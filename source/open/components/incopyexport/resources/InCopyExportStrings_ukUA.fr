@@ -1,0 +1,52 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// U.S. English strings
+//========================================================================================
+
+resource StringTable (kInCopyExportStringsRsrcID + index_ukUA)
+{
+	k_ukUA,								// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+
+	{
+		// ----- Miscellaneous strings
+		"Export Seq Name", 		"Експорт матеріалу InCopy",
+		"Text",					"Текст", // append "Text" to export name on a text story
+		
+		// ----- Export options dialog strings
+		"InCopyExportOptions",	"Параметри експорту у форматі Adobe InCopy",
+		"ExportOptions_DataType",	"&Кодування:",
+		"ExportOptions_UTF16",	"UTF16",
+		"ExportOptions_UTF8",	"UTF8",
+		"ExportOptions_DataOptions",	"Параметри:",
+		"ExportOptions_StyleTable",	"Включити таблицю &стилів",
+		"ExportOptions_SwatchList",	"Включити список з&разків",
+		"ExportOptions_XMPData",	"Включити &дані XMP",
+		"ExportOptions_StoryLabel",	"&Мітка матеріалу:",
+
+		//menu
+		"ExportMenu",				"E&кспорт",
+		"kExportLayerToIC",			"&Шар...",
+		"kExportAllStoriesToIC",	"Усі мат&еріали...",
+		"kExportAllGraphicsToIC",	"Усі &графічні об'єкти...",
+		"kExportAllItemsToIC",		"&Усі графічні об'єкти та матеріали...",
+
+		"INCDFeatureLost",    "Матеріал може містити елементи, які не підтримуються форматом файлу.  Такі елементи під час оновлення матеріалу будуть втрачені.",
+	}
+};
+
+#endif // __ODFRC__

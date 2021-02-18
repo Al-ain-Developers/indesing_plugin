@@ -1,0 +1,635 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/sdksamples/persistentlistui/PstLstUI.fr $
+//  
+//  Owner: Adobe Developer Technologies
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//  
+//  Umbrella include file for all the .fr files in the plug-in.
+//  
+//========================================================================================
+
+//===========================
+//  General includes:
+//===========================
+
+#include "MenuDef.fh"
+#include "ActionDef.fh"
+#include "ActionDefs.h"
+#include "AdobeMenuPositions.h"
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "StringTable.fh"
+#include "objectmodeltypes.fh"
+#include "ShuksanID.h"
+#include "ActionID.h"
+#include "CommandID.h"
+#include "WorkspaceID.h"
+#include "widgetid.h"
+#include "BuildNumber.h"
+#include "PanelList.fh"
+#include "Widgets.fh"	// for PalettePanelWidget
+#include "InterfaceColorDefines.h"
+#include "IControlViewDefs.h"
+#include "SysControlIds.h"
+
+// General includes:
+#include "GenericID.h"
+#include "TreeViewDefs.h"
+
+
+// Project includes:
+#include "PstLstUIID.h"
+#include "PstLstID.h"
+
+#include "PlugInModel_UIAttributes.h"
+
+#include "EveInfo.fh"
+#ifdef __ODFRC__
+
+#define kPersistListUIActionArea            "KBSCE SDK Plug-Ins: PersistList" // KBSCE key for special SDK related KBSC's
+
+/*
+// Plugin version definition.
+*/
+resource PluginVersion (kSDKDefPluginVersionResourceID)
+{
+	kTargetVersion,
+	kPstLstUIPluginID,
+	kSDKDefPlugInMajorVersionNumber, kSDKDefPlugInMinorVersionNumber, 	
+	kSDKDefHostMajorVersionNumber, kSDKDefHostMinorVersionNumber,
+	kPstLstUILastMajorFormatChange, kPstLstUILastMinorFormatChange,
+	{kInDesignProduct },
+	{kWildFS },
+	kUIPlugIn,
+	kPstLstUIVersion
+};
+
+
+/*
+// Dependent on TransparencyEffect plug-in.
+*/
+resource PluginDependency(kSDKDefPluginDependencyResourceID)
+{
+	kWildFS
+	{
+		kPstLstPluginID,
+		kPstLstPluginName,
+		kSDKDefPlugInMajorVersionNumber,
+		kSDKDefPlugInMinorVersionNumber,
+	}
+}
+
+/*
+	Boss class definition.
+*/
+resource ClassDescriptionTable(kSDKDefClassDescriptionTableResourceID)
+{{{
+			/** 
+			This boss class implements the New and Modify IPstLstData dialog for this plug-in. All
+			dialogs must implement IDialogController. Specialisation of IObserver is 
+			only necessary if you want to handle widget changes dynamically rather 
+			than just gathering their values and applying in the IDialogController 
+			implementation.
+			In this implementation IObserver is specialised so that the plug-in's 
+			about box is popped when the info button widget is clicked.
+			@ingroup persistentlist
+			*/
+			Class 
+			{
+				kPstLstUIDialogBoss,
+				kDialogBoss,
+				{
+					/** 
+					Provides management and control over the dialog.  In this case, when the OK button is clicked,
+					use appropriate suite to create or modify new IPstLstData on the IPstLstUIDList of the current
+					selection.
+					Implementation provided in PstLstUIDlgController.cpp.
+					*/
+					IID_IDIALOGCONTROLLER,	kPstLstUIDlgControllerImpl,
+					
+					/** 
+					This interface carries a flag that stores the dialog mode, the dialog is used by both
+					New and Modify command, and we need to display different string for each case.
+					*/
+					IID_IINTDATA, kIntDataImpl
+					
+					/** 
+					This interface hold the list of the selected PstLstData objects of the panel.
+					*/
+					IID_IUIDLISTDATA, kUIDListDataImpl,        
+				}
+			},
+			/**
+			This boss class provides the actions invoked by this plug-in's
+			sub-menu items. It supports two interfaces: 
+			IActionComponent and IPMPersist. We provide the implementation 
+			for IActionComponent in PstLstUIAction.cpp. The other
+			default implementation is provided by the API.
+			@ingroup persistentlist
+			*/
+			Class
+			{
+				kPstLstUIActionComponentBoss,
+				kBaseActionComponentBoss,
+				{
+					/** Handle the actions from the menu. */
+					IID_IACTIONCOMPONENT, kPstLstUIActionComponentImpl,
+				}
+			},
+			
+			
+			
+			/**
+			This boss class inherits from an API panel boss class, and
+			adds an interface to control a pop-up menu on the panel.
+			The implementation for this interface is provided by the API.
+			@ingroup persistentlist
+			*/
+			Class
+			{
+				kPstLstUIPanelWidgetBoss,
+				kPalettePanelWidgetBoss,
+				{
+					/** 
+					The plug-in's implementation of IPanelMenuData.
+					Implementation provided by the API.
+					*/ 
+					IID_IPANELMENUDATA, kCPanelMenuDataImpl,
+					
+					/** 
+					The plug-in's implementation of IControlView.
+					Implementation provided by the helper kPalettePanelView.
+					*/
+					IID_ICONTROLVIEW, kPalettePanelView,
+					
+					/** 
+					This observer subclasses ActiveSelectionObserver so when there is a selection change, 
+					PstLstUISelectionObserver will get notified. And also this observer observes the drop down list, we
+					need to know when the user changes the drop down selection so we can update the dispaly
+					data.
+					*/
+					IID_IOBSERVER, kPstLstUISelectionObserverImpl
+				}
+			},
+			
+			/**
+			List-box implemented with tree view. 
+			@ingroup persistentlist
+			*/
+			Class 
+			{
+				kPstLstUITreeViewWidgetBoss,
+				kTreeViewWidgetBoss,
+				{
+					/** Furnishes application framework with widgets as needed and geometry info */
+					IID_ITREEVIEWWIDGETMGR,  kPstLstUITVWidgetMgrImpl,
+					/** Adapts our data model to the needs of the application framework */
+					IID_ITREEVIEWHIERARCHYADAPTER,  kPstLstUITVHierarchyAdapterImpl,
+				}
+			},
+			
+		}}};
+/*
+// Implementation definition.
+*/
+resource FactoryList (kSDKDefFactoryListResourceID) 
+{
+	kImplementationIDSpace,
+	{
+#include "PstLstUIFactoryList.h"
+	}
+};
+
+/*
+// Menu definition.
+*/
+resource MenuDef (kSDKDefMenuResourceID)
+{
+	{
+		// The About Plug-ins sub-menu item for this plug-in.
+		kPstLstUIAboutActionID,			// ActionID (kInvalidActionID for positional entries)
+		kPstLstUIAboutMenuPath,			// Menu Path.
+		kSDKDefAlphabeticPosition,			// Menu Position.
+		kSDKDefIsNotDynamicMenuFlag,		// kSDKDefIsNotDynamicMenuFlag or kSDKDefIsDynamicMenuFlag.
+		
+		kPstLstUINewActionID,
+		kPstLstUITargetMenuPath,
+		kPstLstUINewMenuItemPosition,
+		kSDKDefIsNotDynamicMenuFlag,
+		
+		kPstLstUIModifyActionID,
+		kPstLstUITargetMenuPath,
+		kPstLstUIModifyMenuItemPosition,
+		kSDKDefIsNotDynamicMenuFlag,
+		
+		kPstLstUIDeleteActionID,
+		kPstLstUITargetMenuPath,
+		kPstLstUIDeleteMenuItemPosition,
+		kSDKDefIsNotDynamicMenuFlag,
+		
+		// Separator for the popup menu on the panel
+		kPstLstUISeparator1ActionID,
+		kPstLstUIInternalPopupMenuNameKey kSDKDefDelimiterAndSeparatorPath,	// :- to mark an item as a separator.
+		kPstLstUISeparator1MenuItemPosition,
+		kSDKDefIsNotDynamicMenuFlag,
+		
+		// About this plugin submenu for the popup menu on the panel
+		kPstLstUIPopupAboutThisActionID,
+		kPstLstUITargetMenuPath
+		kPstLstUIAboutThisMenuItemPosition,
+		kSDKDefIsNotDynamicMenuFlag, 
+	}
+};
+
+/*
+// Action definition.
+*/
+resource ActionDef (kSDKDefActionResourceID)
+{
+	{
+		kPstLstUIActionComponentBoss, 		// ClassID of boss class that implements the ActionID.
+		kPstLstUIAboutActionID,	// ActionID.
+		kPstLstUIAboutMenuKey,	// Sub-menu string.
+		kHelpMenuActionArea,				// Area name (see ActionDefs.h).
+		kNormalAction,					// Type of action (see ActionDefs.h).
+		kDisableIfLowMem,				// Enabling type (see ActionDefs.h).
+		kInvalidInterfaceID,			// Selection InterfaceID this action cares about or kInvalidInterfaceID.
+		kSDKDefInvisibleInKBSCEditorFlag, // kSDKDefVisibleInKBSCEditorFlag or kSDKDefInvisibleInKBSCEditorFlag.
+		
+		kPstLstUIActionComponentBoss,
+		kPstLstUINewActionID,		
+		kPstLstUINewMenuItemKey,		
+		kPersistListUIActionArea,			
+		kNormalAction,				
+		kDisableIfLowMem|kDisableIfSelectionDoesNotSupportIID | kCustomEnabling,	
+		IID_IPSTLST_ISUITE,		
+		kSDKDefInvisibleInKBSCEditorFlag,
+		
+		kPstLstUIActionComponentBoss, 
+		kPstLstUIModifyActionID, 
+		kPstLstUIModifyMenuItemKey,
+		kPersistListUIActionArea,
+		kNormalAction,
+		kDisableIfLowMem|kDisableIfSelectionDoesNotSupportIID | kCustomEnabling,	
+		IID_IPSTLST_ISUITE,		
+		kSDKDefInvisibleInKBSCEditorFlag,
+		
+		kPstLstUIActionComponentBoss,
+		kPstLstUIDeleteActionID,		
+		kPstLstUIDeleteMenuItemKey,		
+		kPersistListUIActionArea,			
+		kNormalAction,				
+		kDisableIfLowMem|kDisableIfSelectionDoesNotSupportIID | kCustomEnabling,	
+		IID_IPSTLST_ISUITE,		
+		kSDKDefInvisibleInKBSCEditorFlag,
+		
+		kPstLstUIActionComponentBoss, 
+		kPstLstUIPopupAboutThisActionID, 
+		kSDKDefAboutThisPlugInMenuKey,	// Key to the name of this action
+		kPersistListUIActionArea,
+		kNormalAction,
+		kDisableIfLowMem,	
+		kInvalidInterfaceID,
+		kSDKDefInvisibleInKBSCEditorFlag,
+	}
+};
+
+/*
+// LocaleIndex
+// The LocaleIndex should have indicies that point at your
+// localizations for each language system that you are 
+// localized for.
+*/
+/*
+// String LocaleIndex.
+*/
+resource LocaleIndex (kSDKDefStringsResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_enUS, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_jaJP, kSDKDefStringsResourceID + index_jaJP
+		
+		kWildFS, k_Wild, kSDKDefStringsResourceID + index_enUS
+	}
+};
+
+resource LocaleIndex (kSDKDefStringsNoTransResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_Wild, kSDKDefStringsNoTransResourceID + index_enUS
+	}
+};
+
+resource StringTable (kSDKDefStringsNoTransResourceID + index_enUS)
+{
+	k_enUS,									// Locale Id
+	kEuropeanMacToWinEncodingConverter,		// Character encoding converter
+	{
+		// No-Translate strings go here:		
+		kPstLstUIInternalPopupMenuNameKey,	kPstLstUIInternalPopupMenuNameKey,		// No need to translate, internal menu name.
+	}
+};
+
+/*
+// Panel LocaleIndex.
+*/
+resource LocaleIndex (kSDKDefPanelResourceID)
+{
+	kViewRsrcType,
+	{
+		kWildFS, k_Wild, 	kSDKDefPanelResourceID + index_enUS
+	}
+};
+
+// added to support the list elements in the list box
+resource LocaleIndex (kPstLstUIListElementRsrcID)
+{
+	kViewRsrcType,
+	{
+		kWildFS, k_Wild, kPstLstUIListElementRsrcID + index_enUS
+	}
+};
+
+/*
+// Type definition.
+*/
+type PstLstUIPanelWidget(kViewRsrcType) : PalettePanelWidget(ClassID = kPstLstUIPanelWidgetBoss) 
+{
+	CPanelMenuData;
+	
+	WidgetEveInfo;
+};
+type EVEPstLstUITreeViewWidget: TreeViewWidget(ClassID = kPstLstUITreeViewWidgetBoss) 
+{
+	
+	WidgetEveInfo;
+};
+
+/*
+// PanelList definition.
+*/
+resource PanelList (kSDKDefPanelResourceID)
+{
+	{
+		// 1st panel in the list
+		kSDKDefPanelResourceID,		// Resource ID for this panel (use SDK default rsrc ID)
+		kPstLstUIPluginID,			// ID of plug-in that owns this panel
+		kNotResizable,
+		kPstLstUIPanelWidgetActionID,	// Action ID to show/hide the panel
+		kPstLstUIPanelTitleKey,	// Shows up in the Window list.
+		"",
+		0.0,
+		0,0,						// Rsrc ID, Plugin ID for a PNG icon resource to use for this palette
+		c_Panel
+	}	
+};
+
+/*
+// PanelView definition.
+// The view is not currently localised: therefore, it can reside here.
+// However, if you wish to localise it, it is recommended to locate it in one of
+// the localised framework resource files (i.e. PstLstUI_enUS.fr etc.).
+*/
+resource PstLstUIPanelWidget(kSDKDefPanelResourceID + index_enUS)
+{
+	__FILE__, __LINE__,					// Localization macro		
+	kPstLstUIPanelWidgetID,			// WidgetID 
+	kPMRsrcID_None,						// RsrcID
+	kBindNone,							// Binding (0=none)
+	Frame(0,0,207,123),						// Frame: left, top, right, bottom.
+	kTrue, kTrue,						// Visible, Enabled
+	kFalse,								// Erase background
+	kInterfacePaletteFill,				// Erase to color
+	kFalse,								// Draw dropshadow
+	kPstLstUIPanelTitleKey,			// Panel name	
+	{
+		
+		EVEPstLstUITreeViewWidget
+		(
+			kPstLstUITreeViewWidgetID, kPMRsrcID_None,// WidgetId, RsrcId
+			kBindAll,
+			Frame(0,0,210,120) // Frame
+			kTrue, kTrue,				// Visible, Enabled
+			kTrue, // EraseBeforeDraw
+			kInterfacePaletteFill, // Erase to color,
+			"Persistent List",
+			kHideRootNode | kDrawEndLine,	// Options
+			kFalse,						//Use H Scroll bar
+			kTrue,						//Use V scroll bar
+			20,							// Vertical Scroll Button Increment
+			20,							// Vertical Thumb Scroll Increment
+			0,							// Horizontal Scroll Button Increment - Not Used
+			0,							// Horizontal Thumb Scroll Increment - Not Used
+			2,							// Items selectable, 0 = No Selection, 1 = Single Selection, 2 = Multiple Selection
+			kTrue,						// Allow children from multiple parents to be selected
+			kTrue,						// Allow discontiguous selection
+			{
+			}
+			
+			kEVERegularSpaceAfter,
+		)
+	}
+	kPstLstUIInternalPopupMenuNameKey		// Popup menu name (internal)
+	
+	kEVEArrangeChildrenInRow | kEVELargeMargin,
+};
+
+type PstLstUINodeWidget(kViewRsrcType) : PrimaryResourcePanelWidget(ClassID = kTreeNodeWidgetBoss) {
+	WidgetEveInfo;
+};
+
+resource PstLstUINodeWidget (kPstLstUIListElementRsrcID + index_enUS)
+{
+	__FILE__, __LINE__,
+	kPstLstUIListParentWidgetId, 0,	// WidgetId, RsrcId
+	kPstLstUIPluginID,
+	kBindLeft | kBindRight,			// Frame binding
+	Frame(0,0,208,19),				// Frame
+	kTrue, kTrue,					// Visible, Enabled
+	"",								// name
+	{
+		EVETreeExpanderWidget
+		(
+			kTreeNodeExpanderWidgetID,								//WidgetID
+			kTreeBranchCollapsedRsrcID, kApplicationRsrcPluginID,	// RsrcId of icon when node is collapsed
+			kBindNone,
+			Frame(0,2,14,18)										// Frame
+			kTrue, kTrue,
+			kTreeBranchExpandedRsrcID, kApplicationRsrcPluginID,	// RsrcId of icon when node is collapsed
+			kTrue,													// Cmd-Click expands/collapses children,
+			kTrue,													// Scroll to show children when expanded
+			kADBEIconSuiteButtonNoCenteringType,
+			
+			kEVERegularSpaceAfter,
+		),
+		
+		// Just a info-static text widget 
+		EVEInfoStaticTextWidget
+		(
+			kPstLstUITextWidgetID, kPMRsrcID_None,	// WidgetId, RsrcId
+			kBindLeft | kBindRight,					// Frame binding
+			Frame(20,0,208,18)						// Frame
+			kTrue, kTrue, kAlignLeft,				// Visible, Enabled, alignment
+			kEllipsizeEnd, kTrue					
+			"",										// Text
+			0,
+			kDialogWindowSmallFontId, 
+			kDialogWindowSmallHiliteFontId,
+			
+			kEVENoSpaceAfter,
+		),
+		
+	}
+	
+	kEVEArrangeChildrenInRow | kEVELargeMargin,
+};
+
+//================================================================================
+// Dialogs
+// Resource definitions for any dialogs and widget types.
+//================================================================================
+//------------------------------------------------------------
+// Dialog LocaleIndex.
+//------------------------------------------------------------
+resource LocaleIndex (kSDKDefDialogResourceID)
+{
+	kViewRsrcType,
+	{
+		kWildFS, k_Wild, kSDKDefDialogResourceID + index_enUS
+	}
+};
+
+//------------------------------------------------------------
+// Resource types
+// Define your User Interface resource types here.
+//------------------------------------------------------------
+type PstLstUIDialogWidget(kViewRsrcType) : DialogBoss(ClassID = kPstLstUIDialogBoss) {
+	WidgetEveInfo;
+};
+
+//------------------------------------------------------------
+// Dialog Resource Definition for English.
+//------------------------------------------------------------
+resource PstLstUIDialogWidget (kSDKDefDialogResourceID + index_enUS)
+{
+	__FILE__, __LINE__,
+	kPstLstUIDialogWidgetID,	// WidgetID
+	kPMRsrcID_None,				// RsrcID
+	kBindNone,					// Binding
+	Frame(0,0,388,112),			// Frame (l,t,r,b)
+	kTrue, kTrue,				// Visible, Enabled
+	kPstLstUIDlgTitleKey,		// Dialog name
+	{
+		EVEGenericPanelWidget // First column: label and text box
+		(
+			kInvalidWidgetID,	// WidgetId
+			0					// RsrcId
+			0,					// Widget EVE Info
+			kBindNone,			// Frame binding
+			Frame(0,0,0,0)		// Frame
+			kTrue,				// Visible
+			kTrue,				// Enabled
+			kEVEAlignFill | kEVELargeSpaceAfter | kEVEArrangeChildrenInColumn,
+			{
+				EVEStaticTextWidget // Label, "IPstLstData"
+				(
+					kPstLstUIStaticTextWidgetID,	// WidgetId
+					kSysStaticTextPMRsrcId,			// RsrcId
+					kBindNone,
+					Frame(0,0,0,0),					// Frame(l,t,r,b)
+					kTrue, kTrue, kAlignRight,		// Visible, Enabled, Alignment
+					kEllipsizeEnd, kTrue
+					kPstLstUIDataStaticTextKey,
+					kPstLstUIEditBoxWidgetID,		// WidgetID this shortcut is connected to, 0 if none.
+					kEVERegularSpaceAfter,
+				),
+				EVETextEditBoxWidget // Text edit box
+				(
+					kPstLstUIEditBoxWidgetID,	// WidgetId
+					kSysEditBoxPMRsrcId,		// RsrcId
+					kBindNone,					// Frame binding
+					Frame(0,0,200,0)			// Frame
+					kTrue, kTrue,				// Visible, Enabled
+					0,							// widget id of nudge button			
+					0,	0,						// small/large nudge amount
+					32,							// max num chars(0 = no limit)
+					kFalse,						// is read only
+					kFalse,						// should notify each key stroke (NEW)
+					kFalse,						// range checking enabled
+					kFalse,						// blank entry allowed
+					0, 0,						// upper/lower bounds
+					""							// initial text					
+					kEVERegularSpaceAfter,
+				),
+			}
+		), // End of first column
+				
+		EVEGenericPanelWidget // Second column, OK/Cancel buttons
+		(
+			kInvalidWidgetID,	// WidgetId
+			0					// RsrcId
+			0,					// Widget EVE Info
+			kBindNone,			// Frame binding
+			Frame(0,0,0,0)		// Frame
+			kTrue,				// Visible
+			kTrue,				// Enabled
+			kEVEAlignFill | kEVERegularSpaceAfter | kEVEArrangeChildrenInColumn,
+			{
+				EVEDefaultButtonWidget // OK button
+				(
+					kOKButtonWidgetID,				// WidgetID 
+					kSysButtonPMRsrcId,				// RsrcID
+					kBindNone,						// Binding
+					Frame(0,0,0,0),					// Frame (l,t,r,b)
+					kTrue, kTrue,					// Visible, Enabled
+					kSDKDefOKButtonApplicationKey	// Button text
+					kEVELargeSpaceAfter,
+				),
+				EVECancelButtonWidget // Cancel button
+				(
+					kCancelButton_WidgetID,				// WidgetID
+					kSysButtonPMRsrcId,					// RsrcID
+					kBindNone,							// Binding
+					Frame(0,0,0,0),						// Frame (l,t,r,b)
+					kTrue, kTrue,						// Visible, Enabled
+					kSDKDefCancelButtonApplicationKey,	// Button name
+					kTrue,								// Change to Reset on option-click.
+					kEVELargeSpaceAfter,
+				),
+			}
+		), // End of second column
+	},
+	kEVEArrangeChildrenInRow | kEVELargeMargin,
+};
+
+// Get rid of these defines now that we're done with them:
+#undef kDialogWidth
+#undef kDialogHeight
+#undef kGap
+
+
+#endif // __ODFRC__
+
+#include "PstLstUI_enUS.fr"
+#include "PstLstUI_jaJP.fr"
+
+// End, PstLstUI.fr.
+

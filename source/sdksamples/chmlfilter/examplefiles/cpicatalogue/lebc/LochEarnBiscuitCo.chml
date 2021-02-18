@@ -1,0 +1,73 @@
+<CHML>
+
+<c> First the images... </c>
+
+<c> Can handle absolute paths as well, see SDKUtilities.cpp for details </c>
+<i banner2b.jpg 0  0>
+<i banner2b.jpg 0  695> 
+<i banner2c.jpg 0  24> 
+<i banner2c.jpg 515  24 > 
+<i shortbread1b.jpg 39  179> 
+<i shortbread2b.jpg 360  270> 
+<i shortbreadheartsb.jpg 27  425> 
+
+<c> The heading:  </c>
+<t   27  27  516  57 >
+<a c> <s 30> <u> The Loch Earn Biscuit Company  </u> 
+<t   25  60  513  161 > 
+<s 14> <f Georgia> 
+<a j> <c> ...and justify </c>
+Travelled far? Working a little too hard? What happened to those days when you could sit by 
+the fire and enjoy some of life’s comforts, like your granmother spoiling you with milk and 
+biscuits? There may be no-one to pamper you anymore, your gran may be fertiliser, but you can 
+still get Patrick's Homemade shortbread! For a limited time only, you can gorge yourself on 
+one of Scotland's finest exports until you puke! No need to rob a bank either, see our 
+wonderful prices below!
+
+<t   171  180  513  270 >
+<a j>
+<s 12> <f Helvetica>
+For the canny purchaser! Why spend money on expensive packaging? The Patrick's <b> EcoPack </b> 
+comes with 28 slices of our own finest shortbread. The packaging is disposable, you cannot 
+re-seal it and the contents will biodegrade in an hour, but that won’t matter, once you get 
+your teeth into our shortbread, they won't last the hour!
+
+<t   27  306  355  405 >
+<a j>
+<s 12> <f Times>
+For the business man who may wish to travel with a little something in his suitcase. The 
+<b> ExecutiveBox </b> comes with 14 slices of Patrick's best, along with some sturdy card 
+to protect it from the trials and tribulations of life on the road. Once you finish your 
+shortbread, and lets face it, this will be soon after you buy it, the packaging will be 
+handy for all sorts of activities, from beating midges with, to the use as fuel when you 
+need a small diversionary fire.
+
+<t   180  441  508  549 >
+<a j>
+<s 12> <f Helvetica>
+Now meet our corporate model, the <b> BoardroomBox </b> consists of 18 bits of shortbread, 
+each lovingly shaped into a heart by a large stainless steel press, contained within a unique 
+octagonal tin. Customer feedback has shown that this is a firm favourite, not only because 
+it looks impressive in any business environment, but because you can keep nails, spare buttons, 
+or many other things in the tin when it is empty! Now, that is canny!
+
+<t   27  603  189  684 >
+<a j>
+<s 9> <f Times>
+The Loch Earn Biscuit Company can not be held responsible for damages occurring to the 
+goods in transit for remote orders. Compensation for loss of teeth will be met if it 
+can be proven that this was a result of decay, and not being hit in the mouth with 
+the <b> BoardroomBox </b> .
+
+<t   270  558  486  690 >
+<a c>
+<s 18> <f Times>
+Prices <p>
+<a j>
+<s 12> 
+The EcoPack ----------------------------£4.99 
+The Execbox ----------------------------£7.99 
+The BoardroomBox -------------------£14.99 
+Any two? --------------------------------£20.00 
+All three? -------------------------------£22.99 
+P&P (outside Scotland) -----------------£4.99

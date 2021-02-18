@@ -1,0 +1,159 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kSpellPanelStringsRsrcID + index_ruRU)
+{
+	k_ruRU,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{				
+		// ----- Main menu strings
+		"SpellingMenu",					"&Орфография",
+		"Check Spelling...",			"&Проверка орфографии...",
+		"Dynamic SpellCheck",			"&Динамическая проверка орфографии",
+		"Autocorrect",					"Автокоррекция",
+		"Auto Correct",					"&Автокоррекция",
+		"AutoCorrect",					"Автокоррекция",
+
+		// ----- Window strings
+		"corrected",					"исправлено",
+		"misspelled",					"с ошибками",
+		
+		// ----- Scope strings
+		
+		"[No spelling]",				"[Не задано]",
+		"Auto",							"Авт.",
+		"Document",						"Документ",
+		"Story",						"Материал",
+		"Stories",						"Материалы",
+		"Selection",					"Выделенный фрагмент",
+		
+		// ----- Panel strings		
+		"Spelling",						"Орфография",
+		"&Spelling...",					"&Орфография...",
+		"Auto Correct...",				"Автокорр&екция...",
+		"[No language]",				"[Язык не задан]",
+		"AutoCorrectEnable",			"Вк&лючить автокоррекцию",
+		"AutoCorrectCapitalizationErrors",			"Исправлять &ошибки капитализации",
+		"A&dd...",						"&Добавить...",		// Opens a dialog
+		"EditAutoCorrectWord",			"&Редактировать...",		// Opens a dialog
+		"Correction",					"Исправление",
+		"Misspelled Word",				"Слово с ошибкой",
+
+		// ----- Dialog strings
+		"Check Spelling",				"Проверка орфографии",
+		"&Change To:",					"&Заменить на:",
+		
+		"Change To",					"Заменить на",
+		"&Suggested Corrections:",		"Предлагаемые исправ&ления:",
+		"Language:",					"Язык:",
+		"Sea&rch:",						"&Зона поиска:",
+		"Include Overset",				"Включая вытесненный",
+		"&Done",							"&Готово",
+		"C&hange",						"&Заменить",
+		"S&tart",						"&Начать",
+		"Chan&ge All",					"&Заменить все",
+		"Skip",							"Пропустить",	
+		"kSkipButtonInSpellingDialog",  "Пр&опустить",
+		"Ignore",						"Игнорировать",
+		"&Ignore All",					"&Игнорировать все",
+		"&AddAndContinue",				"&Добавить",			// Adds to dictionary automatically, continues spelling
+		"Dic&tionary...",				"&Словарь...",	// Launches Dict Editor dialog
+		"Add To:",						"Добавить в&:",
+
+		// Label strings in Spell Check dialog.
+		"Ready to Spell Check:", 			"Готов к проверке орфографии",
+		"Misspelled Word:",					"Слово с ошибкой:",
+		"Unknown Word - No Suggestions:", 	"Неизвестное слово - вариантов нет:",
+		"Not in Dictionary:",				"Нет в словаре:",
+		"Repeated Word:",					"Повтор слова:",
+		"Uncapitalized Word:",				"Слово не с прописной:",
+		"Uncapitalized Sentence:",			"Предложение не с прописной:",
+		"Duplicate Word:",					"Дублирование слова:",
+		"Capitalization Error:",			"Ошибка расстановки прописных:",
+		"Spell Check Complete:",			"Проверка орфографии завершена",
+		
+		"SpellCheckCompleteAlertStr",			"Проверка орфографии завершена.",	// Alert string at completion of spelling.
+
+		"Misspelled Word (Overset):",					"Слово с ошибкой: (Вытесненный текст)",
+		"Unknown Word - No Suggestions (Overset):", 	"Неизвестное слово: (Вытесненный текст)",
+		"Not in Dictionary (Overset):",					"Нет в словаре: (Вытесненный текст)",
+		"Repeated Word (Overset):",						"Повтор слова: (Вытесненный текст)",
+		"Uncapitalized Word (Overset):",				"Слово не с прописной: (Вытесненный текст)",
+		"Uncapitalized Sentence (Overset):",			"Предложение не с прописной: (Вытеснение)",
+
+		"Misspelled Word (In Table):",					"Слово с ошибкой: (В таблице)",
+		"Unknown Word - No Suggestions (In Table):", 	"Неизвестное слово: (В таблице)",
+		"Not in Dictionary (In Table):",					"Нет в словаре: (В таблице)",
+		"Repeated Word (In Table):",						"Повтор слова: (В таблице)",
+		"Uncapitalized Word (In Table):",				"Слово не с прописной: (В таблице)",
+		"Uncapitalized Sentence (In Table):",			"Предложение не с прописной: (В таблице)",
+
+		"Misspelled Word (Deleted Text):",				"Слово с ошибкой: (Удаленный текст)",
+		"Unknown Word - No Suggestions (Deleted Text):","Неизвестное слово: (Удаленный текст)",
+		"Not in Dictionary (Deleted Text):",			"Нет в словаре: (Удаленный текст)",
+		"Repeated Word (Deleted Text):",				"Повтор слова: (Удаленный текст)",
+		"Uncapitalized Word (Deleted Text):",			"Слово не с прописной: (Удаленный текст)",
+		"Uncapitalized Sentence (Deleted Text):",		"Предложение не с прописной: (Удаленный)",
+		
+		"Misspelled Word (Hidden):",					"Слово с ошибкой: (скрытый объект)",
+		"Unknown Word - No Suggestions (Hidden):", 		"Неизвестное слово: (скрытый объект)",
+		"Not in Dictionary (Hidden):",					"Слово отсутствует в словаре: (скрытый объект)",
+		"Repeated Word (Hidden):",						"Повторяющееся слово: (скрытый объект)",
+		"Uncapitalized Word (Hidden):",					"Слово со строчной буквы: (скрытый объект)",
+		"Uncapitalized Sentence (Hidden):",				"Предложение со строчной буквы: (скрытый объект)", // Shortened to "Hidden" for space. Like the "Overset" case above.
+
+//		"Spelling Preferences", 						"Spelling Preferences", // Note to localizer: this string moved to SpellingServiceStrings.fr
+		"Find", 										"Найти",
+		"&Misspelled Words", 							"&Слова с ошибками",
+		"&Repeated Words", 								"&Повторяющиеся слова",
+		"&Uncapitalized Words", 						"&Слова не с прописных",
+		"Uncapitalized &Sentences", 					"&Предложения не с прописных",
+		"Misspelled Words Underline Color:",			"&Слова с ошибками:",
+		"Repeated Words Underline Color:",				"&Повторяющиеся слова:",
+		"Uncapitalized Words Underline Color:",			"&Слова не с прописных:",
+		"Uncapitalized Sentences Underline Color:",		"&Предложения не с прописных:",
+		"Dynamic Spellchecking",						"Динамическая проверка",
+		
+		"Underline Color",								"Цвет подчеркивания",
+		
+		"&Enable Dynamic Spelling",						"&Включить динамическую проверку орфографии",
+		
+		"Search is completed.  ^1  replacement(s) made.", "Поиск завершен.  Произведено замен ^1.", 
+
+		"Add",											"Добавить",
+		"Re&move",										"&Удалить",
+		"Misspelled:",									"С ошибками:",
+		"Correction:",									"Исправление:",
+		"Language:",									"Язык:",
+		"&Language:",									"&Язык:",
+		"AddToAutoCorrectList",							"Добавить в список автокоррекции",
+		"EditAutoCorrectList",							"Изменить список для автокоррекции",
+
+		"ACAlert1",		"Пустые входы не допускаются.",
+		"ACAlert2",		"Ошибочное слово и его исправленный вариант не могут быть идентичными по орфографии и расстановке прописных.",
+		"ACAlert3",		"Ошибочное слово и его исправленный вариант уже есть в списке.",
+		"ACAlert4",		"Создание входа невозможно. Количество символов превышает максимально допустимое (64).",
+		"ACAlert5",		"Вход содержит недопустимый символ.",
+		"ACAlert6",		"Пробел в слове с ошибкой не допускается.",
+
+	}
+};
+
+#endif // __ODFRC__

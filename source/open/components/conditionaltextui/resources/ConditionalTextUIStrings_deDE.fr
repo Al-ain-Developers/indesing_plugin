@@ -1,0 +1,126 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kConditionalTextUIStringsRsrcID + index_deDE)
+{
+    k_deDE,                                 // Locale Id
+    kResourceUTF8Encoded,     // Character encoding converter
+    {
+		"#CondTextUI_WinMenu",	"B&edingter Text",	// panel menu item
+		"#CondTextUI_PanelName","Bedingter Text",		// panel name
+		"#CondTextUI_PanelMenu","Bedingter Text, Bedienfeldmenü",
+		"#CondTextUI_NewConditionTagMenu", "Neue Bedingung...",
+		"#CondTextUI_DeleteConditionTagMenu", "Bedingung löschen...",
+		"#CondTextUI_DeleteConditionTagsMenu", "Bedingungen löschen...",
+		"#CondTextUI_EditConditionTagMenu", "Bedingungsoptionen...",
+		"#CondTextUI_LoadConditionTagsMenu", "Bedingungen laden...",
+		"#CondTextUI_LoadConditionTagsAndSetsMenu", "Bedingungen und Bedingungssätze laden...",
+		"#CondTextUI_ShowIndicatorsCB", "Kennzeichnungen für bedingten Text anzeigen",
+		"#CondTextUI_ShowIndicatorsMenu", "Kennzeichnungen für bedingten Text anzeigen",
+		"#CondTextUI_ShowAndPrintIndicatorsMenu", "Kennzeichnungen für bedingten Text anzeigen und drucken",
+		"#CondTextUI_HideIndicatorsMenu", "Kennzeichnungen für bedingten Text ausblenden",
+		"#CondTextUI_ShowIndicatorsDD", "Kennzeichen:",
+		"#CondTextUI_ShowIndicators", "Einblenden",
+		"#CondTextUI_ShowAndPrintIndicators", "Einblenden und drucken",
+		"#CondTextUI_HideIndicators", "Ausblenden",
+		"#CondTextUI_RtMenuConditionTagTVNode",    "Bedingungsstrukturansichtsknoten, Kontextmenü",
+		"#CondTextUI_RtMenuUnapplyTag",		"\"^1\" aufheben",
+		"#CondTextUI_RtMenuDeleteTag",		"\"^1\" löschen",
+		"#CondTextUI_RtMenuEditTag",		"\"^1\" bearbeiten...",
+		"Show Options", "Optionen &einblenden",
+		"Hide Options", "Optionen &ausblenden",
+		"#CondTextUI_SelectUnusedMenu", "Alle nicht verwendeten auswählen",
+	
+		"#ConditionTagList_NameColumnLabel", "Name",
+		"#ConditionTag_OptionsDialog", "Bedingungsoptionen",
+		"#ConditionTag_OptionsDialogNew", "Neue Bedingung",
+		"#ConditionTagOptions_Name:", "&Name:",
+		"#ConditionTagOptions_Method:", "&Methode:",
+		"#ConditionTagOptions_Appearance:", "&Darstellung:",
+		"#ConditionTagOptions_Color:", "&Farbe:",
+		"#ConditionTagOptions_Indicator", "Kennzeichnung",
+		"#ConditionTagOptions_MethodUnderline", "Unterstrichen",
+		"#ConditionTagOptions_MethodHighlight", "Markieren",
+		"#ConditionTagOptions_WavyUnderline", "Wellenlinie",		
+		"#ConditionTagOptions_SolidUnderline", "Durchgezogen",		
+		"#ConditionTagOptions_DashedUnderline", "Gestrichelt",		
+		"#ConditionTag_EmptyNameMsg", "Geben Sie einen Bedingungsnamen an.",
+		"#ConditionTag_NameInUseMsg", "Dieser Bedingungsname wird bereits verwendet. Wählen Sie einen anderen Namen.",
+		
+		"#ConditionSetShowAll", "Alle einblenden",
+		"#ConditionSetHideAll", "Alle ausblenden",
+		"#ConditionSetNone", "[Ohne]",
+		"#ConditionSetBlank", " ",
+		"#ConditionSetLabel", "Satz:",
+		"#ConditionSetNewSet", "Neuen Satz erstellen...",
+		"#ConditionSetDeleteSet", "\"^1\" löschen...",
+		"#ConditionSetRenameSet", "\"^1\" umbenennen...",
+		"#ConditionSetRedefineSet", "\"^1\" neu definieren...",
+		"#ConditionSetUpdateAllSets", "Alle Sätze aktualisieren",
+		"#ConditionSetUpdateAllSetsUndoName", "Alle Bedingungssätze aktualisieren",
+		"#ConditionSetNameDialog", "Name des Bedingungssatzes",
+		"#ConditionSetNameStatic", "&Name:",
+		"#InvalidSetName", "Ungültiger Name für Bedingungssatz",
+		"#DuplicateSetName", "Name ist bereits vorhanden",
+		"#NoActiveSetString", "Kein aktiver Satz",
+		
+		"#ConditionalTextTip", "Verborgener Text mit ^1 gefunden: ",
+		"#ConditionalTextTipOneTag", "diese Bedingung",
+		"#ConditionalTextTipManyTags", "diese Bedingungen",
+		
+		"#ConditionalTextEyeballHideWidgetTip", "Klicken, um den gesamten Text mit dieser Bedingung auszublenden",
+		"#ConditionalTextEyeballShowWidgetTip", "Klicken, um den gesamten Text mit dieser Bedingung einzublenden",
+		"#ConditionalTextEyeballUnconditionalWidgetTip", "Text ohne Bedingungen ist stets sichtbar",
+		"#ConditionalTextAppliedAllTip",	"Bedingung auf den ausgewählten Text angewendet. Klicken, um aufzuheben",
+		"#ConditionalTextAppliedSomeTip",	"Bedingung auf einen Teil des ausgewählten Textes angewendet. Klicken, um auf den gesamten ausgewählten Text anzuwenden",
+		"#ConditionalTextAppliedNoneTip",	"Klicken, um Bedingung anzuwenden",
+		"#ConditionalTextAppliedAllTipUncondition",	"Der ausgewählte Text ist nicht bedingt",
+		"#ConditionalTextAppliedSomeTipUncondition",	"Ein Teil des ausgewählten Textes ist nicht bedingt. Klicken, um gesamten Text in nicht bedingt zu ändern",
+		"#ConditionalTextAppliedNoneTipUncondition",	"Klicken, um Text in nicht bedingt zu ändern",
+		"#ConditionalTextApplyNoSelectionTip", "Klicken, um Bedingung auf ausgewählten Text anzuwenden",
+		"#ConditionalTextNewTagTip",		"Neue Bedingung",
+		"#ConditionalTextDeleteTagTip",		"Bedingung löschen",
+		"#ConditionalTextIndicatorTip",		"Kennzeichnungsmethode: ^1",
+		"#ConditionalTextNewSetTip",		"Neuer Satz",
+		"#SetOverrideTip_NewConditionsAndConditionVisibility",	"Abweichungen: Bedingungssichtbarkeit (zum Löschen Satz erneut auswählen oder \"Neu definieren\" auswählen) + neue Bedingungen (zum Löschen \"Alle Sätze aktualisieren\" auswählen oder \"Neu definieren\" auswählen)",
+		"#SetOverrideTip_NewConditions",	"Abweichungen: neue Bedingungen (zum Löschen \"Alle Sätze aktualisieren\" auswählen oder \"Neu definieren\" auswählen)",
+		"#SetOverrideTip_ConditionVisibility",	"Abweichungen: Bedingungssichtbarkeit (zum Löschen Satz erneut auswählen oder \"Neu definieren\" auswählen)",
+		
+		"#ConditionTag_DeleteConditionDialog", "Bedingung löschen", 
+		"#ConditionTag_DeleteConditionsDialog", "Bedingungen löschen", 
+		"#ConditionTag_DeleteConditionAndReplace:", "Bedingung löschen und ersetzen durch: ", 
+		"#ConditionTag_DeleteConditionsAndReplace:", "Bedingungen löschen und ersetzen durch: ", 
+		"#ConditionTag_DeleteInformationAlert", "Ziehen Sie eine Bedingung auf das Papierkorbsymbol, um sie zu löschen.",
+		"#ConditionTag_DeleteNoReplaceChoice", "[Ohne]",
+		
+		"#QuickApplyConditions", "Bedingung",
+		"#Conditions_Filter_Key", "CT", // should be upper case if there is an upper case character, this is the prefix key for quick apply for text conditions.
+		"#QuickApplyConditionSets", "Bedingungssatz",
+		"#QuickApplyConditionSets_Filter_Key", "BS",  // should be upper case if there is an upper case character, this is the prefix key for quick apply for text condition sets.
+		"#QuickApplyConditons_Menu_Key_String", "Bedingungen einschließen (b:)",
+		"#QuickApplyConditonSets_Menu_Key_String", "Bedingungssätze einschließen (cs:)",
+		
+		"#SingularConditionStatusBodyString", "^1 Bedingung ^2 angewendet",
+		"#PluralConditionStatusBodyString", "^1 Bedingungen ^2 angewendet",
+		"#MixedConditionString", " [gemischt]",
+		"#NoConditionsString", "Keine Bedingungen angewendet",
+    }
+};
+
+#endif // __ODFRC__

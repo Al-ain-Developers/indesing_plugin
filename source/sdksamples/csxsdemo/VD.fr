@@ -1,0 +1,263 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/sdksamples/csxsdemo/VD.fr $
+//  
+//  Owner: Timothy Brand-Spencer
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2013 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "VCPlugInHeaders.h"
+
+// General includes:
+#include "MenuDef.fh"
+#include "ActionDef.fh"
+#include "ActionDefs.h"
+#include "AdobeMenuPositions.h"
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "StringTable.fh"
+#include "ObjectModelTypes.fh"
+#include "ShuksanID.h"
+#include "ActionID.h"
+#include "CommandID.h"
+#include "WorkspaceID.h"
+#include "WidgetID.h"
+#include "BuildNumber.h"
+#include "PlugInModel_UIAttributes.h"
+
+// Project includes:
+#include "VDID.h"
+#include "GenericID.h"
+#include "ShuksanID.h"
+#include "TextID.h"
+
+#ifdef __ODFRC__
+
+/*  
+ * Plugin version definition.
+ */
+resource PluginVersion (kSDKDefPluginVersionResourceID)
+{
+	kTargetVersion,
+	kVDPluginID,
+	kSDKDefPlugInMajorVersionNumber, kSDKDefPlugInMinorVersionNumber,
+	kSDKDefHostMajorVersionNumber, kSDKDefHostMinorVersionNumber,
+	kVDCurrentMajorFormatNumber, kVDCurrentMinorFormatNumber,
+	{ kInDesignProduct },
+	{ kWildFS },
+	kUIPlugIn,
+	kVDVersion
+};
+
+/*  
+ * The ExtraPluginInfo resource adds extra information to the Missing Plug-in dialog
+ * that is popped when a document containing this plug-in's data is opened when
+ * this plug-in is not present. These strings are not translatable strings
+ * since they must be available when the plug-in isn't around. They get stored
+ * in any document that this plug-in contributes data to.
+ */
+resource ExtraPluginInfo(1)
+{
+	kVDCompanyValue,			// Company name
+	kVDMissingPluginURLValue,	// URL 
+	kVDMissingPluginAlertValue,	// Missing plug-in alert text
+};
+
+/* 
+ * Boss class definitions.
+ */
+resource ClassDescriptionTable(kSDKDefClassDescriptionTableResourceID)
+{{{
+
+	/*
+	 * This boss class supports two interfaces:
+	 * IActionComponent and IPMPersist.
+     *
+	 */
+	Class
+	{
+		kVDActionComponentBoss,
+		kInvalidClass,
+		{
+			// Handle the actions from the menu.
+			IID_IACTIONCOMPONENT, kVDActionComponentImpl,
+			// Persist the state of the menu across application instantiation. Implementation provided by the API.
+			IID_IPMPERSIST, kPMPersistImpl
+		}
+	},
+
+	/**
+	  * Startup-shutdown service to attempt to read default XML catalog
+	  * file from application data folder
+	  */
+	Class
+	{
+		kVDStartupShutdownServiceBoss,
+		kInvalidClass,
+		{
+			// Implementation of IStartupShutdownService 
+			IID_ISTARTUPSHUTDOWN,  kVDStartupShutdownImpl,
+			// Implementation to IK2ServiceProvider to identify the service type as startup-shutdown
+			IID_IK2SERVICEPROVIDER,  kLazyStartupShutdownProviderImpl,
+		}
+	},
+
+	AddIn
+	{
+		kIntegratorSuiteBoss,
+		kInvalidClass,
+		{
+			IID_IVDSUITE, kVDSuiteASBImpl,
+		}
+	},
+
+	AddIn
+	{
+		kLayoutSuiteBoss,
+		kInvalidClass,
+		{
+			IID_IVDSUITE, kVDSuiteCSBImpl,
+		}
+	},
+	
+	AddIn
+	{
+		kTextSuiteBoss,
+		kInvalidClass,
+		{
+			IID_IVDSUITE, kVDSuiteCSBImpl,
+		}
+	},
+
+}}};
+
+/*  
+ * Implementation definition.
+ */
+resource FactoryList (kSDKDefFactoryListResourceID)
+{
+	kImplementationIDSpace,
+	{
+		#include "VDFactoryList.h"
+	}
+};
+
+/*  
+ * Menu definition.
+ */
+resource MenuDef (kSDKDefMenuResourceID)
+{
+	{
+		// The About sub-menu item for this plug-in.
+		kVDAboutActionID,			// ActionID (kInvalidActionID for positional entries)
+		kVDAboutMenuPath,			// Menu Path.
+		kSDKDefAlphabeticPosition,											// Menu Position.
+		kSDKDefIsNotDynamicMenuFlag,										// kSDKDefIsNotDynamicMenuFlag or kSDKDefIsDynamicMenuFlag
+
+		// Context menu
+		/*
+		kVDContextMenuActionID,			
+		"RtMouseText",		
+		1250.0,										
+		kFalse,
+		*/
+
+		kVDContextMenuActionID,			
+		"RtMouseLayout",		
+		700.0,										
+		kFalse,
+	}
+};
+
+/* 
+ * Action definition.
+ */
+resource ActionDef (kSDKDefActionResourceID)
+{
+	{
+		kVDActionComponentBoss, 		// ClassID of boss class that implements the ActionID.
+		kVDAboutActionID,	// ActionID.
+		kVDAboutMenuKey,	// Sub-menu string.
+		kOtherActionArea,				// Area name (see ActionDefs.h).
+		kNormalAction,					// Type of action (see ActionDefs.h).
+		kDisableIfLowMem,				// Enabling type (see ActionDefs.h).
+		kInvalidInterfaceID,			// Selection InterfaceID this action cares about or kInvalidInterfaceID.
+		kSDKDefInvisibleInKBSCEditorFlag, // kSDKDefVisibleInKBSCEditorFlag or kSDKDefInvisibleInKBSCEditorFlag.
+
+		kVDActionComponentBoss, 		// ClassID of boss class that implements the ActionID.
+		kVDContextMenuActionID,	// ActionID.
+		kVDContextMenuKey,	// Sub-menu string.
+		kOtherActionArea,				// Area name (see ActionDefs.h).
+		kNormalAction,					// Type of action (see ActionDefs.h).
+		kDisableIfLowMem,				// Enabling type (see ActionDefs.h).
+		kInvalidInterfaceID,			// Selection InterfaceID this action cares about or kInvalidInterfaceID.
+		kSDKDefInvisibleInKBSCEditorFlag, // kSDKDefVisibleInKBSCEditorFlag or kSDKDefInvisibleInKBSCEditorFlag.
+	}
+};
+
+
+/*  
+ * Locale Indicies.
+ * The LocaleIndex should have indicies that point at your
+ * localizations for each language system that you are localized for.
+ */
+
+/*  
+ * String LocaleIndex.
+ */
+resource LocaleIndex ( kSDKDefStringsResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_enUS, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_enGB, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_deDE, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_frFR, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_esES, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_ptBR, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_svSE, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_daDK, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_nlNL, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_itIT, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_nbNO, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_fiFI, kSDKDefStringsResourceID + index_enUS
+		kInDesignJapaneseFS, k_jaJP, kSDKDefStringsResourceID + index_jaJP
+	}
+};
+
+resource LocaleIndex (kSDKDefStringsNoTransResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_Wild, kSDKDefStringsNoTransResourceID + index_enUS
+	}
+};
+
+// Strings not being localized
+resource StringTable (kSDKDefStringsNoTransResourceID + index_enUS)
+{
+	k_enUS,									// Locale Id
+	kEuropeanMacToWinEncodingConverter,		// Character encoding converter
+	{
+	}
+};
+
+#endif // __ODFRC__
+
+#include "VD_enUS.fr"
+#include "VD_jaJP.fr"

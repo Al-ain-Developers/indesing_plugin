@@ -1,0 +1,260 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/linksui/resources/LinksUIViews.fr $
+//  
+//  Owner: lance bushore
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "LinksUIID.h"
+#include "TextEditorID.h"
+#include "StylePanelID.h"
+
+#include "LinksUIResDefs.h"
+#include "Widgets.fh"
+#include "SysControlIds.h"
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "IControlViewDefs.h"
+#include "TreeViewDefs.h"
+#include "EveInfo.fh"
+#include "StdHeightWidthConstants.h"
+
+#ifdef __ODFRC__
+
+type LinksUIPanelTreeWidget	(kViewRsrcType) : TreeViewWidget	(ClassID = kLinksUIPanelTreeWidgetBoss)
+{
+	CControlViewObservers;	// List of observers to attach when showing this widget
+};
+
+type LinkInfoPanelWidget	(kViewRsrcType) : GenericPanelWidget	(ClassID = kLinkInfoPanelWidgetBoss)
+{
+};
+
+type LinksUIColumnHeaderWidget	(kViewRsrcType) : ColumnHeaderWidget(ClassID = kLinksUIColumnHeaderWidgetBoss)
+{
+};
+
+type LinksUIPanelWidget	(kViewRsrcType) : ErasablePrimaryResourcePanelWidget(ClassID = kLinksUIPanelBoss)
+{
+	CPanelMenuData;
+};
+
+type LinksUILinkTextWidget	(kViewRsrcType) : InfoStaticTextWidget	(ClassID = kLinksUILinkTextBoss)
+{
+	UIColorSpec;
+};
+
+type LinksUILinkColumnTextWidget	(kViewRsrcType) : LinksUILinkTextWidget(ClassID = kLinksUILinkColumnTextBoss)
+{
+};
+
+type LinksUILinkNameGenericPanelWidget    (kViewRsrcType) : GenericPanelWidget    (ClassID = kLinksUILinkNamePanelWidgetBoss) 
+{ 
+}; 
+
+type LinksUILinkNameTextWidget	(kViewRsrcType) : InfoStaticTextWidget(ClassID = kLinksUILinkNameTextBoss)
+{
+	UIColorSpec;
+};
+
+
+type LinkInfoIconWidget	(kViewRsrcType) : IconFieldWidget	(ClassID = kLinkInfoIconWidgetBoss)
+{
+};
+
+type LinksUILinkThumbnailWidget	(kViewRsrcType) : Widget	(ClassID = kLinkThumbnailBoss)
+{
+	CControlView;
+};
+
+type ChooseLinkColumnsDialog (kViewRsrcType) : DialogBoss (ClassID = kChooseLinkColumnsDialogBoss) 
+{ 
+	WidgetEveInfo;
+};
+
+type ToggleLinkInfoButtonWidget(kViewRsrcType) : RollOverIconButtonWidget(ClassID = kToggleLinkInfoButtonBoss) { };
+type LinksUIButtonWidget(kViewRsrcType) : RollOverIconButtonWidget(ClassID = kLinksUIButtonBoss) { };
+type NextPrevLinkButtonWidget(kViewRsrcType) : RollOverIconButtonWidget(ClassID = kNextPrevLinkButtonBoss) { };
+
+type EVETreeViewWidget (kViewRsrcType):	TreeViewWidget()
+{
+	WidgetEveInfo;
+};
+
+type LinksUITreeRowWidget (kViewRsrcType) : StandardTreeNodeWidget (ClassID = kLinksUITreeRowWidgetBoss)
+{
+}
+
+type LinksUIStatusTextWidget (kViewRsrcType) : StaticTextWidget (ClassID = kLinksUIStatusTextWidgetBoss)
+{
+}
+
+type LinkInfoSectionLabelWidget (kViewRsrcType) : InfoStaticTextWidget (ClassID = kLinkInfoTextLabelWidgetBoss)
+{
+}
+
+type LinkUIColumnHeaderIconWidget (kViewRsrcType) : IconFieldWidget (ClassID = kLinkColumnHeaderIconWidgetBoss)
+{
+}
+
+type GenerateLinkCaptionDialog (kViewRsrcType) : DialogBoss (ClassID = kGenerateLinkCaptionDialogBoss) 
+{ 
+	WidgetEveInfo;
+};
+
+
+type AddDeleteCaptionRowButtonWidget(kViewRsrcType) : RollOverIconButtonWidget(ClassID = kAddDeleteCaptionRowButtonBoss) { };
+
+// define the popup icon widget for the metacharacter popup list box.  This works together with the menu component class.
+type TextVariableMetaCharButtonWidget (kViewRsrcType) : RollOverIconButtonWidget (ClassID = kTVMetaCharButtonWidgetBoss)
+{
+	CTextControlData;
+};
+
+type CaptionParaStyleDropdownWidget (kViewRsrcType) : StyleGroupDropDownListWidget (ClassID = kCaptionParaStyleObserverBoss ) { };
+
+type CaptionLayerDropDownListWidget (kViewRsrcType) : DropDownListWidget (ClassID = kCaptionLayerObserverBoss ) { };
+type MetadataLabelStaticTextWidget (kViewRsrcType) : StaticTextWidget (ClassID = kMetadataLabelStaticTextBoss ) { };
+
+
+
+// -------------------- Locale Index resources -------------------------------------------
+
+resource LocaleIndex (kLinksUIPanelResID)
+{
+	kViewRsrcType,
+	{
+		kWildFS, k_Wild, 	kLinksUIPanelResID + index_enUS,
+	}
+}
+
+resource LocaleIndex (kLinksUITreeLinkElementResID)
+{
+	kViewRsrcType,
+	{
+		kWildFS, k_Wild, 	kLinksUITreeLinkElementResID + index_enUS,
+	}
+}
+
+resource LocaleIndex (kLinksUIDynamicNameEntryResID)
+{
+	kViewRsrcType,
+	{
+		kWildFS, k_Wild, 	kLinksUIDynamicNameEntryResID + index_enUS,
+	}
+}
+
+resource LocaleIndex (kLinkInfoDynamicTextItemResID)
+{
+	kViewRsrcType,
+	{
+		kWildFS, k_Wild, 	kLinkInfoDynamicTextItemResID + index_enUS,
+	}
+}
+
+resource LocaleIndex (kLinkInfoDynamicTextNameItemResID)
+{
+	kViewRsrcType,
+	{
+		kWildFS, k_Wild, 	kLinkInfoDynamicTextNameItemResID + index_enUS,
+	}
+}
+
+resource LocaleIndex (kLinksUIDynamicColumnIconWidgetResID)
+{
+	kViewRsrcType,
+	{
+		kWildFS, k_Wild, 	kLinksUIDynamicColumnIconWidgetResID + index_enUS,
+	}
+}
+
+resource LocaleIndex (kLinksUIDynamicColumnTextItemResID)
+{
+	kViewRsrcType,
+	{
+		kWildFS, k_Wild, 	kLinksUIDynamicColumnTextItemResID + index_enUS,
+	}
+}
+
+
+resource LocaleIndex (kLinksUIDynamicPNGIconResID)
+{
+	kViewRsrcType,
+	{
+		kWildFS, k_Wild, 	kLinksUIDynamicPNGIconResID + index_enUS,
+	}
+}
+
+resource LocaleIndex (kLinksUIDynamicTextItemResID)
+{
+	kViewRsrcType,
+	{
+		kWildFS, k_Wild, 	kLinksUIDynamicTextItemResID + index_enUS,
+	}
+}
+
+resource LocaleIndex (kLinkColumnDialogResID)
+{
+	kViewRsrcType,
+	{
+		kWildFS, k_Wild, 	kLinkColumnDialogResID + index_enUS,
+	}
+}
+
+resource LocaleIndex (kGenerateLinkCaptionDialogResID)
+{
+	kViewRsrcType,
+	{
+		kWildFS, k_Wild, 	kGenerateLinkCaptionDialogResID + index_enUS,
+	}
+}
+
+resource LocaleIndex (kDynamicCaptionRowResID)
+{
+	kViewRsrcType,
+	{
+		kWildFS, k_Wild, 	kDynamicCaptionRowResID + index_enUS,
+	}
+}
+
+
+
+resource LocaleIndex (kLinksUIDynamicPrefRowResID)
+{
+	kViewRsrcType,
+	{
+		kWildFS, k_Wild, 	kLinksUIDynamicPrefRowResID + index_enUS,
+		kWildFS, k_arAE, 	kLinksUIDynamicPrefRowResID + index_heIL,
+		kWildFS, k_heIL, 	kLinksUIDynamicPrefRowResID + index_heIL,
+	}
+}
+
+
+
+#endif // __ODFRC__
+
+
+// The following include is outside the ifdef __ODFRC__ so the 
+// compiler will pick up the dependency.
+
+#include "LinksUIViews_enUS.fr"
+#include "LinksUIDialogViews_enUS.fr"
+#include "CaptionSetupDialogViews_enUS.fr"
+#include "LinksUIDialogViews_heIL.fr"
+

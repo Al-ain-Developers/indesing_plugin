@@ -1,0 +1,114 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/buttonui/resources/behaviorui/OpenFileViews_elGR.fr $
+//  
+//  Owner: Mark VerMurlen
+//  
+//  $Author: vans $
+//  
+//  $DateTime: 2020/11/06 05:06:09 $
+//  
+//  $Revision: #1 $
+//  
+//  $Change: 1088554 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#ifdef __ODFRC__
+#include "InterfaceColorDefines.h"
+
+//========================================================================================
+// AlignPanelView resource
+//========================================================================================
+
+resource OpenFileDataPanel (kOpenFilePanelRsrcID + index_elGR)
+{
+	__FILE__, __LINE__,
+	kOpenFilePanelWidgetID, kPMRsrcID_None, // WidgetId, RsrcId
+	kBindNone,					// Frame binding
+	Frame(0,0,412,213)		// Frame
+	kTrue, kTrue,				// Visible, Enabled
+	kTrue,						// EraseBeforeDraw
+	kInterfacePaletteFill,		// Erase to color
+	kFalse,						// DrawDropShadow
+	"",				// Panel name	
+	{
+		EVEGenericPanelWidget
+		(
+			kInvalidWidgetID,	// WidgetId
+			0,0,				// RsrcId
+			kBindNone,						// Frame binding
+			Frame(0, 0, 215, 23)		// Frame
+			kTrue,							// Visible
+			kTrue,							// Enabled
+			kEVESmallSpaceAfter|kEVENoMargin|kEVEArrangeChildrenInRow|kEVEAlignLeft|kEVEChildRegularSpaceAfter,		//EVE info
+			{
+				EVEStaticTextWidget
+				(
+					kSelectFileLabelWidgetID, kSysStaticTextPMRsrcId,			// WidgetId, RsrcId
+					kBindNone,											// Frame binding
+					Frame(0,5,50,22),		// Frame
+					kTrue, kTrue, kAlignRight,							// Visible, Enabled, Alignment
+					kDontEllipsize,	kTrue,									// Ellipsize style, Convert ampersands
+					"$$$/Dialog/Behaviors/OpenFile/Select File:",
+					kSelectFileWidgetID,
+					kEVERegularSpaceAfter
+				),
+
+				EVEGenericPanelWidget
+				(
+					kInvalidWidgetID,	// WidgetId
+					0,0,				// RsrcId
+					kBindNone,						// Frame binding
+					Frame(55,5,205,22)		// Frame
+					kTrue,							// Visible
+					kTrue,							// Enabled
+					kEVEDontArrangeChildren|kEVERegularSpaceAfter,		//EVE info
+					{
+						TextEditBoxWidget
+						(
+							kSelectFileWidgetID,		// WidgetId
+							kSysEditBoxPMRsrcId,			// RsrcId
+							kBindNone,						// Frame binding
+							Frame(0,0,150,17)		// Frame
+							kTrue,							// Visible
+							kTrue,							// Enabled
+							0,								// Widget id of nudge button (0 so we don't get one)
+							0, 0,							// small,large nudge amount
+							0,								// max num chars( 0 = no limit)
+							kFalse,							// is read only
+							kFalse,							// should notify each key stroke
+							kFalse,							// range checking enabled
+							kFalse,							// blank entry allowed
+							0,								// Upper bounds
+							0,								// Lower bounds
+							""								// Initial text
+						),
+					}
+				),
+
+				OpenFileBrowseButton
+				(
+					kSelectFileIconWidgetID, kChooseFileIconRsrcId, kFormFieldUIPluginID,	// WidgetId, RsrcId
+					kBindNone,
+					Frame(210,0,230,17)		// Frame
+					kTrue, kTrue,												// Visible, Enabled
+					kADBEIconSuiteButtonType
+					//kEVEExtraLargeSpaceAfter | kEVEAlignRight
+					'CARO', 'PDF ',
+				),
+				
+			}
+		)
+	},
+	kOpenFileBehavior
+}
+
+#endif

@@ -1,0 +1,159 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kSpellPanelStringsRsrcID + index_deDE)
+{
+	k_deDE,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{				
+		// ----- Main menu strings
+		"SpellingMenu",					"Re&chtschreibprüfung",
+		"Check Spelling...",			"Re&chtschreibprüfung...",
+		"Dynamic SpellCheck",			"Dyna&mische Rechtschreibprüfung",
+		"Autocorrect",					"Autokorrektur",
+		"Auto Correct",					"&Autokorrektur",
+		"AutoCorrect",					"Autokorrektur",
+
+		// ----- Window strings
+		"corrected",					"korrigiert",
+		"misspelled",					"fehlerhaft",
+		
+		// ----- Scope strings
+		
+		"[No spelling]",				"[Keine Rechtschreibung]",
+		"Auto",							"Autom.",
+		"Document",						"Dokument",
+		"Story",						"Textabschnitt",
+		"Stories",						"Textabschnitte",
+		"Selection",					"Auswahl",
+		
+		// ----- Panel strings		
+		"Spelling",						"Rechtschreibung",
+		"&Spelling...",					"Re&chtschreibung...",
+		"Auto Correct...",				"&Autokorrektur...",
+		"[No language]",				"[Keine Sprache]",
+		"AutoCorrectEnable",			"Autokorrektur aktiviere&n",
+		"AutoCorrectCapitalizationErrors",			"&Falsche Großschreibung automatisch korrigieren",
+		"A&dd...",						"&Hinzufügen...",		// Opens a dialog
+		"EditAutoCorrectWord",			"&Bearbeiten...",		// Opens a dialog
+		"Correction",					"Korrektur",
+		"Misspelled Word",				"Rechtschreibfehler",
+
+		// ----- Dialog strings
+		"Check Spelling",				"Rechtschreibprüfung",
+		"&Change To:",					"&Ändern in:",
+		
+		"Change To",					"Ändern in",
+		"&Suggested Corrections:",		"Korrektur&vorschläge:",
+		"Language:",					"Sprache:",
+		"Sea&rch:",						"&Durchsuchen:",
+		"Include Overset",				"Übersatz einschließen",
+		"&Done",							"&Fertig",
+		"C&hange",						"Ä&ndern",
+		"S&tart",						"S&tarten",
+		"Chan&ge All",					"A&lle ändern",
+		"Skip",							"Überspringen",	
+		"kSkipButtonInSpellingDialog",  "&Überspringen",
+		"Ignore",						"Ignorieren",
+		"&Ignore All",					"Alle &ignorieren",
+		"&AddAndContinue",				"&Hinzufügen",			// Adds to dictionary automatically, continues spelling
+		"Dic&tionary...",				"&Wörterbuch...",	// Launches Dict Editor dialog
+		"Add To:",						"Hinzufügen z&u:",
+
+		// Label strings in Spell Check dialog.
+		"Ready to Spell Check:", 			"Bereit für Rechtschreibprüfung",
+		"Misspelled Word:",					"Rechtschreibfehler:",
+		"Unknown Word - No Suggestions:", 	"Unbekanntes Wort - keine Vorschläge:",
+		"Not in Dictionary:",				"Nicht im Wörterbuch:",
+		"Repeated Word:",					"Wiederholtes Wort:",
+		"Uncapitalized Word:",				"Kleingeschriebenes Wort:",
+		"Uncapitalized Sentence:",			"Kleingeschriebener Satz:",
+		"Duplicate Word:",					"Doppeltes Wort:",
+		"Capitalization Error:",			"Falsche Großschreibung:",
+		"Spell Check Complete:",			"Rechtschreibprüfung abgeschlossen",
+		
+		"SpellCheckCompleteAlertStr",			"Rechtschreibprüfung abgeschlossen.",	// Alert string at completion of spelling.
+
+		"Misspelled Word (Overset):",					"Fehlerhaftes Wort: (Übersatztext)",
+		"Unknown Word - No Suggestions (Overset):", 	"Unbekanntes Wort: (Übersatztext)",
+		"Not in Dictionary (Overset):",					"Nicht im Wörterbuch: (Übersatztext)",
+		"Repeated Word (Overset):",						"Wiederholtes Wort: (Übersatztext)",
+		"Uncapitalized Word (Overset):",				"Kleingeschriebenes Wort: (Übersatztext)",
+		"Uncapitalized Sentence (Overset):",			"Kleingeschriebener Satz: (Übersatz)",
+
+		"Misspelled Word (In Table):",					"Fehlerhaftes Wort: (Tabelle)",
+		"Unknown Word - No Suggestions (In Table):", 	"Unbekanntes Wort: (Tabelle)",
+		"Not in Dictionary (In Table):",					"Nicht im Wörterbuch: (Tabelle)",
+		"Repeated Word (In Table):",						"Wiederholtes Wort: (Tabelle)",
+		"Uncapitalized Word (In Table):",				"Kleingeschriebenes Wort: (Tabelle)",
+		"Uncapitalized Sentence (In Table):",			"Kleingeschriebener Satz (Tabelle):",
+
+		"Misspelled Word (Deleted Text):",				"Fehlerhaftes Wort: (gelöschter Text)",
+		"Unknown Word - No Suggestions (Deleted Text):","Unbekanntes Wort: (gelöschter Text)",
+		"Not in Dictionary (Deleted Text):",			"Nicht im Wörterbuch: (gelöschter Text)",
+		"Repeated Word (Deleted Text):",				"Wiederholtes Wort: (gelöschter Text)",
+		"Uncapitalized Word (Deleted Text):",			"Kleingeschriebenes Wort: (gelöschter Text)",
+		"Uncapitalized Sentence (Deleted Text):",		"Kleingeschriebener Satzanfang: (gelöscht)",
+		
+		"Misspelled Word (Hidden):",					"Fehlerhaftes Wort: (ausgeblendetes Objekt)",
+		"Unknown Word - No Suggestions (Hidden):", 		"Unbekanntes Wort: (ausgeblendetes Objekt)",
+		"Not in Dictionary (Hidden):",					"Nicht im Wörterbuch: (ausgeblendetes Objekt)",
+		"Repeated Word (Hidden):",						"Wiederholtes Wort: (ausgeblendetes Objekt)",
+		"Uncapitalized Word (Hidden):",					"Kleingeschriebenes Wort: (ausgeblendetes Objekt)",
+		"Uncapitalized Sentence (Hidden):",				"Kleingeschriebener Satz: (ausgeblendet)", // Shortened to "Hidden" for space. Like the "Overset" case above.
+
+//		"Spelling Preferences", 						"Spelling Preferences", // Note to localizer: this string moved to SpellingServiceStrings.fr
+		"Find", 										"Suchen",
+		"&Misspelled Words", 							"Wörter &mit Rechtschreibfehlern",
+		"&Repeated Words", 								"&Wiederholte Wörter",
+		"&Uncapitalized Words", 						"&Kleingeschriebene Wörter",
+		"Uncapitalized &Sentences", 					"Kleingeschriebene &Satzanfänge",
+		"Misspelled Words Underline Color:",			"Wörter mit &Rechtschreibfehlern:",
+		"Repeated Words Underline Color:",				"Wi&ederholte Wörter:",
+		"Uncapitalized Words Underline Color:",			"Klei&ngeschriebene Wörter:",
+		"Uncapitalized Sentences Underline Color:",		"K&leingeschriebene Satzanfänge:",
+		"Dynamic Spellchecking",						"Dynamische Rechtschreibprüfung",
+		
+		"Underline Color",								"Farbe für Unterstreichung",
+		
+		"&Enable Dynamic Spelling",						"&Dynamische Rechtschreibprüfung aktivieren",
+		
+		"Search is completed.  ^1  replacement(s) made.", "Suche ist abgeschlossen. Es wurde(n) ^1 Ersetzung(en) ausgeführt.", 
+
+		"Add",											"Hinzufügen",
+		"Re&move",										"&Entfernen",
+		"Misspelled:",									"Rechtschreibfehler:",
+		"Correction:",									"Korrektur:",
+		"Language:",									"Sprache:",
+		"&Language:",									"&Sprache:",
+		"AddToAutoCorrectList",							"In Autokorrekturliste aufnehmen",
+		"EditAutoCorrectList",							"Autokorrekturliste bearbeiten",
+
+		"ACAlert1",		"Leere Einträge sind nicht zulässig.",
+		"ACAlert2",		"Das Wort und seine Korrektur können nicht dieselbe Schreibweise und Großschreibung aufweisen.",
+		"ACAlert3",		"Das fehlerhafte Wort und seine Korrektur sind in der Liste bereits vorhanden.",
+		"ACAlert4",		"Der Eintrag kann nicht erstellt werden. Er überschreitet die maximal zulässige Zeichenanzahl (64).",
+		"ACAlert5",		"Der Eintrag enthält ein ungültiges Zeichen.",
+		"ACAlert6",		"Im fehlerhaften Wort sind keine Leerräume zulässig.",
+
+	}
+};
+
+#endif // __ODFRC__

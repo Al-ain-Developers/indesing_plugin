@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?aid style="33" type="snippet" DOMVersion="4.0" buildNumber="221" featureSet="513" ?>
+<?aid SnippetType="PageItem"?>
+<SnippetRoot>
+<colr clmd="e_prss" clsp="e_CMYK" clvl="x_4_D_0_D_0_D_0_D_100" ovrd="e_eOvB" clbs="o_n" pnam="c_Black" edbl="b_f" rmbl="b_f" pvis="b_t" ptag="rc_" Self="rc_ub"/>
+<swch pnam="c_None" edbl="b_f" rmbl="b_f" pvis="b_t" ptag="rc_" Self="rc_ue"/>
+<StSt strT="rc_" pnam="c_Solid" Self="rc_di5a29"/>
+<layr pnam="c_Layer 1" pvis="b_t" plck="b_f" lcol="e_iLbl" iwrp="b_f" sogd="b_t" lkgd="b_f" ptag="rc_" Self="rc_u8a"/>
+<crec pAOs="ro_u125cAOs1" txwr="ro_u125ctxw1" IGeo="x_19_l_1_l_4_l_2_D_-23.4_D_-23.4_l_2_D_-23.4_D_73.8857142857143_l_2_D_137.95714285714286_D_73.8857142857143_l_2_D_137.95714285714286_D_-23.4_b_f_D_-23.4_D_-23.4_D_137.95714285714286_D_73.8857142857143_D_1_D_0_D_0_D_1_D_100.54285714285714_D_265.1142857142857" cntt="re_grpt" Xaxn="ro_n" xpBm="e_norm" xpBo="D_100" xpBk="b_f" xpBi="b_f" xpSm="e_none" xpSb="e_xpMb" xpSx="D_7" xpSy="D_7" xpSr="D_5" xpSc="o_ub" xpSo="D_75" xpVm="e_none" xpVw="D_9" xpVc="e_xpCc" xpSs="D_0" xpSn="D_0" xpVn="D_0" ovrp="ro_n" STof="ro_n" pLDs="re_Dflt" flcl="ro_ue" filt="rD_-1" lnwt="rU_1" mitr="rD_4" endc="re_bcap" endj="re_mjon" stty="ro_di5a29" llen="re_none" rlen="re_none" lncl="ro_ue" lint="rD_-1" pcef="re_none" pcrd="rD_12" pgst="rx_2_U_0_U_0" pgfl="rU_0" pgfa="rD_0" pgss="rx_2_U_0_U_0" pgsl="rU_0" pgsa="rD_0" gapC="ro_ue" gapT="rD_-1" strA="re_stAC" nopr="rb_f" pilr="ro_u8a" plck="rb_f" ptag="rc_" Self="rc_u125" SnippetParent="root">
+	<cAOs Self="rc_u125cAOs1"/>
+	<ctxw txwt="e_none" ptwi="e_none" ptwv="b_f" IGeo="x_5_l_0_D_0_D_0_D_0_D_0" pcos="ro_u125ctxw1ccos1" Self="rc_u125ctxw1">
+		<ccos ptns="rx_2_c_Path 1_c_Path 2" acpn="rx_2_c_Transparency_c_tomato channel" pcot="e_sacp" iied="b_f" pcnm="c_" Self="rc_u125ctxw1ccos1"/>
+	</ctxw>
+	<imag Xaxn="ro_n" xpBm="e_norm" xpBo="D_100" xpBk="b_f" xpBi="b_f" xpSm="e_none" xpSb="e_xpMb" xpSx="D_7" xpSy="D_7" xpSr="D_5" xpSc="o_ub" xpSo="D_75" xpVm="e_none" xpVw="D_9" xpVc="e_xpCc" xpSs="D_0" xpSn="D_0" xpVn="D_0" txwr="ro_u11fctxw1" pMep="o_u11fcMep1" iopp="ro_u11fimop1" pcpt="ro_u11fcpth1" grly="ro_u11fglop1" IGeo="x_f_l_0_D_0_D_0_D_46.8_D_46.8_D_3.447802197802198_D_0_D_0_D_2.0787545787545794_D_-23.4_D_-23.4_D_0_D_0_D_46.8_D_46.8" nopr="rb_f" pLDs="re_Dflt" ptag="rc_" Self="rc_u11f">
+		<ctxw txwt="e_none" ptwi="e_none" ptwv="b_f" IGeo="x_5_l_0_D_0_D_0_D_0_D_0" pcos="ro_u11fctxw1ccos1" Self="rc_u11fctxw1">
+			<ccos ptns="rx_2_c_Path 1_c_Path 2" acpn="rx_2_c_Transparency_c_tomato channel" pcot="e_sacp" iied="b_f" pcnm="c_" Self="rc_u11fctxw1ccos1"/>
+		</ctxw>
+		<cMep Self="rc_u11fcMep1">
+			<pcnt><![CDATA[<x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="3.1-079">
+ <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <rdf:Description rdf:about="uuid:45cbfa75-0f7f-11d7-80bd-a64339eb70d1"
+    xmlns:xapMM="http://ns.adobe.com/xap/1.0/mm/"
+   xapMM:DocumentID="adobe:docid:photoshop:59eaf61d-0f4b-11d7-8244-d8cec723b073">
+  </rdf:Description>
+ </rdf:RDF>
+</x:xmpmeta>
+]]></pcnt>
+		</cMep>
+		<imop pres="rl_48" clfr="b_t" embd="b_t" alch="c_" Self="rc_u11fimop1"/>
+		<cpth cptp="e_none" invt="b_f" iied="b_f" rtfr="b_f" uhri="b_t" thhd="l_19" tlrc="D_2" isfr="U_0" ptns="x_2_c_Path 1_c_Path 2" acpn="x_2_c_Transparency_c_tomato channel" ptnm="c_" Self="rc_u11fcpth1"/>
+		<glop gulo="e_loua" Self="rc_u11fglop1">
+			<grlr secd="rb_f" pnam="c_T  mat" orvi="b_t" crvi="b_t" sepl="b_f" adjl="b_f" fxlr="b_t" plck="b_f" hvws="b_f" vwst="b_f" hest="b_f" esta="b_f" hpri="b_f" pris="b_f" ID="l_3" Self="rc_u11fglop1i3"/>
+			<grlr secd="rb_f" pnam="c_Hue/Saturation 1" orvi="b_t" crvi="b_t" sepl="b_f" adjl="b_t" fxlr="b_f" plck="b_f" hvws="b_f" vwst="b_f" hest="b_f" esta="b_f" hpri="b_f" pris="b_f" ID="l_2" Self="rc_u11fglop1i2"/>
+			<grlr secd="rb_f" pnam="c_highlight copy" orvi="b_t" crvi="b_t" sepl="b_f" adjl="b_f" fxlr="b_t" plck="b_f" hvws="b_f" vwst="b_f" hest="b_f" esta="b_f" hpri="b_f" pris="b_f" ID="l_1" Self="rc_u11fglop1i1"/>
+			<grlr secd="rb_f" pnam="c_highlight" orvi="b_t" crvi="b_t" sepl="b_f" adjl="b_f" fxlr="b_t" plck="b_f" hvws="b_f" vwst="b_f" hest="b_f" esta="b_f" hpri="b_f" pris="b_f" ID="l_0" Self="rc_u11fglop1i0"/>
+		</glop>
+		<clnk lURL="c_" letg="rc_" laID="c_" lstk="re_lnsk" LnkI="x_c_c_C:\devtech\internal\4.x\stage\source\sdksamples\codesnippets\examplefiles\assignments\smallTomato.psd_c__l_0_l_8c01_c_Photoshop_l_0_c__L_0~36701_T_2004-08-31T16:40:14_l_0_b_t_b_f" ptag="rc_" Self="rc_u124"/>
+	</imag>
+</crec>
+<?xpacket begin="﻿" id="W5M0MpCehiHzreSzNTczkc9d"?>
+<x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="3.1-079">
+   <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+      <rdf:Description rdf:about=""
+            xmlns:xap="http://ns.adobe.com/xap/1.0/"
+            xmlns:xapGImg="http://ns.adobe.com/xap/1.0/g/img/">
+         <xap:CreateDate>2004-09-21T15:00:18Z</xap:CreateDate>
+         <xap:MetadataDate>2004-09-21T15:00:18Z</xap:MetadataDate>
+         <xap:CreatorTool>Adobe InDesign 4.0</xap:CreatorTool>
+         <xap:Thumbnails>
+            <rdf:Alt>
+               <rdf:li rdf:parseType="Resource">
+                  <xapGImg:format>JPEG</xapGImg:format>
+                  <xapGImg:width>512</xapGImg:width>
+                  <xapGImg:height>512</xapGImg:height>
+                  <xapGImg:image>/9j/4AAQSkZJRgABAgEASABIAAD/7QAsUGhvdG9zaG9wIDMuMAA4QklNA+0AAAAAABAASAAAAAEA&#xA;AQBIAAAAAQAB/+4AE0Fkb2JlAGSAAAAAAQUAAgAC/9sAhAAKBwcHBwcKBwcKDgkJCQ4RDAsLDBEU&#xA;EBAQEBAUEQ8RERERDxERFxoaGhcRHyEhISEfKy0tLSsyMjIyMjIyMjIyAQsJCQ4MDh8XFx8rIh0i&#xA;KzIrKysrMjIyMjIyMjIyMjIyMjIyMjI+Pj4+PjJAQEBAQEBAQEBAQEBAQEBAQEBAQED/wAARCABj&#xA;AKMDAREAAhEBAxEB/8QBogAAAAcBAQEBAQAAAAAAAAAABAUDAgYBAAcICQoLAQACAgMBAQEBAQAA&#xA;AAAAAAABAAIDBAUGBwgJCgsQAAIBAwMCBAIGBwMEAgYCcwECAxEEAAUhEjFBUQYTYSJxgRQykaEH&#xA;FbFCI8FS0eEzFmLwJHKC8SVDNFOSorJjc8I1RCeTo7M2F1RkdMPS4ggmgwkKGBmElEVGpLRW01Uo&#xA;GvLj88TU5PRldYWVpbXF1eX1ZnaGlqa2xtbm9jdHV2d3h5ent8fX5/c4SFhoeIiYqLjI2Oj4KTlJ&#xA;WWl5iZmpucnZ6fkqOkpaanqKmqq6ytrq+hEAAgIBAgMFBQQFBgQIAwNtAQACEQMEIRIxQQVRE2Ei&#xA;BnGBkTKhsfAUwdHhI0IVUmJy8TMkNEOCFpJTJaJjssIHc9I14kSDF1STCAkKGBkmNkUaJ2R0VTfy&#xA;o7PDKCnT4/OElKS0xNTk9GV1hZWltcXV5fVGVmZ2hpamtsbW5vZHV2d3h5ent8fX5/c4SFhoeIiY&#xA;qLjI2Oj4OUlZaXmJmam5ydnp+So6SlpqeoqaqrrK2ur6/9oADAMBAAIRAxEAPwDs2KuxV2KuxV2K&#xA;rXdI1LyMEUdWY0A+k4ql03mTy7buUn1ayicEqVe5iUgjYihftgsKlFx+Y/la3NPrIl25VikhYfL+&#xA;+648QVCN+a/ldTT9+fl6J/5n4OMKt/5Wz5X/AJbj7of+q+PGFcPza8reFx/yR/6r48QVEQfmd5Vn&#xA;KgzmLlXeV4VAp4/vsPEFTWHzj5VmUONXsVqAaNcwgiv/AD0xsKmVvfWV4vO0uIrhQePKJ1ccttqq&#xA;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&#xA;q7FXYq7FXYq7FXYq7FXYq7FX/9k=</xapGImg:image>
+               </rdf:li>
+            </rdf:Alt>
+         </xap:Thumbnails>
+      </rdf:Description>
+      <rdf:Description rdf:about=""
+            xmlns:dc="http://purl.org/dc/elements/1.1/">
+         <dc:format>application/x-indesign</dc:format>
+      </rdf:Description>
+      <rdf:Description rdf:about=""
+            xmlns:xapMM="http://ns.adobe.com/xap/1.0/mm/">
+         <xapMM:InstanceID>8ea12443-0c19-11d9-8155-f4d4babb4a79</xapMM:InstanceID>
+      </rdf:Description>
+   </rdf:RDF>
+</x:xmpmeta>
+<?xpacket end="r"?>
+</SnippetRoot>

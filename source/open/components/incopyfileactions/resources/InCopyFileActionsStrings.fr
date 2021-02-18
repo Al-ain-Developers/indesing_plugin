@@ -1,0 +1,120 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/incopyfileactions/resources/InCopyFileActionsStrings.fr $
+//  
+//  Owner: Chris Parrish
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "FeatureSets.h"
+#include "InCopyFileActionsDefs.h"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// RESOURCE Locale index
+//========================================================================================
+
+resource LocaleIndex (kInCopyFileActionsStringsRsrcID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS,	k_Wild, 	kInCopyFileActionsStringsRsrcID + index_enUS
+		kWildFS,	k_enGB, 	kInCopyFileActionsStringsRsrcID + index_enGB    
+		kWildFS,	k_deDE, 	kInCopyFileActionsStringsRsrcID + index_deDE    
+		kWildFS,	k_frFR, 	kInCopyFileActionsStringsRsrcID + index_frFR    
+		kWildFS,	k_jaJP, 	kInCopyFileActionsStringsRsrcID + index_jaJP    
+		kWildFS,	k_esES, 	kInCopyFileActionsStringsRsrcID + index_esES    
+		kWildFS,	k_ptBR, 	kInCopyFileActionsStringsRsrcID + index_ptBR    
+		kWildFS,	k_svSE, 	kInCopyFileActionsStringsRsrcID + index_svSE    
+		kWildFS,	k_daDK, 	kInCopyFileActionsStringsRsrcID + index_daDK    
+		kWildFS,	k_nlNL, 	kInCopyFileActionsStringsRsrcID + index_nlNL    
+		kWildFS,	k_itIT, 	kInCopyFileActionsStringsRsrcID + index_itIT    
+		kWildFS,	k_nbNO, 	kInCopyFileActionsStringsRsrcID + index_nbNO    
+		kWildFS,	k_fiFI, 	kInCopyFileActionsStringsRsrcID + index_fiFI    
+		kWildFS,	k_koKR, 	kInCopyFileActionsStringsRsrcID + index_koKR    
+		kWildFS,	k_zhCN, 	kInCopyFileActionsStringsRsrcID + index_zhCN    
+		kWildFS,	k_zhTW, 	kInCopyFileActionsStringsRsrcID + index_zhTW    
+		kWildFS,	k_csCZ, 	kInCopyFileActionsStringsRsrcID + index_csCZ    
+		kWildFS,	k_huHU, 	kInCopyFileActionsStringsRsrcID + index_huHU    
+		kWildFS,	k_plPL, 	kInCopyFileActionsStringsRsrcID + index_plPL    
+//		kWildFS,	k_roRO, 	kInCopyFileActionsStringsRsrcID + index_roRO    
+		kWildFS,	k_ruRU, 	kInCopyFileActionsStringsRsrcID + index_ruRU    
+		kWildFS,	k_trTR, 	kInCopyFileActionsStringsRsrcID + index_trTR    
+		kWildFS,	k_ukUA, 	kInCopyFileActionsStringsRsrcID + index_ukUA    
+		kWildFS,	k_elGR, 	kInCopyFileActionsStringsRsrcID + index_elGR    
+		kWildFS,	k_arAE, 	kInCopyFileActionsStringsRsrcID + index_arAE    
+		kWildFS,	k_heIL, 	kInCopyFileActionsStringsRsrcID + index_heIL    
+	}
+}
+
+#endif // __ODFRC__
+
+#include "InCopyFileActionsStrings_enUS.fr"
+#include "InCopyFileActionsStrings_enGB.fr"
+#include "InCopyFileActionsStrings_deDE.fr"
+#include "InCopyFileActionsStrings_frFR.fr"
+#include "InCopyFileActionsStrings_jaJP.fr"
+#include "InCopyFileActionsStrings_esES.fr"
+#include "InCopyFileActionsStrings_ptBR.fr"
+#include "InCopyFileActionsStrings_svSE.fr"
+#include "InCopyFileActionsStrings_daDK.fr"
+#include "InCopyFileActionsStrings_nlNL.fr"
+#include "InCopyFileActionsStrings_itIT.fr"
+#include "InCopyFileActionsStrings_nbNO.fr"
+#include "InCopyFileActionsStrings_fiFI.fr"
+#include "InCopyFileActionsStrings_koKR.fr"
+#include "InCopyFileActionsStrings_zhCN.fr"
+#include "InCopyFileActionsStrings_zhTW.fr"
+#include "InCopyFileActionsStrings_csCZ.fr"
+#include "InCopyFileActionsStrings_huHU.fr"
+#include "InCopyFileActionsStrings_plPL.fr"
+//#include "InCopyFileActionsStrings_roRO.fr"
+#include "InCopyFileActionsStrings_ruRU.fr"
+#include "InCopyFileActionsStrings_trTR.fr"
+#include "InCopyFileActionsStrings_ukUA.fr"
+#include "InCopyFileActionsStrings_elGR.fr"
+#include "InCopyFileActionsStrings_arAE.fr"
+#include "InCopyFileActionsStrings_heIL.fr"
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+resource LocaleIndex (kInCopyFileActionsStringsNoTransRsrcID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS,	k_Wild, 	kInCopyFileActionsStringsNoTransRsrcID + index_enUS
+	}
+}
+
+resource StringTable (kInCopyFileActionsStringsNoTransRsrcID + index_enUS)
+{
+	k_enUS,
+	kEuropeanWinToMacEncodingConverter,
+	{
+		// No-Translate strings go here
+		//----- TEMP : Strings to provide old doc compatibility
+		"Open (Old)...",	"Open (Old)...",
+		"Save (Old)",		"Save (Old)",
+	}
+}
+
+#endif // __ODFRC__

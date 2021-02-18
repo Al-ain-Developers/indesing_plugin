@@ -1,0 +1,73 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/sdksamples/basicmenu/BscMnu_jaJP.fr $
+//  
+//  Owner: Adobe Developer Technologies
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// Japanese strings
+//========================================================================================
+
+// Japanese string table is defined here
+
+resource StringTable (kSDKDefStringsResourceID + index_jaJP)
+{
+	k_jaJP,	// Locale Id
+	0,		// Character encoding converter
+	
+	{
+
+		// ----- Menu strings
+		kBscMnuCompanyKey,					kBscMnuCompanyValue,					
+		kBscMnuAboutMenuKey,			   	kBscMnuPluginName "[JP]...",
+		kBscMnuPluginsMenuKey,				kBscMnuPluginName "[JP]",
+		
+		kBscMnuAlwaysOnMenuItemKey,			"常時イネーブル[JP]...",
+		kBscMnuOnIfFrontDocMenuItemKey,		"最前書類が必要[JP]...",
+		kBscMnuNeedsSelectionMenuItemKey,	"選択項目が必要[JP]...",
+		kSDKDefAboutThisPlugInMenuKey,		kSDKDefAboutThisPlugInMenuValue_jaJP,	
+
+		// ----- Command strings
+
+		
+		// ----- Window strings
+
+		
+		// ----- Panel/dialog strings
+		// ----- Error strings
+
+			
+		// ----- Misc strings
+		kBscMnuAboutBoxStringKey,			kBscMnuPluginName "[JP], version " kBscMnuVersion " by " kBscMnuAuthor "\n\n" kSDKDefCopyrightStandardValue "\n\n" kSDKDefPartnersStandardValue_jaJP,
+		kBscMnuAlwaysOnStringKey,			"「常時イネーブル」メニュー項目を有効にする[JP]",
+		kBscMnuOnIfFrontDocStringKey,		"「最前書類が必要」メニュー項目を有効にする[JP]",
+		kBscMnuNeedsSelectionStringKey,		"「選択項目が必要」メニュー項目を有効にする[JP]",
+	}
+
+};
+
+#endif // __ODFRC__
+
+// End , BscMnu_jaJP.fr
+
+
+

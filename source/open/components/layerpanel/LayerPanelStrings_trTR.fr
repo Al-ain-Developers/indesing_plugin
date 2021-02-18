@@ -1,0 +1,142 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kLayerPanelStringsRsrcID + index_trTR)
+{
+	k_trTR,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{
+		// ----- Command strings
+
+		"Layer Options",				"Katman Seçenekleri",
+		"New Layer",					"Yeni Katman",
+		"Layer Deletion",				"Katman Sil",
+		"Delete Unused Layers",			"Kullanılmayan Katmanları Sil",
+		"Lock Others",					"Diğerlerini Kilitle",
+		"#UnlockOthers",					"Diğerlerinin Kilidini Kaldır",
+		"Show All",						"Tümünü Göster",
+		"#ShowOthers",					"Diğerlerini Göster",
+		"Unlock All",					"Tümünün Kilidini Kaldır",
+		"Hide All",						"Tümünü Gizle",
+		"Lock All",						"Tümünü Kilitle",
+		"Merge Layers",					"Katmanları Birleştir",
+		"Move To Layer",				"Katmana Taşı",
+		"Copy To Layer",				"Katmana Kopyala",
+		"Move Layer",					"Katmanı Taşı",
+		"Move Layers",					"Katmanları Taşı",
+		"kUnlockOthersSequence",		"Diğerlerinin Kilidini Kaldır",
+		"kLockOthersSequence",			"Diğerlerini Kilitle",
+
+		// ----- Menu strings
+		
+		"Layers...",						"&Katmanlar...",
+
+		"New Layer...",						"Yeni Katman...",
+		"New Layer Above \"^1\"...",		"\"^1\" Katmanının Üzerinde Yeni Katman...",
+		"New Layer Below \"^1\"...",		"\"^1\" Katmanının Altında Yeni Katman...",
+		"New Top Layer...",					"Yeni Üst Katman...",
+		"Delete Layer",						"Katmanı Sil",
+		"Delete \"^1\"",					"\"^1\" Katmanını Sil",
+		"Delete Layers",					"Katmanları Sil",
+		"#Duplicate ^1 Menu",				"\"^1\" Katmanını Çoğalt",
+		"#Duplicate LayersMenu",			"Katmanları Çoğalt",
+		"#DuplicatLayersCmd",				"Katmanları Çoğalt",
+		
+		"Layer Options for \"^1\"...",		"\"^1\" için Katman Seçenekleri...",
+		"Layer Options...",					"Katman Seçenekleri...",
+		"Show All Layers",					"Tüm Katmanları Göster",
+		"Hide Others",						"Diğerlerini Gizle",
+		"Unlock All Layers",				"Tüm Katman Kilitlerini Aç",
+		"Lock Others",						"Diğerlerini Kilitle",
+		"Hide All Layers",					"Tüm Katmanları Gizle",
+		"Lock All Layers",					"Tüm Katmanları Kilitle",
+		
+		"Paste Remembers Layers",			"Yapıştır Katmanları Anımsar",
+		"Ungroup Remembers Layers",			"Grubu Çöz Katmanları Hatırlar",
+		
+		"Merge Layers",						"Katmanları Birleştir",
+		"Delete Unused Layers",				"Kullanılmayan Katmanları Sil",
+		"Select Item(s) on \"^1\"",			"\"^1\" üzerinde öğe seç",
+		"Select Item(s) Layer",				"Katmandaki Öğeleri Seç",
+				
+		"#SelectLayerPageItemMenu",		"Öğeleri Seç",
+		"#SelectZoomLayerPageItemMenu",	"Öğeleri Seç ve Sığdır",
+		"#ZoomLockedPageItemMenu",		"Penceredeki Öğeyi Sığdır",
+		
+		// Menu names for context and panel menus
+		"LayerPanelPopup",					"Katmanlar Paneli Menüsü",	
+		"RtMenuLayerPanelEye",				"Katmanlar Paneli Göz İçerik Menüsü",	
+		"RtMenuLayerPanelLock",				"Katmanlar Paneli Kilitleme İçerik Menüsü",
+		"RtMenuLayerPanelItem",				"Katmanlar Paneli Katman İçerik Menüsü",	
+		"RtMenuLayerPanelPageItem",			"Katmanlar Paneli Sayfa Öğesi İçerik Menüsü",	
+
+		// ----- Window strings
+		"DeleteOneLayer",					"\"^1\" katmanı bir veya birkaç nesne içeriyor. Yine de katman silinsin mi?",
+		"DeleteMultiLayers",				"Seçilen katmanlar nesne içeriyorlar. Yine de katmanlar silinsin mi?",
+		"DeleteOneGuideLayer",				"\"^1\" katmanı cetvel kılavuzları içeriyor. Yine de katman silinsin mi?",
+		"DeleteGuideLayers",				"Seçilen katmanlar cetvel kılavuzları içeriyorlar. Yine de katmanlar silinsin mi?",
+		"DeletingPlaceGunUsedLayer",		"Katman silinemiyor. Yerleşim imlecinde yüklenen parçacık için gerekli.",
+
+		// ----- Window Menu
+		"Layers_WinMenu",					"&Katmanlar",
+		
+		// ----- Panel strings
+		
+		"^1 Layer",							"^1 Katman",		// For status widget
+		"^1 Layers",						"^1 Katman",	// For status widget
+		"New Layer",						"Yeni Katman",	// Title of New Layer dialog
+		"Layer Options",					"Katman Seçenekleri", // Title of Layer Options dialog
+		"&Name:",							"&Ad:",
+		"&Color:",							"&Renk:",
+		"&Show Layer",						"Katmanı &Göster",
+		"Show &Guides",						"&Kılavuzları Göster",
+		"&Lock Layer",						"Katmanı &Kilitle",
+		"Loc&k Guides",						"Kılavuzları Kil&itle",
+		"Keep When Layer is &Hidden",		"Katman Gizliyken &Metin Sarmayı Önle",
+		"&Print Layer",						"Katmanı &Yazdır",
+
+		// ----- Tips strings
+
+		"DeleteLayerTip",					"Seçilen katmanları sil",
+		"NewLayerTip",						"Yeni katman oluştur",
+		"EyeTip",							"Görünürlüğü değiştirir",
+		"PencilTip",						"Katman kilidini değiştirir (boş olduğunda düzenlenebilir)",
+		"PageItemPencilTip",				"Sayfa öğesinin kilidini değiştirir (boş olduğunda düzenlenebilir)",
+		"SwatchTip",						"Bu katmandaki seçili İşaretlerin rengi",
+		"ProxyTip",							"Seçili öğeleri belirtir (katmanlar arasında taşımak veya geri alma sırasını değiştirmek için sürükleyin)",
+		"ProxyChildSelectedTip",			"Seçili nesneyi içerir, kap nesnesini seçmek için tıklatın",
+		"UnselectedProxyTip",				"Seçilecek öğeleri tıklatın",
+		"ActiveTip",						"Geçerli çizim katmanını belirtir",
+
+		// ----- Error strings
+		"EmptyLayerName",					"Katman adının verilmesi gerekir.",
+		"DuplicateLayer",					"Bu adla başka bir katman zaten var.",
+
+		"#LayerHierPanelName",		"Katmanlar",
+		"#Page:^1,",					"Sayfa: ^1, ", // for layer panel status widget. Will be followed by layer count string.
+		"#Pages:^1,",					"Sayfalar: ^1, ", // for layer panel status widget. Will be followed by layer count string.
+		"#DeletePageItemsMenu",		"Sayfa Öğelerini Sil", // menu item name
+		"#DeletePageItem \"^1\"",		"\"^1\" Sayfa Öğesini Sil", // menu item name
+		"#DuplicatePI ^1 Menu",			"\"^1\" Sayfa Öğesini Çoğalt", // menu item name
+		"#DuplicatePIMenu",			"Sayfa Öğelerini Çoğalt",  // menu item name
+	}
+};
+
+#endif // __ODFRC__

@@ -1,0 +1,126 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kConditionalTextUIStringsRsrcID + index_csCZ)
+{
+    k_csCZ,                                 // Locale Id
+    kResourceUTF8Encoded,     // Character encoding converter
+    {
+		"#CondTextUI_WinMenu",	"P&odmíněný text",	// panel menu item
+		"#CondTextUI_PanelName","Podmíněný text",		// panel name
+		"#CondTextUI_PanelMenu","Nabídka panelu Podmíněný text",
+		"#CondTextUI_NewConditionTagMenu", "Nová podmínka...",
+		"#CondTextUI_DeleteConditionTagMenu", "Odstranit podmínku...",
+		"#CondTextUI_DeleteConditionTagsMenu", "Odstranit podmínky...",
+		"#CondTextUI_EditConditionTagMenu", "Volby podmínek...",
+		"#CondTextUI_LoadConditionTagsMenu", "Načíst podmínky...",
+		"#CondTextUI_LoadConditionTagsAndSetsMenu", "Načíst podmínky a sady...",
+		"#CondTextUI_ShowIndicatorsCB", "Zobrazit indikátory v podmíněném textu",
+		"#CondTextUI_ShowIndicatorsMenu", "Zobrazit indikátory v podmíněném textu",
+		"#CondTextUI_ShowAndPrintIndicatorsMenu", "Zobrazit a vytisknout indikátory v podmíněném textu",
+		"#CondTextUI_HideIndicatorsMenu", "Skrýt indikátory v podmíněném textu",
+		"#CondTextUI_ShowIndicatorsDD", "Indikátory:",
+		"#CondTextUI_ShowIndicators", "Zobrazit",
+		"#CondTextUI_ShowAndPrintIndicators", "Zobrazit a vytisknout",
+		"#CondTextUI_HideIndicators", "Skrýt ",
+		"#CondTextUI_RtMenuConditionTagTVNode",    "Kontextová nabídka Uzel zobrazení stromu podmínek",
+		"#CondTextUI_RtMenuUnapplyTag",		"Zrušit aplikování \"^1\"",
+		"#CondTextUI_RtMenuDeleteTag",		"Odstranit \"^1\"",
+		"#CondTextUI_RtMenuEditTag",		"Upravit \"^1\"...",
+		"Show Options", "Zobrazit &volby",
+		"Hide Options", "Skrýt &volby",
+		"#CondTextUI_SelectUnusedMenu", "Vybrat všechny nepoužité",
+	
+		"#ConditionTagList_NameColumnLabel", "Název",
+		"#ConditionTag_OptionsDialog", "Volby podmínek",
+		"#ConditionTag_OptionsDialogNew", "Nová podmínka",
+		"#ConditionTagOptions_Name:", "&Název:",
+		"#ConditionTagOptions_Method:", "&Metoda:",
+		"#ConditionTagOptions_Appearance:", "&Vzhled:",
+		"#ConditionTagOptions_Color:", "&Barva:",
+		"#ConditionTagOptions_Indicator", "Indikátor",
+		"#ConditionTagOptions_MethodUnderline", "Podtržení",
+		"#ConditionTagOptions_MethodHighlight", "Zvýraznění",
+		"#ConditionTagOptions_WavyUnderline", "Vlnitá",		
+		"#ConditionTagOptions_SolidUnderline", "Plná",		
+		"#ConditionTagOptions_DashedUnderline", "Čárkovaná",		
+		"#ConditionTag_EmptyNameMsg", "Zadejte název podmínky.",
+		"#ConditionTag_NameInUseMsg", "Tento název podmínky je již použit. Zadejte prosím jiný.",
+		
+		"#ConditionSetShowAll", "Zobrazit vše",
+		"#ConditionSetHideAll", "Skrýt vše",
+		"#ConditionSetNone", "[Žádná]",
+		"#ConditionSetBlank", " ",
+		"#ConditionSetLabel", "Nastavit:",
+		"#ConditionSetNewSet", "Vytvořit novou sadu...",
+		"#ConditionSetDeleteSet", "Odstranit \"^1\"...",
+		"#ConditionSetRenameSet", "Přejmenovat \"^1\"...",
+		"#ConditionSetRedefineSet", "Předefinovat \"^1\"...",
+		"#ConditionSetUpdateAllSets", "Aktualizovat všechny sady",
+		"#ConditionSetUpdateAllSetsUndoName", "Aktualizovat všechny sady podmínek",
+		"#ConditionSetNameDialog", "Název sady podmínek",
+		"#ConditionSetNameStatic", "&Název:",
+		"#InvalidSetName", "Neplatný název sady podmínek",
+		"#DuplicateSetName", "Název již existuje.",
+		"#NoActiveSetString", "Žádná aktivní sada",
+		
+		"#ConditionalTextTip", "Nalezen skrytý text s ^1:  ",
+		"#ConditionalTextTipOneTag", "touto podmínkou",
+		"#ConditionalTextTipManyTags", "těmito podmínkami",
+		
+		"#ConditionalTextEyeballHideWidgetTip", "Klepněte, pokud chcete skrýt celý text po aplikaci této podmínky",
+		"#ConditionalTextEyeballShowWidgetTip", "Klepněte, pokud chcete zobrazit celý text po aplikaci této podmínky",
+		"#ConditionalTextEyeballUnconditionalWidgetTip", "Nepodmíněný text se vždy zobrazuje.",
+		"#ConditionalTextAppliedAllTip",	"Podmínka aplikována na celý vybraný text. Klepnutím zrušte aplikování",
+		"#ConditionalTextAppliedSomeTip",	"Podmínka aplikována na část vybraného textu. Klepnutím aplikujte podmínku na celý vybraný text",
+		"#ConditionalTextAppliedNoneTip",	"Klepnutím aplikujte podmínku",
+		"#ConditionalTextAppliedAllTipUncondition",	"Vybraný text je nepodmíněný",
+		"#ConditionalTextAppliedSomeTipUncondition",	"Část vybraného textu je nepodmíněný text. Klepnutím změňte celý text na nepodmíněný",
+		"#ConditionalTextAppliedNoneTipUncondition",	"Klepnutím změňte text na nepodmíněný",
+		"#ConditionalTextApplyNoSelectionTip", "Klepnutím aplikujte podmínku na vybraný text",
+		"#ConditionalTextNewTagTip",		"Nová podmínka",
+		"#ConditionalTextDeleteTagTip",		"Odstranit podmínku",
+		"#ConditionalTextIndicatorTip",		"Metoda indikátoru je ^1",
+		"#ConditionalTextNewSetTip",		"Nová sada",
+		"#SetOverrideTip_NewConditionsAndConditionVisibility",	"Přepíše: viditelnost podmínky (vymažete tím, že sadu znovu vyberete nebo vyberete volbu Předefinovat) + nové podmínky (vymažete tím, že vyberete volbu Aktualizovat všechny sady nebo vyberete volbu Předefinovat)",
+		"#SetOverrideTip_NewConditions",	"Přepíše: nové podmínky (vymažete tím, že vyberete volbu Aktualizovat všechny sady nebo vyberete volbu Předefinovat)",
+		"#SetOverrideTip_ConditionVisibility",	"Přepíše: viditelnost podmínky (vymažete tím, že sadu znovu vyberete nebo vyberete volbu Předefinovat)",
+		
+		"#ConditionTag_DeleteConditionDialog", "Odstranit podmínku", 
+		"#ConditionTag_DeleteConditionsDialog", "Odstranit podmínky", 
+		"#ConditionTag_DeleteConditionAndReplace:", "Odstranit podmínku a nahradit ji: ", 
+		"#ConditionTag_DeleteConditionsAndReplace:", "Odstranit podmínky a nahradit je: ", 
+		"#ConditionTag_DeleteInformationAlert", "Podmínku odstraníte přetažením na ikonu Koš.",
+		"#ConditionTag_DeleteNoReplaceChoice", "[Žádný]",
+		
+		"#QuickApplyConditions", "Podmínka",
+		"#Conditions_Filter_Key", "PO", // should be upper case if there is an upper case character, this is the prefix key for quick apply for text conditions.
+		"#QuickApplyConditionSets", "Sada podmínek",
+		"#QuickApplyConditionSets_Filter_Key", "SP",  // should be upper case if there is an upper case character, this is the prefix key for quick apply for text condition sets.
+		"#QuickApplyConditons_Menu_Key_String", "Včetně podmínek (ct:)",
+		"#QuickApplyConditonSets_Menu_Key_String", "Včetně sad podmínek (cs:)",
+		
+		"#SingularConditionStatusBodyString", "^1 podmínka aplikována ^2",
+		"#PluralConditionStatusBodyString", "^1 podmínky aplikovány ^2",
+		"#MixedConditionString", " [různé]",
+		"#NoConditionsString", "nebyly aplikovány žádné podmínky",
+    }
+};
+
+#endif // __ODFRC__

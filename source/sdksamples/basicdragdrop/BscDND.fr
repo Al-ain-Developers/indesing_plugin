@@ -1,0 +1,398 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/sdksamples/basicdragdrop/BscDND.fr $
+//  
+//  Owner: Adobe Developer Technologies
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+//===========================
+//  General includes:
+//===========================
+
+#include "MenuDef.fh"
+#include "ActionDef.fh"
+#include "ActionDefs.h"
+#include "AdobeMenuPositions.h"
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "StringTable.fh"
+#include "objectmodeltypes.fh"
+#include "ShuksanID.h"
+#include "ActionID.h"
+#include "CommandID.h"
+#include "WorkspaceID.h"
+#include "widgetid.h"
+#include "BuildNumber.h"
+#include "PanelList.fh"
+#include "Widgets.fh"	// for PalettePanelWidget
+#include "InterfaceColorDefines.h"
+#include "IControlViewDefs.h"
+#include "SysControlIds.h"
+#include "DragDropID.h"
+#include "Tips.fh"
+#include "TipsID.h"
+#include "PageItemScrapID.h"
+#include "LayoutUIID.h"
+
+#include "PlugInModel_UIAttributes.h"
+// Project includes:
+#include "BscDNDID.h"
+
+#ifdef __ODFRC__
+
+/*
+// Plugin version definition.
+*/
+resource PluginVersion (kSDKDefPluginVersionResourceID)
+{
+	kTargetVersion,
+	kBscDNDPluginID,
+	kSDKDefPlugInMajorVersionNumber, kSDKDefPlugInMinorVersionNumber, 	
+	kSDKDefHostMajorVersionNumber, kSDKDefHostMinorVersionNumber,
+	kBscDNDCurrentMajorFormatNumber, kBscDNDCurrentMinorFormatNumber,
+	{ kInDesignProduct, kInCopyProduct },
+	{ kWildFS },
+	kUIPlugIn,
+	kBscDNDVersion
+};
+
+/*
+//	Boss class definition.
+*/
+resource ClassDescriptionTable(kSDKDefClassDescriptionTableResourceID)
+{{{
+
+
+	/**
+	 Provides the actions invoked by this plug-in's
+	 sub-menu items. 
+	 
+	 @ingroup basicdragdrop
+
+	*/
+	Class
+	{
+		kBscDNDActionComponentBoss,
+		kBaseActionComponentBoss,
+		{
+			/** Handle the actions from the menu. The only menu used in this plug-in is the Plug-ins about.*/
+			IID_IACTIONCOMPONENT, kBscDNDActionComponentImpl,
+		}
+	},
+
+
+	/**
+		 Inherits from an API panel boss class.
+		 We extend it to add basic drag and drop target capabilities.
+		@ingroup basicdragdrop
+	*/
+	Class
+	{
+		kBscDNDPanelWidgetBoss,
+		kPalettePanelWidgetBoss,
+		{
+			/** The custom drop target implementation that allows this panel to handle drop events.
+			*/
+			IID_IDRAGDROPTARGET, kBscDNDDropTargetImpl,
+			/** For the panel menu.
+			Implementation provided by the API.
+			*/
+			IID_IPANELMENUDATA, kCPanelMenuDataImpl,
+
+		}
+	},
+
+	/**
+		 Inherits from an API static text boss class, and
+		 adds an interface to control the dragdrop source behaviour. We override
+		 the default event handler to hook in the DND source capabilities.
+
+		@ingroup basicdragdrop
+	*/
+	Class
+	{
+		kBscDNDSourceStaticTextWidgetBoss,
+		kStaticTextWidgetBoss,
+		{
+			/** Provides the drag sourcing capabilities. */
+			IID_IDRAGDROPSOURCE, kBscDNDDragSourceImpl,
+			/** This widget's event handler needs to be DND aware.
+			Implementation provided by the API.
+			*/
+			IID_IEVENTHANDLER, kDragDropSourceEHImpl, 
+		}
+	},
+
+
+	/**
+		 Inherits from an API static text boss class, and
+		 adds an interface to control the dragdrop source behaviour. We override
+		 the default event handler to hook in the DND source capabilities.
+		 @ingroup basicdragdrop
+	*/
+	Class
+	{
+		kBscDNDCustomStaticTextWidgetBoss,
+		kStaticTextWidgetBoss,
+		{
+			/** Provides the drag sourcing capabilities. */
+			IID_IDRAGDROPSOURCE, kBscDNDCustomDragSourceImpl,
+			/** This widget's event handler needs to be DND aware.
+			Implementation provided by the API.
+			*/
+			IID_IEVENTHANDLER, kDragDropSourceEHImpl, 
+		}
+	},
+	
+	/** 
+		Provides our own scrap handler for an item with a custom flavor.
+		@ingroup basicdragdrop
+	*/
+	Class
+	{
+		kBscDNDCustomScrapHandlerBoss,
+		kPageItemScrapHandlerBoss,
+		{
+			/** Overrides the data exchange handler. 
+			*/
+			IID_IDATAEXCHANGEHANDLER, kBscDNDCustomDEHandlerImpl,
+		}
+	},
+
+	/** Register to be a layout widget DD target helper. i.e. we help the layout widget
+		with our flavor of data.
+		@ingroup basicdragdrop
+	*/
+	Class
+	{
+		kBscDNDCustomFlavorHelperBoss,
+		kInvalidClass,
+		{
+			IID_IK2SERVICEPROVIDER,		kLayoutDDTargHelperProviderImpl,
+			IID_IDRAGDROPTARGETFLAVORHELPER,	kBscDNDCustomFlavorHelperImpl,
+		}
+	},
+}}};
+
+/*
+// Implementation definition.
+*/
+resource FactoryList (kSDKDefFactoryListResourceID) 
+{
+	kImplementationIDSpace,
+	{
+#include "BscDNDFactoryList.h"
+	}
+};
+
+/*
+// Menu definition.
+*/
+resource MenuDef (kSDKDefMenuResourceID)
+{
+	{
+		// The About Plug-ins sub-menu item for this plug-in.
+		kBscDNDAboutActionID,			// ActionID (kInvalidActionID for positional entries)
+		kBscDNDAboutMenuPath,			// Menu Path.
+		kSDKDefAlphabeticPosition,			// Menu Position.
+		kSDKDefIsNotDynamicMenuFlag,		// kSDKDefIsNotDynamicMenuFlag or kSDKDefIsDynamicMenuFlag.
+	}
+};
+
+/*
+// Action definition.
+*/
+resource ActionDef (kSDKDefActionResourceID)
+{
+	{ 
+		kBscDNDActionComponentBoss, 		// ClassID of boss class that implements the ActionID.
+		kBscDNDAboutActionID,	// ActionID.
+		kBscDNDAboutMenuKey,	// Sub-menu string.
+		kHelpMenuActionArea,				// Area name (see ActionDefs.h).
+		kNormalAction,					// Type of action (see ActionDefs.h).
+		kDisableIfLowMem,				// Enabling type (see ActionDefs.h).
+		kInvalidInterfaceID,			// Selection InterfaceID this action cares about or kInvalidInterfaceID.
+		kSDKDefInvisibleInKBSCEditorFlag, // kSDKDefVisibleInKBSCEditorFlag or kSDKDefInvisibleInKBSCEditorFlag.
+	}
+};
+
+
+/*
+// LocaleIndex
+// The LocaleIndex should have indicies that point at your
+// localizations for each language system that you are 
+// localized for.
+*/
+/*
+// String LocaleIndex.
+*/
+resource LocaleIndex (kSDKDefStringsResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_enUS, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_jaJP, kSDKDefStringsResourceID + index_jaJP
+		
+		kWildFS, k_Wild, kSDKDefStringsResourceID + index_enUS
+	}
+};
+
+resource LocaleIndex (kSDKDefStringsNoTransResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_Wild, kSDKDefStringsNoTransResourceID + index_enUS
+	}
+};
+
+resource StringTable (kSDKDefStringsNoTransResourceID + index_enUS)
+{
+	k_enUS,									// Locale Id
+	kEuropeanMacToWinEncodingConverter,		// Character encoding converter
+	{
+		// No-Translate strings go here:		
+	}
+};
+
+
+
+/*
+// Panel LocaleIndex.
+*/
+resource LocaleIndex (kSDKDefPanelResourceID)
+{
+	kViewRsrcType,
+	{
+		kWildFS, k_Wild, 	kSDKDefPanelResourceID + index_enUS
+	}
+};
+
+
+/*
+// Type definition.
+*/
+type BscDNDPanelWidget(kViewRsrcType) : PalettePanelWidget(ClassID = kBscDNDPanelWidgetBoss) 
+{
+	CPanelMenuData;
+};
+
+type BscDNDSourceStaticTextWidget(kViewRsrcType) 	: StaticTextWidget(ClassID = kBscDNDSourceStaticTextWidgetBoss)	
+{ };
+
+type BscDNDCustomStaticTextWidget(kViewRsrcType) 	: StaticTextWidget(ClassID = kBscDNDCustomStaticTextWidgetBoss)	
+{ };
+
+
+/*
+// PanelList definition.
+*/
+resource PanelList (kSDKDefPanelResourceID)
+{
+	{
+		// 1st panel in the list
+		kSDKDefPanelResourceID,		// Resource ID for this panel (use SDK default rsrc ID)
+		kBscDNDPluginID,			// ID of plug-in that owns this panel
+		kNotResizable,
+		kBscDNDPanelWidgetActionID,	// Action ID to show/hide the panel
+		kBscDNDStaticTextKey,	// Shows up in the Window list.
+		"",							// Alternate menu path of the form "Main:Foo" if you want your palette menu item in a second place
+		0.0,						// Alternate Menu position Alternate Menu position for determining menu order
+		0,0,
+		c_Panel
+	}	
+};
+
+/*
+// Tip definition. These static strings are popped as tips
+// for the given panel widgets.
+*/
+resource TipTable(33)
+{
+	{
+		kBscDNDTargetStaticTextWidgetID, kBscDNDTargetPanelWidgetTipKey,
+		kBscDNDSourceStaticTextWidgetID, kBscDNDSourcePanelWidgetTipKey,
+		kBscDNDCustomStaticTextWidgetID, kBscDNDSourcePanelWidgetTipKey,
+	}
+}
+
+
+/*
+// PanelView definition.
+// The view is not currently localised: therefore, it can reside here.
+// However, if you wish to localise it, it is recommended to locate it in one of
+// the localised framework resource files (i.e. BscDNDTgt_enUS.fr etc.).
+*/
+resource BscDNDPanelWidget(kSDKDefPanelResourceID + index_enUS)
+{
+	__FILE__, __LINE__,					// Localization macro		
+	kBscDNDPanelWidgetID,			// WidgetID 
+	kPMRsrcID_None,						// RsrcID
+	kBindNone,							// Binding (0=none)
+	0, 0, 207, 90,						// Frame: left, top, right, bottom.
+	kTrue, kTrue,						// Visible, Enabled
+	kFalse,								// Erase background
+	kInterfacePaletteFill,				// Erase to color
+	kFalse,								// Draw dropshadow
+	kBscDNDStaticTextKey,				// Panel name	
+	{
+		StaticTextWidget
+		(
+			kBscDNDTargetStaticTextWidgetID,		// WidgetId (default=0)
+			kSysStaticTextPMRsrcId,			// RsrcId
+			kBindNone,						// Frame binding
+			5, 10, 202, 27,					// Frame: left, top, right, bottom.
+			kTrue, kTrue,					// Visible, Enabled
+			kAlignLeft, kEllipsizeEnd, kTrue,		// Alignment, ellipsize style, convert ampersands
+			kBscDNDTargetPanelWidgetTipKey,		// Initial text.
+			0								// No associated widget
+		),
+
+		BscDNDSourceStaticTextWidget
+		(
+			kBscDNDSourceStaticTextWidgetID, kSysStaticTextPMRsrcId,			// WidgetId, RsrcId
+			kBindNone,
+			Frame(5,35,202,52)		// Frame
+			kTrue, kTrue, kAlignLeft,							// Visible, Enabled, Alignment
+			kDontEllipsize, kTrue,										// Ellipsize style, Convert ampersands
+			kBscDNDSourceStaticTextKey,
+			kInvalidWidgetID
+		),
+
+		BscDNDCustomStaticTextWidget
+		(
+			kBscDNDCustomStaticTextWidgetID, kSysStaticTextPMRsrcId,			// WidgetId, RsrcId
+			kBindNone,
+			Frame(5,60,202,77)		// Frame
+			kTrue, kTrue, kAlignLeft,							// Visible, Enabled, Alignment
+			kDontEllipsize, kTrue,										// Ellipsize style, Convert ampersands
+			kBscDNDCustomStaticTextKey,
+			kInvalidWidgetID
+		),
+
+	}
+
+	""	
+};
+
+#endif // __ODFRC__
+
+#include "BscDND_enUS.fr"
+#include "BscDND_jaJP.fr"
+
+//  Code generated by DollyXS code generator

@@ -1,0 +1,43 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kInCopyFileActionsStringsRsrcID + index_nlNL)
+{
+	k_nlNL,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{
+		"&Update Design",		"Ontwerp &bijwerken",
+		"AlertUnableToSave",	"De volgende inhoud is niet opgeslagen.\nDe bestanden zijn mogelijk vergrendeld of u hebt wellicht geen rechten om de bestanden te wijzigen.\n",
+		"Update^1Alert",		"Bepaalde inhoud kan niet worden opgeslagen. Bij het bijwerken kunnen wijzigingen verloren gaan.\nWilt u de inhoud bijwerken naar de recentste versie van “^1”?",
+		"Undoable^1Save",		"Als u het ontwerp bijwerkt, wordt alle bewerkbare inhoud bijgewerkt voordat u kunt doorgaan. De opdracht Ongedaan maken kan niet worden toegepast op wijzigingen die worden veroorzaakt door het bijwerken. \nWilt u het ontwerp bijwerken naar \"^1\"?",
+		"AlertStoriesMissing",	"Bepaalde inhoudsbestanden zijn niet gevonden en kunnen daarom niet worden bewerkt. Probeer de bestanden naar de oorspronkelijke locaties te verplaatsen of de koppelingen bij te werken in InDesign.",
+		"AlertStoriesMissingWF", "Bepaalde inhoudsbestanden zijn niet gevonden en kunnen daarom niet worden bewerkt. Probeer de inhoud te downloaden van de server en het document te openen.",
+		"Update",				"Bijwerken",
+		"&Revert Story",		"Inhoud he&rstellen",
+//		"Revert Story",			"Revert Content", // Note to localizer: this string moved to InCopySharedStrings_enUS.fr
+		
+		"SaveAsFeatureLost",    "Dit document bevat functies die mogelijk niet worden ondersteund door deze bestandsindeling. Wilt u doorgaan?",
+		"CannotSaveOntoLockedFile",		"Het opgegeven bestand is momenteel uitgecheckt door \"^1\" in ^2 vanuit document ^3. Kies een andere bestandsnaam of zorg dat \"^1\" het bestand incheckt.",
+		"CannotSaveOntoLockedFileMinimal",	"Het opgegeven bestand is momenteel uitgecheckt door \"^1\".  Kies een andere bestandsnaam of zorg dat \"^1\" het bestand incheckt.",
+	}
+};
+
+
+#endif // __ODFRC__

@@ -1,0 +1,129 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kBehaviorUIStringsRsrcID + index_ukUA)
+{
+	k_ukUA,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{		
+		"$$$/Dialog/Behaviors/ShowHideFields/Fields_Tree", "Дерево полів",
+
+		"$$$/Dialog/Behaviors/Description",				"Тут буде поміщено короткий опис поведінки. Також можуть міститися деякі поради щодо параметрів поведінки, для того щоб дати певне уявлення про їхнє використання.",
+		"$$$/Dialog/Behaviors/Description Title",		"Опис",
+		"$$$/Dialog/Behaviors/DeleteAlert",				"Видалити вибрану дію?",
+		"$$$/Dialog/Behaviors/DragDeleteAlert",			"Вибрати перетягнуті дії?",
+		"$$$/Dialog/Behaviors/Error/Invalid URL",		"Поле URL-адреси повинно містити значення",
+		"$$$/Dialog/Behaviors/Error/Invalid File",		"Повинен бути заданий правильний файл",
+		
+		"$$$/Dialog/Behaviors/Movie/Movie:",			"Відео:",
+		"$$$/Dialog/Behaviors/Movie/Play Options:",		"Параметри:",
+		"$$$/Dialog/Behaviors/Movie/Play",				"Відтворити",
+		"$$$/Dialog/Behaviors/Movie/Stop",				"Завершити",
+		"$$$/Dialog/Behaviors/Movie/Pause",				"Пауза",
+		"$$$/Dialog/Behaviors/Movie/Resume",			"Продовжити",
+		"$$$/Dialog/Behaviors/Movie/PlayFromNavPoint",	"Відтворити від точки навігації",
+		"$$$/Dialog/Behaviors/Movie/StopAll",			"Зупинити все (лише SWF)",
+		"$$$/Dialog/Behaviors/Movie/NavPoint",			"Точка:",
+		"$$$/Dialog/Behaviors/Movie/NoVideo",			"(немає відео)",
+		"$$$/Dialog/Behaviors/Movie/NoVideoNavPoint",	"(немає точок навігації)",
+
+		"$$$/Dialog/Behaviors/Sound/Sound:",			"Звук:",
+		"$$$/Dialog/Behaviors/Sound/Play Options:",		"Параметри:",
+		"$$$/Dialog/Behaviors/Sound/Play",				"Відтворити",
+		"$$$/Dialog/Behaviors/Sound/Stop",				"Завершити",
+		"$$$/Dialog/Behaviors/Sound/Pause",				"Пауза",
+		"$$$/Dialog/Behaviors/Sound/Resume",			"Продовжити",
+		"$$$/Dialog/Behaviors/Sound/StopAll",			"Зупинити все (лише SWF)",
+		"$$$/Dialog/Behaviors/Sound/Volume:",			"Гучність:",
+		"$$$/Dialog/Behaviors/Sound/Synchronous",		"Синхронний",
+		"$$$/Dialog/Behaviors/Sound/Mix",				"Змішати",
+		"$$$/Dialog/Behaviors/Sound/NoSound",			"(немає звуку)",
+		
+		"$$$/Dialog/Behaviors/Animation/Animation:",	"Анімація:",
+		"$$$/Dialog/Behaviors/Animation/Play Options:",	"Параметри:",
+		"$$$/Dialog/Behaviors/Animation/Play",			"Відтворити",
+		"$$$/Dialog/Behaviors/Animation/Stop",			"Завершити",
+		"$$$/Dialog/Behaviors/Animation/Pause",			"Пауза",
+		"$$$/Dialog/Behaviors/Animation/Resume",		"Продовжити",
+		"$$$/Dialog/Behaviors/Animation/StopAll",		"Зупинити все",
+		"$$$/Dialog/Behaviors/Animation/Reverse",		"Обернути",
+		"$$$/Dialog/Behaviors/Animation/AutoReverse",	"Змінити напрямок при відведенні",
+		"$$$/Dialog/Behaviors/Animation/NoAnimation",	"(анімація відсутня)",
+		
+		"$$$/Dialog/Behaviors/MSO/Object:",				"Об'єкт:",
+		"$$$/Dialog/Behaviors/MSO/State:",				"Стан:",
+		"$$$/Dialog/Behaviors/MSO/AutoReverse",			"Повернутися при відведенні",
+		"$$$/Dialog/Behaviors/MSO/NextLoop",			"Зупинитися на останньому стані",
+		"$$$/Dialog/Behaviors/MSO/PrevLoop",			"Зупинитися на першому стані",
+		"$$$/Dialog/Behaviors/MSO/NoMSO",				"(немає об'єктів із кількома станами)",
+
+		"$$$/Dialog/Behaviors/GoToView/Go To:",			"Перейти до:",
+		"$$$/Dialog/Behaviors/GoToView/First Page",		"Перша сторінка",
+		"$$$/Dialog/Behaviors/GoToView/Page",			"Сторінка",
+		"$$$/Dialog/Behaviors/GoToView/Previous Page",	"Попередня сторінка",
+		"$$$/Dialog/Behaviors/GoToView/Next Page",		"Наступна сторінка",
+		"$$$/Dialog/Behaviors/GoToView/Last Page",		"Остання сторінка",
+		"$$$/Dialog/Behaviors/GoToView/Back",			"Назад",
+		"$$$/Dialog/Behaviors/GoToView/Forward",		"Вперед",
+		"$$$/Dialog/Behaviors/GoToView/Previous View",	"Попередній перегляд",
+		"$$$/Dialog/Behaviors/GoToView/Next View",		"Наступний перегляд",
+		"$$$/Dialog/Behaviors/GoToView/Specific Page",	"Певна сторінка",
+		"$$$/Dialog/Behaviors/GoToView/Document:",		"Документ:",
+		"$$$/Dialog/Behaviors/GoToView/Page:",			"Сторінка:",
+		"$$$/Dialog/Behaviors/GoToView/URL",			"URL",
+		"$$$/Dialog/Behaviors/GoToView/URL:",			"URL:",
+		"$$$/Dialog/Behaviors/GoToView/Anchor",			"Прив'язка тексту",
+		"$$$/Dialog/Behaviors/GoToView/Anchor:",		"Ціль:",
+		"$$$/Dialog/Behaviors/GoToView/Bookmark",		"Закладка",
+		"$$$/Dialog/Behaviors/GoToView/Inherit Zoom",	"Успадкувати масштаб",
+		"$$$/Dialog/Behaviors/GoToView/Actual Size",	"Справжній розмір",
+		"$$$/Dialog/Behaviors/GoToView/Fit In Window",	"За розміром вікна",
+		"$$$/Dialog/Behaviors/GoToView/Fit Width",		"За шириною",
+		"$$$/Dialog/Behaviors/GoToView/Fit Height",		"За висотою",
+		"$$$/Dialog/Behaviors/GoToView/Fit Visible",	"За змістом",
+		"$$$/Dialog/Behaviors/GoToView/Zoom:",			"Масштабування:",
+		"$$$/Dialog/Behaviors/GoToView/None",			"Немає",
+		"$$$/Dialog/Behaviors/GoToAnchor/InDesign Format File","Формат файлу InDesign",
+		
+		"$$$/Dialog/Behaviors/ViewZoom/Full Screen",	"На весь екран",
+		"$$$/Dialog/Behaviors/ViewZoom/Zoom View In",	"Збільшення",
+		"$$$/Dialog/Behaviors/ViewZoom/Zoom View Out",	"Зменшення",
+		"$$$/Dialog/Behaviors/ViewZoom/Fit Page",		"За розміром вікна",
+		"$$$/Dialog/Behaviors/ViewZoom/Actual Size",	"Справжній розмір",
+		"$$$/Dialog/Behaviors/ViewZoom/Fit Width",		"За шириною",
+		"$$$/Dialog/Behaviors/ViewZoom/Fit Visible",	"За змістом",
+		"$$$/Dialog/Behaviors/ViewZoom/SinglePage",		"По одній сторінці",
+		"$$$/Dialog/Behaviors/ViewZoom/OneColumn",		"Безперервно",
+		"$$$/Dialog/Behaviors/ViewZoom/TwoColumns",		"Безперервно - розворотами",
+
+		"$$$/Dialog/Behaviors/ImportData/Select File:","Виберіть файл:",
+		"$$$/Dialog/Behaviors/ImportData/Acrobat Format File","Файл формату Acrobat",
+
+		"$$$/Dialog/Behaviors/OpenFile/Select File:","Виберіть файл:",
+		"$$$/Dialog/Behaviors/OpenFile/Select File to be Opened", "Виберіть файл, який потрібно відкрити",
+		"$$$/Dialog/Behaviors/OpenFile/Acrobat Format File","Файл формату Acrobat",
+
+		"$$$/Dialog/Behaviors/SubmitForm/Submit To:","URL:",
+						
+		// ----- Tips strings
+	}
+};
+
+#endif // __ODFRC__

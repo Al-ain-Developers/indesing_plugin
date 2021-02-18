@@ -1,0 +1,274 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/buttonui/resources/behaviorui/BehaviorUIStrings_roRO.fr $
+//  
+//  $Owner: Mark VerMurlen $
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kBehaviorUIStringsRsrcID + index_roRO)
+{
+	k_roRO,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{
+		"$$$/Panel/Behaviors/Event",					"Eveniment",
+		"$$$/Panel/Behaviors/Behavior",					"Comportament",
+		"$$$/Panel/Behaviors/Empty",					"[Nu a fost adăugat niciun comportament]",
+		
+		"$$$/Panel/Behaviors/Tab",						"Comportamente",	
+
+		"$$$/Dialog/Behaviors/PanelName/Behavior Data Holder", "Holder date comportament",
+
+		"$$$/Dialog/Behaviors/ShowHideFields/Show_Hide Fields", "Afişare/Ascundere câmpuri",
+		"$$$/Dialog/Behaviors/ShowHideFields/Fields_Tree", "Arbore câmpuri",
+
+		"$$$/Dialog/Behaviors/Title",					"Comportamente",
+		"$$$/Dialog/Behaviors/Delete",					"&Ştergere",
+		"$$$/Dialog/Behaviors/Add",						"&Adăugare",
+		"$$$/Dialog/Behaviors/Update",					"Act&ualizare",
+#ifdef MACINTOSH
+		"$$$/Dialog/Behaviors/Browse...",				"Selectare...",
+#endif
+#ifdef WINDOWS
+		"$$$/Dialog/Behaviors/Browse...",				"Par&curgere...",
+#endif
+		"$$$/Dialog/Behaviors/New Behavior",			"Comportament nou",
+		"$$$/Dialog/Behaviors/Edit Behavior",			"Editare comportament",
+		"$$$/Dialog/Behaviors/New JavaScript",			"JavaScript nou",
+		"$$$/Dialog/Behaviors/Edit JavaScript",			"Editare JavaScript",
+		"$$$/Dialog/Behaviors/Event:",					"&Eveniment:",
+		"$$$/Dialog/Behaviors/Behavior:",				"&Comportament:",
+		"$$$/Dialog/Behaviors/Behavior Options",		"Opţiuni comportament",
+		"$$$/Dialog/Behaviors/JavaScript Options",		"Opţiuni JavaScript",
+		"$$$/Dialog/Behaviors/Choose Behavior",			"Selectare comportament",
+		"$$$/Dialog/Behaviors/Description",				"Va conţine o descriere scurtă a comportamentului. Poate, de asemenea, să conţină sugestii despre opţiunile comportamentului. Oferă utilizatorului o idee despre utilizare.",
+		"$$$/Dialog/Behaviors/Description Title",		"Descriere",
+		"$$$/Dialog/Behaviors/DeleteAlert",				"Se şterge comportamentul selectat?",
+		"$$$/Dialog/Behaviors/DeleteAllAlert",			"Ştergere globală comportamente?",
+		"$$$/Dialog/Behaviors/DragDeleteAlert",			"Se şterg comportamente trase?",
+		"$$$/Dialog/Behaviors/Error/Invalid URL",		"Câmpul URL trebuie să conţină o valoare",
+		"$$$/Dialog/Behaviors/Error/Invalid File",		"Trebuie specificat un fişier valid",
+		
+		"$$$/Dialog/Behaviors/Movie/Movie:",			"&Film:",
+		"$$$/Dialog/Behaviors/Movie/Play Options:",		"Opţiuni &redare:",
+		"$$$/Dialog/Behaviors/Movie/Play",				"Redare",
+		"$$$/Dialog/Behaviors/Movie/Stop",				"Stop",
+		"$$$/Dialog/Behaviors/Movie/Pause",				"Pauză",
+		"$$$/Dialog/Behaviors/Movie/Resume",			"Reluare",
+
+		"$$$/Dialog/Behaviors/Sound/Sound:",			"&Sunet:",
+		"$$$/Dialog/Behaviors/Sound/Play Options:",		"Opţiuni &redare:",
+		"$$$/Dialog/Behaviors/Sound/Play",				"Redare",
+		"$$$/Dialog/Behaviors/Sound/Stop",				"Stop",
+		"$$$/Dialog/Behaviors/Sound/Pause",				"Pauză",
+		"$$$/Dialog/Behaviors/Sound/Resume",			"Reluare",
+		"$$$/Dialog/Behaviors/Sound/Volume:",			"Volum:",
+		"$$$/Dialog/Behaviors/Sound/Synchronous",		"Sincron",
+		"$$$/Dialog/Behaviors/Sound/Mix",				"Combinare",
+		
+		"$$$/Dialog/Behaviors/GoToView/Go To:",			"Deplasare la:",
+		"$$$/Dialog/Behaviors/GoToView/First Page",		"Prima pagină",
+		"$$$/Dialog/Behaviors/GoToView/Previous Page",	"Pagina anterioară",
+		"$$$/Dialog/Behaviors/GoToView/Next Page",		"Pagina următoare",
+		"$$$/Dialog/Behaviors/GoToView/Last Page",		"Ultima pagină",
+		"$$$/Dialog/Behaviors/GoToView/Back",			"Înapoi",
+		"$$$/Dialog/Behaviors/GoToView/Forward",		"Înainte",
+		"$$$/Dialog/Behaviors/GoToView/Previous View",	"Vizualizarea anterioară",
+		"$$$/Dialog/Behaviors/GoToView/Next View",		"Următoarea vizualizare",
+		"$$$/Dialog/Behaviors/GoToView/Specific Page",	"Pagină specifică",
+		"$$$/Dialog/Behaviors/GoToView/Document:",		"Do&cument:",
+		"$$$/Dialog/Behaviors/GoToView/Page:",			"Pagina:",
+		"$$$/Dialog/Behaviors/GoToView/URL",			"URL",
+		"$$$/Dialog/Behaviors/GoToView/URL:",			"U&RL:",
+		"$$$/Dialog/Behaviors/GoToView/DefaultURL",		"http://",
+		"$$$/Dialog/Behaviors/GoToView/Anchor",			"Ancoră",
+		"$$$/Dialog/Behaviors/GoToView/Anchor:",		"A&ncoră:",
+		"$$$/Dialog/Behaviors/GoToView/Bookmark",		"Semn de carte",
+		"$$$/Dialog/Behaviors/GoToView/Inherit Zoom",	"Moştenire zoom",
+		"$$$/Dialog/Behaviors/GoToView/Actual Size",	"Dimensiune reală",
+		"$$$/Dialog/Behaviors/GoToView/Fit In Window",	"Potrivire în fereastră",
+		"$$$/Dialog/Behaviors/GoToView/Fit Width",		"Potrivire lăţime",
+		"$$$/Dialog/Behaviors/GoToView/Fit Height",		"Potrivire înălţime",
+		"$$$/Dialog/Behaviors/GoToView/Fit Visible",	"Potrivire zonă vizibilă",
+		"$$$/Dialog/Behaviors/GoToView/Zoom:",			"&Zoom:",
+		"$$$/Dialog/Behaviors/GoToView/None",			"Niciunul",
+		"$$$/Dialog/Behaviors/GoToAnchor/InDesign Format File","Fişier de format InDesign",
+		
+		"$$$/Dialog/Behaviors/ViewZoom/Full Screen",	"Ecran complet",
+		"$$$/Dialog/Behaviors/ViewZoom/Zoom View In",	"Zoom apropiere",
+		"$$$/Dialog/Behaviors/ViewZoom/Zoom View Out",	"Zoom depărtare",
+		"$$$/Dialog/Behaviors/ViewZoom/Fit Page",		"Potrivire în fereastră",
+		"$$$/Dialog/Behaviors/ViewZoom/Actual Size",	"Dimensiune reală",
+		"$$$/Dialog/Behaviors/ViewZoom/Fit Width",		"Potrivire lăţime",
+		"$$$/Dialog/Behaviors/ViewZoom/Fit Visible",	"Potrivire zonă vizibilă",
+		"$$$/Dialog/Behaviors/ViewZoom/Reflow",			"Reîncadrare",
+		"$$$/Dialog/Behaviors/ViewZoom/SinglePage",		"O pagină",
+		"$$$/Dialog/Behaviors/ViewZoom/OneColumn",		"Continuu",
+		"$$$/Dialog/Behaviors/ViewZoom/TwoColumns",		"Continuu-Faţă în faţă",
+		"$$$/Dialog/Behaviors/ViewZoom/RotateCW",		"Rotire în sensul acelor de ceasornic",
+		"$$$/Dialog/Behaviors/ViewZoom/RotateCCW",		"Rotire în sens invers acelor de ceasornic",
+
+		"$$$/Dialog/Behaviors/ShowHideFields/Show All",	"Afişa&re globală",
+		"$$$/Dialog/Behaviors/ShowHideFields/Hide All",	"&Ascundere globală",
+		"$$$/Dialog/Behaviors/ShowHideFields/Clear All","&Ştergere globală",
+
+		"$$$/Dialog/Behaviors/ImportData/Select File:","&Selectare fişier:",
+		"$$$/Dialog/Behaviors/ImportData/Acrobat Format File","Fişier în format Acrobat",
+
+		"$$$/Dialog/Behaviors/ResetForm/Select All",	"Selectare globală",
+		"$$$/Dialog/Behaviors/ResetForm/Deselect All",	"Deselectare globală",
+
+		"$$$/Dialog/Behaviors/SubmitForm/Select All",	"Selectare globală",
+		"$$$/Dialog/Behaviors/SubmitForm/Deselect All",	"Deselectare globală",
+		"$$$/Dialog/Behaviors/SubmitForm/Submit to URL:",	"Trimitere către URL:",
+		"$$$/Dialog/Behaviors/SubmitForm/Export Format",	"Format export",
+		"$$$/Dialog/Behaviors/SubmitForm/Field Selection",	"Selecţie câmp",
+		"$$$/Dialog/Behaviors/SubmitForm/FDF",	"FDF",
+		"$$$/Dialog/Behaviors/SubmitForm/HTML",	"HTML",
+		"$$$/Dialog/Behaviors/SubmitForm/XML",	"XML",
+		"$$$/Dialog/Behaviors/SubmitForm/PDF",	"PDF",
+		"$$$/Dialog/Behaviors/SubmitForm/Field Data",	"Date câmp",
+		"$$$/Dialog/Behaviors/SubmitForm/Comments",	"Comentarii",
+		"$$$/Dialog/Behaviors/SubmitForm/Incremental Changes",	"Schimbări incrementale",
+		"$$$/Dialog/Behaviors/SubmitForm/Standard format dates",	"Date format standard",
+		"$$$/Dialog/Behaviors/SubmitForm/Include empty fields",	"Includere câmpuri necompletate",
+
+		"$$$/Dialog/Behaviors/OpenFile/Select File:","&Selectare fişier:",
+		"$$$/Dialog/Behaviors/OpenFile/Select File to be Opened", "Selectare fişier de deschis",
+		"$$$/Dialog/Behaviors/OpenFile/Acrobat Format File","Fişier în format Acrobat",
+
+		"$$$/Dialog/Behaviors/GoToView/No Data for Go To Next View Behavior", "",
+		"$$$/Dialog/Behaviors/GoToView/No Data for Go To Previous View Behavior", "",
+		"$$$/Dialog/Behaviors/Close/No Data for Close Behavior", "",
+
+		"$$$/Dialog/Behaviors/Exit/No Data for Exit Behavior", "",
+
+		"$$$/Dialog/Behaviors/PanelName/JavaScript", "JavaScript",
+		"$$$/Dialog/Behaviors/JavaScript/Select File:", "Selectare fişier:",
+		"$$$/Dialog/Behaviors/JavaScript/LinkToFile:", "Legătură la fişier:",
+		"$$$/Dialog/Behaviors/JavaScript/JavaScript:", "JavaScript:",
+		
+		"$$$/Dialog/Behaviors/Format/Decimal Places:",			"Nr. de zecimale:",
+		"$$$/Dialog/Behaviors/Format/Decimal Style:",			"Stil separator zecimal:",
+		"$$$/Dialog/Behaviors/FormatNumber/Negative Style:",	"Stil negativ:",
+		"$$$/Dialog/Behaviors/FormatNumber/Currency Symbol:",	"Simbol monetar:",
+		"$$$/Dialog/Behaviors/FormatDate/Format String:",		"Şir format:",
+		"$$$/Dialog/Behaviors/FormatDate/Date Format:",			"Format pentru dată:",
+		"$$$/Dialog/Behaviors/FormatTime/Time Format:",			"Format oră:",
+		"$$$/Dialog/Behaviors/FormatSpecial/Type:",				"Text:",
+		
+		"$$$/Dialog/Behaviors/Format/CommaPeriod",				"1,234.56",
+		"$$$/Dialog/Behaviors/Format/NothingPeriod",			"1234.56",
+		"$$$/Dialog/Behaviors/Format/PeriodComma",				"1.234,56",
+		"$$$/Dialog/Behaviors/Format/NothingComma",				"1234,56",
+
+		"$$$/Dialog/Behaviors/Format/Minus",							"Minus",
+		"$$$/Dialog/Behaviors/Format/Colored Red",						"Roşu colorat",
+		"$$$/Dialog/Behaviors/Format/Parenthesized",					"Încadrat de paranteze",
+		"$$$/Dialog/Behaviors/Format/Colored Red and Parenthesized",	"Roşu colorat şi încadrat de paranteze",
+		
+		"$$$/Dialog/Behaviors/CurrencyFormat/None",				"Niciunul",
+		"$$$/Dialog/Behaviors/CurrencyFormat/Dollar",			"USD",
+		"$$$/Dialog/Behaviors/CurrencyFormat/Deutschmark",		"Marcă germană",
+		"$$$/Dialog/Behaviors/CurrencyFormat/Euro",				"Euro",
+		"$$$/Dialog/Behaviors/CurrencyFormat/Franc",			"Franc",
+		"$$$/Dialog/Behaviors/CurrencyFormat/Guilder",			"Gulden",
+		"$$$/Dialog/Behaviors/CurrencyFormat/Krona",			"Coroană",
+		"$$$/Dialog/Behaviors/CurrencyFormat/Lira",				"Liră",
+		"$$$/Dialog/Behaviors/CurrencyFormat/Pesata",			"Pesetă",
+		"$$$/Dialog/Behaviors/CurrencyFormat/Pound",			"GBP",
+		"$$$/Dialog/Behaviors/CurrencyFormat/Yen",				"Yen",
+
+		"$$$/Dialog/Behaviors/DateFormat/1/3",					"1/3",
+		"$$$/Dialog/Behaviors/DateFormat/1/3/81",				"1/3/81",
+		"$$$/Dialog/Behaviors/DateFormat/1/3/1981",				"1/3/1981",
+		"$$$/Dialog/Behaviors/DateFormat/01/03/81",				"01/03/81",
+		"$$$/Dialog/Behaviors/DateFormat/01/03/1981",			"01/03/1981",
+		"$$$/Dialog/Behaviors/DateFormat/01/81",				"01/81",
+		"$$$/Dialog/Behaviors/DateFormat/01/1981",				"01/1981",
+		"$$$/Dialog/Behaviors/DateFormat/3-Jan",				"ian",
+		"$$$/Dialog/Behaviors/DateFormat/3-Jan-81",				"ian-81",
+		"$$$/Dialog/Behaviors/DateFormat/3-Jan-1981",			"ian-1981",
+		"$$$/Dialog/Behaviors/DateFormat/03-Jan-81",			"ian-81",
+		"$$$/Dialog/Behaviors/DateFormat/03-Jan-1981",			"ian-1981",
+		"$$$/Dialog/Behaviors/DateFormat/81-01-03",				"81-01-03",
+		"$$$/Dialog/Behaviors/DateFormat/1981-01-03",			"1981-01-03",
+		"$$$/Dialog/Behaviors/DateFormat/Jan-81",				"Ian-81",
+		"$$$/Dialog/Behaviors/DateFormat/January-81",			"Ianuarie-81",
+		"$$$/Dialog/Behaviors/DateFormat/January-1981",			"Ianuarie-1981",
+		"$$$/Dialog/Behaviors/DateFormat/Jan 3, 1981",			"3 Ian, 1981",
+		"$$$/Dialog/Behaviors/DateFormat/January 3, 1981",		"3 Ianuarie, 1981",
+		"$$$/Dialog/Behaviors/DateFormat/1/3/81 2:30 pm", 		"1/3/81 2:30 pm",
+		"$$$/Dialog/Behaviors/DateFormat/1/3/1981 2:30 pm",		"1/3/1981 2:30 pm",
+		"$$$/Dialog/Behaviors/DateFormat/1/3/81 14:30",			"1/3/81 14:30",
+		"$$$/Dialog/Behaviors/DateFormat/1/3/1981 14:30",		"1/3/81 14:30",
+		"$$$/Dialog/Behaviors/DateFormat/Custom",				"Personalizat",
+
+		"$$$/Dialog/Behaviors/TimeFormat/14:30",				"14:30",
+		"$$$/Dialog/Behaviors/TimeFormat/2:30 pm",				"2:30 pm",
+		"$$$/Dialog/Behaviors/TimeFormat/14:30:15",				"14:30:15",
+		"$$$/Dialog/Behaviors/TimeFormat/2:30:15 pm",			"2:30:15 pm",
+
+		"$$$/Dialog/Behaviors/FormatSpecial/Zip Code",				"Cod poştal",
+		"$$$/Dialog/Behaviors/FormatSpecial/Zip Code+4",			"Cod poştal + 4",
+		"$$$/Dialog/Behaviors/FormatSpecial/Phone Number",			"Număr de telefon",
+		"$$$/Dialog/Behaviors/FormatSpecial/Social Security Number","Număr de asigurări sociale (SSN)",
+		
+		"$$$/Dialog/Behaviors/Formula/Value is the",			"Valoarea este",
+		"$$$/Dialog/Behaviors/Formula/of the chosen fields",	"din câmpurile selectate",
+		"$$$/Dialog/Behaviors/Formula/Select All",				"Selectare globală",
+		"$$$/Dialog/Behaviors/Formula/Deselect All",			"Deselectare globală",
+
+		"$$$/Dialog/Behaviors/Formula/Sum",						"Sumă",
+		"$$$/Dialog/Behaviors/Formula/Product",					"Produs",
+		"$$$/Dialog/Behaviors/Formula/Average",					"Medie",
+		"$$$/Dialog/Behaviors/Formula/Minimum",					"Minim",
+		"$$$/Dialog/Behaviors/Formula/Maximum",					"Maxim",
+
+		"$$$/Dialog/Behaviors/MarkReadOnly/Select All",			"Selectare globală",
+		"$$$/Dialog/Behaviors/MarkReadOnly/Deselect All",		"Deselectare globală",
+		
+		"$$$/Dialog/Behaviors/ValidateRange/Ensure value is",	"Asiguraţi-vă că valoarea este",
+		"$$$/Dialog/Behaviors/ValidateRange/Greater than or equal to:",		"Mai mare decât sau egală cu:",
+		"$$$/Dialog/Behaviors/ValidateRange/and less than or equal to:",	"şi mai mic decât sau egal cu:",
+
+		"$$$/Dialog/CommandSequence/EditDocumentJavaScript",	"Editare JavaScript document",
+
+		"$$$/Dialog/EditDocumentJavaScript",					"Editare JavaScript document",
+		"$$$/Dialog/EditDocumentJavaScript/ScriptName:",			"Nume script:",
+		"$$$/Dialog/EditDocumentJavaScript/Add...",					"Adăugare...",
+		"$$$/Dialog/EditDocumentJavaScript/Delete",					"Ştergere",
+		"$$$/Dialog/EditDocumentJavaScript/Edit...",				"Editare...",
+
+		// ----- Tips strings
+
+		"$$$/Tip/DeleteBehavior",			"Ştergere comportamente selectate",
+		"$$$/Tip/NewBehavior",				"Creare comportament nou",
+	}
+};
+
+#endif // __ODFRC__

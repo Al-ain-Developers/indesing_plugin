@@ -1,0 +1,124 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/buttonui/resources/behaviorui/BehaviorUIStrings_arAE.fr $
+//  
+//  $Owner: Mark VerMurlen $
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kBehaviorUIStringsRsrcID + index_arAE)
+{
+	k_arAE,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{		
+		"$$$/Dialog/Behaviors/ShowHideFields/Fields_Tree", "شجرة الحقول",
+
+		"$$$/Dialog/Behaviors/Description",				"سوف يحتوي هذا على توصيف مختصر عن أسلوب التفاعل، وربما تحتوي أيضاً على بعض التلميحات المساعدة عن خيارات أسلوب التفاعل لإعطاء المستخدم فكرة مبسطة عن كيفية إستخدامه.",
+		"$$$/Dialog/Behaviors/Description Title",		"التوصيف",
+		"$$$/Dialog/Behaviors/DeleteAlert",				"حذف العملية المحددة؟",
+		"$$$/Dialog/Behaviors/DragDeleteAlert",			"هل تريد حذف العمليات المسحوبة؟",
+		"$$$/Dialog/Behaviors/Error/Invalid URL",		"الحقل الخاص بالـ URL يجب أن يحتوي على قيمة",
+		"$$$/Dialog/Behaviors/Error/Invalid File",		"يجب تحديد ملف صحيح",
+		
+		"$$$/Dialog/Behaviors/Movie/Movie:",			"ال&فيلم:",
+		"$$$/Dialog/Behaviors/Movie/Play Options:",		"خ&يارات:",
+		"$$$/Dialog/Behaviors/Movie/Play",				"تشغيل",
+		"$$$/Dialog/Behaviors/Movie/Stop",				"إيقاف",
+		"$$$/Dialog/Behaviors/Movie/Pause",				"إيقاف مؤقت",
+		"$$$/Dialog/Behaviors/Movie/Resume",			"إستئناف",
+
+		"$$$/Dialog/Behaviors/Sound/Sound:",			"ال&صوت:",
+		"$$$/Dialog/Behaviors/Sound/Play Options:",		"خ&يارات:",
+		"$$$/Dialog/Behaviors/Sound/Play",				"تشغيل",
+		"$$$/Dialog/Behaviors/Sound/Stop",				"إيقاف",
+		"$$$/Dialog/Behaviors/Sound/Pause",				"إيقاف مؤقت",
+		"$$$/Dialog/Behaviors/Sound/Resume",			"إستئناف",
+		"$$$/Dialog/Behaviors/Sound/Volume:",			"درجة الصوت:",
+		"$$$/Dialog/Behaviors/Sound/Synchronous",		"التزامن",
+		"$$$/Dialog/Behaviors/Sound/Mix",				"خليط",
+		
+		"$$$/Dialog/Behaviors/GoToView/Go To:",			"الذهاب إلى:",
+		"$$$/Dialog/Behaviors/GoToView/First Page",		"الصفحة الأولى",
+		"$$$/Dialog/Behaviors/GoToView/Page",			"صفحة",
+		"$$$/Dialog/Behaviors/GoToView/Previous Page",	"الصفحة السابقة",
+		"$$$/Dialog/Behaviors/GoToView/Next Page",		"الصفحة التالية",
+		"$$$/Dialog/Behaviors/GoToView/Last Page",		"الصفحة الأخيرة",
+		"$$$/Dialog/Behaviors/GoToView/Back",			"الرجوع إلى الخلف",
+		"$$$/Dialog/Behaviors/GoToView/Forward",		"التقدم إلى الأمام",
+		"$$$/Dialog/Behaviors/GoToView/Previous View",	"المنظر السابق",
+		"$$$/Dialog/Behaviors/GoToView/Next View",		"المنظر التالي",
+		"$$$/Dialog/Behaviors/GoToView/Specific Page",	"صفحة محددة",
+		"$$$/Dialog/Behaviors/GoToView/Document:",		"الو&ثيقة:",
+		"$$$/Dialog/Behaviors/GoToView/Page:",			"الصفحة:",
+		"$$$/Dialog/Behaviors/GoToView/URL",			"موقع الويب",
+		"$$$/Dialog/Behaviors/GoToView/URL:",			"مو&قع الويب:",
+		"$$$/Dialog/Behaviors/GoToView/DefaultURL",		"http://",
+		"$$$/Dialog/Behaviors/GoToView/Anchor",			"رابط نص",
+		"$$$/Dialog/Behaviors/GoToView/Anchor:",		"رابط نص:",
+		"$$$/Dialog/Behaviors/GoToView/Bookmark",		"إشارة مرجعية",
+		"$$$/Dialog/Behaviors/GoToView/Inherit Zoom",	"توارث التحجيم",
+		"$$$/Dialog/Behaviors/GoToView/Actual Size",	"الحجم الحقيقي",
+		"$$$/Dialog/Behaviors/GoToView/Fit In Window",	"ملائمة النافذة",
+		"$$$/Dialog/Behaviors/GoToView/Fit Width",		"ملائمة العرض",
+		"$$$/Dialog/Behaviors/GoToView/Fit Height",		"ملائمة الإرتفاع",
+		"$$$/Dialog/Behaviors/GoToView/Fit Visible",	"ملائمة الجزء المرئي",
+		"$$$/Dialog/Behaviors/GoToView/Zoom:",			"&تحجيم:",
+		"$$$/Dialog/Behaviors/GoToView/None",			"لا شيء",
+		"$$$/Dialog/Behaviors/GoToAnchor/InDesign Format File","ملف تنسيقات InDesign",
+		
+		"$$$/Dialog/Behaviors/ViewZoom/Full Screen",	"شاشة كاملة",
+		"$$$/Dialog/Behaviors/ViewZoom/Zoom View In",	"تكبير",
+		"$$$/Dialog/Behaviors/ViewZoom/Zoom View Out",	"تصغير",
+		"$$$/Dialog/Behaviors/ViewZoom/Fit Page",		"ملائمة النافذة",
+		"$$$/Dialog/Behaviors/ViewZoom/Actual Size",	"الحجم الحقيقي",
+		"$$$/Dialog/Behaviors/ViewZoom/Fit Width",		"ملائمة العرض",
+		"$$$/Dialog/Behaviors/ViewZoom/Fit Visible",	"ملائمة الجزء المرئي",
+		"$$$/Dialog/Behaviors/ViewZoom/Reflow",			"إعادة الإنسياب",
+		"$$$/Dialog/Behaviors/ViewZoom/SinglePage",		"صفحة مفردة",
+		"$$$/Dialog/Behaviors/ViewZoom/OneColumn",		"مستمرة",
+		"$$$/Dialog/Behaviors/ViewZoom/TwoColumns",		"متقابلة مستمرة",
+		"$$$/Dialog/Behaviors/ViewZoom/RotateCW",		"تدوير بإتجاه عقارب الساعة",
+		"$$$/Dialog/Behaviors/ViewZoom/RotateCCW",		"تدوير بعكس إتجاه عقارب الساعة",
+
+		"$$$/Dialog/Behaviors/ImportData/Select File:","ت&حديد الملف:",
+		"$$$/Dialog/Behaviors/ImportData/Acrobat Format File","ملف تنسيقات Acrobat",
+
+		"$$$/Dialog/Behaviors/OpenFile/Select File:","ت&حديد الملف:",
+		"$$$/Dialog/Behaviors/OpenFile/Select File to be Opened", "تحديد ملف للفتح",
+		"$$$/Dialog/Behaviors/OpenFile/Acrobat Format File","ملف تنسيقات Acrobat",
+
+		"$$$/Dialog/Behaviors/GoToView/No Data for Go To Next View Action", "",
+		"$$$/Dialog/Behaviors/GoToView/No Data for Go To Previous View Action", "",
+		"$$$/Dialog/Behaviors/Close/No Data for Close Action", "",
+
+		"$$$/Dialog/Behaviors/Exit/No Data for Exit Action", "",
+						
+		// ----- Tips strings
+	}
+};
+
+#endif // __ODFRC__

@@ -1,0 +1,244 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/dynamicdocumentsui/resources/TimingPanelViews_huHU.fr $
+//  
+//  Owner: Michael Burbidge
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2008 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "IconStyleDefs.h"
+#include "InterfaceColorDefines.h"
+#include "TreeViewDefs.h"
+
+#ifdef __ODFRC__
+
+resource TimingPanelWidget (kTimingPaletteRsrcID + index_huHU)
+{
+	__FILE__, __LINE__,
+	kTimingPanelWidgetID, kPMRsrcID_None,	// WidgetId, RsrcId
+	kBindNone,								// Frame binding
+	Frame(0, 0, kMinTimingPanelWidth, kMinTimingPanelHeight + 4),// Frame
+	kTrue, kTrue,							// Visible, Enabled
+	kTrue,									// EraseBeforeDrawing
+	kInterfacePaletteFill,					// Erase to color
+	"kTimingPanelName",						// Panel name
+	{
+		// Event 
+		GenericPanelWidget
+		(
+			kTimingPanelEventGroupWidgetID, kPMRsrcID_None,
+			kBindLeft | kBindRight | kBindTop,
+			Frame(5,5,kMinTimingPanelWidth-5,26)		// Frame
+			kTrue, kTrue,
+			""
+			{
+				StaticTextWidget
+				(
+					kTimingPanelEventStaticWidgetID, kSysStaticTextPMRsrcId,		// WidgetId, RsrcId
+					kBindLeft | kBindTop,								// Frame binding
+					Frame(0,0,56,21)						// Frame
+					kTrue, kTrue, kAlignRight,				// Visible, Enabled
+					kDontEllipsize, kTrue,					// Ellipsize style, Convert ampersands
+					"kTimingPanelEventStaticText",			// Text
+					kTimingPanelEventDropDownWidgetID,
+				),
+				DropDownListWidget
+				(
+					kTimingPanelEventDropDownWidgetID,    // WidgetId
+					kSysDropDownPMRsrcId,				// RsrcId
+					kBindLeft | kBindRight,
+					Frame(61,0,kMinTimingPanelWidth-10,21)					 // Frame
+					kTrue, kTrue,
+					{{
+						// Fill in dynamically
+					}}
+				),
+			}
+		)
+		// Delay
+		GenericPanelWidget
+		(
+			kTimingPanelDelayGroupWidgetID, kPMRsrcID_None,
+			kBindLeft | kBindTop,
+			Frame(5,31,kMinTimingPanelWidth-5,52)		// Frame
+			kTrue, kTrue,
+			""
+			{
+				StaticTextWidget
+				(
+					kTimingPanelDelayStaticWidgetID, kSysStaticTextPMRsrcId,		// WidgetId, RsrcId
+					kBindLeft,								// Frame binding
+					Frame(0,0,56,21)						// Frame
+					kTrue, kTrue, kAlignRight,				// Visible, Enabled
+					kDontEllipsize, kTrue,					// Ellipsize style, Convert ampersands
+					"kTimingPanelDelayStaticText",			// Text
+					kTimingDelayILEWidgetID,				// Associate widget ID
+				),
+				// delay slider widget
+                NudgeControlWidget 
+                ( 
+                    kTimingDelayNudgeWidgetID, kPMRsrcID_None,		// WidgetId, RsrcId 
+                    kBindLeft,										// Frame binding 
+					Frame(61,0,61 + kCC2016NudgeControlWidth,21), 								// Frame  
+                    kTrue, kTrue,									// Visible, Enabled 
+                ),
+                RealEditBoxWidget
+				(
+					kTimingDelayILEWidgetID, kSysEditBoxPMRsrcId, 
+					kBindLeft,
+					Frame(61 + kCC2016NudgeControlWidth,0,61 + kCC2016NudgeControlWidth + 35,21), 							// Frame  
+					kTrue, kTrue,									// Visible, Enabled			
+					kTimingDelayNudgeWidgetID,						// widget id of nudge button			
+					0.25,	1.0,									// small/large nudge amount
+					8,												// max num chars( 0 = no limit)
+					kFalse,											// is read only
+					kFalse,											//Notified for every key stroke
+					kTrue,											// range checking enabled
+					kFalse,											// blank entry allowed
+					60.0, 0,										// upper/lower bounds
+					"",												// initial text
+				),
+				StaticTextWidget
+				(
+					kTimingPanelDelaySecondStaticWidgetID, kSysStaticTextPMRsrcId,		// WidgetId, RsrcId
+					kBindLeft,								// Frame binding
+					Frame(61 + kCC2016NudgeControlWidth + 40,0,kMinTimingPanelWidth-10,21)						// Frame
+					kTrue, kTrue, kAlignLeft,				// Visible, Enabled
+					kDontEllipsize, kTrue,					// Ellipsize style, Convert ampersands
+					"kTimingPanelDelaySecondStaticText",    // Text
+					kTimingDelayILEWidgetID,										// Associate widget ID
+				),
+			}
+		)
+						
+		StaticTextWidget
+		(
+			kTimingPanelLinkedItemStaticWidgetID, kSysStaticTextPMRsrcId,		// WidgetId, RsrcId
+			kBindLeft,								// Frame binding
+			Frame(18,53,kMinTimingPanelWidth-5,74)						// Frame
+			kTrue, kTrue, kAlignLeft,				// Visible, Enabled
+			kDontEllipsize, kTrue,					// Ellipsize style, Convert ampersands
+			"kTimingPanelLinkedItemStaticText",			// Text
+			kTimingDelayILEWidgetID,				// Associate widget ID
+		),
+		
+		// Loop group
+		GenericPanelWidget
+		(
+			kTimingPanelNumPlaysGroupWidgetID, kPMRsrcID_None,
+			kBindLeft | kBindTop,
+			Frame(5,75,61 + kCC2016NudgeControlWidth+65,96)		// Frame
+			kTrue, kTrue,
+			""
+			{
+				StaticTextWidget
+				(
+					kTimingPanelPlayLinkedItemStaticWidgetID, kSysStaticTextPMRsrcId,		// WidgetId, RsrcId
+					kBindLeft,								// Frame binding
+					Frame(0,0,56,21)						// Frame
+					kTrue, kTrue, kAlignRight,				// Visible, Enabled
+					kDontEllipsize, kTrue,					// Ellipsize style, Convert ampersands
+					"kTimingPanelPlayLinkedItemStaticText",	// Text
+					kTimingPanelPlayLinkedItemEditBoxWidgetID,				// Associate widget ID
+				),
+				// delay slider widget
+                NudgeControlWidget 
+                ( 
+                    kTimingPanelPlayLinkedItemNudgeWidgetID, kPMRsrcID_None,		// WidgetId, RsrcId 
+                    kBindLeft,										// Frame binding 
+					Frame(61,0,61 + kCC2016NudgeControlWidth,21), 								// Frame  
+                    kTrue, kTrue,									// Visible, Enabled 
+                ),
+                IntEditBoxWidget
+				(
+					kTimingPanelPlayLinkedItemEditBoxWidgetID, kSysEditBoxPMRsrcId, 
+					kBindLeft,
+					Frame(61 + kCC2016NudgeControlWidth,0,61 + kCC2016NudgeControlWidth + 35,21), 							// Frame  
+					kTrue, kTrue,									// Visible, Enabled			
+					kTimingPanelPlayLinkedItemNudgeWidgetID,				// widget id of nudge button			
+					1,	5,											// small/large nudge amount
+					8,												// max num chars( 0 = no limit)
+					kFalse,											// is read only
+					kFalse,											//Notified for every key stroke
+					kTrue,											// range checking enabled
+					kFalse,											// blank entry allowed
+					99, 1,											// upper/lower bounds
+					"",												// initial text
+				),
+				StaticTextWidget
+				(
+					kTimingPanelPlayLinkedItemTimeStaticWidgetID, kSysStaticTextPMRsrcId,		// WidgetId, RsrcId
+					kBindLeft,								// Frame binding
+					Frame(61 + kCC2016NudgeControlWidth +40,0,61 + kCC2016NudgeControlWidth+60,20)					// Frame
+					kTrue, kTrue, kAlignLeft,				// Visible, Enabled
+					kDontEllipsize, kTrue,					// Ellipsize style, Convert ampersands
+					"kTimingPanelPlayLinkedItemTimeStaticText",  // Text
+					kTimingPanelPlayLinkedItemEditBoxWidgetID,										// Associate widget ID
+				),
+			}
+		)
+		CheckBoxWidget	// loop checkbox
+		(     
+			kTimingPanelLoopCheckBoxWidgetID,			// WidgetId 
+			kSysCheckBoxPMRsrcId,						// RsrcId 
+			kBindNone,									// Frame binding 
+			Frame(61 + kCC2016NudgeControlWidth+70,75,kMinTimingPanelWidth-5,96)		// Frame 
+			kTrue,										// Visible 
+			kFalse,										// Enabled 
+			kAlignLeft,									// Alignment 
+			"kTimingPanelLoopCheckBoxLabel",		// Initial text 
+		),
+
+		#include "TimingPanelViewsCommonControls.fr"
+	
+	},
+	"kTimingPanelPopup",			// Popup menu name	
+}
+
+resource TimingPanelTreeNode (kTimingPanelTreeNodeRsrcID + index_huHU)
+{
+	__FILE__, __LINE__,
+	kTimingPanelElementWidgetID, kPMRsrcID_None,	// WidgetId, RsrcId
+	kBindLeft | kBindRight,							// Frame binding
+	Frame(1, 0, 196, kTimingPanelRowHeight),		// Frame
+	kTrue, kTrue,									// Visible, Enabled
+	"",												// Panel name
+	{
+		TimingPanelTreeNodeGroupWidget
+		(
+			kTimingPanelTreeNodeGroupWidgetID, kPMRsrcID_None,	// WidgetId, RsrcId 
+			kBindLeft,											// Frame binding 
+            Frame(0,0,kTimingPanelGroupWidgetWidth,kTimingPanelRowHeight)					// Frame 
+            kTrue, kTrue,                                       // Visible, Enabled 
+		),
+		TimingPanelPageItemName
+		(
+			kTimingItemElementItemNameWidgetID, kSysStaticTextPMRsrcId,		// WidgetId, RsrcId
+			kBindAll,								// Frame binding
+			Frame(18,0,196,kTimingPanelRowHeight)	// Frame
+			kTrue, kTrue, kAlignLeft,							// Visible, Enabled
+			kEllipsizeMiddle, kTrue,										// Ellipsize style, Convert ampersands
+			"",								// Initial text
+			kEditbox,
+			kFalse, kTrue,					// key focus, editable
+			100								// max num chars allowed
+		),
+	}
+}
+
+#endif

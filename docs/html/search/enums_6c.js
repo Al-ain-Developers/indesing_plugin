@@ -1,0 +1,26 @@
+var searchData=
+[
+  ['layerattributes',['LayerAttributes',['../class_i_graphic_layer_info.html#a40ca89d1587185dc0fae0cb9828c8194',1,'IGraphicLayerInfo']]],
+  ['layeroptions',['LayerOptions',['../class_i_preflight_options.html#a2aa2b76f2d6fd549f6682872819d0052',1,'IPreflightOptions']]],
+  ['layoutobjecttype',['LayoutObjectType',['../class_c_h_m_l_graphic_frame_meta_data.html#a99b4356bb9ea0b0d45ad56908d0cf17a',1,'CHMLGraphicFrameMetaData']]],
+  ['layoutpolicy',['LayoutPolicy',['../class_i_layout_object.html#ab15bc02494c5b4fac6edd461c121fd42',1,'ILayoutObject']]],
+  ['lineattributes',['LineAttributes',['../class_line_description.html#ac55aa82faab00eee34d8227bd6cbb12e',1,'LineDescription']]],
+  ['linebreaking',['LineBreaking',['../class_i_document_log.html#a6fc7394ba4dc7aab99f68cfc8c7e7040',1,'IDocumentLog']]],
+  ['linecap',['LineCap',['../class_snp_graphic_helper.html#adb5182cda651e50ae5ce125baad34850',1,'SnpGraphicHelper']]],
+  ['linetype',['LineType',['../class_line_description.html#a2def49323aa518dc96d8967185097a84',1,'LineDescription']]],
+  ['linkform',['LinkForm',['../namespacemetadata.html#aa706c5786db920c86a05b2072fbf9d7d',1,'metadata']]],
+  ['linkpageitemoption',['LinkPageItemOption',['../class_facade_1_1_i_shared_content_facade.html#aaa41bf5c548df0651797953e619d3738',1,'Facade::ISharedContentFacade']]],
+  ['linkstatus',['LinkStatus',['../class_facade_1_1_i_link_facade.html#a38f3120a3a13bb63d872c98ed5f1e23f',1,'Facade::ILinkFacade']]],
+  ['linkstoryoption',['LinkStoryOption',['../class_facade_1_1_i_shared_content_facade.html#a116525e173a95a892e92359dd319094c',1,'Facade::ISharedContentFacade']]],
+  ['linktype',['LinkType',['../class_i_link.html#ade60049d1f9c214d74455c56fc74d978',1,'ILink::LinkType()'],['../class_i_preflight_process.html#a3afe566ca4db97994e71e387da41c02b',1,'IPreflightProcess::LinkType()']]],
+  ['listalignment',['ListAlignment',['../class_i_b_n_drawing_style.html#a63cb6f9e63266fef9c76547167cbe993',1,'IBNDrawingStyle']]],
+  ['listtype',['ListType',['../class_i_content_write_iterator.html#a7eb3e141727a7bfcdc221c9cdc950ea4',1,'IContentWriteIterator::ListType()'],['../class_i_structure_marks.html#ad09d7a539ff9400e2660f71e99772e3b',1,'IStructureMarks::ListType()'],['../class_i_text_attr_list_type.html#afbff857a64263edfdbb47745f4a3b717',1,'ITextAttrListType::ListType()']]],
+  ['loadchoice',['LoadChoice',['../class_i_load_style_cmd_data.html#ab01e347bdb8807e469bede2b5a8e227c',1,'ILoadStyleCmdData::LoadChoice()'],['../class_i_selectively_load_style_cmd_data.html#a93f84b2f7a420c791918905238c84f20',1,'ISelectivelyLoadStyleCmdData::LoadChoice()']]],
+  ['locationtype',['LocationType',['../class_i_spectrum_data.html#a24b5799ce596d2d20bf306461ba74c4f',1,'ISpectrumData']]],
+  ['lockeditemtreatment',['LockedItemTreatment',['../class_base_hit_test_handler_impl.html#a8c3a197bf9e3079c10ee0e13341f78ae',1,'BaseHitTestHandlerImpl']]],
+  ['lockedlayertreatment',['LockedLayerTreatment',['../class_base_hit_test_handler_impl.html#a9f9fa3da43394a5fa94b8d02c428d69a',1,'BaseHitTestHandlerImpl']]],
+  ['lockflags',['LockFlags',['../class_i_open_file_cmd_data.html#ae4d43d8703a4775d7b68c706d0ff97dd',1,'IOpenFileCmdData']]],
+  ['lockstate',['LockState',['../class_i_a_m_lockable.html#afff1eb59219506c950dad6a06a86fd9a',1,'IAMLockable']]],
+  ['locktype',['LockType',['../class_i_text_walker_scope.html#a16aae91d83a67c635697b2a93c97c9d4',1,'ITextWalkerScope']]],
+  ['looseend',['LooseEnd',['../class_i_c_text_navigation_suite.html#a87945055db939f5e8b889f5400564d6c',1,'ICTextNavigationSuite']]]
+];

@@ -1,0 +1,356 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/conditionaltextui/resources/ConditionalTextUIClass.fr $
+//  
+//  Owner: Michele Stutzman
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "BuildNumber.h"
+#include "FormatNumber.h"
+#include "objectmodeltypes.fh"
+#include "PMLocaleIds.h"
+
+#include "ActionID.h"
+#include "CommandID.h"
+#include "ConditionalTextUIConversionID.h"
+#include "ConditionalTextUIID.h"
+#include "ConditionalTextID.h"
+#include "DragDropID.h"
+#include "GenericID.h"
+#include "LayoutUIID.h"
+#include "TextEditorImplID.h"
+#include "TextID.h"
+#include "TipsID.h"
+#include "widgetid.h"
+#include "WritingModeUIID.h"
+#include "FindChangeID.h"
+
+#include "PlugInModel_UIAttributes.h"
+
+
+#ifdef __ODFRC__
+
+//---------------------------------------------------------------
+//      Plugin Version
+//---------------------------------------------------------------
+resource PluginVersion(1)
+{
+	kTargetVersion,
+	kConditionalTextUIPluginID,
+	kMajorVersionNumber, kMinorVersionNumber,
+	kMajorVersionNumber, kMinorVersionNumber,
+	kConditionalTextUILastMajorFormat, kConditionalTextUILastMinorFormat
+	{ kInDesignProduct, kInCopyProduct },
+	{ kWildFS },
+	kUIPlugIn,
+	kAUMComponentVersionStr
+};
+
+//-----------------------------------------------------------------------------
+// ResourcePlugInDependency
+//-----------------------------------------------------------------------------
+
+resource PluginDependency(1) 
+{
+	kWildFS,
+	{
+		// pluginid, pluginname, major, minor
+	}
+};
+
+resource ImplementationAlias(1)
+{
+	{
+	}
+};
+
+resource ClassDescriptionTable(1)
+{{{
+	//-----------------------------------------------------------------------------
+	// ClassDescription
+	//-----------------------------------------------------------------------------	
+
+	Class 
+	{
+		kConditionalTextUIPanelBoss,
+		kErasablePrimaryResourcePanelWidgetBoss,
+		{
+			IID_IPANELMENUDATA, kCPanelMenuDataImpl,
+			IID_ICONTROLVIEW, kConditionalTextUIPanelViewImpl,
+			IID_IPANELDETAILCONTROLLER,	kConditionalTextUIPanelDetailControllerImpl,
+		}
+	},
+	
+	Class
+	{
+		kConditionalTextUIPanelMenuBoss,
+		kBaseActionComponentBoss,
+		{
+			IID_IACTIONCOMPONENT, kConditionalTextUIPanelMenuActionImpl,
+		}
+	},
+	
+	Class
+	{
+		kNewConditionSetButtonBoss,
+		kRollOverIconButtonBoss,
+		{
+			IID_IOBSERVER, kNewConditionSetButtonObserverImpl,
+		}
+	},
+	
+	Class
+	{
+		kNewConditionTagButtonBoss,
+		kRollOverIconButtonBoss,
+		{
+			IID_IOBSERVER, kNewConditionTagButtonObserverImpl,
+		}
+	},
+	
+	Class
+	{
+		kDeleteConditionTagButtonBoss,
+		kRollOverIconButtonBoss,
+		{
+			IID_IOBSERVER, kDeleteConditionTagButtonObserverImpl,
+			IID_IDRAGDROPTARGET, kDeleteConditionTagButtonDNDTargetImpl,
+		}
+	},
+
+	Class
+	{
+		kConditionTagListTreeViewWidgetBoss,
+		kTreeViewWidgetBoss,
+		{
+			IID_ITREEVIEWHIERARCHYADAPTER, kConditionTagListTreeViewAdapterImpl,
+			IID_ITREEVIEWWIDGETMGR, kConditionTagListTreeViewWidgetMgrImpl,
+			IID_IOBSERVER,			kConditionTagListTreeObserverImpl,
+	  		IID_ITREEVIEWCONTROLLER, kConditionTagListTreeControllerImpl,
+			IID_ICONTROLVIEWOBSERVERS,		kCControlViewObserversImpl,
+			IID_ISELECTIONOBSERVER, kConditionTagListTreeSelectionObserverImpl,
+			/** Store the database for the tree. */
+			IID_IUIDDATA, kUIDDataImpl,
+		}
+	},
+	
+	Class
+    {
+        kConditionTagListDNDHandlerBoss,
+        kInvalidClass,
+        {
+            IID_IDATAEXCHANGEHANDLER,	kConditionTagListDNDHandlerImpl,
+            IID_IPMPERSIST,				kPMPersistImpl,
+            /** Holds UIDs of condition tags being dragged. */
+ 			IID_IUIDLISTDATA,			kUIDListDataImpl,
+       }
+    },
+    
+	Class
+	{
+		kConditionStatusTextWidgetBoss,
+		kStaticTextWidgetBoss,
+		{
+			IID_ISELECTIONOBSERVER, kConditionStatusTextSelectionObserverImpl,
+			IID_ICONTROLVIEW, kConditionStaticTextViewImpl,
+		}
+	}
+	
+	Class
+	{
+		kNoConditionTagTreeViewNodeWidgetBoss,
+		kTreeNodeWidgetBoss,
+		{
+			IID_ITIP,					kConditionTagTVNodeTipImpl,
+			IID_IEVENTHANDLER,			kConditionTagTVNodeEHImpl,
+		}
+	},
+		
+	Class
+	{
+		kConditionTagTreeViewNodeWidgetBoss,
+		kNoConditionTagTreeViewNodeWidgetBoss,
+		{
+			IID_IDRAGDROPSOURCE,		kConditionTagListDNDSourceImpl,
+		}
+	},
+		
+	Class
+	{
+		kConditionTagNameILEBoss,
+		kTextInLineEditWidgetBoss,
+		{
+			IID_IOBSERVER,						kConditionTagNameILEObserverImpl,
+			IID_IINLINEEDITEDITINGATTRIBUTES,	kConditionTagNameILEEditingAttributesImpl,
+			IID_ITEXTDATAVALIDATION, kConditionTagNameTextValidationImpl,
+		}
+	},
+	
+	Class
+	{
+		kConditionAppliedIconBoss,
+		kIconSuiteWidgetBoss,
+		{
+		}
+	},
+
+	Class 
+	{
+		kConditionTagEyeballWidgetBoss,
+		kEyeballCheckboxBoss,
+		{
+			IID_IOBSERVER, kConditionTagEyeballObserverImpl,
+			IID_ICONTROLVIEW, kConditionTagEyeballViewImpl,
+		}
+	},
+	
+	Class
+	{
+		kConditionTagUIColorSwatchWidgetBoss,
+		kBaseWidgetBoss,
+		{
+			IID_ICONTROLVIEW, kConditionTagColorSwatchViewImpl,	
+		}
+	},
+	
+	Class 
+	{
+		kConditionTagOptionsDialogBoss,
+		kDialogBoss,
+		{
+			IID_IDIALOGCONTROLLER, kConditionTagOptionsDialogControllerImpl,
+			IID_IOBSERVER, kConditionTagOptionsDialogObserverImpl,
+			/** Which condition tag is being edited, or New. */
+			IID_IUIDDATA, kUIDDataImpl,
+		}
+	},
+	
+	Class 
+	{
+		kConditionSetNameDialogBoss,
+		kDialogBoss,
+		{
+			IID_IDIALOGCONTROLLER, kConditionSetNameDialogControllerImpl,
+			IID_IBOOLDATA, kBoolDataImpl, // OUT    kTrue if user choose ok, kFalse if user choose Cancel
+			IID_IWSTRINGDATA, kWStringDataImpl, // IN/OUT name of intial name on in and edited name on out
+			/** Which condition set is being edited, or New. */
+			IID_IUIDDATA, kUIDDataImpl,
+		}
+	},
+
+	Class
+    {
+        kConditionTagTVNodeContextMenuBoss,
+        kBaseActionComponentBoss,
+        {
+            IID_IACTIONCOMPONENT,	kConditionTagTVNodeContextMenuImpl,
+        }
+    },
+
+
+	AddIn
+	{
+		 kUtilsBoss,
+		kInvalidClass
+		{
+			IID_ICONDITIONALTEXTUIFACADE, kConditionalTextUIFacadeImpl,
+		},
+	},
+
+	Class
+	{
+		kConditionalTextLayoutActionBoss,
+		kInvalidClass,
+		{
+			IID_IK2SERVICEPROVIDER, kLayoutActionProviderImpl,
+			IID_ILAYOUTACTION, kConditionalTextLayoutActionImpl,
+		}
+	},
+
+	AddIn
+	{
+		kLayoutWidgetBoss,
+		kInvalidClass,
+		{
+			IID_ICONDITIONALTEXTLAYOUTOBSERVER,	kConditionalTextLayoutObserverImpl,
+		}
+	},
+	
+	AddIn
+	{
+		kHiddenTextBoss,
+		kInvalidClass,
+		{
+            IID_IVISITORHELPER,            kConditionalTextVisitorHelperImpl,	// used for tooltips over hidden conditional text
+			IID_ITIP,						kConditionalTextLayoutTipImpl,
+		}
+	},
+
+	AddIn
+	{
+		kWritingModeWidgetBoss,
+		kInvalidClass,
+		{
+			IID_IALTLAYOUTTIP, kConditionalTextGalleyTipImpl,
+		}
+	},
+	
+	Class
+	{
+		kShowConditionIndicatorsDropDownBoss,
+		kDropDownListWidgetBoss,
+		{
+			IID_IOBSERVER,			kShowConditionIndicatorsObserverImpl,
+		}
+	},
+	
+	Class
+	{
+		kConditionSetsDropDownWidgetBoss,
+		kDropDownListWidgetBoss,
+		{
+			IID_IOBSERVER,	kConditionSetDropDownObserverImpl,
+			IID_ITIP,		kConditionSetDropDownTipImpl,
+		}
+	},
+		
+	Class 
+	{
+		kConditionTagDeleteDialogBoss,
+		kDialogBoss,
+		{
+			IID_IDIALOGCONTROLLER, kConditionTagDeleteDialogControllerImpl,
+			/** Which condition tags are being deleted. */
+			IID_IUIDLISTDATA, kUIDListDataImpl,
+		}
+	},
+	
+	Class
+	{
+		kConditionsQuickApplyServiceBoss,
+		kInvalidClass,
+		{
+			IID_IK2SERVICEPROVIDER, kQuickApplyRegisterProviderImpl,
+			IID_IQUICKAPPLYSERVICE, kConditionsQuickApplyServiceImpl,
+		}
+	},
+
+}}};
+
+#endif // __ODFRC__

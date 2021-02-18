@@ -1,0 +1,337 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/sdksamples/candlechartui/CdlChtUI.fr $
+//  
+//  Owner: Adobe Developer Technologies
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "VCPlugInHeaders.h"
+
+// General includes:
+#include "MenuDef.fh"
+#include "ActionDef.fh"
+#include "ActionDefs.h"
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "StringTable.fh"
+#include "objectmodeltypes.fh"
+#include "ShuksanID.h"
+#include "ActionID.h"
+#include "CommandID.h"
+#include "BuildNumber.h"
+#include "PanelList.fh"
+#include "InterfaceColorDefines.h"
+#include "IControlViewDefs.h"
+#include "SysControlIds.h"
+#include "Widgets.fh"	// for PalettePanelWidget or DialogBoss
+
+#include "PlugInModel_UIAttributes.h"
+// Project includes:
+#include "CdlChtUIID.h"
+
+
+#ifdef __ODFRC__
+
+/*  Plugin version definition.
+*/
+resource PluginVersion (kSDKDefPluginVersionResourceID)
+{
+	kTargetVersion,
+	kCdlChtUIPluginID,
+	kSDKDefPlugInMajorVersionNumber, kSDKDefPlugInMinorVersionNumber,
+	kSDKDefHostMajorVersionNumber, kSDKDefHostMinorVersionNumber,
+	kCdlChtUICurrentMajorFormatNumber, kCdlChtUICurrentMinorFormatNumber,
+	{ kInDesignProduct },
+	{ kWildFS },
+	kUIPlugIn,
+	kCdlChtUIVersion
+};
+
+/*  The ExtraPluginInfo resource adds extra information to the Missing Plug-in dialog
+	that is popped when a document containing this plug-in's data is opened when
+	this plug-in is not present. These strings are not translatable strings
+	since they must be available when the plug-in isn't around. They get stored
+	in any document that this plug-in contributes data to.
+*/
+resource ExtraPluginInfo(1)
+{
+	kCdlChtUICompanyValue,			// Company name
+	kCdlChtUIMissingPluginURLValue,	// URL 
+	kCdlChtUIMissingPluginAlertValue,	// Missing plug-in alert text
+};
+
+/* Boss class definition.
+*/
+resource ClassDescriptionTable(kSDKDefClassDescriptionTableResourceID)
+{{{
+	
+	/**
+	 This boss class supports two interfaces:
+	 IActionComponent and IPMPersist.
+	 
+	 @ingroup candlechartui
+	*/
+	Class
+	{
+		kCdlChtUIActionComponentBoss,
+		kInvalidClass,
+		{
+			/** Handle the actions from the menu. */
+			IID_IACTIONCOMPONENT, kCdlChtUIActionComponentImpl,
+			/** Persist the state of the menu across application instantiation.
+			Implementation provided by the API.*/
+			IID_IPMPERSIST, kPMPersistImpl
+		}
+	},
+
+	/**
+		 This boss class inherits from an API panel boss class, and
+		 adds an interface to control a pop-up menu on the panel.
+		 The implementation for this interface is provided by the API.
+
+		 @ingroup candlechartui
+	*/
+	Class
+	{
+		kCdlChtUIPanelWidgetBoss,
+		kPalettePanelWidgetBoss,
+		{
+			/** The plug-in's implementation of ITextControlData with an exotic IID of IID_IPANELMENUDATA.
+			Implementation provided by the API.
+			*/
+			IID_IPANELMENUDATA, kCPanelMenuDataImpl,
+
+			/** ActiveSelectionObserver implementation.
+			*/
+			IID_IOBSERVER, kCdlChtUISelectionObserverImpl,
+		}
+	},
+
+}}};
+
+/*  Implementation definition.
+*/
+resource FactoryList (kSDKDefFactoryListResourceID)
+{
+	kImplementationIDSpace,
+	{
+		#include "CdlChtUIFactoryList.h"
+	}
+};
+
+
+/*  Menu definition.
+*/
+resource MenuDef (kSDKDefMenuResourceID)
+{
+	{
+		// The About Plug-ins sub-menu item for this plug-in.
+		kCdlChtUIAboutActionID,			// ActionID (kInvalidActionID for positional entries)
+		kCdlChtUIAboutMenuPath,			// Menu Path.
+		kSDKDefAlphabeticPosition,			// Menu Position.
+		kSDKDefIsNotDynamicMenuFlag,		// kSDKDefIsNotDynamicMenuFlag or kSDKDefIsDynamicMenuFlag
+
+		// new candle chart page-item menu
+		kCdlChtUINewCandleChartActionID,
+		kCdlChtUITargetMenuPath,
+		kCdlChtUINewCandleChartMenuItemPosition,
+		kSDKDefIsNotDynamicMenuFlag,
+
+		// Separator for the popup menu on the panel
+		kCdlChtUISeparator1ActionID,
+		kCdlChtUIInternalPopupMenuNameKey kSDKDefDelimiterAndSeparatorPath,	// :- to mark an item as a separator.
+		kCdlChtUISeparator1MenuItemPosition,
+		kSDKDefIsNotDynamicMenuFlag,
+
+		// About this plugin submenu for the popup menu on the panel
+		kCdlChtUIPopupAboutThisActionID,
+		kCdlChtUITargetMenuPath
+		kCdlChtUIAboutThisMenuItemPosition,
+		kSDKDefIsNotDynamicMenuFlag,
+		
+	}
+};
+
+/* Action definition.
+*/
+resource ActionDef (kSDKDefActionResourceID)
+{
+	{
+		kCdlChtUIActionComponentBoss, 		// ClassID of boss class that implements the ActionID.
+		kCdlChtUIAboutActionID,	// ActionID.
+		kCdlChtUIAboutMenuKey,	// Sub-menu string.
+		kOtherActionArea,				// Area name (see ActionDefs.h).
+		kNormalAction,					// Type of action (see ActionDefs.h).
+		kDisableIfLowMem,				// Enabling type (see ActionDefs.h).
+		kInvalidInterfaceID,			// Selection InterfaceID this action cares about or kInvalidInterfaceID.
+		kSDKDefInvisibleInKBSCEditorFlag, // kSDKDefVisibleInKBSCEditorFlag or kSDKDefInvisibleInKBSCEditorFlag.
+
+		kCdlChtUIActionComponentBoss,
+		kCdlChtUINewCandleChartActionID,
+		kCdlChtUINewCandleChartMenuItemKey,
+		kOtherActionArea,
+		kNormalAction,
+		kCustomEnabling,
+		kInvalidInterfaceID,
+		kSDKDefInvisibleInKBSCEditorFlag,
+
+		kCdlChtUIActionComponentBoss,
+		kCdlChtUIPopupAboutThisActionID,
+		kSDKDefAboutThisPlugInMenuKey,	// Key to the name of this action
+		kOtherActionArea,
+		kNormalAction,
+		kDisableIfLowMem,
+		kInvalidInterfaceID,
+		kSDKDefInvisibleInKBSCEditorFlag,
+
+	}
+};
+
+
+/*  LocaleIndex
+	The LocaleIndex should have indicies that point at your
+	localizations for each language system that you are localized for.
+*/
+/*  String LocaleIndex.
+*/
+resource LocaleIndex ( kSDKDefStringsResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_enUS, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_enGB, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_deDE, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_frFR, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_esES, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_ptBR, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_svSE, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_daDK, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_nlNL, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_itIT, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_nbNO, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_fiFI, kSDKDefStringsResourceID + index_enUS
+		kInDesignJapaneseFS, k_jaJP, kSDKDefStringsResourceID + index_jaJP
+	}
+};
+
+resource LocaleIndex (kSDKDefStringsNoTransResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_Wild, kSDKDefStringsNoTransResourceID + index_enUS
+	}
+};
+
+resource StringTable (kSDKDefStringsNoTransResourceID + index_enUS)
+{
+	k_enUS,									// Locale Id
+	kEuropeanMacToWinEncodingConverter,		// Character encoding converter
+	{
+		// No-Translate strings go here:
+
+		kCdlChtUIInternalPopupMenuNameKey,	kCdlChtUIInternalPopupMenuNameKey,		// No need to translate, internal menu name.
+
+	}
+};
+
+
+
+
+/*  Panel LocaleIndex.
+*/
+resource LocaleIndex (kSDKDefPanelResourceID)
+{
+	kViewRsrcType,
+	{
+		kWildFS, k_Wild, 	kSDKDefPanelResourceID + index_enUS
+	}
+};
+
+
+/*  Type definition.
+*/
+type CdlChtUIPanelWidget(kViewRsrcType) : PalettePanelWidget(ClassID = kCdlChtUIPanelWidgetBoss)
+{
+	CPanelMenuData;
+};
+
+/*  PanelList definition.
+*/
+resource PanelList (kSDKDefPanelResourceID)
+{
+	{
+		// 1st panel in the list
+		kSDKDefPanelResourceID,		// Resource ID for this panel (use SDK default rsrc ID)
+		kCdlChtUIPluginID,			// ID of plug-in that owns this panel
+		kIsResizable,
+		kCdlChtUIPanelWidgetActionID,	// Action ID to show/hide the panel
+		kCdlChtUIPanelTitleKey,	// Shows up in the Window list.
+		"",							// Alternate menu path of the form "Main:Foo" if you want your palette menu item in a second place
+		0.0,						// Alternate Menu position Alternate Menu position for determining menu order
+		0,0,						// Rsrc ID, Plugin ID for a PNG icon resource to use for this palette
+		c_Panel
+	}
+};
+
+/*  PanelView definition.
+	The view is not currently localised: therefore, it can reside here.
+	However, if you wish to localise it, it is recommended to locate it in one of
+	the localised framework resource files (i.e. CdlChtUI_enUS.fr etc.).
+*/
+resource CdlChtUIPanelWidget(kSDKDefPanelResourceID + index_enUS)
+{
+	__FILE__, __LINE__,					// Localization macro
+	kCdlChtUIPanelWidgetID,			// WidgetID
+	kPMRsrcID_None,						// RsrcID
+	kBindNone,							// Binding (0=none)
+	0, 0, 207, 32,						// Frame: left, top, right, bottom.
+	kTrue, kTrue,						// Visible, Enabled
+	kFalse,								// Erase background
+	kInterfacePaletteFill,				// Erase to color
+	kFalse,								// Draw dropshadow
+	kCdlChtUIPanelTitleKey,			// Panel name
+	{
+		StaticTextWidget
+		(
+			kCdlChtUINameWidgetID,			// WidgetId (default=0)
+			kSysStaticTextPMRsrcId,			// RsrcId
+			kBindNone,						// Frame binding
+			5, 10, 202, 27,					// Frame: left, top, right, bottom.
+			kTrue, kTrue,					// Visible, Enabled
+			kAlignLeft, kEllipsizeEnd, kTrue,		// Alignment, ellipsize style, convert ampersands
+			kCdlChtUIStaticTextKey,		// Initial text.
+			0								// No associated widget
+		),
+	}
+
+	kCdlChtUIInternalPopupMenuNameKey		// Popup menu name (internal)
+};
+
+
+
+
+
+	
+
+#endif // __ODFRC__
+
+#include "CdlChtUI_enUS.fr"
+#include "CdlChtUI_jaJP.fr"
+
+//  Code generated by DollyXs code generator

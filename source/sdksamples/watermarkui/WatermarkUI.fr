@@ -1,0 +1,973 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/sdksamples/watermarkui/WatermarkUI.fr $
+//  
+//  Owner: Adobe Developer Technologies
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "VCPlugInHeaders.h"
+
+// General includes:
+#include "ActionDef.fh"
+#include "ActionDefs.h"
+#include "MenuDef.fh"
+#include "objectmodeltypes.fh"
+#include "StringTable.fh"
+#include "Widgets.fh"
+
+#include "ActionID.h"
+#include "AdobeMenuPositions.h"
+#include "BuildNumber.h"
+#include "CommandID.h"
+#include "IControlViewDefs.h"
+#include "InterfaceColorDefines.h"
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "ShuksanID.h"
+#include "SysControlIds.h"
+#include "TextID.h"				// for IID_ITEXTFOCUSDATA
+#include "TextPanelID.h"
+#include "widgetid.h"
+#include "WorkspaceID.h"
+
+// Project includes:
+#include "GenericID.h"
+#include "WatermarkUIID.h"
+
+
+#include "PlugInModel_UIAttributes.h"
+
+
+#include "EveInfo.fh"
+#ifdef __ODFRC__
+
+/*  Plugin version definition.
+*/
+resource PluginVersion (kSDKDefPluginVersionResourceID)
+{
+	kTargetVersion,
+	kWatermarkUIPluginID,
+	kSDKDefPlugInMajorVersionNumber, kSDKDefPlugInMinorVersionNumber,
+	kSDKDefHostMajorVersionNumber, kSDKDefHostMinorVersionNumber,
+	kWatermarkUICurrentMajorFormatNumber, kWatermarkUICurrentMinorFormatNumber,
+	{kInDesignProduct},
+	{kWildFS },
+	kUIPlugIn,
+	kWatermarkUIVersion
+};
+
+/*  The ExtraPluginInfo resource adds extra information to the Missing Plug-in dialog
+	that is popped when a document containing this plug-in's data is opened, but
+	this plug-in is not present. These strings are not translatable strings
+	since they must be available when the plug-in isn't around. They get stored
+	in any document that this plug-in contributes data to.
+*/
+resource ExtraPluginInfo(1)
+{
+	kWatermarkUICompanyValue,				// Company name
+	kWatermarkUIMissingPluginURLValue,		// URL 
+	kWatermarkUIMissingPluginAlertValue,	// Missing plug-in alert text
+};
+
+
+
+/* Boss class definition.
+*/
+resource ClassDescriptionTable(kSDKDefClassDescriptionTableResourceID)
+{{{
+			
+			/**
+			This boss class supports two interfaces:
+			IActionComponent and IPMPersist.
+			
+			
+			@ingroup watermarkui
+			*/
+			Class
+			{
+				kWatermarkUIActionComponentBoss,
+				kInvalidClass,
+				{
+					/** Handle the actions from the menu. */
+					IID_IACTIONCOMPONENT, kWatermarkUIActionComponentImpl,
+					/** Persist the state of the menu across application instantiation.
+					Implementation provided by the API.*/
+					IID_IPMPERSIST,				kPMPersistImpl,
+				}
+			},
+			
+			
+			/**
+			This boss class implements the dialog for this plug-in. All
+			dialogs must implement IDialogController. Specialization of
+			IObserver is only necessary if you want to handle widget
+			changes dynamically rather than just gathering their values
+			and applying in the IDialogController implementation.
+			In this implementation IObserver is specialized because the
+			dialog includes a 'preview' button.  In the Observer's Update
+			method, values are grabbed from the widgets, and the 
+			watermark is updated and redrawn.
+			
+			@ingroup watermarkui
+			*/
+			Class
+			{
+				kWatermarkUIDialogBoss,
+				kDialogBoss,
+				{
+					/** Provides management and control over the dialog.
+					*/
+					IID_IDIALOGCONTROLLER, kWatermarkUIDialogControllerImpl,
+					
+					/** Allows dynamic processing of dialog changes.
+					*/
+					IID_IOBSERVER,				kWatermarkUIDialogObserverImpl,
+					
+					IID_ITEXTFOCUSDATA,			kTextFocusDataImpl,			// TextTargetObserver
+					IID_ITEXTTARGETSERVER,		kTextTargetServerImpl,		// see TextPanel plugin.
+				}
+			},
+			
+			Class
+			{
+				kPreviewableColorListDropDownWidgetBoss,
+				kColorListDropDownWidgetBoss,
+				{
+					/** Aggregates a second observer on the ColorListDropDownWidgetBoss.  
+					See PreviewableColorListObserver.cpp for more details.
+					*/
+					IID_IPREVIEWABLECOLORLISTOBSERVER,		kPreviewableColorListObserverImpl,
+					IID_ICONTROLVIEWOBSERVERS,				kCControlViewObserversImpl,
+				}
+			},
+			
+			Class
+			{
+				kAnglePopupSliderComboWidgetBoss,
+				kPopupSliderComboBoxWidgetBoss,
+				{
+					/** Implements an Angle edit box in conjunction with a popup slider control.  
+					*/
+					IID_ITEXTDATAVALIDATION,        kAngleTextValidationImpl,
+					IID_ITEXTVALUE,                 kAngleTextValueImpl,
+					IID_IDISABLEMULTIBYTESCRIPT,    kFalseInitBoolDataImpl,
+					IID_IINTEGERCONTROLDATA,        kCIntegerControlDataImpl,
+				}
+			},
+			
+		}}};
+
+/*  Implementation definition.
+*/
+resource FactoryList (kSDKDefFactoryListResourceID)
+{
+	kImplementationIDSpace,
+	{
+#include "WatermarkUIFactoryList.h"
+	}
+};
+
+
+/*  Menu definition.
+*/
+resource MenuDef (kSDKDefMenuResourceID)
+{
+	{
+		// The About Plug-ins sub-menu item for this plug-in.
+		kWatermarkUIAboutActionID,			// ActionID (kInvalidActionID for positional entries)
+		kWatermarkUIAboutMenuPath,			// Menu Path.
+		kSDKDefAlphabeticPosition,			// Menu Position.
+		kSDKDefIsNotDynamicMenuFlag,		// kSDKDefIsNotDynamicMenuFlag or kSDKDefIsDynamicMenuFlag
+		
+		
+		// The Plug-ins menu sub-menu items for this plug-in.
+		kWatermarkUIDialogActionID,
+		kWatermarkUIPluginsMenuPath,
+		kWatermarkUIDialogMenuItemPosition,
+		kSDKDefIsNotDynamicMenuFlag,
+	}
+};
+
+/* Action definition.
+*/
+resource ActionDef (kSDKDefActionResourceID)
+{
+	{
+		kWatermarkUIActionComponentBoss, 	// ClassID of boss class that implements the ActionID.
+		kWatermarkUIAboutActionID,			// ActionID.
+		kWatermarkUIAboutMenuKey,			// Sub-menu string.
+		kOtherActionArea,					// Area name (see ActionDefs.h).
+		kNormalAction,						// Type of action (see ActionDefs.h).
+		kDisableIfLowMem,					// Enabling type (see ActionDefs.h).
+		kInvalidInterfaceID,				// Selection InterfaceID this action cares about or kInvalidInterfaceID.
+		kSDKDefInvisibleInKBSCEditorFlag,	// kSDKDefVisibleInKBSCEditorFlag or kSDKDefInvisibleInKBSCEditorFlag.
+		
+		kWatermarkUIActionComponentBoss,
+		kWatermarkUIDialogActionID,		
+		kWatermarkUIDialogMenuItemKey,		
+		kOtherActionArea,			
+		kNormalAction,				
+		kDisableIfLowMem,	
+		kInvalidInterfaceID,		
+		kSDKDefVisibleInKBSCEditorFlag,
+	}
+};
+
+/*  LocaleIndex
+	The LocaleIndex should have indicies that point at your
+	localizations for each language system that you are localized for.
+*/
+/*  String LocaleIndex.
+*/
+resource LocaleIndex (kSDKDefStringsResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_enUS, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_enGB, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_deDE, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_frFR, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_esES, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_ptBR, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_svSE, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_daDK, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_nlNL, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_itIT, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_nbNO, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_fiFI, kSDKDefStringsResourceID + index_enUS
+		kInDesignJapaneseFS, k_jaJP, kSDKDefStringsResourceID + index_jaJP
+	}
+};
+
+resource LocaleIndex (kSDKDefStringsNoTransResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_Wild, kSDKDefStringsNoTransResourceID + index_enUS
+	}
+};
+
+resource StringTable (kSDKDefStringsNoTransResourceID + index_enUS)
+{
+	k_enUS,									// Locale Id
+	kEuropeanMacToWinEncodingConverter,		// Character encoding converter
+	{
+		// No-Translate strings go here:
+		
+	}
+};
+
+/*  Dialog LocaleIndex.
+*/
+resource LocaleIndex (kSDKDefDialogResourceID)
+{
+	kViewRsrcType,
+	{
+		kWildFS,	k_Wild, kSDKDefDialogResourceID + index_enUS
+	}
+};
+
+/*  Type definition.
+*/
+type WatermarkUIDialogWidget(kViewRsrcType) : DialogBoss(ClassID = kWatermarkUIDialogBoss)
+{
+	WidgetEveInfo;
+};
+
+type EVEPreviewableColorListDropDownWidget (kViewRsrcType) : ColorListDropDownWidget (ClassID = kPreviewableColorListDropDownWidgetBoss)
+{
+	CControlViewObservers;		// allows multiple observers
+	WidgetEveInfo;
+};
+
+type EVEAnglePopupSliderComboBoxWidget (kViewRsrcType) : AngleEditBoxWidget (ClassID = kAnglePopupSliderComboWidgetBoss)
+{
+	CIntegerControlData;		// On screen length of slider, in pixels
+	WidgetEveInfo;
+};
+
+type EVECharFontFamilyWidget (kViewRsrcType) : DropDownListWidget (ClassID = kTextFontFamilyObserverBoss)
+{
+	WidgetEveInfo;
+};
+
+type EVECharFontStyleWidget (kViewRsrcType) : DropDownListWidget (ClassID = kTextFontStyleObserverBoss)
+{
+	WidgetEveInfo;
+};
+
+/*  Dialog definition.
+	This view is not localised: therefore, it can reside here.
+	However, if you wish to localise it, it is recommended to locate it in one of
+	the localised framework resource files (i.e. WatermarkUI_enUS.fr etc.) and
+	update your Dialog LocaleIndex accordingly.
+*/
+resource WatermarkUIDialogWidget (kSDKDefDialogResourceID + index_enUS) 
+{
+	__FILE__, 
+	__LINE__, 
+	kWatermarkUIDialogWidgetID, // WidgetID
+	kPMRsrcID_None,				// RsrcID
+	kBindNone,					// Binding
+	Frame(0,0,525,440)			// Frame (l,t,r,b)
+	kTrue, kTrue,				// Visible, Enabled
+	kWatermarkUIDialogTitleKey, // Dialog name
+	{
+		EVEGenericPanelWidget // First row in dialog: checlboxes and OK/Cancel buttons
+		(
+			kInvalidWidgetID,	// WidgetId
+			0					// RsrcId
+			0,					// Widget EVE Info
+			kBindNone,			// Frame binding
+			Frame(0,0,0,0)		// Frame
+			kTrue,				// Visible
+			kTrue,				// Enabled
+			kEVEAlignFill | kEVERegularSpaceAfter| kEVEArrangeChildrenInRow,
+			{
+				EVECheckBoxWidget	// Show watermark
+				(
+					kWatermarkUIShowWatermarkCheckBoxWidgetID,	// WidgetId
+					kSysCheckBoxPMRsrcId,						// RsrcId
+					kBindLeft | kBindBottom,					// Frame binding
+					Frame(0,0,0,0)								// Frame
+					kTrue,										// Visible
+					kTrue,										// Enabled
+					kAlignLeft,									// Alignment
+					kWatermarkUIShowWatermarkStringKey,			// Initial text
+					kEVEJumboSpaceAfter,
+				),
+				EVECheckBoxWidget	// Do Print
+				(
+					kWatermarkUIDoPrintCheckBoxWidgetID,	// WidgetId
+					kSysCheckBoxPMRsrcId,					// RsrcId
+					kBindLeft | kBindBottom,				// Frame binding
+					Frame(0,0,0,0)							// Frame
+					kTrue,									// Visible
+					kTrue,									// Enabled
+					kAlignLeft,								// Alignment
+					kWatermarkUIDoPrintWatermarkStringKey,	// Initial text
+					kEVEJumboSpaceAfter,
+				),
+				EVECheckBoxWidget	// DrawInBack
+				(
+					kWatermarkUIDrawInBackCheckBoxWidgetID,		// WidgetId
+					kSysCheckBoxPMRsrcId,						// RsrcId
+					kBindLeft | kBindBottom,					// Frame binding
+					Frame(0,0,0,0)								// Frame
+					kTrue,										// Visible
+					kTrue,										// Enabled
+					kAlignLeft,									// Alignment
+					kWatermarkUIDrawInBackWatermarkStringKey,	// Initial text
+					kEVEJumboSpaceAfter,
+				),
+				EVEGenericPanelWidget	// OK/Cancel buttons
+				(
+					kInvalidWidgetID,	// WidgetId
+					0					// RsrcId
+					0,			
+					kBindRight,			// Frame binding
+					Frame(0,0,0,0)		// Frame
+					kTrue,				// Visible
+					kTrue,				// Enabled
+					kEVEAlignFill|kEVEArrangeChildrenInColumn | kEVEChildAlignRight,
+					{
+						EVEDefaultButtonWidget	// OK button
+						(
+							kOKButtonWidgetID,				// WidgetID
+							kSysButtonPMRsrcId,				// RsrcID
+							kBindNone,						// Binding
+							Frame(0,0,0,0)					// Frame (l,t,r,b)
+							kTrue, kTrue,					// Visible, Enabled
+							kSDKDefOKButtonApplicationKey,	// Button text
+							kEVELargeSpaceAfter,
+						),
+						EVECancelButtonWidget	// Cancel button
+						(
+							kCancelButton_WidgetID,				// WidgetID
+							kSysButtonPMRsrcId,					// RsrcID
+							kBindNone,							// Binding
+							Frame(0,0,0,0)						// Frame (l,t,r,b)
+							kTrue, kTrue,						// Visible, Enabled
+							kSDKDefCancelButtonApplicationKey,	// Button name
+							kFalse,								// Change to Reset on option-click.
+							kEVELargeSpaceAfter,
+						),				
+					}
+				), // End of column of buttons
+			}
+		), // End of first row of controls
+		
+		EVEGroupPanelWidget	// Watermark Info
+		(
+			0,									// The Identifier for this Widget
+			kPMRsrcID_None,						// The Resource ID
+			kBindNone,							// The Plugin ID
+			Frame(0,0,0,0)						// Frame
+			kTrue,								// Visible
+			kTrue,								// Enabled
+			kWatermarkUIInfoGroupLabelWidgetID, // header widget ID
+			kEVEAlignFill | kEVEExtraLargeSpaceAfter | kEVEArrangeChildrenInColumn | kEVERegularMargin,
+			{
+				EVEStaticTextWidget // Group label, "Watermark Info"
+				(
+					kWatermarkUIInfoGroupLabelWidgetID,	// widget ID
+					kSysStaticTextPMRsrcId,				// PMRsrc ID
+					kBindNone,							// frame binding
+					Frame(0,0,0,0)						//  left, top, right, bottom
+					kTrue,								// visible
+					kTrue,								// enabled
+					// StaticTextAttributes properties
+					kAlignCenter,						// Alignment
+					kEllipsizeEnd, kTrue				// Ellipsize style, Convert ampersands
+					kWatermarkUIInfoLabelItemKey,		// control label
+					0,									// associated widget ID
+					kEVERegularSpaceAfter,
+				),
+				
+				EVEGenericPanelWidget // First row of controls: text
+				(
+					kInvalidWidgetID,	// WidgetId
+					0					// RsrcId
+					0,					// Widget EVE Info
+					kBindNone,			// Frame binding
+					Frame(0,0,0,0)		// Frame
+					kTrue,				// Visible
+					kTrue,				// Enabled
+					kEVEAlignFill | kEVERegularSpaceAfter | kEVEArrangeChildrenInRow,
+					{
+						EVEStaticTextWidget // Watermark text label
+						(
+							0,									// widget ID
+							kSysStaticTextPMRsrcId,				// PMRsrc ID
+							kBindNone,							// frame binding
+							Frame(0,0,0,0)						// Frame (l,t,r,b)
+							kTrue,								// visible
+							kTrue,								// enabled
+							// StaticTextAttributes properties
+							kAlignRight,						// Alignment
+							kDontEllipsize, kTrue,				// Ellipsize style, Convert ampersands
+							kWatermarkUIWmkTextLabelItemKey,	// control label
+							kWatermarkUIEditBoxWidgetID,		// associated widget ID
+							kEVERegularSpaceAfter,
+						),
+						EVETextEditBoxWidget // Watermark text field
+						(
+							kWatermarkUIEditBoxWidgetID,	// WidgetId
+							kSysEditBoxPMRsrcId,			// RsrcId
+							kBindNone,
+							Frame(0,0,416,0)				// Frame
+							kTrue, kTrue,					// Visible, Enabled
+							0,								// widget id of nudge button
+							1,								// small nudge amount
+							10,								// large nudge amount
+							0,								// max num chars(0 = no limit)
+							kFalse,							// is read only
+							kTrue,							// should notify each key stroke (NEW)
+							kFalse,							// range checking enabled
+							kFalse,							// blank entry allowed
+							0, 
+							0,								// upper/lower bounds
+							"",								// initial text
+							kEVERegularSpaceAfter,
+						),
+					} 
+				),
+						
+				EVEGenericPanelWidget // Second row of controls: color, opacity, rotation
+				(
+					kInvalidWidgetID,	// WidgetId
+					0					// RsrcId
+					0,					// Widget EVE Info
+					kBindNone,			// Frame binding
+					Frame(0,0,0,0)		// Frame
+					kTrue,				// Visible
+					kTrue,				// Enabled
+					kEVEAlignFill | kEVERegularSpaceAfter | kEVEArrangeChildrenInRow,
+					{
+						// Color
+						EVEStaticTextWidget // Label, "Color"
+						(
+							0,								// widget ID
+							kSysStaticTextPMRsrcId,			// PMRsrc ID
+							kBindNone,						// frame binding
+							Frame(0,0,0,0)					// Frame(l,t,r,b)
+							kTrue,							// visible
+							kTrue,							// enabled
+							kAlignRight,					// Alignment
+							kDontEllipsize, kTrue,			// Ellipsize style, Convert ampersands
+							kWatermarkUIColorLabelItemKey,	// control label
+							kWatermarkUIColorDropDownWidgetID,	// associated widget ID
+							kEVERegularSpaceAfter,
+						),
+						EVEPreviewableColorListDropDownWidget // Color DropDown
+						(
+							kWatermarkUIColorDropDownWidgetID,	// WidgetId
+							kSysDropDownPMRsrcId,				// RsrcId
+							kBindNone,							// frame binding
+							Frame(0,0,135,0)					// Frame
+							kTrue,								// Visible
+							kTrue,								// Enabled
+							0,									// Associated Widget
+							
+							// using IControlViewObservers to allow multiple observers on this control
+							//		see PreviewableColorListObserver.cpp for more information
+							// For a widget with an IControlViewObservers interface and that autoattaches observers,
+							// the IID of every observer must be in the list of observers to attach, including the
+							// default observer, IID_IOBSERVER.  Here we are also attaching PreviewableColorListObserver.
+							{{IID_IOBSERVER, IID_IPREVIEWABLECOLORLISTOBSERVER }}		// IID_ICONTROLVIEWOBSERVERS
+							
+							kEVEJumboSpaceAfter,
+						),
+						
+						// Opacity
+						EVEStaticTextWidget // Label, "Opactiy"
+						(
+							0,									// widget ID
+							kSysStaticTextPMRsrcId,				// PMRsrc ID
+							kBindNone,							// frame binding
+							Frame(0,0,0,0)						// Frame(l,t,r,b)
+							kTrue,								// visible
+							kTrue,								// enabled
+							// StaticTextAttributes properties
+							kAlignRight,						// Alignment
+							kDontEllipsize, kTrue,				// Ellipsize style, Convert ampersands
+							kWatermarkUIOpacityLabelItemKey,	// control label
+							kWatermarkUIOpacityWidgetID,		// associated widget ID
+							kEVERegularSpaceAfter,
+						),
+						EVEPercentPopupSliderComboBoxWidget // Opacity percentage slider
+						(
+							kWatermarkUIOpacityWidgetID,	// The Identifier for this Widget
+							kPMRsrcID_None,					// The Plugin ID
+							kBindNone,						// Frame binding
+							Frame(0,0,60,20)					// Frame(l,t,r,b)
+							kTrue,							// Is this visible
+							kTrue,							// Is this enabled
+							0,								// The WidgetID for the nudge button
+							1,								// small nudge amount
+							10,								// large nudge amount
+							3,								// The maximum number of characters
+							kFalse,							// integer readOnly value
+							kFalse,							// Notify on key stroke
+							kTrue,							// Enable range checking
+							kFalse,							// Allow blank entry
+							100,							// The upper limit
+							0,								// The lower limit
+							"100",							// The String value
+							100,							// slider length in pixel
+							kEVEJumboSpaceAfter,
+						),
+						
+						// Rotation
+						EVEStaticTextWidget // Label, "Rotation"
+						(
+							0,									// widget ID
+							kSysStaticTextPMRsrcId,				// PMRsrc ID
+							kBindNone,							// frame binding
+							Frame(0,0,0,0)						// Frame(l,t,r,b)
+							kTrue,								// visible
+							kTrue,								// enabled
+							// StaticTextAttributes properties
+							kAlignRight,						// Alignment
+							kDontEllipsize, kTrue,				// Ellipsize style, Convert ampersands
+							kWatermarkUIRotationLabelItemKey,	// control label
+							kWatermarkUIRotationWidgetID,		// associated widget ID
+							kEVERegularSpaceAfter,
+						),
+						EVEAnglePopupSliderComboBoxWidget // Rotation degree slider
+						(
+							kWatermarkUIRotationWidgetID,	// The Identifier for this Widget
+							kPMRsrcID_None,					// The Plugin ID
+							kBindNone,						// Frame binding
+							Frame(0,0,60,20)					// Frame(l,t,r,b)
+							kTrue,							// Is this visible
+							kTrue,							// Is this enabled
+							0,								// The WidgetID for the nudge button
+							1,								// small nudge amount
+							10,								// large nudge amount
+							4,								// The maximum number of characters
+							kFalse,							// integer readOnly value
+							kFalse,							// Notify on key stroke
+							kTrue,							// Enable range checking
+							kFalse,							// Allow blank entry
+							180,							// The upper limit
+							-180,							// The lower limit
+							"0",							// The String value
+							100,							// slider length in pixel
+							kEVERegularSpaceAfter,
+						),
+					} 
+				),
+			}
+		), // End of Watermark Info group
+		
+		EVEGroupPanelWidget // Font group
+		(
+			0,											// The Identifier for this Widget
+			kPMRsrcID_None,								// The Resource ID
+			kBindNone,									// The Plugin ID
+			Frame(0,0,0,0) 
+			kTrue,										// Is this visible
+			kTrue,										// Is this enabled
+			kWatermarkUICharacterGroupLabelWidgetID,	// header widget ID
+			kEVEAlignFill | kEVEExtraLargeSpaceAfter | kEVEArrangeChildrenInRow | kEVERegularMargin,
+			{
+				EVEStaticTextWidget // Group label
+				(
+					kWatermarkUICharacterGroupLabelWidgetID,	// widget ID
+					kSysStaticTextPMRsrcId,						// PMRsrc ID
+					kBindNone,									// frame binding
+					Frame(0,0,0,0)								// Frame(l,t,r,b)
+					kTrue,										// visible
+					kTrue,										// enabled
+					kAlignCenter,								// Alignment
+					kDontEllipsize, kTrue,						// Ellipsize style, Convert ampersands
+					kWatermarkUICharacterLabelItemKey,			// control label
+					0,											// associated widget ID
+					kEVERegularSpaceAfter,
+				),
+				EVEGenericPanelWidget // Column containing the font family and style labels
+				(
+					kInvalidWidgetID,	// WidgetId
+					0					// RsrcId
+					0,					// Widget EVE Info
+					kBindNone,			// Frame binding
+					Frame(0,0,0,0)		// Frame
+					kTrue,				// Visible
+					kTrue,				// Enabled
+					kEVEAlignFill | kEVERegularSpaceAfter | kEVEArrangeChildrenInColumn,
+					{	
+						EVEStaticTextWidget // Label, "Family"
+						(
+							kWatermarkUICharFontTextWidgetId,			// WidgetId
+							kSysStaticTextPMRsrcId,						// RsrcId
+							kBindNone, 
+							Frame(0,0,0,0)								// Frame
+							kTrue, kTrue, kAlignRight,					// Visible, Enabled, Alignment
+							kDontEllipsize, kTrue,						// Ellipsize style, Convert ampersands
+							kWatermarkUIFamilyLabelItemKey, 
+							kWatermarkUICharFontFamilyDropDownWidgetId,
+							kEVEAlignRight | kEVERegularSpaceAfter,
+						),
+						EVEStaticTextWidget // Label, "Style"
+						(
+							kWatermarkUICharPanelStaticTextWidgetId,	// WidgetId
+							kSysStaticTextPMRsrcId,						// RsrcId
+							kBindNone, 
+							Frame(0,0,0,0)								// Frame
+							kTrue, kTrue, kAlignRight,					// Visible, Enabled, Alignment
+							kDontEllipsize, kTrue,						// Ellipsize style, Convert ampersands
+							kWatermarkUIStyleLabelItemKey,
+							kWatermarkUICharFontStyleDropDownWidgetId,
+							kEVEAlignRight | kEVERegularSpaceAfter,
+						),
+					}
+				),
+				EVEGenericPanelWidget // Column containing the font family and style controls
+				(
+					kInvalidWidgetID,	// WidgetId
+					0					// RsrcId
+					0,					// Widget EVE Info
+					kBindNone,			// Frame binding
+					Frame(0,0,0,0)		// Frame
+					kTrue,				// Visible
+					kTrue,				// Enabled
+					kEVEAlignFill | kEVEJumboSpaceAfter | kEVEArrangeChildrenInColumn,
+					{
+						EVECharFontFamilyWidget // Font family drop down
+						(
+							kWatermarkUICharFontFamilyDropDownWidgetId,	// WidgetId
+							kSysDropDownRsrcId,							// RsrcId
+							0, 
+							kBindNone, 
+							Frame(0,0,255,20)							// Frame
+							kTrue, kTrue,								// Visible, Enabled
+							{
+								{"Dummy entry", }
+							},
+							kEVERegularSpaceAfter,
+						),
+						EVECharFontStyleWidget // Font style drop down
+						(
+							kWatermarkUICharFontStyleDropDownWidgetId,	// WidgetId
+							kSysDropDownRsrcId,							// RsrcId
+							0, 
+							kBindNone,
+							Frame(0,0,255,20)							// Frame
+							kTrue, kTrue,								// Visible, Enabled
+							{
+								{"Dummy entry",  }
+							},
+							kEVERegularSpaceAfter,
+						),
+					}
+				),
+				
+				EVEGenericPanelWidget // Row containing the size controls
+				(
+					kInvalidWidgetID,	// WidgetId
+					0					// RsrcId
+					0,					// Widget EVE Info
+					kBindNone,			// Frame binding
+					Frame(0,0,0,0)		// Frame
+					kTrue,				// Visible
+					kTrue,				// Enabled
+					kEVEAlignRight | kEVEArrangeChildrenInRow | kEVEChildAlignRight,
+					{
+						EVEStaticTextWidget // Label, "Size"
+						(
+							kWatermarkUIFontSizeStaticWidgetID,	// The Identifier for this Widget
+							kSysStaticTextPMRsrcId,				// The Plugin ID
+							kBindNone,							// Frame binding
+							Frame(0,0,0,0)						// Frame(l,t,r,b) 
+							kTrue, kTrue, kAlignRight,			// Visible, Enabled, Alignment
+							kDontEllipsize, kTrue,				// Where to ellipsize the string if the size is larger than its frame
+							kWatermarkUISizeLabelItemKey,		// The String value
+							kWatermarkUIFontSizeWidgetID,		// The Widget ID for associated control for shortcut focus
+							kEVERegularSpaceAfter,
+						),
+						EVENudgeControlWidget // Font size nudge control
+						(
+							kWatermarkUIFontSizeNudgeWidgetID,	// The Identifier for this Widget
+							kPMRsrcID_None,						// The Plugin ID
+							kBindNone,							// Frame binding
+							Frame(0,0,0,0)						// Frame(l,t,r,b)
+							kTrue,								// Is this visible
+							kTrue,								// Is this enabled
+							kEVENoSpaceAfter,
+						),
+						EVETextSizeMeasureComboBoxWidget // Font size drop down control
+						(
+							kWatermarkUIFontSizeWidgetID,		// The Identifier for this Widget
+							kPMRsrcID_None,						// The Plugin ID
+							kBindNone,							// Frame binding
+							Frame(0,0,70,20)						// Frame(l,t,r,b)
+							kTrue,								// Is this visible
+							kTrue,								// Is this enabled
+							kWatermarkUIFontSizeNudgeWidgetID,	// The WidgetID for the nudge button
+							1,									// A small nudge amount
+							1,									// A large nudge amount
+							0,									// The maximum number of characters
+							kFalse,								// integer readOnly value
+							kFalse,								// Notify on key stroke
+							kTrue,								// Enable range checking
+							kFalse,								// Allow blank entry
+							1296,								// The upper limit
+							0.1,								// The lower limit
+							"48 pt", 
+							{
+								{
+								}
+							},
+							kEVERegularSpaceAfter,
+						),
+					}
+				),
+			}
+		),
+		
+		EVEGroupPanelWidget // Horizontal Position group
+		(
+			0,											// The Identifier for this Widget
+			kPMRsrcID_None,								// The Resource ID
+			kBindNone,									// The Plugin ID
+			Frame(0,0,0,0) 
+			kTrue,										// Is this visible
+			kTrue,										// Is this enabled
+			kWatermarkUIHorizontalGroupLabelWidgetID,	// header widget ID
+			kEVEAlignFill | kEVEExtraLargeSpaceAfter | kEVEArrangeChildrenInRow | kEVERegularMargin,
+			{
+				EVEStaticTextWidget // Group label, "Horizontal position"
+				(
+					kWatermarkUIHorizontalGroupLabelWidgetID,	// widget ID
+					kSysStaticTextPMRsrcId,						// PMRsrc ID
+					kBindNone,									// frame binding
+					Frame(0,0,0,0)								// Frame(l,t,r,b)
+					kTrue, kTrue, kAlignCenter,					// Visible, Enabled, Alignment
+					kDontEllipsize, kTrue,						// Ellipsize style, Convert ampersands
+					kWatermarkUIHPosLabelItemKey,				// control label
+					0,											// associated widget ID
+					kEVERegularSpaceAfter,
+				),
+				EVEDropDownListWidget // Horizontal position dropdown
+				(
+					kWatermarkUIHPosDropDownWidgetID,	// WidgetId
+					kSysDropDownPMRsrcId,				// RsrcId
+					kBindNone,							// Frame binding
+					Frame(0,0,0,0)						// Frame
+					kTrue,								// Visible
+					kTrue,								// Enabled
+					{
+						{
+						}
+					},
+					kEVEJumboSpaceAfter,
+				),
+				EVEStaticTextWidget // Label, "Offset"
+				(
+					0,								// widget ID
+					kSysStaticTextPMRsrcId,			// PMRsrc ID
+					kBindNone,						// frame binding
+					Frame(0,0,0,0)					// Frame(l,t,r,b)
+					kTrue,							// visible
+					kTrue,							// enabled
+					kAlignRight,					// Alignment
+					kDontEllipsize, kTrue,			// Ellipsize style, Convert ampersands
+					kWatermarkUIOffsetLabelItemKey,	// control label
+					0,								// associated widget ID
+					kEVERegularSpaceAfter,
+				),
+				EVENudgeControlWidget // Horizontal offest nudge control
+				(
+					kWatermarkUIHOffsetNudgeWidgetID,	// The Identifier for this Widget
+					kPMRsrcID_None,						// The Plugin ID
+					kBindNone,							// Frame binding
+					Frame(0,0,0,0) 
+					kTrue,								// Is this visible
+					kTrue,								// Is this enabled
+					kEVENoSpaceAfter,
+				),
+				EVEXMeasureEditBoxWidget // Horizontal offset edit field
+				(
+					kWatermarkUIHOffsetWidgetID,		// widget ID
+					kSysEditBoxPMRsrcId,				// PMRsrc ID
+					kBindNone,							// frame binding
+					Frame(0,0,0,0)						// Frame(l,t,r,b)
+					kTrue,								// visible
+					kTrue,								// enabled
+					kWatermarkUIHOffsetNudgeWidgetID,	// nudgeWidgetId
+					1,									// small nudge amount
+					10,									// large nudge amount
+					0,									// max num chars
+					kFalse,								// read only flag
+					kFalse,								// should notify on each key stroke
+					kTrue,								// range checking enabled
+					kFalse,								// blank entry allowed
+					10000.0,							// upper limit
+					-10000.0,							// lower limit
+					"0",								// control label
+					kEVERegularSpaceAfter,
+				),
+			}
+		),
+
+		EVEGroupPanelWidget	// Vertical Position group
+		(
+			0,										// The Identifier for this Widget
+			kPMRsrcID_None,							// The Resource ID
+			kBindNone,								// The Plugin ID
+			Frame(0,0,0,0)							// Frame(l,t,r,b)
+			kTrue,									// Is this visible
+			kTrue,									// Is this enabled
+			kWatermarkUIVerticalGroupLabelWidgetID,	// header widget ID
+			kEVEAlignFill | kEVEExtraLargeSpaceAfter | kEVEArrangeChildrenInRow | kEVERegularMargin,
+			{
+				EVEStaticTextWidget // Group label, "Vertical Position"
+				(
+					kWatermarkUIVerticalGroupLabelWidgetID,	// widget ID
+					kSysStaticTextPMRsrcId,					// PMRsrc ID
+					kBindNone,								// frame binding
+					Frame(0,0,0,0)							// Frame(l,t,r,b)
+					kTrue, kTrue, kAlignCenter,				// Visible, Enabled, Alignment
+					kDontEllipsize, kTrue,					// Ellipsize style, Convert ampersands
+					kWatermarkUIVPosLabelItemKey,			// control label
+					0,										// associated widget ID
+					kEVERegularSpaceAfter,
+				),
+				EVEDropDownListWidget // Vertical position dropdown
+				(
+					kWatermarkUIVPosDropDownWidgetID,	// WidgetId
+					kSysDropDownPMRsrcId,				// RsrcId
+					kBindNone,							// Frame binding
+					Frame(0,0,0,0)						// Frame
+					kTrue,								// Visible
+					kTrue,								// Enabled
+					{
+						{
+						}
+					},
+					kEVEJumboSpaceAfter,
+				),
+				EVEStaticTextWidget 
+				(
+					0,								// widget ID
+					kSysStaticTextPMRsrcId,			// PMRsrc ID
+					kBindNone,						// frame binding
+					Frame(0,0,0,0)					// Frame(l,t,r,b)
+					kTrue, kTrue, kAlignRight,		// Visible, Enabled, Alignment
+					kDontEllipsize, kTrue,			// Ellipsize style, Convert ampersands
+					kWatermarkUIOffsetLabelItemKey,	// control label
+					0,								// associated widget ID
+					kEVERegularSpaceAfter,
+				),
+				EVENudgeControlWidget // Vertical offset nudge control
+				(
+					kWatermarkUIVOffsetNudgeWidgetID,	// The Identifier for this Widget
+					kPMRsrcID_None,						// The Plugin ID
+					kBindNone,							// Frame binding
+					Frame(0,0,0,0)						// Frame(l,t,r,b)
+					kTrue,								// Is this visible
+					kTrue,								// Is this enabled
+					kEVENoSpaceAfter,
+				),
+				EVEYMeasureEditBoxWidget // Vertical offset edit field
+				(
+					kWatermarkUIVOffsetWidgetID,		// widget ID
+					kSysEditBoxPMRsrcId,				// PMRsrc ID
+					kBindNone,							// frame binding
+					Frame(0,0,0,0)						// Frame(l,t,r,b)
+					kTrue,								// visible
+					kTrue,								// enabled
+					kWatermarkUIVOffsetNudgeWidgetID,	// nudgeWidgetId (0 or kInvalidWidgetID if no nudge required)
+					1,									// small nudge amount
+					10,									// large nudge amount
+					0,									// max num chars
+					kFalse,								// read only flag
+					kFalse,								// should notify on each key stroke
+					kTrue,								// range checking enabled
+					kFalse,								// blank entry allowed
+					10000.0,							// upper limit
+					-10000.0,							// lower limit
+					"0",								// control label
+					kEVERegularSpaceAfter,
+				),
+			} 
+		),
+		
+		EVECheckBoxWidget // Preview checkbox
+		(
+			kPreviewButtonWidgetID,	// widget ID
+			kSysCheckBoxPMRsrcId,	// PMRsrc ID
+			kBindNone,				// frame binding
+			Frame(0,0,0,0)			// Frame(l,t,r,b)
+			kTrue,					// visible
+			kTrue,					// enabled
+			kAlignRight,				// alignment
+			"Pre&view",				// control label
+			kEVEAlignRight,
+		),
+	}
+	kEVEArrangeChildrenInColumn | kEVELargeMargin,
+};
+
+#endif // __ODFRC__
+
+#include "WatermarkUI_enUS.fr"
+#include "WatermarkUI_jaJP.fr"
+

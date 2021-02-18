@@ -1,0 +1,43 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kInCopyFileActionsUIStringsRsrcID + index_jaJP)
+{
+	k_jaJP,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{
+		"&Update Design",		"デザインを更新(&U)",
+		"AlertUnableToSave",	"次のコンテンツを保存できません。\nファイルがロックされているか、またはファイルを変更するための権限がない可能性があります。\n",
+		"Update^1Alert",		"一部のコンテンツを保存できません。更新を行うと変更内容が失われることがあります。\n最新バージョンの \"^1\" に更新しますか？",
+		"Undoable^1Save",		"デザインを更新を実行すると、処理の前にすべての編集可能なコンテンツが保存されます。更新により生じた変更は「取り消し」コマンドを使用して元に戻すことができません。\n\"^1\" を更新しますか？",
+		"AlertStoriesMissing",	"一部のコンテンツのファイルが見つからないため、編集できません。ファイルを元の場所に移動するか、InDesign でリンクを更新してください。",
+		"AlertStoriesMissingWF", "一部のコンテンツのファイルが見つからないため、編集できません。コンテンツをサーバーからダウンロードして、ドキュメントを開き直してください。",
+		"Update",				"更新",
+		"&Revert Story",		"コンテンツの復帰(&V)",
+//		"Revert Story",			"Revert Content", // Note to localizer: this string moved to InCopySharedStrings_enUS.fr
+		
+		"SaveAsFeatureLost",    "このドキュメントには、このファイル形式でサポートされていない機能が含まれている可能性があります。続行しますか？",
+		"CannotSaveOntoLockedFile",		"指定したファイルは、現在 \"^1\" によって ^2 でドキュメント ^2 からチェックアウトされています。他のファイル名を選択するか、\"^1\" をチェックインしてください。",
+		"CannotSaveOntoLockedFileMinimal",	"指定したファイルは現在 \"^1\" によってチェックアウトされています。他のファイル名を選択するか、\"^1\" をチェックインしてください。",
+	}
+};
+
+
+#endif // __ODFRC__

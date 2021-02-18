@@ -1,0 +1,142 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kLayerPanelStringsRsrcID + index_koKR)
+{
+	k_koKR,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{
+		// ----- Command strings
+
+		"Layer Options",				"레이어 옵션",
+		"New Layer",					"새 레이어",
+		"Layer Deletion",				"레이어 삭제",
+		"Delete Unused Layers",			"사용하지 않는 레이어 삭제",
+		"Lock Others",					"다른 레이어 잠그기",
+		"#UnlockOthers",					"다른 레이어 잠금 해제",
+		"Show All",						"모두 표시",
+		"#ShowOthers",					"기타 표시",
+		"Unlock All",					"모두 잠금 해제",
+		"Hide All",						"모두 숨기기",
+		"Lock All",						"모두 잠그기",
+		"Merge Layers",					"레이어 병합",
+		"Move To Layer",				"레이어로 이동",
+		"Copy To Layer",				"레이어로 복사",
+		"Move Layer",					"레이어 이동",
+		"Move Layers",					"레이어 이동",
+		"kUnlockOthersSequence",		"다른 레이어 잠금 해제",
+		"kLockOthersSequence",			"다른 레이어 잠그기",
+
+		// ----- Menu strings
+		
+		"Layers...",						"레이어(&L)...",
+
+		"New Layer...",						"새 레이어...",
+		"New Layer Above \"^1\"...",		"\"^1\" 위에 새 레이어 만들기...",
+		"New Layer Below \"^1\"...",		"\"^1\" 아래에 새 레이어 만들기...",
+		"New Top Layer...",					"새 위쪽 레이어...",
+		"Delete Layer",						"레이어 삭제",
+		"Delete \"^1\"",					"\"^1\" 레이어 삭제",
+		"Delete Layers",					"레이어 삭제",
+		"#Duplicate ^1 Menu",				"\"^1\" 레이어 복제",
+		"#Duplicate LayersMenu",			"레이어 복제",
+		"#DuplicatLayersCmd",				"레이어 복제",
+		
+		"Layer Options for \"^1\"...",		"\"^1\" 레이어 옵션...",
+		"Layer Options...",					"레이어 옵션...",
+		"Show All Layers",					"모든 레이어 표시",
+		"Hide Others",						"다른 레이어 숨기기",
+		"Unlock All Layers",				"모든 레이어 잠금 해제",
+		"Lock Others",						"다른 레이어 잠그기",
+		"Hide All Layers",					"모든 레이어 숨기기",
+		"Lock All Layers",					"모든 레이어 잠그기",
+		
+		"Paste Remembers Layers",			"붙일 때 레이어 기억",
+		"Ungroup Remembers Layers",			"그룹 해제 시 레이어 기억",
+		
+		"Merge Layers",						"레이어 병합",
+		"Delete Unused Layers",				"사용하지 않는 레이어 삭제",
+		"Select Item(s) on \"^1\"",			"\"^1\"의 항목 선택",
+		"Select Item(s) Layer",				"레이어의 항목 선택",
+				
+		"#SelectLayerPageItemMenu",		"항목 선택",
+		"#SelectZoomLayerPageItemMenu",	"항목 선택 및 맞춤",
+		"#ZoomLockedPageItemMenu",		"창에 항목 맞추기",
+		
+		// Menu names for context and panel menus
+		"LayerPanelPopup",					"레이어 패널 메뉴",	
+		"RtMenuLayerPanelEye",				"레이어 패널 눈아이콘 컨텍스트 메뉴",	
+		"RtMenuLayerPanelLock",				"레이어 패널 잠그기 컨텍스트 메뉴",
+		"RtMenuLayerPanelItem",				"레이어 패널 레이어 컨텍스트 메뉴",	
+		"RtMenuLayerPanelPageItem",			"레이어 패널 페이지 항목 컨텍스트 메뉴",	
+
+		// ----- Window strings
+		"DeleteOneLayer",					"\"^1\" 레이어에 개체가 하나 이상 포함되어 있습니다. 레이어를 삭제하시겠습니까?",
+		"DeleteMultiLayers",				"선택한 레이어에 개체가 포함되어 있습니다. 레이어를 삭제하시겠습니까?",
+		"DeleteOneGuideLayer",				"\"^1\" 레이어에 눈금자 안내선이 포함되어 있습니다. 레이어를 삭제하시겠습니까?",
+		"DeleteGuideLayers",				"선택한 레이어에 눈금자 안내선이 포함되어 있습니다. 레이어를 삭제하시겠습니까?",
+		"DeletingPlaceGunUsedLayer",		"레이어를 삭제할 수 없습니다. 가져오기 커서에서 불러온 스니펫에 필요합니다.",
+
+		// ----- Window Menu
+		"Layers_WinMenu",					"레이어(&L)",
+		
+		// ----- Panel strings
+		
+		"^1 Layer",							"레이어 ^1개",		// For status widget
+		"^1 Layers",						"레이어 ^1개",	// For status widget
+		"New Layer",						"새 레이어",	// Title of New Layer dialog
+		"Layer Options",					"레이어 옵션", // Title of Layer Options dialog
+		"&Name:",							"이름(&N):",
+		"&Color:",							"색상(&C):",
+		"&Show Layer",						"레이어 표시(&S)",
+		"Show &Guides",						"안내선 표시(&G)",
+		"&Lock Layer",						"레이어 잠그기(&L)",
+		"Loc&k Guides",						"안내선 잠그기(&K)",
+		"Keep When Layer is &Hidden",		"레이어가 숨겨진 경우 텍스트 감싸기 무시(&T)",
+		"&Print Layer",						"레이어 인쇄(&P)",
+
+		// ----- Tips strings
+
+		"DeleteLayerTip",					"선택한 레이어 삭제",
+		"NewLayerTip",						"새 레이어 만들기",
+		"EyeTip",							"가시성 켜기/끄기",
+		"PencilTip",						"레이어 잠금 켜기/끄기(비었을 때 편집 가능)",
+		"PageItemPencilTip",				"페이지 항목 잠금 켜기/끄기(비었을 때 편집 가능)",
+		"SwatchTip",						"이 레이어의 선택 항목을 표시하는 색상",
+		"ProxyTip",							"선택된 항목 표시(드래그하여 레이어 간 이동 또는 Z 순서 변경)",
+		"ProxyChildSelectedTip",			"선택한 개체 포함. 컨테이너 개체를 선택하려면 클릭",
+		"UnselectedProxyTip",				"항목을 클릭하여 선택",
+		"ActiveTip",						"현재 그리고 있는 레이어 표시",
+
+		// ----- Error strings
+		"EmptyLayerName",					"레이어 이름을 지정해야 합니다.",
+		"DuplicateLayer",					"이 이름의 다른 레이어가 이미 있습니다.",
+
+		"#LayerHierPanelName",		"레이어",
+		"#Page:^1,",					"페이지: ^1, ", // for layer panel status widget. Will be followed by layer count string.
+		"#Pages:^1,",					"페이지: ^1, ", // for layer panel status widget. Will be followed by layer count string.
+		"#DeletePageItemsMenu",		"페이지 항목 삭제", // menu item name
+		"#DeletePageItem \"^1\"",		"\"^1\" 페이지 항목 삭제", // menu item name
+		"#DuplicatePI ^1 Menu",			"\"^1\" 페이지 항목 복제", // menu item name
+		"#DuplicatePIMenu",			"페이지 항목 복제",  // menu item name
+	}
+};
+
+#endif // __ODFRC__

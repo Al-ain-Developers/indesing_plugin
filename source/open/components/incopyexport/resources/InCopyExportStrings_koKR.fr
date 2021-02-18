@@ -1,0 +1,52 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// U.S. English strings
+//========================================================================================
+
+resource StringTable (kInCopyExportStringsRsrcID + index_koKR)
+{
+	k_koKR,								// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+
+	{
+		// ----- Miscellaneous strings
+		"Export Seq Name", 		"InCopy 스토리 내보내기",
+		"Text",					"텍스트", // append "Text" to export name on a text story
+		
+		// ----- Export options dialog strings
+		"InCopyExportOptions",	"Adobe InCopy 내보내기 옵션",
+		"ExportOptions_DataType",	"인코딩(&E):",
+		"ExportOptions_UTF16",	"UTF16",
+		"ExportOptions_UTF8",	"UTF8",
+		"ExportOptions_DataOptions",	"옵션:",
+		"ExportOptions_StyleTable",	"스타일 표 포함(&S)",
+		"ExportOptions_SwatchList",	"색상 견본 목록 포함(&W)",
+		"ExportOptions_XMPData",	"XMP 정보 포함(&I)",
+		"ExportOptions_StoryLabel",	"스토리 레이블(&L):",
+
+		//menu
+		"ExportMenu",				"내보내기(&X)",
+		"kExportLayerToIC",			"레이어(&L)...",
+		"kExportAllStoriesToIC",	"모든 스토리(&R)...",
+		"kExportAllGraphicsToIC",	"모든 그래픽(&G)...",
+		"kExportAllItemsToIC",		"모든 그래픽 및 스토리(&A)...",
+
+		"INCDFeatureLost",    "이 스토리에는 이 파일 형식에서 지원되지 않는 기능이 포함되어 있을 수 있습니다. 이 스토리가 업데이트되면 이러한 기능을 잃게 됩니다.",
+	}
+};
+
+#endif // __ODFRC__

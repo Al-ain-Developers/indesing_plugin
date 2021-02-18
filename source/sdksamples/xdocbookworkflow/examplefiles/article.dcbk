@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article SYSTEM "sdocbook.dtd">
+<?xml-stylesheet href="copy-with-contxt-sens-styling.xsl" type="text/xsl"?>
+<article><title>Snippet Fundamentals</title>
+<abstract><title>Abstract</title>
+<para >This article describes the snippet architecture, introduced for InDesign CS, which lets a document be broken down into self-contained assets. A snippet is logically complete fragment of an InDesign document. Snippets are represented in InDesign Interchange (INX) file-format. </para>
+<para>We describe the organisation of snippets for different asset types and relate this to the low-level (boss) document object model. The snippet architecture is the basis for the Asset Library in InDesign CS2, which is now a collection of snippets in a binary container. We discuss implications of the change to this snippet architecture if you store your own persistent data in documents. In addition, we identify use cases involving snippets and provide guidelines on implementing these. </para>
+<para>One key point is that currently we do not recommend generating snippets from outside of InDesign/ InCopy, owing to the relative complexity of the format.</para>
+</abstract><section><title>Objectives</title>
+<para>The objectives of this document are:</para>
+<orderedlist><listitem><para>Explain what snippets are and how they relate to the document model.</para>
+</listitem><listitem><para>Describe the organization of some carefully chosen snippets.</para>
+</listitem><listitem><para>Identify use-cases involving snippets and provide hints on implementation.</para>
+</listitem></orderedlist><para>The document [INX File Format] is recommended reading to provide background on the InDesign Interchange (INX) format, on which the snippet architecture depends. </para>
+</section><section><title>Conceptual overview</title>
+<section><title >INX format and snippets</title>
+<para>INX (InDesign Interchange format) is an XML-based file format that represents an InDesign document at a higher level of abstraction than the low-level binary InDesign documents (INDD) files; INX represents the document at the level of scripting DOM. See [INX File Format] for a detailed discussion on the format. Briefly, an INX file is a collection of XML fragments (IXMLFragment) that represent an entire InDesign document, created by serializing the scripting DOM for a document instance. </para>
+<para>A major benefit of this representation is that the scripting DOM is stable relative to the low-level (boss) document model.One price to be paid for this higher level of abstraction (and XML-based format) with INX is that it takes somewhat longer to read and write an INX file than a binary InDesign (INDD) document. InDesign binary documents are demand-paged, so they are quick to load as not all the file is initially loaded before it can be used, whereas the entire INX file has to be loaded before it can be used. </para>
+<para>A snippet file represents one or more “root” objects and their dependents in the document from which they came. Note that a root object in this context doesn’t mean the root of the entire document, but root of a sub-tree within the scripting DOM tree. </para>
+<para>A root object must expose the interface IDOMElement. Parent-child relationships in a snippet come from ownership relations in the scripting DOM. However, as we will see in the examples, the elements in a snippet file have information that comes from the boss DOM (about UIDs, for instance) and the relationship between the boss DOM and scripting DOM is predictable.</para>
+<section><title >Working with snippets</title>
+<para>There are a few things that you need to know to work with snippets;</para>
+<itemizedlist><listitem><para >How to acquire references to the object(s) you want to export as a snippet; for instance, page items. At a minimum, you need an IDOMElement interface on each root object you want to export in a given snippet, and an export policy. [Layout Fundamentals] shows how to acquire references to objects in the layout.</para>
+</listitem><listitem><para >Where to target the snippet import; that is, what DOM element (IDOMElement) you should use as the parent for the object(s) in the snippet to import. To understand how to do this, you need to understand the connection between the scripting DOM and the boss DOM, as you are targeting a node in the scripting DOM on import. It turns out that you need an IXMLFragment interface to identify the parent in the scripting DOM for your import.</para>
+</listitem><listitem><para >Generating a snippet from scratch is not recommended. Snippets for even simple content page items are relatively complex, owing to the need to serialize the graph of dependencies.</para>
+</listitem></itemizedlist></section></section></section>
+<section><title>References</title>
+<itemizedlist><listitem><para >“InCopy Interchange Format”. InDesign CS2 SDK</para>
+</listitem><listitem><para >“INX File Format”. InDesign CS2 SDK</para>
+</listitem><listitem><para >Graphviz “Graph Visualization Software”. http://www.graphviz.org/</para>
+</listitem><listitem><para >“Layout Fundamentals”. InDesign CS2 SDK</para>
+</listitem><listitem><para >“Making Your Plug-in Scriptable”. InDesign CS2 SDK</para>
+</listitem><listitem><para >“Selection”. InDesign CS2 SDK</para>
+</listitem><listitem><para >“XML Fundamentals”. InDesign CS2 SDK</para>
+</listitem></itemizedlist></section>
+</article>

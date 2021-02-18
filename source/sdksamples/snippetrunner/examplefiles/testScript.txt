@@ -1,0 +1,5 @@
+;
+; Exercises code snippets.
+;
+NewDoc 600 500
+PlaceFile ducky.tif

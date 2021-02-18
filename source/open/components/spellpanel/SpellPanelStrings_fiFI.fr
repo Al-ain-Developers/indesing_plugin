@@ -1,0 +1,159 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kSpellPanelStringsRsrcID + index_fiFI)
+{
+	k_fiFI,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{				
+		// ----- Main menu strings
+		"SpellingMenu",					"&Oikoluku",
+		"Check Spelling...",			"Oi&keinkirjoituksen tarkistaminen...",
+		"Dynamic SpellCheck",			"Dynaami&nen oikoluku",
+		"Autocorrect",					"Automaattinen korjaus",
+		"Auto Correct",					"&Automaattinen korjaus",
+		"AutoCorrect",					"Automaattinen korjaus",
+
+		// ----- Window strings
+		"corrected",					"korjattu",
+		"misspelled",					"väärin kirjoitettu",
+		
+		// ----- Scope strings
+		
+		"[No spelling]",				"[Ei oikolukua]",
+		"Auto",							"Autom.",
+		"Document",						"Julkaisu",
+		"Story",						"Juttu",
+		"Stories",						"Jutut",
+		"Selection",					"Valinta",
+		
+		// ----- Panel strings		
+		"Spelling",						"Oikoluku",
+		"&Spelling...",					"&Oikoluku...",
+		"Auto Correct...",				"A&utomaattinen korjaus...",
+		"[No language]",				"[Ei kieltä]",
+		"AutoCorrectEnable",			"&Ota automaattinen korjaus käyttöön",
+		"AutoCorrectCapitalizationErrors",			"Korjaa automaattisesti &virheet isojen kirjainten käytössä",
+		"A&dd...",						"L&isää...",		// Opens a dialog
+		"EditAutoCorrectWord",			"&Muokkaa...",		// Opens a dialog
+		"Correction",					"Korjaus",
+		"Misspelled Word",				"Kirjoitusvirhe sanassa",
+
+		// ----- Dialog strings
+		"Check Spelling",				"Oikeinkirjoituksen tarkistaminen",
+		"&Change To:",					"&Korvaava:",
+		
+		"Change To",					"Muuta",
+		"&Suggested Corrections:",		"Korjauseh&dotukset:",
+		"Language:",					"Kieli:",
+		"Sea&rch:",						"&Etsi:",
+		"Include Overset",				"Ylijuokseva sisällytetään",
+		"&Done",							"&Valmis",
+		"C&hange",						"M&uuta",
+		"S&tart",						"Aloi&ta",
+		"Chan&ge All",					"&Muuta kaikki",
+		"Skip",							"Ohita",	
+		"kSkipButtonInSpellingDialog",  "O&hita",
+		"Ignore",						"Ohita",
+		"&Ignore All",					"&Ohita kaikki",
+		"&AddAndContinue",				"&Lisää",			// Adds to dictionary automatically, continues spelling
+		"Dic&tionary...",				"Sanast&o...",	// Launches Dict Editor dialog
+		"Add To:",						"Lisää ko&hteeseen:",
+
+		// Label strings in Spell Check dialog.
+		"Ready to Spell Check:", 			"Valmis oikoluettavaksi",
+		"Misspelled Word:",					"Kirjoitusvirhe sanassa:",
+		"Unknown Word - No Suggestions:", 	"Tuntematon sana - ei ehdotuksia:",
+		"Not in Dictionary:",				"Ei ole sanastossa:",
+		"Repeated Word:",					"Toistuva sana:",
+		"Uncapitalized Word:",				"Pienellä kirjoitettu sana:",
+		"Uncapitalized Sentence:",			"Pienellä kirjaimella aloitettu lause:",
+		"Duplicate Word:",					"Toistuva sana:",
+		"Capitalization Error:",			"Virhe ison kirjaimen käytössä:",
+		"Spell Check Complete:",			"Oikoluku valmis:",
+		
+		"SpellCheckCompleteAlertStr",			"Oikoluku valmis.",	// Alert string at completion of spelling.
+
+		"Misspelled Word (Overset):",					"Kirjoitusvirhe sanassa (ylijuokseva teksti):",
+		"Unknown Word - No Suggestions (Overset):", 	"Tuntematon sana (ylijuokseva teksti):",
+		"Not in Dictionary (Overset):",					"Ei ole sanastossa (ylijuokseva teksti):",
+		"Repeated Word (Overset):",						"Toistuva sana (ylijuokseva teksti):",
+		"Uncapitalized Word (Overset):",				"Pienellä kirjoitettu sana (ylijuokseva teksti):",
+		"Uncapitalized Sentence (Overset):",			"Pienellä kirjaimella aloitettu lause (ylijuokseva)",
+
+		"Misspelled Word (In Table):",					"Kirjoitusvirhe sanassa (taulukossa):",
+		"Unknown Word - No Suggestions (In Table):", 	"Tuntematon sana (taulukossa):",
+		"Not in Dictionary (In Table):",					"Ei ole sanastossa (taulukossa):",
+		"Repeated Word (In Table):",						"Toistuva sana (taulukossa):",
+		"Uncapitalized Word (In Table):",				"Pienellä kirjoitettu sana (taulukossa):",
+		"Uncapitalized Sentence (In Table):",			"Pienellä kirjaimella aloitettu lause (taulukossa):",
+
+		"Misspelled Word (Deleted Text):",				"Kirjoitusvirhe sanassa (poistettu teksti):",
+		"Unknown Word - No Suggestions (Deleted Text):","Tuntematon sana (poistettu teksti):",
+		"Not in Dictionary (Deleted Text):",			"Ei ole sanastossa (poistettu teksti):",
+		"Repeated Word (Deleted Text):",				"Toistuva sana (poistettu teksti):",
+		"Uncapitalized Word (Deleted Text):",			"Pienellä kirjoitettu sana (poistettu teksti):",
+		"Uncapitalized Sentence (Deleted Text):",		"Pienellä kirjaimella aloitettu lause (poistettu):",
+		
+		"Misspelled Word (Hidden):",					"Väärin kirjoitettu sana: (Piilotettu kohde)",
+		"Unknown Word - No Suggestions (Hidden):", 		"Tuntematon sana: (Piilotettu kohde)",
+		"Not in Dictionary (Hidden):",					"Ei sanakirjassa: (Piilotettu kohde)",
+		"Repeated Word (Hidden):",						"Toistettu sana: (Piilotettu kohde)",
+		"Uncapitalized Word (Hidden):",					"Pienellä kirjaimella aloitettu sana: (Piilotettu kohde)",
+		"Uncapitalized Sentence (Hidden):",				"Pienellä kirjaimella aloitettu lause: (Piilotettu)", // Shortened to "Hidden" for space. Like the "Overset" case above.
+
+//		"Spelling Preferences", 						"Spelling Preferences", // Note to localizer: this string moved to SpellingServiceStrings.fr
+		"Find", 										"Etsi",
+		"&Misspelled Words", 							"&Kirjoitusvirheet",
+		"&Repeated Words", 								"&Toistuvat sanat",
+		"&Uncapitalized Words", 						"&Pienellä kirjoitetut sanat",
+		"Uncapitalized &Sentences", 					"Pienellä kirjaimella alkavat &lauseet",
+		"Misspelled Words Underline Color:",			"Kirjoitus&virheet sanoissa:",
+		"Repeated Words Underline Color:",				"Toi&stuvat sanat:",
+		"Uncapitalized Words Underline Color:",			"Pi&enellä alkukirjaimella kirjoitetut sanat:",
+		"Uncapitalized Sentences Underline Color:",		"Pienellä kirjaimella &aloitetut lauseet:",
+		"Dynamic Spellchecking",						"Dynaaminen oikoluku",
+		
+		"Underline Color",								"Alleviivausväri",
+		
+		"&Enable Dynamic Spelling",						"&Ota käyttöön dynaaminen oikoluku",
+		
+		"Search is completed.  ^1  replacement(s) made.", "Etsintä on valmis. Korvauksia on tehty ^1.", 
+
+		"Add",											"Lisää",
+		"Re&move",										"&Poista",
+		"Misspelled:",									"Väärin kirjoitettu:",
+		"Correction:",									"Korjaus:",
+		"Language:",									"Kieli:",
+		"&Language:",									"Kie&li:",
+		"AddToAutoCorrectList",							"Lisää automaattisen korjauksen luetteloon",
+		"EditAutoCorrectList",							"Muokkaa automaattisen korjauksen luetteloa",
+
+		"ACAlert1",		"Tyhjiä viittauksia ei sallita.",
+		"ACAlert2",		"Sana ja sen korjaus eivät voi olla oikeinkirjoitukseltaan ja isojen kirjainten käytöltään identtisiä.",
+		"ACAlert3",		"Tämä väärin kirjoitettu sana ja sen korjaus ovat jo luettelossa.",
+		"ACAlert4",		"Ei voi luoda viittausta. Se ylittää merkkien enimmäismäärän (64).",
+		"ACAlert5",		"Viittaus sisältää virheellisen merkin.",
+		"ACAlert6",		"Tyhjää tilaa ei sallita väärin kirjoitetussa sanassa.",
+
+	}
+};
+
+#endif // __ODFRC__

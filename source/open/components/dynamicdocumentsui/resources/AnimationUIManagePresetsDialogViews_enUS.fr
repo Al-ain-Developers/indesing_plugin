@@ -1,0 +1,176 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/dynamicdocumentsui/resources/AnimationUIManagePresetsDialogViews_enUS.fr $
+//  
+//  Owner: Yeming Liu
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#ifdef __ODFRC__
+
+#include "StdHeightWidthConstants.h"
+
+resource AnimationUIManagePresetsDialog (kAnimationUIManagePresetsDialogRsrcID + index_enUS)
+{
+	__FILE__, __LINE__,
+	kAnimationUIManagePresetsDialogWidgetID,// WidgetId
+	kPMRsrcID_None,							// RsrcId
+	kBindNone,
+	Frame(0,0,500,400)						// Frame
+	kTrue,									// Visible
+	kTrue,									// Enabled
+	"kAnimationUIManagePresetsDialogTitle",	// Title name
+	{		
+		// first column --- list of presets
+		EVEGenericPanelWidget
+		(
+			kAnimationUIManagePresetsListBoxGroupWidgetID,// WidgetId
+			0,0,							// RsrcId
+			kBindNone,						// Frame binding
+			Frame(0,0,335,15*kCC2016PanelTreeNodeHeight)				// Frame
+			kTrue,							// Visible
+			kTrue,							// Enabled
+			kEVEExtraLargeSpaceAfter|kEVEDontArrangeChildren|kEVEAlignFill,	// EVE info
+			{
+				AnimationUIManagePresetsListBox 
+                ( 
+                    kAnimationUIManagePresetsListBoxWidgetID,   // WID 
+                    kSysListBoxPMRsrcId,						// RsrcId 
+                    kBindNone, 
+                    Frame(0,0,335,15*kCC2016PanelTreeNodeHeight)                   // Frame 
+                    kTrue,                                // Visible 
+                    kTrue,                                // Enabled 
+                    kTrue,                                // EraseBeforeDraw 
+                    kInterfacePaletteFill,                // InterfaceColor 
+                    1, 0,                                 // List dimensions 
+                    kCC2016PanelTreeNodeHeight,			// Cell height, 
+                    1,                                    // border width 
+                    kFalse, kTrue,                        // HScroll, VScroll 
+                    kTrue, kFalse, kFalse, kFalse,        // multisel, reorderable, draggable, drag-drop 
+                    kFalse, kFalse,						  // always selected, notify on reselect 
+                    0,									  // fItemRsrcID, fill list box with widgets of this type
+                    kHideRootNode,                           // Options
+                    kFalse,                               // Use H Scroll bar 
+                    kTrue,                                // Use V scroll bar 
+                    kCC2016PanelTreeNodeHeight,			// Vertical Scroll Button Increment 
+                    1,                                    // Vertical Thumb Scroll Increment 
+                    0,                                    // Horizontal Scroll Button Increment - Not Used 
+                    0,                                    // Horizontal Thumb Scroll Increment - Not Used 
+                    2,                                    // Items selectable, 0 = No Selection, 1 = Single Selection, 2 = Multiple Selection 
+                    kTrue,                                // Allow children from multiple parents to be selected 
+                    kTrue,                                // Allow discontiguous selection 
+                ), 
+			}
+		)
+				
+		// second column ---  buttons
+		EVEGenericPanelWidget
+		(
+			kAnimationUIManagePresetsButtonGroupWidgetID,// WidgetId
+			0,0,							// RsrcId
+			kBindNone,						// Frame binding
+			Frame(0,0,0,0)				// Frame
+			kTrue,							// Visible
+			kTrue,							// Enabled
+			kEVENoSpaceAfter|kEVEArrangeChildrenInColumn|kEVEAlignFill,	// EVE info
+			{
+				EVEDefaultButtonWidget
+				(
+					kOKButtonWidgetID,		// WidgetId
+					kSysButtonPMRsrcId,									// RsrcId
+					kBindNone,
+					Frame(0,0,0,0)										// Frame
+					kTrue,												// Visible
+					kTrue,												// Enabled
+					"kAnimationUIManagePresetsDoneButton",				// Panel name
+					kEVEExtraLargeSpaceAfter,							// EVE info
+				)
+				EVEButtonWidget
+				(
+					kAnimationUIManagePresetsDeleteButtonWidgetID,		// WidgetId
+					kSysButtonPMRsrcId,									// RsrcId
+					kBindNone,
+					Frame(0,0,0,0)										// Frame
+					kTrue,												// Visible
+					kTrue,												// Enabled
+					"kAnimationUIManagePresetsDeleteButton",			// Panel name
+					kEVELargeSpaceAfter,								// EVE info
+				)
+				EVEButtonWidget
+				(
+					kAnimationUIManagePresetsDuplicateButtonWidgetID,	// WidgetId
+					kSysButtonPMRsrcId,									// RsrcId
+					kBindNone,
+					Frame(0,0,0,0)										// Frame
+					kTrue,												// Visible
+					kTrue,												// Enabled
+					"kAnimationUIManagePresetsDuplicateButton",			// Panel name
+					kEVELargeSpaceAfter,								// EVE info
+				)
+				EVEButtonWidget
+				(
+					kAnimationUIManagePresetsLoadButtonWidgetID,		// WidgetId
+					kSysButtonPMRsrcId,									// RsrcId
+					kBindNone,
+					Frame(0,0,0,0)										// Frame
+					kTrue,												// Visible
+					kTrue,												// Enabled
+					"kAnimationUIManagePresetsLoadButton",				// Panel name
+					kEVELargeSpaceAfter,								// EVE info
+				)
+				EVEButtonWidget
+				(
+					kAnimationUIManagePresetsSaveAsButtonWidgetID,		// WidgetId
+					kSysButtonPMRsrcId,									// RsrcId
+					kBindNone,
+					Frame(0,0,0,0)										// Frame
+					kTrue,												// Visible
+					kTrue,												// Enabled
+					"kAnimationUIManagePresetsSaveAsButton",			// Panel name
+					kEVENoSpaceAfter,									// EVE info
+				)
+			}
+		)	
+	},
+	kEVEArrangeChildrenInRow|kEVELargeMargin,		// EVE child layout(row/column)
+};
+
+resource AnimationUIManagePresetsDialogListNodeWidget (kAnimationUIManagePresetsDialogListNodeRsrcID + index_enUS)
+{
+    __FILE__, __LINE__,
+    kStandardTreeNodeWidgetID, kPMRsrcID_None,	// WidgetId, RsrcId
+    kBindLeft | kBindRight,						// Frame binding
+    Frame(0,0,335,kCC2016PanelTreeNodeHeight),							// Frame (left, top, right, bottom)
+    kTrue, kTrue,								// Visible, Enabled
+    "",											// Panel name
+    {
+        AnimationUIManagePresetsDialogStaticTextWidget 
+        (
+            kStaticTextWidgetID,				// WidgetId
+            kSysStaticTextPMRsrcId,				// RsrcId
+            kBindLeft|kBindRight,				// Frame binding
+            Frame(kCC2016StandardGapBetweenWidgets, 0, 330, kCC2016PanelTreeNodeContentHeight)				// Frame
+            kTrue,kTrue, kAlignLeft,			// Visible, Enabled, Alignment
+            kDontEllipsize, kTrue,				// Ellipsize style, Convert ampersands
+            "",									// Initial text
+            0,
+        )
+    }
+}
+
+#endif // __ODFRC__

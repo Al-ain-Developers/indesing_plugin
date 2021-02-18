@@ -1,0 +1,68 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/buttonui/resources/behaviorui/behavioruipng.fr $
+//  
+//  Owner: ???
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#ifdef __ODFRC__
+
+#include "IconPNGDefs.h"
+#include "BehaviorUIDefs.h"
+
+resource PNGA(kCheckMarkIconRsrcID) "S_CheckMark_Xs_N.png"
+resource PNGAD(kCheckMarkIconRsrcID) "S_CheckMark_Xs_N_D.png"
+
+resource PNGA(kShowFieldIconRsrcID) "S_Visibility_Xs_N.png"
+resource PNGAD(kShowFieldIconRsrcID) "S_Visibility_Xs_N_D.png"
+
+resource PNGA(kHideFieldIconRsrcID) "S_VisibilityOff_Xs_N.png"
+resource PNGAD(kHideFieldIconRsrcID) "S_VisibilityOff_Xs_N_D.png"
+
+resource PNGA(kBlankIconRsrcID) "S_Ignore_Xs_N.png"
+resource PNGAD(kBlankIconRsrcID) "S_Ignore_Xs_N_D.png"
+
+// HiDPI
+resource PNGA(kCheckMarkIconRsrcID + kHIDPIIconOffset) "S_CheckMark_Xs_N@2x.png"
+resource PNGAD(kCheckMarkIconRsrcID + kHIDPIIconOffset) "S_CheckMark_Xs_N_D@2x.png"
+
+resource PNGA(kShowFieldIconRsrcID + kHIDPIIconOffset) "S_Visibility_Xs_N@2x.png"
+resource PNGAD(kShowFieldIconRsrcID + kHIDPIIconOffset) "S_Visibility_Xs_N_D@2x.png"
+
+resource PNGA(kHideFieldIconRsrcID + kHIDPIIconOffset) "S_VisibilityOff_Xs_N@2x.png"
+resource PNGAD(kHideFieldIconRsrcID + kHIDPIIconOffset) "S_VisibilityOff_Xs_N_D@2x.png"
+
+resource PNGA(kBlankIconRsrcID + kHIDPIIconOffset) "S_Ignore_Xs_N@2x.png"
+resource PNGAD(kBlankIconRsrcID + kHIDPIIconOffset) "S_Ignore_Xs_N_D@2x.png"
+
+#ifdef WINDOWS
+resource PNGA(kCheckMarkIconRsrcID + kHIDPIIconOffset150) "S_CheckMark_Xs_N@3to2x.png"
+resource PNGAD(kCheckMarkIconRsrcID + kHIDPIIconOffset150) "S_CheckMark_Xs_N_D@3to2x.png"
+
+resource PNGA(kShowFieldIconRsrcID + kHIDPIIconOffset150) "S_Visibility_Xs_N@3to2x.png"
+resource PNGAD(kShowFieldIconRsrcID + kHIDPIIconOffset150) "S_Visibility_Xs_N_D@3to2x.png"
+
+resource PNGA(kHideFieldIconRsrcID + kHIDPIIconOffset150) "S_VisibilityOff_Xs_N@3to2x.png"
+resource PNGAD(kHideFieldIconRsrcID + kHIDPIIconOffset150) "S_VisibilityOff_Xs_N_D@3to2x.png"
+
+resource PNGA(kBlankIconRsrcID + kHIDPIIconOffset150) "S_Ignore_Xs_N@3to2x.png"
+resource PNGAD(kBlankIconRsrcID + kHIDPIIconOffset150) "S_Ignore_Xs_N_D@3to2x.png"
+#endif
+
+#endif

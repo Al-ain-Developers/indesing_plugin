@@ -1,0 +1,298 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kDynamicDocumentsUIStringsRsrcID + index_ukUA)
+{
+	k_ukUA,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{
+		// ----- Command strings
+
+		// ----- Window strings
+
+		// ----- Panel strings
+		"kPageTransitionsPanelPopup",			"Меню панелі \"Переходи між сторінками\"",    
+		"kPageTransitionsSubMenu",				"Переходи між &сторінками",
+		"kPageTransitionsPanelName",			"Переходи між сторінками",	   
+		"kPageTransitionStaticText",			"Перехід: ",
+		"kPageDirectionStaticText",				"Напрямок: ",
+		"kPageSpeedStaticText",					"Швидкість: ",
+        "kPTHorizontal",						"По горизонталі",
+        "kPTVertical",							"По вертикалі",
+        "kPTIn",								"Всередину",
+        "kPTOut",								"Назовні",
+        "kPTDown",								"Вниз",
+        "kPTLeft",								"Ліворуч",
+        "kPTLeftDown",							"Ліворуч вниз",
+        "kPTLeftUp",							"Ліворуч вверх",
+        "kPTRight",								"Праворуч",
+        "kPTRightDown",							"Праворуч вниз",
+        "kPTRightUp",							"Праворуч вверх",
+        "kPTUp",								"Вверх",
+        "kPTHorizontalIn",						"По горизонталі всередину",
+        "kPTHorizontalOut",						"По горизонталі назовні",
+        "kPTVerticalIn",						"По вертикалі всередину",
+        "kPTVerticalOut",						"По вертикалі назовні",
+        "kPTSlow",								"Повільно",
+		"kPTMedium",							"Середньо",
+		"kPTFast",								"Швидко",		
+		"kPTNoTransition",						"Немає",	
+              		
+		// ----- Liquid Layout panel
+		"kLiquidLayoutMenu",					"&Рідкий макет",
+		"kLiquidLayoutPanelPopup",				"Меню панелі \"Рідкий макет\"",
+		"kLiquidLayoutPanelName",				"Рідкий макет",	
+		"kObjectConstraintsStaticTextLabel",	"Обмеження об’єкта:",
+		"kDocumentReflowStaticTextLabel",		"Перекомпонування документа",
+		"kFixedSizeStaticTextLabel",			"Змінити розмір зі сторінкою:",
+		"kHeightCheckBoxLabel",					"Висота",
+		"kWidthCheckBoxLabel",					"Ширина",
+		"kPinLeftEdgeCheckBoxLabel",			"Ліворуч",
+		"kPinRightEdgeCheckBoxLabel",			"Праворуч",
+		"kPinTopEdgeCheckBoxLabel",				"Зверху",
+		"kPinBottomEdgeCheckBoxLabel",			"Знизу",
+		"kPinObjectEdgesStaticTextLabel",		"Закріпити:",
+		"kContentStaticTextLabel",				"Вміст:",
+		"kLayoutAdjustmentWarningTip",			"Правила рідких макетів не застосовуються, оскільки для документа ввімкнено коригування макета. Клацніть, щоб вимкнути коригування макета.",
+		"kPageLayoutPolicyDropdownLabel",		"Правило рідкої стор.:",
+		"kLiquidLayoutPanelPageRange",			"Сторінка:  ^1",
+		"kPinEdgeToolTip",						"Установіть, щоб зафіксувати об'єкт відносно країв сторінки.",
+		"kResizeHeightWithPageToolTip",			"Установіть, щоб змінювати висоту об'єкта, коли змінюється висота сторінки.",
+		"kResizeWidthWithPageToolTip",			"Установіть, щоб змінювати ширину об'єкта, коли змінюється ширина сторінки.",
+		
+        // ----- Timing panel
+        "kTimingPanelPopup",					"Меню панелі “Час”",    
+		"kTimingSubMenu",						"Ч&ас",
+		"kTimingPanelName",						"Час",	
+		"kTimingPanelEventStaticText",			"Подія: ",
+		"kTimingPanelDelayStaticText",			"Затримка: ",
+        "kTimingPanelDelaySecondStaticText",	"с",
+        "kTimingPanelDelaySecondsStaticText",	"с",
+        "kTimingPanelAssignPageLoadEvent",		"Перепризначити параметр “При завантаженні сторінки”.",
+        "kTimingPanelAssignStateLoadEvent",		"Перепризначити параметр “При завантаженні стану”.",
+        "kTimingPanelAssignPageClickEvent",		"Перепризначити параметр “При натисканні сторінки”.",
+        "kTimingPanelRemoveItem",				"Видалити елемент",
+        "kTimingPanelEventDropDownTip",			"Для продовження треба клацнути",
+        "kTimingPanelGroupButtonTip",			"Відтворити разом",
+        "kTimingPanelUngroupkButtonTip",		"Відтворити окремо",
+        "kTimingPanelPreviewButtonTip",			"Переглянути розворот",
+        "kUnassignedEntry",						"Не призначено",
+        "kTimingPanelLinkedItemStaticText",			"Зв'язані елементи:",	
+        "kTimingPanelPlayLinkedItemStaticText",		"Відтворити: ",
+        "kTimingPanelPlayLinkedItemTimeStaticText",	"раз",
+        "kTimingPanelPlayLinkedItemTimesStaticText","разів",
+        "kTimingPanelLoopCheckBoxLabel",		"Цикл",
+        "kTimingPanelLinkedItemGroupWidgetTip",	"Об'єкти відтворюються разом (клацніть, щоб виділити групу)", 
+
+        // HTML Preview menu items
+        "kHTMLFXLPreviewSpread",				"Попередній перегляд розвороту: у EPUB",
+		// ----- Menu Strings
+		"kTransitionPanelChooseAction",				"&Вибрати...",
+		"kTransitionPanelApplyToAllSpreadsAction",	"&Застосувати до всіх розворотів",
+		"kTransitionPanelClearAllTransitionsAction","Очистити в&се",
+		
+		// ----- Tips strings
+		"kApplyToAllSpreadsButtonTip",			"Застосувати до всіх розворотів",
+		"kMotionPathTipStr",					"Шлях руху, натисніть для редагування",
+		"kEasingPathTipStr",					"Контур сповільнення/прискорення",
+	#ifdef WINDOWS
+		"kPreviewSpreadButtonToolTip",			"Попередній перегляд розвороту: у EPUB.",
+	#else
+		"kPreviewSpreadButtonToolTip",			"Попередній перегляд розвороту: у EPUB.",			
+	#endif
+				
+		// ----- XFL Export Dialogs
+
+		"kXFLExport",						"Експортувати Flash CS6 Professional (FLA)",
+		"kSizePixels",						"Розмір (пікселі):",
+		"kPagesStr",						"Сторінки:",
+		"kExportStr",						"Експорт:",
+		"kSpreadsStr",						"Роз&вороти",
+		"kGenerateHTMLStr",					"Створити файл HT&ML",
+		"kFlashText",						"Класичний текст Flash",
+		"kVectorText",						"Конвертувати в контури",
+		"kRasterText",						"Перетворити на пікселі",
+		"kVellumText",						"Текст Flash TLF",
+		"kInsertHyphensStr",				"В&ставити точки переносів за бажанням",
+		"kFitToSize",						"&Припасувати до:",
+		"kWidthSize",						"Ши&рина:",
+		"kHeightSize",						"&Висота:",
+		"kSelectionExportedStr",			"Виді&лення",
+		"kAllPagesExported",				"&Усі",
+		"kAllPagesExportedStr",				"&Усі сторінки",
+		"kPageRangeExported",				"&Діапазон:",
+		"kScaleSize",						"&Масштаб:",
+		"kTextStr",							"Те&кст:",
+		"kInteractivityStr",				"Інтерактивність:",
+		"kDynamicMediaStr",					"Інтерактивність та мультимедія:",
+		"kImageCompStr",					"Стискання &зображення:",
+		"kQualityStr",						"Якість &JPEG:",
+		"kCurveQualityStr",					"&Якість кривої:",
+		"kInclButtonsStr",					"Включити &кнопки",
+		"kInclHyperLinkStr",				"Включити гіпер&посилання",
+		"kInclPageTrans",					"Включити переходи між ст&орінками",
+		"kIncludePageCurl",					"Вк&лючити інтерактивне перегортання сторінок",
+		"kIncludeAllStr",					"&Включати все",
+		"kAppearanceOnlyStr",				"Лише в&игляд",
+		"kBackgroundStr",					"Фон:",
+		"kPaperColorStr",					"К&олір паперу",
+		"kTransparentStr",					"&Прозорий",
+		"kFramesPerSecStr",					"кадрів на секунду",
+		"kPageTransitionsStr",				"Переходи між ст&орінками:",
+		"kNone",							"Немає",
+		"kFromDocument",					"З документа",
+		"kOptionsStr",						"Параметри:",
+		"kDescriptionStr",					"Опис:",
+		"kFrameRateStr",					"&Частота кадрів:",
+		"kImageCompAuto",					"Авто",
+		"kJPG_Lossy",						"JPEG",
+		"kJPG_LossyStr",					"JPEG (із втратами)",
+		"kPNG_Lossless",					"Без втрат (Нічого не робити)",
+		"kPNG_LosslessStr",					"PNG (без втрат)",
+		"kMinimumQual",						"Мінімальна",
+		"kLowQual",							"Низька",
+		"kMediumQual",						"Середня",
+		"kHighQual",						"Висока",
+		"kMaximumQual",						"Максимальна",
+		"kRasterizeStr",					"Растери&зувати сторінки",
+		"kFlattenXPStr",					"Згла&джування прозорості",
+		"k1280x800",						"1280 x 800",
+		"k1024x768",						"1024 x 768",
+		"k800x600",							"800 x 600",
+		"k640x480",							"640 x 480",
+		"k250per",							"250%",
+		"k200per",							"200%",
+		"k150per",							"150%",
+		"k100per",							"100%",
+		"k75per",							"75%",
+		"k50per",							"50%",
+		"k25per",							"25%",
+
+		// Font Embedding
+		"kEmbeddedFontsTitle",				"Вбудовані шрифти (застосовується лише до класичного тексту Flash)",
+		"kTotalFonts",						"Загалом шрифтів: ",
+		"kFontLicensingInfo",				"Інформація про ліцензію шрифту",
+		"kEmbeddedFontName",				"Назва шрифту: ",
+		"kEmbeddedVendorID",				"Ідентифікатор постачальника: ",
+
+		// Add Page Transition dialog
+		"kPageTransitionsDialogTitle",			"Переходи між сторінками",
+		"kPageTransitionApplyToAllSpreads",		"Застосувати до всіх розворотів",
+		"kZoomInOutString",						"Збільшення/зменшення", 
+		
+		
+		//	Animation UI
+		"kAnimationUIPanelPopup",				"Меню панелі “Користувацький інтерфейс анімації”",
+		"kAnimationUISubMenu",					"Анімація",
+		"kAnimationUIPresetPopupMenu",			"Меню стилів “Користувацький інтерфейс анімації”",
+		"kMotionPresetsNoneTextkey",			"Немає",
+		"kAnimationUILoadPresetMenuItem",		"Завантаження стилю...",
+		"kAnimationUISaveAsPresetMenuItem",		"Зберегти як...",
+		"kAnimationUISavePresetMenuItem",		"Зберегти",
+		"kAnimationUIDeletePresetMenuItem",		"Видалити",
+
+		"kAnimationUIConvertToMotionPathMenuItem",	"Конвертувати у шлях руху",
+		"kAnimationUITestInBrowserMenuItem",	"Перевірити у веб-переглядачі...",
+		"kCustomPresetName",					"Стиль руху",
+		"kAnimationUIEventSeparator",			", ",
+		
+		"kAnimationUIPanelName",				"Анімація",
+		"kAnimationUIPreviewStaticTextLabel",	"Перегляд",
+		"kAnimationUINameStaticTextLabel",		"Ім'я:",
+		"kAnimationUIPresetStaticTextLabel",	"Стиль:",
+		"kAnimationUICustomPreset",				"Власні",
+		"kAnimationUIMixed",					"Змішаний",
+		"kAnimationUIMixed:",					"Змішаний: ",
+		"kAnimationUIChoose",					"Вибрати",
+		"kAnimationUIEventStaticTextLabel",		"Подія (події):",
+		"kAnimationUIDurationStaticTextLabel",	"Тривалість:",
+		"kAnimationUISecondStaticTextLabel",	"с",
+		"kAnimationUISecondsStaticTextLabel",	"с",
+		"kAnimationUIPlayStaticTextLabel",		"Відтворити:",
+		"kAnimationUITimeStaticTextLabel",		"раз",
+		"kAnimationUITimesStaticTextLabel",		"разів",
+		"kAnimationUILoopCheckBoxLabel",		"Цикл",
+		"kAnimationUISpeedStaticTextLabel",		"Швидкість:",
+		"kAnimationUIVisibilityStaticTextLabel","Видимість:",
+		"kAnimationUIPropertyStaticTextLabel",	"Властивості",
+		"kAnimationUIHideBeforeAnimateCheckBoxLabel","Сховати до початку анімування",
+		"kAnimationUIHideAfterAnimateCheckBoxLabel","Сховати після анімування",
+		"kAnimationUIOnButtonEvent",			"При події натискання кнопки",
+		"kAnimationUIOnRollOffCheckBoxLabel",	"Змінити напрямок при відведенні",
+		"kAnimationUIEaseIn",					"Сповільнення",
+		"kAnimationUIEaseOut",					"Прискорення",
+		"kAnimationUIEaseInAndOut",				"Сповільнення та прискорення",
+		"kAnimationUIFadeIn",					"Поступова поява",
+		"kAnimationUIFadeOut",					"Поступове згасання",
+		"kAnimationUINone",						"Немає",
+		"kAnimationUIFromPreset",				"Зі стилю",
+		"kAnimationUIPropertyDesignStaticTextLabel",		"Анімувати:",
+		"kAnimationUIPropertyDesignCheckBoxLabel",			"Кінець анімації",
+		"kAnimationFromStaticTextLabel",					"Створити анімацію з",
+		"kAnimationToStaticTextLabel",						"Створити анімацію у",
+		"kAnimationUIPropertyDesignScaleStaticTextLabel",	"Масштаб",
+		"kAnimationUIPropertyDesignScaleHorzStaticTextLabel",	"Ш:",
+		"kAnimationUIPropertyDesignScaleVertStaticTextLabel",	"В:",
+		"kAnimationUIPropertyDesignRotateStaticTextLabel",	"Поворот:",
+		"kAnimationUIPropertyDesignOpacityStaticTextLabel",	"Непрозорість:",
+		"kAnimationUIPropertyDesignProxyStaticTextLabel",	"Походження:",
+		
+		"kAnimationUIFrom",						"З поточного вигляду",
+		"kAnimationUITo",						"До поточного вигляду",
+		"kAnimationUIOffset",					"У поточне розташування",
+
+		"kAnimationPanelButtonTriggerTip",		"Створити кнопку-запускач (клацніть значок, а потім клацніть будь-який об'єкт, щоб запустити цю анімацію)",
+		"kAnimationPanelShowProxyTip",			"Відобразити анімацію з екранною роздільною здатністю",
+		"kAnimationPanelLockIconTip",			"Зберегти значення масштабу",
+		"kAnimationPanelEventMenuSelectorTip",	"Виберіть запускну подію, натиснувши стрілку вниз",
+		"kAnimationPanelEventInfoTip",			"Запускні події для анімації",
+		"kAnimationPanelEventInfoDefaultTip",	"Запускна подія для анімації за замовчуванням",
+		"kAnimationPanelPreviewButtonTip",		"Переглянути поточне виділення",
+		"kAnimationPanelConvertToMotionPathTip","Конвертувати у шлях руху",
+		"kAnimationUIFromTip",					"Використовує поточні параметри об'єкта як початковий вигляд анімації під час її виконання.",
+		"kAnimationUIToTip",					"Використовує поточні параметри об'єкта як кінцевий вигляд анімації під час її виконання.",
+		"kAnimationUIOffsetTip",				"Використовує поточні властивості об'єкта як початковий вигляд, а поточне розташування – як кінцеве розташування анімації під час виконання.",
+		"kAnimationUIAnimationOptionTip",		"Параметри анімації",
+		"kAnimationUITrashTip",					"Видалити анімацію",
+		"kAnimationUIXFPointTip",				"Змінити вихідну точку для масштабування та повороту.",
+		"kAnimationUIShowTimingButtonTip",		"Відобразити панель “Час”",
+		
+		"kAnimationUISaveAsPresetTitle",		"Зберегти вибраний стиль як",
+		"kAnimationUISavePresetTitle",			"Зберегти стиль",
+		"kAnimationUISavePresetNameLabel",		"Ім'я:",
+
+		"kAnimationUIEventPopupMenu",			"Спливаюче меню події",
+		"kAnimationUICreateButtonTriggerCmd",	"Створити кнопку-запускач",
+		"kAnimationUICreateSelfTriggerCmd",		"Створити самозапуск",
+		
+		"kAnimationUIManagePresetsDialogTitle",	"Керування стилями",
+		"kAnimationUIManagePresetsDoneButton",	"Готово",
+		"kAnimationUIManagePresetsDeleteButton","&Видалити",
+		"kAnimationUIManagePresetsDuplicateButton","&Створити дублікат",
+		"kAnimationUIManagePresetsLoadButton",	"&Завантажити...",
+		"kAnimationUIManagePresetsSaveAsButton","&Зберегти як...",
+		"kAnimationUIManagePresetMenuItem",		"Керування стилями...",
+		"kAnimationUIManagePresetPresetsSeparator", "--------------------",
+		"kAnimationUIManagePresetNamePrefix",	"[",
+		"kAnimationUIManagePresetNameSuffix",	"]",
+	}
+};
+
+#endif // __ODFRC__

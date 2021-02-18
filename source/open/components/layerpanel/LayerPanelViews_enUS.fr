@@ -1,0 +1,152 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/layerpanel/LayerPanelViews_enUS.fr $
+//  
+//  Owner: Michael Burbidge
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "IconStyleDefs.h"
+#include "InterfaceColorDefines.h"
+#include "TreeViewDefs.h"
+
+#ifdef __ODFRC__
+
+resource LayerPanelWidget (kLayerPanelRsrcID + index_enUS)
+{
+	__FILE__, __LINE__,
+	kLayerParentWidgetId, kPMRsrcID_None,			// WidgetId, RsrcId
+	kBindAll,					// Frame binding
+	Frame(0, 0, kCC2016PanelStandardWidth, kCC2016PanelWithTreeWidgetAndFooterHeight),				// Frame
+	kTrue, kTrue,				// Visible, Enabled
+	kTrue,						// EraseBeforeDrawing
+	kInterfacePaletteFill,		// Erase to color
+	"#LayerHierPanelName",					// Panel name
+	{	
+        GenericPanelWithBorderWidget
+        (
+            kInvalidWidgetID, 
+            kPMRsrcID_None,
+            kBindAll,
+            Frame(0,1,kCC2016PanelStandardWidth,kCC2016PanelStandardTreeWidgetHeight + 1)		// Frame
+            kTrue, kTrue,
+            "",
+            {
+				LayerPanelTreeWidget
+				(
+					kLayerPanelTreeWidgetID, kPMRsrcID_None,// WidgetId, RsrcId
+					kBindAll,
+					Frame(0, 1, kCC2016PanelStandardWidth - 1, kCC2016PanelStandardTreeWidgetHeight + 1)		// Frame
+					kTrue, kTrue,				// Visible, Enabled
+					kTrue,						// EraseBeforeDraw. This is made true so that it erases the lower line of the above SeparatorWidget, removing the bevel effect.
+					kInterfacePaletteFill,		// InterfaceColor
+					"",// name
+					kHideRootNode, //Options
+					kFalse,						//Use H Scroll bar
+					kTrue,						//Use V scroll bar
+					kCC2016PanelTreeNodeHeight,							// Vertical Scroll Button Increment
+					kCC2016PanelTreeNodeHeight,							// Vertical Thumb Scroll Increment
+					10,							// Horizontal Scroll Button Increment - Not Used
+					10,							// Horizontal Thumb Scroll Increment - Not Used
+					2,							// Items selectable, 0 = No Selection, 1 = Single Selection, 2 = Multiple Selection
+					kTrue,						// Allow children from multiple parents to be selected
+					kTrue,						// Allow discontiguous selection
+					{
+					},
+					{{
+						IID_IOBSERVER, // need to attach this one first, so it rebuilds the tree
+						IID_ISELECTIONOBSERVER,
+					}},
+	
+				)
+			}
+		),
+ 
+ 		// ----- Layer control strip. (status, new & delete buttons)
+		GenericPanelWidget
+		(
+			kLayerControlStripWidgetID, kPMRsrcID_None,			// WidgetId, RsrcId
+			kBindBottom | kBindRight | kBindLeft,				// Frame binding
+			Frame(0,kCC2016PanelStandardTreeWidgetHeight,kCC2016PanelStandardWidth,kCC2016PanelWithTreeWidgetAndFooterHeight)		// Frame
+			kTrue, kTrue,										// Visible, Enabled
+			""
+			{
+				StaticTextWidget
+				(
+					kLayerStatusWidgetID, kSysStaticTextPMRsrcId,		// WidgetId, RsrcId
+					kBindBottom | kBindRight | kBindLeft,								// Frame binding
+					Frame(kCC2016StandardGapBetweenWidgets, 0, kCC2016PanelStandardWidth - (2*kCC2016PanelIconWidth) - kCC2016PanelBottomResizeWidgetWidth - kCC2016StandardGapBetweenWidgets, kCC2016PanelIconHeight)		// Frame
+					kTrue, kTrue, kAlignLeft,							// Visible, Enabled
+					kDontEllipsize, kTrue,										// Ellipsize style, Convert ampersands
+					"",													// Text
+					0
+				),
+	 			NewLayerButton
+				(
+					kLayerNewButtonWidgetID, kIconNew, kApplicationRsrcPluginID,	// WidgetId, RsrcId
+					kBindBottom | kBindRight,							// Frame binding
+					Frame(kCC2016PanelStandardWidth - (2*kCC2016PanelIconWidth) - kCC2016PanelBottomResizeWidgetWidth,0,kCC2016PanelStandardWidth - kCC2016PanelIconWidth - kCC2016PanelBottomResizeWidgetWidth,kCC2016PanelIconHeight)		// Frame
+					kTrue, kTrue,										// Visible, Enabled
+					kADBEIconSuiteButtonType,
+				),
+				DeleteLayerButton
+				(
+					kLayerDeleteButtonWidgetID, kIconDelete, kApplicationRsrcPluginID,// WidgetId, RsrcId
+					kBindBottom | kBindRight,							// Frame binding
+					Frame(kCC2016PanelStandardWidth - kCC2016PanelIconWidth - kCC2016PanelBottomResizeWidgetWidth,0,kCC2016PanelStandardWidth - kCC2016PanelBottomResizeWidgetWidth,kCC2016PanelIconHeight)		// Frame
+					kTrue, kTrue,										// Visible, Enabled
+					kADBEIconSuiteButtonType,
+				),
+			}
+		),
+	
+	},
+	"LayerPanelPopup",			// Popup menu name	
+}
+
+#define TREE_NODE_HEIGHT			kCC2016PanelTreeNodeHeight
+#define TREE_NODE_CONTENT_HEIGHT	kCC2016PanelTreeNodeContentHeight
+
+resource LayerTreeElement (kLayerPageItemElementPanelRsrcID + index_enUS)
+{
+	#include "LayerPanelViewsPageItemTreeNode.fr"
+}
+
+resource LayerTreeElement (kLayerElementPanelRsrcID + index_enUS)
+{
+	#include "LayerPanelViewsTreeNode.fr"
+}
+
+#undef TREE_NODE_HEIGHT
+#undef TREE_NODE_CONTENT_HEIGHT
+
+#define TREE_NODE_HEIGHT			kCC2016PanelTreeNodeSmallRowHeight
+#define TREE_NODE_CONTENT_HEIGHT	kCC2016PanelTreeNodeContentSmallRowHeight
+
+resource LayerTreeElement (kLayerPageItemElementSmallRowsPanelRsrcID + index_enUS)
+{
+	#include "LayerPanelViewsPageItemTreeNode.fr"
+}
+
+resource LayerTreeElement (kLayerElementSmallRowsPanelRsrcID + index_enUS)
+{
+	#include "LayerPanelViewsTreeNode.fr"
+}
+
+
+#endif

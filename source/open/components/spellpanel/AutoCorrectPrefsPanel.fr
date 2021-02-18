@@ -1,0 +1,129 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/spellpanel/AutoCorrectPrefsPanel.fr $
+//  
+//  Owner: Heath Horton
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//  
+//  Proj:	SpellPanel
+//  
+//========================================================================================
+
+#include "Widgets.fh"
+#include "SysControlIds.h"
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "SpellPanelID.h"
+#include "IDList.fh"
+#include "IDListPair.fh"
+#include "IControlViewDefs.h"
+
+
+#include "EveInfo.fh"
+#ifdef __ODFRC__
+
+resource IDList (kAutoCorrectPrefsDialogCreatorRsrcID)
+{
+	{
+		kGlobalPrefsDialogServiceImpl,
+	},
+};
+
+resource IDListPair (kAutoCorrectPrefsDialogCreatorRsrcID)	// this resource specifies which resource to use in creating the
+{// panel, depending upon which dialog the panel is going into
+	{
+		kGlobalPrefsDialogServiceImpl, kAutoCorrectPrefsPaletteRsrcID, kSpellPanelPluginID
+	},
+};
+
+
+//========================================================================================
+// TYPES
+//========================================================================================
+
+// NOTE: Put ClassID in GlobalPrefsDialog.fr to control order dialogs appear in dialog.
+type AutoCorrectPrefsPanel (kViewRsrcType) : PrimaryResourcePanelWidget (ClassID = kAutoCorrectPrefsDialogBoss) {
+	WidgetEveInfo;
+};
+
+//type AutoCorrectListWidget (kViewRsrcType) : WidgetListBoxWidgetN (ClassID = kAutoCorrectListObserverBoss ) { };
+type EVEAutoCorrectTreeViewWidget (kViewRsrcType) : TreeViewWidget (ClassID = kAutoCorrectTreeViewWidgetBoss ) {
+	WidgetEveInfo;
+};
+type AutoCorrectTreeNodeWidget (kViewRsrcType) : PrimaryResourcePanelWidget (ClassID = kAutoCorrectTreeNodeWidgetBoss)  {
+	WidgetEveInfo;
+};
+
+type EVEAutoCorrectAddButtonWidget (kViewRsrcType) : ButtonWidget (ClassID = kAutoCorrectAddButtonBoss)  {
+	WidgetEveInfo;
+};
+type EVEAutoCorrectEditButtonWidget (kViewRsrcType) : ButtonWidget (ClassID = kAutoCorrectEditButtonBoss)  {
+	WidgetEveInfo;
+};
+type EVEAutoCorrectRemoveButtonWidget (kViewRsrcType) : ButtonWidget (ClassID = kAutoCorrectRemoveButtonBoss)  {
+	WidgetEveInfo;
+};
+type EVEAutoCorrectCheckBoxWidget (kViewRsrcType) : CheckBoxWidget (ClassID = kAutoCorrectCheckBoxObserverBoss)  {
+	WidgetEveInfo;
+};
+type EVEAutoCorrectCapCheckBoxWidget (kViewRsrcType) : CheckBoxWidget (ClassID = kAutoCorrectCapCheckBoxObserverBoss)  {
+	WidgetEveInfo;
+};
+
+type AutoCorrectAddPairDialog (kViewRsrcType) : DialogBoss (ClassID = kAutoCorrectAddPairDialogBoss) {
+	WidgetEveInfo;
+};
+
+type EVEAutoCorrectLanguageWidget (kViewRsrcType) : DropDownListWidget (ClassID = kAutoCorrectLanguageObserverBoss) {
+	WidgetEveInfo;
+};
+
+
+//========================================================================================
+// RESOURCES
+//========================================================================================
+
+resource LocaleIndex (kAutoCorrectPrefsPaletteRsrcID)
+{
+	kViewRsrcType,
+	{
+		kWildFS, k_Wild, 	kAutoCorrectPrefsPaletteRsrcID + index_enUS
+	}
+}
+
+resource LocaleIndex (kAutoCorrectTreeWidgetNodeRsrcID)
+{
+	kViewRsrcType,
+	{
+		kWildFS, k_Wild, 	kAutoCorrectTreeWidgetNodeRsrcID + index_enUS
+	}
+}
+
+resource LocaleIndex (kAutoCorrectAddPairDialogRsrcID)
+{
+	kViewRsrcType,
+	{
+		kWildFS, k_Wild, 	kAutoCorrectAddPairDialogRsrcID + index_enUS
+	}
+}
+
+
+#endif // __ODFRC__
+
+#include "AutoCorrectPrefsPanel_enUS.fr"
+

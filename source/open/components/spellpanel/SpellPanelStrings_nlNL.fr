@@ -1,0 +1,159 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kSpellPanelStringsRsrcID + index_nlNL)
+{
+	k_nlNL,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{				
+		// ----- Main menu strings
+		"SpellingMenu",					"Spellin&g",
+		"Check Spelling...",			"Spelling&controle...",
+		"Dynamic SpellCheck",			"Dyna&mische spelling",
+		"Autocorrect",					"AutoCorrectie",
+		"Auto Correct",					"&AutoCorrectie",
+		"AutoCorrect",					"AutoCorrectie",
+
+		// ----- Window strings
+		"corrected",					"gecorrigeerd",
+		"misspelled",					"onjuist gespeld",
+		
+		// ----- Scope strings
+		
+		"[No spelling]",				"[Geen spelling]",
+		"Auto",							"Automatisch",
+		"Document",						"Document",
+		"Story",						"Artikel",
+		"Stories",						"Artikelen",
+		"Selection",					"Selectie",
+		
+		// ----- Panel strings		
+		"Spelling",						"Spelling",
+		"&Spelling...",					"&Spelling...",
+		"Auto Correct...",				"A&utoCorrectie...",
+		"[No language]",				"[Geen taal]",
+		"AutoCorrectEnable",			"&AutoCorrectie inschakelen",
+		"AutoCorrectCapitalizationErrors",			"AutoCorrectie &hoofdletterfouten",
+		"A&dd...",						"Toe&voegen...",		// Opens a dialog
+		"EditAutoCorrectWord",			"Be&werken...",		// Opens a dialog
+		"Correction",					"Correctie",
+		"Misspelled Word",				"Onjuist gespeld woord:",
+
+		// ----- Dialog strings
+		"Check Spelling",				"Spellingcontrole",
+		"&Change To:",					"&Wijzigen &in:",
+		
+		"Change To",					"Wijzigen in",
+		"&Suggested Corrections:",		"&Suggesties:",
+		"Language:",					"Taal:",
+		"Sea&rch:",						"&Zoeken:",
+		"Include Overset",				"Inclusief overlopend",
+		"&Done",							"&Gereed",
+		"C&hange",						"Wijzig&en",
+		"S&tart",						"S&tarten",
+		"Chan&ge All",					"Alles wijzige&n",
+		"Skip",							"Overslaan",	
+		"kSkipButtonInSpellingDialog",  "&Overslaan",
+		"Ignore",						"Negeren",
+		"&Ignore All",					"&Alles negeren",
+		"&AddAndContinue",				"&Toevoegen",			// Adds to dictionary automatically, continues spelling
+		"Dic&tionary...",				"Woord&enboek...",	// Launches Dict Editor dialog
+		"Add To:",						"T&oevoegen aan:",
+
+		// Label strings in Spell Check dialog.
+		"Ready to Spell Check:", 			"Gereed voor spellingcontrole",
+		"Misspelled Word:",					"Onjuist gespeld woord:",
+		"Unknown Word - No Suggestions:", 	"Onbekend woord - Geen suggesties:",
+		"Not in Dictionary:",				"Niet in woordenboek:",
+		"Repeated Word:",					"Herhaald woord:",
+		"Uncapitalized Word:",				"Woord zonder hoofdletters:",
+		"Uncapitalized Sentence:",			"Zin zonder hoofdletters:",
+		"Duplicate Word:",					"Dubbel woord:",
+		"Capitalization Error:",			"Fout in hoofdlettergebruik:",
+		"Spell Check Complete:",			"Spellingcontrole is voltooid",
+		
+		"SpellCheckCompleteAlertStr",			"Spellingcontrole is voltooid.",	// Alert string at completion of spelling.
+
+		"Misspelled Word (Overset):",					"Verkeerd gespeld woord: (overlopende tekst)",
+		"Unknown Word - No Suggestions (Overset):", 	"Onbekend woord: (overlopende tekst)",
+		"Not in Dictionary (Overset):",					"Niet in woordenboek: (overlopende tekst)",
+		"Repeated Word (Overset):",						"Herhaald woord: (overlopende tekst)",
+		"Uncapitalized Word (Overset):",				"Woord zonder hoofdletters: (overlopende tekst)",
+		"Uncapitalized Sentence (Overset):",			"Zin zonder hoofdletters: (Overlopend)",
+
+		"Misspelled Word (In Table):",					"Verkeerd gespeld woord: (in tabel)",
+		"Unknown Word - No Suggestions (In Table):", 	"Onbekend woord: (in tabel)",
+		"Not in Dictionary (In Table):",					"Niet in woordenboek: (in tabel)",
+		"Repeated Word (In Table):",						"Herhaald woord: (in tabel)",
+		"Uncapitalized Word (In Table):",				"Woord zonder hoofdletters: (in tabel)",
+		"Uncapitalized Sentence (In Table):",			"Zin zonder hoofdletters: (in tabel)",
+
+		"Misspelled Word (Deleted Text):",				"Verkeerd gespeld woord: (verwijderde tekst)",
+		"Unknown Word - No Suggestions (Deleted Text):","Onbekend woord: (verwijderde tekst)",
+		"Not in Dictionary (Deleted Text):",			"Niet in woordenboek: (verwijderde tekst)",
+		"Repeated Word (Deleted Text):",				"Herhaald woord: (verwijderde tekst)",
+		"Uncapitalized Word (Deleted Text):",			"Woord zonder hoofdletters: (verwijderde tekst)",
+		"Uncapitalized Sentence (Deleted Text):",		"Zin zonder hoofdletter: (verwijderd)",
+		
+		"Misspelled Word (Hidden):",					"Woord met spelfout: (verborgen item)",
+		"Unknown Word - No Suggestions (Hidden):", 		"Onbekend woord: (verborgen item)",
+		"Not in Dictionary (Hidden):",					"Niet in woordenboek: (verborgen item)",
+		"Repeated Word (Hidden):",						"Dubbel woord: (verborgen item)",
+		"Uncapitalized Word (Hidden):",					"Woord zonder hoofdletter: (verborgen item)",
+		"Uncapitalized Sentence (Hidden):",				"Zin zonder hoofdletter: (verborgen)", // Shortened to "Hidden" for space. Like the "Overset" case above.
+
+//		"Spelling Preferences", 						"Spelling Preferences", // Note to localizer: this string moved to SpellingServiceStrings.fr
+		"Find", 										"Zoeken",
+		"&Misspelled Words", 							"&Verkeerd gespelde woorden",
+		"&Repeated Words", 								"&Herhaalde woorden",
+		"&Uncapitalized Words", 						"&Woorden zonder hoofdletters",
+		"Uncapitalized &Sentences", 					"&Zinnen zonder hoofdletters",
+		"Misspelled Words Underline Color:",			"Onjuis&t gespelde woorden:",
+		"Repeated Words Underline Color:",				"Herhaa&lde woorden:",
+		"Uncapitalized Words Underline Color:",			"W&oorden zonder hoofdletter:",
+		"Uncapitalized Sentences Underline Color:",		"Zi&nnen zonder hoofdletter:",
+		"Dynamic Spellchecking",						"Dynamische spelling",
+		
+		"Underline Color",								"Onderstrepingskleur:",
+		
+		"&Enable Dynamic Spelling",						"Dynamische spelling &inschakelen",
+		
+		"Search is completed.  ^1  replacement(s) made.", "Zoekopdracht is uitgevoerd. ^1 items zijn vervangen.", 
+
+		"Add",											"Toevoegen",
+		"Re&move",										"Ve&rwijderen",
+		"Misspelled:",									"Onjuist gespeld:",
+		"Correction:",									"Correctie:",
+		"Language:",									"Taal:",
+		"&Language:",									"&Taal:",
+		"AddToAutoCorrectList",							"Toevoegen aan AutoCorrectielijst",
+		"EditAutoCorrectList",							"AutoCorrectielijst bewerken",
+
+		"ACAlert1",		"Lege invoer is niet toegestaan.",
+		"ACAlert2",		"De spelling en het hoofdlettergebruik van het woord mogen niet gelijk zijn aan de spelling en het hoofdlettergebruik van de correctie.",
+		"ACAlert3",		"Dit onjuist gespelde woord en de bijbehorende correctie staan al in de lijst.",
+		"ACAlert4",		"Kan invoer niet maken. Het bevat meer dan het maximaal toegestane aantal tekens (64).",
+		"ACAlert5",		"Invoer bevat ongeldig teken.",
+		"ACAlert6",		"Spatie is niet toegestaan in het onjuist gespelde woord.",
+
+	}
+};
+
+#endif // __ODFRC__

@@ -1,0 +1,122 @@
+// =================================================================================================
+// ADOBE SYSTEMS INCORPORATED
+// Copyright 2014 Adobe Systems Incorporated
+// All Rights Reserved
+//
+// NOTICE: Adobe permits you to use, modify, and distribute this file in accordance with the terms
+// of the Adobe license agreement accompanying it.
+// =================================================================================================
+
+#if AdobePrivate
+// =================================================================================================
+// Change history
+// ==============
+//
+// Writers:
+//  ADC	Amandeep Chawla
+//
+// mm-dd-yy who Description of changes, most recent on top
+//
+// 06-06-14 ADC 5.6-c014 [3768055] Fix warnings in public headers and client glue code which appear
+//						 while building XMP components in XCode 5.0.2 with "Recommended Settings".
+// 05-19-14 ADC 5.6-c012 Refactoring XMPCommon code and appropriate changes in XMPCore and XMPCompareAndMerge.
+// 02-27-14 HK  5.6-c006 Implementation of Remove API + Adding support for creating empty DOM nodes.
+// 02-24-14 HK  5.6-c004 Added new internal XMP DOM interfaces + fixed memory leaks + implemented qualifiers for new XMP DOM.
+// 02-24-14 ADC 5.6-c001 XMPCommon Framework and XMPCore new APIs ported to Mac Environment.
+// 02-13-14 ADC 5.5-c031 Refactoring XMPCore, implementing few APIs and fixing issues.
+// 02-12-14 HK  5.5-c028 Done refactoring of XMP DOM interfaces and implementations.
+// 02-09-14 ADC 5.5-c026 Re-factoring of XMPCommon Framework
+// 02-05-14 ADC 5.5-c024 Added a new API to the XMPCore to return pointer to interface
+//						 IXMPDOMFactory
+//
+// =================================================================================================
+#endif // AdobePrivate
+
+#include "XMPCore/Interfaces/IXMPDOMFactory.h"
+#include "XMPCommon/Utilities/TSmartPointers.h"
+#include "XMPCommon/XMPCommonFwdDeclarations.h"
+#include "XMPCore/XMPCoreFwdDeclarations.h"
+
+#undef CALL_EQUIVALENT_VIRTUAL_FUNCTION_NO_ARGS
+#define CALL_EQUIVALENT_VIRTUAL_FUNCTION_NO_ARGS( nameSpace, className, functionName ) {			\
+			pIError error ( NULL );																	\
+			p##className##_base ptr = functionName( error );										\
+			if ( error )																			\
+				throw nameSpace::MakeUncheckedSharedPointer( error );								\
+				return nameSpace::MakeSharedPointer< className##_latest, className##_base >( ptr );	\
+		}
+
+#undef CALL_EQUIVALENT_VIRTUAL_FUNCTION
+#define CALL_EQUIVALENT_VIRTUAL_FUNCTION( nameSpace, className, functionName, ... ) {			\
+			pIError error ( NULL );																\
+			p##className##_base ptr = functionName( __VA_ARGS__, error );						\
+			if ( error )																		\
+				throw nameSpace::MakeUncheckedSharedPointer( error );							\
+			return nameSpace::MakeSharedPointer< className##_latest, className##_base >( ptr );	\
+		}
+
+namespace NS_XMPCORE {
+	spIXMPPathSegment_latest IXMPDOMFactory_v1::CreatePropertySegment( const char * nameSpace, const char * name ) {
+		CALL_EQUIVALENT_VIRTUAL_FUNCTION ( NS_XMPCOMMON, IXMPPathSegment, CreatePropertySegment, nameSpace, name);
+	}
+
+	spIXMPPathSegment_latest IXMPDOMFactory_v1::CreateArrayIndexSegment( const char * nameSpace, size_t index ) {
+		CALL_EQUIVALENT_VIRTUAL_FUNCTION ( NS_XMPCOMMON, IXMPPathSegment, CreateArrayIndexSegment, nameSpace, index);
+	}
+
+	spIXMPPathSegment_latest IXMPDOMFactory_v1::CreateQualifierSegment( const char * nameSpace, const char * name ) {
+		CALL_EQUIVALENT_VIRTUAL_FUNCTION ( NS_XMPCOMMON, IXMPPathSegment, CreateQualifierSegment, nameSpace, name);
+	}
+	
+	spIXMPPathSegment_latest IXMPDOMFactory_v1::CreateQualifierSelectorSegment( const char * nameSpace, const char * name, const char * value ) {
+		CALL_EQUIVALENT_VIRTUAL_FUNCTION ( NS_XMPCOMMON, IXMPPathSegment, CreateQualifierSelectorSegment, nameSpace, name, value);
+	}
+
+	spIXMPPath_latest IXMPDOMFactory_v1::CreateEmptyPath() {
+		CALL_EQUIVALENT_VIRTUAL_FUNCTION_NO_ARGS ( NS_XMPCOMMON, IXMPPath, CreateEmptyPath);
+	}
+
+	spIXMPPath_latest IXMPDOMFactory_v1::CreatePathByParsing( const char * str ) {
+		CALL_EQUIVALENT_VIRTUAL_FUNCTION ( NS_XMPCOMMON, IXMPPath, CreatePathByParsing, str);
+	}
+	
+	spIXMPMetadata_latest IXMPDOMFactory_v1::CreateDOMFromPacket( const char * packet, SizeT length ) {
+		CALL_EQUIVALENT_VIRTUAL_FUNCTION ( NS_XMPCOMMON, IXMPMetadata, CreateDOMFromPacket, packet, length);
+	}
+
+	spIXMPQualifiers_latest IXMPDOMFactory_v1::CreateQualifiers (){
+		CALL_EQUIVALENT_VIRTUAL_FUNCTION_NO_ARGS ( NS_XMPCOMMON, IXMPQualifiers, CreateQualifiers);
+	}
+
+	spIXMPSimpleNode_latest IXMPDOMFactory_v1::CreateSimpleNode( const char * nameSpace, const char * name ){
+		CALL_EQUIVALENT_VIRTUAL_FUNCTION ( NS_XMPCOMMON, IXMPSimpleNode, CreateSimpleNode, nameSpace, name);
+	}
+
+	spIXMPArrayNode_latest IXMPDOMFactory_v1::CreateArrayNode( eXMPArrayNodeForm form, const char * nameSpace, const char * name ){
+		CALL_EQUIVALENT_VIRTUAL_FUNCTION ( NS_XMPCOMMON, IXMPArrayNode, CreateArrayNode, form, nameSpace, name);
+	}
+
+	spIXMPStructNode_latest IXMPDOMFactory_v1::CreateStructNode( const char * nameSpace, const char * name ){
+		CALL_EQUIVALENT_VIRTUAL_FUNCTION ( NS_XMPCOMMON, IXMPStructNode, CreateStructNode, nameSpace, name);
+	}
+}
+
+static NS_XMPCORE::pIXMPDOMFactory_latest sDOMFactoryInstancePtr = NULL;
+
+template< >
+NS_XMPCORE::pIXMPDOMFactory_latest NS_XMPCOMMON::ITSingleton< NS_XMPCORE::IXMPDOMFactory_latest >::GetInstance() {
+	if ( sDOMFactoryInstancePtr == NULL )
+		sDOMFactoryInstancePtr = dynamic_cast< NS_XMPCORE::pIXMPDOMFactory_latest >( WXMPMeta_GetXMPDOMFactoryInstance_1() );
+	//TODO:@Aman: throw error on null ptr
+	return sDOMFactoryInstancePtr;
+}
+
+template< >
+void NS_XMPCOMMON::ITSingleton< NS_XMPCORE::IXMPDOMFactory_latest >::CreateInstance() {
+	GetInstance();
+}
+
+template< >
+void NS_XMPCOMMON::ITSingleton< NS_XMPCORE::IXMPDOMFactory_latest >::DestroyInstance() {
+	sDOMFactoryInstancePtr = NULL;
+}

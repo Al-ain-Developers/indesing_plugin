@@ -1,0 +1,43 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kInCopyFileActionsStringsRsrcID + index_koKR)
+{
+	k_koKR,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{
+		"&Update Design",		"디자인 업데이트(&U)",
+		"AlertUnableToSave",	"다음 내용을 저장할 수 없습니다.\n파일이 잠겨 있거나 파일을 변경할 권한이 없습니다.\n",
+		"Update^1Alert",		"일부 내용을 저장할 수 없습니다. 업데이트하면 변경 내용을 잃을 수 있습니다.\n“^1”의 최신 버전으로 업데이트하시겠습니까?",
+		"Undoable^1Save",		"디자인 업데이트는 진행하기 전에 모든 편집 가능한 내용을 저장합니다. [실행 취소] 명령은 업데이트로 인해 변경된 모든 사항들을 되돌릴 수 없습니다. \n\"^1\"(으)로 업데이트하시겠습니까?",
+		"AlertStoriesMissing",	"일부 내용 파일을 찾을 수 없으므로 편집할 수 없습니다. 파일을 원래 위치로 이동하거나 InDesign의 링크를 업데이트해 보십시오.",
+		"AlertStoriesMissingWF", "일부 내용 파일을 찾을 수 없으므로 편집할 수 없습니다. 서버에서 내용을 다운로드하여 문서를 다시 열어 보십시오.",
+		"Update",				"업데이트",
+		"&Revert Story",		"내용 되돌리기(&V)",
+//		"Revert Story",			"Revert Content", // Note to localizer: this string moved to InCopySharedStrings_enUS.fr
+		
+		"SaveAsFeatureLost",    "이 문서에는 이 파일 형식에서 지원되지 않는 기능이 포함되어 있을 수 있습니다. 계속하시겠습니까?",
+		"CannotSaveOntoLockedFile",		"지정된 파일은 문서 ^3에서 ^2의 \"^1\"이(가) 현재 체크아웃했습니다. 다른 파일 이름을 선택하거나  \"^1\"이 파일을 체크인하도록 하십시오.",
+		"CannotSaveOntoLockedFileMinimal",	"지정된 파일은 \"^1\"이(가) 현재 체크아웃했습니다. 다른 파일 이름을 선택하거나  \"^1\"이 파일을 체크인하도록 하십시오.",
+	}
+};
+
+
+#endif // __ODFRC__

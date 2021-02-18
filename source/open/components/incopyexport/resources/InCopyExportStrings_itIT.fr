@@ -1,0 +1,52 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// U.S. English strings
+//========================================================================================
+
+resource StringTable (kInCopyExportStringsRsrcID + index_itIT)
+{
+	k_itIT,								// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+
+	{
+		// ----- Miscellaneous strings
+		"Export Seq Name", 		"Esporta brano di InCopy",
+		"Text",					"Testo", // append "Text" to export name on a text story
+		
+		// ----- Export options dialog strings
+		"InCopyExportOptions",	"Opzioni di esportazione di Adobe InCopy",
+		"ExportOptions_DataType",	"&Codifica:",
+		"ExportOptions_UTF16",	"UTF16",
+		"ExportOptions_UTF8",	"UTF8",
+		"ExportOptions_DataOptions",	"Opzioni:",
+		"ExportOptions_StyleTable",	"Includi tabella &stili",
+		"ExportOptions_SwatchList",	"Includi e&lenco campioni",
+		"ExportOptions_XMPData",	"Includi &informazioni XMP",
+		"ExportOptions_StoryLabel",	"Etichetta &brano:",
+
+		//menu
+		"ExportMenu",				"&Esporta",
+		"kExportLayerToIC",			"&Livello...",
+		"kExportAllStoriesToIC",	"Tutti i b&rani...",
+		"kExportAllGraphicsToIC",	"Tutta la &grafica...",
+		"kExportAllItemsToIC",		"&Tutta la grafica e tutti i brani...",
+
+		"INCDFeatureLost",    "Questo brano potrebbe contenere funzioni non supportate da questo formato di file. Tali funzioni andranno perse quando il brano verrà aggiornato.",
+	}
+};
+
+#endif // __ODFRC__

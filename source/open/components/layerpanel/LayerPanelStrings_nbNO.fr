@@ -1,0 +1,142 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kLayerPanelStringsRsrcID + index_nbNO)
+{
+	k_nbNO,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{
+		// ----- Command strings
+
+		"Layer Options",				"Lagvalg",
+		"New Layer",					"Nytt lag",
+		"Layer Deletion",				"Slett lag",
+		"Delete Unused Layers",			"Slett ubrukte lag",
+		"Lock Others",					"Lås andre",
+		"#UnlockOthers",					"Lås opp andre",
+		"Show All",						"Vis alle",
+		"#ShowOthers",					"Vis andre",
+		"Unlock All",					"Lås opp alle",
+		"Hide All",						"Skjul alle",
+		"Lock All",						"Lås alle",
+		"Merge Layers",					"Slå sammen lag",
+		"Move To Layer",				"Flytt til lag",
+		"Copy To Layer",				"Kopier til lag",
+		"Move Layer",					"Flytt lag",
+		"Move Layers",					"Flytt lag",
+		"kUnlockOthersSequence",		"Lås opp andre",
+		"kLockOthersSequence",			"Lås andre",
+
+		// ----- Menu strings
+		
+		"Layers...",						"L&ag...",
+
+		"New Layer...",						"Nytt lag...",
+		"New Layer Above \"^1\"...",		"Nytt lag over \"^1\"...",
+		"New Layer Below \"^1\"...",		"Nytt lag under \"^1\"...",
+		"New Top Layer...",					"Nytt topplag...",
+		"Delete Layer",						"Slett lag",
+		"Delete \"^1\"",					"Slett laget \"^1\"",
+		"Delete Layers",					"Slett lag",
+		"#Duplicate ^1 Menu",				"Dupliser laget \"^1\"",
+		"#Duplicate LayersMenu",			"Dupliser lag",
+		"#DuplicatLayersCmd",				"Dupliser lag",
+		
+		"Layer Options for \"^1\"...",		"Lagvalg for \"^1\"...",
+		"Layer Options...",					"Lagvalg...",
+		"Show All Layers",					"Vis alle lag",
+		"Hide Others",						"Skjul andre",
+		"Unlock All Layers",				"Lås opp alle lag",
+		"Lock Others",						"Lås andre",
+		"Hide All Layers",					"Skjul alle lag",
+		"Lock All Layers",					"Lås alle lag",
+		
+		"Paste Remembers Layers",			"Lim inn husker lag",
+		"Ungroup Remembers Layers",			"Opphev gruppering av Husker lag",
+		
+		"Merge Layers",						"Slå sammen lag",
+		"Delete Unused Layers",				"Slett ubrukte lag",
+		"Select Item(s) on \"^1\"",			"Velg objekt(er) på \"^1\"",
+		"Select Item(s) Layer",				"Velg objekt(er) på lag",
+				
+		"#SelectLayerPageItemMenu",		"Velg objekt(er)",
+		"#SelectZoomLayerPageItemMenu",	"Velg og tilpass objekt",
+		"#ZoomLockedPageItemMenu",		"Tilpass objekt i vindu",
+		
+		// Menu names for context and panel menus
+		"LayerPanelPopup",					"Lag-panelmeny",	
+		"RtMenuLayerPanelEye",				"Øye-hurtigmeny på Lag-panel",	
+		"RtMenuLayerPanelLock",				"Lås-hurtigmeny på Lag-panel",
+		"RtMenuLayerPanelItem",				"Lag-hurtigmeny for Lag-panel",	
+		"RtMenuLayerPanelPageItem",			"Sideobjekt-hurtigmeny for Lag-panel",	
+
+		// ----- Window strings
+		"DeleteOneLayer",					"Laget \"^1\" inneholder ett eller flere objekter. Vil du likevel slette laget?",
+		"DeleteMultiLayers",				"De valgte lagene inneholder objekter. Vil du likevel slette lagene?",
+		"DeleteOneGuideLayer",				"Laget \"^1\" inneholder hjelpelinjer. Vil du likevel slette laget?",
+		"DeleteGuideLayers",				"De valgte lagene inneholder hjelpelinjer. Vil du likevel slette lagene?",
+		"DeletingPlaceGunUsedLayer",		"Kan ikke slette laget. Det er nødvendig for snippeten som er lastet inn i monteringsmarkøren.",
+
+		// ----- Window Menu
+		"Layers_WinMenu",					"&Lag",
+		
+		// ----- Panel strings
+		
+		"^1 Layer",							"^1 lag",		// For status widget
+		"^1 Layers",						"^1 lag",	// For status widget
+		"New Layer",						"Nytt lag",	// Title of New Layer dialog
+		"Layer Options",					"Lagvalg", // Title of Layer Options dialog
+		"&Name:",							"&Navn:",
+		"&Color:",							"F&arge:",
+		"&Show Layer",						"Vi&s lag",
+		"Show &Guides",						"&Vis hjelpelinjer",
+		"&Lock Layer",						"&Lås lag",
+		"Loc&k Guides",						"L&ås hjelpelinjer",
+		"Keep When Layer is &Hidden",		"Skjul &tekstflyt når laget er skjult",
+		"&Print Layer",						"S&kriv ut lag",
+
+		// ----- Tips strings
+
+		"DeleteLayerTip",					"Slett valgte lag",
+		"NewLayerTip",						"Opprett nytt lag",
+		"EyeTip",							"Slår av/på synlighet",
+		"PencilTip",						"Slår av/på laglås (kan redigeres når den er tom)",
+		"PageItemPencilTip",				"Slår av/på sideobjektslås (kan redigeres når den er tom)",
+		"SwatchTip",						"Farge på markeringsmerker på dette laget",
+		"ProxyTip",							"Angir markerte objekter (dra hvis du vil flytte mellom lag eller endre Z-rekkefølge)",
+		"ProxyChildSelectedTip",			"Inneholder markert objekt. Klikk for å markere beholderobjekt",
+		"UnselectedProxyTip",				"Klikk for å velge objekter",
+		"ActiveTip",						"Angir gjeldende tegnelag",
+
+		// ----- Error strings
+		"EmptyLayerName",					"Du må angi et navn på laget.",
+		"DuplicateLayer",					"Et annet lag har allerede dette navnet.",
+
+		"#LayerHierPanelName",		"Lag",
+		"#Page:^1,",					"Side: ^1, ", // for layer panel status widget. Will be followed by layer count string.
+		"#Pages:^1,",					"Sider: ^1, ", // for layer panel status widget. Will be followed by layer count string.
+		"#DeletePageItemsMenu",		"Slett sideobjekter", // menu item name
+		"#DeletePageItem \"^1\"",		"Slett sideobjektet \"^1\"", // menu item name
+		"#DuplicatePI ^1 Menu",			"Dupliser sideobjektet \"^1\"", // menu item name
+		"#DuplicatePIMenu",			"Dupliser sideobjekter",  // menu item name
+	}
+};
+
+#endif // __ODFRC__

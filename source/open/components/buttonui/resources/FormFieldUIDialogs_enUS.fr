@@ -1,0 +1,416 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/buttonui/resources/FormFieldUIDialogs_enUS.fr $
+//  
+//  Owner: Mark VerMurlen
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//  
+//  Adapted from GroupStrings_enUS.fr
+//  
+//  twright SPAM 01/17/2001 Should either rename this file, or move the dialog def somewhere else...
+//  
+//========================================================================================
+
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "SysControlIds.h"
+#include "Widgets.fh"
+#include "IControlViewDefs.h"
+#include "TreeViewDefs.h"
+
+#include "CharPanelID.h"
+#include "InterfaceColorDefines.h"
+
+#include "FormFieldUIDefs.h"
+#include "FormFieldUIID.h"
+#include "FormFieldUIDialogs.fh"
+
+#ifdef __ODFRC__
+
+
+//------------------------------------------------------------
+// Dialog Resource Definition for English.
+//------------------------------------------------------------
+
+resource AppearancePanelPrefsDialog (kAppearancePanelPrefsDialogRsrcID + index_enUS)
+{
+	__FILE__, __LINE__,
+	kAppearancePanelPrefsDialogWID,			// WidgetId
+	kPMRsrcID_None,							// RsrcId
+	kBindNone,								// Frame binding
+	Frame(0,0,265,242)						// Frame
+	kTrue,									// Visible
+	kTrue,									// Enabled
+	"$$$/Dialog/AppearancePanelPrefs/Title",			// Dialog name
+	{	
+		// Icon buttons group box and controls
+		EVEGenericPanelWidget
+		(
+			0,					// WidgetId
+			0,0,				// RsrcId
+			kBindNone,						// Frame binding
+			Frame(0,0,200,70)		// Frame
+			kTrue,							// Visible
+			kTrue,							// Enabled
+			kEVELargeSpaceAfter|kEVEArrangeChildrenInRow|kEVEChildAlignFill,	// EVE info
+			{
+				EVEGroupPanelWidget
+				(
+					kSizeGroupWID,						// WidgetId
+					kPMRsrcID_None,						// RsrcId
+					kBindNone,							// Frame bindings
+					Frame(11,15,141,227)				// Frame
+					kTrue,								// Visible
+					kTrue,								// Enabled
+					kSizeGroupLabelWID,					// widget id of border widget
+					kEVEAlignFill|kEVENoSpaceAfter|kEVEArrangeChildrenInRow|kEVELargeMargin,	// EVE info
+					{
+						EVEStaticTextWidget	
+						(
+							kSizeGroupLabelWID,			// WidgetId
+							kSysStaticTextPMRsrcId,		// RsrcId
+							kBindNone,
+							Frame(10,0,61,0)			// Frame
+							kTrue, kTrue,				// Visible, Enabled
+							kAlignCenter,
+							kDontEllipsize, kTrue,				// Ellipsize style, Convert ampersands
+							"$$$/Dialog/AppearancePanelPrefs/ThumbnailSize",	// Label
+							0,
+							kEVENoSpaceAfter
+						),
+						
+						EVEClusterPanelWidget
+						(
+							kSizeRadioButtonClusterWID,	// WidgetId
+							kPMRsrcID_None,         	// RsrcId
+							kBindNone,              	// Frame binding
+							Frame(0,0,130,212)			// Frame
+							kTrue,                  	// Visible
+							kTrue,                  	// Enabled
+							kEVEAlignRight|kEVEArrangeChildrenInColumn|kEVENoSpaceAfter|kEVEChildRegularSpaceAfter,		// EVE info
+							{
+								EVERadioButtonWidget
+								(
+									kSmallSizeRadioButtonWID,	// WidgetId
+									kSysRadioButtonPMRsrcId,	// RsrcId
+									kBindNone,              	// Frame binding
+									Frame(0,0,10,16)			// Frame
+									kTrue,                  	// Visible
+									kTrue,                  	// Enabled
+									"$$$/NoLabel" 				// Label
+									kEVEAlignRight, // EVE info
+								),
+								EVERadioButtonWidget
+								(
+									kMediumSizeRadioButtonWID,	// WidgetId
+									kSysRadioButtonPMRsrcId,	// RsrcId
+									kBindNone,              	// Frame binding
+									Frame(0,0,10,35)			// Frame
+									kTrue,                  	// Visible
+									kTrue,                  	// Enabled
+									"$$$/NoLabel" 				// Label
+									kEVEAlignRight, // EVE info
+								),
+								EVERadioButtonWidget
+								(
+									kLargeSizeRadioButtonWID,	// WidgetId
+									kSysRadioButtonPMRsrcId,	// RsrcId
+									kBindNone,              	// Frame binding
+									Frame(0,0,10,60)			// Frame
+									kTrue,                  	// Visible
+									kTrue,                  	// Enabled
+									"$$$/NoLabel" 				// Label
+									kEVEAlignRight, // EVE info
+								),
+								EVERadioButtonWidget
+								(
+									kExtraLargeSizeRadioButtonWID, // WidgetId
+									kSysRadioButtonPMRsrcId,	// RsrcId
+									kBindNone,              	// Frame binding
+									Frame(0,0,10,85)			// Frame
+									kTrue,                  	// Visible
+									kTrue,                  	// Enabled
+									"$$$/NoLabel" 				// Label
+									kEVEAlignRight, // EVE info
+								),
+
+							}
+						),
+						
+						EVEGenericPanelWidget
+						(
+							0,					// WidgetId
+							0,0,				// RsrcId
+							kBindNone,						// Frame binding
+							Frame(0,0,20,0)		// Frame
+							kTrue,							// Visible
+							kTrue,							// Enabled
+							kEVEAlignLeft|kEVEArrangeChildrenInColumn|kEVENoSpaceAfter|kEVEChildRegularSpaceAfter,		// EVE info
+							{
+								EVEStaticTextWidget
+								(
+									0,								// WidgetId
+									kSysStaticTextPMRsrcId,			// RsrcId
+									kBindNone,						// Frame binding
+									Frame(0,0,20,16)		// Frame
+									kTrue, kTrue, kAlignLeft,		// Visible, Enabled, Alignment
+									kDontEllipsize, kTrue,					// Ellipsize style, Convert ampersands
+									"$$$/Dialog/AppearancePanelPrefs/None"      // Contents
+									kSmallSizeRadioButtonWID,
+									kEVEAlignLeft, // EVE info
+								),
+								
+								IconSuiteWidget
+								(
+									kMediumThumbnailPictWID,
+									kMediumThumbnailPictRsrcID,	kFormFieldUIPluginID,	// WidgetId, RsrcId
+									kBindNone,
+									Frame(0,0,35,35),					
+									kTrue, kTrue,				// Visible, Enabled
+									kADBEIconSuiteButtonType,
+									kMediumSizeRadioButtonWID,	// Associated Widget
+								),
+
+								IconSuiteWidget
+								(
+									kLargeThumbnailPictWID,
+									kLargeThumbnailPictRsrcID,	kFormFieldUIPluginID,	// WidgetId, RsrcId
+									kBindNone,
+									Frame(0,0,60,60),					
+									kTrue, kTrue,				// Visible, Enabled
+									kADBEIconSuiteButtonType,
+									kLargeSizeRadioButtonWID,	// Associated Widget
+								),
+
+								IconSuiteWidget
+								(
+									kExtraLargeThumbnailPictWID,
+									kExtraLargeThumbnailPictRsrcID,	kFormFieldUIPluginID,	// WidgetId, RsrcId
+									kBindNone,
+									Frame(0,0,85,85),					
+									kTrue, kTrue,				// Visible, Enabled
+									kADBEIconSuiteButtonType,
+									kExtraLargeSizeRadioButtonWID, // Associated Widget
+								),
+							}
+						),
+						
+						// Extra widget to fix #1810607, EVEGroupPanelWidget won't resize to accomodate long string as title (kSizeGroupLabelWID).
+						StaticTextWidget
+						(
+							0,      // WidgetId
+							kSysStaticTextPMRsrcId,         // RsrcId
+							kBindNone,
+							Frame(0,0,50,0)     // Frame
+							kTrue, kFalse, kAlignLeft,      // Visible, Enabled, Alignment
+							kDontEllipsize, kTrue,              // Ellipsize style, Convert ampersands
+							"",                    // Initial text
+							0
+						),
+						
+						
+					}
+				),
+			}
+		),
+		
+		// OK, Cancel buttons
+		EVEGenericPanelWidget
+		(
+			0,					// WidgetId
+			0,0,				// RsrcId
+			kBindNone,						// Frame binding
+			Frame(200,15,300,80)		// Frame
+			kTrue,							// Visible
+			kTrue,							// Enabled
+			kEVENoSpaceAfter|kEVEArrangeChildrenInColumn|kEVEAlignCenter,		//EVE info
+			{
+				DefaultButtonWidget
+				(
+					kOKButtonWidgetID,					// WidgetId
+					kSysButtonPMRsrcId,					// RsrcId
+					kBindNone,							// Frame binding
+					Frame(155,0,250,0)				// Frame
+					kTrue,								// Visible
+					kTrue,								// Enabled
+					kButtonOK							// Panel name
+				),
+				CancelButtonWidget
+				(
+					kCancelButton_WidgetID,				// WidgetId
+					kSysButtonPMRsrcId,					// RsrcId
+					kBindNone,							// Frame binding
+					Frame(155,0,250,0)				// Frame
+					kTrue,								// Visible
+					kTrue,								// Enabled
+					kButtonCancel,						// Initial text
+					kTrue,								// Cancel changes to Reset
+				),
+			}
+		),
+		
+	}
+	kEVEArrangeChildrenInRow|kEVELargeMargin,		// EVE child layout(row/column)
+};
+
+resource TabOrderDialog (kTabOrderDialogRsrcID + index_enUS)
+{
+	__FILE__, __LINE__,
+	kStatePropertiesDialogWID,				// WidgetId
+	kPMRsrcID_None,							// RsrcId
+	kBindNone,								// Frame binding
+	Frame(0,0,350,290)						// Frame
+	kTrue,									// Visible
+	kTrue,									// Enabled
+	"$$$/Dialog/TabOrder/Title",			// Dialog name
+	{
+		EVEGenericPanelWidget
+		(
+			kInvalidWidgetID,		// WidgetId
+			0						// RsrcId
+			0,						// Widget EVE Info
+			kBindNone,				// Frame binding
+			Frame(0,0,0,0)			// Frame
+			kTrue,					// Visible
+			kTrue,					// Enabled
+			kEVEAlignFill | kEVERegularSpaceAfter | kEVEArrangeChildrenInColumn ,
+			{	
+				EVEGenericPanelWithBorderWidget
+				(
+					kInvalidWidgetID, kPMRsrcID_None,
+					kBindLeft,
+					Frame(0,0,220,kCC2016PanelTreeNodeHeight*9 + 2)			// Frame
+					kTrue, kTrue,
+					"",
+					{					
+						EVEOrderListBoxWidget
+						(
+							kListBoxListWidgetID,				// WidgetId
+							kSysListBoxPMRsrcId,				// RsrcId
+							kBindNone,							// Frame binding
+							Frame(1,1,219,kCC2016PanelTreeNodeHeight*9 + 1)					// Frame
+							kTrue, kTrue,						// Visible, Enabled
+							kTrue,								// EraseBeforeDraw
+							kInterfacePaletteFill,				// InterfaceColor
+							1,0,								// List dimensions
+							kCC2016PanelTreeNodeHeight,			// Cell height
+							0,									// Border width
+							kFalse,								// fHasHScrollBar
+							kTrue,								// fHasVScrollBar
+							kTrue,								// Multiselection
+							kTrue,								// fReorderable
+							kFalse,								// fDraggable
+							kFalse,								// fDragDropable
+							kFalse,								// fAlwaysSelected
+							kFalse,								// Notify when reselecting items
+							0,									// fItemRsrcID, fill list box with widgets of this type
+							kHideRootNode,							// Options
+							kFalse,								// Use H Scroll bar
+							kTrue,								// Use V scroll bar
+							kCC2016PanelTreeNodeHeight,			// Vertical Scroll Button Increment
+							1,									// Vertical Thumb Scroll Increment
+							0,									// Horizontal Scroll Button Increment - Not Used
+							0,									// Horizontal Thumb Scroll Increment - Not Used
+							2,									// Items selectable, 0 = No Selection, 1 = Single Selection, 2 = Multiple Selection
+							kFalse,								// Allow children from multiple parents to be selected
+							kTrue,								// Allow discontiguous selection
+							kEVELargeSpaceAfter,
+						),
+					}
+					kEVEDontArrangeChildren|kEVELargeSpaceAfter,	// EVE Info
+				),										
+			
+				EVEGenericPanelWidget
+				(
+					kInvalidWidgetID,			// WidgetId
+					0							// RsrcId
+					0,							// Widget EVE Info
+					kBindNone,					// Frame binding
+					Frame(0,0,0,0)				// Frame
+					kTrue,						// Visible
+					kTrue,						// Enabled
+					kEVEAlignFill | kEVEArrangeChildrenInRow,
+					{	
+						EVEButtonWidget
+						(
+							kListBoxMoveUpWidgetID, kSysButtonPMRsrcId, 
+							kBindNone,									
+							Frame(0,0,0,0)						// Frame
+							kTrue, kTrue,						// Visible, Enabled
+							"$$$/Dialog/Order/MoveUp"
+							kEVERegularSpaceAfter,
+						),
+								
+						EVEButtonWidget
+						(
+							kListBoxMoveDownWidgetID, kSysButtonPMRsrcId, 
+							kBindNone,									
+							Frame(0,0,0,0)						// Frame
+							kTrue, kTrue,						// Visible, Enabled
+							"$$$/Dialog/Order/MoveDown"
+							0,
+						),
+							
+					}  // End of Eve generic panel child widgets
+				), // End of Eve generic panel widget definition
+				
+			}  // End of Eve generic panel child widgets
+		), // End of Eve generic panel widget definition
+					
+		EVEGenericPanelWidget
+		(
+			kInvalidWidgetID,		// WidgetId
+			0						// RsrcId
+			0,			
+			kBindNone,				// Frame binding
+			Frame(0,0,0,0)			// Frame
+			kTrue,					// Visible
+			kTrue,					// Enabled
+			kEVEAlignFill | kEVEArrangeChildrenInColumn,		
+			{
+				EVEDefaultButtonWidget
+				(
+					kOKButtonWidgetID,					// WidgetId
+					kSysButtonPMRsrcId,					// RsrcId
+					kBindNone,							// Frame binding
+					Frame(0,0,0,0)						// Frame
+					kTrue,								// Visible
+					kTrue,								// Enabled
+					kButtonOK							// Panel name
+					kEVERegularSpaceAfter,
+				),
+				EVECancelButtonWidget
+				(
+					kCancelButton_WidgetID,				// WidgetId
+					kSysButtonPMRsrcId,					// RsrcId
+					kBindNone,							// Frame binding
+					Frame(0,0,0,0)						// Frame
+					kTrue,								// Visible
+					kTrue,								// Enabled
+					kButtonCancel,						// Initial text
+					kTrue,								// Cancel changes to Reset
+					0,
+				),				
+						
+			}  // End of EVE Generic panel child widgets
+		), // End of EVE Generic panel widget definition
+	}
+	kEVEArrangeChildrenInRow | kEVERegularMargin,
+};
+
+#endif // __ODFRC__

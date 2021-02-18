@@ -1,0 +1,163 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/linksui/resources/LinksUIStrings_heIL.fr $
+//  
+//  Owner: Steve Flenniken
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#ifdef __ODFRC__
+
+#include "StringTable.fh"
+
+resource StringTable (kLinksUIStringsRsrcID + index_heIL)
+{
+	k_heIL,					// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	{
+		"Links_WinMenu",			"&קישורים", // panel menu item
+		"kRtMouseGraphics",			"פריטים גרפיים", // context menu submenu name
+		"RtMenuLinksUILinkInfo",	"תפריט תלוי-הקשר של נתוני קישור",
+		
+		"#LinksUIPanel",			"קישורים", // panel name
+		"#LinksUIPanelMenu",		"תפריט חלונית - קישורים", 
+		"#LinksUtilitiesSubmenu",		"כלי עזר",		// submenu for links panel menu
+		"#SelectedLinkInfoSectionName",			"נתוני קישור", // section name in links ui panel
+		
+		"#UpdateAllOutOfDateLinksMenu",	"עדכן את כל הקישורים",
+		"#AutoFindMissingLinksMenu",		"חפש קישורים חסרים",
+		"#LinksUIRelinkLinkMenu",		"קישור מחדש...",
+		"#LinksUIRelinkResourceMenu",	"קשר מחדש את כל המופעים...", // menu item to relink all instances of this multiple link assets
+		"#RelinkResource ^1 Menu",		"קשר מחדש את כל המופעים של '^1'...", // menu item to relink all instances of one single link asset
+		"#LinksUIUpdateLinkMenu",			"עדכן קישור", // context menu item in links ui panel
+		"#LinksUIUpdateLinkResourceMenu",	"עדכן את כל המופעים",
+		"#UpdateResource ^1 Menu",		"עכדן את כל המופעים של '^1'", // menu item to update all instances of one single link asset
+		"#LinksUIEmbedLinkMenu",			"הטבע קישור", // context menu item in links ui panel
+		"#LinksUIEmbedResourceMenu",		"הטבע את כל המופעים",
+		"#EmbedResource ^1 Menu",			"הטבע את כל המופעים של '^1'", // menu item to embed all instances of one single link asset
+		"#LinksUIUnEmbedLinkMenu",		"הסר הטבעת קישור", // context menu item in links ui panel
+		"#LinksUIUnEmbedResourceMenu",	"הסר הטבעה של כל המופעים",
+		"#UnembedResource ^1 Menu",			"הסר הטבעה של כל המופעים של '^1'", // menu item to unembed all instances of one single link asset
+		"#LinksUIUnLinkMenu",				"בטל קישור",
+		"#UnLinkResourceMenu",			"נתק קישור של כל המופעים",
+		"#UnLinkResource ^1 Menu",			"נתק קישור של כל המופעים של '^1'", // menu item to unlink all instances of one single link asset
+		"#LinksUIEditOriginalLinkMenu",		"ערוך מקור", // context menu item in links ui panel
+		"#LinksUIXMPFileInfo",				"נתוני קובץ XMP...",
+		"#LinksUICopyPath",				"העתק נתיב מלא",
+		"#LinksUICopyPlatformPath",			"העתק נתיב סגנון פלטפורמה",
+		"#RevealLinkInMacFinder",			"הצג ב-Finder",
+		"#RevealLinkInWinExplorer",			"הצג בסייר",
+		"#RevealLinkInAdobeBridge",			"הצג ב-Bridge",
+		"#GoToLink",						"עבור לקישור",
+		"#EditWithApp",					"עריכה בעזרת",
+		"ApplicationFiles",					"יישום (‎*.exe)", // windows only string to list exe files in the 'edit with application' dialog.
+		"#ChooseEditingApplication",			"בחר יישום", // dialog title
+		"#OtherApp",						"אחר...",	// Menu name for choosing a custom application via a standard file dialog for Edit With...
+		"#LinksUICopyLink",				"העתקת קישורים אל...",
+		"#LinksUIEditColumnsMenu",			"אפשרויות חלונית...",
+		
+		"#LinksUIRemoveThisColumnMenu",	"הסתר עמודה זו",
+		"#LinksUIShowThumbnailMenu",		"הצג תמונה ממוזערות",
+		"#LinksUIHideThumbnailMenu",		"הסתר תמונה ממוזערת",		
+		"#LinksUIShowInfoThumbnailMenu",	"הצג תמונה ממוזערת של המידע",
+		"#LinksUIHideInfoThumbnailMenu",	"הסתר תמונה ממוזערת של המידע",
+		
+		"#SaveLinkVersionCmd",			"הכנס קישור לאחסון",
+		"#ShowLinksPanelColumn",			"הצג עמודה",
+		"#ShowLinksPanelInfo",				"הצג בנתוני קישור",
+		"#SelectNextLinkButtonTip",			"בחר בקישור הבא ברשימה",
+		"#SelectPrevLinkButtonTip",			"בחר בקישור הקודם ברשימה",
+		"#ToggleLinkInfoButtonTip",			"הצג/הסתר נתוני קישור",
+		
+		"#ShortLinkStatusParamStr",				"^1 קישורים",  // status string for links panel
+		"#LongLinkStatusParamStr",				"סה\"כ ^1 קישורים\n\n   ^2 חסרים\n   ^3 השתנו\n   ^4 הוטבעו\n   ^5 ייחודיים\n   ^6 תת-קישורים", // tip string for links panel status.
+		"#NumSelectedLinksParamStr",			"^1 נבחרו", // status string when links are selected in the panel.
+				
+		"RtMenuLinksUILinkItem",		"תפריט תלוי-הקשר של קישור",
+		"RtMenuLinksUILinksHeader",		"תפריט תלוי-הקשר של כותרת קישורים",
+		
+		"#LinkColumnDialog",			"אפשרויות חלונית", // dialog name
+		"#LinksUIPanelOptions",			"אפשרויות",
+		
+		"#LinkThumbPrefLabel",			"תמונות ממוזערות:",
+		"#LinksUIRowSizeLabel",		"&גודל שורה:",
+		"#LinksUISmallRowStr",			"שורות קטנות",
+		"#LinksUIRegularRowStr",		"שורות רגילות",
+		"#LinksUILargeRowStr",			"שורות גדולות",
+		"#LinkInfoShowThumbnailCheckbox",	"הצג ב&נתוני קישור",
+		"#LinksUIShowThumbnail",		"ה&צג בעמודת השם",
+
+		"#SearchHereForMissingFiles",	"חפש קישורים חסרים בתיקייה זו", // label for checkbox in relink dialog
+		"#RelinkSkipButton",			"דלג", // name for 'skip' button in relink dialog
+		"#SearchFound^1Links",		"מצא וקשר מחדש ^1 קישורים חסרים.", // alert that displays if we auto find missing links after a relink
+		"#RelinkToFolderTitle",			"בחר תייקיה לקישור מחדש. רק הקישורים שנבחרו כרגע עם שם תואם יקושרו מחדש.",
+		"#RelinkToSameFilename",		"התאם אותו שם קובץ וסיומת", // radio button option in relink to folder dialog
+		"#RelinkToExtension",			"התאם שם קובץ זהה אך עם סיומת זו:", // radio button option in relink to folder dialog
+		"#RelinkToFolderFailedParamStr", "לא הצליח למצוא ^1 קישורים בתיקייה החדשה. קישורים אלה לא קושרו מחדש, והם יישארו בבחירה בחלונית 'קישורים'.",
+		"#LinksUICopyLinksTitle",		"בחר תיקייה שאליה יועתקו הקבצים המקושרים.",
+		"#LinksUIRelinkToFolderLinkMenu",	"קשר מחדש לתיקייה...",
+		"#LinksUIRelink: ^1",			"קשר מחדש: ^1", // title for relink dialog. ^1 becomes file path.
+		"#LinksUILocate: ^1",			"אתר את: ^1", // title for relink dialog when link is missing. ^1 becomes file path.
+		"#CopyLinksFailedAlert",		"לא ניתן להעתיק את הקישורים לתיקייה.",
+		"#AutoFindFoundNothingAlert",	"לא נמצאו קישורים חסרים. השתמש בפקודה 'קישור מחדש' כדי למצוא את הקישור החסר הראשון, ונסה שנית.",
+		
+		"kEditsMadeWarning",			  "נעשו פעולות עריכה בגרסה המיובאת של \"^1\". פעולות עריכה אלה לא יישמרו בעת ביצוע העדכון. האם לעדכן בכל זאת?",
+		"kEditsMadeToTextOrTableWarning", "נעשו פעולות עריכה בגרסה המיובאת של \"^1\". פעולות עריכה אלה לא יישמרו בעת עדכון הקישור (מלבד שינויים שהוחלו על גיליונות נתונים באמצעות סגנונות תא או סגנונות טבלה). האם לעדכן בכל זאת?",
+
+		// Strings for Problem Links dialog
+		"#LinksModifiedWarning",	"מסמך זה כולל קישורים למשאבים שהשתנו. ניתן לעדכן את הקישורים שהשתנו כעת, או לעדכנם במועד מאוחר יותר מהחלונית 'קישורים'.",
+		"#UpdateLinks",				"&עדכן קישורים",	 // button text
+		"#Don'tUpdateLinks",		"אל תעדכן קישורים", // button text
+		"#ProblemMissingLinksParamStr",	"^1 - קישורים חסרים",
+		"#ProblemModifiedLinksParamStr",	"^1 - קישורים השתנו",
+
+		"UnembedToOriginal", 		"ביטול ההטבעה יכול ליצור קישור לקבצים המקוריים או לקבצים שהקישור יוצר בתיקייה. האם לקשר לקבצים המקוריים?",
+   
+		"#SelectUnembedDir","בחר תיקייה ליצירת הקבצים.",
+   
+
+		// Show Link message.
+		 "Cannot show link: The selected item is on a hidden layer.","לא ניתן להציג קישור: הפריט שנבחר נמצא בשכבה מוסתרת.",
+   
+		"Cannot show link: The selected item is hidden in overset text.","לא ניתן להציג קישור: הפריט שנבחר מוסתר בעודף טקסט.",
+   
+		"Cannot show link: The selected item is hidden in an inactive form field state.","לא ניתן להציג קישור: הפריט שנבחר מוסתר במצב לחצן לא פעיל.  היעזר בחלונית 'לחצנים' כדי להפעיל את המצב המוסתר כדי שתוכל לראות את הפריט.",
+   
+		"Cannot show link: The selected item is in deleted text in a tracked change.","לא ניתן להציג קישור: הפריט שנבחר נמצא בטקסט שנמחק במעקב אחר שינויים.",
+   
+		"Cannot show link: The selected item is an XML structure element not in the layout.","לא ניתן להציג קישור: הפריט שנבחר הוא רכיב במבנה XML שאינו נמצא בפריסה.",
+   
+		"Cannot show link: The selected item is in hidden conditional text.","לא ניתן להציג קישור: הפריט שנבחר נמצא בטקסט מותנה ומוסתר.",
+   
+						
+						
+		"#EditOriginalButtonTip",		"ערוך מקור",	// tip string for button in links panel
+		"#GotoLinkButtonTip",		"עבור לקישור",	// tip string for button in links panel
+		
+		"#appendedUpdateButtonTipMac",		". הקש Opt כדי לעדכן הכל", // appened to menu name for 'update link' to build tip string for update button(mac)
+		"#appendedUpdateButtonTipWin",		". הקש Alt כדי לעדכן הכל", // appened to menu name for 'update link' to build tip string for update button(win)
+		"#appendedRelinkButtonTipMac",		" הקש Opt כדי לקשר מחדש את כל הקישורים החסרים", // appened to menu name for 'Relink' to build tip string for relink button(mac)
+		"#appendedRelinkButtonTipWin",		" הקש Alt כדי לקשר מחדש את כל הקישורים החסרים", // appened to menu name for 'Relink' to build tip string for relink button(win)
+		
+		"#ErrorEmbeddingLink",		"לא הצליח להטביע קישור.",
+	}
+};
+
+
+
+#endif //__ODFRC__

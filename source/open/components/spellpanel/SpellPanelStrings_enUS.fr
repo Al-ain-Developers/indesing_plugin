@@ -1,0 +1,159 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kSpellPanelStringsRsrcID + index_enUS)
+{
+	k_enUS,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{				
+		// ----- Main menu strings
+		"SpellingMenu",					"&Spelling",
+		"Check Spelling...",			"Chec&k Spelling...",
+		"Dynamic SpellCheck",			"Dyna&mic Spelling",
+		"Autocorrect",					"Autocorrect",
+		"Auto Correct",					"&Autocorrect",
+		"AutoCorrect",					"Autocorrect",
+
+		// ----- Window strings
+		"corrected",					"corrected",
+		"misspelled",					"misspelled",
+		
+		// ----- Scope strings
+		
+		"[No spelling]",				"[No spelling]",
+		"Auto",							"Auto",
+		"Document",						"Document",
+		"Story",						"Story",
+		"Stories",						"Stories",
+		"Selection",					"Selection",
+		
+		// ----- Panel strings		
+		"Spelling",						"Spelling",
+		"&Spelling...",					"&Spelling...",
+		"Auto Correct...",				"Autocorr&ect...",
+		"[No language]",				"[No language]",
+		"AutoCorrectEnable",			"E&nable Autocorrect",
+		"AutoCorrectCapitalizationErrors",			"Autocorrect &Capitalization Errors",
+		"A&dd...",						"A&dd...",		// Opens a dialog
+		"EditAutoCorrectWord",			"&Edit...",		// Opens a dialog
+		"Correction",					"Correction",
+		"Misspelled Word",				"Misspelled Word",
+
+		// ----- Dialog strings
+		"Check Spelling",				"Check Spelling",
+		"&Change To:",					"&Change To:",
+		
+		"Change To",					"Change To",
+		"&Suggested Corrections:",		"Suggested Correctio&ns:",
+		"Language:",					"Language:",
+		"Sea&rch:",						"Sea&rch:",
+		"Include Overset",				"Include Overset",
+		"&Done",							"&Done",
+		"C&hange",						"C&hange",
+		"S&tart",						"S&tart",
+		"Chan&ge All",					"Chan&ge All",
+		"Skip",							"Skip",	
+		"kSkipButtonInSpellingDialog",  "S&kip",
+		"Ignore",						"Ignore",
+		"&Ignore All",					"&Ignore All",
+		"&AddAndContinue",				"&Add",			// Adds to dictionary automatically, continues spelling
+		"Dic&tionary...",				"Dictionar&y...",	// Launches Dict Editor dialog
+		"Add To:",						"Add T&o:",
+
+		// Label strings in Spell Check dialog.
+		"Ready to Spell Check:", 			"Ready to Check Spelling",
+		"Misspelled Word:",					"Misspelled Word:",
+		"Unknown Word - No Suggestions:", 	"Unknown Word - No Suggestions:",
+		"Not in Dictionary:",				"Not in Dictionary:",
+		"Repeated Word:",					"Repeated Word:",
+		"Uncapitalized Word:",				"Uncapitalized Word:",
+		"Uncapitalized Sentence:",			"Uncapitalized Sentence:",
+		"Duplicate Word:",					"Duplicate Word:",
+		"Capitalization Error:",			"Capitalization Error:",
+		"Spell Check Complete:",			"Spell Check Complete",
+		
+		"SpellCheckCompleteAlertStr",			"Spell check complete.",	// Alert string at completion of spelling.
+
+		"Misspelled Word (Overset):",					"Misspelled Word: (Overset Text)",
+		"Unknown Word - No Suggestions (Overset):", 	"Unknown Word: (Overset Text)",
+		"Not in Dictionary (Overset):",					"Not in Dictionary: (Overset Text)",
+		"Repeated Word (Overset):",						"Repeated Word: (Overset Text)",
+		"Uncapitalized Word (Overset):",				"Uncapitalized Word: (Overset Text)",
+		"Uncapitalized Sentence (Overset):",			"Uncapitalized Sentence: (Overset)",
+
+		"Misspelled Word (In Table):",					"Misspelled Word: (In Table)",
+		"Unknown Word - No Suggestions (In Table):", 	"Unknown Word: (In Table)",
+		"Not in Dictionary (In Table):",					"Not in Dictionary: (In Table)",
+		"Repeated Word (In Table):",						"Repeated Word: (In Table)",
+		"Uncapitalized Word (In Table):",				"Uncapitalized Word: (In Table)",
+		"Uncapitalized Sentence (In Table):",			"Uncapitalized Sentence: (In Table)",
+
+		"Misspelled Word (Deleted Text):",				"Misspelled Word: (Deleted Text)",
+		"Unknown Word - No Suggestions (Deleted Text):","Unknown Word: (Deleted Text)",
+		"Not in Dictionary (Deleted Text):",			"Not in Dictionary: (Deleted Text)",
+		"Repeated Word (Deleted Text):",				"Repeated Word: (Deleted Text)",
+		"Uncapitalized Word (Deleted Text):",			"Uncapitalized Word: (Deleted Text)",
+		"Uncapitalized Sentence (Deleted Text):",		"Uncapitalized Sentence: (Deleted)",
+		
+		"Misspelled Word (Hidden):",					"Misspelled Word: (Hidden Item)",
+		"Unknown Word - No Suggestions (Hidden):", 		"Unknown Word: (Hidden Item)",
+		"Not in Dictionary (Hidden):",					"Not in Dictionary: (Hidden Item)",
+		"Repeated Word (Hidden):",						"Repeated Word: (Hidden Item)",
+		"Uncapitalized Word (Hidden):",					"Uncapitalized Word: (Hidden Item)",
+		"Uncapitalized Sentence (Hidden):",				"Uncapitalized Sentence: (Hidden)", // Shortened to "Hidden" for space. Like the "Overset" case above.
+
+//		"Spelling Preferences", 						"Spelling Preferences", // Note to localizer: this string moved to SpellingServiceStrings.fr
+		"Find", 										"Find",
+		"&Misspelled Words", 							"&Misspelled Words",
+		"&Repeated Words", 								"&Repeated Words",
+		"&Uncapitalized Words", 						"&Uncapitalized Words",
+		"Uncapitalized &Sentences", 					"Uncapitalized &Sentences",
+		"Misspelled Words Underline Color:",			"Miss&pelled Words:",
+		"Repeated Words Underline Color:",				"Repea&ted Words:",
+		"Uncapitalized Words Underline Color:",			"Uncapitali&zed Words:",
+		"Uncapitalized Sentences Underline Color:",		"Uncapitalized Se&ntences:",
+		"Dynamic Spellchecking",						"Dynamic Spelling",
+		
+		"Underline Color",								"Underline Color",
+		
+		"&Enable Dynamic Spelling",						"&Enable Dynamic Spelling",
+		
+		"Search is completed.  ^1  replacement(s) made.", "Search is completed.  ^1  replacement(s) made.", 
+
+		"Add",											"Add",
+		"Re&move",										"Re&move",
+		"Misspelled:",									"Misspelled:",
+		"Correction:",									"Correction:",
+		"Language:",									"Language:",
+		"&Language:",									"&Language:",
+		"AddToAutoCorrectList",							"Add to Autocorrect List",
+		"EditAutoCorrectList",							"Edit Autocorrect List",
+
+		"ACAlert1",		"Blank entries are not allowed.",
+		"ACAlert2",		"The word and its correction cannot be identical in spelling and capitalization.",
+		"ACAlert3",		"This misspelled word and its correction already exist in the list.",
+		"ACAlert4",		"Cannot create entry. It exceeds the maximum number of characters (64).",
+		"ACAlert5",		"Entry contains invalid character.",
+		"ACAlert6",		"Whitespace is not allowed in the misspelled word.",
+
+	}
+};
+
+#endif // __ODFRC__

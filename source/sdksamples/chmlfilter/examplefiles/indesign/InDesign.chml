@@ -1,0 +1,46 @@
+<CHML>
+<c> Include the list of images </c>
+<c> Specify file paths using unix paths </c>
+
+<c> Should be able to comment out actual chml! </c>
+<c>
+<i d:\\product-cdml\\integrat.gif 362 201>
+</c>
+<c> Our first text box, aligned centre, underlined and of size 20 </c>
+<t   0  95  540  125 > 
+<a c> <s 20> <u> Page layout and Design for the Future of Professional Publishing  
+<t   0  138  336  288 >  <c> With this text box, I'll use Georgia... </c>
+<s 12> <f Georgia> 
+<a j> <c> ...and justify </c>
+
+<b> Adobe(R) InDesign(TM) </b> speaks the language of professional 
+designers, delivering unparalleled creative freedom, productivity, and 
+precision for designing superb pages. It works seamlessly with <b> 
+Photoshop(R) </b> and <b> Illustrator(R), </b> providing a single 
+integrated design environment that does not interrupt your creative 
+process. InDesign even opens <s 8> QuarkXPress <s 12> and <b> PageMaker(R) 
+</b> files, so you can bring your work with you as you enter a new world 
+of design possibilities. With InDesign, your creativity is in command. 
+
+<c> we can handle absolute paths as well, see the SDKUtilities for info on how! </c>
+<i ::images:adobelogo2.gif 0  0> 
+<i ::images:indesignban.gif 0  36>
+<i ../images/indesignbox.gif 339  125>
+<i ..\images\magazine.jpg 0  288>
+<i ../images/integrat.gif 0  365>
+
+<t   372  366  540  720 >
+<a j>
+<s 13> <f Helvetica>
+Imagine a program that's easy to learn and fits smoothly into your work 
+with other software tools. Sound like an impossible dream? <p> Not with <b> Adobe(R) 
+InDesign(TM), </b> which is built to look and feel like <b> Adobe Illustrator(R) 
+</b> and <b>
+Adobe Photoshop(R). </b> Wherever appropriate, these programs share common tools, 
+commands, palettes, and other interface elements. You can even rely on the 
+same keyboard shortcuts from program to program. If you use <b> Illustrator </b> or 
+<b> Photoshop </b> regularly, you can hit the ground running with <b> Adobe InDesign.
+
+
+
+

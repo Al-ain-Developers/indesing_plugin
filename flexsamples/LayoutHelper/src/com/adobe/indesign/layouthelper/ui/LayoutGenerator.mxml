@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ADOBE SYSTEMS INCORPORATED
+Copyright 2012 Adobe Systems Incorporated
+All Rights Reserved.
+
+NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance with the 
+terms of the Adobe license agreement accompanying it.  If you have received this file from a 
+source other than Adobe, then your use, modification, or distribution of it requires the prior 
+written permission of Adobe.
+-->
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" 
+		   label="Layout Creator" 
+		   width="100%" 
+		   height="100%" 
+		   xmlns:UI="UI.*" 
+		   horizontalScrollPolicy="off" 
+		   verticalScrollPolicy="off">
+	
+	<mx:Script>
+		<![CDATA[
+			import com.adobe.csawlib.indesign.InDesign;
+			import com.adobe.indesign.*;
+			
+			import mx.collections.ArrayCollection;
+			
+			[Bindable]
+			private var layouts:ArrayCollection = new ArrayCollection([
+				{id:"ipadh", selected:false, height:"768 px", width:"1024 px"}, 
+				{id:"ipadv", selected:false, height:"1024 px", width:"768 px"},
+				{id:"iphoneh", selected:false, height:"640 px", width:"960 px"},
+				{id:"iphonev", selected:false, height:"960 px", width:"640 px"},
+				{id:"galaxyphoneh", selected:false, height:"480 px", width:"800 px"},
+				{id:"galaxyphonev", selected:false, height:"800 px", width:"480 px"},
+				{id:"galaxyh", selected:false, height:"1024 px", width:"600 px"},
+				{id:"galaxyv", selected:false, height:"600 px", width:"1024 px"},
+				{id:"xoomh", selected:false, height:"800 px", width:"1280 px"},
+				{id:"xoomv", selected:false, height:"1280 px", width:"800 px"}
+			]);
+			[Bindable]
+			private var showExportPanel:Boolean = false;
+			
+			public function createAlternativeLayout():void
+			{
+				var app:Application = InDesign.app;
+				var doc:Document = app.activeDocument;
+				if(doc == null)
+				{
+					return;
+				}
+				//set layout to objectbased layout policy and go through all items to set flexiable option
+				preProcess(doc);
+				//call create alternate layout to create a layout 
+				process(doc);
+				//Auto sizing of text frame 
+				postProcess(doc);
+			}
+			
+			public function preProcess(doc:Document):void
+			{
+				//go through all pages of the document and set the layout policy to objectbased
+				message.text = "1. PreProcess: go through all pages of the document and set the layout policy to objectbased\n";
+				var pages:Pages = doc.pages;
+				for(var i:int=0; i<pages.length; i++)
+				{
+					//go through all items of pages and set option to [flexiable, flexiable, flexiable]
+					pages.item(i).layoutRule = LayoutRuleOptions.OBJECT_BASED;
+					var pageItems:PageItems = pages.item(i).pageItems;
+					for(var j:int=0; j<pageItems.length; j++)
+					{
+						var pageItem:PageItem = pageItems.item(j); 
+						message.text += "	item ("+(j+1)+") set " + pageItem.name + " to [flexible, flexible, flexible, flexible, flexible, flexible]\n";
+						pageItem.horizontalLayoutConstraints = [DimensionsConstraints.flexibleDimension, 
+																DimensionsConstraints.flexibleDimension, 
+																DimensionsConstraints.flexibleDimension];
+						pageItem.verticalLayoutConstraints = [DimensionsConstraints.flexibleDimension, 
+																DimensionsConstraints.flexibleDimension, 
+																DimensionsConstraints.flexibleDimension];
+					}
+				}
+			}
+			
+			public function process(doc:Document):void
+			{
+				message.text += "2. Process: create alternate layout for all spreads of the document\n";
+				//need to create spread array 
+				var spreadArray:Array = new Array();
+				for (var i:int=0; i<doc.spreads.length; ++i)
+				{
+					var spread:Spread = doc.spreads.item(i);
+					spreadArray.push(spread);
+				}
+				
+				//create all selected alternate layout for all spreads of the document 
+				for (var l:int =0; l<layouts.length; l++)
+				{
+					if (layouts.getItemAt(l).selected)
+					{
+						//call createAlternateLayout API with parameters
+						//can NOT pass the doc.spreads as the first parameter
+						doc.createAlternateLayout(spreadArray, 							//The spreads to create an alternate layout for.
+												  layouts.getItemAt(l).id, 				//The name of the alternate layout. 
+												  layouts.getItemAt(l).width, 			//The width of the pages created.
+												  layouts.getItemAt(l).height,  		//The height of the pages created.
+												  true, 								//Whether to create new text styles.
+												  true, 							    //Whether to create linked text for duplicated text stories.
+												  LayoutRuleOptions.preserveExisting);  //Whether to create linked text for duplicated text stories.
+					}
+				}
+			}
+			
+			public function postProcess(doc:Document):void
+			{
+				message.text += "3. PostProcess: Fit all content to frame and resize the font size to adapt to the updated text frame";
+				var pages:Pages = doc.pages;
+				for(var i:int=0; i<pages.length; i++)
+				{
+					var textFrames:TextFrames = pages.item(i).textFrames;
+					for(var j:int=0; j<textFrames.length; j++)
+					{
+						var textFrame:TextFrame = textFrames.item(i);
+						if(textFrame != null)
+						{
+							//Auto sizing of text frame will be done in both(height and width) dimensions proportionally.
+							textFrame.textFramePreferences.autoSizingType = AutoSizingTypeEnum.HEIGHT_AND_WIDTH_PROPORTIONALLY;
+						}
+					}
+				}
+			}
+			
+			private function handleCheckBox(id:String, selected:Boolean):void
+			{
+				for(var i:int =0; i<layouts.length; i++)
+				{
+					if(layouts.getItemAt(i).id == id)
+					{
+						layouts.getItemAt(i).selected = selected;
+					}
+				} 
+			}
+
+		]]>
+	</mx:Script>
+		<mx:Panel width="100%" height="100%">
+			<mx:VBox width="100%">	
+				<mx:HBox width="100%" height="100%">
+					<mx:VBox width="50%">
+						<mx:Label text="Horizontal Layout" width="100%"/>
+						<mx:CheckBox id="ipadh" label="IPadH" toolTip="Resolution(1024:768)" disabledColor="0" selected="{layouts.getItemAt(0).selected}" enabled="true"  color="#132124" fontFamily="Verdana" click="{handleCheckBox(ipadh.id, ipadh.selected)}"/>
+						<mx:CheckBox id="iphoneh" label="IPhoneH" toolTip="Resolution(960:640)" disabledColor="0" selected="{layouts.getItemAt(2).selected}" enabled="true"  color="#132124" fontFamily="Verdana" click="{handleCheckBox(iphoneh.id, iphoneh.selected)}"/>
+						<mx:CheckBox id="galaxyphoneh" label="GalaxyPhoneH" toolTip="Resolution(800:480)" disabledColor="0" selected="{layouts.getItemAt(4).selected}" enabled="true"  color="#132124" fontFamily="Verdana" click="{handleCheckBox(galaxyphoneh.id, galaxyphoneh.selected)}"/>
+						<mx:CheckBox id="galaxyh" label="GalaxyH" toolTip="Resolution(1024:600)" disabledColor="0" selected="{layouts.getItemAt(6).selected}" enabled="true"  color="#132124" fontFamily="Verdana" click="{handleCheckBox(galaxyh.id, galaxyh.selected)}"/>
+						<mx:CheckBox id="xoomh" label="XoomH" toolTip="Resolution(1280:800)" disabledColor="0" selected="{layouts.getItemAt(8).selected}" enabled="true"  color="#132124" fontFamily="Verdana" click="{handleCheckBox(xoomh.id, xoomh.selected)}"/>
+					</mx:VBox>
+					<mx:VBox width="50%">
+						<mx:Label text="Vertical Layout" width="100%"/>
+						<mx:CheckBox id="ipadv" label="IPadV" toolTip="Resolution(768:1024)" disabledColor="0" selected="{layouts.getItemAt(1).selected}" enabled="true"  color="#132124" fontFamily="Verdana" click="{handleCheckBox(ipadv.id, ipadv.selected)}"/>	
+						<mx:CheckBox id="iphonev" label="IPhoneV" toolTip="Resolution(640:960)" disabledColor="0" selected="{layouts.getItemAt(3).selected}" enabled="true"  color="#132124" fontFamily="Verdana" click="{handleCheckBox(iphonev.id, iphonev.selected)}"/>
+						<mx:CheckBox id="galaxyphonev" label="GalaxyPhoneV" toolTip="Resolution(480:800)" disabledColor="0" selected="{layouts.getItemAt(5).selected}" enabled="true"  color="#132124" fontFamily="Verdana" click="{handleCheckBox(galaxyphonev.id, galaxyphonev.selected)}"/>
+						<mx:CheckBox id="galaxyv" label="GalaxyV" toolTip="Resolution(600:1024)" disabledColor="0" selected="{layouts.getItemAt(7).selected}" enabled="true"  color="#132124" fontFamily="Verdana" click="{handleCheckBox(galaxyv.id, galaxyv.selected)}"/>								
+						<mx:CheckBox id="xoomv" label="XoomV" toolTip="Resolution(800:1280)" disabledColor="0" selected="{layouts.getItemAt(9).selected}" enabled="true"  color="#132124" fontFamily="Verdana" click="{handleCheckBox(xoomv.id, xoomv.selected)}"/>
+					</mx:VBox>
+				</mx:HBox>
+				<mx:Button label="Create Alternate Layout" click="{createAlternativeLayout();}" toolTip="Create alternate layout"/>
+			</mx:VBox>
+			<mx:TextArea paddingLeft="1"
+						 paddingRight="1"
+						 paddingTop="1"
+						 paddingBottom="1"
+						 id="message" borderStyle="solid" minHeight="150" height="100%" width="100%" fontFamily="Arial" enabled="true"/>
+
+		</mx:Panel>
+			
+</mx:Canvas>

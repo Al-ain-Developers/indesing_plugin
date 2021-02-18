@@ -1,0 +1,159 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kSpellPanelStringsRsrcID + index_svSE)
+{
+	k_svSE,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{				
+		// ----- Main menu strings
+		"SpellingMenu",					"Sta&vning",
+		"Check Spelling...",			"Kontrollera sta&vning...",
+		"Dynamic SpellCheck",			"Dyna&misk stavningskontroll",
+		"Autocorrect",					"Automatisk korrigering",
+		"Auto Correct",					"&Automatisk korrigering",
+		"AutoCorrect",					"Automatisk korrigering",
+
+		// ----- Window strings
+		"corrected",					"rättad",
+		"misspelled",					"felstavat",
+		
+		// ----- Scope strings
+		
+		"[No spelling]",				"[Ingen stavning]",
+		"Auto",							"Auto",
+		"Document",						"Dokument",
+		"Story",						"Artikeln",
+		"Stories",						"Artiklar",
+		"Selection",					"Markering",
+		
+		// ----- Panel strings		
+		"Spelling",						"Stavning",
+		"&Spelling...",					"Sta&vning...",
+		"Auto Correct...",				"Automatisk korrig&ering...",
+		"[No language]",				"[Inget språk]",
+		"AutoCorrectEnable",			"&Aktivera automatisk korrigering",
+		"AutoCorrectCapitalizationErrors",			"&Korrigera skiftlägesfel automatiskt",
+		"A&dd...",						"Lägg &till...",		// Opens a dialog
+		"EditAutoCorrectWord",			"&Redigera...",		// Opens a dialog
+		"Correction",					"Korrigering",
+		"Misspelled Word",				"Felstavat ord",
+
+		// ----- Dialog strings
+		"Check Spelling",				"Kontrollera stavning",
+		"&Change To:",					"&Ersätt med:",
+		
+		"Change To",					"Ersätt med",
+		"&Suggested Corrections:",		"Föreslag&na korrigeringar:",
+		"Language:",					"Språk:",
+		"Sea&rch:",						"Sö&k i:",
+		"Include Overset",				"Inkludera dold text",
+		"&Done",							"Stä&ng",
+		"C&hange",						"Än&dra",
+		"S&tart",						"&Börja",
+		"Chan&ge All",					"Ä&ndra alla",
+		"Skip",							"Hoppa över",	
+		"kSkipButtonInSpellingDialog",  "Hoppa &över",
+		"Ignore",						"Ignorera",
+		"&Ignore All",					"&Ignorera alla",
+		"&AddAndContinue",				"&Lägg till",			// Adds to dictionary automatically, continues spelling
+		"Dic&tionary...",				"&Lexikon...",	// Launches Dict Editor dialog
+		"Add To:",						"Lägg &till i:",
+
+		// Label strings in Spell Check dialog.
+		"Ready to Spell Check:", 			"Redo för stavningskontroll",
+		"Misspelled Word:",					"Felstavat ord:",
+		"Unknown Word - No Suggestions:", 	"Okänt ord - inga förslag:",
+		"Not in Dictionary:",				"Inte i ordlistan:",
+		"Repeated Word:",					"Upprepat ord:",
+		"Uncapitalized Word:",				"Ord som inte börjar med versal:",
+		"Uncapitalized Sentence:",			"Mening som inte börjar med versal:",
+		"Duplicate Word:",					"Dubblerat ord:",
+		"Capitalization Error:",			"Versalfel:",
+		"Spell Check Complete:",			"Stavningskontrollen slutfördes",
+		
+		"SpellCheckCompleteAlertStr",			"Stavningskontrollen slutfördes.",	// Alert string at completion of spelling.
+
+		"Misspelled Word (Overset):",					"Felstavat ord: (dold text)",
+		"Unknown Word - No Suggestions (Overset):", 	"Okänt ord: (dold text)",
+		"Not in Dictionary (Overset):",					"Ej i lexikon: (dold text)",
+		"Repeated Word (Overset):",						"Upprepat ord: (dold text)",
+		"Uncapitalized Word (Overset):",				"Ord som inte börjar med versal: (dold text)",
+		"Uncapitalized Sentence (Overset):",			"Mening som inte börjar med versal: (övertext)",
+
+		"Misspelled Word (In Table):",					"Felstavat ord: (i tabell)",
+		"Unknown Word - No Suggestions (In Table):", 	"Okänt ord: (i tabell)",
+		"Not in Dictionary (In Table):",					"Inte i ordlistan: (i tabell)",
+		"Repeated Word (In Table):",						"Upprepat ord: (i tabell)",
+		"Uncapitalized Word (In Table):",				"Ord som inte börjar med versal: (i tabell)",
+		"Uncapitalized Sentence (In Table):",			"Mening som inte börjar med versal: (i tabell)",
+
+		"Misspelled Word (Deleted Text):",				"Felstavat ord: (borttagen text)",
+		"Unknown Word - No Suggestions (Deleted Text):","Okänt ord: (borttagen text)",
+		"Not in Dictionary (Deleted Text):",			"Inte i ordlistan: (borttagen text)",
+		"Repeated Word (Deleted Text):",				"Upprepat ord: (borttagen text)",
+		"Uncapitalized Word (Deleted Text):",			"Ord som inte börjar med versal: (borttagen text)",
+		"Uncapitalized Sentence (Deleted Text):",		"Mening som inte börjar med versal: (borttagen)",
+		
+		"Misspelled Word (Hidden):",					"Felstavat ord: (dolt objekt)",
+		"Unknown Word - No Suggestions (Hidden):", 		"Okänt ord: (dolt objekt)",
+		"Not in Dictionary (Hidden):",					"Inte i ordlistan: (dolt objekt)",
+		"Repeated Word (Hidden):",						"Upprepat ord: (dolt objekt)",
+		"Uncapitalized Word (Hidden):",					"Ord som inte börjar med versal: (dolt objekt)",
+		"Uncapitalized Sentence (Hidden):",				"Mening som inte börjar med versal: (dold)", // Shortened to "Hidden" for space. Like the "Overset" case above.
+
+//		"Spelling Preferences", 						"Spelling Preferences", // Note to localizer: this string moved to SpellingServiceStrings.fr
+		"Find", 										"Sök efter",
+		"&Misspelled Words", 							"&Felstavade ord",
+		"&Repeated Words", 								"&Upprepade ord",
+		"&Uncapitalized Words", 						"&Ord som inte börjar med versal",
+		"Uncapitalized &Sentences", 					"&Meningar som inte börjar med versal",
+		"Misspelled Words Underline Color:",			"F&elstavade ord:",
+		"Repeated Words Underline Color:",				"U&pprepade ord:",
+		"Uncapitalized Words Underline Color:",			"O&rd som inte börjar med versal:",
+		"Uncapitalized Sentences Underline Color:",		"Me&ning som inte börjar med versal:",
+		"Dynamic Spellchecking",						"Dynamisk stavningskontroll",
+		
+		"Underline Color",								"Understrykningsfärg",
+		
+		"&Enable Dynamic Spelling",						"&Aktivera dynamisk stavningskontroll",
+		
+		"Search is completed.  ^1  replacement(s) made.", "Sökningen är klar. ^1 ersättningar utfördes.", 
+
+		"Add",											"Lägg till",
+		"Re&move",										"Ta &bort",
+		"Misspelled:",									"Felstavat:",
+		"Correction:",									"Korrigering:",
+		"Language:",									"Språk:",
+		"&Language:",									"&Språk:",
+		"AddToAutoCorrectList",							"Lägg till till den automatiska korrigeringslistan",
+		"EditAutoCorrectList",							"Redigera lista för automatisk korrigering",
+
+		"ACAlert1",		"Tomma poster är inte tillåtna.",
+		"ACAlert2",		"Ordet och korrigeringen får inte vara identiska i stavning och skiftläge.",
+		"ACAlert3",		"Det felstavade ordet och korrigeringen finns redan i listan.",
+		"ACAlert4",		"Det gick inte att skapa posten. Den är längre än det största tillåtna antalet tecken (64).",
+		"ACAlert5",		"Posten innehåller ogiltiga tecken.",
+		"ACAlert6",		"Tomt utrymme är inte tillåtet för felstavade ord.",
+
+	}
+};
+
+#endif // __ODFRC__

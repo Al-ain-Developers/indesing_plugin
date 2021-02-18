@@ -1,0 +1,142 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kLayerPanelStringsRsrcID + index_zhTW)
+{
+	k_zhTW,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{
+		// ----- Command strings
+
+		"Layer Options",				"圖層選項",
+		"New Layer",					"新增圖層",
+		"Layer Deletion",				"刪除圖層",
+		"Delete Unused Layers",			"刪除未使用的圖層",
+		"Lock Others",					"鎖定其他圖層",
+		"#UnlockOthers",					"解除鎖定其他項目",
+		"Show All",						"全部顯示",
+		"#ShowOthers",					"顯示其他項目",
+		"Unlock All",					"全部解除鎖定",
+		"Hide All",						"全部隱藏",
+		"Lock All",						"全部鎖定",
+		"Merge Layers",					"合併圖層",
+		"Move To Layer",				"移動至圖層",
+		"Copy To Layer",				"拷貝至圖層",
+		"Move Layer",					"移動圖層",
+		"Move Layers",					"移動圖層",
+		"kUnlockOthersSequence",		"解除鎖定其他項目",
+		"kLockOthersSequence",			"鎖定其他項目",
+
+		// ----- Menu strings
+		
+		"Layers...",						"圖層(&L)...",
+
+		"New Layer...",						"新增圖層...",
+		"New Layer Above \"^1\"...",		"新增圖層於「^1」之上...",
+		"New Layer Below \"^1\"...",		"新增圖層於「^1」之下...",
+		"New Top Layer...",					"新增頂端圖層...",
+		"Delete Layer",						"刪除圖層",
+		"Delete \"^1\"",					"刪除圖層「^1」",
+		"Delete Layers",					"刪除圖層",
+		"#Duplicate ^1 Menu",				"複製圖層「^1」",
+		"#Duplicate LayersMenu",			"複製圖層",
+		"#DuplicatLayersCmd",				"複製圖層",
+		
+		"Layer Options for \"^1\"...",		"「^1」的圖層選項...",
+		"Layer Options...",					"圖層選項...",
+		"Show All Layers",					"顯示所有圖層",
+		"Hide Others",						"隱藏其他圖層",
+		"Unlock All Layers",				"解除鎖定所有圖層",
+		"Lock Others",						"鎖定其他圖層",
+		"Hide All Layers",					"隱藏所有圖層",
+		"Lock All Layers",					"鎖定所有圖層",
+		
+		"Paste Remembers Layers",			"貼上時記住圖層位置",
+		"Ungroup Remembers Layers",			"解散群組時記住圖層位置",
+		
+		"Merge Layers",						"合併圖層",
+		"Delete Unused Layers",				"刪除未使用的圖層",
+		"Select Item(s) on \"^1\"",			"選取「^1」上的項目",
+		"Select Item(s) Layer",				"選取圖層上的項目",
+				
+		"#SelectLayerPageItemMenu",		"選取項目",
+		"#SelectZoomLayerPageItemMenu",	"選取並符合項目",
+		"#ZoomLockedPageItemMenu",		"使項目符合視窗",
+		
+		// Menu names for context and panel menus
+		"LayerPanelPopup",					"圖層面板選單",	
+		"RtMenuLayerPanelEye",				"圖層面板眼睛環境選單",	
+		"RtMenuLayerPanelLock",				"圖層面板鎖定環境選單",
+		"RtMenuLayerPanelItem",				"圖層面板圖層環境選單",	
+		"RtMenuLayerPanelPageItem",			"圖層面板頁面項目環境選單",	
+
+		// ----- Window strings
+		"DeleteOneLayer",					"圖層「^1」含有一或多個物件。是否仍要刪除圖層?",
+		"DeleteMultiLayers",				"選取的圖層含有物件。是否仍要刪除圖層?",
+		"DeleteOneGuideLayer",				"圖層「^1」含有尺標參考線。是否仍要刪除圖層?",
+		"DeleteGuideLayers",				"選取的圖層含有尺標參考線。是否仍要刪除圖層?",
+		"DeletingPlaceGunUsedLayer",		"無法刪除圖層。載入於位置游標中的程式碼片段需要該圖層。",
+
+		// ----- Window Menu
+		"Layers_WinMenu",					"圖層(&L)",
+		
+		// ----- Panel strings
+		
+		"^1 Layer",							"^1 個圖層",		// For status widget
+		"^1 Layers",						"^1 個圖層",	// For status widget
+		"New Layer",						"新增圖層",	// Title of New Layer dialog
+		"Layer Options",					"圖層選項", // Title of Layer Options dialog
+		"&Name:",							"名稱(&N):",
+		"&Color:",							"顏色(&C):",
+		"&Show Layer",						"顯示圖層(&S)",
+		"Show &Guides",						"顯示參考線(&G)",
+		"&Lock Layer",						"鎖定圖層(&L)",
+		"Loc&k Guides",						"鎖定參考線(&K)",
+		"Keep When Layer is &Hidden",		"圖層為隱藏時取消繞圖排文功能(&T)",
+		"&Print Layer",						"列印圖層(&P)",
+
+		// ----- Tips strings
+
+		"DeleteLayerTip",					"刪除選取的圖層",
+		"NewLayerTip",						"建立新圖層",
+		"EyeTip",							"切換可見度 ",
+		"PencilTip",						"切換圖層鎖定狀態 (空白時可編輯)",
+		"PageItemPencilTip",				"切換頁面項目鎖定狀態 (空白時可編輯)",
+		"SwatchTip",						"這個圖層的選取範圍標記顏色",
+		"ProxyTip",							"指出選取的項目 (使用拖移在圖層間移動或變更 Z 順序)",
+		"ProxyChildSelectedTip",			"包含選取的物件，按一下以選取物件框物件。",
+		"UnselectedProxyTip",				"按一下以選取項目",
+		"ActiveTip",						"指示目前的繪畫圖層",
+
+		// ----- Error strings
+		"EmptyLayerName",					"必須提供圖層名稱。",
+		"DuplicateLayer",					"已有同樣名稱的圖層存在。",
+
+		"#LayerHierPanelName",		"圖層",
+		"#Page:^1,",					"頁面: ^1， ", // for layer panel status widget. Will be followed by layer count string.
+		"#Pages:^1,",					"頁面: ^1， ", // for layer panel status widget. Will be followed by layer count string.
+		"#DeletePageItemsMenu",		"刪除頁面項目", // menu item name
+		"#DeletePageItem \"^1\"",		"刪除頁面項目「^1」", // menu item name
+		"#DuplicatePI ^1 Menu",			"複製頁面項目「^1」", // menu item name
+		"#DuplicatePIMenu",			"複製頁面項目",  // menu item name
+	}
+};
+
+#endif // __ODFRC__

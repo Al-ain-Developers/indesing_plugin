@@ -1,0 +1,298 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kDynamicDocumentsUIStringsRsrcID + index_trTR)
+{
+	k_trTR,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{
+		// ----- Command strings
+
+		// ----- Window strings
+
+		// ----- Panel strings
+		"kPageTransitionsPanelPopup",			"Sayfa Geçişleri Paneli Menüsü",    
+		"kPageTransitionsSubMenu",				"Sayfa &Geçişleri",
+		"kPageTransitionsPanelName",			"Sayfa Geçişleri",	   
+		"kPageTransitionStaticText",			"Geçiş: ",
+		"kPageDirectionStaticText",				"Yön: ",
+		"kPageSpeedStaticText",					"Hız: ",
+        "kPTHorizontal",						"Yatay",
+        "kPTVertical",							"Dikey",
+        "kPTIn",								"İç",
+        "kPTOut",								"Dış",
+        "kPTDown",								"Aşağı",
+        "kPTLeft",								"Sol",
+        "kPTLeftDown",							"Sol Aşağı",
+        "kPTLeftUp",							"Sol Yukarı",
+        "kPTRight",								"Sağ",
+        "kPTRightDown",							"Sağ Aşağı",
+        "kPTRightUp",							"Sağ Yukarı",
+        "kPTUp",								"Yukarı",
+        "kPTHorizontalIn",						"Yatay İç",
+        "kPTHorizontalOut",						"Yatay Dış",
+        "kPTVerticalIn",						"Dikey İç",
+        "kPTVerticalOut",						"Dikey Dış",
+        "kPTSlow",								"Yavaş",
+		"kPTMedium",							"Orta",
+		"kPTFast",								"Hızlı",		
+		"kPTNoTransition",						"Yok",	
+              		
+		// ----- Liquid Layout panel
+		"kLiquidLayoutMenu",					"&Akışkan Mizanpaj",
+		"kLiquidLayoutPanelPopup",				"Akışkan Mizanpaj Paneli Menüsü",
+		"kLiquidLayoutPanelName",				"Akışkan Mizanpaj",	
+		"kObjectConstraintsStaticTextLabel",	"Nesne Sınırlamaları:",
+		"kDocumentReflowStaticTextLabel",		"Belge Yeniden Akışı",
+		"kFixedSizeStaticTextLabel",			"Şu Sayfa ile Yeniden Boyutlandır:",
+		"kHeightCheckBoxLabel",					"Yükseklik",
+		"kWidthCheckBoxLabel",					"Genişlik",
+		"kPinLeftEdgeCheckBoxLabel",			"Sol",
+		"kPinRightEdgeCheckBoxLabel",			"Sağ",
+		"kPinTopEdgeCheckBoxLabel",				"Üst",
+		"kPinBottomEdgeCheckBoxLabel",			"Alt",
+		"kPinObjectEdgesStaticTextLabel",		"Pin:",
+		"kContentStaticTextLabel",				"İçerik:",
+		"kLayoutAdjustmentWarningTip",			"Bu belge için mizanpaj ayarı etkinleştirildiği için akışkan mizanpaj kuralları geçerli değildir. Mizanpaj ayarını devre dışı bırakmak için tıklatın.",
+		"kPageLayoutPolicyDropdownLabel",		"Akışkan Sayfa Kuralı:",
+		"kLiquidLayoutPanelPageRange",			"Sayfa: ^1",
+		"kPinEdgeToolTip",						"Nesneyi sayfa kenarına göre tutturmak için işaretleyin.",
+		"kResizeHeightWithPageToolTip",			"Sayfa yüksekliği değiştikçe nesne yüksekliğini yeniden boyutlandırmak için işaretleyin.",
+		"kResizeWidthWithPageToolTip",			"Sayfa genişliği değiştikçe nesne genişliğini yeniden boyutlandırmak için işaretleyin.",
+		
+        // ----- Timing panel
+        "kTimingPanelPopup",					"Zamanlama Paneli Menüsü",    
+		"kTimingSubMenu",						"Za&manlama",
+		"kTimingPanelName",						"Zamanlama",	
+		"kTimingPanelEventStaticText",			"Olay: ",
+		"kTimingPanelDelayStaticText",			"Gecikme: ",
+        "kTimingPanelDelaySecondStaticText",	"saniye",
+        "kTimingPanelDelaySecondsStaticText",	"saniye",
+        "kTimingPanelAssignPageLoadEvent",		"Sayfa Yüklendiğindeye Yeniden Ata",
+        "kTimingPanelAssignStateLoadEvent",		"Durum Yüklendiğindeye Yeniden Ata",
+        "kTimingPanelAssignPageClickEvent",		"Sayfa Tıklatıldığındaya Yeniden Ata",
+        "kTimingPanelRemoveItem",				"Öğeyi Kaldır",
+        "kTimingPanelEventDropDownTip",			"Devam etmek için tıklatın",
+        "kTimingPanelGroupButtonTip",			"Birlikte oynat",
+        "kTimingPanelUngroupkButtonTip",		"Ayrı olarak oynat",
+        "kTimingPanelPreviewButtonTip",			"Formayı Önizle",
+        "kUnassignedEntry",						"Atanmamış",
+        "kTimingPanelLinkedItemStaticText",			"Bağlı Öğeler:",	
+        "kTimingPanelPlayLinkedItemStaticText",		"Oynat: ",
+        "kTimingPanelPlayLinkedItemTimeStaticText",	"defa",
+        "kTimingPanelPlayLinkedItemTimesStaticText","defa",
+        "kTimingPanelLoopCheckBoxLabel",		"Döngü",
+        "kTimingPanelLinkedItemGroupWidgetTip",	"Nesneler birlikte oynar (grubu seçmek için tıklatın)", 
+
+        // HTML Preview menu items
+        "kHTMLFXLPreviewSpread",				"Forma Önizleme: EPUB",
+		// ----- Menu Strings
+		"kTransitionPanelChooseAction",				"&Seç...",
+		"kTransitionPanelApplyToAllSpreadsAction",	"&Tüm Sayfa Çiftlerine Uygula",
+		"kTransitionPanelClearAllTransitionsAction","&Tümünü Temizle",
+		
+		// ----- Tips strings
+		"kApplyToAllSpreadsButtonTip",			"Tüm Sayfa Çiftlerine Uygula",
+		"kMotionPathTipStr",					"Hareket Yolu, düzenlemek için tıklatın",
+		"kEasingPathTipStr",					"Geçiş Yolu",
+	#ifdef WINDOWS
+		"kPreviewSpreadButtonToolTip",			"Önizleme Yayılımı: EPUB.",
+	#else
+		"kPreviewSpreadButtonToolTip",			"Önizleme Yayılımı: EPUB.",			
+	#endif
+				
+		// ----- XFL Export Dialogs
+
+		"kXFLExport",						"Flash CS6 Professional (FLA) Dışa Aktarma",
+		"kSizePixels",						"Boyut (piksel):",
+		"kPagesStr",						"Sayfalar:",
+		"kExportStr",						"Dışa Aktar:",
+		"kSpreadsStr",						"&Sayfa Çiftleri",
+		"kGenerateHTMLStr",					"&HTML Dosyası Oluştur",
+		"kFlashText",						"Flash Klasik Metin",
+		"kVectorText",						"Anahatlara Dönüştür",
+		"kRasterText",						"Piksellere Dönüştür",
+		"kVellumText",						"Flash TLF Metni",
+		"kInsertHyphensStr",				"S&eçmeli Tire Noktaları Ekle",
+		"kFitToSize",						"&Sığdır:",
+		"kWidthSize",						"Ge&nişlik:",
+		"kHeightSize",						"&Yükseklik:",
+		"kSelectionExportedStr",			"Se&çim",
+		"kAllPagesExported",				"&Tümü",
+		"kAllPagesExportedStr",				"&Tüm Sayfalar",
+		"kPageRangeExported",				"&Aralık:",
+		"kScaleSize",						"&Ölçek:",
+		"kTextStr",							"Me&tin:",
+		"kInteractivityStr",				"Etkileşim:",
+		"kDynamicMediaStr",					"Etkileşim ve Ortam:",
+		"kImageCompStr",					"&Görüntü Sıkıştırması:",
+		"kQualityStr",						"&JPEG Kalitesi:",
+		"kCurveQualityStr",					"&Eğri Kalitesi:",
+		"kInclButtonsStr",					"&Düğmeleri Ekle",
+		"kInclHyperLinkStr",				"&Köprüleri Ekle",
+		"kInclPageTrans",					"&Sayfa Geçişleri Ekle",
+		"kIncludePageCurl",					"Etkil&eşimli Sayfa Kıvrımını Dahil Et",
+		"kIncludeAllStr",					"&Tümünü Dahil Et",
+		"kAppearanceOnlyStr",				"Yalnızca Gö&rünüm",
+		"kBackgroundStr",					"Arka Plan:",
+		"kPaperColorStr",					"Kağıt R&engi",
+		"kTransparentStr",					"&Saydam",
+		"kFramesPerSecStr",					"kare/saniye",
+		"kPageTransitionsStr",				"Sayfa Geçi&şleri:",
+		"kNone",							"Yok",
+		"kFromDocument",					"Belgeden",
+		"kOptionsStr",						"Seçenekler:",
+		"kDescriptionStr",					"Açıklama:",
+		"kFrameRateStr",					"&Kare Hızı:",
+		"kImageCompAuto",					"Otomatik",
+		"kJPG_Lossy",						"JPEG",
+		"kJPG_LossyStr",					"JPEG (Kayıplı)",
+		"kPNG_Lossless",					"Kayıpsız (Hiçbir Şey Yapmayın)",
+		"kPNG_LosslessStr",					"PNG (Kayıpsız)",
+		"kMinimumQual",						"Minimum",
+		"kLowQual",							"Düşük",
+		"kMediumQual",						"Orta",
+		"kHighQual",						"Yüksek",
+		"kMaximumQual",						"Maksimum",
+		"kRasterizeStr",					"Sayfaları Rasterleştir",
+		"kFlattenXPStr",					"Saydamlığı Dü&zleştir",
+		"k1280x800",						"1280 x 800",
+		"k1024x768",						"1024 x 768",
+		"k800x600",							"800 x 600",
+		"k640x480",							"640 x 480",
+		"k250per",							"%250",
+		"k200per",							"%200",
+		"k150per",							"%150",
+		"k100per",							"%100",
+		"k75per",							"%75",
+		"k50per",							"%50",
+		"k25per",							"%25",
+
+		// Font Embedding
+		"kEmbeddedFontsTitle",				"Gömülü Fontlar (yalnızca Flash Klasik Metin için geçerlidir)",
+		"kTotalFonts",						"Toplam Font: ",
+		"kFontLicensingInfo",				"Font Lisanslama Bilgisi",
+		"kEmbeddedFontName",				"Font Adı: ",
+		"kEmbeddedVendorID",				"Satıcı Kimliği: ",
+
+		// Add Page Transition dialog
+		"kPageTransitionsDialogTitle",			"Sayfa Geçişleri",
+		"kPageTransitionApplyToAllSpreads",		"Tüm Formalara Uygula",
+		"kZoomInOutString",						"Yakınlaştır/Uzaklaştır", 
+		
+		
+		//	Animation UI
+		"kAnimationUIPanelPopup",				"Animasyon Kullanıcı Arabirimi Paneli Menüsü",
+		"kAnimationUISubMenu",					"Animasyon",
+		"kAnimationUIPresetPopupMenu",			"Animasyon Kullanıcı Arabirimi Hazır Ayar Menüsü",
+		"kMotionPresetsNoneTextkey",			"Yok",
+		"kAnimationUILoadPresetMenuItem",		"Hazır Ayar Yükle...",
+		"kAnimationUISaveAsPresetMenuItem",		"Farklı Kaydet...",
+		"kAnimationUISavePresetMenuItem",		"Kaydet",
+		"kAnimationUIDeletePresetMenuItem",		"Sil",
+
+		"kAnimationUIConvertToMotionPathMenuItem",	"Hareket Yollarına Dönüştür",
+		"kAnimationUITestInBrowserMenuItem",	"Tarayıcıda Test Et...",
+		"kCustomPresetName",					"Hareket Hazır Ayarı",
+		"kAnimationUIEventSeparator",			", ",
+		
+		"kAnimationUIPanelName",				"Animasyon",
+		"kAnimationUIPreviewStaticTextLabel",	"Önizleme",
+		"kAnimationUINameStaticTextLabel",		"Ad:",
+		"kAnimationUIPresetStaticTextLabel",	"Hazır Ayar:",
+		"kAnimationUICustomPreset",				"Özel",
+		"kAnimationUIMixed",					"Karışık",
+		"kAnimationUIMixed:",					"Karışık: ",
+		"kAnimationUIChoose",					"Seç",
+		"kAnimationUIEventStaticTextLabel",		"Olaylar:",
+		"kAnimationUIDurationStaticTextLabel",	"Süre:",
+		"kAnimationUISecondStaticTextLabel",	"saniye",
+		"kAnimationUISecondsStaticTextLabel",	"saniye",
+		"kAnimationUIPlayStaticTextLabel",		"Oynat:",
+		"kAnimationUITimeStaticTextLabel",		"defa",
+		"kAnimationUITimesStaticTextLabel",		"defa",
+		"kAnimationUILoopCheckBoxLabel",		"Döngü",
+		"kAnimationUISpeedStaticTextLabel",		"Hız:",
+		"kAnimationUIVisibilityStaticTextLabel","Görünürlük:",
+		"kAnimationUIPropertyStaticTextLabel",	"Özellikler",
+		"kAnimationUIHideBeforeAnimateCheckBoxLabel","Animasyona Kadar Gizle",
+		"kAnimationUIHideAfterAnimateCheckBoxLabel","Animasyondan Sonra Gizle",
+		"kAnimationUIOnButtonEvent",			"Düğmedeyken Olayı",
+		"kAnimationUIOnRollOffCheckBoxLabel",	"Üzerinden Kaldırıldığında ters çevir",
+		"kAnimationUIEaseIn",					"Artan Hareket Hızı",
+		"kAnimationUIEaseOut",					"Azalan Hareket Hızı",
+		"kAnimationUIEaseInAndOut",				"Artan ve Azalan Hareket Hızı",
+		"kAnimationUIFadeIn",					"Netleş",
+		"kAnimationUIFadeOut",					"Sol",
+		"kAnimationUINone",						"Yok",
+		"kAnimationUIFromPreset",				"Hazır ayardan",
+		"kAnimationUIPropertyDesignStaticTextLabel",		"Animasyon:",
+		"kAnimationUIPropertyDesignCheckBoxLabel",			"Animasyonun Sonu",
+		"kAnimationFromStaticTextLabel",					"Animasyondan",
+		"kAnimationToStaticTextLabel",						"Animasyona",
+		"kAnimationUIPropertyDesignScaleStaticTextLabel",	"Ölçekle",
+		"kAnimationUIPropertyDesignScaleHorzStaticTextLabel",	"G:",
+		"kAnimationUIPropertyDesignScaleVertStaticTextLabel",	"Y:",
+		"kAnimationUIPropertyDesignRotateStaticTextLabel",	"Döndür:",
+		"kAnimationUIPropertyDesignOpacityStaticTextLabel",	"Opaklık:",
+		"kAnimationUIPropertyDesignProxyStaticTextLabel",	"Başlangıç:",
+		
+		"kAnimationUIFrom",						"Geçerli Görünümden",
+		"kAnimationUITo",						"Geçerli Görünüme",
+		"kAnimationUIOffset",					"Geçerli Konuma",
+
+		"kAnimationPanelButtonTriggerTip",		"Düğme tetikleyicisi oluştur (simgeyi tıklatın ardından bu animasyonu tetikleyecek bir nesneyi tıklatın)",
+		"kAnimationPanelShowProxyTip",			"Animasyon temsilini göster",
+		"kAnimationPanelLockIconTip",			"Ölçek değerlerini koru",
+		"kAnimationPanelEventMenuSelectorTip",	"Aşağı oku tıklatarak tetikleyici olay seçin",
+		"kAnimationPanelEventInfoTip",			"Animasyon için tetikleyici olaylar",
+		"kAnimationPanelEventInfoDefaultTip",	"Animasyon için varsayılan tetikleyici olay",
+		"kAnimationPanelPreviewButtonTip",		"Geçerli seçimi önizle",
+		"kAnimationPanelConvertToMotionPathTip","Hareket yollarına dönüştür",
+		"kAnimationUIFromTip",					"Çalışma süresinde, animasyonun başlangıç görünümü olarak geçerli nesnenin özelliklerini kullanır.",
+		"kAnimationUIToTip",					"Çalışma süresinde, animasyonun bitiş görünümü olarak geçerli nesnenin özelliklerini kullanır.",
+		"kAnimationUIOffsetTip",				"Çalışma süresinde, animasyonun başlangıç görünümü olarak geçerli nesnenin özelliklerini ve animasyonun bitiş konumu olarak nesnenin geçerli pozisyonunu kullanır.",
+		"kAnimationUIAnimationOptionTip",		"Animasyon seçenekleri",
+		"kAnimationUITrashTip",					"Animasyonu kaldır",
+		"kAnimationUIXFPointTip",				"Ölçek ve dönüş için başlangıç noktasını değiştirin.",
+		"kAnimationUIShowTimingButtonTip",		"Zamanlama panelini göster",
+		
+		"kAnimationUISaveAsPresetTitle",		"Seçili Hazır Ayarı Farklı Kaydet",
+		"kAnimationUISavePresetTitle",			"Hazır Ayarı Kaydet",
+		"kAnimationUISavePresetNameLabel",		"Ad:",
+
+		"kAnimationUIEventPopupMenu",			"Olay Açılır Menüsü",
+		"kAnimationUICreateButtonTriggerCmd",	"Düğme Tetikleyici Oluştur",
+		"kAnimationUICreateSelfTriggerCmd",		"Kendinden Tetikleyici Oluştur",
+		
+		"kAnimationUIManagePresetsDialogTitle",	"Hazır Ayarları Yönet",
+		"kAnimationUIManagePresetsDoneButton",	"Bitti",
+		"kAnimationUIManagePresetsDeleteButton","&Sil",
+		"kAnimationUIManagePresetsDuplicateButton","&Çoğalt",
+		"kAnimationUIManagePresetsLoadButton",	"Yük&le...",
+		"kAnimationUIManagePresetsSaveAsButton","&Farklı Kaydet...",
+		"kAnimationUIManagePresetMenuItem",		"Hazır Ayarları Yönet...",
+		"kAnimationUIManagePresetPresetsSeparator", "--------------------",
+		"kAnimationUIManagePresetNamePrefix",	"[",
+		"kAnimationUIManagePresetNameSuffix",	"]",
+	}
+};
+
+#endif // __ODFRC__

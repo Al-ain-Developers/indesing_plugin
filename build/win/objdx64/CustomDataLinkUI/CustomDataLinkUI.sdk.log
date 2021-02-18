@@ -1,0 +1,36 @@
+﻿  VCPlugInHeaders.cpp
+  CusDtLnkUIActionComponent.cpp
+  CusDtLnkUIBrowsDialogController.cpp
+  CusDtLnkUIBrowsDialogObserver.cpp
+  CusDtLnkUICustomView.cpp
+  CusDtLnkUIDataExchangeHandler.cpp
+  CusDtLnkUIDDTargetFlavorHelper.cpp
+  CusDtLnkUIDragDropSource.cpp
+  CusDtLnkUIFileNodeID.cpp
+  CusDtLnkUITreeDataModel.cpp
+  CusDtLnkUITreeDataNode.cpp
+  CusDtLnkUITreeNodeEH.cpp
+  CusDtLnkUITreeNodeObserver.cpp
+  CusDtLnkUITreeObserver.cpp
+  CusDtLnkUITVHierarchyAdapter.cpp
+  CusDtLnkUITVWidgetMgr.cpp
+  CusDtLnkUIID.cpp
+  CusDtLnkUINoStrip.cpp
+  PlugInStatics.cpp
+  SDKFileHelper.cpp
+  SDKPlugInEntrypoint.cpp
+  TriggerResourceDeps.cpp
+  Performing Custom Build Tools
+  ODFRC deleting old resources... 
+  Could Not Find C:\Users\User\Desktop\plugin_sdk_v3\plugin\build\win\objDx64\CustomDataLinkUI\*.idrc
+  merge_res.cmd - calling ConcatRes
+          1 file(s) copied.
+  ConcatRes skipped since "..\objDx64\CustomDataLinkUI"\CusDtLnkUI.fres is an empty file.
+  merge_res.cmd done.
+  Deleting old resources... 
+  The system cannot find the file specified.
+  26 File(s) copied
+     Creating library ..\..\..\build\win\objDx64\CustomDataLinkUI/CustomDataLinkUI.lib and object ..\..\..\build\win\objDx64\CustomDataLinkUI/CustomDataLinkUI.exp
+  CustomDataLinkUI.sdk.vcxproj -> C:\Users\User\Desktop\plugin_sdk_v3\plugin\build\win\debugx64\sdk\CustomDataLinkUI.sdk.pln
+          1 file(s) copied.
+  restore_res.cmd done.

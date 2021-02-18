@@ -1,0 +1,140 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/public/libs/publiclib/resourcedefs/Public.rc $
+//  
+//  Owner: ???
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//  
+//  Microsoft Developer Studio generated resource script.
+//  
+//========================================================================================
+
+#include "PublicResource.h"
+#include "WinRezFlags.h"
+#include "buildnumber.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+
+#endif    // !_MAC
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+
+
+//////////////////////////////////////////////////////////////////////////
+//
+// Versioning information automatically added by ijohnsto
+//
+
+1 VERSIONINFO
+ FILEVERSION kMajorVersionNumberForResource, kMinorVersionNumberForResource, kDotVersionNumberForResource, kBuildNumber
+ PRODUCTVERSION kMajorVersionNumberForResource, kMinorVersionNumberForResource, kDotVersionNumberForResource, 0
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x40004L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "000004b0"
+        BEGIN
+            VALUE "CompanyName", "Adobe Systems Incorporated\0"
+            VALUE "FileDescription", "Public Plug-in\0"
+            VALUE "FileVersion", "1.0", "\0"
+            VALUE "InternalName", "Public\0"
+            VALUE "LegalCopyright", kShortCopyRightStr, "\0"
+
+            VALUE "OriginalFilename", "Public.dll\0"
+            VALUE "ProductName", "Adobe InDesign\0"
+            VALUE "ProductVersion", kVersionNumberForResourceStr, "\0"
+            VALUE "Copyright", kVersionCopyRightStr, "\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x000, 1200
+    END
+END
+

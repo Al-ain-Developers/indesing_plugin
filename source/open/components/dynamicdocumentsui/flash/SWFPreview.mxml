@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" 
+	            layout="absolute" 
+	            backgroundColor="#FFFFFF"
+				horizontalScrollPolicy="off" 
+				verticalScrollPolicy="off"
+	            creationComplete="onCreationComplete()">
+	
+	<mx:Script>
+		<![CDATA[
+			import mx.events.*;
+            import mx.controls.Alert;
+			       
+			private var fMySWFLoader:Loader = null;
+			private var fCurrentSpreadIndex : int = 1;
+			
+			// -----------------------------------------------------------------------------
+			// Internal callback: creationComplete
+			// Prepares for interaction with the DynamicDocumentsUI plugin for SWF preview.
+			// -----------------------------------------------------------------------------
+			private function onCreationComplete():void
+			{				
+				if (ExternalInterface.available)
+				{
+					try
+					{
+						// Register the external functions:
+						ExternalInterface.addCallback("loadSWF", onLoadSWF);
+						ExternalInterface.addCallback("unloadSWF", onUnloadSWF);
+						ExternalInterface.addCallback("spreadIndexChanged", onSpreadIndexChanged);
+					}
+					catch (e:Error)
+					{
+						trace("ExternalInterface failed due to:" + e.message);
+					}
+				}
+			} // end onCreationComplete()
+			
+			//----------------------------------------------------------------------------------
+			//	INCOMING ExternalInterface methods (my callback methods)
+			//
+			//	These methods are declared as callbacks in the ExternalInterface using 
+			//	ExternalInterface.addCallback()
+			//  
+			//	InDesign makes a call to an ExternalInterface callback method by using its 
+			//	OWLFlashPlayerController's CallMovieFunction method.
+			//
+			//	These methods' return value is received by InDesign as a Response XML packet
+			//----------------------------------------------------------------------------------
+			
+			private function onLoadSWF(fileName:String):void
+			{
+				if (fMySWFLoader)
+					onUnloadSWF();
+					
+				fMySWFLoader = new Loader();
+				
+				var loadURLReq:URLRequest = new URLRequest(fileName);
+				
+				fMySWFLoader.addEventListener(Event.ENTER_FRAME, setInDesignSpreadIndex);
+			
+				fMySWFLoader.load(loadURLReq);
+													
+				myCanvas.rawChildren.addChild(fMySWFLoader);
+			}
+			
+			private function onUnloadSWF():void
+			{			
+				if (fMySWFLoader)
+				{		
+					fMySWFLoader.removeEventListener(Event.ENTER_FRAME, setInDesignSpreadIndex);
+														
+					myCanvas.rawChildren.removeChild(fMySWFLoader);
+					
+					fMySWFLoader = null;
+				}
+			}
+					
+			private function onSpreadIndexChanged(spreadIndex:int) : void
+			{							
+				var myMovieClip:MovieClip = MovieClip(fMySWFLoader.content);
+								
+				myMovieClip.gotoAndStop(spreadIndex);	
+				
+				fCurrentSpreadIndex = spreadIndex;				
+			}
+			
+			//----------------------------------------------------------------------------------
+			//	OUTGOING ExternalInterface methods
+			//
+			//	These methods use ExternalInterface to call a method in the InDesign plug-in
+			//	using ExternalInterface.call()
+			//  
+			//	The InDesign method called (PreviewSWFCallback) is declared as a static
+			//	member of the C++ class, and the callback is registed with ExternalInterface
+			//	from within the plug-in by calling the OWLFlashPlayerController's 
+			//	SetAppFunctionCallback() method.
+			//
+			//	The static C++ method can return a value to the swf by returning a response
+			//	XML string.
+			//----------------------------------------------------------------------------------
+			private function setInDesignSpreadIndex(event:Event) : void
+			{
+				try
+				{
+					//
+					// Tells InDesign to change the navigation widgets its currently previewing frame
+					//
+					if(ExternalInterface.available) 
+					{	
+						var myMovieClip:MovieClip = MovieClip(fMySWFLoader.content);
+						var spreadIndex:int = myMovieClip.currentFrame;	
+								
+						if (spreadIndex != fCurrentSpreadIndex)
+						{									
+							ExternalInterface.call("PreviewSWFCallback", "setSpreadIndex", spreadIndex);
+						}							
+					}
+				}
+				catch (e:Error)
+				{
+					trace("ExternalInterface failed due to:" + e.message);
+				}
+			}
+		]]>
+	</mx:Script>
+	
+	<!-- Canvas -->
+	<mx:Canvas id="myCanvas" width="100%" height="100%"/>
+
+</mx:Application>

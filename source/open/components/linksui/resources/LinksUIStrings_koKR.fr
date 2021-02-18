@@ -1,0 +1,227 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#ifdef __ODFRC__
+
+#include "StringTable.fh"
+
+resource StringTable (kLinksUIStringsRsrcID + index_koKR)
+{
+	k_koKR,					// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	{
+		"Links_WinMenu",			"링크(&K)", // panel menu item
+		"kRtMouseGraphics",			"그래픽", // context menu submenu name
+		"RtMenuLinksUILinkInfo",	"링크 정보 컨텍스트 메뉴",
+		
+		"#LinksUIPanel",			"링크", // panel name
+		"#LinksUIPanelMenu",		"링크 패널 메뉴", 
+		"#LinksUtilitiesSubmenu",		"유틸리티",		// submenu for links panel menu
+		"#SelectedLinkInfoSectionName",			"링크 정보", // section name in links ui panel
+		
+		"#UpdateAllOutOfDateLinksMenu",	"모든 링크 업데이트",
+		"#AutoFindMissingLinksMenu",		"누락된 링크 검색",
+		"#LinksUIRelinkLinkMenu",		"다시 연결...",
+		"#LinksUIRelinkResourceMenu",	"모든 인스턴스 다시 연결...", // menu item to relink all instances of this multiple link assets
+		"#RelinkResource ^1 Menu",		"'^1'의 모든 인스턴스 다시 연결...", // menu item to relink all instances of one single link asset
+		"#ReplaceFPOWithOriginalResourceMenu",	"모든 인스턴스 바꾸기...", // menu item to replace all instances of this multiple link assets
+		"#ReplaceFPOWithOriginalResource ^1 Menu", "'^1' FPO의 모든 인스턴스를 원본으로 바꾸기...", // menu item to replace all instances of one single link asset
+		"#RelinkCloudResource ^1 Menu",	"CC 라이브러리에서 '^1'의 모든 인스턴스 다시 연결...", // menu item to relink all instances of one single link asset
+        "#RelinkAALResource ^1 Menu",    "Adobe Asset Link에서 '^1'의 모든 인스턴스 다시 연결...", // menu item to relink all instances of one single link asset
+		"#LinksUIUpdateLinkMenu",			"링크 업데이트", // context menu item in links ui panel
+		"#LinksUIUpdateLinkResourceMenu",	"모든 인스턴스 업데이트",
+		"#UpdateResource ^1 Menu",		"'^1'의 모든 인스턴스 업데이트", // menu item to update all instances of one single link asset
+		"#LinksUIEmbedLinkMenu",			"링크 포함", // context menu item in links ui panel
+		"#LinksUIEmbedResourceMenu",		"모든 인스턴스 포함",
+		"#EmbedResource ^1 Menu",			"'^1'의 모든 인스턴스 포함", // menu item to embed all instances of one single link asset
+		"#LinksUIUnEmbedLinkMenu",		"링크 포함 취소", // context menu item in links ui panel
+		"#LinksUIUnEmbedResourceMenu",	"모든 인스턴스 포함 취소",
+		"#UnembedResource ^1 Menu",			"'^1'의 모든 인스턴스 포함 취소", // menu item to unembed all instances of one single link asset
+		"#LinksUIUnLinkMenu",				"연결 해제",
+		"#UnLinkResourceMenu",			"모든 인스턴스 연결 취소",
+		"#UnLinkResource ^1 Menu",			"'^1'의 모든 인스턴스 연결 취소", // menu item to unlink all instances of one single link asset
+		"#LinksUIEditOriginalLinkMenu",		"원본 편집", // context menu item in links ui panel
+		"#LinksUIGoToSourceLinkMenu",		"소스로 이동", // context menu item in links ui panel
+		"#LinksUIXMPFileInfo",				"XMP 파일 정보...",
+		"#LinksUICopyPath",				"전체 경로 복사",
+		"#LinksUICopyPlatformPath",			"플랫폼 스타일 경로 복사",
+		"#RevealLinkInMacFinder",			"Finder에 나타내기",
+		"#RevealLinkInWinExplorer",			"탐색기에 나타내기",
+		"#RevealLinkInAdobeBridge",			"Bridge에 나타내기",
+		"#RevealLinkInCCLibraries",			"CC 라이브러리에 나타내기",
+		"#GoToLink",						"링크로 이동",
+		"#EditWithApp",					"편집에 사용할 응용 프로그램",
+		"ApplicationFiles",					"응용 프로그램(*.exe)", // windows only string to list exe files in the 'edit with application' dialog.
+		"#ChooseEditingApplication",			"응용 프로그램 선택", // dialog title
+		"#OtherApp",						"기타...",	// Menu name for choosing a custom application via a standard file dialog for Edit With...
+		"#LinksUICopyLink",				"링크 복사...",
+		"#LinksUIEditColumnsMenu",			"패널 옵션...",
+		
+		"#LinksUIRemoveThisColumnMenu",	"이 열 숨기기",
+		"#LinksUIShowThumbnailMenu",		"축소판 표시",
+		"#LinksUIHideThumbnailMenu",		"축소판 숨기기",		
+		"#LinksUIShowInfoThumbnailMenu",	"정보 축소판 표시",
+		"#LinksUIHideInfoThumbnailMenu",	"정보 축소판 숨기기",
+		
+		"#SaveLinkVersionCmd",			"링크 체크인",
+		"#ShowLinksPanelColumn",			"열 표시",
+		"#ShowLinksPanelInfo",				"링크 정보에 표시",
+		"#SelectNextLinkButtonTip",			"목록의 다음 링크 선택",
+		"#SelectPrevLinkButtonTip",			"목록의 이전 링크 선택",
+		"#ToggleLinkInfoButtonTip",			"링크 정보 표시/숨기기",
+
+		"#ShortLinkStatusParamStr",				"^1 링크",  // status string for links panel
+		"#LongLinkStatusParamStr",				"총 ^1개 링크\n\n   ^2개 누락\n   ^3개 수정됨\n   ^4개 포함됨\n   ^5개 고유 항목\n   ^6개 하위 링크", // tip string for links panel status.
+		"#OneSelectedLinkStr",			"1개 선택됨", // status string when one link is selected in the panel.
+		"#NumSelectedLinksParamStr",	"^1개 선택됨", // status string when multiple links are selected in the panel.
+				
+		"RtMenuLinksUILinkItem",		"링크 컨텍스트 메뉴",
+		"RtMenuLinksUILinksHeader",		"링크 머리글 컨텍스트 메뉴",
+		
+		"#LinkColumnDialog",			"패널 옵션", // dialog name
+		"#LinksUIPanelOptions",			"옵션",
+		
+		"#LinkThumbPrefLabel",			"축소판 수:",
+		"#LinksUIRowSizeLabel",		"행 크기(&R):",
+		"#LinksUISmallRowStr",			"행 높이 줄임",
+		"#LinksUIRegularRowStr",		"표준 행 높이",
+		"#LinksUILargeRowStr",			"행 높이 늘림",
+		"#LinkInfoShowThumbnailCheckbox",	"링크 정보에 표시(&I)",
+		"#LinksUIShowThumbnail",		"이름 열에 표시(&N)",
+		"#LinksUICollapseMultiple",		"동일한 소스에 대한 다중 링크 축소(&C)",
+
+		"#SearchHereForMissingFiles",	"이 폴더에서 누락된 링크 검색", // label for checkbox in relink dialog
+		"#RelinkSkipButton",			"건너뛰기", // name for 'skip' button in relink dialog
+		"#SearchFound^1Links",		"이 다시 연결된 디렉토리를 검색하여 ^1개의 누락된 링크를 발견하고 다시 연결했습니다.", // alert that displays if we auto find missing links after a relink
+		"#RelinkToFolderTitle",			"다시 연결할 폴더를 선택합니다. 이름이 일치하는 현재 선택한 링크만 다시 연결됩니다.",
+		"#RelinkToSameFilename",		"같은 파일 이름 및 확장명 찾기", // radio button option in relink to folder dialog
+		"#RelinkToExtension",			"같은 파일 이름의 다음 확장명 찾기:", // radio button option in relink to folder dialog
+		"#LinksUICopyLinksTitle",		"연결된 파일을 복사할 폴더를 선택하십시오.",
+		"#LinksUIRelinkToFolderLinkMenu",	"폴더로 다시 연결...",
+		"#LinksUIRelinkFileExtensionLinkMenu",	"파일 확장명 다시 연결...",
+        "#LinksUIRelinkFromCloudAssetLinkMenu",	"CC 라이브러리에서 다시 연결...",
+        "#LinksUIRelinkFromAALAssetLinkMenu",    "Adobe Asset Link에서 다시 연결...",
+		"#LicenseStockAssetLinkMenu",	"사용권 이미지…",
+		"#LinksUIRelink: ^1",			"다시 연결: ^1", // title for relink dialog. ^1 becomes file path.
+		"#LinksUILocate: ^1",			"찾기: ^1", // title for relink dialog when link is missing. ^1 becomes file path.
+		"#CopyLinksFailedAlert",		"링크를 폴더로 복사하지 못했습니다.",
+		"#AutoFindFoundNothingAlert",	"누락된 링크가 없습니다. [다시 연결] 명령을 사용하여 처음 나타나는 누락된 링크를 찾은 후 다시 시도하십시오.",
+		
+		"kEditsMadeWarning",			  "\"^1\"의 가져온 버전이 편집되었습니다. 업데이트하면 편집 내용을 잃게 됩니다. 업데이트하시겠습니까?",
+		"kEditsMadeInLinkedStoryWarning",	"연결된 스토리 \"^1\"이(가) 편집되었습니다. 업데이트하면 편집 내용을 잃게 됩니다. 업데이트하시겠습니까?",
+		"kEditsMadeInLinkedArticleWarning", "연결된 페이지 항목 \"^1\"이(가) 편집되었습니다. 업데이트하면 편집 내용을 잃게 됩니다. 업데이트하시겠습니까?",
+		"kEditsMadeToTextOrTableWarning", "\"^1\"의 가져온 버전이 편집되었습니다. 링크를 업데이트하면 셀 스타일이나 표 스타일을 통해 스프레드시트에 적용된 변경 내용을 제외한 모든 편집 내용을 잃게 됩니다. 그래도 업데이트하시겠습니까?",
+
+		// Strings for Problem Links dialog
+		"#LinksModifiedWarning",	"이 문서에는 누락/수정된 소스에 연결하는 링크가 포함되어 있습니다. 수정된 링크를 지금 업데이트하거나 링크 패널을 사용하여 나중에 업데이트할 수 있습니다.",
+		"#HTTPLinksModifiedWarning",	"이 문서에는 마지막 문서 저장 이후 누락/수정된 소스에 연결하는 링크가 포함되어 있습니다. 수정된 링크를 지금 업데이트하거나 링크 패널을 사용하여 나중에 업데이트할 수 있습니다.",
+		"#UpdateLinks",				"수정된 링크 업데이트(&U)",	 // button text
+		"#Don'tUpdateLinks",		"링크 업데이트 안 함", // button text
+		"#ProblemMissingLinksParamStr",	"^1 - 누락된 링크 수",
+		"#ProblemModifiedLinksParamStr",	"^1 - 수정된 링크 수",
+		"#ProblemInaccessibleLinksParamStr",	"^1 - 액세스할 수 없는 URL 링크. 자세한 내용은 링크 패널을 참조하십시오.",
+        "#ProblemLinksDialogHeader",    "링크 관련 문제",
+		"UnembedToOriginal", 		"포함을 취소하면 원본 파일에 연결하거나 폴더에 생성된 파일에 연결할 수 있습니다. 원본 파일에 연결하시겠습니까?",
+		"#SelectUnembedDir",
+									"파일을 만들 폴더를 선택하십시오.",
+
+		// Show Link message.
+		 "Cannot show link: The selected item is on a hidden layer.",
+						"링크를 표시할 수 없습니다. 선택한 항목이 숨겨져 있거나 숨겨진 레이어에 있습니다.",
+		"Cannot show link: The selected item is hidden in overset text.",
+						"링크를 표시할 수 없습니다. 선택한 항목이 넘치는 텍스트에 숨겨져 있습니다.",
+		"Cannot show link: The selected item is hidden in an inactive form field state.",
+						"링크를 표시할 수 없습니다. 선택한 항목이 비활성 단추 상태에 숨겨져 있습니다. 항목을 보려면 [단추] 패널을 사용하여 숨김 상태를 활성화하십시오.",
+		"Cannot show link: The selected item is hidden in an inactive mso state.",
+						"링크를 표시할 수 없습니다. 선택한 항목이 비활성 개체 상태입니다. 개체 상태 패널을 사용하여 숨겨진 상태를 보이도록 하십시오.",
+		"Cannot show link: The selected item is in deleted text in a tracked change.",
+						"링크를 표시할 수 없습니다. 선택한 항목이 추적한 변경 내용의 삭제된 텍스트에 있습니다.",
+		"Cannot show link: The selected item is an XML structure element not in the layout.",
+						"링크를 표시할 수 없습니다. 선택한 항목이 레이아웃에 있지 않은 XML 구조 요소입니다.",
+		"Cannot show link: The selected item is in hidden conditional text.",
+						"링크를 표시할 수 없습니다. 선택한 항목이 숨겨진 조건부 텍스트 내에 있습니다.",
+						
+						
+		"#EditOriginalButtonTip",		"원본 편집",	// tip string for button in links panel
+		"#GotoLinkButtonTip",		"링크로 이동",	// tip string for button in links panel
+		
+		"#appendedUpdateButtonTipMac",		". 모두 업데이트하려면 Opt 키를 누른 채 클릭하십시오.", // appened to menu name for 'update link' to build tip string for update button(mac)
+		"#appendedUpdateButtonTipWin",		". 모두 업데이트하려면 Alt 키를 누른 채 클릭하십시오.", // appened to menu name for 'update link' to build tip string for update button(win)
+		"#appendedRelinkButtonTipMac",		" 누락된 모든 링크를 다시 연결하려면 Opt 키를 누른 채 클릭하십시오.", // appened to menu name for 'Relink' to build tip string for relink button(mac)
+		"#appendedRelinkButtonTipWin",		" 누락된 모든 링크를 다시 연결하려면 Alt 키를 누른 채 클릭하십시오.", // appened to menu name for 'Relink' to build tip string for relink button(win)
+		
+		"#ErrorEmbeddingLink",				"링크를 포함하지 못했습니다.",
+		"#LinksUIShowLinkInfoMenu",		"링크 정보 창 표시",
+		"#LinksUIHideLinkInfoMenu",			"링크 정보 창 숨기기",
+		"#LinksUICopyLinkInfoMenu",		"모든 링크 정보 복사",
+		"#LinksUIAutosizeLinkInfoMenu",		"링크 정보 자동 크기 조정",
+		"#LinksUIGenerateReportMenu",		"선택한 링크에 대한 정보 복사",
+		"#LinksUIGenerateCaptionPrefsMenu",	"캡션 설정...",
+		"#GenerateLiveLinkCaptionMenu",		"실시간 캡션 생성",
+		"#GenerateStaticLinkCaptionMenu",	"정적 캡션 생성",
+		
+		"#GenerateCaptionPrefDialogName",	"캡션 설정",
+		"#BeforeMetadataCaptionLabel",		"이전 텍스트",
+		"#MetadataCaptionLabel",			"메타데이터",
+		"#AfterMetadataCaptionLabel",		"이후 텍스트",
+		"#GenerateLiveCaptionGraphicSelectionMenu",	"실시간 캡션 생성",
+		"#GenerateStaticCaptionGraphicSelectionMenu",	"정적 캡션 생성",
+		"#CopyLinkInfoStr '^1'",				"^1' 복사", // Menu item name in links panel. ^1 is replaced with whatever text data is under the mouse.
+		"#CopyLinkFieldMenu",				"정보 필드 복사",
+		"#InfoLabelSuffix",					": ", // suffix added to end of link info labels in the info section
+		
+		"#LinksCopyInfoMenu",				"정보 복사", // links panel submenu
+		
+		"#CaptionSubmenu",				"캡션",		// name of captions submenu on Object menu
+		"#CaptionRowLabel",				"메타데이터 캡션", // caption setup dialog top section title
+		"#CaptionOptionsLabel",				"위치 및 스타일", // caption setup dialog bottom section title
+		"#CaptionOffsetLabel",				"오프셋(&O):",
+		"#CaptionParaStyleLabel",			"단락 스타일(&P):",
+		"#CaptionLayerLabel",				"레이어(&L):",
+		"#CaptionLayerLockedError",			"잠긴 레이어에서 캡션을 생성할 수 없습니다.",
+		"#CaptionGroupFailureError",			"캡션에 대한 그룹을 만들 수 없습니다.",
+		"#ErrorGeneratingCaption",			"캡션을 생성하지 못했습니다.",
+		"#CaptionAlignmentLabel",			"정렬(&A):",
+		
+		"#CaptionAlignBelow",				"이미지 아래",
+		"#CaptionAlignAbove",				"이미지 위",
+		"#CaptionAlignLeft",					"이미지 왼쪽",
+		"#CaptionAlignRight",				"이미지 오른쪽",
+		
+		"#GroupCaptionWithImage",			"이미지 포함 그룹 캡션(&G)",
+		 "#ConvertCaptionToTextMenu",		"정적 캡션으로 변환",
+		 "#ShowImportOptionsTip", 			"가져오기 옵션 표시", // Tool tip for custom controls in relink dialog
+		 "#SearchHereForMissingFilesTip",	"여기서 누락된 파일 검색", // Tool tip for custom controls in relink dialog
+		 "#EmbedLinkFromPropsPanel",		"속성 패널에서 이미지 포함",
+		 "#RelinkAssetFromPropsPanel",		"속성 패널에서 이미지 다시 연결",
+		 "#UpdateLinkFromPropsPanel",		"속성 패널에서 이미지 업데이트",
+		 "#UnlinkFromPropsPanel",			"속성 패널에서 파일 연결 해제",
+        
+        "kImportingAALAsset",                "자산을 가져오는 중",
+        "kImportingFileName",                "^1을(를) 가져오는 중",
+        
+        //Error Strings for AEM
+        "AEMUnsupportedFiles",     "^2개 파일 중 ^1개를 가져올 수 없습니다. InDesign에서 지원하지 않는 파일 형식입니다.",
+        "AEMInaccessibleFiles",     "^2개의 파일 중 ^1개를 가져올 수 없습니다. InDesign이 파일에 액세스할 수 없습니다. 네트워크 연결이나 내용의 원본 소스를 확인하십시오.",
+        "AEMUnknownFiles",     "알 수 없는 오류로 인해 ^2개 파일 중 ^1개를 가져오지 못했습니다.",
+        "AEMGenericImportFailure",     "AEM 기반 자산을 가져올 수 없습니다.",
+        
+        // Action id strings
+        "#LinksUIReplaceFPOWithOriginalLink",        "FPO를 원본으로 바꾸기...",
+        "#LinksUIReplaceAllFPOWithOriginalLinks",    "모든 FPO를 원본으로 바꾸기...",
+        "#LinksUIDownloadOriginalLink",                "원본 다운로드",
+        "#LinksUIDownloadAllOriginalLinks",            "모든 원본 다운로드",
+	}
+};
+
+
+
+#endif //__ODFRC__

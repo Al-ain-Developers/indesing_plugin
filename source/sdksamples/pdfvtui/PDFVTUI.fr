@@ -1,0 +1,625 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/sdksamples/pdfvtui/PDFVTUI.fr $
+//  
+//  Owner: Devtech
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2008 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "VCPlugInHeaders.h"
+
+// General includes:
+#include "MenuDef.fh"
+#include "ActionDef.fh"
+#include "ActionDefs.h"
+#include "AdobeMenuPositions.h"
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "StringTable.fh"
+#include "ObjectModelTypes.fh"
+#include "ShuksanID.h"
+#include "ActionID.h"
+#include "CommandID.h"
+#include "WorkspaceID.h"
+#include "WidgetID.h"
+#include "BuildNumber.h"
+#include "PlugInModel_UIAttributes.h"
+#include "PanelList.fh"
+
+#include "InterfaceColorDefines.h"
+#include "IControlViewDefs.h"
+#include "SysControlIDs.h"
+#include "Widgets.fh"	// for PalettePanelWidget or DialogBoss
+
+
+// Project includes:
+#include "PDFVTUIID.h"
+#include "PDFVTID.h"
+#include "GenericID.h"
+#include "ShuksanID.h"
+#include "TextID.h"
+
+
+#ifdef __ODFRC__
+
+/*  Plugin version definition.
+*/
+resource PluginVersion (kSDKDefPluginVersionResourceID)
+{
+	kTargetVersion,
+	kPDFVTUIPluginID,
+	kSDKDefPlugInMajorVersionNumber, kSDKDefPlugInMinorVersionNumber,
+	kSDKDefHostMajorVersionNumber, kSDKDefHostMinorVersionNumber,
+	kPDFVTUICurrentMajorFormatNumber, kPDFVTUICurrentMinorFormatNumber,
+	{ kInDesignProduct },
+	{ kWildFS },
+	kUIPlugIn,
+	kPDFVTUIVersion
+};
+
+resource PluginDependency(kSDKDefPluginDependencyResourceID)
+{
+    kWildFS
+    {
+        kPDFVTPluginID,
+        kPDFVTPluginName,
+        kSDKDefPlugInMajorVersionNumber,
+        kSDKDefPlugInMinorVersionNumber,
+    }
+}
+
+
+/*  The ExtraPluginInfo resource adds extra information to the Missing Plug-in dialog
+	that is popped when a document containing this plug-in's data is opened when
+	this plug-in is not present. These strings are not translatable strings
+	since they must be available when the plug-in isn't around. They get stored
+	in any document that this plug-in contributes data to.
+*/
+resource ExtraPluginInfo(1)
+{
+	kPDFVTUICompanyValue,			// Company name
+	kPDFVTUIMissingPluginURLValue,	// URL 
+	kPDFVTUIMissingPluginAlertValue,	// Missing plug-in alert text
+};
+
+/* Boss class definition.
+*/
+resource ClassDescriptionTable(kSDKDefClassDescriptionTableResourceID)
+{{{
+	
+	/**
+	 This boss class supports two interfaces:
+	 IActionComponent and IPMPersist.
+
+	 
+	 @ingroup pdf_vtui
+	*/
+	Class
+	{
+		kPDFVTUIActionComponentBoss,
+		kInvalidClass,
+		{
+			/** Handle the actions from the menu. */
+			IID_IACTIONCOMPONENT, kPDFVTUIActionComponentImpl,
+			/** Persist the state of the menu across application instantiation.
+			Implementation provided by the API.*/
+			IID_IPMPERSIST, kPMPersistImpl
+		}
+	},
+
+	/**
+		 This boss class inherits from an API panel boss class, and
+		 adds an interface to control a pop-up menu on the panel.
+		 The implementation for this interface is provided by the API.
+
+		 
+		 @ingroup pdf_vtui
+	*/
+
+	Class
+	{
+		kPDFVTUIPanelWidgetBoss,
+		kPalettePanelWidgetBoss,
+		{
+			/** The plug-in's implementation of ITextControlData with an exotic IID of IID_IPANELMENUDATA.
+			Implementation provided by the API.
+			*/
+			IID_IPANELMENUDATA, kCPanelMenuDataImpl,
+		}
+	},
+
+			
+	/**
+		 This boss class implements the dialog for this plug-in. All
+		 dialogs must implement IDialogController. Specialisation of
+		 IObserver is only necessary if you want to handle widget
+		 changes dynamically rather than just gathering their values
+		 and applying in the IDialogController implementation.
+		 In this implementation IObserver is specialised so that the
+		 plug-in's about box is popped when the info button widget
+		 is clicked.
+
+		 
+		 @ingroup pdf_vtui
+	*/
+	Class
+	{
+		kPDFVTUIDialogBoss,
+			kDialogBoss,
+		{
+			/** Provides management and control over the dialog.
+			*/
+			IID_IDIALOGCONTROLLER, kPDFVTUIDialogControllerImpl,
+			/** Allows dynamic processing of dialog changes.
+			*/
+			IID_IOBSERVER, kPDFVTUIDialogObserverImpl,
+			IID_IPDFVTUIDROPDOWNLISTSELECTION, kPDFVTUIDropDownListSelectionImpl,
+		}
+
+	},
+
+
+}}};
+
+/*  Implementation definition.
+*/
+resource FactoryList (kSDKDefFactoryListResourceID)
+{
+	kImplementationIDSpace,
+	{
+		#include "PDFVTUIFactoryList.h"
+	}
+};
+
+
+/*  Menu definition.
+*/
+resource MenuDef (kSDKDefMenuResourceID)
+{
+	{
+		// The About Plug-ins sub-menu item for this plug-in.
+		kPDFVTUIAboutActionID,			// ActionID (kInvalidActionID for positional entries)
+		kPDFVTUIAboutMenuPath,			// Menu Path.
+		kSDKDefAlphabeticPosition,			// Menu Position.
+		kSDKDefIsNotDynamicMenuFlag,		// kSDKDefIsNotDynamicMenuFlag or kSDKDefIsDynamicMenuFlag
+
+
+		// Separator for the popup menu on the panel
+		kPDFVTUISeparator1ActionID,
+		kPDFVTUIInternalPopupMenuNameKey kSDKDefDelimiterAndSeparatorPath,	// :- to mark an item as a separator.
+		kPDFVTUISeparator1MenuItemPosition,
+		kSDKDefIsNotDynamicMenuFlag,
+
+		// About this plugin submenu for the popup menu on the panel
+		kPDFVTUIPopupAboutThisActionID,
+		kPDFVTUITargetMenuPath
+		kPDFVTUIAboutThisMenuItemPosition,
+		kSDKDefIsNotDynamicMenuFlag,
+
+
+	// The Plug-ins menu sub-menu items for this plug-in.
+		kPDFVTUIDialogActionID,
+		kPDFVTUIPluginsMenuPath,
+		kPDFVTUIDialogMenuItemPosition,
+		kSDKDefIsNotDynamicMenuFlag,
+		
+
+	}
+};
+
+/* Action definition.
+*/
+resource ActionDef (kSDKDefActionResourceID)
+{
+	{
+		kPDFVTUIActionComponentBoss, 		// ClassID of boss class that implements the ActionID.
+		kPDFVTUIAboutActionID,	// ActionID.
+		kPDFVTUIAboutMenuKey,	// Sub-menu string.
+		kOtherActionArea,				// Area name (see ActionDefs.h).
+		kNormalAction,					// Type of action (see ActionDefs.h).
+		kDisableIfLowMem,				// Enabling type (see ActionDefs.h).
+		kInvalidInterfaceID,			// Selection InterfaceID this action cares about or kInvalidInterfaceID.
+		kSDKDefInvisibleInKBSCEditorFlag, // kSDKDefVisibleInKBSCEditorFlag or kSDKDefInvisibleInKBSCEditorFlag.
+
+
+		kPDFVTUIActionComponentBoss,
+		kPDFVTUIPopupAboutThisActionID,
+		kSDKDefAboutThisPlugInMenuKey,	// Key to the name of this action
+		kOtherActionArea,
+		kNormalAction,
+		kDisableIfLowMem,
+		kInvalidInterfaceID,
+		kSDKDefInvisibleInKBSCEditorFlag,
+
+
+		kPDFVTUIActionComponentBoss,
+		kPDFVTUIDialogActionID,		
+		kPDFVTUIDialogMenuItemKey,		
+		kOtherActionArea,			
+		kNormalAction,				
+		kDisableIfNoFrontDocument,	
+		kInvalidInterfaceID,		
+		kSDKDefVisibleInKBSCEditorFlag,
+
+
+	}
+};
+
+
+/*  LocaleIndex
+	The LocaleIndex should have indicies that point at your
+	localizations for each language system that you are localized for.
+*/
+/*  String LocaleIndex.
+*/
+resource LocaleIndex ( kSDKDefStringsResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_enUS, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_enGB, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_deDE, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_frFR, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_esES, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_ptBR, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_svSE, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_daDK, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_nlNL, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_itIT, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_nbNO, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_fiFI, kSDKDefStringsResourceID + index_enUS
+		kInDesignJapaneseFS, k_jaJP, kSDKDefStringsResourceID + index_jaJP
+	}
+};
+
+resource LocaleIndex (kSDKDefStringsNoTransResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_Wild, kSDKDefStringsNoTransResourceID + index_enUS
+	}
+};
+
+resource StringTable (kSDKDefStringsNoTransResourceID + index_enUS)
+{
+	k_enUS,									// Locale Id
+	kEuropeanMacToWinEncodingConverter,		// Character encoding converter
+	{
+		// No-Translate strings go here:
+
+		kPDFVTUIInternalPopupMenuNameKey,	kPDFVTUIInternalPopupMenuNameKey,		// No need to translate, internal menu name.		
+		kPDFVTUIDataSourceFileKey, kPDFVTUIDataSourceFileKey,
+		kPDFVTUIFileTypeTextKey, kPDFVTUIFileTypeTextKey,
+		kPDFVTUIFileTypeCSVKey, kPDFVTUIFileTypeCSVKey,
+		kUnsupportedEncodingWarningKey, kUnsupportedEncodingWarningKey,
+	}
+};
+
+/*  Panel LocaleIndex.
+*/
+resource LocaleIndex (kSDKDefPanelResourceID)
+{
+	kViewRsrcType,
+	{
+		kWildFS, k_Wild, 	kSDKDefPanelResourceID + index_enUS
+	}
+};
+
+
+/*  Type definition.
+*/
+type PDFVTUIPanelWidget(kViewRsrcType) : PalettePanelWidget(ClassID = kPDFVTUIPanelWidgetBoss)
+{
+	CPanelMenuData;
+};
+
+/*  Dialog LocaleIndex.
+*/
+resource LocaleIndex (kSDKDefDialogResourceID)
+{
+   kViewRsrcType,
+	{
+		kWildFS,	k_Wild, kSDKDefDialogResourceID + index_enUS
+	}
+};
+
+/*  Type definition.
+*/
+type PDFVTUIDialogWidget(kViewRsrcType) : DialogBoss(ClassID = kPDFVTUIDialogBoss)
+{
+};
+
+/*  Dialog definition.
+	This view is not localised: therefore, it can reside here.
+	However, if you wish to localise it, it is recommended to locate it in one of
+	the localised framework resource files (i.e. PDFVTUI_enUS.fr etc.) and
+	update your Dialog LocaleIndex accordingly.
+*/
+resource PDFVTUIDialogWidget (kSDKDefDialogResourceID + index_enUS)
+{
+	__FILE__, __LINE__,
+	kPDFVTUIDialogWidgetID,	// WidgetID
+	kPMRsrcID_None,				// RsrcID
+	kBindNone,					// Binding
+	0, 0, 488,170,				// Frame (l,t,r,b)
+	kTrue, kTrue,				// Visible, Enabled
+	kPDFVTUIDialogTitleKey,	// Dialog name
+	{
+	//<FREDDYWIDGETDEFLISTUS>
+		DefaultButtonWidget
+		(
+			kOKButtonWidgetID,		// WidgetID
+			kSysButtonPMRsrcId,		// RsrcID
+			kBindNone,				// Binding
+			400, 10, 480, 30,		// Frame (l,t,r,b)
+			kTrue, kTrue,			// Visible, Enabled
+			kSDKDefOKButtonApplicationKey,	// Button text            
+		),
+		CancelButtonWidget
+		(
+			kCancelButton_WidgetID,	// WidgetID
+			kSysButtonPMRsrcId,		// RsrcID
+			kBindNone,				// Binding
+			400, 40, 480, 60,		// Frame (l,t,r,b)
+			kTrue, kTrue,			// Visible, Enabled
+			kSDKDefCancelButtonApplicationKey,	// Button name
+			kTrue,					// Change to Reset on option-click.
+		),
+
+		StaticTextWidget
+		(
+			0,
+			kSysStaticTextPMRsrcId,
+			kBindNone,
+			//Frame(12,54,115,74) //  left, top, right, bottom
+			Frame(5,10,110,30) //  left, top, right, bottom
+			kTrue, // visible
+			kTrue, // enabled
+			// StaticTextAttributes properties
+			kAlignRight, // Alignment
+			kDontEllipsize, kTrue, // Ellipsize style, Convert ampersands
+			kPDFVTUIDataSourceFileLabelItemKey, // control label
+			kPDFVTUIDataSourceFileTextWidgetID,  // associated widget ID
+		),
+		
+		TextEditBoxWidget 
+		( 
+			kPDFVTUIDataSourceFileTextWidgetID, 
+			kSysEditBoxPMRsrcId, // WidgetId, RsrcId
+			kBindNone, 
+			//Frame(125,54,260,74) // Frame
+			Frame(115,10,355,30) // Frame
+			kTrue, 
+			kTrue, // Visible, Enabled
+			0, // widget id of nudge button
+			1, // small nudge amount
+			10, // large nudge amount
+			0, // max num chars( 0 = no limit)
+			kFalse, // is read only
+			kTrue, // should notify each key stroke (NEW)
+			kFalse, // range checking enabled
+			kTrue, // blank entry allowed
+			0, 
+			0, // upper/lower bounds
+			"",  // initial text
+		),
+		
+		ButtonWidget 
+		( 
+			kPDFVTUIFindDataSourceFileButtonWidgetID, // WidgetID
+			kSysButtonPMRsrcId, // RsrcID
+			kBindNone, // Binding
+			//Frame(300,54,350,74) // Frame (l,t,r,b)
+			Frame(360,10,390,30)
+			kTrue, 
+			kTrue, // Visible, Enabled
+			kPDFVTUIFindDataSourceFileButtonKey, // Button name
+		),
+		
+		GroupPanelWidget
+		(
+			0,
+			kPMRsrcID_None, // PMRsrc ID
+			kBindNone, // frame binding
+			Frame(10.0,70.0,480.0,165.0) //  left, top, right, bottom
+			kTrue, // visible
+			kTrue, // enabled			
+			kCIP4MappingGroupTextWidgetID, // header widget ID
+			{
+				//FirstName
+				StaticTextWidget
+				(
+					0,
+					kSysStaticTextPMRsrcId,
+					kBindNone,
+					//Frame(12,54,115,74) //  left, top, right, bottom
+					//Frame(5, 50, 65, 70) //  left, top, right, bottom
+					Frame(5, 15, 70, 35)
+					kTrue, // visible
+					kTrue, // enabled
+					// StaticTextAttributes properties
+					kAlignRight, // Alignment
+					kDontEllipsize, kTrue, // Ellipsize style, Convert ampersands
+					//kPDFVTUIDataSourceFileLabelItemKey, // control label
+					//kPDFVTUIDataSourceFileTextWidgetID,  // associated widget ID
+					kPDFVTUIFirstNameLabelItemKey,
+					kPDFVTUIFirstNameTextWidgetID,
+				),
+				
+				DropDownListWidget
+				(
+					kPDFVTUIFirstNameDropDownListWidgetID, kSysDropDownPMRsrcId,
+					kBindNone,
+					//Frame(70, 50, 170, 70)
+					Frame(75, 15, 195, 35)
+					kTrue, kTrue,
+					{{
+						kPDFVTUICIP4UnmappedKey,
+					}}
+				),
+				
+				//LastName
+				StaticTextWidget
+				(
+					0,
+					kSysStaticTextPMRsrcId,
+					kBindNone,
+					//Frame(12,54,115,74) //  left, top, right, bottom
+					//Frame(180, 50, 245, 70) //  left, top, right, bottom
+					//Frame(180, 10, 245, 30)
+					Frame(270, 15, 335, 35) 
+					kTrue, // visible
+					kTrue, // enabled
+					// StaticTextAttributes properties
+					kAlignRight, // Alignment
+					kDontEllipsize, kTrue, // Ellipsize style, Convert ampersands					
+					kPDFVTUILastNameLabelItemKey,  // control label
+					kPDFVTUILastNameTextWidgetID,  // associated widget ID
+				),
+				
+				DropDownListWidget
+				(
+					kPDFVTUILastNameDropDownListWidgetID, kSysDropDownPMRsrcId,
+					kBindNone,
+					//Frame(250, 50, 350, 70)
+					Frame(340, 15, 460, 35)
+					kTrue, kTrue,
+					{{
+						kPDFVTUICIP4UnmappedKey,
+					}}
+				),
+				
+				//City
+				StaticTextWidget
+				(
+					0,
+					kSysStaticTextPMRsrcId,
+					kBindNone,
+					//Frame(12,54,115,74) //  left, top, right, bottom
+					//Frame(5, 75, 65, 95) //  left, top, right, bottom
+					Frame(5, 40, 70, 60)
+					kTrue, // visible
+					kTrue, // enabled
+					// StaticTextAttributes properties
+					kAlignRight, // Alignment
+					kDontEllipsize, kTrue, // Ellipsize style, Convert ampersands					
+					kPDFVTUICityLabelItemKey,  // control label
+					kPDFVTUICityTextWidgetID,  // associated widget ID
+				),
+				
+				DropDownListWidget
+				(
+					kPDFVTUICityDropDownListWidgetID, kSysDropDownPMRsrcId,
+					kBindNone,
+					//Frame(70, 75, 170, 95)
+					Frame(75, 40, 195, 60)
+					kTrue, kTrue,
+					{{
+						kPDFVTUICIP4UnmappedKey,
+					}}
+				),
+				
+				//PostalCode
+				StaticTextWidget
+				(
+					0,
+					kSysStaticTextPMRsrcId,
+					kBindNone,
+					//Frame(12,54,115,74) //  left, top, right, bottom
+					//Frame(180, 75, 245, 95) //  left, top, right, bottom
+					Frame(260, 40, 335, 60)
+					kTrue, // visible
+					kTrue, // enabled
+					// StaticTextAttributes properties
+					kAlignRight, // Alignment
+					kDontEllipsize, kTrue, // Ellipsize style, Convert ampersands					
+					kPDFVTUIPostalCodeLabelItemKey,  // control label
+					kPDFVTUIPostalCodeTextWidgetID,  // associated widget ID
+				),
+				
+				DropDownListWidget
+				(
+					kPDFVTUIPostalCodeDropDownListWidgetID, kSysDropDownPMRsrcId,
+					kBindNone,
+					//Frame(250, 75, 350, 95)
+					Frame(340, 40, 460, 60)
+					kTrue, kTrue,
+					{{
+						kPDFVTUICIP4UnmappedKey,
+					}}
+				),
+
+				//Country
+				StaticTextWidget
+				(
+					0,
+					kSysStaticTextPMRsrcId,
+					kBindNone,
+					//Frame(12,54,115,74) //  left, top, right, bottom
+					//Frame(5, 100, 65, 120) //  left, top, right, bottom
+					Frame(5, 65, 70, 85)
+					kTrue, // visible
+					kTrue, // enabled
+					// StaticTextAttributes properties
+					kAlignRight, // Alignment
+					kDontEllipsize, kTrue, // Ellipsize style, Convert ampersands					
+					kPDFVTUICountryLabelItemKey,  // control label
+					kPDFVTUICountryTextWidgetID,  // associated widget ID
+				),
+				
+				DropDownListWidget
+				(
+					kPDFVTUICountryDropDownListWidgetID, kSysDropDownPMRsrcId,
+					kBindNone,
+					//Frame(70, 100, 170, 120)
+					Frame(75, 65, 195, 85)
+					kTrue, kTrue,
+					{{
+						kPDFVTUICIP4UnmappedKey,
+					}}
+				),
+				StaticTextWidget
+				(
+					kCIP4MappingGroupTextWidgetID,
+					kSysStaticTextPMRsrcId, // PMRsrc ID
+					kBindNone, // frame binding
+					Frame(10.0,-8.0,160.0,10.0) //  left, top, right, bottom
+					kTrue, // visible
+					kTrue, // enabled
+					// StaticTextAttributes properties
+					kAlignLeft, // Alignment
+					kDontEllipsize, kTrue, // Ellipsize style, Convert ampersands
+					// CTextControlData properties
+					kCIP4MappingOptionsKey, // control label
+					// AssociatedWidgetAttributes properties
+					0, // associated widget ID
+				),
+			}
+		),		
+	//</FREDDYWIDGETDEFLISTUS>
+
+	},
+};
+
+
+#endif // __ODFRC__
+
+#include "PDFVTUI_enUS.fr"
+#include "PDFVTUI_jaJP.fr"
+
+//  Code generated by DollyXs code generator

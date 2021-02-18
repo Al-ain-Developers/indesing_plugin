@@ -1,0 +1,85 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/sdksamples/docwatch/DocWch_jaJP.fr $
+//  
+//  Owner: Adobe Developer Technologies
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// Japanese strings
+//========================================================================================
+
+// Japanese string table is defined here
+
+resource StringTable (kSDKDefStringsResourceID + index_jaJP)
+{
+	k_jaJP,	// Locale Id
+	0,		// Character encoding converter
+	
+	{
+
+		// ----- Menu strings
+		kDocWchCompanyKey,					kDocWchCompanyValue,					
+		kDocWchAboutMenuKey,				kDocWchPluginName "[JP]...",
+		kDocWchPluginsMenuKey,				kDocWchPluginName "[JP]",
+		
+		kDocWchUseResponderMenuItemKey,		"レスポンダを使用[JP]...",
+		kSDKDefAboutThisPlugInMenuKey,		kSDKDefAboutThisPlugInMenuValue_jaJP,	
+
+		// ----- Command strings
+		
+		// ----- Window strings
+		
+		// ----- Panel/dialog strings
+
+		// ----- Error strings
+			
+		// ----- Misc strings
+		kDocWchAboutBoxStringKey,			kDocWchPluginName "[JP], version " kDocWchVersion " by " kDocWchAuthor "\n\n" kSDKDefCopyrightStandardValue "\n\n" kSDKDefPartnersStandardValue_jaJP,
+
+		// ----- Alertbox strings
+		kBeforeNewDocSignalStringKey,		kDocWchPluginName "[JP]: DocWatch 書類新規作成前のシグナル",
+		kDuringNewDocSignalStringKey,		kDocWchPluginName "[JP]: DocWatch 書類新規作成中のシグナル",
+		kAfterNewDocSignalStringKey,		kDocWchPluginName "[JP]: DocWatch 書類新規作成後のシグナル",
+		kBeforeOpenDocSignalStringKey,		kDocWchPluginName "[JP]: DocWatch 書類を開く前のシグナル",
+		kDuringOpenDocSignalStringKey,		kDocWchPluginName "[JP]: DocWatch 書類を開き中のシグナル",
+		kAfterOpenDocSignalStringKey,		kDocWchPluginName "[JP]: DocWatch 書類を開いた後のシグナル",
+		kBeforeSaveDocSignalStringKey,		kDocWchPluginName "[JP]: DocWatch 書類保存前のシグナル",
+		kAfterSaveDocSignalStringKey,		kDocWchPluginName "[JP]: DocWatch 書類保存後のシグナル",
+		kBeforeSaveAsDocSignalStringKey,	kDocWchPluginName "[JP]: DocWatch 書類を別名で保存前のシグナル",
+		kAfterSaveAsDocSignalStringKey,		kDocWchPluginName "[JP]: DocWatch 書類を別名で保存後のシグナル",
+		kBeforeSaveACopyDocSignalStringKey,	kDocWchPluginName "[JP]: DocWatch 書類の複製を保存前のシグナル",
+		kDuringSaveACopyDocSignalStringKey,	kDocWchPluginName "[JP]: DocWatch 書類の複製を保存中のシグナル",
+		kAfterSaveACopyDocSignalStringKey,	kDocWchPluginName "[JP]: DocWatch 書類の複製を保存後のシグナル",
+		kBeforeRevertDocSignalStringKey,	kDocWchPluginName "[JP]: DocWatch 書類復帰前のシグナル",
+		kAfterRevertDocSignalStringKey,		kDocWchPluginName "[JP]: DocWatch 書類復帰後のシグナル",
+		kBeforeCloseDocSignalStringKey,		kDocWchPluginName "[JP]: DocWatch 書類を閉じる前のシグナル",
+		kAfterCloseDocSignalStringKey,		kDocWchPluginName "[JP]: DocWatch 書類を閉じた後のシグナル",
+
+	}
+
+};
+
+#endif // __ODFRC__
+
+// End , DocWch_jaJP.fr
+
+

@@ -1,0 +1,299 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/public/includes/objectmodeltypes.fh $
+//  
+//  Owner: Robin Briggs
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#ifdef __ODFRC__
+
+#ifndef __ObjectModelTypes__
+#define __ObjectModelTypes__
+
+#include "CoreResTypes.h"
+#include "PMTypes.fh"
+#include "ObjectModelDefs.h"
+
+#ifndef __WINDOWS__
+	// This should be a temporary HACK.  ODFRC does not define DEBUG, so we explicitly include
+	// GeneralBuildFlags.h, but GeneralBuildFlags.h is in PRECOMP which is not on the include path
+	// on Windows.  For Windows we explicitly define -d DEBUG in the ODFRC custom build rule.
+	// (We'd do this on both platforms, but Metrowerks doesn't allow it on the Mac.)
+	#include "GeneralBuildFlags.h"
+#endif
+
+
+#define kInvalidClass	0
+
+#define BUILD_PMCLASSFACTORY(cn, id)	\
+	id
+	
+#define REGISTER_PMINTERFACE(cn, id)	\
+	id
+
+#define RPMIID(_ID) \
+	_ID
+
+
+#define kReleaseVersion	RezLong(0)
+//non-zero means debug(we use the build number)
+
+#ifdef DEBUG
+#define kTargetVersion	RezLong(kBuildNumber)
+#else
+#define kTargetVersion	kReleaseVersion
+#endif
+
+type PluginVersion(kPlugInVersion)
+{
+	longint;	// Debug or Release target
+	longint;	// Plug-in ID
+	
+	longint; longint; 	// major & minor version number of this plug-in
+	longint; longint;		// major & minor version number of app expected
+	longint; longint;		// major & minor format number of this plug-in
+	
+	// ----- The following is an array of product ids. If any one of the ids in this
+	//		 list match the product id in the application executable, then the plug-in
+	//		 is considered part of the currently running product and is loaded.
+	
+	longint = $$CountOf(ProductIds);	
+	array	ProductIds { longint; };
+	
+	// ----- The following is an array of feature set ids. If any one of the ids in this
+	//		 list match the current feature set id, then the plug-in is loaded.
+	
+	longint = $$CountOf(FeatureSetIds);	
+	array	FeatureSetIds { integer; };
+	
+	longint;	// Threading Policy for this plugIn
+	
+	wstring;	// Update Manager versioning string (four part string e.g. "3.0.0.0")
+};
+
+
+type PluginDependency(kPlugInDependents)
+{
+	integer;	// Feature Set Id
+	longint = $$CountOf(Dependents);	
+	array	Dependents {
+		longint; // Plug-in ID of plug-in this one is dependent on
+		wstring;	// Name of plug-in this one is depedent on
+		longint;	longint; // Major & minor version number of plug-in this one is dependent on
+		}
+};
+
+// ---- [mburbidg 5-6-02] The Product resource is part of the application 
+//		executable and indicates the product. Only plug-ins that indicate
+//		they belong to this product will be loaded.
+
+type Product(kProductRsrcType)
+{
+	longint;			// Id of the product.
+};
+
+type CriticalTags(kCriticalTagsRsrcType)
+{
+	longint;		// ID space (kImplementationIDSpace or kClassIDSpace)
+	longint = $$CountOf(Tags);	
+	array Tags 
+	{
+		longint;	// ID 
+	}
+};
+
+
+type IgnoreTags(kIgnoreTagsRsrcType)
+{
+	longint;		// ID space (kImplementationIDSpace or kClassIDSpace)
+	longint = $$CountOf(Tags);	
+	array Tags 
+	{
+		longint;	// ID 
+	}
+};
+
+
+type ClassDescriptionType
+{
+	longint;							// ClassID
+	longint;							// Parent class
+	longint = $$CountOf(Interfaces);
+	array  Interfaces {
+		longint;						// IID
+		longint; 						// ImplementationID
+		}
+};
+
+
+type ClassDescription(kClassRsrcType)
+{
+	ClassDescriptionType;
+};
+
+
+type AddinClassType
+{
+	longint;							// ClassID
+	longint;							// Parent class
+	longint = $$CountOf(Interfaces);
+	array  Interfaces {
+		longint;						// IID
+		longint; 						// ImplementationID
+		}
+};
+
+
+type AddinByIIDType
+{
+	longint = $$CountOf(IIDs);
+	array IIDs {
+		longint;						// key IIDs
+		};
+	longint = $$CountOf(Interfaces);
+	array  Interfaces {
+		longint;						// IID
+		longint; 						// ImplementationID
+		}
+};
+
+
+type AddinClass(kAddInClassRsrcType)
+{
+	AddinClassType;
+};
+
+
+type ClassDescriptionTableType
+{
+	longint = $$CountOf(Descriptions);	
+	array Descriptions 
+	{
+		switch
+		{
+			case Class:
+				key integer = kClassDescription;
+				ClassDescriptionType;
+			
+			case AddIn:
+				key integer = kAddInDescription;
+				AddinClassType;
+				
+			case AddInByIID:
+				key integer = kAddInByIIDDescription;
+				AddinByIIDType;
+		} 
+	}
+};
+
+
+type ClassDescriptionTable(kClassTableRsrcType)
+{
+	ClassDescriptionTableType;
+};
+
+
+type FactoryList (kFactoryListRsrcType)
+{
+	longint;	// ID type
+	longint = $$CountOf(IDs);
+	array IDs
+	{
+		longint;	// ImplementationID
+	}
+};
+
+
+type ImplementationAlias (kImplementationAliasRsrcType)
+{
+	longint = $$CountOf(IDs);
+	array IDs
+	{
+		longint;	// Alias ImplementationID
+		longint;	// Based-on ImplementationID
+	}
+};
+
+
+type ServiceProvider (kServiceProviderType)
+{
+	longint;						// ClassID
+	longint;						// ServiceID
+	wstring;						// name of service (optional)
+	integer;						// IsDefaultServiceProvider?
+	longint;						// InstantiationPolicy
+};
+
+type kSelectionSuiteExt (kSelectionExtRsrcType)
+{
+	longint;							// ClassID of boss with the Suite impl
+	longint = $$CountOf(IDs);
+	array  IDs
+		{
+		longint;						// ImplementationID of Suite
+		longint; 						// ImplementationID of corresponding ISuite
+		}
+};
+
+type IDNameList (kIDNameListRsrcType)
+{
+	longint = $$CountOf(IDs);
+	array IDs
+	{
+		longint;				// ID Space
+		wstring;				// ID String
+		longint;				// ID Value
+	}
+};
+
+
+	// Optional extra information a plug-in can supply in order to
+	// customize the information that comes up in the missing plug-in
+	// alert that comes up on opening a document if the plug-in is 
+	// missing.
+type ExtraPluginInfo (kExtraPluginInfoType)
+{
+	wstring;		// Company name
+	wstring;		// URL
+	wstring;		// alert text
+};
+
+
+type CoreResourceCompileTime(kCoreResourceCompileTimeType)
+{
+	longint = 0;
+	longint = 0;
+};
+
+
+#ifdef WINDOWS
+resource CoreResourceCompileTime (1)
+{
+};
+#endif
+
+
+#define kInstancePerSession	0
+#define kInstancePerUse			1
+#define kInstancePerSessionPreload	2
+
+
+#endif // __ObjectModelTypes__
+#endif // __ODFRC__
+

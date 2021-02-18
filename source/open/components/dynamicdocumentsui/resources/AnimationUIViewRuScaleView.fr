@@ -1,0 +1,106 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/dynamicdocumentsui/resources/AnimationUIViewRuScaleView.fr $
+//  
+//  Owner: jangir
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  ADOBE CONFIDENTIAL
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+	StaticTextWidget
+				(		
+					kAnimationUIPropertyScaleLabelWID, kSysStaticTextPMRsrcId,// WidgetId, RsrcId
+					kBindLeft | kBindTop,							// Frame binding
+					Frame(5,78,70,99)	// Frame
+					kTrue, kTrue, kAlignRight,						// Visible, Enabled
+					kDontEllipsize, kTrue,							// Ellipsize style, Convert ampersands
+					"kAnimationUIPropertyDesignScaleStaticTextLabel",// Text
+					kAnimationUIScaleHorzILEWID,
+				),
+				
+				// ----- Scale Horz Label -----
+				StaticTextWidget
+				(		
+					kAnimationUIPropertyScaleHorzLabelWID, kSysStaticTextPMRsrcId,// WidgetId, RsrcId
+					kBindLeft | kBindTop,							// Frame binding
+					Frame(71,78,95,99)	// Frame
+					kTrue, kTrue, kAlignRight,						// Visible, Enabled
+					kDontEllipsize, kTrue,							// Ellipsize style, Convert ampersands
+					"kAnimationUIPropertyDesignScaleHorzStaticTextLabel",	// Text
+					kAnimationUIScaleHorzILEWID,
+				),
+				// ----- Animation Scale Horizontal Slider Widget -----
+                NudgeControlWidget 
+                ( 
+                    kAnimationUIScaleHorzNudgeWID, kPMRsrcID_None,	// WidgetId, RsrcId 
+                    kBindLeft,										// Frame binding 
+                    Frame(100,78,117,99)	// Frame 
+                    kTrue, kTrue,									// Visible, Enabled 
+                ),
+                PercentageEditBoxWidget 
+				(
+					kAnimationUIScaleHorzILEWID, kSysEditBoxPMRsrcId, 
+					kBindLeft,
+					Frame(117,78,167,99), // Frame  
+					kTrue, kTrue,									// Visible, Enabled			
+					kAnimationUIScaleHorzNudgeWID,					// widget id of nudge button			
+					1.0,	10.0,									// small/large nudge amount
+					8,												// max num chars( 0 = no limit)
+					kFalse,											// is read only
+					kFalse,											//Notified for every key stroke
+					kTrue,											// range checking enabled
+					kFalse,											// blank entry allowed
+					10000, 0, 										// upper/lower bounds
+					"",												// initial text
+				),
+				// ----- Scale Vert Label -----	
+				StaticTextWidget
+				(		
+					kAnimationUIPropertyScaleVertLabelWID, kSysStaticTextPMRsrcId,// WidgetId, RsrcId
+					kBindLeft | kBindTop,							// Frame binding
+					Frame(169,78,191,99)							// Frame
+					kTrue, kTrue, kAlignRight,						// Visible, Enabled
+					kDontEllipsize, kTrue,							// Ellipsize style, Convert ampersands
+					"kAnimationUIPropertyDesignScaleVertStaticTextLabel",	// Text
+					kAnimationUIScaleVertILEWID,
+				),
+				// ----- Animation Scale Vertical Slider Widget -----
+                NudgeControlWidget 
+                ( 
+                    kAnimationUIScaleVertNudgeWID, kPMRsrcID_None,	// WidgetId, RsrcId 
+                    kBindLeft,										// Frame binding 
+                    Frame(196,78,213,99)// Frame 
+                    kTrue, kTrue,									// Visible, Enabled 
+                ),
+                PercentageEditBoxWidget 
+				(
+					kAnimationUIScaleVertILEWID, kSysEditBoxPMRsrcId, 
+					kBindLeft,
+					Frame(213,78,263,99), 							// Frame  
+					kTrue, kTrue,									// Visible, Enabled			
+					kAnimationUIScaleVertNudgeWID,					// widget id of nudge button			
+					1.0,	5.0,									// small/large nudge amount
+					8,												// max num chars( 0 = no limit)
+					kFalse,											// is read only
+					kFalse,											//Notified for every key stroke
+					kTrue,											// range checking enabled
+					kFalse,											// blank entry allowed
+					10000, 0, 										// upper/lower bounds
+					"",												// initial text
+				),

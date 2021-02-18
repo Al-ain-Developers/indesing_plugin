@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleExecutable</key>
+	<string>$(PRODUCT_NAME)</string>
+	<key>CFBundleGetInfoString</key>
+	<string>16.0, Copyright 1999-2020 Adobe. All rights reserved.</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.adobe.InDesign.$(PRODUCT_NAME)</string>
+	<key>CFBundleLongVersionString</key>
+	<string>16.0, Copyright 1999-2020 Adobe. All rights reserved.</string>
+	<key>CFBundlePackageType</key>
+	<string>$(ID_PLUGIN_SDK_TYPE)</string>
+	<key>CFBundleShortVersionString</key>
+	<string>16.0.0</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleSignature</key>
+	<string>$(ID_CREATOR)</string>
+	<key>NSHumanReadableCopyright</key>
+	<string>16.0, Copyright 1999-2020 Adobe. All rights reserved.</string>
+</dict>
+</plist>

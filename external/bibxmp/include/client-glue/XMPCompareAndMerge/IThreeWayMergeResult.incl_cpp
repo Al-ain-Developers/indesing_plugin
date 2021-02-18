@@ -1,0 +1,109 @@
+// =================================================================================================
+// ADOBE SYSTEMS INCORPORATED
+// Copyright 2014 Adobe Systems Incorporated
+// All Rights Reserved
+//
+// NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance with the terms
+// of the Adobe license agreement accompanying it.
+// =================================================================================================
+
+#if AdobePrivate
+// =================================================================================================
+// Change history
+// ==============
+//
+// Writers:
+//  ADC	Amandeep Chawla
+//	HK	Honey Kansal
+//
+// mm-dd-yy who Description of changes, most recent first.
+//
+// 05-19-14 ADC 1.0-m020 Refactoring XMPCommon code and appropriate changes in XMPCore and XMPCompareAndMerge.
+// 03-03-14 ADC 1.0-m013 Implemented GetMergedMetadata function of ThreeWayMerge.
+// 02-24-14 HK  1.0-m009 Added new internal XMP DOM interfaces + fixed memory leaks + implemented qualifiers for new XMP DOM.
+// 02-18-14 ADC 1.0-m004 Three Way Conflict Identification Feature.
+//
+// =================================================================================================
+#endif	// AdobePrivate
+
+#include "XMPCompareAndMerge/Interfaces/IThreeWayMergeResult.h"
+#include "XMPCompareAndMerge/Interfaces/IThreeWayResolvedConflict.h"
+#include "XMPCompareAndMerge/Interfaces/IThreeWayUnResolvedConflict.h"
+#include "XMPCore/Interfaces/IXMPMetadata.h"
+
+#include "XMPCommon/Interfaces/IError.h"
+
+#define CALL_EQUIVALENT_VIRTUAL_FUNCTION_NO_ARGS( className, functionName ) {			\
+			pIError error ( NULL );																	\
+			p##className##_base ptr = functionName( error );										\
+			if ( error )																			\
+				throw NS_XMPCOMMON::MakeUncheckedSharedPointer( error );								\
+				return NS_XMPCOMMON::MakeSharedPointer< className##_latest, className##_base >( ptr );	\
+		}
+
+#define CALL_EQUIVALENT_VIRTUAL_FUNCTION( className, functionName, ... ) {			\
+			pIError error ( NULL );																\
+			p##className##_base ptr = functionName( __VA_ARGS__, error );						\
+			if ( error )																		\
+				throw NS_XMPCOMMON::MakeUncheckedSharedPointer( error );							\
+			return NS_XMPCOMMON::MakeSharedPointer< className##_latest, className##_base >( ptr );	\
+		}
+
+#define CALL_EQUIVALENT_CVIRTUAL_FUNCTION_NO_ARGS( className, functionName ) {	\
+			pIError error ( NULL );																	\
+			pc##className##_base ptr = functionName( error );										\
+			if ( error )																			\
+				throw NS_XMPCOMMON::MakeUncheckedSharedPointer( error );								\
+			return NS_XMPCOMMON::MakeSharedPointer< const className##_latest, const className##_base >( ptr );	\
+		}
+
+#define CALL_EQUIVALENT_CVIRTUAL_FUNCTION( className, functionName, ... ) {			\
+			pIError error ( NULL );																\
+			pc##className##_base ptr = functionName( __VA_ARGS__, error );						\
+			if ( error )																		\
+				throw NS_XMPCOMMON::MakeUncheckedSharedPointer( error );							\
+			return NS_XMPCOMMON::MakeSharedPointer< const className##_latest, const className##_base >( ptr );	\
+		}
+
+
+namespace NS_XMPCOMPAREANDMERGE {
+
+	eThreeWayMergeStatus IThreeWayMergeResult_v1::GetMergedStatus() const {
+		CALL_EQUIVALENT_VIRTUAL_FUNCTION_RETURNING_ENUM_NO_ARGS( NS_XMPCOMMON, eThreeWayMergeStatus, GetMergedStatus );
+	}
+
+	spIThreeWayResolvedConflictList_latest IThreeWayMergeResult_v1::GetResolvedConflicts() const {
+		pIError_base error( NULL );
+		spIThreeWayResolvedConflictList_latest list = NS_XMPCOMMON::MakeUncheckedSharedPointerWithDefaultDelete( new IThreeWayResolvedConflictList_latest() );
+		SizeT nCount = GetCountOfResolvedConflicts( error );
+		if ( error )
+			throw NS_XMPCOMMON::MakeUncheckedSharedPointer( error );
+		for (SizeT i = 0; i < nCount; i++ ) {
+			pIThreeWayResolvedConflict_latest conflict = GetResolvedConflict( i, error );
+			if ( error )
+				throw NS_XMPCOMMON::MakeUncheckedSharedPointer( error );
+			list->push_back( NS_XMPCOMMON::MakeUncheckedSharedPointer< IThreeWayResolvedConflict_latest >( conflict ) );
+		}
+		return list;
+	}
+
+	spIThreeWayUnResolvedConflictList_latest IThreeWayMergeResult_v1::GetUnResolvedConflicts() const {
+		pIError_base error( NULL );
+		spIThreeWayUnResolvedConflictList_latest list = NS_XMPCOMMON::MakeUncheckedSharedPointerWithDefaultDelete( new IThreeWayUnResolvedConflictList_latest() );
+		SizeT nCount = GetCountOfUnResolvedConflicts( error );
+		if ( error )
+			throw NS_XMPCOMMON::MakeUncheckedSharedPointer( error );
+		for (SizeT i = 0; i < nCount; i++ ) {
+			pIThreeWayUnResolvedConflict_latest conflict = GetUnResolvedConflict( i, error );
+			if ( error )
+				throw NS_XMPCOMMON::MakeUncheckedSharedPointer( error );
+			list->push_back( NS_XMPCOMMON::MakeUncheckedSharedPointer< IThreeWayUnResolvedConflict_latest >( conflict ) );
+		}
+		return list;
+	}
+
+	VIRTUAL_IF_SOURCE_COMPILED spIXMPMetadata_latest IThreeWayMergeResult_v1::GetMergedMetadata() const {
+		CALL_EQUIVALENT_VIRTUAL_FUNCTION_NO_ARGS( IXMPMetadata, GetMergedMetadata );
+	}
+
+}

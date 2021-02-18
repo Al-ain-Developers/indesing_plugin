@@ -1,0 +1,331 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/sdksamples/hidpi/HiDPI.fr $
+//  
+//  Owner: Neelabh Sunny
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//  
+//  Umbrella include file for all the .fr files in the plug-in.
+//  
+//========================================================================================
+
+//===========================
+//  General includes:
+//===========================
+
+#include "MenuDef.fh"
+#include "ActionDef.fh"
+#include "ActionDefs.h"
+#include "AdobeMenuPositions.h"
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "StringTable.fh"
+#include "objectmodeltypes.fh"
+#include "ShuksanID.h"
+#include "ActionID.h"
+#include "CommandID.h"
+#include "WorkspaceID.h"
+#include "widgetid.h"
+#include "BuildNumber.h"
+#include "PanelList.fh"
+#include "Widgets.fh"
+#include "InterfaceColorDefines.h"
+#include "IControlViewDefs.h"
+#include "SysControlIds.h"
+#include "IconPNGDefs.h"
+#include "PlugInModel_UIAttributes.h"
+#include "HiDPIID.h"
+
+#ifdef __ODFRC__
+
+//================================================================================
+// Plugin version definition.
+//================================================================================
+resource PluginVersion (kSDKDefPluginVersionResourceID)
+{
+	kTargetVersion,
+	kHiDPIPluginID,
+	kSDKDefPlugInMajorVersionNumber, kSDKDefPlugInMinorVersionNumber, 	
+	kSDKDefHostMajorVersionNumber, kSDKDefHostMinorVersionNumber,
+	kHiDPICurrentMajorFormatNumber, kHiDPICurrentMinorFormatNumber,
+	{ kInDesignProduct, kInCopyProduct },
+	{ kWildFS },
+	kUIPlugIn,
+	kHiDPIVersion
+};
+
+resource PNGA(kHiDPIIconRsrcID) "SP_LoadHiDPI_50x50.png"
+
+// HiDPI 
+#ifdef MACINTOSH 
+resource PNGA(kHiDPIIconRsrcID + kHIDPIIconOffset) "SP_x2_LoadHiDPI_100x100.png"
+#endif // end HiDPI 
+
+//================================================================================
+//	Boss class definition.
+//================================================================================
+resource ClassDescriptionTable(kSDKDefClassDescriptionTableResourceID)
+{{{
+
+	/**
+	 Provides the actions invoked by this plug-in's
+	 sub-menu items. It supports two interfaces: 
+	 IActionComponent and IPMPersist. We provide the implementation 
+	 for IActionComponent in HiDPIActionComponent.cpp. The other
+	 default implementation is provided by the API.
+	 @ingroup hidpi
+	*/
+	Class
+	{
+		kHiDPIActionComponentBoss,
+		kBaseActionComponentBoss,
+		{
+			/** Handle the actions from the menu. Implements IActionComponent. 
+				@see HiDPIActionComponent
+			*/
+			IID_IACTIONCOMPONENT, kHiDPIActionComponentImpl,
+		}
+	},
+
+	/**
+	 Controls addition of a pop-up menu to the panel.
+	 @ingroup hidpi
+	*/
+	Class
+	{
+		kHiDPIPanelWidgetBoss,
+		kPalettePanelWidgetBoss,
+		{
+			/** The plug-in's implementation of ITextControlData, used
+			to store the menu name.
+			Implementation provided by the API. Although the IID is
+			exotic (IID_IPANELMENUDATA), the interface exposed is really
+			ITextControlData.
+			*/ 
+			IID_IPANELMENUDATA, kCPanelMenuDataImpl,
+		}
+	},
+
+	/**
+	 Provides the actions invoked when drawing HiDPI image. It supports two interfaces: 
+	 IControlView and IEventHandler. We have provided the implementation 
+	 for IControlView, IEventHandler in HiDPIWidgetControlView.cpp, HiDPIWidgetEventHandler.cpp
+	 respectively.
+	 @ingroup hidpi
+	*/
+	Class
+	{
+		kHiDPIWidgetBoss,
+		kIconSuiteButtonWidgetBoss,
+		{
+			IID_ICONTROLVIEW, kHiDPIControlViewImpl,
+			IID_IEVENTHANDLER, kHiDPIWidgetEventHandlerImpl,
+		}
+	},
+}}};
+
+//================================================================================
+// Implementation definition.
+//================================================================================
+resource FactoryList (kSDKDefFactoryListResourceID) 
+{
+	kImplementationIDSpace,
+	{
+	#include "HiDPIFactoryList.h"
+	}
+};
+
+//================================================================================
+// Menu definition. 
+// The first of two resources that define where a menu appears and how it behaves.
+// This resource associates an action ID with a menu path, menu position, and 
+// whether the menu entry is dynamic.  The menu path positions the menu entry
+// within the main or popup menu structure.  The menu position defines a relative
+// location within the menu group identified by the menu path. A dynamic menu item
+// is rebuilt before showing -- used only in cases where menus are context sensitive. 
+//================================================================================
+resource MenuDef (kSDKDefMenuResourceID)
+{
+	{
+		// The About Plug-ins sub-menu item for this plug-in.
+		kHiDPIAboutActionID,				// ActionID (kInvalidActionID for positional entries)
+		kHiDPIAboutMenuPath,				// Menu Path.
+		kSDKDefAlphabeticPosition,			// Menu Position.
+		kSDKDefIsNotDynamicMenuFlag,		// kSDKDefIsNotDynamicMenuFlag or kSDKDefIsDynamicMenuFlag.
+
+		// About this plugin submenu for the popup menu on the panel
+		kHiDPIPopupAboutThisActionID,
+		kHiDPITargetMenuPath
+		kHiDPIAboutThisMenuItemPosition,
+		kSDKDefIsNotDynamicMenuFlag, 
+
+	}
+};
+
+//================================================================================
+// Action definition.
+// The second of two resources that define where a menu appears and how it behaves.
+// This resource associates an action ID with a boss that aggregates the action
+// component, a sub-menu string, a keyboard shortcut area name, an action specifier,
+// an enabling type, a selection interface, an a keyboard shortcut editor flag.
+// The sub-menu string is the text that appears in a menu, the KBSC area name is
+// used for grouping shortcuts in the KBSC editor.  The action specifier and
+// enabling type both affect the behavior of the action.  The KBSC editor flag
+// influences whether the action has an editable KBSC.
+//================================================================================
+resource ActionDef (kSDKDefActionResourceID)
+{
+	{ 
+		// Action def for about/help main menu entry
+		kHiDPIActionComponentBoss,          // ClassID of boss class that implements the ActionID.
+		kHiDPIAboutActionID,                // ActionID.
+		kHiDPIAboutMenuKey,                 // Sub-menu string.
+		kHelpMenuActionArea,				// Area name (see ActionDefs.h).
+		kNormalAction,                      // Type of action (see ActionDefs.h).
+		kDisableIfLowMem,                   // Enabling type (see ActionDefs.h).
+		kInvalidInterfaceID,                // Selection InterfaceID this action cares about or kInvalidInterfaceID.
+		kSDKDefInvisibleInKBSCEditorFlag,   // kSDKDefVisibleInKBSCEditorFlag or kSDKDefInvisibleInKBSCEditorFlag.
+
+		// Action def for about/help panel popup menu entry
+		kHiDPIActionComponentBoss, 
+		kHiDPIPopupAboutThisActionID, 
+		kSDKDefAboutThisPlugInMenuKey,
+		kOtherActionArea,
+		kNormalAction,
+		kDisableIfLowMem,	
+		kInvalidInterfaceID,
+		kSDKDefInvisibleInKBSCEditorFlag,
+	}
+};
+
+
+//================================================================================
+// LocaleIndex
+// The LocaleIndex should have indicies that point at your
+// localizations for each language system that you are 
+// localized for.
+//================================================================================
+//------------------------------------------------------------
+// String LocaleIndex.
+//------------------------------------------------------------
+resource LocaleIndex (kSDKDefStringsResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_enUS, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_jaJP, kSDKDefStringsResourceID + index_jaJP
+		kWildFS, k_Wild, kSDKDefStringsResourceID + index_enUS
+	}
+};
+
+resource LocaleIndex (kSDKDefStringsNoTransResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_Wild, kSDKDefStringsNoTransResourceID + index_enUS
+	}
+};
+
+resource StringTable (kSDKDefStringsNoTransResourceID + index_enUS)
+{
+	k_enUS,                                                                 // Locale Id
+	kEuropeanMacToWinEncodingConverter,                                     // Character encoding converter
+	{
+		kHiDPIInternalPopupMenuNameKey,	kHiDPIInternalPopupMenuNameKey,		// No need to translate, internal menu name.
+	}
+};
+
+//------------------------------------------------------------
+// Panel LocaleIndex.
+//------------------------------------------------------------
+resource LocaleIndex (kSDKDefPanelResourceID)
+{
+	kViewRsrcType,
+	{
+		kWildFS, k_Wild, 	kSDKDefPanelResourceID + index_enUS
+	}
+};
+
+
+//========================================================================================
+// Type definition.
+//========================================================================================
+type HiDPIPanelWidget(kViewRsrcType) : PalettePanelWidget(ClassID = kHiDPIPanelWidgetBoss) 
+{
+	CPanelMenuData;
+};
+
+type HiDPIWidget(kViewRsrcType) : Widget(ClassID = kHiDPIWidgetBoss)
+{
+	CControlView;
+};
+
+//================================================================================
+// PanelList definition.
+//================================================================================
+resource PanelList (kSDKDefPanelResourceID)
+{
+	{
+		// 1st panel in the list
+		kSDKDefPanelResourceID,		// Resource ID for this panel (use SDK default rsrc ID)
+		kHiDPIPluginID,             // ID of plug-in that owns this panel
+		kNotResizable,
+		kHiDPIPanelWidgetActionID,	// Action ID to show/hide the panel
+		kHiDPIPanelTitleKey,		// Shows up in the Window list.
+		"",							// Alternate menu path of the form "Main:Foo" if you want your palette menu item in a second place
+		0.0,						// Alternate Menu position Alternate Menu position for determining menu order
+		0,0,						// Rsrc ID, Plugin ID for a PNG icon resource to use for this palette
+		c_Panel
+	}	
+};
+
+//================================================================================
+// PanelView definition.
+// The view is not currently localised: therefore, it can reside here.
+// However, if you wish to localise it, it is recommended to locate it in one of
+// the localised framework resource files (i.e. HiDPI_enUS.fr etc.).
+//================================================================================
+resource HiDPIPanelWidget(kSDKDefPanelResourceID + index_enUS)
+{
+	__FILE__, __LINE__,					// Localization macro		
+	kHiDPIPanelWidgetID,				// WidgetID 
+	kPMRsrcID_None,						// RsrcID
+	kBindNone,							// Binding (0=none)
+	0, 0, 207, 95,						// Frame: left, top, right, bottom.
+	kTrue, kTrue,						// Visible, Enabled
+	kFalse,								// Erase background
+	kInterfacePaletteFill,				// Erase to color
+	kFalse,								// Draw dropshadow
+	kHiDPIPanelTitleKey,				// Panel name	
+	{
+		HiDPIWidget 
+        (
+            kHiDPIPanelIconWidgetID, kHiDPIIconRsrcID, kHiDPIPluginID,    // WidgetId, RsrcId 
+            kBindNone,                                                    // Frame binding
+            0, 0, 50, 50,                                                 // Frame 16
+            kTrue, kTrue,                                                 // Visible, Enabled
+        ),
+	}
+
+	kHiDPIInternalPopupMenuNameKey		// Popup menu name (internal)
+};
+
+#endif // __ODFRC__
+
+#include "HiDPI_enUS.fr"
+#include "HiDPI_jaJP.fr"

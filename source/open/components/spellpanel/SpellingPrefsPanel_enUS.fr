@@ -1,0 +1,446 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/spellpanel/SpellingPrefsPanel_enUS.fr $
+//  
+//  Owner: Heath Horton
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//  
+//  Proj:	SpellPanel
+//  
+//========================================================================================
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// Dialog:				"Preferences:Spellings"
+// UI Spec File:		??
+//========================================================================================
+
+resource SpellPrefsPanel (kSpellPrefsPaletteRsrcID + index_enUS)	// now IC and ID use same panel
+{
+	__FILE__, __LINE__,
+	kSpellPrefsDialogPanelWidgetID,			// WidgetId
+	kPMRsrcID_None,							// RsrcId
+	kBindNone,
+	Frame(0,0,450,390),						// Frame, bottom same as lowest control
+	kTrue,									// Visible
+	kTrue,									// Enabled
+	"Spelling",								// Panel name
+	{
+		/////////////////////////////////////////////////////
+		// The following controls are for Spelling Options //
+		/////////////////////////////////////////////////////		
+		EVEGroupPanelWidget
+		(
+			kSpellPrefsPanelWidgetID,								// WidgetId
+			kPMRsrcID_None,					// RsrcId
+			kBindNone,
+			Frame(0,0,435,100)		// Frame
+			kTrue,							// Visible
+			kTrue,							// Enabled
+			kSpellPrefsTitleTextWidgetID,		// widget id of border widget
+			
+			kEVEAlignFill | kEVEExtraLargeSpaceAfter | kEVEArrangeChildrenInRow | kEVELargeMargin,
+			{
+				
+				EVEGenericPanelWidget
+				(
+					kInvalidWidgetID,	// WidgetId
+					0			// RsrcId
+					0,			// Widget EVE Info
+					kBindNone,		// Frame binding
+					Frame(0,0,344,130)		// Frame
+					kTrue,			// Visible
+					kTrue,			// Enabled
+					kEVEAlignFill | kEVERegularSpaceAfter | kEVEArrangeChildrenInColumn,
+					
+					{
+						EVECheckBoxWidget
+						(
+							kSpellPrefsMisspelledWordsCheckboxWidgetID,	// WidgetId
+							kSysCheckBoxPMRsrcId,			// RsrcId
+							kBindNone,
+							Frame(0,0,0,0)		// Frame
+							kTrue,							// Visible
+							kTrue,							// Enabled
+							kAlignLeft,					// Alignment
+							"&Misspelled Words"				// Initial text
+							
+							kEVERegularSpaceAfter,
+						),
+						EVECheckBoxWidget
+						(
+							kSpellPrefsRepeatedWordsCheckboxWidgetID,	// WidgetId
+							kSysCheckBoxPMRsrcId,			// RsrcId
+							kBindNone,
+							Frame(0,0,0,0)		// Frame
+							kTrue,							// Visible
+							kTrue,							// Enabled
+							kAlignLeft,					// Alignment
+							"&Repeated Words"				// Initial text
+							
+							kEVERegularSpaceAfter,
+						),
+						EVECheckBoxWidget
+						(
+							kSpellPrefsUncapitalizedWordsCheckboxWidgetID,	// WidgetId
+							kSysCheckBoxPMRsrcId,			// RsrcId
+							kBindNone,
+							Frame(0,0,0,0)		// Frame
+							kTrue,							// Visible
+							kTrue,							// Enabled
+							kAlignLeft,					// Alignment
+							"&Uncapitalized Words"				// Initial text
+							
+							kEVERegularSpaceAfter,
+						),
+						EVECheckBoxWidget
+						(
+							kSpellPrefsUncapitalizedSentencesCheckboxWidgetID,	// WidgetId
+							kSysCheckBoxPMRsrcId,			// RsrcId
+							kBindNone,
+							Frame(0,0,0,0)		// Frame
+							kTrue,							// Visible
+							kTrue,							// Enabled
+							kAlignLeft,					// Alignment
+							"Uncapitalized &Sentences"				// Initial text
+							
+							kEVERegularSpaceAfter,
+						),
+						
+					}  // End of Eve generic panel child widgets
+				), // End of Eve generic panel widget definition
+				EVEStaticTextWidget
+				(
+					kSpellPrefsTitleTextWidgetID,	// WidgetId
+					kSysStaticTextPMRsrcId,			// RsrcId
+					kBindNone,
+					Frame(0,0,0,0)		// Frame
+					kTrue, kTrue, 	// Visible, Enabled
+					kAlignCenter,		// Alignment
+					kDontEllipsize, kTrue,					// Ellipsize style, Convert ampersands
+					"Find",				// Initial text
+					0
+					
+					kEVEExtraLargeSpaceAfter,
+				),
+			},
+		),
+		
+		/////////////////////////////////////////////////////
+		// The following controls are for Dynamic Spelling Options //
+		/////////////////////////////////////////////////////		
+		EVEGroupPanelWidget
+		(
+			kDynamicSpellCheckPanelWidgetID,								// WidgetId
+			kPMRsrcID_None,					// RsrcId
+			kBindNone,
+			Frame(0,0,435,206)			// Frame
+			kTrue,							// Visible
+			kTrue,							// Enabled
+			kDynamicSpellCheckTitleTextWidgetID,		// widget id of border widget
+			
+			kEVEAlignFill | kEVEExtraLargeSpaceAfter | kEVEArrangeChildrenInColumn | kEVERegularMargin,
+			{
+				EVEStaticTextWidget
+				(
+					kDynamicSpellCheckTitleTextWidgetID,	// WidgetId
+					kSysStaticTextPMRsrcId,					// RsrcId
+					kBindNone,
+					Frame(0,0,0,0)					// Frame
+					kTrue, kTrue, 						// Visible, Enabled
+					kAlignCenter,							// Alignment
+					kDontEllipsize, kTrue,							// Ellipsize style, Convert ampersands
+					"Dynamic Spellchecking",				// Initial text
+					0
+					
+					kEVEExtraLargeSpaceAfter,
+				),
+				
+				EVEGenericPanelWidget
+				(
+					kInvalidWidgetID,	// WidgetId
+					0			// RsrcId
+					0,			// Widget EVE Info
+					kBindNone,		// Frame binding
+					Frame(0,0,435,30)		// Frame
+					kTrue,			// Visible
+					kTrue,			// Enabled
+					kEVEAlignFill | kEVERegularSpaceAfter | kEVEArrangeChildrenInRow,
+					
+					{
+						EVECheckBoxWidget
+						(
+							kSpellPrefsEnableDSCCheckboxWidgetID,	// WidgetId
+							kSysCheckBoxPMRsrcId,					// RsrcId
+							kBindNone,
+							Frame(0,0,0,0)						// Frame
+							kTrue,									// Visible
+							kTrue,									// Enabled
+							kAlignLeft,								// Alignment
+							"&Enable Dynamic Spelling"				// Initial text
+							
+							kEVERegularSpaceAfter,
+						),
+						
+						
+					}  // End of Eve generic panel child widgets
+				), // End of Eve generic panel widget definition
+				
+				EVEGenericPanelWidget
+				(
+					kInvalidWidgetID,	// WidgetId
+					0			// RsrcId
+					0,			// Widget EVE Info
+					kBindNone,		// Frame binding
+					Frame(0,0,435,326)		// Frame
+					kTrue,			// Visible
+					kTrue,			// Enabled
+					kEVEAlignFill | kEVERegularSpaceAfter | kEVEArrangeChildrenInRow,
+					
+					{
+						EVEGroupPanelWidget
+						(
+							kUnderlineColorGroupWidgetId,			// WidgetId
+							kPMRsrcID_None,							// RsrcId
+							kBindNone,
+							Frame(0,0,405,145)					// Frame
+							kTrue,									// Visible
+							kTrue,									// Enabled
+							kUnderlineColorTitleTextWidgetID,		// widget id of border widget
+							
+							kEVEAlignFill | kEVEExtraLargeSpaceAfter | kEVEArrangeChildrenInRow | kEVERegularMargin,
+							{
+								EVEStaticTextWidget
+								(
+									kUnderlineColorTitleTextWidgetID,	// WidgetId
+									kSysStaticTextPMRsrcId,				// RsrcId
+									kBindNone,
+									Frame(0,0,0,0)				// Frame
+									kTrue, kTrue, 					// Visible, Enabled,
+									kAlignCenter,						// Alignment
+									kDontEllipsize, kTrue,						// Ellipsize style, Convert ampersands
+									"Underline Color",					// Initial text
+									0
+									
+									kEVEExtraLargeSpaceAfter,
+								),
+								
+								EVEGenericPanelWidget
+								(
+									kInvalidWidgetID,	// WidgetId
+									0			// RsrcId
+									0,			// Widget EVE Info
+									kBindNone,		// Frame binding
+									Frame(0,0,175,170)		// Frame
+									kTrue,			// Visible
+									kTrue,			// Enabled
+									kEVEAlignFill | kEVERegularSpaceAfter | kEVEArrangeChildrenInColumn|kEVEChildAlignRight,
+									
+									{
+										EVEStaticTextWidget
+										(
+											kDynamicSpellCheckMisspelledColorTextWidgetID,	// WidgetId
+											kSysStaticTextPMRsrcId,			// RsrcId
+											kBindNone,
+											Frame(0,0,0,0)				// Frame
+											kTrue, kTrue, kAlignRight,		// Visible, Enabled, Alignment
+											kDontEllipsize, kTrue,					// Ellipsize style, Convert ampersands
+											"Misspelled Words Underline Color:",						// Initial text
+											kDynamicSpellCheckMisspelledColorDropDownWidgetID
+											
+											kEVERegularSpaceAfter,
+										),
+										EVEStaticTextWidget
+										(
+											kDynamicSpellCheckRepeatedWordColorTextWidgetID,	// WidgetId
+											kSysStaticTextPMRsrcId,			// RsrcId
+											kBindNone,
+											Frame(0,0,0,0)				// Frame
+											kTrue, kTrue, kAlignRight,		// Visible, Enabled, Alignment
+											kDontEllipsize, kTrue,					// Ellipsize style, Convert ampersands
+											"Repeated Words Underline Color:",						// Initial text
+											kDynamicSpellCheckRepeatedWordColorDropDownWidgetID
+											
+											kEVERegularSpaceAfter,
+										),
+										EVEStaticTextWidget
+										(
+											kDynamicSpellCheckCapitalizedWordColorTextWidgetID,	// WidgetId
+											kSysStaticTextPMRsrcId,			// RsrcId
+											kBindNone,
+											Frame(0,0,0,0)				// Frame
+											kTrue, kTrue, kAlignRight,		// Visible, Enabled, Alignment
+											kDontEllipsize, kTrue,					// Ellipsize style, Convert ampersands
+											"Uncapitalized Words Underline Color:",						// Initial text
+											kDynamicSpellCheckCapitalizedWordColorDropDownWidgetID
+											
+											kEVERegularSpaceAfter,
+										),
+										EVEStaticTextWidget
+										(
+											kDynamicSpellCheckCapitalizedSentenceColorTextWidgetID,	// WidgetId
+											kSysStaticTextPMRsrcId,			// RsrcId
+											kBindNone,
+											Frame(0,0,0,0)			// Frame
+											kTrue, kTrue, kAlignRight,		// Visible, Enabled, Alignment
+											kDontEllipsize, kTrue,					// Ellipsize style, Convert ampersands
+											"Uncapitalized Sentences Underline Color:",						// Initial text
+											kDynamicSpellCheckCapitalizedSentenceColorDropDownWidgetID
+											
+											kEVERegularSpaceAfter,
+										),
+										
+									}  // End of Eve generic panel child widgets
+								), // End of Eve generic panel widget definition
+								
+								EVEGenericPanelWidget
+								(
+									kInvalidWidgetID,	// WidgetId
+									0			// RsrcId
+									0,			// Widget EVE Info
+									kBindNone,		// Frame binding
+									Frame(0,0,230,170)		// Frame
+									kTrue,			// Visible
+									kTrue,			// Enabled
+									kEVEAlignFill | kEVERegularSpaceAfter | kEVEArrangeChildrenInColumn,
+									
+									{
+										EVEGenericPanelWidget
+										(
+											kDynamicSpellCheckGeneric1PanelWidgetID,					// WidgetId
+											kPMRsrcID_None,							// RsrcId
+											kBindNone,								// Frame binding
+											Frame(0,0,217,23)					// Frame
+											kTrue,									// Visible
+											kTrue,									// Enabled
+											,										// Panel name
+											
+											kEVERegularSpaceAfter | kEVEArrangeChildrenInRow,
+											{
+												EVEColorListDropDownWidget
+												(
+													kDynamicSpellCheckMisspelledColorDropDownWidgetID,	// WidgetId
+													kSysDropDownPMRsrcId,			// RsrcId
+													kBindNone,						// Frame binding
+													Frame(0,0,170,0)				// Frame
+													kTrue,							// Visible
+													kTrue,							// Enabled
+													0,
+													
+													kEVERegularSpaceAfter,
+												),
+											}
+										),
+										EVEGenericPanelWidget
+										(
+											kDynamicSpellCheckGeneric2PanelWidgetID,					// WidgetId
+											kPMRsrcID_None,							// RsrcId
+											kBindNone,								// Frame binding
+											Frame(0,0,217,23)					// Frame
+											kTrue,									// Visible
+											kTrue,									// Enabled
+											,										// Panel name
+											
+											kEVERegularSpaceAfter | kEVEArrangeChildrenInRow,
+											{
+												EVEColorListDropDownWidget
+												(
+													kDynamicSpellCheckRepeatedWordColorDropDownWidgetID,	// WidgetId
+													kSysDropDownPMRsrcId,			// RsrcId
+													kBindNone,						// Frame binding
+													Frame(0,0,170,0)				// Frame
+													kTrue,							// Visible
+													kTrue,							// Enabled
+													0,
+													
+													kEVERegularSpaceAfter,
+												),
+											}
+										),
+										EVEGenericPanelWidget
+										(
+											kDynamicSpellCheckGeneric3PanelWidgetID,					// WidgetId
+											kPMRsrcID_None,							// RsrcId
+											kBindNone,								// Frame binding
+											Frame(0,0,217,23)					// Frame
+											kTrue,									// Visible
+											kTrue,									// Enabled
+											,										// Panel name
+											
+											kEVERegularSpaceAfter | kEVEArrangeChildrenInRow,
+											{
+												EVEColorListDropDownWidget
+												(
+													kDynamicSpellCheckCapitalizedWordColorDropDownWidgetID,	// WidgetId
+													kSysDropDownPMRsrcId,			// RsrcId
+													kBindNone,						// Frame binding
+													Frame(0,0,170,0)				// Frame
+													kTrue,							// Visible
+													kTrue,							// Enabled
+													0,
+													
+													kEVERegularSpaceAfter,
+												),
+											}
+										),
+										EVEGenericPanelWidget
+										(
+											kDynamicSpellCheckGeneric4PanelWidgetID,					// WidgetId
+											kPMRsrcID_None,							// RsrcId
+											kBindNone,								// Frame binding
+											Frame(0,0,217,23)					// Frame
+											kTrue,									// Visible
+											kTrue,									// Enabled
+											,										// Panel name
+											
+											kEVERegularSpaceAfter | kEVEArrangeChildrenInRow,
+											{
+												EVEColorListDropDownWidget
+												(
+													kDynamicSpellCheckCapitalizedSentenceColorDropDownWidgetID,	// WidgetId
+													kSysDropDownPMRsrcId,			// RsrcId
+													kBindNone,						// Frame binding
+													Frame(0,0,170,0)				// Frame
+													kTrue,							// Visible
+													kTrue,							// Enabled
+													0,
+													
+													kEVERegularSpaceAfter,
+												),
+											}
+										),
+										
+									}  // End of Eve generic panel child widgets
+								), // End of Eve generic panel widget definition
+							}
+						)
+						
+						
+					}  // End of Eve generic panel child widgets
+				), // End of Eve generic panel widget definition
+			},
+		),
+	}
+	
+	kEVEArrangeChildrenInColumn | kEVENoMargin,
+};
+
+
+#endif
+

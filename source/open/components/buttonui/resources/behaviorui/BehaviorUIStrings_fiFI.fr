@@ -1,0 +1,129 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kBehaviorUIStringsRsrcID + index_fiFI)
+{
+	k_fiFI,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{		
+		"$$$/Dialog/Behaviors/ShowHideFields/Fields_Tree", "Kentät-puu",
+
+		"$$$/Dialog/Behaviors/Description",				"Tämä kohta sisältää lyhyen kuvauksen toiminnasta. Tässä voi olla myös vihjeitä toiminta-asetuksista. Tämä kohta antaa käyttäjälle lisätietoja toiminnan käyttämisestä.",
+		"$$$/Dialog/Behaviors/Description Title",		"Kuvaus",
+		"$$$/Dialog/Behaviors/DeleteAlert",				"Poistetaanko valittu toiminto?",
+		"$$$/Dialog/Behaviors/DragDeleteAlert",			"Poistetaanko vedetyt toiminnot?",
+		"$$$/Dialog/Behaviors/Error/Invalid URL",		"URL-kentässä on oltava arvo",
+		"$$$/Dialog/Behaviors/Error/Invalid File",		"Kelvollinen tiedosto on määritettävä",
+		
+		"$$$/Dialog/Behaviors/Movie/Movie:",			"Video:",
+		"$$$/Dialog/Behaviors/Movie/Play Options:",		"Asetukset:",
+		"$$$/Dialog/Behaviors/Movie/Play",				"Toista",
+		"$$$/Dialog/Behaviors/Movie/Stop",				"Pysäytä",
+		"$$$/Dialog/Behaviors/Movie/Pause",				"Keskeytä",
+		"$$$/Dialog/Behaviors/Movie/Resume",			"Jatka",
+		"$$$/Dialog/Behaviors/Movie/PlayFromNavPoint",	"Toista navigointipisteestä",
+		"$$$/Dialog/Behaviors/Movie/StopAll",			"Pysäytä kaikki (vain SWF)",
+		"$$$/Dialog/Behaviors/Movie/NavPoint",			"Piste:",
+		"$$$/Dialog/Behaviors/Movie/NoVideo",			"(ei videota)",
+		"$$$/Dialog/Behaviors/Movie/NoVideoNavPoint",	"(ei navigointipistettä)",
+
+		"$$$/Dialog/Behaviors/Sound/Sound:",			"Ääni:",
+		"$$$/Dialog/Behaviors/Sound/Play Options:",		"Asetukset:",
+		"$$$/Dialog/Behaviors/Sound/Play",				"Toista",
+		"$$$/Dialog/Behaviors/Sound/Stop",				"Pysäytä",
+		"$$$/Dialog/Behaviors/Sound/Pause",				"Keskeytä",
+		"$$$/Dialog/Behaviors/Sound/Resume",			"Jatka",
+		"$$$/Dialog/Behaviors/Sound/StopAll",			"Pysäytä kaikki (vain SWF)",
+		"$$$/Dialog/Behaviors/Sound/Volume:",			"Äänenvoimakkuus:",
+		"$$$/Dialog/Behaviors/Sound/Synchronous",		"Synkronoitu",
+		"$$$/Dialog/Behaviors/Sound/Mix",				"Mix",
+		"$$$/Dialog/Behaviors/Sound/NoSound",			"(ei ääntä)",
+		
+		"$$$/Dialog/Behaviors/Animation/Animation:",	"Animaatio:",
+		"$$$/Dialog/Behaviors/Animation/Play Options:",	"Asetukset:",
+		"$$$/Dialog/Behaviors/Animation/Play",			"Toista",
+		"$$$/Dialog/Behaviors/Animation/Stop",			"Pysäytä",
+		"$$$/Dialog/Behaviors/Animation/Pause",			"Keskeytä",
+		"$$$/Dialog/Behaviors/Animation/Resume",		"Jatka",
+		"$$$/Dialog/Behaviors/Animation/StopAll",		"Pysäytä kaikki",
+		"$$$/Dialog/Behaviors/Animation/Reverse",		"Negatiivi",
+		"$$$/Dialog/Behaviors/Animation/AutoReverse",	"Toista takaperin siirryttäessä pois painikkeelta",
+		"$$$/Dialog/Behaviors/Animation/NoAnimation",	"(ei animaatiota)",
+		
+		"$$$/Dialog/Behaviors/MSO/Object:",				"Objekti:",
+		"$$$/Dialog/Behaviors/MSO/State:",				"Tila:",
+		"$$$/Dialog/Behaviors/MSO/AutoReverse",			"Siirry takaisin siirryttäessä pois painikkeelta",
+		"$$$/Dialog/Behaviors/MSO/NextLoop",			"Pysäytä viimeisessä tilassa",
+		"$$$/Dialog/Behaviors/MSO/PrevLoop",			"Pysäytä ensimmäisessä tilassa",
+		"$$$/Dialog/Behaviors/MSO/NoMSO",				"(useissa tiloissa olevaa kohdetta ei ole)",
+
+		"$$$/Dialog/Behaviors/GoToView/Go To:",			"Siirry:",
+		"$$$/Dialog/Behaviors/GoToView/First Page",		"Ensimmäinen sivu",
+		"$$$/Dialog/Behaviors/GoToView/Page",			"Sivu",
+		"$$$/Dialog/Behaviors/GoToView/Previous Page",	"Edellinen sivu",
+		"$$$/Dialog/Behaviors/GoToView/Next Page",		"Seuraava sivu",
+		"$$$/Dialog/Behaviors/GoToView/Last Page",		"Viimeinen sivu",
+		"$$$/Dialog/Behaviors/GoToView/Back",			"Takaisin",
+		"$$$/Dialog/Behaviors/GoToView/Forward",		"Eteenpäin",
+		"$$$/Dialog/Behaviors/GoToView/Previous View",	"Edellinen näkymä",
+		"$$$/Dialog/Behaviors/GoToView/Next View",		"Seuraava näkymä",
+		"$$$/Dialog/Behaviors/GoToView/Specific Page",	"Tietty sivu",
+		"$$$/Dialog/Behaviors/GoToView/Document:",		"Julkaisu:",
+		"$$$/Dialog/Behaviors/GoToView/Page:",			"Sivu:",
+		"$$$/Dialog/Behaviors/GoToView/URL",			"URL",
+		"$$$/Dialog/Behaviors/GoToView/URL:",			"URL:",
+		"$$$/Dialog/Behaviors/GoToView/Anchor",			"Tekstiankkuri",
+		"$$$/Dialog/Behaviors/GoToView/Anchor:",		"Kohde:",
+		"$$$/Dialog/Behaviors/GoToView/Bookmark",		"Kirjanmerkki",
+		"$$$/Dialog/Behaviors/GoToView/Inherit Zoom",	"Siirrä zoomaus",
+		"$$$/Dialog/Behaviors/GoToView/Actual Size",	"Todellinen koko",
+		"$$$/Dialog/Behaviors/GoToView/Fit In Window",	"Sovita ikkunaan",
+		"$$$/Dialog/Behaviors/GoToView/Fit Width",		"Sovita leveys",
+		"$$$/Dialog/Behaviors/GoToView/Fit Height",		"Sovita korkeus",
+		"$$$/Dialog/Behaviors/GoToView/Fit Visible",	"Sovita näkyvä",
+		"$$$/Dialog/Behaviors/GoToView/Zoom:",			"Zoomaa:",
+		"$$$/Dialog/Behaviors/GoToView/None",			"Ei mitään",
+		"$$$/Dialog/Behaviors/GoToAnchor/InDesign Format File","InDesign-tiedosto",
+		
+		"$$$/Dialog/Behaviors/ViewZoom/Full Screen",	"Koko näyttö",
+		"$$$/Dialog/Behaviors/ViewZoom/Zoom View In",	"Lähennä",
+		"$$$/Dialog/Behaviors/ViewZoom/Zoom View Out",	"Loitonna",
+		"$$$/Dialog/Behaviors/ViewZoom/Fit Page",		"Sovita ikkunaan",
+		"$$$/Dialog/Behaviors/ViewZoom/Actual Size",	"Todellinen koko",
+		"$$$/Dialog/Behaviors/ViewZoom/Fit Width",		"Sovita leveys",
+		"$$$/Dialog/Behaviors/ViewZoom/Fit Visible",	"Sovita näkyvä",
+		"$$$/Dialog/Behaviors/ViewZoom/SinglePage",		"Yksi sivu",
+		"$$$/Dialog/Behaviors/ViewZoom/OneColumn",		"Jatkuva",
+		"$$$/Dialog/Behaviors/ViewZoom/TwoColumns",		"Jatkuva - vastakkaiset sivut",
+
+		"$$$/Dialog/Behaviors/ImportData/Select File:","Valitse tiedosto:",
+		"$$$/Dialog/Behaviors/ImportData/Acrobat Format File","Acrobat-muotoinen tiedosto",
+
+		"$$$/Dialog/Behaviors/OpenFile/Select File:","Valitse tiedosto:",
+		"$$$/Dialog/Behaviors/OpenFile/Select File to be Opened", "Valitse avattava tiedosto",
+		"$$$/Dialog/Behaviors/OpenFile/Acrobat Format File","Acrobat-muotoinen tiedosto",
+
+		"$$$/Dialog/Behaviors/SubmitForm/Submit To:","URL:",
+						
+		// ----- Tips strings
+	}
+};
+
+#endif // __ODFRC__

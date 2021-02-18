@@ -1,0 +1,52 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// U.S. English strings
+//========================================================================================
+
+resource StringTable (kInCopyExportStringsRsrcID + index_ruRU)
+{
+	k_ruRU,								// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+
+	{
+		// ----- Miscellaneous strings
+		"Export Seq Name", 		"Экспортировать материал InCopy",
+		"Text",					"Текст", // append "Text" to export name on a text story
+		
+		// ----- Export options dialog strings
+		"InCopyExportOptions",	"Параметры экспорта Adobe InCopy",
+		"ExportOptions_DataType",	"&Кодировка:",
+		"ExportOptions_UTF16",	"UTF16",
+		"ExportOptions_UTF8",	"UTF8",
+		"ExportOptions_DataOptions",	"Параметры:",
+		"ExportOptions_StyleTable",	"&Включить таблицу стилей",
+		"ExportOptions_SwatchList",	"&Включить список образцов",
+		"ExportOptions_XMPData",	"&Включить информацию ХМР",
+		"ExportOptions_StoryLabel",	"&Метка материала:",
+
+		//menu
+		"ExportMenu",				"&Экспорт",
+		"kExportLayerToIC",			"&Слой...",
+		"kExportAllStoriesToIC",	"&Все материалы...",
+		"kExportAllGraphicsToIC",	"&Вся графика...",
+		"kExportAllItemsToIC",		"&Все материалы и графика...",
+
+		"INCDFeatureLost",    "Этот материал может содержать элементы, которые не поддерживаются данным форматом файла.  Эти элементы будут потеряны при обновлении материала.",
+	}
+};
+
+#endif // __ODFRC__

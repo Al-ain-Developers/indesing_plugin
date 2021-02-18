@@ -1,0 +1,547 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/public/includes/Schema.fh $
+//  
+//  Owner: Steve Pellegrin
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//  
+//  Adobe patent application tracking # P409, entitled 'Schema-based file Conversion',
+//  inventors: Robin Briggs, Steve Pellegrin
+//  
+//========================================================================================
+
+#if !defined(_SCHEMAS_)
+#define _SCHEMAS_
+
+// ----- Includes -----
+
+#include "CoreResTypes.h"
+#include "SchemaTypes.h"
+
+// ----- ID.h files -----
+
+#include "ShuksanID.h"
+
+
+// From OMTypes.h
+#define kInvalidPlugin		0
+#define kInvalidClass		0
+#define kFalse				0
+#define kTrue				1
+
+#ifdef __ODFRC__
+
+type FormatNumber								// Format Number
+{
+	longint;									//    Major version
+	longint;									//    Minor version
+};
+
+type Version									// Version specification
+{
+	unsigned longint;							// Which plugin?
+	FormatNumber;								// Format number
+};
+
+type ClassImplementation						// A Class/Implementation pair
+{
+	unsigned longint;							//    ClassID
+	unsigned longint;							//    ImplementationID
+};
+
+type ClassClass									// An old/new Class pair
+{
+	unsigned longint;							//    ClassID
+	unsigned longint;							//    ClassID
+};
+
+type ImplementationImplementation				// An old/new Implementation pair
+{
+	unsigned longint;							//    ImplementationID
+	unsigned longint;							//    ImplementationID
+};
+
+
+// FieldWidthDefinition: Field type.
+// Defines the width of a field.
+
+type FieldWidthDefinition
+{
+	switch
+	{
+		case Int8:								// Signed integer 8-bit 
+			key integer = kInt8;
+			
+		case Uint8:								// Unsigned integer 8-bit
+			key integer = kUint8;
+			
+		case Int16:								// Signed integer 16-bit
+			key integer = kInt16;
+			
+		case Uint16:							// Unsigned integer 16-bit
+			key integer = kUint16;
+			
+		case Int32:								// Signed integer 32-bit
+			key integer = kInt32;
+			
+		case Uint32:							// Unsigned integer 32-bit
+			key integer = kUint32;
+	};
+};
+
+// Useful shorthand definitions for FieldWidthDefinition.
+
+#define _Int8_			{Int8{}}
+#define _Uint8_			{Uint8{}}
+#define _Int16_			{Int16{}}
+#define _Uint16_		{Uint16{}}
+#define _Int32_			{Int32{}}
+#define _Uint32_		{Uint32{}}
+
+
+// FieldArrayIteration: Field type, initial value.
+// Defines a FieldArray iteration count.
+
+type FieldArrayIteration
+{
+	switch
+	{
+		// These cases should be used with "FieldArray"
+		//
+		case Int8:								// Signed integer 8-bit 
+			key integer = kInt8;
+			byte;
+			
+		case Uint8:								// Unsigned integer 8-bit
+			key integer = kUint8;
+			unsigned byte;
+			
+		case Int16:								// Signed integer 16-bit
+			key integer = kInt16;
+			integer;
+			
+		case Uint16:							// Unsigned integer 16-bit
+			key integer = kUint16;
+			unsigned integer;
+			
+		case Int32:								// Signed integer 32-bit
+			key integer = kInt32;
+			longint;
+			
+		case Uint32:							// Unsigned integer 32-bit
+			key integer = kUint32;
+			unsigned longint;
+			
+		// These cases should be used with "FieldIf"
+		//
+		case Bool8:								// Boolean 8-bit
+			key integer = kBool8;
+			unsigned byte;
+			
+		case Bool16:							// Boolean 16-bit
+			key integer = kBool16;
+			unsigned integer;
+			
+		case ClassID:							// ClassID - Iterates once if != kInvalidClass
+			key integer = kClassID;
+			unsigned longint;
+			
+		case ImplementationID:					// ImplementationID - Iterates once if != kInvalidImpl
+			key integer = kImplementationID;
+			unsigned longint;
+	}
+}
+
+// FieldArray3: Field type, Field ID, Initial value
+// (Just like a Field. Used for second-level nesting).
+
+type SchemaFieldArray3
+{
+	switch										// A field is one of the following types...
+	{
+#include "SchemaFields.fh"						// Include standard fields
+	};
+};
+
+
+// FieldArray2: Field type, Field ID, Initial value
+// (Just like a Field. Used for first-level nesting).
+
+type SchemaFieldArray2
+{
+	switch										// A field is one of the following types...
+	{
+#include "SchemaFields.fh"						// Include standard fields
+		case FieldArray:						// Array of Fields
+			key integer = kFieldArray;
+			unsigned integer;					// The FieldArray's ID (unique within the schema)
+			FieldArrayIteration;
+			integer = $$CountOf(Fields);
+			array Fields
+			{
+				SchemaFieldArray3;
+			};
+	};
+};
+
+
+// FieldArray1: Field type, Field ID, Initial value
+// (Just like a Field. Used for first-level nesting).
+
+type SchemaFieldArray1
+{
+	switch										// A field is one of the following types...
+	{
+#include "SchemaFields.fh"						// Include standard fields
+		case FieldArray:						// Array of Fields
+			key integer = kFieldArray;
+			unsigned integer;					// The FieldArray's ID (unique within the schema)
+			FieldArrayIteration;
+			integer = $$CountOf(Fields);
+			array Fields
+			{
+				SchemaFieldArray2;
+			};
+	};
+};
+
+
+type SchemaField
+{
+	switch										// A field is one of the following types...
+	{
+#include "SchemaFields.fh"						// Include standard fields
+		case FieldArray:						// Array of Fields
+			key integer = kFieldArray;
+			unsigned integer;					// The FieldArray's ID (unique within the schema)
+			FieldArrayIteration;
+			integer = $$CountOf(Fields);
+			array Fields
+			{
+				SchemaFieldArray1;
+			};
+	};
+};
+
+
+// An alternative name for FieldArray. Used for conditional, rather than iterated, constructs.
+//
+#define	FieldIf		FieldArray
+
+
+type SchemaCore
+{
+	unsigned longint;							// Which Class or Implementation?
+	FormatNumber;								// Plug-in format number described by this schema
+	integer = $$CountOf(Fields);				// Number of fields
+	array Fields								// The fields
+	{
+		SchemaField;
+	};
+};
+
+
+// ImplementationSchema: kImplementationIDSpace, Implementation ID, Field Count, Array of Fields
+
+type ImplementationSchema(kSchemaRsrcType)
+{
+	unsigned longint = kInvalidPlugin;			// Means "this plugin"
+	integer = kFalse;							// Is not a Class schema
+	SchemaCore;
+};
+
+type Schema(kSchemaRsrcType)					// Historical - Alias for ImplementationSchema
+{
+	ImplementationSchema;
+};
+
+
+// OtherImplementationSchema: An ImplementationSchema for another plugin.
+
+type OtherImplementationSchema(kSchemaRsrcType)
+{
+	unsigned longint;							// Which plugin?
+	integer = kFalse;							// Is not a Class schema
+	SchemaCore;
+};
+
+
+// ClassSchema: kClassIDSpace, Implementation ID, Field Count, Array of Fields
+
+type ClassSchema(kSchemaRsrcType)
+{
+	unsigned longint = kInvalidPlugin;			// Means "this plugin"
+	integer = kTrue;							// Is a Class schema
+	SchemaCore;
+};
+
+
+// OtherClassSchema: A ClassSchema for another plugin.
+
+type OtherClassSchema(kSchemaRsrcType)
+{
+	unsigned longint;							// Which plugin?
+	integer = kTrue;							// Is a Class schema
+	SchemaCore;
+};
+
+
+// SchemaList: List of various schema types.
+
+type SchemaList(kSchemaListRsrcType)
+{
+	integer = $$CountOf(Schemas);	
+	array Schemas 
+	{
+		switch
+		{
+			case ClassSchema:
+				key integer = kClassSchema;
+				ClassSchema;
+			
+			case OtherClassSchema:
+				key integer = kOtherClassSchema;
+				OtherClassSchema;
+
+			case ImplementationSchema:
+				key integer = kImplementationSchema;
+				ImplementationSchema;
+
+			case Schema:
+				key integer = kSchema;
+				ImplementationSchema;
+			
+			case OtherImplementationSchema:
+				key integer = kOtherImplementationSchema;
+				OtherImplementationSchema;
+		} 
+	}
+};
+
+
+// Directive: Directive type, Implementation ID, Format Number
+
+type Directive
+{
+	switch										// A directive has one of the following types...
+	{
+		case RemoveClass:						// A Boss was removed from a Plugin.
+			key integer = kRemoveClass;			//    Key value
+			unsigned longint = kInvalidPlugin;	//    Means "this plugin"
+			unsigned longint;					//	  Which Boss?
+			FormatNumber;						//	  Which format number?
+		
+		case RemoveOtherClass:					// A Boss was removed from another Plugin.
+			key integer = kRemoveClass;			//    Key value
+			unsigned longint;					//    Which plugin?
+			unsigned longint;					//	  Which Boss?
+			FormatNumber;						//	  Which format number?
+		
+		case ReplaceClass:						// Replace one Class with another
+			key integer = kReplaceClass;		//    Key value
+			unsigned longint;					//	  Old Class ID
+			unsigned longint;					//    New ClassID
+			FormatNumber;						//	  First format number to use the new ID
+		
+		case MoveClass:							// A Boss was moved from one Plugin to another.
+			key integer = kMoveClass;			//    Key value
+			unsigned longint;					//	  Old Class ID?
+			unsigned longint;					//    From which Plugin?
+			FormatNumber;						//    Old plugin format number?
+			unsigned longint;					//	  New Class ID?
+			FormatNumber;						//	  As of which format number?
+		
+		case MoveClassToPlugin:					// A Boss was moved from one Plugin to another.
+			key integer = kMoveClassToPlugin;	//    Key value
+			unsigned longint;					//	  Old Class ID?
+			unsigned longint;					//    From which Plugin?
+			FormatNumber;						//    Old plugin format number?
+			unsigned longint;					//	  New Class ID?
+			unsigned longint;					//    To which Plugin?
+			FormatNumber;						//	  As of which format number?
+			FormatNumber;						//	  Format number of Plugin containing the directive?
+		
+		case RemoveImplementation:				// An Implementation was removed from a Boss 
+												// Used for "forward" conversions (target format > source)
+			key integer = kRemoveImplementation;//    Key value
+			unsigned longint = kInvalidPlugin;	//    Means "this plugin"
+			unsigned longint;					//    Which Boss?
+			unsigned longint;					//	  Which Implementation?
+			FormatNumber;						//	  Which format number?
+			
+		case RemoveAllImplementation:			// An Implementation was removed from all Bosses
+												// Used for "forward" conversions (target format > source)
+			key integer = kRemoveImplementation;//    Key value
+			unsigned longint = kInvalidPlugin;	//    Means "this plugin"
+			unsigned longint = kInvalidClass;	//    Means "every Boss"
+			unsigned longint;					//	  Which Implementation?
+			FormatNumber;						//	  Which format number?
+			
+		case RemoveOtherImplementation:			// An Implementation was removed from a Boss 
+			key integer = kRemoveImplementation;//    Key value
+			unsigned longint;					//    Which plugin?
+			unsigned longint;					//    Which Boss?
+			unsigned longint;					//	  Which Implementation?
+			FormatNumber;						//	  Which format number?
+			
+		case RemoveAllOtherImplementation:		// An Implementation was removed from all Bosses 
+			key integer = kRemoveImplementation;//    Key value
+			unsigned longint;					//    Which plugin?
+			unsigned longint = kInvalidClass;	//    Means "every Boss"
+			unsigned longint;					//	  Which Implementation?
+			FormatNumber;						//	  Which format number?
+
+		case ReplaceImplementation:				// Replace one Implementation with another
+			key integer = kReplaceImplementation;//   Key value
+			unsigned longint;					//    In which Context?
+			unsigned longint;					//	  Old Implementation ID
+			unsigned longint;					//    New ImplementationID
+			FormatNumber;						//	  First format number to use the new ID
+
+		case ReplaceAllImplementation:			// Replace one Implementation with another
+			key integer = kReplaceImplementation;//   Key value
+			unsigned longint = kInvalidClass;	//    Means "every Boss"
+			unsigned longint;					//	  Old Implementation ID
+			unsigned longint;					//    New ImplementationID
+			FormatNumber;						//	  First format number to use the new ID
+		
+		case MoveImplementation:				// An Implementation was moved from one Plugin to another.
+			key integer = kMoveImplementation;	//    Key value
+			unsigned longint;					//	  Old Implementation ID
+			unsigned longint;					//    From which Plugin?
+			FormatNumber;						//    Old Plugin format number?
+			unsigned longint;					//	  New Implementation ID?
+			FormatNumber;						//	  As of which format number?
+		
+		case MoveImplementationToPlugin:		// An Implementation was moved from one Plugin to another.
+			key integer = kMoveImplementationToPlugin;	//    Key value
+			unsigned longint;					//	  Old Implementation ID
+			unsigned longint;					//    From which Plugin?
+			FormatNumber;						//    Old Plugin format number?
+			unsigned longint;					//	  New Implementation ID?
+			unsigned longint;					//    To which Plugin?
+			FormatNumber;						//	  As of which format number?
+			FormatNumber;						//	  Format number of Plugin containing the directive?
+
+		case RemovePlugin:						// Removing an entire plugin
+			key integer = kRemovePlugin;		//    Key value
+			FormatNumber;						//    Format number when the removal happened
+			unsigned longint;					//    Which plugin?
+			integer = $$CountOf(Classes);		//    List of Classes removed along with the plugin
+			array Classes
+			{
+				unsigned longint;				//       ClassID
+			};
+			integer = $$CountOf(Impls);			//    List of Implementations removed along with the plugin
+			array Impls
+			{
+				unsigned longint;				//       ImplementationID
+			};
+
+		case RenumberPlugin:					// Renumbering an entire plugin
+			key integer = kRenumberPlugin;		//    Key value
+			FormatNumber;						//    Format number when the renumbering happened
+			Version;							//    Old plugin and last format number
+			Version;							//    New plugin and first format number
+			integer = $$CountOf(Classes);		//    List of Classes renumbered along with the plugin
+			array Classes
+			{
+				ClassClass;						//       Old ClassID, New ClassID
+			};
+			integer = $$CountOf(Impls);			//    List of Implementations renumbered along with the plugin
+			array Impls
+			{
+				ImplementationImplementation;	//       Old ImplementationID, New Implementation ID
+			};
+
+		case IgnorePlugin:						// Mark a plugin as ignorable
+			key integer = kIgnorePlugin;		//    Key value
+			FormatNumber;						//    Format number when the plugin was marked ignorable
+			unsigned longint;					//    Which plugin?
+	};
+};
+
+
+// DirectiveList: Boss ID, Directive Count, Array of Directives
+
+type DirectiveList(kBossDirectiveRsrcType)
+{
+	integer = $$CountOf(Directives);			// Number of Directives
+	array Directives							// The Directives
+	{
+		Directive;
+	};
+};
+
+
+// An alternative name for DirectiveList.
+//
+#define	BossDirective		DirectiveList
+
+
+// SchemaFormatNumber: A list of format numbers.
+
+type SchemaFormatNumber(kVersionListRsrcType)
+{
+	integer = $$CountOf(Versions);				// Number of format numbers
+	array Versions								// The list
+	{
+		unsigned longint = kInvalidPlugin;		// Means "this plugin"
+		FormatNumber;
+	};
+};
+
+
+// OtherSchemaFormatNumber: A list of format numbers for another plugin.
+
+type OtherSchemaFormatNumber(kVersionListRsrcType)
+{
+	integer = $$CountOf(Versions);				// Number of format numbers
+	array Versions								// The list
+	{
+		Version;
+	};
+};
+
+
+// AFormatNumberPath: Major Format Number, Array of valid predecessor numbers.
+
+type AFormatNumberPath
+{
+	longint;									// A Major Format number
+	integer = $$CountOf(Prececessors);			// Number of predecessors
+	array Prececessors							// The predecessors
+	{
+		longint;								//    A predecessor's major format number
+	};
+};
+
+
+// FormatNumberPath: A list of Path specifiers.
+
+type FormatNumberPath(kFormatNumberPathRsrcType)
+{
+	integer = $$CountOf(Paths);					// Number of Path specifiers
+	array Paths									// The Path specifier
+	{
+		AFormatNumberPath;
+	};
+};
+#endif //  __ODFRC__
+
+#endif // !defined(_SCHEMAS_)

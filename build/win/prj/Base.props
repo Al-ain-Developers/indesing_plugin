@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Label="PropertySheets">
+    <Import Project="artif.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros">
+    <ODFRC_ADDITIONAL_FLAGS>-d WINDOWS -d ID_DROVER_ENABLE=1 -d ID_COCOA_ENABLE=0 -d DVAUI_ENABLE_CSNEXT_SKIN=1</ODFRC_ADDITIONAL_FLAGS>
+  </PropertyGroup>
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.40219.1</_ProjectFileVersion>
+    <LinkIncremental>false</LinkIncremental>
+    <ExecutablePath>..\..\..\devtools\bin\;$(ExecutablePath)</ExecutablePath>
+    <CustomBuildBeforeTargets>PreLinkEvent</CustomBuildBeforeTargets>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\..\..\external;$(BOOST_HEADER_SEARCH_PATH);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_SCL_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_DEPRECATE;DVAUI_DATA_DELETER_PARAM_OPTIONAL=1;DVA_ENABLE_LEGACY_SKIN=1;DVAUI_ENABLE_CSNEXT_SKIN=1;DVAUI_DEFAULT_CSNEXT_VERSION=5;DVAWORKSPACE_CSNEXT_ENABLE_WORKSPACESWITCHER=0;DVA_ENABLE_AGM_DRAWBOT=0;DVA_ASL_SUPPORT=1;ID_DROVER_ENABLE=1;DVA_COCOA_UI=0;ID_COCOA_ENABLE=0;OWL_COCOA_ENABLE=0;UICANVAS_COCOA_ENABLE=0;OWL_TARGET_PLATFORM_ENABLE=1;BOOST_ALL_DYN_LINK;BOOST_REGEX_USE_CPP_LOCALE;BOOST_REGEX_NON_RECURSIVE;BOOST_HAS_ICU=1;BOOST_FILESYSTEM_VERSION=3;BOOST_CHRONO_HEADER_ONLY;BOOST_SIGNALS_NO_DEPRECATION_WARNING;BOOST_SPIRIT_THREADSAFE;ID_NO_DIRECT_DRAWING_ALLOWED=1;DVA_USE_WIDECHAR_AS_UTF16CHAR_ON_WIN;DVA_ENABLE_ACCESSIBILITY=0;DVA_MAC_COCOA_POPUPWINDOW_POST_RC_FIX=1;SC_NO_WIN_STDINT_H=1;U_HAVE_INT32_T=1;U_HAVE_UINT32_T=1;DVACORE_MATCH_MAC_STDINT_ON_WINDOWS=1; EXO_SUPPORTS_SHARED_VISUAL_KEYBOARD_SHORTCUT_EDITOR=0; DVA_INCLUDE_TOUCHBAR=0; BOOST_USE_WINDOWS_H=0;DVAUI_USE_ADOBE_CLEAN=0;UXTECH_USE_BOOST_BIND=0;UXTECH_USE_BOOST_SHARED_PTR=0;UXTECH_USE_STD_SHARED_PTR=1;UXTECH_USE_STD_BIND=1;UXTECH_IMPORT_EXPORT_USAGE=1;DVAUXP_NGL_VULCAN_BINDINGS=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <WarningLevel>Level3</WarningLevel>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <LanguageStandard>stdcpp14</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>$(BoostSystemLib);%(AdditionalDependencies)</AdditionalDependencies>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <BuildMacro Include="ODFRC_ADDITIONAL_FLAGS">
+      <Value>$(ODFRC_ADDITIONAL_FLAGS)</Value>
+    </BuildMacro>
+  </ItemGroup>
+</Project>

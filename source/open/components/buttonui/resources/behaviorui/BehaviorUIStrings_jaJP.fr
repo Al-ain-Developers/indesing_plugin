@@ -1,0 +1,129 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kBehaviorUIStringsRsrcID + index_jaJP)
+{
+	k_jaJP,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{		
+		"$$$/Dialog/Behaviors/ShowHideFields/Fields_Tree", "フィールドツリー",
+
+		"$$$/Dialog/Behaviors/Description",				"これには、動作の要旨が含まれています。動作オプションについての使用方法やヒントが含まれている場合もあります。",
+		"$$$/Dialog/Behaviors/Description Title",		"詳細",
+		"$$$/Dialog/Behaviors/DeleteAlert",				"選択されたアクションを削除しますか？",
+		"$$$/Dialog/Behaviors/DragDeleteAlert",			"ドラッグされたアクションを削除しますか？",
+		"$$$/Dialog/Behaviors/Error/Invalid URL",		"URL フィールドには、必ず値を記入してください。",
+		"$$$/Dialog/Behaviors/Error/Invalid File",		"有効なファイルを必ず特定してください。",
+		
+		"$$$/Dialog/Behaviors/Movie/Movie:",			"ビデオ :",
+		"$$$/Dialog/Behaviors/Movie/Play Options:",		"オプション :",
+		"$$$/Dialog/Behaviors/Movie/Play",				"再生",
+		"$$$/Dialog/Behaviors/Movie/Stop",				"停止",
+		"$$$/Dialog/Behaviors/Movie/Pause",				"一時停止",
+		"$$$/Dialog/Behaviors/Movie/Resume",			"再開",
+		"$$$/Dialog/Behaviors/Movie/PlayFromNavPoint",	"ナビゲーションポイントから再生",
+		"$$$/Dialog/Behaviors/Movie/StopAll",			"すべて停止 (SWF のみ)",
+		"$$$/Dialog/Behaviors/Movie/NavPoint",			"ポイント :",
+		"$$$/Dialog/Behaviors/Movie/NoVideo",			"(ビデオなし)",
+		"$$$/Dialog/Behaviors/Movie/NoVideoNavPoint",	"(ナビゲーションポイントなし)",
+
+		"$$$/Dialog/Behaviors/Sound/Sound:",			"サウンド :",
+		"$$$/Dialog/Behaviors/Sound/Play Options:",		"オプション :",
+		"$$$/Dialog/Behaviors/Sound/Play",				"再生",
+		"$$$/Dialog/Behaviors/Sound/Stop",				"停止",
+		"$$$/Dialog/Behaviors/Sound/Pause",				"一時停止",
+		"$$$/Dialog/Behaviors/Sound/Resume",			"再開",
+		"$$$/Dialog/Behaviors/Sound/StopAll",			"すべて停止 (SWF のみ)",
+		"$$$/Dialog/Behaviors/Sound/Volume:",			"ボリューム :",
+		"$$$/Dialog/Behaviors/Sound/Synchronous",		"同時に",
+		"$$$/Dialog/Behaviors/Sound/Mix",				"ミックス",
+		"$$$/Dialog/Behaviors/Sound/NoSound",			"(サウンドなし)",
+		
+		"$$$/Dialog/Behaviors/Animation/Animation:",	"アニメーション :",
+		"$$$/Dialog/Behaviors/Animation/Play Options:",	"オプション :",
+		"$$$/Dialog/Behaviors/Animation/Play",			"再生",
+		"$$$/Dialog/Behaviors/Animation/Stop",			"停止",
+		"$$$/Dialog/Behaviors/Animation/Pause",			"一時停止",
+		"$$$/Dialog/Behaviors/Animation/Resume",		"再開",
+		"$$$/Dialog/Behaviors/Animation/StopAll",		"すべて停止",
+		"$$$/Dialog/Behaviors/Animation/Reverse",		"逆方向",
+		"$$$/Dialog/Behaviors/Animation/AutoReverse",	"ロールオフ時に反転",
+		"$$$/Dialog/Behaviors/Animation/NoAnimation",	"(アニメーションなし)",
+		
+		"$$$/Dialog/Behaviors/MSO/Object:",				"オブジェクト :",
+		"$$$/Dialog/Behaviors/MSO/State:",				"ステート :",
+		"$$$/Dialog/Behaviors/MSO/AutoReverse",			"ロールオフ時に戻る",
+		"$$$/Dialog/Behaviors/MSO/NextLoop",			"最後のステートで停止",
+		"$$$/Dialog/Behaviors/MSO/PrevLoop",			"最初のステートで停止",
+		"$$$/Dialog/Behaviors/MSO/NoMSO",				"(マルチステートオブジェクトなし)",
+
+		"$$$/Dialog/Behaviors/GoToView/Go To:",			"移動 :",
+		"$$$/Dialog/Behaviors/GoToView/First Page",		"先頭ページへ",
+		"$$$/Dialog/Behaviors/GoToView/Page",			"ページ",
+		"$$$/Dialog/Behaviors/GoToView/Previous Page",	"前ページへ",
+		"$$$/Dialog/Behaviors/GoToView/Next Page",		"次ページへ",
+		"$$$/Dialog/Behaviors/GoToView/Last Page",		"最終ページへ",
+		"$$$/Dialog/Behaviors/GoToView/Back",			"戻る",
+		"$$$/Dialog/Behaviors/GoToView/Forward",		"順方向",
+		"$$$/Dialog/Behaviors/GoToView/Previous View",	"前表示",
+		"$$$/Dialog/Behaviors/GoToView/Next View",		"次表示",
+		"$$$/Dialog/Behaviors/GoToView/Specific Page",	"指定のページ",
+		"$$$/Dialog/Behaviors/GoToView/Document:",		"ドキュメント :",
+		"$$$/Dialog/Behaviors/GoToView/Page:",			"ページ :",
+		"$$$/Dialog/Behaviors/GoToView/URL",			"URL",
+		"$$$/Dialog/Behaviors/GoToView/URL:",			"URL :",
+		"$$$/Dialog/Behaviors/GoToView/Anchor",			"テキストアンカー",
+		"$$$/Dialog/Behaviors/GoToView/Anchor:",		"配置先 :",
+		"$$$/Dialog/Behaviors/GoToView/Bookmark",		"ブックマーク",
+		"$$$/Dialog/Behaviors/GoToView/Inherit Zoom",	"ズーム設定維持",
+		"$$$/Dialog/Behaviors/GoToView/Actual Size",	"100% 表示",
+		"$$$/Dialog/Behaviors/GoToView/Fit In Window",	"全体表示",
+		"$$$/Dialog/Behaviors/GoToView/Fit Width",		"幅に合わせる",
+		"$$$/Dialog/Behaviors/GoToView/Fit Height",		"高さに合わせる",
+		"$$$/Dialog/Behaviors/GoToView/Fit Visible",	"可視全体",
+		"$$$/Dialog/Behaviors/GoToView/Zoom:",			"ズーム :",
+		"$$$/Dialog/Behaviors/GoToView/None",			"なし",
+		"$$$/Dialog/Behaviors/GoToAnchor/InDesign Format File","InDesign 形式ファイル",
+		
+		"$$$/Dialog/Behaviors/ViewZoom/Full Screen",	"フルスクリーン",
+		"$$$/Dialog/Behaviors/ViewZoom/Zoom View In",	"ズームイン",
+		"$$$/Dialog/Behaviors/ViewZoom/Zoom View Out",	"ズームアウト",
+		"$$$/Dialog/Behaviors/ViewZoom/Fit Page",		"全体表示",
+		"$$$/Dialog/Behaviors/ViewZoom/Actual Size",	"100% 表示",
+		"$$$/Dialog/Behaviors/ViewZoom/Fit Width",		"幅に合わせる",
+		"$$$/Dialog/Behaviors/ViewZoom/Fit Visible",	"可視全体",
+		"$$$/Dialog/Behaviors/ViewZoom/SinglePage",		"単数ページ",
+		"$$$/Dialog/Behaviors/ViewZoom/OneColumn",		"連続",
+		"$$$/Dialog/Behaviors/ViewZoom/TwoColumns",		"連続-見開き",
+
+		"$$$/Dialog/Behaviors/ImportData/Select File:","ファイルを選択 :",
+		"$$$/Dialog/Behaviors/ImportData/Acrobat Format File","Acrobat 形式ファイル",
+
+		"$$$/Dialog/Behaviors/OpenFile/Select File:","ファイルを選択 :",
+		"$$$/Dialog/Behaviors/OpenFile/Select File to be Opened", "ファイルを選択",
+		"$$$/Dialog/Behaviors/OpenFile/Acrobat Format File","Acrobat 形式ファイル",
+
+		"$$$/Dialog/Behaviors/SubmitForm/Submit To:","URL :",
+						
+		// ----- Tips strings
+	}
+};
+
+#endif // __ODFRC__

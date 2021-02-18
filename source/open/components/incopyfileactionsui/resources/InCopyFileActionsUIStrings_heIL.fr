@@ -1,0 +1,55 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/incopyfileactionsui/resources/InCopyFileActionsUIStrings_heIL.fr $
+//  
+//  Owner: Chris Parrish
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kInCopyFileActionsUIStringsRsrcID + index_heIL)
+{
+	k_heIL,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{
+		"&Update Design",		"&עדכן עיצוב",
+		"AlertUnableToSave",	"לא ניתן לשמור את התוכן שלהלן.\nייתכן שהקבצים נעולים, או שאין לך הרשאה לשינוי הקבצים.\n",
+		"Update^1Alert",		"לא ניתן לשמור חלק מהתוכן. העדכון עלול לגרום לאובדן השינויים.\nהאם לעדכן לגרסה העדכנית ביותר של “^1”?",
+		"Undoable^1Save",		"עדכון העיצוב יגרום לשמירת כל התוכן הניתן לעריכה לפני שניתן יהיה להמשיך. לא תוכל לבטל באמצעות הפקודה 'בטל' שינויים כלשהם שנגרמו כתוצאה מהעדכון. \nהאם לעדכן ל-\"^1\" בכל זאת?",
+		"AlertStoriesMissing",	"לא ניתן למצוא חלק מקובצי התוכן, ולפיכך לא ניתן לערוך אותם. נסה להעביר את הקבצים למיקום המקורי שלהם או לעדכן את הקישורים ב-InDesign.",
+		"AlertStoriesMissingWF", "לא ניתן למצוא חלק מקבצי התוכן, ולפיכך לא ניתן לערוך אותם. נסה להוריד את התוכן מהשרת ולפתוח את המסמך מחדש.",
+		"Update",				"עדכן",
+		"&Revert Story",		"ש&חזר תוכן",
+//		"Revert Story",			"Revert Content", // Note to localizer: this string moved to InCopySharedStrings_heIL.fr
+		
+		"SaveAsFeatureLost",    "ייתכן שמסמך זה כולל מאפיינים שאינם נתמכים בתבנית קובץ זו. האם להמשיך?",
+		"CannotSaveOntoLockedFile",		"הקובץ שצוין הוצא מאחסון על-ידי \"^1\" ב-^2 ממסמך ^3. אנא בחר שם קובץ אחר או בקש מ-\"^1\" להכניס את הקובץ לאחסון.",
+		"CannotSaveOntoLockedFileMinimal",	"הקובץ שצוין הוצא מאחסון על-ידי \"^1\".  אנא בחר שם קובץ אחר או בקש מ-\"^1\" להכניס את הקובץ לאחסון.",
+	}
+};
+
+
+#endif // __ODFRC__

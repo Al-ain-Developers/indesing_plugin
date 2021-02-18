@@ -1,0 +1,57 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/buttonui/resources/ButtonUI.fr $
+//  
+//  Owner: Mark VerMurlen
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "FormFieldUIClass.fr"
+#include "FormFieldUIFactoryList.fr"
+
+#include "FormFieldUIStrings.fr"
+#include "BehaviorUIStrings.fr"
+
+#include "FormFieldUIMenu.fr"
+#include "FormFieldUIDialogs.fr"
+#include "FormFieldUIPanelList.fr"
+#include "FormFieldUIPanelView.fr"
+#include "FormFieldUITips.fr"
+#include "FormFieldUIPNG.fr"
+#include "behavioruipng.fr"
+
+#include "MovieDataViews.fr"
+#include "SoundDataViews.fr"
+#include "GoToPageViews.fr"
+#include "GoToFirstPageViews.fr"
+#include "GoToLastPageViews.fr"
+#include "GoToNextPageViews.fr"
+#include "GoToPreviousPageViews.fr"
+#include "GoToURLViews.fr"
+#include "ShowHideFieldsViews.fr"
+#include "OpenFileViews.fr"
+#include "GoToAnchorViews.fr"
+#include "GoToNextViewViews.fr"
+#include "GoToPreviousViewViews.fr"
+#include "ViewZoomViews.fr"
+#include "AnimationDataViews.fr"
+#include "MSODataViews.fr"
+#include "SubmitFormViews.fr"
+
+#include "MSOPanelList.fr"
+#include "MSOPanelViews.fr"

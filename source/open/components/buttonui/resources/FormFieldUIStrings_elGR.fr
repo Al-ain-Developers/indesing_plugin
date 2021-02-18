@@ -1,0 +1,250 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/buttonui/resources/FormFieldUIStrings_elGR.fr $
+//  
+//  Owner: Mark VerMurlen
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "StringTable.fh"
+
+#include "FormFieldUIDefs.h"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+//twright 12/11/2000 Removed left-over strings from group strings.
+//not sure if button/form is going to need lock warning...
+
+resource StringTable (kFormFieldUIStringsRsrcID + index_elGR)
+{
+	k_elGR,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{
+		// ----- Menu strings
+		"ButtonsActionsPopup",				"Μενού ενεργειών κουμπιών",
+		
+		"$$$/Menu/AppearancePanelPopup",	"Μενού πίνακα κουμπιών",	
+		"$$$/Menu/Interactive",				"Αλληλεπίδ&ραση", 
+		"$$$/Menu/FormField",				"&Φόρμα", 
+		"$$$/Menu/About",					"&Πληροφορίες για την επέκταση Form", 
+		"$$$/Menu/CreateButton",			"&Μετατροπή σε κουμπί", 
+		"$$$/Menu/DestroyButton",			"&Μετατροπή σε αντικείμενο", 
+		"$$$/Menu/FormFieldSettings",		"&Επιλογές κουμπιού...", 
+		"$$$/Menu/NewState",				"Νέα κατάσταση", 
+		"$$$/Menu/DeleteState",				"Διαγραφή κατάστασης", 
+		"$$$/Menu/DeleteStates",			"Διαγραφή καταστάσεων",
+		"$$$/Menu/PlaceIntoState",			"Τοποθέτηση περιεχομένου σε κατάσταση...",
+		"$$$/Menu/DeleteStateContent",		"Διαγραφή περιεχομένου από κατάσταση",
+		"$$$/Menu/AppearancePanelPrefs",	"Επιλογές πίνακα...",
+		"$$$/Menu/StateOptions",			"Επιλογές κατάστασης...",
+		"$$$/Menu/SetTabOrder",				"Ορισμός σειράς &στηλοθετών...",
+		"$$$/Menu/SetCalculationOrder",		"Ορισμός σειράς υπολογισμού...",
+		"$$$/Menu/States",					"Κ&ουμπιά",
+		
+		"$$$/Menu/Close",					"Κλείσιμο",
+		"$$$/Menu/Exit",					"Έξοδος",
+		"$$$/Menu/Go To Page",				"Μετάβαση στη σελίδα (μόνο για SWF)",
+		"$$$/Menu/Go To First Page",		"Μετάβαση στην πρώτη σελίδα",
+		"$$$/Menu/Go To Anchor",			"Μετάβαση σε κόμβο",
+		"$$$/Menu/Go To Last Page",			"Μετάβαση στην τελευταία σελίδα",
+		"$$$/Menu/Go To Next Page",			"Μετάβαση στην επόμενη σελίδα",
+		"$$$/Menu/Go To Next View",			"Μετάβαση στην επόμενη προβολή",
+		"$$$/Menu/Go To Previous Page",		"Μετάβαση στην προηγούμενη σελίδα",
+		"$$$/Menu/Go To Previous View",		"Μετάβαση στην προηγούμενη προβολή",
+		"$$$/Menu/Go To URL",				"Μετάβαση σε URL",
+		"$$$/Menu/Movie",					"Ταινία",
+		"$$$/Menu/Open File",				"Άνοιγμα αρχείου",
+		"$$$/Menu/Show/Hide Buttons",		"Κουμπιά εμφάνισης/απόκρυψης",
+		"$$$/Menu/Sound",					"Ήχος",
+		"$$$/Menu/View Zoom",				"Προβολή ζουμ",
+
+		"$$$/Menu/FormFieldSettings/ButtonLibrary",			"Κουμπιά δείγματος",	// Name of menu item in Buttons Panel flyout that opens a library of Sample Buttons
+
+		"$$$/Menu/FormFieldSettings/PDFVis/Visible",		"Ορατό στο PDF",
+		"$$$/Menu/FormFieldSettings/PDFVis/Hidden",			"Κρυφό στο PDF",
+		"$$$/Menu/FormFieldSettings/PDFVis/VisibleNoPrint",	"Ορατό στο PDF αλλά μη εκτυπώσιμο",
+		"$$$/Menu/FormFieldSettings/PDFVis/HiddenButPrint",	"Κρυφό στο PDF αλλά εκτυπώσιμο",	
+			
+		"PageItems",						"Στοιχεία σελίδας", 
+		"$$$/Menu/Trace Geometry",			"Ιχνογράφηση γεωμετρίας", 
+
+		"InteractiveContextMenu",			"Αλληλεπίδραση",
+	
+		// ----- Dialog strings
+		"$$$/Dialog/CreateFormField/Title",		"Πεδίο φόρμας", 
+		"$$$/Dialog/CreateFormField/Options",	"Επιλογές",
+		"$$$/Dialog/CreateFormField/Width",		"&Πλάτος:",
+		"$$$/Dialog/CreateFormField/Height",	"&Ύψος:",
+
+		"$$$/Dialog/FormFieldSettings/Title",				"Γενικές", 
+		"$$$/Dialog/FormFieldSettings/FieldType",			"Τύπος πεδίου:",
+		"$$$/Dialog/FormFieldSettings/FieldTypeSetting",	"",
+		"$$$/Dialog/FormFieldSettings/Name",				"&Όνομα:",
+		"$$$/Dialog/FormFieldSettings/PDFVisibility",		"&Ορατότητα στο PDF:",
+		"$$$/Dialog/FormFieldSettings/PDFVis/Visible",		"Ορατό",
+		"$$$/Dialog/FormFieldSettings/PDFVis/Hidden",		"Κρυμμένο",
+		"$$$/Dialog/FormFieldSettings/PDFVis/VisibleNoPrint",	"Ορατό αλλά δεν εκτυπώνεται",
+		"$$$/Dialog/FormFieldSettings/PDFVis/HiddenButPrint",	"Κρυμμένο, αλλά εκτυπώσιμο",
+		"$$$/Dialog/FormFieldSettings/ReadOnly",			"Μόνο για ανάγνωση",
+		"$$$/Dialog/FormFieldSettings/Export",				"Εξαγωγή",
+		"$$$/Dialog/FormFieldSettings/RequiredForExport",	"Απαιτείται για εξαγωγή",
+		"$$$/Dialog/FormFieldSettings/Description",			"&Περιγραφή:",
+		"$$$/Dialog/FormFieldSettings/ExportName",			"&Εξαγωγή ονόματος:",
+		"$$$/Dialog/FormFieldSettings/Common Settings",		"Κοινές ρυθμίσεις",
+		"$$$/Dialog/FormFieldSettings/Options",				"Επιλογές",
+		"$$$/Dialog/FormFieldSettings/Holder",				"Κάτοχος ρυθμίσεων πεδίου φόρμας",
+
+		"$$$/Dialog/FormOptions/Title",						"Επιλογές κουμπιού",
+		"$$$/Dialog/FormFieldSettings/Options",				"Επιλογές",
+		
+		"$$$/Dialog/FormFieldSettings/ExportValue",			"Τιμή εξαγωγή:",
+		"$$$/Dialog/FormFieldSettings/DefaultIsChecked",	"Η προεπιλογή είναι ενεργή",
+		"$$$/Dialog/FormFieldSettings/DefaultIsSelected",	"Η προεπιλογή είναι επιλεγμένη",
+		"$$$/Dialog/FormFieldSettings/Default",				"Προεπιλογή:",
+
+		"$$$/Dialog/FormFieldSettings/Multiline",				"Πολλαπλές γραμμές",
+		"$$$/Dialog/FormFieldSettings/Scroll",					"Με δυνατότητα κύλισης",
+		"$$$/Dialog/FormFieldSettings/LimitOf",					"Όριο στους",
+		"$$$/Dialog/FormFieldSettings/Characters",				"χαρ.",
+		"$$$/Dialog/FormFieldSettings/Password",				"Κωδικός πρόσβασης",
+		"$$$/Dialog/FormFieldSettings/FieldForFileSelection",	"Χρησιμοποιείται για επιλογή αρχείων",
+		"$$$/Dialog/FormFieldSettings/SpellCheck",				"Ορθογραφικός έλεγχος",
+		
+		"$$$/Dialog/FormFieldSettings/Item",					"Αντικείμενο:",
+		"$$$/Dialog/FormFieldSettings/Add",						"Προσθήκη",
+		"$$$/Dialog/FormFieldSettings/Delete",					"Διαγραφή",
+		"$$$/Dialog/FormFieldSettings/Change",					"Αλλαγή",
+		"$$$/Dialog/FormFieldSettings/SortItems",				"Ταξινόμηση αντικειμένων",
+		"$$$/Dialog/FormFieldSettings/AllowMultipleSelection",	"Να επιτρέπεται η πολλαπλή επιλογή",
+		"$$$/Dialog/FormFieldSettings/Editable",				"Επεξεργάσιμο",
+
+		"$$$/Dialog/FormFieldSettings/Align",					"Στοίχιση:",
+		"$$$/Dialog/FormFieldSettings/Align/Left",				"Αριστερά",
+		"$$$/Dialog/FormFieldSettings/Align/Center",			"Κέντρο",
+		"$$$/Dialog/FormFieldSettings/Align/Right",				"Δεξιά",
+
+		"$$$/Dialog/FormFieldSettings/Font:",					"&Γραμματοσειρά:",
+		"$$$/Dialog/FormFieldSettings/Size:",					"&Μέγεθος:",
+		"$$$/Dialog/FormFieldSettings/Auto",					"Αυτόματο",
+
+		"$$$/Dialog/FormFieldSettings/SelectedIsDefault",		"Το επιλεγμένο αντικείμενο είναι προεπιλεγμένο",
+		
+		"$$$/Dialog/FormFieldUI/DeleteAlert",					"Με τη διαγραφή της κατάστασης διαγράφεται επίσης το περιεχόμενο που συσχετίζεται με αυτήν.  Θέλετε να διαγράψετε την κατάσταση;",
+		"$$$/Dialog/FormFieldUI/DestroyAlert",					"Με την ενέργεια αυτή θα διαγραφεί το περιεχόμενο που συσχετίζεται με τις άλλες καταστάσεις του κουμπιού.  Θέλετε να συνεχίσετε;",
+		"$$$/Dialog/FormFieldUI/DeleteContentAlert",			"Είστε βέβαιοι ότι θέλετε να διαγράψετε το περιεχόμενο που συσσχετίζεται με αυτήν την κατάσταση;",
+		"$$$/Dialog/FormFieldUI/StyleChangeAlert",				"Με την ενέργεια αυτή θα διαγραφεί το περιεχόμενο που συσχετίζεται με τις τρέχουσες καταστάσεις του κουμπιού.  Θέλετε να συνεχίσετε;",
+		"$$$/Dialog/FormFieldUI/StyleChangeFailed",				"Αποτυχία στην εφαρμογή του επιλεγμένου στυλ εμφάνισης στο κουμπί.",
+
+		/* These are not visible, they are names of subpanels... */
+		
+		"$$$/Dialog/FormFieldSettings/CheckBox",				"Επιλογές πλαισίου ελέγχου",	
+		"$$$/Dialog/FormFieldSettings/RadioButton",				"Επιλογές κουμπιού επιλογής",	
+		"$$$/Dialog/FormFieldSettings/TextField",				"Επιλογές κουμπιού πεδίου κειμένου",	
+		"$$$/Dialog/FormFieldSettings/ListBox",					"Επιλογές κουμπιού πλαισίου λίστας",	
+		
+		"$$$/Dialog/About/Description",						"Επέκταση Forms, έκδοση 1.0\n\n(c) 2001 Adobe Systems Incorporated. Με επιφύλαξη κάθε δικαιώματος.",
+
+		"$$$/Dialog/CmdName/CreateButton",					"Μετατροπή σε κουμπί",
+		"$$$/Dialog/CmdName/DestroyButton",					"Μετατροπή σε αντικείμενο",
+		"$$$/Dialog/CmdName/ChangeFormSettings",			"Αλλαγή ρυθμίσεων κουμπιού",
+
+		"$$$/Dialog/TextColor/Title",						"Χρώμα κειμένου", 
+		"$$$/Dialog/Button/Color...",						"Χρώμα γραμματοσειράς...", 
+
+		"$$$/Dialog/AppearancePanelPrefs/Title",			"Επιλογές πίνακα", 
+		"$$$/Dialog/AppearancePanelPrefs/ThumbnailSize",	"Μέγεθος μικρογραφίας", 
+		"$$$/Dialog/AppearancePanelPrefs/None",				"Κανένα", 
+		
+		
+		"$$$/Dialog/StateOptions/Title",					"Επιλογές κατάστασης", 
+		"$$$/Dialog/StateOptions/State",					"Κατάσταση:", 
+		"$$$/Dialog/StateOptions/Enable",					"Ενεργοποίηση κατάστασης", 
+
+		"$$$/Dialog/CalculationOrder/Title",				"Σειρά υπολογισμού", 
+		"$$$/Dialog/TabOrder/Title",						"Σειρά στηλοθέτη", 
+		"$$$/Dialog/Order/MoveUp",							"Μετακίνηση &πάνω", 
+		"$$$/Dialog/Order/MoveDown",						"Μετακίνηση &κάτω",
+
+		// ----- Window strings
+		
+		// ----- Panel strings
+
+		"$$$/Panel/FormFieldSettings/Action Data Holder",	"Υποδοχέας δεδομένων ενέργειας",
+		"$$$/Panel/FormFieldSettings/+",					"+",
+		"$$$/Panel/FormFieldSettings/Event:",				"Συμβάν:",
+		"$$$/Panel/FormFieldSettings/Actions:",				"Ενέργειες:",
+		"$$$/Panel/FormFieldSettings/URL:",					"URL:",
+		"$$$/Panel/Action",									"Ενέργεια",
+		"$$$/Panel/Empty Action",							"[Δεν έχουν προστεθεί ενέργειες]",
+		"$$$/Panel/StatesListBoxLabel/States",				"Εμφάνιση κατάστασης",
+		"$$$/Panel/States",									"Κουμπιά",
+		"$$$/Panel/FormFieldSettings/FieldType",			"Τύπος:",
+		"$$$/Panel/FormFieldSettings/Name",					"Όνομα:",
+		"$$$/Panel/ShowHide/Visibility:",					"Ορατότητα:",
+		"$$$/Panel/GoToPage/Page:",							"Σελίδα:",
+
+		"$$$/Panel/Normal",									"[Κανονικό]",
+		"$$$/Panel/Over",									"[Επαναφορά]",
+		"$$$/Panel/Down",									"[Κλικ]",
+
+		"$$$/Panel/CmdName/FormFieldName",					"Όνομα κουμπιού",
+		"$$$/Panel/CmdName/FormFieldStyle",					"Εμφάνιση κουμπιού",
+		
+		"$$$/Panel/FormFieldSettings/Appearance",			"Εμφάνιση:",
+
+		"$$$/Popup/Separator",								"-",
+		
+		"$$$/Dialog/Behaviors/Exit/No Data for Exit Behavior", "",
+
+		// ----- Tips strings
+
+		"$$$/Tip/FormName",				"Όνομα για το κουμπί",
+		"$$$/Tip/StateEye",				"Ενεργοποίηση/απενεργοποίηση προαιρετικής κατάστασης σε εξαγόμενο PDF ή SWF",
+		"$$$/Tip/StateThumbnail",		"Μειωμένη προβολή αυτής της κατάστασης",
+		"$$$/Tip/Show",					"Εμφάνιση",
+		"$$$/Tip/Hide",					"Απόκρυψη",
+		"$$$/Tip/Ignore",				"Παράβλεψη",
+		"$$$/Tip/Delete Selected Action",	"Διαγραφή επιλεγμένης ενέργειας",
+		"$$$/Tip/Add New Action",		"Προσθήκη νέας ενέργειας για το επιλεγμένο συμβάν",
+		"$$$/Tip/DeleteState",			"Διαγραφή προαιρετικής κατάστασης και του περιεχομένου της",
+		"$$$/Tip/Convert To Button",		"Μετατροπή αντικειμένου σε κουμπί",
+		"$$$/Tip/Convert To Object",		"Μετατροπή κουμπιού σε αντικείμενο",
+
+		// ----- Error strings
+
+		"$$$/Error/YouNeedToSpecifyAName", "Πρέπει να προσδιορίσετε ένα όνομα.",
+		"$$$/Error/YouNeedToSpecifyANonBlankName", "Πρέπει να προσδιορίσετε ένα έγκυρο όνομα.",
+		"$$$/Error/YouNeedToSpecifyANonBlankNameOrNoName", "Πρέπει να προσδιορίσετε ένα έγκυρο όνομα ή κανένα όνομα.",
+		"$$$/Error/YouNeedToSpecifyAnExportValue", "Πρέπει να προσδιορίσετε μια τιμή εξαγωγής.",
+		"$$$/Error/YouNeedToSpecifyANonBlankExportValue", "Πρέπει να προσδιορίσετε μια έγκυρη τιμή εξαγωγής.",
+		
+		// ----- Misc strings
+
+		"$$$/Command/DeleteStates",	"Διαγραφή καταστάσεων",
+		"$$$/CmdName/DeleteStateContent",	"Διαγραφή περιεχομένου κατάστασης",
+	}
+};
+
+#endif // __ODFRC__

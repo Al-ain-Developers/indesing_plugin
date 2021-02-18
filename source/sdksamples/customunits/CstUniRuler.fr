@@ -1,0 +1,60 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/sdksamples/customunits/CstUniRuler.fr $
+//  
+//  Owner: Adobe Developer Technologies
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//  
+//  The resource description for custom ruler.
+//  
+//========================================================================================
+
+#include "RulerType.fh"
+#include "CstUniID.h"
+#include "CstUniDef.h"
+
+#ifdef __ODFRC__
+
+
+resource RulerDataType (kCstUniRulerSpecId)
+{
+	kDefaultRulerFont, 9.0, kCstUniBoss, kNotFraction, kDecimal,
+	{ //zoom	major 	n sub-		sub-	n sub-sub-	sub-sub-
+	  //		units	ticks		tick 	ticks		tick len
+	  //							len		
+		0.05,   160.0,  {20,        33, },
+		0.125,  40.0,   {10,        33, },
+		0.25,   20.0,   {5,         33,     5,        22,},
+		0.50,   10.0,   {2,         33,     5,        22,},
+		1.00,   10.0,   {2,         33,     5,        22,      2,    11,},
+// the previous line means:
+// between 100% & 150%, draw major/labeled ticks every 10 custom units, subdivide each into 2, 
+// 5 units parts with a tick 33% of the width of the ruler, subdivide each of the 5 units divisions into
+//  5, 1 unit parts with a tick 22% of the width of the ruler, and divide each of those 1 unit
+//  parts into 2 with a tick 11% of the width
+        1.50,   5.0,    {2,         33,     5,        22,      2,    11,},
+        2.50,   2.0,    {2,         33,     5,        22,      2,    11,},
+        4.50,   1.0,    {2,         33,     5,        22,      2,    11,},
+        8.50,   0.5,    {2,         33,     5,        22,      2,    11,},
+        16.50,  0.25,   {2,         33,     5,        22,      2,    11,},
+	}
+};
+
+#endif
+
+

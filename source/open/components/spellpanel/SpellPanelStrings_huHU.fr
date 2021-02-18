@@ -1,0 +1,159 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kSpellPanelStringsRsrcID + index_huHU)
+{
+	k_huHU,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{				
+		// ----- Main menu strings
+		"SpellingMenu",					"&Helyesírás-ellenőrzés",
+		"Check Spelling...",			"Helyesírás-elle&nőrzés...",
+		"Dynamic SpellCheck",			"Dina&mikus helyesírás-ellenőrzés",
+		"Autocorrect",					"Automatikus javítás",
+		"Auto Correct",					"&Automatikus javítás",
+		"AutoCorrect",					"Automatikus javítás",
+
+		// ----- Window strings
+		"corrected",					"javított",
+		"misspelled",					"elírt",
+		
+		// ----- Scope strings
+		
+		"[No spelling]",				"[Nincs helyesírás-ellenőrzés]",
+		"Auto",							"Automatikus",
+		"Document",						"Dokumentum",
+		"Story",						"Szövegegység",
+		"Stories",						"Szövegek",
+		"Selection",					"Kijelölés",
+		
+		// ----- Panel strings		
+		"Spelling",						"Helyesírás-ellenőrzés",
+		"&Spelling...",					"&Helyesírás-ellenőrzés...",
+		"Auto Correct...",				"Automatikus javí&tás...",
+		"[No language]",				"[Nincs megadva a nyelv]",
+		"AutoCorrectEnable",			"A&utomatikus javítás engedélyezése",
+		"AutoCorrectCapitalizationErrors",			"&Kis- és nagybetűhibák automatikus javítása",
+		"A&dd...",						"H&ozzáadás...",		// Opens a dialog
+		"EditAutoCorrectWord",			"&Szerkesztés...",		// Opens a dialog
+		"Correction",					"Javítás",
+		"Misspelled Word",				"Helyesírási hiba",
+
+		// ----- Dialog strings
+		"Check Spelling",				"Helyesírás-ellenőrzés",
+		"&Change To:",					"&Módosítás erre:",
+		
+		"Change To",					"Módosítás erre",
+		"&Suggested Corrections:",		"Javasolt ja&vítások:",
+		"Language:",					"Nyelv:",
+		"Sea&rch:",						"Ker&esés:",
+		"Include Overset",				"Túlszedéssel együtt",
+		"&Done",							"&Kész",
+		"C&hange",						"M&ódosítás",
+		"S&tart",						"I&ndítás",
+		"Chan&ge All",					"Az összes módo&sítása",
+		"Skip",							"Kihagyás",	
+		"kSkipButtonInSpellingDialog",  "Ki&hagyás",
+		"Ignore",						"Kihagyás",
+		"&Ignore All",					"Az összes &kihagyása",
+		"&AddAndContinue",				"&Hozzáadás",			// Adds to dictionary automatically, continues spelling
+		"Dic&tionary...",				"S&zótár...",	// Launches Dict Editor dialog
+		"Add To:",						"Hozzáadás &ehhez:",
+
+		// Label strings in Spell Check dialog.
+		"Ready to Spell Check:", 			"Helyesírás-ellenőrzés elkezdhető",
+		"Misspelled Word:",					"Helyesírási hiba:",
+		"Unknown Word - No Suggestions:", 	"Ismeretlen szó - Nincs javaslat:",
+		"Not in Dictionary:",				"Nincs a szótárban:",
+		"Repeated Word:",					"Ismétlődő szó:",
+		"Uncapitalized Word:",				"Kisbetűvel kezdődő szó:",
+		"Uncapitalized Sentence:",			"Kisbetűvel kezdődő mondat:",
+		"Duplicate Word:",					"Kettőzött szó:",
+		"Capitalization Error:",			"Kis-/nagybetű hiba:",
+		"Spell Check Complete:",			"A helyesírás-ellenőrzés befejeződött",
+		
+		"SpellCheckCompleteAlertStr",			"A helyesírás-ellenőrzés befejeződött.",	// Alert string at completion of spelling.
+
+		"Misspelled Word (Overset):",					"Helyesírási hiba: (Túlszedett szöveg)",
+		"Unknown Word - No Suggestions (Overset):", 	"Ismeretlen szó: (Túlszedett szöveg)",
+		"Not in Dictionary (Overset):",					"Nincs a szótárban: (Túlszedett szöveg)",
+		"Repeated Word (Overset):",						"Ismétlődő szó: (Túlszedett szöveg)",
+		"Uncapitalized Word (Overset):",				"Kisbetűvel kezdődő szó: (Túlszedett szöveg)",
+		"Uncapitalized Sentence (Overset):",			"Kisbetűvel kezdődő mondat: (Túlszedett)",
+
+		"Misspelled Word (In Table):",					"Helyesírási hiba: (Táblázatban)",
+		"Unknown Word - No Suggestions (In Table):", 	"Ismeretlen szó: (Táblázatban)",
+		"Not in Dictionary (In Table):",					"Nincs a szótárban: (Táblázatban)",
+		"Repeated Word (In Table):",						"Ismétlődő szó: (Táblázatban)",
+		"Uncapitalized Word (In Table):",				"Kisbetűvel kezdődő szó: (Táblázatban)",
+		"Uncapitalized Sentence (In Table):",			"Kisbetűvel kezdődő mondat: (Táblázatban)",
+
+		"Misspelled Word (Deleted Text):",				"Helyesírási hiba: (Törölt szöveg)",
+		"Unknown Word - No Suggestions (Deleted Text):","Ismeretlen szó: (Törölt szöveg)",
+		"Not in Dictionary (Deleted Text):",			"Nincs a szótárban: (Törölt szöveg)",
+		"Repeated Word (Deleted Text):",				"Ismétlődő szó: (Törölt szöveg)",
+		"Uncapitalized Word (Deleted Text):",			"Kisbetűvel kezdődő szó: (Törölt szöveg)",
+		"Uncapitalized Sentence (Deleted Text):",		"Kisbetűvel kezdődő mondat: (Törölve)",
+		
+		"Misspelled Word (Hidden):",					"Rosszul írt szó: (rejtett elem)",
+		"Unknown Word - No Suggestions (Hidden):", 		"Ismeretlen szó: (rejtett elem)",
+		"Not in Dictionary (Hidden):",					"Nincs a szótárban: (rejtett elem)",
+		"Repeated Word (Hidden):",						"Ismétlődő szó: (rejtett elem)",
+		"Uncapitalized Word (Hidden):",					"Kisbetűvel kezdődő szó: (rejtett elem)",
+		"Uncapitalized Sentence (Hidden):",				"Kisbetűvel kezdődő mondat: (rejtett)", // Shortened to "Hidden" for space. Like the "Overset" case above.
+
+//		"Spelling Preferences", 						"Spelling Preferences", // Note to localizer: this string moved to SpellingServiceStrings.fr
+		"Find", 										"Keresés",
+		"&Misspelled Words", 							"&Helyesírási hibák",
+		"&Repeated Words", 								"&Ismétlődő szavak",
+		"&Uncapitalized Words", 						"Kisbet&űvel kezdődő szavak",
+		"Uncapitalized &Sentences", 					"Kisbetűvel kezdődő &mondatok",
+		"Misspelled Words Underline Color:",			"Helye&sírási hibák:",
+		"Repeated Words Underline Color:",				"Ismétlő&dő szavak:",
+		"Uncapitalized Words Underline Color:",			"Kisbetűvel &kezdődő szavak:",
+		"Uncapitalized Sentences Underline Color:",		"Kisbetűvel kezdődő mo&ndatok:",
+		"Dynamic Spellchecking",						"Dinamikus helyesírás-ellenőrzés",
+		
+		"Underline Color",								"Aláhúzás színe",
+		
+		"&Enable Dynamic Spelling",						"Dinamikus helyesírás-ellenőrzés &engedélyezése",
+		
+		"Search is completed.  ^1  replacement(s) made.", "A keresés befejeződött. ^1 csere történt.", 
+
+		"Add",											"Hozzáadás",
+		"Re&move",										"El&távolítás",
+		"Misspelled:",									"Hibás:",
+		"Correction:",									"Javítás:",
+		"Language:",									"Nyelv:",
+		"&Language:",									"&Nyelv:",
+		"AddToAutoCorrectList",							"Hozzáadás az automatikus javítási listához",
+		"EditAutoCorrectList",							"Automatikus javítás listájának szerkesztése",
+
+		"ACAlert1",		"Üres bejegyzések nem engedélyezettek.",
+		"ACAlert2",		"A hibás szónál és a javított változatánál nem lehet azonos a helyesírás és a kis-, illetve nagybetűk használata.",
+		"ACAlert3",		"A hibás szó és javított változata már szerepel a listán.",
+		"ACAlert4",		"A bejegyzést nem lehet létrehozni. Mérete meghaladja az engedélyezett karakterek számát (64).",
+		"ACAlert5",		"A bejegyzés érvénytelen karaktert tartalmaz.",
+		"ACAlert6",		"A hibás szó nem tartalmazhat szóközt.",
+
+	}
+};
+
+#endif // __ODFRC__

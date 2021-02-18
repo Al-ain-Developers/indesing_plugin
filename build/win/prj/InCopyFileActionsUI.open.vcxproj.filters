@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Plugin">
+      <UniqueIdentifier>{395c3bb9-9759-48a3-93e7-753b6359782c}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;rc;def;r;odl;hpj;bat;for;f90;h</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{e9a65d7e-7452-4f19-9a3a-448c94fe57ab}</UniqueIdentifier>
+      <Extensions>ico;cur;bmp;dlg;rc2;rct;bin;cnt;rtf;gif;jpg;jpeg;jpe</Extensions>
+    </Filter>
+    <Filter Include="Resource Files\Core">
+      <UniqueIdentifier>{1e48bcd2-0e8b-4568-a8fc-b1dbb0b67345}</UniqueIdentifier>
+      <Extensions>fr</Extensions>
+    </Filter>
+    <Filter Include="Source">
+      <UniqueIdentifier>{4ae2b200-f89a-4554-befe-75b13c8531b0}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\source\open\components\incopyfileactionsui\InCopyFileActionsUIID.cpp">
+      <Filter>Plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\incopyfileactionsui\InCopyFileActionsUIMWHacks.cpp">
+      <Filter>Plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\incopyfileactionsui\InCopyFileActionsUIPlugIn.cpp">
+      <Filter>Plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\libs\publiclib\statics\PlugInStatics.cpp">
+      <Filter>Plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\incopyfileactionsui\TriggerResourceDeps.cpp">
+      <Filter>Plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\precomp\msvc\VCPlugInHeaders.cpp">
+      <Filter>Plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\incopyfileactionsui\InCopyFileActionsComponent.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\incopyfileactionsui\InCopyRecentDocsComponent.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\incopyfileactionsui\InCopyRecentDocsDynamicMenu.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\source\open\components\incopyfileactionsui\InCopyFileActionsUIID.h">
+      <Filter>Plugin</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\open\components\incopyfileactionsui\InCopyFileActionsUIDefs.h">
+      <Filter>Plugin</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\open\components\incopyfileactionsui\InCopyFileActionsUIFactoryList.h">
+      <Filter>Plugin</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\precomp\msvc\VCPlugInHeaders.h">
+      <Filter>Plugin</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\..\..\source\open\components\incopyfileactionsui\InCopyFileActionsUI.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\source\open\components\incopyfileactionsui\resources\InCopyFileActionsUIClass.fr">
+      <Filter>Resource Files\Core</Filter>
+    </None>
+    <None Include="..\..\..\source\open\components\incopyfileactionsui\resources\InCopyFileActionsUIFactoryList.fr">
+      <Filter>Resource Files\Core</Filter>
+    </None>
+    <None Include="..\..\..\source\open\components\incopyfileactionsui\resources\InCopyFileActionsUIMenus.fr">
+      <Filter>Resource Files\Core</Filter>
+    </None>
+    <None Include="..\..\..\source\open\components\incopyfileactionsui\resources\InCopyFileActionsUIStrings.fr">
+      <Filter>Resource Files\Core</Filter>
+    </None>
+    <None Include="..\..\..\source\open\components\incopyfileactionsui\resources\InCopyFileActionsUIStrings_enUS.fr">
+      <Filter>Resource Files\Core</Filter>
+    </None>
+    <None Include="..\..\..\source\open\components\incopyfileactionsui\resources\InCopyFileActionsUIViews.fr">
+      <Filter>Resource Files\Core</Filter>
+    </None>
+    <None Include="..\..\..\source\open\components\incopyfileactionsui\resources\InCopyFileActionsUIViews_enUS.fr">
+      <Filter>Resource Files\Core</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\..\..\source\open\components\incopyfileactionsui\resources\InCopyFileActionsUI.fr">
+      <Filter>Resource Files\Core</Filter>
+    </CustomBuild>
+  </ItemGroup>
+</Project>

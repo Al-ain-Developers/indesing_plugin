@@ -1,0 +1,118 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/conditionaltextui/resources/ConditionalTextUIStrings.fr $
+//  
+//  Owner: Michele Stutzman
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "StringTable.fh"
+#include "ErrorTableTypes.h"
+
+#include "ConditionalTextUIDefs.h"
+#include "ConditionalTextUIID.h"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// RESOURCE Locale index
+//========================================================================================
+
+resource LocaleIndex (kConditionalTextUIStringsRsrcID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_Wild, kConditionalTextUIStringsRsrcID + index_enUS
+		kWildFS, k_enGB, kConditionalTextUIStringsRsrcID + index_enGB
+		kWildFS, k_deDE, kConditionalTextUIStringsRsrcID + index_deDE
+		kWildFS, k_frFR, kConditionalTextUIStringsRsrcID + index_frFR
+		kWildFS, k_jaJP, kConditionalTextUIStringsRsrcID + index_jaJP
+		kWildFS, k_esES, kConditionalTextUIStringsRsrcID + index_esES
+		kWildFS, k_ptBR, kConditionalTextUIStringsRsrcID + index_ptBR
+		kWildFS, k_svSE, kConditionalTextUIStringsRsrcID + index_svSE
+		kWildFS, k_daDK, kConditionalTextUIStringsRsrcID + index_daDK
+		kWildFS, k_nlNL, kConditionalTextUIStringsRsrcID + index_nlNL
+		kWildFS, k_itIT, kConditionalTextUIStringsRsrcID + index_itIT
+		kWildFS, k_nbNO, kConditionalTextUIStringsRsrcID + index_nbNO
+		kWildFS, k_fiFI, kConditionalTextUIStringsRsrcID + index_fiFI
+		kWildFS, k_koKR, kConditionalTextUIStringsRsrcID + index_koKR
+		kWildFS, k_zhCN, kConditionalTextUIStringsRsrcID + index_zhCN
+		kWildFS, k_zhTW, kConditionalTextUIStringsRsrcID + index_zhTW
+		kWildFS, k_csCZ, kConditionalTextUIStringsRsrcID + index_csCZ
+		kWildFS, k_plPL, kConditionalTextUIStringsRsrcID + index_plPL
+		kWildFS, k_huHU, kConditionalTextUIStringsRsrcID + index_huHU
+		kWildFS, k_ruRU, kConditionalTextUIStringsRsrcID + index_ruRU
+		kWildFS, k_trTR, kConditionalTextUIStringsRsrcID + index_trTR
+		kWildFS, k_ukUA, kConditionalTextUIStringsRsrcID + index_ukUA
+		kWildFS, k_elGR, kConditionalTextUIStringsRsrcID + index_elGR
+		kWildFS, k_arAE, kConditionalTextUIStringsRsrcID + index_arAE
+		kWildFS, k_heIL, kConditionalTextUIStringsRsrcID + index_heIL
+		
+	}
+}
+
+#endif // __ODFRC__
+
+#include "ConditionalTextUIStrings_enUS.fr"
+#include "ConditionalTextUIStrings_enGB.fr"
+#include "ConditionalTextUIStrings_deDE.fr"
+#include "ConditionalTextUIStrings_frFR.fr"
+#include "ConditionalTextUIStrings_jaJP.fr"
+#include "ConditionalTextUIStrings_esES.fr"
+#include "ConditionalTextUIStrings_ptBR.fr"
+#include "ConditionalTextUIStrings_svSE.fr"
+#include "ConditionalTextUIStrings_daDK.fr"
+#include "ConditionalTextUIStrings_nlNL.fr"
+#include "ConditionalTextUIStrings_itIT.fr"
+#include "ConditionalTextUIStrings_nbNO.fr"
+#include "ConditionalTextUIStrings_fiFI.fr"
+#include "ConditionalTextUIStrings_koKR.fr"
+#include "ConditionalTextUIStrings_zhCN.fr"
+#include "ConditionalTextUIStrings_zhTW.fr"
+#include "ConditionalTextUIStrings_csCZ.fr"
+#include "ConditionalTextUIStrings_plPL.fr"
+#include "ConditionalTextUIStrings_huHU.fr"
+#include "ConditionalTextUIStrings_ruRU.fr"
+#include "ConditionalTextUIStrings_trTR.fr"
+#include "ConditionalTextUIStrings_ukUA.fr"
+#include "ConditionalTextUIStrings_elGR.fr"
+#include "ConditionalTextUIStrings_arAE.fr"
+#include "ConditionalTextUIStrings_heIL.fr"
+
+#ifdef __ODFRC__
+
+resource LocaleIndex (kConditionalTextUIStringsNoTransRsrcID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_Wild, kConditionalTextUIStringsNoTransRsrcID + index_enUS
+	}
+}
+
+resource StringTable (kConditionalTextUIStringsNoTransRsrcID + index_enUS)
+{
+	k_enUS,
+	kEuropeanWinToMacEncodingConverter,
+	{
+		// No-Translate strings go here
+	}
+}
+
+#endif // __ODFRC__

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ExtensionManifest Version="5.0" ExtensionBundleId="ToolHints" ExtensionBundleVersion="3.0.0"
+		ExtensionBundleName="Tool Hints" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<ExtensionList>
+		<Extension Id="TH" Version="3.0" />
+	</ExtensionList>
+	<ExecutionEnvironment>
+		<HostList>
+			<Host Name="IDSN" Version="10.0"/>
+			<Host Name="AICY" Version="10.0"/>
+		</HostList>
+		<LocaleList>
+			<Locale Code="All" />
+		</LocaleList>
+		<RequiredRuntimeList>
+			<RequiredRuntime Name="CSXS" Version="5.0" />
+
+		</RequiredRuntimeList>
+	</ExecutionEnvironment>
+	<DispatchInfoList>
+		<Extension Id="TH">
+			<DispatchInfo >
+				<Resources>
+				<MainPath>./index.html</MainPath>
+				<ScriptPath>./ToolHints.jsx</ScriptPath>
+				</Resources>
+				<Lifecycle>
+					<AutoVisible>true</AutoVisible>
+				</Lifecycle>
+				<UI>
+					<Type>Panel</Type>
+					<Menu Placement="'Main:&amp;Window:UtilitiesSubmenu',600,'KBSCE Tools'">%TOOLHINTSNAME</Menu>
+					<Geometry>
+						<Size>
+							<Height>480</Height>
+							<Width>212</Width>
+						</Size>
+						<MinSize>
+							<Height>100</Height>
+							<Width>212</Width>
+						</MinSize>
+					</Geometry>
+					<Icons>
+						<Icon Type="Normal">./assets/PL_Hints_N.png</Icon>
+						<Icon Type="RollOver">./assets/PL_Hints_R.png</Icon>
+					</Icons>
+				</UI>
+			</DispatchInfo>
+		</Extension>
+	</DispatchInfoList>
+</ExtensionManifest>

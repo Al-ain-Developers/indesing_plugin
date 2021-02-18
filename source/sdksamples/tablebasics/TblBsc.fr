@@ -1,0 +1,611 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/sdksamples/tablebasics/TblBsc.fr $
+//  
+//  Owner: Adobe Developer Technologies
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//  
+//  Umbrella include file for all the .fr files in the plug-in.
+//  
+//========================================================================================
+
+//===========================
+//  General includes:
+//===========================
+
+#include "MenuDef.fh"
+#include "ActionDef.fh"
+#include "ActionDefs.h"
+#include "AdobeMenuPositions.h"
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "StringTable.fh"
+//#include "OMTypes.h"
+#include "objectmodeltypes.fh"
+#include "ShuksanID.h"
+#include "ActionID.h"
+#include "CommandID.h"
+#include "WorkspaceID.h"
+#include "widgetid.h"
+#include "BuildNumber.h"
+//#include "PanelList.fh"
+#include "Widgets.fh"    // for DialogBoss
+#include "InterfaceColorDefines.h"
+#include "IControlViewDefs.h"
+#include "SysControlIds.h"
+#include "TextID.h"    // kTextSuiteBoss
+
+#include "PlugInModel_UIAttributes.h"
+
+// Project includes:
+#include "TblBscID.h"
+
+#include "EveInfo.fh"
+#ifdef __ODFRC__
+
+/*
+// Plugin version definition.
+*/
+resource PluginVersion (kSDKDefPluginVersionResourceID)
+{
+    kTargetVersion,
+    kTblBscPluginID,
+    kSDKDefPlugInMajorVersionNumber, kSDKDefPlugInMinorVersionNumber,     
+    kSDKDefHostMajorVersionNumber, kSDKDefHostMinorVersionNumber,
+    kTblBscCurrentMajorFormatNumber, kTblBscCurrentMinorFormatNumber,
+    {kInDesignProduct, kInCopyProduct }, 
+    {kWildFS },
+    kUIPlugIn,
+    kTblBscVersion
+};
+
+/*
+//    Boss class definition.
+*/
+resource ClassDescriptionTable(kSDKDefClassDescriptionTableResourceID)
+{{{
+            
+            
+            /** Provides the actions invoked by this plug-in's
+            sub-menu items.
+            
+            @ingroup tablebasics
+            */
+            Class
+            {
+                kTblBscActionComponentBoss,
+                kBaseActionComponentBoss,
+                {
+                    /** Handle the actions from the menu, see TblBscActionComponent. 
+                    */
+                    IID_IACTIONCOMPONENT, kTblBscActionComponentImpl,
+                }
+            },
+            
+            /** Implements the dialog for this plug-in.
+            
+            @ingroup tablebasics
+            */
+            Class
+            {
+                kTblBscDialogBoss,
+                kDialogBoss,
+                {
+                    /** Provides management and control over the dialog,
+                    see TblBscDialogController. 
+                    */
+                    IID_IDIALOGCONTROLLER, kTblBscDialogControllerImpl,
+                    /** Handles dialog widget changes that need dynamic processing,
+                    see TblBscDialogObserver. 
+                    */
+                    IID_IOBSERVER, kTblBscDialogObserverImpl,
+                }
+            },
+            
+            /** Adds a custom suite (ITblBscSuite) to the integrator suite boss class (kIntegratorSuiteBoss), 
+            see TblBscSuiteASB.
+            @ingroup tablebasics
+            */
+            AddIn
+            {
+                kIntegratorSuiteBoss,
+                kInvalidClass,
+                {
+                    /** See TblBscSuiteASB.
+                    */
+                    IID_ITBLBSCSUITE, kTblBscSuiteASBImpl,
+                }
+            },
+            
+            /** Adds a custom suite (ITblBscSuite) to the text suite boss class (kTextSuiteBoss),
+            see TblBscSuiteTextCSB.
+            @ingroup tablebasics
+            
+            */
+            AddIn
+            {
+                kTextSuiteBoss,
+                kInvalidClass,
+                {
+                    /** Provides capability to insert a table, get and set table cell text. 
+                    @see TblBscSuiteTextCSB
+                    */
+                    IID_ITBLBSCSUITE, kTblBscSuiteTextCSBImpl,
+                }
+            },
+            
+        }}};
+
+/*
+// Implementation definition.
+*/
+resource FactoryList (kSDKDefFactoryListResourceID) 
+{
+    kImplementationIDSpace,
+    {
+#include "TblBscFactoryList.h"
+    }
+};
+
+/*
+// Menu definition.
+*/
+resource MenuDef (kSDKDefMenuResourceID)
+{
+    {
+        // The About Plug-ins sub-menu item for this plug-in.
+        kTblBscAboutActionID,            // ActionID (kInvalidActionID for positional entries)
+        kTblBscAboutMenuPath,            // Menu Path.
+        kSDKDefAlphabeticPosition,       // Menu Position.
+        kSDKDefIsNotDynamicMenuFlag,     // kSDKDefIsNotDynamicMenuFlag or kSDKDefIsDynamicMenuFlag.
+        
+        kTblBscNewTableActionID,
+        kTblBscTargetMenuPath,
+        kTblBscNewTableMenuItemPosition,
+        kSDKDefIsNotDynamicMenuFlag,
+        
+        
+    }
+};
+
+/*
+// Action definition.
+*/
+resource ActionDef (kSDKDefActionResourceID)
+{
+    {
+        kTblBscActionComponentBoss,         // ClassID of boss class that implements the ActionID.
+        kTblBscAboutActionID,	            // ActionID.
+        kTblBscAboutMenuKey,                // Sub-menu string.
+        kHelpMenuActionArea,                // Area name (see ActionDefs.h).
+        kNormalAction,                      // Type of action (see ActionDefs.h).
+        kDisableIfLowMem,                   // Enabling type (see ActionDefs.h).
+        kInvalidInterfaceID,                // Selection InterfaceID this action cares about or kInvalidInterfaceID.
+        kSDKDefInvisibleInKBSCEditorFlag,   // kSDKDefVisibleInKBSCEditorFlag or kSDKDefInvisibleInKBSCEditorFlag.
+        
+        kTblBscActionComponentBoss,
+        kTblBscNewTableActionID,        
+        kTblBscNewTableMenuItemKey,        
+        kOtherActionArea,            
+        kNormalAction,                
+        kDisableIfSelectionDoesNotSupportIID | kCustomEnabling,    
+        IID_ITBLBSCSUITE,        
+        kSDKDefInvisibleInKBSCEditorFlag,
+        
+        
+    }
+};
+
+
+/*
+// LocaleIndex
+// The LocaleIndex should have indicies that point at your
+// localizations for each language system that you are 
+// localized for.
+*/
+/*
+// String LocaleIndex.
+*/
+resource LocaleIndex (kSDKDefStringsResourceID)
+{
+    kStringTableRsrcType,
+    {
+        kWildFS, k_enUS, kSDKDefStringsResourceID + index_enUS
+        kWildFS, k_jaJP, kSDKDefStringsResourceID + index_jaJP
+        
+        kWildFS, k_Wild, kSDKDefStringsResourceID + index_enUS
+    }
+};
+
+resource LocaleIndex (kSDKDefStringsNoTransResourceID)
+{
+    kStringTableRsrcType,
+    {
+        kWildFS, k_Wild, kSDKDefStringsNoTransResourceID + index_enUS
+    }
+};
+
+resource StringTable (kSDKDefStringsNoTransResourceID + index_enUS)
+{
+    k_enUS,                                    // Locale Id
+    kEuropeanMacToWinEncodingConverter,        // Character encoding converter
+    {
+        // No-Translate strings go here:        
+        
+        
+    }
+};
+
+/*
+// Dialog LocaleIndex.
+*/
+resource LocaleIndex (kSDKDefDialogResourceID)
+{
+    kViewRsrcType,
+    {
+        kWildFS,    k_Wild, kSDKDefDialogResourceID + index_enUS
+    }
+};
+
+/*
+// Type definition.
+*/
+type TblBscDialogWidget(kViewRsrcType) : DialogBoss(ClassID = kTblBscDialogBoss)
+{
+    
+    WidgetEveInfo;
+};
+
+/*
+// Dialog definition.
+// This view is not localised: therefore, it can reside here.
+// However, if you wish to localise it, it is recommended to locate it in one of 
+// the localised framework resource files (i.e. TblBsc_enUS.fr etc.) and 
+// update your Dialog LocaleIndex accordingly.
+*/
+resource TblBscDialogWidget (kSDKDefDialogResourceID + index_enUS)
+{
+    __FILE__, __LINE__,
+    kTblBscDialogWidgetID,         // WidgetID
+    kPMRsrcID_None,                // RsrcID
+    kBindNone,                     // Binding
+    Frame(0,0,388,112),            // Frame (l,t,r,b)
+    kTrue, kTrue,                  // Visible, Enabled
+    kTblBscDialogTitleKey,         // Dialog name
+    {
+		//Dummy widget.
+		EVEStaticTextWidget
+        (
+            // CControlView properties
+            kInvalidWidgetID,       // widget ID
+            kSysStaticTextPMRsrcId, // PMRsrc ID
+            kBindNone,              // frame binding
+            Frame(0,0,20,0)        // left, top, right, bottom
+            kTrue,                  // visible
+            kTrue,                  // enabled
+            // StaticTextAttributes properties
+            kAlignRight,            // Alignment
+            kDontEllipsize, kTrue,  // Ellipsize style, Convert ampersands
+            // CTextControlData properties
+            "",// control label
+            // AssociatedWidgetAttributes properties
+            0,       // associated widget ID
+                                    
+            kEVERegularSpaceAfter,
+        ),
+
+        EVEGenericPanelWidget
+        (
+            kInvalidWidgetID,    // WidgetId
+            0                    // RsrcId
+            0,                   // Widget EVE Info
+            kBindNone,           // Frame binding
+            Frame(0,0,0,0)     // Frame
+            kTrue,               // Visible
+            kTrue,               // Enabled
+            kEVEAlignFill | kEVERegularSpaceAfter | kEVEArrangeChildrenInColumn,
+                            
+            {
+                EVEStaticTextWidget
+                (
+                    // CControlView properties
+                    kInvalidWidgetID,       // widget ID
+                    kSysStaticTextPMRsrcId, // PMRsrc ID
+                    kBindNone,              // frame binding
+                    Frame(0,0,0,0)        // left, top, right, bottom
+                    kTrue,                  // visible
+                    kTrue,                  // enabled
+                    // StaticTextAttributes properties
+                    kAlignRight,            // Alignment
+                    kDontEllipsize, kTrue,  // Ellipsize style, Convert ampersands
+                    // CTextControlData properties
+                    kTblBscNumRowsWidgetKey,// control label
+                    // AssociatedWidgetAttributes properties
+                    kTblBscNumRowsEditWidgetID,       // associated widget ID
+                                    
+                   kEVEAlignRight | kEVERegularSpaceAfter,
+                ),
+                EVEStaticTextWidget
+                (
+                    // CControlView properties
+                    kInvalidWidgetID,       // widget ID
+                    kSysStaticTextPMRsrcId, // PMRsrc ID
+                    kBindNone,              // frame binding
+                    Frame(0,0,0,0)        // left, top, right, bottom
+                    kTrue,                  // visible
+                    kTrue,                  // enabled
+                    // StaticTextAttributes properties
+                    kAlignRight,            // Alignment
+                    kDontEllipsize, kTrue,  // Ellipsize style, Convert ampersands
+                    // CTextControlData properties
+                    kTblBscNumColsWidgetKey,// control label
+                    // AssociatedWidgetAttributes properties
+                    kTblBscNumColsEditWidgetID,       // associated widget ID
+                                    
+                    kEVEAlignRight | kEVERegularSpaceAfter,
+                ),
+                            
+            }  // End of Eve generic panel child widgets
+        ), // End of Eve generic panel widget definition
+                        
+        EVEGenericPanelWidget
+        (
+            kInvalidWidgetID,    // WidgetId
+            0                    // RsrcId
+            0,                   // Widget EVE Info
+            kBindNone,           // Frame binding
+            Frame(0,0,0,0)     // Frame
+            kTrue,               // Visible
+            kTrue,               // Enabled
+            kEVEAlignFill | kEVERegularSpaceAfter | kEVEArrangeChildrenInColumn,
+                        
+            {                
+                EVEGenericPanelWidget
+                (
+                    kInvalidWidgetID, // WidgetId
+                    0                 // RsrcId
+                    0,            
+                    kBindNone,        // Frame binding
+                    Frame(0,0,0,0)  // Frame
+                    kTrue,            // Visible
+                    kTrue,            // Enabled
+                    kEVEAlignLeft | kEVERegularSpaceAfter | kEVEArrangeChildrenInRow,
+                                    
+                    {
+                        EVENudgeControlWidget
+                        (
+                            // CControlView properties
+                            kTblBscNumRowsNudgeWidgetID, // widget ID
+                            kSysButtonPMRsrcId,          // PMRsrc ID
+                            kBindNone,                   // frame binding
+                            Frame(0,0,0,0)				 // left, top, right, bottom
+                            kTrue,                       // visible
+                            kTrue,                       // enabled
+                                            
+                            kEVENoSpaceAfter,
+                        ),
+                        EVEIntEditBoxWidget
+                        (
+                            // CControlView properties
+                            kTblBscNumRowsEditWidgetID, // widget ID
+                            kSysEditBoxPMRsrcId,        // PMRsrc ID
+                            kBindNone,                  // frame binding
+                            Frame(0,0,25,20)            // left, top, right, bottom
+                            kTrue,                      // visible
+                            kTrue,                      // enabled
+                            // CEditBoxAttributes
+                            kTblBscNumRowsNudgeWidgetID, // nudgeWidgetId (0 if no nudge
+                            1.0,                         // small nudge amount
+                            5.0,                         // large nudge amount
+                            0,                           // max num chars
+                            kFalse,                      // read only flag
+                            kFalse,                      // should notify on each key stroke
+                            // TextDataValidation properties
+                            kTrue,                       // range checking enabled
+                            kFalse,                      // blank entry allowed
+                            30.0,                        // upper limit
+                            1.0,                         // lower limit
+                            // CTextControlData properties
+                            "0",                         // control label
+                                                
+                            kEVERegularSpaceAfter,
+                        ),
+                    }  // End of EVE Generic panel child widgets
+                ), // End of EVE Generic panel widget definition
+                                    
+                EVEGenericPanelWidget
+                (
+                    kInvalidWidgetID,    // WidgetId
+                    0                    // RsrcId
+                    0,            
+                    kBindNone,           // Frame binding
+                    Frame(0,0,0,0)     // Frame
+                    kTrue,               // Visible
+                    kTrue,               // Enabled
+                    kEVEAlignLeft | kEVERegularSpaceAfter | kEVEArrangeChildrenInRow,
+                                        
+                    {
+                        EVENudgeControlWidget
+                        (
+                            // CControlView properties
+                            kTblBscNumColsNudgeWidgetID, // widget ID
+                            kSysButtonPMRsrcId,          // PMRsrc ID
+                            kBindNone,                   // frame binding
+                            Frame(0,0,0,0)				 // left, top, right, bottom
+                            kTrue,                       // visible
+                            kTrue,                       // enabled
+                                                
+                            kEVENoSpaceAfter,
+                        ),
+                        EVEIntEditBoxWidget
+                        (
+                            // CControlView properties
+                            kTblBscNumColsEditWidgetID, // widget ID
+                            kSysEditBoxPMRsrcId,        // PMRsrc ID
+                            kBindNone,                  // frame binding
+                            Frame(0,0,25,20)            // left, top, right, bottom
+                            kTrue,                      // visible
+                            kTrue,                      // enabled
+                            // CEditBoxAttributes
+                            kTblBscNumColsNudgeWidgetID, // nudgeWidgetId (0 if no nudge
+                            1.0,                         // small nudge amount
+                            5.0,                         // large nudge amount
+                            0,                           // max num chars
+                            kFalse,                      // read only flag
+                            kFalse,                      // should notify on each key stroke
+                            // TextDataValidation properties
+                            kTrue,                       // range checking enabled
+                            kFalse,                      // blank entry allowed
+                            30.0,                        // upper limit
+                            1.0,                         // lower limit
+                            // CTextControlData properties
+                            "0",                         // control label
+                                                    
+                            kEVERegularSpaceAfter,
+                        ),
+                                                
+                    }  // End of EVE Generic panel child widgets
+                ), // End of EVE Generic panel widget definition
+                                        
+            }  // End of Eve generic panel child widgets
+        ), // End of Eve generic panel widget definition
+           
+                
+        EVEGenericPanelWidget
+        (
+            kInvalidWidgetID,    // WidgetId
+            0                    // RsrcId
+            0,                   // Widget EVE Info
+            kBindNone,           // Frame binding
+            Frame(0,0,0,0)   // Frame
+            kTrue,               // Visible
+            kTrue,               // Enabled
+            kEVEAlignFill | kEVEJumboSpaceAfter | kEVEArrangeChildrenInColumn,
+                    
+            {
+                EVECheckBoxWidget
+                (
+                    // CControlView properties
+                    kTblBscPreFilledCheckboxWidgetID, // widget ID
+                    kSysCheckBoxPMRsrcId,             // PMRsrc ID
+                    kBindNone,                        // frame binding
+                    Frame(0,0,0,0)                 // left, top, right, bottom
+                    kTrue,                            // visible
+                    kTrue,                            // enabled
+                    // TriStateControlAttributes properties
+                    kAlignLeft,                       // alignment
+                    // CTextControlData properties
+                    kTblBscPreFilledWidgetKey,        // control label
+                            
+                    kEVERegularSpaceAfter,
+                ),
+                
+				EVEClusterPanelWidget
+                (
+                    // CControlView properties
+                    kInvalidWidgetID,                 // widget ID
+                    kPMRsrcID_None,                   // PMRsrc ID
+                    kBindNone,                        // frame binding
+                    Frame(0,0,0,0)                 // left, top, right, bottom
+                    kTrue,                            // visible
+                    kTrue,                            // enabled
+                    // CTextControlData properties
+                    , // control label
+                            
+                    kEVERegularSpaceAfter | kEVEArrangeChildrenInColumn,
+                    {        
+						EVERadioButtonWidget
+						(
+							// CControlView properties
+							kTblBscAddressFillRadioWidgetID, // widget ID
+							kSysRadioButtonPMRsrcId,         // PMRsrc ID
+							kBindNone,                       // frame binding
+							Frame(0,0,0,0)					 // left, top, right, bottom
+							kTrue,                           // visible
+							kTrue,                           // enabled
+							// CTextControlData properties
+							kTblBscAddressFillRadioWidgetKey,// control label
+                                    
+							kEVERegularSpaceAfter,
+						),
+						EVERadioButtonWidget
+						(
+							// CControlView properties
+							kTblBscPlaceholderFillRadioWidgetID, // widget ID
+							kSysRadioButtonPMRsrcId,             // PMRsrc ID
+							kBindNone,                           // frame binding
+							Frame(0,0,0,0)						 // left, top, right, bottom
+							kTrue,                               // visible
+							kTrue,                               // enabled
+							// CTextControlData properties
+							kTblBscPlaceholderFillRadioWidgetKey,// control label
+                                    
+							kEVEJumboSpaceAfter,
+						),
+					}
+				),
+            }  // End of Eve generic panel child widgets
+        ), // End of Eve generic panel widget definition
+                
+        EVEGenericPanelWidget
+        (
+            kInvalidWidgetID,    // WidgetId
+            0                    // RsrcId
+            0,                   // Widget EVE Info
+            kBindNone,           // Frame binding
+            Frame(0,0,0,0)    // Frame
+            kTrue,               // Visible
+            kTrue,               // Enabled
+            kEVEAlignFill | kEVERegularSpaceAfter | kEVEArrangeChildrenInColumn,
+                    
+            {
+                EVEDefaultButtonWidget
+                (
+                    kOKButtonWidgetID,                // WidgetID 
+                    kSysButtonPMRsrcId,               // RsrcID
+                    kBindNone,                        // Binding
+                    Frame(0,0,0,0),                 // Frame (l,t,r,b)
+                    kTrue, kTrue,                     // Visible, Enabled
+                    kSDKDefOKButtonApplicationKey,    // Button text
+                                    
+                    kEVELargeSpaceAfter,
+                ),
+                EVECancelButtonWidget                
+                (
+                    kCancelButton_WidgetID,    // WidgetID
+                    kSysButtonPMRsrcId,        // RsrcID
+                    kBindNone,                 // Binding
+                    Frame(0,0,0,0),          // Frame (l,t,r,b)
+                    kTrue, kTrue,              // Visible, Enabled
+                    kSDKDefCancelButtonApplicationKey,    // Button name
+                    kTrue,                     // Change to Reset on option-click.
+                                    
+                    kEVELargeSpaceAfter,
+                ),
+                        
+            }  // End of Eve generic panel child widgets
+        ), // End of Eve generic panel widget definition
+    },
+            
+    kEVEArrangeChildrenInRow | kEVERegularMargin,
+};
+
+#endif // __ODFRC__
+
+#include "TblBsc_enUS.fr"
+#include "TblBsc_jaJP.fr"

@@ -1,0 +1,236 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/buttonui/resources/MSOPanelViews_enUS.fr $
+//  
+//  Owner: Michele Stutzman
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "InterfaceColorDefines.h"
+
+#include "Widgets.fh"
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "IControlViewDefs.h"
+#include "TreeViewDefs.h"
+
+#include "FormFieldUIID.h"
+#include "FormFieldUIDefs.h"
+#include "SysControlIds.h"
+
+#include "IconRsrcDefs.h"
+#include "IconStyleDefs.h"
+
+
+#ifdef __ODFRC__
+
+// ----------------------------------------------
+// States UI Panel:
+
+resource MSOPanelWidget (kMSOPanelRsrcID + index_enUS)
+{
+	__FILE__, __LINE__,
+	kMSOPanelWidgetID, kPMRsrcID_None,			// WidgetId, RsrcId
+	kBindAll,					// Frame binding
+	Frame(0,0,kCC2016PanelStandardWidth,kHeaderHeight + 2*kMSOStateMediumRowHeight + kCC2016PanelIconHeight),		// Frame
+	kTrue, kTrue,				// Visible, Enabled
+	kTrue,						// EraseBeforeDrawing
+	kInterfacePaletteFill,		// Erase to color
+	"$$$/Panel/MSOPanel",	// Panel name
+	{
+		#undef OBJECTNAME_TEXT_WIDTH
+		#define OBJECTNAME_TEXT_WIDTH	(66)
+		#include "MSOPanelViewsCommonUI.fr"
+	}
+		
+	"$$$/Menu/MSOPanelPopup",	// Popup menu name	
+}
+
+resource MSOPanelTreeViewNodeWidget(kMSOPanelTreeViewNodeRsrcID + index_enUS)
+{
+	__FILE__, __LINE__,
+	kMSOPanelTreeViewNodeWidgetID, kPMRsrcID_None,	// WidgetId, RsrcId
+	kBindLeft | kBindRight,
+	Frame(0, 0, kCC2016PanelStandardWidth, kMSOStateMediumRowHeight),								// Frame
+	kTrue, kTrue,										// Visible, Enabled
+	"",													// Panel name
+	{
+		MSOPanelStateThumbnailWidget
+		(
+			kMSOPanelStateThumbnailWidgetID,						// WidgetId
+			kPMRsrcID_None,	// RsrcId
+			kBindNone,				// Frame binding
+			Frame(kCC2016StandardGapBetweenWidgets,0,kMSOStateMediumRowContentHeight+kCC2016StandardGapBetweenWidgets,kMSOStateMediumRowContentHeight)		// Frame
+			kTrue,kTrue,	// Visible, Enabled
+		),
+		MSOPanelStateNameILEWidget
+		(
+			kTreeNodeNameWidgetID, kSysEditBoxPMRsrcId,	// WidgetId, RsrcId
+			kBindRight | kBindLeft,
+			Frame(kMSOStateMediumRowContentHeight+2*kCC2016StandardGapBetweenWidgets,0,kCC2016PanelStandardWidth - 2*kCC2016StandardGapBetweenWidgets - kCC2016StandardWidgetHeight,kMSOStateMediumRowContentHeight)						// Frame
+			kTrue, kTrue,								// Visible, Enabled
+			kAlignLeft,									// Alignment
+			kEllipsizeEnd, kFalse,						// Ellipsize style, Convert ampersands
+			"",											// Text Control Data	
+			kEditbox,
+			kFalse, kTrue,								// key focus, editable
+			100											// max num chars allowed
+		),
+		IconSuiteWidget
+		(
+			kMSOStateSelectionIconWidgetID,			// WidgetId
+			kMSOStateIsSelectedIconRsrcID,							// RsrcId
+			kFormFieldUIPluginID,
+			kBindRight,								// Frame binding
+			Frame(kCC2016PanelStandardWidth - kCC2016StandardGapBetweenWidgets - kCC2016StandardWidgetHeight,0,kCC2016PanelStandardWidth - kCC2016StandardGapBetweenWidgets,kMSOStateMediumRowContentHeight),	// Frame
+			kTrue,									// Visible
+			kTrue,									// Enabled
+			kADBEIconSuiteButtonType,
+			0,
+		),
+	}
+}
+
+resource MSOPanelTreeViewSmallNodeWidget(kMSOPanelTreeViewSmallNodeRsrcID + index_enUS)
+{
+	__FILE__, __LINE__,
+	kMSOPanelTreeViewNodeWidgetID, kPMRsrcID_None,	// WidgetId, RsrcId
+	kBindLeft | kBindRight,
+	Frame(0, 0, kCC2016PanelStandardWidth, kMSOStateSmallRowHeight),								// Frame
+	kTrue, kTrue,										// Visible, Enabled
+	"",													// Panel name
+	{
+		MSOPanelStateNameILEWidget
+		(
+			kTreeNodeNameWidgetID, kSysEditBoxPMRsrcId,	// WidgetId, RsrcId
+			kBindRight | kBindLeft,
+			Frame(kCC2016StandardGapBetweenWidgets,0,kCC2016PanelStandardWidth - 2*kCC2016StandardGapBetweenWidgets - kCC2016StandardWidgetHeight,kMSOStateSmallRowContentHeight)						// Frame
+			kTrue, kTrue,								// Visible, Enabled
+			kAlignLeft,									// Alignment
+			kEllipsizeEnd, kFalse,						// Ellipsize style, Convert ampersands
+			"",											// Text Control Data	
+			kEditbox,
+			kFalse, kTrue,								// key focus, editable
+			100											// max num chars allowed
+		),
+		IconSuiteWidget
+		(
+			kMSOStateSelectionIconWidgetID,			// WidgetId
+			kMSOStateIsSelectedIconRsrcID,							// RsrcId
+			kFormFieldUIPluginID,
+			kBindRight,								// Frame binding
+			Frame(kCC2016PanelStandardWidth - kCC2016StandardGapBetweenWidgets - kCC2016StandardWidgetHeight,0,kCC2016PanelStandardWidth - kCC2016StandardGapBetweenWidgets,kMSOStateSmallRowContentHeight),	// Frame
+			kTrue,									// Visible
+			kTrue,									// Enabled
+			kADBEIconSuiteButtonType,
+			0,
+		),
+	}
+}
+
+resource MSOPanelTreeViewLargeNodeWidget(kMSOPanelTreeViewLargeNodeRsrcID + index_enUS)
+{
+	__FILE__, __LINE__,
+	kMSOPanelTreeViewNodeWidgetID, kPMRsrcID_None,	// WidgetId, RsrcId
+	kBindLeft | kBindRight,
+	Frame(0, 0, kCC2016PanelStandardWidth, kMSOStateLargeRowHeight),								// Frame
+	kTrue, kTrue,										// Visible, Enabled
+	"",													// Panel name
+	{
+		MSOPanelStateThumbnailWidget
+		(
+			kMSOPanelStateThumbnailWidgetID,						// WidgetId
+			kPMRsrcID_None,	// RsrcId
+			kBindNone,				// Frame binding
+			Frame(kCC2016StandardGapBetweenWidgets,0,kMSOStateLargeRowContentHeight+kCC2016StandardGapBetweenWidgets,kMSOStateLargeRowContentHeight)	// Frame
+			kTrue,kTrue,	// Visible, Enabled
+		),
+		MSOPanelStateNameILEWidget
+		(
+			kTreeNodeNameWidgetID, kSysEditBoxPMRsrcId,	// WidgetId, RsrcId
+			kBindRight | kBindLeft,
+			Frame(kMSOStateLargeRowContentHeight+2*kCC2016StandardGapBetweenWidgets,0,kCC2016PanelStandardWidth - 2*kCC2016StandardGapBetweenWidgets - kCC2016StandardWidgetHeight,kMSOStateLargeRowContentHeight)						// Frame
+			kTrue, kTrue,								// Visible, Enabled
+			kAlignLeft,									// Alignment
+			kEllipsizeEnd, kFalse,						// Ellipsize style, Convert ampersands
+			"",											// Text Control Data	
+			kEditbox,
+			kFalse, kTrue,								// key focus, editable
+			100											// max num chars allowed
+		),
+		IconSuiteWidget
+		(
+			kMSOStateSelectionIconWidgetID,			// WidgetId
+			kMSOStateIsSelectedIconRsrcID,							// RsrcId
+			kFormFieldUIPluginID,
+			kBindRight,								// Frame binding
+			Frame(kCC2016PanelStandardWidth - kCC2016StandardGapBetweenWidgets - kCC2016StandardWidgetHeight,0,kCC2016PanelStandardWidth - kCC2016StandardGapBetweenWidgets,kMSOStateLargeRowContentHeight),	// Frame
+			kTrue,									// Visible
+			kTrue,									// Enabled
+			kADBEIconSuiteButtonType,
+			0,
+		),
+	}
+}
+
+resource MSOPanelTreeViewExtraLargeNodeWidget(kMSOPanelTreeViewExtraLargeNodeRsrcID + index_enUS)
+{
+	__FILE__, __LINE__,
+	kMSOPanelTreeViewNodeWidgetID, kPMRsrcID_None,	// WidgetId, RsrcId
+	kBindLeft | kBindRight,
+	Frame(0, 0, kCC2016PanelStandardWidth, kMSOStateExtraLargeRowHeight),								// Frame
+	kTrue, kTrue,										// Visible, Enabled
+	"",													// Panel name
+	{
+		MSOPanelStateThumbnailWidget
+		(
+			kMSOPanelStateThumbnailWidgetID,						// WidgetId
+			kPMRsrcID_None,	// RsrcId
+			kBindNone,				// Frame binding
+			Frame(kCC2016StandardGapBetweenWidgets,0,kMSOStateExtraLargeRowContentHeight + kCC2016StandardGapBetweenWidgets,kMSOStateExtraLargeRowContentHeight)		// Frame
+			kTrue,kTrue,	// Visible, Enabled
+		),
+		MSOPanelStateNameILEWidget
+		(
+			kTreeNodeNameWidgetID, kSysEditBoxPMRsrcId,	// WidgetId, RsrcId
+			kBindRight | kBindLeft,
+			Frame(kMSOStateExtraLargeRowContentHeight+2*kCC2016StandardGapBetweenWidgets,0,kCC2016PanelStandardWidth - 2*kCC2016StandardGapBetweenWidgets - kCC2016StandardWidgetHeight,kMSOStateExtraLargeRowContentHeight)						// Frame
+			kTrue, kTrue,								// Visible, Enabled
+			kAlignLeft,									// Alignment
+			kEllipsizeEnd, kFalse,						// Ellipsize style, Convert ampersands
+			"",											// Text Control Data	
+			kEditbox,
+			kFalse, kTrue,								// key focus, editable
+			100											// max num chars allowed
+		),
+		IconSuiteWidget
+		(
+			kMSOStateSelectionIconWidgetID,			// WidgetId
+			kMSOStateIsSelectedIconRsrcID,							// RsrcId
+			kFormFieldUIPluginID,
+			kBindRight,								// Frame binding
+			Frame(kCC2016PanelStandardWidth - kCC2016StandardGapBetweenWidgets - kCC2016StandardWidgetHeight,0,kCC2016PanelStandardWidth - kCC2016StandardGapBetweenWidgets,kMSOStateExtraLargeRowContentHeight),	// Frame
+			kTrue,									// Visible
+			kTrue,									// Enabled
+			kADBEIconSuiteButtonType,
+			0,
+		),
+	}
+}
+
+#endif

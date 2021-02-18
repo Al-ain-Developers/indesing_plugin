@@ -1,0 +1,125 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/sdksamples/snapshot/Snap_enUS.fr $
+//  
+//  Owner: Adobe Developer Technologies
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+// English string table is defined here
+
+resource StringTable (kSDKDefStringsResourceID + index_enUS)
+{
+	k_enUS,									// Locale Id
+	kEuropeanMacToWinEncodingConverter,		// Character encoding converter
+	
+	{
+
+		// ----- Menu strings
+		kSnapCompanyKey,					kSnapCompanyValue,					
+		kSnapAboutMenuKey,					kSnapPluginName "[US]...",
+		kSnapPluginsMenuKey,				kSnapPluginName "[US]",
+		
+		// ----- Window strings
+		
+		// ----- Panel/dialog strings
+		kSnapStringKey,					kSnapPluginName "[US]",
+		kTrackingStartKey,				"Start tracking",
+
+		kDialogTitleKey,				kSnapPluginName "[US]",
+		kDialogFilenameKey, 			"Name",
+		kDialogDefaultFilenameKey, 		"Snapshot",
+		kDialogFileOptionsKey, 			"File",
+		kDialogFileFormatKey,			"Format",
+		kDialogDefaultFileFormatKey,	"TIFF",
+		kDialogScaleKey,				"Scale",
+		kDialogResolutionKey,			"Resolution",
+		kDialogBleedKey,				"Bleed",
+		kDialogGeneralOptionsKey,		"General",
+		kDialogTIFFOptionsKey,			"TIFF",
+		kDialogGIFOptionsKey,			"GIF",
+		kDialogJPEGOptionsKey,			"JPEG",
+		kDialogSelectionOptionsKey, 	"Selection",
+		kDialogDrawKey, 				"Draw",
+		kDialogDrawAreaKey, 			"Area",
+		kDialogDrawItemKey, 			"Item",
+		kDialogMinimumResolutionKey,	"Minimum Resolution",
+		kDialogFullResolutionKey,		"Use Full Resolution Graphics",
+		kDialogGrayscaleKey,			"Create Grayscale",
+		kDialogPrintingKey,				"Hide Guides and Frame Edges",
+		k9dpiKey,						"9",
+		k18dpiKey,						"18",
+		k36dpiKey,						"36",
+		k72dpiKey,						"72",
+		k144dpiKey,						"144",
+		k288dpiKey,						"288",
+		k576dpiKey,						"576",
+		kDialogJPEGEncodingKey,			"Encoding",
+		kJPEGEncodingBaselineKey,		"Baseline",
+		kJPEGEncodingProgressiveKey,	"Progressive",
+		kDialogJPEGQualityKey,			"Quality",
+		kJPEGQualityLowKey,				"Low",
+		kJPEGQualityGoodKey,			"Good",
+		kJPEGQualityExcellentKey,		"Excellent",
+		kJPEGQualityGreatKey,			"Great",
+		kDialogPaletteTypeKey,			"Palette Type",
+		kNoPaletteTypeKey,				"No Palette",
+		kExactThenAdaptivePaletteTypeKey,	"TryExactThenAdaptivePalette",
+		kMacPaletteTypeKey,				"Mac Palette",
+		kWebPaletteTypeKey,				"Web Palette",
+		kWinPaletteTypeKey,				"Win Palette",
+		kGIFInterlacedKey,				"Interlaced",
+		kDialogTransparentKey,			"Transparent",
+
+		// ----- Tool strings
+//		kSnapshotToolID,				kSnapPluginName "[US]",
+//		kSnapshotToolShortcutID,		"\\",
+			
+		// ----- Alert strings
+		kAlertBadFilenameKey,			"Please specify a valid file name:\n^0",
+		kAlertSnapshotTakenKey,			"Snapshot made in file:\n^0",
+		kAlertSnapshotFailedKey,		"Snapshot failed.",
+		kAlertMemoryKey,				"Not enough memory. Reduce scale or draw a smaller area.",
+		kAlertSaveFileKey,				"Please save the file before taking snapshots or specify an absolute path via the tool's options.",
+		kAlertBadFileNumberKey,			"Delete snapshot file. Maximum file number 256 reached.",
+		kAlertFormatDoesNotSupportRgbOrGrayscaleKey, "Sorry - the selected format does not support RGB or Grayscale - try another format",
+		kAlertMinimumResolutionKey, "Minimum Resolution must be less than or equal to Resolution",
+		kAlertDoYouReallyWantToDoThis, "Your scale or resolution setting could generate a large image file - do you really want to do this?",
+		kSnapFailureErrorCodeErrorCodeStringKey,	"SnapShot failure [US]",
+		kSnapDataAccessErrorCodeStringKey,	"SnapShot data access error [US]",
+
+		// ----- Command strings
+		kCommandSnapSetPrefsCmdKey, "SnapshotPrefs",					
+
+		// ----- Misc strings
+		kSnapAboutBoxStringKey,			kSnapPluginName " [US], version " kSnapVersion " by " kSnapAuthor "\n\n" kSDKDefCopyrightStandardValue "\n\n" kSDKDefPartnersStandardValue_enUS,
+	}
+
+};
+
+#endif // __ODFRC__
+
+// End , Snap_enUS.fr
+
+

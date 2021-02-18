@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{a201103a-648a-45cf-8aac-7fa6b6b172d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Plugin">
+      <UniqueIdentifier>{75690d3d-c7ee-427c-9ba8-da511185217a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\scripting">
+      <UniqueIdentifier>{467353bc-ac0b-49fb-9f69-6d40aa0f87dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\buildingblocks">
+      <UniqueIdentifier>{c67ef9d8-0560-4645-8a33-377b9c1e1c1c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\helpers">
+      <UniqueIdentifier>{80f69423-3455-4da9-b86d-1e9479aab657}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\core">
+      <UniqueIdentifier>{ae66b1b6-ea0f-4342-ae6d-12b4a200df6c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{e115864e-1441-4c94-9fba-756194f34eb5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{ec3e8d94-f3a9-4e7a-8d83-d18d4362cbb3}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="$(id_sdk_dir)\source\public\libs\publiclib\statics\PlugInStatics.cpp">
+      <Filter>Source Files\Plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\common\SDKPlugInEntrypoint.cpp">
+      <Filter>Source Files\Plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\xdocbookworkflow\TriggerResourceDeps.cpp">
+      <Filter>Source Files\Plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="$(id_sdk_dir)\source\precomp\msvc\VCPlugInHeaders.cpp">
+      <Filter>Source Files\Plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\xdocbookworkflow\XDocBkID.cpp">
+      <Filter>Source Files\Plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\xdocbookworkflow\XDocBkNoStrip.cpp">
+      <Filter>Source Files\Plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\xdocbookworkflow\XDocBkPrefsScriptProvider.cpp">
+      <Filter>Source Files\scripting</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\xdocbookworkflow\XDocBkCALSContentHandler.cpp">
+      <Filter>Source Files\buildingblocks</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\xdocbookworkflow\XDocBkCALSContentXMLImportPrefs.cpp">
+      <Filter>Source Files\buildingblocks</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\xdocbookworkflow\XDocBkChangeOptionsCmd.cpp">
+      <Filter>Source Files\buildingblocks</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\xdocbookworkflow\XDocBkChangeServiceXMLImportPrefsCmd.cpp">
+      <Filter>Source Files\buildingblocks</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\xdocbookworkflow\XDocBkErrorStringService.cpp">
+      <Filter>Source Files\buildingblocks</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\xdocbookworkflow\XDocBkExportProvider.cpp">
+      <Filter>Source Files\buildingblocks</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\xdocbookworkflow\XDocBkImageSizerCmd.cpp">
+      <Filter>Source Files\buildingblocks</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\xdocbookworkflow\XDocBkImportProvider.cpp">
+      <Filter>Source Files\buildingblocks</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\xdocbookworkflow\XDocBkXMLPostImportIteration.cpp">
+      <Filter>Source Files\buildingblocks</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\xdocbookworkflow\XDocBkXMLTransformer.cpp">
+      <Filter>Source Files\buildingblocks</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\xdocbookworkflow\XDocBkXPostImpXMLImportPrefs.cpp">
+      <Filter>Source Files\buildingblocks</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\xdocbookworkflow\XDocBkXTransXMLImportPrefs.cpp">
+      <Filter>Source Files\buildingblocks</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\common\SDKFileHelper.cpp">
+      <Filter>Source Files\helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\common\SDKLayoutHelper.cpp">
+      <Filter>Source Files\helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\xdocbookworkflow\XDocBkTableHelper.cpp">
+      <Filter>Source Files\helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\xdocbookworkflow\XDocBkConstants.cpp">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\xdocbookworkflow\XDocBkFacade.cpp">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\xdocbookworkflow\XDocBkOptions.cpp">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\source\sdksamples\xdocbookworkflow\IXDocBkFacade.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\sdksamples\xdocbookworkflow\IXDocBkOptions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\sdksamples\common\SDKFileHelper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\sdksamples\common\SDKLayoutHelper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\sdksamples\xdocbookworkflow\XDocBkConstants.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\sdksamples\xdocbookworkflow\XDocBkFactoryList.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\sdksamples\xdocbookworkflow\XDocBkID.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\sdksamples\xdocbookworkflow\XDocBkTableHelper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\source\sdksamples\xdocbookworkflow\XDocBk_enUS.fr">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\source\sdksamples\xdocbookworkflow\XDocBk_jaJP.fr">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\..\..\source\sdksamples\xdocbookworkflow\XDocBk.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\..\..\source\sdksamples\xdocbookworkflow\XDocBk.fr">
+      <Filter>Resource Files</Filter>
+    </CustomBuild>
+  </ItemGroup>
+</Project>

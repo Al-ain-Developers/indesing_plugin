@@ -1,0 +1,135 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/layerpanel/LayerPanelStrings_arAE.fr $
+//  
+//  Owner: Michael Burbidge
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kLayerPanelStringsRsrcID + index_arAE)
+{
+	k_arAE,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{
+		// ----- Command strings
+
+		"Layer Options",				"خيارات الطبقة",
+		"New Layer",					"طبقة جديدة",
+		"Layer Deletion",				"حذف طبقة(طبقات)",
+		"Delete Unused Layers",			"حذف الطبقات غير المستخدمة",
+		"Lock Others",					"إقفال الآخرين",
+		"Show All",						"إظهار الكل",
+		"Unlock All",					"فك إقفال الكل",
+		"Hide All",						"إخفاء الكل",
+		"Lock All",						"إقفال الكل",
+		"Merge Layers",					"دمج طبقات",
+		"Move To Layer",				"التحريك إلى طبقة",
+		"Copy To Layer",				"نسخ إلى طبقة",
+		"Move Layer",					"تحريك طبقة",
+		"Move Layers",					"تحريك طبقات",
+
+		// ----- Menu strings
+		
+		"Layers...",						"&طبقات...",
+
+		"New Layer...",						"طبقة جديدة...",
+		"New Layer Above \"^1\"...",		"طبقة جديدة فوق \"^1\"...",
+		"New Layer Below \"^1\"...",		"طبقة جديدة تحت \"^1\"...",
+		"Delete Layer",						"حذف طبقة",
+		"Delete \"^1\"",					"حذف طبقة \"^1\"",
+		"Delete Layers",					"حذف طبقات",
+		"Duplicate Layer",						"مضاعفة طبقة",
+		"Duplicate \"^1\"...",					"مضاعفة طبقة \"^1\"...",
+		"Duplicate Layers...",					"مضاعفة طبقات...",
+		
+		"Layer Options for \"^1\"...",		"خيارات طبقة لـ \"^1\"...",
+		"Layer Options...",					"خيارات الطبقة...",
+		"Show All Layers",					"إظهار كل الطبقات",
+		"Hide Others",						"إخفاء الآخرين",
+		"Unlock All Layers",				"إلغاء إقفال كل الطبقات",
+		"Lock Others",						"إقفال الآخرين",
+		"Hide All Layers",					"إخفاء كل الطبقات",
+		"Lock All Layers",					"إقفال كل الطبقات",
+		
+		"Paste Remembers Layers",			"طبقات تذكر اللصق",
+		
+		"Merge Layers",						"دمج طبقات",
+		"Delete Unused Layers",				"حذف الطبقات غير المستخدمة",
+		"Select Item(s) on \"^1\"",			"تحديد عنصر (عناصر) في \"^1\"",
+		"Select Item(s) Layer",				"تحديد عنصر (عناصر) في الطبقة",
+				
+		// Menu names for context and panel menus
+		"LayerPanelPopup",					"قائمة لوحة الطبقات",	
+		"RtMenuLayerPanelEye",				"قائمة سياق عين لوحة الطبقات",	
+		"RtMenuLayerPanelLock",				"قائمة سياق قفل لوحة الطبقات",
+		"RtMenuLayerPanelItem",				"قائمة سياق عنصر لوحة الطبقات",	
+
+		// ----- Window strings
+		"DeleteOneLayer",					"تحتوي الطبقة \"^1\" على كائن واحد أو أكثر، هل تريد حذف الطبقة على أي حال؟",
+		"DeleteMultiLayers",				"الطبقات المحددة تحتوي على كائنات، هل تريد حذف الطبقات على أي حال؟",
+		"DeleteOneGuideLayer",				"تحتوي الطبقة \"^1\" على أدلة مسطرة، هل تريد حذف الطبقة على أي حال؟",
+		"DeleteGuideLayers",				"الطبقات المحددة تحتوي على أدلة مسطرة، هل تريد حذف الطبقات على أي حال؟",
+		"DeletingPlaceGunUsedLayer",		"لا يمكن حذف الطبقة. إنه مطلوب من قبل كود البرنامج المحمل في موضع المؤشر.",
+		"LockingPlaceGunUsedLayer",			"لا يمكن إقفال الطبقة. إنه مطلوب من قبل كود البرنامج المحمل في موضع المؤشر.",
+
+		// ----- Window Menu
+		"Layers_WinMenu",					"&طبقات",
+
+		// ----- Panel strings
+		
+		"Layers",							"طبقات",
+		"^1 Layer",							"^1 طبقة",		// For status widget
+		"^1 Layers",						"^1 طبقات",	// For status widget
+		"New Layer",						"طبقة جديدة",	// Title of New Layer dialog
+		"Layer Options",					"خيارات الطبقة", // Title of Layer Options dialog
+		"&Name:",							"الإ&سم:",
+		"&Color:",							"ال&لون:",
+		"&Show Layer",						"إ&ظهار طبقة",
+		"Show &Guides",						"إظهار الأ&دلة",
+		"&Lock Layer",						"إقفال &طبقة",
+		"Loc&k Guides",						"إقفال الأ&دلة",
+		"Keep When Layer is &Hidden",		"إهمال الت&فاف النص عندما تكون الطبقة مختفية",
+		"&Print Layer",						"طبقة &الطباعة",
+
+		// ----- Tips strings
+
+		"DeleteLayerTip",					"حذف الطبقات المحددة",
+		"NewLayerTip",						"إنشاء طبقة جديدة",
+		"EyeTip",							"إمكانية التبديل",
+		"PencilTip",						"إقفال التبديل (قابلة للكتابة عليها عندما تكون فارغة)",
+		"SwatchTip",						"لون علامات التحديد على هذه الطبقة",
+		"ProxyTip",							"تعني العناصر المحددة (سحب للتحريك بين الطبقات)",
+		"ActiveTip",						"تعني طبقة الرسم الحالية",
+
+		// ----- Error strings
+		"EmptyLayerName",					"لابد من تحديد إسم الطبقة.",
+		"DuplicateLayer",					"يوجد طبقة أخرى تحمل هذا الإسم.",
+
+	}
+};
+
+#endif // __ODFRC__

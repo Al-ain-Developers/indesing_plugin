@@ -1,0 +1,960 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?aid style="33" type="document" DOMVersion="4.0" readerVersion="3.0" featureSet="257" product="4.0(380)" ?>
+<docu pMep="o_dcMep1" InLi="x_0" zero="x_2_U_0_U_0" pacl="o_ud7" ptag="x_0" DCcp="c_U.S. Web Coated (SWOP) v2" DCrp="c_sRGB IEC61966-2.1" DCci="e_RIcs" DCbi="e_RIcs" DCii="e_RIcs" CSrp="e_CPpp" CScp="e_CPpd" DCsa="b_f" Self="rc_d">
+	<lang pnam="rk_[No Language]" lsqu="k_&apos;&apos;" ldqu="k_&quot;&quot;" pril="rk_[No Language]" subl="rk_[No Language]" ID="rl_0" ptag="x_0" Self="rc_u38"/>
+	<lang pnam="rk_English: UK" lsqu="k_‘’" ldqu="k_“”" pril="rk_English" subl="rk_UK" ID="rl_20d" ptag="x_0" Self="rc_u39"/>
+	<lang pnam="rk_Portuguese: Brazilian" lsqu="k_‘’" ldqu="k_“”" pril="rk_Portuguese" subl="rk_Brazilian" ID="rl_220" ptag="x_0" Self="rc_u3a"/>
+	<lang pnam="rk_English: Canadian" lsqu="k_‘’" ldqu="k_“”" pril="rk_English" subl="rk_Canadian" ID="rl_40d" ptag="x_0" Self="rc_u3b"/>
+	<lang pnam="rk_French: Canadian" lsqu="k_‘’" ldqu="k_«»" pril="rk_French" subl="rk_Canadian" ID="rl_312" ptag="x_0" Self="rc_u3c"/>
+	<lang pnam="rk_Catalan" lsqu="k_‘’" ldqu="k_“”" pril="rk_Catalan" subl="rk_" ID="rl_107" ptag="x_0" Self="rc_u3d"/>
+	<lang pnam="rk_Czech" lsqu="k_‚‘" ldqu="k_„“" pril="rk_Czech" subl="rk_" ID="rl_10a" ptag="x_0" Self="rc_u3e"/>
+	<lang pnam="rk_Danish" lsqu="k_’’" ldqu="k_””" pril="rk_Danish" subl="rk_" ID="rl_10b" ptag="x_0" Self="rc_u3f"/>
+	<lang pnam="rk_Dutch" lsqu="k_‘’" ldqu="k_“”" pril="rk_Dutch" subl="rk_" ID="rl_10c" ptag="x_0" Self="rc_u40"/>
+	<lang pnam="rk_Finnish" lsqu="k_’’" ldqu="k_””" pril="rk_Finnish" subl="rk_" ID="rl_111" ptag="x_0" Self="rc_u41"/>
+	<lang pnam="rk_French" lsqu="k_‘’" ldqu="k_«»" pril="rk_French" subl="rk_" ID="rl_112" ptag="x_0" Self="rc_u42"/>
+	<lang pnam="rk_Greek" lsqu="k_‘’" ldqu="k_“”" pril="rk_Greek" subl="rk_" ID="rl_114" ptag="x_0" Self="rc_u43"/>
+	<lang pnam="rk_German: Reformed" lsqu="k_‚‘" ldqu="k_„“" pril="rk_German" subl="rk_Reformed" ID="rl_113" ptag="x_0" Self="rc_u44"/>
+	<lang pnam="rk_German: Traditional" lsqu="k_‚‘" ldqu="k_„“" pril="rk_German" subl="rk_Traditional" ID="rl_113" ptag="x_0" Self="rc_u45"/>
+	<lang pnam="rk_Hungarian" lsqu="k_’’" ldqu="k_„”" pril="rk_Hungarian" subl="rk_" ID="rl_116" ptag="x_0" Self="rc_u46"/>
+	<lang pnam="rk_Italian" lsqu="k_‘’" ldqu="k_“”" pril="rk_Italian" subl="rk_" ID="rl_119" ptag="x_0" Self="rc_u47"/>
+	<lang pnam="rk_Norwegian: Bokmal" lsqu="k_’’" ldqu="k_””" pril="rk_Norwegian" subl="rk_" ID="rl_11e" ptag="x_0" Self="rc_u48"/>
+	<lang pnam="rk_Norwegian: Nynorsk" lsqu="k_’’" ldqu="k_””" pril="rk_Norwegian" subl="rk_Nynorsk" ID="rl_21e" ptag="x_0" Self="rc_u49"/>
+	<lang pnam="rk_Polish" lsqu="k_‘’" ldqu="k_„”" pril="rk_Polish" subl="rk_" ID="rl_11f" ptag="x_0" Self="rc_u4a"/>
+	<lang pnam="rk_Portuguese" lsqu="k_‘’" ldqu="k_“”" pril="rk_Portuguese" subl="rk_" ID="rl_120" ptag="x_0" Self="rc_u4b"/>
+	<lang pnam="rk_Russian" lsqu="k_‘’" ldqu="k_“”" pril="rk_Russian" subl="rk_" ID="rl_122" ptag="x_0" Self="rc_u4c"/>
+	<lang pnam="rk_German: Swiss" lsqu="k_‹›" ldqu="k_«»" pril="rk_German" subl="rk_Swiss" ID="rl_213" ptag="x_0" Self="rc_u4d"/>
+	<lang pnam="rk_Slovak" lsqu="k_‚‘" ldqu="k_„“" pril="rk_Slovak" subl="rk_" ID="rl_123" ptag="x_0" Self="rc_u4e"/>
+	<lang pnam="rk_Spanish: Castilian" lsqu="k_‘’" ldqu="k_“”" pril="rk_Spanish" subl="rk_" ID="rl_126" ptag="x_0" Self="rc_u4f"/>
+	<lang pnam="rk_Swedish" lsqu="k_’’" ldqu="k_””" pril="rk_Swedish" subl="rk_" ID="rl_127" ptag="x_0" Self="rc_u50"/>
+	<lang pnam="rk_Turkish" lsqu="k_‘’" ldqu="k_“”" pril="rk_Turkish" subl="rk_" ID="rl_129" ptag="x_0" Self="rc_u51"/>
+	<lang pnam="rk_English: USA" lsqu="k_‘’" ldqu="k_“”" pril="rk_English" subl="rk_USA" ID="rl_10d" ptag="x_0" Self="rc_u52"/>
+	<lang pnam="rk_English: USA Legal" lsqu="k_‘’" ldqu="k_“”" pril="rk_English" subl="rk_USA Legal" ID="rl_10d" ptag="x_0" Self="rc_u53"/>
+	<lang pnam="rk_English: USA Medical" lsqu="k_‘’" ldqu="k_“”" pril="rk_English" subl="rk_USA Medical" ID="rl_10d" ptag="x_0" Self="rc_u54"/>
+	<colr clmd="e_prss" clsp="e_CMYK" clvl="x_4_D_0_D_0_D_0_D_100" ovrd="e_eOvB" clbs="o_n" atcs="e_nasp" atvl="x_0" pnam="c_Black" edbl="b_f" rmbl="b_f" pvis="b_t" swID="l_1f01" ptag="x_0" Self="rc_ub"/>
+	<colr clmd="e_prss" clsp="e_CMYK" clvl="x_4_D_0_D_0_D_100_D_0" ovrd="e_norm" clbs="o_n" atcs="e_nasp" atvl="x_0" pnam="c_C=0 M=0 Y=100 K=0" edbl="b_t" rmbl="b_t" pvis="b_t" swID="l_1f01" ptag="x_0" Self="rc_u8c"/>
+	<colr clmd="e_prss" clsp="e_CMYK" clvl="x_4_D_0_D_100_D_0_D_0" ovrd="e_norm" clbs="o_n" atcs="e_nasp" atvl="x_0" pnam="c_C=0 M=100 Y=0 K=0" edbl="b_t" rmbl="b_t" pvis="b_t" swID="l_1f01" ptag="x_0" Self="rc_u8d"/>
+	<colr clmd="e_prss" clsp="e_CMYK" clvl="x_4_D_100_D_0_D_0_D_0" ovrd="e_norm" clbs="o_n" atcs="e_nasp" atvl="x_0" pnam="c_C=100 M=0 Y=0 K=0" edbl="b_t" rmbl="b_t" pvis="b_t" swID="l_1f01" ptag="x_0" Self="rc_u8e"/>
+	<colr clmd="e_prss" clsp="e_CMYK" clvl="x_4_D_100_D_89.80392156862746_D_9.803921568627452_D_0" ovrd="e_norm" clbs="o_n" atcs="e_nasp" atvl="x_0" pnam="c_C=100 M=90 Y=10 K=0" edbl="b_t" rmbl="b_t" pvis="b_t" swID="l_1f01" ptag="x_0" Self="rc_u8f"/>
+	<colr clmd="e_prss" clsp="e_CMYK" clvl="x_4_D_14.901960784313726_D_100_D_100_D_0" ovrd="e_norm" clbs="o_n" atcs="e_nasp" atvl="x_0" pnam="c_C=15 M=100 Y=100 K=0" edbl="b_t" rmbl="b_t" pvis="b_t" swID="l_1f01" ptag="x_0" Self="rc_u90"/>
+	<colr clmd="e_prss" clsp="e_CMYK" clvl="x_4_D_74.90196078431373_D_4.705882352941177_D_100_D_0" ovrd="e_norm" clbs="o_n" atcs="e_nasp" atvl="x_0" pnam="c_C=75 M=5 Y=100 K=0" edbl="b_t" rmbl="b_t" pvis="b_t" swID="l_1f01" ptag="x_0" Self="rc_u91"/>
+	<colr clmd="e_prss" clsp="e_CMYK" clvl="x_4_D_100_D_0_D_0_D_0" ovrd="e_eOvH" clbs="o_n" atcs="e_nasp" atvl="x_0" pnam="c_Cyan" edbl="b_f" rmbl="b_f" pvis="b_f" swID="l_1f01" ptag="x_0" Self="rc_uc"/>
+	<colr clmd="e_prss" clsp="e_CMYK" clvl="x_4_D_0_D_100_D_0_D_0" ovrd="e_eOvH" clbs="o_n" atcs="e_nasp" atvl="x_0" pnam="c_Magenta" edbl="b_f" rmbl="b_f" pvis="b_f" swID="l_1f01" ptag="x_0" Self="rc_ud"/>
+	<colr clmd="e_prss" clsp="e_CMYK" clvl="x_4_D_0_D_0_D_0_D_0" ovrd="e_eOvP" clbs="o_n" atcs="e_nasp" atvl="x_0" pnam="c_Paper" edbl="b_t" rmbl="b_f" pvis="b_t" swID="l_1f01" ptag="x_0" Self="rc_uf"/>
+	<colr clmd="e_regs" clsp="e_CMYK" clvl="x_4_D_100_D_100_D_100_D_100" ovrd="e_eOvR" clbs="o_n" atcs="e_nasp" atvl="x_0" pnam="c_Registration" edbl="b_f" rmbl="b_f" pvis="b_t" swID="l_1f01" ptag="x_0" Self="rc_u10"/>
+	<colr clmd="e_prss" clsp="e_CMYK" clvl="x_4_D_0_D_0_D_100_D_0" ovrd="e_eOvH" clbs="o_n" atcs="e_nasp" atvl="x_0" pnam="c_Yellow" edbl="b_f" rmbl="b_f" pvis="b_f" swID="l_1f01" ptag="x_0" Self="rc_u11"/>
+	<colr clmd="e_prss" clsp="e_CMYK" clvl="x_4_D_0_D_0_D_0_D_0" ovrd="e_norm" clbs="o_n" atcs="e_nasp" atvl="x_0" pnam="k_" edbl="b_t" rmbl="b_t" pvis="b_f" swID="l_1f01" ptag="x_0" Self="rc_u59"/>
+	<colr clmd="e_prss" clsp="e_CMYK" clvl="x_4_D_0_D_0_D_0_D_100" ovrd="e_norm" clbs="o_n" atcs="e_nasp" atvl="x_0" pnam="k_" edbl="b_t" rmbl="b_t" pvis="b_f" swID="l_1f01" ptag="x_0" Self="rc_u5b"/>
+	<cink inIP="rb_t" pnam="k_Process Cyan" inSd="rD_0" inAs="k_k[NoAlias]" inAn="D_75" inCP="b_f" inFr="D_70" inND="D_0.61" inPI="b_t" inPo="l_1" inTp="e_norm" ptag="x_0" Self="rc_u7"/>
+	<cink inIP="rb_t" pnam="k_Process Magenta" inSd="rD_0" inAs="k_k[NoAlias]" inAn="D_15" inCP="b_f" inFr="D_70" inND="D_0.76" inPI="b_t" inPo="l_2" inTp="e_norm" ptag="x_0" Self="rc_u8"/>
+	<cink inIP="rb_t" pnam="k_Process Yellow" inSd="rD_0" inAs="k_k[NoAlias]" inAn="D_0" inCP="b_f" inFr="D_70" inND="D_0.16" inPI="b_t" inPo="l_3" inTp="e_norm" ptag="x_0" Self="rc_u9"/>
+	<cink inIP="rb_t" pnam="k_Process Black" inSd="rD_0" inAs="k_k[NoAlias]" inAn="D_45" inCP="b_f" inFr="D_70" inND="D_1.7" inPI="b_t" inPo="l_4" inTp="e_norm" ptag="x_0" Self="rc_ua"/>
+	<ctbb pvrs="l_0" bbtp="e_bbtc" spcl="y_0" bben="e_eta6" bbmx="x_6_D_1_D_0_D_0_D_1_D_0_D_0" pnam="k_" edbl="b_t" rmbl="b_t" pvis="b_f" swID="l_1f01" ptag="x_0" Self="rc_u58">
+		<pcnt><![CDATA[AAAAAT/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==]]></pcnt>
+	</ctbb>
+	<swch pnam="c_None" edbl="b_f" rmbl="b_f" pvis="b_t" swID="l_1f01" ptag="x_0" Self="rc_ue"/>
+	<grad grdt="e_axlg" pnam="k_" edbl="b_t" rmbl="b_t" pvis="b_f" swID="l_1f01" ptag="x_0" Self="rc_u5a">
+		<gstp gcls="o_u59" loca="D_0" Self="rc_u5agstp0"/>
+		<gstp gcls="o_ub" loca="D_100" mids="D_50" Self="rc_u5agstp1"/>
+	</grad>
+	<StSt strT="rk_" pnam="k_Triple~sep~Stroke" Self="rc_dib01a"/>
+	<StSt strT="rk_" pnam="k_ThickThinThick" Self="rc_dib009"/>
+	<StSt strT="rk_" pnam="k_ThinThickThin" Self="rc_dib008"/>
+	<StSt strT="rk_" pnam="k_ThickThick" Self="rc_dib007"/>
+	<StSt strT="rk_" pnam="k_ThickThin" Self="rc_dib006"/>
+	<StSt strT="rk_" pnam="k_ThinThick" Self="rc_dib005"/>
+	<StSt strT="rk_" pnam="k_ThinThin" Self="rc_dib004"/>
+	<StSt strT="rk_" pnam="k_Japanese Dots" Self="rc_di5a3f"/>
+	<StSt strT="rk_" pnam="k_White Diamond" Self="rc_di5a3e"/>
+	<StSt strT="rk_" pnam="k_Left Slant Hash" Self="rc_di5a3d"/>
+	<StSt strT="rk_" pnam="k_Right Slant Hash" Self="rc_di5a3c"/>
+	<StSt strT="rk_" pnam="k_Straight Hash" Self="rc_di5a3b"/>
+	<StSt strT="rk_" pnam="k_Wavy" Self="rc_di5a3a"/>
+	<StSt strT="rk_" pnam="k_Canned Dotted" Self="rc_di5a39"/>
+	<StSt strT="rk_" pnam="k_Canned Dashed 3x2" Self="rc_di5a38"/>
+	<StSt strT="rk_" pnam="k_Canned Dashed 4x4" Self="rc_di5a37"/>
+	<StSt strT="rk_" pnam="k_Dashed" Self="rc_di5a2a"/>
+	<StSt strT="rk_" pnam="k_Solid" Self="rc_di5a29"/>
+	<cfnt pnam="k_[No composite font]" ptag="x_0" Self="rc_u66">
+		<cfen pnam="k_Kanji" font="c_Kozuka Mincho Std" ptfs="k_R" jcfs="D_100" bshf="D_0" phzs="D_100" pvts="D_100" plck="b_t" jcfa="b_t" ptag="x_0" Self="rc_u67"/>
+		<cfen pnam="k_Kana" font="c_Kozuka Mincho Std" ptfs="k_R" jcfs="D_100" bshf="D_0" phzs="D_100" pvts="D_100" jcfc="k_ぁあぃいぅうぇえぉおかがきぎくぐけげこごさざしじすずせぜそぞただちぢっつづてでとどなにぬねのはばぱひびぴふぶぷへべぺほぼぽまみむめもゃやゅゆょよらりるれろゎわゐゑをんゝゞァアィイゥウェエォオカガキギクグケゲコゴサザシジスズセゼソゾタダチヂッツヅテデトドナニヌネノハバパヒビピフブプヘベペホボポマミムメモャヤュユョヨラリルレロヮワヰヱヲンヴヵヶーヽヾ" plck="b_t" jcfa="b_t" ptag="x_0" Self="rc_u69"/>
+		<cfen pnam="k_Punctuation" font="c_Kozuka Mincho Std" ptfs="k_R" jcfs="D_100" bshf="D_0" phzs="D_100" pvts="D_100" jcfc="k_—―‖‘’“”‥…′″∥、。〈〉《》「」『』【】〔〕〜・！（），．／：；？［］｛｝～" plck="b_t" jcfa="b_t" ptag="x_0" Self="rc_u6a"/>
+		<cfen pnam="k_Symbols" font="c_Kozuka Mincho Std" ptfs="k_R" jcfs="D_100" bshf="D_0" phzs="D_100" pvts="D_100" jcfc="k_¢£§¨¬°±´¶×÷ΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡΣΤΥΦΧΨΩαβγδεζηθικλμνξοπρστυφχψωЁАБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдежзийклмнопрстуфхцчшщъыьэюяё‐†‡‰※℃Å←↑→↓⇒⇔∀∂∃∇∈∋−√∝∞∠∧∨∩∪∫∬∴∵∽≒≠≡≦≧≪≫⊂⊃⊆⊇⊥⌒■□▲△▼▽◆◇○◎●◯★☆♀♂♪♭♯〃〆〇〒〓゛゜＃＄％＆＊＋－０１２３４５６７８９＜＝＞＠ＡＢＣＤＥＦＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸＹＺ＼＾＿｀ａｂｃｄｅｆｇｈｉｊｋｌｍｎｏｐｑｒｓｔｕｖｗｘｙｚ｜￠￡￢￣￥" plck="b_t" jcfa="b_t" ptag="x_0" Self="rc_u6b"/>
+		<cfen pnam="k_Alphabetic" font="c_Times" ptfs="k_Roman" jcfs="D_100" bshf="D_0" phzs="D_100" pvts="D_100" jcfc="k_ !&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^~sep~`abcdefghijklmnopqrstuvwxyz{|}~ ¡¤¥¦©ª«­®¯²³µ·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõöøùúûüýþÿıŒœŠšŸŽžƒˆˇ˘˙˚˛˜˝–‚„•‹›⁄€™∆∏∑≈≤≥◊ﬀﬁﬂﬃﬄﬅﬆ" plck="b_t" jcfa="b_f" ptag="x_0" Self="rc_u6c"/>
+		<cfen pnam="k_Numbers" font="c_Times" ptfs="k_Roman" jcfs="D_100" bshf="D_0" phzs="D_100" pvts="D_100" jcfc="k_0123456789" plck="b_t" jcfa="b_f" ptag="x_0" Self="rc_u6d"/>
+	</cfnt>
+	<Jkst pnam="k_kHardKinsokuName" Self="rc_u92"/>
+	<Jkst pnam="k_kSoftKinsokuName" Self="rc_u93"/>
+	<Jkst pnam="k_kKoreanKinsokuName" Self="rc_u94"/>
+	<Jkst pnam="k_kSimpChineseKinsokuName" Self="rc_u95"/>
+	<Jkst pnam="k_kTradChineseKinsokuName" Self="rc_u96"/>
+	<Jkst pnam="c_kHardKinsokuName" jcbl="k_" jcel="k_" jhgp="k_" jcbs="k_" ptag="x_0" Self="rc_u97"/>
+	<Jmjt pnam="k_kMojikumiDefaultName1" Self="rc_u98"/>
+	<Jmjt pnam="k_kMojikumiDefaultName2" Self="rc_u99"/>
+	<Jmjt pnam="k_kMojikumiDefaultName3" Self="rc_u9a"/>
+	<Jmjt pnam="k_kMojikumiDefaultName4" Self="rc_u9b"/>
+	<Jmjt pnam="k_kMojikumiDefaultName5" Self="rc_u9c"/>
+	<Jmjt pnam="k_kMojikumiDefaultName6" Self="rc_u9d"/>
+	<Jmjt pnam="k_kMojikumiDefaultName7" Self="rc_u9e"/>
+	<Jmjt pnam="k_kMojikumiDefaultName8" Self="rc_u9f"/>
+	<Jmjt pnam="k_kMojikumiDefaultName9" Self="rc_ua0"/>
+	<Jmjt pnam="k_kMojikumiDefaultName10" Self="rc_ua1"/>
+	<Jmjt pnam="k_kMojikumiDefaultName11" Self="rc_ua2"/>
+	<Jmjt pnam="k_kMojikumiDefaultName12" Self="rc_ua3"/>
+	<Jmjt pnam="k_kMojikumiDefaultName13" Self="rc_ua4"/>
+	<Jmjt pnam="k_kMojikumiDefaultName14" Self="rc_ua5"/>
+	<csty pnam="k_[No character style]" smpt="b_f" ptag="x_0" Self="rc_u56"/>
+	<csty basd="k_[No character style]" pnam="c_computeroutput" smpt="b_f" ptag="x_0" ptfs="c_Regular" ptsz="U_9" font="c_Myriad Pro" Self="rc_ua6"/>
+	<csty basd="k_[No character style]" pnam="c_emphasis" smpt="b_f" ptag="x_0" ptfs="c_Italic" font="c_Minion Pro" Self="rc_ua7"/>
+	<csty basd="k_[No character style]" pnam="c_ulink" smpt="b_f" ptag="x_0" flcl="o_u8f" Self="rc_ua9"/>
+	<psty pnam="k_[No paragraph style]" smpt="b_f" ptag="x_0" flcl="o_ub" ptfs="c_Roman" ptsz="U_12" phzs="D_100" pakm="k_Metrics" ligt="b_t" lnwt="U_1" trak="D_0" ptce="c_HL Composer" dcca="s_0" dcli="s_0" bshf="U_0" capm="e_norm" lncl="o_ue" hypl="s_3" pvts="D_100" inbl="U_0" inbr="U_0" infl="U_0" alea="D_120" szld="e_atil" plng="k_English: USA" hyph="b_t" mibe="s_2" miaf="s_2" hypc="b_t" swor="s_5" nobk="b_f" hyzo="U_36" spbe="U_0" spaf="U_0" alts="x_0" undr="b_f" font="c_Times (TT)" Ofst="e_Dflt" wsde="D_100" wsma="D_133" wsmi="D_80" lsde="D_0" lsma="D_0" lsmi="D_0" gsde="D_100" gsma="D_100" gsmi="D_100" pbbp="e_nbrk" kept="b_f" kwnx="s_0" kfnl="s_2" klnl="s_2" posm="e_norm" strk="b_f" jcal="e_Jact" kepl="b_f" lint="D_-1" filt="D_-1" sovp="b_f" ovpr="b_f" pgsa="D_0" pgfa="D_0" pgsl="D_-1" pgfl="D_-1" pgss="x_2_U_0_U_0" pgst="x_2_U_0_U_0" pskw="D_0" rlac="k_Text Color" pras="D_1" prat="D_-1" paof="U_0" pral="U_0" pair="U_0" rawd="e_Klwd" rlbc="k_Text Color" prbs="D_1" prbt="D_-1" pbop="U_0" prbl="U_0" pbir="U_0" rbwd="e_Klwd" prao="b_f" prbo="b_f" prar="b_f" prbr="b_f" inlr="U_0" hylw="b_t" pals="e_full" OTor="b_f" OTfr="b_f" OTdl="b_f" OTti="b_f" patp="o_di5a29" pbtp="o_di5a29" bala="e_BlOf" alrs="x_0" ragc="o_ue" ragt="D_-1" rago="b_f" rbgc="o_ue" rbgt="D_-1" rbgo="b_f" paln="e_left" hypw="s_5" OTzr="b_f" OTss="l_0" OThi="b_f" OTca="b_t" ulco="k_Text Color" ulgc="o_ue" upgo="b_f" ulgt="D_-1" ulos="U_-9999" ulop="b_f" ultt="D_-1" ulwt="U_-9999" ultp="o_di5a29" stco="k_Text Color" stgc="o_ue" stgo="b_f" stgt="D_-1" stos="U_-9999" Stvp="b_f" sttt="D_-1" sttp="o_di5a29" stwt="U_-9999" OTsw="b_f" tsum="D_0" jmoj="e_JM01" jmbs="D_-1" jmas="D_-1" jkin="e_Jhks" jkit="e_Jkif" jkht="e_none" jbki="b_t" jpro="b_t" jrfs="D_-1" jral="e_Jrjs" jrtp="e_Jrpc" jrfn="k_" jrft="e_nada" jrsp="e_Jr12" jrwd="D_100" jrpt="D_100" jrxo="D_0" jryo="D_0" jrpz="e_Jkar" jraa="b_t" jrva="e_Jro1" jrov="b_f" jras="b_f" jrsc="D_66" jrfl="k_Text Color" jrti="D_-1" jrof="e_atil" jrsk="k_Text Color" jrst="D_-1" jros="e_atil" jrwt="D_-1" jktp="e_none" jkfz="D_-1" jkfn="k_" jkfs="e_nada" jkcm="D_100" jkpt="D_100" jkpl="D_0" jkal="e_Jknc" jkp2="e_Jkar" jkcc="k_" jset="e_Jchi" jkfc="k_Text Color" jktn="D_-1" jkof="e_atil" jksc="k_Text Color" jkst="D_-1" jkos="e_atil" jkwt="D_-1" jtcy="b_f" jtax="D_0" jtay="D_0" jatc="s_0" jatr="b_f" jjid="s_0" jggy="s_0" jga1="b_f" jgal="e_none" crot="D_0" jro1="b_f" jren="b_t" jshp="D_0" jsha="D_4500" jsht="b_t" jshr="b_f" jwar="b_f" jwli="s_2" jwas="D_50" jwls="D_0" jwal="e_atil" jmbb="s_2" jmab="s_2" hkna="b_f" palt="b_f" ital="b_f" Jled="e_Jlab" jslh="b_f" jpgd="b_f" jgrt="b_f" jgfm="e_none" jrtd="s_0" jrtr="b_f" jrts="b_t" bnlt="e_LTno" bnfs="D_-1" bncl="k_Text Color" bnbc="x_2_e_BCuo_l_2022" bnsa="l_1" bnsp="l_2e" bnns="k_1, 2, 3, 4..." blfn="k_" blft="e_nada" nmfn="k_" nmft="e_nada" Self="rc_u55"/>
+	<psty basd="k_[No paragraph style]" pnam="c_computer~sep~output" smpt="b_f" nxpa="o_uab" ptag="x_0" ptsz="U_9" font="c_Minion Pro" Self="rc_uab"/>
+	<psty basd="k_[No paragraph style]" pnam="c_para" smpt="b_f" nxpa="o_uac" ptag="x_0" ptsz="U_11" inbl="U_30" spaf="U_6.6" font="c_Minion Pro" pals="e_left" jgal="e_Jabl" Self="rc_uac"/>
+	<psty basd="o_uac" pnam="c_para~sep~abstract" smpt="b_f" nxpa="o_uad" ptag="x_0" ptfs="c_Italic" spbe="U_6.6" Self="rc_uad"/>
+	<psty basd="o_uac" pnam="c_para~sep~caption" smpt="b_f" nxpa="o_uae" ptag="x_0" ptfs="c_Italic" spbe="U_15" Self="rc_uae"/>
+	<psty basd="o_uac" pnam="c_para~sep~itemizedlist" smpt="b_f" nxpa="o_uaf" ptag="x_0" inbl="U_45" infl="U_-15" jgal="e_none" bnlt="e_LTbt" Self="rc_uaf"/>
+	<psty basd="o_uac" pnam="c_para~sep~orderedlist" smpt="b_f" nxpa="o_ub0" ptag="x_0" inbl="U_45" inbr="U_15" infl="U_-15" jgal="e_none" bnlt="e_LTnm" Self="rc_ub0"/>
+	<psty basd="o_uab" pnam="c_programlisting" smpt="b_f" nxpa="o_ub1" ptag="x_0" inbl="U_30" jga1="b_t" jgal="e_Jabl" Self="rc_ub1"/>
+	<psty basd="k_[No paragraph style]" pnam="c_title" smpt="b_f" nxpa="k_[No paragraph style]" ptag="x_0" ptfs="c_Semibold SemiCondensed" ptsz="U_18" bshf="U_-5.2" spbe="U_8" spaf="U_5.2" font="c_Myriad Pro" kwnx="s_4" rlac="o_u8f" pras="D_0.5" paof="U_16" pbop="U_14.173228346456694" prar="b_t" jga1="b_t" jgal="e_Jabl" Self="rc_ub2"/>
+	<psty basd="o_ub2" pnam="c_title~sep~article" smpt="b_f" nxpa="o_ub3" ptag="x_0" flcl="o_u8f" ptsz="U_24" bshf="U_0" spbe="U_13.2" spaf="U_13.2" prar="b_f" Self="rc_ub3"/>
+	<psty basd="o_ub2" pnam="c_title~sep~sub" smpt="b_f" nxpa="o_ub4" ptag="x_0" ptsz="U_13" bshf="U_0" inbl="U_15" spbe="U_0" spaf="U_0" prar="b_f" Self="rc_ub4"/>
+	<psty basd="o_ub4" pnam="c_title~sep~sub~sep~sub" smpt="b_f" nxpa="o_ub5" ptag="x_0" ptsz="U_12" inbl="U_30" Self="rc_ub5"/>
+	<psty basd="o_ub5" pnam="c_title~sep~sub~sep~sub~sep~sub" smpt="b_f" nxpa="o_ub6" ptag="x_0" ptfs="c_Semibold Condensed Italic" ptsz="U_11.5" Self="rc_ub6"/>
+	<psty basd="o_uac" pnam="c_entry" smpt="b_f" nxpa="o_ub7" ptag="x_0" ptsz="U_9" inbl="U_0" Self="rc_ub7"/>
+	<psty basd="o_ub7" pnam="c_entry~sep~thead" smpt="b_f" nxpa="o_ub8" ptag="x_0" ptfs="c_Semibold SemiCondensed" font="c_Myriad Pro" Self="rc_ub8"/>
+	<psty basd="o_ub0" pnam="c_keyword" smpt="b_f" nxpa="o_ub9" ptag="x_0" flcl="o_ue" ptsz="U_8" Self="rc_ub9"/>
+	<psty basd="o_ub5" pnam="c_title~sep~examplefiguretable" smpt="b_f" nxpa="o_uba" ptag="x_0" ptfs="c_Semibold SemiCondensed Italic" spbe="U_13.2" spaf="U_13.2" kwnx="s_5" kepl="b_t" Self="rc_uba"/>
+	<tsty pnam="k_[No table style]" TBsw="U_1" TBss="o_di5a29" TBsc="o_ub" TBst="D_100" TBso="b_f" TBgc="o_uf" TBgt="D_100" TBgo="b_f" LBsw="U_1" LBss="o_di5a29" LBsc="o_ub" LBst="D_100" LBso="b_f" LBgc="o_uf" LBgt="D_100" LBgo="b_f" BBsw="U_1" BBss="o_di5a29" BBsc="o_ub" BBst="D_100" BBso="b_f" BBgc="o_uf" BBgt="D_100" BBgo="b_f" RBsw="U_1" RBss="o_di5a29" RBsc="o_ub" RBst="D_100" RBso="b_f" RBac="o_uf" RBat="D_100" RBao="b_f" spbe="U_4" spaf="U_-4" Sfsr="l_0" Slsr="l_0" RSfc="l_0" RScf="o_ub" RSwf="U_1" RSsf="o_di5a29" RStf="D_100" RSgo="b_f" RSgc="o_uf" RSgt="D_100" RSof="b_f" RSsc="l_0" RScs="o_ub" RSws="U_0.25" RSss="o_di5a29" RSts="D_100" RSos="b_f" RSgs="o_uf" RSas="D_100" RSps="b_f" Sfsc="l_0" Slsc="l_0" CSfc="l_0" CScf="o_ub" CSwf="U_1" CSsf="o_di5a29" CStf="D_100" CSof="b_f" CSgc="o_uf" CSgt="D_100" CSgo="b_f" CSsc="l_0" CScs="o_ub" CSws="U_0.25" CSss="o_di5a29" CSts="D_100" CSos="b_f" CSgs="o_uf" CSas="D_100" CSps="b_f" CFPr="b_f" Sffr="l_0" Slfr="l_0" RFcf="o_ub" RFfc="l_0" RFtf="D_20" RFof="b_f" RFsc="l_0" RFcs="o_ue" RFts="D_100" RFos="b_f" Sffc="l_0" Slfc="l_0" CFfc="l_0" CFcf="o_ub" CFtf="D_20" CFof="b_f" CFsc="l_0" CFcs="o_ue" CFts="D_100" CFos="b_f" HdBt="e_IaTc" FtBt="e_IaTc" HdSk="b_f" FtSk="b_f" tsdo="e_sbej" Mnht="U_3" Mxht="U_600" Kwnr="b_f" Strw="e_nbrk" AuGw="b_t" MFHo="U_3" klwd="U_1" NstT="U_4" NstL="U_4" NstB="U_4" NstR="U_4" flcl="o_ue" filt="D_100" ovpr="b_f" DLTl="b_f" DLTr="b_f" DLib="b_f" DLsw="U_1" DLsy="o_di5a29" DLsc="o_ub" DLst="D_100" DLso="b_f" DLgc="o_ue" DLgt="D_100" DLgo="b_f" ClcC="b_f" Fbof="e_MAso" VJal="e_top" PSsl="U_0" Fboa="U_0" kang="D_0" Rfst="b_t" ptag="x_0" Self="rc_u7e"/>
+	<ObSt dtos="o_u61" dfos="o_u5e" dffg="o_u62" pnam="k_[None]" prst="o_n" flcl="o_ue" filt="D_-1" lnwt="U_1" mitr="D_4" endc="e_bcap" endj="e_mjon" stty="o_di5a29" llen="e_none" rlen="e_none" lncl="o_ue" lint="D_-1" pcef="e_none" pcrd="D_12" gapC="o_ue" gapT="D_-1" strA="e_stAC" nopr="b_f" pgfa="D_0" pgsa="D_0" xpBm="e_norm" xpBo="D_100" xpBk="b_f" xpBi="b_f" xpSm="e_none" xpSb="e_xpMb" xpSx="U_7" xpSy="U_7" xpSr="U_5" xpSc="o_ub" xpSo="D_75" xpSs="D_0" xpSn="D_0" xpVn="D_0" xpVm="e_none" xpVw="U_9" xpVc="e_xpCc" pTFP="o_u5dTFPf1" BLfg="o_u5dBfGo1" pAOs="o_u5dcAOs1" txwr="o_u5dctxw1" pSTP="o_u5dSyPf1" Jang="o_u5c" ptag="x_0" Self="rc_u5d">
+		<TFPf ccnt="l_1" clgt="U_12" clwd="U_144" ufcw="b_f" inst="x_4_U_0_U_0_U_0_U_0" Fbof="e_MAso" Fboa="U_0" VJal="e_top" VJmi="U_0" iwrp="b_f" Self="rc_u5dTFPf1"/>
+		<BfGo BFuc="b_f" BFso="U_0" BFro="e_EToi" BFic="U_12" BFcl="e_iLbl" Self="rc_u5dBfGo1"/>
+		<cAOs AOpt="e_AOPi" AOsr="b_f" AOlp="b_f" AOpp="b_f" AOwp="e_ANbr" AOHa="e_left" AHrl="e_txtf" AOVa="e_botm" AOVr="e_AVba" AOxo="D_0" AOyo="D_0" AOya="D_0" Self="rc_u5dcAOs1"/>
+		<ctxw pcos="ro_u5dctxw1ccos1" txwt="e_none" ptwi="e_none" ptwv="b_f" Self="rc_u5dctxw1">
+			<ccos ptns="rx_0" acpn="rx_0" pcot="e_sacp" iied="b_f" pcnm="k_" Self="rc_u5dctxw1ccos1"/>
+		</ctxw>
+		<SyPf omAL="b_f" omBZ="U_12" sgON="e_Txft" sorn="e_horz" Self="rc_u5dSyPf1"/>
+	</ObSt>
+	<ObSt dtos="o_u61" dfos="o_u5e" dffg="o_u62" basd="k_[None]" pnam="k_[Normal Graphics Frame]" prst="o_n" osnp="b_f" obfc="b_t" obsc="b_t" obcc="b_t" obtc="b_t" obdc="b_t" obpc="b_f" obtf="b_f" obbc="b_f" oboc="b_f" obtw="b_f" obao="b_f" flcl="o_ue" filt="D_-1" lnwt="U_1" mitr="D_4" endc="e_bcap" endj="e_mjon" stty="o_di5a29" llen="e_none" rlen="e_none" lncl="o_ub" lint="D_-1" pcef="e_none" pcrd="D_12" sovp="b_f" gapC="o_ue" gapT="D_-1" strA="e_stAC" nopr="b_f" pgfa="D_0" pgsa="D_0" xpBm="e_norm" xpBo="D_100" xpBk="b_f" xpBi="b_f" xpSm="e_none" xpSb="e_xpMb" xpSx="U_7" xpSy="U_7" xpSr="U_5" xpSc="o_ub" xpSo="D_75" xpSs="D_0" xpSn="D_0" xpVn="D_0" xpVm="e_none" xpVw="U_9" xpVc="e_xpCc" pTFP="o_u5eTFPf1" BLfg="o_u5eBfGo1" pAOs="o_u5ecAOs1" txwr="o_u5ectxw1" pSTP="o_u5eSyPf1" Jang="o_u5c" ptag="x_0" Self="rc_u5e">
+		<TFPf ccnt="l_1" clgt="U_12" clwd="U_144" ufcw="b_f" inst="x_4_U_0_U_0_U_0_U_0" Fbof="e_MAso" Fboa="U_0" VJal="e_top" VJmi="U_0" iwrp="b_f" Self="rc_u5eTFPf1"/>
+		<BfGo BFuc="b_f" BFso="U_0" BFro="e_EToi" BFic="U_12" BFcl="e_iLbl" Self="rc_u5eBfGo1"/>
+		<cAOs AOpt="e_AOPi" AOsr="b_f" AOlp="b_f" AOpp="b_f" AOwp="e_ANbr" AOHa="e_left" AHrl="e_txtf" AOVa="e_botm" AOVr="e_AVba" AOxo="D_0" AOyo="D_0" AOya="D_0" Self="rc_u5ecAOs1"/>
+		<ctxw pcos="ro_u5ectxw1ccos1" txwt="e_none" ptwi="e_none" ptwv="b_f" Self="rc_u5ectxw1">
+			<ccos ptns="rx_0" acpn="rx_0" pcot="e_sacp" iied="b_f" pcnm="k_" Self="rc_u5ectxw1ccos1"/>
+		</ctxw>
+		<SyPf omAL="b_f" omBZ="U_12" sgON="e_Txft" sorn="e_horz" Self="rc_u5eSyPf1"/>
+	</ObSt>
+	<ObSt dtos="o_u61" dfos="o_u5e" dffg="o_u62" basd="k_[None]" pnam="k_[Normal Text Frame]" prst="o_n" osnp="b_f" obfc="b_t" obsc="b_t" obcc="b_t" obtc="b_t" obdc="b_t" obpc="b_f" obtf="b_t" obbc="b_t" oboc="b_t" obtw="b_f" obao="b_f" flcl="o_ue" filt="D_-1" lnwt="U_1" mitr="D_4" endc="e_bcap" endj="e_mjon" stty="o_di5a29" llen="e_none" rlen="e_none" lncl="o_ue" lint="D_-1" pcef="e_none" pcrd="D_12" gapC="o_ue" gapT="D_-1" strA="e_stAC" nopr="b_f" pgfa="D_0" pgsa="D_0" xpBm="e_norm" xpBo="D_100" xpBk="b_f" xpBi="b_f" xpSm="e_none" xpSb="e_xpMb" xpSx="U_7" xpSy="U_7" xpSr="U_5" xpSc="o_ub" xpSo="D_75" xpSs="D_0" xpSn="D_0" xpVn="D_0" xpVm="e_none" xpVw="U_9" xpVc="e_xpCc" pTFP="o_u61TFPf1" BLfg="o_u61BfGo1" pAOs="o_u61cAOs1" txwr="o_u61ctxw1" pSTP="o_u61SyPf1" Jang="o_u5c" ptag="x_0" Self="rc_u61">
+		<TFPf ccnt="l_1" clgt="U_12" clwd="U_144" ufcw="b_f" inst="x_4_U_0_U_0_U_0_U_0" Fbof="e_MAso" Fboa="U_0" VJal="e_top" VJmi="U_0" iwrp="b_f" Self="rc_u61TFPf1"/>
+		<BfGo BFuc="b_f" BFso="U_0" BFro="e_EToi" BFic="U_12" BFcl="e_iLbl" Self="rc_u61BfGo1"/>
+		<cAOs AOpt="e_AOPi" AOsr="b_f" AOlp="b_f" AOpp="b_f" AOwp="e_ANbr" AOHa="e_left" AHrl="e_txtf" AOVa="e_botm" AOVr="e_AVba" AOxo="D_0" AOyo="D_0" AOya="D_0" Self="rc_u61cAOs1"/>
+		<ctxw pcos="ro_u61ctxw1ccos1" txwt="e_none" ptwi="e_none" ptwv="b_f" Self="rc_u61ctxw1">
+			<ccos ptns="rx_0" acpn="rx_0" pcot="e_sacp" iied="b_f" pcnm="k_" Self="rc_u61ctxw1ccos1"/>
+		</ctxw>
+		<SyPf omAL="b_f" omBZ="U_12" sgON="e_Txft" sorn="e_horz" Self="rc_u61SyPf1"/>
+	</ObSt>
+	<ObSt dtos="o_u61" dfos="o_u5e" dffg="o_u62" basd="k_[None]" pnam="k_[Normal Grid]" prst="o_n" osnp="b_f" obfc="b_t" obsc="b_t" obcc="b_t" obtc="b_t" obdc="b_t" obpc="b_f" obtf="b_t" obbc="b_t" oboc="b_t" obtw="b_f" obao="b_f" flcl="o_ue" filt="D_-1" lnwt="U_1" mitr="D_4" endc="e_bcap" endj="e_mjon" stty="o_di5a29" llen="e_none" rlen="e_none" lncl="o_ue" lint="D_-1" pcef="e_none" pcrd="D_12" gapC="o_ue" gapT="D_-1" strA="e_stAC" nopr="b_f" pgfa="D_0" pgsa="D_0" xpBm="e_norm" xpBo="D_100" xpBk="b_f" xpBi="b_f" xpSm="e_none" xpSb="e_xpMb" xpSx="U_7" xpSy="U_7" xpSr="U_5" xpSc="o_ub" xpSo="D_75" xpSs="D_0" xpSn="D_0" xpVn="D_0" xpVm="e_none" xpVw="U_9" xpVc="e_xpCc" pTFP="o_u62TFPf1" BLfg="o_u62BfGo1" pAOs="o_u62cAOs1" txwr="o_u62ctxw1" pSTP="o_u62SyPf1" Jang="o_u5c" ptag="x_0" Self="rc_u62">
+		<TFPf ccnt="l_1" clgt="U_12" clwd="U_144" ufcw="b_f" inst="x_4_U_0_U_0_U_0_U_0" Fbof="e_MAso" Fboa="U_0" VJal="e_top" VJmi="U_0" iwrp="b_f" Self="rc_u62TFPf1"/>
+		<BfGo BFuc="b_f" BFso="U_0" BFro="e_EToi" BFic="U_12" BFcl="e_iLbl" Self="rc_u62BfGo1"/>
+		<cAOs AOpt="e_AOPi" AOsr="b_f" AOlp="b_f" AOpp="b_t" AOwp="e_ANbr" AOHa="e_left" AHrl="e_txtf" AOVa="e_top" AOVr="e_AVba" AOxo="D_0" AOyo="D_0" AOya="D_0" Self="rc_u62cAOs1"/>
+		<ctxw pcos="ro_u62ctxw1ccos1" txwt="e_none" ptwi="e_none" ptwv="b_f" Self="rc_u62ctxw1">
+			<ccos ptns="rx_0" acpn="rx_0" pcot="e_sacp" iied="b_f" pcnm="k_" Self="rc_u62ctxw1ccos1"/>
+		</ctxw>
+		<SyPf omAL="b_f" omBZ="U_12" sgON="e_FGtp" sorn="e_horz" Self="rc_u62SyPf1"/>
+	</ObSt>
+	<Jngd Jgrd="ro_u5cJgda1" pnam="k_[Page Grid]" ptag="x_0" Self="rc_u5c">
+		<Jgda ptfs="k_" ptsz="D_9.21259842519685" Jcak="D_0" Jlak="D_6.909448818897637" phzs="D_100" pvts="D_100" laln="e_lltj" jgal="e_Jact" jcal="e_Jact" Self="rc_u5cJgda1"/>
+	</Jngd>
+	<cPWP PIHL="b_f" PEnc="k_" POIM="b_t" PFIM="b_t" PMnS="b_t" PVwP="b_f" Self="rc_dcPWP1"/>
+	<cdmr pdmp="ro_dcdmr1cdmp1" Self="rc_dcdmr1">
+		<cdmp Self="rc_dcdmr1cdmp1"/>
+	</cdmr>
+	<cdmo dmFI="e_dmPr" dmCI="b_f" dmLI="b_t" dmRB="b_f" dmCN="b_f" dmDS="l_32" Self="rc_dcdmo1"/>
+	<Ladp EnLA="b_f" Self="rc_dLadp1"/>
+	<xiPf Xits="b_t" XMis="e_XMmi" Xicl="b_f" XMrt="b_t" Xtal="b_f" Xtar="b_f" Self="rc_dxiPf1"/>
+	<xePf Xvae="b_f" Xprb="k_" Xefs="b_f" svFE="e_svU8" Xrub="b_f" Xdtd="b_t" Xeco="b_f" Xeoi="b_f" Xefi="b_f" Xeic="e_ibst" Xegp="e_plap" Xegi="b_f" Xejq="e_enMd" Xejf="e_jpgb" Self="rc_dxePf1"/>
+	<xgPf XstN="c_Story" XstC="e_iBrd" XtaN="c_Table" XtaC="e_iDbl" XceN="c_Cell" XceC="e_iGgr" Self="rc_dxgPf1"/>
+	<xpPf xpPb="e_CMYK" Self="rc_dxpPf1"/>
+	<SyPf omAL="b_f" omBZ="U_12" sgON="e_Txft" sorn="e_horz" Self="rc_dSyPf1"/>
+	<TFPf ccnt="l_1" clgt="U_12" clwd="U_144" ufcw="b_f" inst="x_4_U_0_U_0_U_0_U_0" Fbof="e_MAso" Fboa="U_0" VJal="e_top" VJmi="U_0" iwrp="b_f" Self="rc_dTFPf1"/>
+	<txtp typq="b_t" shhj="b_f" shkp="b_f" shsb="b_f" shcs="b_f" hlmf="b_t" mmos="b_t" pled="b_f" sups="D_58.3" supp="D_33.3" subs="D_58.3" subp="D_33.3" Smcp="D_70" lkbd="U_2" bkbd="U_2" kkbd="D_20" sinv="b_f" jwrp="b_f" sclt="b_t" awrp="b_t" zwrp="b_f" gplt="b_f" shkk="b_f" Jnvs="b_f" Jcid="b_f" Self="rc_dtxtp1"/>
+	<cTdf infl="U_0" inbl="U_30" inbr="U_0" spbe="U_0" spaf="U_6.6" bala="e_BlOf" paln="e_left" pals="e_left" alea="D_120" dcli="s_0" dcca="s_0" kepl="b_f" kept="b_f" kwnx="s_0" kfnl="s_2" klnl="s_2" pbbp="e_nbrk" ptce="c_HL Composer" wsmi="D_80" wsma="D_133" wsde="D_100" lsmi="D_0" lsma="D_0" lsde="D_0" gsmi="D_100" gsma="D_100" gsde="D_100" prar="b_f" prao="b_f" pras="D_1" prat="D_-1" paof="U_0" pral="U_0" pair="U_0" rawd="e_Klwd" rlac="k_Text Color" ragc="o_ue" ragt="D_-1" rago="b_f" patp="o_di5a29" prbr="b_f" prbo="b_f" prbs="D_1" prbt="D_-1" pbop="U_0" prbl="U_0" pbir="U_0" rbwd="e_Klwd" rlbc="k_Text Color" rbgc="o_ue" rbgt="D_-1" rbgo="b_f" pbtp="o_di5a29" hypc="b_t" hyph="b_t" miaf="s_2" mibe="s_2" swor="s_5" hypl="s_3" hyzo="U_36" hypw="s_5" prst="o_uac" crst="o_u56" alrs="x_0" alts="x_0" font="c_Minion Pro" ptfs="c_Roman" ptsz="U_11" szld="e_atil" pakm="k_Metrics" trak="D_0" capm="e_norm" posm="e_norm" undr="b_f" strk="b_f" ligt="b_t" nobk="b_f" phzs="D_100" pvts="D_100" bshf="U_0" pskw="D_0" filt="D_-1" lint="D_-1" lnwt="U_1" sovp="b_f" ovpr="b_f" Ofst="e_Dflt" OTor="b_f" OTfr="b_f" OTdl="b_f" OTti="b_f" OTca="b_t" OTsw="b_f" ulco="k_Text Color" ulgc="o_ue" ultt="D_-1" ulgt="D_-1" ulop="b_f" upgo="b_f" ultp="o_di5a29" ulos="U_-9999" ulwt="U_-9999" stco="k_Text Color" stgc="o_ue" sttt="D_-1" stgt="D_-1" Stvp="b_f" stgo="b_f" sttp="o_di5a29" stos="U_-9999" stwt="U_-9999" flcl="o_ub" lncl="o_ue" plng="k_English: USA" inlr="U_0" hylw="b_t" OTzr="b_f" OThi="b_f" OTss="l_0" pgfl="D_-1" pgfa="D_0" pgsl="D_-1" pgsa="D_0" pgst="x_2_U_0_U_0" pgss="x_2_U_0_U_0" Jang="o_n" jcal="e_Jact" tsum="D_0" jmbs="D_-1" jmas="D_-1" crot="D_0" jjid="s_0" jshp="D_0" jsha="D_4500" jshr="b_f" jsht="b_t" jtcy="b_f" jtax="D_0" jtay="D_0" jkfc="k_Text Color" jksc="k_Text Color" jktn="D_-1" jkst="D_-1" jkwt="D_-1" jkof="e_atil" jkos="e_atil" jktp="e_none" jkpl="D_0" jkal="e_Jknc" jkp2="e_Jkar" jkfn="k_" jkfs="e_nada" jkfz="D_-1" jkcm="D_100" jkpt="D_100" jkcc="k_" jset="e_Jchi" jrfl="k_Text Color" jrsk="k_Text Color" jrti="D_-1" jrwt="D_-1" jrof="e_atil" jros="e_atil" jrst="D_-1" jrfn="k_" jrft="e_nada" jrfs="D_-1" jpro="b_t" jrwd="D_100" jrpt="D_100" jrtp="e_Jrpc" jral="e_Jrjs" jrpz="e_Jkar" jrxo="D_0" jryo="D_0" jrsp="e_Jr12" jraa="b_t" jrov="b_f" jras="b_f" jrsc="D_66" jrva="e_Jro1" jwar="b_f" jwas="D_50" jwli="s_2" jwls="D_0" jwal="e_atil" jmab="s_2" jmbb="s_2" palt="b_f" hkna="b_f" ital="b_f" jslh="b_f" jgrt="b_f" jgfm="e_none" jga1="b_f" jgal="e_Jabl" jggy="s_0" jatc="s_0" jatr="b_f" jkin="e_Jhks" jkit="e_Jkif" jkht="e_none" jbki="b_t" jmoj="e_JM01" jren="b_t" jro1="b_f" Jled="e_Jlab" jrtd="s_0" jrtr="b_f" jrts="b_t" jpgd="b_f" nmfn="k_" nmft="e_nada" blfn="k_" blft="e_nada" bnlt="e_LTno" bnns="k_1, 2, 3, 4..." bnfs="D_-1" bncl="k_Text Color" bnsa="l_1" bnsp="l_2e" bnbc="x_2_e_BCuo_l_2022" Self="rc_dcTdf1"/>
+	<dctp dpcu="e_both" dpmu="b_f" dprc="b_t" Self="rc_ddctp1"/>
+	<BfGo BFuc="b_f" BFso="U_0" BFro="e_EToi" BFic="U_12" BFcl="e_iLbl" Self="rc_dBfGo1"/>
+	<cAOd AOct="e_unas" AOht="D_72" AOwd="D_72" AOps="o_u55" AOos="o_u5d" Self="rc_dcAOd1"/>
+	<cAOs AOpt="e_AOPi" AOsr="b_f" AOlp="b_f" AOpp="b_t" AOwp="e_ANbr" AOHa="e_left" AHrl="e_txtf" AOVa="e_top" AOVr="e_AVba" AOxo="D_0" AOyo="D_0" AOya="D_0" Self="rc_dcAOs1"/>
+	<FNop FNns="e_Marb" FNsa="l_1" FNrn="e_Fdrs" FNps="e_Fpsn" FNpr="k_" FNsu="k_" FNap="o_u55" FNac="o_u56" FNmp="e_FmSp" FNsp="k_ " FNsb="U_0" FNsh="U_0" FNfm="e_MLdo" FNfo="U_0" FNpl="b_f" FNds="b_f" FNn0="b_t" FNty="o_di5a29" FNsw="U_1" FNnc="o_ub" FNrg="o_ue" FNrt="D_100" FNgt="D_100" FNgo="b_f" FNnv="b_f" FNli="U_0" FNri="U_72" FNro="U_0" FNc0="b_t" FNcy="o_di5a29" FNcw="U_1" FNcc="o_ub" FNcg="o_ue" FNct="D_100" FNc4="D_100" FNcv="b_f" FNc3="b_f" FNci="U_0" FNcr="U_288" FNco="U_0" Self="rc_dFNop1"/>
+	<docp phgt="U_841.889763778" pwdt="U_595.275590551" cclr="e_iVlt" mclr="e_iMgn" nump="l_1" ppsd="b_f" bldt="U_0" bldb="U_0" bldi="U_0" bldo="U_0" bldu="b_f" slgt="U_0" slgb="U_0" slgi="U_0" slgo="U_0" slgu="b_f" PrSl="b_t" Shfl="b_t" oprb="b_t" pbin="e_ltrb" cold="e_horz" clok="b_t" Self="rc_ddocp1"/>
+	<grdp gsho="b_f" grto="b_f" Hgdv="U_72" Vgdv="U_72" Hgsd="l_8" Vgsd="l_8" grdc="e_iLgr" GrDb="b_t" blsn="b_t" blst="U_0" bldv="U_13.2" blvl="D_400" blcl="e_iGbl" grlo="e_ENgt" Self="rc_dgrdp1"/>
+	<gudp gdib="b_f" gdsh="b_t" gdlk="b_f" gdto="b_t" gvth="D_5" gudc="e_iCyn" Self="rc_dgudp1"/>
+	<imgp colc="l_1" colg="U_12" mart="U_85.03937007874016" marb="U_85.03937007874016" marl="U_85.03937007874016" marr="U_56.69291338582678" cold="e_horz" Self="rc_dimgp1"/>
+	<pbdp PBbr="U_72" PBcr="e_iWht" PBbk="e_iLgr" PBbc="e_iFie" PBsc="e_iGbl" Self="rc_dpbdp1"/>
+	<viwp sntz="l_4" keyn="U_1" hunt="e_zpoi" vunt="e_zpoi" RCtp="e_RCPo" srul="b_t" sfre="b_t" tunt="e_zpoi" tsnt="e_zpoi" pdnt="e_zinc" lunt="e_zpoi" ptin="D_72" hrcp="D_12" vecp="D_12" SHNt="b_t" Self="rc_dviwp1"/>
+	<prnp Rsty="e_Dflt" Rprt="c_Fax" ppd="k_" RpFn="f_" lwcp="l_1" lwcl="b_f" Rrvr="b_f" oeb="e_all" Rspd="b_f" Rpmp="b_f" Rpnp="b_f" Rblk="b_f" Rpgg="b_f" Rpsz="k_Letter Transverse" Rpht="e_atil" Rpwd="e_atil" Rpof="U_0" Rpgp="U_0" RpTv="b_f" RpOr="e_high" RpCt="e_cntN" RScm="e_scxy" swdp="D_100" shtp="D_100" RpSP="b_t" RpTn="b_f" RpTp="e_t1x2" RpTt="b_f" tilt="e_atil" tilo="D_108" apm="b_f" crpm="b_f" bldm="b_f" regm="b_f" colb="b_f" pifo="b_f" RpMt="e_Dflt" RpMw="e_250p" Rpmo="U_6" RpDB="b_t" RpBt="U_0" RpBb="U_0" RpBi="U_0" RpBo="U_0" RpIS="b_f" RpCm="e_cmRB" RpTB="b_f" trpe="e_OFF" RpFp="e_none" RpNe="b_f" RpSc="e_Dflt" RpCA="D_45" RpCF="D_70" RpSO="b_f" RPCI="b_t" RCIA="D_75" RCIF="D_70" RPMI="b_t" RMIA="D_15" RMIF="D_70" RPYI="b_t" RYIA="D_0" RYIF="D_70" RPBI="b_t" RBIA="D_45" RBIF="D_70" simd="e_opss" fndl="e_whle" RpPF="b_t" RpPL="e_PSL2" RpDF="e_Bnry" RCSP="e_uDoc" RpPr="e_uDoc" RpCr="e_Dflt" RCin="e_RIac" odir="b_f" omte="b_f" omtp="b_f" omtb="b_f" RpFS="k_kFlSt~sep~MediumDefaultName" igSO="b_f" pcty="e_prna" Rpdt="l_1" Rppt="l_0" ppdf="k_" Rptd="b_f" Rppr="k_IE5JVwIAAABkTURX/AMAAEZheAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQQABJwAYAMD&#xa;JgEAAQABAOoKbwhkAAAAAQDIAAEAAQDIAAEAAABMZXR0ZXIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA&#xa;AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA&#xa;AERmYXgAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA&#xa;AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA&#xa;AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA&#xa;AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA&#xa;AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA&#xa;AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA&#xa;AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA&#xa;AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA&#xa;AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA&#xa;AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA&#xa;AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA&#xa;AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA&#xa;AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA&#xa;AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA&#xa;AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA&#xa;AAAAAAAAAAAAAG1ORFcjAAAACAARABUAAQB3aW5zcG9vbABGYXgATmUwMDoAADYAMgAAAAAAAAAA&#xa;AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA&#xa;AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA&#xa;AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA&#xa;AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA&#xa;AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA&#xa;AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA&#xa;AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA&#xa;AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA&#xa;AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA&#xa;AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA&#xa;AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA&#xa;AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA&#xa;AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA&#xa;AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA&#xa;AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA&#xa;AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA&#xa;AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" Rpre="D_200" RpSR="x_4_D_0_D_0_D_612_D_792" RpIR="x_4_D_0_D_0_D_612_D_792.0000610351562" RpSS="k_NgA=" RpHR="x_2_D_0_D_0" RpWR="x_2_D_0_D_0" RpOR="x_2_D_0_D_0" RpSs="k_" RpCs="k_kDefault" RSIA="D_45" RSIF="D_70" RpBC="b_f" RpCn="b_f" Self="rc_dprnp1"/>
+	<cMet Self="rc_dcMet1"/>
+	<cMep Self="rc_dcMep1">
+		<pcnt><![CDATA[<?xpacket begin="﻿" id="W5M0MpCehiHzreSzNTczkc9d"?>
+<x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="3.1.1-105">
+   <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+      <rdf:Description rdf:about="2c6c4c54-f2dc-11d7-9327-bfab5786aaf2"
+            xmlns:xap="http://ns.adobe.com/xap/1.0/">
+         <xap:CreateDate>2005-01-27T11:23:35Z</xap:CreateDate>
+         <xap:MetadataDate>2005-02-08T14:42:01Z</xap:MetadataDate>
+         <xap:ModifyDate>2005-02-08T14:42:01Z</xap:ModifyDate>
+         <xap:CreatorTool>Adobe InDesign 4.0</xap:CreatorTool>
+      </rdf:Description>
+      <rdf:Description rdf:about="2c6c4c54-f2dc-11d7-9327-bfab5786aaf2"
+            xmlns:xapMM="http://ns.adobe.com/xap/1.0/mm/">
+         <xapMM:InstanceID>97e2cc53-79df-11d9-98d0-e7a07a214381</xapMM:InstanceID>
+         <xapMM:DocumentID>adobe:docid:indd:b5174efb-7055-11d9-acbe-d24b5d626741</xapMM:DocumentID>
+      </rdf:Description>
+      <rdf:Description rdf:about="2c6c4c54-f2dc-11d7-9327-bfab5786aaf2"
+            xmlns:dc="http://purl.org/dc/elements/1.1/">
+         <dc:format>application/x-indesign</dc:format>
+      </rdf:Description>
+      <rdf:Description rdf:about="2c6c4c54-f2dc-11d7-9327-bfab5786aaf2"
+            xmlns:xapTPg="http://ns.adobe.com/xap/1.0/t/pg/"
+            xmlns:xapG="http://ns.adobe.com/xap/1.0/g/"
+            xmlns:stFNT="http://ns.adobe.com/xap/1.0/sType/Font#">
+         <xapTPg:Colorants>
+            <rdf:Seq>
+               <rdf:li rdf:parseType="Resource">
+                  <xapG:swatchName>Black</xapG:swatchName>
+                  <xapG:mode>CMYK</xapG:mode>
+                  <xapG:type>Process</xapG:type>
+                  <xapG:cyan>0</xapG:cyan>
+                  <xapG:magenta>0</xapG:magenta>
+                  <xapG:yellow>0</xapG:yellow>
+                  <xapG:black>100</xapG:black>
+               </rdf:li>
+               <rdf:li rdf:parseType="Resource">
+                  <xapG:swatchName>C=100 M=90 Y=10 K=0</xapG:swatchName>
+                  <xapG:mode>CMYK</xapG:mode>
+                  <xapG:type>Process</xapG:type>
+                  <xapG:cyan>100</xapG:cyan>
+                  <xapG:magenta>89.80392156862746</xapG:magenta>
+                  <xapG:yellow>9.803921568627452</xapG:yellow>
+                  <xapG:black>0</xapG:black>
+               </rdf:li>
+               <rdf:li rdf:parseType="Resource">
+                  <xapG:swatchName>Paper</xapG:swatchName>
+                  <xapG:mode>CMYK</xapG:mode>
+                  <xapG:type>Process</xapG:type>
+                  <xapG:cyan>0</xapG:cyan>
+                  <xapG:magenta>0</xapG:magenta>
+                  <xapG:yellow>0</xapG:yellow>
+                  <xapG:black>0</xapG:black>
+               </rdf:li>
+               <rdf:li rdf:parseType="Resource">
+                  <xapG:swatchName>Registration</xapG:swatchName>
+                  <xapG:mode>CMYK</xapG:mode>
+                  <xapG:type>Process</xapG:type>
+                  <xapG:cyan>100</xapG:cyan>
+                  <xapG:magenta>100</xapG:magenta>
+                  <xapG:yellow>100</xapG:yellow>
+                  <xapG:black>100</xapG:black>
+               </rdf:li>
+            </rdf:Seq>
+         </xapTPg:Colorants>
+         <xapTPg:Fonts>
+            <rdf:Bag>
+               <rdf:li rdf:parseType="Resource">
+                  <stFNT:fontName>MyriadPro-LightCond</stFNT:fontName>
+                  <stFNT:fontFamily>Myriad Pro</stFNT:fontFamily>
+                  <stFNT:fontFace>Light Condensed</stFNT:fontFace>
+                  <stFNT:fontType>OpenTypeCFF</stFNT:fontType>
+                  <stFNT:versionString>MyriadPro-LightCondVersion 2.006;PS 002.000;Core 1.0.38;makeotf.lib1.6.6565</stFNT:versionString>
+                  <stFNT:composite>false</stFNT:composite>
+                  <stFNT:fontFileName>MyriadPro-LightCond.otf</stFNT:fontFileName>
+               </rdf:li>
+               <rdf:li rdf:parseType="Resource">
+                  <stFNT:fontName>MyriadPro-LightCondIt</stFNT:fontName>
+                  <stFNT:fontFamily>Myriad Pro</stFNT:fontFamily>
+                  <stFNT:fontFace>Light Condensed Italic</stFNT:fontFace>
+                  <stFNT:fontType>OpenTypeCFF</stFNT:fontType>
+                  <stFNT:versionString>MyriadPro-LightCondItVersion 2.006;PS 002.000;Core 1.0.38;makeotf.lib1.6.6565</stFNT:versionString>
+                  <stFNT:composite>false</stFNT:composite>
+                  <stFNT:fontFileName>MyriadPro-LightCondIt.otf</stFNT:fontFileName>
+               </rdf:li>
+               <rdf:li rdf:parseType="Resource">
+                  <stFNT:fontName>MyriadPro-Cond</stFNT:fontName>
+                  <stFNT:fontFamily>Myriad Pro</stFNT:fontFamily>
+                  <stFNT:fontFace>Condensed</stFNT:fontFace>
+                  <stFNT:fontType>OpenTypeCFF</stFNT:fontType>
+                  <stFNT:versionString>MyriadPro-CondVersion 2.006;PS 002.000;Core 1.0.38;makeotf.lib1.6.6565</stFNT:versionString>
+                  <stFNT:composite>false</stFNT:composite>
+                  <stFNT:fontFileName>MyriadPro-Cond.otf</stFNT:fontFileName>
+               </rdf:li>
+               <rdf:li rdf:parseType="Resource">
+                  <stFNT:fontName>MyriadPro-CondIt</stFNT:fontName>
+                  <stFNT:fontFamily>Myriad Pro</stFNT:fontFamily>
+                  <stFNT:fontFace>Condensed Italic</stFNT:fontFace>
+                  <stFNT:fontType>OpenTypeCFF</stFNT:fontType>
+                  <stFNT:versionString>MyriadPro-CondItVersion 2.006;PS 002.000;Core 1.0.38;makeotf.lib1.6.6565</stFNT:versionString>
+                  <stFNT:composite>false</stFNT:composite>
+                  <stFNT:fontFileName>MyriadPro-CondIt.otf</stFNT:fontFileName>
+               </rdf:li>
+               <rdf:li rdf:parseType="Resource">
+                  <stFNT:fontName>MyriadPro-SemiboldCond</stFNT:fontName>
+                  <stFNT:fontFamily>Myriad Pro</stFNT:fontFamily>
+                  <stFNT:fontFace>Semibold Condensed</stFNT:fontFace>
+                  <stFNT:fontType>OpenTypeCFF</stFNT:fontType>
+                  <stFNT:versionString>MyriadPro-SemiboldCondVersion 2.006;PS 002.000;Core 1.0.38;makeotf.lib1.6.6565</stFNT:versionString>
+                  <stFNT:composite>false</stFNT:composite>
+                  <stFNT:fontFileName>MyriadPro-SemiboldCond.otf</stFNT:fontFileName>
+               </rdf:li>
+               <rdf:li rdf:parseType="Resource">
+                  <stFNT:fontName>MyriadPro-SemiboldCondIt</stFNT:fontName>
+                  <stFNT:fontFamily>Myriad Pro</stFNT:fontFamily>
+                  <stFNT:fontFace>Semibold Condensed Italic</stFNT:fontFace>
+                  <stFNT:fontType>OpenTypeCFF</stFNT:fontType>
+                  <stFNT:versionString>MyriadPro-SemiboldCondItVersion 2.006;PS 002.000;Core 1.0.38;makeotf.lib1.6.6565</stFNT:versionString>
+                  <stFNT:composite>false</stFNT:composite>
+                  <stFNT:fontFileName>MyriadPro-SemiboldCondIt.otf</stFNT:fontFileName>
+               </rdf:li>
+               <rdf:li rdf:parseType="Resource">
+                  <stFNT:fontName>MyriadPro-BoldCond</stFNT:fontName>
+                  <stFNT:fontFamily>Myriad Pro</stFNT:fontFamily>
+                  <stFNT:fontFace>Bold Condensed</stFNT:fontFace>
+                  <stFNT:fontType>OpenTypeCFF</stFNT:fontType>
+                  <stFNT:versionString>MyriadPro-BoldCondVersion 2.006;PS 002.000;Core 1.0.38;makeotf.lib1.6.6565</stFNT:versionString>
+                  <stFNT:composite>false</stFNT:composite>
+                  <stFNT:fontFileName>MyriadPro-BoldCond.otf</stFNT:fontFileName>
+               </rdf:li>
+               <rdf:li rdf:parseType="Resource">
+                  <stFNT:fontName>MyriadPro-BoldCondIt</stFNT:fontName>
+                  <stFNT:fontFamily>Myriad Pro</stFNT:fontFamily>
+                  <stFNT:fontFace>Bold Condensed Italic</stFNT:fontFace>
+                  <stFNT:fontType>OpenTypeCFF</stFNT:fontType>
+                  <stFNT:versionString>MyriadPro-BoldCondItVersion 2.006;PS 002.000;Core 1.0.38;makeotf.lib1.6.6565</stFNT:versionString>
+                  <stFNT:composite>false</stFNT:composite>
+                  <stFNT:fontFileName>MyriadPro-BoldCondIt.otf</stFNT:fontFileName>
+               </rdf:li>
+               <rdf:li rdf:parseType="Resource">
+                  <stFNT:fontName>MyriadPro-BlackCond</stFNT:fontName>
+                  <stFNT:fontFamily>Myriad Pro</stFNT:fontFamily>
+                  <stFNT:fontFace>Black Condensed</stFNT:fontFace>
+                  <stFNT:fontType>OpenTypeCFF</stFNT:fontType>
+                  <stFNT:versionString>MyriadPro-BlackCondVersion 2.006;PS 002.000;Core 1.0.38;makeotf.lib1.6.6565</stFNT:versionString>
+                  <stFNT:composite>false</stFNT:composite>
+                  <stFNT:fontFileName>MyriadPro-BlackCond.otf</stFNT:fontFileName>
+               </rdf:li>
+               <rdf:li rdf:parseType="Resource">
+                  <stFNT:fontName>MyriadPro-BlackCondIt</stFNT:fontName>
+                  <stFNT:fontFamily>Myriad Pro</stFNT:fontFamily>
+                  <stFNT:fontFace>Black Condensed Italic</stFNT:fontFace>
+                  <stFNT:fontType>OpenTypeCFF</stFNT:fontType>
+                  <stFNT:versionString>MyriadPro-BlackCondItVersion 2.006;PS 002.000;Core 1.0.38;makeotf.lib1.6.6565</stFNT:versionString>
+                  <stFNT:composite>false</stFNT:composite>
+                  <stFNT:fontFileName>MyriadPro-BlackCondIt.otf</stFNT:fontFileName>
+               </rdf:li>
+               <rdf:li rdf:parseType="Resource">
+                  <stFNT:fontName>MyriadPro-LightSemiCn</stFNT:fontName>
+                  <stFNT:fontFamily>Myriad Pro</stFNT:fontFamily>
+                  <stFNT:fontFace>Light SemiCondensed</stFNT:fontFace>
+                  <stFNT:fontType>OpenTypeCFF</stFNT:fontType>
+                  <stFNT:versionString>MyriadPro-LightSemiCnOTF 1.003;PS 001.000;Core 1.0.31;makeotf.lib1.4.1585</stFNT:versionString>
+                  <stFNT:composite>false</stFNT:composite>
+                  <stFNT:fontFileName>MyriadPro-LightSemiCn.otf</stFNT:fontFileName>
+               </rdf:li>
+               <rdf:li rdf:parseType="Resource">
+                  <stFNT:fontName>MyriadPro-LightSemiCnIt</stFNT:fontName>
+                  <stFNT:fontFamily>Myriad Pro</stFNT:fontFamily>
+                  <stFNT:fontFace>Light SemiCondensed Italic</stFNT:fontFace>
+                  <stFNT:fontType>OpenTypeCFF</stFNT:fontType>
+                  <stFNT:versionString>MyriadPro-LightSemiCnItOTF 1.003;PS 001.000;Core 1.0.31;makeotf.lib1.4.1585</stFNT:versionString>
+                  <stFNT:composite>false</stFNT:composite>
+                  <stFNT:fontFileName>MyriadPro-LightSemiCnIt.otf</stFNT:fontFileName>
+               </rdf:li>
+               <rdf:li rdf:parseType="Resource">
+                  <stFNT:fontName>MyriadPro-SemiCn</stFNT:fontName>
+                  <stFNT:fontFamily>Myriad Pro</stFNT:fontFamily>
+                  <stFNT:fontFace>SemiCondensed</stFNT:fontFace>
+                  <stFNT:fontType>OpenTypeCFF</stFNT:fontType>
+                  <stFNT:versionString>MyriadPro-SemiCnOTF 1.003;PS 001.000;Core 1.0.31;makeotf.lib1.4.1585</stFNT:versionString>
+                  <stFNT:composite>false</stFNT:composite>
+                  <stFNT:fontFileName>MyriadPro-SemiCn.otf</stFNT:fontFileName>
+               </rdf:li>
+               <rdf:li rdf:parseType="Resource">
+                  <stFNT:fontName>MyriadPro-SemiCnIt</stFNT:fontName>
+                  <stFNT:fontFamily>Myriad Pro</stFNT:fontFamily>
+                  <stFNT:fontFace>SemiCondensed Italic</stFNT:fontFace>
+                  <stFNT:fontType>OpenTypeCFF</stFNT:fontType>
+                  <stFNT:versionString>MyriadPro-SemiCnItOTF 1.003;PS 001.000;Core 1.0.31;makeotf.lib1.4.1585</stFNT:versionString>
+                  <stFNT:composite>false</stFNT:composite>
+                  <stFNT:fontFileName>MyriadPro-SemiCnIt.otf</stFNT:fontFileName>
+               </rdf:li>
+               <rdf:li rdf:parseType="Resource">
+                  <stFNT:fontName>MyriadPro-SemiboldSemiCn</stFNT:fontName>
+                  <stFNT:fontFamily>Myriad Pro</stFNT:fontFamily>
+                  <stFNT:fontFace>Semibold SemiCondensed</stFNT:fontFace>
+                  <stFNT:fontType>OpenTypeCFF</stFNT:fontType>
+                  <stFNT:versionString>MyriadPro-SemiboldSemiCnOTF 1.003;PS 001.000;Core 1.0.31;makeotf.lib1.4.1585</stFNT:versionString>
+                  <stFNT:composite>false</stFNT:composite>
+                  <stFNT:fontFileName>MyriadPro-SemiboldSemiCn.otf</stFNT:fontFileName>
+               </rdf:li>
+               <rdf:li rdf:parseType="Resource">
+                  <stFNT:fontName>MyriadPro-SemiboldSemiCnIt</stFNT:fontName>
+                  <stFNT:fontFamily>Myriad Pro</stFNT:fontFamily>
+                  <stFNT:fontFace>Semibold SemiCondensed Italic</stFNT:fontFace>
+                  <stFNT:fontType>OpenTypeCFF</stFNT:fontType>
+                  <stFNT:versionString>MyriadPro-SemiboldSemiCnItOTF 1.003;PS 001.000;Core 1.0.31;makeotf.lib1.4.1585</stFNT:versionString>
+                  <stFNT:composite>false</stFNT:composite>
+                  <stFNT:fontFileName>MyriadPro-SemiboldSemiCnIt.otf</stFNT:fontFileName>
+               </rdf:li>
+               <rdf:li rdf:parseType="Resource">
+                  <stFNT:fontName>MyriadPro-BoldSemiCn</stFNT:fontName>
+                  <stFNT:fontFamily>Myriad Pro</stFNT:fontFamily>
+                  <stFNT:fontFace>Bold SemiCondensed</stFNT:fontFace>
+                  <stFNT:fontType>OpenTypeCFF</stFNT:fontType>
+                  <stFNT:versionString>MyriadPro-BoldSemiCnOTF 1.003;PS 001.000;Core 1.0.31;makeotf.lib1.4.1585</stFNT:versionString>
+                  <stFNT:composite>false</stFNT:composite>
+                  <stFNT:fontFileName>MyriadPro-BoldSemiCn.otf</stFNT:fontFileName>
+               </rdf:li>
+               <rdf:li rdf:parseType="Resource">
+                  <stFNT:fontName>MyriadPro-BoldSemiCnIt</stFNT:fontName>
+                  <stFNT:fontFamily>Myriad Pro</stFNT:fontFamily>
+                  <stFNT:fontFace>Bold SemiCondensed Italic</stFNT:fontFace>
+                  <stFNT:fontType>OpenTypeCFF</stFNT:fontType>
+                  <stFNT:versionString>MyriadPro-BoldSemiCnItOTF 1.003;PS 001.000;Core 1.0.31;makeotf.lib1.4.1585</stFNT:versionString>
+                  <stFNT:composite>false</stFNT:composite>
+                  <stFNT:fontFileName>MyriadPro-BoldSemiCnIt.otf</stFNT:fontFileName>
+               </rdf:li>
+               <rdf:li rdf:parseType="Resource">
+                  <stFNT:fontName>MyriadPro-BlackSemiCn</stFNT:fontName>
+                  <stFNT:fontFamily>Myriad Pro</stFNT:fontFamily>
+                  <stFNT:fontFace>Black SemiCondensed</stFNT:fontFace>
+                  <stFNT:fontType>OpenTypeCFF</stFNT:fontType>
+                  <stFNT:versionString>MyriadPro-BlackSemiCnOTF 1.003;PS 001.000;Core 1.0.31;makeotf.lib1.4.1585</stFNT:versionString>
+                  <stFNT:composite>false</stFNT:composite>
+                  <stFNT:fontFileName>MyriadPro-BlackSemiCn.otf</stFNT:fontFileName>
+               </rdf:li>
+               <rdf:li rdf:parseType="Resource">
+                  <stFNT:fontName>MyriadPro-BlackSemiCnIt</stFNT:fontName>
+                  <stFNT:fontFamily>Myriad Pro</stFNT:fontFamily>
+                  <stFNT:fontFace>Black SemiCondensed Italic</stFNT:fontFace>
+                  <stFNT:fontType>OpenTypeCFF</stFNT:fontType>
+                  <stFNT:versionString>MyriadPro-BlackSemiCnItOTF 1.003;PS 001.000;Core 1.0.31;makeotf.lib1.4.1585</stFNT:versionString>
+                  <stFNT:composite>false</stFNT:composite>
+                  <stFNT:fontFileName>MyriadPro-BlackSemiCnIt.otf</stFNT:fontFileName>
+               </rdf:li>
+               <rdf:li rdf:parseType="Resource">
+                  <stFNT:fontName>MyriadPro-Light</stFNT:fontName>
+                  <stFNT:fontFamily>Myriad Pro</stFNT:fontFamily>
+                  <stFNT:fontFace>Light</stFNT:fontFace>
+                  <stFNT:fontType>OpenTypeCFF</stFNT:fontType>
+                  <stFNT:versionString>MyriadPro-LightVersion 2.006;PS 002.000;Core 1.0.38;makeotf.lib1.6.6565</stFNT:versionString>
+                  <stFNT:composite>false</stFNT:composite>
+                  <stFNT:fontFileName>MyriadPro-Light.otf</stFNT:fontFileName>
+               </rdf:li>
+               <rdf:li rdf:parseType="Resource">
+                  <stFNT:fontName>MyriadPro-LightIt</stFNT:fontName>
+                  <stFNT:fontFamily>Myriad Pro</stFNT:fontFamily>
+                  <stFNT:fontFace>Light Italic</stFNT:fontFace>
+                  <stFNT:fontType>OpenTypeCFF</stFNT:fontType>
+                  <stFNT:versionString>MyriadPro-LightItVersion 2.006;PS 002.000;Core 1.0.38;makeotf.lib1.6.6565</stFNT:versionString>
+                  <stFNT:composite>false</stFNT:composite>
+                  <stFNT:fontFileName>MyriadPro-LightIt.otf</stFNT:fontFileName>
+               </rdf:li>
+               <rdf:li rdf:parseType="Resource">
+                  <stFNT:fontName>MyriadPro-Regular</stFNT:fontName>
+                  <stFNT:fontFamily>Myriad Pro</stFNT:fontFamily>
+                  <stFNT:fontFace>Regular</stFNT:fontFace>
+                  <stFNT:fontType>OpenTypeCFF</stFNT:fontType>
+                  <stFNT:versionString>MyriadPro-RegularVersion 2.006;PS 002.000;Core 1.0.38;makeotf.lib1.6.6565</stFNT:versionString>
+                  <stFNT:composite>false</stFNT:composite>
+                  <stFNT:fontFileName>MyriadPro-Regular.otf</stFNT:fontFileName>
+               </rdf:li>
+               <rdf:li rdf:parseType="Resource">
+                  <stFNT:fontName>MyriadPro-It</stFNT:fontName>
+                  <stFNT:fontFamily>Myriad Pro</stFNT:fontFamily>
+                  <stFNT:fontFace>Italic</stFNT:fontFace>
+                  <stFNT:fontType>OpenTypeCFF</stFNT:fontType>
+                  <stFNT:versionString>MyriadPro-ItVersion 2.006;PS 002.000;Core 1.0.38;makeotf.lib1.6.6565</stFNT:versionString>
+                  <stFNT:composite>false</stFNT:composite>
+                  <stFNT:fontFileName>MyriadPro-It.otf</stFNT:fontFileName>
+               </rdf:li>
+               <rdf:li rdf:parseType="Resource">
+                  <stFNT:fontName>MyriadPro-Semibold</stFNT:fontName>
+                  <stFNT:fontFamily>Myriad Pro</stFNT:fontFamily>
+                  <stFNT:fontFace>Semibold</stFNT:fontFace>
+                  <stFNT:fontType>OpenTypeCFF</stFNT:fontType>
+                  <stFNT:versionString>MyriadPro-SemiboldVersion 2.006;PS 002.000;Core 1.0.38;makeotf.lib1.6.6565</stFNT:versionString>
+                  <stFNT:composite>false</stFNT:composite>
+                  <stFNT:fontFileName>MyriadPro-Semibold.otf</stFNT:fontFileName>
+               </rdf:li>
+               <rdf:li rdf:parseType="Resource">
+                  <stFNT:fontName>MyriadPro-SemiboldIt</stFNT:fontName>
+                  <stFNT:fontFamily>Myriad Pro</stFNT:fontFamily>
+                  <stFNT:fontFace>Semibold Italic</stFNT:fontFace>
+                  <stFNT:fontType>OpenTypeCFF</stFNT:fontType>
+                  <stFNT:versionString>MyriadPro-SemiboldItVersion 2.006;PS 002.000;Core 1.0.38;makeotf.lib1.6.6565</stFNT:versionString>
+                  <stFNT:composite>false</stFNT:composite>
+                  <stFNT:fontFileName>MyriadPro-SemiboldIt.otf</stFNT:fontFileName>
+               </rdf:li>
+               <rdf:li rdf:parseType="Resource">
+                  <stFNT:fontName>MyriadPro-Bold</stFNT:fontName>
+                  <stFNT:fontFamily>Myriad Pro</stFNT:fontFamily>
+                  <stFNT:fontFace>Bold</stFNT:fontFace>
+                  <stFNT:fontType>OpenTypeCFF</stFNT:fontType>
+                  <stFNT:versionString>MyriadPro-BoldVersion 2.006;PS 002.000;Core 1.0.38;makeotf.lib1.6.6565</stFNT:versionString>
+                  <stFNT:composite>false</stFNT:composite>
+                  <stFNT:fontFileName>MyriadPro-Bold.otf</stFNT:fontFileName>
+               </rdf:li>
+               <rdf:li rdf:parseType="Resource">
+                  <stFNT:fontName>MyriadPro-BoldIt</stFNT:fontName>
+                  <stFNT:fontFamily>Myriad Pro</stFNT:fontFamily>
+                  <stFNT:fontFace>Bold Italic</stFNT:fontFace>
+                  <stFNT:fontType>OpenTypeCFF</stFNT:fontType>
+                  <stFNT:versionString>MyriadPro-BoldItVersion 2.006;PS 002.000;Core 1.0.38;makeotf.lib1.6.6565</stFNT:versionString>
+                  <stFNT:composite>false</stFNT:composite>
+                  <stFNT:fontFileName>MyriadPro-BoldIt.otf</stFNT:fontFileName>
+               </rdf:li>
+               <rdf:li rdf:parseType="Resource">
+                  <stFNT:fontName>MyriadPro-Black</stFNT:fontName>
+                  <stFNT:fontFamily>Myriad Pro</stFNT:fontFamily>
+                  <stFNT:fontFace>Black</stFNT:fontFace>
+                  <stFNT:fontType>OpenTypeCFF</stFNT:fontType>
+                  <stFNT:versionString>MyriadPro-BlackVersion 2.006;PS 002.000;Core 1.0.38;makeotf.lib1.6.6565</stFNT:versionString>
+                  <stFNT:composite>false</stFNT:composite>
+                  <stFNT:fontFileName>MyriadPro-Black.otf</stFNT:fontFileName>
+               </rdf:li>
+               <rdf:li rdf:parseType="Resource">
+                  <stFNT:fontName>MyriadPro-BlackIt</stFNT:fontName>
+                  <stFNT:fontFamily>Myriad Pro</stFNT:fontFamily>
+                  <stFNT:fontFace>Black Italic</stFNT:fontFace>
+                  <stFNT:fontType>OpenTypeCFF</stFNT:fontType>
+                  <stFNT:versionString>MyriadPro-BlackItVersion 2.006;PS 002.000;Core 1.0.38;makeotf.lib1.6.6565</stFNT:versionString>
+                  <stFNT:composite>false</stFNT:composite>
+                  <stFNT:fontFileName>MyriadPro-BlackIt.otf</stFNT:fontFileName>
+               </rdf:li>
+               <rdf:li rdf:parseType="Resource">
+                  <stFNT:fontName>MyriadPro-LightSemiExt</stFNT:fontName>
+                  <stFNT:fontFamily>Myriad Pro</stFNT:fontFamily>
+                  <stFNT:fontFace>Light SemiExtended</stFNT:fontFace>
+                  <stFNT:fontType>OpenTypeCFF</stFNT:fontType>
+                  <stFNT:versionString>MyriadPro-LightSemiExtOTF 1.006;PS 001.000;Core 1.0.23;hotunix 1.28</stFNT:versionString>
+                  <stFNT:composite>false</stFNT:composite>
+                  <stFNT:fontFileName>MyriadPro-LightSemiExt.otf</stFNT:fontFileName>
+               </rdf:li>
+               <rdf:li rdf:parseType="Resource">
+                  <stFNT:fontName>MyriadPro-LightSemiExtIt</stFNT:fontName>
+                  <stFNT:fontFamily>Myriad Pro</stFNT:fontFamily>
+                  <stFNT:fontFace>Light SemiExtended Italic</stFNT:fontFace>
+                  <stFNT:fontType>OpenTypeCFF</stFNT:fontType>
+                  <stFNT:versionString>MyriadPro-LightSemiExtItOTF 1.006;PS 001.000;Core 1.0.23;hotunix 1.28</stFNT:versionString>
+                  <stFNT:composite>false</stFNT:composite>
+                  <stFNT:fontFileName>MyriadPro-LightSemiExtIt.otf</stFNT:fontFileName>
+               </rdf:li>
+               <rdf:li rdf:parseType="Resource">
+                  <stFNT:fontName>MyriadPro-SemiExt</stFNT:fontName>
+                  <stFNT:fontFamily>Myriad Pro</stFNT:fontFamily>
+                  <stFNT:fontFace>SemiExtended</stFNT:fontFace>
+                  <stFNT:fontType>OpenTypeCFF</stFNT:fontType>
+                  <stFNT:versionString>MyriadPro-SemiExtOTF 1.006;PS 001.000;Core 1.0.23;hotunix 1.28</stFNT:versionString>
+                  <stFNT:composite>false</stFNT:composite>
+                  <stFNT:fontFileName>MyriadPro-SemiExt.otf</stFNT:fontFileName>
+               </rdf:li>
+               <rdf:li rdf:parseType="Resource">
+                  <stFNT:fontName>MyriadPro-SemiExtIt</stFNT:fontName>
+                  <stFNT:fontFamily>Myriad Pro</stFNT:fontFamily>
+                  <stFNT:fontFace>SemiExtended Italic</stFNT:fontFace>
+                  <stFNT:fontType>OpenTypeCFF</stFNT:fontType>
+                  <stFNT:versionString>MyriadPro-SemiExtItOTF 1.006;PS 001.000;Core 1.0.23;hotunix 1.28</stFNT:versionString>
+                  <stFNT:composite>false</stFNT:composite>
+                  <stFNT:fontFileName>MyriadPro-SemiExtIt.otf</stFNT:fontFileName>
+               </rdf:li>
+               <rdf:li rdf:parseType="Resource">
+                  <stFNT:fontName>MyriadPro-SemiboldSemiExt</stFNT:fontName>
+                  <stFNT:fontFamily>Myriad Pro</stFNT:fontFamily>
+                  <stFNT:fontFace>Semibold SemiExtended</stFNT:fontFace>
+                  <stFNT:fontType>OpenTypeCFF</stFNT:fontType>
+                  <stFNT:versionString>MyriadPro-SemiboldSemiExtOTF 1.007;PS 001.000;Core 1.0.23;hotunix 1.28</stFNT:versionString>
+                  <stFNT:composite>false</stFNT:composite>
+                  <stFNT:fontFileName>MyriadPro-SemiboldSemiExt.otf</stFNT:fontFileName>
+               </rdf:li>
+               <rdf:li rdf:parseType="Resource">
+                  <stFNT:fontName>MyriadPro-SemiboldSemiExtIt</stFNT:fontName>
+                  <stFNT:fontFamily>Myriad Pro</stFNT:fontFamily>
+                  <stFNT:fontFace>Semibold SemiExtended Italic</stFNT:fontFace>
+                  <stFNT:fontType>OpenTypeCFF</stFNT:fontType>
+                  <stFNT:versionString>MyriadPro-SemiboldSemiExtItOTF 1.006;PS 001.000;Core 1.0.23;hotunix 1.28</stFNT:versionString>
+                  <stFNT:composite>false</stFNT:composite>
+                  <stFNT:fontFileName>MyriadPro-SemiboldSemiExtIt.otf</stFNT:fontFileName>
+               </rdf:li>
+               <rdf:li rdf:parseType="Resource">
+                  <stFNT:fontName>MyriadPro-BoldSemiExt</stFNT:fontName>
+                  <stFNT:fontFamily>Myriad Pro</stFNT:fontFamily>
+                  <stFNT:fontFace>Bold SemiExtended</stFNT:fontFace>
+                  <stFNT:fontType>OpenTypeCFF</stFNT:fontType>
+                  <stFNT:versionString>MyriadPro-BoldSemiExtOTF 1.007;PS 001.000;Core 1.0.23;hotunix 1.28</stFNT:versionString>
+                  <stFNT:composite>false</stFNT:composite>
+                  <stFNT:fontFileName>MyriadPro-BoldSemiExt.otf</stFNT:fontFileName>
+               </rdf:li>
+               <rdf:li rdf:parseType="Resource">
+                  <stFNT:fontName>MyriadPro-BoldSemiExtIt</stFNT:fontName>
+                  <stFNT:fontFamily>Myriad Pro</stFNT:fontFamily>
+                  <stFNT:fontFace>Bold SemiExtended Italic</stFNT:fontFace>
+                  <stFNT:fontType>OpenTypeCFF</stFNT:fontType>
+                  <stFNT:versionString>MyriadPro-BoldSemiExtItOTF 1.006;PS 001.000;Core 1.0.23;hotunix 1.28</stFNT:versionString>
+                  <stFNT:composite>false</stFNT:composite>
+                  <stFNT:fontFileName>MyriadPro-BoldSemiExtIt.otf</stFNT:fontFileName>
+               </rdf:li>
+               <rdf:li rdf:parseType="Resource">
+                  <stFNT:fontName>MyriadPro-BlackSemiExt</stFNT:fontName>
+                  <stFNT:fontFamily>Myriad Pro</stFNT:fontFamily>
+                  <stFNT:fontFace>Black SemiExtended</stFNT:fontFace>
+                  <stFNT:fontType>OpenTypeCFF</stFNT:fontType>
+                  <stFNT:versionString>MyriadPro-BlackSemiExtOTF 1.006;PS 001.000;Core 1.0.23;hotunix 1.28</stFNT:versionString>
+                  <stFNT:composite>false</stFNT:composite>
+                  <stFNT:fontFileName>MyriadPro-BlackSemiExt.otf</stFNT:fontFileName>
+               </rdf:li>
+               <rdf:li rdf:parseType="Resource">
+                  <stFNT:fontName>MyriadPro-BlackSemiExtIt</stFNT:fontName>
+                  <stFNT:fontFamily>Myriad Pro</stFNT:fontFamily>
+                  <stFNT:fontFace>Black SemiExtended Italic</stFNT:fontFace>
+                  <stFNT:fontType>OpenTypeCFF</stFNT:fontType>
+                  <stFNT:versionString>MyriadPro-BlackSemiExtItOTF 1.006;PS 001.000;Core 1.0.23;hotunix 1.28</stFNT:versionString>
+                  <stFNT:composite>false</stFNT:composite>
+                  <stFNT:fontFileName>MyriadPro-BlackSemiExtIt.otf</stFNT:fontFileName>
+               </rdf:li>
+               <rdf:li rdf:parseType="Resource">
+                  <stFNT:fontName>MinionPro-Cn</stFNT:fontName>
+                  <stFNT:fontFamily>Minion Pro</stFNT:fontFamily>
+                  <stFNT:fontFace>Cond</stFNT:fontFace>
+                  <stFNT:fontType>OpenTypeCFF</stFNT:fontType>
+                  <stFNT:versionString>MinionPro-CnVersion 1.021;PS 001.001;Core 1.0.35;makeotf.lib1.5.4492</stFNT:versionString>
+                  <stFNT:composite>false</stFNT:composite>
+                  <stFNT:fontFileName>MinionPro-Cn.otf</stFNT:fontFileName>
+               </rdf:li>
+               <rdf:li rdf:parseType="Resource">
+                  <stFNT:fontName>MinionPro-CnIt</stFNT:fontName>
+                  <stFNT:fontFamily>Minion Pro</stFNT:fontFamily>
+                  <stFNT:fontFace>Cond Italic</stFNT:fontFace>
+                  <stFNT:fontType>OpenTypeCFF</stFNT:fontType>
+                  <stFNT:versionString>MinionPro-CnItVersion 1.022;PS 001.001;Core 1.0.35;makeotf.lib1.5.4492</stFNT:versionString>
+                  <stFNT:composite>false</stFNT:composite>
+                  <stFNT:fontFileName>MinionPro-CnIt.otf</stFNT:fontFileName>
+               </rdf:li>
+               <rdf:li rdf:parseType="Resource">
+                  <stFNT:fontName>MinionPro-MediumCn</stFNT:fontName>
+                  <stFNT:fontFamily>Minion Pro</stFNT:fontFamily>
+                  <stFNT:fontFace>Medium Cond</stFNT:fontFace>
+                  <stFNT:fontType>OpenTypeCFF</stFNT:fontType>
+                  <stFNT:versionString>MinionPro-MediumCnVersion 1.021;PS 001.001;Core 1.0.35;makeotf.lib1.5.4492</stFNT:versionString>
+                  <stFNT:composite>false</stFNT:composite>
+                  <stFNT:fontFileName>MinionPro-MediumCn.otf</stFNT:fontFileName>
+               </rdf:li>
+               <rdf:li rdf:parseType="Resource">
+                  <stFNT:fontName>MinionPro-MediumCnIt</stFNT:fontName>
+                  <stFNT:fontFamily>Minion Pro</stFNT:fontFamily>
+                  <stFNT:fontFace>Medium Cond Italic</stFNT:fontFace>
+                  <stFNT:fontType>OpenTypeCFF</stFNT:fontType>
+                  <stFNT:versionString>MinionPro-MediumCnItVersion 1.022;PS 001.001;Core 1.0.35;makeotf.lib1.5.4492</stFNT:versionString>
+                  <stFNT:composite>false</stFNT:composite>
+                  <stFNT:fontFileName>MinionPro-MediumCnIt.otf</stFNT:fontFileName>
+               </rdf:li>
+               <rdf:li rdf:parseType="Resource">
+                  <stFNT:fontName>MinionPro-SemiboldCn</stFNT:fontName>
+                  <stFNT:fontFamily>Minion Pro</stFNT:fontFamily>
+                  <stFNT:fontFace>Semibold Cond</stFNT:fontFace>
+                  <stFNT:fontType>OpenTypeCFF</stFNT:fontType>
+                  <stFNT:versionString>MinionPro-SemiboldCnVersion 1.021;PS 001.001;Core 1.0.35;makeotf.lib1.5.4492</stFNT:versionString>
+                  <stFNT:composite>false</stFNT:composite>
+                  <stFNT:fontFileName>MinionPro-SemiboldCn.otf</stFNT:fontFileName>
+               </rdf:li>
+               <rdf:li rdf:parseType="Resource">
+                  <stFNT:fontName>MinionPro-SemiboldCnIt</stFNT:fontName>
+                  <stFNT:fontFamily>Minion Pro</stFNT:fontFamily>
+                  <stFNT:fontFace>Semibold Cond Italic</stFNT:fontFace>
+                  <stFNT:fontType>OpenTypeCFF</stFNT:fontType>
+                  <stFNT:versionString>MinionPro-SemiboldCnItVersion 1.022;PS 001.001;Core 1.0.35;makeotf.lib1.5.4492</stFNT:versionString>
+                  <stFNT:composite>false</stFNT:composite>
+                  <stFNT:fontFileName>MinionPro-SemiboldCnIt.otf</stFNT:fontFileName>
+               </rdf:li>
+               <rdf:li rdf:parseType="Resource">
+                  <stFNT:fontName>MinionPro-BoldCn</stFNT:fontName>
+                  <stFNT:fontFamily>Minion Pro</stFNT:fontFamily>
+                  <stFNT:fontFace>Bold Cond</stFNT:fontFace>
+                  <stFNT:fontType>OpenTypeCFF</stFNT:fontType>
+                  <stFNT:versionString>MinionPro-BoldCnVersion 1.021;PS 001.001;Core 1.0.35;makeotf.lib1.5.4492</stFNT:versionString>
+                  <stFNT:composite>false</stFNT:composite>
+                  <stFNT:fontFileName>MinionPro-BoldCn.otf</stFNT:fontFileName>
+               </rdf:li>
+               <rdf:li rdf:parseType="Resource">
+                  <stFNT:fontName>MinionPro-BoldCnIt</stFNT:fontName>
+                  <stFNT:fontFamily>Minion Pro</stFNT:fontFamily>
+                  <stFNT:fontFace>Bold Cond Italic</stFNT:fontFace>
+                  <stFNT:fontType>OpenTypeCFF</stFNT:fontType>
+                  <stFNT:versionString>MinionPro-BoldCnItVersion 1.022;PS 001.001;Core 1.0.35;makeotf.lib1.5.4492</stFNT:versionString>
+                  <stFNT:composite>false</stFNT:composite>
+                  <stFNT:fontFileName>MinionPro-BoldCnIt.otf</stFNT:fontFileName>
+               </rdf:li>
+               <rdf:li rdf:parseType="Resource">
+                  <stFNT:fontName>MinionPro-Regular</stFNT:fontName>
+                  <stFNT:fontFamily>Minion Pro</stFNT:fontFamily>
+                  <stFNT:fontFace>Regular</stFNT:fontFace>
+                  <stFNT:fontType>OpenTypeCFF</stFNT:fontType>
+                  <stFNT:versionString>MinionPro-RegularVersion 1.021;PS 001.001;Core 1.0.35;makeotf.lib1.5.4492</stFNT:versionString>
+                  <stFNT:composite>false</stFNT:composite>
+                  <stFNT:fontFileName>MinionPro-Regular.otf</stFNT:fontFileName>
+               </rdf:li>
+               <rdf:li rdf:parseType="Resource">
+                  <stFNT:fontName>MinionPro-It</stFNT:fontName>
+                  <stFNT:fontFamily>Minion Pro</stFNT:fontFamily>
+                  <stFNT:fontFace>Italic</stFNT:fontFace>
+                  <stFNT:fontType>OpenTypeCFF</stFNT:fontType>
+                  <stFNT:versionString>MinionPro-ItVersion 1.022;PS 001.001;Core 1.0.35;makeotf.lib1.5.4492</stFNT:versionString>
+                  <stFNT:composite>false</stFNT:composite>
+                  <stFNT:fontFileName>MinionPro-It.otf</stFNT:fontFileName>
+               </rdf:li>
+               <rdf:li rdf:parseType="Resource">
+                  <stFNT:fontName>MinionPro-Medium</stFNT:fontName>
+                  <stFNT:fontFamily>Minion Pro</stFNT:fontFamily>
+                  <stFNT:fontFace>Medium</stFNT:fontFace>
+                  <stFNT:fontType>OpenTypeCFF</stFNT:fontType>
+                  <stFNT:versionString>MinionPro-MediumVersion 1.021;PS 001.001;Core 1.0.35;makeotf.lib1.5.4492</stFNT:versionString>
+                  <stFNT:composite>false</stFNT:composite>
+                  <stFNT:fontFileName>MinionPro-Medium.otf</stFNT:fontFileName>
+               </rdf:li>
+               <rdf:li rdf:parseType="Resource">
+                  <stFNT:fontName>MinionPro-MediumIt</stFNT:fontName>
+                  <stFNT:fontFamily>Minion Pro</stFNT:fontFamily>
+                  <stFNT:fontFace>Medium Italic</stFNT:fontFace>
+                  <stFNT:fontType>OpenTypeCFF</stFNT:fontType>
+                  <stFNT:versionString>MinionPro-MediumItVersion 1.022;PS 001.001;Core 1.0.35;makeotf.lib1.5.4492</stFNT:versionString>
+                  <stFNT:composite>false</stFNT:composite>
+                  <stFNT:fontFileName>MinionPro-MediumIt.otf</stFNT:fontFileName>
+               </rdf:li>
+               <rdf:li rdf:parseType="Resource">
+                  <stFNT:fontName>MinionPro-Semibold</stFNT:fontName>
+                  <stFNT:fontFamily>Minion Pro</stFNT:fontFamily>
+                  <stFNT:fontFace>Semibold</stFNT:fontFace>
+                  <stFNT:fontType>OpenTypeCFF</stFNT:fontType>
+                  <stFNT:versionString>MinionPro-SemiboldVersion 1.021;PS 001.001;Core 1.0.35;makeotf.lib1.5.4492</stFNT:versionString>
+                  <stFNT:composite>false</stFNT:composite>
+                  <stFNT:fontFileName>MinionPro-Semibold.otf</stFNT:fontFileName>
+               </rdf:li>
+               <rdf:li rdf:parseType="Resource">
+                  <stFNT:fontName>MinionPro-SemiboldIt</stFNT:fontName>
+                  <stFNT:fontFamily>Minion Pro</stFNT:fontFamily>
+                  <stFNT:fontFace>Semibold Italic</stFNT:fontFace>
+                  <stFNT:fontType>OpenTypeCFF</stFNT:fontType>
+                  <stFNT:versionString>MinionPro-SemiboldItVersion 1.022;PS 001.001;Core 1.0.35;makeotf.lib1.5.4492</stFNT:versionString>
+                  <stFNT:composite>false</stFNT:composite>
+                  <stFNT:fontFileName>MinionPro-SemiboldIt.otf</stFNT:fontFileName>
+               </rdf:li>
+               <rdf:li rdf:parseType="Resource">
+                  <stFNT:fontName>MinionPro-Bold</stFNT:fontName>
+                  <stFNT:fontFamily>Minion Pro</stFNT:fontFamily>
+                  <stFNT:fontFace>Bold</stFNT:fontFace>
+                  <stFNT:fontType>OpenTypeCFF</stFNT:fontType>
+                  <stFNT:versionString>MinionPro-BoldVersion 1.021;PS 001.001;Core 1.0.35;makeotf.lib1.5.4492</stFNT:versionString>
+                  <stFNT:composite>false</stFNT:composite>
+                  <stFNT:fontFileName>MinionPro-Bold.otf</stFNT:fontFileName>
+               </rdf:li>
+               <rdf:li rdf:parseType="Resource">
+                  <stFNT:fontName>MinionPro-BoldIt</stFNT:fontName>
+                  <stFNT:fontFamily>Minion Pro</stFNT:fontFamily>
+                  <stFNT:fontFace>Bold Italic</stFNT:fontFace>
+                  <stFNT:fontType>OpenTypeCFF</stFNT:fontType>
+                  <stFNT:versionString>MinionPro-BoldItVersion 1.022;PS 001.001;Core 1.0.35;makeotf.lib1.5.4492</stFNT:versionString>
+                  <stFNT:composite>false</stFNT:composite>
+                  <stFNT:fontFileName>MinionPro-BoldIt.otf</stFNT:fontFileName>
+               </rdf:li>
+               <rdf:li rdf:parseType="Resource">
+                  <stFNT:fontName>AGaramondPro-Regular</stFNT:fontName>
+                  <stFNT:fontFamily>Adobe Garamond Pro</stFNT:fontFamily>
+                  <stFNT:fontFace>Regular</stFNT:fontFace>
+                  <stFNT:fontType>OpenTypeCFF</stFNT:fontType>
+                  <stFNT:versionString>AGaramondPro-RegularOTF 1.007;PS 001.000;Core 1.0.30;makeotf.lib1.4.1030</stFNT:versionString>
+                  <stFNT:composite>false</stFNT:composite>
+                  <stFNT:fontFileName>AGaramondPro-Regular.otf</stFNT:fontFileName>
+               </rdf:li>
+               <rdf:li rdf:parseType="Resource">
+                  <stFNT:fontName>AGaramondPro-Italic</stFNT:fontName>
+                  <stFNT:fontFamily>Adobe Garamond Pro</stFNT:fontFamily>
+                  <stFNT:fontFace>Italic</stFNT:fontFace>
+                  <stFNT:fontType>OpenTypeCFF</stFNT:fontType>
+                  <stFNT:versionString>AGaramondPro-ItalicOTF 1.007;PS 001.000;Core 1.0.30;makeotf.lib1.4.1030</stFNT:versionString>
+                  <stFNT:composite>false</stFNT:composite>
+                  <stFNT:fontFileName>AGaramondPro-Italic.otf</stFNT:fontFileName>
+               </rdf:li>
+               <rdf:li rdf:parseType="Resource">
+                  <stFNT:fontName>AGaramondPro-Semibold</stFNT:fontName>
+                  <stFNT:fontFamily>Adobe Garamond Pro</stFNT:fontFamily>
+                  <stFNT:fontFace>Semibold</stFNT:fontFace>
+                  <stFNT:fontType>OpenTypeCFF</stFNT:fontType>
+                  <stFNT:versionString>AGaramondPro-SemiboldOTF 1.007;PS 001.000;Core 1.0.30;makeotf.lib1.4.1030</stFNT:versionString>
+                  <stFNT:composite>false</stFNT:composite>
+                  <stFNT:fontFileName>AGaramondPro-Semibold.otf</stFNT:fontFileName>
+               </rdf:li>
+               <rdf:li rdf:parseType="Resource">
+                  <stFNT:fontName>AGaramondPro-SemiboldItalic</stFNT:fontName>
+                  <stFNT:fontFamily>Adobe Garamond Pro</stFNT:fontFamily>
+                  <stFNT:fontFace>Semibold Italic</stFNT:fontFace>
+                  <stFNT:fontType>OpenTypeCFF</stFNT:fontType>
+                  <stFNT:versionString>AGaramondPro-SemiboldItalicOTF 1.007;PS 001.000;Core 1.0.30;makeotf.lib1.4.1030</stFNT:versionString>
+                  <stFNT:composite>false</stFNT:composite>
+                  <stFNT:fontFileName>AGaramondPro-SemiboldItalic.otf</stFNT:fontFileName>
+               </rdf:li>
+               <rdf:li rdf:parseType="Resource">
+                  <stFNT:fontName>AGaramondPro-Bold</stFNT:fontName>
+                  <stFNT:fontFamily>Adobe Garamond Pro</stFNT:fontFamily>
+                  <stFNT:fontFace>Bold</stFNT:fontFace>
+                  <stFNT:fontType>OpenTypeCFF</stFNT:fontType>
+                  <stFNT:versionString>AGaramondPro-BoldOTF 1.007;PS 001.000;Core 1.0.30;makeotf.lib1.4.1030</stFNT:versionString>
+                  <stFNT:composite>false</stFNT:composite>
+                  <stFNT:fontFileName>AGaramondPro-Bold.otf</stFNT:fontFileName>
+               </rdf:li>
+               <rdf:li rdf:parseType="Resource">
+                  <stFNT:fontName>AGaramondPro-BoldItalic</stFNT:fontName>
+                  <stFNT:fontFamily>Adobe Garamond Pro</stFNT:fontFamily>
+                  <stFNT:fontFace>Bold Italic</stFNT:fontFace>
+                  <stFNT:fontType>OpenTypeCFF</stFNT:fontType>
+                  <stFNT:versionString>AGaramondPro-BoldItalicOTF 1.007;PS 001.000;Core 1.0.30;makeotf.lib1.4.1030</stFNT:versionString>
+                  <stFNT:composite>false</stFNT:composite>
+                  <stFNT:fontFileName>AGaramondPro-BoldItalic.otf</stFNT:fontFileName>
+               </rdf:li>
+            </rdf:Bag>
+         </xapTPg:Fonts>
+      </rdf:Description>
+   </rdf:RDF>
+</x:xmpmeta>
+<?xpacket end="r"?>]]></pcnt>
+	</cMep>
+	<cOpt tlnm="k_Index" tlsl="o_u55" ReIx="b_t" iBkD="b_f" iHEs="b_f" IdxF="e_NtIf" iSHs="b_t" iEiS="b_f" lOst="o_u55" lTws="o_u55" lThs="o_u55" lFst="o_u55" sHst="o_u55" pnSt="o_u56" crSt="o_u56" crTS="o_u56" ftSp="k_  " beSp="k_; " prSp="k_^=" pnSp="k_, " crSp="k_. " eeSp="k_" Self="rc_dcOpt1"/>
+	<cIhs HSnm="k_" HSlg="l_100" HShc="l_13034" HSgv="l_1" HSov="l_0" HSgl="x_a_c_kIndexGroup~sep~Symbol_k_kIndexGroup~sep~Symbol_k__b_f_x_4_k__k__k_kIndexSection~sep~Symbol_l_100_c_kIndexGroup~sep~Alphabet_k_kIndexGroup~sep~Alphabet_k__b_f_x_68_k_A_k__k_kIndexSection~sep~A_l_100_k_B_k__k_kIndexSection~sep~B_l_100_k_C_k__k_kIndexSection~sep~C_l_100_k_D_k__k_kIndexSection~sep~D_l_100_k_E_k__k_kIndexSection~sep~E_l_100_k_F_k__k_kIndexSection~sep~F_l_100_k_G_k__k_kIndexSection~sep~G_l_100_k_H_k__k_kIndexSection~sep~H_l_100_k_I_k__k_kIndexSection~sep~I_l_100_k_J_k__k_kIndexSection~sep~J_l_100_k_K_k__k_kIndexSection~sep~K_l_100_k_L_k__k_kIndexSection~sep~L_l_100_k_M_k__k_kIndexSection~sep~M_l_100_k_N_k__k_kIndexSection~sep~N_l_100_k_O_k__k_kIndexSection~sep~O_l_100_k_P_k__k_kIndexSection~sep~P_l_100_k_Q_k__k_kIndexSection~sep~Q_l_100_k_R_k__k_kIndexSection~sep~R_l_100_k_S_k__k_kIndexSection~sep~S_l_100_k_T_k__k_kIndexSection~sep~T_l_100_k_U_k__k_kIndexSection~sep~U_l_100_k_V_k__k_kIndexSection~sep~V_l_100_k_W_k__k_kIndexSection~sep~W_l_100_k_X_k__k_kIndexSection~sep~X_l_100_k_Y_k__k_kIndexSection~sep~Y_l_100_k_Z_k__k_kIndexSection~sep~Z_l_100" Self="rc_dcIhs1"/>
+	<btnp pnam="k_" snam="k_" Self="rc_dbtnp1"/>
+	<tinD Self="rc_dtinD1">
+		<pcnt><![CDATA[AAAAAA==]]></pcnt>
+	</tinD>
+	<Jcpg font="c_Times" ptfs="k_Roman" ptsz="D_9.21259842519685" Jcak="D_0" Jlak="D_6.909448818897637" phzs="D_100" pvts="D_100" Self="rc_dJcpg1"/>
+	<Jcsg font="c_Times" ptfs="k_Roman" ptsz="D_9.21259842519685" Jcak="D_0" Jlak="D_6.909448818897637" phzs="D_100" pvts="D_100" laln="e_lltj" jgal="e_Jact" jcal="e_Jact" Jgdv="e_jGgv" Jgcc="e_botm" Jgcz="D_9.212598" Self="rc_dJcsg1"/>
+	<Jgpf Jgsa="b_f" Jgsf="b_t" Jgms="D_50" Jstp="b_f" Jgci="e_iGdg" Jcen="s_a" Jslc="b_t" Jicf="b_f" Jucc="b_f" Jscc="b_t" Self="rc_dJgpf1"/>
+	<Jmui jmus="s_7fff" Self="rc_dJmui1"/>
+	<tagX pnam="c_article" XTCr="e_iYlw" ptag="x_0" Self="rc_ubf"/>
+	<tagX pnam="c_articleinfo" XTCr="e_iCyn" ptag="x_0" Self="rc_uc0"/>
+	<tagX pnam="c_computeroutput" XTCr="e_iLvn" ptag="x_0" Self="rc_uc1"/>
+	<tagX pnam="c_emphasis" XTCr="e_iPnk" ptag="x_0" Self="rc_uc2"/>
+	<tagX pnam="c_entry" XTCr="e_iBrn" ptag="x_0" Self="rc_uc3"/>
+	<tagX pnam="c_imagedata" XTCr="e_iBrg" ptag="x_0" Self="rc_uc4"/>
+	<tagX pnam="c_imageobject" XTCr="e_iPch" ptag="x_0" Self="rc_uc5"/>
+	<tagX pnam="c_informaltable" XTCr="e_iOrn" ptag="x_0" Self="rc_uc6"/>
+	<tagX pnam="c_itemizedlist" XTCr="e_iGld" ptag="x_0" Self="rc_uc7"/>
+	<tagX pnam="c_keyword" XTCr="e_iBlk" ptag="x_0" Self="rc_uc8"/>
+	<tagX pnam="c_keywordset" XTCr="e_iGry" ptag="x_0" Self="rc_uc9"/>
+	<tagX pnam="c_link" XTCr="e_iOcr" ptag="x_0" Self="rc_uca"/>
+	<tagX pnam="c_listitem" XTCr="e_iDbl" ptag="x_0" Self="rc_ucb"/>
+	<tagX pnam="c_mediaobject" XTCr="e_iOlv" ptag="x_0" Self="rc_ucc"/>
+	<tagX pnam="c_orderedlist" XTCr="e_iOlv" ptag="x_0" Self="rc_ucd"/>
+	<tagX pnam="c_para" XTCr="e_iRed" ptag="x_0" Self="rc_uce"/>
+	<tagX pnam="c_programlisting" XTCr="e_iOcr" ptag="x_0" Self="rc_ucf"/>
+	<tagX pnam="c_row" XTCr="e_iTan" ptag="x_0" Self="rc_ud0"/>
+	<tagX pnam="c_section" XTCr="e_iBlu" ptag="x_0" Self="rc_ud1"/>
+	<tagX pnam="c_tbody" XTCr="e_iVlt" ptag="x_0" Self="rc_ud2"/>
+	<tagX pnam="c_tgroup" XTCr="e_iDgr" ptag="x_0" Self="rc_ud3"/>
+	<tagX pnam="c_thead" XTCr="e_iTel" ptag="x_0" Self="rc_ud4"/>
+	<tagX pnam="c_title" XTCr="e_iGrn" ptag="x_0" Self="rc_ud5"/>
+	<tagX pnam="c_ulink" XTCr="e_iBrd" ptag="x_0" Self="rc_ud6"/>
+	<layr pnam="c_Layer 1" pvis="b_t" plck="b_f" lcol="e_iLbl" iwrp="b_f" sogd="b_t" lkgd="b_f" uilr="b_t" exlr="b_t" ptag="x_0" Self="rc_ud7"/>
+	<mspr pnam="rc_A-Master" npfx="c_A" nmbs="c_Master" smsi="b_t" PagC="l_1" pmas="o_n" ovpp="x_0" ptag="x_0" Self="rc_ud8">
+		<page impp="ro_uddimgp1" pnam="rc_A" SnAd="ro_n" DCof="rl_0" pbnd="rx_4_U_-420.944881889_U_-297.6377952755_U_420.944881889_U_297.6377952755" pgTs="o_u89" PgSd="re_usex" pmas="o_n" mpgs="ry_0" ovrl="x_0" TOpp="y_0" Jgrd="ro_uddJgda1" Jgsp="e_gsto" Jumg="b_t" ptag="x_0" Self="rc_udd">
+			<imgp colc="l_1" colg="U_12" mart="U_85.03937007874016" marb="U_85.03937007874016" marl="U_85.03937007874016" marr="U_56.69291338582678" cold="e_horz" hccl="rb_f" cpos="x_2_D_0_D_453.5433070864331" Self="rc_uddimgp1"/>
+			<Jgda font="c_Times" ptfs="k_Roman" ptsz="D_9.21259842519685" Jcak="D_0" Jlak="D_6.909448818897637" phzs="D_100" pvts="D_100" laln="e_lltj" jgal="e_Jact" jcal="e_Jact" Self="rc_uddJgda1"/>
+		</page>
+		<txtf strp="ro_udf" ftxf="ro_uf0" ltxf="ro_uf0" itxf="rl_0" ptxf="o_n" ntxf="o_n" pTFP="ro_uf0TFPf1" BLfg="ro_uf0BfGo1" pAOs="ro_uf0cAOs1" txwr="ro_uf0ctxw1" IGeo="x_19_l_1_l_4_l_2_D_-226.77165354321656_D_-335.90551181025984_l_2_D_-226.77165354321656_D_335.90551181025984_l_2_D_226.77165354321656_D_335.90551181025984_l_2_D_226.77165354321656_D_-335.90551181025984_b_f_D_-226.77165354321656_D_-335.90551181025984_D_226.77165354321656_D_335.90551181025984_D_1_D_0_D_0_D_1_D_14.173228346456682_D_0" cntt="e_~sep~745f7465" Jgrd="ro_uf0Jgda1" lckS="re_none" Xaxn="ro_n" xpBm="e_norm" xpBo="D_100" xpBk="b_f" xpBi="b_f" xpSm="e_none" xpSb="e_xpMb" xpSx="U_7" xpSy="U_7" xpSr="U_5" xpSc="o_ub" xpSo="D_75" xpVm="e_none" xpVw="U_9" xpVc="e_xpCc" xpSs="D_0" xpSn="D_0" xpVn="D_0" STof="ro_n" flcl="o_ue" filt="D_-1" lnwt="U_1" mitr="D_4" endc="e_bcap" endj="e_mjon" stty="o_di5a29" llen="e_none" rlen="e_none" lncl="o_ue" lint="D_-1" pcef="e_none" pcrd="D_12" pgst="x_2_U_0_U_0" pgfl="U_0" pgfa="D_0" pgss="x_2_U_0_U_0" pgsl="U_0" pgsa="D_0" gapC="o_ue" gapT="D_-1" strA="e_stAC" nopr="b_f" pilr="o_ud7" plck="b_f" pLDs="e_Dflt" gfhl="U_0" gfha="D_0" gshl="U_0" gsha="D_0" aobs="o_n" ptag="x_0" Self="rc_uf0">
+			<TFPf ccnt="l_1" clgt="U_12" clwd="U_453.5433070864331" ufcw="b_f" inst="x_4_U_0_U_0_U_0_U_0" Fbof="e_MAso" Fboa="U_0" VJal="e_top" VJmi="U_0" iwrp="b_f" Self="rc_uf0TFPf1"/>
+			<BfGo BFuc="b_f" BFso="U_0" BFro="e_EToi" BFic="U_12" BFcl="e_iLbl" Self="rc_uf0BfGo1"/>
+			<cAOs Self="rc_uf0cAOs1"/>
+			<ctxw pcos="ro_uf0ctxw1ccos1" txwt="e_none" ptwi="e_none" ptwv="b_f" Self="rc_uf0ctxw1">
+				<ccos ptns="rx_0" acpn="rx_0" Self="rc_uf0ctxw1ccos1"/>
+			</ctxw>
+			<Jgda Jgdv="e_jGgv" Jgcc="e_botm" Jgcz="D_9.21259842519685" Self="rc_uf0Jgda1"/>
+		</txtf>
+	</mspr>
+	<sprd fsSo="e_Dflt" fsFS="ro_uf4flSe1" smsi="b_t" ilnd="b_f" PagC="l_1" BnLc="l_0" pmas="o_ud8" ptag="x_0" Self="rc_uf4">
+		<flSe fsLl="D_50" fsFr="D_300" fsGr="D_150" fsCr="b_f" fsSf="b_f" fsTo="b_f" Self="rc_uf4flSe1"/>
+		<page impp="ro_uf9imgp1" pnam="rc_1" SnAd="ro_u8a" DCof="rl_1" pbnd="rx_4_U_-420.944881889_U_-297.6377952755_U_420.944881889_U_297.6377952755" pgTs="o_u89" PgSd="re_usex" pmas="o_ud8" mpgs="ry_0" ovrl="x_2_o_uf0_o_u10c" TOpp="y_0" Jgrd="ro_uf9Jgda1" Jgsp="e_gsto" Jumg="b_t" ptag="x_0" Self="rc_uf9">
+			<imgp colc="l_1" colg="U_12" mart="U_85.03937007874016" marb="U_85.03937007874016" marl="U_85.03937007874016" marr="U_56.69291338582678" cold="e_horz" hccl="rb_f" cpos="x_2_D_0_D_453.5433070864331" Self="rc_uf9imgp1"/>
+			<Jgda font="c_Times" ptfs="k_Roman" ptsz="D_9.21259842519685" Jcak="D_0" Jlak="D_6.909448818897637" phzs="D_100" pvts="D_100" laln="e_lltj" jgal="e_Jact" jcal="e_Jact" Self="rc_uf9Jgda1"/>
+		</page>
+		<txtf strp="ro_ufb" ftxf="ro_u10c" ltxf="ro_u128" itxf="rl_0" ptxf="o_n" ntxf="o_u128" pTFP="ro_u10cTFPf1" BLfg="ro_u10cBfGo1" pAOs="ro_u10ccAOs1" txwr="ro_u10cctxw1" IGeo="x_19_l_1_l_4_l_2_D_-226.77165354321656_D_-335.90551181025984_l_2_D_-226.77165354321656_D_335.90551181025984_l_2_D_226.77165354321656_D_335.90551181025984_l_2_D_226.77165354321656_D_-335.90551181025984_b_f_D_-226.77165354321656_D_-335.90551181025984_D_226.77165354321656_D_335.90551181025984_D_1_D_0_D_0_D_1_D_14.173228346456682_D_0" cntt="e_~sep~745f7465" Jgrd="ro_u10cJgda1" lckS="re_none" Xaxn="ro_di1i2" xpBm="e_norm" xpBo="D_100" xpBk="b_f" xpBi="b_f" xpSm="e_none" xpSb="e_xpMb" xpSx="U_7" xpSy="U_7" xpSr="U_5" xpSc="o_ub" xpSo="D_75" xpVm="e_none" xpVw="U_9" xpVc="e_xpCc" xpSs="D_0" xpSn="D_0" xpVn="D_0" STof="ro_n" flcl="o_ue" filt="D_-1" lnwt="U_1" mitr="D_4" endc="e_bcap" endj="e_mjon" stty="o_di5a29" llen="e_none" rlen="e_none" lncl="o_ue" lint="D_-1" pcef="e_none" pcrd="D_12" pgst="x_2_U_0_U_0" pgfl="U_0" pgfa="D_0" pgss="x_2_U_0_U_0" pgsl="U_0" pgsa="D_0" gapC="o_ue" gapT="D_-1" strA="e_stAC" nopr="b_f" pilr="o_ud7" plck="b_f" pLDs="e_Dflt" gfhl="U_0" gfha="D_0" gshl="U_0" gsha="D_0" aobs="o_n" ptag="x_0" Self="rc_u10c">
+			<TFPf ccnt="l_1" clgt="U_12" clwd="U_453.5433070864331" ufcw="b_f" inst="x_4_U_0_U_0_U_0_U_0" Fbof="e_MAso" Fboa="U_0" VJal="e_top" VJmi="U_0" iwrp="b_f" Self="rc_u10cTFPf1"/>
+			<BfGo BFuc="b_f" BFso="U_0" BFro="e_EToi" BFic="U_12" BFcl="e_iLbl" Self="rc_u10cBfGo1"/>
+			<cAOs Self="rc_u10ccAOs1"/>
+			<ctxw pcos="ro_u10cctxw1ccos1" txwt="e_none" ptwi="e_none" ptwv="b_f" Self="rc_u10cctxw1">
+				<ccos ptns="rx_0" acpn="rx_0" Self="rc_u10cctxw1ccos1"/>
+			</ctxw>
+			<Jgda Jgdv="e_jGgv" Jgcc="e_botm" Jgcz="D_9.21259842519685" Self="rc_u10cJgda1"/>
+		</txtf>
+	</sprd>
+	<sprd fsSo="e_Dflt" fsFS="ro_u110flSe1" smsi="b_t" ilnd="b_f" PagC="l_1" BnLc="l_0" pmas="o_ud8" ptag="x_0" Self="rc_u110">
+		<flSe fsLl="D_50" fsFr="D_300" fsGr="D_150" fsCr="b_f" fsSf="b_f" fsTo="b_f" Self="rc_u110flSe1"/>
+		<page impp="ro_u115imgp1" pnam="rc_2" SnAd="ro_u8a" DCof="rl_2" pbnd="rx_4_U_600.944881889_U_-297.6377952755_U_1442.8346456670001_U_297.6377952755" pgTs="o_u89" PgSd="re_usex" pmas="o_ud8" mpgs="ry_0" ovrl="x_2_o_uf0_o_u128" TOpp="y_0" Jgrd="ro_u115Jgda1" Jgsp="e_gsto" Jumg="b_t" ptag="x_0" Self="rc_u115">
+			<imgp colc="l_1" colg="U_12" mart="U_85.03937007874016" marb="U_85.03937007874016" marl="U_85.03937007874016" marr="U_56.69291338582678" cold="e_horz" hccl="rb_f" cpos="x_2_D_0_D_453.5433070864331" Self="rc_u115imgp1"/>
+			<Jgda font="c_Times" ptfs="k_Roman" ptsz="D_9.21259842519685" Jcak="D_0" Jlak="D_6.909448818897637" phzs="D_100" pvts="D_100" laln="e_lltj" jgal="e_Jact" jcal="e_Jact" Self="rc_u115Jgda1"/>
+		</page>
+		<txtf strp="ro_ufb" ftxf="ro_u10c" ltxf="ro_u128" itxf="rl_1" ptxf="o_u10c" ntxf="o_n" pTFP="ro_u128TFPf1" BLfg="ro_u128BfGo1" pAOs="ro_u128cAOs1" txwr="ro_u128ctxw1" IGeo="x_19_l_1_l_4_l_2_D_-226.77165354321656_D_-335.90551181025984_l_2_D_-226.77165354321656_D_335.90551181025984_l_2_D_226.77165354321656_D_335.90551181025984_l_2_D_226.77165354321656_D_-335.90551181025984_b_f_D_-226.77165354321656_D_-335.90551181025984_D_226.77165354321656_D_335.90551181025984_D_1_D_0_D_0_D_1_D_14.173228346456682_D_0" cntt="e_~sep~745f7465" Jgrd="ro_u128Jgda1" lckS="re_none" Xaxn="ro_di1i2" xpBm="e_norm" xpBo="D_100" xpBk="b_f" xpBi="b_f" xpSm="e_none" xpSb="e_xpMb" xpSx="U_7" xpSy="U_7" xpSr="U_5" xpSc="o_ub" xpSo="D_75" xpVm="e_none" xpVw="U_9" xpVc="e_xpCc" xpSs="D_0" xpSn="D_0" xpVn="D_0" STof="ro_n" flcl="o_ue" filt="D_-1" lnwt="U_1" mitr="D_4" endc="e_bcap" endj="e_mjon" stty="o_di5a29" llen="e_none" rlen="e_none" lncl="o_ue" lint="D_-1" pcef="e_none" pcrd="D_12" pgst="x_2_U_0_U_0" pgfl="U_0" pgfa="D_0" pgss="x_2_U_0_U_0" pgsl="U_0" pgsa="D_0" gapC="o_ue" gapT="D_-1" strA="e_stAC" nopr="b_f" pilr="o_ud7" plck="b_f" pLDs="e_Dflt" gfhl="U_0" gfha="D_0" gshl="U_0" gsha="D_0" aobs="o_n" ptag="x_0" Self="rc_u128">
+			<TFPf ccnt="l_1" clgt="U_12" clwd="U_453.5433070864331" ufcw="b_f" inst="x_4_U_0_U_0_U_0_U_0" Fbof="e_MAso" Fboa="U_0" VJal="e_top" VJmi="U_0" iwrp="b_f" Self="rc_u128TFPf1"/>
+			<BfGo BFuc="b_f" BFso="U_0" BFro="e_EToi" BFic="U_12" BFcl="e_iLbl" Self="rc_u128BfGo1"/>
+			<cAOs Self="rc_u128cAOs1"/>
+			<ctxw pcos="ro_u128ctxw1ccos1" txwt="e_none" ptwi="e_none" ptwv="b_f" Self="rc_u128ctxw1">
+				<ccos ptns="rx_0" acpn="rx_0" Self="rc_u128ctxw1ccos1"/>
+			</ctxw>
+			<Jgda Jgdv="e_jGgv" Jgcc="e_botm" Jgcz="D_9.21259842519685" Self="rc_u128Jgda1"/>
+		</txtf>
+	</sprd>
+	<sctn leng="rl_2" pnSt="e_Marb" SnCt="b_t" SnPx="b_f" SnPn="l_1" SnMk="c_" SnPg="o_uf9" spfx="c_" ptag="x_0" Self="rc_u8a"/>
+	<DcUs UsrN="k_Unknown User Name" UsrC="e_iGld" Self="rc_dDcUs0"/>
+	<DcUs UsrN="c_y" UsrC="e_iYlw" Self="rc_dDcUs1"/>
+	<DcUs UsrN="k_Unknown User Name" UsrC="e_iGld" Self="rc_dDcUs2"/>
+	<DcUs UsrN="k_Unknown User Name" UsrC="e_iGld" Self="rc_dDcUs3"/>
+	<cflo lckS="re_none" pXLS="x_0" pWRD="x_0" pTXT="x_0" pSMP="x_2_x_0_x_0" Xans="ro_n" ATOC="o_n" pSTP="ro_udfSyPf1" OVRF="rb_f" pMep="o_udfcMep1" TCAc="b_f" sLbl="k_" Jgrd="ro_udfJgda1" Jang="o_n" ptag="x_0" Self="rc_udf">
+		<SyPf omAL="b_f" omBZ="U_12" sgON="e_Txft" sorn="e_horz" Self="rc_udfSyPf1"/>
+		<cMep Self="rc_udfcMep1">
+			<pcnt><![CDATA[]]></pcnt>
+		</cMep>
+		<Jgda font="c_Times" ptfs="k_" ptsz="D_9.21259842519685" Jcak="D_0" Jlak="D_6.909448818897637" phzs="D_100" pvts="D_100" laln="e_lltj" jgal="e_Jact" jcal="e_Jact" Self="rc_udfJgda1"/>
+		<cins prst="o_u55" crst="o_u56" font="c_Adobe Garamond Pro">
+			<pcnt>c_</pcnt>
+		</cins>
+	</cflo>
+	<cflo lckS="re_none" pXLS="x_0" pWRD="x_0" pTXT="x_0" pSMP="x_2_x_0_x_0" Xans="ro_di1i2" ATOC="o_n" pSTP="ro_ufbSyPf1" OVRF="rb_f" pMep="o_ufbcMep1" TCAc="b_f" sLbl="k_" Jgrd="ro_ufbJgda1" Jang="o_n" ptag="x_0" Self="rc_ufb">
+		<SyPf omAL="b_f" omBZ="U_12" sgON="e_Txft" sorn="e_horz" Self="rc_ufbSyPf1"/>
+		<cMep Self="rc_ufbcMep1">
+			<pcnt><![CDATA[]]></pcnt>
+		</cMep>
+		<Jgda font="c_Times" ptfs="k_" ptsz="D_9.21259842519685" Jcak="D_0" Jlak="D_6.909448818897637" phzs="D_100" pvts="D_100" laln="e_lltj" jgal="e_Jact" jcal="e_Jact" Self="rc_ufbJgda1"/>
+		<cins prst="o_u55" crst="o_u56" font="c_Adobe Garamond Pro">
+			<pcnt>c_</pcnt>
+		</cins>
+	</cflo>
+	<cxst pMep="o_u6ecMep1" lckS="re_none" pXLS="x_0" pWRD="x_0" pTXT="x_0" pSMP="x_2_x_0_x_0" Xans="ro_n" ATOC="o_n" pSTP="ro_u6eSyPf1" TCAc="b_f" sLbl="k_" Jgrd="ro_u6eJgda1" Jang="o_n" ptag="x_0" Self="rc_u6e">
+		<SyPf omAL="b_f" omBZ="U_12" sgON="e_Txft" sorn="e_horz" Self="rc_u6eSyPf1"/>
+		<Jgda ptfs="k_" ptsz="D_9.21259842519685" Jcak="D_0" Jlak="D_6.909448818897637" phzs="D_100" pvts="D_100" laln="e_lltj" jgal="e_Jact" jcal="e_Jact" Self="rc_u6eJgda1"/>
+		<cMep Self="rc_u6ecMep1">
+			<pcnt><![CDATA[]]></pcnt>
+		</cMep>
+		<txsr prst="o_u55" crst="o_u56">
+			<pcnt>c_<?aid Self="rc_u6ecins0"?><?aid Self="rc_u6ecins1"?><?aid Self="rc_u6ecins2"?></pcnt>
+		</txsr>
+	</cxst>
+	<cTOC crbk="b_t" styd="e_horz" tlsl="k_[No paragraph style]" tlnm="c_Contents" pnam="k_DefaultTOCStyleName" runn="b_f" ichd="b_f" iBkD="b_f" ptag="x_0" Self="rc_u65"/>
+	<cTOC crbk="b_t" styd="e_horz" tlsl="k_[No paragraph style]" tlnm="c_Contents" pnam="c_[Default]" runn="b_f" ichd="b_f" iBkD="b_f" ptag="x_0" Self="rc_u12d"/>
+	<trSt pnam="k_k[No Trap Preset]" tpDW="U_0.25" tpBW="U_0.5" tpJS="e_mjon" tpES="e_tpme" tpOI="b_t" tpII="b_t" tpIM="b_f" tpOB="b_t" tpIP="e_tpcn" tpST="D_10" tpBT="D_100" tpBD="D_1.6" tpSL="D_70" tpRD="D_100" ptag="x_0" Self="rc_u88"/>
+	<trSt pnam="k_kDefaultTrapStyleName" tpDW="U_0.25" tpBW="U_0.5" tpJS="e_mjon" tpES="e_tpme" tpOI="b_t" tpII="b_t" tpIM="b_f" tpOB="b_t" tpIP="e_tpcn" tpST="D_10" tpBT="D_100" tpBD="D_1.6" tpSL="D_70" tpRD="D_100" ptag="x_0" Self="rc_u89"/>
+	<bnoc bnbt="e_BCuo" bnbv="l_2022" blfn="k_" blft="k_" Self="rc_dbnoc0"/>
+	<bnoc bnbt="e_BCuo" bnbv="l_2a" blfn="k_" blft="k_" Self="rc_dbnoc1"/>
+	<bnoc bnbt="e_BCuo" bnbv="l_25ca" blfn="k_" blft="k_" Self="rc_dbnoc2"/>
+	<bnoc bnbt="e_BCuf" bnbv="l_bb" blfn="c_Myriad Pro" blft="k_Regular" Self="rc_dbnoc3"/>
+	<bnoc bnbt="e_BCgf" bnbv="l_276" blfn="c_Adobe Jenson Pro" blft="k_Regular" Self="rc_dbnoc4"/>
+	<AsMt hDPT="r0_" pASt="re_AUtD" pnam="k_UnassignedInCopy" path="k_" UsrN="k_" AsEx="e_AsEf" AFCl="e_none" ptag="x_0" Self="rc_u8b"/>
+	<cXML Xcnt="o_ufb" strp="ro_ufb" STof="o_u6ecins1" XMLt="o_ubf" Self="rc_di1i2"/>
+	<tsmX XMLt="o_uc1" Xmps="o_ua6" Self="rc_dic1"/>
+	<tsmX XMLt="o_uc2" Xmps="o_ua7" Self="rc_dic2"/>
+	<tsmX XMLt="o_uc3" Xmps="o_ub7" Self="rc_dic3"/>
+	<tsmX XMLt="o_uc8" Xmps="o_ub9" Self="rc_dic8"/>
+	<tsmX XMLt="o_uce" Xmps="o_uac" Self="rc_dice"/>
+	<tsmX XMLt="o_ucf" Xmps="o_ub1" Self="rc_dicf"/>
+	<tsmX XMLt="o_ud5" Xmps="o_ub2" Self="rc_did5"/>
+	<tsmX XMLt="o_ud6" Xmps="o_ua9" Self="rc_did6"/>
+</docu>

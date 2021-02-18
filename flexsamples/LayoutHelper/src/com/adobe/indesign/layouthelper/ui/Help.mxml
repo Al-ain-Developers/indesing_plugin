@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+ADOBE SYSTEMS INCORPORATED
+Copyright 2012 Adobe Systems Incorporated
+All Rights Reserved.
+
+NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance with the 
+terms of the Adobe license agreement accompanying it.  If you have received this file from a 
+source other than Adobe, then your use, modification, or distribution of it requires the prior 
+written permission of Adobe.
+-->
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" label="Help" width="100%" height="100%">
+	<mx:Text text="This extension has three functions:&#xd;&#xd;1. Easily to view and set layout policy for pages in InDesign docoment. &#xd;&#xd;2. Easily to create alternate layout for a document.&#xd;&#xd;3. Export the document to files. " left="2" top="2" right="2" bottom="2"/>
+</mx:Canvas>

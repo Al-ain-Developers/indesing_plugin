@@ -1,0 +1,298 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kDynamicDocumentsUIStringsRsrcID + index_huHU)
+{
+	k_huHU,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{
+		// ----- Command strings
+
+		// ----- Window strings
+
+		// ----- Panel strings
+		"kPageTransitionsPanelPopup",			"Oldalátmenetek panelmenü",    
+		"kPageTransitionsSubMenu",				"Oldalát&menetek",
+		"kPageTransitionsPanelName",			"Oldalátmenetek",	   
+		"kPageTransitionStaticText",			"Átmenet: ",
+		"kPageDirectionStaticText",				"Irány: ",
+		"kPageSpeedStaticText",					"Sebesség: ",
+        "kPTHorizontal",						"Vízszintes",
+        "kPTVertical",							"Függőleges",
+        "kPTIn",								"Be",
+        "kPTOut",								"Ki",
+        "kPTDown",								"Le",
+        "kPTLeft",								"Balra",
+        "kPTLeftDown",							"Balra le",
+        "kPTLeftUp",							"Balra fel",
+        "kPTRight",								"Jobbra",
+        "kPTRightDown",							"Jobbra le",
+        "kPTRightUp",							"Jobbra fel",
+        "kPTUp",								"Fel",
+        "kPTHorizontalIn",						"Vízszintesen be",
+        "kPTHorizontalOut",						"Vízszintesen ki",
+        "kPTVerticalIn",						"Függőlegesen be",
+        "kPTVerticalOut",						"Függőlegesen ki",
+        "kPTSlow",								"Lassú",
+		"kPTMedium",							"Közepes",
+		"kPTFast",								"Gyors",		
+		"kPTNoTransition",						"Nincs",	
+              		
+		// ----- Liquid Layout panel
+		"kLiquidLayoutMenu",					"Ruga&lmas elrendezés",
+		"kLiquidLayoutPanelPopup",				"Rugalmas elrendezés panelmenü",
+		"kLiquidLayoutPanelName",				"Rugalmas elrendezés",	
+		"kObjectConstraintsStaticTextLabel",	"Objektumkorlátozások:",
+		"kDocumentReflowStaticTextLabel",		"Dokumentum áttördelése",
+		"kFixedSizeStaticTextLabel",			"Méretezze az oldallal:",
+		"kHeightCheckBoxLabel",					"Magasság",
+		"kWidthCheckBoxLabel",					"Szélesség",
+		"kPinLeftEdgeCheckBoxLabel",			"Bal",
+		"kPinRightEdgeCheckBoxLabel",			"Jobb",
+		"kPinTopEdgeCheckBoxLabel",				"Fent",
+		"kPinBottomEdgeCheckBoxLabel",			"Lent",
+		"kPinObjectEdgesStaticTextLabel",		"Letűzés:",
+		"kContentStaticTextLabel",				"Tartalom:",
+		"kLayoutAdjustmentWarningTip",			"A rendszer nem alkalmazza a „Rugalmas elrendezés” szabályokat, mert az „Elrendezés beállítása” opció be van kapcsolva. Kattintással kikapcsolható az „Elrendezés beállítása”.",
+		"kPageLayoutPolicyDropdownLabel",		"Rugalmas oldalszabály:",
+		"kLiquidLayoutPanelPageRange",			"Oldal: ^1",
+		"kPinEdgeToolTip",						"Bejelölése esetén az objektumot az oldal széléhez képest tűzi le.",
+		"kResizeHeightWithPageToolTip",			"Bejelölése esetén az oldalmagasság módosításakor a rendszer átméretezi az objektum magasságát.",
+		"kResizeWidthWithPageToolTip",			"Bejelölése esetén az oldalszélesség módosításakor a rendszer átméretezi az objektum szélességét.",
+		
+        // ----- Timing panel
+        "kTimingPanelPopup",					"Időzítés panel menüje",    
+		"kTimingSubMenu",						"&Időzítő",
+		"kTimingPanelName",						"Időzítés",	
+		"kTimingPanelEventStaticText",			"Esemény: ",
+		"kTimingPanelDelayStaticText",			"Késleltetés: ",
+        "kTimingPanelDelaySecondStaticText",	"másodperc",
+        "kTimingPanelDelaySecondsStaticText",	"másodperc",
+        "kTimingPanelAssignPageLoadEvent",		"Lap betöltődésekor (On Page Load)",
+        "kTimingPanelAssignStateLoadEvent",		"Állapot betöltődésekor (On State Load)",
+        "kTimingPanelAssignPageClickEvent",		"Lapra kattintáskor (On Page Click)",
+        "kTimingPanelRemoveItem",				"Elem eltávolítása",
+        "kTimingPanelEventDropDownTip",			"Kattintani kell a folytatáshoz",
+        "kTimingPanelGroupButtonTip",			"Lejátszás együtt",
+        "kTimingPanelUngroupkButtonTip",		"Lejátszás külön",
+        "kTimingPanelPreviewButtonTip",			"Oldalpár előnézete",
+        "kUnassignedEntry",						"Nincs meghatározva",
+        "kTimingPanelLinkedItemStaticText",			"Hivatkozott elemek:",	
+        "kTimingPanelPlayLinkedItemStaticText",		"Lejátszás: ",
+        "kTimingPanelPlayLinkedItemTimeStaticText",	"x",
+        "kTimingPanelPlayLinkedItemTimesStaticText","alkalommal",
+        "kTimingPanelLoopCheckBoxLabel",		"Folyamatos",
+        "kTimingPanelLinkedItemGroupWidgetTip",	"Egyszerre lejátszandó objektumok (kattintással jelölje ki a csoportot)", 
+
+        // HTML Preview menu items
+        "kHTMLFXLPreviewSpread",				"Oldalpár előnézete: EPUB",
+		// ----- Menu Strings
+		"kTransitionPanelChooseAction",				"&Kiválasztás...",
+		"kTransitionPanelApplyToAllSpreadsAction",	"Minden oldalpárra &alkalmazva",
+		"kTransitionPanelClearAllTransitionsAction","Öss&zes törlése",
+		
+		// ----- Tips strings
+		"kApplyToAllSpreadsButtonTip",			"Minden oldalpárra alkalmazva",
+		"kMotionPathTipStr",					"Mozgási útvonal, rákkattintás után szerkeszthető",
+		"kEasingPathTipStr",					"Mozgásütemezési útvonal",
+	#ifdef WINDOWS
+		"kPreviewSpreadButtonToolTip",			"Oldalpár előnézete: EPUB.",
+	#else
+		"kPreviewSpreadButtonToolTip",			"Oldalpár előnézete: EPUB.",			
+	#endif
+				
+		// ----- XFL Export Dialogs
+
+		"kXFLExport",						"Flash CS6 Professional (FLA) exportálása",
+		"kSizePixels",						"Méret (képpontokban):",
+		"kPagesStr",						"Oldalak:",
+		"kExportStr",						"Exportálás:",
+		"kSpreadsStr",						"Oldalp&árok",
+		"kGenerateHTMLStr",					"&HTML fájl generálása",
+		"kFlashText",						"Klasszikus Flash-szöveg",
+		"kVectorText",						"Átalakítás körvonallá",
+		"kRasterText",						"Átalakítás képpontokká",
+		"kVellumText",						"Flash TLF-szöveg",
+		"kInsertHyphensStr",				"&Lágy elválasztójelekkel együtt",
+		"kFitToSize",						"&Igazítás:",
+		"kWidthSize",						"S&zélesség:",
+		"kHeightSize",						"M&agasság:",
+		"kSelectionExportedStr",			"&Kijelölés",
+		"kAllPagesExported",				"Mi&nd",
+		"kAllPagesExportedStr",				"&Minden oldal",
+		"kPageRangeExported",				"&Tartomány:",
+		"kScaleSize",						"M&éretezés:",
+		"kTextStr",							"&Szöveg:",
+		"kInteractivityStr",				"Interaktivitás:",
+		"kDynamicMediaStr",					"Interaktivitás és média:",
+		"kImageCompStr",					"Kép&tömörítés:",
+		"kQualityStr",						"&JPEG-minőség:",
+		"kCurveQualityStr",					"&Görbeminőség:",
+		"kInclButtonsStr",					"G&ombokkal együtt",
+		"kInclHyperLinkStr",				"&Hiperhivatkozásokkal együtt",
+		"kInclPageTrans",					"Oldalátme&netekkel együtt",
+		"kIncludePageCurl",					"&Interaktív lapozással együtt",
+		"kIncludeAllStr",					"Min&dennel együtt",
+		"kAppearanceOnlyStr",				"&Csak megjelenés",
+		"kBackgroundStr",					"Háttér:",
+		"kPaperColorStr",					"&Papírszín",
+		"kTransparentStr",					"&Áttetsző",
+		"kFramesPerSecStr",					"másodpercenkénti képkocka",
+		"kPageTransitionsStr",				"&Oldalátmenetek:",
+		"kNone",							"Nincs",
+		"kFromDocument",					"A dokumentumból",
+		"kOptionsStr",						"Beállítások:",
+		"kDescriptionStr",					"Leírás:",
+		"kFrameRateStr",					"&Képsebesség:",
+		"kImageCompAuto",					"Automatikus",
+		"kJPG_Lossy",						"JPEG",
+		"kJPG_LossyStr",					"JPEG (veszteséges)",
+		"kPNG_Lossless",					"Veszteség nélküli (semmit se tegyen)",
+		"kPNG_LosslessStr",					"PNG (veszteségmentes)",
+		"kMinimumQual",						"Minimális",
+		"kLowQual",							"Alacsony",
+		"kMediumQual",						"Közepes",
+		"kHighQual",						"Kiváló",
+		"kMaximumQual",						"Maximális",
+		"kRasterizeStr",					"Oldalak &raszterizálása",
+		"kFlattenXPStr",					"Á&ttetszőség összeolvasztása",
+		"k1280x800",						"1280 x 800",
+		"k1024x768",						"1024 x 768",
+		"k800x600",							"800 x 600",
+		"k640x480",							"640 x 480",
+		"k250per",							"250%",
+		"k200per",							"200%",
+		"k150per",							"150%",
+		"k100per",							"100%",
+		"k75per",							"75%",
+		"k50per",							"50%",
+		"k25per",							"25%",
+
+		// Font Embedding
+		"kEmbeddedFontsTitle",				"Beágyazott betűtípusok (csak Klasszikus Flash-szövegre vonatkozik)",
+		"kTotalFonts",						"Összes betűtípus: ",
+		"kFontLicensingInfo",				"Betűtípus licencadatai",
+		"kEmbeddedFontName",				"Betűtípus neve: ",
+		"kEmbeddedVendorID",				"Forgalmazói azonosító: ",
+
+		// Add Page Transition dialog
+		"kPageTransitionsDialogTitle",			"Oldalátmenetek",
+		"kPageTransitionApplyToAllSpreads",		"Minden oldalpárra alkalmazva",
+		"kZoomInOutString",						"Nagyítás/kicsinyítés", 
+		
+		
+		//	Animation UI
+		"kAnimationUIPanelPopup",				"Animációs felhasználói felület panel menü",
+		"kAnimationUISubMenu",					"Animáció",
+		"kAnimationUIPresetPopupMenu",			"Animációs felhasználói felület készlet menü",
+		"kMotionPresetsNoneTextkey",			"Nincs",
+		"kAnimationUILoadPresetMenuItem",		"Készlet betöltése...",
+		"kAnimationUISaveAsPresetMenuItem",		"Mentés másként...",
+		"kAnimationUISavePresetMenuItem",		"Mentés",
+		"kAnimationUIDeletePresetMenuItem",		"Törlés",
+
+		"kAnimationUIConvertToMotionPathMenuItem",	"Átalakítás mozgási útvonallá",
+		"kAnimationUITestInBrowserMenuItem",	"Kipróbálás böngészőben...",
+		"kCustomPresetName",					"Mozgáskészlet",
+		"kAnimationUIEventSeparator",			", ",
+		
+		"kAnimationUIPanelName",				"Animáció",
+		"kAnimationUIPreviewStaticTextLabel",	"Előnézet",
+		"kAnimationUINameStaticTextLabel",		"Név:",
+		"kAnimationUIPresetStaticTextLabel",	"Készlet:",
+		"kAnimationUICustomPreset",				"Egyéni",
+		"kAnimationUIMixed",					"Vegyes",
+		"kAnimationUIMixed:",					"Vegyes: ",
+		"kAnimationUIChoose",					"Választás",
+		"kAnimationUIEventStaticTextLabel",		"Esemény(ek):",
+		"kAnimationUIDurationStaticTextLabel",	"Tartam:",
+		"kAnimationUISecondStaticTextLabel",	"másodperc",
+		"kAnimationUISecondsStaticTextLabel",	"másodperc",
+		"kAnimationUIPlayStaticTextLabel",		"Lejátszás:",
+		"kAnimationUITimeStaticTextLabel",		"x",
+		"kAnimationUITimesStaticTextLabel",		"alkalommal",
+		"kAnimationUILoopCheckBoxLabel",		"Folyamatos",
+		"kAnimationUISpeedStaticTextLabel",		"Sebesség:",
+		"kAnimationUIVisibilityStaticTextLabel","Láthatóság:",
+		"kAnimationUIPropertyStaticTextLabel",	"Tulajdonságok",
+		"kAnimationUIHideBeforeAnimateCheckBoxLabel","Elrejtés animáció előtt",
+		"kAnimationUIHideAfterAnimateCheckBoxLabel","Elrejtés animáció után",
+		"kAnimationUIOnButtonEvent",			"Gombeseménykor",
+		"kAnimationUIOnRollOffCheckBoxLabel",	"Vissza kurzorlehúzáskor (On Roll Off)",
+		"kAnimationUIEaseIn",					"Gyorsuló ütemű",
+		"kAnimationUIEaseOut",					"Lassuló ütemű",
+		"kAnimationUIEaseInAndOut",				"Gyorsuló és lassuló ütemű",
+		"kAnimationUIFadeIn",					"Fokozatosan előtűnik",
+		"kAnimationUIFadeOut",					"Fokozatosan eltűnik",
+		"kAnimationUINone",						"Nincs",
+		"kAnimationUIFromPreset",				"Készletből",
+		"kAnimationUIPropertyDesignStaticTextLabel",		"Animálás:",
+		"kAnimationUIPropertyDesignCheckBoxLabel",			"Az animáció vége",
+		"kAnimationFromStaticTextLabel",					"Animálás innen:",
+		"kAnimationToStaticTextLabel",						"Animálás idáig:",
+		"kAnimationUIPropertyDesignScaleStaticTextLabel",	"Méretezés",
+		"kAnimationUIPropertyDesignScaleHorzStaticTextLabel",	"Sz:",
+		"kAnimationUIPropertyDesignScaleVertStaticTextLabel",	"M:",
+		"kAnimationUIPropertyDesignRotateStaticTextLabel",	"Elforgatás:",
+		"kAnimationUIPropertyDesignOpacityStaticTextLabel",	"Opacitás:",
+		"kAnimationUIPropertyDesignProxyStaticTextLabel",	"Kezdőpont:",
+		
+		"kAnimationUIFrom",						"Az aktuális megjelenésből indít",
+		"kAnimationUITo",						"Az aktuális megjelenéssel zárul",
+		"kAnimationUIOffset",					"Az aktuális pozícióval zárul",
+
+		"kAnimationPanelButtonTriggerTip",		"Eseményindító gomb létrehozása (kattintson az ikonra, majd arra az objektumra, amelynek ezt az animációt indítania kell)",
+		"kAnimationPanelShowProxyTip",			"Animáció megjelenítése nézőképpel",
+		"kAnimationPanelLockIconTip",			"Méretezés az oldalarány megtartásával",
+		"kAnimationPanelEventMenuSelectorTip",	"A le nyílra kattintva választható ki az indítóesemény",
+		"kAnimationPanelEventInfoTip",			"Az animáció indítóeseménye(i)",
+		"kAnimationPanelEventInfoDefaultTip",	"Az animáció alapértelmezett indítóeseménye",
+		"kAnimationPanelPreviewButtonTip",		"Az aktuális kijelölés előnézete",
+		"kAnimationPanelConvertToMotionPathTip","Átalakítás mozgási útvonallá",
+		"kAnimationUIFromTip",					"Az animáció lefuttatásakor kezdő megjelenéseként az aktuális objektumtulajdonságokat használja.",
+		"kAnimationUIToTip",					"Az animáció lefuttatásakor záró megjelenéseként az aktuális objektumtulajdonságokat használja.",
+		"kAnimationUIOffsetTip",				"Az animáció lefuttatásakor kezdő megjelenésként az aktuális objektumtulajdonságokat, a mozgatás végpontjaként pedig az aktuális pozíciót használja.",
+		"kAnimationUIAnimationOptionTip",		"Animáció beállításai",
+		"kAnimationUITrashTip",					"Animáció eltávolítása",
+		"kAnimationUIXFPointTip",				"A méretezés és elforgatás középpontjának megváltoztatása.",
+		"kAnimationUIShowTimingButtonTip",		"Időzítés panel megjelenítése",
+		
+		"kAnimationUISaveAsPresetTitle",		"Kijelölt készlet mentése másként",
+		"kAnimationUISavePresetTitle",			"Készlet mentése",
+		"kAnimationUISavePresetNameLabel",		"Név:",
+
+		"kAnimationUIEventPopupMenu",			"Esemény helyi menü",
+		"kAnimationUICreateButtonTriggerCmd",	"Eseményindító gomb létrehozása",
+		"kAnimationUICreateSelfTriggerCmd",		"Önindító (self trigger) létrehozása",
+		
+		"kAnimationUIManagePresetsDialogTitle",	"Készletek kezelése",
+		"kAnimationUIManagePresetsDoneButton",	"Kész",
+		"kAnimationUIManagePresetsDeleteButton","&Törlés",
+		"kAnimationUIManagePresetsDuplicateButton","&Másolat létrehozása",
+		"kAnimationUIManagePresetsLoadButton",	"Betö&ltés...",
+		"kAnimationUIManagePresetsSaveAsButton","Menté&s másként...",
+		"kAnimationUIManagePresetMenuItem",		"Készletek kezelése...",
+		"kAnimationUIManagePresetPresetsSeparator", "--------------------",
+		"kAnimationUIManagePresetNamePrefix",	"[",
+		"kAnimationUIManagePresetNameSuffix",	"]",
+	}
+};
+
+#endif // __ODFRC__

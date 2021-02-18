@@ -1,0 +1,224 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/conditionaltextui/resources/ConditionalTextUIViews_jaJP.fr $
+//  
+//  Owner: Michele Stutzman
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "InterfaceColorDefines.h"
+#include "AboutBoxID.h"
+#include "ApplDefs.h"
+#include "IconStyleDefs.h"
+#include "EveInfo.fh"
+
+#ifdef __ODFRC__
+
+/***********************************************************************/
+
+resource ConditionalTextUIPanelWidget(kConditionalTextUIPanelRsrcID + index_jaJP)
+{
+	__FILE__, __LINE__,
+	kConditionalTextUIPanelWidgetID, kPMRsrcID_None,		// WidgetId, RsrcId
+	kBindAll,
+	Frame(0,0,kCC2016PanelStandardWidth,266),					// Frame
+	kTrue, kTrue,						// Visible, Enabled
+	kTrue,								// EraseBeforeDrawing
+	kInterfacePaletteFill,				// Erase to color
+	"#CondTextUI_PanelName",			// Panel name
+	{
+		GenericPanelWidget
+		(
+			kConditionalTextUIPanelListWidgetId, kPMRsrcID_None,
+			kBindAll,
+			Frame(0,0,kCC2016PanelStandardWidth,266)		// Frame
+			kTrue, kTrue,
+			"",
+			{	
+				GenericPanelWithBorderWidget
+				(
+					kConditionalTextUIPanelListWidgetId, kPMRsrcID_None,
+					kBindAll,
+					Frame(0,0,kCC2016PanelStandardWidth,178)		// Frame
+					kTrue, kTrue,
+					"",
+					{	
+						ConditionTagListTreeViewWidget
+						(
+							kConditionTagListTreeViewWidgetID, kPMRsrcID_None,// WidgetId, RsrcId
+							kBindAll,
+							Frame(0,0,kCC2016PanelStandardWidth - 1,176)			// Frame
+							kTrue, kTrue,				// Visible, Enabled
+							kFalse,						// EraseBeforeDraw
+							kInterfacePaletteFill,		// Erase to color,
+							"",							// Name
+							kDisplayRootNode,			// Options
+							kFalse,						// Use H Scroll bar
+							kTrue,						// Use V scroll bar
+							kCC2016PanelTreeNodeHeight,							// Vertical Scroll Button Increment
+							kCC2016PanelTreeNodeHeight,							// Vertical Thumb Scroll Increment
+							0,							// Horizontal Scroll Button Increment - Not Used
+							0,							// Horizontal Thumb Scroll Increment - Not Used
+							2,							// Items selectable, 0 = No Selection, 1 = Single Selection, 2 = Multiple Selection
+							kTrue,						// Allow children from multiple parents to be selected
+							kTrue,						// Allow discontiguous selection
+							{
+							},
+							{{ 
+								IID_IOBSERVER,
+								IID_ISELECTIONOBSERVER,
+							}}
+						),
+					}
+				),
+				
+				GenericPanelWidget
+				(
+					kConditionalTextUIPanelIndicatorsAreaWidgetId, kPMRsrcID_None,
+					kBindBottom | kBindLeft | kBindRight,
+					Frame(kCC2016StandardGapBetweenWidgets,183,kCC2016PanelStandardWidth-kCC2016StandardGapBetweenWidgets,204)		// Frame
+					kTrue, kTrue,
+					"",
+					{
+						StaticTextWidget
+						(
+							0, kSysStaticTextPMRsrcId,	// WidgetId, RsrcId
+							kBindLeft,				// Frame binding
+							Frame(0,0,92,kCC2016StandardWidgetHeight)									// Frame
+							kTrue, kTrue, kAlignRight,							// Visible, Enabled
+							kDontEllipsize,	kTrue,								// Ellipsize style, Convert ampersands
+							"#CondTextUI_ShowIndicatorsDD",						// Text
+							kShowConditionIndicatorsWidgetId,
+						),
+						
+						ShowConditionIndicatorsDropDownWidget
+						(
+							kShowConditionIndicatorsWidgetId,			// WidgetId
+							kSysDropDownPMRsrcId,						// RsrcId
+							kBindLeft | kBindRight,
+							Frame(92+kCC2016StandardGapBetweenWidgets,0,230,kCC2016StandardWidgetHeight)					// Frame
+							kTrue,										// Visible
+							kTrue,										// Enabled
+							{{
+								"#CondTextUI_ShowIndicators",
+								"#CondTextUI_ShowAndPrintIndicators",
+								"#CondTextUI_HideIndicators"
+							}}
+						),
+					}
+				)
+						
+				GenericPanelWidget
+				(
+					kConditionalTextUIPanelSetsAreaWidgetId,	// WidgetId
+					0,0,						// RsrcId
+					kBindBottom | kBindRight | kBindLeft,				// Frame binding
+					Frame(kCC2016StandardGapBetweenWidgets,209,kCC2016PanelStandardWidth-kCC2016StandardGapBetweenWidgets,241)		// Frame
+					kTrue,						// Visible
+					kTrue,	
+					"",					// Enabled
+					{
+						SeparatorWidget
+						(
+							kConditionUISeperator1WidgetID, kSysGenericSeparatorPMRsrcId,	// WidgetId, RsrcId
+							kBindLeft | kBindRight,
+							Frame(0,0,kCC2016PanelStandardWidth-2*kCC2016StandardGapBetweenWidgets,1)						// Frame
+							kTrue, kTrue,								// Visible, Enabled
+						),
+						
+						StaticTextWidget
+						(
+							kConditionSetsDropDownLabelWidgetID, kSysStaticTextPMRsrcId,	// WidgetId, RsrcId
+							kBindLeft,				// Frame binding
+							Frame(0,1+kCC2016StandardGapBetweenWidgets,92,1+kCC2016StandardGapBetweenWidgets+kCC2016StandardWidgetHeight)									// Frame
+							kTrue, kTrue, kAlignRight,							// Visible, Enabled
+							kDontEllipsize,	kTrue,								// Ellipsize style, Convert ampersands
+							"#ConditionSetLabel",								// Text
+							kConditionSetsDropDownWidgetID,
+						),
+				
+						ConditionSetsDropDownWidget
+						(
+							kConditionSetsDropDownWidgetID,			// WidgetId
+							kSysDropDownPMRsrcId,				// RsrcId
+							kBindLeft | kBindRight,
+							Frame(92+kCC2016StandardGapBetweenWidgets,1+kCC2016StandardGapBetweenWidgets,230,1+kCC2016StandardGapBetweenWidgets+kCC2016StandardWidgetHeight)					// Frame
+							kTrue,								// Visible
+							kTrue,								// Enabled
+							{{
+								"#ConditionSetNewSet"
+							}}
+						),
+					}
+				)
+						
+				// ----- The control strip ----- //
+				GenericPanelWidget
+				(
+					kConditionalTextUIPanelControlStripWidgetId, kPMRsrcID_None,
+					kBindBottom | kBindLeft | kBindRight,
+					Frame(kCC2016StandardGapBetweenWidgets,241,kCC2016PanelStandardWidth-kCC2016StandardGapBetweenWidgets,266)		// Frame
+					kTrue, kTrue,
+					"",
+					{									
+						SeparatorWidget
+						(
+							kConditionUISeperator2WidgetID, kSysGenericSeparatorPMRsrcId,	// WidgetId, RsrcId
+							kBindLeft | kBindRight,
+							Frame(kCC2016StandardGapBetweenWidgets,0,kCC2016PanelStandardWidth-kCC2016StandardGapBetweenWidgets,1)							// Frame
+							kTrue, kTrue,								// Visible, Enabled
+						),
+						ConditionStatusTextWidget
+						(
+							kConditionalTextUIStatusWidgetID, kSysStaticTextPMRsrcId,	// WidgetId, RsrcId
+							kBindLeft | kBindRight,				// Frame binding
+							Frame(kCC2016StandardGapBetweenWidgets,1,130,kCC2016StandardWidgetHeight+1)									// Frame
+							kTrue, kTrue, kAlignLeft,							// Visible, Enabled
+							kEllipsizeEnd,	kTrue,								// Ellipsize style, Convert ampersands
+							"",													// Text
+							0
+						),
+						NewConditionTagButtonWidget
+						(
+							kNewConditionTagButtonWidgetID, 		// WidgetId
+							kIconNew, kApplicationRsrcPluginID,		// RsrcId
+							kBindRight,
+							Frame(169,1,169+kCC2016PanelIconWidth,kCC2016PanelIconHeight+1)					// Frame
+							kTrue, kTrue,							// Visible, Enabled
+							kADBEIconSuiteButtonType,
+						),
+						DeleteConditionTagButtonWidget
+						(
+							kDeleteConditionTagButtonWidgetID,		// WidgetId 
+							kIconDelete, kApplicationRsrcPluginID,	// RsrcId
+							kBindRight,
+							Frame(169+kCC2016PanelIconWidth,1,169+(2*kCC2016PanelIconWidth),kCC2016PanelIconHeight+1)					// Frame
+							kTrue, kTrue,							// Visible, Enabled
+							kADBEIconSuiteButtonType,
+						),
+					}
+				),
+			}
+		),
+	},
+	"#CondTextUI_PanelMenu", // panel menu name	
+}
+
+#endif	// __ODFRC__
+
+

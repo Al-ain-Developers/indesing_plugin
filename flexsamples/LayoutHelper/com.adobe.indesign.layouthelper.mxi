@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<macromedia-extension id="com.adobe.indesign.layouthelper" name="com.adobe.indesign.layouthelper" requires-restart="true" version="1.0.0">
+  <author name="Adobe Systems"/>
+  <description/>
+  <license-agreement/>
+  <products>
+    <product familyname="InDesign" maxversion="9.9" primary="true" version="9.0"/>
+  </products>
+  <files>
+    <file destination="" file-type="CSXS" products="" source="LayoutHelper.zxp"/>
+    <file destination="$indesign/Plug-Ins" maxVersion="9.9" minVersion="9.0" platform="win" products="InDesign32" shared="true" source="csadapters-3.0/id_host_adapter/win32/IDHostAdapter.pln"/>
+    <file destination="$indesign/Plug-Ins" maxVersion="9.9" minVersion="9.0" platform="win" products="InDesign32" shared="true" source="csadapters-3.0/id_host_adapter/win32/(IDHostAdapter Resources)"/>
+    <file destination="$indesign/Plug-Ins" maxVersion="9.9" minVersion="9.0" platform="win" products="InDesign64" shared="true" source="csadapters-3.0/id_host_adapter/win64/IDHostAdapter.pln"/>
+    <file destination="$indesign/Plug-Ins" maxVersion="9.9" minVersion="9.0" platform="win" products="InDesign64" shared="true" source="csadapters-3.0/id_host_adapter/win64/(IDHostAdapter Resources)"/>
+    <file destination="$indesign/Plug-Ins" maxVersion="9.9" minVersion="9.0" platform="mac" products="InDesign" shared="true" source="csadapters-3.0/id_host_adapter/mac/IDHostAdapter.InDesignPlugin"/>
+  </files>
+</macromedia-extension>

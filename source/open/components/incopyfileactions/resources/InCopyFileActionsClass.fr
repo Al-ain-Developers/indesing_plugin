@@ -1,0 +1,142 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/incopyfileactions/resources/InCopyFileActionsClass.fr $
+//  
+//  Owner: Chris Parrish
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "objectmodeltypes.fh"
+
+#include "InCopyFileActionsID.h"
+
+#include "ActionID.h"
+#include "BuildNumber.h"
+#include "CJKID.h"
+#include "CommandID.h"
+#include "DocumentID.h"
+#include "FormatNumber.h"
+#include "HyperlinkID.h"
+#include "IMEID.h"
+#include "IndexingID.h"
+#include "OpenPlaceID.h"
+#include "PMLocaleIds.h"
+#include "ShuksanID.h"
+#include "TablesID.h"
+#include "TCID.h"
+#include "TextAttrID.h"
+#include "TextID.h"
+#include "widgetid.h"
+#include "WorkspaceID.h"
+#include "InCopyWorkflowID.h"
+#include "XMLParserID.h"
+
+#include "PlugInModel_UIAttributes.h"
+
+#ifdef __ODFRC__
+
+//---------------------------------------------------------------
+//	Plugin Version
+//---------------------------------------------------------------
+resource PluginVersion (1)
+{
+	kTargetVersion,
+	kInCopyFileActionsPluginID,
+	kMajorVersionNumber, kMinorVersionNumber, 	
+	kMajorVersionNumber, kMinorVersionNumber, 	
+	kHotakaMajorFormatNumber, kHotakaInitialMinorFormatNumber,
+	{ kInCopyProduct },
+	{ kWildFS },
+	kModelPlugIn,
+	kAUMComponentVersionStr
+};
+
+
+//------------------------------------------------------------------------------
+// Implementation Alias
+//------------------------------------------------------------------------------
+
+resource ImplementationAlias(1)
+{
+	{
+		kDocDetectFileTypeFoundImpl, kFalseInitBoolDataImpl,
+		kDocDetectIsInCopyFileImpl, kIntDataImpl,
+	}
+};
+
+	
+//------------------------------------------------------------------------------
+// Classes
+//------------------------------------------------------------------------------
+
+resource ClassDescriptionTable(1)
+{{{
+		
+	//----- Respond to open docs, handles importing incopy stories
+	//      when InDesign Docs/DUD's are opened
+	Class
+	{
+		kFileActionsOpenDocResponderBoss,
+		kInvalidClass,
+		{
+			IID_IK2SERVICEPROVIDER,		kAfterOpenDocSignalRespServiceImpl,
+			IID_IRESPONDER,				kFileActionsOpenDocResponderImpl,
+		}
+	}
+	
+	//----- SAXDocumentHandler for detecting InCopy and XML documents
+	Class
+	{
+		kInCopyDocDetectContentHandlerBoss,
+		kInvalidClass,
+		{	
+			IID_ISAXCONTENTHANDLER,			kInCopyDocDetectContentHandlerImpl,
+			IID_IDOCDETECTFILETYPEFOUND,	kDocDetectFileTypeFoundImpl,
+			IID_IDOCDETECTISINCOPYFILE,		kDocDetectIsInCopyFileImpl,
+		}
+	}
+	
+	Class
+	{
+		kInCopyDocFileHandlerBoss,
+		kInvalidClass,
+		{	
+			IID_IDOCFILEHANDLER,		kInCopyDocFileHandlerImpl,
+		}
+	};
+		
+	
+//------------------------------------------------------------------------------
+// Addin's
+//------------------------------------------------------------------------------
+	
+	//----- Utils boss addins
+	AddIn
+	{
+		kUtilsBoss,
+		kInvalidClass,
+		{
+			IID_IINCOPYDOCUTILS,		kInCopyDocUtilsImpl,
+		}
+	
+	};
+
+	
+}}};
+
+#endif //__ODFRC__

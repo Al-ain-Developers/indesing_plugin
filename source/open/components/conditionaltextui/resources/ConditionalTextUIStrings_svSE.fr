@@ -1,0 +1,126 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kConditionalTextUIStringsRsrcID + index_svSE)
+{
+    k_svSE,                                 // Locale Id
+    kResourceUTF8Encoded,     // Character encoding converter
+    {
+		"#CondTextUI_WinMenu",	"&Villkorlig text",	// panel menu item
+		"#CondTextUI_PanelName","Villkorlig text",		// panel name
+		"#CondTextUI_PanelMenu","Panelmeny för villkorlig text",
+		"#CondTextUI_NewConditionTagMenu", "Nytt villkor...",
+		"#CondTextUI_DeleteConditionTagMenu", "Ta bort villkor...",
+		"#CondTextUI_DeleteConditionTagsMenu", "Ta bort villkor...",
+		"#CondTextUI_EditConditionTagMenu", "Villkorsalternativ...",
+		"#CondTextUI_LoadConditionTagsMenu", "Läs in villkor...",
+		"#CondTextUI_LoadConditionTagsAndSetsMenu", "Läs in villkor och uppsättningar...",
+		"#CondTextUI_ShowIndicatorsCB", "Visa indikatorer på villkorlig text",
+		"#CondTextUI_ShowIndicatorsMenu", "Visa indikatorer på villkorlig text",
+		"#CondTextUI_ShowAndPrintIndicatorsMenu", "Visa och skriv ut indikatorer för villkorlig text",
+		"#CondTextUI_HideIndicatorsMenu", "Dölj indikatorer för villkorlig text",
+		"#CondTextUI_ShowIndicatorsDD", "Indikatorer:",
+		"#CondTextUI_ShowIndicators", "Visa",
+		"#CondTextUI_ShowAndPrintIndicators", "Visa och skriv ut",
+		"#CondTextUI_HideIndicators", "Dölj",
+		"#CondTextUI_RtMenuConditionTagTVNode",    "Snabbmeny för villkor i trädvy",
+		"#CondTextUI_RtMenuUnapplyTag",		"Använd inte \"^1\"",
+		"#CondTextUI_RtMenuDeleteTag",		"Ta bort \"^1\"",
+		"#CondTextUI_RtMenuEditTag",		"Redigera \"^1\"...",
+		"Show Options", "Visa &alternativ",
+		"Hide Options", "Dölj &alternativ",
+		"#CondTextUI_SelectUnusedMenu", "Markera alla oanvända",
+	
+		"#ConditionTagList_NameColumnLabel", "Namn",
+		"#ConditionTag_OptionsDialog", "Villkorsalternativ",
+		"#ConditionTag_OptionsDialogNew", "Nytt villkor",
+		"#ConditionTagOptions_Name:", "&Namn:",
+		"#ConditionTagOptions_Method:", "&Metod:",
+		"#ConditionTagOptions_Appearance:", "&Utseende:",
+		"#ConditionTagOptions_Color:", "&Färg:",
+		"#ConditionTagOptions_Indicator", "Indikator",
+		"#ConditionTagOptions_MethodUnderline", "Understrukna",
+		"#ConditionTagOptions_MethodHighlight", "Färgöverstrykning",
+		"#ConditionTagOptions_WavyUnderline", "Vågig",		
+		"#ConditionTagOptions_SolidUnderline", "Helfylld",		
+		"#ConditionTagOptions_DashedUnderline", "Streckad",		
+		"#ConditionTag_EmptyNameMsg", "Ange ett villkorsnamn.",
+		"#ConditionTag_NameInUseMsg", "Det här villkorsnamnet används redan. Välj ett annat.",
+		
+		"#ConditionSetShowAll", "Visa alla",
+		"#ConditionSetHideAll", "Dölj alla",
+		"#ConditionSetNone", "[Inga]",
+		"#ConditionSetBlank", " ",
+		"#ConditionSetLabel", "Uppsättning:",
+		"#ConditionSetNewSet", "Skapa ny uppsättning...",
+		"#ConditionSetDeleteSet", "Ta bort \"^1\"...",
+		"#ConditionSetRenameSet", "Ändra namn \"^1\"...",
+		"#ConditionSetRedefineSet", "Omdefiniera \"^1\"...",
+		"#ConditionSetUpdateAllSets", "Uppdatera alla uppsättningar",
+		"#ConditionSetUpdateAllSetsUndoName", "Uppdatera alla villkorsuppsättningar",
+		"#ConditionSetNameDialog", "Namn på villkorsuppsättning",
+		"#ConditionSetNameStatic", "&Namn:",
+		"#InvalidSetName", "Ogiltigt namn på villkorsuppsättning",
+		"#DuplicateSetName", "Namnet finns redan",
+		"#NoActiveSetString", "Ingen aktiv uppsättning",
+		
+		"#ConditionalTextTip", "Hittade dold text med ^1: ",
+		"#ConditionalTextTipOneTag", "detta villkor",
+		"#ConditionalTextTipManyTags", "dessa villkor",
+		
+		"#ConditionalTextEyeballHideWidgetTip", "Klicka för att dölja all text när detta villkor används",
+		"#ConditionalTextEyeballShowWidgetTip", "Klicka för att visa all text när detta villkor används",
+		"#ConditionalTextEyeballUnconditionalWidgetTip", "Ovillkorlig text visas alltid",
+		"#ConditionalTextAppliedAllTip",	"Villkor används i all markerad text. Klicka för att inte använda",
+		"#ConditionalTextAppliedSomeTip",	"Villkor används i viss markerad text. Klicka för att använda i all markerad text",
+		"#ConditionalTextAppliedNoneTip",	"Klicka för att använda villkor",
+		"#ConditionalTextAppliedAllTipUncondition",	"Markerad text är ovillkorlig",
+		"#ConditionalTextAppliedSomeTipUncondition",	"Viss markerad text är ovillkorlig. Klicka för att göra all text ovillkorlig",
+		"#ConditionalTextAppliedNoneTipUncondition",	"Klicka för att göra text ovillkorlig",
+		"#ConditionalTextApplyNoSelectionTip", "Klicka för att använda villkor i markerad text",
+		"#ConditionalTextNewTagTip",		"Nytt villkor",
+		"#ConditionalTextDeleteTagTip",		"Ta bort villkor",
+		"#ConditionalTextIndicatorTip",		"Indikatormetoden är ^1",
+		"#ConditionalTextNewSetTip",		"Ny uppsättning",
+		"#SetOverrideTip_NewConditionsAndConditionVisibility",	"Åsidosätter: villkorssynlighet (markera uppsättningen igen för att rensa, eller välj Omdefiniera) + nya villkor (välj Uppdatera alla uppsättningar för att rensa, eller välj Omdefiniera)",
+		"#SetOverrideTip_NewConditions",	"Åsidosätter: nya villkor (välj Uppdatera alla uppsättningar för att rensa, eller välj Omdefiniera)",
+		"#SetOverrideTip_ConditionVisibility",	"Åsidosätter: villkorssynlighet (markera uppsättningen igen för att rensa, eller välj Omdefiniera)",
+		
+		"#ConditionTag_DeleteConditionDialog", "Ta bort villkoret", 
+		"#ConditionTag_DeleteConditionsDialog", "Ta bort villkor", 
+		"#ConditionTag_DeleteConditionAndReplace:", "Ta bort villkoret och ersätt med: ", 
+		"#ConditionTag_DeleteConditionsAndReplace:", "Ta bort villkor och ersätt med: ", 
+		"#ConditionTag_DeleteInformationAlert", "Dra ett villkor till papperskorgen för att ta bort det.",
+		"#ConditionTag_DeleteNoReplaceChoice", "[Inget]",
+		
+		"#QuickApplyConditions", "Villkor",
+		"#Conditions_Filter_Key", "V", // should be upper case if there is an upper case character, this is the prefix key for quick apply for text conditions.
+		"#QuickApplyConditionSets", "Villkorsuppsättning",
+		"#QuickApplyConditionSets_Filter_Key", "VU",  // should be upper case if there is an upper case character, this is the prefix key for quick apply for text condition sets.
+		"#QuickApplyConditons_Menu_Key_String", "Inkludera villkor (ct:)",
+		"#QuickApplyConditonSets_Menu_Key_String", "Inkludera villkorsuppsättning (cs:)",
+		
+		"#SingularConditionStatusBodyString", "^1 villkor använt ^2",
+		"#PluralConditionStatusBodyString", "^1 villkor använt ^2",
+		"#MixedConditionString", " [blandad]",
+		"#NoConditionsString", "inga villkor används",
+    }
+};
+
+#endif // __ODFRC__

@@ -1,0 +1,162 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/linksui/resources/ProblemLinksDialog_enUS.fr $
+//  
+//  Owner: Steve Flenniken
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "IconStyleDefs.h"
+
+#ifdef __ODFRC__
+
+resource ProblemLinksDialog (kProblemLinksDialogResID + index_enUS)
+{
+	__FILE__, __LINE__,
+	kProblemParentWidgetId,										// WidgetId
+	kPMRsrcID_None,							// RsrcId
+	kBindNone,
+	Frame(0,0,20,20)			// Frame
+	kTrue,									// Visible
+	kTrue,									// Enabled
+    "#ProblemLinksDialogHeader",						// name
+	{
+		EVEGenericPanelWidget
+		(
+			kProblemDialogIconTextPanelWidgetID,					// WidgetId
+			kPMRsrcID_None,				// RsrcId
+			kBindNone,						// Frame binding
+			Frame(0,0,0,0)		// Frame
+			kTrue,							// Visible
+			kTrue,							// Enabled
+			kEVEArrangeChildrenInRow | kEVELargeSpaceAfter|kEVEChildLargeSpaceAfter,						// Eve info
+			{
+				EVEIconFieldWidget
+				(
+					kLinksPanelWidgetID1, kLargeWarningSignRsrcID, kApplicationRsrcPluginID,	// WidgetId, RsrcId
+					kBindNone,
+					Frame(0,0,0,0)		// Frame
+					kTrue, kTrue,														// Invisible, Enabled	
+					kADBEIconSuiteButtonType,
+					kEVELargeSpaceAfter,
+				),
+				EVEGenericPanelWidget
+				(
+					kProblemDialogTextPanelWidgetID,					// WidgetId
+					kPMRsrcID_None,				// RsrcId
+					kBindNone,						// Frame binding
+					Frame(0,0,0,0)		// Frame
+					kTrue,							// Visible
+					kTrue,							// Enabled
+					kEVEArrangeChildrenInColumn|kEVEChildNoSpaceAfter|kEVELargeSpaceAfter,						// Eve info
+					{
+						EVEStaticMultiLineTextWidget
+						(
+							kProblemLinkMultilineTextWidgetId, kSysStaticTextPMRsrcId,		// WidgetId, RsrcId
+							kBindNone,
+							Frame(0,0,360,60)		// Frame
+							kTrue, kTrue, kAlignLeft,		// Visible, Enabled, Alignment
+							kDontEllipsize, kTrue,					// Ellipsize style, Convert ampersands
+							// StaticMultiLineTextAttr
+							0,											// fScrollBarWidgetID
+							kDialogWindowFontId;					// fFontID
+							3,											// fNumPixelsBetweenLines
+							0,0,										// fInset
+							"#LinksModifiedWarning",
+							kEVENoSpaceAfter,
+						),
+						EVEStaticTextWidget
+						(
+							kMissingLinksStaticWidgetID, kSysStaticTextPMRsrcId,		// WidgetId, RsrcId
+							kBindNone,
+							Frame(0,0,0,0)			// Frame
+							kTrue, kTrue, kAlignLeft,		// Visible, Enabled, Alignment
+							kDontEllipsize, kTrue,					// Ellipsize style, Convert ampersands
+							"#ProblemMissingLinksParamStr",
+							0,
+							kEVENoSpaceAfter,
+						),
+
+						EVEStaticTextWidget
+						(
+							kModifiedLinksStaticWidgetID, kSysStaticTextPMRsrcId,		// WidgetId, RsrcId
+							kBindNone,
+							Frame(0,0,0,0)			// Frame
+							kTrue, kTrue, kAlignLeft,		// Visible, Enabled, Alignment
+							kDontEllipsize, kTrue,					// Ellipsize style, Convert ampersands
+							"#ProblemModifiedLinksParamStr",
+							0,
+							kEVENoSpaceAfter,
+						),
+
+						EVEStaticTextWidget
+						(
+							kInaccessibleLinksStaticWidgetID, kSysStaticTextPMRsrcId,		// WidgetId, RsrcId
+							kBindNone,
+							Frame(0,0,0,0)			// Frame
+							kFalse, kTrue, kAlignLeft,		// Visible, Enabled, Alignment
+							kDontEllipsize, kTrue,					// Ellipsize style, Convert ampersands
+							"#ProblemInaccessibleLinksParamStr",
+							0,
+							kEVENoSpaceAfter,
+						),
+					}
+				)
+			}
+		),
+
+		EVEGenericPanelWidget
+		(
+			kProblemDialogButtonPanelWidgetID,					// WidgetId
+			kPMRsrcID_None,				// RsrcId
+			kBindNone,						// Frame binding
+			Frame(0,0,0,0)		// Frame
+			kTrue,							// Visible
+			kTrue,							// Enabled
+			kEVEArrangeChildrenInRow|kEVEAlignRight,						// Eve info
+			{
+				EVEDefaultButtonWidget
+				(
+					kOKButtonWidgetID,					// WidgetId
+					kSysButtonPMRsrcId,				// RsrcId
+					kBindNone,
+					Frame(0,0,0,0)			// Frame
+					kTrue,							// Visible
+					kTrue,							// Enabled
+					"#Don'tUpdateLinks",				// Panel name
+					kEVELargeSpaceAfter,
+				)
+				EVEButtonWidget
+				(
+					kFixLinksButtonWidgetID,		// WidgetId
+					kSysButtonPMRsrcId,				// RsrcId
+					kBindNone,
+					Frame(0,0,0,0)			// Frame
+					kTrue,							// Visible
+					kTrue,							// Enabled
+					"#UpdateLinks",					// Panel name
+					kEVELargeSpaceAfter,
+				)
+			}
+		)
+	}
+	kEVEArrangeChildrenInColumn|kEVELargeMargin,		// EVE info for the dialog
+
+};
+
+#endif // __ODFRC__

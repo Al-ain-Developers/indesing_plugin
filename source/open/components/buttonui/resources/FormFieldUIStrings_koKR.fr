@@ -1,0 +1,357 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "StringTable.fh"
+
+#include "FormFieldUIDefs.h"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+//twright 12/11/2000 Removed left-over strings from group strings.
+//not sure if button/form is going to need lock warning...
+
+resource StringTable (kFormFieldUIStringsRsrcID + index_koKR)
+{
+	k_koKR,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{
+		// ----- Menu strings
+		"ButtonsActionsPopup",						"단추 동작 메뉴",
+		
+		"$$$/Menu/AppearancePanelPopup",	"단추 패널 메뉴",	
+		"$$$/Menu/Interactive",				"대화형(&V)", 
+		"$$$/Menu/FormField",				"양식(&F)", 
+		"$$$/Menu/About",					"양식 플러그인 정보(&A)", 
+		"$$$/Menu/CreateButton",			"단추로 변환(&C)", 
+		"$$$/Menu/CreateCheckBox",			"확인란으로 변환(&C)",
+		"$$$/Menu/CreateComboBox",			"콤보 상자로 변환(&C)", 
+		"$$$/Menu/CreateListBox",			"목록 상자로 변환(&C)", 
+		"$$$/Menu/CreateRadioButton",		"라디오 단추로 변환(&C)", 
+		"$$$/Menu/CreateSignatureField",	"서명 필드로 변환(&C)", 
+		"$$$/Menu/CreateTextField",			"텍스트 필드로 변환(&C)", 
+		"$$$/Menu/DestroyButton",			"개체로 변환(&C)", 
+		"$$$/Menu/FormFieldSettings",		"단추 옵션(&B)...", 
+		"$$$/Menu/NewState",				"새 상태", 
+		"$$$/Menu/DeleteState",				"상태 삭제", 
+		"$$$/Menu/DeleteStates",			"상태 삭제",
+		"$$$/Menu/PlaceIntoState",			"상태에 내용 가져오기...",
+		"$$$/Menu/DeleteStateContent",		"상태에서 내용 삭제",
+		"$$$/Menu/AppearancePanelPrefs",	"패널 옵션...",
+		"$$$/Menu/StateOptions",			"상태 옵션...",
+		"$$$/Menu/SetTabOrder",				"탭 순서 설정(&T)...",
+		"$$$/Menu/SetCalculationOrder",		"연산 순서 설정...",
+		"$$$/Menu/States",					"단추 및 양식(&U)",
+		
+		"$$$/Menu/Go To Page",				"페이지로 이동",
+		"$$$/Menu/Go To First Page",		"첫 페이지로 이동",
+		"$$$/Menu/Go To Anchor",			"대상으로 이동",
+		"$$$/Menu/Go To Last Page",			"마지막 페이지로 이동",
+		"$$$/Menu/Go To Next Page",			"다음 페이지로 이동",
+		"$$$/Menu/Go To Next View",			"다음 보기로 이동",
+		"$$$/Menu/Go To Previous Page",		"이전 페이지로 이동",
+		"$$$/Menu/Go To Previous View",		"이전 보기로 이동",
+		"$$$/Menu/Go To URL",				"URL로 이동",
+		"$$$/Menu/Movie",					"비디오",
+		"$$$/Menu/Open File",				"파일 열기",
+		"$$$/Menu/Show/Hide Buttons",		"단추 및 양식 표시/숨기기",
+		"$$$/Menu/Sound",					"사운드",
+		"$$$/Menu/View Zoom",				"확대/축소 보기",
+		"$$$/Menu/Animation",				"애니메이션",
+		"$$$/Menu/SwitchToMSOState",		"상태로 이동",
+		"$$$/Menu/SwitchToNextMSOState",	"다음 상태로 이동",
+		"$$$/Menu/SwitchToPrevMSOState",	"이전 상태로 이동",
+		"$$$/Menu/EPUBOnly",					"EPUB만",
+		"$$$/Menu/PDFOnly",					"PDF만",
+		"$$$/Menu/Print Form",				"인쇄 양식",
+		"$$$/Menu/Clear Form",				"양식 지우기",
+		"$$$/Menu/Submit Form",				"양식 제출",
+		
+		"$$$/Menu/FormFieldSettings/ButtonLibrary",			"단추 및 양식 견본",	// Name of menu item in Buttons Panel flyout that opens a library of Sample Buttons
+
+		"$$$/Menu/FormFieldSettings/PDFVis/Visible",		"PDF에 표시",
+		"$$$/Menu/FormFieldSettings/PDFVis/Hidden",			"PDF에서 숨기기",
+		"$$$/Menu/FormFieldSettings/PDFVis/VisibleNoPrint",	"PDF에 표시하지만 인쇄 안 함",
+		"$$$/Menu/FormFieldSettings/PDFVis/HiddenButPrint",	"PDF에서는 숨기지만 인쇄 가능함",	
+		"$$$/Menu/ButtonPDFOptions", "PDF 옵션...",
+
+		"$$$/Menu/ResetAllButtons",	"모든 단추를 표준 상태로 재설정",	
+			
+		"PageItems",						"페이지 항목", 
+		"$$$/Menu/Trace Geometry",			"도형 추적", 
+
+		"$$$/Menu/FormFieldOptions/Button",					"단추",
+		"$$$/Menu/FormFieldOptions/Check Box",				"확인란",
+		"$$$/Menu/FormFieldOptions/Combo Box",				"콤보 상자",
+		"$$$/Menu/FormFieldOptions/List Box",				"목록 상자",
+		"$$$/Menu/FormFieldOptions/Radio Button",			"라디오 단추",
+		"$$$/Menu/FormFieldOptions/Signature Field",		"서명 필드",
+		"$$$/Menu/FormFieldOptions/Text Field",				"텍스트 필드",
+
+		"InteractiveContextMenu",			"대화형",
+	
+		// ----- Dialog strings
+		"$$$/Dialog/CreateFormField/Title",		"양식 필드", 
+		"$$$/Dialog/CreateFormField/Options",	"옵션",
+		"$$$/Dialog/CreateFormField/Width",		"폭(&W):",
+		"$$$/Dialog/CreateFormField/Height",	"높이(&H):",
+
+		"$$$/Dialog/FormFieldSettings/Title",				"일반", 
+		"$$$/Dialog/FormFieldSettings/FieldType",			"필드 유형:",
+		"$$$/Dialog/FormFieldSettings/FieldTypeSetting",	"",
+		"$$$/Dialog/FormFieldSettings/Name",				"이름(&N):",
+		"$$$/Dialog/FormFieldSettings/PDFVisibility",		"PDF의 가시성(&V):",
+		"$$$/Dialog/FormFieldSettings/PDFVis/Visible",		"표시",
+		"$$$/Dialog/FormFieldSettings/PDFVis/Hidden",		"숨김",
+		"$$$/Dialog/FormFieldSettings/PDFVis/VisibleNoPrint",	"보이게 하고 인쇄 안 함",
+		"$$$/Dialog/FormFieldSettings/PDFVis/HiddenButPrint",	"숨기지만 인쇄 가능함",
+		"$$$/Dialog/FormFieldSettings/ReadOnly",			"읽기 전용",
+		"$$$/Dialog/FormFieldSettings/Export",				"내보내기",
+		"$$$/Dialog/FormFieldSettings/RequiredForExport",	"내보내기에 필요",
+		"$$$/Dialog/FormFieldSettings/Description",			"설명(&D):",
+		"$$$/Dialog/FormFieldSettings/ExportName",			"내보내기 이름(&E):",
+		"$$$/Dialog/FormFieldSettings/Common Settings",		"일반 설정",
+		"$$$/Dialog/FormFieldSettings/Options",				"옵션",
+		"$$$/Dialog/FormFieldSettings/Holder",				"양식 필드 설정 저장소",
+
+		"$$$/Dialog/FormOptions/Title",						"단추 옵션",
+		"$$$/Dialog/FormFieldSettings/Options",				"옵션",
+		
+		"$$$/Dialog/FormFieldSettings/ExportValue",			"내보내기 값:",
+		"$$$/Dialog/FormFieldSettings/DefaultIsChecked",	"기본값이 체크됨",
+		"$$$/Dialog/FormFieldSettings/DefaultIsSelected",	"기본값이 선택됨",
+		"$$$/Dialog/FormFieldSettings/Default",				"기본값:",
+
+		"$$$/Dialog/FormFieldSettings/Multiline",				"여러 줄",
+		"$$$/Dialog/FormFieldSettings/Scroll",					"스크롤 가능",
+		"$$$/Dialog/FormFieldSettings/LimitOf",					"제한",
+		"$$$/Dialog/FormFieldSettings/Characters",				"자",
+		"$$$/Dialog/FormFieldSettings/Password",				"암호",
+		"$$$/Dialog/FormFieldSettings/FieldForFileSelection",	"파일 선택에 사용됨",
+		"$$$/Dialog/FormFieldSettings/SpellCheck",				"맞춤법 검사",
+		
+		"$$$/Dialog/FormFieldSettings/Item",					"항목:",
+		"$$$/Dialog/FormFieldSettings/Add",						"추가",
+		"$$$/Dialog/FormFieldSettings/Delete",					"삭제",
+		"$$$/Dialog/FormFieldSettings/Change",					"변경",
+		"$$$/Dialog/FormFieldSettings/SortItems",				"항목 정렬",
+		"$$$/Dialog/FormFieldSettings/AllowMultipleSelection",	"다중 선택 허용",
+		"$$$/Dialog/FormFieldSettings/Editable",				"편집 가능",
+
+		"$$$/Dialog/FormFieldSettings/Align",					"정렬:",
+		"$$$/Dialog/FormFieldSettings/Align/Left",				"왼쪽",
+		"$$$/Dialog/FormFieldSettings/Align/Center",			"가운데",
+		"$$$/Dialog/FormFieldSettings/Align/Right",				"오른쪽",
+
+		"$$$/Dialog/FormFieldSettings/Font:",					"글꼴(&F):",
+		"$$$/Dialog/FormFieldSettings/Size:",					"크기(&S):",
+		"$$$/Dialog/FormFieldSettings/Auto",					"자동",
+
+		"$$$/Dialog/FormFieldSettings/SelectedIsDefault",		"선택한 항목은 기본값입니다.",
+		
+		"$$$/Dialog/FormFieldUI/DeleteAlert",					"상태를 삭제하면 연결된 내용도 삭제됩니다. 상태를 삭제하시겠습니까?",
+		"$$$/Dialog/FormFieldUI/DestroyAlert",					"이 동작은 양식 필드의 다른 상태와 연결된 내용을 삭제합니다. 계속하시겠습니까?",
+		"$$$/Dialog/FormFieldUI/DeleteContentAlert",			"이 상태와 연결된 내용을 삭제하시겠습니까?",
+		"$$$/Dialog/FormFieldUI/StyleChangeAlert",				"이 동작은 양식 필드의 현재 상태와 연결된 내용을 삭제합니다. 계속하시겠습니까?",
+		"$$$/Dialog/FormFieldUI/StyleChangeFailed",				"양식 필드에 선택한 모양 스타일을 적용하지 못했습니다.",
+
+		/* These are not visible, they are names of subpanels... */
+		
+		"$$$/Dialog/FormFieldSettings/CheckBox",				"체크 상자 옵션",	
+		"$$$/Dialog/FormFieldSettings/RadioButton",				"라디오 단추 옵션",	
+		"$$$/Dialog/FormFieldSettings/TextField",				"텍스트 필드 단추 옵션",	
+		"$$$/Dialog/FormFieldSettings/ListBox",					"목록 상자 단추 옵션",	
+		
+		"$$$/Dialog/About/Description",						"Forms 플러그인, 버전 1.0\n\n(c) 2001 Adobe Systems Incorporated. 모든 권리 보유.",
+
+		"$$$/Dialog/CmdName/CreateButton",					"단추로 변환",
+		"$$$/Dialog/CmdName/DestroyButton",					"개체로 변환",
+		"$$$/Dialog/CmdName/ChangeFormSettings",			"단추 설정 변경",
+
+		"$$$/Dialog/TextColor/Title",						"텍스트 색상", 
+		"$$$/Dialog/Button/Color...",						"글꼴 색상...", 
+
+		"$$$/Dialog/AppearancePanelPrefs/Title",			"패널 옵션", 
+		"$$$/Dialog/AppearancePanelPrefs/ThumbnailSize",	"축소판 크기", 
+		"$$$/Dialog/AppearancePanelPrefs/None",				"없음", 
+		
+		
+		"$$$/Dialog/StateOptions/Title",					"상태 옵션", 
+		"$$$/Dialog/StateOptions/State",					"상태:", 
+		"$$$/Dialog/StateOptions/Enable",					"상태 사용", 
+
+		"$$$/Dialog/CalculationOrder/Title",				"연산 순서", 
+		"$$$/Dialog/TabOrder/Title",						"탭 순서", 
+		"$$$/Dialog/Order/MoveUp",							"위로 이동(&U)", 
+		"$$$/Dialog/Order/MoveDown",						"아래로 이동(&D)",
+
+		"$$$/Dialog/ButtonPDFOptions/Title",				"PDF 옵션",
+		"$$$/Dialog/ButtonPDFOptions/InitialAppearance",	"초기 모양:",
+		"$$$/Dialog/ButtonPDFOptions/Visible",				"표시(&V)",
+		"$$$/Dialog/ButtonPDFOptions/Hidden",				"숨김(&H)",
+		"$$$/Dialog/ButtonPDFOptions/Printable",			"인쇄 가능(&P)",
+		"$$$/Dialog/ButtonPDFOptions/Description",			"설명(&D):",
+		
+		// ----- Window strings
+		
+		// ----- Panel strings
+
+		"$$$/Panel/FormFieldSettings/Action Data Holder",	"동작 데이터 저장소",
+		"$$$/Panel/FormFieldSettings/+",					"+",
+		"$$$/Panel/FormFieldSettings/Event:",				"이벤트:",
+		"$$$/Panel/FormFieldSettings/Actions:",				"동작:",
+		"$$$/Panel/FormFieldSettings/URL:",					"URL:",
+		"$$$/Panel/FormFieldSettings/Mail to:",				" 받는 사람:",
+		"$$$/Panel/Action",									"동작",
+		"$$$/Panel/Empty Action",							"[추가된 동작 없음]",
+		"$$$/Panel/StatesListBoxLabel/States",				"모양",
+		"$$$/Panel/States",									"단추 및 양식",
+		"$$$/Panel/FormFieldSettings/FieldType",			"유형:",
+		"$$$/Panel/FormFieldSettings/Name",					"이름:",
+		"$$$/Panel/ShowHide/Visibility:",					"가시성:",
+		"$$$/Panel/GoToPage/Page:",							"페이지:",
+
+		"$$$/Panel/Normal",									"[표준]",
+		"$$$/Panel/Over",									"[롤오버]",
+		"$$$/Panel/Down",									"[클릭]",
+
+		"$$$/Panel/Off",									"[보통 끔]",
+		"$$$/Panel/On",										"[보통 켬]",
+
+		"$$$/Panel/RolloverOff",							"[롤오버 끔]",
+		"$$$/Panel/RolloverOn",								"[롤오버 켬]",
+		"$$$/Panel/DowmOff",								"[클릭 끔]",
+		"$$$/Panel/DownOn",									"[클릭 켬]",
+
+		"$$$/Panel/CmdName/FormFieldName",					"단추 이름",
+		"$$$/Panel/CmdName/FormFieldStyle",					"단추 모양",
+		
+		"$$$/Panel/FormFieldSettings/Appearance",			"모양:",
+		"$$$/Panel/PDFOptions",								"PDF 옵션",
+		"$$$/Panel/Required",								"필수",
+		"$$$/Panel/Printable",								"인쇄 가능",
+		"$$$/Panel/Description",							"설명:",
+		"$$$/Panel/SelectedByDefault",						"기본적으로 선택됨",
+		"$$$/Panel/Multiline",								"여러 줄",
+		"$$$/Panel/ListItems",								"목록 항목",
+		"$$$/Panel/MultipleSelection",						"다중 선택",
+		"$$$/Panel/FontSize",								"글꼴 크기:",
+		"$$$/Panel/Font",									"글꼴:",
+		"$$$/Panel/AutoSize",								"자동",
+		"$$$/Panel/SortItems",								"항목 정렬",
+		"$$$/Panel/MERTLOption",							"오른쪽에서 왼쪽",
+		"$$$/Panel/ExportValue",							"단추 값:",
+		 
+		"$$$/Popup/Separator",								"-",
+		
+		"$$$/Dialog/Behaviors/Exit/No Data for Exit Behavior", "",
+
+		// ----- Tips strings
+
+		"$$$/Tip/StateEye",				"내보내기 시 옵션 상태 활성화/비활성화",
+		"$$$/Tip/StateThumbnail",		"이 상태의 축소 보기",
+		"$$$/Tip/Show",					"표시",
+		"$$$/Tip/Hide",					"숨기기",
+		"$$$/Tip/Ignore",				"무시",
+		"$$$/Tip/Delete Selected Action",	"선택한 동작 삭제",
+		"$$$/Tip/Add New Action",		"선택한 이벤트에 새 동작 추가",
+		"$$$/Tip/DeleteState",			"선택적 상태 및 해당 내용을 삭제합니다.",
+		"$$$/Tip/Convert To Button",		"단추로 변환",
+		"$$$/Tip/Convert To Object",		"개체로 변환",
+		"$$$/Tip/DefaultChoice",		"목록에서 항목을 선택하여 기본 선택 항목으로 만드십시오. 사용자 정의 정렬 순서를 설정하려면 \"항목 정렬\" 선택을 해제하고 제 위치로 드래그합니다.",
+        "$$$/Tip/MissingFontToolTip",				"양식 필드에 글꼴이 없습니다. 클릭하여 글꼴을 찾으십시오.",
+
+		// ----- Error strings
+
+		"$$$/Error/YouNeedToSpecifyAName", "이름을 지정해야 합니다.",
+		"$$$/Error/YouNeedToSpecifyANonBlankName", "유효한 이름을 지정해야 합니다.",
+		"$$$/Error/YouNeedToSpecifyANonBlankNameOrNoName", "유효한 이름을 지정하거나 이름을 전혀 지정하지 않아야 합니다.",
+		"$$$/Error/YouNeedToSpecifyAnExportValue", "내보내기 값을 지정해야 합니다.",
+		"$$$/Error/YouNeedToSpecifyANonBlankExportValue", "유효한 내보내기 값을 지정해야 합니다.",
+		"$$$/Error/YouNeedToSpecifyAUniqueName", "이 상태 이름은 이미 사용 중입니다. 다른 이름을 선택하십시오.",
+		"$$$/Error/YouNeedToSpecifyAValidFontSize", "0 ~ 300 사이의 값 또는 자동을 지정합니다.",
+		
+		// ----- Misc strings
+
+		"$$$/Command/DeleteStates",	"상태 삭제",
+		"$$$/CmdName/DeleteStateContent",	"상태 내용 삭제",
+		"$$$/Panel/CmdName/MSOName",		"다중 상태 개체 이름",
+		
+		// ----- MultiStateObject Panel strings
+				
+		"$$$/Menu/MSOPanel", "개체 상태(&O)",
+		"$$$/Panel/MSOPanel", "개체 상태",
+		"$$$/Panel/MSOPanel/ObjectName", "개체 이름:",
+#ifdef MACINTOSH
+		"$$$/Panel/MSOPanel/MixedSelection", "각 개체를 개별 상태로 만들려면 [새로 만들기] 단추를 클릭합니다. (개체를 동일한 상태로 유지하려면 Opt 키를 누른 채 클릭합니다.)",
+		"$$$/Panel/MSOPanel/MSOAndMixedSelection", "각 개체를 다중 상태 개체 \"^1\"의 새로운 상태로 만들려면 [새로 만들기] 단추를 클릭합니다. (개체를 동일한 상태로 유지하려면 Opt 키를 누른 채 클릭합니다.)\n\n개체를 \"^2\"의 표시 상태에 삽입하려면 [추가] 단추를 클릭합니다.",
+#else
+		"$$$/Panel/MSOPanel/MixedSelection", "각 개체를 개별 상태로 만들려면 [새로 만들기] 단추를 클릭합니다. (개체를 동일한 상태로 유지하려면 Alt 키를 누른 채 클릭합니다.)",
+		"$$$/Panel/MSOPanel/MSOAndMixedSelection", "각 개체를 다중 상태 개체 \"^1\"의 새로운 상태로 만들려면 [새로 만들기] 단추를 클릭합니다. (개체를 동일한 상태로 유지하려면 Alt 키를 누른 채 클릭합니다.)\n\n개체를 \"^2\"의 표시 상태에 삽입하려면 [추가] 단추를 클릭합니다.",
+#endif
+		
+		"$$$/Menu/MSOPanelPopup", "개체 상태 패널 메뉴",	
+		"$$$/Menu/MSOPanel/NewState", "새 상태",
+		"$$$/Menu/MSOPanel/DeleteState", "상태 삭제",
+		"$$$/Menu/MSOPanel/AddToState", "상태에 개체 추가",
+		"$$$/Menu/MSOPanel/PasteIntoState", "상태에 붙여넣기",
+		"$$$/Menu/MSOPanel/ReleaseState", "상태를 개체에 놓기",
+		"$$$/Menu/MSOPanel/ReleaseAllStates", "모든 상태를 개체에 풀기",
+		"$$$/Menu/MSOPanel/ResetAllMSOs", "모든 다중 상태 개체를 첫 상태로 재설정",
+		"$$$/Menu/MSOPanel/Options", "패널 옵션...",
+		"$$$/Menu/MSOPanel/ContextMenu", "개체 상태 패널 컨텍스트 메뉴",
+		"$$$/Menu/MSOPanel/ReleaseStateContextMenu", "\"^1\"을(를) 개체에 놓기",
+		"$$$/Menu/MSOPanel/DeleteStateContextMenu", "\"^1\" 삭제",
+		"$$$/Menu/MSOPanel/PasteIntoStateContextMenu", "\"^1\"에 붙여넣기",
+		"$$$/Menu/MSOPanel/HiddenUntilTriggered", "트리거할 때까지 숨겨짐",
+	
+		"$$$/Tip/MSOPanel/StateAnimated", "이 상태의 개체가 애니메이션됩니다.",
+		"$$$/Tip/MSOPanel/NewMSO", "선택 항목을 다중 상태 개체로 변환",
+		"$$$/Tip/MSOPanel/NewState", "새 상태 만들기",
+		"$$$/Tip/MSOPanel/DeleteState", "선택한 상태 삭제",
+		"$$$/Tip/MSOPanel/MSOIsSelected", "이 다중 상태 개체가 선택됩니다. 개체를 변환할 경우 모든 상태가 변환됩니다.",
+		"$$$/Tip/MSOPanel/MSOIsNotSelected", "상태가 선택됩니다. 다중 상태 개체를 선택하려면 클릭합니다.",
+		"$$$/Tip/MSOPanel/MSOStateIsSelected", "이 상태가 선택됩니다.",
+		"$$$/Tip/MSOPanel/MSOStateContentIsSelected", "상태에 있는 내용이 선택됩니다. 이 상태를 선택하려면 행을 클릭합니다.",
+		"$$$/Tip/MSOPanel/MSOStateRowMSOIsSelected", "다중 상태 개체가 선택됩니다. 전환할 행을 클릭하고 이 상태를 선택하십시오.",
+		"$$$/Tip/MSOPanel/MSOActiveStateRowMSOIsSelected", "다중 상태 개체가 선택됩니다. 이 상태를 선택하려면 행을 클릭합니다.",
+		"$$$/Tip/MSOPanel/MSOAnotherStateIsSelected", "전환할 행을 클릭하고 이 상태를 선택하십시오.",
+		"$$$/Tip/MSOPanel/PasteIntoState", "복사한 개체를 선택한 상태에 붙여넣기",
+		"$$$/Tip/MSOPanel/AddToState", "표시 상태에 개체 추가",
+	
+		"$$$/Dialog/MSOPanel/ReleaseAlert", "다중 상태 개체에는 적어도 두 개의 상태가 있어야 합니다. 이 동작은 문서에서 다중 상태 개체를 제거합니다. 모든 현재 개체는 현재 위치에서 단일 상태 개체로 남아 있습니다.",
+		"$$$/Dialog/MSOPanel/ReleaseAllAlert", "이 동작은 다중 상태 개체를 문서에서 제거합니다. 모든 현재 개체는 현재 위치에서 단일 상태 개체로 남아 있습니다.",
+		"$$$/Dialog/MSOPanel/DeletesMSOAlert", "다중 상태 개체에는 적어도 두 개의 상태가 있어야 합니다. 이 동작은 문서에서 다중 상태 개체를 제거합니다. 나머지 상태와 연관된 개체는 현재 위치에서 단일 상태 개체로 남습니다.",
+		
+		"$$$/Panel/MSOPanel/StatusOne", "개의 개체가 ^1에 있음",
+		"$$$/Panel/MSOPanel/Status", "개의 개체가 ^1에 있음",
+		
+		"$$$/Panel/MSOPanel/StatusMSOSelected", "선택된 모든 상태",
+		"$$$/Panel/MSOPanel/StatusStateSelected", "선택한 상태",
+		"$$$/Panel/MSOPanel/StatusStateContentSelected", "선택한 상태의 개체",
+
+		// Command strings		
+		"$$$/Command/CheckBox", "확인란으로 변환",
+		"$$$/Command/ComboBox", "콤보 상자로 변환",
+		"$$$/Command/ListBox", "목록 상자로 변환",
+		"$$$/Command/RadioButton", "라디오 단추로 변환",
+		"$$$/Command/SignatureField", "서명 필드로 변환",
+		"$$$/Command/TextField", "텍스트 필드로 변환",
+}
+};
+
+#endif // __ODFRC__

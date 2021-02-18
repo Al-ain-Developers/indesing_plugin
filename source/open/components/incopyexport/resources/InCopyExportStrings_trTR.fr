@@ -1,0 +1,52 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// U.S. English strings
+//========================================================================================
+
+resource StringTable (kInCopyExportStringsRsrcID + index_trTR)
+{
+	k_trTR,								// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+
+	{
+		// ----- Miscellaneous strings
+		"Export Seq Name", 		"InCopy Öyküsünü Dışa Aktar",
+		"Text",					"Metin", // append "Text" to export name on a text story
+		
+		// ----- Export options dialog strings
+		"InCopyExportOptions",	"Adobe InCopy Dışa Aktarma Seçenekleri",
+		"ExportOptions_DataType",	"&Kodlama:",
+		"ExportOptions_UTF16",	"UTF16",
+		"ExportOptions_UTF8",	"UTF8",
+		"ExportOptions_DataOptions",	"Seçenekler:",
+		"ExportOptions_StyleTable",	"&Stil Tablosunu Ekle",
+		"ExportOptions_SwatchList",	"R&enk Örneği Listesini Ekle",
+		"ExportOptions_XMPData",	"XMP &Bilgilerini İçer",
+		"ExportOptions_StoryLabel",	"Öykü &Etiketi:",
+
+		//menu
+		"ExportMenu",				"&Dışa aktar",
+		"kExportLayerToIC",			"&Katman...",
+		"kExportAllStoriesToIC",	"Tüm &Öyküler...",
+		"kExportAllGraphicsToIC",	"Tüm &Grafikler...",
+		"kExportAllItemsToIC",		"&Tüm Grafikler ve Öyküler...",
+
+		"INCDFeatureLost",    "Bu öykü bu dosya formatı tarafından desteklenmeyen özellikler içerebilir.  Bu öykü güncellendiğinde bu özellikler kaybolacaktır.",
+	}
+};
+
+#endif // __ODFRC__

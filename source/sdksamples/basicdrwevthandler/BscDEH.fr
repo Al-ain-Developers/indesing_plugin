@@ -1,0 +1,216 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/sdksamples/basicdrwevthandler/BscDEH.fr $
+//  
+//  Owner: Adobe Developer Technologies
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//  
+//  Umbrella include file for all the .fr files in the plug-in.
+//  
+//========================================================================================
+
+//===========================
+//  General includes:
+//===========================
+
+#include "MenuDef.fh"
+#include "ActionDef.fh"
+#include "ActionDefs.h"
+#include "AdobeMenuPositions.h"
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "StringTable.fh"
+//#include "OMTypes.h"
+#include "objectmodeltypes.fh"
+#include "ShuksanID.h"
+#include "ActionID.h"
+#include "CommandID.h"
+#include "WorkspaceID.h"
+#include "widgetid.h"
+#include "BuildNumber.h"
+#include "GraphicsID.h"
+
+#include "PlugInModel_UIAttributes.h"
+
+// Project includes:
+#include "BscDEHID.h"
+
+#ifdef __ODFRC__
+
+/*
+// Plugin version definition.
+*/
+resource PluginVersion (kSDKDefPluginVersionResourceID)
+{
+	kTargetVersion,
+	kBscDEHPluginID,
+	kSDKDefPlugInMajorVersionNumber, kSDKDefPlugInMinorVersionNumber, 	
+	kSDKDefHostMajorVersionNumber, kSDKDefHostMinorVersionNumber,
+	kBscDEHCurrentMajorFormatNumber, kBscDEHCurrentMinorFormatNumber,
+	{ kInDesignProduct },
+	{ kWildFS },
+	kUIPlugIn,
+	kBscDEHVersion
+};
+
+/*
+//	Boss class definition.
+*/
+resource ClassDescriptionTable(kSDKDefClassDescriptionTableResourceID)
+{{{
+
+
+	/**
+	 This boss registers and provides a service for handling draw events.
+	 The handler implementation describes the specific events it will handle,
+	 and provides code for handling them.
+	 
+	 @ingroup basicdrwevthandler
+	*/
+	Class
+	{
+		kBscDEHServiceBoss,
+		kInvalidClass,
+		{
+			/** Registers this boss with the application as providing a draw event handling service */
+			IID_IK2SERVICEPROVIDER, kBscDEHDrwEvtSrvcImpl,
+			/** Provides the actual service of registering for, handling, and unregistering for draw events */
+			IID_IDRWEVTHANDLER, kBscDEHDrwEvtHandlerImpl, 
+		}
+	},
+
+
+	/**
+	 This boss class provides the actions invoked by this plug-in's
+	 sub-menu items. It supports two interfaces: 
+	 IActionComponent and IPMPersist. We provide the implementation 
+	 for IActionComponent in BscDEHAction.cpp. The other
+	 default implementation is provided by the API.
+	 
+	 @ingroup basicdrwevthandler
+	*/
+	Class
+	{
+		kBscDEHActionComponentBoss,
+		kBaseActionComponentBoss,
+		{
+			/** Handle the actions from the menu. */
+			IID_IACTIONCOMPONENT, kBscDEHActionComponentImpl,
+		}
+	},
+}}};
+
+/*
+// Implementation definition.
+*/
+resource FactoryList (kSDKDefFactoryListResourceID) 
+{
+	kImplementationIDSpace,
+	{
+#include "BscDEHFactoryList.h"
+	}
+};
+
+/*
+// Menu definition.
+*/
+resource MenuDef (kSDKDefMenuResourceID)
+{
+	{
+		// The About Plug-ins sub-menu item for this plug-in.
+		kBscDEHAboutActionID,			// ActionID (kInvalidActionID for positional entries)
+		kBscDEHAboutMenuPath,			// Menu Path.
+		kSDKDefAlphabeticPosition,			// Menu Position.
+		kSDKDefIsNotDynamicMenuFlag,		// kSDKDefIsNotDynamicMenuFlag or kSDKDefIsDynamicMenuFlag.
+	}
+};
+
+/*
+// Action definition.
+*/
+resource ActionDef (kSDKDefActionResourceID)
+{
+	{ 
+		kBscDEHActionComponentBoss, 		// ClassID of boss class that implements the ActionID.
+		kBscDEHAboutActionID,	// ActionID.
+		kBscDEHAboutMenuKey,	// Sub-menu string.
+		kHelpMenuActionArea,				// Area name (see ActionDefs.h).
+		kNormalAction,					// Type of action (see ActionDefs.h).
+		kDisableIfLowMem,				// Enabling type (see ActionDefs.h).
+		kInvalidInterfaceID,			// Selection InterfaceID this action cares about or kInvalidInterfaceID.
+		kSDKDefInvisibleInKBSCEditorFlag, // kSDKDefVisibleInKBSCEditorFlag or kSDKDefInvisibleInKBSCEditorFlag.
+	}
+};
+
+
+/*
+// LocaleIndex
+// The LocaleIndex should have indicies that point at your
+// localizations for each language system that you are 
+// localized for.
+*/
+/*
+// String LocaleIndex.
+*/
+resource LocaleIndex (kSDKDefStringsResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_enUS, kSDKDefStringsResourceID + index_enUS
+		kInDesignJapaneseFS, k_jaJP, kSDKDefStringsResourceID + index_jaJP
+		
+		kWildFS, k_Wild, kSDKDefStringsResourceID + index_enUS
+	}
+};
+
+resource LocaleIndex (kSDKDefStringsNoTransResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_Wild, kSDKDefStringsNoTransResourceID + index_enUS
+	}
+};
+
+resource StringTable (kSDKDefStringsNoTransResourceID + index_enUS)
+{
+	k_enUS,									// Locale Id
+	kEuropeanMacToWinEncodingConverter,		// Character encoding converter
+	{
+		// No-Translate strings go here:		
+
+
+	}
+};
+
+
+
+
+#endif // __ODFRC__
+
+#include "BscDEH_enUS.fr"
+#include "BscDEH_jaJP.fr"
+//  Generated by Dolly build 17: template "IfPanelMenu".
+// End, BscDEH.fr.
+
+
+
+
+
+
+
+

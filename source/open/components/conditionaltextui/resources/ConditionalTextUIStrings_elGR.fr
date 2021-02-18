@@ -1,0 +1,132 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/conditionaltextui/resources/ConditionalTextUIStrings_elGR.fr $
+//  
+//  Owner: Michele Stutzman
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kConditionalTextUIStringsRsrcID + index_elGR)
+{
+    k_elGR,                                 // Locale Id
+    kResourceUTF8Encoded,     // Character encoding converter
+    {
+		"#CondTextUI_WinMenu",	"Κ&είμενο υπό συνθήκες",	// panel menu item
+		"#CondTextUI_PanelName","Κείμενο υπό συνθήκες",		// panel name
+		"#CondTextUI_PanelMenu","Μενού πίνακα κειμένου υπό συνθήκες",
+		"#CondTextUI_NewConditionTagMenu", "Νέα συνθήκη...",
+		"#CondTextUI_DeleteConditionTagMenu", "Διαγραφή συνθήκης...",
+		"#CondTextUI_DeleteConditionTagsMenu", "Διαγραφή συνθηκών...",
+		"#CondTextUI_EditConditionTagMenu", "Επιλογές συνθήκης...",
+		"#CondTextUI_LoadConditionTagsMenu", "Φόρτωση συνθηκών...",
+		"#CondTextUI_LoadConditionTagsAndSetsMenu", "Φόρτωση συνθηκών και συνόλων...",
+		"#CondTextUI_ShowIndicatorsCB", "Εμφάνιση ενδείξεων σε κείμενο υπό συνθήκες",
+		"#CondTextUI_ShowIndicatorsMenu", "Εμφάνιση ενδείξεων σε κείμενο υπό συνθήκες",
+		"#CondTextUI_ShowAndPrintIndicatorsMenu", "Εμφάνιση και εκτύπωση ενδείξεων σε κείμενο υπό συνθήκες",
+		"#CondTextUI_HideIndicatorsMenu", "Απόκρυψη ενδείξεων σε κείμενο υπό συνθήκες",
+		"#CondTextUI_ShowIndicatorsDD", "Ενδείξεις:",
+		"#CondTextUI_ShowIndicators", "Εμφάνιση",
+		"#CondTextUI_ShowAndPrintIndicators", "Εμφάνιση και εκτύπωση",
+		"#CondTextUI_HideIndicators", "Απόκρυψη",
+		"#CondTextUI_RtMenuConditionTagTVNode",    "Μενού περιβάλλοντος κόμβου προβολής συνθηκών σε μορφή δέντρου",
+		"#CondTextUI_RtMenuUnapplyTag",		"Κατάργηση εφαρμογής \"^1\"",
+		"#CondTextUI_RtMenuDeleteTag",		"Διαγραφή \"^1\"",
+		"#CondTextUI_RtMenuEditTag",		"Επεξεργασία \"^1\"...",
+		"Show Options", "Εμφάνιση &επιλογών",
+		"Hide Options", "Απόκρυψη &επιλογών",
+		
+		"#ConditionTagList_NameColumnLabel", "Όνομα",
+		"#ConditionTag_OptionsDialog", "Επιλογές συνθήκης",
+		"#ConditionTag_OptionsDialogNew", "Νέα συνθήκη",
+		"#ConditionTagOptions_Name:", "&Όνομα:",
+		"#ConditionTagOptions_Method:", "&Μέθοδος:",
+		"#ConditionTagOptions_Appearance:", "&Εμφάνιση:",
+		"#ConditionTagOptions_Color:", "&Χρώμα:",
+		"#ConditionTagOptions_Indicator", "Ένδειξη",
+		"#ConditionTagOptions_MethodUnderline", "Υπογράμμιση",
+		"#ConditionTagOptions_MethodHighlight", "Επισήμανση",
+		"#ConditionTagOptions_WavyUnderline", "Κυματιστό",		
+		"#ConditionTagOptions_SolidUnderline", "Συνεχές",		
+		"#ConditionTagOptions_DashedUnderline", "Διακεκομμένη",		
+		"#ConditionTag_EmptyNameMsg", "Ορίστε ένα όνομα συνθήκης.",
+		"#ConditionTag_NameInUseMsg", "Αυτό το όνομα συνθήκης χρησιμοποιείται ήδη. Επιλέξτε διαφορετικό όνομα.",
+		
+		"#ConditionSetShowAll", "Εμφάνιση όλων",
+		"#ConditionSetHideAll", "Απόκρυψη όλων",
+		"#ConditionSetNone", "[Κανένα]",
+		"#ConditionSetBlank", " ",
+		"#ConditionSetLabel", "Σύνολο:",
+		"#ConditionSetNewSet", "Δημιουργία νέου συνόλου...",
+		"#ConditionSetDeleteSet", "Διαγραφή \"^1\"...",
+		"#ConditionSetRenameSet", "Μετονομασία \"^1\"...",
+		"#ConditionSetRedefineSet", "Επανακαθορισμός \"^1\"...",
+		"#ConditionSetNameDialog", "Όνομα συνόλου συνθηκών",
+		"#ConditionSetNameStatic", "&Όνομα:",
+		"#InvalidSetName", "Μη έγκυρο όνομα συνόλου συνθηκών",
+		"#DuplicateSetName", "Το όνομα υπάρχει ήδη",
+		"#NoActiveSetString", "Μη ενεργό σύνολο",
+		
+		"#ConditionalTextTip", "Βρέθηκε κρυφό κείμενο με ^1: ",
+		"#ConditionalTextTipOneTag", "αυτή η συνθήκη",
+		"#ConditionalTextTipManyTags", "αυτές οι συνθήκες",
+		
+		"#ConditionalTextEyeballHideWidgetTip", "Κάντε κλικ για απόκρυψη όλου του κειμένου με εφαρμογή της συγκεκριμένης συνθήκης",
+		"#ConditionalTextEyeballShowWidgetTip", "Κάντε κλικ για εμφάνιση όλου του κειμένου με εφαρμογή της συγκεκριμένης συνθήκης",
+		"#ConditionalTextEyeballUnconditionalWidgetTip", "Το κείμενο χωρίς συνθήκες είναι πάντα ορατό",
+		"#ConditionalTextAppliedAllTip",	"Η συνθήκη εφαρμόστηκε σε όλο το επιλεγμένο κείμενο. Κάντε κλικ για να καταργηθεί η εφαρμογή",
+		"#ConditionalTextAppliedSomeTip",	"Η συνθήκη εφαρμόστηκε σε μέρος του επιλεγμένου κειμένου. Κάντε κλικ για εφαρμογή σε όλο το επιλεγμένο κείμενο",
+		"#ConditionalTextAppliedNoneTip",	"Κάντε κλικ για εφαρμογή συνθήκης",
+		"#ConditionalTextAppliedAllTipUncondition",	"Το επιλεγμένο κείμενο δεν είναι υπό συνθήκες",
+		"#ConditionalTextAppliedSomeTipUncondition",	"Μέρος του επιλεγμένου κειμένου είναι χωρίς συνθήκες. Κάντε κλικ για να κάνετε όλο το κείμενο χωρίς συνθήκες",
+		"#ConditionalTextAppliedNoneTipUncondition",	"Κάντε κλικ για να κάνετε το κείμενο χωρίς συνθήκες",
+		"#ConditionalTextApplyNoSelectionTip", "Κάντε κλικ για εφαρμογή της συνθήκης στο επιλεγμένο κείμενο",
+		"#ConditionalTextNewTagTip",		"Νέα συνθήκη",
+		"#ConditionalTextDeleteTagTip",		"Διαγραφή συνθήκης",
+		"#ConditionalTextIndicatorTip",		"Η μέθοδος ένδειξης είναι ^1",
+		"#ConditionalTextNewSetTip",		"Νέο σύνολο",
+		
+		"#ConditionTag_DeleteConditionDialog", "Διαγραφή συνθήκης", 
+		"#ConditionTag_DeleteConditionsDialog", "Διαγραφή συνθηκών", 
+		"#ConditionTag_DeleteConditionAndReplace:", "Διαγραφή συνθήκης και αντικατάσταση με: ", 
+		"#ConditionTag_DeleteConditionsAndReplace:", "Διαγραφή συνθηκών και αντικατάσταση με: ", 
+		"#ConditionTag_DeleteInformationAlert", "Μεταφέρετε μια συνθήκη στο εικονίδιο του κάδου ανακύκλωσης για να τη διαγράψετε.",
+		"#ConditionTag_DeleteNoReplaceChoice", "[Κανένα]",
+		
+		"#QuickApplyConditions", "Συνθήκη",
+		"#Conditions_Filter_Key", "CT", // should be upper case if there is an upper case character, this is the prefix key for quick apply for text conditions.
+		"#QuickApplyConditionSets", "Σύνολο συνθηκών",
+		"#QuickApplyConditionSets_Filter_Key", "CS",  // should be upper case if there is an upper case character, this is the prefix key for quick apply for text condition sets.
+		"#QuickApplyConditons_Menu_Key_String", "Συμπερίληψη συνθηκών (ct:)",
+		"#QuickApplyConditonSets_Menu_Key_String", "Συμπερίληψη συνόλων συνθηκών (cs:)",
+		
+		"#SingularConditionStatusBodyString", "^1 συνθήκη εφαρμόζεται ^2",
+		"#PluralConditionStatusBodyString", "^1 συνθήκες εφαρμόζονται ^2",
+		"#MixedConditionString", " [μεικτό]",
+		"#NoConditionsString", "δεν εφαρμόζονται συνθήκες",
+    }
+};
+
+#endif // __ODFRC__

@@ -1,0 +1,137 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/public/includes/PMTypes.fh $
+//  
+//  Owner: Michael Burbidge
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#ifndef __PMTypes_fh__
+#define __PMTypes_fh__
+
+#include "ShuksanID.h"
+const short kMagicInterfacePadding  = 0x3333;
+
+#ifdef __ODFRC__
+
+const short kTrue = 1;
+const short kFalse = 0;
+
+// See OMTypes.h and OMTypes.cpp
+const longint kInvalidUID = 0;
+const longint kInvalidWidgetID = 0;
+const longint kInvalidClass = 0;
+const longint kInvalidPlugin = 0;
+const longint kInvalidImpl = 0;
+const longint kInvalidService = 0;
+const longint kInvalidInterfaceID = 0;
+const longint kInvalidKitViewID = 0;
+const longint kInvalidActionID = 0;
+const longint kInvalidFileTypeInfoID = 0;
+const longint kInvalidScriptElementID = 0;
+const longint kInvalidScriptID = 0;
+
+type PlatformPMString
+{
+	ShouldTranslate:	integer = kTrue;	// fShouldTranslate, 1 = true, 0 = false
+	HasTranslated:		integer = kFalse;	// fHasTranslated, 1 = true, 0 = false
+	wstring;								// Two-byte length, single byte chars
+};
+
+type NoTranslateString : PlatformPMString ( ShouldTranslate = kFalse )
+{
+};
+
+type PMPoint
+{
+	double;		// x
+	double;		// y
+};
+
+type PMRect
+{
+	double;		// left
+	double;		// top
+	double;		// right
+	double;		// bottom
+};
+
+type PMRsrcID
+{
+	longint;		// fRsrcId
+	longint;		// fPluginId
+};
+
+type PMSysRsrcID
+{
+	integer;		// fSysRsrcId
+	longint;		// fPluginId
+};
+
+#ifndef kPluginID_None
+	#define kPluginID_None		0
+	#define kPMRsrcID_None		kNoIcon, 0
+#endif
+
+//========================================================================================
+// Interface types
+//========================================================================================
+
+// ----- Root data type for all types that describes the data for interfaces
+//		 on bosses.
+type Interface
+{
+	integer = kMagicInterfacePadding; // cushion between each interface, to detect bad readwrites
+	IID:
+		longint = 0;
+};
+
+// ----- A data type of an interface that refers to a shuksan boss described
+//		 in another interface.
+/*
+type ObjectRefData : Interface (IID = IID_IOBJECTREFDATA)
+{
+	PMString;		// Plugin name
+	longint;		// Resource type
+	longint;		// Resource Id
+};
+*/
+//========================================================================================
+// Class types
+//========================================================================================
+
+// ----- Root data type for all resource types that describe data that
+//		 represents shuksan bosses.
+
+type Class
+{
+	ClassID:
+		longint = 0;
+};
+
+// ----- A data type that refers to a shuksan boss described in another
+//		 resource.
+
+/*type ObjectRefBoss : Class (ClassID = kObjectRefBoss)
+{
+	ObjectRefData;
+};*/
+
+#endif // __ODFRC__
+
+#endif // __PMTypes_fh__

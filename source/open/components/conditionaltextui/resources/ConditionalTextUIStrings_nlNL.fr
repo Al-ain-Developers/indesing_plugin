@@ -1,0 +1,126 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kConditionalTextUIStringsRsrcID + index_nlNL)
+{
+    k_nlNL,                                 // Locale Id
+    kResourceUTF8Encoded,     // Character encoding converter
+    {
+		"#CondTextUI_WinMenu",	"V&oorwaardelijke tekst",	// panel menu item
+		"#CondTextUI_PanelName","Voorwaardelijke tekst",		// panel name
+		"#CondTextUI_PanelMenu","Menu van deelvenster Voorwaardelijke tekst",
+		"#CondTextUI_NewConditionTagMenu", "Nieuwe voorwaarde...",
+		"#CondTextUI_DeleteConditionTagMenu", "Voorwaarde verwijderen...",
+		"#CondTextUI_DeleteConditionTagsMenu", "Voorwaarden verwijderen...",
+		"#CondTextUI_EditConditionTagMenu", "Voorwaardeopties...",
+		"#CondTextUI_LoadConditionTagsMenu", "Voorwaarden laden...",
+		"#CondTextUI_LoadConditionTagsAndSetsMenu", "Voorwaarden en sets laden...",
+		"#CondTextUI_ShowIndicatorsCB", "Indicatoren tonen op voorwaardelijke tekst",
+		"#CondTextUI_ShowIndicatorsMenu", "Indicatoren tonen op voorwaardelijke tekst",
+		"#CondTextUI_ShowAndPrintIndicatorsMenu", "Indicatoren tonen en afdrukken op voorwaardelijke tekst",
+		"#CondTextUI_HideIndicatorsMenu", "Indicatoren verbergen op voorwaardelijke tekst",
+		"#CondTextUI_ShowIndicatorsDD", "Indicatoren:",
+		"#CondTextUI_ShowIndicators", "Tonen",
+		"#CondTextUI_ShowAndPrintIndicators", "Tonen en afdrukken",
+		"#CondTextUI_HideIndicators", "Verbergen",
+		"#CondTextUI_RtMenuConditionTagTVNode",    "Contextmenu van knooppunt in Structuurweergave voorwaarden",
+		"#CondTextUI_RtMenuUnapplyTag",		"Toepassen van \"^1\" ongedaan maken",
+		"#CondTextUI_RtMenuDeleteTag",		"\"^1\" verwijderen",
+		"#CondTextUI_RtMenuEditTag",		"\"^1\" bewerken...",
+		"Show Options", "&Opties tonen",
+		"Hide Options", "O&pties verbergen",
+		"#CondTextUI_SelectUnusedMenu", "Alle ongebruikte selecteren",
+	
+		"#ConditionTagList_NameColumnLabel", "Naam",
+		"#ConditionTag_OptionsDialog", "Voorwaardeopties",
+		"#ConditionTag_OptionsDialogNew", "Nieuwe voorwaarde",
+		"#ConditionTagOptions_Name:", "&Naam:",
+		"#ConditionTagOptions_Method:", "&Methode:",
+		"#ConditionTagOptions_Appearance:", "&Vormgeving:",
+		"#ConditionTagOptions_Color:", "&Kleur:",
+		"#ConditionTagOptions_Indicator", "Indicator",
+		"#ConditionTagOptions_MethodUnderline", "Onderstrepen",
+		"#ConditionTagOptions_MethodHighlight", "Markeren",
+		"#ConditionTagOptions_WavyUnderline", "Golvend",		
+		"#ConditionTagOptions_SolidUnderline", "Ononderbroken",		
+		"#ConditionTagOptions_DashedUnderline", "Streepjes",		
+		"#ConditionTag_EmptyNameMsg", "Geef een voorwaardenaam op.",
+		"#ConditionTag_NameInUseMsg", "Deze voorwaardenaam bestaat reeds. Kies een andere naam.",
+		
+		"#ConditionSetShowAll", "Alles tonen",
+		"#ConditionSetHideAll", "Alles verbergen",
+		"#ConditionSetNone", "[Geen]",
+		"#ConditionSetBlank", " ",
+		"#ConditionSetLabel", "Instellen:",
+		"#ConditionSetNewSet", "Nieuwe set maken...",
+		"#ConditionSetDeleteSet", "\"^1\" verwijderen...",
+		"#ConditionSetRenameSet", "Naam \"^1\" wijzigen...",
+		"#ConditionSetRedefineSet", "\"^1\" opnieuw definiëren...",
+		"#ConditionSetUpdateAllSets", "Alle sets bijwerken",
+		"#ConditionSetUpdateAllSetsUndoName", "Alle voorwaardensets bijwerken",
+		"#ConditionSetNameDialog", "Naam voorwaardeset",
+		"#ConditionSetNameStatic", "&Naam:",
+		"#InvalidSetName", "Ongeldige naam voor voorwaardeset",
+		"#DuplicateSetName", "Naam bestaat al",
+		"#NoActiveSetString", "Geen actieve set",
+		
+		"#ConditionalTextTip", "Verborgen tekst aangetroffen met ^1: ",
+		"#ConditionalTextTipOneTag", "deze voorwaarde",
+		"#ConditionalTextTipManyTags", "deze voorwaarden",
+		
+		"#ConditionalTextEyeballHideWidgetTip", "Klik om alle tekst te verbergen waarop deze voorwaarde is toegepast",
+		"#ConditionalTextEyeballShowWidgetTip", "Klik om alle tekst te tonen waarop deze voorwaarde is toegepast",
+		"#ConditionalTextEyeballUnconditionalWidgetTip", "Onvoorwaardelijke tekst is altijd zichtbaar",
+		"#ConditionalTextAppliedAllTip",	"Voorwaarde is toegepast op alle geselecteerde tekst. Klik om toepassing ongedaan te maken",
+		"#ConditionalTextAppliedSomeTip",	"Voorwaarde is toegepast op bepaalde geselecteerde tekst. Klik om toe te passen op alle geselecteerde tekst",
+		"#ConditionalTextAppliedNoneTip",	"Klik om voorwaarde toe te passen",
+		"#ConditionalTextAppliedAllTipUncondition",	"Geselecteerde tekst is onvoorwaardelijk",
+		"#ConditionalTextAppliedSomeTipUncondition",	"Bepaalde geselecteerde tekst is onvoorwaardelijk. Klik om alles onvoorwaardelijk te maken",
+		"#ConditionalTextAppliedNoneTipUncondition",	"Klik om tekst onvoorwaardelijk te maken",
+		"#ConditionalTextApplyNoSelectionTip", "Klik om voorwaarde toe te passen op geselecteerde tekst",
+		"#ConditionalTextNewTagTip",		"Nieuwe voorwaarde",
+		"#ConditionalTextDeleteTagTip",		"Voorwaarde verwijderen",
+		"#ConditionalTextIndicatorTip",		"Indicatormethode is ^1",
+		"#ConditionalTextNewSetTip",		"Nieuwe set",
+		"#SetOverrideTip_NewConditionsAndConditionVisibility",	"Overschrijvingen: zichtbaarheid voorwaarde (selecteer nogmaals de set die u wilt wissen of kies Opnieuw definiëren) + nieuwe voorwaarden (kies Alle sets bijwerken om te wissen of kies Opnieuw definiëren)",
+		"#SetOverrideTip_NewConditions",	"Overschrijvingen: nieuwe voorwaarden (kies Alle sets bijwerken om te wissen of kies Opnieuw definiëren)",
+		"#SetOverrideTip_ConditionVisibility",	"Overschrijvingen: zichtbaarheid voorwaarde (selecteer nogmaals de set die u wilt wissen of kies Opnieuw definiëren)",
+		
+		"#ConditionTag_DeleteConditionDialog", "Voorwaarde verwijderen", 
+		"#ConditionTag_DeleteConditionsDialog", "Voorwaarden verwijderen", 
+		"#ConditionTag_DeleteConditionAndReplace:", "Voorwaarde verwijderen en vervangen door: ", 
+		"#ConditionTag_DeleteConditionsAndReplace:", "Voorwaarden verwijderen en vervangen door: ", 
+		"#ConditionTag_DeleteInformationAlert", "Sleep een voorwaarde naar het pictogram met de prullenmand om de voorwaarde te verwijderen.",
+		"#ConditionTag_DeleteNoReplaceChoice", "[Geen]",
+		
+		"#QuickApplyConditions", "Voorwaarde",
+		"#Conditions_Filter_Key", "CT", // should be upper case if there is an upper case character, this is the prefix key for quick apply for text conditions.
+		"#QuickApplyConditionSets", "Voorwaardenset",
+		"#QuickApplyConditionSets_Filter_Key", "CS",  // should be upper case if there is an upper case character, this is the prefix key for quick apply for text condition sets.
+		"#QuickApplyConditons_Menu_Key_String", "Inclusief voorwaarden (ct:)",
+		"#QuickApplyConditonSets_Menu_Key_String", "Inclusief voorwaardensets (cs:)",
+		
+		"#SingularConditionStatusBodyString", "^1 voorwaarde toegepast ^2",
+		"#PluralConditionStatusBodyString", "^1 voorwaarden toegepast ^2",
+		"#MixedConditionString", " [gemengd]",
+		"#NoConditionsString", "geen voorwaarden toegepast",
+    }
+};
+
+#endif // __ODFRC__

@@ -1,0 +1,227 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#ifdef __ODFRC__
+
+#include "StringTable.fh"
+
+resource StringTable (kLinksUIStringsRsrcID + index_ptBR)
+{
+	k_ptBR,					// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	{
+		"Links_WinMenu",			"Vínc&ulos", // panel menu item
+		"kRtMouseGraphics",			"Gráficos", // context menu submenu name
+		"RtMenuLinksUILinkInfo",	"Menu contextual 'Informações sobre vínculos'",
+		
+		"#LinksUIPanel",			"Vínculos", // panel name
+		"#LinksUIPanelMenu",		"Menu do painel 'Vínculos'", 
+		"#LinksUtilitiesSubmenu",		"Utilitários",		// submenu for links panel menu
+		"#SelectedLinkInfoSectionName",			"Informações sobre vínculos", // section name in links ui panel
+		
+		"#UpdateAllOutOfDateLinksMenu",	"Atualizar todos os vínculos",
+		"#AutoFindMissingLinksMenu",		"Procurar vínculos ausentes",
+		"#LinksUIRelinkLinkMenu",		"Revincular...",
+		"#LinksUIRelinkResourceMenu",	"Revincular todas as instâncias...", // menu item to relink all instances of this multiple link assets
+		"#RelinkResource ^1 Menu",		"Revincular todas as instâncias de '^1'...", // menu item to relink all instances of one single link asset
+		"#ReplaceFPOWithOriginalResourceMenu",	"Substituir todas as instâncias...", // menu item to replace all instances of this multiple link assets
+		"#ReplaceFPOWithOriginalResource ^1 Menu", "Substituir todas as ocorrências de FPO '^1' por originais...", // menu item to replace all instances of one single link asset
+		"#RelinkCloudResource ^1 Menu",	"Revincular todas as instâncias de '^1' das bibliotecas CC...", // menu item to relink all instances of one single link asset
+        "#RelinkAALResource ^1 Menu",    "Revincular todas as instâncias de '^1' do Adobe Asset Link...", // menu item to relink all instances of one single link asset
+		"#LinksUIUpdateLinkMenu",			"Atualizar vínculo", // context menu item in links ui panel
+		"#LinksUIUpdateLinkResourceMenu",	"Atualizar todas as instâncias",
+		"#UpdateResource ^1 Menu",		"Atualizar todas as instâncias de '^1'", // menu item to update all instances of one single link asset
+		"#LinksUIEmbedLinkMenu",			"Incorporar vínculo", // context menu item in links ui panel
+		"#LinksUIEmbedResourceMenu",		"Incorporar todas as instâncias",
+		"#EmbedResource ^1 Menu",			"Incorporar todas as instâncias de '^1'", // menu item to embed all instances of one single link asset
+		"#LinksUIUnEmbedLinkMenu",		"Desincorporar vínculo", // context menu item in links ui panel
+		"#LinksUIUnEmbedResourceMenu",	"Desincorporar todas as instâncias",
+		"#UnembedResource ^1 Menu",			"Desincorporar todas as instâncias de '^1'", // menu item to unembed all instances of one single link asset
+		"#LinksUIUnLinkMenu",				"Desvincular",
+		"#UnLinkResourceMenu",			"Desvincular todas as instâncias",
+		"#UnLinkResource ^1 Menu",			"Desvincular todas as instâncias de '^1'", // menu item to unlink all instances of one single link asset
+		"#LinksUIEditOriginalLinkMenu",		"Editar original", // context menu item in links ui panel
+		"#LinksUIGoToSourceLinkMenu",		"Ir para origem", // context menu item in links ui panel
+		"#LinksUIXMPFileInfo",				"Informações de arquivo XMP...",
+		"#LinksUICopyPath",				"Copiar caminho completo",
+		"#LinksUICopyPlatformPath",			"Copiar caminho de estilo de plataforma",
+		"#RevealLinkInMacFinder",			"Revelar no Finder",
+		"#RevealLinkInWinExplorer",			"Revelar no Explorer",
+		"#RevealLinkInAdobeBridge",			"Revelar no Bridge",
+		"#RevealLinkInCCLibraries",			"Revelar nas bibliotecas CC",
+		"#GoToLink",						"Ir para vínculo",
+		"#EditWithApp",					"Editar com",
+		"ApplicationFiles",					"Aplicativo (*.exe)", // windows only string to list exe files in the 'edit with application' dialog.
+		"#ChooseEditingApplication",			"Escolher aplicativo", // dialog title
+		"#OtherApp",						"Outro(a)...",	// Menu name for choosing a custom application via a standard file dialog for Edit With...
+		"#LinksUICopyLink",				"Copiar vínculo(s) para...",
+		"#LinksUIEditColumnsMenu",			"Opções de painel...",
+		
+		"#LinksUIRemoveThisColumnMenu",	"Ocultar esta coluna",
+		"#LinksUIShowThumbnailMenu",		"Mostrar miniatura",
+		"#LinksUIHideThumbnailMenu",		"Ocultar miniatura",		
+		"#LinksUIShowInfoThumbnailMenu",	"Mostrar miniatura de informações",
+		"#LinksUIHideInfoThumbnailMenu",	"Ocultar miniatura de informações",
+		
+		"#SaveLinkVersionCmd",			"Dar entrada no vínculo",
+		"#ShowLinksPanelColumn",			"Mostrar coluna",
+		"#ShowLinksPanelInfo",				"Mostrar em informações sobre vínculos",
+		"#SelectNextLinkButtonTip",			"Selecionar próximo vínculo na lista",
+		"#SelectPrevLinkButtonTip",			"Selecionar vínculo anterior na lista",
+		"#ToggleLinkInfoButtonTip",			"Mostrar/ocultar informações sobre vínculos",
+
+		"#ShortLinkStatusParamStr",				"^1 vínculos",  // status string for links panel
+		"#LongLinkStatusParamStr",				"Total de ^1 vínculo(s)\n\n   ^2 ausente(s)\n   ^3 modificado(s)\n   ^4 incorporado(s)\n   ^5 exclusivo(s)\n   ^6 subvínculo(s)", // tip string for links panel status.
+		"#OneSelectedLinkStr",			"1 selecionado", // status string when one link is selected in the panel.
+		"#NumSelectedLinksParamStr",	"^1 selecionado(s)", // status string when multiple links are selected in the panel.
+				
+		"RtMenuLinksUILinkItem",		"Menu contextual 'Vínculo'",
+		"RtMenuLinksUILinksHeader",		"Menu contextual 'Cabeçalho de vínculos'",
+		
+		"#LinkColumnDialog",			"Opções de painel", // dialog name
+		"#LinksUIPanelOptions",			"Opções",
+		
+		"#LinkThumbPrefLabel",			"Miniaturas:",
+		"#LinksUIRowSizeLabel",		"&Tamanho da linha:",
+		"#LinksUISmallRowStr",			"Linhas pequenas",
+		"#LinksUIRegularRowStr",		"Linhas normais",
+		"#LinksUILargeRowStr",			"Linhas grandes",
+		"#LinkInfoShowThumbnailCheckbox",	"Mostrar em &informações sobre vínculos",
+		"#LinksUIShowThumbnail",		"Mostrar em colu&na de nome",
+		"#LinksUICollapseMultiple",		"&Contrair vários vínculos na mesma origem",
+
+		"#SearchHereForMissingFiles",	"Procurar vínculos ausentes nesta pasta", // label for checkbox in relink dialog
+		"#RelinkSkipButton",			"Ignorar", // name for 'skip' button in relink dialog
+		"#SearchFound^1Links",		"O diretório foi pesquisado e ^1 vínculos ausentes foram encontrados e revinculados.", // alert that displays if we auto find missing links after a relink
+		"#RelinkToFolderTitle",			"Selecione a pasta para revinculação. Somente os vínculos selecionados com nome correspondente serão revinculados.",
+		"#RelinkToSameFilename",		"Corresponder mesmo nome de arquivo e extensão", // radio button option in relink to folder dialog
+		"#RelinkToExtension",			"Corresponder mesmo nome de arquivo mas com esta extensão:", // radio button option in relink to folder dialog
+		"#LinksUICopyLinksTitle",		"Selecione a pasta em que os arquivos vinculados serão copiados.",
+		"#LinksUIRelinkToFolderLinkMenu",	"Revincular à pasta...",
+		"#LinksUIRelinkFileExtensionLinkMenu",	"Revincular extensão de arquivo...",
+        "#LinksUIRelinkFromCloudAssetLinkMenu",	"Revincular das bibliotecas CC...",
+        "#LinksUIRelinkFromAALAssetLinkMenu",    "Revincular do Adobe Asset Link...",
+		"#LicenseStockAssetLinkMenu",	"Obter licença da imagem...",
+		"#LinksUIRelink: ^1",			"Revincular: ^1", // title for relink dialog. ^1 becomes file path.
+		"#LinksUILocate: ^1",			"Localizar: ^1", // title for relink dialog when link is missing. ^1 becomes file path.
+		"#CopyLinksFailedAlert",		"Falha ao copiar vínculos para uma pasta.",
+		"#AutoFindFoundNothingAlert",	"Não foi encontrado nenhum vínculo ausente. Use o comando 'Revincular' para localizar o primeiro vínculo ausente e tente novamente.",
+		
+		"kEditsMadeWarning",			  "Foram feitas edições na versão importada de \"^1\". Você perderá essas edições com a atualização. Deseja atualizar mesmo assim?",
+		"kEditsMadeInLinkedStoryWarning",	"Foram feitas edições na matéria vinculada de \"^1\". Você perderá essas edições com a atualização. Deseja atualizar mesmo assim?",
+		"kEditsMadeInLinkedArticleWarning", "Foram feitas edições no item de página vinculado \"^1\". Você perderá essas edições com a atualização. Deseja atualizar mesmo assim?",
+		"kEditsMadeToTextOrTableWarning", "Foram feitas edições na versão importada de \"^1\". Essas edições serão perdidas (exceto as alterações aplicadas às planilhas por meio de estilos de célula ou de tabela) quando você atualizar o vínculo. Deseja atualizá-lo mesmo assim?",
+
+		// Strings for Problem Links dialog
+		"#LinksModifiedWarning",	"Este documento contém vínculos para origens que foram removidas/modificadas. Você pode atualizar os vínculos modificados agora ou mais tarde usando o painel Vínculos.",
+		"#HTTPLinksModifiedWarning",	"Este documento contém vínculos para origens que foram removidas/modificadas desde a última vez que o documento foi salvo. Você pode atualizar os vínculos modificados agora ou mais tarde usando o painel Vínculos.",
+		"#UpdateLinks",				"&Atualizar vínculos modificados",	 // button text
+		"#Don'tUpdateLinks",		"Não atualizar vínculos", // button text
+		"#ProblemMissingLinksParamStr",	"^1 - vínculo(s) ausente(s)",
+		"#ProblemModifiedLinksParamStr",	"^1 - vínculo(s) modificado(s)",
+		"#ProblemInaccessibleLinksParamStr",	"^1 - Vínculos de URL não acessíveis. Consulte o painel Vínculos para obter detalhes.",
+        "#ProblemLinksDialogHeader",    "Problemas com vínculos",
+		"UnembedToOriginal", 		"A desincorporação pode vincular aos arquivos originais ou aos arquivos criados em uma pasta. Deseja vincular aos arquivos originais?",
+		"#SelectUnembedDir",
+									"Selecione a pasta em que os arquivos serão criados.",
+
+		// Show Link message.
+		 "Cannot show link: The selected item is on a hidden layer.",
+						"Não é possível mostrar o vínculo: o item selecionado está oculto ou em uma camada oculta.",
+		"Cannot show link: The selected item is hidden in overset text.",
+						"Não é possível mostrar o vínculo. O item selecionado está oculto no texto com excesso de tipos.",
+		"Cannot show link: The selected item is hidden in an inactive form field state.",
+						"Não é possível mostrar o vínculo. O item selecionado está oculto em um estado de botão inativo. Use o painel 'Botões' para ativar o estado oculto e exibir o item.",
+		"Cannot show link: The selected item is hidden in an inactive mso state.",
+						"Não é possível mostrar o vínculo: o item selecionado está em um estado de objeto inativo. Use o painel Estados do objeto para tornar o estado oculto visível.",
+		"Cannot show link: The selected item is in deleted text in a tracked change.",
+						"Não é possível mostrar o vínculo. O item selecionado está em um texto excluído de uma alteração monitorada.",
+		"Cannot show link: The selected item is an XML structure element not in the layout.",
+						"Não é possível mostrar o vínculo: o item selecionado é um elemento de estrutura XML ausente no layout.",
+		"Cannot show link: The selected item is in hidden conditional text.",
+						"Não é possível mostrar o vínculo. O item selecionado está em um texto condicional oculto.",
+						
+						
+		"#EditOriginalButtonTip",		"Editar original",	// tip string for button in links panel
+		"#GotoLinkButtonTip",		"Ir para vínculo",	// tip string for button in links panel
+		
+		"#appendedUpdateButtonTipMac",		". Clique com Opt para atualizar tudo", // appened to menu name for 'update link' to build tip string for update button(mac)
+		"#appendedUpdateButtonTipWin",		". Clique com Alt para atualizar tudo", // appened to menu name for 'update link' to build tip string for update button(win)
+		"#appendedRelinkButtonTipMac",		" Clique com Opt para restabelecer todos os vínculos ausentes", // appened to menu name for 'Relink' to build tip string for relink button(mac)
+		"#appendedRelinkButtonTipWin",		" Clique com Alt para restabelecer todos os vínculos ausentes", // appened to menu name for 'Relink' to build tip string for relink button(win)
+		
+		"#ErrorEmbeddingLink",				"Falha ao incorporar vínculo.",
+		"#LinksUIShowLinkInfoMenu",		"Mostrar painel Informações sobre vínculos",
+		"#LinksUIHideLinkInfoMenu",			"Ocultar painel Informações sobre vínculos",
+		"#LinksUICopyLinkInfoMenu",		"Copiar todas as informações sobre vínculos",
+		"#LinksUIAutosizeLinkInfoMenu",		"Autodimensionar informações sobre vínculo",
+		"#LinksUIGenerateReportMenu",		"Copiar informações para vínculos selecionados",
+		"#LinksUIGenerateCaptionPrefsMenu",	"Configuração de legenda...",
+		"#GenerateLiveLinkCaptionMenu",		"Gerar legendas ativas",
+		"#GenerateStaticLinkCaptionMenu",	"Gerar legendas estáticas",
+		
+		"#GenerateCaptionPrefDialogName",	"Configuração de legenda",
+		"#BeforeMetadataCaptionLabel",		"Texto antes de",
+		"#MetadataCaptionLabel",			"Metadados",
+		"#AfterMetadataCaptionLabel",		"Texto após",
+		"#GenerateLiveCaptionGraphicSelectionMenu",	"Gerar legenda ativa",
+		"#GenerateStaticCaptionGraphicSelectionMenu",	"Gerar legenda estática",
+		"#CopyLinkInfoStr '^1'",				"Copiar '^1'", // Menu item name in links panel. ^1 is replaced with whatever text data is under the mouse.
+		"#CopyLinkFieldMenu",				"Copiar campo Informações",
+		"#InfoLabelSuffix",					": ", // suffix added to end of link info labels in the info section
+		
+		"#LinksCopyInfoMenu",				"Copiar informações", // links panel submenu
+		
+		"#CaptionSubmenu",				"Legendas",		// name of captions submenu on Object menu
+		"#CaptionRowLabel",				"Legenda de metadados", // caption setup dialog top section title
+		"#CaptionOptionsLabel",				"Posição e estilo", // caption setup dialog bottom section title
+		"#CaptionOffsetLabel",				"Desl&ocamento:",
+		"#CaptionParaStyleLabel",			"Estilo de &parágrafo:",
+		"#CaptionLayerLabel",				"&Camada:",
+		"#CaptionLayerLockedError",			"Não é possível gerar legenda em uma camada bloqueada.",
+		"#CaptionGroupFailureError",			"Não é possível criar grupo para legenda.",
+		"#ErrorGeneratingCaption",			"Falha ao gerar legenda.",
+		"#CaptionAlignmentLabel",			"Alin&hamento:",
+		
+		"#CaptionAlignBelow",				"Abaixo da imagem",
+		"#CaptionAlignAbove",				"Acima da imagem",
+		"#CaptionAlignLeft",					"À esquerda da imagem",
+		"#CaptionAlignRight",				"À direita da imagem",
+		
+		"#GroupCaptionWithImage",			"Ag&rupar legenda com imagem",
+		 "#ConvertCaptionToTextMenu",		"Converter para legenda estática",
+		 "#ShowImportOptionsTip", 			"Mostrar opções de importação", // Tool tip for custom controls in relink dialog
+		 "#SearchHereForMissingFilesTip",	"Pesquisar arquivos ausentes aqui", // Tool tip for custom controls in relink dialog
+		 "#EmbedLinkFromPropsPanel",		"Incorporar imagem do painel de Acessórios",
+		 "#RelinkAssetFromPropsPanel",		"Vincular novamente imagem do painel de Acessórios",
+		 "#UpdateLinkFromPropsPanel",		"Atualizar imagem do painel de Acessórios",
+		 "#UnlinkFromPropsPanel",			"Desvincular o arquivo do painel de Acessórios",
+        
+        "kImportingAALAsset",                "Importando ativo",
+        "kImportingFileName",                "Importando ^1",
+        
+        //Error Strings for AEM
+        "AEMUnsupportedFiles",     "Não é possível inserir ^1 de ^2 arquivo(s). O formato do arquivo não é compatível com o InDesign.",
+        "AEMInaccessibleFiles",     "Não é possível inserir ^1 de ^2 arquivo(s). O InDesign não pode acessar o arquivo. Verifique sua conexão de rede ou a fonte original do conteúdo.",
+        "AEMUnknownFiles",     "Falha ao inserir ^1 de ^2 arquivo(s) devido a um erro desconhecido.",
+        "AEMGenericImportFailure",     "Não é possível acessar o ativo armazenado no AEM.",
+        
+        // Action id strings
+        "#LinksUIReplaceFPOWithOriginalLink",        "Substituir FPO pelo original...",
+        "#LinksUIReplaceAllFPOWithOriginalLinks",    "Substituir todos os FPOs por originais...",
+        "#LinksUIDownloadOriginalLink",                "Baixar original",
+        "#LinksUIDownloadAllOriginalLinks",            "Baixar todos os originais",
+	}
+};
+
+
+
+#endif //__ODFRC__

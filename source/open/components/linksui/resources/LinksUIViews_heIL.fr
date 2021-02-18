@@ -1,0 +1,441 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/linksui/resources/LinksUIViews_heIL.fr $
+//   
+//  Owner: lance bushore
+//  
+//  $Author: vans $
+//  
+//  $DateTime: 2020/11/06 05:06:09 $
+//  
+//  $Revision: #1 $
+//  
+//  $Change: 1088554 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "InterfaceColorDefines.h"
+#include "SplitterPanelDefs.h"
+
+#ifdef __ODFRC__
+
+resource LinksUIPanelWidget (kLinksUIPanelResID + index_heIL)
+{
+	__FILE__, __LINE__,
+	kLinksUIPanelWidgetID, kPMRsrcID_None,			// WidgetId, RsrcId
+	kBindAll,
+	Frame(0, 0, 260, 275),				// Frame
+	kTrue, kTrue,				// Visible, Enabled
+	kTrue,						// EraseBeforeDraw
+	kInterfacePaletteFill,		// Erase to color
+	"#LinksUIPanel",					// Panel name
+	{
+		SplitterPanelWidget
+		(
+			kLinkUISplitterPanelWidgetID, kPMRsrcID_None,
+			kBindAll, 
+			Frame(0, 0, 258, 275),			
+			kTrue, kTrue,
+			"",			
+			kFirstWidgetIsTop,
+			kTrue,								// Top Visible
+			kFalse,								// Bottom Visible
+			275,								// Splitter Intital Position
+			100,									// Splitter init percentage
+			130,								// Splitter Top Snap,
+			kDontSnapSlider,					// Snap Up?			
+			85,								// Lower splitter Snap Positon
+			kDontSnapSlider,						// Snap Down? 
+			kHorizontalSplitter,
+			5,									// Splitter Radius
+			kLinkUITreeOuterPanelWidgetID,		// widget id of widget to NOT resize.
+			kSingleClickDoNothing,
+		#ifdef MACINTOSH
+				kDrawPallets,
+		#endif
+		#ifdef WINDOWS
+				kDrawXORSplitter,
+		#endif
+			{
+				GenericPanelWidget
+				(
+					kLinkUITreeOuterPanelWidgetID, kPMRsrcID_None,		// WidgetId, RsrcId
+					kBindAll|kBindNotSymetrize,								// Frame binding
+					Frame(0, 0, 260, 275)		// Frame
+					kTrue, kTrue,							// Visible, Enabled (initially visible, default view)
+					""							// Panel name
+					{
+						LinksUIColumnHeaderWidget
+						(
+							kLinksUIColumnHeaderRowWidgetID, kPMRsrcID_None,		// WidgetId, RsrcId
+							kBindNone|kBindNotSymetrize,								// Frame binding
+							Frame(6, 0, 260, 18)		// Frame
+							kTrue, kTrue,				// Visible, Enabled (initially visible, default view)
+							kFalse,                        // EraseBeforeDraw 
+							kInterfacePaletteFill,        // InterfaceColor 							
+							""							// Panel name
+							{
+							}
+							kDontAutoResize, 16
+						),
+						SeparatorWidget
+						(
+							kLinkColumnSeparatorWidgetID,					// WidgetId
+							0,0,				// RsrcId
+							kBindLeft|kBindRight|kBindNotSymetrize,						// Frame binding
+							Frame(0, 18, 260, 20)		// Frame
+							kTrue,							// Visible
+							kTrue,							// Enabled
+						),
+						LinksUIPanelTreeWidget
+						(
+							kLinksUIPanelTreeWidgetID, kPMRsrcID_None,// WidgetId, RsrcId
+							kBindAll|kBindNotSymetrize,
+							Frame(0, 20, 258, 260)		// Frame
+							kTrue, kTrue,				// Visible, Enabled
+							kFalse,						// EraseBeforeDraw
+							kInterfacePaletteFill,		// InterfaceColor
+							"",// name
+							kHideRootNode | kDrawEndLine, //Options
+							kTrue,						//Use H Scroll bar
+							kTrue,						//Use V scroll bar
+							kDefaultLinksRowHeight,							// Vertical Scroll Button Increment
+							kDefaultLinksRowHeight,							// Vertical Thumb Scroll Increment
+							10,							// Horizontal Scroll Button Increment - Not Used
+							10,							// Horizontal Thumb Scroll Increment - Not Used
+							2,							// Items selectable, 0 = No Selection, 1 = Single Selection, 2 = Multiple Selection
+							kTrue,						// Allow children from multiple parents to be selected
+							kTrue,						// Allow discontiguous selection
+							{
+							},
+							{{
+								IID_IOBSERVER, // need to attach this one first, so it rebuilds the tree
+								IID_ISELECTIONOBSERVER,
+							}},
+						),
+						ToggleLinkInfoButtonWidget
+						(
+							kToggleLinkInfoButtonWidgetID, kTreeBranchCollapsedRsrcID, kApplicationRsrcPluginID,	// WidgetId, RsrcId
+							kBindLeft|kBindBottom,				// Frame binding
+							Frame(0+17,258,15+17,258 + kPanelIconHeight)		// Frame
+							kTrue, kTrue,										// Visible, Enabled
+							kADBEIconSuiteButtonType,
+						),
+						LinksUIStatusTextWidget
+						(
+							kLinksUIPanelStatusWidgetID,						// WidgetId
+							kSysStaticTextPMRsrcId,	// RsrcId
+							kBindLeft|kBindBottom|kBindRight,				// Frame binding
+							Frame(16+16, 260, 100, 275)		// Frame
+							kTrue,kTrue, kAlignLeft,	// Visible, Enabled, Alignment
+							kEllipsizeEnd, kTrue,				// Ellipsize style, Convert ampersands
+							"",			// Initial text
+							0,
+						),
+						LinksUIButtonWidget
+						(
+							kCCRelinkButtonWidgetID, kLinksUICCRelinkButtonIconRsrcID, kLinksUIPluginID,	// WidgetId, RsrcId
+							kBindRight|kBindBottom,				// Frame binding
+							Frame(100,258,130,258 + kPanelIconHeight)		// Frame
+							kTrue, kTrue,										// Visible, Enabled
+							kADBEIconSuiteButtonType,
+						),
+						LinksUIButtonWidget
+						(
+							kRelinkButtonWidgetID, kLinksUIRelinkButtonIconRsrcID, kLinksUIPluginID,	// WidgetId, RsrcId
+							kBindRight|kBindBottom,				// Frame binding
+							Frame(130,258,160,258 + kPanelIconHeight)		// Frame
+							kTrue, kTrue,										// Visible, Enabled
+							kADBEIconSuiteButtonType,
+						),
+						LinksUIButtonWidget
+						(
+							kGotoLinkButtonWidgetID, kLinksUIGotoLinkButtonIconResID, kLinksUIPluginID,	// WidgetId, RsrcId
+							kBindRight|kBindBottom,				// Frame binding
+							Frame(160,258,190,258 + kPanelIconHeight)		// Frame
+							kTrue, kTrue,										// Visible, Enabled
+							kADBEIconSuiteButtonType,
+						),
+						LinksUIButtonWidget
+						(
+							kUpdateLinkButtonWidgetID, kLinksUIUpdateLinkButtonIconRsrcID, kLinksUIPluginID,	// WidgetId, RsrcId
+							kBindRight|kBindBottom,				// Frame binding
+							Frame(190,258,220,258 + kPanelIconHeight)		// Frame
+							kTrue, kTrue,										// Visible, Enabled
+							kADBEIconSuiteButtonType,
+						),
+						LinksUIButtonWidget
+						(
+							kEditOriginalButtonWidgetID, kLinksUIEditOriginalButtonIconResID, kLinksUIPluginID,	// WidgetId, RsrcId
+							kBindRight|kBindBottom,				// Frame binding
+							Frame(220,258,250,258 + kPanelIconHeight)		// Frame
+							kTrue, kTrue,										// Visible, Enabled
+							kADBEIconSuiteButtonType,
+						),
+					}
+				)
+				GenericPanelWidget
+				(
+					kLinkInfoOuterPanelWidgetID, kPMRsrcID_None,		// WidgetId, RsrcId
+					kBindAll,											// Frame binding
+					Frame(0, 275, 270, 450)								// Frame
+					kFalse, kTrue,										// Visible, Enabled (initially visible, default view)
+					""													// Panel name
+					{
+						LinkInfoSectionLabelWidget
+						(
+							kLinksUIInfoHeaderLabelWidgetID,						// WidgetId
+							kSysStaticTextPMRsrcId,	// RsrcId
+							kBindLeft,				// Frame binding
+							Frame(3, 0, 150, 19)		// Frame
+							kTrue,kTrue, kAlignLeft,	// Visible, Enabled, Alignment
+							kDontEllipsize, kTrue,				// Ellipsize style, Convert ampersands
+							"#SelectedLinkInfoSectionName",			// Initial text
+							0,
+							kPaletteWindowHiliteFontId, kPaletteWindowHiliteFontId
+						),
+						NextPrevLinkButtonWidget
+						(
+							kSelectPrevLinkButtonWidgetID, kLinksUIGotoNextIconRsrcID, kLinksUIPluginID,	// WidgetId, RsrcId
+							kBindRight,				// Frame binding
+							Frame(230,0,250,15)		// Frame
+							kTrue, kTrue,										// Visible, Enabled
+							kADBEIconSuiteButtonType,
+						),
+						NextPrevLinkButtonWidget
+						(
+							kSelectNextLinkButtonWidgetID, kLinksUIGotoPrevIconRsrcID, kLinksUIPluginID,	// WidgetId, RsrcId
+							kBindRight,				// Frame binding
+							Frame(250,0,270,15)		// Frame
+							kTrue, kTrue,										// Visible, Enabled
+							kADBEIconSuiteButtonType,
+						),
+						SeparatorWidget
+						(
+							kLinkInfoSeparatorWidgetID,					// WidgetId
+							0,0,				// RsrcId
+							kBindLeft|kBindRight,						// Frame binding
+							Frame(0, 19, 255, 21)		// Frame
+							kTrue,							// Visible
+							kTrue,							// Enabled
+						),
+						LinkInfoPanelWidget
+						(
+							kLinkInfoPanelWidgetID,					// WidgetId
+							0,0,				// RsrcId
+							kBindAll,						// Frame binding
+							Frame(5, 21, 252, 175)		// Frame
+							kTrue,							// Visible
+							kTrue,							// Enabled
+							"",
+							{
+								LinksUILinkThumbnailWidget
+								(
+									kLinksUILinkInfoThumbnailWidgetID,						// WidgetId
+									kPMRsrcID_None,	// RsrcId
+									kBindLeft,				// Frame binding
+									Frame(0, 0, kLinkInfoThumbnailSize, kLinkInfoThumbnailSize)		// Frame
+									kTrue,kTrue,	// Visible, Enabled
+								),
+								EVEGenericPanelWidget
+								(
+									kLinkInfoLabelColumnWidgetID,					// WidgetId
+									kPMRsrcID_None,				// RsrcId
+									kBindLeft,				// Frame binding
+									Frame(0,10,10,20)		// Frame
+									kTrue,							// Visible
+									kTrue,							// Enabled
+									kEVEArrangeChildrenInColumn|kEVEChildAlignRight|kEVEChildSmallSpaceAfter,
+									{
+									}
+								),
+								GenericPanelWidget
+								(
+									kLinkInfoValueColumnWidgetID,					// WidgetId
+									kPMRsrcID_None,				// RsrcId
+									kBindRight|kBindLeft,						// Frame binding
+									Frame(0,kLinkInfoThumbnailSize,252,kLinkInfoThumbnailSize)		// Frame
+									kTrue,							// Visible
+									kTrue,							// Enabled
+									"",
+									{
+									}
+								),
+							}
+						),
+						ScrollBarWidget
+						(
+							kLinkInfoSectionScrollBarWidgetID,	// WidgetId
+							kSysVScrollBarPMRsrcId,				// RsrcId
+							kBindLeft|kBindTop|kBindBottom|kBindNotSymetrize,
+							Frame(0,20,13,159),
+							kTrue,								// Visible
+							kTrue,								// Enabled
+							0,									// Min
+							100,								// Max
+							0,									// Value
+							1,									// Increment
+							1,									// Increment Multiple
+							0, 0, 0, // not accelerate ( threshold (0 for none), max,increment)
+						),
+									
+					}
+				),
+			}
+		),
+	},
+	"#LinksUIPanelMenu", // panel menu name
+}
+
+// this is used for rows in the links ui panel - one per link, plus one for the header. We add static text controls dynamically for the columns.
+resource LinksUITreeRowWidget(kLinksUITreeLinkElementResID + index_heIL)
+{
+	__FILE__, __LINE__,
+	kLinksUIElementRowWidgetID, kPMRsrcID_None,			// WidgetId, RsrcId
+	kBindLeft,
+	Frame(0, 0, 100, kDefaultLinksRowHeight),				// Frame
+	kTrue, kTrue,				// Visible, Enabled
+	"",					// Panel name
+	{
+	},
+}
+
+// this resource is used for the name column in the links panel. It's a panel containing the text field for the name, plus the thumbnail widget and expander widget.
+resource LinksUILinkNameGenericPanelWidget(kLinksUIDynamicNameEntryResID + index_heIL)
+{
+	kLinksUINameEntryWidgetID, kPMRsrcID_None,			// WidgetId, RsrcId
+	kBindNone,
+	Frame(0, 0, 171, kDefaultLinksRowHeight),				// Frame
+	kTrue, kTrue,				// Visible, Enabled
+	"",					// Panel name
+	{
+		TreeExpanderWidget
+		(
+			kTreeNodeExpanderWidgetID,			// WidgetId
+			kTreeBranchCollapsedRsrcID,			// RsrcId for collapsed node icon
+			kApplicationRsrcPluginID,				// RsrcPlugin for collapsed node icon
+			kBindNone,							// Frame binding
+			Frame(1,0,12,kDefaultLinksRowHeight),					// Frame
+			kFalse, kTrue,						// Visible, Enabled
+			kTreeBranchExpandedRsrcID, 			// RsrcId for expanded node icon
+			kApplicationRsrcPluginID,			// RsrcPlugin for expanded node icon
+			kTrue,								// Cmd-Click expands/collapses children
+			kTrue,								// Scroll to show children when expanded
+			kADBEIconSuiteButtonType,
+		),
+		LinksUILinkThumbnailWidget
+		(
+			kLinksUILinkThumbnailWidgetID,						// WidgetId
+			kPMRsrcID_None,	// RsrcId
+			kBindNone,				// Frame binding
+			Frame(12, 0, 12 + kDefaultLinksRowHeight, kDefaultLinksRowHeight)		// Frame
+			kTrue,kTrue,	// Visible, Enabled
+		),
+		LinksUILinkNameTextWidget
+		(
+			kLinksUINameTextWidgetID,						// WidgetId
+			kSysStaticTextPMRsrcId,	// RsrcId
+			kBindNone,				// Frame binding
+			Frame(0,0,20,14)		// Frame
+			kTrue,kTrue, kAlignLeft,	// Visible, Enabled, Alignment
+			kEllipsizeMiddle, kFalse,				// Ellipsize style, Convert ampersands
+			"",			// Initial text
+			0,
+			kPaletteWindowFontId, kPaletteWindowFontId,
+			kInterfaceTextColor,kInterfaceHighLightText,kInterfacePaletteFill,kInterfaceHighLight,	// fColorID, fHiliteColorID,fBackgroundColorID,fBackgroundHiliteColorID
+		)
+	},
+}
+
+// we create these on the fly to populate our columns in the info section
+resource InfoStaticTextWidget(kLinkInfoDynamicTextItemResID + index_heIL)
+{
+	kLinkHeaderTextWidgetID,				// WidgetId
+	kSysStaticTextPMRsrcId,					// RsrcId
+	kBindNone,								// Frame binding
+	Frame(0,0,20,14)						// Frame
+	kTrue,kTrue, kAlignLeft,				// Visible, Enabled, Alignment
+	kEllipsizeMiddle, kTrue,				// Ellipsize style, Convert ampersands
+	"",										// Initial text
+	0,
+	kPaletteWindowFontId, kPaletteWindowFontId,
+	
+}
+
+// we create these on the fly to populate our columns in the info section
+resource InfoStaticTextWidget(kLinkInfoDynamicTextNameItemResID + index_heIL)
+{
+	kLinkHeaderNameTextWidgetID,			// WidgetId
+	kSysStaticTextPMRsrcId,					// RsrcId
+	kBindNone,								// Frame binding
+	Frame(0,0,20,14)						// Frame
+	kTrue,kTrue, kAlignRight,				// Visible, Enabled, Alignment
+	kEllipsizeMiddle, kTrue,				// Ellipsize style, Convert ampersands
+	"",										// Initial text
+	0,
+	kPaletteWindowFontId, kPaletteWindowHiliteFontId,
+	
+}
+
+// we create these widgets for the column headers that use icons.
+resource LinkUIColumnHeaderIconWidget(kLinksUIDynamicColumnIconWidgetResID + index_heIL)
+{
+	kLinkHeaderIconWidgetID,						// WidgetId
+	0, kInvalidPlugin,	// RsrcId
+	kBindNone,				// Frame binding
+	Frame(0,0,20,kDefaultLinksRowHeight),		// Frame
+	kTrue,kTrue,	// Visible, Enabled
+	kIconCentering, kIconFlushLook,  0,		// PNG attributes
+}
+
+	
+// we create these on the fly to populate the textual columns in the links panel
+resource LinksUILinkTextWidget(kLinksUIDynamicTextItemResID + index_heIL)
+{
+	kLinksUIDynamicTextWidgetID,						// WidgetId
+	kSysStaticTextPMRsrcId,	// RsrcId
+	kBindNone,				// Frame binding
+	Frame(0,0,60,kDefaultLinksRowHeight)		// Frame
+	kTrue,kTrue, kAlignLeft,	// Visible, Enabled, Alignment
+	kEllipsizeMiddle, kTrue,				// Ellipsize style, Convert ampersands
+	"",			// Initial text
+	0,
+	kPaletteWindowFontId, kPaletteWindowFontId,
+	kInterfaceTextColor,kInterfaceHighLightText,kInterfacePaletteFill,kInterfaceHighLight,	// fColorID, fHiliteColorID,fBackgroundColorID,fBackgroundHiliteColorID
+}
+
+// we create these on the fly to populate the column header text
+resource LinksUILinkColumnTextWidget(kLinksUIDynamicColumnTextItemResID + index_heIL)
+{
+	kLinksUIDynamicTextWidgetID,						// WidgetId
+	kSysStaticTextPMRsrcId,	// RsrcId
+	kBindNone,				// Frame binding
+	Frame(0,0,60,kDefaultLinksRowHeight)		// Frame
+	kTrue,kTrue, kAlignLeft,	// Visible, Enabled, Alignment
+	kEllipsizeEnd, kTrue,				// Ellipsize style, Convert ampersands
+	"",			// Initial text
+	0,
+	kPaletteWindowHiliteFontId, kPaletteWindowHiliteFontId,
+	kInterfaceTextColor,kInterfaceHighLightText,kInterfacePaletteFill,kInterfaceHighLight,	// fColorID, fHiliteColorID,fBackgroundColorID,fBackgroundHiliteColorID
+}
+
+
+// we create these on the fly to populate our columns in the LinksUI tree view - the columns which use icons.
+resource LinkInfoIconWidget(kLinksUIDynamicPNGIconResID + index_heIL)
+{
+	kLinkInfoDynamicIconWidgetID,						// WidgetId
+	0, kInvalidPlugin,	// RsrcId
+	kBindNone,				// Frame binding
+	Frame(1,1,20,kDefaultLinksRowHeight),		// Frame
+	kTrue,kTrue,	// Visible, Enabled
+	kIconCentering, kIconFlushLook,  0,		// PNG attributes
+}
+
+#endif // __ODFRC__

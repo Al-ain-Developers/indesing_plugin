@@ -1,0 +1,357 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "StringTable.fh"
+
+#include "FormFieldUIDefs.h"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+//twright 12/11/2000 Removed left-over strings from group strings.
+//not sure if button/form is going to need lock warning...
+
+resource StringTable (kFormFieldUIStringsRsrcID + index_huHU)
+{
+	k_huHU,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{
+		// ----- Menu strings
+		"ButtonsActionsPopup",						"Gombok műveletmenüje",
+		
+		"$$$/Menu/AppearancePanelPopup",	"Gombok panelmenüje",	
+		"$$$/Menu/Interactive",				"Interaktí&v", 
+		"$$$/Menu/FormField",				"&Űrlap", 
+		"$$$/Menu/About",					"Űrlap bővítmény &névjegye", 
+		"$$$/Menu/CreateButton",			"&Átalakítás gombbá", 
+		"$$$/Menu/CreateCheckBox",			"Átalakítás &jelölőnégyzetté",
+		"$$$/Menu/CreateComboBox",			"Átalakítás &kombinált mezővé", 
+		"$$$/Menu/CreateListBox",			"Átalakítás &legördülő listává ", 
+		"$$$/Menu/CreateRadioButton",		"Átalakítás &választógombbá", 
+		"$$$/Menu/CreateSignatureField",	"Átalakítás &aláírásmezővé", 
+		"$$$/Menu/CreateTextField",			"Átalakítás &szövegmezővé", 
+		"$$$/Menu/DestroyButton",			"Objektummá &konvertálás", 
+		"$$$/Menu/FormFieldSettings",		"&Gomb beállításai...", 
+		"$$$/Menu/NewState",				"Új állapot", 
+		"$$$/Menu/DeleteState",				"Állapot törlése", 
+		"$$$/Menu/DeleteStates",			"Állapotok törlése",
+		"$$$/Menu/PlaceIntoState",			"Tartalom elhelyezése állapotba...",
+		"$$$/Menu/DeleteStateContent",		"Tartalom törlése állapotból",
+		"$$$/Menu/AppearancePanelPrefs",	"Panel beállításai...",
+		"$$$/Menu/StateOptions",			"Állapotbeállítások...",
+		"$$$/Menu/SetTabOrder",				"Bejárási &sorrend beállítása...",
+		"$$$/Menu/SetCalculationOrder",		"Számítási sorrend beállítása...",
+		"$$$/Menu/States",					"&Gombok és űrlapok",
+		
+		"$$$/Menu/Go To Page",				"Ugrás az oldalra",
+		"$$$/Menu/Go To First Page",		"Ugrás az első oldalra",
+		"$$$/Menu/Go To Anchor",			"Ugrás a célra",
+		"$$$/Menu/Go To Last Page",			"Ugrás az utolsó oldalra",
+		"$$$/Menu/Go To Next Page",			"Ugrás a következő oldalra",
+		"$$$/Menu/Go To Next View",			"Ugrás a következő nézetre",
+		"$$$/Menu/Go To Previous Page",		"Ugrás az előző oldalra",
+		"$$$/Menu/Go To Previous View",		"Ugrás az előző nézetre",
+		"$$$/Menu/Go To URL",				"Ugrás URL-re",
+		"$$$/Menu/Movie",					"Videó",
+		"$$$/Menu/Open File",				"Fájl megnyitása",
+		"$$$/Menu/Show/Hide Buttons",		"Gombok és űrlapok megjelenítése/elrejtése",
+		"$$$/Menu/Sound",					"Hang",
+		"$$$/Menu/View Zoom",				"Nézet nagyítása",
+		"$$$/Menu/Animation",				"Animáció",
+		"$$$/Menu/SwitchToMSOState",		"Ugrás adott állapotra",
+		"$$$/Menu/SwitchToNextMSOState",	"Ugrás a következő állapotra",
+		"$$$/Menu/SwitchToPrevMSOState",	"Ugrás az előző állapotra",
+		"$$$/Menu/EPUBOnly",					"Csak EPUB",
+		"$$$/Menu/PDFOnly",					"Csak PDF",
+		"$$$/Menu/Print Form",				"Űrlap nyomtatása",
+		"$$$/Menu/Clear Form",				"Űrlap ürítése",
+		"$$$/Menu/Submit Form",				"Űrlap elküldése",
+		
+		"$$$/Menu/FormFieldSettings/ButtonLibrary",			"Minta gombok és űrlapok",	// Name of menu item in Buttons Panel flyout that opens a library of Sample Buttons
+
+		"$$$/Menu/FormFieldSettings/PDFVis/Visible",		"A PDF-ben látható",
+		"$$$/Menu/FormFieldSettings/PDFVis/Hidden",			"A PDF-ben rejtve",
+		"$$$/Menu/FormFieldSettings/PDFVis/VisibleNoPrint",	"A PDF-ben látható, de nem nyomtatható",
+		"$$$/Menu/FormFieldSettings/PDFVis/HiddenButPrint",	"A PDF-ben rejtve, de nyomtatható",	
+		"$$$/Menu/ButtonPDFOptions", "PDF-beállítások...",
+
+		"$$$/Menu/ResetAllButtons",	"Minden gomb visszaállítása Normál állapotra",	
+			
+		"PageItems",						"PageItems", 
+		"$$$/Menu/Trace Geometry",			"Geometria követése", 
+
+		"$$$/Menu/FormFieldOptions/Button",					"Gomb",
+		"$$$/Menu/FormFieldOptions/Check Box",				"Jelölőnégyzet",
+		"$$$/Menu/FormFieldOptions/Combo Box",				"Kombinált lista",
+		"$$$/Menu/FormFieldOptions/List Box",				"Legördülő lista",
+		"$$$/Menu/FormFieldOptions/Radio Button",			"Választógomb",
+		"$$$/Menu/FormFieldOptions/Signature Field",		"Aláírásmező",
+		"$$$/Menu/FormFieldOptions/Text Field",				"Szövegmező",
+
+		"InteractiveContextMenu",			"Interaktív",
+	
+		// ----- Dialog strings
+		"$$$/Dialog/CreateFormField/Title",		"Űrlapmező", 
+		"$$$/Dialog/CreateFormField/Options",	"Beállítások",
+		"$$$/Dialog/CreateFormField/Width",		"&Szélesség:",
+		"$$$/Dialog/CreateFormField/Height",	"&Magasság:",
+
+		"$$$/Dialog/FormFieldSettings/Title",				"Általános", 
+		"$$$/Dialog/FormFieldSettings/FieldType",			"Mezőtípus:",
+		"$$$/Dialog/FormFieldSettings/FieldTypeSetting",	"",
+		"$$$/Dialog/FormFieldSettings/Name",				"&Név:",
+		"$$$/Dialog/FormFieldSettings/PDFVisibility",		"Lá&thatóság PDF formátumban:",
+		"$$$/Dialog/FormFieldSettings/PDFVis/Visible",		"Látható",
+		"$$$/Dialog/FormFieldSettings/PDFVis/Hidden",		"Rejtett",
+		"$$$/Dialog/FormFieldSettings/PDFVis/VisibleNoPrint",	"Látható, de nem nyomtatható",
+		"$$$/Dialog/FormFieldSettings/PDFVis/HiddenButPrint",	"Rejtett, de nyomtatható",
+		"$$$/Dialog/FormFieldSettings/ReadOnly",			"Csak olvasható",
+		"$$$/Dialog/FormFieldSettings/Export",				"Exportálás",
+		"$$$/Dialog/FormFieldSettings/RequiredForExport",	"Szükséges az exportáláshoz",
+		"$$$/Dialog/FormFieldSettings/Description",			"&Leírás:",
+		"$$$/Dialog/FormFieldSettings/ExportName",			"&Exportálási név:",
+		"$$$/Dialog/FormFieldSettings/Common Settings",		"Közös beállítások",
+		"$$$/Dialog/FormFieldSettings/Options",				"Beállítások",
+		"$$$/Dialog/FormFieldSettings/Holder",				"Űrlapmezők beállításainak tárolója",
+
+		"$$$/Dialog/FormOptions/Title",						"Gomb beállításai",
+		"$$$/Dialog/FormFieldSettings/Options",				"Beállítások",
+		
+		"$$$/Dialog/FormFieldSettings/ExportValue",			"Exportálási érték:",
+		"$$$/Dialog/FormFieldSettings/DefaultIsChecked",	"Alapértelmezés: bejelölve",
+		"$$$/Dialog/FormFieldSettings/DefaultIsSelected",	"Alapértelmezés: kiválasztva",
+		"$$$/Dialog/FormFieldSettings/Default",				"Alapértelmezés:",
+
+		"$$$/Dialog/FormFieldSettings/Multiline",				"Többsoros",
+		"$$$/Dialog/FormFieldSettings/Scroll",					"Görgethető",
+		"$$$/Dialog/FormFieldSettings/LimitOf",					"Legfeljebb",
+		"$$$/Dialog/FormFieldSettings/Characters",				"karakter",
+		"$$$/Dialog/FormFieldSettings/Password",				"Jelszó",
+		"$$$/Dialog/FormFieldSettings/FieldForFileSelection",	"Fájlkijelölésre használva",
+		"$$$/Dialog/FormFieldSettings/SpellCheck",				"Helyesírás-ellenőrzés",
+		
+		"$$$/Dialog/FormFieldSettings/Item",					"Elem:",
+		"$$$/Dialog/FormFieldSettings/Add",						"Hozzáadás",
+		"$$$/Dialog/FormFieldSettings/Delete",					"Törlés",
+		"$$$/Dialog/FormFieldSettings/Change",					"Változtatás",
+		"$$$/Dialog/FormFieldSettings/SortItems",				"Elemek rendezése",
+		"$$$/Dialog/FormFieldSettings/AllowMultipleSelection",	"Több elemet is ki lehessen jelölni",
+		"$$$/Dialog/FormFieldSettings/Editable",				"Szerkeszthető",
+
+		"$$$/Dialog/FormFieldSettings/Align",					"Igazítás:",
+		"$$$/Dialog/FormFieldSettings/Align/Left",				"Balra",
+		"$$$/Dialog/FormFieldSettings/Align/Center",			"Közép",
+		"$$$/Dialog/FormFieldSettings/Align/Right",				"Jobbra",
+
+		"$$$/Dialog/FormFieldSettings/Font:",					"&Betűtípus:",
+		"$$$/Dialog/FormFieldSettings/Size:",					"&Méret:",
+		"$$$/Dialog/FormFieldSettings/Auto",					"Automatikus",
+
+		"$$$/Dialog/FormFieldSettings/SelectedIsDefault",		"Kijelölt elem az alapértelmezett",
+		
+		"$$$/Dialog/FormFieldUI/DeleteAlert",					"Az állapot törlése az állapothoz kapcsolódó tartalmat is törli.  Így is törli az állapotot?",
+		"$$$/Dialog/FormFieldUI/DestroyAlert",					"Ez a művelet törli az űrlapmező többi állapotához társított tartalmat is. Mégis folytatja?",
+		"$$$/Dialog/FormFieldUI/DeleteContentAlert",			"Biztosan törölni szeretné az ehhez az állapothoz társuló tartalmat?",
+		"$$$/Dialog/FormFieldUI/StyleChangeAlert",				"Ez a művelet törli az űrlapmező pillanatnyi állapotaihoz társított tartalmat is. Mégis folytatja?",
+		"$$$/Dialog/FormFieldUI/StyleChangeFailed",				"Nem sikerült az űrlapmezőre a kiválasztott megjelenési stílust alkalmazni.",
+
+		/* These are not visible, they are names of subpanels... */
+		
+		"$$$/Dialog/FormFieldSettings/CheckBox",				"Jelölőnégyzetek beállításai",	
+		"$$$/Dialog/FormFieldSettings/RadioButton",				"Választógombok beállításai",	
+		"$$$/Dialog/FormFieldSettings/TextField",				"Szövegmezők gombjainak beállításai",	
+		"$$$/Dialog/FormFieldSettings/ListBox",					"Legördülő listák gombjainak beállításai",	
+		
+		"$$$/Dialog/About/Description",						"Forms beépülő modul, 1.0-s verzió\n\n(c) 2001 Adobe Systems Incorporated. Minden jog fenntartva.",
+
+		"$$$/Dialog/CmdName/CreateButton",					"Átalakítás gombbá",
+		"$$$/Dialog/CmdName/DestroyButton",					"Objektummá konvertálás",
+		"$$$/Dialog/CmdName/ChangeFormSettings",			"Gomb beállításainak módosítása",
+
+		"$$$/Dialog/TextColor/Title",						"Szöveg színe", 
+		"$$$/Dialog/Button/Color...",						"Betűszín...", 
+
+		"$$$/Dialog/AppearancePanelPrefs/Title",			"Panel beállításai", 
+		"$$$/Dialog/AppearancePanelPrefs/ThumbnailSize",	"Bélyegképek mérete", 
+		"$$$/Dialog/AppearancePanelPrefs/None",				"Nincs", 
+		
+		
+		"$$$/Dialog/StateOptions/Title",					"Állapotbeállítások", 
+		"$$$/Dialog/StateOptions/State",					"Állapot:", 
+		"$$$/Dialog/StateOptions/Enable",					"Állapot engedélyezése", 
+
+		"$$$/Dialog/CalculationOrder/Title",				"Számítási sorrend", 
+		"$$$/Dialog/TabOrder/Title",						"Bejárási sorrend", 
+		"$$$/Dialog/Order/MoveUp",							"&Feljebb", 
+		"$$$/Dialog/Order/MoveDown",						"&Lejjebb",
+
+		"$$$/Dialog/ButtonPDFOptions/Title",				"PDF-beállítások",
+		"$$$/Dialog/ButtonPDFOptions/InitialAppearance",	"Kezdő megjelenés:",
+		"$$$/Dialog/ButtonPDFOptions/Visible",				"&Látható",
+		"$$$/Dialog/ButtonPDFOptions/Hidden",				"&Rejtett",
+		"$$$/Dialog/ButtonPDFOptions/Printable",			"&Nyomtatható",
+		"$$$/Dialog/ButtonPDFOptions/Description",			"&Leírás:",
+		
+		// ----- Window strings
+		
+		// ----- Panel strings
+
+		"$$$/Panel/FormFieldSettings/Action Data Holder",	"Műveletadat-őrző",
+		"$$$/Panel/FormFieldSettings/+",					"+",
+		"$$$/Panel/FormFieldSettings/Event:",				"Esemény:",
+		"$$$/Panel/FormFieldSettings/Actions:",				"Műveletek:",
+		"$$$/Panel/FormFieldSettings/URL:",					"URL-cím:",
+		"$$$/Panel/FormFieldSettings/Mail to:",				"Levél címzettje:",
+		"$$$/Panel/Action",									"Művelet",
+		"$$$/Panel/Empty Action",							"[Művelet nincs hozzáadva]",
+		"$$$/Panel/StatesListBoxLabel/States",				"Megjelenés",
+		"$$$/Panel/States",									"Gombok és űrlapok",
+		"$$$/Panel/FormFieldSettings/FieldType",			"Típus:",
+		"$$$/Panel/FormFieldSettings/Name",					"Név:",
+		"$$$/Panel/ShowHide/Visibility:",					"Láthatóság:",
+		"$$$/Panel/GoToPage/Page:",							"Oldal",
+
+		"$$$/Panel/Normal",									"[Normál]",
+		"$$$/Panel/Over",									"[Kurzorráhúzás]",
+		"$$$/Panel/Down",									"[Kattintás]",
+
+		"$$$/Panel/Off",									"[Normál ki]",
+		"$$$/Panel/On",										"[Normál be]",
+
+		"$$$/Panel/RolloverOff",							"[Kurzorráhúzás ki]",
+		"$$$/Panel/RolloverOn",								"[Kurzorráhúzás be]",
+		"$$$/Panel/DowmOff",								"[Kattintás ki]",
+		"$$$/Panel/DownOn",									"[Kattintás be]",
+
+		"$$$/Panel/CmdName/FormFieldName",					"Gomb neve",
+		"$$$/Panel/CmdName/FormFieldStyle",					"Gomb megjelenése",
+		
+		"$$$/Panel/FormFieldSettings/Appearance",			"Megjelenés:",
+		"$$$/Panel/PDFOptions",								"PDF-beállítások",
+		"$$$/Panel/Required",								"Szükséges",
+		"$$$/Panel/Printable",								"Nyomtatható",
+		"$$$/Panel/Description",							"Leírás:",
+		"$$$/Panel/SelectedByDefault",						"Alapértelmezetté",
+		"$$$/Panel/Multiline",								"Többsoros",
+		"$$$/Panel/ListItems",								"Listaelemek",
+		"$$$/Panel/MultipleSelection",						"Többszörös kijelölés",
+		"$$$/Panel/FontSize",								"Betűméret:",
+		"$$$/Panel/Font",									"Betűtípus:",
+		"$$$/Panel/AutoSize",								"Automatikus",
+		"$$$/Panel/SortItems",								"Elemek rendezése",
+		"$$$/Panel/MERTLOption",							"Jobbról balra",
+		"$$$/Panel/ExportValue",							"Gomb értéke:",
+		 
+		"$$$/Popup/Separator",								"-",
+		
+		"$$$/Dialog/Behaviors/Exit/No Data for Exit Behavior", "",
+
+		// ----- Tips strings
+
+		"$$$/Tip/StateEye",				"Exportálásnál a választható állapot engedélyezése/tiltása",
+		"$$$/Tip/StateThumbnail",		"Állapot csökkentett nézete",
+		"$$$/Tip/Show",					"Megjelenítés",
+		"$$$/Tip/Hide",					"Elrejtés",
+		"$$$/Tip/Ignore",				"Kihagyás",
+		"$$$/Tip/Delete Selected Action",	"Törli a kijelölt műveletet",
+		"$$$/Tip/Add New Action",		"Új művelet hozzáadása a kijelölt eseményhez",
+		"$$$/Tip/DeleteState",			"Törölje a választható állapotot és tartalmát",
+		"$$$/Tip/Convert To Button",		"Átalakítás gombbá",
+		"$$$/Tip/Convert To Object",		"Átalakítás objektummá ",
+		"$$$/Tip/DefaultChoice",		"Válassza ki a listának azt az elemét, amelyet alapértelmezetté kíván tenni. Egyéni rendezési sorrend megadásához törölje az \"Elemek rendezése\" lehetőség bejelölését, majd húzza az elemeket a kívánt pozícióba.",
+        "$$$/Tip/MissingFontToolTip",				"Hiányzó betűtípus az űrlapmezőben. Kattintson ide betűtípusok kereséséhez.",
+
+		// ----- Error strings
+
+		"$$$/Error/YouNeedToSpecifyAName", "Meg kell adnia valamilyen nevet.",
+		"$$$/Error/YouNeedToSpecifyANonBlankName", "Érvényes nevet kell megadnia.",
+		"$$$/Error/YouNeedToSpecifyANonBlankNameOrNoName", "Vagy érvényes nevet adjon meg, vagy semmilyet.",
+		"$$$/Error/YouNeedToSpecifyAnExportValue", "Meg kell adnia egy exportálási értéket.",
+		"$$$/Error/YouNeedToSpecifyANonBlankExportValue", "Érvényes exportálási értéket kell megadnia.",
+		"$$$/Error/YouNeedToSpecifyAUniqueName", "Ilyen nevű állapot már van. Válasszon másik nevet.",
+		"$$$/Error/YouNeedToSpecifyAValidFontSize", "Megadható egy 0 és 300 közötti érték, vagy automatikus.",
+		
+		// ----- Misc strings
+
+		"$$$/Command/DeleteStates",	"Állapotok törlése",
+		"$$$/CmdName/DeleteStateContent",	"Állapot tartalmának törlése",
+		"$$$/Panel/CmdName/MSOName",		"Többállapotú objektum neve",
+		
+		// ----- MultiStateObject Panel strings
+				
+		"$$$/Menu/MSOPanel", "&Objektumállapotok",
+		"$$$/Panel/MSOPanel", "Objektumállapotok",
+		"$$$/Panel/MSOPanel/ObjectName", "Objektum neve:",
+#ifdef MACINTOSH
+		"$$$/Panel/MSOPanel/MixedSelection", "Az Új gomb hatására az egyes objektumok különálló állapotokká változnak. (Opt+kattintás az objektumokat egy állapoton belül tartja.)",
+		"$$$/Panel/MSOPanel/MSOAndMixedSelection", "Az Új gomb hatására az egyes objektumok új állapotokká változnak a(z) \"^1\" többállapotú objektumban. (Opt+kattintás az objektumokat egy állapoton belül tartja.)\n\nA Hozzáadás gombbal objektumok illeszthetők be a(z) \"^2\" látható állapotába.",
+#else
+		"$$$/Panel/MSOPanel/MixedSelection", "Az Új gomb hatására az egyes objektumok különálló állapotokká változnak. (Alt+kattintás az objektumokat egy állapoton belül tartja.)",
+		"$$$/Panel/MSOPanel/MSOAndMixedSelection", "Az Új gomb hatására az egyes objektumok új állapotokká változnak a(z) \"^1\" többállapotú objektumban. (Alt+kattintás az objektumokat egy állapoton belül tartja.)\n\nA Hozzáadás gombbal objektumok illeszthetők be a(z) \"^2\" látható állapotába.",
+#endif
+		
+		"$$$/Menu/MSOPanelPopup", "Objektumállapotok panel menüje",	
+		"$$$/Menu/MSOPanel/NewState", "Új állapot",
+		"$$$/Menu/MSOPanel/DeleteState", "Állapot törlése",
+		"$$$/Menu/MSOPanel/AddToState", "Objektumok hozzáadása az állapothoz",
+		"$$$/Menu/MSOPanel/PasteIntoState", "Beillesztés az állapotba",
+		"$$$/Menu/MSOPanel/ReleaseState", "Állapot feloldása objektumokká",
+		"$$$/Menu/MSOPanel/ReleaseAllStates", "Minden állapot feloldása objektumokká",
+		"$$$/Menu/MSOPanel/ResetAllMSOs", "Minden többállapotú objektum első állapotba állítása",
+		"$$$/Menu/MSOPanel/Options", "Panel beállításai...",
+		"$$$/Menu/MSOPanel/ContextMenu", "Objektumállapotok panel helyi menüje",
+		"$$$/Menu/MSOPanel/ReleaseStateContextMenu", "\"^1\" feloldása objektumokká",
+		"$$$/Menu/MSOPanel/DeleteStateContextMenu", "\"^1\" törlése",
+		"$$$/Menu/MSOPanel/PasteIntoStateContextMenu", "Beillesztés ebbe: \"^1\"",
+		"$$$/Menu/MSOPanel/HiddenUntilTriggered", "Rejtett, amíg nincs indítva",
+	
+		"$$$/Tip/MSOPanel/StateAnimated", "Az aktuális állapot animált objektumot tartalmaz.",
+		"$$$/Tip/MSOPanel/NewMSO", "A kijelölés átalakítása többállapotú objektummá",
+		"$$$/Tip/MSOPanel/NewState", "Új állapot létrehozása",
+		"$$$/Tip/MSOPanel/DeleteState", "Kijelölt állapot törlése",
+		"$$$/Tip/MSOPanel/MSOIsSelected", "Ez a többállapotú objektum ki van jelölve, ezért minden állapota változik, ha változtatja az objektumot.",
+		"$$$/Tip/MSOPanel/MSOIsNotSelected", "Állapot van kijelölve. Rákattintással kijelölhető a többállapotú objektum.",
+		"$$$/Tip/MSOPanel/MSOStateIsSelected", "Ez az állapot ki van jelölve.",
+		"$$$/Tip/MSOPanel/MSOStateContentIsSelected", "Ezen az állapoton belül lévő tartalom van kijelölve. A sorra rákattintva kijelölhető ez az állapot.",
+		"$$$/Tip/MSOPanel/MSOStateRowMSOIsSelected", "A többállapotú objektum ki van jelölve. A sorra rákattintva át lehet kapcsolni erre az állapotra, és ki lehet jelölni azt.",
+		"$$$/Tip/MSOPanel/MSOActiveStateRowMSOIsSelected", "A többállapotú objektum ki van jelölve. A sorra rákattintva kijelölhető ez az állapot.",
+		"$$$/Tip/MSOPanel/MSOAnotherStateIsSelected", "A sorra rákattintva át lehet kapcsolni erre az állapotra, és ki lehet jelölni azt.",
+		"$$$/Tip/MSOPanel/PasteIntoState", "Másolt objektumok beillesztése a kijelölt állapotba",
+		"$$$/Tip/MSOPanel/AddToState", "Objektumok hozzáadása a látható állapothoz",
+	
+		"$$$/Dialog/MSOPanel/ReleaseAlert", "Többállapotú csak a legalább két állapottal rendelkező objektum lehet. Ez a művelet a többállapotú objektumot eltávolítja a dokumentumból. Minden aktuális objektum egyállapotú objektumként marad a helyén.",
+		"$$$/Dialog/MSOPanel/ReleaseAllAlert", "A művelet hatására a többállapotú objektum törlődik a dokumentumból. Minden aktuális objektum egyállapotú objektumként marad a helyén.",
+		"$$$/Dialog/MSOPanel/DeletesMSOAlert", "Többállapotú csak a legalább két állapottal rendelkező objektum lehet. Ez a művelet a többállapotú objektumot eltávolítja a dokumentumból. A megmaradt állapothoz tartozó objektumok egyállapotú objektumként maradnak a helyükön.",
+		
+		"$$$/Panel/MSOPanel/StatusOne", " objektum ebben: ^1",
+		"$$$/Panel/MSOPanel/Status", " objektum ebben: ^1",
+		
+		"$$$/Panel/MSOPanel/StatusMSOSelected", "Minden állapot kijelölve",
+		"$$$/Panel/MSOPanel/StatusStateSelected", "Állapot kijelölve",
+		"$$$/Panel/MSOPanel/StatusStateContentSelected", "Objektum a kijelölt állapotban",
+
+		// Command strings		
+		"$$$/Command/CheckBox", "Átalakítás jelölőnégyzetté",
+		"$$$/Command/ComboBox", "Átalakítás kombinált mezővé",
+		"$$$/Command/ListBox", "Átalakítás legördülő listává",
+		"$$$/Command/RadioButton", "Átalakítás választógombbá",
+		"$$$/Command/SignatureField", "Átalakítás aláírásmezővé",
+		"$$$/Command/TextField", "Átalakítás szövegmezővé",
+}
+};
+
+#endif // __ODFRC__

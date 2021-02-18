@@ -1,0 +1,64 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/dynamicdocumentsui/resources/DynamicDocumentsUI.fr $
+//  
+//  Owner: DBerggren
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "DynamicDocumentsUIClass.fr"
+#include "DynamicDocumentsUIFactoryList.fr"
+#include "DynamicDocumentsUIStrings.fr"
+#include "DynamicDocumentsUICursors.fr"
+
+// Page Transitions Panel
+#include "PageTransitionsPanelList.fr"
+#include "PageTransitionsPanelPng.fr"	// TODO: need to get the icon for the panel, current using Thearus
+#include "PageTransitionsPanelViews.fr"
+#include "PageTransitionsPanelMenus.fr"
+#include "PageTransitionsPanelTips.fr"
+
+// Add page transition dialog
+#include "PageTransitionsDialogViews.fr"
+
+// Timing panel
+#include "TimingPanelList.fr"	// Uncomment out this line will invoke the functionality for timing panel.
+#include "TimingPanelPng.fr"	// TODO::need the preview panel icon?
+#include "TimingPanelViews.fr"
+#include "TimingPanelMenus.fr"
+#include "TimingPanelToolTips.fr"
+
+// Add Animation UI panel
+#include "AnimationUIPanelList.fr"	// Uncomment out this line will invoke the functionality for animation UI.
+#include "AnimationUIPng.fr"
+#include "AnimationUIViews.fr"
+#include "AnimationUIMenus.fr"
+#include "AnimationPanelToolTips.fr"
+#include "AnimationUIManagePresetsDialogViews.fr"
+
+// Liquid Layout panel
+#include "LiquidLayoutPanelList.fr"
+#include "LiquidLayoutPanelPng.fr"
+#include "LiquidLayoutPanelViews.fr"
+#include "LiquidLayoutPanelMenus.fr"
+#include "LiquidLayoutPanelTips.fr"
+
+// HTML preview panel
+#include "HTMLPreviewPanelMenus.fr"
+
+

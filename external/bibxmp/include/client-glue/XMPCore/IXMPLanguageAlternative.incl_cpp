@@ -1,0 +1,30 @@
+// =================================================================================================
+// Copyright 2014 Adobe Systems Incorporated
+// All Rights Reserved.
+//
+// NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance with the terms
+// of the Adobe license agreement accompanying it.
+// =================================================================================================
+
+#if AdobePrivate
+// =================================================================================================
+// Change history
+// ==============
+//
+// Writers:
+//  HK  Honey Kansal
+//
+// mm/dd/yy who Description of changes, most recent on top.
+//
+// 02-12-14 HK  5.5-c030 Creating client glue code for XMP DOM APIs.
+//
+// =================================================================================================
+#endif // AdobePrivate
+
+#include "XMPCore/Interfaces/IXMPLanguageAlternative.h"
+
+namespace NS_XMPCORE {
+
+
+			
+}

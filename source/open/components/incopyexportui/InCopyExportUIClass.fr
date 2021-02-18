@@ -1,0 +1,82 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/incopyexportui/InCopyExportUIClass.fr $
+//  
+//  Owner: Lonnie Millett
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "ActionID.h"
+#include "BuildNumber.h"
+#include "FormatNumber.h"
+#include "InCopyExportID.h"
+#include "InCopyExportUIID.h"
+#include "InCopyWorkflowID.h"
+#include "objectmodeltypes.fh"
+#include "PMLocaleIds.h"
+#include "CommandID.h" // IntDataImpl
+#include "PlugInModel_UIAttributes.h"
+
+#ifdef __ODFRC__
+
+//---------------------------------------------------------------
+//	Plugin Version
+//---------------------------------------------------------------
+resource PluginVersion (1)
+{
+    kTargetVersion,
+	kInCopyExportUIPluginID,
+	kMajorVersionNumber, kMinorVersionNumber, 	
+	kMajorVersionNumber, kMinorVersionNumber, 	
+	kK2MajorFormatNumber,	kLastK2MinorVersionNumber
+	{ kInDesignProduct },
+	{ kWildFS } // kAllProductsRomanFS,
+	kUIPlugIn,
+	kAUMComponentVersionStr
+};
+
+//---------------------------------------------------------------
+//	Plugin Dependencies
+//---------------------------------------------------------------
+resource PluginDependency (1)
+{
+	kWildFS,
+	{
+	kInCopyExportPluginID, kInCopyExportPluginName, kMajorVersionNumber, kMinorVersionNumber,
+	}
+};
+
+
+resource ClassDescriptionTable(1)
+{{{
+	Class
+	{
+		kInCopyExportMenuComponentBoss,
+		kBaseActionComponentBoss,
+		{
+			IID_IACTIONCOMPONENT, kInCopyExportMenuComponentImpl,
+			IID_IINCOPYEXPORTLAYERSUITE,	kICExportLayerStoriesImpl,
+			IID_IINCOPYEXPORTALLSUITE,		kICExportAllSuiteImpl,
+			IID_IINCOPYEXPORTALLSTORIESSUITE,kICExportAllStoriesSuiteImpl,
+			IID_IINCOPYEXPORTALLGRAPHICSSUITE,kICExportAllGraphicsSuiteImpl,
+			IID_IINCOPYEXPORTALLCONCURRENCY, kIntDataImpl,
+		}
+	},
+}}};
+
+#endif // __ODFRC__

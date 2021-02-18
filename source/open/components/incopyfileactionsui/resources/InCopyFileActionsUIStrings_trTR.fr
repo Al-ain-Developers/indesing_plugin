@@ -1,0 +1,43 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kInCopyFileActionsUIStringsRsrcID + index_trTR)
+{
+	k_trTR,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{
+		"&Update Design",		"Tasarımı &Güncelle",
+		"AlertUnableToSave",	"Aşağıdaki içerik çözümlenemedi.\nDosyalar kilitli olabilir veya değişiklik yapma izniniz olmayabilir.\n",
+		"Update^1Alert",		"İçeriğin bir bölümü kaydedilemiyor. Güncelleştirme sonucunda bu değişiklikler kaybolabilir.\n“^1” öğesinin en son sürümüne güncelleştirme yapılsın mı?",
+		"Undoable^1Save",		"Tasarım güncelleştirmesi devam etmeden önce, düzenlenebilir olan tüm içeriği kaydedecek. Geri Al komutu, güncelleştirme sırasında yapılan değişiklikleri geri döndüremez. \n\"^1\" yine de güncelleştirilsin mi?",
+		"AlertStoriesMissing",	"Bazı içerik dosyaları bulunamadı, bu yüzden düzenlenemezler. Dosyaları orijinal konumlarına taşımayı veya InDesign uygulamasında bağlantıları güncelleştirmeyi deneyin.",
+		"AlertStoriesMissingWF", "Bazı içerik dosyaları bulunamadı, bu yüzden düzenlenemezler. İçeriği sunucudan indirip belgeyi yeniden açmayı deneyin.",
+		"Update",				"Güncelle",
+		"&Revert Story",		"İçeriği Geri &Döndür",
+//		"Revert Story",			"Revert Content", // Note to localizer: this string moved to InCopySharedStrings_enUS.fr
+		
+		"SaveAsFeatureLost",    "Bu belge, bu dosya formatında desteklenmeyen özellikler içeriyor olabilir. Devam etmek misiniz?",
+		"CannotSaveOntoLockedFile",		"Belirlenen dosya şu anda \"^1\" tarafından ^2 içinde ^3 belgesinden teslim alınıyor.  Lütfen farklı bir dosya adı seçin veya \"^1\" öğesinin dosyayı teslim etmesini sağlayın.",
+		"CannotSaveOntoLockedFileMinimal",	"Belirlenen dosya şu anda \"^1\" tarafından teslim alınıyor.  Lütfen farklı bir dosya adı seçin veya \"^1\" öğesinin dosyayı teslim etmesini sağlayın.",
+	}
+};
+
+
+#endif // __ODFRC__

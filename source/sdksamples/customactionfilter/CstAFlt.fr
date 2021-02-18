@@ -1,0 +1,228 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/sdksamples/customactionfilter/CstAFlt.fr $
+//  
+//  Owner: Adobe Developer Technologies
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//  
+//  Umbrella include file for all the .fr files in the plug-in.
+//  
+//========================================================================================
+
+//===========================
+//  General includes:
+//===========================
+
+#include "MenuDef.fh"
+#include "ActionDef.fh"
+#include "ActionDefs.h"
+#include "AdobeMenuPositions.h"
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "StringTable.fh"
+#include "objectmodeltypes.fh"
+#include "ShuksanID.h"
+#include "ActionID.h"
+#include "CommandID.h"
+#include "WorkspaceID.h"
+#include "widgetid.h"
+#include "BuildNumber.h"
+
+
+#include "PlugInModel_UIAttributes.h"
+// Project includes:
+#include "CstAFltID.h"
+
+#ifdef __ODFRC__
+
+/*
+// Plugin version definition.
+*/
+resource PluginVersion (kSDKDefPluginVersionResourceID)
+{
+	kTargetVersion,
+	kCstAFltPluginID,
+	kSDKDefPlugInMajorVersionNumber, kSDKDefPlugInMinorVersionNumber, 	
+	kSDKDefHostMajorVersionNumber, kSDKDefHostMinorVersionNumber,
+	kCstAFltCurrentMajorFormatNumber, kCstAFltCurrentMinorFormatNumber,
+	{ kInDesignProduct, kInCopyProduct },
+	{ kWildFS },
+	kUIPlugIn,
+	kCstAFltVersion
+};
+
+/*
+//	Boss class definition.
+*/
+resource ClassDescriptionTable(kSDKDefClassDescriptionTableResourceID)
+{{{
+	/**	This boss class provides the actions invoked by this plug-in's
+	  	sub-menu items. It supports two interfaces: 
+	  	IActionComponent and IPMPersist. We provide the implementation 
+	  	for IActionComponent in CstAFltAction.cpp. The other
+	  	default implementation is provided by the API.
+		@ingroup customactionfilter
+		@author Ken Sadahiro
+	 */
+	Class
+	{
+		kCstAFltActionComponentBoss,
+		kInvalidClass,
+		{
+			/** Handle the actions from the menu. */
+			IID_IACTIONCOMPONENT, kCstAFltActionComponentImpl,
+			/** Persist the state of the menu across application instantiation.
+				Implementation provided by the API.*/
+			IID_IPMPERSIST, kPMPersistImpl
+		}
+	},
+
+	/**	This boss class represents the action filter implementation.
+	  	It is implemented as a service provider (ServiceID = kActionFilterService, 
+	  	defined in ActionID.h).  The implementation of IK2ServiceProvider 
+	  	is provided by the API.
+		@ingroup customactionfilter
+		@author Ken Sadahiro
+	*/
+	Class
+	{
+		kCstAFltActionFilterBoss,
+		kInvalidClass,
+		{
+			/** Register action filters with the application. */
+			IID_IACTIONFILTER, kCstAFltActionFilterImpl,
+			/** Identify this boss as an ActionFilter service. Implementation provided by the API.
+			*/
+			IID_IK2SERVICEPROVIDER, kActionFilterProviderImpl,
+			/** Allow this boss to be persisted.  Implementation provided by the API.
+			*/
+			IID_IPMPERSIST, kPMPersistImpl,
+		}
+	},
+
+	Class
+	{
+		kCstAFltStartupShutdownBoss,
+		kInvalidClass,
+		{
+			/** Implementation of IStartupShutdownService that cleans up our map */
+			IID_ISTARTUPSHUTDOWN,  kCstAFltStartupShutdownImpl,
+			/** identify the service type */
+			IID_IK2SERVICEPROVIDER,  kCStartupShutdownProviderImpl,
+		}
+	},
+
+}}};
+
+/*
+// Implementation definition.
+*/
+resource FactoryList (kSDKDefFactoryListResourceID) 
+{
+	kImplementationIDSpace,
+	{
+#include "CstAFltFactoryList.h"
+	}
+};
+
+/*
+// Menu definition.
+*/
+resource MenuDef (kSDKDefMenuResourceID)
+{
+	{
+		// The About Plug-ins sub-menu item for this plug-in.
+		kCstAFltAboutActionID,			// ActionID (kInvalidActionID for positional entries)
+		kCstAFltAboutMenuPath,			// Menu Path.
+		kSDKDefAlphabeticPosition,			// Menu Position.
+		kSDKDefIsNotDynamicMenuFlag,		// kSDKDefIsNotDynamicMenuFlag or kSDKDefIsDynamicMenuFlag.
+	}
+};
+
+/*
+// Action definition.
+*/
+resource ActionDef (kSDKDefActionResourceID)
+{
+	{ 
+		kCstAFltActionComponentBoss, 		// ClassID of boss class that implements the ActionID.
+		kCstAFltAboutActionID,	// ActionID.
+		kCstAFltAboutMenuKey,	// Sub-menu string.
+		kOtherActionArea,				// Area name (see ActionDefs.h).
+		kNormalAction,					// Type of action (see ActionDefs.h).
+		kDisableIfLowMem,				// Enabling type (see ActionDefs.h).
+		kInvalidInterfaceID,			// Selection InterfaceID this action cares about or kInvalidInterfaceID.
+		kSDKDefInvisibleInKBSCEditorFlag, // kSDKDefVisibleInKBSCEditorFlag or kSDKDefInvisibleInKBSCEditorFlag.
+	}
+};
+
+
+/*
+// LocaleIndex
+// The LocaleIndex should have indicies that point at your
+// localizations for each language system that you are 
+// localized for.
+*/
+/*
+// String LocaleIndex.
+*/
+resource LocaleIndex (kSDKDefStringsResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_enUS, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_enGB, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_deDE, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_frFR, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_esES, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_ptBR, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_svSE, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_daDK, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_nlNL, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_itIT, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_nbNO, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_fiFI, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_jaJP, kSDKDefStringsResourceID + index_jaJP
+		kWildFS, k_Wild, kSDKDefStringsResourceID + index_enUS
+	}
+};
+
+resource LocaleIndex (kSDKDefStringsNoTransResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_Wild, kSDKDefStringsNoTransResourceID + index_enUS
+	}
+};
+
+resource StringTable (kSDKDefStringsNoTransResourceID + index_enUS)
+{
+	k_enUS,									// Locale Id
+	kEuropeanMacToWinEncodingConverter,		// Character encoding converter
+	{
+		// No-Translate strings go here:		
+	}
+};
+
+#endif // __ODFRC__
+
+#include "CstAFlt_enUS.fr"
+#include "CstAFlt_jaJP.fr"
+//  Generated by Dolly build 17: template "IfPanelMenu".
+// End, CstAFlt.fr.
+

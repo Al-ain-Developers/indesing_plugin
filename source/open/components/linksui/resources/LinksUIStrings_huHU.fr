@@ -1,0 +1,227 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#ifdef __ODFRC__
+
+#include "StringTable.fh"
+
+resource StringTable (kLinksUIStringsRsrcID + index_huHU)
+{
+	k_huHU,					// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	{
+		"Links_WinMenu",			"Hivatkozá&sok", // panel menu item
+		"kRtMouseGraphics",			"Grafikák", // context menu submenu name
+		"RtMenuLinksUILinkInfo",	"Hivatkozásinfó feltételes menü",
+		
+		"#LinksUIPanel",			"Hivatkozások", // panel name
+		"#LinksUIPanelMenu",		"Hivatkozások panelmenü", 
+		"#LinksUtilitiesSubmenu",		"Segédprogramok",		// submenu for links panel menu
+		"#SelectedLinkInfoSectionName",			"Hivatkozásinfó", // section name in links ui panel
+		
+		"#UpdateAllOutOfDateLinksMenu",	"Összes hivatkozás frissítése",
+		"#AutoFindMissingLinksMenu",		"Hiányzó hivatkozások keresése",
+		"#LinksUIRelinkLinkMenu",		"Újracsatolás...",
+		"#LinksUIRelinkResourceMenu",	"Összes előfordulás újracsatolása...", // menu item to relink all instances of this multiple link assets
+		"#RelinkResource ^1 Menu",		"'^1' minden előfordulásának újracsatolása...", // menu item to relink all instances of one single link asset
+		"#ReplaceFPOWithOriginalResourceMenu",	"Összes előfordulás lecserélése...", // menu item to replace all instances of this multiple link assets
+		"#ReplaceFPOWithOriginalResource ^1 Menu", "„^1” FPO összes előfordulásának lecserélése az eredetivel...", // menu item to replace all instances of one single link asset
+		"#RelinkCloudResource ^1 Menu",	"A(z) „^1” összes példányának újracsatolása a CC könyvtárakból...", // menu item to relink all instances of one single link asset
+        "#RelinkAALResource ^1 Menu",    "A(z) „^1” összes példányának újbóli csatlakoztatása az Adobe-eszközkapcsolatból...", // menu item to relink all instances of one single link asset
+		"#LinksUIUpdateLinkMenu",			"Hivatkozás frissítése", // context menu item in links ui panel
+		"#LinksUIUpdateLinkResourceMenu",	"Összes előfordulás frissítése",
+		"#UpdateResource ^1 Menu",		"'^1' minden példányának frissítése", // menu item to update all instances of one single link asset
+		"#LinksUIEmbedLinkMenu",			"Hivatkozás beágyazása", // context menu item in links ui panel
+		"#LinksUIEmbedResourceMenu",		"Összes előfordulás beágyazása",
+		"#EmbedResource ^1 Menu",			"'^1' minden példányának beágyazása", // menu item to embed all instances of one single link asset
+		"#LinksUIUnEmbedLinkMenu",		"Beágyazatlan hivatkozás", // context menu item in links ui panel
+		"#LinksUIUnEmbedResourceMenu",	"Összes előfordulás beágyazásának megszüntetése",
+		"#UnembedResource ^1 Menu",			"'^1' minden példánya beágyazásának megszüntetése", // menu item to unembed all instances of one single link asset
+		"#LinksUIUnLinkMenu",				"Szétkapcsolás",
+		"#UnLinkResourceMenu",			"Minden példány csatolásának megszüntetése",
+		"#UnLinkResource ^1 Menu",			"'^1' minden példánya csatolásának megszüntetése", // menu item to unlink all instances of one single link asset
+		"#LinksUIEditOriginalLinkMenu",		"Eredeti szerkesztése", // context menu item in links ui panel
+		"#LinksUIGoToSourceLinkMenu",		"Ugrás a forrásra", // context menu item in links ui panel
+		"#LinksUIXMPFileInfo",				"XMP fájlinformáció...",
+		"#LinksUICopyPath",				"Teljes útvonal másolása",
+		"#LinksUICopyPlatformPath",			"Platformfüggő útvonal másolása",
+		"#RevealLinkInMacFinder",			"Megjelenítés a Keresőben",
+		"#RevealLinkInWinExplorer",			"Megjelenítés az Explorerben",
+		"#RevealLinkInAdobeBridge",			"Megjelenítés a Bridge programban",
+		"#RevealLinkInCCLibraries",			"Felfedés a CC könyvtárakban",
+		"#GoToLink",						"Ugrás hivatkozásra",
+		"#EditWithApp",					"Szerkesztéshez használva:",
+		"ApplicationFiles",					"Alkalmazás (*.exe)", // windows only string to list exe files in the 'edit with application' dialog.
+		"#ChooseEditingApplication",			"Alkalmazás kiválasztása", // dialog title
+		"#OtherApp",						"Egyéb...",	// Menu name for choosing a custom application via a standard file dialog for Edit With...
+		"#LinksUICopyLink",				"Hivatkozás(ok) másolása ide...",
+		"#LinksUIEditColumnsMenu",			"Panel beállításai...",
+		
+		"#LinksUIRemoveThisColumnMenu",	"Ennek az oszlopnak az elrejtése",
+		"#LinksUIShowThumbnailMenu",		"Bélyegkép mutatása",
+		"#LinksUIHideThumbnailMenu",		"Bélyegkép elrejtése",		
+		"#LinksUIShowInfoThumbnailMenu",	"Infobélyegkép mutatása",
+		"#LinksUIHideInfoThumbnailMenu",	"Infobélyegkép elrejtése",
+		
+		"#SaveLinkVersionCmd",			"Hivatkozás lefoglalásának feloldása...",
+		"#ShowLinksPanelColumn",			"Oszlop mutatása",
+		"#ShowLinksPanelInfo",				"Hivatkozásinfóban látszódjon",
+		"#SelectNextLinkButtonTip",			"A következő csatolás kijelölése a listában",
+		"#SelectPrevLinkButtonTip",			"Az előző csatolás kijelölése a listában",
+		"#ToggleLinkInfoButtonTip",			"Hivatkozásinformáció mutatása/elrejtése",
+
+		"#ShortLinkStatusParamStr",				"^1 hivatkozások",  // status string for links panel
+		"#LongLinkStatusParamStr",				"^1 összes hivatkozás\n\n   ^2 hiányzó\n   ^3 módosított\n   ^4 beágyazott\n   ^5 egyedi\n   ^6 származtatott", // tip string for links panel status.
+		"#OneSelectedLinkStr",			"1 kijelölve", // status string when one link is selected in the panel.
+		"#NumSelectedLinksParamStr",	"^1 kijelölve", // status string when multiple links are selected in the panel.
+				
+		"RtMenuLinksUILinkItem",		"Hivatkozás környezetfüggő menü",
+		"RtMenuLinksUILinksHeader",		"Hivatkozások fejléc környezetfüggő menü",
+		
+		"#LinkColumnDialog",			"Panel beállításai", // dialog name
+		"#LinksUIPanelOptions",			"Beállítások",
+		
+		"#LinkThumbPrefLabel",			"Bélyegképek:",
+		"#LinksUIRowSizeLabel",		"&Sor mérete:",
+		"#LinksUISmallRowStr",			"Kis sorok",
+		"#LinksUIRegularRowStr",		"Normál sorok",
+		"#LinksUILargeRowStr",			"Nagy sorok",
+		"#LinkInfoShowThumbnailCheckbox",	"&Látható a Hivatkozásinfóban",
+		"#LinksUIShowThumbnail",		"Látható a &Név oszlopban",
+		"#LinksUICollapseMultiple",		"Több hivatkozás össze&csukása egy forrásra",
+
+		"#SearchHereForMissingFiles",	"Hiányzó csatolások keresése ebben a mappában", // label for checkbox in relink dialog
+		"#RelinkSkipButton",			"Kihagyás", // name for 'skip' button in relink dialog
+		"#SearchFound^1Links",		"Az újracsatolási könyvtár átvizsgálásakor ^1 hiányzó hivatkozás volt található, és az újracsatolás megtörtént.", // alert that displays if we auto find missing links after a relink
+		"#RelinkToFolderTitle",			"Válassza ki az újracsatolni kívánt mappát. A program csak az egyező nevű hivatkozásokat csatolja újra a kijelöltek közül.",
+		"#RelinkToSameFilename",		"Azonos fájlnév és kiterjesztés egyeztetése:", // radio button option in relink to folder dialog
+		"#RelinkToExtension",			"Azonos fájlnév egyeztetése ezzel a kiterjesztéssel:", // radio button option in relink to folder dialog
+		"#LinksUICopyLinksTitle",		"Válassza ki a mappát, ahová a csatolt fájlokat másolni szeretné.",
+		"#LinksUIRelinkToFolderLinkMenu",	"Újracsatolás mappához...",
+		"#LinksUIRelinkFileExtensionLinkMenu",	"Újracsatolási fájlkiterjesztés...",
+        "#LinksUIRelinkFromCloudAssetLinkMenu",	"Újracsatolás a CC könyvtárakból...",
+        "#LinksUIRelinkFromAALAssetLinkMenu",    "Újrakapcsolódás az Adobe-eszközkapcsolatból...",
+		"#LicenseStockAssetLinkMenu",	"Kép licencelése...",
+		"#LinksUIRelink: ^1",			"Újracsatolás: ^1", // title for relink dialog. ^1 becomes file path.
+		"#LinksUILocate: ^1",			"Keresés: ^1", // title for relink dialog when link is missing. ^1 becomes file path.
+		"#CopyLinksFailedAlert",		"A hivatkozások mappába másolása nem sikerült.",
+		"#AutoFindFoundNothingAlert",	"Nem található hiányzó csatolás. Az Újracsatolás paranccsal keresse meg az első hiányzó csatolást, majd próbálja újra.",
+		
+		"kEditsMadeWarning",			  "A(z) \"^1\" importált verzióját szerkesztették. A frissítéssel elveszíti ezeket a szerkesztéseket. Mindenképpen frissíti?",
+		"kEditsMadeInLinkedStoryWarning",	"A(z) \"^1\" hivatkozott szövegegységet szerkesztették. A frissítéssel elveszíti ezeket a szerkesztéseket. Mindenképpen frissíti?",
+		"kEditsMadeInLinkedArticleWarning", "A(z) „^1” hivatkozott oldalelemet szerkesztették. A frissítéssel elveszíti ezeket a szerkesztéseket. Mindenképpen frissíti?",
+		"kEditsMadeToTextOrTableWarning", "A(z) \"^1\" importált verzióját szerkesztették. A hivatkozás frissítése esetén elveszíti ezeket a szerkesztéseket (a számolótáblákon cellastílusokkal vagy táblázatstílusokkal végrehajtott módosítások kivételével). Ennek ellenére is frissíteni szeretne?",
+
+		// Strings for Problem Links dialog
+		"#LinksModifiedWarning",	"Ez a dokumentum olyan forráscsatolásokat tartalmaz, melyek módosítva lettek/hiányoznak. Frissítheti ezeket a módosított csatolásokat most vagy később a Csatolások panel segítségével.",
+		"#HTTPLinksModifiedWarning",	"Ez a dokumentum olyan forráscsatolásokat tartalmaz, melyek módosítva lettek/hiányoznak a dokumentum legutóbbi mentése óta. Frissítheti ezeket a módosított csatolásokat most vagy később a Csatolások panel segítségével.",
+		"#UpdateLinks",				"&Módosított hivatkozások frissítése",	 // button text
+		"#Don'tUpdateLinks",		"Ne frissítse a csatolásokat", // button text
+		"#ProblemMissingLinksParamStr",	"^1 - hiányzó hivatkozás(ok)",
+		"#ProblemModifiedLinksParamStr",	"^1 - módosított csatolás(ok)",
+		"#ProblemInaccessibleLinksParamStr",	"^1 - nem elérhető URL-hivatkozás(ok). Részletek a Hivatkozások panelen.",
+        "#ProblemLinksDialogHeader",    "Hivatkozásokkal kapcsolatos problémák",
+		"UnembedToOriginal", 		"A be nem ágyazott elem kapcsolódhat az eredeti fájl(ok)hoz vagy mappában létrehozott fájl(ok)hoz. Az eredeti fájl(ok)hoz kívánja kapcsolni?",
+		"#SelectUnembedDir",
+									"Válassza ki a mappát, ahol a fájlokat létre kívánja hozni.",
+
+		// Show Link message.
+		 "Cannot show link: The selected item is on a hidden layer.",
+						"A hivatkozás megjelenítése nem sikerült: A kijelölt elem, vagy az elemet tartalmazó réteg rejtett.",
+		"Cannot show link: The selected item is hidden in overset text.",
+						"A hivatkozás megjelenítése nem sikerült: A kijelölt elem túlszedett szövegbe van rejtve.",
+		"Cannot show link: The selected item is hidden in an inactive form field state.",
+						"Nem lehet megjeleníteni a hivatkozást: A kijelölt elem inaktív gombállapotba van rejtve.  Az elem megjelenítéséhez aktiválja a rejtett állapotot a Gombok panelen.",
+		"Cannot show link: The selected item is hidden in an inactive mso state.",
+						"A hivatkozás nem jeleníthető meg: A kijelölt elem inaktív objektumállapotú. Az Objektumállapotok panelen váltsa a rejtett állapotot láthatóra.",
+		"Cannot show link: The selected item is in deleted text in a tracked change.",
+						"A hivatkozás megjelenítése nem sikerült: A kijelölt elem korrektúra törölt szövegében található.",
+		"Cannot show link: The selected item is an XML structure element not in the layout.",
+						"A hivatkozás megjelenítése nem sikerült: A kijelölt elem az elrendezésen kívüli XML-szerkezeti elem.",
+		"Cannot show link: The selected item is in hidden conditional text.",
+						"A hivatkozás nem jeleníthető meg: A kijelölt elem rejtett feltételes szövegben van.",
+						
+						
+		"#EditOriginalButtonTip",		"Eredeti szerkesztése",	// tip string for button in links panel
+		"#GotoLinkButtonTip",		"Ugrás hivatkozásra",	// tip string for button in links panel
+		
+		"#appendedUpdateButtonTipMac",		". Mind frissítéséhez Opt+kattintás", // appened to menu name for 'update link' to build tip string for update button(mac)
+		"#appendedUpdateButtonTipWin",		". Mind frissítéséhez Alt+kattintás", // appened to menu name for 'update link' to build tip string for update button(win)
+		"#appendedRelinkButtonTipMac",		" Minden hiányzó csatolás újracsatolásához Opt+kattintás", // appened to menu name for 'Relink' to build tip string for relink button(mac)
+		"#appendedRelinkButtonTipWin",		" Minden hiányzó csatolás újracsatolásához Alt+kattintás", // appened to menu name for 'Relink' to build tip string for relink button(win)
+		
+		"#ErrorEmbeddingLink",				"Nem sikerült beágyazni a hivatkozást.",
+		"#LinksUIShowLinkInfoMenu",		"Hivatkozási adatmező megjelenítése",
+		"#LinksUIHideLinkInfoMenu",			"Hivatkozási adatmező elrejtése",
+		"#LinksUICopyLinkInfoMenu",		"Minden hivatkozási adat másolása",
+		"#LinksUIAutosizeLinkInfoMenu",		"Hivatkozás adatainak automatikus méretezése",
+		"#LinksUIGenerateReportMenu",		"Adat másolása, kijelölt hivatkozások",
+		"#LinksUIGenerateCaptionPrefsMenu",	"Felirat beállítása...",
+		"#GenerateLiveLinkCaptionMenu",		"Élő feliratok létrehozása",
+		"#GenerateStaticLinkCaptionMenu",	"Rögzített feliratok létrehozása",
+		
+		"#GenerateCaptionPrefDialogName",	"Felirat beállítása",
+		"#BeforeMetadataCaptionLabel",		"Szöveg előtte:",
+		"#MetadataCaptionLabel",			"Metaadatok",
+		"#AfterMetadataCaptionLabel",		"Szöveg utána: ",
+		"#GenerateLiveCaptionGraphicSelectionMenu",	"Élő felirat létrehozása",
+		"#GenerateStaticCaptionGraphicSelectionMenu",	"Statikus felirat létrehozása",
+		"#CopyLinkInfoStr '^1'",				"\"^1\" másolása", // Menu item name in links panel. ^1 is replaced with whatever text data is under the mouse.
+		"#CopyLinkFieldMenu",				"Adatmező másolása",
+		"#InfoLabelSuffix",					": ", // suffix added to end of link info labels in the info section
+		
+		"#LinksCopyInfoMenu",				"Adat másolása", // links panel submenu
+		
+		"#CaptionSubmenu",				"Feliratok",		// name of captions submenu on Object menu
+		"#CaptionRowLabel",				"Metaadat-feliratozás", // caption setup dialog top section title
+		"#CaptionOptionsLabel",				"Pozíció és stílus", // caption setup dialog bottom section title
+		"#CaptionOffsetLabel",				"&Eltolás:",
+		"#CaptionParaStyleLabel",			"&Bekezdésstílus:",
+		"#CaptionLayerLabel",				"&Réteg:",
+		"#CaptionLayerLockedError",			"Zárolt rétegen nem hozható létre felirat.",
+		"#CaptionGroupFailureError",			"Feliratcsoport nem hozható létre.",
+		"#ErrorGeneratingCaption",			"Felirat létrehozása nem sikerült.",
+		"#CaptionAlignmentLabel",			"&Igazítás:",
+		
+		"#CaptionAlignBelow",				"Kép alatt",
+		"#CaptionAlignAbove",				"Kép felett",
+		"#CaptionAlignLeft",					"Képtől balra",
+		"#CaptionAlignRight",				"Képtől jobbra",
+		
+		"#GroupCaptionWithImage",			"&Felirat csoportosítása a képpel",
+		 "#ConvertCaptionToTextMenu",		"Átalakítás statikus felirattá",
+		 "#ShowImportOptionsTip", 			"Importálási beállítások megjelenítése", // Tool tip for custom controls in relink dialog
+		 "#SearchHereForMissingFilesTip",	"Itt kereshetők a hiányzó fájlok", // Tool tip for custom controls in relink dialog
+		 "#EmbedLinkFromPropsPanel",		"Kép beágyazása a Kellékek panelről",
+		 "#RelinkAssetFromPropsPanel",		"Kép újracsatolása a Kellékek panelről",
+		 "#UpdateLinkFromPropsPanel",		"Kép frissítése a Kellékek panelről",
+		 "#UnlinkFromPropsPanel",			"Fájl csatolásának megszüntetése a Kellékek panelről",
+        
+        "kImportingAALAsset",                "Eszköz importálása",
+        "kImportingFileName",                "^1 importálása folyamatban van",
+        
+        //Error Strings for AEM
+        "AEMUnsupportedFiles",     "^1/^2 fájl elhelyezése nem lehetséges. Az InDesign ezt a fájltípust nem támogatja.",
+        "AEMInaccessibleFiles",     "^1/^2 fájl elhelyezése nem lehetséges. Az InDesign nem fér hozzá a fájlhoz. Kérjük, ellenőrizze a hálózati kapcsolatot vagy a tartalom eredeti forrását.",
+        "AEMUnknownFiles",     "Ismeretlen hiba miatt nem sikerült ^1/^2 fájl elhelyezése.",
+        "AEMGenericImportFailure",     "Nem lehet importálni az AEM-alapú eszközt.",
+        
+        // Action id strings
+        "#LinksUIReplaceFPOWithOriginalLink",        "FPO lecserélése az eredetivel...",
+        "#LinksUIReplaceAllFPOWithOriginalLinks",    "Összes FPO lecserélése eredetikkel...",
+        "#LinksUIDownloadOriginalLink",                "Eredeti letöltése",
+        "#LinksUIDownloadAllOriginalLinks",            "Összes eredeti letöltése",
+	}
+};
+
+
+
+#endif //__ODFRC__

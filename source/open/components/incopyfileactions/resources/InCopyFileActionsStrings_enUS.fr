@@ -1,0 +1,43 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kInCopyFileActionsStringsRsrcID + index_enUS)
+{
+	k_enUS,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{
+		"&Update Design",		"&Update Design",
+		"AlertUnableToSave",	"The following content could not be saved.\nThe files could be locked or you may not have permission to change them.\n",
+		"Update^1Alert",		"Some content cannot be saved. Updating could lose changes.\nUpdate to latest version of “^1”?",
+		"Undoable^1Save",		"Update design will save all editable content before proceeding. The Undo command cannot reverse any changes made by updating. \nUpdate to \"^1\" anyway?",
+		"AlertStoriesMissing",	"Some content files could not be found therefore they cannot be edited. Try moving the files to their original location or updating the links in InDesign.",
+		"AlertStoriesMissingWF", "Some content files could not be found therefore they cannot be edited. Try downloading the content from the server and reopening the document.",
+		"Update",				"Update",
+		"&Revert Story",		"Re&vert Content",
+//		"Revert Story",			"Revert Content", // Note to localizer: this string moved to InCopySharedStrings_enUS.fr
+		
+		"SaveAsFeatureLost",    "This document may contain features that are not supported by this file format. Do you want to continue?",
+		"CannotSaveOntoLockedFile",		"The specified file is currently checked out by \"^1\" in ^2 from document ^3.  Please choose a different file name or have \"^1\" check in the file.",
+		"CannotSaveOntoLockedFileMinimal",	"The specified file is currently checked out by \"^1\".  Please choose a different file name or have \"^1\" check in the file.",
+	}
+};
+
+
+#endif // __ODFRC__

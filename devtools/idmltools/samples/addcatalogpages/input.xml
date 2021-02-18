@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Data>
+    <Category id="1" name="Wear Aquo: Men">
+        <Item id="1">
+            <Name>Men’s Orange Tee</Name>
+            <Number>#0003456</Number>
+            <Description>Look hot in this new tee, fresh for 2007. Regular fit. Made in the USA.</Description>
+            <Detail>Machine Wash</Detail>
+            <Detail>27” from shoulder to hem</Detail>
+            <Detail>100% Cotton</Detail>
+            <Price>$24.00</Price>
+            <Size> S, M, L, XL</Size>
+            <Image>male_tshirt_1.jpg</Image>
+        </Item>
+        <Item id="2">
+            <Name>Men’s Green Tee</Name>
+            <Number>#0003457</Number>
+            <Description>Sport Aquo with this kelly green tee. Regular fit. Made in the USA.</Description>
+            <Detail>Machine Wash</Detail>
+            <Detail>27” from shoulder to hem</Detail>
+            <Detail>100% Cotton</Detail>
+            <Price>$24.00</Price>
+            <Size>S, M, L, XL</Size>
+            <Image>male_tshirt_2.jpg</Image>
+        </Item>
+        <Item id="3">
+            <Name>Men’s Sky Tee</Name>
+            <Number>#0003458</Number>
+            <Description>This sky blue Aquo logo tee keeps it light. Regular fit. Made in the USA.</Description>
+            <Detail>Machine Wash</Detail>
+            <Detail>27” from shoulder to hem</Detail>
+            <Detail>100% Cotton</Detail>
+            <Price>$18.00</Price>
+            <Size>S, M, L, XL</Size>
+            <Image>male_tshirt_3.jpg</Image>
+        </Item>
+        <Item id="4">
+            <Name>Men’s Blue Tee</Name>
+            <Number>#0003459</Number>
+            <Description>Where to wear this blue tee? Everywhere! Regular fit. Made in the USA.</Description>
+            <Detail>Machine Wash</Detail>
+            <Detail>27” from shoulder to hem</Detail>
+            <Detail>100% Cotton</Detail>
+            <Price>$24.00</Price>
+            <Size>S, M, L, XL</Size>
+            <Image>male_tshirt_4.jpg</Image>
+        </Item>
+        <Item id="5">
+            <Name>Men’s Yellow Tee</Name>
+            <Number>#0003460</Number>
+            <Description>Zesty green and yellow combine in this tee. Regular fit. Made in the USA.</Description>
+            <Detail>Machine Wash</Detail>
+            <Detail>27” from shoulder to hem</Detail>
+            <Detail>100% Cotton</Detail>
+            <Price>$28.00</Price>
+            <Size>S, M, L, XL</Size>
+            <Image>male_tshirt_5.jpg</Image>
+        </Item>
+        <Item id="6">
+            <Name>Men’s Ahhh! Tee</Name>
+            <Number>#0003461</Number>
+            <Description>Inspire action with our tagline tee. Regular fit. Made in the USA.</Description>
+            <Detail>Machine Wash</Detail>
+            <Detail>27” from shoulder to hem</Detail>
+            <Detail>100% Cotton</Detail>
+            <Price>$26.00</Price>
+            <Size>S, M, L, XL</Size>
+            <Image>male_tshirt_6.jpg</Image>
+        </Item>
+        <Item id="7">
+            <Name>Men’s Citrus Tee</Name>
+            <Number>#0003462</Number>
+            <Description>Look sharp in this yellow and orange tee. Regular fit. Made in the USA.</Description>
+            <Detail>Machine Wash</Detail>
+            <Detail>27” from shoulder to hem</Detail>
+            <Detail>100% Cotton</Detail>
+            <Price>$28.00</Price>
+            <Size> S, M, L, XL</Size>
+            <Image>male_tshirt_7.jpg</Image>
+        </Item>
+        <Item id="8">
+            <Name>Men’s White Tee</Name>
+            <Number>#0003463</Number>
+            <Description>Keep it simple with our classic clean white tee. Regular fit. Made in the USA.</Description>
+            <Detail>Machine Wash</Detail>
+            <Detail>27” from shoulder to hem</Detail>
+            <Detail>100% Cotton</Detail>
+            <Price>$18.00</Price>
+            <Size>S, M, L, XL</Size>
+            <Image>male_tshirt_8.jpg</Image>
+        </Item>
+    </Category>
+    <Category id="2" name="Wear Aquo: Women">
+        <Item id="9">
+            <Name>Women’s Magenta Tee</Name>
+            <Number>#0003464</Number>
+            <Description>Brighten it up in this berry hue tee. Regular fit. Made in the USA.</Description>
+            <Detail>Machine Wash</Detail>
+            <Detail>25” from shoulder to hem</Detail>
+            <Detail>100% Cotton</Detail>
+            <Price>$24.00</Price>
+            <Size>S, M, L, XL</Size>
+            <Image>female_tshirt_3.jpg</Image>
+        </Item>
+        <Item id="10">
+            <Name>Women’s Green Tee</Name>
+            <Number>#0003465</Number>
+            <Description>Fresh spring green makes this tee sing. Regular fit. Made in the USA.</Description>
+            <Detail>Machine Wash</Detail>
+            <Detail>25” from shoulder to hem</Detail>
+            <Detail>100% Cotton</Detail>
+            <Price>$24.00</Price>
+            <Size>S, M, L, XL</Size>
+            <Image>female_tshirt_4.jpg</Image>
+        </Item>
+        <Item id="11">
+            <Name>Women’s Aqua Tee</Name>
+            <Number>#0003466</Number>
+            <Description>Quench your thirst for cool with this aqua tee. Regular fit. Made in the USA.</Description>
+            <Detail>Machine Wash</Detail>
+            <Detail>25” from shoulder to hem</Detail>
+            <Detail>100% Cotton</Detail>
+            <Price>$26.00</Price>
+            <Size>S, M, L, XL</Size>
+            <Image>female_tshirt_5.jpg</Image>
+        </Item>
+        <Item id="12">
+            <Name>Women’s Red Tee</Name>
+            <Number>#0003467</Number>
+            <Description>Sport this tee in 2007’s newest hue. Regular fit. Made in the USA.</Description>
+            <Detail>Machine Wash</Detail>
+            <Detail>25” from shoulder to hem</Detail>
+            <Detail>100% Cotton</Detail>
+            <Price>$18.00</Price>
+            <Size>S, M, L, XL</Size>
+            <Image>female_tshirt_6.jpg</Image>
+        </Item>
+        <Item id="13">
+            <Name>Women’s Sky Tee</Name>
+            <Number>#0003468</Number>
+            <Description>This tee provides a breath of fresh air. Regular fit. Made in the USA.</Description>
+            <Detail>Machine Wash</Detail>
+            <Detail>25” from shoulder to hem</Detail>
+            <Detail>100% Cotton</Detail>
+            <Price>$24.00</Price>
+            <Size>S, M, L, XL</Size>
+            <Image>female_tshirt_1.jpg</Image>
+        </Item>
+        <Item id="14">
+            <Name>Women’s Ahhh! Tee</Name>
+            <Number>#0003469</Number>
+            <Description>Our tagline tee has a special twist for the ladies. Regular fit. Made in the USA.</Description>
+            <Detail>Machine Wash</Detail>
+            <Detail>25” from shoulder to hem</Detail>
+            <Detail>100% Cotton</Detail>
+            <Price>$28.00</Price>
+            <Size>S, M, L, XL</Size>
+            <Image>female_tshirt_2.jpg</Image>
+        </Item>
+        <Item id="15">
+            <Name>Women’s Orange Tee</Name>
+            <Number>#0003470</Number>
+            <Description>This tee is fresh for 2007. Regular fit. Made in the USA.</Description>
+            <Detail>Machine Wash</Detail>
+            <Detail>25” from shoulder to hem</Detail>
+            <Detail>100% Cotton</Detail>
+            <Price>$22.00</Price>
+            <Size>S, M, L, XL</Size>
+            <Image>female_tshirt_7.jpg</Image>
+        </Item>
+        <Item id="16">
+            <Name>Women’s White Tee</Name>
+            <Number>#0003471</Number>
+            <Description>This tee is a nice twist on a classic. Regular fit. Made in the USA.</Description>
+            <Detail>Machine Wash</Detail>
+            <Detail>25” from shoulder to hem</Detail>
+            <Detail>100% Cotton</Detail>
+            <Price>$18.00</Price>
+            <Size>S, M, L, XL</Size>
+            <Image>female_tshirt_8.jpg</Image>
+        </Item>
+    </Category>
+</Data>

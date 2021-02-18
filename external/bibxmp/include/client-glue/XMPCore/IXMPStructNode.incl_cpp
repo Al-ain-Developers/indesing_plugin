@@ -1,0 +1,163 @@
+// =================================================================================================
+// Copyright 2014 Adobe Systems Incorporated
+// All Rights Reserved.
+//
+// NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance with the terms
+// of the Adobe license agreement accompanying it.
+// =================================================================================================
+
+#if AdobePrivate
+// =================================================================================================
+// Change history
+// ==============
+//
+// Writers:
+//  HK  Honey Kansal
+//  ADC	Amandeep Chawla
+//
+// mm/dd/yy who Description of changes, most recent on top.
+//
+// 05-19-14 ADC 5.6-c012 Refactoring XMPCommon code and appropriate changes in XMPCore and XMPCompareAndMerge.
+// 02-24-14 HK  5.6-c004 Added new internal XMP DOM interfaces + fixed memory leaks + implemented qualifiers for new XMP DOM.
+// 02-13-14 ADC 5.5-c031 Refactoring XMPCore, implementing few APIs and fixing issues.
+// 02-12-14 HK  5.5-c030 Creating client glue code for XMP DOM APIs.
+//
+// =================================================================================================
+#endif // AdobePrivate
+
+#include "XMPCore/Interfaces/IXMPStructNode.h"
+
+#define CALL_EQUIVALENT_VIRTUAL_FUNCTION_NO_ARGS( className, functionName ) {			\
+			pIError error ( NULL );																	\
+			p##className##_base ptr = functionName( error );										\
+			if ( error )																			\
+				throw NS_XMPCOMMON::MakeUncheckedSharedPointer( error );								\
+				return NS_XMPCOMMON::MakeSharedPointer< className##_latest, className##_base >( ptr );	\
+		}
+
+#define CALL_EQUIVALENT_VIRTUAL_FUNCTION( className, functionName, ... ) {			\
+			pIError error ( NULL );																\
+			p##className##_base ptr = functionName( __VA_ARGS__, error );						\
+			if ( error )																		\
+				throw NS_XMPCOMMON::MakeUncheckedSharedPointer( error );							\
+			return NS_XMPCOMMON::MakeSharedPointer< className##_latest, className##_base >( ptr );	\
+		}
+
+#define CALL_EQUIVALENT_CVIRTUAL_FUNCTION_NO_ARGS( className, functionName ) {	\
+			pIError error ( NULL );																	\
+			pc##className##_base ptr = functionName( error );										\
+			if ( error )																			\
+				throw NS_XMPCOMMON::MakeUncheckedSharedPointer( error );								\
+			return NS_XMPCOMMON::MakeSharedPointer< const className##_latest, const className##_base >( ptr );	\
+		}
+
+#define CALL_EQUIVALENT_CVIRTUAL_FUNCTION( className, functionName, ... ) {			\
+			pIError error ( NULL );																\
+			pc##className##_base ptr = functionName( __VA_ARGS__, error );						\
+			if ( error )																		\
+				throw NS_XMPCOMMON::MakeUncheckedSharedPointer( error );							\
+			return NS_XMPCOMMON::MakeSharedPointer< const className##_latest, const className##_base >( ptr );	\
+		}
+
+#define CALL_EQUIVALENT_VIRTUAL_FUNCTION_RETURNING_NOTHING( functionName, ... ) {	\
+			pIError error ( NULL );																		\
+			functionName( __VA_ARGS__, error );															\
+			if ( error )																				\
+				throw NS_XMPCOMMON::MakeUncheckedSharedPointer( error );									\
+		}
+
+namespace NS_XMPCORE {
+
+	spIXMPSimpleNode_latest IXMPStructNode_v1::SetSimpleNode( const char * nameSpace, const char * name, const char * value ){
+		CALL_EQUIVALENT_VIRTUAL_FUNCTION ( IXMPSimpleNode, SetSimpleNode, nameSpace, name, value );
+	}
+	
+	spIXMPArrayNode_latest IXMPStructNode_v1::SetArrayNode( const char * nameSpace, const char * name, eXMPArrayNodeForm form ){
+		CALL_EQUIVALENT_VIRTUAL_FUNCTION ( IXMPArrayNode, SetArrayNode, nameSpace, name, form );
+	}
+	spIXMPStructNode_latest IXMPStructNode_v1::SetStructNode( const char * nameSpace, const char * name ){
+		CALL_EQUIVALENT_VIRTUAL_FUNCTION ( IXMPStructNode, SetStructNode, nameSpace, name );
+	}
+	
+	//spIXMPLanguageAlternative IXMPStructNode_v1::SetLanguageAlternative( const char * nameSpace, const char * name ){
+	//	pIError_latest err( NULL );
+	//	pIXMPLanguageAlternative_base ptr = SetLanguageAlternative( nameSpace, name, err );
+	//	if ( err ) {
+	//		throw NS_XMPCOMMON::CreateUncheckedSharedPointer( err ) ;
+	//	}
+	//	return NS_XMPCOMMON::CreateSharedPointer< IXMPLanguageAlternative_latest, IXMPLanguageAlternative_base >( ptr );
+	//}
+
+	spcIXMPNode_latest IXMPStructNode_v1::GetNode( const char * nameSpace, const char * name ) const{
+		CALL_EQUIVALENT_CVIRTUAL_FUNCTION ( IXMPNode, GetNode, nameSpace, name );
+	}
+	
+	spIXMPNode_latest IXMPStructNode_v1::GetNode( const char * nameSpace, const char * name ){
+		CALL_EQUIVALENT_VIRTUAL_FUNCTION ( IXMPNode, GetNode, nameSpace, name );
+	}
+
+	spcIXMPSimpleNode_latest IXMPStructNode_v1::GetSimpleNode( const char * nameSpace, const char * name ) const{
+		CALL_EQUIVALENT_CVIRTUAL_FUNCTION ( IXMPSimpleNode, GetSimpleNode, nameSpace, name );
+	}
+	
+	spIXMPSimpleNode_latest IXMPStructNode_v1::GetSimpleNode( const char * nameSpace, const char * name ){
+		CALL_EQUIVALENT_VIRTUAL_FUNCTION ( IXMPSimpleNode, GetSimpleNode, nameSpace, name );
+	}
+	
+	spcIXMPArrayNode_latest IXMPStructNode_v1::GetArrayNode( const char * nameSpace, const char * name ) const{
+		CALL_EQUIVALENT_CVIRTUAL_FUNCTION ( IXMPArrayNode, GetArrayNode, nameSpace, name );
+	}
+	
+	spIXMPArrayNode_latest IXMPStructNode_v1::GetArrayNode( const char * nameSpace, const char * name ){
+		CALL_EQUIVALENT_VIRTUAL_FUNCTION ( IXMPArrayNode, GetArrayNode, nameSpace, name );
+	}
+	
+	spcIXMPStructNode_latest IXMPStructNode_v1::GetStructNode( const char * nameSpace, const char * name ) const{
+		CALL_EQUIVALENT_CVIRTUAL_FUNCTION ( IXMPStructNode, GetStructNode, nameSpace, name );
+	}
+	
+	spIXMPStructNode_latest IXMPStructNode_v1::GetStructNode( const char * nameSpace, const char * name ){
+		CALL_EQUIVALENT_VIRTUAL_FUNCTION ( IXMPStructNode, GetStructNode, nameSpace, name );
+	}
+	
+	//spcIXMPLanguageAlternative IXMPStructNode_v1::GetLanguageAlternative( const char * nameSpace, const char * name ) const{
+	//	pIError_latest err( NULL );
+	//	pcIXMPLanguageAlternative_base ptr = GetLanguageAlternative( nameSpace, name, err );
+	//	if ( err ) {
+	//		throw NS_XMPCOMMON::CreateUncheckedSharedPointer( err ) ;
+	//	}
+	//	return NS_XMPCOMMON::CreateSharedPointer< IXMPLanguageAlternative_latest, IXMPLanguageAlternative_base >( ptr );
+	//}
+	//
+	//spIXMPLanguageAlternative IXMPStructNode_v1::GetLanguageAlternative( const char * nameSpace, const char * name ){
+	//	pIError_latest err( NULL );
+	//	pIXMPLanguageAlternative_base ptr = GetLanguageAlternative( nameSpace, name, err );
+	//	if ( err ) {
+	//		throw NS_XMPCOMMON::CreateUncheckedSharedPointer( err ) ;
+	//	}
+	//	return NS_XMPCOMMON::CreateSharedPointer< IXMPLanguageAlternative_latest, IXMPLanguageAlternative_base >( ptr );
+	//}
+	
+
+
+	bool IXMPStructNode_v1::RenameField( const char * oldNameSpace, const char * oldName, const char * newNameSpace, const char* newName ){
+		pIError_base error ( NULL );													
+		bool result = RenameField( oldNameSpace, oldName, newNameSpace, newName, error );					
+		if ( error )																	
+			throw MakeUncheckedSharedPointer( error );								
+		return result;
+	}
+	
+
+	spIXMPConstNodeIterator_latest IXMPStructNode_v1::GetAllPropertiesInNameSpace( const char * nameSpace ) const{
+		CALL_EQUIVALENT_VIRTUAL_FUNCTION ( IXMPConstNodeIterator, GetAllPropertiesInNameSpace, nameSpace );
+	}
+	
+	spIXMPNodeIterator_latest IXMPStructNode_v1::GetAllPropertiesInNameSpace( const char * nameSpace ){
+		CALL_EQUIVALENT_VIRTUAL_FUNCTION ( IXMPNodeIterator, GetAllPropertiesInNameSpace, nameSpace );
+	}
+
+	spIXMPNode_latest IXMPStructNode_v1::Remove ( const char * nameSpace, const char * name ){
+		CALL_EQUIVALENT_VIRTUAL_FUNCTION ( IXMPNode, Remove, nameSpace, name );
+	}
+}

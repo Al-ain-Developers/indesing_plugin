@@ -1,0 +1,119 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/sdksamples/snapshot/Snap_jaJP.fr $
+//  
+//  Owner: Adobe Developer Technologies
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// Japanese strings
+//========================================================================================
+
+// Japanese string table is defined here
+
+resource StringTable (kSDKDefStringsResourceID + index_jaJP)
+{
+	k_jaJP,		// Locale Id
+	0,		// Character encoding converter
+	{
+		// ----- Menu strings
+		kSnapCompanyKey,		kSnapCompanyValue,					
+		kSnapAboutMenuKey,		kSnapPluginName "[JP]...",
+		kSnapPluginsMenuKey,		kSnapPluginName "[JP]",
+		
+		// ----- Command strings
+		kCommandSnapSetPrefsCmdKey,	"SnapshotPrefs",	
+		
+		// ----- Window strings
+		
+		// ----- Panel/dialog strings
+		kSnapStringKey,			"スナップ [JP]",
+		kTrackingStartKey,		"トラッキング開始",
+
+		kDialogTitleKey,		kSnapPluginName "[JP]",
+		kDialogFilenameKey, 		"名前",
+		kDialogDefaultFilenameKey, 	"スナップ",
+		kDialogFileOptionsKey, 		"ファイル",
+		kDialogFileFormatKey,		"形式",
+		kDialogDefaultFileFormatKey,	"TIFF",
+		kDialogScaleKey,		"スケール",
+		kDialogResolutionKey,		"解像度",
+		kDialogBleedKey,		"ブリード",
+		kDialogGeneralOptionsKey,	"一般",
+		kDialogTIFFOptionsKey,		"TIFF",
+		kDialogGIFOptionsKey,		"GIF",
+		kDialogJPEGOptionsKey,		"JPEG",
+		kDialogSelectionOptionsKey, 	"選択項目",
+		kDialogDrawKey, 		"描画",
+		kDialogDrawAreaKey, 		"範囲",
+		kDialogDrawItemKey, 		"項目",
+		kDialogMinimumResolutionKey,	"最低解像度",
+		kDialogFullResolutionKey,	"最高解像度画像を使用",
+		kDialogGrayscaleKey,		"グレースケール作成",
+		kDialogPrintingKey,		"ガイド・フレーム枠を隠す",
+		k9dpiKey,			"9",
+		k18dpiKey,			"18",
+		k36dpiKey,			"36",
+		k72dpiKey,			"72",
+		k144dpiKey,			"144",
+		k288dpiKey,			"288",
+		k576dpiKey,			"576",
+		kDialogJPEGEncodingKey,		"エンコーディング",
+		kJPEGEncodingBaselineKey,	"ベースライン",
+		kJPEGEncodingProgressiveKey,	"プログレッシブ",
+		kDialogJPEGQualityKey,		"画質",
+		kJPEGQualityLowKey,		"低",
+		kJPEGQualityGoodKey,		"中",
+		kJPEGQualityExcellentKey,	"高",
+		kJPEGQualityGreatKey,		"最高",
+		kDialogPaletteTypeKey,		"パレットタイプ",
+		kNoPaletteTypeKey,		"パレットなし",
+		kExactThenAdaptivePaletteTypeKey,	"TryExactThenAdaptivePalette",
+		kMacPaletteTypeKey,		"Macパレット",
+		kWebPaletteTypeKey,		"Webパレット",
+		kWinPaletteTypeKey,		"Winパレット",
+		kGIFInterlacedKey,		"インターレース",
+		kDialogTransparentKey,		"透明",
+
+
+		// ----- Error strings
+		kAlertBadFilenameKey,		"有効なファイル名を指定して下さい:\n^0",
+		kAlertSnapshotTakenKey,		"スナップが保存されたファイル名:\n^0",
+		kAlertSnapshotFailedKey,	"スナップに失敗しました。",
+		kAlertMemoryKey,		"メモリが不足しています。スケールを縮小するか、もっと小さい範囲を選択して下さい。",
+		kAlertSaveFileKey,		"スナップを撮る前にファイルを保存するか、ツールのオプションで完全パスを指定して下さい。",
+		kAlertBadFileNumberKey,		"最大ファイル数256に到達したため、スナップファイルを削除して下さい。",
+		kAlertFormatDoesNotSupportRgbOrGrayscaleKey, "残念ながら、選択された形式はRGBやグレースケールをサポートしません。別の形式を選択して下さい。",
+		kAlertMinimumResolutionKey, 	"最低解像度は、現在の解像度と同じかそれより低い設定が必要です。",
+		kAlertDoYouReallyWantToDoThis, 	"選択されたスケールまたは解像度では膨大なファイルが作成されます。それでも実行しますか？",
+		kSnapFailureErrorCodeErrorCodeStringKey,	"SnapShot failure [JP]",
+		kSnapDataAccessErrorCodeStringKey,	"SnapShot data access error [JP]",
+
+		// ----- Misc strings
+		kSnapAboutBoxStringKey,		 kSnapPluginName " [JP], version " kSnapVersion " by " kSnapAuthor "\n\n" kSDKDefCopyrightStandardValue "\n\n" kSDKDefPartnersStandardValue_jaJP,
+	}
+};
+
+#endif // __ODFRC__
+
+// End Snap_jaJP.fr
+
+

@@ -1,0 +1,284 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/buttonui/resources/behaviorui/MSODataViews_enUS.fr $
+//  
+//  Owner: Greg St. Pierre
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#ifdef __ODFRC__
+#include "InterfaceColorDefines.h"
+
+//========================================================================================
+// MSO behavior panel resources
+//========================================================================================
+
+resource SwitchToMSOStateDataPanel (kSwitchToMSOStatePanelRsrcID + index_enUS)
+{
+	__FILE__, __LINE__,
+	kSwitchToMSOStatePanelWidgetID, kPMRsrcID_None, // WidgetId, RsrcId
+	kBindNone,					// Frame binding
+	Frame(0, 0,262,0)		// Frame
+	kTrue, kTrue,				// Visible, Enabled
+	kTrue,						// EraseBeforeDraw
+	kInterfacePaletteFill,		// Erase to color
+	kFalse,						// DrawDropShadow
+	"",							// Panel name	
+	{
+		EVEGenericPanelWidget
+		(
+			kInvalidWidgetID,	// WidgetId
+			0,0,				// RsrcId
+			kBindNone,						// Frame binding
+			Frame(0, 0,262,0)		// Frame
+			kTrue,							// Visible
+			kTrue,							// Enabled
+			kEVENoSpaceAfter|kEVEArrangeChildrenInRow|kEVEAlignLeft|kEVENoMargin,		//EVE info
+			{
+				EVEGenericPanelWidget
+				(
+					kInvalidWidgetID,	// WidgetId
+					0,0,				// RsrcId
+					kBindNone,						// Frame binding
+					Frame(0,0,0,0)		// Frame
+					kTrue,							// Visible
+					kTrue,							// Enabled
+					kEVERegularSpaceAfter|kEVEArrangeChildrenInColumn|kEVEAlignRight|kEVEChildRegularSpaceAfter,		//EVE info
+					{
+						EVEStaticTextWidget
+						(
+							kMSOTargetLabelWidgetID, kSysStaticTextPMRsrcId,	// WidgetId, RsrcId
+							kBindNone,											// Frame binding
+							Frame(0,0,57,0)										// Frame
+							kTrue, kTrue, kAlignRight,							// Visible, Enabled, Alignment
+							kDontEllipsize,	kTrue,								// Ellipsize style, Convert ampersands
+							"$$$/Dialog/Behaviors/MSO/Object:",
+							kMSOTargetChoiceWidgetID,
+							kEVERegularSpaceAfter
+						),
+						EVEStaticTextWidget
+						(
+							kMSOStateLabelWidgetID, kSysStaticTextPMRsrcId,	// WidgetId, RsrcId
+							kBindNone,												// Frame binding
+							Frame(0,0,57,0)											// Frame
+							kTrue, kTrue, kAlignRight,								// Visible, Enabled, Alignment
+							kDontEllipsize,	kTrue,									// Ellipsize style, Convert ampersands
+							"$$$/Dialog/Behaviors/MSO/State:",
+							kMSOStateChoiceWidgetID,
+							kEVERegularSpaceAfter
+						),
+					}
+				)
+				
+				EVEGenericPanelWidget
+				(
+					kInvalidWidgetID,	// WidgetId
+					0,0,				// RsrcId
+					kBindNone,						// Frame binding
+					Frame(0,0,0,0)					// Frame
+					kTrue,							// Visible
+					kTrue,							// Enabled
+					kEVENoSpaceAfter|kEVEArrangeChildrenInColumn|kEVEAlignLeft|kEVEChildRegularSpaceAfter,		//EVE info
+					{
+						
+						EVEMSOTargetChoice
+						(
+							kMSOTargetChoiceWidgetID, kSysDropDownPMRsrcId, kBindNone,
+							Frame(0, 0, 200,0)		// Frame
+							kTrue, kTrue,
+							{{
+							}},
+							kEVEDontAlignWidth,
+						),
+						
+						MSOStateChoice
+						(
+							kMSOStateChoiceWidgetID, kSysDropDownPMRsrcId, kBindNone,
+							Frame(0, 0, 200,0)		// Frame
+							kTrue, kTrue,
+							{}
+						),
+						
+						EVECheckBoxWidget
+						(
+							kMSOAutoReverseWidgetID,						// WID
+							kSysCheckBoxPMRsrcId,							// RsrcId
+							kBindNone,										// Frame binding
+							Frame(0, 0, 200,0)								// Frame
+							kTrue, kTrue,									// Visible, Enabled
+							kAlignLeft,										// Alignment
+							"$$$/Dialog/Behaviors/MSO/AutoReverse"			// Initial Text
+							kEVEAlignLeft|kEVENoSpaceAfter,
+						),
+					}
+				)
+			}
+		)
+	},
+	kSwitchToMSOStateBehavior
+}
+
+resource SwitchToNextMSOStateDataPanel (kSwitchToNextMSOStatePanelRsrcID + index_enUS)
+{
+	__FILE__, __LINE__,
+	kSwitchToNextMSOStatePanelWidgetID, kPMRsrcID_None, // WidgetId, RsrcId
+	kBindNone,					// Frame binding
+	Frame(0, 0, 262,0)		// Frame
+	kTrue, kTrue,				// Visible, Enabled
+	kTrue,						// EraseBeforeDraw
+	kInterfacePaletteFill,		// Erase to color
+	kFalse,						// DrawDropShadow
+	"",							// Panel name	
+	{
+		EVEGenericPanelWidget
+		(
+			kInvalidWidgetID,	// WidgetId
+			0,0,				// RsrcId
+			kBindNone,						// Frame binding
+			Frame(0, 0,262,0)		// Frame
+			kTrue,							// Visible
+			kTrue,							// Enabled
+			kEVENoSpaceAfter|kEVEArrangeChildrenInRow|kEVEAlignLeft|kEVENoMargin,		//EVE info
+			{
+				EVEStaticTextWidget
+				(
+					kNextMSOTargetLabelWidgetID, kSysStaticTextPMRsrcId,	// WidgetId, RsrcId
+					kBindNone,											// Frame binding
+					Frame(0,0,57,0)										// Frame
+					kTrue, kTrue, kAlignRight,							// Visible, Enabled, Alignment
+					kDontEllipsize,	kTrue,								// Ellipsize style, Convert ampersands
+					"$$$/Dialog/Behaviors/MSO/Object:",
+					kNextMSOTargetChoiceWidgetID,
+					kEVERegularSpaceAfter
+				),
+			
+				
+				EVEGenericPanelWidget
+				(
+					kInvalidWidgetID,	// WidgetId
+					0,0,				// RsrcId
+					kBindNone,						// Frame binding
+					Frame(0,0,0,0)		// Frame
+					kTrue,							// Visible
+					kTrue,							// Enabled
+					kEVENoSpaceAfter|kEVEArrangeChildrenInColumn|kEVEAlignLeft|kEVEChildRegularSpaceAfter,		//EVE info
+					{
+						EVEMSOTargetChoice
+						(
+							kNextMSOTargetChoiceWidgetID, kSysDropDownPMRsrcId, kBindNone,
+							Frame(0, 0, 200,0)		// Frame
+							kTrue, kTrue,
+							{{
+							}},
+							kEVEDontAlignWidth,
+						),
+					
+						EVECheckBoxWidget
+						(
+							kLoopAtBeginningOrEndWidgetID,						// WID
+							kSysCheckBoxPMRsrcId,							// RsrcId
+							kBindNone,										// Frame binding
+							Frame(0, 0, 200,0)								// Frame
+							kTrue, kTrue,									// Visible, Enabled
+							kAlignLeft,										// Alignment
+							"$$$/Dialog/Behaviors/MSO/NextLoop"					// Initial Text
+							kEVEAlignLeft|kEVENoSpaceAfter,
+						),
+					}
+				)
+			}
+		)
+	},
+	kSwitchToNextMSOStateBehavior
+}
+
+resource SwitchToPrevMSOStateDataPanel (kSwitchToPrevMSOStatePanelRsrcID + index_enUS)
+{
+	__FILE__, __LINE__,
+	kSwitchToPrevMSOStatePanelWidgetID, kPMRsrcID_None, // WidgetId, RsrcId
+	kBindNone,					// Frame binding
+	Frame(0, 0, 262,0)		// Frame
+	kTrue, kTrue,				// Visible, Enabled
+	kTrue,						// EraseBeforeDraw
+	kInterfacePaletteFill,		// Erase to color
+	kFalse,						// DrawDropShadow
+	"",							// Panel name	
+	{
+		EVEGenericPanelWidget
+		(
+			kInvalidWidgetID,	// WidgetId
+			0,0,				// RsrcId
+			kBindNone,						// Frame binding
+			Frame(0, 0, 262,0)		// Frame
+			kTrue,							// Visible
+			kTrue,							// Enabled
+			kEVENoSpaceAfter|kEVEArrangeChildrenInRow|kEVEAlignLeft|kEVENoMargin,		//EVE info
+			{
+				
+				EVEStaticTextWidget
+				(
+					kPrevMSOTargetLabelWidgetID, kSysStaticTextPMRsrcId,	// WidgetId, RsrcId
+					kBindNone,											// Frame binding
+					Frame(0,0,57,0)		// Frame
+					kTrue, kTrue, kAlignRight,							// Visible, Enabled, Alignment
+					kDontEllipsize,	kTrue,								// Ellipsize style, Convert ampersands
+					"$$$/Dialog/Behaviors/MSO/Object:",
+					kPrevMSOTargetChoiceWidgetID,
+					kEVERegularSpaceAfter
+				),
+				
+				EVEGenericPanelWidget
+				(
+					kInvalidWidgetID,	// WidgetId
+					0,0,				// RsrcId
+					kBindNone,						// Frame binding
+					Frame(0,0,0,0)		// Frame
+					kTrue,							// Visible
+					kTrue,							// Enabled
+					kEVENoSpaceAfter|kEVEArrangeChildrenInColumn|kEVEAlignLeft|kEVEChildRegularSpaceAfter,		//EVE info
+					{
+						EVEMSOTargetChoice
+						(
+							kPrevMSOTargetChoiceWidgetID, kSysDropDownPMRsrcId, kBindNone,
+							Frame(0, 0, 200,0)		// Frame
+							kTrue, kTrue,
+							{{
+							}},
+							kEVEDontAlignWidth,
+						),
+						
+						EVECheckBoxWidget
+						(
+							kLoopAtBeginningOrEndWidgetID,				// WID
+							kSysCheckBoxPMRsrcId,							// RsrcId
+							kBindNone,										// Frame binding
+							Frame(0, 0, 200,0)								// Frame
+							kTrue, kTrue,									// Visible, Enabled
+							kAlignLeft,										// Alignment
+							"$$$/Dialog/Behaviors/MSO/PrevLoop"					// Initial Text
+							kEVEAlignLeft|kEVENoSpaceAfter,
+						),
+					}
+				)
+			}
+		)
+	},
+	kSwitchToPrevMSOStateBehavior
+}
+
+#endif

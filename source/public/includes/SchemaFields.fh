@@ -1,0 +1,304 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/public/includes/SchemaFields.fh $
+//  
+//  Owner: Steve Pellegrin
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//  
+//  Adobe patent application tracking # P409, entitled 'Schema-based file Conversion',
+//  inventors: Robin Briggs, Steve Pellegrin
+//  
+//  Field types.
+//  Stored in a separately included file because nesting has to be
+//  special-cased and this insures that all levels have the same field definitions.
+//  
+//========================================================================================
+
+		case Bool8:								// Boolean 8-bit
+			key integer = kBool8;				// 		Key value
+			unsigned integer;					//		The Field's ID (unique within the schema)
+			unsigned byte;						//		Default value
+			
+		case Bool8Array:						// Array of Bool8
+			key integer = kBool8Array;
+			unsigned integer;
+			integer = $$CountOf(Bool8s);
+			array Bool8s {unsigned byte;};
+			
+		case Bool16:							// Boolean 16-bit
+			key integer = kBool16;
+			unsigned integer;
+			unsigned integer;
+			
+		case Bool16Array:						// Array of Bool16
+			key integer = kBool16Array;
+			unsigned integer;
+			integer = $$CountOf(Bool16s);
+			array Bool16s {unsigned integer;};
+			
+		case Int8:								// Signed integer 8-bit 
+			key integer = kInt8;
+			unsigned integer;
+			byte;
+			
+		case Int8Array:							// Array of Int8
+			key integer = kInt8Array;
+			unsigned integer;
+			integer = $$CountOf(Int8s);
+			array Int8s {byte;};
+			
+		case Uint8:								// Unsigned integer 8-bit
+			key integer = kUint8;
+			unsigned integer;
+			unsigned byte;
+			
+		case Uint8Array:						// Array of Uint8
+			key integer = kUint8Array;
+			unsigned integer;
+			integer = $$CountOf(Uint8s);
+			array Uint8s {unsigned byte;};
+			
+		case Int16:								// Signed integer 16-bit
+			key integer = kInt16;
+			unsigned integer;
+			integer;
+			
+		case Int16Array:						// Array of Int16
+			key integer = kInt16Array;
+			unsigned integer;
+			integer = $$CountOf(Int16s);
+			array Int16s {integer;};
+			
+		case Uint16:							// Unsigned integer 16-bit
+			key integer = kUint16;
+			unsigned integer;
+			unsigned integer;
+			
+		case Uint16Array:						// Array of Uint16
+			key integer = kUint16Array;
+			unsigned integer;
+			integer = $$CountOf(Uint16s);
+			array Uint16s {unsigned integer;};
+			
+		case Int32:								// Signed integer 32-bit
+			key integer = kInt32;
+			unsigned integer;
+			longint;
+			
+		case Int32Array:						// Array of Int32
+			key integer = kInt32Array;
+			unsigned integer;
+			integer = $$CountOf(Int32s);
+			array Int32s {longint;};
+			
+		case Uint32:							// Unsigned integer 32-bit
+			key integer = kUint32;
+			unsigned integer;
+			unsigned longint;
+			
+		case Uint32Array:						// Array of Uint32
+			key integer = kUint32Array;
+			unsigned integer;
+			integer = $$CountOf(Uint32s);
+			array Uint32s {unsigned longint;};
+			
+		case Real:								// PMReal
+			key integer = kReal;
+			unsigned integer;
+			double;
+			
+		case RealArray:							// Array of Real
+			key integer = kRealArray;
+			unsigned integer;
+			integer = $$CountOf(Reals);
+			array Reals {double;};
+
+		case ClassID:							// ID
+			key integer = kClassID;
+			unsigned integer;
+			unsigned longint;
+			
+		case ClassIDArray:						// Array of ID
+			key integer = kClassIDArray;
+			unsigned integer;
+			integer = $$CountOf(cIDs);
+			array cIDs {unsigned longint;};
+			
+		case InterfaceID:						// ID
+			key integer = kInterfaceID;
+			unsigned integer;
+			unsigned longint;
+			
+		case InterfaceIDArray:					// Array of ID
+			key integer = kInterfaceIDArray;
+			unsigned integer;
+			integer = $$CountOf(inIDs);
+			array inIDs {unsigned longint;};
+			
+		case ImplementationID:					// ID
+			key integer = kImplementationID;
+			unsigned integer;
+			unsigned longint;
+			
+		case ImplementationIDArray:				// Array of ID
+			key integer = kImplementationIDArray;
+			unsigned integer;
+			integer = $$CountOf(imIDs);
+			array imIDs {unsigned longint;};
+			
+		case WidgetID:							// ID
+			key integer = kWidgetID;
+			unsigned integer;
+			unsigned longint;
+			
+		case WidgetIDArray:						// Array of ID
+			key integer = kWidgetIDArray;
+			unsigned integer;
+			integer = $$CountOf(wIDs);
+			array wIDs {unsigned longint;};
+			
+		case MessageID:							// ID
+			key integer = kMessageID;
+			unsigned integer;
+			unsigned longint;
+			
+		case MessageIDArray:					// Array of ID
+			key integer = kMessageIDArray;
+			unsigned integer;
+			integer = $$CountOf(mIDs);
+			array mIDs {unsigned longint;};
+			
+		case ServiceID:							// ID
+			key integer = kServiceID;
+			unsigned integer;
+			unsigned longint;
+			
+		case ServiceIDArray:					// Array of ID
+			key integer = kServiceIDArray;
+			unsigned integer;
+			integer = $$CountOf(sIDs);
+			array sIDs {unsigned longint;};
+			
+		case ErrorID:							// ID
+			key integer = kErrorID;
+			unsigned integer;
+			unsigned longint;
+			
+		case ErrorIDArray:						// Array of ID
+			key integer = kErrorIDArray;
+			unsigned integer;
+			integer = $$CountOf(eIDs);
+			array eIDs {unsigned longint;};
+			
+		case PluginID:							// ID
+			key integer = kPluginID;
+			unsigned integer;
+			unsigned longint;
+			
+		case PluginIDArray:						// Array of ID
+			key integer = kPluginIDArray;
+			unsigned integer;
+			integer = $$CountOf(pIDs);
+			array pIDs {unsigned longint;};
+			
+		case Object:							// Object
+			key integer = kObject;
+			unsigned integer;
+			unsigned longint;
+			
+		case ObjectArray:						// Array of Object
+			key integer = kObjectArray;
+			unsigned integer;
+			integer = $$CountOf(Objects);
+			array Objects {unsigned longint;};
+			
+		case Reference:							// Object reference
+			key integer = kReference;
+			unsigned integer;
+			unsigned longint;
+			
+		case ReferenceArray:					// Array of Reference
+			key integer = kReferenceArray;
+			unsigned integer;
+			integer = $$CountOf(References);
+			array References {unsigned longint;};
+
+		case AttributeBoss:						// Attribute Boss
+			key integer = kAttrBoss;
+			unsigned integer;
+			FieldWidthDefinition;				// Determines width of Impl data field
+
+		case AttributeBossList:					// Attribute Boss List
+			key integer = kAttrBossList;
+			unsigned integer;
+			FieldWidthDefinition;				// Determines width of Boss count field
+			FieldWidthDefinition;				// Determines width of Boss data field
+
+		case DataBlob:							// Blob of 8-bit data
+			key integer = kDataBlob8;
+			unsigned integer;
+			FieldWidthDefinition;				// Determines width of data count
+			
+		case PMString:							// PMString
+			key integer = kPMString;
+			unsigned integer;
+			wstring;			
+
+		case PMPoint:							// PMPoint
+			key integer = kPMPoint;
+			unsigned integer;
+			double;			
+			double;			
+
+		case PMRect:							// PMRect
+			key integer = kPMRect;
+			unsigned integer;
+			double;			
+			double;			
+			double;			
+			double;			
+
+		case PMMatrix:							// PMMatrix
+			key integer = kPMMatrix;
+			unsigned integer;
+			double;			
+			double;			
+			double;			
+			double;			
+			double;			
+			double;			
+
+		case NameInfo:							// NameInfo
+			key integer = kNameInfo;
+			unsigned integer;
+			wstring;			
+			wstring;			
+			longint;
+			unsigned longint;
+			
+		case WideString:						// WideString
+			key integer = kWideString;
+			unsigned integer;
+			wstring;			
+			
+		case URI:								// URI
+			key integer = kURI;
+			unsigned integer;
+			byte;
+			longint;
+			array Uint8s {unsigned byte;};

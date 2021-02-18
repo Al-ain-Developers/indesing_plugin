@@ -1,0 +1,490 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/spellpanel/SpellDialogViews_enUS.fr $
+//  
+//  Owner: Bernd Paradies 
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "TreeViewDefs.h"
+
+#ifdef __ODFRC__   
+
+//========================================================================================
+// Dialog:				"Check Spelling"
+// UI Spec File:		PM_CheckSpelling-v09.tif
+//========================================================================================
+#include "Widgets.fh"
+#include "EveInfo.fh"
+#include "StdHeightWidthConstants.h"
+
+resource SpellDialogWidget( kSpellDialogRsrcID + index_enUS ) 
+{ 
+    __FILE__, __LINE__, 
+    kSpellDlgParentWidgetID, kPMRsrcID_None,                    // WidgetId, RsrcId 
+    kBindNone, 
+    Frame(0,0,0,0)        // Frame 
+    kTrue, kTrue,                // Visible, Enabled 
+    "Check Spelling",                // Panel name 
+    {
+		EVEGenericPanelWidget 
+		( 
+			kInvalidWidgetID,    // WidgetId 
+			0,
+			0,					  
+			kBindNone,        // Frame binding 
+			Frame(0,0,0,0)        // Frame 
+			kTrue,            // Visible 
+			kTrue,            // Enabled 
+			kEVENoSpaceAfter | kEVEArrangeChildrenInRow, 
+			{
+				EVEGenericPanelWidget 
+				( 
+					kInvalidWidgetID,    // WidgetId 
+					0,            // RsrcId 
+					0,
+					kBindNone,        // Frame binding 
+					Frame(0,0,0,0)        // Frame 
+					kTrue,            // Visible 
+					kTrue,            // Enabled 
+					kEVEExtraLargeSpaceAfter | kEVEArrangeChildrenInColumn, 
+					{
+						SpellMisspelledTextBoss
+						(
+							kSpellStatusTextWidgetID, kSysStaticTextPMRsrcId,			// WidgetId, RsrcId
+							kBindNone,
+							Frame(0,0,0,0)											// Frame
+							kTrue, kTrue, kAlignLeft,									// Visible, Enabled, Alignment
+							kDontEllipsize, kTrue,										// Ellipsize style, Convert ampersands
+							"Ready to Spell Check:",
+							kSpellWordEditBoxID,
+							kEVENoSpaceAfter
+						),
+						SpellMisspelledWordBoss					
+						(
+							kSpellWordEditBoxID,			// WidgetId
+							kSysEditBoxPMRsrcId,			// RsrcId
+							kBindNone,						// Frame binding
+							Frame(0,0,0,0)					// Frame
+							kTrue, kFalse					// Visible, Enabled
+							0,								// Widget id of nudge button (0 so we don't get one)
+							0, 0,							// small,large nudge amount
+							0,			// max num chars( 0 = no limit)
+							kFalse,							// is read only
+							kFalse,							// should notify each key stroke
+							kFalse,							// range checking enabled
+							kFalse,							// blank entry allowed
+							0,								// Upper bounds
+							0,								// Lower bounds
+							"",								// Initial text
+							kDialogWindowSystemScriptFontId, kDialogWindowSystemScriptFontId,
+							kEVERegularSpaceAfter|kEVEAlignFill
+						),
+						EVEStaticTextWidget
+						(
+							kSpellChangeToTextWidgetID, kSysStaticTextPMRsrcId,			// WidgetId, RsrcId
+							kBindNone,
+							Frame(0,0,0,0)		// Frame
+							kTrue, kTrue, kAlignLeft,							// Visible, Enabled, Alignment
+							kDontEllipsize, kTrue,										// Ellipsize style, Convert ampersands
+							"&Change To:",
+							kSpellAlternativeEditBoxID,
+							kEVENoSpaceAfter
+						),
+						SpellWordObserverBoss					
+						(
+							kSpellAlternativeEditBoxID,				// WidgetId
+							kSysEditBoxPMRsrcId,			// RsrcId
+							kBindNone,						// Frame binding
+							Frame(0,0,0,0)		// Frame
+							kTrue, kFalse					// Visible, Enabled
+							0,								// Widget id of nudge button (0 so we don't get one)
+							0, 0,							// small,large nudge amount
+							0,			// max num chars( 0 = no limit)
+							kFalse,							// is read only
+							kTrue,							// should notify each key stroke
+							kFalse,							// range checking enabled
+							kFalse,							// blank entry allowed
+							0,								// Upper bounds
+							0,								// Lower bounds
+							"",								// Initial text
+							kDialogWindowSystemScriptFontId, kDialogWindowSystemScriptFontId,
+							kEVERegularSpaceAfter|kEVEAlignFill
+						),
+						EVEStaticTextWidget
+						(
+							kSpellCorrectionsTextWidgetID, kSysStaticTextPMRsrcId,			// WidgetId, RsrcId
+							kBindNone,
+							Frame(0,0,0,0)		// Frame
+							kTrue, kTrue, kAlignLeft,							// Visible, Enabled, Alignment
+							kDontEllipsize, kTrue,										// Ellipsize style, Convert ampersands
+							"&Suggested Corrections:",
+							kSpellAlternativesID,
+							kEVENoSpaceAfter
+						),
+						// Dummy StaticText Widget
+						EVEStaticTextWidget
+						(
+							kInvalidWidgetID, kSysStaticTextPMRsrcId,			// WidgetId, RsrcId
+							kBindNone,
+							Frame(0,0,0,1)		// Frame
+							kTrue, kTrue, kAlignRight,							// Visible, Enabled, Alignment
+							kDontEllipsize, kTrue,										// Ellipsize style, Convert ampersands
+							"",
+							0,
+							kEVENoSpaceAfter
+						),
+						SpellAlternativesObserverBoss
+						(
+							kSpellAlternativesID, kSysOwnerDrawListBoxPMRsrcId,	// WidgetId, RsrcId
+							kBindNone,
+							Frame(0,0,0,9*kCC2016PanelTreeNodeSmallRowHeight)	// Frame
+							kTrue, kTrue,								// Visible, Enabled			
+							kTrue,												// EraseBeforeDraw
+							kInterfacePaletteFill,								// InterfaceColor
+							1,0,										// List dimensions
+							kCC2016PanelTreeNodeSmallRowHeight,			// Cell height
+							1,											// Border width
+							kFalse, kTrue,								// Has scroll bar (v,h)
+							kFalse,										// Multiselection
+							kFalse,										// List items can be reordered
+							kFalse,										// Draggable to new/delete buttons
+							kFalse,										// Drag/Dropable to other windows
+							kFalse,										// An item always has to be selected
+							kFalse,										// Don't notify on reselect
+							0,											// Fill list box with widgets with this ID (default is 0)
+							kHideRootNode,					//Options
+							kFalse,						//Use H Scroll bar
+							kTrue,						//Use V scroll bar
+							kCC2016PanelTreeNodeSmallRowHeight,			// Vertical Scroll Button Increment
+							kCC2016PanelTreeNodeSmallRowHeight,		// Vertical Thumb Scroll Increment
+							0,							// Horizontal Scroll Button Increment - Not Used
+							0,							// Horizontal Thumb Scroll Increment - Not Used
+							1,							// Items selectable, 0 = No Selection, 1 = Single Selection, 2 = Multiple Selection
+							kFalse,						// Allow children from multiple parents to be selected
+							kFalse,						// Allow discontiguous selection
+							kEVERegularSpaceAfter|kEVEAlignFill
+						),
+						EVEGenericPanelWidget 
+						( 
+							kInvalidWidgetID,    // WidgetId 
+							0,            // RsrcId 
+							0,
+							kBindNone,        // Frame binding 
+							Frame(0,0,0,0)        // Frame 
+							kTrue,            // Visible 
+							kTrue,            // Enabled 
+							kEVENoSpaceAfter, 
+							{
+								// Dummy StaticText Widget
+								EVEStaticTextWidget
+								(
+									kInvalidWidgetID, kSysStaticTextPMRsrcId,			// WidgetId, RsrcId
+									kBindNone,
+									Frame(0,0,0,4)		// Frame
+									kTrue, kTrue, kAlignRight,							// Visible, Enabled, Alignment
+									kDontEllipsize, kTrue,										// Ellipsize style, Convert ampersands
+									"",
+									0,
+									kEVENoSpaceAfter
+								),
+							}
+						),
+						EVEGenericPanelWidget 
+						( 
+							kInvalidWidgetID,    // WidgetId 
+							0,            // RsrcId 
+							0,
+							kBindNone,        // Frame binding 
+							Frame(0,0,0,0)        // Frame 
+							kTrue,            // Visible 
+							kTrue,            // Enabled 
+							kEVENoSpaceAfter | kEVEArrangeChildrenInRow,
+							{
+								EVEGenericPanelWidget 
+								( 
+									kInvalidWidgetID,    // WidgetId 
+									0,            // RsrcId 
+									0,
+									kBindNone,        // Frame binding 
+									Frame(0,0,0,0)        // Frame 
+									kTrue,            // Visible 
+									kTrue,            // Enabled 
+									kEVERegularSpaceAfter | kEVEArrangeChildrenInColumn|kEVEChildAlignRight,
+									{
+										EVEStaticTextWidget
+										(
+											kSpellLanguageTextWidgetID, kSysStaticTextPMRsrcId,			// WidgetId, RsrcId
+											kBindNone,
+											Frame(0,0,0,0)		// Frame
+											kTrue, kTrue, kAlignRight,							// Visible, Enabled, Alignment
+											kDontEllipsize, kTrue,										// Ellipsize style, Convert ampersands
+											"Add To:",
+											kUserDictTargetPopupID,
+											kEVERegularSpaceAfter
+										),
+										// Dummy StaticText Widget
+										EVEStaticTextWidget
+										(
+											kInvalidWidgetID, kSysStaticTextPMRsrcId,			// WidgetId, RsrcId
+											kBindNone,
+											Frame(0,0,10,0)		// Frame
+											kTrue, kTrue, kAlignRight,							// Visible, Enabled, Alignment
+											kDontEllipsize, kTrue,										// Ellipsize style, Convert ampersands
+											"",
+											0,
+											kEVERegularSpaceAfter
+										),
+										EVEStaticTextWidget
+										(
+											kSpellLanguageTextWidgetID, kSysStaticTextPMRsrcId,			// WidgetId, RsrcId
+											kBindNone,
+											Frame(0,0,0,0)		// Frame
+											kTrue, kTrue, kAlignRight,							// Visible, Enabled, Alignment
+											kDontEllipsize, kTrue,										// Ellipsize style, Convert ampersands
+											"Language:",
+											kSpellLanguageBossWidgetID,
+											kEVERegularSpaceAfter
+										),
+										EVEStaticTextWidget
+										(
+											kSpellSearchTextWidgetID, kSysStaticTextPMRsrcId,			// WidgetId, RsrcId
+											kBindNone,
+											Frame(0,0,0,0)		// Frame
+											kTrue, kTrue, kAlignRight,							// Visible, Enabled, Alignment
+											kDontEllipsize, kTrue,										// Ellipsize style, Convert ampersands
+											"Sea&rch:",
+											kSpellScopePopupID,
+											kEVENoSpaceAfter
+										),
+
+									}
+								),
+								EVEGenericPanelWidget 
+								( 
+									kInvalidWidgetID,    // WidgetId 
+									0,            // RsrcId 
+									0,
+									kBindNone,        // Frame binding 
+									Frame(0,0,0,0)        // Frame 
+									kTrue,            // Visible 
+									kTrue,            // Enabled 
+									kEVENoSpaceAfter | kEVEArrangeChildrenInColumn|kEVEChildAlignFill,
+									{
+										SpellTargetWidget		
+										(
+											kUserDictTargetPopupID,			// WidgetId
+											kSysDropDownPMRsrcId,
+											kBindNone,
+											Frame(0,0,0,0)			// Frame
+											kTrue,							// Visible
+											kTrue,							// Enabled
+											{{
+												"User Dictionary"
+											}},
+											kEVERegularSpaceAfter							
+										),
+										SpellCaseSensitiveCheckBoxWidget
+										(
+											kSpellCaseSensitiveWidgetID,                     // WidgetId
+											kSysCheckBoxPMRsrcId,                            // RsrcId
+											kBindNone,
+											Frame(0,0,0,0)        // Frame
+											kTrue, kTrue, kAlignLeft,                        // Visible, Enabled, Alignment
+											"kCaseSensitive",                                // Text
+											kEVERegularSpaceAfter
+										),
+										SpellLanguageBoss
+										(
+											kSpellLanguageBossWidgetID, kSysStaticTextPMRsrcId,			// WidgetId, RsrcId
+											kBindNone,
+											Frame(0,0,0,0)		// Frame
+											kTrue, kTrue, kAlignLeft,							// Visible, Enabled, Alignment
+											kDontEllipsize, kTrue,										// Ellipsize style, Convert ampersands
+											"",
+											0,
+											kEVERegularSpaceAfter
+										),
+										SpellScopeWidget		
+										(
+											kSpellScopePopupID,			// WidgetId
+											kSysDropDownPMRsrcId,
+											kBindNone,
+											Frame(0,0,150,0)		// Frame
+											kTrue,							// Visible
+											kTrue,							// Enabled
+											{{
+												"Document",
+												"All Documents",				
+												"Story",
+												"To End of Story",
+												"Selection"
+											}},
+											kEVENoSpaceAfter							
+										),
+									}
+								),
+							}
+						), 
+					}
+				),
+				EVEGenericPanelWidget 
+				( 
+					kInvalidWidgetID,    // WidgetId 
+					0,            // RsrcId 
+					0,
+					kBindNone,        // Frame binding 
+					Frame(0,0,0,0)        // Frame 
+					kTrue,            // Visible 
+					kTrue,            // Enabled 
+					kEVENoSpaceAfter | kEVEArrangeChildrenInColumn, 
+					{
+						EVEButtonWidget
+						(
+							kOKButtonWidgetID, kSysButtonPMRsrcId,						// WidgetId, RsrcId
+							kBindNone,
+							Frame(0,0,0,0)		// Frame
+							kTrue, kTrue,										// Visible, Enabled
+							"&Done",								// Text
+							kEVEJumboSpaceAfter  
+						),
+						EVEGroupPanelWidget 
+						( 
+							kInvalidWidgetID,         // WidgetId 
+							kPMRsrcID_None,                // RsrcId 
+							kBindNone,                    // Frame bindings 
+							Frame(0,0,0,0)        // Frame 
+							kTrue,                        // Visible 
+							kTrue,                        // Enabled 
+							kSpellDirectionWidgetID,    // ID of title widget 
+							kEVEArrangeChildrenInColumn|kEVEChildAlignLeft|kEVELargeSpaceAfter |kEVERegularMargin ,            // EVE info 
+							{      
+								EVEStaticTextWidget 
+								( 
+									kSpellDirectionWidgetID,    // WidgetId 
+									kSysStaticTextPMRsrcId,        // RsrcId 
+									kBindNone,                    // Frame binding 
+									Frame(0,0,0,0)            // Frame 
+									kTrue, kTrue,            // Visible, Enabled, padding 
+									kAlignCenter,                // Alignment 
+									kDontEllipsize, kTrue,                // Ellipsize style, Convert ampersands 
+									"kFCDirection",    // Initial text 
+									0,                            // associated widget id 
+									kEVERegularSpaceAfter  
+								), 
+                         
+								 EVEClusterPanelWidget 
+								( 
+									kSpellDirectionChooserWidgetID, kPMRsrcID_None,            // WidgetId, RsrcId 
+									kBindNone,                    // Frame bindings 
+									Frame(0,0,0,0)            // Frame 
+									kTrue, kTrue,                // Visible, Enabled 
+									kEVENoSpaceAfter | kEVEArrangeChildrenInColumn, 
+									{ 
+										EVESpellForwardRadioButton 
+										( 
+											kSpellForwardRadioWidgetID,    // WidgetId 
+											kSysRadioButtonPMRsrcId,    // RsrcId 
+											kBindNone,                    // Frame binding 
+											Frame(0,0,0,0)            // Frame 
+											kTrue,                        // Visible 
+											kTrue,                        // Enabled 
+											"kFCForward"                        // Initial text 
+											kEVESmallSpaceAfter,
+										), 
+										EVESpellBackwardsRadioButton 
+										( 
+											kSpellBackwardsRadioWidgetID,    // WidgetId 
+											kSysRadioButtonPMRsrcId,    // RsrcId 
+											kBindNone,                    // Frame binding 
+											Frame(0,0,90,0)            // Frame 
+											kTrue,                        // Visible 
+											kTrue,                        // Enabled 
+											"kFCBackward"                        // Initial text 
+											kEVEVerySmallSpaceAfter, 
+										), 
+									} 
+								), 
+							} 
+						),	
+						SpellSkipButtonWidget
+						(
+							kSpellSkipButtonID, kSysButtonPMRsrcId,			// WidgetId, RsrcId
+							kBindNone,
+							Frame(0,0,0,0)		// Frame
+							kTrue, kTrue,										// Visible, Disabled per default
+							"S&tart",
+							kEVERegularSpaceAfter 
+						),	
+						SpellChangeButtonWidget
+						(
+							kSpellChangeButtonID, kSysButtonPMRsrcId,			// WidgetId, RsrcId
+							kBindNone,
+							Frame(0,0,0,0)		// Frame
+							kTrue, kFalse,										// Visible, Disabled
+							"C&hange",			// flips between Start/Change
+							kEVELargeSpaceAfter  
+						),	
+						SpellIgnoreButtonWidget
+						(
+							kSpellIgnoreButtonID, kSysButtonPMRsrcId,			// WidgetId, RsrcId
+							kBindNone,
+							Frame(0,0,0,0)		// Frame
+							kTrue, kFalse,										// Visible, Disabled
+							"&Ignore All",
+							kEVERegularSpaceAfter  
+						),	
+						SpellChangeAllButtonWidget
+						(
+							kSpellChangeAllButtonID, kSysButtonPMRsrcId,			// WidgetId, RsrcId
+							kBindNone,
+							Frame(0,0,0,0)		// Frame
+							kTrue, kFalse,										// Visible, Disabled
+							"Chan&ge All",
+							kEVELargeSpaceAfter 
+						),
+						SpellAddAndContinueButtonWidget
+						(
+							kSpellAddAndContinueButtonID, kSysButtonPMRsrcId,			// WidgetId, RsrcId
+							kBindNone,
+							Frame(0,0,0,0)		// Frame
+							kTrue, kFalse,										// Visible, Disabled
+							"&AddAndContinue",		// Adds to dictionary automatically, continues spelling
+							kEVELargeSpaceAfter 
+						),	
+						SpellAddToListButtonWidget
+						(
+							kSpellAddToListButtonID, kSysButtonPMRsrcId,			// WidgetId, RsrcId
+							kBindNone,
+							Frame(0,0,0,0)		// Frame
+							kTrue, kFalse,										// Visible, Disabled
+							"Dic&tionary...",		// launches the DictEditor
+							kEVELargeSpaceAfter 
+						),	
+						
+					}
+				),
+			},
+		),
+	}
+	{{ IID_ITEXTTARGETSERVER, IID_IOBSERVER }},
+	kEVENoSpaceAfter|kEVELargeMargin 
+}; 
+
+#endif // __ODFRC__
+																

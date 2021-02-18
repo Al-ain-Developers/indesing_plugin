@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article SYSTEM "sdocbook.dtd">
+<article>
+<section>
+<title>Mixed column numbers in header</title>
+<informaltable>
+<tgroup cols="2">
+<thead>
+<row>
+<entry>Solo header  entry</entry>
+</row>
+<row>
+<entry>One header entry</entry>
+<entry>Second header  entry</entry>
+</row>
+</thead>
+<tbody>
+<row>
+<entry>One entry</entry>
+<entry>Second entry</entry>
+</row>
+<row>
+<entry>Another entry</entry>
+<entry>Yet another entry</entry>
+</row>
+<row>
+<entry>Another entry</entry>
+<entry>Yet another entry</entry>
+</row>
+<row>
+<entry>Another entry</entry>
+<entry>Yet another entry</entry>
+</row>
+</tbody>
+</tgroup>
+</informaltable>
+</section>
+</article>

@@ -1,0 +1,164 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/spellpanel/SpellPanelStrings_arAE.fr $
+//  
+//  Owner: Michael Burbidge
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kSpellPanelStringsRsrcID + index_arAE)
+{
+	k_arAE,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{				
+		// ----- Main menu strings
+		"SpellingMenu",					"&تدقيق إملائي",
+		"Check Spelling...",			"تد&قيق إملائي...",
+		"Dynamic SpellCheck",			"تدقيق إملائي دينامي&كي",
+		"Autocorrect",					"تصحيح آلي",
+		"Auto Correct",					"&تصحيح آلي",
+		"AutoCorrect",					"تصحيح آلي",
+
+		// ----- Window strings
+		"corrected",					"تم تصحيحه",
+		"misspelled",					"غير صحيح هجائياً",
+		
+		// ----- Scope strings
+		
+		"[No spelling]",				"[بدون تدقيق إملائي]",
+		"Auto",							"تلقائي",
+		"Document",						"الوثيقة",
+		"Story",						"مجموعة نصية",
+		"Stories",						"مجموعات نصية",
+		"Selection",					"تحديد",
+		
+		// ----- Panel strings		
+		"Spelling",						"تدقيق إملائي",
+		"&Spelling...",					"تدقيق إ&ملائي...",
+		"Auto Correct...",				"تصحيح &آلي...",
+		"[No language]",				"[بدون لغة]",
+		"AutoCorrectEnable",			"إ&تاحة التصحيح الآلي",
+		"AutoCorrectCapitalizationErrors",			"أخطاء تصحيح ت&كبير الحروف",
+		"A&dd...",						"إ&ضافة...",		// Opens a dialog
+		"EditAutoCorrectWord",			"&تحرير...",		// Opens a dialog
+		"Correction",					"تصحيح",
+		"Misspelled Word",				"كلمة غير صحيحة الهجاء",
+
+		// ----- Dialog strings
+		"Check Spelling",				"تدقيق إملائي",
+		"&Change To:",					"ت&غيير إلى:",
+		
+		"Change To",					"تغيير إلى",
+		"&Suggested Corrections:",		"&إصلاحات مقترحة:",
+		"Language:",					"اللغة:",
+		"Sea&rch:",						"بح&ث:",
+		"Include Overset",				"تضمين غير الظاهر",
+		"&Done",							"&تم",
+		"C&hange",						"ت&غيير",
+		"S&tart",						"ال&بدء",
+		"Chan&ge All",					"تغيي&ر الكل",
+		"Skip",							"تخطي",	
+		"kSkipButtonInSpellingDialog",  "ت&جاوز",
+		"Ignore",						"تجاهل",
+		"&Ignore All",					"ت&جاهل الكل",
+		"&AddAndContinue",				"إ&ضافة",			// Adds to dictionary automatically, continues spelling
+		"Dic&tionary...",				"قامو&س...",	// Launches Dict Editor dialog
+		"Add To:",						"إضافة &إلى:",
+
+		// Label strings in Spell Check dialog.
+		"Ready to Spell Check:", 			"جاهز للتدقيق الإملائي",
+		"Misspelled Word:",					"كلمة بها خطأ إملائي:",
+		"Unknown Word - No Suggestions:", 	"كلمة غير معروفة - لا توجد إقتراحات:",
+		"Not in Dictionary:",				"ليست في القاموس:",
+		"Repeated Word:",					"كلمة مكررة:",
+		"Uncapitalized Word:",				"كلمة بدون حروف كبيرة:",
+		"Uncapitalized Sentence:",			"جملة بدون حروف كبيرة:",
+		"Duplicate Word:",					" كلمة مكررة:",
+		"Capitalization Error:",			"خطأ في الكتابة بحروف كبيرة:",
+		"Spell Check Complete:",			"تم إجراء التدقيق الإملائي",
+		
+		"SpellCheckCompleteAlertStr",			"تم التدقيق الإملائي.",	// Alert string at completion of spelling.
+
+		"Misspelled Word (Overset):",					"كلمة بها خطأ إملائي: (نص غير ظاهر)",
+		"Unknown Word - No Suggestions (Overset):", 	"كلمة غير معروفة: (نص غير ظاهر)",
+		"Not in Dictionary (Overset):",					"ليست في القاموس: (نص غير ظاهر)",
+		"Repeated Word (Overset):",						"كلمة مكررة: (نص غير ظاهر)",
+		"Uncapitalized Word (Overset):",				"كلمة بدون حروف كبيرة: (نص غير ظاهر)",
+		"Uncapitalized Sentence (Overset):",			"جملة بدون حروف كبيرة: (غير ظاهر)",
+
+		"Misspelled Word (In Table):",					"كلمة خطأ هجاؤها: (في جدول)",
+		"Unknown Word - No Suggestions (In Table):", 	"كلمة غير معروفة: (في جدول)",
+		"Not in Dictionary (In Table):",					"ليست في القاموس: (في جدول)",
+		"Repeated Word (In Table):",						"كلمة مكررة: (في جدول)",
+		"Uncapitalized Word (In Table):",				"كلمة بدون حروف كبيرة: (في جدول)",
+		"Uncapitalized Sentence (In Table):",			"جملة بدون حروف كبيرة: (في جدول)",
+
+		"Misspelled Word (Deleted Text):",				"كلمة خطأ هجاؤها: (نص محذوف)",
+		"Unknown Word - No Suggestions (Deleted Text):","كلمة غير معروفة: (نص محذوف)",
+		"Not in Dictionary (Deleted Text):",			"ليست في القاموس: (نص محذوف)",
+		"Repeated Word (Deleted Text):",				"كلمة مكررة: (نص محذوف)",
+		"Uncapitalized Word (Deleted Text):",			"كلمة بدون حروف كبيرة: (نص محذوف)",
+		"Uncapitalized Sentence (Deleted Text):",		"جملة غير مكبرة الحروف: (محذوفة)",
+
+//		"Spelling Preferences", 						"Spelling Preferences", // Note to localizer: this string moved to SpellingServiceStrings.fr
+		"Find", 										"بحث عن",
+		"&Misspelled Words", 							"الكلمات التي بها &خطأ إملائي",
+		"&Repeated Words", 								"الكلمات الم&كررة",
+		"&Uncapitalized Words", 						"الكلمات التي بدون &حروف كبيرة",
+		"Uncapitalized &Sentences", 					"الج&مل التي بدون حروف كبيرة",
+		"Misspelled Words Underline Color:",			"كلمات غير &صحيحة الهجاء:",
+		"Repeated Words Underline Color:",				"كلمات م&كررة:",
+		"Uncapitalized Words Underline Color:",			"كلمات غير م&كبرة الحروف:",
+		"Uncapitalized Sentences Underline Color:",		"جمل غير م&كبرة الحروف:",
+		"Dynamic Spellchecking",						"تدقيق إملائي ديناميكي",
+		
+		"Underline Color",								"لون الخط تحت النص",
+		
+		"&Enable Dynamic Spelling",						"تشغيل التدقيق الإملائي الدينامي&كي",
+		
+		"Search is completed.  ^1  replacement(s) made.", "تم البحث. ^1 إستبدال(إستبدالات) حدثت.", 
+
+		"Add",											"إضافة",
+		"Re&move",										"إ&زالة",
+		"Misspelled:",									"خاطئ هجائياً:",
+		"Correction:",									"تصحيح:",
+		"Language:",									"اللغة:",
+		"&Language:",									"الل&غة:",
+		"AddToAutoCorrectList",							"إضافة لقائمة التصحيح الآلي",
+		"EditAutoCorrectList",							"تحرير قائمة التصحيح الآلي",
+
+		"ACAlert1",		"المدخلات الفارغة غير مسموح بها.",
+		"ACAlert2",		"الكلمة وتصحيحها لا يمكن أن يتطابقا في الهجاء وتكبير الحروف.",
+		"ACAlert3",		"الكلمة الخاطئة هجائياً وتصحيحها موجودان بالفعل في القائمة.",
+		"ACAlert4",		"لا يمكن إنشاء المدخل، طوله يتجاوز الحد الأقصى لعدد الحروف (64).",
+		"ACAlert5",		"المدخل يحتوي على حروف غير سليمة.",
+		"ACAlert6",		"المسافات الفارغة غير مسموح بها في الكلمات الخاطئة هجائياً.",
+
+	}
+};
+
+#endif // __ODFRC__

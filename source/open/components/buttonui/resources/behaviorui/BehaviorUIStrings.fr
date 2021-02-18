@@ -1,0 +1,112 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/buttonui/resources/behaviorui/BehaviorUIStrings.fr $
+//  
+//  Owner: Michael Burbidge
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "BehaviorUIDefs.h"
+#include "BehaviorUIID.h"
+#include "ErrorTableTypes.h"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// RESOURCE Locale index
+//========================================================================================
+
+resource LocaleIndex (kBehaviorUIStringsRsrcID)
+{
+	kStringTableRsrcType;
+	{
+		kWildFS, k_Wild, kBehaviorUIStringsRsrcID + index_enUS,
+		kWildFS, k_enGB, kBehaviorUIStringsRsrcID + index_enGB,
+		kWildFS, k_deDE, kBehaviorUIStringsRsrcID + index_deDE,
+		kWildFS, k_frFR, kBehaviorUIStringsRsrcID + index_frFR,
+		kWildFS, k_jaJP, kBehaviorUIStringsRsrcID + index_jaJP,
+		kWildFS, k_esES, kBehaviorUIStringsRsrcID + index_esES,   
+		kWildFS, k_ptBR, kBehaviorUIStringsRsrcID + index_ptBR,   
+		kWildFS, k_svSE, kBehaviorUIStringsRsrcID + index_svSE,   
+		kWildFS, k_daDK, kBehaviorUIStringsRsrcID + index_daDK,   
+		kWildFS, k_nlNL, kBehaviorUIStringsRsrcID + index_nlNL,   
+		kWildFS, k_itIT, kBehaviorUIStringsRsrcID + index_itIT,   
+		kWildFS, k_nbNO, kBehaviorUIStringsRsrcID + index_nbNO,   
+		kWildFS, k_fiFI, kBehaviorUIStringsRsrcID + index_fiFI,   
+		kWildFS, k_koKR, kBehaviorUIStringsRsrcID + index_koKR,   
+		kWildFS, k_zhCN, kBehaviorUIStringsRsrcID + index_zhCN,   
+		kWildFS, k_zhTW, kBehaviorUIStringsRsrcID + index_zhTW,   
+		kWildFS, k_csCZ, kBehaviorUIStringsRsrcID + index_csCZ,   
+		kWildFS, k_huHU, kBehaviorUIStringsRsrcID + index_huHU,   
+		kWildFS, k_plPL, kBehaviorUIStringsRsrcID + index_plPL,   
+//		kWildFS, k_roRO, kBehaviorUIStringsRsrcID + index_roRO,   
+		kWildFS, k_ruRU, kBehaviorUIStringsRsrcID + index_ruRU,   
+		kWildFS, k_trTR, kBehaviorUIStringsRsrcID + index_trTR,   
+		kWildFS, k_ukUA, kBehaviorUIStringsRsrcID + index_ukUA,   
+		kWildFS, k_elGR, kBehaviorUIStringsRsrcID + index_elGR,   
+		kWildFS, k_arAE, kBehaviorUIStringsRsrcID + index_arAE,   
+		kWildFS, k_heIL, kBehaviorUIStringsRsrcID + index_heIL,   
+	};
+};
+
+//
+// The following are the error string defines
+// Please note that these are localized in the _en* files included below.
+//
+resource UserErrorTable( kBehaviorUIErrorStringTableRsrcID )
+{
+	{ 
+		// error number					// error string
+		kInvalidURLField,				"$$$/Dialog/Behaviors/Error/Invalid URL",
+		kSelectFileWidgetID,			"$$$/Dialog/Behaviors/Error/Invalid File",
+	}
+};
+
+#endif // __ODFRC__
+
+#include "BehaviorUIStrings_enUS.fr"
+#include "BehaviorUIStrings_enGB.fr"
+#include "BehaviorUIStrings_deDE.fr"
+#include "BehaviorUIStrings_frFR.fr"
+#include "BehaviorUIStrings_jaJP.fr"
+#include "BehaviorUIStrings_esES.fr"
+#include "BehaviorUIStrings_ptBR.fr"
+#include "BehaviorUIStrings_svSE.fr"
+#include "BehaviorUIStrings_daDK.fr"
+#include "BehaviorUIStrings_nlNL.fr"
+#include "BehaviorUIStrings_itIT.fr"
+#include "BehaviorUIStrings_nbNO.fr"
+#include "BehaviorUIStrings_fiFI.fr"
+#include "BehaviorUIStrings_koKR.fr"
+#include "BehaviorUIStrings_zhCN.fr"
+#include "BehaviorUIStrings_zhTW.fr"
+
+#include "BehaviorUIStrings_csCZ.fr"
+#include "BehaviorUIStrings_huHU.fr"
+#include "BehaviorUIStrings_plPL.fr"
+//#include "BehaviorUIStrings_roRO.fr"
+#include "BehaviorUIStrings_ruRU.fr"
+#include "BehaviorUIStrings_trTR.fr"
+#include "BehaviorUIStrings_ukUA.fr"
+#include "BehaviorUIStrings_elGR.fr"
+#include "BehaviorUIStrings_arAE.fr"
+#include "BehaviorUIStrings_heIL.fr"
+#include "StringTable.fh"
+

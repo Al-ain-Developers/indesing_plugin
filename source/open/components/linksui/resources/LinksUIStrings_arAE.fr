@@ -1,0 +1,163 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/linksui/resources/LinksUIStrings_arAE.fr $
+//  
+//  Owner: Steve Flenniken
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#ifdef __ODFRC__
+
+#include "StringTable.fh"
+
+resource StringTable (kLinksUIStringsRsrcID + index_arAE)
+{
+	k_arAE,					// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	{
+		"Links_WinMenu",			"الر&وابط", // panel menu item
+		"kRtMouseGraphics",			"رسومات", // context menu submenu name
+		"RtMenuLinksUILinkInfo",	"قائمة سياق معلومات الرابط",
+		
+		"#LinksUIPanel",			"الروابط", // panel name
+		"#LinksUIPanelMenu",		"قائمة لوحة الروابط", 
+		"#LinksUtilitiesSubmenu",		"أدوات مساعدة",		// submenu for links panel menu
+		"#SelectedLinkInfoSectionName",			"معلومات الرابط", // section name in links ui panel
+		
+		"#UpdateAllOutOfDateLinksMenu",	"تحديث كل الروابط",
+		"#AutoFindMissingLinksMenu",		"البحث عن الروابط المفقودة",
+		"#LinksUIRelinkLinkMenu",		"إعادة ربط...",
+		"#LinksUIRelinkResourceMenu",	"إعادة ربط كل التواجدات...", // menu item to relink all instances of this multiple link assets
+		"#RelinkResource ^1 Menu",		"إعادة ربط كل تواجدات '^1'...", // menu item to relink all instances of one single link asset
+		"#LinksUIUpdateLinkMenu",			"تحديث رابط", // context menu item in links ui panel
+		"#LinksUIUpdateLinkResourceMenu",	"تحديث كل التواجدات",
+		"#UpdateResource ^1 Menu",		"تحديث كل تواجدات '^1'", // menu item to update all instances of one single link asset
+		"#LinksUIEmbedLinkMenu",			"إدراج رابط", // context menu item in links ui panel
+		"#LinksUIEmbedResourceMenu",		"دمج كل التواجدات",
+		"#EmbedResource ^1 Menu",			"دمج كل تواجدات '^1'", // menu item to embed all instances of one single link asset
+		"#LinksUIUnEmbedLinkMenu",		"إلغاء دمج الرابط", // context menu item in links ui panel
+		"#LinksUIUnEmbedResourceMenu",	"إلغاء دمج كل التواجدات",
+		"#UnembedResource ^1 Menu",			"إلغاء دمج كل تواجدات '^1'", // menu item to unembed all instances of one single link asset
+		"#LinksUIUnLinkMenu",				"إلغاء الربط",
+		"#UnLinkResourceMenu",			"إلغاء ربط كل التواجدات",
+		"#UnLinkResource ^1 Menu",			"إلغاء ربط كل تواجدات '^1'", // menu item to unlink all instances of one single link asset
+		"#LinksUIEditOriginalLinkMenu",		"تحرير الأصل", // context menu item in links ui panel
+		"#LinksUIXMPFileInfo",				"معلومات ملف XMP...",
+		"#LinksUICopyPath",				"نسخ المسار الكامل",
+		"#LinksUICopyPlatformPath",			"نسخ مسار نمط المنصة",
+		"#RevealLinkInMacFinder",			"إظهار في المستكشف",
+		"#RevealLinkInWinExplorer",			"إظهار في المتصفح",
+		"#RevealLinkInAdobeBridge",			"إظهار في Bridge",
+		"#GoToLink",						"الذهاب إلي الرابط",
+		"#EditWithApp",					"تحرير باستخدام",
+		"ApplicationFiles",					"التطبيق (*.exe)", // windows only string to list exe files in the 'edit with application' dialog.
+		"#ChooseEditingApplication",			"اختر تطبيق", // dialog title
+		"#OtherApp",						"أخرى...",	// Menu name for choosing a custom application via a standard file dialog for Edit With...
+		"#LinksUICopyLink",				"نسخ الرابط إلى...",
+		"#LinksUIEditColumnsMenu",			"خيارات اللوحة...",
+		
+		"#LinksUIRemoveThisColumnMenu",	"إخفاء هذا العامود",
+		"#LinksUIShowThumbnailMenu",		"إظهار المصغر",
+		"#LinksUIHideThumbnailMenu",		"إخفاء المصغر",		
+		"#LinksUIShowInfoThumbnailMenu",	"إظهار مصغر المعلومات",
+		"#LinksUIHideInfoThumbnailMenu",	"إخفاء مصغر المعلومات",
+		
+		"#SaveLinkVersionCmd",			"إيقاف إتاحة الرابط",
+		"#ShowLinksPanelColumn",			"إظهار العامود",
+		"#ShowLinksPanelInfo",				"إظهار في معلومات الرابط",
+		"#SelectNextLinkButtonTip",			"حدد الرابط التالي في القائمة",
+		"#SelectPrevLinkButtonTip",			"حدد الرابط السابق في القائمة",
+		"#ToggleLinkInfoButtonTip",			"إظهار/إخفاء معلومات الربط",
+		
+		"#ShortLinkStatusParamStr",				"^1 رابط",  // status string for links panel
+		"#LongLinkStatusParamStr",				"^1 إجمالي الروابط\n\n   ^2 مفقود\n   ^3 معدل\n   ^4 مدمج\n   ^5 فريدة\n   ^6 روابط فرعية", // tip string for links panel status.
+		"#NumSelectedLinksParamStr",			"^1 محددة", // status string when links are selected in the panel.
+				
+		"RtMenuLinksUILinkItem",		"قائمة سياق الرابط",
+		"RtMenuLinksUILinksHeader",		"قائمة سياق رأس الروابط",
+		
+		"#LinkColumnDialog",			"خيارات اللوحة", // dialog name
+		"#LinksUIPanelOptions",			"الخيارات",
+		
+		"#LinkThumbPrefLabel",			"المصغرات:",
+		"#LinksUIRowSizeLabel",		"&حجم الصف:",
+		"#LinksUISmallRowStr",			"صفوف صغيرة",
+		"#LinksUIRegularRowStr",		"صفوف عادية",
+		"#LinksUILargeRowStr",			"صفوف كبيرة",
+		"#LinkInfoShowThumbnailCheckbox",	"إظهار في &معلومات الرابط",
+		"#LinksUIShowThumbnail",		"إظهار في عامود ال&اسم",
+
+		"#SearchHereForMissingFiles",	"البحث عن روابط مفقودة في هذا المجلد", // label for checkbox in relink dialog
+		"#RelinkSkipButton",			"تخطي", // name for 'skip' button in relink dialog
+		"#SearchFound^1Links",		"عثر على ^1 روابط مفقودة وتم إعادة ربطهم.", // alert that displays if we auto find missing links after a relink
+		"#RelinkToFolderTitle",			"حدد المجلد لإعادة ربطهم به. سيتم إعادة ربط الروابط المحددة حالياً ذات الاسم المطابق.",
+		"#RelinkToSameFilename",		"يطابق نفس اسم الملف والامتداد", // radio button option in relink to folder dialog
+		"#RelinkToExtension",			"يطابق نفس اسم الملف لكن هذا الامتداد:", // radio button option in relink to folder dialog
+		"#RelinkToFolderFailedParamStr", "فشل في العثور على ^1 رابط في المجلد الجديد. هذه الروابط لم يتم إعادة ربطهم، وستبقى محددة في لوحة الروابط.",
+		"#LinksUICopyLinksTitle",		"تحديد المجلد الذي سيتم نسخ الملفات المرتبطة إليه.",
+		"#LinksUIRelinkToFolderLinkMenu",	"إعادة الربط بمجلد...",
+		"#LinksUIRelink: ^1",			"إعادة ربط: ^1", // title for relink dialog. ^1 becomes file path.
+		"#LinksUILocate: ^1",			"تحديد مكان: ^1", // title for relink dialog when link is missing. ^1 becomes file path.
+		"#CopyLinksFailedAlert",		"فشل نسخ الروابط إلى مجلد.",
+		"#AutoFindFoundNothingAlert",	"لم يوجد روابط مفقودة. استخدم أمر إعادة الربط للعثور على أول رابط مفقود، وحاول مرة أخرى.",
+		
+		"kEditsMadeWarning",			  "تمت عمل تعديلات على الإصدار المدرج من \"^1\"، ستفقد هذه التعديلات عند القيام بالتحديث، هل تريد التحديث على أي حال؟",
+		"kEditsMadeToTextOrTableWarning", "تم عمل تحريرات على الإصدار المدرج من \"^1\". ستفقد تلك التحريرات (ما عدا التغييرات المطبقة على الجداول الإلكترونية من خلال أنماط الخلية أو أنماط الجدول) عندما تقوم بتحديث الرابط. تحديث على أي حال؟",
+
+		// Strings for Problem Links dialog
+		"#LinksModifiedWarning",	"تحتوي هذه الوثيقة على روابط إلى مصادر تم تعديلها. يمكنك تحديث الروابط المعدلة الآن، أو تحديثهم لاحقاً باستخدام لوحة الروابط.",
+		"#UpdateLinks",				"&تحديث الروابط",	 // button text
+		"#Don'tUpdateLinks",		"لا تحدث الروابط", // button text
+		"#ProblemMissingLinksParamStr",	"^1 – روابط مفقودة",
+		"#ProblemModifiedLinksParamStr",	"^1 – روابط معدلة",
+
+		"UnembedToOriginal", 		"غير المدرج يمكن ربطه بالملفات الأصلية أو من الممكن ربطه بالملفات التي تنشئها على المجلد. هل ترغب في الربط بالملفات الأصلية؟",
+   
+		"#SelectUnembedDir","حدد المجلد الذي سيتم إنشاء الملفات فيه.",
+   
+
+		// Show Link message.
+		 "Cannot show link: The selected item is on a hidden layer.","لا يمكن إظهار الرابط: العنصر المحدد يقع على طبقة مختفية.",
+   
+		"Cannot show link: The selected item is hidden in overset text.","لا يمكن إظهار الرابط: العنصر المحدد يقع على نص غير ظاهر.",
+   
+		"Cannot show link: The selected item is hidden in an inactive form field state.","لا يمكن إظهار الرابط: العنصر المحدد مخفي في حالة زر غير نشط.  استخدم لوحة الأزرار لتنشيط الحالة المخفية لعرض العنصر.",
+   
+		"Cannot show link: The selected item is in deleted text in a tracked change.","لا يمكن إظهار الرابط: العنصر المحدد موجود في نص محذوف في تعقب التغييرات.",
+   
+		"Cannot show link: The selected item is an XML structure element not in the layout.","لا يمكن إظهار الرابط: العنصر المحدد هو عنصر هيكل XML غر موجود في المخطط.",
+   
+		"Cannot show link: The selected item is in hidden conditional text.","لا يمكن إظهار الرابط: العنصر المحدد موجود في نص شرطي مخفي.",
+   
+						
+						
+		"#EditOriginalButtonTip",		"تحرير الأصل",	// tip string for button in links panel
+		"#GotoLinkButtonTip",		"الذهاب إلي الرابط",	// tip string for button in links panel
+		
+		"#appendedUpdateButtonTipMac",		". نقر مع الضغط على Opt لتحديث الكل", // appened to menu name for 'update link' to build tip string for update button(mac)
+		"#appendedUpdateButtonTipWin",		". نقر مع الضغط على Alt لتحديث الكل", // appened to menu name for 'update link' to build tip string for update button(win)
+		"#appendedRelinkButtonTipMac",		" نقر مع الضغط على Opt لإعادة ربط كل الروابط المفقودة", // appened to menu name for 'Relink' to build tip string for relink button(mac)
+		"#appendedRelinkButtonTipWin",		" نقر مع الضغط على Alt لإعادة ربط كل الروابط المفقودة", // appened to menu name for 'Relink' to build tip string for relink button(win)
+		
+		"#ErrorEmbeddingLink",		"فشل في دمج الرابط.",
+	}
+};
+
+
+
+#endif //__ODFRC__

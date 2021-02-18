@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas 
+	xmlns:mx="http://www.adobe.com/2006/mxml"
+	label="Images" 
+	width="100%" 
+	height="100%">
+	
+	<mx:Script>
+		<![CDATA[
+			import com.adobe.flexsamples.IDMLContentEditor.BindableImageObject;
+			import mx.collections.ArrayCollection;
+			import mx.core.DragSource;
+        	import mx.events.DragEvent;
+        	import mx.controls.Alert;
+        	import mx.managers.DragManager;		
+ 			
+ 			/**
+ 			 * Handles files that are dropped over the image.
+ 			 */ 
+			private function  dropHandler(event:DragEvent):void
+			{
+				var list:List = event.currentTarget as List;
+				
+				//Get the array of files being drug into the app.
+				//Note:	Most samples that demonstrate dragging and dropping files into an 
+				//		air application use the native drag and drop handlers and events.
+				//		The problem with the native drag and drop handler is that the events
+				//		associated with them do not work for calculating the drop index.
+				//		The line below allows dragging and dropping of files using the drag 
+				//		event instead of the NativeDragEvent.
+				var imgFiles:Array = event.dragSource.dataForFormat(ClipboardFormats.FILE_LIST_FORMAT) as Array; 
+				var imgFile:File = imgFiles[0]; 
+				
+				//If the file is an image file
+				if ((imgFile.type.toString() == ".png") ||
+					(imgFile.type.toString() == ".gif") ||
+					(imgFile.type.toString() == ".jpg"))
+				{
+					//Update the image object with the new image file.
+					var lstIndex:int = list.calculateDropIndex(event);
+					var imageObjects:ArrayCollection = lstImages.dataProvider as ArrayCollection;
+					var img:BindableImageObject = imageObjects.getItemAt(lstIndex) as BindableImageObject;
+					img.update(imgFile);					
+				}
+				else 
+				{
+					Alert.show("Only image files can be dropped over an image.");
+				}				
+			}
+			
+			/**
+			 * Handles the Drag Event over the image list.
+			 */ 
+			private function dragEnterHandler(event:DragEvent):void
+			{
+				var list:List = event.currentTarget as List;
+        		NativeDragManager.acceptDragDrop(list);
+			}
+			
+			/**
+			 * Browes for a replacement image.
+			 */ 
+			public function chooseImage():void
+			{
+				//Note: this function needs to be public because it is accessed through
+				//		the outerDocument of the list component created below.
+				var selectedImage:File = new File(); 
+				var imageFilter:FileFilter = new FileFilter("Image Files","*.jpg;*.gif;*.png");
+				selectedImage.browseForOpen("Choose an image file",[imageFilter]);
+				selectedImage.addEventListener(Event.SELECT, handleSelectImage);			
+			}
+			
+			/**
+			 * Handles an image replacement selection.
+			 */ 
+			private function handleSelectImage(event:Event):void
+			{		
+				var imgFile:File = event.target as File;
+				var imageObjects:ArrayCollection = lstImages.dataProvider as ArrayCollection;
+				var img:BindableImageObject = imageObjects.getItemAt(lstImages.selectedIndex) as BindableImageObject;
+				img.update(imgFile);
+			}
+		]]>
+	</mx:Script>
+	
+	<mx:List 
+		id="lstImages" 
+		columnCount="2" 
+		verticalScrollPolicy="on"
+		horizontalScrollPolicy="off"		
+		height="100%"
+		width="100%" 
+		dragEnter="dragEnterHandler(event)"
+		dragDrop="dropHandler(event)"
+		allowMultipleSelection="false">
+		<mx:itemRenderer>
+	       	<mx:Component>
+	           	<mx:HBox width="300" height="120" paddingLeft="10" paddingRight="10">
+					<mx:Image source="file:///{data.nativePath}" width="100" height="100" />
+               		<mx:VBox>
+               			<mx:HBox>
+	               			<mx:Label 
+	               				width="120"
+		               			text="Script Label:"
+		           			/>	     
+		           			<mx:Label 
+		               			text="{data.scriptLabel}"
+		           			/>	 
+		           		</mx:HBox>          		
+	               		<mx:HBox>
+			               	<mx:Label 
+			               		width="120"
+			               		text="Image Path: "
+			               	/>
+			               	<mx:TextInput 
+			               		id="txtImagePath"
+			               		width="450"
+			               		text="{data.nativePath}"
+			               		toolTip="{data.nativePath}"
+			               		change="{data.updatePath(txtImagePath.text)}"
+			               	/>
+				               	<!-- Note: 	To access functions above the 
+				               				outerDocument reference is needed.
+				               	-->
+			               	<mx:Button
+			               		label="..."
+			               		click="outerDocument.chooseImage()"
+		               		/>
+		               </mx:HBox>
+		               <mx:HBox>
+		               		<mx:Label 
+			               		width="120"
+		               			text="Image Name:"
+		           			/>
+		           			<mx:Label 
+		               			text="{data.fileName}"
+		           			/>
+		               	</mx:HBox>
+	               	 	<mx:HBox>
+		               		<mx:Label 
+			               		width="120" 
+			               		text="Embedded:"
+		           			/>			               
+			               <mx:Label
+			               		text="{data.showEmbedded()}" 
+		               		/>
+	               		</mx:HBox>
+	               </mx:VBox>
+	           </mx:HBox>
+	       </mx:Component>
+	   </mx:itemRenderer>
+	</mx:List >	
+</mx:Canvas>

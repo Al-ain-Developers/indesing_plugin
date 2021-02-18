@@ -1,0 +1,346 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/sdksamples/xmlcataloghandler/XCatHnd.fr $
+//  
+//  Owner: Adobe Developer Technologies
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "VCPlugInHeaders.h"
+
+// General includes:
+#include "MenuDef.fh"
+#include "ActionDef.fh"
+#include "ActionDefs.h"
+#include "AdobeMenuPositions.h"
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "StringTable.fh"
+#include "objectmodeltypes.fh"
+#include "ShuksanID.h"
+#include "ActionID.h"
+#include "CommandID.h"
+#include "WorkspaceID.h"
+#include "widgetid.h"
+#include "BuildNumber.h"
+
+#include "InterfaceColorDefines.h"
+#include "IControlViewDefs.h"
+#include "SysControlIds.h"
+#include "Widgets.fh"	// for PalettePanelWidget or DialogBoss
+#include "XMLParserID.h" // IID_ISAX...
+#include "XMLID.h" // kXML...
+#include "ErrorTableTypes.h" // for UserErrorTable
+
+#include "PlugInModel_UIAttributes.h"
+
+// Project includes:
+#include "XCatHndID.h"
+
+#ifdef __ODFRC__
+
+/*
+// Plugin version definition.
+*/
+resource PluginVersion (kSDKDefPluginVersionResourceID)
+{
+	kTargetVersion,
+	kXCatHndPluginID,
+	kSDKDefPlugInMajorVersionNumber, kSDKDefPlugInMinorVersionNumber,
+	kSDKDefHostMajorVersionNumber, kSDKDefHostMinorVersionNumber,
+	kXCatHndLastMajorFormatChange, kXCatHndLastMinorFormatChange,
+	{ kInDesignProduct, kInCopyProduct, kInDesignServerProduct }, 
+	{ kWildFS },
+	kModelPlugIn,
+	kXCatHndVersionStr,
+};
+
+
+
+/*
+//	Boss class definition.
+*/
+resource ClassDescriptionTable(kSDKDefClassDescriptionTableResourceID)
+{{{
+
+
+
+	/** A SAX Content Handler service to read an XML catalog.
+		@ingroup xmlcataloghandler
+		@see ISAXContentHandler
+	*/
+	Class
+	{
+		kXCatHndSAXContentHandlerServiceBoss,
+		kInvalidClass,
+		{
+			/** ISAXContentHandler implementation from this plug-in,
+				provided interface from this plug-in
+				@see XCatHndSAXContentHandler
+			*/
+			IID_ISAXCONTENTHANDLER,	kXCatHndSAXContentHandlerImpl,
+		}
+	},
+	
+	/** Add in a custom interface to locator boss class that
+		the XML parser uses, so we can store data on it
+		@ingroup xmlcataloghandler
+	*/
+	AddIn
+	{
+		kXMLParserLocatorBoss,
+		kInvalidClass,
+		{
+			/** IXCatHndParsingContext implementation */
+			IID_IXCATHNDPARSINGCONTEXT, kXCatHndParsingContextImpl,
+		}
+	},
+	
+	/** Provides custom entity resolver. 
+		@ingroup xmlcataloghandler
+	*/
+	Class
+	{
+		kXCatHndEntityResolverBoss,
+		kInvalidClass,
+		{
+			/** Our ISAXEntityResolver implementation */
+			IID_ISAXENTITYRESOLVER, kXCatHndEntityResolverImpl,
+			/** ISysFileData, re-use API implementation */
+			IID_ISYSFILEDATA,	kSysFileDataImpl,
+		},
+	},
+	
+	/** Add a persistent interface to the session workspace, to
+		store information our entity resolver needs; basically
+		the salient information extracted from
+		the XML catalog
+		@ingroup xmlcataloghandler
+	*/
+	AddIn
+	{
+		kWorkspaceBoss,
+		kInvalidClass, 
+		{
+			/** IXCatHndEntityMapping, change via command of type
+				kXCatHndSetEntityMappingCmdBoss
+			*/
+			IID_IXCATHNDENTITYMAPPING, kXCatHndEntityMappingImpl,
+		},
+	},
+	
+	/** Command to modify the entity-mapping information
+		we have stored on a workspace.
+		
+		@pre
+		UIDRef of 1st thing in item list has to support instantiating
+		IXCatHndEntityMapping interface
+		
+		@post 
+		The workspace's IXCatHndEntityMapping matches contents of
+		this command's IXCatHndEntityMapping interface
+
+		@par Item list input
+		First item should be UIDRef of workspace whose IXCatHndEntityMapping we want to
+		change
+
+		@par Item list output
+		Not used
+
+		@par Observer notification
+		None
+
+		@see IXCatHndEntityMapping
+
+		@ingroup xmlcataloghandler
+	*/
+	Class
+	{
+		kXCatHndChangeEntityMappingCmdBoss,
+		kInvalidClass,
+		{
+			/** ICommand implementation
+				@see XCatHndChangeEntityMappingCmd
+			*/
+			IID_ICOMMAND,	kXCatHndChangeEntityMappingCmdImpl,
+			
+			/** IN IXCatHndEntityMapping parameterizing command with
+				the new state we want to set the target workspace's interface to.
+			*/
+			IID_IXCATHNDENTITYMAPPING, kXCatHndEntityMappingImpl,
+		}
+	},
+	
+	/** Add our facade interface to the Utils boss. Note we're using
+		the Facade smart pointer type to deref our facade interface.
+		See Facades.h in public headers
+		
+		@ingroup xmlcataloghandler
+	*/
+	AddIn
+	{
+		kUtilsBoss,
+		kInvalidClass,
+		{
+			/** Implementation of IXCatHndFacade 
+				@see XCatHndFacade
+			*/
+			IID_IXCATHNDFACADE,	kXCatHndFacadeImpl,
+		}
+	},
+	
+	/** Custom acquirer that lets us ensure the XML import mechanism
+		uses the custom entity resolver from this plug-in. The acquirer
+		lets us have a sub-type that appears on the standard XML import
+		options dialog, without doing much real extra work
+		@ingroup xmlcataloghandler
+	*/
+	Class
+    {
+        kXCatHndAcquirerFilterServiceBoss,
+        kInvalidClass,
+        {
+			/** IK2ServiceProvider implementation, identifying this
+				as a XML acquirer filter. Required interface for 
+				a service.
+			*/
+            IID_IK2SERVICEPROVIDER,		kXMLFilterServiceProviderImpl,
+            
+            /** IXMLAcquirerFilter implementation from this plug-in,
+				provided interface of this plug-in
+				@see XCatHndAcquirerFilter
+			*/
+            IID_IXMLACQUIRERFILTER,		kXCatHndAcquirerFilterImpl,
+            /** Implementation of IXMLImportPreferences that lets us 
+				turn this service on or off
+ 				@see XCatHndAcquirerXMLImportPrefs
+ 			*/
+			IID_IXMLIMPORTPREFERENCES, kXCatHndAcquirerXMLImportPrefsImpl,   
+
+
+        }
+    },
+    
+    
+    
+    /**
+		Startup-shutdown service to attempt to read default XML catalog
+		file from application data folder
+		@ingroup xmlcataloghandler
+	*/
+	Class
+	{
+		kXCatHndStartupShutdownServiceBoss,
+		kInvalidClass,
+		{
+			/** Implementation of IStartupShutdownService 
+				@see  XCatHndStartupShutdown */
+			IID_ISTARTUPSHUTDOWN,  kXCatHndStartupShutdownImpl,
+			/** Implementation to IK2ServiceProvider to identify the service type as startup-shutdown */
+			IID_IK2SERVICEPROVIDER,  kCMainThreadStartupShutdownProviderImpl,
+		}
+	},
+	
+	/** Error-string service to enable us to provide user-friendly errors.
+		@ingroup xmlcataloghandler
+	*/
+	Class
+	{
+		kXCatHndErrorStringServiceBoss,
+		kInvalidClass,
+		{
+			/** Implementation of IErrorStringService from this plug-in
+				@see XCatHndErrorStringService
+			*/
+			IID_IERRORSTRINGSERVICE,	kXCatHndErrorStringServiceImpl,
+			/** Implementation of IK2ServiceProvider identifying this class as errorstring service
+			*/
+			IID_IK2SERVICEPROVIDER,		kErrorStringProviderImpl,
+		}
+	},
+	
+	
+}}};
+
+/*
+// Implementation definition.
+*/
+resource FactoryList (kSDKDefFactoryListResourceID)
+{
+	kImplementationIDSpace,
+	{
+#include "XCatHndFactoryList.h"
+	}
+};
+
+
+
+
+/*
+// LocaleIndex
+// The LocaleIndex should have indicies that point at your
+// localizations for each language system that you are
+// localized for.
+*/
+/*
+// String LocaleIndex.
+*/
+resource LocaleIndex (kSDKDefStringsResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_enUS, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_jaJP, kSDKDefStringsResourceID + index_jaJP
+		
+		kWildFS, k_Wild, kSDKDefStringsResourceID + index_enUS
+	}
+};
+
+resource LocaleIndex (kSDKDefStringsNoTransResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_Wild, kSDKDefStringsNoTransResourceID + index_enUS
+	}
+};
+
+resource StringTable (kSDKDefStringsNoTransResourceID + index_enUS)
+{
+	k_enUS,									// Locale Id
+	kEuropeanMacToWinEncodingConverter,		// Character encoding converter
+	{
+		// No-Translate strings go here:
+	}
+};
+
+
+resource UserErrorTable( kXCatHndErrorStringTableRsrcID )
+{
+	{
+		// -- General model errors
+		kXCatHndFailedLoadingDefaultCatalogErr,	kXCatHndFailedLoadingDefaultCatalogErrKey,
+		kXCatHndNoDefaultCatalogErr,			kXCatHndNoDefaultCatalogErrKey,
+	}
+};
+
+#endif // __ODFRC__
+
+#include "XCatHnd_enUS.fr"
+#include "XCatHnd_jaJP.fr"
+
+//  Code generated by DollyXS code generator

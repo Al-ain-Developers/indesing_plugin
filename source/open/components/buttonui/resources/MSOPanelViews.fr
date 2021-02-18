@@ -1,0 +1,130 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/buttonui/resources/MSOPanelViews.fr $
+//  
+//  Owner: Michele Stutzman
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+
+#include "EveInfo.fh"
+#include "FormFieldUIDefs.h"
+#include "FormFieldUIPanelView.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// RESOURCES Local Index
+//========================================================================================
+
+type MSOPanelWidget (kViewRsrcType) : ErasablePrimaryResourcePanelWidget	(ClassID = kMSOPanelBoss) 
+{
+	CPanelMenuData;
+};
+
+type MSOPanelTreeWidget	(kViewRsrcType) : TreeViewWidget	(ClassID = kMSOPanelTreeWidgetBoss)
+{
+	CControlViewObservers;	// List of observers to attach when showing this widget
+};
+
+type MSOPanelTreeViewNodeWidget(kViewRsrcType) : StandardTreeNodeWidget (ClassID = kMSOPanelTreeViewNodeWidgetBoss) {};
+type MSOPanelTreeViewSmallNodeWidget(kViewRsrcType) : StandardTreeNodeWidget (ClassID = kMSOPanelTreeViewNodeWidgetBoss) {};
+type MSOPanelTreeViewLargeNodeWidget(kViewRsrcType) : StandardTreeNodeWidget (ClassID = kMSOPanelTreeViewNodeWidgetBoss) {};
+type MSOPanelTreeViewExtraLargeNodeWidget(kViewRsrcType) : StandardTreeNodeWidget (ClassID = kMSOPanelTreeViewNodeWidgetBoss) {};
+
+type MSOPanelStateThumbnailWidget (kViewRsrcType) : Widget	(ClassID = kMSOPanelStateThumbnailBoss)
+{
+	CControlView;
+};
+type MSOPanelStateNameILEWidget	(kViewRsrcType) : TextInLineEditWidget	(ClassID = kMSOPanelStateNameILEBoss) {};
+
+type PasteIntoMSOStateButton	(kViewRsrcType) : RollOverIconButtonWidget		(ClassID = kPasteIntoMSOStateButtonBoss) {};
+type AddToMSOStateButton	(kViewRsrcType) : RollOverIconButtonWidget		(ClassID = kAddToMSOStateButtonBoss) {};
+type NewMSOStateButton	(kViewRsrcType) : RollOverIconButtonWidget		(ClassID = kNewMSOStateButtonBoss) {};
+type DeleteMSOStateButton	(kViewRsrcType) : RollOverIconButtonWidget		(ClassID = kDeleteMSOStateButtonBoss) {};
+
+type MSOSelectionIcon (kViewRsrcType) : IconSuiteWidget (ClassID = kMSOSelectionIconBoss) {};
+
+//========================================================================================
+// RESOURCES Local Index
+//========================================================================================
+
+resource LocaleIndex (kMSOPanelRsrcID)
+{
+	kViewRsrcType,
+	{
+		kWildFS, k_Wild, kMSOPanelRsrcID + index_enUS,
+		kWildFS, k_deDE, kMSOPanelRsrcID + index_deDE,
+		kWildFS, k_frFR, kMSOPanelRsrcID + index_deDE,
+		kWildFS, k_jaJP, kMSOPanelRsrcID + index_deDE,
+		kWildFS, k_esES, kMSOPanelRsrcID + index_deDE,
+		kWildFS, k_ptBR, kMSOPanelRsrcID + index_deDE,
+		kWildFS, k_svSE, kMSOPanelRsrcID + index_deDE,
+		kWildFS, k_daDK, kMSOPanelRsrcID + index_deDE,
+		kWildFS, k_nlNL, kMSOPanelRsrcID + index_deDE,
+		kWildFS, k_itIT, kMSOPanelRsrcID + index_deDE,
+		kWildFS, k_nbNO, kMSOPanelRsrcID + index_deDE,
+		kWildFS, k_fiFI, kMSOPanelRsrcID + index_deDE,
+		kWildFS, k_csCZ, kMSOPanelRsrcID + index_deDE,
+		kWildFS, k_plPL, kMSOPanelRsrcID + index_deDE,
+		kWildFS, k_huHU, kMSOPanelRsrcID + index_deDE,
+		kWildFS, k_ruRU, kMSOPanelRsrcID + index_ruRU
+		kWildFS, k_trTR, kMSOPanelRsrcID + index_deDE,
+		kWildFS, k_ukUA, kMSOPanelRsrcID + index_deDE,
+	}
+}
+
+resource LocaleIndex (kMSOPanelTreeViewNodeRsrcID)
+{
+	kViewRsrcType,
+	{
+		kWildFS, k_Wild, kMSOPanelTreeViewNodeRsrcID + index_enUS,
+	}
+}
+
+resource LocaleIndex (kMSOPanelTreeViewSmallNodeRsrcID)
+{
+	kViewRsrcType,
+	{
+		kWildFS, k_Wild, kMSOPanelTreeViewSmallNodeRsrcID + index_enUS,
+	}
+}
+
+resource LocaleIndex (kMSOPanelTreeViewLargeNodeRsrcID)
+{
+	kViewRsrcType,
+	{
+		kWildFS, k_Wild, kMSOPanelTreeViewLargeNodeRsrcID + index_enUS,
+	}
+}
+
+resource LocaleIndex (kMSOPanelTreeViewExtraLargeNodeRsrcID)
+{
+	kViewRsrcType,
+	{
+		kWildFS, k_Wild, kMSOPanelTreeViewExtraLargeNodeRsrcID + index_enUS,
+	}
+}
+
+#endif // __ODFRC__
+
+#include "MSOPanelViews_enUS.fr"
+#include "MSOPanelViews_deDE.fr"
+#include "MSOPanelViews_ruRU.fr"

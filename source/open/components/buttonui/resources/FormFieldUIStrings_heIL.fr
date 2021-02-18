@@ -1,0 +1,250 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/buttonui/resources/FormFieldUIStrings_heIL.fr $
+//  
+//  Owner: Mark VerMurlen
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "StringTable.fh"
+
+#include "FormFieldUIDefs.h"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+//twright 12/11/2000 Removed left-over strings from group strings.
+//not sure if button/form is going to need lock warning...
+
+resource StringTable (kFormFieldUIStringsRsrcID + index_heIL)
+{
+	k_heIL,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{
+		// ----- Menu strings
+		"ButtonsActionsPopup",				"תפריט 'פעולות לחצנים'",
+		
+		"$$$/Menu/AppearancePanelPopup",	"תפריט החלונית 'לחצנים'",	
+		"$$$/Menu/Interactive",				"אינטר&אקטיבי", 
+		"$$$/Menu/FormField",				"&טופס", 
+		"$$$/Menu/About",					"&אודות תוסף תוכנה של טפסים", 
+		"$$$/Menu/CreateButton",			"&המר ללחצן", 
+		"$$$/Menu/DestroyButton",			"&המר לאובייקט", 
+		"$$$/Menu/FormFieldSettings",		"&אפשרויות לחצן...", 
+		"$$$/Menu/NewState",				"מצב חדש", 
+		"$$$/Menu/DeleteState",				"מחק מצב", 
+		"$$$/Menu/DeleteStates",			"מחק מצבים",
+		"$$$/Menu/PlaceIntoState",			"מיקום תוכן במצב...",
+		"$$$/Menu/DeleteStateContent",		"מחק תוכן ממצב",
+		"$$$/Menu/AppearancePanelPrefs",	"אפשרויות חלונית...",
+		"$$$/Menu/StateOptions",			"אפשרויות מצב...",
+		"$$$/Menu/SetTabOrder",				"הגדרת &סדר טאבים...",
+		"$$$/Menu/SetCalculationOrder",		"הגדרת סדר חישוב...",
+		"$$$/Menu/States",					"&לחצנים",
+		
+		"$$$/Menu/Close",					"סגור",
+		"$$$/Menu/Exit",					"יציאה",
+		"$$$/Menu/Go To Page",				"עבור לעמוד (SWF בלבד)",
+		"$$$/Menu/Go To First Page",		"עבור לעמוד ראשון",
+		"$$$/Menu/Go To Anchor",			"עבור לעוגן",
+		"$$$/Menu/Go To Last Page",			"עבור לעמוד אחרון",
+		"$$$/Menu/Go To Next Page",			"עבור לעמוד הבא",
+		"$$$/Menu/Go To Next View",			"עבור לתצוגה הבאה",
+		"$$$/Menu/Go To Previous Page",		"עבור לעמוד הקודם",
+		"$$$/Menu/Go To Previous View",		"עבור לתצוגה הקודמת",
+		"$$$/Menu/Go To URL",				"עבור לכתובת URL",
+		"$$$/Menu/Movie",					"סרט",
+		"$$$/Menu/Open File",				"פתח קובץ",
+		"$$$/Menu/Show/Hide Buttons",		"הצג/הסתר לחצנים",
+		"$$$/Menu/Sound",					"צליל",
+		"$$$/Menu/View Zoom",				"זום לתצוגה",
+
+		"$$$/Menu/FormFieldSettings/ButtonLibrary",			"לחצני דגימה",	// Name of menu item in Buttons Panel flyout that opens a library of Sample Buttons
+
+		"$$$/Menu/FormFieldSettings/PDFVis/Visible",		"גלוי ב- PDF",
+		"$$$/Menu/FormFieldSettings/PDFVis/Hidden",			"מוסתר ב- PDF",
+		"$$$/Menu/FormFieldSettings/PDFVis/VisibleNoPrint",	"גלוי ב- PDF אך אינו מודפס",
+		"$$$/Menu/FormFieldSettings/PDFVis/HiddenButPrint",	"מוסתר ב- PDF אך ניתן להדפסה",	
+			
+		"PageItems",						"פריטי עמוד", 
+		"$$$/Menu/Trace Geometry",			"אתר צורה גיאומטרית", 
+
+		"InteractiveContextMenu",			"אינטראקטיבי",
+	
+		// ----- Dialog strings
+		"$$$/Dialog/CreateFormField/Title",		"שדה טופס", 
+		"$$$/Dialog/CreateFormField/Options",	"אפשרויות",
+		"$$$/Dialog/CreateFormField/Width",		"&רוחב:",
+		"$$$/Dialog/CreateFormField/Height",	"ג&ובה:",
+
+		"$$$/Dialog/FormFieldSettings/Title",				"כללי", 
+		"$$$/Dialog/FormFieldSettings/FieldType",			"סוג שדה:",
+		"$$$/Dialog/FormFieldSettings/FieldTypeSetting",	"",
+		"$$$/Dialog/FormFieldSettings/Name",				"&שם:",
+		"$$$/Dialog/FormFieldSettings/PDFVisibility",		"&גלוי ב-PDF:",
+		"$$$/Dialog/FormFieldSettings/PDFVis/Visible",		"גלוי",
+		"$$$/Dialog/FormFieldSettings/PDFVis/Hidden",		"מוסתר",
+		"$$$/Dialog/FormFieldSettings/PDFVis/VisibleNoPrint",	"גלוי אך לא מודפס",
+		"$$$/Dialog/FormFieldSettings/PDFVis/HiddenButPrint",	"מוסתר אך מודפס",
+		"$$$/Dialog/FormFieldSettings/ReadOnly",			"לקריאה בלבד",
+		"$$$/Dialog/FormFieldSettings/Export",				"ייצוא",
+		"$$$/Dialog/FormFieldSettings/RequiredForExport",	"נדרש לייצוא",
+		"$$$/Dialog/FormFieldSettings/Description",			"&תיאור:",
+		"$$$/Dialog/FormFieldSettings/ExportName",			"&שם ייצוא:",
+		"$$$/Dialog/FormFieldSettings/Common Settings",		"הגדרות נפוצות",
+		"$$$/Dialog/FormFieldSettings/Options",				"אפשרויות",
+		"$$$/Dialog/FormFieldSettings/Holder",				"מחזיק הגדרות שדה טופס",
+
+		"$$$/Dialog/FormOptions/Title",						"אפשרויות לחצן",
+		"$$$/Dialog/FormFieldSettings/Options",				"אפשרויות",
+		
+		"$$$/Dialog/FormFieldSettings/ExportValue",			"ערך ייצוא:",
+		"$$$/Dialog/FormFieldSettings/DefaultIsChecked",	"ברירת המחדל מסומנת",
+		"$$$/Dialog/FormFieldSettings/DefaultIsSelected",	"ברירת המחדל נבחרה",
+		"$$$/Dialog/FormFieldSettings/Default",				"ברירת מחדל:",
+
+		"$$$/Dialog/FormFieldSettings/Multiline",				"שורות מרובות",
+		"$$$/Dialog/FormFieldSettings/Scroll",					"נגלל",
+		"$$$/Dialog/FormFieldSettings/LimitOf",					"הגבלה של",
+		"$$$/Dialog/FormFieldSettings/Characters",				"תווים",
+		"$$$/Dialog/FormFieldSettings/Password",				"סיסמה",
+		"$$$/Dialog/FormFieldSettings/FieldForFileSelection",	"משמש לבחירת קובץ",
+		"$$$/Dialog/FormFieldSettings/SpellCheck",				"בדיקת איות",
+		
+		"$$$/Dialog/FormFieldSettings/Item",					"פריט:",
+		"$$$/Dialog/FormFieldSettings/Add",						"הוסף",
+		"$$$/Dialog/FormFieldSettings/Delete",					"מחק",
+		"$$$/Dialog/FormFieldSettings/Change",					"שנה",
+		"$$$/Dialog/FormFieldSettings/SortItems",				"מיין פריטים",
+		"$$$/Dialog/FormFieldSettings/AllowMultipleSelection",	"התר ריבוי בחירות",
+		"$$$/Dialog/FormFieldSettings/Editable",				"ניתן לעריכה",
+
+		"$$$/Dialog/FormFieldSettings/Align",					"יישור:",
+		"$$$/Dialog/FormFieldSettings/Align/Left",				"שמאל",
+		"$$$/Dialog/FormFieldSettings/Align/Center",			"מרכז",
+		"$$$/Dialog/FormFieldSettings/Align/Right",				"ימין",
+
+		"$$$/Dialog/FormFieldSettings/Font:",					"&גופן:",
+		"$$$/Dialog/FormFieldSettings/Size:",					"&גודל:",
+		"$$$/Dialog/FormFieldSettings/Auto",					"אוטומטי",
+
+		"$$$/Dialog/FormFieldSettings/SelectedIsDefault",		"הפריט הנבחר הוא פריט ברירת המחדל",
+		
+		"$$$/Dialog/FormFieldUI/DeleteAlert",					"מחיקת המצב תגרום גם למחיקת התוכן המקושר אליו.  האם למחוק את המצב בכל זאת?",
+		"$$$/Dialog/FormFieldUI/DestroyAlert",					"פעולה זו תגרום למחיקת התוכן שקושר לשאר המצבים של הלחצן.  האם להמשיך בכל זאת?",
+		"$$$/Dialog/FormFieldUI/DeleteContentAlert",			"האם אתה בטוח שברצונך למחוק את התוכן המשויך למצב זה?",
+		"$$$/Dialog/FormFieldUI/StyleChangeAlert",				"פעולה זו תגרום למחיקת התוכן שקושר למצבים הנוכחיים של הלחצן.  האם להמשיך בכל זאת?",
+		"$$$/Dialog/FormFieldUI/StyleChangeFailed",				"החלת סגנון המראה שנבחר על הלחצן נכשלה.",
+
+		/* These are not visible, they are names of subpanels... */
+		
+		"$$$/Dialog/FormFieldSettings/CheckBox",				"אפשרויות תיבת סימון",	
+		"$$$/Dialog/FormFieldSettings/RadioButton",				"אפשרויות לחצן אפשרויות",	
+		"$$$/Dialog/FormFieldSettings/TextField",				"אפשרויות לחצן שדה טקסט",	
+		"$$$/Dialog/FormFieldSettings/ListBox",					"אפשרויות לחצן תיבת רשימה",	
+		
+		"$$$/Dialog/About/Description",						"תוסף תוכנה של טפסים, גרסה 1.0\n\n(c) 2001 Adobe Systems Incorporated. כל הזכויות שמורות.",
+
+		"$$$/Dialog/CmdName/CreateButton",					"המר ללחצן",
+		"$$$/Dialog/CmdName/DestroyButton",					"המר לאובייקט",
+		"$$$/Dialog/CmdName/ChangeFormSettings",			"שנה הגדרות לחצן",
+
+		"$$$/Dialog/TextColor/Title",						"צבע טקסט", 
+		"$$$/Dialog/Button/Color...",						"צבע גופן...", 
+
+		"$$$/Dialog/AppearancePanelPrefs/Title",			"אפשרויות חלונית", 
+		"$$$/Dialog/AppearancePanelPrefs/ThumbnailSize",	"גודל תמונה ממוזערת", 
+		"$$$/Dialog/AppearancePanelPrefs/None",				"ללא", 
+		
+		
+		"$$$/Dialog/StateOptions/Title",					"אפשרויות מצב", 
+		"$$$/Dialog/StateOptions/State",					"מצב:", 
+		"$$$/Dialog/StateOptions/Enable",					"הפעל מצב", 
+
+		"$$$/Dialog/CalculationOrder/Title",				"סדר חישוב", 
+		"$$$/Dialog/TabOrder/Title",						"סידור טאבים", 
+		"$$$/Dialog/Order/MoveUp",							"העבר ל&מעלה", 
+		"$$$/Dialog/Order/MoveDown",						"העבר למ&טה",
+
+		// ----- Window strings
+		
+		// ----- Panel strings
+
+		"$$$/Panel/FormFieldSettings/Action Data Holder",	"מציין נתוני פעולה",
+		"$$$/Panel/FormFieldSettings/+",					"+",
+		"$$$/Panel/FormFieldSettings/Event:",				"אירוע:",
+		"$$$/Panel/FormFieldSettings/Actions:",				"פעולות:",
+		"$$$/Panel/FormFieldSettings/URL:",					"כתובת URL:",
+		"$$$/Panel/Action",									"פעולה",
+		"$$$/Panel/Empty Action",							"‏[לא נוספו התנהגויות]",
+		"$$$/Panel/StatesListBoxLabel/States",				"מראה מצב",
+		"$$$/Panel/States",									"לחצנים",
+		"$$$/Panel/FormFieldSettings/FieldType",			"סוג:",
+		"$$$/Panel/FormFieldSettings/Name",					"שם:",
+		"$$$/Panel/ShowHide/Visibility:",					"תצוגה:",
+		"$$$/Panel/GoToPage/Page:",							"עמוד:",
+
+		"$$$/Panel/Normal",									"‏[רגיל]",
+		"$$$/Panel/Over",									"‏[הצבעה בעכבר]",
+		"$$$/Panel/Down",									"‏[לחיצה]",
+
+		"$$$/Panel/CmdName/FormFieldName",					"שם לחצן",
+		"$$$/Panel/CmdName/FormFieldStyle",					"מראה לחצן",
+		
+		"$$$/Panel/FormFieldSettings/Appearance",			"מראה:",
+
+		"$$$/Popup/Separator",								"-",
+		
+		"$$$/Dialog/Behaviors/Exit/No Data for Exit Behavior", "",
+
+		// ----- Tips strings
+
+		"$$$/Tip/FormName",				"שם עבור הלחצן",
+		"$$$/Tip/StateEye",				"הפעל/בטל מצב אופציונלי ב-PDF או ב- SWF מיוצא",
+		"$$$/Tip/StateThumbnail",		"תצוגה מוקטנת של מצב זה",
+		"$$$/Tip/Show",					"הצג",
+		"$$$/Tip/Hide",					"הסתר",
+		"$$$/Tip/Ignore",				"התעלם",
+		"$$$/Tip/Delete Selected Action",	"מחק פעולה שנבחרה",
+		"$$$/Tip/Add New Action",		"הוסף פעולה חדשה לאירוע שנבחר",
+		"$$$/Tip/DeleteState",			"מחק מצב אופציונלי ותוכנו",
+		"$$$/Tip/Convert To Button",		"המר אובייקט ללחצן",
+		"$$$/Tip/Convert To Object",		"המר לחצן לאובייקט",
+
+		// ----- Error strings
+
+		"$$$/Error/YouNeedToSpecifyAName", "יש לציין שם.",
+		"$$$/Error/YouNeedToSpecifyANonBlankName", "יש לציין שם חוקי.",
+		"$$$/Error/YouNeedToSpecifyANonBlankNameOrNoName", "יש לציין שם חוקי או לא לציין שם כלל.",
+		"$$$/Error/YouNeedToSpecifyAnExportValue", "יש לציין ערך ייצוא.",
+		"$$$/Error/YouNeedToSpecifyANonBlankExportValue", "יש לציין ערך ייצוא חוקי.",
+		
+		// ----- Misc strings
+
+		"$$$/Command/DeleteStates",	"מחק מצבים",
+		"$$$/CmdName/DeleteStateContent",	"מחק תוכן מצב",
+	}
+};
+
+#endif // __ODFRC__

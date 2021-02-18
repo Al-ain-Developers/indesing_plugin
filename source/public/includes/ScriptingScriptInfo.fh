@@ -1,0 +1,38 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/public/includes/ScriptingScriptInfo.fh $
+//  
+//  Owner: Jonathan W. Brown
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#ifndef __SCRIPTINGSCRIPTINFO_FH__
+#define __SCRIPTINGSCRIPTINFO_FH__
+
+#ifdef __ODFRC__
+
+/**
+	Handy defines for ScriptInfo.fr files
+*/
+
+//Create events are expected to have a "with properties" parameter. To ensure consistency, use this #define.
+#define WITHPROPERTIESPARAM		keyAEPropData, "with properties", "Initial values for properties of the new ^Object", RecordType( kContainerObjectScriptElement ), kOptional
+
+#endif // __ODFRC__
+
+#endif // __SCRIPTINGSCRIPTINFO_FH__

@@ -1,0 +1,27 @@
+var searchData=
+[
+  ['magnification',['Magnification',['../class_i_interactive_p_d_f_export_prefs.html#abf24fcfc71a58b2c29163e7d9da2a138',1,'IInteractivePDFExportPrefs']]],
+  ['mappingruletype',['MappingRuleType',['../class_i_style_mappings.html#a6401825401309a910dd382426637d98d',1,'IStyleMappings']]],
+  ['mappingstyletype',['MappingStyleType',['../class_i_style_mappings.html#a0861d6455309d000247c91ed354a6b83',1,'IStyleMappings']]],
+  ['markerplace',['MarkerPlace',['../class_i_index_page_entry_data.html#aeafa7a0e9c53dea6352ef2420c27e31f',1,'IIndexPageEntryData']]],
+  ['markerpositionoptions',['MarkerPositionOptions',['../class_i_endnote_settings.html#a9638f1e117bbb4265d27d62a2ee1904f',1,'IEndnoteSettings::MarkerPositionOptions()'],['../class_i_footnote_settings.html#a9c924202d3b9feb98295d9c49deb3260',1,'IFootnoteSettings::MarkerPositionOptions()']]],
+  ['markoperation',['MarkOperation',['../class_i_preflight_artwork_mark_info.html#aa7461af9b1aa4f30be69e2eb623b7d5b',1,'IPreflightArtworkMarkInfo']]],
+  ['marktype',['MarkType',['../class_i_preflight_artwork_mark_info.html#a1ad069e5939213b03fcdae511c661d8b',1,'IPreflightArtworkMarkInfo']]],
+  ['masterpagehandlertreatment',['MasterPageHandlerTreatment',['../class_base_hit_test_handler_impl.html#a2db950c2b31b7fa8d39471eff56271d2',1,'BaseHitTestHandlerImpl']]],
+  ['matrixtype',['MatrixType',['../class_i_transform.html#af0d1fd22c1248c869ff6452f1e99156b',1,'ITransform']]],
+  ['mediaattributeid',['MediaAttributeID',['../class_i_media_attributes.html#adeaf074790f8fea6c1fbd7feb5c4ca64',1,'IMediaAttributes']]],
+  ['mediacontentattributeid',['MediaContentAttributeID',['../class_i_media_content_data.html#a25b4b1e6944dc19525b692fdb95af131',1,'IMediaContentData']]],
+  ['mediaformattype',['MediaFormatType',['../class_i_media_utils.html#ac193892a2d1f3c8e847afba85a1d9d58',1,'IMediaUtils']]],
+  ['memorystate',['MemoryState',['../class_i_memory_manager.html#a58d0ce45be29e9505245245d7709b3be',1,'IMemoryManager']]],
+  ['menusetreadfileerror',['MenuSetReadFileError',['../class_i_menu_customization_data.html#af08f659e5058b9b5cfec4681aa5c4b2d',1,'IMenuCustomizationData']]],
+  ['menutype',['MenuType',['../class_i_x_m_l_tag_suite.html#a39cfe24886a82b79ae2e9fe4684eb96b',1,'IXMLTagSuite']]],
+  ['messageflags',['MessageFlags',['../class_i_set_spread_command_data.html#a76b20594738921a507fd2a8bf3a9bdb8',1,'ISetSpreadCommandData']]],
+  ['messagetype',['MessageType',['../class_i_graphic_attr_message.html#af93b1fd05aa609ac2c89b6a1a4222021',1,'IGraphicAttrMessage::MessageType()'],['../class_gfx_state_render_object_change_msg.html#a3f5e59bcd73d00ed63d6fdeb72c88be4',1,'GfxStateRenderObjectChangeMsg::MessageType()'],['../class_library_asset_observer_msg.html#aea6663b9510626c5afb2211c6bc84f4f',1,'LibraryAssetObserverMsg::MessageType()'],['../class_library_observer_msg.html#abd08b176caa1395dc3cd6ae29f9b17c7',1,'LibraryObserverMsg::MessageType()']]],
+  ['minimumcolumnwidth',['minimumColumnWidth',['../class_i_text_column_sizer.html#a8088159fd933bc1836c31cf8b9b646e9',1,'ITextColumnSizer']]],
+  ['missingattributetype',['MissingAttributeType',['../class_i_text_attr_missing_impl_data.html#aba6440071d0e330b25026afa586e7193',1,'ITextAttrMissingImplData']]],
+  ['mode',['mode',['../class_i_stand_off.html#a3ab0e1dfc6cb6bb64e290d6c1513c71a',1,'IStandOff']]],
+  ['modifier',['Modifier',['../class_txt_exp_utils.html#a933afba2f84ad355e33a50d7463b55da',1,'TxtExpUtils']]],
+  ['motionxmloptions',['MotionXMLOptions',['../class_i_animation_core.html#ae3a6492dc6b1b1643b44b79ca5177a93',1,'IAnimationCore']]],
+  ['movetype',['MoveType',['../class_i_dynamic_event_and_timing_cmd_data.html#a886369d17e5ed104557548f461cc50e4',1,'IDynamicEventAndTimingCmdData']]],
+  ['movieattributeid',['MovieAttributeID',['../class_i_movie_attributes.html#a0aae003889271ee94f119242d36472c1',1,'IMovieAttributes']]]
+];

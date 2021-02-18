@@ -1,0 +1,142 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kLayerPanelStringsRsrcID + index_nlNL)
+{
+	k_nlNL,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{
+		// ----- Command strings
+
+		"Layer Options",				"Laagopties",
+		"New Layer",					"Nieuwe laag",
+		"Layer Deletion",				"Laag/lagen verwijderen",
+		"Delete Unused Layers",			"Ongebruikte lagen verwijderen",
+		"Lock Others",					"Overige vergrendelen",
+		"#UnlockOthers",					"Overige ontgrendelen",
+		"Show All",						"Alles tonen",
+		"#ShowOthers",					"Overige tonen",
+		"Unlock All",					"Alles ontgrendelen",
+		"Hide All",						"Alles verbergen",
+		"Lock All",						"Alles vergrendelen",
+		"Merge Layers",					"Lagen samenvoegen",
+		"Move To Layer",				"Naar laag verplaatsen",
+		"Copy To Layer",				"Naar laag kopiëren",
+		"Move Layer",					"Laag verplaatsen",
+		"Move Layers",					"Lagen verplaatsen",
+		"kUnlockOthersSequence",		"Overige ontgrendelen",
+		"kLockOthersSequence",			"Overige vergrendelen",
+
+		// ----- Menu strings
+		
+		"Layers...",						"&Lagen...",
+
+		"New Layer...",						"Nieuwe laag...",
+		"New Layer Above \"^1\"...",		"Nieuwe laag boven \"^1\"...",
+		"New Layer Below \"^1\"...",		"Nieuwe laag onder \"^1\"...",
+		"New Top Layer...",					"Nieuwe bovenste laag...",
+		"Delete Layer",						"Laag verwijderen",
+		"Delete \"^1\"",					"Laag \"^1\" verwijderen",
+		"Delete Layers",					"Lagen verwijderen",
+		"#Duplicate ^1 Menu",				"Laag \"^1\" dupliceren",
+		"#Duplicate LayersMenu",			"Lagen dupliceren",
+		"#DuplicatLayersCmd",				"Lagen dupliceren",
+		
+		"Layer Options for \"^1\"...",		"Laagopties voor \"^1\"...",
+		"Layer Options...",					"Laagopties...",
+		"Show All Layers",					"Alle lagen tonen",
+		"Hide Others",						"Overige verbergen",
+		"Unlock All Layers",				"Alle lagen ontgrendelen",
+		"Lock Others",						"Overige vergrendelen",
+		"Hide All Layers",					"Alle lagen verbergen",
+		"Lock All Layers",					"Alle lagen vergrendelen",
+		
+		"Paste Remembers Layers",			"Lagen behouden bij plakken",
+		"Ungroup Remembers Layers",			"Lagen behouden bij degroeperen",
+		
+		"Merge Layers",						"Lagen samenvoegen",
+		"Delete Unused Layers",				"Ongebruikte lagen verwijderen",
+		"Select Item(s) on \"^1\"",			"Item(s) op \"^1\" selecteren",
+		"Select Item(s) Layer",				"Item(s) op laag selecteren",
+				
+		"#SelectLayerPageItemMenu",		"Item(s) selecteren",
+		"#SelectZoomLayerPageItemMenu",	"Item selecteren en passend maken",
+		"#ZoomLockedPageItemMenu",		"Item in venster passen",
+		
+		// Menu names for context and panel menus
+		"LayerPanelPopup",					"Menu van deelvenster Lagen",	
+		"RtMenuLayerPanelEye",				"Contextmenu Oog van het deelvenster Lagen",	
+		"RtMenuLayerPanelLock",				"Contextmenu Vergrendelen van het deelvenster Lagen",
+		"RtMenuLayerPanelItem",				"Contextmenu Laag van het deelvenster Lagen",	
+		"RtMenuLayerPanelPageItem",			"Contextmenu Pagina-item van het deelvenster Lagen",	
+
+		// ----- Window strings
+		"DeleteOneLayer",					"De laag \"^1\" bevat een of meer objecten. Wilt u de laag toch verwijderen?",
+		"DeleteMultiLayers",				"De geselecteerde lagen bevatten objecten. Wilt u de lagen toch verwijderen?",
+		"DeleteOneGuideLayer",				"De laag \"^1\" bevat liniaalhulplijnen. Wilt u de laag toch verwijderen?",
+		"DeleteGuideLayers",				"De geselecteerde lagen bevatten liniaalhulplijnen.Wilt u de lagen toch verwijderen?",
+		"DeletingPlaceGunUsedLayer",		"Kan laag niet verwijderen. Deze laag is nodig voor het fragment dat in de plaatscursor is geladen.",
+
+		// ----- Window Menu
+		"Layers_WinMenu",					"&Lagen",
+		
+		// ----- Panel strings
+		
+		"^1 Layer",							"^1 laag",		// For status widget
+		"^1 Layers",						"^1 lagen",	// For status widget
+		"New Layer",						"Nieuwe laag",	// Title of New Layer dialog
+		"Layer Options",					"Laagopties", // Title of Layer Options dialog
+		"&Name:",							"&Naam:",
+		"&Color:",							"&Kleur:",
+		"&Show Layer",						"&Laag tonen",
+		"Show &Guides",						"H&ulplijnen tonen",
+		"&Lock Layer",						"Laag &vergrendelen",
+		"Loc&k Guides",						"&Hulplijnen vergrendelen",
+		"Keep When Layer is &Hidden",		"&Tekstomloop onderdrukken wanneer laag wordt verborgen",
+		"&Print Layer",						"&Laag afdrukken",
+
+		// ----- Tips strings
+
+		"DeleteLayerTip",					"Geselecteerde lagen verwijderen",
+		"NewLayerTip",						"Nieuwe laag maken",
+		"EyeTip",							"Schakelt zichtbaarheid in/uit",
+		"PencilTip",						"Schakelt laagvergrendeling in/uit (laag kan worden bewerkt als het vakje leeg is)",
+		"PageItemPencilTip",				"Schakelt pagina-itemvergrendeling in/uit (pagina-item kan worden bewerkt als het vakje leeg is)",
+		"SwatchTip",						"Kleur van selectiemarkeringen op deze laag",
+		"ProxyTip",							"Geeft geselecteerde items aan (sleep om tussen lagen te verplaatsen of om Z-volgorde te wijzigen)",
+		"ProxyChildSelectedTip",			"Bevat geselecteerd object; klik om containerobject te selecteren",
+		"UnselectedProxyTip",				"Klikken om items te selecteren",
+		"ActiveTip",						"Geeft de huidige tekenlaag aan",
+
+		// ----- Error strings
+		"EmptyLayerName",					"Er moet een laagnaam worden opgegeven.",
+		"DuplicateLayer",					"Er is al een laag met deze naam.",
+
+		"#LayerHierPanelName",		"Lagen",
+		"#Page:^1,",					"Pagina: ^1, ", // for layer panel status widget. Will be followed by layer count string.
+		"#Pages:^1,",					"Pagina's: ^1, ", // for layer panel status widget. Will be followed by layer count string.
+		"#DeletePageItemsMenu",		"Pagina-items verwijderen", // menu item name
+		"#DeletePageItem \"^1\"",		"Pagina-item \"^1\" verwijderen", // menu item name
+		"#DuplicatePI ^1 Menu",			"Pagina-item \"^1\" dupliceren", // menu item name
+		"#DuplicatePIMenu",			"Pagina-items dupliceren",  // menu item name
+	}
+};
+
+#endif // __ODFRC__

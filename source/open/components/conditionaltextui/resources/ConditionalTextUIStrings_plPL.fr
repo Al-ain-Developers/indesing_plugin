@@ -1,0 +1,126 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kConditionalTextUIStringsRsrcID + index_plPL)
+{
+    k_plPL,                                 // Locale Id
+    kResourceUTF8Encoded,     // Character encoding converter
+    {
+		"#CondTextUI_WinMenu",	"Tekst warunk&owy",	// panel menu item
+		"#CondTextUI_PanelName","Tekst warunkowy",		// panel name
+		"#CondTextUI_PanelMenu","Menu panelu Tekst warunkowy",
+		"#CondTextUI_NewConditionTagMenu", "Nowy warunek...",
+		"#CondTextUI_DeleteConditionTagMenu", "Usuń warunek...",
+		"#CondTextUI_DeleteConditionTagsMenu", "Usuń warunki...",
+		"#CondTextUI_EditConditionTagMenu", "Opcje warunku…",
+		"#CondTextUI_LoadConditionTagsMenu", "Wczytaj warunki...",
+		"#CondTextUI_LoadConditionTagsAndSetsMenu", "Wczytaj warunki i zestawy...",
+		"#CondTextUI_ShowIndicatorsCB", "Pokaż wskaźniki w tekście warunkowym",
+		"#CondTextUI_ShowIndicatorsMenu", "Pokaż wskaźniki w tekście warunkowym",
+		"#CondTextUI_ShowAndPrintIndicatorsMenu", "Pokaż i drukuj wskaźniki w tekście warunkowym",
+		"#CondTextUI_HideIndicatorsMenu", "Ukryj wskaźniki w tekście warunkowym",
+		"#CondTextUI_ShowIndicatorsDD", "Wskaźniki:",
+		"#CondTextUI_ShowIndicators", "Pokaż",
+		"#CondTextUI_ShowAndPrintIndicators", "Pokaż i drukuj",
+		"#CondTextUI_HideIndicators", "Ukryj",
+		"#CondTextUI_RtMenuConditionTagTVNode",    "Menu kontekstowe węzła widoku drzewa warunków",
+		"#CondTextUI_RtMenuUnapplyTag",		"Cofnij stosowanie \"^1\"",
+		"#CondTextUI_RtMenuDeleteTag",		"Usuń \"^1\"",
+		"#CondTextUI_RtMenuEditTag",		"Edytuj \"^1\"...",
+		"Show Options", "Pokaż &opcje",
+		"Hide Options", "Ukryj &opcje",
+		"#CondTextUI_SelectUnusedMenu", "Zaznacz wszystkie nieużywane",
+	
+		"#ConditionTagList_NameColumnLabel", "Nazwa",
+		"#ConditionTag_OptionsDialog", "Opcje warunku",
+		"#ConditionTag_OptionsDialogNew", "Nowy warunek",
+		"#ConditionTagOptions_Name:", "&Nazwa:",
+		"#ConditionTagOptions_Method:", "&Metoda:",
+		"#ConditionTagOptions_Appearance:", "&Wygląd:",
+		"#ConditionTagOptions_Color:", "&Kolor:",
+		"#ConditionTagOptions_Indicator", "Wskaźnik",
+		"#ConditionTagOptions_MethodUnderline", "Podkreśl",
+		"#ConditionTagOptions_MethodHighlight", "Wyróżniaj",
+		"#ConditionTagOptions_WavyUnderline", "Falujący",		
+		"#ConditionTagOptions_SolidUnderline", "Jednolity",		
+		"#ConditionTagOptions_DashedUnderline", "Kreskowany",		
+		"#ConditionTag_EmptyNameMsg", "Proszę podać nazwę warunku.",
+		"#ConditionTag_NameInUseMsg", "Ta nazwa warunku jest już używana. Proszę wybrać inną.",
+		
+		"#ConditionSetShowAll", "Pokaż wszystkie",
+		"#ConditionSetHideAll", "Ukryj wszystkie",
+		"#ConditionSetNone", "[Brak]",
+		"#ConditionSetBlank", " ",
+		"#ConditionSetLabel", "Ustaw:",
+		"#ConditionSetNewSet", "Utwórz nowy zestaw...",
+		"#ConditionSetDeleteSet", "Usuń \"^1\"...",
+		"#ConditionSetRenameSet", "Zmień nazwę \"^1\"...",
+		"#ConditionSetRedefineSet", "Zmień definicję \"^1\"...",
+		"#ConditionSetUpdateAllSets", "Uaktualnij wszystkie zestawy",
+		"#ConditionSetUpdateAllSetsUndoName", "Uaktualnij wszystkie zestawy warunków",
+		"#ConditionSetNameDialog", "Nazwa zestawu warunków",
+		"#ConditionSetNameStatic", "&Nazwa:",
+		"#InvalidSetName", "Nieprawidłowa nazwa zestawu warunków",
+		"#DuplicateSetName", "Nazwa już istnieje",
+		"#NoActiveSetString", "Brak aktywnego zestawu",
+		
+		"#ConditionalTextTip", "Znaleziono ukryty tekst z ^1: ",
+		"#ConditionalTextTipOneTag", "tym warunkiem",
+		"#ConditionalTextTipManyTags", "tymi warunkami",
+		
+		"#ConditionalTextEyeballHideWidgetTip", "Kliknij, aby ukryć cały tekst, do którego zastosowano ten warunek",
+		"#ConditionalTextEyeballShowWidgetTip", "Kliknij, aby pokazać cały tekst, do którego zastosowano ten warunek",
+		"#ConditionalTextEyeballUnconditionalWidgetTip", "Tekst bezwarunkowy jest zawsze widoczny",
+		"#ConditionalTextAppliedAllTip",	"Warunek zastosowano do całego zaznaczonego tekstu. Kliknij w celu cofnięcia stosowania",
+		"#ConditionalTextAppliedSomeTip",	"Warunek zastosowano do części zaznaczonego tekstu. Kliknij, aby zastosować do całego zaznaczonego tekstu",
+		"#ConditionalTextAppliedNoneTip",	"Kliknij, aby zastosować warunek",
+		"#ConditionalTextAppliedAllTipUncondition",	"Zaznaczony tekst jest bezwarunkowy",
+		"#ConditionalTextAppliedSomeTipUncondition",	"Część zaznaczonego tekstu jest bezwarunkowa. Kliknij, aby zamienić cały tekst na bezwarunkowy",
+		"#ConditionalTextAppliedNoneTipUncondition",	"Kliknij, aby zmienić tekst na bezwarunkowy",
+		"#ConditionalTextApplyNoSelectionTip", "Kliknij, aby zastosować warunek do zaznaczonego tekstu",
+		"#ConditionalTextNewTagTip",		"Nowy warunek",
+		"#ConditionalTextDeleteTagTip",		"Usuń warunek",
+		"#ConditionalTextIndicatorTip",		"Metoda wskaźnika to ^1",
+		"#ConditionalTextNewSetTip",		"Nowy zestaw",
+		"#SetOverrideTip_NewConditionsAndConditionVisibility",	"Przesłonięcia: widoczność warunku (zaznacz ponownie, aby usunąć, lub wybierz opcję Zmień definicję) + nowe warunki (wybierz opcję Aktualizuj wszystkie zestawy, aby usunąć, lub opcję Zmień definicję)",
+		"#SetOverrideTip_NewConditions",	"Przesłonięcia: nowe warunki (wybierz opcję Aktualizuj wszystkie zestawy, aby usunąć, lub opcję Zmień definicję)",
+		"#SetOverrideTip_ConditionVisibility",	"Przesłonięcia: widoczność warunku (zaznacz ponownie, aby usunąć, lub wybierz opcję Zmień definicję)",
+		
+		"#ConditionTag_DeleteConditionDialog", "Usuń warunek", 
+		"#ConditionTag_DeleteConditionsDialog", "Usuń warunki", 
+		"#ConditionTag_DeleteConditionAndReplace:", "Usuń warunek i zamień na: ", 
+		"#ConditionTag_DeleteConditionsAndReplace:", "Usuń warunki i zamień na: ", 
+		"#ConditionTag_DeleteInformationAlert", "Przeciągnij warunek na ikonę kosza, aby usunąć ten warunek.",
+		"#ConditionTag_DeleteNoReplaceChoice", "[Brak]",
+		
+		"#QuickApplyConditions", "Warunek",
+		"#Conditions_Filter_Key", "CT", // should be upper case if there is an upper case character, this is the prefix key for quick apply for text conditions.
+		"#QuickApplyConditionSets", "Zestaw warunków",
+		"#QuickApplyConditionSets_Filter_Key", "CS",  // should be upper case if there is an upper case character, this is the prefix key for quick apply for text condition sets.
+		"#QuickApplyConditons_Menu_Key_String", "Dołącz warunki (ct:)",
+		"#QuickApplyConditonSets_Menu_Key_String", "Dołącz zestawy warunków (cs:)",
+		
+		"#SingularConditionStatusBodyString", "^1 zastosowano warunek ^2",
+		"#PluralConditionStatusBodyString", "^1 zastosowano warunki ^2",
+		"#MixedConditionString", " [mieszane]",
+		"#NoConditionsString", "nie zastosowano żadnych warunków",
+    }
+};
+
+#endif // __ODFRC__

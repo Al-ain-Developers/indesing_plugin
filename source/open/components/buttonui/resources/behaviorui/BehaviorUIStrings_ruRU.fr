@@ -1,0 +1,129 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kBehaviorUIStringsRsrcID + index_ruRU)
+{
+	k_ruRU,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{		
+		"$$$/Dialog/Behaviors/ShowHideFields/Fields_Tree", "Дерево полей",
+
+		"$$$/Dialog/Behaviors/Description",				"Здесь будет содержаться краткое описание поведения, а также информация о его параметрах.",
+		"$$$/Dialog/Behaviors/Description Title",		"Описание",
+		"$$$/Dialog/Behaviors/DeleteAlert",				"Удалить выделенное действие?",
+		"$$$/Dialog/Behaviors/DragDeleteAlert",			"Удалить перемещенные действия?",
+		"$$$/Dialog/Behaviors/Error/Invalid URL",		"Поле URL не должно быть пустым",
+		"$$$/Dialog/Behaviors/Error/Invalid File",		"Необходимо задать корректный файл",
+		
+		"$$$/Dialog/Behaviors/Movie/Movie:",			"Видео:",
+		"$$$/Dialog/Behaviors/Movie/Play Options:",		"Параметры:",
+		"$$$/Dialog/Behaviors/Movie/Play",				"Воспроизведение",
+		"$$$/Dialog/Behaviors/Movie/Stop",				"Остановка",
+		"$$$/Dialog/Behaviors/Movie/Pause",				"Пауза",
+		"$$$/Dialog/Behaviors/Movie/Resume",			"Возобновление",
+		"$$$/Dialog/Behaviors/Movie/PlayFromNavPoint",	"Воспроизвести с точки навигации",
+		"$$$/Dialog/Behaviors/Movie/StopAll",			"Остановить все (только для SWF)",
+		"$$$/Dialog/Behaviors/Movie/NavPoint",			"Точка:",
+		"$$$/Dialog/Behaviors/Movie/NoVideo",			"(нет видео)",
+		"$$$/Dialog/Behaviors/Movie/NoVideoNavPoint",	"(нет точки навигации)",
+
+		"$$$/Dialog/Behaviors/Sound/Sound:",			"Звук:",
+		"$$$/Dialog/Behaviors/Sound/Play Options:",		"Параметры:",
+		"$$$/Dialog/Behaviors/Sound/Play",				"Воспроизведение",
+		"$$$/Dialog/Behaviors/Sound/Stop",				"Остановка",
+		"$$$/Dialog/Behaviors/Sound/Pause",				"Пауза",
+		"$$$/Dialog/Behaviors/Sound/Resume",			"Возобновление",
+		"$$$/Dialog/Behaviors/Sound/StopAll",			"Остановить все (только для SWF)",
+		"$$$/Dialog/Behaviors/Sound/Volume:",			"Громкость:",
+		"$$$/Dialog/Behaviors/Sound/Synchronous",		"Синхронизация",
+		"$$$/Dialog/Behaviors/Sound/Mix",				"Микширование",
+		"$$$/Dialog/Behaviors/Sound/NoSound",			"(нет звука)",
+		
+		"$$$/Dialog/Behaviors/Animation/Animation:",	"Анимация:",
+		"$$$/Dialog/Behaviors/Animation/Play Options:",	"Параметры:",
+		"$$$/Dialog/Behaviors/Animation/Play",			"Воспроизвести",
+		"$$$/Dialog/Behaviors/Animation/Stop",			"Остановить",
+		"$$$/Dialog/Behaviors/Animation/Pause",			"Пауза",
+		"$$$/Dialog/Behaviors/Animation/Resume",		"Возобновить",
+		"$$$/Dialog/Behaviors/Animation/StopAll",		"Остановить все",
+		"$$$/Dialog/Behaviors/Animation/Reverse",		"В обратную сторону",
+		"$$$/Dialog/Behaviors/Animation/AutoReverse",	"Сброс при отведении курсора",
+		"$$$/Dialog/Behaviors/Animation/NoAnimation",	"(без анимации)",
+		
+		"$$$/Dialog/Behaviors/MSO/Object:",				"Объект:",
+		"$$$/Dialog/Behaviors/MSO/State:",				"Состояние:",
+		"$$$/Dialog/Behaviors/MSO/AutoReverse",			"Воспроизвести в обратную сторону при отведении курсора",
+		"$$$/Dialog/Behaviors/MSO/NextLoop",			"Остановить на последнем состоянии",
+		"$$$/Dialog/Behaviors/MSO/PrevLoop",			"Остановить на первом состоянии",
+		"$$$/Dialog/Behaviors/MSO/NoMSO",				"(нет объекта с несколькими состояниями)",
+
+		"$$$/Dialog/Behaviors/GoToView/Go To:",			"Перейти:",
+		"$$$/Dialog/Behaviors/GoToView/First Page",		"На первую страницу",
+		"$$$/Dialog/Behaviors/GoToView/Page",			"Страница",
+		"$$$/Dialog/Behaviors/GoToView/Previous Page",	"На предыдущую страницу",
+		"$$$/Dialog/Behaviors/GoToView/Next Page",		"На следующую страницу",
+		"$$$/Dialog/Behaviors/GoToView/Last Page",		"На последнюю страницу",
+		"$$$/Dialog/Behaviors/GoToView/Back",			"Назад",
+		"$$$/Dialog/Behaviors/GoToView/Forward",		"Вперед",
+		"$$$/Dialog/Behaviors/GoToView/Previous View",	"К предыдущему виду",
+		"$$$/Dialog/Behaviors/GoToView/Next View",		"К следующему виду",
+		"$$$/Dialog/Behaviors/GoToView/Specific Page",	"На заданную страницу",
+		"$$$/Dialog/Behaviors/GoToView/Document:",		"Документ:",
+		"$$$/Dialog/Behaviors/GoToView/Page:",			"Страница:",
+		"$$$/Dialog/Behaviors/GoToView/URL",			"URL",
+		"$$$/Dialog/Behaviors/GoToView/URL:",			"URL:",
+		"$$$/Dialog/Behaviors/GoToView/Anchor",			"Привязка к тексту",
+		"$$$/Dialog/Behaviors/GoToView/Anchor:",		"Привязка:",
+		"$$$/Dialog/Behaviors/GoToView/Bookmark",		"Закладка",
+		"$$$/Dialog/Behaviors/GoToView/Inherit Zoom",	"Текущий масштаб",
+		"$$$/Dialog/Behaviors/GoToView/Actual Size",	"Реальный размер",
+		"$$$/Dialog/Behaviors/GoToView/Fit In Window",	"Уместить в окне",
+		"$$$/Dialog/Behaviors/GoToView/Fit Width",		"По ширине",
+		"$$$/Dialog/Behaviors/GoToView/Fit Height",		"По высоте",
+		"$$$/Dialog/Behaviors/GoToView/Fit Visible",	"По содержимому",
+		"$$$/Dialog/Behaviors/GoToView/Zoom:",			"Масштаб:",
+		"$$$/Dialog/Behaviors/GoToView/None",			"Нет",
+		"$$$/Dialog/Behaviors/GoToAnchor/InDesign Format File","Файл в формате InDesign",
+		
+		"$$$/Dialog/Behaviors/ViewZoom/Full Screen",	"Во весь экран",
+		"$$$/Dialog/Behaviors/ViewZoom/Zoom View In",	"Увеличить",
+		"$$$/Dialog/Behaviors/ViewZoom/Zoom View Out",	"Уменьшить",
+		"$$$/Dialog/Behaviors/ViewZoom/Fit Page",		"Уместить в окне",
+		"$$$/Dialog/Behaviors/ViewZoom/Actual Size",	"Реальный размер",
+		"$$$/Dialog/Behaviors/ViewZoom/Fit Width",		"По ширине",
+		"$$$/Dialog/Behaviors/ViewZoom/Fit Visible",	"По содержимому",
+		"$$$/Dialog/Behaviors/ViewZoom/SinglePage",		"Постранично",
+		"$$$/Dialog/Behaviors/ViewZoom/OneColumn",		"Непрерывно",
+		"$$$/Dialog/Behaviors/ViewZoom/TwoColumns",		"Непрерывно разворотами",
+
+		"$$$/Dialog/Behaviors/ImportData/Select File:","Выбрать файл:",
+		"$$$/Dialog/Behaviors/ImportData/Acrobat Format File","Файл в формате Acrobat",
+
+		"$$$/Dialog/Behaviors/OpenFile/Select File:","Выбрать файл:",
+		"$$$/Dialog/Behaviors/OpenFile/Select File to be Opened", "Выберите файл для открытия",
+		"$$$/Dialog/Behaviors/OpenFile/Acrobat Format File","Файл в формате Acrobat",
+
+		"$$$/Dialog/Behaviors/SubmitForm/Submit To:","URL:",
+						
+		// ----- Tips strings
+	}
+};
+
+#endif // __ODFRC__

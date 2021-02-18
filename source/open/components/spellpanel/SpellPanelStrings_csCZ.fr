@@ -1,0 +1,159 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kSpellPanelStringsRsrcID + index_csCZ)
+{
+	k_csCZ,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{				
+		// ----- Main menu strings
+		"SpellingMenu",					"Kontrola &pravopisu",
+		"Check Spelling...",			"Kontrola pravopis&u...",
+		"Dynamic SpellCheck",			"Dyna&mická kontrola pravopisu",
+		"Autocorrect",					"Automatické opravy",
+		"Auto Correct",					"&Automaticky opravit",
+		"AutoCorrect",					"Automatické opravy",
+
+		// ----- Window strings
+		"corrected",					"opravené",
+		"misspelled",					"chybně zapsané",
+		
+		// ----- Scope strings
+		
+		"[No spelling]",				"[Bez kontroly pravopisu]",
+		"Auto",							"Automaticky",
+		"Document",						"Dokument",
+		"Story",						"Článek",
+		"Stories",						"Články",
+		"Selection",					"Výběr",
+		
+		// ----- Panel strings		
+		"Spelling",						"Kontrola pravopisu",
+		"&Spelling...",					"&Kontrola pravopisu...",
+		"Auto Correct...",				"Automatic&ky opravit...",
+		"[No language]",				"[Neurčený jazyk]",
+		"AutoCorrectEnable",			"Zapnout auto&matické opravy",
+		"AutoCorrectCapitalizationErrors",			"Automati&cky opravit chyby velkých písmen",
+		"A&dd...",						"&Přidat...",		// Opens a dialog
+		"EditAutoCorrectWord",			"&Upravit...",		// Opens a dialog
+		"Correction",					"Oprava",
+		"Misspelled Word",				"Slovo s chybami",
+
+		// ----- Dialog strings
+		"Check Spelling",				"Kontrola pravopisu",
+		"&Change To:",					"&Změnit na:",
+		
+		"Change To",					"Změnit na",
+		"&Suggested Corrections:",		"&Doporučené opravy:",
+		"Language:",					"Jazyk:",
+		"Sea&rch:",						"Proh&ledat:",
+		"Include Overset",				"Včetně přesahujícího textu",
+		"&Done",							"&Hotovo",
+		"C&hange",						"&Nahradit",
+		"S&tart",						"Spus&tit",
+		"Chan&ge All",					"N&ahradit vše",
+		"Skip",							"Přeskočit",	
+		"kSkipButtonInSpellingDialog",  "Přes&kočit",
+		"Ignore",						"Ignorov.",
+		"&Ignore All",					"&Ignorovat vše",
+		"&AddAndContinue",				"Přid&at",			// Adds to dictionary automatically, continues spelling
+		"Dic&tionary...",				"&Slovník...",	// Launches Dict Editor dialog
+		"Add To:",						"Přidat &k:",
+
+		// Label strings in Spell Check dialog.
+		"Ready to Spell Check:", 			"Připraveno ke kontrole pravopisu",
+		"Misspelled Word:",					"Slova s chybami:",
+		"Unknown Word - No Suggestions:", 	"Neznámé slovo - žádné návrhy:",
+		"Not in Dictionary:",				"Není ve slovníku:",
+		"Repeated Word:",					"Opakované slovo:",
+		"Uncapitalized Word:",				"Slovo nezačínající velkým písmenem:",
+		"Uncapitalized Sentence:",			"Věta nezačínající velkým písmenem:",
+		"Duplicate Word:",					"Zdvojené slovo:",
+		"Capitalization Error:",			"Chyba velkých písmen:",
+		"Spell Check Complete:",			"Kontrola pravopisu je dokončena",
+		
+		"SpellCheckCompleteAlertStr",			"Kontrola pravopisu je dokončena",	// Alert string at completion of spelling.
+
+		"Misspelled Word (Overset):",					"Slovo s chybami: (Přesahující text)",
+		"Unknown Word - No Suggestions (Overset):", 	"Neznámé slovo: (Přesahující text)",
+		"Not in Dictionary (Overset):",					"Není ve slovníku: (Přesahující text)",
+		"Repeated Word (Overset):",						"Opakované slovo: (Přesahující text)",
+		"Uncapitalized Word (Overset):",				"Slovo nezačínající velkým písmenem: (Přesahující text)",
+		"Uncapitalized Sentence (Overset):",			"Věta nezačínající velkým písmenem: (Přesahující)",
+
+		"Misspelled Word (In Table):",					"Slovo s chybami: (V tabulce)",
+		"Unknown Word - No Suggestions (In Table):", 	"Neznámé slovo: (V tabulce)",
+		"Not in Dictionary (In Table):",					"Není ve slovníku: (V tabulce)",
+		"Repeated Word (In Table):",						"Opakované slovo: (V tabulce)",
+		"Uncapitalized Word (In Table):",				"Slovo nezačínající velkým písmenem: (V tabulce)",
+		"Uncapitalized Sentence (In Table):",			"Věta nezačínající velkým písmenem: (V tabulce)",
+
+		"Misspelled Word (Deleted Text):",				"Slovo s chybami: (Odstraněný text)",
+		"Unknown Word - No Suggestions (Deleted Text):","Neznámé slovo: (Odstraněný text)",
+		"Not in Dictionary (Deleted Text):",			"Není ve slovníku: (Odstraněný text)",
+		"Repeated Word (Deleted Text):",				"Opakované slovo: (Odstraněný text)",
+		"Uncapitalized Word (Deleted Text):",			"Slovo nezačínající velkým písmenem: (Odstraněný text)",
+		"Uncapitalized Sentence (Deleted Text):",		"Věta nezačínající velkým písmenem: (Odstraněno)",
+		
+		"Misspelled Word (Hidden):",					"Chybně napsané slovo: (Skryté)",
+		"Unknown Word - No Suggestions (Hidden):", 		"Neznámé slovo: (Skryté)",
+		"Not in Dictionary (Hidden):",					"Není ve slovníku: (Skrytá položka)",
+		"Repeated Word (Hidden):",						"Opakované slovo: (Skryté)",
+		"Uncapitalized Word (Hidden):",					"Slovo nezačínající velkým písmenem: (Skryté)",
+		"Uncapitalized Sentence (Hidden):",				"Věta nezačínající velkým písmenem: (Skrytá)", // Shortened to "Hidden" for space. Like the "Overset" case above.
+
+//		"Spelling Preferences", 						"Spelling Preferences", // Note to localizer: this string moved to SpellingServiceStrings.fr
+		"Find", 										"Hledat",
+		"&Misspelled Words", 							"S&lova s chybami",
+		"&Repeated Words", 								"&Opakovaná slova",
+		"&Uncapitalized Words", 						"&Slova nezačínající velkým písmenem",
+		"Uncapitalized &Sentences", 					"&Věty nezačínající velkým písmenem",
+		"Misspelled Words Underline Color:",			"Slova s ch&ybami:",
+		"Repeated Words Underline Color:",				"Opa&kovaná slova:",
+		"Uncapitalized Words Underline Color:",			"Slova ne&začínající velkým písmenem:",
+		"Uncapitalized Sentences Underline Color:",		"Věty &nezačínající velkým písmenem:",
+		"Dynamic Spellchecking",						"Dynamická kontrola pravopisu",
+		
+		"Underline Color",								"Barva podtržení",
+		
+		"&Enable Dynamic Spelling",						"Z&apnout dynamickou kontrolu pravopisu",
+		
+		"Search is completed.  ^1  replacement(s) made.", "Hledání je dokončeno.   bylo provedeno ^1 nahrazení.", 
+
+		"Add",											"Přidat",
+		"Re&move",										"&Odstranit",
+		"Misspelled:",									"Chybně zapsané:",
+		"Correction:",									"Oprava:",
+		"Language:",									"Jazyk:",
+		"&Language:",									"&Jazyk:",
+		"AddToAutoCorrectList",							"Přidat do seznamu automatických oprav",
+		"EditAutoCorrectList",							"Upravit seznam automatických oprav",
+
+		"ACAlert1",		"Prázdné položky nejsou povoleny.",
+		"ACAlert2",		"Slovo a jeho oprava nemohou být zcela totožné, včetně malých a velkých písmen.",
+		"ACAlert3",		"Toto chybné slovo a jeho oprava již jsou v seznamu.",
+		"ACAlert4",		"Položku nelze vytvořit. Přesahuje maximální počet znaků (64).",
+		"ACAlert5",		"Položka obsahuje neplatný znak.",
+		"ACAlert6",		"V chybně zapsaném slově nejsou povolené jakékoliv mezery.",
+
+	}
+};
+
+#endif // __ODFRC__

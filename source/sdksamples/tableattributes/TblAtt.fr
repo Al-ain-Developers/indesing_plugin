@@ -1,0 +1,1011 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/sdksamples/tableattributes/TblAtt.fr $
+//  
+//  Owner: Adobe Developer Technologies
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//  
+//  Umbrella include file for all the .fr files in the plug-in.
+//  
+//========================================================================================
+
+//===========================
+//  General includes:
+//===========================
+
+#include "MenuDef.fh"
+#include "ActionDef.fh"
+#include "ActionDefs.h"
+#include "AdobeMenuPositions.h"
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "StringTable.fh"
+//#include "OMTypes.h"
+#include "objectmodeltypes.fh"
+#include "ShuksanID.h"
+#include "ActionID.h"
+#include "CommandID.h"
+#include "WorkspaceID.h"
+#include "widgetid.h"
+#include "BuildNumber.h"
+#include "PanelList.fh"
+#include "Widgets.fh"	// for PalettePanelWidget
+#include "InterfaceColorDefines.h"
+#include "IControlViewDefs.h"
+#include "SysControlIds.h"
+
+#include "PlugInModel_UIAttributes.h"
+// + hack (irp) for build 281 on Mac on my machine... as the rsrc's are being moved around
+#ifndef kApplicationRsrcPluginID
+#define kApplicationRsrcPluginID kApplicationPluginID
+#endif
+
+// - hack
+
+// Project includes:
+#include "TblAttID.h"
+
+#ifdef __ODFRC__
+
+/*
+// Plugin version definition.
+*/
+resource PluginVersion (kSDKDefPluginVersionResourceID)
+{
+	kTargetVersion,
+	kTblAttPluginID,
+	kSDKDefPlugInMajorVersionNumber, kSDKDefPlugInMinorVersionNumber, 	
+	kSDKDefHostMajorVersionNumber, kSDKDefHostMinorVersionNumber,
+	kTblAttCurrentMajorFormatNumber, kTblAttCurrentMinorFormatNumber,
+	{ kInDesignProduct, kInCopyProduct },
+	{ kWildFS },
+	kUIPlugIn,
+	kTblAttVersion
+};
+
+/*
+//	Boss class definition.
+*/
+resource ClassDescriptionTable(kSDKDefClassDescriptionTableResourceID)
+{{{
+
+
+	/**
+	 This boss class provides the actions invoked by this plug-in's
+	 sub-menu items. It supports two interfaces: 
+	 IActionComponent and IPMPersist. We provide the implementation 
+	 for IActionComponent in TblAttAction.cpp. The other
+	 default implementation is provided by the API.
+		@ingroup tableattributes
+	*/
+	Class
+	{
+		kTblAttActionComponentBoss,
+		kBaseActionComponentBoss,
+		{
+			/** Handle the actions from the menu. */
+			IID_IACTIONCOMPONENT, kTblAttActionComponentImpl,
+		}
+	},
+
+
+
+	/**
+		 This boss class inherits from an API panel boss class, and
+		 adds an interface to control a pop-up menu on the panel.
+		 The implementation for this interface is provided by the API.
+		@ingroup tableattributes
+	*/
+
+	Class
+	{
+		kTblAttPanelWidgetBoss,
+		kPalettePanelWidgetBoss,
+		{
+			/** IControlViewObservers is aggregated to attach
+			the panel's observers.
+			Implementation provided by the API.
+			*/
+			IID_ICONTROLVIEWOBSERVERS, kCControlViewObserversImpl,
+			/** For the panel menu.
+			Implementation provided by the API.
+			*/ 
+			IID_IPANELMENUDATA, kCPanelMenuDataImpl,
+			/** ActiveSelectionObserver implementation 
+			*/
+			IID_ITBLATTSELECTIONOBSERVER, kTblAttSelectionObserverImpl,
+			/** CObserver implementation 
+			*/
+			IID_ITBLATTWIDGETOBSERVER, kTblAttWidgetObserverImpl,			
+			
+		}
+	},
+
+
+
+
+}}};
+
+/*
+// Implementation definition.
+*/
+resource FactoryList (kSDKDefFactoryListResourceID) 
+{
+	kImplementationIDSpace,
+	{
+#include "TblAttFactoryList.h"
+	}
+};
+
+/*
+// Menu definition.
+*/
+resource MenuDef (kSDKDefMenuResourceID)
+{
+	{
+		// The About Plug-ins sub-menu item for this plug-in.
+		kTblAttAboutActionID,			// ActionID (kInvalidActionID for positional entries)
+		kTblAttAboutMenuPath,			// Menu Path.
+		kSDKDefAlphabeticPosition,			// Menu Position.
+		kSDKDefIsNotDynamicMenuFlag,		// kSDKDefIsNotDynamicMenuFlag or kSDKDefIsDynamicMenuFlag.
+
+		// About this plugin submenu for the popup menu on the panel
+		kTblAttPopupAboutThisActionID,
+		kTblAttTargetMenuPath
+		kTblAttAboutThisMenuItemPosition,
+		kSDKDefIsNotDynamicMenuFlag, 
+
+	}
+};
+
+/*
+// Action definition.
+*/
+resource ActionDef (kSDKDefActionResourceID)
+{
+	{ 
+		kTblAttActionComponentBoss, 		// ClassID of boss class that implements the ActionID.
+		kTblAttAboutActionID,	// ActionID.
+		kTblAttAboutMenuKey,	// Sub-menu string.
+		kHelpMenuActionArea,				// Area name (see ActionDefs.h).
+		kNormalAction,					// Type of action (see ActionDefs.h).
+		kDisableIfLowMem,				// Enabling type (see ActionDefs.h).
+		kInvalidInterfaceID,			// Selection InterfaceID this action cares about or kInvalidInterfaceID.
+		kSDKDefInvisibleInKBSCEditorFlag, // kSDKDefVisibleInKBSCEditorFlag or kSDKDefInvisibleInKBSCEditorFlag.
+				
+		kTblAttActionComponentBoss, 
+		kTblAttPopupAboutThisActionID, 
+		kSDKDefAboutThisPlugInMenuKey,	// Key to the name of this action
+		kOtherActionArea,
+		kNormalAction,
+		kDisableIfLowMem,	
+		kInvalidInterfaceID,
+		kSDKDefInvisibleInKBSCEditorFlag,
+
+	}
+};
+
+
+/*
+// LocaleIndex
+// The LocaleIndex should have indicies that point at your
+// localizations for each language system that you are 
+// localized for.
+*/
+/*
+// String LocaleIndex.
+*/
+resource LocaleIndex (kSDKDefStringsResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_enUS, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_jaJP, kSDKDefStringsResourceID + index_jaJP
+		
+		kWildFS, k_Wild, kSDKDefStringsResourceID + index_enUS
+	}
+};
+
+resource LocaleIndex (kSDKDefStringsNoTransResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_Wild, kSDKDefStringsNoTransResourceID + index_enUS
+	}
+};
+
+resource StringTable (kSDKDefStringsNoTransResourceID + index_enUS)
+{
+	k_enUS,									// Locale Id
+	kEuropeanMacToWinEncodingConverter,		// Character encoding converter
+	{
+		// No-Translate strings go here:		
+
+
+		kTblAttInternalPopupMenuNameKey,	kTblAttInternalPopupMenuNameKey,		// No need to translate, internal menu name.
+	}
+};
+
+
+
+/*
+// Panel LocaleIndex.
+*/
+resource LocaleIndex (kSDKDefPanelResourceID)
+{
+	kViewRsrcType,
+	{
+		kWildFS, k_Wild, 	kSDKDefPanelResourceID + index_enUS
+	}
+};
+
+
+/*
+// Type definition.
+*/
+type TblAttPanelWidget(kViewRsrcType) : PalettePanelWidget(ClassID = kTblAttPanelWidgetBoss) 
+{
+	CPanelMenuData;
+	CControlViewObservers;
+};
+
+/*
+// PanelList definition.
+*/
+resource PanelList (kSDKDefPanelResourceID)
+{
+	{
+		// 1st panel in the list
+		kSDKDefPanelResourceID,		// Resource ID for this panel (use SDK default rsrc ID)
+		kTblAttPluginID,			// ID of plug-in that owns this panel
+		kNotResizable,
+		kTblAttPanelWidgetActionID,	// Action ID to show/hide the panel
+		kTblAttPanelTitleKey,		// Shows up in the Window list.
+		"",							// Alternate menu path of the form "Main:Foo" if you want your palette menu item in a second place
+		0.0,						// Alternate Menu position Alternate Menu position for determining menu order
+		0,0,						// Rsrc ID, Plugin ID for a PNG icon resource to use for this palette
+		c_Panel
+	}	
+};
+
+/*
+// PanelView definition.
+// The view is not currently localised: therefore, it can reside here.
+// However, if you wish to localise it, it is recommended to locate it in one of
+// the localised framework resource files (i.e. TblAtt_enUS.fr etc.).
+*/
+resource TblAttPanelWidget(kSDKDefPanelResourceID + index_enUS)
+{
+	__FILE__, __LINE__,					// Localization macro		
+	kTblAttPanelWidgetID,			// WidgetID 
+	kPMRsrcID_None,						// RsrcID
+	kBindNone,							// Binding (0=none)
+	0, 0, 207, 160,						// Frame: left, top, right, bottom.
+	kTrue, kTrue,						// Visible, Enabled
+	kFalse,								// Erase background
+	kInterfacePaletteFill,				// Erase to color
+	kFalse,								// Draw dropshadow
+	kTblAttPanelTitleKey,			// Panel name	
+	{
+	//<FREDDYWIDGETDEFLISTUS>
+
+				GroupPanelWidget
+				(
+					// CControlView properties
+					kInvalidWidgetID, // widget ID
+					kPMRsrcID_None, // PMRsrc ID
+					kBindNone, // frame binding
+					Frame(5,10,205,59) //  left, top, right, bottom
+					kTrue, // visible
+					kTrue, // enabled
+					// GroupPanelAttributes properties
+					kTblAttCellAttributesPanelTitleWidgetID, // header widget ID
+					{
+
+						StaticTextWidget
+						(
+							// CControlView properties
+							kTblAttCellAttributesPanelTitleWidgetID, // widget ID
+							kSysStaticTextPMRsrcId, // PMRsrc ID
+							kBindNone, // frame binding
+							Frame(10,-10,60,5) //  left, top, right, bottom
+							kTrue, // visible
+							kTrue, // enabled
+							// StaticTextAttributes properties
+							kAlignLeft, // Alignment
+							kDontEllipsize, kTrue, // Ellipsize style, Convert ampersands
+							// CTextControlData properties
+							kTblAttCellAttributesPanelTitleKey, // control label
+							// AssociatedWidgetAttributes properties
+							kInvalidWidgetID, // associated widget ID
+						),
+						NudgeControlWidget
+						(
+							// CControlView properties
+							kTblAttCellLeftNudgeWidgetID, // widget ID
+							kPMRsrcID_None, // PMRsrc ID
+							kBindNone, // frame binding
+							Frame(30,5,45,22) //  left, top, right, bottom
+							kTrue, // visible
+							kTrue, // enabled
+						),
+						StaticTextWidget
+						(
+							// CControlView properties
+							kInvalidWidgetID, // widget ID
+							kSysStaticTextPMRsrcId, // PMRsrc ID
+							kBindNone, // frame binding
+							Frame(5,5,30,22) //  left, top, right, bottom
+							kTrue, // visible
+							kTrue, // enabled
+							// StaticTextAttributes properties
+							kAlignRight, // Alignment
+							kDontEllipsize, kTrue, // Ellipsize style, Convert ampersands
+							// CTextControlData properties
+							kTblAttCellLeftKey, // control label
+							// AssociatedWidgetAttributes properties
+							kInvalidWidgetID, // associated widget ID
+						),
+						NudgeControlWidget
+						(
+							// CControlView properties
+							kTblAttCellRightNudgeWidgetID, // widget ID
+							kPMRsrcID_None, // PMRsrc ID
+							kBindNone, // frame binding
+							Frame(30,27,45,44) //  left, top, right, bottom
+							kTrue, // visible
+							kTrue, // enabled
+						),
+						StaticTextWidget
+						(
+							// CControlView properties
+							kInvalidWidgetID, // widget ID
+							kSysStaticTextPMRsrcId, // PMRsrc ID
+							kBindNone, // frame binding
+							Frame(5,27,30,44) //  left, top, right, bottom
+							kTrue, // visible
+							kTrue, // enabled
+							// StaticTextAttributes properties
+							kAlignRight, // Alignment
+							kDontEllipsize, kTrue, // Ellipsize style, Convert ampersands
+							// CTextControlData properties
+							kTblAttCellRightKey, // control label
+							// AssociatedWidgetAttributes properties
+							kInvalidWidgetID, // associated widget ID
+						),
+						LineWtMeasureComboBoxWidget
+						(
+							// CControlView properties
+							kTblAttCellTopComboBoxWidgetID, // widget ID
+							kSysEditBoxPMRsrcId, // PMRsrc ID
+							kBindNone, // frame binding
+							Frame(145,5,195,22) //  left, top, right, bottom
+							kTrue, // visible
+							kTrue, // enabled
+							// CEditBoxAttributes
+							kTblAttCellTopNudgeWidgetID, // nudgeWidgetId (0 if no nudge
+							1.0, // small nudge amount
+							5.0, // large nudge amount
+							0, // max num chars
+							kFalse, // read only flag
+							kFalse, // should notify on each key stroke
+							// TextDataValidation properties
+							kTrue, // range checking enabled
+							kFalse, // blank entry allowed
+							30.0, // upper limit
+							0.0, // lower limit
+							// CTextControlData properties
+							"",												// initial text
+							{{
+							}}
+						),
+						NudgeControlWidget
+						(
+							// CControlView properties
+							kTblAttCellTopNudgeWidgetID, // widget ID
+							kPMRsrcID_None, // PMRsrc ID
+							kBindNone, // frame binding
+							Frame(130,5,145,22) //  left, top, right, bottom
+							kTrue, // visible
+							kTrue, // enabled
+						),
+						LineWtMeasureComboBoxWidget
+						(
+							// CControlView properties
+							kTblAttCellLeftComboBoxWidgetID, // widget ID
+							kSysEditBoxPMRsrcId, // PMRsrc ID
+							kBindNone, // frame binding
+							Frame(45,5,95,22) //  left, top, right, bottom
+							kTrue, // visible
+							kTrue, // enabled
+							// CEditBoxAttributes
+							kTblAttCellLeftNudgeWidgetID, // nudgeWidgetId (0 if no nudge
+							1.0, // small nudge amount
+							5.0, // large nudge amount
+							0, // max num chars
+							kFalse, // read only flag
+							kFalse, // should notify on each key stroke
+							// TextDataValidation properties
+							kTrue, // range checking enabled
+							kFalse, // blank entry allowed
+							30.0, // upper limit
+							0.0, // lower limit
+							// CTextControlData properties
+							"",												// initial text
+							{{
+							}}
+						),
+						StaticTextWidget
+						(
+							// CControlView properties
+							kInvalidWidgetID, // widget ID
+							kSysStaticTextPMRsrcId, // PMRsrc ID
+							kBindNone, // frame binding
+							Frame(105,5,130,22) //  left, top, right, bottom
+							kTrue, // visible
+							kTrue, // enabled
+							// StaticTextAttributes properties
+							kAlignRight, // Alignment
+							kDontEllipsize, kTrue, // Ellipsize style, Convert ampersands
+							// CTextControlData properties
+							kTblAttCellTopKey, // control label
+							// AssociatedWidgetAttributes properties
+							kInvalidWidgetID, // associated widget ID
+						),
+						LineWtMeasureComboBoxWidget
+						(
+							// CControlView properties
+							kTblAttCellRightComboBoxWidgetID, // widget ID
+							kSysEditBoxPMRsrcId, // PMRsrc ID
+							kBindNone, // frame binding
+							Frame(45,27,95,44) //  left, top, right, bottom
+							kTrue, // visible
+							kTrue, // enabled
+							// CEditBoxAttributes
+							kTblAttCellRightNudgeWidgetID, // nudgeWidgetId (0 if no nudge
+							1.0, // small nudge amount
+							5.0, // large nudge amount
+							0, // max num chars
+							kFalse, // read only flag
+							kFalse, // should notify on each key stroke
+							// TextDataValidation properties
+							kTrue, // range checking enabled
+							kFalse, // blank entry allowed
+							30.0, // upper limit
+							0.0, // lower limit
+							// CTextControlData properties
+							"",												// initial text
+							{{
+							}}
+						),
+						StaticTextWidget
+						(
+							// CControlView properties
+							kInvalidWidgetID, // widget ID
+							kSysStaticTextPMRsrcId, // PMRsrc ID
+							kBindNone, // frame binding
+							Frame(105,27,130,44) //  left, top, right, bottom
+							kTrue, // visible
+							kTrue, // enabled
+							// StaticTextAttributes properties
+							kAlignRight, // Alignment
+							kDontEllipsize, kTrue, // Ellipsize style, Convert ampersands
+							// CTextControlData properties
+							kTblAttCellBottomKey, // control label
+							// AssociatedWidgetAttributes properties
+							kInvalidWidgetID, // associated widget ID
+						),
+						LineWtMeasureComboBoxWidget
+						(
+							// CControlView properties
+							kTblAttCellBottomComboBoxWidgetID, // widget ID
+							kSysEditBoxPMRsrcId, // PMRsrc ID
+							kBindNone, // frame binding
+							Frame(145,27,195,44) //  left, top, right, bottom
+							kTrue, // visible
+							kTrue, // enabled
+							// CEditBoxAttributes
+							kTblAttCellBottomNudgeWidgetID, // nudgeWidgetId (0 if no nudge
+							1.0, // small nudge amount
+							5.0, // large nudge amount
+							0, // max num chars
+							kFalse, // read only flag
+							kFalse, // should notify on each key stroke
+							// TextDataValidation properties
+							kTrue, // range checking enabled
+							kFalse, // blank entry allowed
+							30.0, // upper limit
+							0.0, // lower limit
+							// CTextControlData properties
+							"",												// initial text
+							{{
+							}}
+						),
+						NudgeControlWidget
+						(
+							// CControlView properties
+							kTblAttCellBottomNudgeWidgetID, // widget ID
+							kPMRsrcID_None, // PMRsrc ID
+							kBindNone, // frame binding
+							Frame(130,27,145,44) //  left, top, right, bottom
+							kTrue, // visible
+							kTrue, // enabled
+						),
+					}
+
+				),
+
+				GroupPanelWidget
+				(
+					// CControlView properties
+					kInvalidWidgetID, // widget ID
+					kPMRsrcID_None, // PMRsrc ID
+					kBindNone, // frame binding
+					Frame(5,69,100,96) //  left, top, right, bottom
+					kTrue, // visible
+					kTrue, // enabled
+					// GroupPanelAttributes properties
+					kTblAttRowAttributesPanelTitleWidgetID, // header widget ID
+					{
+
+						StaticTextWidget
+						(
+							// CControlView properties
+							kTblAttRowAttributesPanelTitleWidgetID, // widget ID
+							kSysStaticTextPMRsrcId, // PMRsrc ID
+							kBindNone, // frame binding
+							Frame(10,-10,70,5) //  left, top, right, bottom
+							kTrue, // visible
+							kTrue, // enabled
+							// StaticTextAttributes properties
+							kAlignLeft, // Alignment
+							kDontEllipsize, kTrue, // Ellipsize style, Convert ampersands
+							// CTextControlData properties
+							kTblAttRowAttributesPanelTitleKey, // control label
+							// AssociatedWidgetAttributes properties
+							kInvalidWidgetID, // associated widget ID
+						),
+
+						StaticTextWidget
+						(
+							// CControlView properties
+							kInvalidWidgetID, // widget ID
+							kSysStaticTextPMRsrcId, // PMRsrc ID
+							kBindNone, // frame binding
+							Frame(5,5,30,22) //  left, top, right, bottom
+							kTrue, // visible
+							kTrue, // enabled
+							// StaticTextAttributes properties
+							kAlignRight, // Alignment
+							kDontEllipsize, kTrue, // Ellipsize style, Convert ampersands
+							// CTextControlData properties
+							kTblAttRowKey, // control label
+							// AssociatedWidgetAttributes properties
+							kInvalidWidgetID, // associated widget ID
+						),
+						NudgeControlWidget
+						(
+							// CControlView properties
+							kTblAttRowNudgeWidgetID, // widget ID
+							kPMRsrcID_None, // PMRsrc ID
+							kBindNone, // frame binding
+							Frame(30,5,45,22) //  left, top, right, bottom
+							kTrue, // visible
+							kTrue, // enabled
+						),
+						LineWtMeasureComboBoxWidget
+						(
+							// CControlView properties
+							kTblAttRowComboBoxWidgetID, // widget ID
+							kSysEditBoxPMRsrcId, // PMRsrc ID
+							kBindNone, // frame binding
+							Frame(45,5,90,22) //  left, top, right, bottom
+							kTrue, // visible
+							kTrue, // enabled
+							// CEditBoxAttributes
+							kTblAttRowNudgeWidgetID, // nudgeWidgetId (0 if no nudge
+							1.0, // small nudge amount
+							5.0, // large nudge amount
+							0, // max num chars
+							kFalse, // read only flag
+							kFalse, // should notify on each key stroke
+							// TextDataValidation properties
+							kTrue, // range checking enabled
+							kFalse, // blank entry allowed
+							30.0, // upper limit
+							0.0, // lower limit
+							// CTextControlData properties
+							"",												// initial text
+							{{
+							}}
+						),
+					}
+
+				),
+
+				GroupPanelWidget
+				(
+					// CControlView properties
+					kInvalidWidgetID, // widget ID
+					kPMRsrcID_None, // PMRsrc ID
+					kBindNone, // frame binding
+					Frame(110,69,205,96) //  left, top, right, bottom
+					kTrue, // visible
+					kTrue, // enabled
+					// GroupPanelAttributes properties
+					kTblAttColAttributesPanelTitleWidgetID, // header widget ID
+					{
+
+						StaticTextWidget
+						(
+							// CControlView properties
+							kTblAttColAttributesPanelTitleWidgetID, // widget ID
+							kSysStaticTextPMRsrcId, // PMRsrc ID
+							kBindNone, // frame binding
+							Frame(10,-10,70,5) //  left, top, right, bottom
+							kTrue, // visible
+							kTrue, // enabled
+							// StaticTextAttributes properties
+							kAlignLeft, // Alignment
+							kDontEllipsize, kTrue, // Ellipsize style, Convert ampersands
+							// CTextControlData properties
+							kTblAttColAttributesPanelTitleKey, // control label
+							// AssociatedWidgetAttributes properties
+							kInvalidWidgetID, // associated widget ID
+						),
+
+
+						StaticTextWidget
+						(
+							// CControlView properties
+							kInvalidWidgetID, // widget ID
+							kSysStaticTextPMRsrcId, // PMRsrc ID
+							kBindNone, // frame binding
+							Frame(5,5,30,22) //  left, top, right, bottom
+							kTrue, // visible
+							kTrue, // enabled
+							// StaticTextAttributes properties
+							kAlignRight, // Alignment
+							kDontEllipsize, kTrue, // Ellipsize style, Convert ampersands
+							// CTextControlData properties
+							kTblAttColKey, // control label
+							// AssociatedWidgetAttributes properties
+							kInvalidWidgetID, // associated widget ID
+						),
+						NudgeControlWidget
+						(
+							// CControlView properties
+							kTblAttColNudgeWidgetID, // widget ID
+							kPMRsrcID_None, // PMRsrc ID
+							kBindNone, // frame binding
+							Frame(30,5,45,22) //  left, top, right, bottom
+							kTrue, // visible
+							kTrue, // enabled
+							),
+						LineWtMeasureComboBoxWidget
+						(
+							// CControlView properties
+							kTblAttColComboBoxWidgetID, // widget ID
+							kSysEditBoxPMRsrcId, // PMRsrc ID
+							kBindNone, // frame binding
+							Frame(45,5,90,22) //  left, top, right, bottom
+							kTrue, // visible
+							kTrue, // enabled
+							// CEditBoxAttributes
+							kTblAttColNudgeWidgetID, // nudgeWidgetId (0 if no nudge
+							1.0, // small nudge amount
+							5.0, // large nudge amount
+							0, // max num chars
+							kFalse, // read only flag
+							kFalse, // should notify on each key stroke
+							// TextDataValidation properties
+							kTrue, // range checking enabled
+							kFalse, // blank entry allowed
+							30.0, // upper limit
+							0.0, // lower limit
+							// CTextControlData properties
+							"",												// initial text
+							{{
+							}}
+						),
+					}
+
+				),
+
+				GroupPanelWidget
+				(
+					// CControlView properties
+					kInvalidWidgetID, // widget ID
+					kPMRsrcID_None, // PMRsrc ID
+					kBindNone, // frame binding
+					Frame(5,106,205,155) //  left, top, right, bottom
+					kTrue, // visible
+					kTrue, // enabled
+					// GroupPanelAttributes properties
+					kTblAttTableAttributesPanelTitleWidgetID, // header widget ID
+					{
+						StaticTextWidget
+						(
+							// CControlView properties
+							kTblAttTableAttributesPanelTitleWidgetID, // widget ID
+							kSysStaticTextPMRsrcId, // PMRsrc ID
+							kBindNone, // frame binding
+							Frame(10,-10,70,5) //  left, top, right, bottom
+							kTrue, // visible
+							kTrue, // enabled
+							// StaticTextAttributes properties
+							kAlignLeft, // Alignment
+							kDontEllipsize, kTrue, // Ellipsize style, Convert ampersands
+							// CTextControlData properties
+							kTblAttTableAttributesPanelTitleKey, // control label
+							// AssociatedWidgetAttributes properties
+							kInvalidWidgetID, // associated widget ID
+						),
+
+					NudgeControlWidget
+						(
+							// CControlView properties
+							kTblAttTableLeftNudgeWidgetID, // widget ID
+							kPMRsrcID_None, // PMRsrc ID
+							kBindNone, // frame binding
+							Frame(30,5,45,22) //  left, top, right, bottom
+							kTrue, // visible
+							kTrue, // enabled
+						),
+						StaticTextWidget
+						(
+							// CControlView properties
+							kInvalidWidgetID, // widget ID
+							kSysStaticTextPMRsrcId, // PMRsrc ID
+							kBindNone, // frame binding
+							Frame(5,5,30,22) //  left, top, right, bottom
+							kTrue, // visible
+							kTrue, // enabled
+							// StaticTextAttributes properties
+							kAlignRight, // Alignment
+							kDontEllipsize, kTrue, // Ellipsize style, Convert ampersands
+							// CTextControlData properties
+							kTblAttTableLeftKey, // control label
+							// AssociatedWidgetAttributes properties
+							kInvalidWidgetID, // associated widget ID
+						),
+						NudgeControlWidget
+						(
+							// CControlView properties
+							kTblAttTableRightNudgeWidgetID, // widget ID
+							kPMRsrcID_None, // PMRsrc ID
+							kBindNone, // frame binding
+							Frame(30,27,45,44) //  left, top, right, bottom
+							kTrue, // visible
+							kTrue, // enabled
+						),
+						StaticTextWidget
+						(
+							// CControlView properties
+							kInvalidWidgetID, // widget ID
+							kSysStaticTextPMRsrcId, // PMRsrc ID
+							kBindNone, // frame binding
+							Frame(5,27,30,44) //  left, top, right, bottom
+							kTrue, // visible
+							kTrue, // enabled
+							// StaticTextAttributes properties
+							kAlignRight, // Alignment
+							kDontEllipsize, kTrue, // Ellipsize style, Convert ampersands
+							// CTextControlData properties
+							kTblAttTableRightKey, // control label
+							// AssociatedWidgetAttributes properties
+							kInvalidWidgetID, // associated widget ID
+						),
+						LineWtMeasureComboBoxWidget
+						(
+							// CControlView properties
+							kTblAttTableTopComboBoxWidgetID, // widget ID
+							kSysEditBoxPMRsrcId, // PMRsrc ID
+							kBindNone, // frame binding
+							Frame(145,5,195,22) //  left, top, right, bottom
+							kTrue, // visible
+							kTrue, // enabled
+							// CEditBoxAttributes
+							kTblAttTableTopNudgeWidgetID, // nudgeWidgetId (0 if no nudge
+							1.0, // small nudge amount
+							5.0, // large nudge amount
+							0, // max num chars
+							kFalse, // read only flag
+							kFalse, // should notify on each key stroke
+							// TextDataValidation properties
+							kTrue, // range checking enabled
+							kFalse, // blank entry allowed
+							30.0, // upper limit
+							0.0, // lower limit
+							// CTextControlData properties
+							"",												// initial text
+							{{
+							}}
+						),
+						NudgeControlWidget
+						(
+							// CControlView properties
+							kTblAttTableTopNudgeWidgetID, // widget ID
+							kPMRsrcID_None, // PMRsrc ID
+							kBindNone, // frame binding
+							Frame(130,5,145,22) //  left, top, right, bottom
+							kTrue, // visible
+							kTrue, // enabled
+						),
+						LineWtMeasureComboBoxWidget
+						(
+							// CControlView properties
+							kTblAttTableLeftComboBoxWidgetID, // widget ID
+							kSysEditBoxPMRsrcId, // PMRsrc ID
+							kBindNone, // frame binding
+							Frame(45,5,95,22) //  left, top, right, bottom
+							kTrue, // visible
+							kTrue, // enabled
+							// CEditBoxAttributes
+							kTblAttTableLeftNudgeWidgetID, // nudgeWidgetId (0 if no nudge
+							1.0, // small nudge amount
+							5.0, // large nudge amount
+							0, // max num chars
+							kFalse, // read only flag
+							kFalse, // should notify on each key stroke
+							// TextDataValidation properties
+							kTrue, // range checking enabled
+							kFalse, // blank entry allowed
+							30.0, // upper limit
+							0.0, // lower limit
+							// CTextControlData properties
+							"",                                             // initial text
+							{{
+							}}
+						),
+						StaticTextWidget
+						(
+							// CControlView properties
+							kInvalidWidgetID, // widget ID
+							kSysStaticTextPMRsrcId, // PMRsrc ID
+							kBindNone, // frame binding
+							Frame(105,5,130,22) //  left, top, right, bottom
+							kTrue, // visible
+							kTrue, // enabled
+							// StaticTextAttributes properties
+							kAlignRight, // Alignment
+							kDontEllipsize, kTrue, // Ellipsize style, Convert ampersands
+							// CTextControlData properties
+							kTblAttTableTopKey, // control label
+							// AssociatedWidgetAttributes properties
+							kInvalidWidgetID, // associated widget ID
+						),
+						LineWtMeasureComboBoxWidget
+						(
+							// CControlView properties
+							kTblAttTableRightComboBoxWidgetID, // widget ID
+							kSysEditBoxPMRsrcId, // PMRsrc ID
+							kBindNone, // frame binding
+							Frame(45,27,95,44) //  left, top, right, bottom
+							kTrue, // visible
+							kTrue, // enabled
+							// CEditBoxAttributes
+							kTblAttTableRightNudgeWidgetID, // nudgeWidgetId (0 if no nudge
+							1.0, // small nudge amount
+							5.0, // large nudge amount
+							0, // max num chars
+							kFalse, // read only flag
+							kFalse, // should notify on each key stroke
+							// TextDataValidation properties
+							kTrue, // range checking enabled
+							kFalse, // blank entry allowed
+							30.0, // upper limit
+							0.0, // lower limit
+							// CTextControlData properties
+							"",												// initial text
+							{{
+							}}
+						),
+						StaticTextWidget
+						(
+							// CControlView properties
+							kInvalidWidgetID, // widget ID
+							kSysStaticTextPMRsrcId, // PMRsrc ID
+							kBindNone, // frame binding
+							Frame(105,27,130,44) //  left, top, right, bottom
+							kTrue, // visible
+							kTrue, // enabled
+							// StaticTextAttributes properties
+							kAlignRight, // Alignment
+							kDontEllipsize, kTrue, // Ellipsize style, Convert ampersands
+							// CTextControlData properties
+							kTblAttTableBottomKey, // control label
+							// AssociatedWidgetAttributes properties
+							kInvalidWidgetID, // associated widget ID
+						),
+						LineWtMeasureComboBoxWidget
+						(
+							// CControlView properties
+							kTblAttTableBottomComboBoxWidgetID, // widget ID
+							kSysEditBoxPMRsrcId, // PMRsrc ID
+							kBindNone, // frame binding
+							Frame(145,27,195,44) //  left, top, right, bottom
+							kTrue, // visible
+							kTrue, // enabled
+							// CEditBoxAttributes
+							kTblAttTableBottomNudgeWidgetID, // nudgeWidgetId (0 if no nudge
+							1.0, // small nudge amount
+							5.0, // large nudge amount
+							0, // max num chars
+							kFalse, // read only flag
+							kFalse, // should notify on each key stroke
+							// TextDataValidation properties
+							kTrue, // range checking enabled
+							kFalse, // blank entry allowed
+							30.0, // upper limit
+							0.0, // lower limit
+							// CTextControlData properties
+							"",												// initial text
+							{{
+							}}
+						),
+						NudgeControlWidget
+						(
+							// CControlView properties
+							kTblAttTableBottomNudgeWidgetID, // widget ID
+							kPMRsrcID_None, // PMRsrc ID
+							kBindNone, // frame binding
+							Frame(130,27,145,44) //  left, top, right, bottom
+							kTrue, // visible
+							kTrue, // enabled
+						),
+
+					}
+
+				),
+
+			
+
+			
+
+
+			
+
+		//</FREDDYWIDGETDEFLISTUS>
+		
+	}
+
+
+	kTblAttInternalPopupMenuNameKey		// Popup menu name (internal)
+
+	{										// CControlViewObservers - the panel's observers.
+		{
+			IID_ITBLATTSELECTIONOBSERVER, 
+			IID_ITBLATTWIDGETOBSERVER,
+		}
+	}
+};
+
+
+
+#endif // __ODFRC__
+
+#include "TblAtt_enUS.fr"
+#include "TblAtt_jaJP.fr"
+//  Generated by Dolly build 17: template "IfPanelMenu".
+// End, TblAtt.fr.
+
+
+
+
+

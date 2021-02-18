@@ -1,0 +1,115 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/layerpanel/LayerPanelStrings.fr $
+//  
+//  Owner: Michael Burbidge
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "LayerPanelDefs.h"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// RESOURCE Locale index
+//========================================================================================
+
+resource LocaleIndex (kLayerPanelStringsRsrcID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_Wild, kLayerPanelStringsRsrcID + index_enUS
+		kWildFS, k_enGB, kLayerPanelStringsRsrcID + index_enGB
+		kWildFS, k_deDE, kLayerPanelStringsRsrcID + index_deDE
+		kWildFS, k_frFR, kLayerPanelStringsRsrcID + index_frFR
+		kWildFS, k_jaJP, kLayerPanelStringsRsrcID + index_jaJP
+		kWildFS, k_svSE, kLayerPanelStringsRsrcID + index_svSE
+		kWildFS, k_esES, kLayerPanelStringsRsrcID + index_esES
+		kWildFS, k_itIT, kLayerPanelStringsRsrcID + index_itIT
+		kWildFS, k_nlNL, kLayerPanelStringsRsrcID + index_nlNL
+		kWildFS, k_nbNO, kLayerPanelStringsRsrcID + index_nbNO
+		kWildFS, k_daDK, kLayerPanelStringsRsrcID + index_daDK
+		kWildFS, k_fiFI, kLayerPanelStringsRsrcID + index_fiFI
+		kWildFS, k_ptBR, kLayerPanelStringsRsrcID + index_ptBR
+		kWildFS, k_koKR, kLayerPanelStringsRsrcID + index_koKR    
+		kWildFS, k_zhCN, kLayerPanelStringsRsrcID + index_zhCN    
+		kWildFS, k_zhTW, kLayerPanelStringsRsrcID + index_zhTW    
+		kWildFS, k_csCZ, kLayerPanelStringsRsrcID + index_csCZ    
+		kWildFS, k_huHU, kLayerPanelStringsRsrcID + index_huHU    
+		kWildFS, k_plPL, kLayerPanelStringsRsrcID + index_plPL    
+//		kWildFS, k_roRO, kLayerPanelStringsRsrcID + index_roRO    
+		kWildFS, k_ruRU, kLayerPanelStringsRsrcID + index_ruRU    
+		kWildFS, k_trTR, kLayerPanelStringsRsrcID + index_trTR    
+		kWildFS, k_ukUA, kLayerPanelStringsRsrcID + index_ukUA
+		kWildFS, k_elGR, kLayerPanelStringsRsrcID + index_elGR
+		kWildFS, k_arAE, kLayerPanelStringsRsrcID + index_arAE
+		kWildFS, k_heIL, kLayerPanelStringsRsrcID + index_heIL
+	}
+}
+
+#endif // __ODFRC__
+
+#include "LayerPanelStrings_enUS.fr"
+#include "LayerPanelStrings_enGB.fr"
+#include "LayerPanelStrings_frFR.fr"
+#include "LayerPanelStrings_deDE.fr"
+#include "LayerPanelStrings_jaJP.fr"
+#include "LayerPanelStrings_svSE.fr"
+#include "LayerPanelStrings_esES.fr"
+#include "LayerPanelStrings_itIT.fr"
+#include "LayerPanelStrings_nlNL.fr"
+#include "LayerPanelStrings_nbNO.fr"
+#include "LayerPanelStrings_daDK.fr"
+#include "LayerPanelStrings_fiFI.fr"
+#include "LayerPanelStrings_ptBR.fr"
+#include "LayerPanelStrings_koKR.fr"
+#include "LayerPanelStrings_zhCN.fr"
+#include "LayerPanelStrings_zhTW.fr"
+
+#include "LayerPanelStrings_csCZ.fr"
+#include "LayerPanelStrings_huHU.fr"
+#include "LayerPanelStrings_plPL.fr"
+//#include "LayerPanelStrings_roRO.fr"
+#include "LayerPanelStrings_ruRU.fr"
+#include "LayerPanelStrings_trTR.fr"
+#include "LayerPanelStrings_ukUA.fr"
+#include "LayerPanelStrings_elGR.fr"
+#include "LayerPanelStrings_arAE.fr"
+#include "LayerPanelStrings_heIL.fr"
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+resource LocaleIndex (kLayerPanelStringsNoTransRsrcID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_Wild, 	kLayerPanelStringsNoTransRsrcID + index_enUS
+	}
+}
+
+resource StringTable (kLayerPanelStringsNoTransRsrcID + index_enUS)
+{
+	k_enUS,
+	kEuropeanWinToMacEncodingConverter,
+	{
+		// No-Translate strings go here
+	}
+}
+#endif // __ODFRC__

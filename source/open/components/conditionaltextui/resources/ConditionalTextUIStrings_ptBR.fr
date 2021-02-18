@@ -1,0 +1,126 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kConditionalTextUIStringsRsrcID + index_ptBR)
+{
+    k_ptBR,                                 // Locale Id
+    kResourceUTF8Encoded,     // Character encoding converter
+    {
+		"#CondTextUI_WinMenu",	"Text&o condicional",	// panel menu item
+		"#CondTextUI_PanelName","Texto condicional",		// panel name
+		"#CondTextUI_PanelMenu","Menu do painel 'Texto condicional'",
+		"#CondTextUI_NewConditionTagMenu", "Nova condição...",
+		"#CondTextUI_DeleteConditionTagMenu", "Excluir condição...",
+		"#CondTextUI_DeleteConditionTagsMenu", "Excluir condições...",
+		"#CondTextUI_EditConditionTagMenu", "Opções de condição...",
+		"#CondTextUI_LoadConditionTagsMenu", "Carregar condições...",
+		"#CondTextUI_LoadConditionTagsAndSetsMenu", "Carregar condições e conjuntos...",
+		"#CondTextUI_ShowIndicatorsCB", "Mostrar indicadores em texto condicional",
+		"#CondTextUI_ShowIndicatorsMenu", "Mostrar indicadores em texto condicional",
+		"#CondTextUI_ShowAndPrintIndicatorsMenu", "Mostrar e imprimir indicadores em texto condicional",
+		"#CondTextUI_HideIndicatorsMenu", "Ocultar indicadores em texto condicional",
+		"#CondTextUI_ShowIndicatorsDD", "Indicadores:",
+		"#CondTextUI_ShowIndicators", "Mostrar",
+		"#CondTextUI_ShowAndPrintIndicators", "Mostrar e imprimir",
+		"#CondTextUI_HideIndicators", "Ocultar",
+		"#CondTextUI_RtMenuConditionTagTVNode",    "Menu contextual do nó da condição na exibição em árvore",
+		"#CondTextUI_RtMenuUnapplyTag",		"Desaplicar \"^1\"",
+		"#CondTextUI_RtMenuDeleteTag",		"Excluir \"^1\"",
+		"#CondTextUI_RtMenuEditTag",		"Editar \"^1\"...",
+		"Show Options", "M&ostrar opções",
+		"Hide Options", "&Ocultar opções",
+		"#CondTextUI_SelectUnusedMenu", "Selecionar todos os não usados",
+	
+		"#ConditionTagList_NameColumnLabel", "Nome",
+		"#ConditionTag_OptionsDialog", "Opções de condição",
+		"#ConditionTag_OptionsDialogNew", "Nova condição",
+		"#ConditionTagOptions_Name:", "&Nome:",
+		"#ConditionTagOptions_Method:", "&Método:",
+		"#ConditionTagOptions_Appearance:", "&Aparência:",
+		"#ConditionTagOptions_Color:", "&Cor:",
+		"#ConditionTagOptions_Indicator", "Indicador",
+		"#ConditionTagOptions_MethodUnderline", "Sublinhado",
+		"#ConditionTagOptions_MethodHighlight", "Destaque",
+		"#ConditionTagOptions_WavyUnderline", "Ondulado",		
+		"#ConditionTagOptions_SolidUnderline", "Sólido(a)",		
+		"#ConditionTagOptions_DashedUnderline", "Tracejado(a)",		
+		"#ConditionTag_EmptyNameMsg", "Forneça um nome de condição.",
+		"#ConditionTag_NameInUseMsg", "Este nome de condição já está sendo usado. Escolha outro.",
+		
+		"#ConditionSetShowAll", "Mostrar tudo",
+		"#ConditionSetHideAll", "Ocultar tudo",
+		"#ConditionSetNone", "[Nenhum]",
+		"#ConditionSetBlank", " ",
+		"#ConditionSetLabel", "Conjunto:",
+		"#ConditionSetNewSet", "Criar novo conjunto...",
+		"#ConditionSetDeleteSet", "Excluir \"^1\"...",
+		"#ConditionSetRenameSet", "Renomear \"^1\"...",
+		"#ConditionSetRedefineSet", "Redefinir \"^1\"...",
+		"#ConditionSetUpdateAllSets", "Atualizar todos os conjuntos",
+		"#ConditionSetUpdateAllSetsUndoName", "Atualizar todos os conjuntos de condições",
+		"#ConditionSetNameDialog", "Nome do conjunto de condições",
+		"#ConditionSetNameStatic", "&Nome:",
+		"#InvalidSetName", "Nome inválido do conjunto de condições",
+		"#DuplicateSetName", "O nome já existe",
+		"#NoActiveSetString", "Não há conjunto ativo",
+		
+		"#ConditionalTextTip", "Texto oculto encontrado com ^1:  ",
+		"#ConditionalTextTipOneTag", "esta condição",
+		"#ConditionalTextTipManyTags", "estas condições",
+		
+		"#ConditionalTextEyeballHideWidgetTip", "Clique para ocultar todo texto com esta condição aplicada",
+		"#ConditionalTextEyeballShowWidgetTip", "Clique para mostrar todo texto com esta condição aplicada",
+		"#ConditionalTextEyeballUnconditionalWidgetTip", "O texto incondicional é sempre visível",
+		"#ConditionalTextAppliedAllTip",	"Condição aplicada a todo o texto selecionado. Clique para desaplicar.",
+		"#ConditionalTextAppliedSomeTip",	"Condição aplicada a uma parte do texto selecionado. Clique para aplicar a todo o texto selecionado.",
+		"#ConditionalTextAppliedNoneTip",	"Clique para aplicar condição",
+		"#ConditionalTextAppliedAllTipUncondition",	"O texto selecionado é incondicional",
+		"#ConditionalTextAppliedSomeTipUncondition",	"Parte do texto selecionado é incondicional. Clique para tornar tudo incondicional.",
+		"#ConditionalTextAppliedNoneTipUncondition",	"Clique para tornar o texto incondicional",
+		"#ConditionalTextApplyNoSelectionTip", "Clique para aplicar condição ao texto selecionado",
+		"#ConditionalTextNewTagTip",		"Nova condição",
+		"#ConditionalTextDeleteTagTip",		"Excluir condição",
+		"#ConditionalTextIndicatorTip",		"O método do indicador é ^1",
+		"#ConditionalTextNewSetTip",		"Novo conjunto",
+		"#SetOverrideTip_NewConditionsAndConditionVisibility",	"Substituições: visibilidade de condição (selecione o conjunto novamente para apagar ou escolha Redefinir) + novas condições (selecione Atualizar todos os conjuntos para apagar ou escolha Redefinir)",
+		"#SetOverrideTip_NewConditions",	"Substituições: novas condições (selecione Atualizar todos os conjuntos para apagar ou escolha Redefinir)",
+		"#SetOverrideTip_ConditionVisibility",	"Substituições: visibilidade de condição (selecione o conjunto novamente para apagar ou escolha Redefinir)",
+		
+		"#ConditionTag_DeleteConditionDialog", "Excluir condição", 
+		"#ConditionTag_DeleteConditionsDialog", "Excluir condições", 
+		"#ConditionTag_DeleteConditionAndReplace:", "Excluir condição e substituir por: ", 
+		"#ConditionTag_DeleteConditionsAndReplace:", "Excluir condições e substituir por: ", 
+		"#ConditionTag_DeleteInformationAlert", "Para excluir uma condição, arraste-a para o ícone da lixeira.",
+		"#ConditionTag_DeleteNoReplaceChoice", "[Nenhum(a)]",
+		
+		"#QuickApplyConditions", "Condição",
+		"#Conditions_Filter_Key", "CT", // should be upper case if there is an upper case character, this is the prefix key for quick apply for text conditions.
+		"#QuickApplyConditionSets", "Conjunto de condições",
+		"#QuickApplyConditionSets_Filter_Key", "CS",  // should be upper case if there is an upper case character, this is the prefix key for quick apply for text condition sets.
+		"#QuickApplyConditons_Menu_Key_String", "Incluir condições (ct:)",
+		"#QuickApplyConditonSets_Menu_Key_String", "Incluir conjuntos de condições (cs:)",
+		
+		"#SingularConditionStatusBodyString", "^1 condição aplicada ^2",
+		"#PluralConditionStatusBodyString", "^1 condições aplicadas ^2",
+		"#MixedConditionString", " [mista]",
+		"#NoConditionsString", "não há condições aplicadas",
+    }
+};
+
+#endif // __ODFRC__

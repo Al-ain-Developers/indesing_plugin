@@ -1,0 +1,357 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "StringTable.fh"
+
+#include "FormFieldUIDefs.h"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+//twright 12/11/2000 Removed left-over strings from group strings.
+//not sure if button/form is going to need lock warning...
+
+resource StringTable (kFormFieldUIStringsRsrcID + index_zhCN)
+{
+	k_zhCN,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{
+		// ----- Menu strings
+		"ButtonsActionsPopup",						"按钮动作菜单",
+		
+		"$$$/Menu/AppearancePanelPopup",	"按钮面板菜单",	
+		"$$$/Menu/Interactive",				"交互(&V)", 
+		"$$$/Menu/FormField",				"表单(&F)", 
+		"$$$/Menu/About",					"关于表单增效工具(&A)", 
+		"$$$/Menu/CreateButton",			"转换为按钮(&C)", 
+		"$$$/Menu/CreateCheckBox",			"转换为复选框(&C)",
+		"$$$/Menu/CreateComboBox",			"转换为组合框(&C)", 
+		"$$$/Menu/CreateListBox",			"转换为列表框(&C)", 
+		"$$$/Menu/CreateRadioButton",		"转换为单选按钮(&C)", 
+		"$$$/Menu/CreateSignatureField",	"转换为签名域(&C)", 
+		"$$$/Menu/CreateTextField",			"转换为文本域(&C)", 
+		"$$$/Menu/DestroyButton",			"转换为对象(&C)", 
+		"$$$/Menu/FormFieldSettings",		"按钮选项(&B)...", 
+		"$$$/Menu/NewState",				"新建状态", 
+		"$$$/Menu/DeleteState",				"删除状态", 
+		"$$$/Menu/DeleteStates",			"删除状态",
+		"$$$/Menu/PlaceIntoState",			"将内容置入状态...",
+		"$$$/Menu/DeleteStateContent",		"从状态删除内容",
+		"$$$/Menu/AppearancePanelPrefs",	"面板选项...",
+		"$$$/Menu/StateOptions",			"状态选项...",
+		"$$$/Menu/SetTabOrder",				"设置跳位顺序(&T)...",
+		"$$$/Menu/SetCalculationOrder",		"设置计算顺序...",
+		"$$$/Menu/States",					"按钮和表单(&U)",
+		
+		"$$$/Menu/Go To Page",				"转至页面",
+		"$$$/Menu/Go To First Page",		"转到首页",
+		"$$$/Menu/Go To Anchor",			"转至目标",
+		"$$$/Menu/Go To Last Page",			"转到末页",
+		"$$$/Menu/Go To Next Page",			"转到下一页",
+		"$$$/Menu/Go To Next View",			"转到下一视图",
+		"$$$/Menu/Go To Previous Page",		"转到上一页",
+		"$$$/Menu/Go To Previous View",		"转到上一视图",
+		"$$$/Menu/Go To URL",				"转到 URL",
+		"$$$/Menu/Movie",					"视频",
+		"$$$/Menu/Open File",				"打开文件",
+		"$$$/Menu/Show/Hide Buttons",		"显示/隐藏按钮和表单",
+		"$$$/Menu/Sound",					"声音",
+		"$$$/Menu/View Zoom",				"视图缩放",
+		"$$$/Menu/Animation",				"动画",
+		"$$$/Menu/SwitchToMSOState",		"转至状态",
+		"$$$/Menu/SwitchToNextMSOState",	"转至下一状态",
+		"$$$/Menu/SwitchToPrevMSOState",	"转至上一状态",
+		"$$$/Menu/EPUBOnly",					"仅限 EPUB",
+		"$$$/Menu/PDFOnly",					"仅限 PDF",
+		"$$$/Menu/Print Form",				"打印表单",
+		"$$$/Menu/Clear Form",				"清除表单",
+		"$$$/Menu/Submit Form",				"提交表单",
+		
+		"$$$/Menu/FormFieldSettings/ButtonLibrary",			"样本按钮和表单",	// Name of menu item in Buttons Panel flyout that opens a library of Sample Buttons
+
+		"$$$/Menu/FormFieldSettings/PDFVis/Visible",		"在 PDF 中可见",
+		"$$$/Menu/FormFieldSettings/PDFVis/Hidden",			"在 PDF 中隐藏",
+		"$$$/Menu/FormFieldSettings/PDFVis/VisibleNoPrint",	"在 PDF 中可见但禁止打印",
+		"$$$/Menu/FormFieldSettings/PDFVis/HiddenButPrint",	"在 PDF 中隐藏但可以打印",	
+		"$$$/Menu/ButtonPDFOptions", "PDF 选项...",
+
+		"$$$/Menu/ResetAllButtons",	"将所有按钮重置为普通状态",	
+			
+		"PageItems",						"页面项目", 
+		"$$$/Menu/Trace Geometry",			"几何跟踪", 
+
+		"$$$/Menu/FormFieldOptions/Button",					"按钮",
+		"$$$/Menu/FormFieldOptions/Check Box",				"复选框",
+		"$$$/Menu/FormFieldOptions/Combo Box",				"组合框",
+		"$$$/Menu/FormFieldOptions/List Box",				"列表框",
+		"$$$/Menu/FormFieldOptions/Radio Button",			"单选按钮",
+		"$$$/Menu/FormFieldOptions/Signature Field",		"签名域",
+		"$$$/Menu/FormFieldOptions/Text Field",				"文本域",
+
+		"InteractiveContextMenu",			"交互",
+	
+		// ----- Dialog strings
+		"$$$/Dialog/CreateFormField/Title",		"表单域", 
+		"$$$/Dialog/CreateFormField/Options",	"选项",
+		"$$$/Dialog/CreateFormField/Width",		"宽度(&W):",
+		"$$$/Dialog/CreateFormField/Height",	"高度(&H):",
+
+		"$$$/Dialog/FormFieldSettings/Title",				"常规", 
+		"$$$/Dialog/FormFieldSettings/FieldType",			"栏类型:",
+		"$$$/Dialog/FormFieldSettings/FieldTypeSetting",	"",
+		"$$$/Dialog/FormFieldSettings/Name",				"名称(&N):",
+		"$$$/Dialog/FormFieldSettings/PDFVisibility",		"PDF 中的可视性(&V):",
+		"$$$/Dialog/FormFieldSettings/PDFVis/Visible",		"可见",
+		"$$$/Dialog/FormFieldSettings/PDFVis/Hidden",		"隐藏",
+		"$$$/Dialog/FormFieldSettings/PDFVis/VisibleNoPrint",	"显示但禁止打印",
+		"$$$/Dialog/FormFieldSettings/PDFVis/HiddenButPrint",	"隐藏但可打印",
+		"$$$/Dialog/FormFieldSettings/ReadOnly",			"只读",
+		"$$$/Dialog/FormFieldSettings/Export",				"导出",
+		"$$$/Dialog/FormFieldSettings/RequiredForExport",	"对于导出必需",
+		"$$$/Dialog/FormFieldSettings/Description",			"说明(&D):",
+		"$$$/Dialog/FormFieldSettings/ExportName",			"导出名称(&E):",
+		"$$$/Dialog/FormFieldSettings/Common Settings",		"通用设置",
+		"$$$/Dialog/FormFieldSettings/Options",				"选项",
+		"$$$/Dialog/FormFieldSettings/Holder",				"表单域设置存放器",
+
+		"$$$/Dialog/FormOptions/Title",						"按钮选项",
+		"$$$/Dialog/FormFieldSettings/Options",				"选项",
+		
+		"$$$/Dialog/FormFieldSettings/ExportValue",			"导出值:",
+		"$$$/Dialog/FormFieldSettings/DefaultIsChecked",	"默认为已选中",
+		"$$$/Dialog/FormFieldSettings/DefaultIsSelected",	"默认为已选中",
+		"$$$/Dialog/FormFieldSettings/Default",				"默认:",
+
+		"$$$/Dialog/FormFieldSettings/Multiline",				"多行",
+		"$$$/Dialog/FormFieldSettings/Scroll",					"可滚动",
+		"$$$/Dialog/FormFieldSettings/LimitOf",					"限制为",
+		"$$$/Dialog/FormFieldSettings/Characters",				"个字符",
+		"$$$/Dialog/FormFieldSettings/Password",				"密码",
+		"$$$/Dialog/FormFieldSettings/FieldForFileSelection",	"用于文件选择",
+		"$$$/Dialog/FormFieldSettings/SpellCheck",				"拼写检查",
+		
+		"$$$/Dialog/FormFieldSettings/Item",					"项目:",
+		"$$$/Dialog/FormFieldSettings/Add",						"添加",
+		"$$$/Dialog/FormFieldSettings/Delete",					"删除",
+		"$$$/Dialog/FormFieldSettings/Change",					"更改",
+		"$$$/Dialog/FormFieldSettings/SortItems",				"排序项目",
+		"$$$/Dialog/FormFieldSettings/AllowMultipleSelection",	"允许多重选择",
+		"$$$/Dialog/FormFieldSettings/Editable",				"可编辑",
+
+		"$$$/Dialog/FormFieldSettings/Align",					"对齐:",
+		"$$$/Dialog/FormFieldSettings/Align/Left",				"左",
+		"$$$/Dialog/FormFieldSettings/Align/Center",			"居中",
+		"$$$/Dialog/FormFieldSettings/Align/Right",				"右",
+
+		"$$$/Dialog/FormFieldSettings/Font:",					"字体(&F):",
+		"$$$/Dialog/FormFieldSettings/Size:",					"大小(&S):",
+		"$$$/Dialog/FormFieldSettings/Auto",					"自动",
+
+		"$$$/Dialog/FormFieldSettings/SelectedIsDefault",		"已选中项目为默认值",
+		
+		"$$$/Dialog/FormFieldUI/DeleteAlert",					"删除该状态同时会删除与之关联的内容。  仍要删除状态吗？",
+		"$$$/Dialog/FormFieldUI/DestroyAlert",					"此操作将删除与该表单域的其他状态关联的内容。仍要继续吗？",
+		"$$$/Dialog/FormFieldUI/DeleteContentAlert",			"是否确实要删除与此状态关联的内容？",
+		"$$$/Dialog/FormFieldUI/StyleChangeAlert",				"此操作将删除与该表单域的当前状态关联的内容。仍要继续吗？",
+		"$$$/Dialog/FormFieldUI/StyleChangeFailed",				"未能将已选中外观样式应用于该表单域。",
+
+		/* These are not visible, they are names of subpanels... */
+		
+		"$$$/Dialog/FormFieldSettings/CheckBox",				"复选框选项",	
+		"$$$/Dialog/FormFieldSettings/RadioButton",				"单选按钮选项",	
+		"$$$/Dialog/FormFieldSettings/TextField",				"文本域按钮选项",	
+		"$$$/Dialog/FormFieldSettings/ListBox",					"列表框按钮选项",	
+		
+		"$$$/Dialog/About/Description",						"表单增效工具，版本 1.0\n\n(c) 2001 Adobe Systems Incorporated。版权所有。",
+
+		"$$$/Dialog/CmdName/CreateButton",					"转换为按钮",
+		"$$$/Dialog/CmdName/DestroyButton",					"转换为对象",
+		"$$$/Dialog/CmdName/ChangeFormSettings",			"更改按钮设置",
+
+		"$$$/Dialog/TextColor/Title",						"文本颜色", 
+		"$$$/Dialog/Button/Color...",						"字体颜色...", 
+
+		"$$$/Dialog/AppearancePanelPrefs/Title",			"面板选项", 
+		"$$$/Dialog/AppearancePanelPrefs/ThumbnailSize",	"缩览图大小", 
+		"$$$/Dialog/AppearancePanelPrefs/None",				"无", 
+		
+		
+		"$$$/Dialog/StateOptions/Title",					"状态选项", 
+		"$$$/Dialog/StateOptions/State",					"状态:", 
+		"$$$/Dialog/StateOptions/Enable",					"启用状态", 
+
+		"$$$/Dialog/CalculationOrder/Title",				"计算顺序", 
+		"$$$/Dialog/TabOrder/Title",						"跳位顺序", 
+		"$$$/Dialog/Order/MoveUp",							"上移(&U)", 
+		"$$$/Dialog/Order/MoveDown",						"下移(&D)",
+
+		"$$$/Dialog/ButtonPDFOptions/Title",				"PDF 选项",
+		"$$$/Dialog/ButtonPDFOptions/InitialAppearance",	"初始外观:",
+		"$$$/Dialog/ButtonPDFOptions/Visible",				"可见(&V)",
+		"$$$/Dialog/ButtonPDFOptions/Hidden",				"隐藏(&H)",
+		"$$$/Dialog/ButtonPDFOptions/Printable",			"可打印(&P)",
+		"$$$/Dialog/ButtonPDFOptions/Description",			"说明(&D):",
+		
+		// ----- Window strings
+		
+		// ----- Panel strings
+
+		"$$$/Panel/FormFieldSettings/Action Data Holder",	"动作数据存放器",
+		"$$$/Panel/FormFieldSettings/+",					"+",
+		"$$$/Panel/FormFieldSettings/Event:",				"事件:",
+		"$$$/Panel/FormFieldSettings/Actions:",				"动作:",
+		"$$$/Panel/FormFieldSettings/URL:",					"URL:",
+		"$$$/Panel/FormFieldSettings/Mail to:",				"邮寄地址:",
+		"$$$/Panel/Action",									"动作",
+		"$$$/Panel/Empty Action",							"[未添加动作]",
+		"$$$/Panel/StatesListBoxLabel/States",				"外观",
+		"$$$/Panel/States",									"按钮和表单",
+		"$$$/Panel/FormFieldSettings/FieldType",			"类型:",
+		"$$$/Panel/FormFieldSettings/Name",					"名称:",
+		"$$$/Panel/ShowHide/Visibility:",					"可视性:",
+		"$$$/Panel/GoToPage/Page:",							"页:",
+
+		"$$$/Panel/Normal",									"[正常]",
+		"$$$/Panel/Over",									"[悬停鼠标]",
+		"$$$/Panel/Down",									"[单击]",
+
+		"$$$/Panel/Off",									"[正常关闭]",
+		"$$$/Panel/On",										"[正常打开]",
+
+		"$$$/Panel/RolloverOff",							"[鼠标悬停关闭]",
+		"$$$/Panel/RolloverOn",								"[鼠标悬停打开]",
+		"$$$/Panel/DowmOff",								"[单击关闭]",
+		"$$$/Panel/DownOn",									"[单击打开]",
+
+		"$$$/Panel/CmdName/FormFieldName",					"按钮名称",
+		"$$$/Panel/CmdName/FormFieldStyle",					"按钮外观",
+		
+		"$$$/Panel/FormFieldSettings/Appearance",			"外观:",
+		"$$$/Panel/PDFOptions",								"PDF 选项",
+		"$$$/Panel/Required",								"必需",
+		"$$$/Panel/Printable",								"可打印",
+		"$$$/Panel/Description",							"说明:",
+		"$$$/Panel/SelectedByDefault",						"默认选定",
+		"$$$/Panel/Multiline",								"多行",
+		"$$$/Panel/ListItems",								"列表项目",
+		"$$$/Panel/MultipleSelection",						"多重选择",
+		"$$$/Panel/FontSize",								"字体大小:",
+		"$$$/Panel/Font",									"字体:",
+		"$$$/Panel/AutoSize",								"自动",
+		"$$$/Panel/SortItems",								"排序项目",
+		"$$$/Panel/MERTLOption",							"从右到左",
+		"$$$/Panel/ExportValue",							"按钮值:",
+		 
+		"$$$/Popup/Separator",								"-",
+		
+		"$$$/Dialog/Behaviors/Exit/No Data for Exit Behavior", "",
+
+		// ----- Tips strings
+
+		"$$$/Tip/StateEye",				"导出时启用/禁用可选状态",
+		"$$$/Tip/StateThumbnail",		"此状态的缩小视图",
+		"$$$/Tip/Show",					"显示",
+		"$$$/Tip/Hide",					"隐藏",
+		"$$$/Tip/Ignore",				"忽略",
+		"$$$/Tip/Delete Selected Action",	"删除所选动作",
+		"$$$/Tip/Add New Action",		"为所选事件添加新动作",
+		"$$$/Tip/DeleteState",			"删除可选状态及其内容",
+		"$$$/Tip/Convert To Button",		"转换为按钮",
+		"$$$/Tip/Convert To Object",		"转换为对象",
+		"$$$/Tip/DefaultChoice",		"选择列表中的某个项目可使其成为默认选项。要设置自定排序顺序，请取消选中“排序项目”，然后将项目拖动到相应位置。",
+        "$$$/Tip/MissingFontToolTip",				"表单域中缺失字体。请单击“查找字体”。",
+
+		// ----- Error strings
+
+		"$$$/Error/YouNeedToSpecifyAName", "您需要指定一个名称。",
+		"$$$/Error/YouNeedToSpecifyANonBlankName", "您需要指定一个有效的名称。",
+		"$$$/Error/YouNeedToSpecifyANonBlankNameOrNoName", "您需要指定一个有效的名称，或不指定任何名称。",
+		"$$$/Error/YouNeedToSpecifyAnExportValue", "您需要指定一个导出值。",
+		"$$$/Error/YouNeedToSpecifyANonBlankExportValue", "您需要指定一个有效的导出值。",
+		"$$$/Error/YouNeedToSpecifyAUniqueName", "此状态名称已被使用，请选择其他名称。",
+		"$$$/Error/YouNeedToSpecifyAValidFontSize", "指定一个介于 0 到 300 之间的值或指定“自动”。",
+		
+		// ----- Misc strings
+
+		"$$$/Command/DeleteStates",	"删除状态",
+		"$$$/CmdName/DeleteStateContent",	"删除状态内容",
+		"$$$/Panel/CmdName/MSOName",		"多状态对象名称",
+		
+		// ----- MultiStateObject Panel strings
+				
+		"$$$/Menu/MSOPanel", "对象状态(&O)",
+		"$$$/Panel/MSOPanel", "对象状态",
+		"$$$/Panel/MSOPanel/ObjectName", "对象名称:",
+#ifdef MACINTOSH
+		"$$$/Panel/MSOPanel/MixedSelection", "单击“新建”按钮，为每个对象创建一个单独的状态。（按下 Opt 的同时单击鼠标可保持多个对象处于相同的状态。）",
+		"$$$/Panel/MSOPanel/MSOAndMixedSelection", "单击“新建”按钮，为多状态对象“^1”中的每个对象创建一个新状态。（按下 Opt 的同时单击鼠标可保持多个对象处于相同的状态。）\n\n单击“添加”按钮，可将对象插入“^2”的可见状态中。",
+#else
+		"$$$/Panel/MSOPanel/MixedSelection", "单击“新建”按钮，为每个对象创建一个单独的状态。（按下 Alt 的同时单击鼠标可保持多个对象处于相同的状态。）",
+		"$$$/Panel/MSOPanel/MSOAndMixedSelection", "单击“新建”按钮，为多状态对象“^1”中的每个对象创建一个新状态。（按下 Alt 的同时单击鼠标可保持多个对象处于相同的状态。）\n\n单击“添加”按钮，可将对象插入“^2”的可见状态中。",
+#endif
+		
+		"$$$/Menu/MSOPanelPopup", "“对象状态”面板菜单",	
+		"$$$/Menu/MSOPanel/NewState", "新建状态",
+		"$$$/Menu/MSOPanel/DeleteState", "删除状态",
+		"$$$/Menu/MSOPanel/AddToState", "将对象添加至状态",
+		"$$$/Menu/MSOPanel/PasteIntoState", "粘贴至状态",
+		"$$$/Menu/MSOPanel/ReleaseState", "释放对象的状态",
+		"$$$/Menu/MSOPanel/ReleaseAllStates", "释放对象的所有状态",
+		"$$$/Menu/MSOPanel/ResetAllMSOs", "将所有多状态对象重置为初始状态",
+		"$$$/Menu/MSOPanel/Options", "面板选项...",
+		"$$$/Menu/MSOPanel/ContextMenu", "“对象状态”面板上下文菜单",
+		"$$$/Menu/MSOPanel/ReleaseStateContextMenu", "释放对象的“^1”",
+		"$$$/Menu/MSOPanel/DeleteStateContextMenu", "删除“^1”",
+		"$$$/Menu/MSOPanel/PasteIntoStateContextMenu", "粘贴至“^1”",
+		"$$$/Menu/MSOPanel/HiddenUntilTriggered", "触发前隐藏",
+	
+		"$$$/Tip/MSOPanel/StateAnimated", "此状态中的对象已添加了动画。",
+		"$$$/Tip/MSOPanel/NewMSO", "将选定范围转换为多状态对象",
+		"$$$/Tip/MSOPanel/NewState", "创建新状态",
+		"$$$/Tip/MSOPanel/DeleteState", "删除选定的状态",
+		"$$$/Tip/MSOPanel/MSOIsSelected", "已选择这个多状态对象。如果变换此对象，则会变换所有状态。",
+		"$$$/Tip/MSOPanel/MSOIsNotSelected", "已选择状态。单击此处可选择多状态对象。",
+		"$$$/Tip/MSOPanel/MSOStateIsSelected", "已选择此状态。",
+		"$$$/Tip/MSOPanel/MSOStateContentIsSelected", "已选择此状态中的内容。单击该行可选择此状态。",
+		"$$$/Tip/MSOPanel/MSOStateRowMSOIsSelected", "已选择此多状态对象。单击该行可切换并选择此状态。",
+		"$$$/Tip/MSOPanel/MSOActiveStateRowMSOIsSelected", "已选择此多状态对象。单击该行可选择这个状态。",
+		"$$$/Tip/MSOPanel/MSOAnotherStateIsSelected", "单击该行可切换并选择此状态。",
+		"$$$/Tip/MSOPanel/PasteIntoState", "将复制的对象粘贴至选定的状态",
+		"$$$/Tip/MSOPanel/AddToState", "将对象添加至可见状态",
+	
+		"$$$/Dialog/MSOPanel/ReleaseAlert", "多状态对象必须至少有两个状态。此动作将从文档中删除多状态对象。所有的当前对象将作为单状态对象保留在其当前位置。",
+		"$$$/Dialog/MSOPanel/ReleaseAllAlert", "此动作将导致从文档中删除多状态对象。所有的当前对象将作为单状态对象保留在其当前位置。",
+		"$$$/Dialog/MSOPanel/DeletesMSOAlert", "多状态对象必须至少有两个状态。此动作将从文档中删除多状态对象。与其余状态关联的对象将作为单状态对象保留在其当前位置。",
+		
+		"$$$/Panel/MSOPanel/StatusOne", " 个对象（在 ^1 中）",
+		"$$$/Panel/MSOPanel/Status", " 个对象（在 ^1 中）",
+		
+		"$$$/Panel/MSOPanel/StatusMSOSelected", "所有选定的状态",
+		"$$$/Panel/MSOPanel/StatusStateSelected", "选定的状态",
+		"$$$/Panel/MSOPanel/StatusStateContentSelected", "选定状态中的对象",
+
+		// Command strings		
+		"$$$/Command/CheckBox", "转换为复选框",
+		"$$$/Command/ComboBox", "转换为组合框",
+		"$$$/Command/ListBox", "转换为列表框",
+		"$$$/Command/RadioButton", "转换为单选按钮",
+		"$$$/Command/SignatureField", "转换为签名域",
+		"$$$/Command/TextField", "转换为文本域",
+}
+};
+
+#endif // __ODFRC__

@@ -1,0 +1,73 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/public/includes/RulerType.fh $
+//  
+//  Owner: Michael Burbidge
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#ifndef __RULERTYPE__
+#define __RULERTYPE__
+
+#include "CoreResTypes.h"
+#include "PMTypes.fh"
+
+enum { kFraction = 1, kNotFraction = 0 };
+enum { kDecimal = 1, kNotDecimal = 0 };
+
+
+#ifdef MACINTOSH
+#define kDefaultRulerFont "Lucida Grande"
+#endif
+
+#ifdef WINDOWS
+#define kDefaultRulerFont "Tahoma"
+#endif
+
+#ifdef __ODFRC__
+
+type RulerDataType (kRulerRsrcType)
+{
+	wstring;							// Postscript fontname
+	double;								// Point size
+	longint;							// Units of measure boss ID
+	integer;							// Flag for fraction(e.g., inches), 1 for yes, 0 for no
+	integer;							// Flag for Decimal(e.g., inches decimal), 1 for yes, 0 for no
+
+	longint = $$CountOf(TickSpecificationList);
+	array TickSpecificationList
+	{
+		double;	// Starting zoom factor for this specification (0.05-40.00); ending is either the next entry in the
+				// list or maximum zoom (currently 4000% or 40.00)
+		double;	// Major division size in the specified measurement system for this zoom factor. These divisions will
+				// draw the full width of the ruler & will be labeled 
+
+		longint = $$CountOf(SubTickSpecificationList);
+		
+		array SubTickSpecificationList
+		{
+			integer;	// number of subdivisions of the previous sub-tick level (or of the major ticks 
+						// for the first entry)
+			integer;	// tick length, as a percentage of the full ruler width (0-100)
+		}
+	};
+};
+
+#endif
+
+#endif

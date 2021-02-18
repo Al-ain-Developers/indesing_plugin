@@ -1,0 +1,29 @@
+<!doctype html>
+
+<html>
+<head>
+	<meta charset="utf-8">
+	<script src="./ext.js"></script>
+	<script src="./lib/CSInterface-4.0.0.js"></script>
+	<script src="http://code.jquery.com/jquery-2.0.0.min.js"></script>
+	<link id="ppstyle" rel="stylesheet" type="text/css" href="./style.css"/>
+	<title>ScriptingComms</title>
+	
+	<script>
+	// On load we add a click handler to a link, which sends a CSXS event to the native
+	// plug-in part of this sample.
+	$(function() {
+	    $("#link").click(function() {
+			var evt = new CSEvent("com.adobe.indesign.scriptingcomms.cpp", "APPLICATION", "IDSN", "com.adobe.indesign.scriptingcomms.html");
+			evt.data = "Hello from HTML5!";
+			new CSInterface().dispatchEvent(evt);
+	    });
+	});
+	</script>
+</head>
+
+<body onload="onLoaded()">	
+	<a href="#" id="link">Send message to CPP plug-in</a>
+</body>
+
+</html>

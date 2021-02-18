@@ -1,0 +1,129 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kBehaviorUIStringsRsrcID + index_zhCN)
+{
+	k_zhCN,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{		
+		"$$$/Dialog/Behaviors/ShowHideFields/Fields_Tree", "域树",
+
+		"$$$/Dialog/Behaviors/Description",				"这将包含该行为的简短说明。还可能包含有关行为选项的一些提示。告诉用户它的用法。",
+		"$$$/Dialog/Behaviors/Description Title",		"说明",
+		"$$$/Dialog/Behaviors/DeleteAlert",				"是否删除所选动作？",
+		"$$$/Dialog/Behaviors/DragDeleteAlert",			"是否删除拖动的动作？",
+		"$$$/Dialog/Behaviors/Error/Invalid URL",		"必须提供 URL 栏的值",
+		"$$$/Dialog/Behaviors/Error/Invalid File",		"必须指定一个有效文件",
+		
+		"$$$/Dialog/Behaviors/Movie/Movie:",			"视频:",
+		"$$$/Dialog/Behaviors/Movie/Play Options:",		"选项:",
+		"$$$/Dialog/Behaviors/Movie/Play",				"播放",
+		"$$$/Dialog/Behaviors/Movie/Stop",				"停止",
+		"$$$/Dialog/Behaviors/Movie/Pause",				"暂停",
+		"$$$/Dialog/Behaviors/Movie/Resume",			"继续",
+		"$$$/Dialog/Behaviors/Movie/PlayFromNavPoint",	"从导航点播放",
+		"$$$/Dialog/Behaviors/Movie/StopAll",			"全部停止（仅限 SWF）",
+		"$$$/Dialog/Behaviors/Movie/NavPoint",			"点:",
+		"$$$/Dialog/Behaviors/Movie/NoVideo",			"（无视频）",
+		"$$$/Dialog/Behaviors/Movie/NoVideoNavPoint",	"（无导航点）",
+
+		"$$$/Dialog/Behaviors/Sound/Sound:",			"声音:",
+		"$$$/Dialog/Behaviors/Sound/Play Options:",		"选项:",
+		"$$$/Dialog/Behaviors/Sound/Play",				"播放",
+		"$$$/Dialog/Behaviors/Sound/Stop",				"停止",
+		"$$$/Dialog/Behaviors/Sound/Pause",				"暂停",
+		"$$$/Dialog/Behaviors/Sound/Resume",			"继续",
+		"$$$/Dialog/Behaviors/Sound/StopAll",			"全部停止（仅限 SWF）",
+		"$$$/Dialog/Behaviors/Sound/Volume:",			"音量:",
+		"$$$/Dialog/Behaviors/Sound/Synchronous",		"同步",
+		"$$$/Dialog/Behaviors/Sound/Mix",				"混合",
+		"$$$/Dialog/Behaviors/Sound/NoSound",			"（无声音）",
+		
+		"$$$/Dialog/Behaviors/Animation/Animation:",	"动画:",
+		"$$$/Dialog/Behaviors/Animation/Play Options:",	"选项:",
+		"$$$/Dialog/Behaviors/Animation/Play",			"播放",
+		"$$$/Dialog/Behaviors/Animation/Stop",			"停止",
+		"$$$/Dialog/Behaviors/Animation/Pause",			"暂停",
+		"$$$/Dialog/Behaviors/Animation/Resume",		"继续",
+		"$$$/Dialog/Behaviors/Animation/StopAll",		"全部停止",
+		"$$$/Dialog/Behaviors/Animation/Reverse",		"还原",
+		"$$$/Dialog/Behaviors/Animation/AutoReverse",	"鼠标指针移开时还原",
+		"$$$/Dialog/Behaviors/Animation/NoAnimation",	"（无动画）",
+		
+		"$$$/Dialog/Behaviors/MSO/Object:",				"对象:",
+		"$$$/Dialog/Behaviors/MSO/State:",				"状态:",
+		"$$$/Dialog/Behaviors/MSO/AutoReverse",			"鼠标指针移开时返回",
+		"$$$/Dialog/Behaviors/MSO/NextLoop",			"在最终状态停止",
+		"$$$/Dialog/Behaviors/MSO/PrevLoop",			"在最初状态停止",
+		"$$$/Dialog/Behaviors/MSO/NoMSO",				"（无多状态对象）",
+
+		"$$$/Dialog/Behaviors/GoToView/Go To:",			"转到:",
+		"$$$/Dialog/Behaviors/GoToView/First Page",		"第一页",
+		"$$$/Dialog/Behaviors/GoToView/Page",			"页面",
+		"$$$/Dialog/Behaviors/GoToView/Previous Page",	"上一页",
+		"$$$/Dialog/Behaviors/GoToView/Next Page",		"下一页",
+		"$$$/Dialog/Behaviors/GoToView/Last Page",		"最后一页",
+		"$$$/Dialog/Behaviors/GoToView/Back",			"上一个",
+		"$$$/Dialog/Behaviors/GoToView/Forward",		"下一个",
+		"$$$/Dialog/Behaviors/GoToView/Previous View",	"上一视图",
+		"$$$/Dialog/Behaviors/GoToView/Next View",		"下一视图",
+		"$$$/Dialog/Behaviors/GoToView/Specific Page",	"特定页面",
+		"$$$/Dialog/Behaviors/GoToView/Document:",		"文档:",
+		"$$$/Dialog/Behaviors/GoToView/Page:",			"页:",
+		"$$$/Dialog/Behaviors/GoToView/URL",			"URL",
+		"$$$/Dialog/Behaviors/GoToView/URL:",			"URL:",
+		"$$$/Dialog/Behaviors/GoToView/Anchor",			"文本锚点",
+		"$$$/Dialog/Behaviors/GoToView/Anchor:",		"目标:",
+		"$$$/Dialog/Behaviors/GoToView/Bookmark",		"书签",
+		"$$$/Dialog/Behaviors/GoToView/Inherit Zoom",	"承前缩放",
+		"$$$/Dialog/Behaviors/GoToView/Actual Size",	"实际大小",
+		"$$$/Dialog/Behaviors/GoToView/Fit In Window",	"适合窗口大小",
+		"$$$/Dialog/Behaviors/GoToView/Fit Width",		"适合宽度",
+		"$$$/Dialog/Behaviors/GoToView/Fit Height",		"适合高度",
+		"$$$/Dialog/Behaviors/GoToView/Fit Visible",	"适合可见",
+		"$$$/Dialog/Behaviors/GoToView/Zoom:",			"缩放:",
+		"$$$/Dialog/Behaviors/GoToView/None",			"无",
+		"$$$/Dialog/Behaviors/GoToAnchor/InDesign Format File","InDesign 格式文件",
+		
+		"$$$/Dialog/Behaviors/ViewZoom/Full Screen",	"全屏",
+		"$$$/Dialog/Behaviors/ViewZoom/Zoom View In",	"放大",
+		"$$$/Dialog/Behaviors/ViewZoom/Zoom View Out",	"缩小",
+		"$$$/Dialog/Behaviors/ViewZoom/Fit Page",		"适合窗口大小",
+		"$$$/Dialog/Behaviors/ViewZoom/Actual Size",	"实际大小",
+		"$$$/Dialog/Behaviors/ViewZoom/Fit Width",		"适合宽度",
+		"$$$/Dialog/Behaviors/ViewZoom/Fit Visible",	"适合可见",
+		"$$$/Dialog/Behaviors/ViewZoom/SinglePage",		"单页",
+		"$$$/Dialog/Behaviors/ViewZoom/OneColumn",		"连续",
+		"$$$/Dialog/Behaviors/ViewZoom/TwoColumns",		"连续-对开",
+
+		"$$$/Dialog/Behaviors/ImportData/Select File:","选择文件:",
+		"$$$/Dialog/Behaviors/ImportData/Acrobat Format File","Acrobat 格式文件",
+
+		"$$$/Dialog/Behaviors/OpenFile/Select File:","选择文件:",
+		"$$$/Dialog/Behaviors/OpenFile/Select File to be Opened", "选择要打开的文件",
+		"$$$/Dialog/Behaviors/OpenFile/Acrobat Format File","Acrobat 格式文件",
+
+		"$$$/Dialog/Behaviors/SubmitForm/Submit To:","URL:",
+						
+		// ----- Tips strings
+	}
+};
+
+#endif // __ODFRC__

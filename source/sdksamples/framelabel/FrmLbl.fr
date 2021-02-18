@@ -1,0 +1,770 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/sdksamples/framelabel/FrmLbl.fr $
+//  
+//  Owner: Adobe Developer Technologies
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "VCPlugInHeaders.h"
+
+// General includes:
+#include "MenuDef.fh"
+#include "ActionDef.fh"
+#include "ActionDefs.h"
+#include "AdobeMenuPositions.h"
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "StringTable.fh"
+#include "objectmodeltypes.fh"
+#include "ScriptingScriptInfo.fh"
+#include "ShuksanID.h"
+#include "ActionID.h"
+#include "CommandID.h"
+#include "WorkspaceID.h"
+#include "widgetid.h"
+#include "TablesID.h"
+#include "DocumentID.h"
+#include "BuildNumber.h"
+#include "ErrorTableTypes.h" // for UserErrorTable
+
+#include "ScriptInfoTypes.fh"
+#include "AppFrameworkID.h" // for kApplicationObjectScriptElement
+#include "DocFrameworkID.h" // for kDocumentObjectScriptElement
+
+// Project includes:
+#include "FrmLblID.h"
+#include "GenericID.h"
+#include "ShuksanID.h"
+#include "TextID.h"
+
+#include "FrmLblScriptingDefs.h"
+
+#include "PlugInModel_UIAttributes.h"
+
+#ifdef __ODFRC__
+
+/*  Plugin version definition.
+*/
+resource PluginVersion (kSDKDefPluginVersionResourceID)
+{
+	kTargetVersion,
+	kFrmLblPluginID,
+	kSDKDefPlugInMajorVersionNumber, kSDKDefPlugInMinorVersionNumber,
+	kSDKDefHostMajorVersionNumber, kSDKDefHostMinorVersionNumber,
+	kFrmLblLastMajorFormatChange, kFrmLblLastMinorFormatChange,
+	{ kInDesignProduct, kInCopyProduct, kInDesignServerProduct},
+	{ kWildFS },
+	kModelPlugIn,
+	kFrmLblVersion
+};
+
+/*  The ExtraPluginInfo resource adds extra information to the Missing Plug-in dialog
+	that is popped when a document containing this plug-in's data is opened when
+	this plug-in is not present. These strings are not translatable strings
+	since they must be available when the plug-in isn't around. They get stored
+	in any document that this plug-in contributes data to.
+*/
+resource ExtraPluginInfo(1)
+{
+	kFrmLblCompanyValue,			// Company name
+	kFrmLblMissingPluginURLValue,	// URL 
+	kFrmLblMissingPluginAlertValue,	// Missing plug-in alert text
+};
+
+/*
+//	IgnoreTags - mark these impls/classIDs as ignore so that when a document that
+//	contains FrameLabel data is opened without the plug-in present the 
+//	Missing Plug-ins alert does not get popped. This plug-in's data is not critical
+//	to the functioning of the document so the user does not need to be warned
+//	(if it was the CriticalTags statement would be used to make sure the
+//	user gets alerted).
+*/
+resource IgnoreTags(1)
+{
+	kImplementationIDSpace, 
+	{
+		kFrmLblDataImpl,
+	}
+};
+
+resource IgnoreTags(2)
+{
+	kClassIDSpace,
+	{
+		kFrmLblAdornmentBoss,
+	}
+};
+
+/* SchemaList: a history of the persistent data formats supported by this plug-in
+*/
+resource SchemaList(1)
+{{
+    Schema
+    {
+        kFrmLblDataImpl,
+        {kFrmLbl_1J_MajorFormat, kFrmLbl_1J_MinorFormat},
+        {
+            {PMString	{kFrmLblLabel, 		kFrmLblDefaultLabel}},
+            {Int32		{kFrmLblLabelWidth,	kFrmLblDefaultWidth}},
+            {Int32		{kFrmLblPointSize, 	kFrmLblDefaultPointSize}},
+            {Bool16		{kFrmLblVisibility,	kFrmLblDefaultVisibility}},
+        }
+    };
+    
+    Schema
+    {
+        kFrmLblDataImpl,
+        {kFrmLblLastMajorFormatChange, kFrmLblLastMinorFormatChange},
+        {
+            {WideString	{kFrmLblLabel, 		kFrmLblDefaultLabel}},
+            
+            //this field has been removed
+            //{Int32		{kFrmLblLabelWidth,	kFrmLblDefaultWidth}},           
+            
+            {Int32		{kFrmLblPointSize, 	kFrmLblDefaultPointSize}},
+            {Bool16		{kFrmLblVisibility,	kFrmLblDefaultVisibility}},
+            {Int32		{kFrmLblColor, 		kFrmLblDefaultColor}},
+            {Int32		{kFrmLblPosition,	kFrmLblDefaultPosition}},
+        }
+    };
+    
+    
+}};
+
+/* Boss class definition.
+*/
+resource ClassDescriptionTable(kSDKDefClassDescriptionTableResourceID)
+{{{
+	
+	/**
+	Adds an interface to kWorkspaceBoss. 
+	The inteface stores bool value for the frame label to be printed or not.
+	@ingroup framelabel
+	*/
+	AddIn
+	{
+		kWorkspaceBoss,
+		kInvalidClass,
+		{
+			IID_IFRMLBLPRINTBOOLDATA, kFrmLblPrintPrefsDataPersistImpl,
+		}
+	},
+
+	/**
+	Adds an interface to kWorkspaceBoss. 
+	The inteface stores
+	default data for the frame label adornment to display.
+	@ingroup framelabel
+	*/
+	AddIn
+	{
+		kWorkspaceBoss,
+		kInvalidClass,
+		{
+			/** Stores the data to be displayed in frame adornment.
+				@see  FrmLblData
+			*/
+			IID_IFRMLBLDATA, kFrmLblDataImpl,
+		}
+	},		
+	
+	/**
+	Adds an interface to kDocWorkspaceBoss. 
+	The inteface stores
+	default data for the frame label adornment to display.
+	@ingroup framelabel
+	*/
+	AddIn
+	{
+		kDocWorkspaceBoss,
+		kInvalidClass,
+		{
+			/** Stores the data to be displayed in frame adornment.
+				@see  FrmLblData
+			*/
+			IID_IFRMLBLDATA, kFrmLblDataImpl,
+		}
+	},		
+	
+	/**
+	Adds an interface to all drawable page items (add-in to kDrawablePageItemBoss). 
+	The inteface stores
+	data for the frame label adornment to display.
+	@ingroup framelabel
+	*/
+	AddIn
+	{
+		kDrawablePageItemBoss,
+		kInvalidClass,
+		{
+			/** Stores the data to be displayed in frame adornment.
+				@see  FrmLblData
+			*/
+			IID_IFRMLBLDATA, kFrmLblDataImpl,
+		}
+	},
+
+	/** Puts facade onto the Utils boss to let client code use it. 
+		@ingroup framelabel
+	*/
+    AddIn
+    {
+        kUtilsBoss,
+        kInvalidClass,
+        {
+            IID_FRMLBLDATAFACADE, kFrmLblDataFacadeImpl,           
+        }
+    },
+    
+    
+	
+	/** Handles scripting of FrameLabel's properties.
+        Added at InDesign CS2 to support scripting.
+        @ingroup framelabel
+	 */
+	Class
+	{
+		kFrmLblScriptProviderBoss,
+		kBaseScriptProviderBoss,
+		{
+			IID_ISCRIPTPROVIDER,kFrmLblScriptProviderImpl,
+			
+		}
+	},
+	
+	/** Handles scripting of FrameLabel's default setting and 
+		printing preference.
+        @ingroup framelabel
+	 */
+	Class
+	{
+		kFrmLblPrefsScriptProviderBoss,
+		kBaseScriptProviderBoss,
+		{
+			IID_ISCRIPTPROVIDER,kFrmLblPrefsScriptProviderImpl,
+			
+		}
+	},
+	
+	/**
+	Adornment implementation for drawable page items.
+		@ingroup framelabel
+	*/
+	Class
+	{
+		kFrmLblAdornmentBoss,
+		kInvalidClass,
+		{
+			/** Provides drawing, etc. 
+			*/
+			IID_IADORNMENTSHAPE, kFrmLblAdornmentImpl,
+		}
+	},
+		
+	/** A command to control the appearance of the adornment
+		@ingroup framelabel
+	*/
+	Class
+	{
+		kFrmLblCmdBoss,
+		kInvalidClass,
+		{
+			/** Manipulates a frame label data interface. 
+				@see FrmLblCmd
+			*/
+			IID_ICOMMAND, kFrmLblCmdImpl,
+			/** Stores setting for use by the command
+				@see FrmLblData
+			*/
+			IID_IFRMLBLDATA, kFrmLblDataImpl,
+		}
+	},
+
+	/** Adds our custom suite interface to the integrator boss class kIntegratorSuiteBoss.
+		@ingroup framelabel
+	*/
+	AddIn
+	{
+		kIntegratorSuiteBoss,
+		kInvalidClass,
+		{
+			IID_IFRMLBLDATASUITE,kFrmLblDataSuiteASBImpl,
+			
+		}
+	},
+	
+	/** Adds our custom suite interface to kTextSuiteBoss
+		@ingroup framelabel
+	*/
+	AddIn
+	{
+		kTextSuiteBoss,
+		kInvalidClass,
+		{
+			IID_IFRMLBLDATASUITE,kFrmLblDataSuiteTextCSBImpl,
+			
+		}
+	},
+		
+	/** Adds our custom suite interface to klayoutSuiteBoss
+		@ingroup framelabel
+	*/
+	AddIn
+	{
+		kLayoutSuiteBoss,
+		kInvalidClass,
+		{
+			IID_IFRMLBLDATASUITE,kFrmLblDataSuiteLayoutCSBImpl,
+			
+		}
+	},
+	
+	/** Adds our custom suite interface to kTableSuiteBoss
+		@ingroup framelabel
+	*/
+	AddIn
+	{
+		kTableSuiteBoss,
+		kInvalidClass,
+		{
+			IID_IFRMLBLDATASUITE, kFrmLblDataSuiteTableCSBImpl,
+		}
+	},
+	
+	/** Adds our custom suite interface to kDocumentDefaultSuiteBoss
+		@ingroup framelabel
+	*/
+	AddIn
+	{
+		kDocumentDefaultSuiteBoss,
+		kInvalidClass,
+		{
+			IID_IFRMLBLDATASUITE,kFrmLblDataSuiteDefaultsCSBImpl,
+			
+		}
+	},
+		
+	/** Adds our custom suite interface to kApplicationDefaultSuiteBosss
+		@ingroup framelabel
+	*/
+	AddIn
+	{
+		kApplicationDefaultSuiteBoss,
+		kInvalidClass,
+		{
+			IID_IFRMLBLDATASUITE, kFrmLblDataSuiteDefaultsCSBImpl,
+			
+		}
+	},
+		
+	/** Command boss class to change printing preference .
+	*/
+	Class
+	{
+        kFrmLblPrintPrefsCmdBoss,
+        kInvalidClass,
+        {
+            /** Implementation of ICommand
+                @see kFrmLblPrintPrefsCmdImpl
+            */
+            IID_ICOMMAND,    kFrmLblPrintPrefsCmdImpl,
+            IID_IFRMLBLPRINTBOOLDATA, kFrmLblPrintPrefsDataPersistImpl,
+
+        }
+	},
+
+	/** This boss class supplies a schema-based conversion service for this plug-in.
+		@ingroup framelabel
+	*/
+	Class
+    {
+        kFrmLblConversionProviderBoss,
+        kInvalidClass,
+        {
+			/** Provides the conversion service.
+				Implementation provided by the API.
+			*/
+            IID_ICONVERSIONPROVIDER, kSchemaBasedConversionImpl,
+			/** Registers this boss as a conversion service provider.
+				Implementation provided by the API.
+			*/
+            IID_IK2SERVICEPROVIDER, kConversionServiceImpl,
+        }
+    },
+
+	/** Set document default frame label setting when the document is created.
+		@ingroup framelabel
+	 */
+    Class
+    {
+		kFrmLblNewDocResponderBoss,
+        kInvalidClass,
+        {
+			/** See IResponder and FrmLblResponder.
+			 */
+            IID_IRESPONDER, kFrmLblResponderImpl,
+
+			/** Implementation provided by API.
+			 */
+            IID_IK2SERVICEPROVIDER, kAfterNewDocSignalRespServiceImpl,
+        }
+    },
+	
+	/** Created frame label adornment based on default IFrmLblData when
+		the page item is created.
+		@ingroup framelabel
+	 */
+    Class
+    {
+		kFrmLblNewPIResponderBoss,
+        kInvalidClass,
+        {
+			/** See IResponder and FrmLblResponder.
+			 */
+            IID_IRESPONDER, kFrmLblResponderImpl,
+
+			/** Implementation provided by API.
+			 */
+            IID_IK2SERVICEPROVIDER, kNewPISignalRespServiceImpl,
+        }
+    },
+	
+	/** This boss class supplies an error string service for this plug-in.
+		@ingroup framelabel
+	*/
+    Class
+    {
+        kFrmLblErrorStringServiceBoss,
+        kInvalidClass,
+        {
+			/** Registers this boss as an error string service provider.
+				Implementation provided by the API.
+			*/
+            IID_IK2SERVICEPROVIDER, kErrorStringProviderImpl,
+			/** See IErrorStringService / FrmLblErrorStringService.
+			 */
+            IID_IERRORSTRINGSERVICE, kFrmLblErrorStringServiceImpl,
+        }
+    };
+    
+}}};
+
+/*  Implementation definition.
+*/
+resource FactoryList (kSDKDefFactoryListResourceID)
+{
+	kImplementationIDSpace,
+	{
+		#include "FrmLblFactoryList.h"
+	}
+};
+
+
+
+/*  LocaleIndex
+	The LocaleIndex should have indicies that point at your
+	localizations for each language system that you are localized for.
+*/
+/*  String LocaleIndex.
+*/
+resource LocaleIndex ( kSDKDefStringsResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_enUS, kSDKDefStringsResourceID + index_enUS
+		kInDesignJapaneseFS, k_jaJP, kSDKDefStringsResourceID + index_jaJP
+		
+		kWildFS, k_Wild, kSDKDefStringsResourceID + index_enUS
+	}
+};
+
+resource LocaleIndex (kSDKDefStringsNoTransResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_Wild, kSDKDefStringsNoTransResourceID + index_enUS
+	}
+};
+
+resource StringTable (kSDKDefStringsNoTransResourceID + index_enUS)
+{
+	k_enUS,									// Locale Id
+	kEuropeanMacToWinEncodingConverter,		// Character encoding converter
+	{
+		// No-Translate strings go here:
+
+	}
+};
+
+
+/*
+
+/*
+// Scripting definition.
+*/
+
+resource VersionedScriptElementInfo(1)
+{
+	//Contexts
+	{
+		kCS4ScriptVersion, kCoreScriptManagerBoss, kInDesignAllLanguagesFS, k_Wild,
+		kCS4ScriptVersion, kCoreScriptManagerBoss, kInDesignServerAllLanguagesFS, k_Wild,
+	}
+	
+	//Elements
+	{	
+		
+		// Defines new script element object for this plug-in's preferences
+		Object
+        {
+            kFrmLblPrefObjectScriptElement,    // this object's script element ID
+            c_FrmLblPref,                        // ScriptID
+            "framelabel preference",        // name
+            "framelabel preference",        // description
+            kFrmLblPref_CLSID,           // Windows CLSID
+            NoCollectionInfo,                    // CollectionElementType (scriptID, name, descr, CLSID)
+            kPreferencesObjectScriptElement,// base object script element ID
+            kPreferencesSuiteScriptElement,    // suite script element ID
+        }
+		
+	   // Allows the object above to be accessed by clients as a property
+       Property
+       {
+           kFrmLblPrefObjectPropertyScriptElement,
+           p_FrmLblPref,
+           "framelabel preferences",
+           "framelabel preferences",
+           ObjectType( kFrmLblPrefObjectScriptElement ),
+           {}
+           kNoAttributeClass,
+       }
+		// FrameLabel's properties.
+		Property
+		{
+			kFrmLblStringElement,
+			p_FrmLblString,
+			"framelabel string",
+			"The label string for the FrameLabel",
+			StringType,
+			{}
+			kNoAttributeClass,
+		},
+
+		Property
+		{
+			kFrmLblSizeElement,
+			p_FrmLblSize,
+			"framelabel size",
+			"The label size (in points) for the FrameLabel",
+			Int32Type,
+			{}
+			kNoAttributeClass,
+		},
+		Property
+		{
+			kFrmLblVisibilityElement,
+			p_FrmLblVisibility,
+			"framelabel visibility",
+			"The label visibility for the FrameLabel",
+			BoolType,
+			{}
+			kNoAttributeClass,
+		},
+
+		Property
+		{
+			kFrmLblFontColorElement,
+			p_FrmLblFontColor,
+			"framelabel font color",
+			"The font color for the FrameLabel",
+			TypeDefType( kInDesignUIColorTypeDefScriptElement ),
+			{}
+			kNoAttributeClass,
+		},
+		
+		Enum
+		{
+			kFrmLblPositionEnumElement,
+			en_FrmLblPosition,
+			"framelabel position enum",
+			"Frame label position enum type.",
+			{
+				en_FrmLblLeft, "framelabel left", "Place label left."				
+				en_FrmLblRight, "framelabel right", "Place label right."
+				en_FrmLblTop, "framelabel top", "Place label top."
+				en_FrmLblBottom, "framelabel bottom", "Place label bottom."
+			}
+		}
+		
+		Property
+		{
+			kFrmLblPositionElement,
+			p_FrmLblPosition,
+			"framelabel position",
+			"The position for the Framelabel",
+			EnumType( kFrmLblPositionEnumElement ),
+			{}
+			kNoAttributeClass,
+		},
+				
+		
+		// Connects this plug-in's preferences to scripting.
+        Provider
+        {
+            kFrmLblPrefsScriptProviderBoss,
+            {
+                // Parent the FrameLabel preferences on the application and document:
+				Parent{ kApplicationObjectScriptElement },
+                Parent{ kDocumentObjectScriptElement },
+
+                // The FrameLabel object:
+                RepresentObject{ kFrmLblPrefObjectScriptElement },
+
+                // The property on the parent object returns the FrameLabel preferences object:
+                ParentProperty{ kFrmLblPrefObjectPropertyScriptElement, kReadOnly },
+
+				// the frame label string property
+				Property{ kFrmLblStringElement, kReadWrite },
+				// the frame label size property
+				Property{ kFrmLblSizeElement, kReadWrite },
+				// the frame label visibility property
+				Property{ kFrmLblVisibilityElement, kReadWrite },
+				
+				Property{ kFrmLblFontColorElement, kReadWrite },
+				
+				Property{ kFrmLblPositionElement, kReadWrite },
+            }
+        }
+
+		
+		// Connects this plug-in's properties to scripting and INX round trip.
+		Provider
+		{
+			kFrmLblScriptProviderBoss,
+			{
+				// The frame label properties will be added to the graphic and page item objects 
+				// Other objects that inherit from these two objects will also get the frame label properties.
+				Object{ kGraphicObjectScriptElement },
+				Object{ kPageItemObjectScriptElement },
+
+				// the frame label string property
+				Property{ kFrmLblStringElement, kReadWrite },
+				// the frame label size property
+				Property{ kFrmLblSizeElement, kReadWrite },
+				// the frame label visibility property
+				Property{ kFrmLblVisibilityElement, kReadWrite },
+				
+				Property{ kFrmLblFontColorElement, kReadWrite },
+				
+				Property{ kFrmLblPositionElement, kReadWrite },
+			}
+		}
+	}
+};
+
+resource VersionedScriptElementInfo(2)
+{
+	//Contexts
+	{
+		kCS4ScriptVersion, kCoreScriptManagerBoss, kInDesignAllLanguagesFS, k_Wild,
+		kCS4ScriptVersion, kCoreScriptManagerBoss, kInDesignServerAllLanguagesFS, k_Wild,
+	}
+	
+	//Elements
+	{	
+		
+		// Defines new script element object for this plug-in's preferences
+		Object
+        {
+            kFrmLblPrintPrefObjectScriptElement,    // this object's script element ID
+            c_FrmLblPrintPref,                        // ScriptID
+            "framelabel print preference",        // name
+            "frame label print preference",        // description
+            kFrmLblPrintPref_CLSID,                // Windows CLSID
+            NoCollectionInfo,                    // CollectionElementType (scriptID, name, descr, CLSID)
+            kPreferencesObjectScriptElement,// base object script element ID
+            kPreferencesSuiteScriptElement,    // suite script element ID
+        }
+		
+	   // Allows the object above to be accessed by clients as a property
+       Property
+       {
+           kFrmLblPrintPrefObjectPropertyScriptElement,
+           p_FrmLblPrintPref,
+           "framelabel print preferences",
+           "frame label print preferences",
+           ObjectType( kFrmLblPrintPrefObjectScriptElement ),
+           {}
+           kNoAttributeClass,
+       }
+       
+       	Property
+		{
+			kFrmLblPrintPrefElement,
+			p_FrmLblPrint,
+			"print label",
+			"If true, print frame label",
+			BoolType,
+			{}
+			kNoAttributeClass,
+		},
+			
+		// Connects this plug-in's properties to scripting and INX round trip.
+		Provider
+		{
+			kFrmLblPrefsScriptProviderBoss,
+			{
+				// The frame label properties will be added to the graphic and page item objects 
+				// Other objects that inherit from these two objects will also get the frame label properties.
+				Parent{ kApplicationObjectScriptElement },
+				
+				// The FrameLabel object:
+                RepresentObject{ kFrmLblPrintPrefObjectScriptElement },
+                
+                // The property on the parent object returns the FrameLabel preferences object:
+                ParentProperty{ kFrmLblPrintPrefObjectPropertyScriptElement, kReadOnly },
+
+				// the frame label printing preference string property
+				Property{ kFrmLblPrintPrefElement, kReadWrite },
+
+			}
+		}
+	}
+};	
+
+/*
+// User Error Table resource 
+// To be coupled with an IErrorStringService implementation and
+// string translations (see localized .fr files)
+*/
+resource UserErrorTable(kSDKDefErrorStringResourceID) 
+{
+	{
+		kFrmLblFailureErrorCode, kFrmLblFailureErrorCodeStringKey, 
+		kFrmLblLabelCommandFailedErrorCode, kFrmLblLabelCommandFailedErrorKey,
+	}
+};
+
+#endif // __ODFRC__
+
+#include "FrmLbl_enUS.fr"
+#include "FrmLbl_jaJP.fr"
+
+//  
+

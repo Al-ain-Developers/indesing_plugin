@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article SYSTEM "sdocbook.dtd">
+<?xml-stylesheet href="copy-with-contxt-sens-styling.xsl" type="text/xsl"?>
+<article>
+<section><title>Table example</title>
+<table><title>Widgets</title><tgroup cols="3"><thead><row><entry>Widget boss class</entry>
+<entry>ODFRez custom type</entry>
+<entry>Use</entry>
+</row>
+</thead>
+<tbody>
+<row>
+<entry>kTextEditBoxWidgetBoss</entry>
+<entry>TextEditBoxWidget</entry>
+<entry>For values that are strictly textual, or where you want to parse a value in your own code. </entry>
+</row>
+<row>
+<entry>kAngleEditBoxWidgetBoss</entry>
+<entry>AngleEditBoxWidget</entry>
+<entry>This is used to display values in angular units. The Rotation dialog has an instance of this widget.</entry>
+</row>
+<row>
+<entry>kIntEditBoxWidgetBoss</entry>
+<entry>IntEditBoxWidget</entry>
+<entry>Used to display integer values. The Page Set-up dialog has an example of this widget.</entry>
+</row>
+<row>
+<entry>kRealEditBoxWidgetBoss</entry>
+<entry>RealEditBoxWidget</entry>
+<entry>Used to display floating point values. The Scale dialog has an instance.</entry>
+</row>
+<row>
+<entry>kPercentageEditBoxWidgetBoss</entry>
+<entry>PercentageEditBoxWidget</entry>
+<entry>Display values in percentage units. Instance on the Scale dialog. </entry>
+</row>
+<row>
+<entry>kTextMeasureEditBoxWidgetBoss</entry>
+<entry>TextMeasureEditBoxWidget</entry>
+<entry>Displays values in the current text measurement units. Can be found on the Character panel, e.g. the line weight element.</entry>
+</row>
+<row>
+<entry>kLineWtMeasureEditBoxWidgetBoss</entry>
+<entry>LineWtMeasureEditBoxWidget</entry>
+<entry>Display values in line-weight units. The Stroke panel has an instance, when the Dashed line type is selected.</entry>
+</row>
+<row>
+<entry>kXMeasureEditBoxWidgetBoss</entry>
+<entry>XMeasureEditBoxWidget</entry>
+<entry>Displays values in the current horizontal measurement units.</entry>
+</row>
+<row>
+<entry>kYMeasureEditBoxWidgetBoss</entry>
+<entry>YMeasureEditBoxWidget</entry>
+<entry>Displays values in the current vertical measurement units.</entry>
+</row>
+<row>
+<entry>kPageRangeEditBoxWidgetBoss</entry>
+<entry>PageRangeEditBoxWidget</entry>
+<entry>Used on the pages panel.</entry>
+</row>
+<row>
+<entry>kPageNumPlusMasterEditBoxWidgetBoss</entry>
+<entry>PageNumPlusMasterEditBoxWidget</entry>
+<entry>Used on the pages panel.</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+</section></article>

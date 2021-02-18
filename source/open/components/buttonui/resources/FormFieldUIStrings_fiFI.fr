@@ -1,0 +1,357 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "StringTable.fh"
+
+#include "FormFieldUIDefs.h"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+//twright 12/11/2000 Removed left-over strings from group strings.
+//not sure if button/form is going to need lock warning...
+
+resource StringTable (kFormFieldUIStringsRsrcID + index_fiFI)
+{
+	k_fiFI,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{
+		// ----- Menu strings
+		"ButtonsActionsPopup",						"Painiketoiminnot-valikko",
+		
+		"$$$/Menu/AppearancePanelPopup",	"Painikkeet-paneelivalikko",	
+		"$$$/Menu/Interactive",				"&Vuorovaikutteinen", 
+		"$$$/Menu/FormField",				"&Lomake", 
+		"$$$/Menu/About",					"&Tietoja lomakelaajennuksesta", 
+		"$$$/Menu/CreateButton",			"&Muunna painikkeeksi", 
+		"$$$/Menu/CreateCheckBox",			"&Muunna valintaruuduksi",
+		"$$$/Menu/CreateComboBox",			"&Muunna yhdistelmäruuduksi", 
+		"$$$/Menu/CreateListBox",			"&Muunna luetteloruuduksi", 
+		"$$$/Menu/CreateRadioButton",		"&Muunna painikkeeksi", 
+		"$$$/Menu/CreateSignatureField",	"&Muunna allekirjoituskentäksi", 
+		"$$$/Menu/CreateTextField",			"&Muunna tekstikentäksi", 
+		"$$$/Menu/DestroyButton",			"&Muunna objektiksi", 
+		"$$$/Menu/FormFieldSettings",		"&Painikeasetukset...", 
+		"$$$/Menu/NewState",				"Uusi tila", 
+		"$$$/Menu/DeleteState",				"Poista tila", 
+		"$$$/Menu/DeleteStates",			"Poista tilat",
+		"$$$/Menu/PlaceIntoState",			"Sijoita sisältö tilaan...",
+		"$$$/Menu/DeleteStateContent",		"Poista sisältö tilasta",
+		"$$$/Menu/AppearancePanelPrefs",	"Paneeliasetukset...",
+		"$$$/Menu/StateOptions",			"Tila-asetukset...",
+		"$$$/Menu/SetTabOrder",				"Määritä &sarkainjärjestys...",
+		"$$$/Menu/SetCalculationOrder",		"Määritä laskentajärjestys...",
+		"$$$/Menu/States",					"P&ainikkeet ja lomakkeet",
+		
+		"$$$/Menu/Go To Page",				"Siirry sivulle",
+		"$$$/Menu/Go To First Page",		"Siirry ensimmäiselle sivulle",
+		"$$$/Menu/Go To Anchor",			"Mene kohteeseen",
+		"$$$/Menu/Go To Last Page",			"Siirry viimeiselle sivulle",
+		"$$$/Menu/Go To Next Page",			"Siirry seuraavalle sivulle",
+		"$$$/Menu/Go To Next View",			"Siirry seuraavaan näkymään",
+		"$$$/Menu/Go To Previous Page",		"Siirry edelliselle sivulle",
+		"$$$/Menu/Go To Previous View",		"Siirry edelliseen näkymään",
+		"$$$/Menu/Go To URL",				"Siirry URL-osoitteeseen",
+		"$$$/Menu/Movie",					"Video",
+		"$$$/Menu/Open File",				"Avaa tiedosto",
+		"$$$/Menu/Show/Hide Buttons",		"Näytä/piilota painikkeet ja lomakkeet",
+		"$$$/Menu/Sound",					"Ääni",
+		"$$$/Menu/View Zoom",				"Näytä zoomaus",
+		"$$$/Menu/Animation",				"Animaatio",
+		"$$$/Menu/SwitchToMSOState",		"Siirry tilaan",
+		"$$$/Menu/SwitchToNextMSOState",	"Siirry seuraavaan tilaan",
+		"$$$/Menu/SwitchToPrevMSOState",	"Siirry edelliseen tilaan",
+		"$$$/Menu/EPUBOnly",					"Vain EPUB",
+		"$$$/Menu/PDFOnly",					"Vain PDF",
+		"$$$/Menu/Print Form",				"Tulosta lomake",
+		"$$$/Menu/Clear Form",				"Tyhjennä lomake",
+		"$$$/Menu/Submit Form",				"Lähetä lomake",
+		
+		"$$$/Menu/FormFieldSettings/ButtonLibrary",			"Mallipainikkeet ja -lomakkeet",	// Name of menu item in Buttons Panel flyout that opens a library of Sample Buttons
+
+		"$$$/Menu/FormFieldSettings/PDFVis/Visible",		"Näkyy PDF-tiedostossa",
+		"$$$/Menu/FormFieldSettings/PDFVis/Hidden",			"Ei näy PDF-tiedostossa",
+		"$$$/Menu/FormFieldSettings/PDFVis/VisibleNoPrint",	"Näkyy PDF-tiedostossa, mutta ei tulostu",
+		"$$$/Menu/FormFieldSettings/PDFVis/HiddenButPrint",	"Ei näy PDF-tiedostossa, mutta on tulostettavissa",	
+		"$$$/Menu/ButtonPDFOptions", "PDF-asetukset...",
+
+		"$$$/Menu/ResetAllButtons",	"Nollaa kaikki painikkeet normaalitilaan",	
+			
+		"PageItems",						"PageItems", 
+		"$$$/Menu/Trace Geometry",			"Trace Geometry", 
+
+		"$$$/Menu/FormFieldOptions/Button",					"Painike",
+		"$$$/Menu/FormFieldOptions/Check Box",				"Valintaruutu",
+		"$$$/Menu/FormFieldOptions/Combo Box",				"Yhdistelmäruutu",
+		"$$$/Menu/FormFieldOptions/List Box",				"Luetteloruutu",
+		"$$$/Menu/FormFieldOptions/Radio Button",			"Valintanappi",
+		"$$$/Menu/FormFieldOptions/Signature Field",		"Allekirjoituskenttä",
+		"$$$/Menu/FormFieldOptions/Text Field",				"Tekstikenttä",
+
+		"InteractiveContextMenu",			"Vuorovaikutteisuus",
+	
+		// ----- Dialog strings
+		"$$$/Dialog/CreateFormField/Title",		"Lomakekenttä", 
+		"$$$/Dialog/CreateFormField/Options",	"Asetukset",
+		"$$$/Dialog/CreateFormField/Width",		"&Leveys:",
+		"$$$/Dialog/CreateFormField/Height",	"&Korkeus:",
+
+		"$$$/Dialog/FormFieldSettings/Title",				"Yleiset", 
+		"$$$/Dialog/FormFieldSettings/FieldType",			"Kentän tyyppi:",
+		"$$$/Dialog/FormFieldSettings/FieldTypeSetting",	"",
+		"$$$/Dialog/FormFieldSettings/Name",				"&Nimi:",
+		"$$$/Dialog/FormFieldSettings/PDFVisibility",		"Näkyvyys &PDF-muodossa:",
+		"$$$/Dialog/FormFieldSettings/PDFVis/Visible",		"Näkyvä",
+		"$$$/Dialog/FormFieldSettings/PDFVis/Hidden",		"Kätketty",
+		"$$$/Dialog/FormFieldSettings/PDFVis/VisibleNoPrint",	"Näkyvä (ei tulostu)",
+		"$$$/Dialog/FormFieldSettings/PDFVis/HiddenButPrint",	"Kätketty (tulostettavissa)",
+		"$$$/Dialog/FormFieldSettings/ReadOnly",			"Vain luku",
+		"$$$/Dialog/FormFieldSettings/Export",				"Vie",
+		"$$$/Dialog/FormFieldSettings/RequiredForExport",	"Viennin edellytykset",
+		"$$$/Dialog/FormFieldSettings/Description",			"&Kuvaus:",
+		"$$$/Dialog/FormFieldSettings/ExportName",			"&Viennin nimi:",
+		"$$$/Dialog/FormFieldSettings/Common Settings",		"Yleisasetukset",
+		"$$$/Dialog/FormFieldSettings/Options",				"Asetukset",
+		"$$$/Dialog/FormFieldSettings/Holder",				"Form Field Settings Holder",
+
+		"$$$/Dialog/FormOptions/Title",						"Painikeasetukset",
+		"$$$/Dialog/FormFieldSettings/Options",				"Asetukset",
+		
+		"$$$/Dialog/FormFieldSettings/ExportValue",			"Vientiarvo:",
+		"$$$/Dialog/FormFieldSettings/DefaultIsChecked",	"Valittu oletusarvon mukaan",
+		"$$$/Dialog/FormFieldSettings/DefaultIsSelected",	"Valittu oletusarvon mukaan",
+		"$$$/Dialog/FormFieldSettings/Default",				"Oletus:",
+
+		"$$$/Dialog/FormFieldSettings/Multiline",				"Monirivinen",
+		"$$$/Dialog/FormFieldSettings/Scroll",					"Scrollable",
+		"$$$/Dialog/FormFieldSettings/LimitOf",					"Rajoitus:",
+		"$$$/Dialog/FormFieldSettings/Characters",				"merkkiä",
+		"$$$/Dialog/FormFieldSettings/Password",				"Salasana",
+		"$$$/Dialog/FormFieldSettings/FieldForFileSelection",	"Käytetään tiedoston valintaan",
+		"$$$/Dialog/FormFieldSettings/SpellCheck",				"Oikoluku",
+		
+		"$$$/Dialog/FormFieldSettings/Item",					"Kohde:",
+		"$$$/Dialog/FormFieldSettings/Add",						"Lisää",
+		"$$$/Dialog/FormFieldSettings/Delete",					"Poista",
+		"$$$/Dialog/FormFieldSettings/Change",					"Vaihda",
+		"$$$/Dialog/FormFieldSettings/SortItems",				"Lajittele kohteet",
+		"$$$/Dialog/FormFieldSettings/AllowMultipleSelection",	"Salli useiden valinta",
+		"$$$/Dialog/FormFieldSettings/Editable",				"Muokattavissa",
+
+		"$$$/Dialog/FormFieldSettings/Align",					"Tasaa:",
+		"$$$/Dialog/FormFieldSettings/Align/Left",				"Vasen",
+		"$$$/Dialog/FormFieldSettings/Align/Center",			"Keskitetty",
+		"$$$/Dialog/FormFieldSettings/Align/Right",				"Oikea",
+
+		"$$$/Dialog/FormFieldSettings/Font:",					"Ki&rjasin:",
+		"$$$/Dialog/FormFieldSettings/Size:",					"&Koko:",
+		"$$$/Dialog/FormFieldSettings/Auto",					"Autom.",
+
+		"$$$/Dialog/FormFieldSettings/SelectedIsDefault",		"Valittu kohde on oletus",
+		
+		"$$$/Dialog/FormFieldUI/DeleteAlert",					"Jos poistat tilan, myös siihen liittyvä sisältö poistetaan. Haluatko poistaa tilan?",
+		"$$$/Dialog/FormFieldUI/DestroyAlert",					"Tämä toimi poistaa lomakekentän muihin tiloihin liittyvän sisällön. Haluatko jatkaa?",
+		"$$$/Dialog/FormFieldUI/DeleteContentAlert",			"Haluatko varmasti poistaa tähän tilaan liittyvän sisällön?",
+		"$$$/Dialog/FormFieldUI/StyleChangeAlert",				"Tämä toimi poistaa lomakekentän nykyisiin tiloihin liittyvän sisällön. Haluatko jatkaa?",
+		"$$$/Dialog/FormFieldUI/StyleChangeFailed",				"Valitun ulkoasutyylin liittäminen lomakekenttään epäonnistui.",
+
+		/* These are not visible, they are names of subpanels... */
+		
+		"$$$/Dialog/FormFieldSettings/CheckBox",				"Valintaruutuasetukset",	
+		"$$$/Dialog/FormFieldSettings/RadioButton",				"Valintanappiasetukset",	
+		"$$$/Dialog/FormFieldSettings/TextField",				"Tekstikenttäpainikkeen asetukset",	
+		"$$$/Dialog/FormFieldSettings/ListBox",					"Luetteloruutupainikkeen asetukset",	
+		
+		"$$$/Dialog/About/Description",						"Forms Plugin, versio 1.0\n\n(c) 2001 Adobe Systems Incorporated. Kaikki oikeudet pidätetään.",
+
+		"$$$/Dialog/CmdName/CreateButton",					"Muunna painikkeeksi",
+		"$$$/Dialog/CmdName/DestroyButton",					"Muunna objektiksi",
+		"$$$/Dialog/CmdName/ChangeFormSettings",			"Muuta painikeasetuksia",
+
+		"$$$/Dialog/TextColor/Title",						"Tekstin väri", 
+		"$$$/Dialog/Button/Color...",						"Kirjasinväri...", 
+
+		"$$$/Dialog/AppearancePanelPrefs/Title",			"Paneeliasetukset", 
+		"$$$/Dialog/AppearancePanelPrefs/ThumbnailSize",	"Miniatyyrin koko", 
+		"$$$/Dialog/AppearancePanelPrefs/None",				"Ei mitään", 
+		
+		
+		"$$$/Dialog/StateOptions/Title",					"Tila-asetukset", 
+		"$$$/Dialog/StateOptions/State",					"Tila:", 
+		"$$$/Dialog/StateOptions/Enable",					"Ota tila käyttöön", 
+
+		"$$$/Dialog/CalculationOrder/Title",				"Laskentajärjestys", 
+		"$$$/Dialog/TabOrder/Title",						"Sarkainjärjestys", 
+		"$$$/Dialog/Order/MoveUp",							"Siirrä &ylös", 
+		"$$$/Dialog/Order/MoveDown",						"Siirrä &alas",
+
+		"$$$/Dialog/ButtonPDFOptions/Title",				"PDF-asetukset",
+		"$$$/Dialog/ButtonPDFOptions/InitialAppearance",	"Alkava ulkoasu:",
+		"$$$/Dialog/ButtonPDFOptions/Visible",				"&Näkyvä",
+		"$$$/Dialog/ButtonPDFOptions/Hidden",				"&Kätketty",
+		"$$$/Dialog/ButtonPDFOptions/Printable",			"&Tulostettava",
+		"$$$/Dialog/ButtonPDFOptions/Description",			"&Kuvaus:",
+		
+		// ----- Window strings
+		
+		// ----- Panel strings
+
+		"$$$/Panel/FormFieldSettings/Action Data Holder",	"Toimintodatan paikkamerkki",
+		"$$$/Panel/FormFieldSettings/+",					"+",
+		"$$$/Panel/FormFieldSettings/Event:",				"Tapahtuma:",
+		"$$$/Panel/FormFieldSettings/Actions:",				"Toiminnot:",
+		"$$$/Panel/FormFieldSettings/URL:",					"URL:",
+		"$$$/Panel/FormFieldSettings/Mail to:",				"Lähetä:",
+		"$$$/Panel/Action",									"Toiminto",
+		"$$$/Panel/Empty Action",							"[Toimintoja ei ole lisätty]",
+		"$$$/Panel/StatesListBoxLabel/States",				"Ulkoasu",
+		"$$$/Panel/States",									"Painikkeet ja lomakkeet",
+		"$$$/Panel/FormFieldSettings/FieldType",			"Tyyppi:",
+		"$$$/Panel/FormFieldSettings/Name",					"Nimi:",
+		"$$$/Panel/ShowHide/Visibility:",					"Näkyvyys:",
+		"$$$/Panel/GoToPage/Page:",							"Sivu:",
+
+		"$$$/Panel/Normal",									"[Normaali]",
+		"$$$/Panel/Over",									"[Vieritys]",
+		"$$$/Panel/Down",									"[Napsautus]",
+
+		"$$$/Panel/Off",									"[Normaali ei käytössä]",
+		"$$$/Panel/On",										"[Normaali käytössä]",
+
+		"$$$/Panel/RolloverOff",							"[Vieritys ei käytössä]",
+		"$$$/Panel/RolloverOn",								"[Vieritys käytössä]",
+		"$$$/Panel/DowmOff",								"[Napsautus ei käytössä]",
+		"$$$/Panel/DownOn",									"[Napsautus käytössä]",
+
+		"$$$/Panel/CmdName/FormFieldName",					"Painikkeen nimi",
+		"$$$/Panel/CmdName/FormFieldStyle",					"Painikkeen ulkoasu",
+		
+		"$$$/Panel/FormFieldSettings/Appearance",			"Ulkoasu:",
+		"$$$/Panel/PDFOptions",								"PDF-asetukset",
+		"$$$/Panel/Required",								"Välttämätön",
+		"$$$/Panel/Printable",								"Tulostettava",
+		"$$$/Panel/Description",							"Kuvaus:",
+		"$$$/Panel/SelectedByDefault",						"Valittu oletusarvoisesti",
+		"$$$/Panel/Multiline",								"Monirivinen",
+		"$$$/Panel/ListItems",								"Luettelokohteet",
+		"$$$/Panel/MultipleSelection",						"Monivalinta",
+		"$$$/Panel/FontSize",								"Kirjasinkoko:",
+		"$$$/Panel/Font",									"Kirjasin:",
+		"$$$/Panel/AutoSize",								"Automaattinen",
+		"$$$/Panel/SortItems",								"Lajittele kohteet",
+		"$$$/Panel/MERTLOption",							"Oikealta vasemmalle",
+		"$$$/Panel/ExportValue",							"Painikkeen arvo:",
+		 
+		"$$$/Popup/Separator",								"-",
+		
+		"$$$/Dialog/Behaviors/Exit/No Data for Exit Behavior", "",
+
+		// ----- Tips strings
+
+		"$$$/Tip/StateEye",				"Ota valinnainen tila vietäessä käyttöön tai poista se käytöstä",
+		"$$$/Tip/StateThumbnail",		"Pienennetty näkymä tästä tilasta",
+		"$$$/Tip/Show",					"Näytä",
+		"$$$/Tip/Hide",					"Kätke",
+		"$$$/Tip/Ignore",				"Ohita",
+		"$$$/Tip/Delete Selected Action",	"Poista valittu toiminto",
+		"$$$/Tip/Add New Action",		"Lisää valitulle tapahtumalle uusi toiminto",
+		"$$$/Tip/DeleteState",			"Poista valinnainen tila ja sen sisältö",
+		"$$$/Tip/Convert To Button",		"Muunna painikkeeksi",
+		"$$$/Tip/Convert To Object",		"Muunna objektiksi",
+		"$$$/Tip/DefaultChoice",		"Valitse luettelosta oletusvalinnaksi asetettava kohde. Jos haluat määrittää mukautetun järjestyksen, poista ”Lajittele kohteet” -asetuksen valinta ja vedä kohteet paikoilleen.",
+        "$$$/Tip/MissingFontToolTip",				"Lomakekentästä puuttuu kirjasin. Valitse Etsi kirjasin.",
+
+		// ----- Error strings
+
+		"$$$/Error/YouNeedToSpecifyAName", "Nimi on määritettävä.",
+		"$$$/Error/YouNeedToSpecifyANonBlankName", "Kelvollinen nimi on määritettävä.",
+		"$$$/Error/YouNeedToSpecifyANonBlankNameOrNoName", "Määritä kelvollinen nimi tai älä määritä nimeä lainkaan.",
+		"$$$/Error/YouNeedToSpecifyAnExportValue", "Vientiarvo on määritettävä.",
+		"$$$/Error/YouNeedToSpecifyANonBlankExportValue", "Kelvollinen vientiarvo on määritettävä.",
+		"$$$/Error/YouNeedToSpecifyAUniqueName", "Tämä tilan nimi on jo käytössä. Valitse toinen nimi.",
+		"$$$/Error/YouNeedToSpecifyAValidFontSize", "Määritä arvo väliltä 0–300 tai Automaattinen.",
+		
+		// ----- Misc strings
+
+		"$$$/Command/DeleteStates",	"Poista tilat",
+		"$$$/CmdName/DeleteStateContent",	"Poista tilan sisältö",
+		"$$$/Panel/CmdName/MSOName",		"Useissa tiloissa olevan objektin nimi",
+		
+		// ----- MultiStateObject Panel strings
+				
+		"$$$/Menu/MSOPanel", "Objektin &tilat",
+		"$$$/Panel/MSOPanel", "Objektin tilat",
+		"$$$/Panel/MSOPanel/ObjectName", "Objektin nimi:",
+#ifdef MACINTOSH
+		"$$$/Panel/MSOPanel/MixedSelection", "Napsauttamalla Uusi-painiketta voit tehdä jokaisesta objektista erillisen tilan. (Jos painat optionäppäintä napsauttaessasi, objektit pysyvät samassa tilassa.)",
+		"$$$/Panel/MSOPanel/MSOAndMixedSelection", "Napsauttamalla Uusi-painiketta voit tehdä jokaisesta objektista uuden tilan useissa tiloissa olevaan objektiin ^1. (Jos painat optionäppäintä napsauttaessasi, objektit pysyvät samassa tilassa.)\n\nNapsauttamalla Lisää-painiketta voit lisätä objektit kohteen ^2 näkyvään tilaan.",
+#else
+		"$$$/Panel/MSOPanel/MixedSelection", "Napsauttamalla Uusi-painiketta voit tehdä jokaisesta objektista erillisen tilan. (Jos painat Alt-näppäintä napsauttaessasi, objektit pysyvät samassa tilassa.)",
+		"$$$/Panel/MSOPanel/MSOAndMixedSelection", "Napsauttamalla Uusi-painiketta voit tehdä jokaisesta objektista uuden tilan useissa tiloissa olevaan objektiin ^1. (Jos painat Alt-näppäintä napsauttaessasi, objektit pysyvät samassa tilassa.)\n\nNapsauttamalla Lisää-painiketta voit lisätä objektit kohteen ^2 näkyvään tilaan.",
+#endif
+		
+		"$$$/Menu/MSOPanelPopup", "Objektitilojen paneelivalikko",	
+		"$$$/Menu/MSOPanel/NewState", "Uusi tila",
+		"$$$/Menu/MSOPanel/DeleteState", "Poista tila",
+		"$$$/Menu/MSOPanel/AddToState", "Lisää objektit tiloihin",
+		"$$$/Menu/MSOPanel/PasteIntoState", "Liitä tilaan",
+		"$$$/Menu/MSOPanel/ReleaseState", "Vapauta tila objekteiksi",
+		"$$$/Menu/MSOPanel/ReleaseAllStates", "Vapauta kaikki tilat objekteiksi",
+		"$$$/Menu/MSOPanel/ResetAllMSOs", "Nollaa kaikki useissa tiloissa olevat kohteet niiden ensimmäiseen tilaan",
+		"$$$/Menu/MSOPanel/Options", "Paneeliasetukset...",
+		"$$$/Menu/MSOPanel/ContextMenu", "Objektityylien paneelin pikavalikko",
+		"$$$/Menu/MSOPanel/ReleaseStateContextMenu", "Vapauta ^1 objekteiksi",
+		"$$$/Menu/MSOPanel/DeleteStateContextMenu", "Poista ^1",
+		"$$$/Menu/MSOPanel/PasteIntoStateContextMenu", "Liitä kohteeseen ^1",
+		"$$$/Menu/MSOPanel/HiddenUntilTriggered", "Kätketty kunnes liipaistaan",
+	
+		"$$$/Tip/MSOPanel/StateAnimated", "Tässä tilassa oleva objekti on animoitu.",
+		"$$$/Tip/MSOPanel/NewMSO", "Muunna valinta useissa tiloissa olevaksi objektiksi",
+		"$$$/Tip/MSOPanel/NewState", "Luo uusi tila",
+		"$$$/Tip/MSOPanel/DeleteState", "Poista valittu tila",
+		"$$$/Tip/MSOPanel/MSOIsSelected", "Tämä useissa tiloissa oleva objekti on valittuna. Kaikki tilan muunnetaan, jos muunnat objektin.",
+		"$$$/Tip/MSOPanel/MSOIsNotSelected", "Tila on valittuna. Valitse useissa tiloissa oleva objekti napsauttamalla.",
+		"$$$/Tip/MSOPanel/MSOStateIsSelected", "Tämä tila on valittu.",
+		"$$$/Tip/MSOPanel/MSOStateContentIsSelected", "Tähän tilaan liittyvää sisältöä on valittuna. Valitse tämä tila napsauttamalla riviä.",
+		"$$$/Tip/MSOPanel/MSOStateRowMSOIsSelected", "Valittuna on useissa tiloissa oleva objekti. Vaihda ja valitse tämä tila napsauttamalla riviä.",
+		"$$$/Tip/MSOPanel/MSOActiveStateRowMSOIsSelected", "Valittuna on useissa tiloissa oleva objekti. Valitse tämä tila napsauttamalla riviä.",
+		"$$$/Tip/MSOPanel/MSOAnotherStateIsSelected", "Vaihda ja valitse tämä tila napsauttamalla riviä.",
+		"$$$/Tip/MSOPanel/PasteIntoState", "Liitä kopioidut objektit valittuun tilaan",
+		"$$$/Tip/MSOPanel/AddToState", "Kaikki objektit näkyvään tilaan",
+	
+		"$$$/Dialog/MSOPanel/ReleaseAlert", "Useissa tiloissa olevilla objekteilla täytyy olla ainakin kaksi tilaa. Tämä toimenpide poistaa useissa tiloissa olevan objektin julkaisusta. Kaikki nykyiset objektit jäävät entisille paikoilleen yksitilaisina objekteina.",
+		"$$$/Dialog/MSOPanel/ReleaseAllAlert", "Tämä toimenpide poistaa useissa tiloissa olevan objektin julkaisusta. Kaikki nykyiset objektit jäävät entisille paikoilleen yksitilaisina objekteina.",
+		"$$$/Dialog/MSOPanel/DeletesMSOAlert", "Useissa tiloissa olevilla objekteilla täytyy olla ainakin kaksi tilaa. Tämä toimenpide poistaa useissa tiloissa olevan objektin julkaisusta. Jäljellä olevaan tilaan liitetyt objektit jäävät entisille paikoilleen yksitilaisina objekteina.",
+		
+		"$$$/Panel/MSOPanel/StatusOne", " objekti kohteessa ^1",
+		"$$$/Panel/MSOPanel/Status", " objektit kohteessa ^1",
+		
+		"$$$/Panel/MSOPanel/StatusMSOSelected", "Kaikki tilat valittuna",
+		"$$$/Panel/MSOPanel/StatusStateSelected", "Valittu tila",
+		"$$$/Panel/MSOPanel/StatusStateContentSelected", "Objekti tila valittuna",
+
+		// Command strings		
+		"$$$/Command/CheckBox", "Muunna valintaruuduksi",
+		"$$$/Command/ComboBox", "Muunna yhdistelmäruuduksi",
+		"$$$/Command/ListBox", "Muunna luetteloruuduksi",
+		"$$$/Command/RadioButton", "Muunna painikkeeksi",
+		"$$$/Command/SignatureField", "Muunna allekirjoituskentäksi",
+		"$$$/Command/TextField", "Muunna tekstikentäksi",
+}
+};
+
+#endif // __ODFRC__

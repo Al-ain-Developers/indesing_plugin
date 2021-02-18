@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{0a7bdaf4-6a14-4c2a-8651-85fc1a67d75f}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;rc;def;r;odl;hpj;bat;for;f90</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{bcc578cf-26d8-4d32-92ff-ba31cc713463}</UniqueIdentifier>
+      <Extensions>ico;cur;bmp;dlg;rc2;rct;bin;cnt;rtf;gif;jpg;jpeg;jpe;fr;r</Extensions>
+    </Filter>
+    <Filter Include="MWHack">
+      <UniqueIdentifier>{b8c1cf78-6050-4eea-92b8-d6218a714719}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Plugin">
+      <UniqueIdentifier>{e0673d87-bc29-4945-9c19-6383105ccee8}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\source\open\components\incopyexport\ICExportPrefsScriptProvider.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\incopyexport\export\InCopyStoryExportExtras.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\incopyexport\export\InCopyStoryExportProvider.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\incopyexport\export\InCopyStoryExportSuiteASB.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\incopyexport\InCopyExportMWHacks.cpp">
+      <Filter>MWHack</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\incopyexport\InCopyExportID.cpp">
+      <Filter>Plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\incopyexport\InCopyExportPlugIn.cpp">
+      <Filter>Plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\libs\publiclib\statics\PlugInStatics.cpp">
+      <Filter>Plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\incopyexport\resources\TriggerResourceDeps.cpp">
+      <Filter>Plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\precomp\msvc\VCPlugInHeaders.cpp">
+      <Filter>Plugin</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\source\open\components\incopyexport\resources\InCopyExportClass.fr">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\source\open\components\incopyexport\resources\InCopyExportFactoryList.fr">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\source\open\components\incopyexport\resources\InCopyExportStringRegister.fr">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\source\open\components\incopyexport\resources\InCopyExportStrings_enUS.fr">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\..\..\source\open\components\incopyexport\resources\InCopyExport.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\source\open\components\incopyexport\InCopyExportFactoryList.h">
+      <Filter>Plugin</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\..\..\source\open\components\incopyexport\resources\InCopyExport.fr">
+      <Filter>Resource Files</Filter>
+    </CustomBuild>
+  </ItemGroup>
+</Project>

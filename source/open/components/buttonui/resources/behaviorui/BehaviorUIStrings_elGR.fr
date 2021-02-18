@@ -1,0 +1,124 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/buttonui/resources/behaviorui/BehaviorUIStrings_elGR.fr $
+//  
+//  $Owner: Mark VerMurlen $
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kBehaviorUIStringsRsrcID + index_elGR)
+{
+	k_elGR,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{		
+		"$$$/Dialog/Behaviors/ShowHideFields/Fields_Tree", "Ιεραρχία πεδίων",
+
+		"$$$/Dialog/Behaviors/Description",				"Εδώ περιέχεται μια σύντομη περιγραφή της συμπεριφοράς. Μπορεί να περιέχει επίσης ορισμένες υποδείξεις σχετικά με τις επιλογές της συμπεριφοράς. Υποδεικνύει στο χρήστη πώς να τη χρησιμοποιήσει.",
+		"$$$/Dialog/Behaviors/Description Title",		"Περιγραφή",
+		"$$$/Dialog/Behaviors/DeleteAlert",				"Διαγραφή επιλεγμένης ενέργειας;",
+		"$$$/Dialog/Behaviors/DragDeleteAlert",			"Διαγραφή των ενεργειών που έχουν μεταφερθεί;",
+		"$$$/Dialog/Behaviors/Error/Invalid URL",		"Το πεδίο URL πρέπει να έχει τιμή",
+		"$$$/Dialog/Behaviors/Error/Invalid File",		"Πρέπει να καθοριστεί έγκυρο αρχείο",
+		
+		"$$$/Dialog/Behaviors/Movie/Movie:",			"&Ταινία:",
+		"$$$/Dialog/Behaviors/Movie/Play Options:",		"Ε&πιλογές:",
+		"$$$/Dialog/Behaviors/Movie/Play",				"Αναπαραγωγή",
+		"$$$/Dialog/Behaviors/Movie/Stop",				"Διακοπή",
+		"$$$/Dialog/Behaviors/Movie/Pause",				"Παύση",
+		"$$$/Dialog/Behaviors/Movie/Resume",			"Συνέχιση",
+
+		"$$$/Dialog/Behaviors/Sound/Sound:",			"&Ήχος:",
+		"$$$/Dialog/Behaviors/Sound/Play Options:",		"Ε&πιλογές:",
+		"$$$/Dialog/Behaviors/Sound/Play",				"Αναπαραγωγή",
+		"$$$/Dialog/Behaviors/Sound/Stop",				"Διακοπή",
+		"$$$/Dialog/Behaviors/Sound/Pause",				"Παύση",
+		"$$$/Dialog/Behaviors/Sound/Resume",			"Συνέχιση",
+		"$$$/Dialog/Behaviors/Sound/Volume:",			"Δίσκος:",
+		"$$$/Dialog/Behaviors/Sound/Synchronous",		"Σύγχρονο",
+		"$$$/Dialog/Behaviors/Sound/Mix",				"Μίξη",
+		
+		"$$$/Dialog/Behaviors/GoToView/Go To:",			"Μετάβαση Σε:",
+		"$$$/Dialog/Behaviors/GoToView/First Page",		"Πρώτη σελίδα",
+		"$$$/Dialog/Behaviors/GoToView/Page",			"Σελίδα",
+		"$$$/Dialog/Behaviors/GoToView/Previous Page",	"Προηγούμενη σελίδα",
+		"$$$/Dialog/Behaviors/GoToView/Next Page",		"Επόμενη σελίδα",
+		"$$$/Dialog/Behaviors/GoToView/Last Page",		"Τελευταία σελίδα",
+		"$$$/Dialog/Behaviors/GoToView/Back",			"Πίσω",
+		"$$$/Dialog/Behaviors/GoToView/Forward",		"Εμπρός",
+		"$$$/Dialog/Behaviors/GoToView/Previous View",	"Προηγούμενη προβολή",
+		"$$$/Dialog/Behaviors/GoToView/Next View",		"Επόμενη προβολή",
+		"$$$/Dialog/Behaviors/GoToView/Specific Page",	"Συγκεκριμένη σελίδα",
+		"$$$/Dialog/Behaviors/GoToView/Document:",		"Έγ&γραφο:",
+		"$$$/Dialog/Behaviors/GoToView/Page:",			"Σελίδα:",
+		"$$$/Dialog/Behaviors/GoToView/URL",			"URL",
+		"$$$/Dialog/Behaviors/GoToView/URL:",			"U&RL:",
+		"$$$/Dialog/Behaviors/GoToView/DefaultURL",		"http://",
+		"$$$/Dialog/Behaviors/GoToView/Anchor",			"Κόμβος κειμένου",
+		"$$$/Dialog/Behaviors/GoToView/Anchor:",		"Κόμβος κειμένου:",
+		"$$$/Dialog/Behaviors/GoToView/Bookmark",		"Σελιδοδείκτης",
+		"$$$/Dialog/Behaviors/GoToView/Inherit Zoom",	"Μεταβίβαση ζουμ",
+		"$$$/Dialog/Behaviors/GoToView/Actual Size",	"Πραγματικό μέγεθος",
+		"$$$/Dialog/Behaviors/GoToView/Fit In Window",	"Προσαρμογή στο παράθυρο",
+		"$$$/Dialog/Behaviors/GoToView/Fit Width",		"Προσαρμογή πλάτους",
+		"$$$/Dialog/Behaviors/GoToView/Fit Height",		"Προσαρμογή ύψους",
+		"$$$/Dialog/Behaviors/GoToView/Fit Visible",	"Προσαρμογή ορατού περιεχομένου",
+		"$$$/Dialog/Behaviors/GoToView/Zoom:",			"&Ζουμ:",
+		"$$$/Dialog/Behaviors/GoToView/None",			"Κανένα",
+		"$$$/Dialog/Behaviors/GoToAnchor/InDesign Format File","Αρχείο μορφής InDesign",
+		
+		"$$$/Dialog/Behaviors/ViewZoom/Full Screen",	"Πλήρης οθόνη",
+		"$$$/Dialog/Behaviors/ViewZoom/Zoom View In",	"Μεγέθυνση",
+		"$$$/Dialog/Behaviors/ViewZoom/Zoom View Out",	"Σμίκρυνση",
+		"$$$/Dialog/Behaviors/ViewZoom/Fit Page",		"Προσαρμογή στο παράθυρο",
+		"$$$/Dialog/Behaviors/ViewZoom/Actual Size",	"Πραγματικό μέγεθος",
+		"$$$/Dialog/Behaviors/ViewZoom/Fit Width",		"Προσαρμογή πλάτους",
+		"$$$/Dialog/Behaviors/ViewZoom/Fit Visible",	"Προσαρμογή ορατού περιεχομένου",
+		"$$$/Dialog/Behaviors/ViewZoom/Reflow",			"Αναδιαμόρφωση",
+		"$$$/Dialog/Behaviors/ViewZoom/SinglePage",		"Μία σελίδα",
+		"$$$/Dialog/Behaviors/ViewZoom/OneColumn",		"Συνεχής",
+		"$$$/Dialog/Behaviors/ViewZoom/TwoColumns",		"Συνεχείς αντικριστές σελίδες",
+		"$$$/Dialog/Behaviors/ViewZoom/RotateCW",		"Περιστροφή δεξιόστροφα",
+		"$$$/Dialog/Behaviors/ViewZoom/RotateCCW",		"Περιστροφή αριστερόστροφα",
+
+		"$$$/Dialog/Behaviors/ImportData/Select File:","&Επιλογή αρχείου:",
+		"$$$/Dialog/Behaviors/ImportData/Acrobat Format File","Aρχείο μορφής Acrobat",
+
+		"$$$/Dialog/Behaviors/OpenFile/Select File:","&Επιλογή αρχείου:",
+		"$$$/Dialog/Behaviors/OpenFile/Select File to be Opened", "Επιλογή αρχείου για άνοιγμα",
+		"$$$/Dialog/Behaviors/OpenFile/Acrobat Format File","Aρχείο μορφής Acrobat",
+
+		"$$$/Dialog/Behaviors/GoToView/No Data for Go To Next View Action", "",
+		"$$$/Dialog/Behaviors/GoToView/No Data for Go To Previous View Action", "",
+		"$$$/Dialog/Behaviors/Close/No Data for Close Action", "",
+
+		"$$$/Dialog/Behaviors/Exit/No Data for Exit Action", "",
+						
+		// ----- Tips strings
+	}
+};
+
+#endif // __ODFRC__

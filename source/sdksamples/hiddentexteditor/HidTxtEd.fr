@@ -1,0 +1,590 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/sdksamples/hiddentexteditor/HidTxtEd.fr $
+//  
+//  Owner: Adobe Developer Technologies
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+//===========================
+//  General includes:
+//===========================
+
+#include "MenuDef.fh"
+#include "ActionDef.fh"
+#include "ActionDefs.h"
+#include "AdobeMenuPositions.h"
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "StringTable.fh"
+//#include "OMTypes.h"
+#include "objectmodeltypes.fh"
+#include "ShuksanID.h"
+#include "ActionID.h"
+#include "CommandID.h"
+#include "WorkspaceID.h"
+#include "widgetid.h"
+#include "TextEditorImplID.h"
+#include "TextID.h"
+#include "BuildNumber.h"
+#include "Widgets.fh"    // for PalettePanelWidget
+#include "InterfaceColorDefines.h"
+#include "IControlViewDefs.h"
+#include "SysControlIds.h"
+#include "PanelList.fh"
+
+// HiddenText includes:
+#include "HidTxtID.h"
+
+#include "PlugInModel_UIAttributes.h"
+// Project includes:
+#include "HidTxtEdID.h"
+
+#include "EveInfo.fh"
+#ifdef __ODFRC__
+
+/*
+// Plugin version definition.
+*/
+resource PluginVersion (kSDKDefPluginVersionResourceID)
+{
+    kTargetVersion,
+    kHidTxtEdPluginID,
+    kSDKDefPlugInMajorVersionNumber, kSDKDefPlugInMinorVersionNumber,     
+    kSDKDefHostMajorVersionNumber, kSDKDefHostMinorVersionNumber,
+    kHidTxtEdCurrentMajorFormatNumber, kHidTxtEdCurrentMinorFormatNumber,
+    {kInDesignProduct, kInCopyProduct },
+    {kWildFS },
+    kUIPlugIn,
+    kHidTxtEdVersion
+};
+
+/*
+// Dependent on HiddenText plug-in.
+*/
+resource PluginDependency(kSDKDefPluginDependencyResourceID)
+{
+    kWildFS
+    {
+        kHidTxtPluginID,
+        kHidTxtPluginName,
+        kSDKDefPlugInMajorVersionNumber,
+        kSDKDefPlugInMinorVersionNumber,
+    }
+}
+
+/*
+//    Boss class definition.
+*/
+resource ClassDescriptionTable(kSDKDefClassDescriptionTableResourceID)
+{{{
+            /**    Signifies that the HiddenText plug-in's text adornment(kHidTxtAnchorTextAdornmentBoss)
+            should draw. 
+            The adornment only draws when an IBoolData interface is added to its
+            boss class. The interface provides a flag that indicates the presence
+            of the HiddenTextEditor. The presence of hidden text is only indicated
+            the HiddenTextEditor is installed.
+            @ingroup hiddentexteditor
+            */
+            AddIn
+            {
+                kHidTxtAnchorTextAdornmentBoss,
+                kInvalidClass,
+                {
+                    /** Indicate to the HiddenText plug-in that the
+                    HiddenTextEditor is installed and the presence
+                    of hidden text should be shown.
+                    */
+                    IID_IHIDTXTSHOWADORNMENTBOOLDATA, kBoolDataImpl,
+                }
+            },
+            
+            /**    Implements this plug-in's actions.
+            @ingroup hiddentexteditor
+            */
+            Class
+            {
+                kHidTxtEdActionComponentBoss,
+                kBaseActionComponentBoss,
+                {
+                    /** Handle the actions from the menu. */
+                    IID_IACTIONCOMPONENT, kHidTxtEdActionComponentImpl,
+                }
+            },
+            
+            
+            /**    Implements this plug-in's panel.
+            @ingroup hiddentexteditor
+            */    
+            Class
+            {
+                kHidTxtEdPanelWidgetBoss,
+                kPalettePanelWidgetBoss,
+                {
+                    /** The plug-in's implementation of ITextControlData with an exotic IID of IID_IPANELMENUDATA.
+                    Implementation provided by the API.
+                    */ 
+                    IID_IPANELMENUDATA, kCPanelMenuDataImpl,
+                    /** See ActiveSelectionObserver and HidTxtEdSelectionObserver; selection observer 
+                    that updates the panel when the selection changes.
+                    */
+                    IID_IOBSERVER, kHidTxtEdSelectionObserverImpl,            
+                }
+            },
+            
+            /**    Implements this plug-in's dialog.
+            @ingroup hiddentexteditor
+            */    
+            Class 
+            {
+                kHidTxtEdDialogBoss,
+                kDialogBoss,
+                {
+                    /** See IDialogController and HidTxtEdDlgController.
+                    */
+                    IID_IDIALOGCONTROLLER,    kHidTxtEdDlgControllerImpl,
+                    /** Indicates the dialog mode, i.e. whether the dialog is to be used
+                    to create new or modify existiong hidden text,
+                    see IIntData, implementation provided by the API.
+                    */
+                    IID_IINTDATA, kIntDataImpl
+                }
+            },
+            
+            AddIn
+            {
+                kHidTxtModelBoss,
+                kInvalidClass,
+                {
+                    /** See ITextParcelListUI, implementation provided by the API.
+                    */                
+                    IID_ITEXTPARCELLISTUI, kTextParcelListUIImpl,
+                }
+            },
+            
+        }}};
+
+/*
+// Implementation definition.
+*/
+resource FactoryList (kSDKDefFactoryListResourceID) 
+{
+    kImplementationIDSpace,
+    {
+#include "HidTxtEdFactoryList.h"
+    }
+};
+
+/*
+// Menu definition.
+*/
+resource MenuDef (kSDKDefMenuResourceID)
+{
+    {
+        // The About Plug-ins sub-menu item for this plug-in.
+        kHidTxtEdAboutActionID,            // ActionID (kInvalidActionID for positional entries)
+        kHidTxtEdAboutMenuPath,            // Menu Path.
+        kSDKDefAlphabeticPosition,         // Menu Position.
+        kSDKDefIsNotDynamicMenuFlag,       // kSDKDefIsNotDynamicMenuFlag or kSDKDefIsDynamicMenuFlag.
+        
+        kHidTxtEdCreateActionID,
+        kHidTxtEdTargetMenuPath,
+        kHidTxtEdCreateMenuItemPosition,
+        kSDKDefIsNotDynamicMenuFlag,
+        
+        kHidTxtEdModifyActionID,
+        kHidTxtEdTargetMenuPath,
+        kHidTxtEdModifyMenuItemPosition,
+        kSDKDefIsNotDynamicMenuFlag,
+        
+        kHidTxtEdDeleteActionID,
+        kHidTxtEdTargetMenuPath,
+        kHidTxtEdDeleteMenuItemPosition,
+        kSDKDefIsNotDynamicMenuFlag,
+        
+        // Separator for the popup menu on the panel
+        kHidTxtEdSeparator1ActionID,
+        kHidTxtEdInternalPopupMenuNameKey kSDKDefDelimiterAndSeparatorPath,    // :- to mark an item as a separator.
+        kHidTxtEdSeparator1MenuItemPosition,
+        kSDKDefIsNotDynamicMenuFlag,
+        
+        // About this plugin submenu for the popup menu on the panel
+        kHidTxtEdPopupAboutThisActionID,
+        kHidTxtEdTargetMenuPath
+        kHidTxtEdAboutThisMenuItemPosition,
+        kSDKDefIsNotDynamicMenuFlag, 
+        
+    }
+};
+
+/*
+// Action definition.
+*/
+resource ActionDef (kSDKDefActionResourceID)
+{
+    {
+        kHidTxtEdActionComponentBoss,       // ClassID of boss class that implements the ActionID.
+        kHidTxtEdAboutActionID,             // ActionID.
+        kHidTxtEdAboutMenuKey,              // Sub-menu string.
+        kHelpMenuActionArea,                // Area name (see ActionDefs.h).
+        kNormalAction,                      // Type of action (see ActionDefs.h).
+        kDisableIfLowMem,                   // Enabling type (see ActionDefs.h).
+        kInvalidInterfaceID,                // Selection InterfaceID this action cares about or kInvalidInterfaceID.
+        kSDKDefInvisibleInKBSCEditorFlag,   // kSDKDefVisibleInKBSCEditorFlag or kSDKDefInvisibleInKBSCEditorFlag.
+        
+        kHidTxtEdActionComponentBoss,
+        kHidTxtEdCreateActionID,        
+        kHidTxtEdCreateMenuItemKey,        
+        kOtherActionArea,            
+        kNormalAction,                
+        kDisableIfSelectionDoesNotSupportIID | kCustomEnabling | kDisableIfLowMem,    
+        IID_IHIDTXTSUITE,    
+        kSDKDefInvisibleInKBSCEditorFlag,
+        
+        kHidTxtEdActionComponentBoss, 
+        kHidTxtEdModifyActionID, 
+        kHidTxtEdModifyMenuItemKey,
+        kOtherActionArea,
+        kNormalAction,
+        kDisableIfSelectionDoesNotSupportIID | kCustomEnabling | kDisableIfLowMem,    
+        IID_IHIDTXTSUITE,
+        kSDKDefInvisibleInKBSCEditorFlag,
+        
+        kHidTxtEdActionComponentBoss,
+        kHidTxtEdDeleteActionID,        
+        kHidTxtEdDeleteMenuItemKey,        
+        kOtherActionArea,            
+        kNormalAction,                
+        kDisableIfSelectionDoesNotSupportIID | kCustomEnabling | kDisableIfLowMem,    
+        IID_IHIDTXTSUITE,    
+        kSDKDefInvisibleInKBSCEditorFlag,
+        
+        kHidTxtEdActionComponentBoss, 
+        kHidTxtEdPopupAboutThisActionID, 
+        kSDKDefAboutThisPlugInMenuKey,    // Key to the name of this action
+        kOtherActionArea,
+        kNormalAction,
+        kDisableIfLowMem,    
+        kInvalidInterfaceID,
+        kSDKDefInvisibleInKBSCEditorFlag,
+        
+    }
+};
+
+/*
+// LocaleIndex
+// The LocaleIndex should have indicies that point at your
+// localizations for each language system that you are 
+// localized for.
+*/
+/*
+// String LocaleIndex.
+*/
+resource LocaleIndex (kSDKDefStringsResourceID)
+{
+    kStringTableRsrcType,
+    {
+        kWildFS, k_enUS, kSDKDefStringsResourceID + index_enUS
+        kWildFS, k_jaJP, kSDKDefStringsResourceID + index_jaJP
+        
+        kWildFS, k_Wild, kSDKDefStringsResourceID + index_enUS
+    }
+};
+
+resource LocaleIndex (kSDKDefStringsNoTransResourceID)
+{
+    kStringTableRsrcType,
+    {
+        kWildFS, k_Wild, kSDKDefStringsNoTransResourceID + index_enUS
+    }
+};
+
+resource StringTable (kSDKDefStringsNoTransResourceID + index_enUS)
+{
+    k_enUS,                                    // Locale Id
+    kEuropeanMacToWinEncodingConverter,        // Character encoding converter
+    {
+        // No-Translate strings go here:        
+        kHidTxtEdInternalPopupMenuNameKey,    kHidTxtEdInternalPopupMenuNameKey,        // No need to translate, internal menu name.
+    }
+};
+
+/*
+// Panel LocaleIndex.
+*/
+resource LocaleIndex (kSDKDefPanelResourceID)
+{
+    kViewRsrcType,
+    {
+        kWildFS, k_Wild,     kSDKDefPanelResourceID + index_enUS
+    }
+};
+
+/*
+// Type definition.
+*/
+type HidTxtEdPanelWidget(kViewRsrcType) : PalettePanelWidget(ClassID = kHidTxtEdPanelWidgetBoss) 
+{
+    CPanelMenuData;
+    
+    WidgetEveInfo;
+};
+
+/*
+// PanelList definition.
+*/
+resource PanelList (kSDKDefPanelResourceID)
+{
+    {
+        // 1st panel in the list
+        kSDKDefPanelResourceID,       // Resource ID for this panel (use SDK default rsrc ID)
+        kHidTxtEdPluginID,            // ID of plug-in that owns this panel
+        kNotResizable,
+        kHidTxtEdPanelWidgetActionID, // Action ID to show/hide the panel
+        kHidTxtEdPanelTitleKey,       // Shows up in the Window list.
+        "",                           // Alternate menu path of the form "Main:Foo" if you want your palette menu item in a second place
+        0.0,                          // Alternate Menu position Alternate Menu position for determining menu order
+        0,0,                          // Rsrc ID, Plugin ID for a PNG icon resource to use for this palette
+        c_Panel
+    }    
+};
+
+/*
+// PanelView definition.
+// The view is not currently localised: therefore, it can reside here.
+// However, if you wish to localise it, it is recommended to locate it in one of
+// the localised framework resource files (i.e. HidTxtEd_enUS.fr etc.).
+*/
+resource HidTxtEdPanelWidget(kSDKDefPanelResourceID + index_enUS)
+{
+    __FILE__, __LINE__,                // Localization macro        
+    kHidTxtEdPanelWidgetID,            // WidgetID 
+    kPMRsrcID_None,                    // RsrcID
+    kBindNone,                         // Binding (0=none)
+    Frame(0,0,207,95),                 // Frame: left, top, right, bottom.
+    kTrue, kTrue,                      // Visible, Enabled
+    kFalse,                            // Erase background
+    kInterfacePaletteFill,             // Erase to color
+    kFalse,                            // Draw dropshadow
+    kHidTxtEdPanelTitleKey,            // Panel name    
+    {
+        EVEStaticTextWidget
+        (
+            kHidTxtEdPanelDataLabelWidgetID, // WidgetId (default=0)
+            kSysStaticTextPMRsrcId,          // RsrcId
+            kBindNone,                       // Frame binding
+            Frame(5,5,202,20),               // Frame: left, top, right, bottom.
+            kTrue, kTrue,                    // Visible, Enabled
+            kAlignLeft, kEllipsizeEnd, kTrue,// Alignment, ellipsize style, convert ampersands
+            kHidTxtEdHiddenTextLabelKey,     // Initial text.
+            0,                               // No associated widget
+            
+            kEVERegularSpaceAfter,
+        ),
+        
+        EVEGenericPanelWithBorderWidget
+        (
+            kHidTxtEdPanelDataPanelWidgetID, kPMRsrcID_None,        // WidgetId, RsrcId
+            kBindNone,
+            Frame(5, 25, 197, 85),     // Frame
+            kTrue, kTrue,              // Visible, Enabled
+            "",
+            {
+                EVEStaticMultiLineTextWidget
+                (
+                    kHidTxtEdPanelDataWidgetID, //WidgetID
+                    kPMRsrcID_None,             // kSysOwnerDrawListBoxPMRsrcId,//RsrcID
+                    kBindNone,                  //Binding
+                    Frame(2, 2, 179, 58),        //Frame
+                    kTrue,kTrue,                //Visible,Enabled
+                    // Static Text Attributes
+                    kAlignLeft,                 // Alignment
+                    kDontEllipsize, kTrue,      // Ellipsize style, Convert ampersands                    
+                    kHidTxtEdPanelDataScrollBarWidgetID,//WidgetID of scrollbar
+                    kDialogWindowSmallFontId,       //InterfaceFontID
+                    3,                          //Number of pixels between lines
+                    1,0,                        //Inset amount
+                    "",                         //Initial text
+                    
+                    kEVERegularSpaceAfter,
+                ),
+
+                EVEScrollBarWidget
+                (
+                    kHidTxtEdPanelDataScrollBarWidgetID,
+                    kSysVScrollBarPMRsrcId,
+                    kBindNone,
+                    Frame(179, 1, 192, 60),
+                    kTrue,kTrue,
+                    0, 100, 0, 1, 1,            // CCounterControlData
+                    0, 0, 0,                    // not accelerate (threshold, max,increment)
+                    
+                    kEVERegularSpaceAfter,
+                )            
+            }
+            
+            kEVERegularSpaceAfter | kEVEArrangeChildrenInRow,
+        ),         
+    }
+    
+    kHidTxtEdInternalPopupMenuNameKey         // Popup menu name (internal)
+    
+    kEVEArrangeChildrenInColumn | kEVELargeMargin,
+};
+
+//================================================================================
+// Dialogs
+// Resource definitions for any dialogs and widget types.
+//================================================================================
+//------------------------------------------------------------
+// Dialog LocaleIndex.
+//------------------------------------------------------------
+resource LocaleIndex (kSDKDefDialogResourceID)
+{
+    kViewRsrcType,
+    {
+        kWildFS, k_Wild, kSDKDefDialogResourceID + index_enUS
+    }
+};
+
+//------------------------------------------------------------
+// Resource types
+// Define your User Interface resource types here.
+//------------------------------------------------------------
+type HidTxtEdDialogWidget(kViewRsrcType) : DialogBoss(ClassID = kHidTxtEdDialogBoss) {
+    WidgetEveInfo;
+};
+
+//------------------------------------------------------------
+// Dialog Resource Definition for English.
+//------------------------------------------------------------
+
+resource HidTxtEdDialogWidget (kSDKDefDialogResourceID + index_enUS)
+{
+    __FILE__, __LINE__,
+    kHidTxtEdDialogWidgetID,      // WidgetID
+    kPMRsrcID_None,               // RsrcID
+    kBindNone,                    // Binding
+    Frame(0,0,388,112),           // Frame (l,t,r,b)
+    kTrue, kTrue,                 // Visible, Enabled
+    kHidTxtEdDialogTitleKey,      // Dialog name
+    {
+        EVEGenericPanelWidget
+        (
+            kInvalidWidgetID,     // WidgetId
+            0                     // RsrcId
+            0,                    // Widget EVE Info
+            kBindNone,            // Frame binding
+            Frame(0,0,0,0)    // Frame
+            kTrue,                // Visible
+            kTrue,                // Enabled
+            kEVEAlignFill | kEVELargeSpaceAfter | kEVEArrangeChildrenInColumn,
+            
+            {
+                EVEStaticTextWidget
+                (
+                    kInvalidWidgetID,
+                    kSysStaticTextPMRsrcId,        // WidgetId, RsrcId
+                    kBindNone,
+                    Frame(0,0,0,0),                // Frame left, top, right, bottom
+                    kTrue, kTrue, kAlignLeft,      // Visible, Enabled, Alignment
+                    kEllipsizeEnd, kTrue
+                    kHidTxtEdHiddenTextLabelKey,    
+                    kHidTxtEdDialogEditBoxWidgetID,
+                            
+                    kEVERegularSpaceAfter,
+                ),
+    
+                EVETextEditBoxWidget
+                (
+                    kHidTxtEdDialogEditBoxWidgetID, 
+                    kSysEditBoxPMRsrcId,           // WidgetId, RsrcId
+                    kBindNone,
+                    Frame(0,0,250,20)              // Frame
+                    kTrue, kTrue,                  // Visible, Enabled
+                    0,                             // widget id of nudge button            
+                    0,    0,                       // small/large nudge amount
+                    0,                             // max num chars(0 = no limit)
+                    kFalse,                        // is read only
+                    kFalse,                        // should notify each key stroke (NEW)
+                    kFalse,                        // range checking enabled
+                    kFalse,                        // blank entry allowed
+                    0, 0,                          // upper/lower bounds
+                    ""                             // initial text
+                            
+                    kEVERegularSpaceAfter,
+                ),    
+                
+            }  // End of Eve generic panel child widgets
+        ), // End of Eve generic panel widget definition
+        
+        EVEGenericPanelWidget
+        (
+            kInvalidWidgetID,     // WidgetId
+            0                     // RsrcId
+            0,            
+            kBindNone,            // Frame binding
+            Frame(0,0,133,112)    // Frame
+            kTrue,                // Visible
+            kTrue,                // Enabled
+            kEVEAlignLeft | kEVERegularSpaceAfter | kEVEArrangeChildrenInColumn,
+                
+            {
+                EVEDefaultButtonWidget
+                (
+                    kOKButtonWidgetID,             // WidgetID 
+                    kSysButtonPMRsrcId,            // RsrcID
+                    kBindNone,                     // Binding
+                    Frame(0,0,0,0),                // Frame (l,t,r,b)
+                    kTrue, kTrue,                  // Visible, Enabled
+                    kSDKDefOKButtonApplicationKey  // Button text
+                            
+                    kEVELargeSpaceAfter,
+                ),
+                EVECancelButtonWidget                
+                (
+                    kCancelButton_WidgetID,        // WidgetID
+                    kSysButtonPMRsrcId,            // RsrcID
+                    kBindNone,                     // Binding
+                    Frame(0,0,0,0),                // Frame (l,t,r,b)
+                    kTrue, kTrue,                  // Visible, Enabled
+                    kSDKDefCancelButtonApplicationKey,  // Button name
+                    kTrue,                              // Change to Reset on option-click.
+                            
+                    kEVEJumboSpaceAfter,
+                ),
+                        
+            }  // End of EVE Generic panel child widgets
+        ), // End of EVE Generic panel widget definition
+
+    },
+    
+    kEVEArrangeChildrenInRow | kEVERegularMargin,
+};
+
+// Get rid of these defines now that we're done with them:
+#undef kDialogWidth
+#undef kDialogHeight
+#undef kGap
+
+#endif // __ODFRC__
+
+#include "HidTxtEd_enUS.fr"
+#include "HidTxtEd_jaJP.fr"
+//  Generated by Dolly build 17: template "IfPanelMenu".
+// End, HidTxtEd.fr.

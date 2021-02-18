@@ -1,0 +1,301 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/sdksamples/xmlmarkupinjector/XMLMrk.fr $
+//  
+//  Owner: Adobe Developer Technologies
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//  
+//  Umbrella include file for all the .fr files in the plug-in.
+//  
+//========================================================================================
+
+//===========================
+//  General includes:
+//===========================
+
+#include "MenuDef.fh"
+#include "ActionDef.fh"
+#include "ActionDefs.h"
+#include "AdobeMenuPositions.h"
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "StringTable.fh"
+//#include "OMTypes.h"
+#include "objectmodeltypes.fh"
+#include "ShuksanID.h"
+#include "ActionID.h"
+#include "CommandID.h"
+#include "WorkspaceID.h"
+#include "widgetid.h"
+#include "BuildNumber.h"
+
+#include "XMLID.h"
+
+#include "PlugInModel_UIAttributes.h"
+
+
+#include "TextID.h"		// TextISuiteBoss
+// Project includes:
+#include "XMLMrkID.h"
+
+#ifdef __ODFRC__
+
+/*
+// Plugin version definition.
+*/
+resource PluginVersion (kSDKDefPluginVersionResourceID)
+{
+	kTargetVersion,
+	kXMLMrkPluginID,
+	kSDKDefPlugInMajorVersionNumber, kSDKDefPlugInMinorVersionNumber, 	
+	kSDKDefHostMajorVersionNumber, kSDKDefHostMinorVersionNumber,
+	kXMLMrkCurrentMajorFormatNumber, kXMLMrkCurrentMinorFormatNumber,
+	{ kInDesignProduct },
+	{ kWildFS },
+	kUIPlugIn,
+	kXMLMrkVersion
+};
+
+
+resource ClassDescriptionTable(kSDKDefClassDescriptionTableResourceID)
+{{{
+
+
+	/**
+	 This boss class provides the actions invoked by this plug-in's
+	 sub-menu items. It supports two interfaces: 
+	 IActionComponent and IPMPersist. We provide the implementation 
+	 for IActionComponent in XMLMrkAction.cpp. The other
+	 default implementation is provided by the API.
+		@ingroup xmlmarkupinjector
+	*/
+	Class
+	{
+		kXMLMrkActionComponentBoss,
+		kBaseActionComponentBoss,
+		{
+			/** Handle the actions from the menu. */
+			IID_IACTIONCOMPONENT, kXMLMrkActionComponentImpl,
+		}
+	},
+
+
+
+	/**
+		This add-in adds our interface (IXMLMrkSuite) to the integrator suite boss class.
+		@ingroup xmlmarkupinjector
+	*/
+	AddIn
+	{
+		kIntegratorSuiteBoss,
+		kInvalidClass,
+		{
+			/** Implementation based on template. 
+			*/
+			IID_IXMLMrkSUITE, kXMLMrkSuiteASBImpl,
+		}
+	},
+
+	
+
+
+	/**
+		This add-in adds our interface (IXMLMrkSuite) to the text suite boss class.
+		@ingroup xmlmarkupinjector
+	*/
+	AddIn
+	{
+		kTextSuiteBoss,
+		kInvalidClass,
+		{
+			/** Implementation on the text suite concrete selection boss
+				that marks up the document based on properties of the text selection.
+			*/
+			IID_IXMLMrkSUITE, kXMLMrkSuiteTextCSBImpl,
+		}
+	},
+}}};
+
+/*
+// Implementation definition.
+*/
+resource FactoryList (kSDKDefFactoryListResourceID) 
+{
+	kImplementationIDSpace,
+	{
+#include "XMLMrkFactoryList.h"
+	}
+};
+
+/*
+// Menu definition.
+*/
+resource MenuDef (kSDKDefMenuResourceID)
+{
+	{
+		// The About Plug-ins sub-menu item for this plug-in.
+		kXMLMrkAboutActionID,			// ActionID (kInvalidActionID for positional entries)
+		kXMLMrkAboutMenuPath,			// Menu Path.
+		kSDKDefAlphabeticPosition,			// Menu Position.
+		kSDKDefIsNotDynamicMenuFlag,		// kSDKDefIsNotDynamicMenuFlag or kSDKDefIsDynamicMenuFlag.
+
+		kXMLMrkCompoundSectionActionID,
+		kXMLMrkTargetMenuPath,
+		kXMLMrkCompoundSectionMenuItemPosition,
+		kSDKDefIsNotDynamicMenuFlag,
+
+		kXMLMrkCompoundTableActionID,
+		kXMLMrkTargetMenuPath,
+		kXMLMrkCompoundTableMenuItemPosition,
+		kSDKDefIsNotDynamicMenuFlag,
+
+		kXMLMrkCompoundItemizedListActionID,
+		kXMLMrkTargetMenuPath,
+		kXMLMrkCompoundItemizedListMenuItemPosition,
+		kSDKDefIsNotDynamicMenuFlag,
+
+		kXMLMrkCompoundMediaObjectActionID,
+		kXMLMrkTargetMenuPath,
+		kXMLMrkCompoundMediaObjectMenuItemPosition,
+		kSDKDefIsNotDynamicMenuFlag,
+
+		kXMLMrkCompoundKeywordSetActionID,
+		kXMLMrkTargetMenuPath,
+		kXMLMrkCompoundKeywordSetMenuItemPosition,
+		kSDKDefIsNotDynamicMenuFlag,
+
+	}
+};
+
+/*
+// Action definition.
+*/
+resource ActionDef (kSDKDefActionResourceID)
+{
+	{ 
+		kXMLMrkActionComponentBoss, 		// ClassID of boss class that implements the ActionID.
+		kXMLMrkAboutActionID,	// ActionID.
+		kXMLMrkAboutMenuKey,	// Sub-menu string.
+		kHelpMenuActionArea,				// Area name (see ActionDefs.h).
+		kNormalAction,					// Type of action (see ActionDefs.h).
+		kDisableIfLowMem,				// Enabling type (see ActionDefs.h).
+		kInvalidInterfaceID,			// Selection InterfaceID this action cares about or kInvalidInterfaceID.
+		kSDKDefInvisibleInKBSCEditorFlag, // kSDKDefVisibleInKBSCEditorFlag or kSDKDefInvisibleInKBSCEditorFlag.
+
+		kXMLMrkActionComponentBoss,
+		kXMLMrkCompoundSectionActionID,		
+		kXMLMrkCompoundSectionMenuItemKey,		
+		kOtherActionArea,			
+		kNormalAction,				
+		kDisableIfSelectionDoesNotSupportIID,	
+		IID_IXMLMrkSUITE,
+		kSDKDefInvisibleInKBSCEditorFlag,
+				
+		kXMLMrkActionComponentBoss, 
+		kXMLMrkCompoundTableActionID, 
+		kXMLMrkCompoundTableMenuItemKey,
+		kOtherActionArea,
+		kNormalAction,
+		kDisableIfSelectionDoesNotSupportIID,	
+		IID_IXMLMrkSUITE,
+		kSDKDefInvisibleInKBSCEditorFlag,
+
+		kXMLMrkActionComponentBoss,
+		kXMLMrkCompoundItemizedListActionID,		
+		kXMLMrkCompoundItemizedListMenuItemKey,		
+		kOtherActionArea,			
+		kNormalAction,				
+		kDisableIfSelectionDoesNotSupportIID,	
+		IID_IXMLMrkSUITE,
+		kSDKDefInvisibleInKBSCEditorFlag,
+				
+		kXMLMrkActionComponentBoss, 
+		kXMLMrkCompoundMediaObjectActionID, 
+		kXMLMrkCompoundMediaObjectMenuItemKey,
+		kOtherActionArea,
+		kNormalAction,
+		kDisableIfSelectionDoesNotSupportIID,	
+		IID_IXMLMrkSUITE,
+		kSDKDefInvisibleInKBSCEditorFlag,
+
+		kXMLMrkActionComponentBoss,
+		kXMLMrkCompoundKeywordSetActionID,		
+		kXMLMrkCompoundKeywordSetMenuItemKey,		
+		kOtherActionArea,			
+		kNormalAction,				
+		kDisableIfSelectionDoesNotSupportIID,	
+		IID_IXMLMrkSUITE,
+		kSDKDefInvisibleInKBSCEditorFlag,
+				
+	}
+};
+
+
+/*
+// LocaleIndex
+// The LocaleIndex should have indicies that point at your
+// localizations for each language system that you are 
+// localized for.
+*/
+/*
+// String LocaleIndex.
+*/
+resource LocaleIndex (kSDKDefStringsResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_enUS, kSDKDefStringsResourceID + index_enUS
+		kInDesignJapaneseFS, k_jaJP, kSDKDefStringsResourceID + index_jaJP
+		
+		kWildFS, k_Wild, kSDKDefStringsResourceID + index_enUS
+	}
+};
+
+resource LocaleIndex (kSDKDefStringsNoTransResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_Wild, kSDKDefStringsNoTransResourceID + index_enUS
+	}
+};
+
+resource StringTable (kSDKDefStringsNoTransResourceID + index_enUS)
+{
+	k_enUS,									// Locale Id
+	kEuropeanMacToWinEncodingConverter,		// Character encoding converter
+	{
+		// No-Translate strings go here:		
+	}
+};
+
+
+
+
+#endif // __ODFRC__
+
+#include "XMLMrk_enUS.fr"
+#include "XMLMrk_jaJP.fr"
+//  Generated by Dolly build 17: template "IfPanelMenu".
+// End, XMLMrk.fr.
+
+
+
+
+
+
+

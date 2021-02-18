@@ -1,0 +1,43 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kInCopyFileActionsStringsRsrcID + index_esES)
+{
+	k_esES,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{
+		"&Update Design",		"Actualizar dise&ño",
+		"AlertUnableToSave",	"El siguiente contenido no se pudo guardar.\nPuede que los archivos estén bloqueados o que no tenga permiso para modificarlos.\n",
+		"Update^1Alert",		"No se pudo guardar parte del contenido. Se podrían perder cambios con la actualización.\n¿Desea actualizar a la última versión de “^1”?",
+		"Undoable^1Save",		"La actualización del diseño guardará todo el contenido modificable antes de continuar. El comando Deshacer no podrá deshacer ningún cambio que se realice después de la actualización. \n¿Desea actualizar a \"^1\" de todas formas?",
+		"AlertStoriesMissing",	"No se pudieron encontrar algunos archivos de contenido y, por tanto, no se podrán editar. Intente mover los archivos a su ubicación original o actualizar los vínculos de InDesign.",
+		"AlertStoriesMissingWF", "No se pudieron encontrar algunos archivos de contenido y, por tanto, no se podrán editar. Intente descargar el contenido desde el servidor y vuelva a abrir el documento.",
+		"Update",				"Actualizar",
+		"&Revert Story",		"Rec&uperar contenido",
+//		"Revert Story",			"Revert Content", // Note to localizer: this string moved to InCopySharedStrings_enUS.fr
+		
+		"SaveAsFeatureLost",    "Este documento puede contener funciones que no son compatibles con este formato de archivo. ¿Desea continuar?",
+		"CannotSaveOntoLockedFile",		"\"^1\" ha extraído el archivo especificado en ^2 desde el documento ^3. Elija otro nombre de archivo o haga que \"^1\" registre el archivo.",
+		"CannotSaveOntoLockedFileMinimal",	"\"^1\" ha extraído el archivo especificado.  Elija otro nombre de archivo o haga que \"^1\" registre el archivo.",
+	}
+};
+
+
+#endif // __ODFRC__

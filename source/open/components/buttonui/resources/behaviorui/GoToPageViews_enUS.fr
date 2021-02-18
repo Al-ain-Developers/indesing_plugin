@@ -1,0 +1,158 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/buttonui/resources/behaviorui/GoToPageViews_enUS.fr $
+//  
+//  Owner: Mark VerMurlen
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#ifdef __ODFRC__
+#include "InterfaceColorDefines.h"
+
+//========================================================================================
+// AlignPanelView resource
+//========================================================================================
+
+resource GoToPageDataPanel (kGoToPagePanelRsrcID + index_enUS)
+{
+	__FILE__, __LINE__,
+	kGoToPagePanelWidgetID, kPMRsrcID_None, // WidgetId, RsrcId
+	kBindNone,					// Frame binding
+	Frame(0,0, 262,0)		// Frame
+	kTrue, kTrue,				// Visible, Enabled
+	kTrue,						// EraseBeforeDraw
+	kInterfacePaletteFill,		// Erase to color
+	kFalse,						// DrawDropShadow
+	"",				// Panel name	
+	{
+		EVEGenericPanelWidget
+		(
+			kInvalidWidgetID,	// WidgetId
+			0,0,				// RsrcId
+			kBindNone,						// Frame binding
+			Frame(0, 0,262,0)		// Frame
+			kTrue,							// Visible
+			kTrue,							// Enabled
+			kEVENoSpaceAfter|kEVEArrangeChildrenInRow|kEVEAlignLeft,		//EVE info
+			{
+				EVEGenericPanelWidget
+				(
+					kInvalidWidgetID,	// WidgetId
+					0,0,				// RsrcId
+					kBindNone,						// Frame binding
+					Frame(0,0,0,0)		// Frame
+					kTrue,							// Visible
+					kTrue,							// Enabled
+					kEVERegularSpaceAfter|kEVEArrangeChildrenInColumn|kEVEAlignLeft,		//EVE info
+					{
+						EVEStaticTextWidget
+						(
+							kZoomLabelWidgetID, kSysStaticTextPMRsrcId,					// WidgetId, RsrcId
+							kBindNone,											// Frame binding
+							Frame(0,0,57,0)										// Frame
+							kTrue, kTrue, kAlignRight,							// Visible, Enabled, Alignment
+							kDontEllipsize,	kTrue,									// Ellipsize style, Convert ampersands
+							"$$$/Dialog/Behaviors/GoToView/Zoom:",
+							kZoomWidgetID,
+							kEVERegularSpaceAfter
+						),
+						
+						EVEStaticTextWidget
+						(
+							kInvalidWidgetID, kSysStaticTextPMRsrcId,			// WidgetId, RsrcId
+							kBindNone,											// Frame binding
+							Frame(0,0,57,0)										// Frame
+							kTrue, kTrue, kAlignRight,							// Visible, Enabled, Alignment
+							kDontEllipsize,	kTrue,								// Ellipsize style, Convert ampersands
+							"$$$/Panel/GoToPage/Page:",
+							kGoToPageWidgetID,
+							kEVENoSpaceAfter
+						),
+					}
+				),
+
+				EVEGenericPanelWidget
+				(
+					kInvalidWidgetID,	// WidgetId
+					0,0,				// RsrcId
+					kBindNone,						// Frame binding
+					Frame(0,0,0,0)		// Frame
+					kTrue,							// Visible
+					kTrue,							// Enabled
+					kEVENoSpaceAfter|kEVEArrangeChildrenInColumn|kEVEAlignLeft|kEVEChildRegularSpaceAfter,		//EVE info
+					{
+						ZoomChoice
+						(
+							kZoomWidgetID, kSysDropDownPMRsrcId, kBindNone,
+							Frame(0, 0, 200,0)		// Frame
+							kTrue, kTrue,
+							{{
+							}}
+						),
+
+						EVEGenericPanelWidget
+						(
+							kInvalidWidgetID,	// WidgetId
+							0,0,				// RsrcId
+							kBindNone,						// Frame binding
+							Frame(0,0,0,0)					// Frame
+							kTrue,							// Visible
+							kTrue,							// Enabled
+							kEVENoSpaceAfter|kEVEArrangeChildrenInRow|kEVEAlignLeft|kEVEChildRegularSpaceAfter,		//EVE info
+							{
+								IntEditBoxWidget
+								(
+									kGoToPageWidgetID,				// WidgetId
+									kSysEditBoxPMRsrcId,			// RsrcId
+									kBindNone,						// Frame binding
+									Frame(0, 0, 70, 0)				// Frame
+									kTrue,							// Visible
+									kTrue,							// Enabled
+									0,								// Widget id of nudge button (0 so we don't get one)
+									1, 10,							// small,large nudge amount
+									0,								// max num chars( 0 = no limit)
+									kFalse,							// is read only
+									kFalse,							// should notify each key stroke
+									kTrue,							// range checking enabled
+									kFalse,							// blank entry allowed
+									9999,							// Upper bounds
+									1,								// Lower bounds
+									""								// Initial text
+								),
+								EVEStaticTextWidget
+								(
+									kPageCountWidgetID, kSysStaticTextPMRsrcId,			// WidgetId, RsrcId
+									kBindNone,											// Frame binding
+									Frame(0,0,0,0)								// Frame
+									kTrue, kTrue, kAlignLeft,							// Visible, Enabled, Alignment
+									kDontEllipsize,	kTrue,								// Ellipsize style, Convert ampersands
+									"",
+									kInvalidWidgetID,
+									kEVENoSpaceAfter
+								),								
+							}
+						)
+					}
+				),
+			}
+		),
+	},
+	kGoToPageBehavior
+}
+
+#endif

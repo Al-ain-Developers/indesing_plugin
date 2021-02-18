@@ -1,0 +1,298 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kDynamicDocumentsUIStringsRsrcID + index_svSE)
+{
+	k_svSE,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{
+		// ----- Command strings
+
+		// ----- Window strings
+
+		// ----- Panel strings
+		"kPageTransitionsPanelPopup",			"Menyn i panelen sidövergångar",    
+		"kPageTransitionsSubMenu",				"&Sidövergångar",
+		"kPageTransitionsPanelName",			"Sidövergångar",	   
+		"kPageTransitionStaticText",			"Övergång: ",
+		"kPageDirectionStaticText",				"Riktning: ",
+		"kPageSpeedStaticText",					"Hastighet: ",
+        "kPTHorizontal",						"Vågrät",
+        "kPTVertical",							"Lodrät",
+        "kPTIn",								"In",
+        "kPTOut",								"Ut",
+        "kPTDown",								"Ned",
+        "kPTLeft",								"Vänster",
+        "kPTLeftDown",							"Vänster ned",
+        "kPTLeftUp",							"Vänster upp",
+        "kPTRight",								"Höger",
+        "kPTRightDown",							"Höger ned",
+        "kPTRightUp",							"Höger upp",
+        "kPTUp",								"Upp",
+        "kPTHorizontalIn",						"Vågrät in",
+        "kPTHorizontalOut",						"Vågrät ut",
+        "kPTVerticalIn",						"Lodrät in ",
+        "kPTVerticalOut",						"Lodrät ut",
+        "kPTSlow",								"Sakta",
+		"kPTMedium",							"Mellan",
+		"kPTFast",								"Snabba",		
+		"kPTNoTransition",						"Inget",	
+              		
+		// ----- Liquid Layout panel
+		"kLiquidLayoutMenu",					"F&lytande layout",
+		"kLiquidLayoutPanelPopup",				"Panelmenyn Flytande layout",
+		"kLiquidLayoutPanelName",				"Flytande layout",	
+		"kObjectConstraintsStaticTextLabel",	"Objektbegränsningar:",
+		"kDocumentReflowStaticTextLabel",		"Flöda om dokument",
+		"kFixedSizeStaticTextLabel",			"Ändra storlek med sida:",
+		"kHeightCheckBoxLabel",					"Höjd",
+		"kWidthCheckBoxLabel",					"Bredd",
+		"kPinLeftEdgeCheckBoxLabel",			"Vänster",
+		"kPinRightEdgeCheckBoxLabel",			"Höger",
+		"kPinTopEdgeCheckBoxLabel",				"Överkant",
+		"kPinBottomEdgeCheckBoxLabel",			"Underkant",
+		"kPinObjectEdgesStaticTextLabel",		"Fäst:",
+		"kContentStaticTextLabel",				"Innehåll:",
+		"kLayoutAdjustmentWarningTip",			"Flytande layoutregler gäller inte eftersom layoutanpassning är aktiverat för dokumentet. Klicka här om du vill inaktivera layoutanpassning.",
+		"kPageLayoutPolicyDropdownLabel",		"Regel för flytande sida:",
+		"kLiquidLayoutPanelPageRange",			"Sida: ^1",
+		"kPinEdgeToolTip",						"Markera för att låsa objektets position relativt sidkanten.",
+		"kResizeHeightWithPageToolTip",			"Markera för att ändra objektets höjd om sidans höjd ändras.",
+		"kResizeWidthWithPageToolTip",			"Markera för att ändra objektets bredd om sidans bredd ändras.",
+		
+        // ----- Timing panel
+        "kTimingPanelPopup",					"Panelmeny för timing",    
+		"kTimingSubMenu",						"Ti&ming",
+		"kTimingPanelName",						"Timing",	
+		"kTimingPanelEventStaticText",			"Händelse: ",
+		"kTimingPanelDelayStaticText",			"Fördröjning: ",
+        "kTimingPanelDelaySecondStaticText",	"sekund",
+        "kTimingPanelDelaySecondsStaticText",	"sekunder",
+        "kTimingPanelAssignPageLoadEvent",		"Tilldela på nytt till Vid sidinläsning",
+        "kTimingPanelAssignStateLoadEvent",		"Tilldela på nytt till Vid lägesinläsning",
+        "kTimingPanelAssignPageClickEvent",		"Tilldela på nytt till Vid sidklickning",
+        "kTimingPanelRemoveItem",				"Ta bort objekt",
+        "kTimingPanelEventDropDownTip",			"En klickning krävs för att fortsätta",
+        "kTimingPanelGroupButtonTip",			"Spela upp tillsammans",
+        "kTimingPanelUngroupkButtonTip",		"Spela upp separat",
+        "kTimingPanelPreviewButtonTip",			"Förhandsvisa uppslag",
+        "kUnassignedEntry",						"Ej tilldelat",
+        "kTimingPanelLinkedItemStaticText",			"Länkade objekt:",	
+        "kTimingPanelPlayLinkedItemStaticText",		"Spela upp: ",
+        "kTimingPanelPlayLinkedItemTimeStaticText",	"tid",
+        "kTimingPanelPlayLinkedItemTimesStaticText","tider",
+        "kTimingPanelLoopCheckBoxLabel",		"Slinga",
+        "kTimingPanelLinkedItemGroupWidgetTip",	"Objekt spelas upp tillsammans (klicka för att markera grupp)", 
+
+        // HTML Preview menu items
+        "kHTMLFXLPreviewSpread",				"Förhandsvisa uppslag: EPUB",
+		// ----- Menu Strings
+		"kTransitionPanelChooseAction",				"&Välj...",
+		"kTransitionPanelApplyToAllSpreadsAction",	"&Använd till alla uppslag",
+		"kTransitionPanelClearAllTransitionsAction","Rensa &alla",
+		
+		// ----- Tips strings
+		"kApplyToAllSpreadsButtonTip",			"Använd på alla uppslag",
+		"kMotionPathTipStr",					"Rörelsebana, klicka för att redigera",
+		"kEasingPathTipStr",					"Övergångsbana",
+	#ifdef WINDOWS
+		"kPreviewSpreadButtonToolTip",			"Förhandsvisa uppslag: EPUB.",
+	#else
+		"kPreviewSpreadButtonToolTip",			"Förhandsvisa uppslag: EPUB.",			
+	#endif
+				
+		// ----- XFL Export Dialogs
+
+		"kXFLExport",						"Exportera Flash CS6 Professional (FLA)",
+		"kSizePixels",						"Storlek (pixlar):",
+		"kPagesStr",						"Sidor:",
+		"kExportStr",						"Exportera:",
+		"kSpreadsStr",						"&Uppslag",
+		"kGenerateHTMLStr",					"Skapa &HTML-fil",
+		"kFlashText",						"Flash klassisk text",
+		"kVectorText",						"Konvertera till konturer",
+		"kRasterText",						"Konvertera till pixlar",
+		"kVellumText",						"Flash TLF-text",
+		"kInsertHyphensStr",				"In&foga punkter för mjukt bindestreck",
+		"kFitToSize",						"Anpassa ti&ll:",
+		"kWidthSize",						"Br&edd:",
+		"kHeightSize",						"Hö&jd:",
+		"kSelectionExportedStr",			"Mar&kering",
+		"kAllPagesExported",				"&Alla",
+		"kAllPagesExportedStr",				"&Alla sidor",
+		"kPageRangeExported",				"Inte&rvall:",
+		"kScaleSize",						"&Skalförändra:",
+		"kTextStr",							"Te&xt:",
+		"kInteractivityStr",				"Interaktivitet:",
+		"kDynamicMediaStr",					"Interaktivitet och media:",
+		"kImageCompStr",					"Bild&komprimering:",
+		"kQualityStr",						"&JPEG-kvalitet:",
+		"kCurveQualityStr",					"&Kurvkvalitet:",
+		"kInclButtonsStr",					"Inkludera &knappar",
+		"kInclHyperLinkStr",				"Inkludera h&yperlänkar",
+		"kInclPageTrans",					"Inkludera s&dövergångar",
+		"kIncludePageCurl",					"Inkl&udera interaktiv bläddring",
+		"kIncludeAllStr",					"&Inkludera alla",
+		"kAppearanceOnlyStr",				"En&dast utseende",
+		"kBackgroundStr",					"Bakgrund:",
+		"kPaperColorStr",					"Pappers&färg",
+		"kTransparentStr",					"&Genomskinlig",
+		"kFramesPerSecStr",					"bildrutor per sekund",
+		"kPageTransitionsStr",				"Sidövergå&ngar:",
+		"kNone",							"Inget",
+		"kFromDocument",					"Från dokument",
+		"kOptionsStr",						"Alternativ:",
+		"kDescriptionStr",					"Beskrivning:",
+		"kFrameRateStr",					"&Bildrutehastighet:",
+		"kImageCompAuto",					"Auto",
+		"kJPG_Lossy",						"JPEG",
+		"kJPG_LossyStr",					"JPEG (förstörande)",
+		"kPNG_Lossless",					"icke-förstörande (gör ingenting)",
+		"kPNG_LosslessStr",					"PNG (icke-förstörande)",
+		"kMinimumQual",						"Minimal",
+		"kLowQual",							"Låg",
+		"kMediumQual",						"Mellan",
+		"kHighQual",						"Hög",
+		"kMaximumQual",						"Maximal",
+		"kRasterizeStr",					"Ras&trera sidor",
+		"kFlattenXPStr",					"Före&nkla genomskinlighet",
+		"k1280x800",						"1 280 x 800",
+		"k1024x768",						"1 024 x 768",
+		"k800x600",							"800 x 600",
+		"k640x480",							"640 x 480",
+		"k250per",							"250 %",
+		"k200per",							"200 %",
+		"k150per",							"150 %",
+		"k100per",							"100 %",
+		"k75per",							"75 %",
+		"k50per",							"50 %",
+		"k25per",							"25 %",
+
+		// Font Embedding
+		"kEmbeddedFontsTitle",				"Inbäddade teckensnitt (endast tillämpligt för Flash Classic-text)",
+		"kTotalFonts",						"Antal teckensnitt:  ",
+		"kFontLicensingInfo",				"Information om teckensnittslicensiering",
+		"kEmbeddedFontName",				"Teckensnittsnamn: ",
+		"kEmbeddedVendorID",				"Leverantörs-ID: ",
+
+		// Add Page Transition dialog
+		"kPageTransitionsDialogTitle",			"Sidövergångar",
+		"kPageTransitionApplyToAllSpreads",		"Använd på alla uppslag",
+		"kZoomInOutString",						"Zooma in/ut", 
+		
+		
+		//	Animation UI
+		"kAnimationUIPanelPopup",				"Panelmeny för animeringsgränssnitt",
+		"kAnimationUISubMenu",					"Animering",
+		"kAnimationUIPresetPopupMenu",			"Förinställningsmeny för animeringsgränssnitt",
+		"kMotionPresetsNoneTextkey",			"Inget",
+		"kAnimationUILoadPresetMenuItem",		"Läs in förinställning...",
+		"kAnimationUISaveAsPresetMenuItem",		"Spara som...",
+		"kAnimationUISavePresetMenuItem",		"Spara",
+		"kAnimationUIDeletePresetMenuItem",		"Ta bort",
+
+		"kAnimationUIConvertToMotionPathMenuItem",	"Konvertera till rörelsebana",
+		"kAnimationUITestInBrowserMenuItem",	"Testa i webbläsare...",
+		"kCustomPresetName",					"Rörelseförinställning",
+		"kAnimationUIEventSeparator",			", ",
+		
+		"kAnimationUIPanelName",				"Animering",
+		"kAnimationUIPreviewStaticTextLabel",	"Förhandsvisa",
+		"kAnimationUINameStaticTextLabel",		"Namn:",
+		"kAnimationUIPresetStaticTextLabel",	"Förinställning:",
+		"kAnimationUICustomPreset",				"Anpassad",
+		"kAnimationUIMixed",					"Blandad",
+		"kAnimationUIMixed:",					"Blandad: ",
+		"kAnimationUIChoose",					"Välj",
+		"kAnimationUIEventStaticTextLabel",		"Händelse(r):",
+		"kAnimationUIDurationStaticTextLabel",	"Tid:",
+		"kAnimationUISecondStaticTextLabel",	"sekund",
+		"kAnimationUISecondsStaticTextLabel",	"sekunder",
+		"kAnimationUIPlayStaticTextLabel",		"Spela upp:",
+		"kAnimationUITimeStaticTextLabel",		"gång",
+		"kAnimationUITimesStaticTextLabel",		"gånger",
+		"kAnimationUILoopCheckBoxLabel",		"Slinga",
+		"kAnimationUISpeedStaticTextLabel",		"Hastighet:",
+		"kAnimationUIVisibilityStaticTextLabel","Synlighet:",
+		"kAnimationUIPropertyStaticTextLabel",	"Egenskaper",
+		"kAnimationUIHideBeforeAnimateCheckBoxLabel","Dölj tills animerad",
+		"kAnimationUIHideAfterAnimateCheckBoxLabel","Dölj efter animering",
+		"kAnimationUIOnButtonEvent",			"Vid knapphändelse",
+		"kAnimationUIOnRollOffCheckBoxLabel",	"Omvänt vid avrullning",
+		"kAnimationUIEaseIn",					"Övergång in",
+		"kAnimationUIEaseOut",					"Övergång ut",
+		"kAnimationUIEaseInAndOut",				"Övergång in och ut",
+		"kAnimationUIFadeIn",					"Tona in",
+		"kAnimationUIFadeOut",					"Tona ut",
+		"kAnimationUINone",						"Inget",
+		"kAnimationUIFromPreset",				"Från förinställning",
+		"kAnimationUIPropertyDesignStaticTextLabel",		"Animera:",
+		"kAnimationUIPropertyDesignCheckBoxLabel",			"Animeringens slut",
+		"kAnimationFromStaticTextLabel",					"Animera från",
+		"kAnimationToStaticTextLabel",						"Animera till",
+		"kAnimationUIPropertyDesignScaleStaticTextLabel",	"Skala",
+		"kAnimationUIPropertyDesignScaleHorzStaticTextLabel",	"B:",
+		"kAnimationUIPropertyDesignScaleVertStaticTextLabel",	"H:",
+		"kAnimationUIPropertyDesignRotateStaticTextLabel",	"Rotera:",
+		"kAnimationUIPropertyDesignOpacityStaticTextLabel",	"Opacitet:",
+		"kAnimationUIPropertyDesignProxyStaticTextLabel",	"Ursprung:",
+		
+		"kAnimationUIFrom",						"Från aktuellt utseende",
+		"kAnimationUITo",						"Till aktuellt utseende",
+		"kAnimationUIOffset",					"Till aktuell plats",
+
+		"kAnimationPanelButtonTriggerTip",		"Skapa knapputlösare (klicka på ikonen, klicka sedan på ett objekt för att utlösa den här animeringen)",
+		"kAnimationPanelShowProxyTip",			"Visa animeringsutkast",
+		"kAnimationPanelLockIconTip",			"Bibehåll skalvärdet",
+		"kAnimationPanelEventMenuSelectorTip",	"Klicka på nedåtpilen för att välja utlösarhändelse",
+		"kAnimationPanelEventInfoTip",			"Utlösarhändelse(r) för animeringen",
+		"kAnimationPanelEventInfoDefaultTip",	"Standardutlösarhändelse för animeringen",
+		"kAnimationPanelPreviewButtonTip",		"Förhandsvisa aktuellt val",
+		"kAnimationPanelConvertToMotionPathTip","Konvertera till rörelsebana",
+		"kAnimationUIFromTip",					"Använder det aktuella objektets egenskaper som animeringens startutseende vid körning.",
+		"kAnimationUIToTip",					"Använder det aktuella objektets egenskaper som animeringens slututseende vid körning.",
+		"kAnimationUIOffsetTip",				"Använder det aktuella objektets egenskaper som startutseende, och den aktuella placeringen som slutplacering av animeringen vid körning.",
+		"kAnimationUIAnimationOptionTip",		"Animeringsalternativ",
+		"kAnimationUITrashTip",					"Ta bort animering",
+		"kAnimationUIXFPointTip",				"Ändra utgångspunkten för skala och rotering.",
+		"kAnimationUIShowTimingButtonTip",		"Visa Timing-panel",
+		
+		"kAnimationUISaveAsPresetTitle",		"Spara markerad förinställning som",
+		"kAnimationUISavePresetTitle",			"Spara förinställning",
+		"kAnimationUISavePresetNameLabel",		"Namn:",
+
+		"kAnimationUIEventPopupMenu",			"Popup-meny för händelse",
+		"kAnimationUICreateButtonTriggerCmd",	"Skapa knapputlösare",
+		"kAnimationUICreateSelfTriggerCmd",		"Skapa självutlösare",
+		
+		"kAnimationUIManagePresetsDialogTitle",	"Hantera förinställningar",
+		"kAnimationUIManagePresetsDoneButton",	"Klar",
+		"kAnimationUIManagePresetsDeleteButton","&Ta bort",
+		"kAnimationUIManagePresetsDuplicateButton","D&uplicera",
+		"kAnimationUIManagePresetsLoadButton",	"&Läs in...",
+		"kAnimationUIManagePresetsSaveAsButton","&Spara som...",
+		"kAnimationUIManagePresetMenuItem",		"Hantera förinställningar...",
+		"kAnimationUIManagePresetPresetsSeparator", "--------------------",
+		"kAnimationUIManagePresetNamePrefix",	"[",
+		"kAnimationUIManagePresetNameSuffix",	"]",
+	}
+};
+
+#endif // __ODFRC__

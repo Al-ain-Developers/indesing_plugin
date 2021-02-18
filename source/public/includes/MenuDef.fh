@@ -1,0 +1,63 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/public/includes/MenuDef.fh $
+//  
+//  Owner: lance bushore
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#ifndef __MenuDef_fh__
+#define __MenuDef_fh__
+
+#include "CoreResTypes.h"
+#include "PMTypes.fh"
+
+#ifdef __ODFRC__
+
+type MenuDefWithIconAttributes (kMenuRsrcType)
+{
+    longint = $$CountOf(Menus);
+    array Menus
+    {
+        longint;                    // global action id, eg. kEditActionID
+        wstring;                    // path to the menu you want this item to be on, eg. "Main:&File"
+        double;                        // Menu position - items on same menu will be sorted by this number
+        integer;                    // bool isDynamic - true if this menu has to rebuild before showing, else false.
+        longint;                    // Plugin ID for custom image to be shown on the left of the menu string.
+        longint;                    // Resource ID for custom image to be shown on the left of the menu string.
+    }
+};
+
+type MenuDef (kMenuRsrcType)
+{
+    longint = $$CountOf(Menus);
+    array Menus
+    {
+        longint;                    // global action id, eg. kEditActionID
+        wstring;                    // path to the menu you want this item to be on, eg. "Main:&File"
+        double;                        // Menu position - items on same menu will be sorted by this number
+        integer;                    // bool isDynamic - true if this menu has to rebuild before showing, else false.
+        longint = 0;                    // Plugin ID for custom image to be shown on the left of the menu string.
+        longint = 0;                    // Resource ID for custom image to be shown on the left of the menu string.
+    }
+};
+
+#endif // __ODFRC__
+
+#endif // __MenuDef_fh__
+

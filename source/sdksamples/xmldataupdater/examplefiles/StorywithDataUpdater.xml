@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Root><Story>This is a test.<_DataUpdater_TABLE_ table="Inventory"><_DataUpdater_RECORD_ key="A175"><_DataUpdater_FIELD_ field="SKU">A175</_DataUpdater_FIELD_>_<_DataUpdater_FIELD_ field="Price">£50</_DataUpdater_FIELD_>_<_DataUpdater_FIELD_ field="Description">Electric Drill</_DataUpdater_FIELD_></_DataUpdater_RECORD_>
+<_DataUpdater_RECORD_ key="B456"><_DataUpdater_FIELD_ field="SKU">B456</_DataUpdater_FIELD_>_<_DataUpdater_FIELD_ field="Price">£5</_DataUpdater_FIELD_>_<_DataUpdater_FIELD_ field="Description">Hammer</_DataUpdater_FIELD_></_DataUpdater_RECORD_>
+<_DataUpdater_RECORD_ key="A767"><_DataUpdater_FIELD_ field="SKU">A767</_DataUpdater_FIELD_>_<_DataUpdater_FIELD_ field="Price">£1</_DataUpdater_FIELD_>_<_DataUpdater_FIELD_ field="Description">Screwdriver</_DataUpdater_FIELD_></_DataUpdater_RECORD_>
+<_DataUpdater_RECORD_ key="C199"><_DataUpdater_FIELD_ field="SKU">C199</_DataUpdater_FIELD_>_<_DataUpdater_FIELD_ field="Price">£4</_DataUpdater_FIELD_>_<_DataUpdater_FIELD_ field="Description">Pliers</_DataUpdater_FIELD_></_DataUpdater_RECORD_>
+<_DataUpdater_RECORD_ key="A334"><_DataUpdater_FIELD_ field="SKU">A334</_DataUpdater_FIELD_>_<_DataUpdater_FIELD_ field="Price">£6</_DataUpdater_FIELD_>_<_DataUpdater_FIELD_ field="Description">Saw</_DataUpdater_FIELD_></_DataUpdater_RECORD_>
+</_DataUpdater_TABLE_> I will insert XML data before this sentenc.</Story></Root>

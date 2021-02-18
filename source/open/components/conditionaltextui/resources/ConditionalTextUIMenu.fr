@@ -1,0 +1,100 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/conditionaltextui/resources/ConditionalTextUIMenu.fr $
+//  
+//  Owner: Michele Stutzman
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "CrossPlatformTypes.h"
+#include "ConditionalTextUIDefs.h"
+#include "MenuDef.fh"
+#include "ActionDef.fh"
+#include "ActionDefs.h"
+
+#include "ShuksanID.h"
+#include "AdobeMenuPositions.h"
+
+#ifdef __ODFRC__
+
+//#define kQuickApplyConditionSets
+
+resource MenuDef (kConditionalTextUIMenuResID)
+{
+	{ 
+		kShowHideConditionSetOptionsActionID, "#CondTextUI_PanelMenu", kCondTextConditionSetOptionsMenuPosition, kFalse,
+		kConditionSetOptionsSeperatorActionID, "#CondTextUI_PanelMenu:-", kCondTextConditionSetOptionsSeparatorMenuPosition, kFalse,
+
+		kNewConditionTagActionID, "#CondTextUI_PanelMenu", kCondTextNewConditionTagMenuPosition, kFalse,
+		kDeleteConditionTagActionID, "#CondTextUI_PanelMenu", kCondTextDeleteConditionMenuPosition, kFalse,
+		kEditConditionSeperatorActionID, "#CondTextUI_PanelMenu:-", kCondTextEditSeparatorMenuPosition, kFalse,
+		kEditConditionTagActionID, "#CondTextUI_PanelMenu", kCondTextEditConditionMenuPosition, kFalse,
+
+		kShowHideConditionsSeperatorActionID, "#CondTextUI_PanelMenu:-", kCondTextShowHideSeparatorMenuPosition, kFalse,
+		kShowAllTagsActionID, "#CondTextUI_PanelMenu", kCondTextShowAllTagsMenuPosition, kFalse,
+		kHideAllTagsActionID, "#CondTextUI_PanelMenu", kCondTextHideAllTagsMenuPosition, kFalse,
+
+		kLoadSeperatorActionID, "#CondTextUI_PanelMenu:-", kCondTextLoadSeparatorMenuPosition, kFalse,
+		kLoadConditionTagsActionID, "#CondTextUI_PanelMenu", kCondTextLoadConditionTagsMenuPosition, kFalse,
+		kLoadConditionTagsAndSetsActionID, "#CondTextUI_PanelMenu", kCondTextLoadConditionTagsAndSetsMenuPosition, kFalse,
+		kSelectUnusedSeperatorActionID, "#CondTextUI_PanelMenu:-", kCondTextSelectUnusedSeparatorMenuPosition, kFalse,
+		kSelectUnusedConditionsActionID, "#CondTextUI_PanelMenu", kCondTextSelectUnusedConditionsMenuPosition, kFalse,
+
+        kContextMenuUnapplyConditionTagActionID,    "#CondTextUI_RtMenuConditionTagTVNode", kCondTagItemUnapplyRtMenuPosition,    kFalse,
+        kContextMenuEditConditionTagActionID,    "#CondTextUI_RtMenuConditionTagTVNode", kCondTagItemEditRtMenuPosition,    kFalse,
+        kContextMenuDeleteConditionTagActionID,        "#CondTextUI_RtMenuConditionTagTVNode", kCondTagItemDeleteRtMenuPosition,        kFalse,
+   	}
+};
+
+resource ActionDef (kConditionalTextUIActionResID)
+{
+	{ 
+		kConditionalTextUIPanelMenuBoss, kShowAllTagsActionID, "#ConditionSetShowAll", kPaletteMenusConditionalTextActionArea, kNormalAction, kCustomEnabling, 0, kTrue,
+		kConditionalTextUIPanelMenuBoss, kHideAllTagsActionID, "#ConditionSetHideAll", kPaletteMenusConditionalTextActionArea, kNormalAction, kCustomEnabling, 0, kTrue,
+
+		kConditionalTextUIPanelMenuBoss, kNewConditionTagActionID, "#CondTextUI_NewConditionTagMenu", kPaletteMenusConditionalTextActionArea, kNormalAction, kCustomEnabling, 0, kTrue,
+		kConditionalTextUIPanelMenuBoss, kDeleteConditionTagActionID, "#CondTextUI_DeleteConditionTagMenu", kPaletteMenusConditionalTextActionArea, kNormalAction, kCustomEnabling, 0, kTrue,
+		kConditionalTextUIPanelMenuBoss, kEditConditionTagActionID, "#CondTextUI_EditConditionTagMenu", kPaletteMenusConditionalTextActionArea, kNormalAction, kCustomEnabling, 0, kTrue,
+		kConditionalTextUIPanelMenuBoss, kLoadConditionTagsActionID, "#CondTextUI_LoadConditionTagsMenu", kPaletteMenusConditionalTextActionArea, kNormalAction, kCustomEnabling, 0, kTrue,
+		kConditionalTextUIPanelMenuBoss, kLoadConditionTagsAndSetsActionID, "#CondTextUI_LoadConditionTagsAndSetsMenu", kPaletteMenusConditionalTextActionArea, kNormalAction, kCustomEnabling, 0, kTrue,
+ 
+        kConditionTagTVNodeContextMenuBoss, kContextMenuUnapplyConditionTagActionID,        "#CondTextUI_RtMenuUnapplyTag",        kPaletteMenusConditionalTextActionArea, kNormalAction,kCustomEnabling,0,kFalse,
+        kConditionTagTVNodeContextMenuBoss, kContextMenuDeleteConditionTagActionID,        "#CondTextUI_RtMenuDeleteTag",        kPaletteMenusConditionalTextActionArea, kNormalAction,kCustomEnabling,0,kFalse,
+        kConditionTagTVNodeContextMenuBoss, kContextMenuEditConditionTagActionID,        "#CondTextUI_RtMenuEditTag",        kPaletteMenusConditionalTextActionArea, kNormalAction,kCustomEnabling,0,kFalse,
+
+		kQuickApplyPrefsActionComponentBoss, kQuickApplyConditionsPrefActionID, "#QuickApplyConditons_Menu_Key_String", kEditMenuActionArea, kNormalAction, kCustomEnabling, 0, kFalse,
+#if defined (kQuickApplyConditionSets)
+		kQuickApplyPrefsActionComponentBoss, kQuickApplyConditionSetsPrefActionID, "#QuickApplyConditonSets_Menu_Key_String", kEditMenuActionArea, kNormalAction, kCustomEnabling, 0, kFalse,
+#endif
+		
+		kConditionalTextUIPanelMenuBoss, kShowConditionIndicatorsActionID, "#CondTextUI_ShowIndicatorsMenu", kPaletteMenusConditionalTextActionArea/*kTextAndTablesActionArea*/, kNormalAction, kAlwaysEnabled, 0, kTrue,
+		kConditionalTextUIPanelMenuBoss, kShowAndPrintConditionIndicatorsActionID, "#CondTextUI_ShowAndPrintIndicatorsMenu", kPaletteMenusConditionalTextActionArea/*kTextAndTablesActionArea*/, kNormalAction, kAlwaysEnabled, 0, kTrue,
+		kConditionalTextUIPanelMenuBoss, kHideConditionIndicatorsActionID, "#CondTextUI_HideIndicatorsMenu", kPaletteMenusConditionalTextActionArea/*kTextAndTablesActionArea*/, kNormalAction, kAlwaysEnabled, 0, kTrue,
+
+		kConditionalTextUIPanelMenuBoss, kShowHideConditionSetOptionsActionID, "Show Options", kPaletteMenusConditionalTextActionArea, kNormalAction, kCustomEnabling, 0, kTrue,
+		
+		kConditionalTextUIPanelMenuBoss, kSelectUnusedConditionsActionID, "#CondTextUI_SelectUnusedMenu", kPaletteMenusConditionalTextActionArea, kNormalAction, kCustomEnabling, 0, kTrue,
+	}
+};
+
+#endif // __ODFRC__
+
+
+
+
+

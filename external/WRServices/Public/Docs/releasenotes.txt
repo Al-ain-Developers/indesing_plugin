@@ -1,0 +1,961 @@
+WRServices Release Notes
+
+Changes in Release 15.3 dated 10th February, 2020:
+-Bug Fixes: WRSERVICES-678
+CL#24640
+
+Changes in Release 15.3 dated 9th December, 2019:
+-Bug Fixes: WRSERVICES-437,626,627,630,649,650,653,656
+CL#24640
+
+Changes in Release 15.2 dated 16th October, 2019:
+-Bug Fixes: WRSERVICES-632,WRSERVICES-633
+CL#24548
+
+Changes in Release 15.2 dated 26th September, 2019:
+-Bug Fixes: WRSERVICES-587,WRSERVICES-620
+CL#24487
+
+Changes in Release 15.2 dated 9th September, 2019:
+- iOS : updated deployment target to 11.2 on Xcode 10.2.1
+- Bug Fixes: WRSERVICES-517,WRSERVICES-607,WRSERVICES-608,WRSERVICES-609,WRSERVICES-616,WRSERVICES-618
+- Introduced an enum "kWRCJKOnly" to allow clients to pass Chinese, Japanese and Korean only scripts via Lipika using the API:SetRoutingScriptsForLipika(WRInt8 scripts). For more information plfease refer the link below:
+https://wiki.corp.adobe.com/display/loki/WRServices+Integration+Changes
+
+CL#24467
+
+Changes in Release 15.2 dated 7th August, 2019:
+- MAC : updated deployment target to 10.12 on Xcode 10.2
+- Bug Fixes: WRSERVICES-565,WRSERVICES-590,WRSERVICES-591,WRSERVICES-598,WRSERVICES-599,WRSERVICES-602
+CL#24402
+
+
+Changes in Release 15.2 dated 2nd July, 2019:
+- Latin and Indic scripts have been certified for Harfbuzz route in WRServices. With this release, all scripts except MENA scripts and Type-I fonts will get shaped via Harfbuzz. However, flags have been provided to override the default routing. Please refer to the below wiki:
+https://wiki.corp.adobe.com/pages/viewpage.action?pageId=1470934558
+- Added support for complimentary fonts in the Harfbuzz workflow in WRServices
+- BugFix: WRSERVICES-542
+- With Harfbuzz 2.4 upgrade in 15.1 release, Harfbuzz has enabled many diagnostic errors and warnings in the file :./External/Harfbuzz/Include/hb.hh. This might cause compiler issues at client side.
+	- To ignore all the errors client can define HB_NO_PRAGMA_GCC_DIAGNOSTIC_ERROR
+	- To ignore all the warnings client can define HB_NO_PRAGMA_GCC_DIAGNOSTIC_WARNING
+	- Client can also selectively disable certain types of diagnostics by #pragma GCC diagnostic kind option.
+		For example client can disable the missing enum in switch error by #pragma GCC diagnostic ignored "-Wswitch-enum"
+CL#24324
+
+Changes in Release 15.1 dated 17th June, 2019:
+- Added support for Windows_arm64
+- CL#24145
+
+Changes in Release 15.1 dated 30th May, 2019:
+- Harfbuzz Upgrade to 2.4.0
+- Additional APIs added in InputOutputHB.h for Harfbuzz workflow in InDesign
+- New Win debug flavour:debug_iterator_off added for InDesign
+- Bug Fixes:WRSERVICES-550
+- CL#24145
+
+Changes in Release 15.0 dated 10th April, 2019:
+- Bug fix for HARFBUZZ-491,Harfbuzz-535
+- Support for UTF-8,UTF-16 and UTF-32 client encoding in Harfbuzz workflow. This enables the rendering of surrogate pairs and emojis. To enable please refer the following wiki:
+https://wiki.corp.adobe.com/pages/viewpage.action?pageId=1470934558
+- PIE 1.9.0 and WRServices 15.0 are interdependent, clients are recommended to update both of them, if applicable
+- CL#24003
+
+Changes in Release 15.0 dated 6th March, 2019:
+- Routing changes: Combination of MENA with any other script goes through Lipika, a paragraph containing only Indic scripts also goes thorugh Lipika and shaping for all other scripts happens via Harfbuzz., #HARFBUZZ-505
+- Bug fix for #HARFBUZZ-490, #HARFBUZZ-472, #HARFBUZZ-495, #HARFBUZZ-494
+- Changes for #HARFBUZZ-454/#GTLIB-132 for variable fonts to account for 'rvrn' tag
+- Harfbuzz upgraded to version 2.2.0, fix for #HARFBUZZ-475
+
+Changes in Release 14.0.1.0 dated 16th November 2018:
+- Bug Fix #GTLIB-316
+
+Changes in Release 14.0 dated 14th August 2018:
+- Bug fix:  #GTLIB-244
+- Implemented Highbeam logging for scripts and font usage. To enable highbeam logging , please refer the following wiki page:
+https://wiki.corp.adobe.com/pages/viewpage.action?pageId=1470934558
+
+Changes in Release 14.0 dated 18th July 2018:
+- WRServices gets added support for 5 new scripts (Thai, Burmese, Sinhalese, Khmer, Lao) using Harfbuzz shaper
+- Retained support for legacy workflows including cases where clients want to use new WRServices without Harfbuzz workflows
+- Bug fix for performance issue #GTLIB-216 #GTLIB-242 #HARFBUZZ-441
+- For WRServices 14.0 integration please refer the following wiki page:
+https://wiki.corp.adobe.com/pages/viewpage.action?pageId=1470934558
+
+Changes in Release 13.1:
+- Support for Variable Fonts. Instructions to enable variable fonts can be found at https://wiki.corp.adobe.com/display/Globalization/Variable+Fonts+Support
+- Acrobat Bug Fix ADC-4224452
+- Kannada Customer Crasher Issue fix #ID-4204953, #GTLIB-137,#GTLIB-138
+- Updated Cooltype's enum CTWritingDirection to CTTextWritingDirection in CoolType5BasedFontAccess.h file in  correspondance to the latest CoolType(Release Candidate 39965: 2018/01/08:19:41:32 Wiki Link:https://wiki.corp.adobe.com/display/coretech/CoreTech+Green+Branch+Release+Notes+January+2018).
+If you are using an older version of CoolType Headers then replace all occurrences of CTTextWritingDirection with CTWritingDirection in CoolType5BasedFontAccess.h to fix the compilation errors.
+- MAC: Deprecated 32-bit version as CoolType deprecated the same.
+- Backward Binary Compatible on top of version 13.0.0.1
+CL#22881
+
+Changes in build of 20th November 2017
+- Support for Variable Fonts
+- Acrobat Bug Fix ADC-4224452
+- Backward Binary Compatible on top of version 13.0.0.1
+- Deprecated Mac 32-bit version as CoolType deprecated the same.
+#CL 22734
+
+Changes in build 09/14/2017 build
+JIRA BUG#AI-4209078
+The workflow is getting hit for variable fonts only.But the fix is a general one.
+When CoolType5aBasedFontAccess::WRApplyFeaturesForMM1Fonts with featureInfo->featureRanges=NULL .
+Pointer in WRHybridVector template was not initialized properly.
+
+
+Changes in release 13.0:
+- ArabicRTL and Script detection for both Mac and Win.
+- MAC : updated deployment target to 10.10 on Xcode 8.2.1
+	builds on compiler Apple llvm 8.0
+
+- WIN : removed pure virtual function
+	inclusion of enum for Script detection
+	compiler upgrade VS15 update 3
+
+----------------------------------------------------------------------------
+
+Changes in build of 9th June 2017
+- Win removed pure virtual function
+- inclusion of enum for Script detection
+
+----------------------------------------------------------------------------
+
+Changes in build of 16th May 2017
+- Win compiler upgrade VS15 update 3
+
+----------------------------------------------------------------------------
+
+Changes in build of 14th Feb 2017
+- Ported Lipika to IOS.
+-Added script detection code
+
+----------------------------------------------------------------------------
+
+Changes in build of 17th Jan 2017
+- Arabic Digitset issue: #4181043; New digitset "ArabicDigitsRTL" added, activated by "arabic_rtl".
+
+changes in build of 12 Sep 2016
+Fixed Bengali DFR  Bugs #4187989, #4187993, and length mark issue for the unicode character "09D7"
+---------------------------------------------------------------------------
+
+changes in build of 09 Sep 2016
+Fixed Bengali DFR Nukta Bugs
+---------------------------------------------------------------------------
+
+changes in build of 26 Aug 2016
+Fixed following bugs in kannada, Malayalam and Telugu
+#3213491, #4027934, #3937740, #4114760
+---------------------------------------------------------------------------
+
+changes in build of 22 Jul 2016
+ported Mac solution to MacOSX10.11 Xcode7.2 libc++
+---------------------------------------------------------------------------
+
+changes in build of 07 Jan 2016
+ported window solution to VS2015
+ported Mac solution to MacOSX10.11 and added project file for XCode 7.2
+---------------------------------------------------------------------------
+
+changes in build of 31 Jul 2015
+following Bugs of Telugu DFR have been fixed:
+- #4026987 #4027931   : CL #21834
+---------------------------------------------------------------------------
+
+Changes in build of 10th July 2015
+- Kannada Bugs: #3982657, #3979991, #3979989 with P4 CL: 21821
+- Kannada Bugs: #3947548, #3944580(#3933830), #3946834 with P4 CL: 21820
+
+---------------------------------------------------------------------------
+
+changes in build of 9 Jul 2015
+
+following Bugs of Telugu DFR have been fixed:
+- #4006693 #4007561 #4007523 #4015660 : CL #21798
+
+---------------------------------------------------------------------------
+
+changes in build of 10 Jun 2015
+
+- Implemented ver.2 for Telugu with DFR  CL #21770
+
+----------------------------------------------------------------------------
+
+Changes in build of 10 Jun. 2015
+
+Following bugs have been fixed:
+
+#3994898: CL: #21768; Support for all RTL languages added. (Enhancement for Webdings Bug 3962166 fix)
+
+-----------------------------------------------------------------------------
+
+Changes in build of 22 May. 2015
+
+Following bugs have been fixed:
+
+#3962166: CL: #21747; Webdings/Wingdings issue; Incorrect shaping when digits are used with webdings/wingdings.
+
+-----------------------------------------------------------------------------
+
+Changes in build of 15 Mar. 2015
+
+Following bugs have been fixed:
+Kannada: 3946816, 3947620
+Tamil: 3935665
+Debug build crash on Segoe font: 3532561
+
+-----------------------------------------------------------------------------
+
+Changes in 24 Feb. 2015 IR build
+
+- Implemented ver.2 for Tamil & Kannada with DFR.
+- Fixed the following bugs for Kannada: 3810815, 3507846, 3678629, 3704066, 3581047.
+
+---------------------------------------------------------------------------
+
+Changes in build of 05 Nov. 2014
+
+Windows complier has been updated to VS2013 Update 2.
+Mac compiler has been updated to XCode 5.0.2
+
+-----------------------------------------------------------------------------
+
+Changes in build of 07 March 2014:
+
+CL:20204
+
+3717967:Wrong Combination when UU Matra is used in Rachana.
+3716003:InDesign CC crashes on MAC with MLM2 changes in LIpika.
+3715162:Vattu Problem :: Reordering of Ra
+3708819:Chillu Break in Malayalam for trailing Va
+3700170:The reordering of prebase forms of Ra seems to vary somewhat from script to script. In many the reordering of matras is to the position after the last visible halant
+
+Reverted fix for : 3502585
+
+---------------------------------------------------------------------------
+
+Changes in build of 21 Feb. 2014 :
+
+CL:20178  : Bug#3708819 : Chillu Break in Malayalam for trailing Va
+
+---------------------------------------------------------------------------
+
+Changes in build of Feb. 11 2014:
+
+This build contains fixes for DFR(dynamic font retrieval) and other "mlm2" bugs fixes and Tamil cursor movement, Bengali conjunct and Gujarati conjunct fixes listed below:
+
+BUG#3582587
+BUG#3582584
+BUG#3507849
+BUG#3499322
+BUG#3498601
+BUG#3502585
+BUG#3332096
+BUG#3502702
+BUG#3499335
+BUG#3582583
+BUG#3365152
+BUG#3563770
+BUG#3528304
+
+---------------------------------------------------------------------------
+
+Change in build of 20/01/2014: Upgraded compiler to VS2012.
+
+---------------------------------------------------------------------------
+
+Change in build of 08/03/2013
+
+Release after fixing Lipika Indic bugs :
+
+1. Revert earlier fix for bug#3427213 : When the MENA composer is active on 10.8.1 and 10.8.2 performance is terrible and almost any action (even outside type) seems to trigger beach ball
+2. Turn off the AAT Ligature patch in Lipika for Mac OSX 10.8
+---------------------------------------------------------------------------
+
+Change in build of 25/02/2013
+
+Release after fixing Lipika Indic bugs :
+
+CL : 19078
+- bug=3427213 : When the MENA composer is active on 10.8.1 and 10.8.2 performance is terrible and almost any action (even outside type) seems to trigger beach ball
+CL : 19075
+- bug=3496128 : Recent break: Mac only: Page along with paste board gets corrupted on applying Kashida
+CL : 19056
+- bug=3499773 : Memory leak while typing Indic languages
+
+---------------------------------------------------------------------------
+
+Change in build of 30/01/2013
+
+Release after fixing Lipika Indic bugs :
+
+CL : 18979
+- Reverting partial fix for bug#3365152 : Cursor movement in Tamil Language text is incorrect if Optyca Composer is used with clustering enabled.
+
+---------------------------------------------------------------------------
+
+Change in build of 02/01/2013
+
+Release after fixing Lipika Indic bugs :
+
+CL : 18788
+-bug=3307155 : Tamil letter Sha not recognized as base for vowel sign reordering.
+
+---------------------------------------------------------------------------
+
+Change in build of 22/10/2012
+
+Release after fixing Lipika Indic bugs
+CL : 18464
+Fix for Bug 3333067 : EPV, Marathi letter form versions of La (U+0932) and Sha (U+0936) do not work everywhere
+CL : 18472
+-bug=3103766 : EPV: LOC:3007090:KA/ML:ID:MAC:Non-Joiner between double does not display post-base form; remaining-partial fix.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+Change in build of 06/09/2012
+
+Release after fixing Lipika Indic bugs
+CL : 18217
+-bug=3097656 EPV:LOC:3007090:MA:ID:MAC:Post-base form of Ra character is not displaying properly after the conjuncts.
+CL : 18216
+-bug=3103766 : EPV: LOC:3007090:KA/ML:ID:MAC:Non-Joiner between double does not display post-base form; partial fix.
+CL : 18243
+-bug=3115397 : LOC:3007090:BN:ID:MAC: Khand Ta Character is not displaying properly.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+WRServices Version 7 (CL 18045)
+
+Change in build of July 05, 2012
+
+- Release for CS7
+- On Mac compiled using XCode 4.2.1, OS X SDK 10.7
+
+
+P.S. : The changes here on and above are done by GTLib Team.
+==============================================================================================================================================================================================================================================================================================================================
+Note : These addition are done by Winsoft.
+
+WRServices Version 3
+
+Change in build of September 21, 2008
+
+- Added rules to make the solaris 10 version on i80386solaris platform
+
+Change in this build 23:
+- Variation Selector support. (see http://timor.corp.adobe.com/mediawiki/index.php?title=Lipika:Design_%26_Implementation#Variation_Selectors for the functional specification)
+- Indic native digit support
+- zlib 1.2.3 per Security Threat modeling recommendations.
+- Indic bug fixes
+- Fixed Fortify and BoundChecker issues
+
+Known issues:
+- A work-around for CooType bug: 1627682 was removed and thus there are changes when using the Chandas font.
+- Variation selector support has not been completely verified.
+
+Change in this build 24:
+- Delay load (for Photoshop)
+- Embedded font database: the IntlFontDBWinsoft.txt file is now compiled in in the lib. In the FontDataBase constructor, the argument describing the path of IntlFontDBWinsoft.txt can take three values: NULL (don't use any), "" (empty string, use the embedded one) or an actual path.
+- New Indic parser: a set a new low-level class to help in the implementation of Indic script modules. It co-exists with the previous parser. Existing implementations will be moved gradually.
+- Support for the nes specs for 3 scripts: Devanagari(dev2) Oriya (ori2) Malayalam (mal2).
+- SubstitutionLog::Verify method to check the integrity of a log and prevent malicious usage of altered logs stored on file (ATE).
+- Several Fortify and Boundchecker warnings addressed.
+- New WinOptyca test cases, mainly for Indic
+- Basic support for Georgian, Armenian, GeezScript, Yi, Cherokee
+
+Change in this build 25:
+- Fix Watson bug #1651778 "Tabs in AXTE with WRServices build 23"
+- Test file "objectbetweenjoiners.txt" added
+- VC8 warning level 4 removed
+- Fortify warnings addressed.
+
+Change in this build 26:
+- More Fortify warnings addressed.
+
+Change in this build 27:
+- Bug fixing about kerning (W#1586054)
+- Source documentation and cleanup
+
+Change in this build 28:
+- New font access helper for the upcoming new CT OT API
+- script module for Mongolian
+- fixes for Telugu, Sinhala, Oriya2 and Thaana
+- fixed the broken automatic handling of hyphenation-induced spelling changes
+- silent filtering of ccmp, mark, mkmk in user OT features, since they conflic with the internal use
+
+Change in this build 29:
+- Fix for W1690334, also reported separately by Niti (problem with vowels without consonant in Tami, Gurmukhi and Malayalam)
+- Enhanced default fonts for scripts, at Niti's request
+
+Change in this build 30:
+- fix for W1718409
+- Minor changes to suppress warnings on Mac
+
+Change in this build 31:
+- kerning reworking
+	- a new member function (SameKerningMethod) has been added to the style client control interface, for clients providing more than one kerning method (ID & ATE)
+	- a obsolete flag has been removed from the interface (WR_PASSDIRTOKERN, was always on); client may have to remove the reference to it from their implementation
+- Hebrew change to include some common punctuation. A more generic solution is under investigation.
+- fixes:
+	1) 1728070: Devanagari: Extra dotted circle is being rendered with Mangal font
+	2) 1736738: Bengali: Sequence cons + Virama + cons + dependent vowel form non-ligated form
+	3) 1736754: Bengali: Incorrect placement of &#x09F0;&#x09CD;&#x200D;&#x0995; with Vrinda 5.0 font
+
+
+Change for bug fix 1739925.
+
+- Added code to allow multiple calls to WRServicesPreInitialize, WRServicesInitialize, and WRServicesTerminate that use the same parameters.
+  If the parameters do not match an error code is returned and an assert is raised for debug builds.
+- WRServicesPreInitialize, WRServicesInitialize, and WRServicesTerminate all now return error codes. The new error codes
+  are as follows:
+
+	kWRPreInitializeCalledWithDifferntAllocatorsErr,
+
+	kWRPreInitializeNotCalledErr,
+
+	kWRInitializeCalledWithDifParamsErr,
+
+	kWRInitializeCalledWithSameParamsErr,
+
+	kWRTerminateAlreadyCalledErr,
+
+	kWRTerminateDelayedErr,
+
+- WRServicesPreInitialize may now be called with a null pointer for the memObj parameter. If the paramter is NULL,
+  WRServicesPreInitialize will use an internally defined alloc and free routines.
+- WRUInt32 WRServicesGetClientCount() is a new API, that will return the number of times that WRServicesInitialized has been called.
+  The client should only delete the objects returned by:
+
+  		WRServicesFontAccess();
+		WRServicesMultiProcessing();
+		WRServicesFontContext();
+
+  WRServicesGetClientCount returns 1.
+
+Change in this build 32:
+
+- Fixed Watson #1752226: OT Smallcap weren't working in Cyrillic and Greek
+- Fixed Watson #1749262: Launch performance SLO/PS reduced by delaying inits and using a small font DB
+- Fixed Watson #1738513: Greek bag glyph display because of the script breaking rules, which were too strict for common punctuation.
+		This is a temporary fix, until a more generic solution is set up
+- Fixed Watson #1747311, #1747306, #1747289: Telugu issues
+- Removed a potential multithreading problem, linked to calling Cooltype inside Cooltype API callbacks
+
+Changes in build 33:
+
+- Fixed Watson #1711668 : Oriya files orya/ory2 mismatch due to use of 'DFLT' in CoolType.
+- Fixed Watson #1761323 : Bad placement of long (3 or more consonants) telugu clusters.
+- Updated to the new CT5a interface
+- Fixed Watson #1762269: there was actually two bugs
+		1) fi/fl ligature didn't show up with Winsoft Pro because CT was reporting errorneously the presence of a Latin 'liga'
+		   this is fixed by the new CT5a
+		2) the fi ligature was made in Turkish with T1 fonts
+		   this is an internal Optyca bug and it's addressed by this build
+- Fixed a Fortify issue in SetLinguisticWordBreaks: this method now check mem alloac failures and returns an error code to detect and handle that on the client side
+- Fixed a multithreading problem in WinOptyca, linked to the use a non MT-safe default Check/Trim cache handler in BIB
+- Fixed Watson # 1783360 (by Craig - CL#7616): WRASSERT(false, "WRServicesPreInitialize: Mutliple initializations with different allocators."); is removed from WRServicesPreInitialize
+
+
+Changes in build 34:
+- Fixed Watson #1803580 and #1803466 (UI freeze in long arabic text in AI)
+- Fixed Watson #1807385 (Ra + Nukta in Devanagari)
+- Fixed Watson #1760739 (Anchor objects break ligatures)
+- Removed compile switch: CT_WITH_ISScriptPresent, which was needed for the older version of the CoolType APIs.
+	 All clients must now use a Build of CoolType that is after Build Version: 53.338298 Build Date: 4/15/2008
+
+Changes in build 35:
+
+- major version number increased (4.0)
+- Summary of bug fixes (  Zephyr Issue
+
+watson Bug #    Zephyr Issue    Title
+
+2272283		Z1#45181 	Anchored objects not visible when inserted in a ligature
+						No testcase: Cannot highlite the pb with optyca test tools. A test has�been added in SubLogTest.cpp
+2272282		Z2#6399		Incorrect justification with ZWSP in texts
+2272278		Z2#6660		Incorrect justification with ZWSP in texts with dokchampa
+2272276		Z2#7238		Justification is not correct in Lao when ZW space is used
+2272274		Z2#7237		Justification is not correct in Thai when sara am are present
+2272193		Z2#6858		Justification is not correct in Thai when space is used
+						test_files/autotest/features/justif/lao/lao_DokChampa_1.1_L_BBB.xml
+						test_files/autotest/features/justif/lao/lao_DokChampa_1.1_L_BSZ.xml
+						test_files/autotest/features/justif/lao/lao_DokChampa_1.1_L_BZS.xml
+						test_files/autotest/features/justif/lao/lao_DokChampa_1.1_L_SSS.xml
+						test_files/autotest/features/justif/lao/lao_DokChampa_1.1_L_ZZZ.xml
+						test_files/autotest/features/justif/lao/lao_DokChampa_1.1_W_BBB.xml
+						test_files/autotest/features/justif/lao/lao_DokChampa_1.1_W_BSZ.xml
+						test_files/autotest/features/justif/lao/lao_DokChampa_1.1_W_BZS.xml
+						test_files/autotest/features/justif/lao/lao_DokChampa_1.1_W_SSS.xml
+						test_files/autotest/features/justif/lao/lao_DokChampa_1.1_W_ZZZ.xml
+						test_files/autotest/features/justif/lao/lao_DokChampa_1.2_WL_BBB.xml
+						test_files/autotest/features/justif/lao/lao_DokChampa_1.2_WL_BSZ.xml
+						test_files/autotest/features/justif/lao/lao_DokChampa_1.2_WL_BZS.xml
+						test_files/autotest/features/justif/lao/lao_DokChampa_1.2_WL_SSS.xml
+						test_files/autotest/features/justif/lao/lao_DokChampa_1.2_WL_ZZZ.xml
+						test_files/autotest/features/justif/lao/lao_DokChampa_1.5_WL_BBB.xml
+						test_files/autotest/features/justif/lao/lao_DokChampa_1.5_WL_BSZ.xml
+						test_files/autotest/features/justif/lao/lao_DokChampa_1.5_WL_BZS.xml
+						test_files/autotest/features/justif/lao/lao_DokChampa_1.5_WL_SSS.xml
+						test_files/autotest/features/justif/lao/lao_DokChampa_1.5_WL_ZZZ.xml
+						test_files/autotest/features/justif/lao/lao_SaysetthaOT_1.1_L_BBB.xml
+						test_files/autotest/features/justif/lao/lao_SaysetthaOT_1.1_L_BSZ.xml
+						test_files/autotest/features/justif/lao/lao_SaysetthaOT_1.1_L_BZS.xml
+						test_files/autotest/features/justif/lao/lao_SaysetthaOT_1.1_L_SSS.xml
+						test_files/autotest/features/justif/lao/lao_SaysetthaOT_1.1_L_ZZZ.xml
+						test_files/autotest/features/justif/lao/lao_SaysetthaOT_1.1_W_BBB.xml
+						test_files/autotest/features/justif/lao/lao_SaysetthaOT_1.1_W_BSZ.xml
+						test_files/autotest/features/justif/lao/lao_SaysetthaOT_1.1_W_BZS.xml
+						test_files/autotest/features/justif/lao/lao_SaysetthaOT_1.1_W_SSS.xml
+						test_files/autotest/features/justif/lao/lao_SaysetthaOT_1.1_W_ZZZ.xml
+						test_files/autotest/features/justif/lao/lao_SaysetthaOT_1.2_WL_BBB.xml
+						test_files/autotest/features/justif/lao/lao_SaysetthaOT_1.2_WL_BSZ.xml
+						test_files/autotest/features/justif/lao/lao_SaysetthaOT_1.2_WL_BZS.xml
+						test_files/autotest/features/justif/lao/lao_SaysetthaOT_1.2_WL_SSS.xml
+						test_files/autotest/features/justif/lao/lao_SaysetthaOT_1.2_WL_ZZZ.xml
+						test_files/autotest/features/justif/lao/lao_SaysetthaOT_1.5_WL_BBB.xml
+						test_files/autotest/features/justif/lao/lao_SaysetthaOT_1.5_WL_BSZ.xml
+						test_files/autotest/features/justif/lao/lao_SaysetthaOT_1.5_WL_BZS.xml
+						test_files/autotest/features/justif/lao/lao_SaysetthaOT_1.5_WL_SSS.xml
+						test_files/autotest/features/justif/lao/lao_SaysetthaOT_1.5_WL_ZZZ.xml
+						test_files/autotest/features/justif/thai/tha_AdobeThai-Regular_1.1_L_BBB.xml
+						test_files/autotest/features/justif/thai/tha_AdobeThai-Regular_1.1_L_BSZ.xml
+						test_files/autotest/features/justif/thai/tha_AdobeThai-Regular_1.1_L_BZS.xml
+						test_files/autotest/features/justif/thai/tha_AdobeThai-Regular_1.1_L_SSS.xml
+						test_files/autotest/features/justif/thai/tha_AdobeThai-Regular_1.1_L_ZZZ.xml
+						test_files/autotest/features/justif/thai/tha_AdobeThai-Regular_1.1_W_BBB.xml
+						test_files/autotest/features/justif/thai/tha_AdobeThai-Regular_1.1_W_BSZ.xml
+						test_files/autotest/features/justif/thai/tha_AdobeThai-Regular_1.1_W_BZS.xml
+						test_files/autotest/features/justif/thai/tha_AdobeThai-Regular_1.1_W_SSS.xml
+						test_files/autotest/features/justif/thai/tha_AdobeThai-Regular_1.1_W_ZZZ.xml
+						test_files/autotest/features/justif/thai/tha_AdobeThai-Regular_1.2_WL_BBB.xml
+						test_files/autotest/features/justif/thai/tha_AdobeThai-Regular_1.2_WL_BSZ.xml
+						test_files/autotest/features/justif/thai/tha_AdobeThai-Regular_1.2_WL_BZS.xml
+						test_files/autotest/features/justif/thai/tha_AdobeThai-Regular_1.2_WL_SSS.xml
+						test_files/autotest/features/justif/thai/tha_AdobeThai-Regular_1.2_WL_ZZZ.xml
+						test_files/autotest/features/justif/thai/tha_AdobeThai-Regular_1.5_WL_BBB.xml
+						test_files/autotest/features/justif/thai/tha_AdobeThai-Regular_1.5_WL_BSZ.xml
+						test_files/autotest/features/justif/thai/tha_AdobeThai-Regular_1.5_WL_BZS.xml
+						test_files/autotest/features/justif/thai/tha_AdobeThai-Regular_1.5_WL_SSS.xml
+						test_files/autotest/features/justif/thai/tha_AdobeThai-Regular_1.5_WL_ZZZ.xml
+						test_files/autotest/features/justif/thai/tha_DokChampa_1.1_L_BBB.xml
+						test_files/autotest/features/justif/thai/tha_DokChampa_1.1_L_BSZ.xml
+						test_files/autotest/features/justif/thai/tha_DokChampa_1.1_L_BZS.xml
+						test_files/autotest/features/justif/thai/tha_DokChampa_1.1_L_SSS.xml
+						test_files/autotest/features/justif/thai/tha_DokChampa_1.1_L_ZZZ.xml
+						test_files/autotest/features/justif/thai/tha_DokChampa_1.1_W_BBB.xml
+						test_files/autotest/features/justif/thai/tha_DokChampa_1.1_W_BSZ.xml
+						test_files/autotest/features/justif/thai/tha_DokChampa_1.1_W_BZS.xml
+						test_files/autotest/features/justif/thai/tha_DokChampa_1.1_W_SSS.snap
+						test_files/autotest/features/justif/thai/tha_DokChampa_1.1_W_SSS.xml
+						test_files/autotest/features/justif/thai/tha_DokChampa_1.1_W_ZZZ.xml
+						test_files/autotest/features/justif/thai/tha_DokChampa_1.2_WL_BBB.xml
+						test_files/autotest/features/justif/thai/tha_DokChampa_1.2_WL_BSZ.xml
+						test_files/autotest/features/justif/thai/tha_DokChampa_1.2_WL_BZS.xml
+						test_files/autotest/features/justif/thai/tha_DokChampa_1.2_WL_SSS.xml
+						test_files/autotest/features/justif/thai/tha_DokChampa_1.2_WL_ZZZ.xml
+						test_files/autotest/features/justif/thai/tha_DokChampa_1.5_WL_BBB.xml
+						test_files/autotest/features/justif/thai/tha_DokChampa_1.5_WL_BSZ.xml
+						test_files/autotest/features/justif/thai/tha_DokChampa_1.5_WL_BZS.xml
+						test_files/autotest/features/justif/thai/tha_DokChampa_1.5_WL_SSS.xml
+2272195		Z2#8466		Hindi character not rendering correctly
+						test_files/autotest/scripts/devanagariDevanagari_initialR_Mangal.xml
+2272085		Z2#8584		Issue with full justif and tabulation
+						No testcase:
+						ACE (Tasmeem) related, with possible impact in Indic scripts, but couldn't exhibit it.
+						we discovered further problems in the same area: Z2#15135, CL102890(mainline), not in Lipika yet.
+2272080		Z2#8622		Clicking Preview checkbox in Basic Paragraph style crashes ME
+						No testcase:
+						We didn't succeed in exhibiting the pb with earlier builds
+2271236		Z2#9172		InDesign Crashes when exporting PDF
+						test_files/autotest/scripts/tamil/Tamil_NumbersSpecials_Latha.xml
+2271234		Z2#9071		[From SALP] Glyph pallet fails to show correct in glyph when  highlighted in a document
+						No testcase:
+						Cannot test that with autotests
+2271238		Z2#10693 	[Code View] Diacritics mispositionned with the font GeezaPro
+						test_files/autotest/scripts/arabic/legacy/geezah.xml
+						test_files/autotest/scripts/arabic/legacy/ArabicTransparent.xml
+						test_files/autotest/scripts/arabic/legacy/ArabicTransparent-Bold.xml
+						test_files/autotest/scripts/arabic/legacy/SimplifiedArabic.xml
+						test_files/autotest/scripts/arabic/legacy/SimplifiedArabic-Bold.xml
+2271233		Z2#12415 	[BRB3] apply weight to two mixed kind of fonts/languages  causes error
+						No testcase:
+						The problem was fixed by adding BIB_NO_THROW sanity check around CT calls.
+						It is related to faux-bold problem in CT for some fonts. It was reported to�Niti to look to it.
+						Anyway on our side in WRServices the BIB_NO_THROW�protection is not easy to test. For the future we should be testing
+						WinOptyca/autotest with BIB_NO_THROW NOT DEFINED.
+2271227		Z2#12829 	Bengali problem
+						test_files/autotest/scripts/bengali/bengali_z12829_bidisha.xml
+						This testcase requires font : BN BIDISHA (BNBDOT0N.ttf)
+2271224		Z2#14037 	BasilME: leaks after using Place
+						No testcase needed: memory leak in InDesign
+2271219		Z2#8591		[From SALP] Manual kerning on ignorable chars is ignored  (shouldn't)
+						test_files/autotest/features/kerning_tracking/KerningOnIgnorable.xml
+2271216		Z2#12923 	Flush space in Adobe World-Ready Composers
+						test_files/autotest/features/justif/FlushSpaceRoman1.xml
+						test_files/autotest/features/justif/FlushSpaceRoman2.xml
+						test_files/autotest/features/justif/FlushSpaceRoman3.xml
+2271213		Z2#13871 	Wrong script detection of neutrals in Hebrew text
+2269318		Z2#14603 	Cannot apply an Hebrew OT feature on digits
+						test_files/autotest/scripts/hebrew/SBLHebrewAlefHatafSegolZWJMeteg.xml
+						test_files/autotest/scripts/hebrew/SBLHebrewMarkSpacing.xml
+						test_files/autotest/scripts/hebrew/hebrewdigits.xml
+2271210		Z2#14179 	Points not correcly located with font Noori
+						test_files/autotest/scripts/arabic/nastaliq/NooriNastaleeq.xml
+2270971		Z2#14599 	Alternate lookups don"t work with the opentype menu
+						No testcase:
+						not possible to exhibit the pb without a private font
+
+- All WinOptyca test cases are now converted to the xml test harness format
+- The xml format has been extended to support all the features of the former txt format
+- new targets: linux x64, xcode3 (all architectures inside the universal framework), vc9
+- improved the character script determination
+- improved full justification in Thai and Lao
+
+
+Changes in build 36:
+- Fix MacOSX crash if more than one keyboard installed
+
+
+Changes in build 37:
+
+- Added a character code based cluster iterator (public/includes/WRClusterBreakIterator.h);
+  this utility class provides a way to find cluster boundaries in a stream of text for
+  caret positioning, forward delete, dropcaops automatic expansion... The class comes in two
+  flavor, one using the WRServices unicode database, the other one using a client defined
+  source. Those two classes do not require dynamic memory allocation and are suitable for
+  use at early stages in the initialisation process.
+  For usage example, see DocumentStorageClusterBreakIterator in wrservices\Test\common\DocumentStorage.h
+
+- Added a helper (wrservices\Public\Includes\Helpers\BravoBasedWRServicesInit.h/.cpp) to facilitate
+  the construction of a WRFontContext based on bravo. This helper takes care WRServices pre-initialization,
+  of the mutex provider creation and of the "font access" object creation and of their destruction. It also
+  encapsulate the multiple initialisation protection.
+  For usage example, see wrservices\Test\common\wrapper.cpp or test/src/wrapper.cpp in the test harness
+
+- Removed the need for BuildFromCurrentContext(). The internal cache can now be built incrementally,
+  if the font access implementation overrides SearchFont methods by functional implementations
+  (which is done by the CoolType5aBasedFontAccess and  CoolType5BasedFontAccess helpers).
+  The pre loading with BuildFromCurrentContext() is still functional and indeed must be used if SearchFont is
+  not available.
+
+- Added CheckFontList to the IWRFontAccess interface. The implementation (provided in the cooltype 5 based
+  helpers by calling CCTFontSet::Sync) is expected to tell if a font set change occured since the previous call.
+  The client is expected to call this regularly (every 1 or 2 seconds) and to call IWRFontContext::Invalidate()
+  if a change occured. This new method encpsulates all the necessary invalidations (IWRFontInfo, font glyph cache,
+  etc)
+  The client can also replace the current sequence:
+		WRServicesFontContext()->Cache()->Invalidate();
+		WRServicesFontContext()->OptycaPool()->Cleanup();
+
+		if (gCoolTypeBasedFontContext)
+			gCoolTypeBasedFontContext->Info()->BuildFromCurrentContext();
+  by the call
+		WRServicesFontContext()->Invalidate(false);
+
+- The unicode database is not compressed anymore, allowing an early initialisation of the WRUnicodeDatabase.
+  The non compression together with extra data required by the clustering algorithm is responsible for the
+  increased size of WRServices. However, the compression factor in the installer archive will be higher,
+  compensating this increase.
+  The glyph names are not anymore part of the WRUnicodeDatabase, because this feature was seldom used
+  in release applications. They're still available in an include file wrservices\Public\Includes\WRUnicodeNames.h
+  for clients which need them : the kWRNameCharacterProperty not returns a index in the result string, which should
+  be used to access to the array defined WRUnicodeNames.h. This array is huge (half a mb), if you need the character
+  names at more than one place, creature a function to shared it.
+
+			#include "WRUnicodeNames.h"
+			...
+  			char s[256] = "";
+			WRInt32 sz = 255;
+
+			WRUDGetCharacterProperty(c, kWRNameCharacterProperty, s, &sz);
+
+			if (sz)
+			{
+				int nameIndex = -1;
+
+				sscanf(s, "%d", &nameIndex);
+
+				if (nameIndex > 0 && nameIndex < kUnicodeNamesStringPoolSize)
+					strcpy(s, gUnicodeNamesStringPool + nameIndex);
+			}
+
+
+- removed the zlib from wrservices
+
+- Fixed cursivity bugs in some Nastaliq fonts
+
+- Fixes in the "Naskh" justification method.
+
+- Fixed a vector size bug in the cooltype5aFontAccess (Zephyr #13741, crash with a new Monotype font)
+
+Summary of modifications to be done on the client sides:
+
+- Update the initialization code
+
+	Warning :	Some WRServices clients (InDesign by example) don't need to adapt their code to this initialization code
+				since the current WRServicesPreInitialize() and WRServicesInitialize() calls are not in the same code place.
+
+	#include "BravoBasedWRServicesInit.h"
+	#include "BravoBasedWRServicesInit.cpp"
+	...
+
+	replace:
+		err = WRServicesPreInitialize( NULL );
+	by:
+		BravoBasedWRServicesInit::PreInitialize( NULL ); // pre-init + IWRFontAccess and IWRMultiprocessing creations
+
+	replace:
+		BravoBasedMultiProcessing* multi = new BravoBasedMultiProcessing( );
+		IWRFontAccess* fontAccess = new CoolType5aBasedFontAccess( );
+
+		IWRFontDatabase::GetWRFontDatabase()->Init( multi );
+		WRPlatformUtils::Init( multi );
+		WRKeyboardMgr::GetWRKeyboardMgr()->Init( multi );
+
+		IWRFontContext* fontContext = IWRFontContext::Create( );
+		fontContext->Init( fontAccess, NULL, NULL, NULL, multi );
+	by:
+		IWRFontDatabase::GetWRFontDatabase()->Init( NULL ); // will use the IWRMultiprocessing of the pre-init
+		WRPlatformUtils::Init( NULL );// will use the IWRMultiprocessing of the preinit
+		WRKeyboardMgr::GetWRKeyboardMgr()->Init( NULL );// will use the IWRMultiprocessing of the pre-init
+
+		IWRFontContext* fontContext = IWRFontContext::Create( );
+		fontContext->Init( NULL, NULL, NULL, NULL, NULL );// will use the IWRFontAccess and IWRMultiprocessing of the pre-init
+
+- Update the termination code:
+
+	remove the explicit termination of translators:
+		WRToUnicodeTranslatorTerminate( );
+		WRFromUnicodeTranslatorTerminate( );
+
+	remove the explicite destruction of the IWRFontAccess and IWRMultiprocessing
+
+	after the FontContext destrcution and WRServicesTerminate(), call:
+		BravoBasedWRServicesInit::PostTerminate( ); // destroy IWRFontAccess, IWRMultiprocessing
+
+
+- If the client doesn't use the provided Cooltype5BasedFontaccess or Cooltype5aBasedFontaccess
+  implement the two methods:
+		virtual WRFontDict*		WRSearchFont(const char* familyName, const char* styleName, WRInt32& matchQuality);
+		virtual WRFontDict*		WRSearchFont(const char* psname);
+  as well as
+		virtual bool			CheckFontList(void);
+
+- Remove the call to IWRFontInfo::BuildFromCurrentContext() at initialisation time
+
+- Call IWRFontAccess::CheckFontList() regularly in an idle task and IWRFontContext::Invalidate() is
+  a change occured. This replaces the old font list monitoring (which was also calling BuildFromCurrentContext()),
+  if it already exists in the client (AI, ID)
+
+- Update any reference to kWRNameCharacterProperty
+
+- Use the cluster breaker iterator to snap the selection to cluster boundaries when do the hit test and arrow movements.
+
+
+Changes in build 38:
+
+- Fix of Watson bug 2330749 "ME: World Ready Composer does not optically kern characters of two different point sizes"
+	following SnapShot files have been updated, testharness corresponding files (if any) must be updated
+		"wrservices\Test\test_files\autotest\features\kerning_tracking\KerningAndSize.xml"
+		"wrservices\Test\test_files\autotest\features\kerning_tracking\KerningAndSize.snap"
+
+
+Changes in build 39:
+
+- Fix of Watson bugs:
+	2339789 "EPV, Crash log investigation: Illustrator crashes if font UPC is installed and font is applied using the script"
+	2340689 "Analyze warning"
+	2345813 "Memory leaks when using multithreading and WRServices", must go with cl#103363
+
+
+Changes in build 40:
+
+- Fix of Watson bug 2308890 "ID asserts & draws Arabic glyphs individually when small caps is applied."
+
+
+Changes in build 41:
+
+- Fix of Watson bug 2356463 "Trying to scroll through the font list in PI is sometimes leading to a crash of the application"
+
+
+Changes in build 42:
+
+- Fix of Watson bug 2387028 "veracode  security issues for Lipika windows binary"
+
+
+Changes in build 43:
+
+- Remove of obsolete unknown pragmas
+- Update Xcode3 autoTest project to new Xcode3 WRServices targets
+- Fix of watson bug 2403813 "Signed to Unsigned Conversion Error reported by veracode for WRService linux binaries build 41"
+- Fix of bug crash with threaded font context
+- Splitted mac binaries into 32 and 64 bit framework. 32 bit binaries are available at Public/Libraries/Mac/intel and 64 binaries are available at Public/Libraries/Mac/intel_64.
+ Clients will have to update their mac project to link to the new binaries.
+
+
+Changes in build 44:
+
+- Fix of Watson bug 2441600 "Crash in HP-UX caused by exception that is somehow not properly handled for request on width of glyph ID that does not exist"
+- Possible fix of 2441605 "Occasional bogus widths for RTL text on HP-UX only"
+- Various Veracode fixes
+- Change AutoText processing in unittests: now use of 0xFFFC (unicode OBJECT REPLACEMENT CHARACTER) instead of InDesign kTextChar_AutoText (0x0018)
+- Windows public library folders lowercased
+
+Changes in build 45:
+
+- Fix of Bug# 2459389 Hang importing Arabic text in Encore
+- Two veracode issues
+
+Changes in build 46:
+
+- Fix of bug 2477624 Mac:Type: Crash occurred when editing PSD including text layer which has Windows True Type.
+- Fix of bug 2488793 ME-text: unexpected change in behaviour of Automatic positional form
+- Fix (disabled) of bug 2488585 With arabic OpenType fonts, the order of the application of the features CALT and RLIG is incorrect, it should be reversed.
+- Minor changes related to Tasmeem (no impact on non-Tasmeem client, reviewed and accepted by Craig Rublee)
+- Fix of a spelling in the help screen of the unix make
+
+Changes in build 47:
+
+- WRServices part of fix of bug 2448724 Window only: Flash crashed on quit after importing PSD file as editable text
+
+
+-updated mac project file to strip out some symbols from release binaries. now symbols .dsym file will be created.
+
+Changes in build 48:
+
+- Fix of Watson bug 2546736: Crash when quiting the ID, after hiding one layer of psd file(which contains a text layer) which is placed in ID.
+- Rel enginering notes: the WRServices_Lipika_Build_048 label doesn't include the fix of bug 2448724
+
+Changes in build 49:
+
+- Partial fix of Watson bug 2838991 : World ready composer provides incorrect glyph selection with a Sinhala font when using certain virma and joiner character sequences.
+
+Changes in build 50:
+
+- WRServices5 major release integration
+	- See "WRServices5 - What's new.pdf" for more information
+	- Summary of the changes
+		Bug fixes (to be completed)
+		Introduction of external modules management
+		New IWOptyca interface: clients need to be adapted
+		New OptycaStyleClientControl interface: clients need to be adapted
+		New MarkYDistance character attribute
+		- fix of Watson bug 2733458 "Broken vertical diacritical positioning feature for Arabic"
+		New justification paragraph attribute and algorithm (based on tatweel width of each font)
+			- fix of Watson bug 2816561 "Kashida/Justification Feature Enhancement"
+		Autotests based on font containers
+
+Changes in build 51:
+
+- Complete exception handling in CoolType helper
+- More source code documentation
+- Code cleaning (const, buffer overrun, ...)
+
+Changes in build 52:
+
+- More code cleaning
+- SubstitutionLog fixing (in case of decomposed diacritics)
+- SegmentXUserOffset fixed
+
+Changes in build 53:
+
+- fix of Watson bug 2650242 "ATE crashes on initializing second time."
+- fix of Watson bug 2833417 "EPV: LDS: World ready composer applied to U+03BC of font Saysettha OT, with Small Caps applied, results in hang"
+- fix of Watson bug 2950249 "Incorrect glyph selection for New Sheqel character U+20AA"
+- fix of Watson bug 2816561 "Kashida/Justification Feature Enhancement"
+	This fix was already in build 50
+- fix of Watson bug 2733458 "Broken vertical diacritical positioning feature for Arabic"
+	New diacritic positoning attribute, was already in build 50
+
+Changes in build 54:
+
+- fix of Watson bug 2975136 "Characters overlap when using kashida width justification"
+- fix of Watson bug 2937578 "ME Specific: the shape of Tanwins or Nunations (Diacritic marks) of the same font is different in CS6 from CS5 and CS5.5"
+- fix of Watson bug 2981549 "Document with tight diacritic positioning leaks"
+- Latest version og Arabic full justification algorithm
+	related to bugs:
+	- 2984437 "Kashida not added after sheen if followed by reh"
+	- 2979348 "Kashidas not being correctly added to text"
+
+Changes in build 55:
+- fix of 3059402 Complex: Non-joiner character not inserted into Hindi text
+	ID CS6 bug: 1847049
+- fix of 3059410 Complex: Consonant+Halant+matra produces wrong diacritic positioning in Indic scripts
+	ID CS6 bug: 1847064
+	Same as 1854222, 1871212 Complex: Wrong combinations of matras should not be allowed
+- fix of 1876095 Complex: Tracking should not treat matra as separate cluster
+	ID CS6 bug: 1854264
+- Indic scripts updated to Unicode 6.0
+
+- fix of 2957331 Compilation warning C4244: 'argument' : conversion from 'IWRStrike::WRGlyphClassValue' to 'WRUInt8', possible loss of data
+- fix of 3004504 Type: BIBErrorProc (CT bad param: invalid glyphID) debug error.
+	ATE bug: 2995305
+	PS CS6 bug: 2978476
+- fix of 3016594 MENA: Hebrew text can't be converted to PDF
+	Lipika part of this bug
+	PS CS6 bug: 2808007
+- fix of 3014558 SDL MENA: Using Vertical Diacritical offset on Adobe Naskh causes double diacritics to move in the wrong direction
+	ATE bug: 3002599
+	PS CS6 bug: 3002214
+- fix of 3056416 Not MENA Specific: Corrupt PDF output -- blank lines/parts of lines of text -- World Ready Composer bug
+	ID CS6 bugs: 3045132, 3045132, 2993979
+- fix of 2994522 Incorrect placement of U+1CDA "double tone svarita"
+	Fixed by Unicode 6.0 Indic scripts update
+	ID CS6 bug: 2994520
+
+- fix of 3044379 EPV, Improper conjunct shaping in InDesign CS5 + World Ready Composer templates
+	ID CS6 bug: 2627265
+- fix of 1845917, 3059417 ME: Character construction is not considered in drop cap character count for Hindi text
+
+- fix of 3056561 ME Specific, Some Dots and Hamza are alos changing their positions along with Arabic diacritics
+	ID CS6 bug: 3055248
+	Same as 3014644, 3001936, 3002603
+- fix of 3055195: SDL MENA:Arabic "Myriad Arabic" combination of any diacritic with the (shadah)  do not re-position with any value set to vertical diacritic position
+	ATE bug: 3002621
+	PS C6 bug: 3002056
+
+- Veracode fixes
+
+Changes in build 56:
+
+- fix of 3073411 InDesign crashing on selecting some characters.
+	ID CS6 bug: 2990171
+- fix of 3055623 SDL: MENA: AR&HE: When selecting text, words typed in using either a different font type, style, color or size are not highlighted as selected
+	PS CS6 bug: 3020062
+	AI CS6 bug: 3074724
+- fix of 3080547 ME Specific, EPV: Arabic document fails to export as PDF
+	ID CS6 bug 3053004
+- fix of 3061150 SDL MENA:Arabic Underline & Strikethrough is not reaching the last Arabic letter
+	ATE bug: 3003036
+	PS CS6 bug: 3002033
+- fix (potential) of 3079433 MENA: QE_DONE: Hidden characters overlaps text when made visible
+	potential fix since we can't build and test AI
+	ATE bug: 3053655
+	AI CS6 bug: 3047684
+
+Changes in build 57:
+
+- fix of 3090497 ME Specific, All diacritics of Adobe Arabic font become boxes when applying Italic or bold Italic styles
+	ID CS6 bug: 3073944
+	PS CS6 bug: 3094469
+	Endgame bug: 3094472
+- fix of 3084469 LOC:3007090:BN:ID:Character 'Yaphala' is not displayed properly.
+	ID CS6 bug: 3078405
+	Endgame bug: 3094416
+- fix of 3084471 LOC:3007090:BN:ID:Initial Matra is not displayed Properly with any punctuation characters
+	ID CS6 bug: 3078409
+	Endgame bug: 3094425
+- fix of 3084467 LOC:3007090:GU:ID:Conjunct -Half Vattu functionality is not working properly.
+	ID CS6 bug: 3078420
+	Endgame bug: 3094448
+
+Changes in build 58:
+
+- fix of 3078348 LOC:3007090:HI/BN/GU:ID:Tracking not effective upon increasing & decreasing the tracking value.
+	ID CS6 bugs: 3078348
+	Endgame bug: 3108131
+	This fix reverts the changes fixing 1854264
+- fix of 3108016 Live Image Captions & Variables crash InDesign with World Ready Paragraph composer.
+	ID CS6 bugs: 3103711 and 3103722
+	Endgame bug: 3110388

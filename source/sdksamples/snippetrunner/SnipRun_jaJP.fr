@@ -1,0 +1,92 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/sdksamples/snippetrunner/SnipRun_jaJP.fr $
+//  
+//  Owner: Adobe Developer Technologies
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// Japanese strings
+//========================================================================================
+
+// Japanese string table is defined here
+
+resource StringTable (kSDKDefStringsResourceID + index_jaJP)
+{
+	k_jaJP,	// Locale Id
+	0,		// Character encoding converter
+	{
+		// ----- Menu strings
+		kSnipRunCompanyKey,			kSnipRunCompanyValue,					
+		kSnipRunAboutMenuKey,			kSnipRunPluginName "[JP]...",
+		kSnipRunPluginsMenuKey,			kSnipRunPluginName "[JP]",
+		kSnipRunShowParameterBoxMenuItemKey,		"パラメータボックスを表示[JP]",
+		kSDKDefAboutThisPlugInMenuKey,		kSDKDefAboutThisPlugInMenuValue_jaJP,	
+
+		// ----- Command strings
+
+		
+		// ----- Window strings
+
+		
+		// ----- Panel/dialog strings
+		kSnipRunPanelTitleKey,				kSnipRunPluginName "[JP]",
+		kSnipRunNameStringKey,				"Snippet名" "[JP]",
+		kSnipRunPreconditionsStringKey,		"実行条件" "[JP]",
+		kSnipRunParametersStringKey,		"パラメｰタ" "[JP]",
+		kSnipRunGoStringKey,				"実行" "[JP]",
+		kSnipRunLogStringKey,				"ログ" "[JP]",
+		kSnipRunGoTipStringKey,				"実行：クリックでSnippetを実行（Alt-クリックでパラメータプロンプトなしで実行）" "[JP]",
+		kSnipRunNameTipStringKey,			"実行するSnippetを選択" "[JP]",
+		kSnipRunPreconditionsTipStringKey,	"Snipptを実行する前に必要な実行条件" "[JP]",
+		kSnipRunParametersTipStringKey,		"パラメータの値をカンマ区切りで入力、無ければデフォルトを使用" "[JP]",
+		kSnipRunLogTipStringKey,			"ここでステータス確認" "[JP]",
+		kSnipRunTraceLogStringKey,			"トレース" "[JP]",
+		kSnipRunHelpTipStringKey,			"ヘルプ: クリックするとSnippetのヘルプを見れます" "[JP]",
+		kSnipRunTraceTipStringKey,			"TRACE on/off状態を切り替える" "[JP]",
+		kSnipRunClearLogTipStringKey,		"クリア: クリックするとログをクリアします" "[JP]",
+		kSnipRunSaveLogTipStringKey,		"保存: クリックするとログをファイルに保存出来ます" "[JP]",
+		kSnipRunFamilyStringKey,			kSnipRunPluginName " ログファイル" "[JP]",
+		kSnipRunSaveDialogNameStringKey,	"ログファイルを保存" "[JP]",
+		kSnipRunDefaultFilenameStringKey,	kSnipRunPluginName,
+
+		// ----- Error strings
+		kSnipRunSaveLogFailedStringKey,		"ログが保存出来ませんでした。ログファイルは現在開かれていますか？" "[JP]",
+		kSnipRunSnippetNotFoundErrorCodeKey, "Snippetの検索に失敗しました。" "[JP]",
+		kSnipRunEOFErrorCodeKey, "バッチリストの終端に到達しました。" "[JP]",
+		// ADDED for scriptability - Error string service
+		kSnipRunCannotRunSnippetErrorCodeKey,  "このSnippetは現在実行出来ません" "[JP]",
+		kSnipRunInvalidOperationWhenPanelIsInvisibleErrorCodeKey, "Snippet Runnerパネルが非表示の時、この操作は無効です。" "[JP]",
+		kSnipRunInternalErrorStringKey, "SnippetRunnerプラグインにて内部プログラムエラーが発生しました。（アサートである可能性大）[JP]",
+
+		// ----- Misc strings
+		kSnipRunAboutBoxStringKey,		kSnipRunPluginName " [JP], version " kSnipRunVersion " by " kSnipRunAuthor "\n\n" kSDKDefCopyrightStandardValue "\n\n" kSDKDefPartnersStandardValue_jaJP,
+		kSnipRunQuickApplyFilterKey, "G", // can only have a single character - G for Go
+		kSnipRunQuickApplyNameKey, "Code Snippets[JP]", // UI name for quick apply
+		kSnipRunHelloCSXSMessage, "Hello from CSXS! [JP]",
+	}
+};
+
+#endif // __ODFRC__
+
+// End , SnipRun_jaJP.fr
+
+

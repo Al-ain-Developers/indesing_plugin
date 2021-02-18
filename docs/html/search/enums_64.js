@@ -1,0 +1,27 @@
+var searchData=
+[
+  ['damage',['Damage',['../class_i_table_layout_1_1_parcel.html#a4e990662508a247031fb08da8902a91a',1,'ITableLayout::Parcel::Damage()'],['../class_i_table_layout_1_1_row.html#ae9a16c45ebc280c3766523721d6122f5',1,'ITableLayout::Row::Damage()'],['../class_i_table_layout_1_1_frame.html#a4c81f0d3dc459a18a9a5b085cc521167',1,'ITableLayout::Frame::Damage()']]],
+  ['dbresultcode',['DBResultCode',['../class_i_data_base.html#aeb5462fe60d1a1f2f36bd014a0514510',1,'IDataBase']]],
+  ['defaultrelinkfolder',['DefaultRelinkFolder',['../class_i_relink_preferences.html#a9a4e44c35e8fee01518b9f45b17f4789',1,'IRelinkPreferences']]],
+  ['defcolorspace',['DefColorSpace',['../class_i_print_device_info.html#a455900d9d5a0327c7167fa0a6bc76e9a',1,'IPrintDeviceInfo']]],
+  ['destinationtype',['DestinationType',['../class_i_p_d_f_hyperlinks.html#a9fcbc104c92444a4538098d7ca9fb36b',1,'IPDFHyperlinks']]],
+  ['dialogfocus',['DialogFocus',['../class_i_dialog.html#ac04d801958f515bba236fb3cee79bc91',1,'IDialog']]],
+  ['dialogposition',['DialogPosition',['../class_i_dialog.html#a3d76992e2125de9a453ea48e6a7fa161',1,'IDialog']]],
+  ['dialogtype',['DialogType',['../class_i_dialog.html#adf0c601e7045f0a3716e08a0a7cdf564',1,'IDialog']]],
+  ['direction',['Direction',['../class_i_c_text_navigation_suite.html#aad2853974840b16baaaccaeae4477cc3',1,'ICTextNavigationSuite::Direction()'],['../class_i_galley_text_navigation_suite.html#aa6238c1100adde3b1c51d8c74c1fedc4',1,'IGalleyTextNavigationSuite::Direction()'],['../class_i_table_navigator_suite.html#ab19ac1de60b7fb8851cb3d3f9c1875be',1,'ITableNavigatorSuite::Direction()']]],
+  ['displaynamesflag',['DisplayNamesFlag',['../class_i_text_utils.html#a3acb640ea65f12df87390446686b591e',1,'ITextUtils']]],
+  ['displayoptiontype',['DisplayOptionType',['../class_i_stroke_fill_control_data.html#a7f46a6d6320a26e11dbfe671f1c18ed6',1,'IStrokeFillControlData']]],
+  ['displaytitle',['DisplayTitle',['../class_i_interactive_p_d_f_export_prefs.html#a2819572bb4517b769aaba806e64466e8',1,'IInteractivePDFExportPrefs']]],
+  ['docklocation',['DockLocation',['../class_palette_ref_utils.html#af55c95c4d253c2cf9218200870738b22',1,'PaletteRefUtils']]],
+  ['dockmode',['DockMode',['../class_palette_ref_utils.html#a09e7c64126522c4b410370b28f3c3616',1,'PaletteRefUtils']]],
+  ['documentsection',['DocumentSection',['../class_i_print_insert_p_s_proc_provider.html#a1760b7c7c2214de9a83d58c97ae09a6b',1,'IPrintInsertPSProcProvider']]],
+  ['dpartnodetype',['DPartNodeType',['../class_i_p_d_f_d_part_hierarchy.html#a863592bafae1f2772f295818defd5d70',1,'IPDFDPartHierarchy']]],
+  ['drawbehavior',['DrawBehavior',['../class_i_digital_publishing_setup_provider.html#a3196553322dacb7cf9df403cb9c26311',1,'IDigitalPublishingSetupProvider']]],
+  ['drawchoice',['DrawChoice',['../class_i_text_selection_suite.html#a355a2cbdee521316eed39b586599aca0',1,'ITextSelectionSuite']]],
+  ['drawepsoption',['DrawEPSOption',['../class_i_e_p_s_attributes.html#aed081fbbcf423b27f8019db68f9bae00',1,'IEPSAttributes']]],
+  ['drawpass',['DrawPass',['../class_i_digital_publishing_setup_provider.html#a701bff349d3e8c299181c4509cd09165',1,'IDigitalPublishingSetupProvider']]],
+  ['duplicatepref',['DuplicatePref',['../class_i_swatch_utils.html#a03cf77f030acdc1b6fa0767b924313e1',1,'ISwatchUtils']]],
+  ['dynamicautoflowkind',['DynamicAutoFlowKind',['../namespace_facade.html#ac7d2ad2fb6a0a4e21c63200e8c60280a',1,'Facade']]],
+  ['dynamiccontenttype',['DynamicContentType',['../class_i_spread_dynamic_content_mgr.html#a650a6919af1e16fdb1c8338c0ffe3dac',1,'ISpreadDynamicContentMgr']]],
+  ['dynamicmediahandling',['DynamicMediaHandling',['../namespaceflash__export.html#ace6125532654fc17ae91945c3939c014',1,'flash_export']]]
+];

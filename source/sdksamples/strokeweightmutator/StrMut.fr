@@ -1,0 +1,339 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/sdksamples/strokeweightmutator/StrMut.fr $
+//  
+//  Owner: Adobe Developer Technologies
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+//===========================
+//  General includes:
+//===========================
+
+#include "MenuDef.fh"
+#include "ActionDef.fh"
+#include "ActionDefs.h"
+#include "AdobeMenuPositions.h"
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "StringTable.fh"
+//#include "OMTypes.h"
+#include "objectmodeltypes.fh"
+#include "ShuksanID.h"
+#include "ActionID.h"
+#include "CommandID.h"
+#include "WorkspaceID.h"
+#include "widgetid.h"
+#include "BuildNumber.h"
+#include "PanelList.fh"
+#include "Widgets.fh"	// for PalettePanelWidget
+#include "InterfaceColorDefines.h"
+#include "IControlViewDefs.h"
+#include "SysControlIds.h"
+
+#include "PlugInModel_UIAttributes.h"
+
+// Project includes:
+#include "StrMutID.h"
+
+#ifdef __ODFRC__
+
+/*
+// Plugin version definition.
+*/
+resource PluginVersion (kSDKDefPluginVersionResourceID)
+{
+	kTargetVersion,
+	kStrMutPluginID,
+	kSDKDefPlugInMajorVersionNumber, kSDKDefPlugInMinorVersionNumber, 	
+	kSDKDefHostMajorVersionNumber, kSDKDefHostMinorVersionNumber,
+	kStrMutCurrentMajorFormatNumber, kStrMutCurrentMinorFormatNumber,
+	/* Bug 1178182: Support for InCopy removed due to missing string translation for "Stroke" in InCopy UI plug-ins */
+	{ kInDesignProduct },
+	{ kWildFS },
+	kUIPlugIn,
+	kStrMutVersion
+};
+
+
+/*
+//	Boss class definition.
+*/
+resource ClassDescriptionTable(kSDKDefClassDescriptionTableResourceID)
+{{{
+
+
+	/**	Implements this plug-in's actions.
+		@ingroup strokeweightmutator
+	*/
+	Class
+	{
+		kStrMutActionComponentBoss,
+		kBaseActionComponentBoss,
+		{
+			/** See IActionComponent and StrMutActionComponent.
+			 */
+			IID_IACTIONCOMPONENT, kStrMutActionComponentImpl,
+		}
+	},
+
+	/**	Implements this plug-in's panel.
+		@ingroup strokeweightmutator
+	*/
+	Class
+	{
+		kStrMutPanelWidgetBoss,
+		kPalettePanelWidgetBoss,
+		{
+			/** Connects the panel's popout menu (implementation provided by the API).
+			 */ 
+			IID_IPANELMENUDATA, kCPanelMenuDataImpl,
+			/** See ActiveSelectionObserver and StrMutSelectionObserver;
+				updates the panel when the stroke weight of selected 
+				objects is changed, and changes the stroke weight of
+				selected objects when the panel's widget changes.
+			*/
+			IID_IOBSERVER, kStrMutSelectionObserverImpl,		
+		}
+	},
+
+}}};
+
+/*
+// Implementation definition.
+*/
+resource FactoryList (kSDKDefFactoryListResourceID) 
+{
+	kImplementationIDSpace,
+	{
+#include "StrMutFactoryList.h"
+	}
+};
+
+/*
+// Menu definition.
+*/
+resource MenuDef (kSDKDefMenuResourceID)
+{
+	{
+		// The About Plug-ins sub-menu item for this plug-in.
+		kStrMutAboutActionID,			// ActionID (kInvalidActionID for positional entries)
+		kStrMutAboutMenuPath,			// Menu Path.
+		kSDKDefAlphabeticPosition,			// Menu Position.
+		kSDKDefIsNotDynamicMenuFlag,		// kSDKDefIsNotDynamicMenuFlag or kSDKDefIsDynamicMenuFlag.
+
+		// About this plugin submenu for the popup menu on the panel
+		kStrMutPopupAboutThisActionID,
+		kStrMutTargetMenuPath
+		kStrMutAboutThisMenuItemPosition,
+		kSDKDefIsNotDynamicMenuFlag, 
+
+	}
+};
+
+/*
+// Action definition.
+*/
+resource ActionDef (kSDKDefActionResourceID)
+{
+	{ 
+		kStrMutActionComponentBoss, 		// ClassID of boss class that implements the ActionID.
+		kStrMutAboutActionID,	// ActionID.
+		kStrMutAboutMenuKey,	// Sub-menu string.
+		kHelpMenuActionArea,				// Area name (see ActionDefs.h).
+		kNormalAction,					// Type of action (see ActionDefs.h).
+		kDisableIfLowMem,				// Enabling type (see ActionDefs.h).
+		kInvalidInterfaceID,			// Selection InterfaceID this action cares about or kInvalidInterfaceID.
+		kSDKDefInvisibleInKBSCEditorFlag, // kSDKDefVisibleInKBSCEditorFlag or kSDKDefInvisibleInKBSCEditorFlag.
+
+		kStrMutActionComponentBoss, 
+		kStrMutPopupAboutThisActionID, 
+		kSDKDefAboutThisPlugInMenuKey,	// Key to the name of this action
+		kMiscellaneousArea,
+		kNormalAction,
+		kDisableIfLowMem,	
+		kInvalidInterfaceID,
+		kSDKDefInvisibleInKBSCEditorFlag,
+
+	}
+};
+
+
+/*
+// LocaleIndex
+// The LocaleIndex should have indicies that point at your
+// localizations for each language system that you are 
+// localized for.
+*/
+/*
+// String LocaleIndex.
+*/
+resource LocaleIndex (kSDKDefStringsResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_enUS, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_jaJP, kSDKDefStringsResourceID + index_jaJP
+		
+		kWildFS, k_Wild, kSDKDefStringsResourceID + index_enUS
+	}
+};
+
+resource LocaleIndex (kSDKDefStringsNoTransResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_Wild, kSDKDefStringsNoTransResourceID + index_enUS
+	}
+};
+
+resource StringTable (kSDKDefStringsNoTransResourceID + index_enUS)
+{
+	k_enUS,									// Locale Id
+	kEuropeanMacToWinEncodingConverter,		// Character encoding converter
+	{
+		// No-Translate strings go here:
+		kStrMutInternalPopupMenuNameKey,	kStrMutInternalPopupMenuNameKey,		// No need to translate, internal menu name.
+	}
+};
+
+
+
+/*
+// Panel LocaleIndex.
+*/
+resource LocaleIndex (kSDKDefPanelResourceID)
+{
+	kViewRsrcType,
+	{
+		kWildFS, k_Wild, 	kSDKDefPanelResourceID + index_enUS
+	}
+};
+
+
+/*
+// Type definition.
+*/
+type StrMutPanelWidget(kViewRsrcType) : PalettePanelWidget(ClassID = kStrMutPanelWidgetBoss) 
+{
+	CPanelMenuData;
+};
+
+/*
+// PanelList definition.
+*/
+resource PanelList (kSDKDefPanelResourceID)
+{
+	{
+		// 1st panel in the list
+		kSDKDefPanelResourceID,		// Resource ID for this panel (use SDK default rsrc ID)
+		kStrMutPluginID,			// ID of plug-in that owns this panel
+		kNotResizable,
+		kStrMutPanelWidgetActionID,	// Action ID to show/hide the panel
+		kStrMutPanelTitleKey,	// Shows up in the Window list.
+		"",							// Alternate menu path of the form "Main:Foo" if you want your palette menu item in a second place
+		0.0,						// Alternate Menu position Alternate Menu position for determining menu order
+		0,0,						// Rsrc ID, Plugin ID for a PNG icon resource to use for this palette
+		c_Panel
+	}	
+};
+
+
+
+/*
+// PanelView definition.
+// The view is not currently localised: therefore, it can reside here.
+// However, if you wish to localise it, it is recommended to locate it in one of
+// the localised framework resource files (i.e. StrMut_enUS.fr etc.).
+*/
+resource StrMutPanelWidget(kSDKDefPanelResourceID + index_enUS)
+{
+	__FILE__, __LINE__,					// Localization macro		
+	kStrMutPanelWidgetID,			// WidgetID 
+	kPMRsrcID_None,						// RsrcID
+	kBindNone,							// Binding (0=none)
+	0, 0, 207, 32,						// Frame: left, top, right, bottom.
+	kTrue, kTrue,						// Visible, Enabled
+	kFalse,								// Erase background
+	kInterfacePaletteFill,				// Erase to color
+	kFalse,								// Draw dropshadow
+	kStrMutPanelTitleKey,			// Panel name	
+	{
+		GenericPanelWidget
+		(
+			kInvalidWidgetID, kPMRsrcID_None,			// WidgetId, RsrcId
+			kBindNone,
+			Frame(0,0,207,30)		// Frame
+			kTrue, kTrue	, ""							// Visible, Enabled, Title
+			{
+				// Weight
+				StaticTextWidget
+				(
+					kInvalidWidgetID, kPMRsrcID_None,									// WidgetId, RsrcId
+					kBindNone,											// Frame binding
+					Frame(3,6,63,23)		// Frame
+					kTrue, kTrue, kAlignRight,							// Visible, Enabled, Alignment
+					kDontEllipsize, kTrue,										// Ellipsize style, Convert ampersands
+					kStrMutStaticTextKey,
+					kStrMutStrokeWeightWidgetID
+				),
+
+				LineWtMeasureComboBoxWidget
+				(
+					kStrMutStrokeWeightWidgetID, kPMRsrcID_None,								// WidgetId, RsrcId
+					kBindNone,											// Frame binding
+					Frame(80,7,130,24)		// Frame
+					kTrue, kTrue,										// Visible, Enabled
+					kStrMutStrokeWeightNudgeWidgetID,								// widget id of nudge button			
+					1,		1,											// small/large nudge amount
+					0,										// max num chars( 0 = no limit)
+					kFalse,									// is read only
+					kFalse,									// should notify each key stroke
+					kTrue,									// range checking enabled
+					kFalse,									// blank entry allowed
+					800,	0,											// upper/lower bounds
+					"1 pt",												// initial text
+					{{
+					}}
+				),	
+
+				NudgeControlWidget
+				(
+					kStrMutStrokeWeightNudgeWidgetID, kPMRsrcID_None,				// WidgetId, RsrcId
+					kBindNone,											// Frame binding
+					Frame(64,7,80,24)		// Frame
+					kTrue, kTrue,										// Visible, Enabled
+				)
+			}
+		),
+		
+	}
+
+	kStrMutInternalPopupMenuNameKey,		// CPanelMenuData - the panel's popout menu.
+
+};
+
+
+
+#endif // __ODFRC__
+
+#include "StrMut_enUS.fr"
+#include "StrMut_jaJP.fr"
+//  Generated by Dolly build 17: template "IfPanelMenu".
+// End, StrMut.fr.
+

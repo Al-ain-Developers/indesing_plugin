@@ -1,0 +1,369 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/sdksamples/basicpanel/BscPnl.fr $
+//  
+//  Owner: Adobe Developer Technologies
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//  
+//  Umbrella include file for all the .fr files in the plug-in.
+//  
+//========================================================================================
+
+//===========================
+//  General includes:
+//===========================
+
+#include "MenuDef.fh"
+#include "ActionDef.fh"
+#include "ActionDefs.h"
+#include "AdobeMenuPositions.h"
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "StringTable.fh"
+#include "objectmodeltypes.fh"
+#include "ShuksanID.h"
+#include "ActionID.h"
+#include "CommandID.h"
+#include "WorkspaceID.h"
+#include "widgetid.h"
+#include "BuildNumber.h"
+#include "PanelList.fh"
+#include "Widgets.fh"	// for PalettePanelWidget
+#include "InterfaceColorDefines.h"
+#include "IControlViewDefs.h"
+#include "SysControlIds.h"
+
+#include "PlugInModel_UIAttributes.h"
+
+// Project includes:
+#include "BscPnlID.h"
+
+#ifdef __ODFRC__
+
+//================================================================================
+// Plugin version definition.
+//================================================================================
+resource PluginVersion (kSDKDefPluginVersionResourceID)
+{
+	kTargetVersion,
+	kBscPnlPluginID,
+	kSDKDefPlugInMajorVersionNumber, kSDKDefPlugInMinorVersionNumber, 	
+	kSDKDefHostMajorVersionNumber, kSDKDefHostMinorVersionNumber,
+	kBscPnlCurrentMajorFormatNumber, kBscPnlCurrentMinorFormatNumber,
+	{ kInDesignProduct, kInCopyProduct },
+	{ kWildFS },
+	kUIPlugIn,
+	kBscPnlVersion
+};
+
+
+//================================================================================
+//	Boss class definition.
+//================================================================================
+resource ClassDescriptionTable(kSDKDefClassDescriptionTableResourceID)
+{{{
+
+	/**
+	 Provides the actions invoked by this plug-in's
+	 sub-menu items. It supports two interfaces: 
+	 IActionComponent and IPMPersist. We provide the implementation 
+	 for IActionComponent in BscPnlActionComponent.cpp. The other
+	 default implementation is provided by the API.
+	 @ingroup basicpanel
+	*/
+	Class
+	{
+		kBscPnlActionComponentBoss,
+		kBaseActionComponentBoss,
+		{
+			/** Handle the actions from the menu. Implements IActionComponent. 
+				@see BscPnlActionComponent
+			*/
+			IID_IACTIONCOMPONENT, kBscPnlActionComponentImpl,
+		}
+	},
+
+	/**
+	 Controls addition of a pop-up menu to the panel.
+	 @ingroup basicpanel
+	*/
+	Class
+	{
+		kBscPnlPanelWidgetBoss,
+		kPalettePanelWidgetBoss,
+		{
+			/** The plug-in's implementation of ITextControlData, used
+			to store the menu name.
+			Implementation provided by the API. Although the IID is
+			exotic (IID_IPANELMENUDATA), the interface exposed is really
+			ITextControlData.
+			*/ 
+			IID_IPANELMENUDATA, kCPanelMenuDataImpl,
+		}
+	},
+
+
+
+}}};
+
+
+//================================================================================
+// Implementation definition.
+//================================================================================
+resource FactoryList (kSDKDefFactoryListResourceID) 
+{
+	kImplementationIDSpace,
+	{
+#include "BscPnlFactoryList.h"
+	}
+};
+
+
+//================================================================================
+// Menu definition. 
+// The first of two resources that define where a menu appears and how it behaves.
+// This resource associates an action ID with a menu path, menu position, and 
+// whether the menu entry is dynamic.  The menu path positions the menu entry
+// within the main or popup menu structure.  The menu position defines a relative
+// location within the menu group identified by the menu path. A dynamic menu item
+// is rebuilt before showing -- used only in cases where menus are context sensitive. 
+//================================================================================
+resource MenuDef (kSDKDefMenuResourceID)
+{
+	{
+		// The About Plug-ins sub-menu item for this plug-in.
+		kBscPnlAboutActionID,				// ActionID (kInvalidActionID for positional entries)
+		kBscPnlAboutMenuPath,				// Menu Path.
+		kSDKDefAlphabeticPosition,			// Menu Position.
+		kSDKDefIsNotDynamicMenuFlag,		// kSDKDefIsNotDynamicMenuFlag or kSDKDefIsDynamicMenuFlag.
+
+		// 1st popup menu menu entry
+		kBscPnlGoesNowhereActionID,
+		kBscPnlTargetMenuPath,
+		kBscPnlGoesNowhereMenuItemPosition,
+		kSDKDefIsNotDynamicMenuFlag,
+
+		// 2nd popup menu entry
+		kBscPnlDoesNothingActionID,
+		kBscPnlTargetMenuPath,
+		kBscPnlDoesNothingMenuItemPosition,
+		kSDKDefIsNotDynamicMenuFlag,
+
+		// Separator for the popup menu on the panel
+		kBscPnlSeparator1ActionID,
+		kBscPnlInternalPopupMenuNameKey kSDKDefDelimiterAndSeparatorPath,	// :- to mark an item as a separator.
+		kBscPnlSeparator1MenuItemPosition,
+		kSDKDefIsNotDynamicMenuFlag,
+
+		// About this plugin submenu for the popup menu on the panel
+		kBscPnlPopupAboutThisActionID,
+		kBscPnlTargetMenuPath
+		kBscPnlAboutThisMenuItemPosition,
+		kSDKDefIsNotDynamicMenuFlag, 
+
+	}
+};
+
+//================================================================================
+// Action definition.
+// The second of two resources that define where a menu appears and how it behaves.
+// This resource associates an action ID with a boss that aggregates the action
+// component, a sub-menu string, a keyboard shortcut area name, an action specifier,
+// an enabling type, a selection interface, an a keyboard shortcut editor flag.
+// The sub-menu string is the text that appears in a menu, the KBSC area name is
+// used for grouping shortcuts in the KBSC editor.  The action specifier and
+// enabling type both affect the behavior of the action.  The KBSC editor flag
+// influences whether the action has an editable KBSC.
+//================================================================================
+resource ActionDef (kSDKDefActionResourceID)
+{
+	{ 
+		// Action def for about/help main menu entry
+		kBscPnlActionComponentBoss, 	// ClassID of boss class that implements the ActionID.
+		kBscPnlAboutActionID,			// ActionID.
+		kBscPnlAboutMenuKey,			// Sub-menu string.
+		kHelpMenuActionArea,				// Area name (see ActionDefs.h).
+		kNormalAction,					// Type of action (see ActionDefs.h).
+		kDisableIfLowMem,				// Enabling type (see ActionDefs.h).
+		kInvalidInterfaceID,			// Selection InterfaceID this action cares about or kInvalidInterfaceID.
+		kSDKDefInvisibleInKBSCEditorFlag, // kSDKDefVisibleInKBSCEditorFlag or kSDKDefInvisibleInKBSCEditorFlag.
+
+		// Action for 1st menu entry in the popup menu.		
+		kBscPnlActionComponentBoss,
+		kBscPnlGoesNowhereActionID,		
+		kBscPnlGoesNowhereMenuItemKey,		
+		kOtherActionArea,			
+		kNormalAction,				
+		kDisableIfLowMem,	
+		kInvalidInterfaceID,		
+		kSDKDefInvisibleInKBSCEditorFlag,
+
+		// Action for 2nd menu entry in the popup menu.
+		kBscPnlActionComponentBoss,
+		kBscPnlDoesNothingActionID, 
+		kBscPnlDoesNothingMenuItemKey,
+		kOtherActionArea,
+		kNormalAction,
+		kDisableIfLowMem,	
+		kInvalidInterfaceID,
+		kSDKDefInvisibleInKBSCEditorFlag,
+
+		// Action def for about/help panel popup menu entry
+		kBscPnlActionComponentBoss, 
+		kBscPnlPopupAboutThisActionID, 
+		kSDKDefAboutThisPlugInMenuKey,
+		kOtherActionArea,
+		kNormalAction,
+		kDisableIfLowMem,	
+		kInvalidInterfaceID,
+		kSDKDefInvisibleInKBSCEditorFlag,
+
+	}
+};
+
+
+//================================================================================
+// LocaleIndex
+// The LocaleIndex should have indicies that point at your
+// localizations for each language system that you are 
+// localized for.
+//================================================================================
+//------------------------------------------------------------
+// String LocaleIndex.
+//------------------------------------------------------------
+resource LocaleIndex (kSDKDefStringsResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_enUS, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_jaJP, kSDKDefStringsResourceID + index_jaJP
+		
+		kWildFS, k_Wild, kSDKDefStringsResourceID + index_enUS
+	}
+};
+
+resource LocaleIndex (kSDKDefStringsNoTransResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_Wild, kSDKDefStringsNoTransResourceID + index_enUS
+	}
+};
+
+resource StringTable (kSDKDefStringsNoTransResourceID + index_enUS)
+{
+	k_enUS,									// Locale Id
+	kEuropeanMacToWinEncodingConverter,		// Character encoding converter
+	{
+		// No-Translate strings go here:		
+
+
+		kBscPnlInternalPopupMenuNameKey,	kBscPnlInternalPopupMenuNameKey,		// No need to translate, internal menu name.
+	}
+};
+
+
+
+//------------------------------------------------------------
+// Panel LocaleIndex.
+//------------------------------------------------------------
+resource LocaleIndex (kSDKDefPanelResourceID)
+{
+	kViewRsrcType,
+	{
+		kWildFS, k_Wild, 	kSDKDefPanelResourceID + index_enUS
+	}
+};
+
+
+//========================================================================================
+// Type definition.
+//========================================================================================
+type BscPnlPanelWidget(kViewRsrcType) : PalettePanelWidget(ClassID = kBscPnlPanelWidgetBoss) 
+{
+	CPanelMenuData;
+};
+
+//================================================================================
+// PanelList definition.
+//================================================================================
+resource PanelList (kSDKDefPanelResourceID)
+{
+	{
+		// 1st panel in the list
+		kSDKDefPanelResourceID,		// Resource ID for this panel (use SDK default rsrc ID)
+		kBscPnlPluginID,			// ID of plug-in that owns this panel
+		kNotResizable,
+		kBscPnlPanelWidgetActionID,	// Action ID to show/hide the panel
+		kBscPnlPanelTitleKey,		// Shows up in the Window list.
+		"",							// Alternate menu path of the form "Main:Foo" if you want your palette menu item in a second place
+		0.0,						// Alternate Menu position Alternate Menu position for determining menu order
+		0,0,						// Rsrc ID, Plugin ID for a PNG icon resource to use for this palette
+		c_Panel
+	}	
+};
+
+//================================================================================
+// PanelView definition.
+// The view is not currently localised: therefore, it can reside here.
+// However, if you wish to localise it, it is recommended to locate it in one of
+// the localised framework resource files (i.e. BscPnl_enUS.fr etc.).
+//================================================================================
+resource BscPnlPanelWidget(kSDKDefPanelResourceID + index_enUS)
+{
+	__FILE__, __LINE__,					// Localization macro		
+	kBscPnlPanelWidgetID,				// WidgetID 
+	kPMRsrcID_None,						// RsrcID
+	kBindNone,							// Binding (0=none)
+	0, 0, 207, 95,						// Frame: left, top, right, bottom.
+	kTrue, kTrue,						// Visible, Enabled
+	kFalse,								// Erase background
+	kInterfacePaletteFill,				// Erase to color
+	kFalse,								// Draw dropshadow
+	kBscPnlPanelTitleKey,				// Panel name	
+	{
+		StaticTextWidget
+		(
+			0,								// WidgetId (default=0)
+			 kSysStaticTextPMRsrcId,		// RsrcId
+			kBindNone,						// Frame binding
+			5, 10, 202, 27,					// Frame: left, top, right, bottom.
+			kTrue, kTrue,					// Visible, Enabled
+			kAlignLeft, kEllipsizeEnd, kTrue,		// Alignment, ellipsize style, convert ampersands
+			kBscPnlStaticTextKey,			// Initial text.
+			0								// No associated widget
+		),
+		
+	}
+
+	kBscPnlInternalPopupMenuNameKey		// Popup menu name (internal)
+};
+
+
+
+#endif // __ODFRC__
+
+#include "BscPnl_enUS.fr"
+#include "BscPnl_jaJP.fr"
+
+// End, BscPnl.fr.
+
+
+
+
+

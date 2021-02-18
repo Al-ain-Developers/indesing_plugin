@@ -1,0 +1,298 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kDynamicDocumentsUIStringsRsrcID + index_csCZ)
+{
+	k_csCZ,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{
+		// ----- Command strings
+
+		// ----- Window strings
+
+		// ----- Panel strings
+		"kPageTransitionsPanelPopup",			"Nabídky panelu Přechody stránek",    
+		"kPageTransitionsSubMenu",				"&Přechody stránek",
+		"kPageTransitionsPanelName",			"Přechody stránek",	   
+		"kPageTransitionStaticText",			"Přechod: ",
+		"kPageDirectionStaticText",				"Směr: ",
+		"kPageSpeedStaticText",					"Rychlost: ",
+        "kPTHorizontal",						"Vodorovně",
+        "kPTVertical",							"Svisle",
+        "kPTIn",								"Dovnitř",
+        "kPTOut",								"Ven",
+        "kPTDown",								"Dole",
+        "kPTLeft",								"Vlevo",
+        "kPTLeftDown",							"Vlevo dole",
+        "kPTLeftUp",							"Vlevo nahoře",
+        "kPTRight",								"Vpravo",
+        "kPTRightDown",							"Vpravo dole",
+        "kPTRightUp",							"Vpravo nahoře",
+        "kPTUp",								"Nahoru",
+        "kPTHorizontalIn",						"Vodorovně dovnitř",
+        "kPTHorizontalOut",						"Vodorovně ven",
+        "kPTVerticalIn",						"Svisle dovnitř",
+        "kPTVerticalOut",						"Svisle ven",
+        "kPTSlow",								"Pomalé",
+		"kPTMedium",							"Střední",
+		"kPTFast",								"Rychlé",		
+		"kPTNoTransition",						"Žádný",	
+              		
+		// ----- Liquid Layout panel
+		"kLiquidLayoutMenu",					"&Tekuté rozvržení",
+		"kLiquidLayoutPanelPopup",				"Nabídka panelu Tekuté rozvržení",
+		"kLiquidLayoutPanelName",				"Tekuté rozvržení",	
+		"kObjectConstraintsStaticTextLabel",	"Omezení objektu:",
+		"kDocumentReflowStaticTextLabel",		"Přeformátování dokumentu",
+		"kFixedSizeStaticTextLabel",			"Změnit velikost se stránkou:",
+		"kHeightCheckBoxLabel",					"Výška",
+		"kWidthCheckBoxLabel",					"Šířka",
+		"kPinLeftEdgeCheckBoxLabel",			"Doleva",
+		"kPinRightEdgeCheckBoxLabel",			"Doprava",
+		"kPinTopEdgeCheckBoxLabel",				"Nahoře",
+		"kPinBottomEdgeCheckBoxLabel",			"Dole",
+		"kPinObjectEdgesStaticTextLabel",		"Přichytit: ",
+		"kContentStaticTextLabel",				"Obsah:",
+		"kLayoutAdjustmentWarningTip",			"Pravidla tekutého rozvržení nejsou použita, protože jsou zapnuté úpravy rozvržení pro dokument. Kliknutím vypněte úpravy rozvržení.",
+		"kPageLayoutPolicyDropdownLabel",		"Pravidlo tekuté stránky:",
+		"kLiquidLayoutPanelPageRange",			"Stránka: ^1",
+		"kPinEdgeToolTip",						"Po zaškrtnutí se objekt připne vzhledem k okraji stránky.",
+		"kResizeHeightWithPageToolTip",			"Po zaškrtnutí se výška objektu bude měnit v souladu se změnami výšky stránky.",
+		"kResizeWidthWithPageToolTip",			"Po zaškrtnutí se šířka objektu bude měnit v souladu se změnami šířky stránky.",
+		
+        // ----- Timing panel
+        "kTimingPanelPopup",					"Nabídka panelu Časování",    
+		"kTimingSubMenu",						"Ča&sování",
+		"kTimingPanelName",						"Časování",	
+		"kTimingPanelEventStaticText",			"Událost: ",
+		"kTimingPanelDelayStaticText",			"Prodleva: ",
+        "kTimingPanelDelaySecondStaticText",	"sekunda",
+        "kTimingPanelDelaySecondsStaticText",	"sekund",
+        "kTimingPanelAssignPageLoadEvent",		"Změnit přiřazení na možnost Při načtení stránky",
+        "kTimingPanelAssignStateLoadEvent",		"Změnit přiřazení na možnost Při načtení stavu",
+        "kTimingPanelAssignPageClickEvent",		"Změnit přiřazení na možnost Při klepnutí na stránku",
+        "kTimingPanelRemoveItem",				"Odstranit položku",
+        "kTimingPanelEventDropDownTip",			"Než budete pokračovat, je nutné klepnout",
+        "kTimingPanelGroupButtonTip",			"Spustit společně",
+        "kTimingPanelUngroupkButtonTip",		"Spustit samostatně",
+        "kTimingPanelPreviewButtonTip",			"Náhled dvojstránky",
+        "kUnassignedEntry",						"Nepřiřazený",
+        "kTimingPanelLinkedItemStaticText",			"Připojené položky:",	
+        "kTimingPanelPlayLinkedItemStaticText",		"Spustit: ",
+        "kTimingPanelPlayLinkedItemTimeStaticText",	"čas",
+        "kTimingPanelPlayLinkedItemTimesStaticText","časy",
+        "kTimingPanelLoopCheckBoxLabel",		"Smyčka",
+        "kTimingPanelLinkedItemGroupWidgetTip",	"Spustit objekty společně (klepnutím vyberete skupinu)", 
+
+        // HTML Preview menu items
+        "kHTMLFXLPreviewSpread",				"Náhled dvojstránky: EPUB",
+		// ----- Menu Strings
+		"kTransitionPanelChooseAction",				"&Vybrat...",
+		"kTransitionPanelApplyToAllSpreadsAction",	"&Aplikovat na všechny dvojstránky",
+		"kTransitionPanelClearAllTransitionsAction","Vymazat v&še",
+		
+		// ----- Tips strings
+		"kApplyToAllSpreadsButtonTip",			"Aplikovat na všechny dvojstránky",
+		"kMotionPathTipStr",					"Cesta pohybu, klepnutím začnete upravovat",
+		"kEasingPathTipStr",					"Cesta náběhu/doběhu",
+	#ifdef WINDOWS
+		"kPreviewSpreadButtonToolTip",			"Náhled dvojstránky: EPUB.",
+	#else
+		"kPreviewSpreadButtonToolTip",			"Náhled dvojstránky: EPUB.",			
+	#endif
+				
+		// ----- XFL Export Dialogs
+
+		"kXFLExport",						"Export do Flash CS6 Professional (FLA)",
+		"kSizePixels",						"Velikost (pixely):",
+		"kPagesStr",						"Stránky:",
+		"kExportStr",						"Exportovat:",
+		"kSpreadsStr",						"Dvo&jstránky",
+		"kGenerateHTMLStr",					"Generovat soubor HT&ML",
+		"kFlashText",						"Klasický text Flash",
+		"kVectorText",						"Převést na obrysy",
+		"kRasterText",						"Převést na obr. body",
+		"kVellumText",						"Text Flash TLF",
+		"kInsertHyphensStr",				"V&ložit body neviditelných rozdělovníků",
+		"kFitToSize",						"&Přizpůsobit na:",
+		"kWidthSize",						"Šířk&a:",
+		"kHeightSize",						"&Výška:",
+		"kSelectionExportedStr",			"&Výběr",
+		"kAllPagesExported",				"&Všechny",
+		"kAllPagesExportedStr",				"&Všechny stránky",
+		"kPageRangeExported",				"&Rozsah:",
+		"kScaleSize",						"&Měřítko:",
+		"kTextStr",							"Te&xt:",
+		"kInteractivityStr",				"Interaktivita:",
+		"kDynamicMediaStr",					"Interaktivita a média:",
+		"kImageCompStr",					"Komprese &obrazu:",
+		"kQualityStr",						"&Kvalita JPEG:",
+		"kCurveQualityStr",					"Kvalita &křivky:",
+		"kInclButtonsStr",					"Včetně tlačítek",
+		"kInclHyperLinkStr",				"Včetně h&ypertextových odkazů",
+		"kInclPageTrans",					"Včetně přechodů strá&nek",
+		"kIncludePageCurl",					"Zahr&nout interaktivní otáčení stránek",
+		"kIncludeAllStr",					"&Zahrnout vše",
+		"kAppearanceOnlyStr",				"P&ouze vzhled",
+		"kBackgroundStr",					"Pozadí:",
+		"kPaperColorStr",					"Barva p&apíru",
+		"kTransparentStr",					"&Průhledný",
+		"kFramesPerSecStr",					"snímků za sekundu",
+		"kPageTransitionsStr",				"Přechody str&ánek:",
+		"kNone",							"Žádný",
+		"kFromDocument",					"Z dokumentu",
+		"kOptionsStr",						"Volby:",
+		"kDescriptionStr",					"Popis:",
+		"kFrameRateStr",					"&Kmitočet snímků:",
+		"kImageCompAuto",					"Automaticky",
+		"kJPG_Lossy",						"JPEG",
+		"kJPG_LossyStr",					"JPEG (ztrátový)",
+		"kPNG_Lossless",					"Bezeztrátové (bez akce)",
+		"kPNG_LosslessStr",					"PNG (bezeztrátový)",
+		"kMinimumQual",						"Minimální",
+		"kLowQual",							"Nízká",
+		"kMediumQual",						"Střední",
+		"kHighQual",						"Vysoká",
+		"kMaximumQual",						"Maximální",
+		"kRasterizeStr",					"&Rastrovat stránky",
+		"kFlattenXPStr",					"Slouč&it průhlednost",
+		"k1280x800",						"1280 × 800",
+		"k1024x768",						"1024 × 768",
+		"k800x600",							"800 × 600",
+		"k640x480",							"640 × 480",
+		"k250per",							"250%",
+		"k200per",							"200%",
+		"k150per",							"150%",
+		"k100per",							"100%",
+		"k75per",							"75%",
+		"k50per",							"50%",
+		"k25per",							"25%",
+
+		// Font Embedding
+		"kEmbeddedFontsTitle",				"Vložená písma (platí pouze pro volbu Klasický text Flash)",
+		"kTotalFonts",						"Celkem písem: ",
+		"kFontLicensingInfo",				"Informace o licencování písem",
+		"kEmbeddedFontName",				"Název písma: ",
+		"kEmbeddedVendorID",				"ID dodavatele: ",
+
+		// Add Page Transition dialog
+		"kPageTransitionsDialogTitle",			"Přechody stránek",
+		"kPageTransitionApplyToAllSpreads",		"Aplikovat na všechny dvojstránky",
+		"kZoomInOutString",						"Přiblížit/Vzdálit", 
+		
+		
+		//	Animation UI
+		"kAnimationUIPanelPopup",				"Nabídka panelu Uživatelské rozhraní animace",
+		"kAnimationUISubMenu",					"Animace",
+		"kAnimationUIPresetPopupMenu",			"Nabídka přednastavení Uživatelské rozhraní animace",
+		"kMotionPresetsNoneTextkey",			"Žádný",
+		"kAnimationUILoadPresetMenuItem",		"Načíst přednastavení...",
+		"kAnimationUISaveAsPresetMenuItem",		"Uložit jako...",
+		"kAnimationUISavePresetMenuItem",		"Uložit",
+		"kAnimationUIDeletePresetMenuItem",		"Odstranit",
+
+		"kAnimationUIConvertToMotionPathMenuItem",	"Převést na cestu pohybu",
+		"kAnimationUITestInBrowserMenuItem",	"Vyzkoušet v prohlížeči...",
+		"kCustomPresetName",					"Přednastavení pohybu",
+		"kAnimationUIEventSeparator",			", ",
+		
+		"kAnimationUIPanelName",				"Animace",
+		"kAnimationUIPreviewStaticTextLabel",	"Náhled",
+		"kAnimationUINameStaticTextLabel",		"Název:",
+		"kAnimationUIPresetStaticTextLabel",	"Přednastavení:",
+		"kAnimationUICustomPreset",				"Vlastní",
+		"kAnimationUIMixed",					"Smíšený",
+		"kAnimationUIMixed:",					"Smíšený: ",
+		"kAnimationUIChoose",					"Vybrat",
+		"kAnimationUIEventStaticTextLabel",		"Události:",
+		"kAnimationUIDurationStaticTextLabel",	"Doba trvání:",
+		"kAnimationUISecondStaticTextLabel",	"sekunda",
+		"kAnimationUISecondsStaticTextLabel",	"sekund",
+		"kAnimationUIPlayStaticTextLabel",		"Spustit:",
+		"kAnimationUITimeStaticTextLabel",		"čas",
+		"kAnimationUITimesStaticTextLabel",		"časy",
+		"kAnimationUILoopCheckBoxLabel",		"Smyčka",
+		"kAnimationUISpeedStaticTextLabel",		"Rychlost:",
+		"kAnimationUIVisibilityStaticTextLabel","Viditelnost:",
+		"kAnimationUIPropertyStaticTextLabel",	"Vlastnosti",
+		"kAnimationUIHideBeforeAnimateCheckBoxLabel","Skrýt do animace",
+		"kAnimationUIHideAfterAnimateCheckBoxLabel","Skrýt po animaci",
+		"kAnimationUIOnButtonEvent",			"Při události tlačítka",
+		"kAnimationUIOnRollOffCheckBoxLabel",	"Obrátit při odjetí myší",
+		"kAnimationUIEaseIn",					"Náběh",
+		"kAnimationUIEaseOut",					"Doběh",
+		"kAnimationUIEaseInAndOut",				"Náběh a doběh",
+		"kAnimationUIFadeIn",					"Zesílení",
+		"kAnimationUIFadeOut",					"Zeslabení",
+		"kAnimationUINone",						"Žádný",
+		"kAnimationUIFromPreset",				"Z přednastavení",
+		"kAnimationUIPropertyDesignStaticTextLabel",		"Animovat:",
+		"kAnimationUIPropertyDesignCheckBoxLabel",			"Konec animace",
+		"kAnimationFromStaticTextLabel",					"Animovat od",
+		"kAnimationToStaticTextLabel",						"Animovat do",
+		"kAnimationUIPropertyDesignScaleStaticTextLabel",	"Změnit velikost",
+		"kAnimationUIPropertyDesignScaleHorzStaticTextLabel",	"Š:",
+		"kAnimationUIPropertyDesignScaleVertStaticTextLabel",	"V:",
+		"kAnimationUIPropertyDesignRotateStaticTextLabel",	"Otočit:",
+		"kAnimationUIPropertyDesignOpacityStaticTextLabel",	"Krytí:",
+		"kAnimationUIPropertyDesignProxyStaticTextLabel",	"Počátek:",
+		
+		"kAnimationUIFrom",						"Z aktuálního vzhledu",
+		"kAnimationUITo",						"Do aktuálního vzhledu",
+		"kAnimationUIOffset",					"Do aktuálního umístění",
+
+		"kAnimationPanelButtonTriggerTip",		"Vytvořit spouštění tlačítkem (klepněte na ikonu a pak klepnutím na objekt spustíte tuto animaci)",
+		"kAnimationPanelShowProxyTip",			"Zobrazit náhled animace",
+		"kAnimationPanelLockIconTip",			"Omezit hodnotu změny velikosti",
+		"kAnimationPanelEventMenuSelectorTip",	"Spouštěcí událost zvolte klepnutím na šipku dolů",
+		"kAnimationPanelEventInfoTip",			"Spouštěcí události pro animaci",
+		"kAnimationPanelEventInfoDefaultTip",	"Výchozí spouštěcí událost pro animaci",
+		"kAnimationPanelPreviewButtonTip",		"Náhled aktuálního výběru",
+		"kAnimationPanelConvertToMotionPathTip","Převést na cestu pohybu",
+		"kAnimationUIFromTip",					"Použije aktuální vlastnosti objektu jako výchozí vzhled animace v době běhu programu.",
+		"kAnimationUIToTip",					"Použije aktuální vlastnosti objektu jako koncový vzhled animace v době běhu programu.",
+		"kAnimationUIOffsetTip",				"Použije aktuální vlastnosti objektu jako výchozí vzhled animace a aktuální polohu jako koncovou polohu animace v době běhu programu.",
+		"kAnimationUIAnimationOptionTip",		"Volby animace",
+		"kAnimationUITrashTip",					"Odstranit animaci",
+		"kAnimationUIXFPointTip",				"Změnit počáteční bod pro změnu velikosti a otočení.",
+		"kAnimationUIShowTimingButtonTip",		"Zobrazit panel Časování",
+		
+		"kAnimationUISaveAsPresetTitle",		"Uložit vybrané přednastavení jako",
+		"kAnimationUISavePresetTitle",			"Uložit přednastavení",
+		"kAnimationUISavePresetNameLabel",		"Název:",
+
+		"kAnimationUIEventPopupMenu",			"Rozbalovací nabídka události",
+		"kAnimationUICreateButtonTriggerCmd",	"Vytvořit spouštění tlačítkem",
+		"kAnimationUICreateSelfTriggerCmd",		"Vytvořit automatické spouštění",
+		
+		"kAnimationUIManagePresetsDialogTitle",	"Správa přednastavení",
+		"kAnimationUIManagePresetsDoneButton",	"Hotovo",
+		"kAnimationUIManagePresetsDeleteButton","O&dstranit",
+		"kAnimationUIManagePresetsDuplicateButton","D&uplikovat",
+		"kAnimationUIManagePresetsLoadButton",	"&Načíst...",
+		"kAnimationUIManagePresetsSaveAsButton","&Uložit jako...",
+		"kAnimationUIManagePresetMenuItem",		"Správa přednastavení...",
+		"kAnimationUIManagePresetPresetsSeparator", "--------------------",
+		"kAnimationUIManagePresetNamePrefix",	"[",
+		"kAnimationUIManagePresetNameSuffix",	"]",
+	}
+};
+
+#endif // __ODFRC__

@@ -1,0 +1,835 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+$File: //depot/devtech/16.0.x/plugin/source/open/components/dynamicdocumentsui/flash/HTMLPreview/src/HTMLPreview.mxml $
+
+Owner: David Stephens
+
+$Author: pmbuilder $
+
+$DateTime: 2020/11/06 13:08:29 $
+
+$Revision: #2 $
+
+$Change: 1088580 $ 
+
+ADOBE CONFIDENTIAL
+
+Copyright 2011 Adobe Systems Incorporated. All rights reserved.
+
+NOTICE:  All information contained herein is, and remains
+the property of Adobe Systems Incorporated and its suppliers,
+if any.  The intellectual and technical concepts contained
+herein are proprietary to Adobe Systems Incorporated and its
+suppliers and may be covered by U.S. and Foreign Patents,
+patents in process, and are protected by trade secret or copyright law.
+Dissemination of this information or reproduction of this material
+is strictly forbidden unless prior written permission is obtained
+from Adobe Systems Incorporated.
+xmlns:mx="http://www.adobe.com/2006/mxml"
+
+-->
+<mx:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
+				xmlns:s="library://ns.adobe.com/flex/spark" 
+				xmlns:mx="library://ns.adobe.com/flex/mx"
+				width="100%" height="100%" backgroundColor="0xE8E8E8"
+				creationComplete="onCreationComplete(event)" horizontalAlign="left"
+				paddingLeft="5"
+				paddingTop="5">
+		
+	<fx:Script>
+		<![CDATA[
+			import flash.events.KeyboardEvent;
+			
+			import mx.collections.ArrayCollection;
+			import mx.events.FlexEvent;
+			import mx.events.IndexChangedEvent;
+			import mx.events.ListEvent;
+			import mx.events.MenuEvent;
+			private var _debug:Boolean;
+			
+			static public const HOME_KEYCODE:uint = 36;
+			static public const END_KEYCODE:uint = 35;
+			static public const LEFT_ARROW_KEYCODE:uint = 37;
+			static public const UP_ARROW_KEYCODE:uint = 38;
+			static public const RIGHT_ARROW_KEYCODE:uint = 39;
+			static public const DOWN_ARROW_KEYCODE:uint = 40;
+			static public const CHROME_BORDER_WEIGHT:int = 10;
+			static public const CHROME_CORNER_RADIUS:int = 5;
+						
+			protected function onCreationComplete(event:FlexEvent):void
+			{
+				if (ExternalInterface.available)
+				{
+					try
+					{
+						// Register the external functions:
+						ExternalInterface.addCallback("SetDebug", extSetDebug);
+						ExternalInterface.addCallback("SetURL", extSetURL);
+						ExternalInterface.addCallback("Initialize", extInitialize);
+						ExternalInterface.addCallback("Settings", getPanelSettings);
+						ExternalInterface.addCallback("ShowDevices", extShowDevices);
+									
+						localizeStrings();
+						
+						//_debug = true;
+						//fromXML(toXML());
+
+						// Tell the C++ side that this instance is available:
+						// send message to InDesign that swf loading is done.
+						SendLoadHTMLDoneMessage("Load HTML is done.");
+						LOGMESSAGE("******************HTMLPreview 1.0 is available******************");		
+					}
+					catch (e:Error)
+					{
+						LOGMESSAGE("ExternalInterface failed due to:" + e.message);
+					}
+				}
+			}
+			
+			// -----------------------------------------------------------------------------
+			
+			private function LOGMESSAGE( text:String ):void
+			{
+				if (ExternalInterface.available && _debug)
+				{
+					try
+					{
+						ExternalInterface.call("ReportPlayerEvent", "LogMessage", text ); 
+					}
+					catch (e:Error)
+					{
+					
+					}
+				}
+			} // end LOGMESSAGE()
+		
+			private function extShowDevices(showVal:int):void
+			{
+				var show:Boolean = (showVal == 1);
+				if ( show != _showDevices )
+				{
+					_showDevices = show;
+					
+					if ( _showDevices )
+					{
+						LOGMESSAGE("ShowDevices = true");
+						devices.includeInLayout = true;
+						devices.visible = true;
+						desktop.visible = false;
+						desktop.includeInLayout = false;
+						if ( _url )
+						{
+							if ( phone.location != url )
+								extSetURL(_url);
+						}
+					}
+					else
+					{
+						LOGMESSAGE("ShowDevices = false");
+						devices.includeInLayout = false;
+						devices.visible = false;
+						desktop.visible = true;
+						desktop.includeInLayout = true;
+						if ( _url )
+						{
+							if ( desktopHTML.location != url )
+								extSetURL(_url);
+						}
+					}
+				}
+			}
+			
+			private function getPanelSettings():String
+			{
+						//ExternalInterface.call("ReportPlayerEvent", "Settings", toXML().toXMLString() ); 
+				var settings:String = toXML().toXMLString();
+				return settings;
+			}
+			
+			private function sendUpdatedSettings():void
+			{
+				if (ExternalInterface.available)
+				{
+					try
+					{
+						var settings:String = getPanelSettings();
+						ExternalInterface.call("ReportPlayerEvent", "Settings", settings ); 
+						LOGMESSAGE(settings);
+					}
+					catch (e:Error)
+					{
+						//ignore
+					}
+				}
+			}
+			// -----------------------------------------------------------------------------
+
+			private function localizeStrings():void
+			{
+				if (ExternalInterface.available)
+				{
+					try
+					{
+						desktopHome.toolTip = getLocalizedString("FirstPage1DeviceToolTip");
+						prevPageDesktop.toolTip = getLocalizedString("PrevPage1DeviceToolTip");
+						nextPageDesktop.toolTip = getLocalizedString("NextPage1DeviceToolTip");
+						//desktopLastPage.toolTip = getLocalizedString("LastPage1DeviceToolTip");
+						phoneHome.toolTip = getLocalizedString("FirstPage2DevicesToolTip");
+						prevPagePhone.toolTip = getLocalizedString("PrevPage2DevicesToolTip");
+						nextPagePhone.toolTip = getLocalizedString("NextPage2DevicesToolTip");
+						//phoneLastPage.toolTip = getLocalizedString("LastPage2DevicesToolTip");
+						tabletHome.toolTip = phoneHome.toolTip;
+						prevPageTablet.toolTip = prevPagePhone.toolTip;
+						nextPageTablet.toolTip = nextPagePhone.toolTip;
+						//tabletLastPage.toolTip = phoneLastPage.toolTip;
+					}
+					catch (e:Error)
+					{
+						//ignore
+					}
+				}
+			}
+
+			private function getLocalizedString(key:String):String
+			{
+				if (ExternalInterface.available)
+				{
+					try
+					{
+						var trans:String = ExternalInterface.call("ReportPlayerEvent", "getLocalizedString", key );
+						if ( trans && trans.length )
+							return trans;
+					}
+					catch (e:Error)
+					{
+						//ignore
+					}
+				}
+				
+				return key;
+			}
+			
+			private function SendLoadHTMLDoneMessage( text:String ):void
+			{
+				if (ExternalInterface.available)
+				{
+					try
+					{
+						ExternalInterface.call("ReportPlayerEvent", "loadHTMLDoneMessage", text ); 
+					}
+					catch (e:Error)
+					{
+						//ignore
+					}
+				}
+			} 
+						
+			[Bindable] private var _chrome:Boolean = false;
+			[Bindable] private var _showDevices:Boolean = true;
+			
+			public function toXML():XML
+			{
+				var phoneWidth:int = Math.min(phone.width,phone.height);
+				var phoneHeight:int = Math.max(phone.width,phone.height);
+				var tabWidth:int = Math.min(tablet.width,tablet.height);
+				var tabHeight:int = Math.max(tablet.width,tablet.height);
+				
+				if ( _chrome )
+				{
+					phoneWidth -= 2*CHROME_BORDER_WEIGHT;
+					phoneHeight -= 2*CHROME_BORDER_WEIGHT;
+					tabWidth -= 2*CHROME_BORDER_WEIGHT;
+					tabHeight -= 2*CHROME_BORDER_WEIGHT;
+				}
+				
+				var settings:XML =
+					<settings version={1.0} chrome={_chrome} showDevices={_showDevices}>
+						<device
+							name={phonePopup.selectedLabel}
+				index={phonePopup.selectedIndex}							
+				portrait={portraitPhone}
+				width={phoneWidth}
+				height={phoneHeight}
+				/>
+				<device
+					name={tabletPopup.selectedLabel}
+				index={tabletPopup.selectedIndex}						
+				portrait={portraitTablet}
+				width={tabWidth}
+				height={tabHeight}
+				/>
+			</settings>;
+				
+				return settings;
+			}
+			
+			public function fromXML(settings:XML):void
+			{
+				_chrome = String(settings.@chrome) == "true";
+				//_showDevices = String(settings.@showDevices) == "true";
+				
+				var device1:XML = settings.device[0];
+				var device2:XML = settings.device[1];
+				
+				// device 1
+				phonePopup.selectedIndex = device1.@index;
+				
+				// device 2
+				tabletPopup.selectedIndex = device2.@index;
+				
+				phone.width = int(device1.@width);
+				phone.height = int(device1.@height);
+				tablet.width = int(device2.@width);
+				tablet.height = int(device2.@height);
+				
+				if ( _chrome )
+				{
+					phone.width += 2*CHROME_BORDER_WEIGHT;
+					phone.height += 2*CHROME_BORDER_WEIGHT;
+					tablet.width += 2*CHROME_BORDER_WEIGHT;
+					tablet.height += 2*CHROME_BORDER_WEIGHT;
+				}
+				
+				portraitPhone = String(device1.@portrait) == "true";
+				portraitTablet = String(device2.@portrait) == "true";
+				
+				phonePortrait.selected = portraitPhone;
+				tabletPortrait.selected = portraitTablet;
+				
+				desktop.percentHeight= 100;
+				desktop.percentWidth = 100;
+				
+				if ( _showDevices )
+				{
+					devices.includeInLayout = true;
+					devices.visible = true;
+					desktop.visible = false;
+					desktop.includeInLayout = false;
+				}
+				else
+				{
+					devices.includeInLayout = false;
+					devices.visible = false;
+					desktop.visible = true;
+					desktop.includeInLayout = true;
+				}
+			}
+			
+			
+			// *****************************************************************************
+			// EXTERNAL FUNCTIONS
+			// *****************************************************************************
+			
+			private function extSetDebug( debug:Boolean ):void
+			{
+				_debug = debug;
+				
+				if ( _debug )
+				{
+					var versionInfo:String = "Debugging is on:\n";
+					
+					versionInfo += "AIR Version: "+NativeApplication.nativeApplication.runtimeVersion+"\n";
+					versionInfo += "Player Version: "+Capabilities.version+"\n";
+					LOGMESSAGE(versionInfo);
+				}
+			}
+			
+			private function extInitialize( settings:String ):void
+			{				
+				// for some reason, the first char of the settings from InDesign is often garbage
+				if ( settings && settings.length > 0 && settings.charAt(0) != '<' )
+					settings = settings.slice(1);
+				/*
+				var fs:FileStream = new FileStream();
+				var f:File = File.desktopDirectory.resolvePath("mysettings.txt");
+				fs.open(f,FileMode.WRITE);
+				fs.position = 0;
+				fs.truncate();
+				fs.writeUTF("dave:");
+				fs.writeUTF( settings);
+				
+				//fs.writeUTF(newSettings);
+				fs.close();
+				*/
+				
+				var xml:XML;
+				if ( settings && settings.length > 0)
+				{					
+					LOGMESSAGE("SETTINGS: " + settings);
+					
+					var newSettings:String = "";
+					var parts:Array = settings.split("&");
+					if ( parts.length > 1 )
+					{
+						for each (var part:String in parts)
+						{
+							if ( part.length )
+							{
+								var tokens:Array = part.split(";");
+								if ( tokens.length > 1 )
+								{
+									switch (tokens[0])
+									{
+										case "lt":
+											newSettings += "<";
+											break;
+										case "gt":
+											newSettings += ">";
+											break;
+										case "quot":
+											newSettings += "'";
+											break;
+										case "amp":
+											newSettings += "&";
+											break;
+									}
+									newSettings += tokens[1];
+								}
+							}
+						}						
+
+						LOGMESSAGE("NEWSETTINGS: " + newSettings);
+						xml = XML(newSettings);
+					}
+					else
+						xml = XML(settings);
+					
+					fromXML(xml);
+				}
+			}
+			
+			private var _url:String = null;
+			
+			private function extSetURL( url:String):void
+			{					
+				_url = url;
+				if ( tablet.loaded )
+				{
+					tablet.cancelLoad();
+					tablet.htmlText = "";
+					tablet.location = "";
+				}
+				if ( phone.loaded )
+				{
+					phone.cancelLoad();
+					phone.htmlText = "";
+					phone.location = "";
+				}
+				if ( desktopHTML.loaded )
+				{
+					desktopHTML.cancelLoad();
+					desktopHTML.htmlText = "";
+					desktopHTML.location = "";
+				}
+				
+				if ( devices.visible )
+				{
+					tablet.location = url;
+					phone.location = url;
+				}				
+				else
+				{
+					desktopHTML.location = url;
+				}				
+			}
+			
+			// *****************************************************************************
+			// NAVIGATION EVENT HANDLER FUNCTIONS
+			// *****************************************************************************
+			
+			protected function simulateKey(doc:Object, keyCode:int):void
+			{
+				LOGMESSAGE("simulateKey: simulating " + keyCode);
+				try
+				{
+					var evt:Object = doc.createEvent("Events");
+					evt.initEvent("keydown", true, true);
+					evt.which = keyCode;
+					doc.dispatchEvent(evt);
+				}
+				catch(e:Error)
+				{
+					LOGMESSAGE("simulateKey: error: " + e.message);
+				}
+			}
+			
+			protected function previousPage(html:HTML):void
+			{
+				simulateKey(html.domWindow.document, LEFT_ARROW_KEYCODE);
+				//html.domWindow.pgt.onkeydown({keyCode:"37"});
+				//html.domWindow.pgt.onpagenav({code:"prev"});
+				//html.domWindow.document.body.dispatchEvent(new KeyboardEvent(KeyboardEvent.KEY_DOWN, true, false, 0, LEFT_ARROW_KEYCODE));
+				//html.domWindow.document.body.dispatchEvent(new KeyboardEvent(KeyboardEvent.KEY_UP, true, false, 0, LEFT_ARROW_KEYCODE));
+				//html.domWindow.dispatchEvent(new KeyboardEvent(KeyboardEvent.KEY_DOWN, true, false, 0, LEFT_ARROW_KEYCODE));
+				//html.domWindow.dispatchEvent(new KeyboardEvent(KeyboardEvent.KEY_UP, true, false, 0, LEFT_ARROW_KEYCODE));
+			}
+			
+			protected function nextPage(html:HTML):void
+			{
+				LOGMESSAGE("nextpage");
+				simulateKey(html.domWindow.document, RIGHT_ARROW_KEYCODE);
+				//html.domWindow.pgt.onkeydown({keyCode:"39"});
+				//html.domWindow.pgt.onpagenav({code:"next"});
+				//html.domWindow.document.body.dispatchEvent(new KeyboardEvent(KeyboardEvent.KEY_DOWN, true, false, 0, RIGHT_ARROW_KEYCODE));
+				//html.domWindow.document.body.dispatchEvent(new KeyboardEvent(KeyboardEvent.KEY_UP, true, false, 0, RIGHT_ARROW_KEYCODE));
+				//html.domWindow.dispatchEvent(new KeyboardEvent(KeyboardEvent.KEY_DOWN, true, false, 0, RIGHT_ARROW_KEYCODE));
+				//html.domWindow.dispatchEvent(new KeyboardEvent(KeyboardEvent.KEY_UP, true, false, 0, RIGHT_ARROW_KEYCODE));
+			}
+			
+			protected function firstPage(html:HTML):void
+			{
+				simulateKey(html.domWindow.document, HOME_KEYCODE);
+			}
+			
+			protected function lastPage(html:HTML):void
+			{
+				simulateKey(html.domWindow.document, END_KEYCODE);
+			}
+			
+			protected function prevPagePhone_clickHandler(event:MouseEvent):void
+			{
+				previousPage(phone);
+				if (event.shiftKey)
+					previousPage(tablet);
+			}
+			
+			protected function nextPagePhone_clickHandler(event:MouseEvent):void
+			{
+				nextPage(phone);
+				if (event.shiftKey)
+					nextPage(tablet);
+			}
+			
+			protected function nextPageDesktop_clickHandler(event:MouseEvent):void
+			{
+				nextPage(desktopHTML);
+			}
+			
+			protected function prevPageDesktop_clickHandler(event:MouseEvent):void
+			{
+				previousPage(desktopHTML);
+			}
+			
+			protected function prevPageTablet_clickHandler(event:MouseEvent):void
+			{
+				previousPage(tablet);
+				if (event.shiftKey)
+					previousPage(phone);
+			}
+			
+			protected function nextPageTablet_clickHandler(event:MouseEvent):void
+			{
+				nextPage(tablet);
+				if (event.shiftKey)
+					nextPage(phone);
+			}
+			
+			protected function phoneHome_clickHandler(event:MouseEvent):void
+			{
+				firstPage(phone);
+				if ( event.shiftKey )
+					firstPage(tablet);
+			}
+			
+			protected function tabletHome_clickHandler(event:MouseEvent):void
+			{
+				firstPage(tablet);
+				if ( event.shiftKey )
+					firstPage(phone);
+			}
+			
+			protected function desktopHome_clickHandler(event:MouseEvent):void
+			{
+				firstPage(desktopHTML);
+			}
+
+			protected function phoneLastPage_clickHandler(event:MouseEvent):void
+			{
+				lastPage(phone);
+				if ( event.shiftKey )
+					lastPage(tablet);
+			}
+			
+			protected function tabletLastPage_clickHandler(event:MouseEvent):void
+			{
+				lastPage(tablet);
+				if ( event.shiftKey )
+					lastPage(phone);
+			}
+			
+			protected function desktopLastPage_clickHandler(event:MouseEvent):void
+			{
+				lastPage(desktopHTML);
+			}
+
+			protected function html_keyUpHandler(event:KeyboardEvent):void
+			{
+				event.stopPropagation();
+			}
+			
+			protected function html_keyDownHandler(event:KeyboardEvent):void
+			{
+				event.stopPropagation();
+			}
+			
+			// *****************************************************************************
+			// FUNCTIONS THAT CHANGE VIEW SETTINGS
+			// *****************************************************************************
+
+			protected function phonePortrait_clickHandler(event:MouseEvent):void
+			{
+				portraitPhone = true;
+			}
+			
+			protected function phoneLandscape_clickHandler(event:MouseEvent):void
+			{
+				portraitPhone = false;
+			}
+			
+			[Bindable]
+			protected function get portraitPhone():Boolean
+			{
+				return phone.width <= phone.height;
+			}
+			
+			protected function set portraitPhone(val:Boolean):void
+			{
+				var w:int = phone.width;
+				var h:int = phone.height;
+				
+				if ( val )
+				{
+					phone.width = Math.min(w,h);
+					phone.height = Math.max(w,h);
+				}
+				else
+				{
+					phone.width = Math.max(w,h);
+					phone.height = Math.min(w,h);
+				}
+				sendUpdatedSettings();
+			}
+			
+			protected function tabletPortrait_clickHandler(event:MouseEvent):void
+			{
+				portraitTablet = true;
+			}
+			
+			protected function tabletLandscape_clickHandler(event:MouseEvent):void
+			{
+				portraitTablet = false;
+			}
+			
+			[Bindable]
+			protected function get portraitTablet():Boolean
+			{
+				return tablet.width <= tablet.height;
+			}
+			
+			protected function set portraitTablet(val:Boolean):void
+			{
+				var w:int = tablet.width;
+				var h:int = tablet.height;
+				
+				if ( val )
+				{
+					tablet.width = Math.min(w,h);
+					tablet.height = Math.max(w,h);
+				}
+				else
+				{
+					tablet.width = Math.max(w,h);
+					tablet.height = Math.min(w,h);
+				}
+				sendUpdatedSettings();
+			}
+	
+			[Bindable] public var deviceListDatProvider:ArrayCollection = new ArrayCollection(
+				[	{device:"Phone", width:320, height:480},
+					{device:"Apple iPad", width:768, height:1024},
+					{device:"Motorola Xoom", width:800, height:1280},
+					{device:"Galaxy Tab, PlayBook", width:600, height:1024}	] );
+			
+			
+			protected function chromeCheckbox_clickHandler(event:MouseEvent):void
+			{
+				_chrome = !_chrome;
+				
+				if ( _chrome )
+				{
+					phone.width += 2*CHROME_BORDER_WEIGHT;
+					phone.height += 2*CHROME_BORDER_WEIGHT;
+					tablet.width += 2*CHROME_BORDER_WEIGHT;
+					tablet.height += 2*CHROME_BORDER_WEIGHT;
+				}
+				else
+				{
+					phone.width -= 2*CHROME_BORDER_WEIGHT;
+					phone.height -= 2*CHROME_BORDER_WEIGHT;
+					tablet.width -= 2*CHROME_BORDER_WEIGHT;
+					tablet.height -= 2*CHROME_BORDER_WEIGHT;
+				}
+				sendUpdatedSettings();
+			}
+						
+			protected function phonePopup_changeHandler(e:ListEvent):void
+			{
+				var w:int = deviceListDatProvider[phonePopup.selectedIndex].width;
+				var h:int = deviceListDatProvider[phonePopup.selectedIndex].height;
+				if ( portraitPhone )
+				{
+					phone.width = Math.min(w,h);
+					phone.height = Math.max(w,h);
+				}
+				else
+				{
+					phone.width = Math.max(w,h);
+					phone.height = Math.min(w,h);
+				}
+				
+				if ( _chrome )
+				{
+					phone.width += 2*CHROME_BORDER_WEIGHT;
+					phone.height += 2*CHROME_BORDER_WEIGHT;
+				}
+				sendUpdatedSettings();
+			}
+			
+			protected function tabletPopup_changeHandler(e:ListEvent):void
+			{
+				var w:int = deviceListDatProvider[tabletPopup.selectedIndex].width;
+				var h:int = deviceListDatProvider[tabletPopup.selectedIndex].height;
+				if ( portraitTablet )
+				{
+					tablet.width = Math.min(w,h);
+					tablet.height = Math.max(w,h);
+				}
+				else
+				{
+					tablet.height = Math.min(w,h);
+					tablet.width = Math.max(w,h);
+				}
+				
+				if ( _chrome )
+				{
+					tablet.width += 2*CHROME_BORDER_WEIGHT;
+					tablet.height += 2*CHROME_BORDER_WEIGHT;
+				}
+				sendUpdatedSettings();
+			}			
+		]]>
+	</fx:Script>
+	
+	<mx:HBox id="devices" visible="{_showDevices}" includeInLayout="{_showDevices}" width="100%" height="100%" paddingLeft="0" paddingRight="0">
+		<mx:VBox id="phoneGroup" horizontalScrollPolicy="off" verticalScrollPolicy="off">
+			<mx:HBox width="100%" height="20">
+				<mx:ComboBox id="phonePopup" width="180" height="20"
+							 change="phonePopup_changeHandler(event)"
+							 dataProvider="{deviceListDatProvider}" 
+							 labelField="device"
+							 selectedIndex="0"
+							 />
+				<mx:HBox horizontalGap="0">
+					<mx:Button id="phonePortrait" width="24" height="20"
+							   click="phonePortrait_clickHandler(event)" cornerRadius="0"
+							   icon="@Embed('../../../../../../../external/workflow icons/P_Portrait_Lg_N.png')" selected="{portraitPhone}"/>
+					<mx:Button id="phoneLandscape" width="24" height="20"
+							   click="phoneLandscape_clickHandler(event)" cornerRadius="0"
+							   icon="@Embed('../../../../../../../external/workflow icons/P_Landscape_Lg_N.png')"
+							   selected="{!portraitPhone}"/>
+				</mx:HBox>
+				<mx:CheckBox id="phoneChromeCheckbox" label="Border" click="chromeCheckbox_clickHandler(event)" selected="{_chrome}"/>
+			</mx:HBox>
+			<mx:HTML id="phone" width="320" height="480" borderColor="#272626" borderStyle="solid"
+					 borderThickness="{_chrome ? CHROME_BORDER_WEIGHT : 0}" cornerRadius="{_chrome ? CHROME_CORNER_RADIUS : 0}"
+					 horizontalScrollPolicy="off" verticalScrollPolicy="off"
+					 keyDown="html_keyDownHandler(event)" keyUp="html_keyUpHandler(event)"
+					 />
+			<mx:HBox width="100%" height="25">
+				<mx:Button id="phoneHome" width="20" height="20"
+						   click="phoneHome_clickHandler(event)"
+						   icon="@Embed('../../../../../../../external/workflow icons/P_Firstpage_Sm_N.png')"
+						   />
+				<mx:Button id="prevPagePhone" width="20" height="20"
+						   click="prevPagePhone_clickHandler(event)"
+						   icon="@Embed('../../../../../../../external/workflow icons/P_PNbackward_Sm_N.png')"
+						   />
+				<mx:Button id="nextPagePhone" width="20" height="20"
+						   click="nextPagePhone_clickHandler(event)"
+						   icon="@Embed('../../../../../../../external/workflow icons/P_PNforward_Sm_N.png')"
+						   />
+<!--				<mx:Button id="phoneLastPage" width="20" height="20"
+						   click="phoneLastPage_clickHandler(event)"
+						   icon="@Embed('../../../../../../../external/workflow icons/P_Lastpage_Sm_N.png')"
+						   toolTip="Last page. Press Shift for both devices."
+						   />
+-->			</mx:HBox>
+		</mx:VBox>
+		
+		<mx:VBox id="tabletGroup" horizontalScrollPolicy="off" verticalScrollPolicy="off" visible="{_showDevices}" includeInLayout="{_showDevices}">
+			<mx:HBox width="100%" height="20">
+				<mx:ComboBox id="tabletPopup" width="180" height="20"
+							 change="tabletPopup_changeHandler(event)"
+							 dataProvider="{deviceListDatProvider}" 
+							 labelField="device"
+							 selectedIndex="1"
+							 />
+				<mx:HBox horizontalGap="0">
+					<mx:Button id="tabletPortrait" width="24" height="20"
+							   click="tabletPortrait_clickHandler(event)" cornerRadius="0"
+							   icon="@Embed('../../../../../../../external/workflow icons/P_Portrait_Lg_N.png')" selected="{portraitTablet}"/>
+					<mx:Button id="tabletLandscape" width="24" height="20"
+							   click="tabletLandscape_clickHandler(event)" cornerRadius="0"
+							   icon="@Embed('../../../../../../../external/workflow icons/P_Landscape_Lg_N.png')"
+							   selected="{!portraitTablet}"/>
+				</mx:HBox>
+			</mx:HBox>
+			<mx:HTML id="tablet" width="1024" height="768" borderColor="#272626" borderStyle="solid"
+					 borderThickness="{_chrome ? CHROME_BORDER_WEIGHT : 0}" cornerRadius="{_chrome ? CHROME_CORNER_RADIUS : 0}"
+					 horizontalScrollPolicy="off" verticalScrollPolicy="off" 
+					 keyUp="html_keyUpHandler(event)" keyDown="html_keyDownHandler(event)"
+					 focusEnabled="true"
+					 focusThickness="1"
+					 focusRect="true"/>
+			<mx:HBox width="100%" height="25">
+				<mx:Button id="tabletHome" width="20" height="20"
+						   click="tabletHome_clickHandler(event)"
+						   icon="@Embed('../../../../../../../external/workflow icons/P_Firstpage_Sm_N.png')"
+						   />
+				<mx:Button id="prevPageTablet" click="prevPageTablet_clickHandler(event)" height="20" width="20"
+						   icon="@Embed('../../../../../../../external/workflow icons/P_PNbackward_Sm_N.png')"
+						   />
+				<mx:Button id="nextPageTablet" click="nextPageTablet_clickHandler(event)" height="20" width="20"
+						   icon="@Embed('../../../../../../../external/workflow icons/P_PNforward_Sm_N.png')"
+						   />
+<!--				<mx:Button id="tabletLastPage" width="20" height="20"
+						   click="tabletLastPage_clickHandler(event)"
+						   icon="@Embed('../../../../../../../external/workflow icons/P_Lastpage_Sm_N.png')"
+						   toolTip="Last page. Press Shift for both devices."/>
+-->			</mx:HBox>
+		</mx:VBox>
+	</mx:HBox>
+	
+	<mx:VBox id="desktop" width="100%" height="100%" visible="{!_showDevices}" horizontalScrollPolicy="off" verticalScrollPolicy="off" includeInLayout="{!_showDevices}">
+		<mx:HTML id="desktopHTML" left="0" top="0" width="100%" height="100%" 
+				 horizontalScrollPolicy="off" verticalScrollPolicy="off" 
+				 keyUp="html_keyUpHandler(event)" keyDown="html_keyDownHandler(event)"/>
+		<mx:HBox width="100%" height="25" horizontalScrollPolicy="off" verticalScrollPolicy="off">
+			<mx:Button id="desktopHome" width="20" height="20"
+					   click="desktopHome_clickHandler(event)"
+					   icon="@Embed('../../../../../../../external/workflow icons/P_Firstpage_Sm_N.png')"
+					   />
+			<mx:Button id="prevPageDesktop" click="prevPageDesktop_clickHandler(event)" height="20" width="20"
+					   icon="@Embed('../../../../../../../external/workflow icons/P_PNbackward_Sm_N.png')"
+					   />
+			<mx:Button id="nextPageDesktop" click="nextPageDesktop_clickHandler(event)" height="20" width="20"
+					   icon="@Embed('../../../../../../../external/workflow icons/P_PNforward_Sm_N.png')"
+					   />
+<!--			<mx:Button id="desktopLastPage" width="20" height="20"
+					   click="desktopLastPage_clickHandler(event)"
+					   icon="@Embed('../../../../../../../external/workflow icons/P_Lastpage_Sm_N.png')"
+					   toolTip="Last page"/>
+-->		</mx:HBox>
+	</mx:VBox>	
+</mx:Application>

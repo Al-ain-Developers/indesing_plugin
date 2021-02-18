@@ -1,0 +1,227 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#ifdef __ODFRC__
+
+#include "StringTable.fh"
+
+resource StringTable (kLinksUIStringsRsrcID + index_trTR)
+{
+	k_trTR,					// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	{
+		"Links_WinMenu",			"Bağ&lar", // panel menu item
+		"kRtMouseGraphics",			"Grafikler", // context menu submenu name
+		"RtMenuLinksUILinkInfo",	"Bağ Bilgileri İçerik Menüsü",
+		
+		"#LinksUIPanel",			"Bağlar", // panel name
+		"#LinksUIPanelMenu",		"Bağlar Panel Menüsü", 
+		"#LinksUtilitiesSubmenu",		"Yardımcı Programlar",		// submenu for links panel menu
+		"#SelectedLinkInfoSectionName",			"Dosya Bilgileri", // section name in links ui panel
+		
+		"#UpdateAllOutOfDateLinksMenu",	"Tüm Bağları Güncelleştir",
+		"#AutoFindMissingLinksMenu",		"Eksik Bağları Ara",
+		"#LinksUIRelinkLinkMenu",		"Yeniden bağla...",
+		"#LinksUIRelinkResourceMenu",	"Tüm Örnekleri Yeniden Bağla...", // menu item to relink all instances of this multiple link assets
+		"#RelinkResource ^1 Menu",		"Tüm '^1' Örneklerini Yeniden Bağla...", // menu item to relink all instances of one single link asset
+		"#ReplaceFPOWithOriginalResourceMenu",	"Tüm Örnekleri Değiştir...", // menu item to replace all instances of this multiple link assets
+		"#ReplaceFPOWithOriginalResource ^1 Menu", "Tüm FPO '^1' Örneklerini Orijinaliyle Değiştir...", // menu item to replace all instances of one single link asset
+		"#RelinkCloudResource ^1 Menu",	"'^1' öğesinin tüm örneklerini CC Kitaplıklarından yeniden bağlayın...", // menu item to relink all instances of one single link asset
+        "#RelinkAALResource ^1 Menu",    "Tüm “^1” Örneklerini Adobe Asset Link'ten Yeniden Bağla...", // menu item to relink all instances of one single link asset
+		"#LinksUIUpdateLinkMenu",			"Bağı Güncelleştir", // context menu item in links ui panel
+		"#LinksUIUpdateLinkResourceMenu",	"Tüm Örnekleri Güncelleştir",
+		"#UpdateResource ^1 Menu",		"Tüm '^1' Örneklerini Güncelleştir", // menu item to update all instances of one single link asset
+		"#LinksUIEmbedLinkMenu",			"Bağı Göm", // context menu item in links ui panel
+		"#LinksUIEmbedResourceMenu",		"Tüm Örnekleri Göm",
+		"#EmbedResource ^1 Menu",			"Tüm '^1' Örneklerini Göm", // menu item to embed all instances of one single link asset
+		"#LinksUIUnEmbedLinkMenu",		"Bağ Gömülmesini Kaldır", // context menu item in links ui panel
+		"#LinksUIUnEmbedResourceMenu",	"Tüm Örneklerin Gömülmesini Kaldır",
+		"#UnembedResource ^1 Menu",			"Tüm '^1' Örneklerini Gömmeyi Geri Al", // menu item to unembed all instances of one single link asset
+		"#LinksUIUnLinkMenu",				"Bağı Kes",
+		"#UnLinkResourceMenu",			"Tüm Örneklerin Bağlarını Kaldır",
+		"#UnLinkResource ^1 Menu",			"Tüm \"^1\" Örneklerinin Bağlarını Kaldır", // menu item to unlink all instances of one single link asset
+		"#LinksUIEditOriginalLinkMenu",		"Orijinali Düzenle", // context menu item in links ui panel
+		"#LinksUIGoToSourceLinkMenu",		"Kaynağa Git", // context menu item in links ui panel
+		"#LinksUIXMPFileInfo",				"XMP Dosya Bilgileri...",
+		"#LinksUICopyPath",				"Tam Yol Kopyala",
+		"#LinksUICopyPlatformPath",			"Platform Stil Yolunu Kopyala",
+		"#RevealLinkInMacFinder",			"Finder’da Açığa Çıkar",
+		"#RevealLinkInWinExplorer",			"Explorer’da Açığa Çıkar",
+		"#RevealLinkInAdobeBridge",			"Bridge’de Açığa Çıkar",
+		"#RevealLinkInCCLibraries",			"CC Kitaplıklarında Göster",
+		"#GoToLink",						"Bağa Git",
+		"#EditWithApp",					"Şununla Düzenle:",
+		"ApplicationFiles",					"Uygulama (*.exe)", // windows only string to list exe files in the 'edit with application' dialog.
+		"#ChooseEditingApplication",			"Uygulama Seç", // dialog title
+		"#OtherApp",						"Diğer...",	// Menu name for choosing a custom application via a standard file dialog for Edit With...
+		"#LinksUICopyLink",				"Bağları Kopyala...",
+		"#LinksUIEditColumnsMenu",			"Panel Seçenekleri...",
+		
+		"#LinksUIRemoveThisColumnMenu",	"Bu Sütunu Gizle",
+		"#LinksUIShowThumbnailMenu",		"Minik Resmi Göster",
+		"#LinksUIHideThumbnailMenu",		"Minik Resmi Gizle",		
+		"#LinksUIShowInfoThumbnailMenu",	"Bilgi Minik Resmini Göster",
+		"#LinksUIHideInfoThumbnailMenu",	"Bilgi Minik Resmini Gizle",
+		
+		"#SaveLinkVersionCmd",			"Bağı Teslim Et",
+		"#ShowLinksPanelColumn",			"Sütunu Göster",
+		"#ShowLinksPanelInfo",				"Bağ Bilgilerinde Göster",
+		"#SelectNextLinkButtonTip",			"Listedeki sonraki bağı seç",
+		"#SelectPrevLinkButtonTip",			"Listedeki önceki bağı seç",
+		"#ToggleLinkInfoButtonTip",			"Bağ Bilgilerini Göster/Gizle",
+
+		"#ShortLinkStatusParamStr",				"^1 Bağ",  // status string for links panel
+		"#LongLinkStatusParamStr",				"Toplam ^1 Bağ\n\n   ^2 Eksik\n   ^3 Değiştirilmiş\n   ^4 Gömülü\n   ^5 Benzersiz\n   ^6 Alt bağ", // tip string for links panel status.
+		"#OneSelectedLinkStr",			"1 Seçili", // status string when one link is selected in the panel.
+		"#NumSelectedLinksParamStr",	"^1 Seçili", // status string when multiple links are selected in the panel.
+				
+		"RtMenuLinksUILinkItem",		"Bağ İçerik Menüsü",
+		"RtMenuLinksUILinksHeader",		"Bağlar Üstbilgi İçerik Menüsü",
+		
+		"#LinkColumnDialog",			"Panel Seçenekleri", // dialog name
+		"#LinksUIPanelOptions",			"Seçenekler",
+		
+		"#LinkThumbPrefLabel",			"Minik Resimler:",
+		"#LinksUIRowSizeLabel",		"&Satır Boyutu:",
+		"#LinksUISmallRowStr",			"Küçük Satırlar",
+		"#LinksUIRegularRowStr",		"Normal Satırlar",
+		"#LinksUILargeRowStr",			"Büyük Satırlar",
+		"#LinkInfoShowThumbnailCheckbox",	"&Bağ Bilgilerinde Göster",
+		"#LinksUIShowThumbnail",		"&Ad Sütununda Göster",
+		"#LinksUICollapseMultiple",		"&Birden Çok Bağı Aynı Kaynağa Daralt",
+
+		"#SearchHereForMissingFiles",	"Eksik Bağları Bu Klasörde Ara", // label for checkbox in relink dialog
+		"#RelinkSkipButton",			"Atla", // name for 'skip' button in relink dialog
+		"#SearchFound^1Links",		"Bu yeniden bağlama dizini arandı ve ^1 kayıp bağ bulundu ve yeniden bağlandı.", // alert that displays if we auto find missing links after a relink
+		"#RelinkToFolderTitle",			"Yeniden bağlanılacak klasörü seçin. Yalnızca şu anda seçili bağlardan adı eşleşenler yeniden bağlanır.",
+		"#RelinkToSameFilename",		"Aynı dosya adı ve uzantısıyla eşleştir", // radio button option in relink to folder dialog
+		"#RelinkToExtension",			"Aynı dosya adıyla ancak aşağıdaki uzantıyla eşleştir:", // radio button option in relink to folder dialog
+		"#LinksUICopyLinksTitle",		"Bağlı dosyaların kopyalanacağı klasörü seçin.",
+		"#LinksUIRelinkToFolderLinkMenu",	"Klasörü Yeniden Bağla...",
+		"#LinksUIRelinkFileExtensionLinkMenu",	"Dosya Uzantısını Yeniden Bağla...",
+        "#LinksUIRelinkFromCloudAssetLinkMenu",	"CC Kitaplıklarından Yeniden Bağla...",
+        "#LinksUIRelinkFromAALAssetLinkMenu",    "Adobe Asset Link'ten Yeniden Bağla...",
+		"#LicenseStockAssetLinkMenu",	"Görüntüyü Lisansla...",
+		"#LinksUIRelink: ^1",			"Yeniden Bağla: ^1", // title for relink dialog. ^1 becomes file path.
+		"#LinksUILocate: ^1",			"Bul: ^1", // title for relink dialog when link is missing. ^1 becomes file path.
+		"#CopyLinksFailedAlert",		"Bağlar klasöre kopyalanamadı.",
+		"#AutoFindFoundNothingAlert",	"Eksik bağ bulunamadı. Yeniden Bağla komutunu kullanarak ilk eksik bağı bulun ve yeniden deneyin.",
+		
+		"kEditsMadeWarning",			  "İçe aktarılan \"^1\" sürümünde düzenlemeler yapıldı. Güncelleştirmeyle bu düzenlemeleri kaybedeceksiniz. Yine de güncelleştirilsin mi?",
+		"kEditsMadeInLinkedStoryWarning",	"Bağlantılı öyküde \"^1\" düzenlemeler yapıldı. Güncelleştirmeyle bu düzenlemeleri kaybedeceksiniz. Yine de güncelleştirilsin mi?",
+		"kEditsMadeInLinkedArticleWarning", "Bağlantılı sayfa öğesi \"^1\" içinde düzenlemeler yapıldı. Güncelleştirmeyle bu düzenlemeleri kaybedeceksiniz. Yine de güncelleştirilsin mi?",
+		"kEditsMadeToTextOrTableWarning", "\"^1\" dosyasının içe aktarılan sürümü üzerinde düzenlemeler yapılmış. Bağı güncelleştirdiğinizde bu düzenlemeler (içe aktarılan çalışma sayfalarına uygulanan formatlama değişiklikleri dışında) kaybolur. Güncelleştirilsin mi?",
+
+		// Strings for Problem Links dialog
+		"#LinksModifiedWarning",	"Bu belge eksik/değiştirilmiş kaynaklara bağlantılar içeriyor. Değiştirilmiş bağlantıları hemen güncelleyebilir veya bunu daha sonra yapmak için Bağlantılar panelini kullanabilirsiniz.",
+		"#HTTPLinksModifiedWarning",	"Bu belge son kez kaydedildikten sonra eksik/değiştirilmiş kaynaklara bağlantılar içeriyor. Değiştirilmiş bağlantıları hemen güncelleyebilir veya bunu daha sonra yapmak için Bağlantılar panelini kullanabilirsiniz.",
+		"#UpdateLinks",				"&Değiştirilmiş Bağlantıları Güncelle",	 // button text
+		"#Don'tUpdateLinks",		"Bağları Güncelleştirme", // button text
+		"#ProblemMissingLinksParamStr",	"^1 - Eksik Bağ",
+		"#ProblemModifiedLinksParamStr",	"^1 - Değiştirilmiş Bağ",
+		"#ProblemInaccessibleLinksParamStr",	"^1 - Erişilemeyen URL Bağı. Ayrıntılar için Bağlar paneline başvurun.",
+        "#ProblemLinksDialogHeader",    "Bağlantılarla İlgili Sorunlar",
+		"UnembedToOriginal", 		"Gömülü dosyayı çıkarma işlemi, orijinal dosyalara veya bir klasör içinde oluşturduğu dosyalara bağlantı verebilir. Orijinal dosyalara bağlanmak istiyor musunuz?",
+		"#SelectUnembedDir",
+									"Dosyaların oluşturulacağı klasörü seçin.",
+
+		// Show Link message.
+		 "Cannot show link: The selected item is on a hidden layer.",
+						"Bağ gösterilemiyor: Seçilen öğe gizli veya gizli bir katman üzerinde.",
+		"Cannot show link: The selected item is hidden in overset text.",
+						"Bağ gösterilemiyor: Seçilen öğe kayan metinde gizlenmiş.",
+		"Cannot show link: The selected item is hidden in an inactive form field state.",
+						"Bağ gösterilemiyor: Seçilen öğe, etkin olmayan bir düğme durumunda gizlenmiş.  Öğeyi görüntülemek amacıyla gizli durumu etkinleştirmek için Düğmeler panelini kullanın.",
+		"Cannot show link: The selected item is hidden in an inactive mso state.",
+						"Bağ gösterilemiyor: Seçilen öğe etkin olmayan bir nesne durumunda. Gizli durumu görünür yapmak için Nesne Durumları panelini kullanın.",
+		"Cannot show link: The selected item is in deleted text in a tracked change.",
+						"Bağ gösterilemiyor: Seçilen öğe, izlenen bir değişiklikteki silinen metinde.",
+		"Cannot show link: The selected item is an XML structure element not in the layout.",
+						"Bağ gösterilemiyor: Seçilen öğe, mizanpajda bulunmayan bir XML yapı öğesi.",
+		"Cannot show link: The selected item is in hidden conditional text.",
+						"Bağ gösterilemiyor: Seçilen öğe gizli koşullu metinde.",
+						
+						
+		"#EditOriginalButtonTip",		"Orijinali Düzenle",	// tip string for button in links panel
+		"#GotoLinkButtonTip",		"Bağa Git",	// tip string for button in links panel
+		
+		"#appendedUpdateButtonTipMac",		". Tümünü güncelleştirmek için Opt ile tıklatın", // appened to menu name for 'update link' to build tip string for update button(mac)
+		"#appendedUpdateButtonTipWin",		". Tümünü güncelleştirmek için Alt ile tıklatın", // appened to menu name for 'update link' to build tip string for update button(win)
+		"#appendedRelinkButtonTipMac",		" Eksik bağları yeniden bağlamak için Opt ile tıklatın", // appened to menu name for 'Relink' to build tip string for relink button(mac)
+		"#appendedRelinkButtonTipWin",		" Eksik bağları yeniden bağlamak için Alt ile tıklatın", // appened to menu name for 'Relink' to build tip string for relink button(win)
+		
+		"#ErrorEmbeddingLink",				"Bağ gömülemedi.",
+		"#LinksUIShowLinkInfoMenu",		"Bağ Bilgileri Bölmesini Göster",
+		"#LinksUIHideLinkInfoMenu",			"Bağ Bilgileri Bölmesini Gizle",
+		"#LinksUICopyLinkInfoMenu",		"Tüm Bağ Bilgilerini Kopyala",
+		"#LinksUIAutosizeLinkInfoMenu",		"Otomatik Boyut Bağ Bilgileri",
+		"#LinksUIGenerateReportMenu",		"Seçili Bağlar için Bilgileri Kopyala",
+		"#LinksUIGenerateCaptionPrefsMenu",	"Resim Yazısı Ayarı...",
+		"#GenerateLiveLinkCaptionMenu",		"Canlı Resim Yazıları Oluştur",
+		"#GenerateStaticLinkCaptionMenu",	"Statik Resim Yazıları Oluştur",
+		
+		"#GenerateCaptionPrefDialogName",	"Resim Yazısı Ayarı",
+		"#BeforeMetadataCaptionLabel",		"Önceki Metin",
+		"#MetadataCaptionLabel",			"Meta Veri",
+		"#AfterMetadataCaptionLabel",		"Ardından Gelen Metin",
+		"#GenerateLiveCaptionGraphicSelectionMenu",	"Canlı Resim Yazısı Oluştur",
+		"#GenerateStaticCaptionGraphicSelectionMenu",	"Statik Resim Yazısı Oluştur",
+		"#CopyLinkInfoStr '^1'",				"'^1' öğesini kopyala", // Menu item name in links panel. ^1 is replaced with whatever text data is under the mouse.
+		"#CopyLinkFieldMenu",				"Bilgi Alanını Kopyala",
+		"#InfoLabelSuffix",					": ", // suffix added to end of link info labels in the info section
+		
+		"#LinksCopyInfoMenu",				"Bilgileri Kopyala", // links panel submenu
+		
+		"#CaptionSubmenu",				"Resim Yazıları",		// name of captions submenu on Object menu
+		"#CaptionRowLabel",				"Meta Veri Resim Yazısı", // caption setup dialog top section title
+		"#CaptionOptionsLabel",				"Pozisyon ve Stil", // caption setup dialog bottom section title
+		"#CaptionOffsetLabel",				"&Kenardan Uzaklık:",
+		"#CaptionParaStyleLabel",			"&Paragraf Stili:",
+		"#CaptionLayerLabel",				"&Katman:",
+		"#CaptionLayerLockedError",			"Kilitli katmanda resim yazısı oluşturulamıyor.",
+		"#CaptionGroupFailureError",			"Resim yazısı için grup oluşturulamaz.",
+		"#ErrorGeneratingCaption",			"Resim yazısı oluşturulamadı.",
+		"#CaptionAlignmentLabel",			"&Hizalama:",
+		
+		"#CaptionAlignBelow",				"Görüntünün Altına",
+		"#CaptionAlignAbove",				"Görüntünün Üstüne",
+		"#CaptionAlignLeft",					"Görüntünün Soluna",
+		"#CaptionAlignRight",				"Görüntünün Sağına",
+		
+		"#GroupCaptionWithImage",			"&Görüntüyü Resim Yazısıyla Grupla",
+		 "#ConvertCaptionToTextMenu",		"Statik Resim Yazılarına Dönüştür",
+		 "#ShowImportOptionsTip", 			"İçe Aktarma Seçeneğini Göster", // Tool tip for custom controls in relink dialog
+		 "#SearchHereForMissingFilesTip",	"Eksik Dosyalar için Burada Arama Yap", // Tool tip for custom controls in relink dialog
+		 "#EmbedLinkFromPropsPanel",		"Sürgü Panelinden Görüntü Göm",
+		 "#RelinkAssetFromPropsPanel",		"Sürgü Panelinden Görüntüyü Yeniden Bağla",
+		 "#UpdateLinkFromPropsPanel",		"Sürgü Panelinden Görüntüyü Güncelle",
+		 "#UnlinkFromPropsPanel",			"Dosyayı Özellikler Panelinden Ayır",
+        
+        "kImportingAALAsset",                "Varlık İçe Aktarılıyor",
+        "kImportingFileName",                "^1 İçe Aktarılıyor",
+        
+        //Error Strings for AEM
+        "AEMUnsupportedFiles",     "^1 / ^2 dosya yerleştirilemiyor. Dosya türü InDesign tarafından desteklenmiyor.",
+        "AEMInaccessibleFiles",     "^1 / ^2 dosya yerleştirilemiyor. InDesign dosyaya erişemedi. Lütfen internet bağlantınızı veya özgün içerik kaynağını kontrol edin.",
+        "AEMUnknownFiles",     "Bilinmeyen bir hata nedeniyle ^1 / ^2 dosya yerleştirilemedi.",
+        "AEMGenericImportFailure",     "AEM tabanlı varlık içe aktarılamadı.",
+        
+        // Action id strings
+        "#LinksUIReplaceFPOWithOriginalLink",        "FPO'yu Orijinaliyle Değiştir...",
+        "#LinksUIReplaceAllFPOWithOriginalLinks",    "Tüm FPO'ları Orijinalleriyle Değiştir...",
+        "#LinksUIDownloadOriginalLink",                "Orijinali İndir",
+        "#LinksUIDownloadAllOriginalLinks",            "Tüm Orijinalleri İndir",
+	}
+};
+
+
+
+#endif //__ODFRC__

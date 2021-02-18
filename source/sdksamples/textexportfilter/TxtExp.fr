@@ -1,0 +1,463 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/sdksamples/textexportfilter/TxtExp.fr $
+//  
+//  Owner: Adobe Developer Technologies
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//  
+//  Umbrella include file for all the .fr files in the plug-in.
+//  
+//========================================================================================
+
+//===========================
+//  General includes:
+//===========================
+
+#include "MenuDef.fh"
+#include "ActionDef.fh"
+#include "ActionDefs.h"
+#include "AdobeMenuPositions.h"
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "StringTable.fh"
+//#include "OMTypes.h"
+#include "objectmodeltypes.fh"
+#include "ShuksanID.h"
+#include "ActionID.h"
+#include "CommandID.h"
+#include "WorkspaceID.h"
+#include "widgetid.h"
+#include "BuildNumber.h"
+#include "DocFrameworkID.h"
+#include "IControlViewDefs.h"
+#include "SysControlIds.h"
+#include "Widgets.fh" // for DialogBoss
+#include "TextID.h"
+#include "ImportExportUIID.h"
+// Project includes:
+#include "TxtExpID.h"
+#include "SDKSharedPNG.fr"
+
+#include "PlugInModel_UIAttributes.h"
+
+#include "EveInfo.fh"
+#ifdef __ODFRC__
+
+/*
+// Plugin version definition.
+*/
+resource PluginVersion (kSDKDefPluginVersionResourceID)
+{
+    kTargetVersion,
+    kTxtExpPluginID,
+    kSDKDefPlugInMajorVersionNumber, kSDKDefPlugInMinorVersionNumber,     
+    kSDKDefHostMajorVersionNumber, kSDKDefHostMinorVersionNumber,
+    kTxtExpCurrentMajorFormatNumber, kTxtExpCurrentMinorFormatNumber,
+    {kInDesignProduct, kInCopyProduct },
+    {kWildFS },
+    kUIPlugIn,
+    kTxtExpVersion
+};
+
+/*
+//    Boss class definition.
+*/
+resource ClassDescriptionTable(kSDKDefClassDescriptionTableResourceID)
+{{{
+            /**
+            Adds ITxtExpSuite to the abstract selection boss.
+            @ingroup textexportfilter
+            */
+            AddIn    
+            {
+                kIntegratorSuiteBoss,
+                kInvalidClass,
+                {
+                    /** 
+                    @see TxtExpSuiteASB
+                    */
+                    IID_ITXTEXPSUITE,        kTxtExpSuiteASBImpl,
+                }
+            };
+            
+            
+            /**
+            Adds ITxtExpSuite to the text selection boss allowing 
+            selected text to be exported.        
+            @ingroup textexportfilter
+            */
+            AddIn    
+            {
+                kTextSuiteBoss,
+                kInvalidClass,
+                {
+                    /** 
+                    @see TxtExpSuiteTextCSB
+                    */
+                    IID_ITXTEXPSUITE,    kTxtExpSuiteTextCSBImpl,
+                }
+            }; 
+            
+            /**
+            This boss class implements the dialog for this plug-in. All
+            dialogs must implement IDialogController. Specialisation of 
+            IObserver is only necessary if you want to handle widget 
+            changes dynamically rather than just gathering their values 
+            and applying in the IDialogController implementation.
+            In this implementation IObserver is specialised so that the 
+            plug-in's about box is popped when the info button widget 
+            is clicked.
+            @ingroup textexportfilter
+            */
+            Class
+            {
+                kTxtExpDialogBoss,
+                kDialogBoss,
+                {
+                    /** 
+                    Provides management and control over the dialog. 
+                    */
+                    IID_IDIALOGCONTROLLER, kTxtExpDialogControllerImpl,
+                    /** 
+                    Allows dynamic processing of dialog changes.
+                    */
+                    IID_IOBSERVER, kTxtExpDialogObserverImpl,
+                }
+            },
+            
+            /**
+            This boss class provides the actions invoked by this plug-in's
+            sub-menu items. It supports two interfaces: 
+            IActionComponent and IPMPersist. We provide the implementation 
+            for IActionComponent in TxtExpAction.cpp. The other
+            default implementation is provided by the API.
+            @ingroup textexportfilter
+            */
+            Class
+            {
+                kTxtExpActionComponentBoss,
+                kBaseActionComponentBoss,
+                {
+                    /** 
+                    Handle the actions from the menu. 
+                    */
+                    IID_IACTIONCOMPONENT, kTxtExpActionComponentImpl,
+                }
+            },
+            
+            /**
+            This boss class provides the export filter provider.
+            @ingroup textexportfilter
+            */
+            Class
+            {
+                kTxtExpFilterBoss,
+                kInvalidClass,
+                {
+                    /** 
+                    Register our text export filter with the export registry. 
+                    Implementation provided by the API.
+                    */
+                    IID_IK2SERVICEPROVIDER, kExportServiceImpl,
+                    /** 
+                    Identify this boss as an export provider.
+                    Implementation provided in this sample in TxtExpFilter.cpp.
+                    */
+                    IID_IEXPORTPROVIDER, kTxtExpFilterImpl,
+                    /** 
+                    Stores the integer data for the option
+                    */
+                    IID_IINTDATA, kIntDataImpl, 
+                }
+            },
+            /** 
+            This boss class implements ITxtExpFileWriter for ASCII encoded files..
+            @ingroup textexportfilter
+            */
+            Class
+            {
+                kASCIIFileWriterBoss,
+                kInvalidClass,
+                {
+                    /** 
+                    Implements ITxtExpFileWriter for ASCII encoded files.
+                    */
+                    IID_ITXTEXPFILEWRITER, kASCIIFileWriterImpl,
+                }
+            },
+            /** 
+            This boss class implements ITxtExpFileWriter for UNICODE encoded files..
+            @ingroup textexportfilter
+            */
+            Class
+            {
+                kUNICODEFileWriterBoss,
+                kInvalidClass,
+                {
+                    /** 
+                    Implements ITxtExpFileWriter for UNICODE encoded files.
+                    */
+                    IID_ITXTEXPFILEWRITER, kUNICODEFileWriterImpl,
+                }
+            },
+            /** 
+            This boss class implements ITxtExpFileWriter for ShiftJIS encoded files..
+            @ingroup textexportfilter
+            */
+            Class
+            {
+                kShiftJISFileWriterBoss,
+                kInvalidClass,
+                {
+                    /** 
+                    Implements ITxtExpFileWriter for ShiftJIS encoded files.
+                    */
+                    IID_ITXTEXPFILEWRITER, kShiftJISFileWriterImpl,
+                }
+            },
+            /** 
+            This boss class implements ITxtExpFileWriter for JIS encoded files..
+            @ingroup textexportfilter
+            */
+            Class
+            {
+                kJISFileWriterBoss,
+                kInvalidClass,
+                {
+                    /** 
+                    Implements ITxtExpFileWriter for JIS encoded files.
+                    */
+                    IID_ITXTEXPFILEWRITER, kJISFileWriterImpl,
+                }
+            },
+        }}};
+
+/*
+// Implementation definition.
+*/
+resource FactoryList (kSDKDefFactoryListResourceID) 
+{
+    kImplementationIDSpace,
+    {
+#include "TxtExpFactoryList.h"
+    }
+};
+
+/*
+// Menu definition.
+*/
+resource MenuDef (kSDKDefMenuResourceID)
+{
+    {
+        // The About Plug-ins sub-menu item for this plug-in.
+        kTxtExpAboutActionID,            // ActionID (kInvalidActionID for positional entries)
+        kTxtExpAboutMenuPath,            // Menu Path.
+        kSDKDefAlphabeticPosition,       // Menu Position.
+        kSDKDefIsNotDynamicMenuFlag,     // kSDKDefIsNotDynamicMenuFlag or kSDKDefIsDynamicMenuFlag.
+    }
+};
+
+/*
+// Action definition.
+*/
+resource ActionDef (kSDKDefActionResourceID)
+{
+    {
+        kTxtExpActionComponentBoss,			// ClassID of boss class that implements the ActionID.
+        kTxtExpAboutActionID,				// ActionID.
+        kTxtExpAboutMenuKey,				// Sub-menu string.
+        kHelpMenuActionArea,				// Area name (see ActionDefs.h).
+        kNormalAction,						// Type of action (see ActionDefs.h).
+        kDisableIfLowMem,					// Enabling type (see ActionDefs.h).
+        kInvalidInterfaceID,				// Selection InterfaceID this action cares about or kInvalidInterfaceID.
+        kSDKDefInvisibleInKBSCEditorFlag,   // kSDKDefVisibleInKBSCEditorFlag or kSDKDefInvisibleInKBSCEditorFlag.
+    }
+};
+
+
+/*
+// LocaleIndex
+// The LocaleIndex should have indicies that point at your
+// localizations for each language system that you are 
+// localized for.
+*/
+/*
+// String LocaleIndex.
+*/
+resource LocaleIndex (kSDKDefStringsResourceID)
+{
+    kStringTableRsrcType,
+    {
+        kWildFS, k_enUS, kSDKDefStringsResourceID + index_enUS
+        kWildFS, k_jaJP, kSDKDefStringsResourceID + index_jaJP
+        
+        kWildFS, k_Wild, kSDKDefStringsResourceID + index_enUS
+    }
+};
+
+resource LocaleIndex (kSDKDefStringsNoTransResourceID)
+{
+    kStringTableRsrcType,
+    {
+        kWildFS, k_Wild, kSDKDefStringsNoTransResourceID + index_enUS
+    }
+};
+
+resource StringTable (kSDKDefStringsNoTransResourceID + index_enUS)
+{
+    k_enUS,                                    // Locale Id
+    kEuropeanMacToWinEncodingConverter,        // Character encoding converter
+    {
+        // No-Translate strings go here:        
+    }
+};
+
+/*
+// Dialog LocaleIndex.
+*/
+resource LocaleIndex (kSDKDefDialogResourceID)
+{
+    kViewRsrcType,
+    {
+        kWildFS,    k_Wild, kSDKDefDialogResourceID + index_enUS
+    }
+};
+
+
+/*
+// Type definition.
+*/
+type TxtExpDialogWidget(kViewRsrcType) : DialogBoss(ClassID = kTxtExpDialogBoss)
+{
+    
+    WidgetEveInfo;
+};
+ 
+resource TxtExpDialogWidget (kSDKDefDialogResourceID + index_enUS)
+{
+    __FILE__, __LINE__,
+    kTxtExpDialogWidgetID,    // WidgetID
+    kPMRsrcID_None,           // RsrcID
+    kBindNone,                // Binding
+    Frame(0,0,250,82),		  // Frame (l,t,r,b)
+    kTrue, kTrue,             // Visible, Enabled
+    kTxtExpDialogTitleKey,    // Dialog name
+    {
+        EVEGenericPanelWidget
+        (
+            kInvalidWidgetID, // WidgetId
+            0                 // RsrcId
+            0,                // Widget EVE Info
+            kBindNone,        // Frame binding
+            Frame(0,0,0,0)    // Frame
+            kTrue,            // Visible
+            kTrue,            // Enabled
+            kEVEAlignFill | kEVEJumboSpaceAfter | kEVEArrangeChildrenInColumn,
+            
+            {
+                EVEDropDownListWidget
+                (
+                    // CControlView related
+                    kTxtExpDropdownWidgetId,     // WidgetId
+                    kSysDropDownPMRsrcId,        // RsrcId
+                    kBindNone,                   // Binding
+                    Frame(0,0,0,0),
+                    kTrue,                       // Visible
+                    kTrue,                       // Enabled
+                    {{}}
+                            
+                    kEVEJumboSpaceAfter,
+                ),
+
+                EVERollOverIconButtonWidget
+                (
+                    kTxtExpIconSuiteWidgetID,    // WidgetID
+                    kSDKDefIconInfoResourceID,   // Icon resource ID 
+                    kTxtExpPluginID,             // Plug-in ID
+                    kBindNone,                   // Binding
+
+                    Frame(0,0,0,0),              // Frame (l,t,r,b)
+                    kTrue, kTrue,                // Visible, Enabled
+                    kADBEIconSuiteButtonDrawWellType,        // PNGIconAttributes, new for InDesign 3.0
+                            
+                    kEVERegularSpaceAfter,
+                ),        
+                
+            }  // End of Eve generic panel child widgets
+        ), // End of Eve generic panel widget definition
+        
+        EVEGenericPanelWidget
+        (
+            kInvalidWidgetID,    // WidgetId
+            0                    // RsrcId
+            0,            
+            kBindNone,           // Frame binding
+            Frame(0,0,0,0)       // Frame
+            kTrue,               // Visible
+            kTrue,               // Enabled
+            kEVEAlignLeft | kEVERegularSpaceAfter | kEVEArrangeChildrenInColumn,
+                    
+            {
+                EVEDefaultButtonWidget
+                (
+                    kOKButtonWidgetID,        // WidgetID 
+                    kSysButtonPMRsrcId,       // RsrcID
+                    kBindNone,                // Binding
+                    Frame(0,0,0,0),
+                    kTrue, kTrue,             // Visible, Enabled
+                    kSDKDefOKButtonApplicationKey,    // Button text
+                            
+                    kEVELargeSpaceAfter,
+                ),
+
+                EVECancelButtonWidget                
+                (
+                    kCancelButton_WidgetID,    // WidgetID
+                    kSysButtonPMRsrcId,        // RsrcID
+                    kBindNone,                 // Binding
+                    Frame(0,0,0,0),
+                    kTrue, kTrue,              // Visible, Enabled
+                    kSDKDefCancelButtonApplicationKey,    // Button name
+                    kTrue,                     // Change to Reset on option-click.
+                            
+                    kEVELargeSpaceAfter,
+                ),
+                        
+            }  // End of EVE Generic panel child widgets
+        ), // End of EVE Generic panel widget definition
+
+    },
+    
+    kEVEArrangeChildrenInRow | kEVELargeMargin,
+};
+
+#undef kDialogWidth
+#undef kDialogHeight
+#undef kButtonHeight
+#undef kButtonWidth
+#undef kDDLHeight
+#undef kDDLWidth
+#undef kWidgetVSpace
+#undef kTrim
+#undef kIconTrim
+
+#endif // __ODFRC__
+
+#include "TxtExp_enUS.fr"
+#include "TxtExp_jaJP.fr"
+

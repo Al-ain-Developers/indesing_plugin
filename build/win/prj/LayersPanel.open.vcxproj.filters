@@ -1,0 +1,299 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Layer Panel">
+      <UniqueIdentifier>{54c9ab07-29d3-4e8e-a0c4-036d0ba0912b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Drag and Drop">
+      <UniqueIdentifier>{cf82f754-8ee8-4791-bee6-fad902c8e4ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Drag and Drop\Delete button">
+      <UniqueIdentifier>{3d54cf3c-d260-4c70-9078-0e343d2dd19f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Drag and Drop\Proxy">
+      <UniqueIdentifier>{d7ce6d00-6cb1-4a2f-b5da-0595b62886db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Drag and Drop\Z order">
+      <UniqueIdentifier>{9f01d26f-e800-4308-93fe-548462d40292}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Drag and Drop\Eye">
+      <UniqueIdentifier>{b04d2f11-e90f-40fc-9093-f5791fc112a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Drag and Drop\Pencil">
+      <UniqueIdentifier>{0f63e9e4-6f52-49c9-bbaa-e56807e0e1f6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Drag and Drop\New button">
+      <UniqueIdentifier>{fa0918ac-50da-4f41-9b59-de0b99b5b6da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Event Handlers">
+      <UniqueIdentifier>{40a32623-1592-461f-974e-f4a694b3d951}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Layer Options Dialog">
+      <UniqueIdentifier>{8366357c-42db-4435-99dc-4bbb46a30d0a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Layer PlugIn">
+      <UniqueIdentifier>{ecc82605-0c3a-4e40-a55d-43bb129a0507}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Observers">
+      <UniqueIdentifier>{0e71dd21-f2ba-49a1-9cdd-e6e3a9a845c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Views">
+      <UniqueIdentifier>{1adbd0e5-69a7-4250-a591-41e0d75b748b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{a8714a64-3149-438c-9dbe-b017ef36b477}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\Core">
+      <UniqueIdentifier>{92856922-6c5c-4c2c-b8f6-cce8bc3b7d73}</UniqueIdentifier>
+      <Extensions>fr</Extensions>
+    </Filter>
+    <Filter Include="Tips">
+      <UniqueIdentifier>{7174686a-b531-4022-b5d1-6cf9e4906196}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Layout View">
+      <UniqueIdentifier>{6d6dffab-7a34-48cb-b017-3a72189aa72c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Service Providers">
+      <UniqueIdentifier>{2936e3bb-1702-4eb7-adff-c3d6a876ad2e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Hierarchy">
+      <UniqueIdentifier>{4aa439e2-8645-4bd9-bd99-cf25f27280c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Drover Related">
+      <UniqueIdentifier>{4baeee24-4765-41ee-a86d-994bae06e2c0}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\DebuggingLayers.cpp">
+      <Filter>Layer Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerPanelMenuComponent.cpp">
+      <Filter>Layer Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerPanelUtils.cpp">
+      <Filter>Layer Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerPanelView.cpp">
+      <Filter>Layer Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\PointyHandCursorProvider.cpp">
+      <Filter>Layer Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerDeleteDragDropTarget.cpp">
+      <Filter>Drag and Drop\Delete button</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerProxyDEHandler.cpp">
+      <Filter>Drag and Drop\Proxy</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\ProxyViewDragDropSource.cpp">
+      <Filter>Drag and Drop\Proxy</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerTreeDragDropTarget.cpp">
+      <Filter>Drag and Drop\Z order</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerZOrderDEHandler.cpp">
+      <Filter>Drag and Drop\Z order</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerZOrderDragDropSource.cpp">
+      <Filter>Drag and Drop\Z order</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\PageItemDupDeleteDEHandler.cpp">
+      <Filter>Drag and Drop\Z order</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\PageItemZOrderDEHandler.cpp">
+      <Filter>Drag and Drop\Z order</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerEyeDEHandler.cpp">
+      <Filter>Drag and Drop\Eye</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerEyeDragDropSource.cpp">
+      <Filter>Drag and Drop\Eye</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerEyeDragDropTarget.cpp">
+      <Filter>Drag and Drop\Eye</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerPencilDEHandler.cpp">
+      <Filter>Drag and Drop\Pencil</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerPencilDragDropSource.cpp">
+      <Filter>Drag and Drop\Pencil</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerPencilDragDropTarget.cpp">
+      <Filter>Drag and Drop\Pencil</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerDuplicateDragDropTarg.cpp">
+      <Filter>Drag and Drop\New button</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerEyeDragDropSourceEH.cpp">
+      <Filter>Event Handlers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerNameEH.cpp">
+      <Filter>Event Handlers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerPencilDragDropSourceEH.cpp">
+      <Filter>Event Handlers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerProxyDragDropSourceEH.cpp">
+      <Filter>Event Handlers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerOptionsDlgController.cpp">
+      <Filter>Layer Options Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerOptionsDlgObserver.cpp">
+      <Filter>Layer Options Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerPanelID.cpp">
+      <Filter>Layer PlugIn</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerPanelMWHacks.cpp">
+      <Filter>Layer PlugIn</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerPanelPlugIn.cpp">
+      <Filter>Layer PlugIn</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerUIUtils.cpp">
+      <Filter>Layer PlugIn</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\libs\publiclib\statics\PlugInStatics.cpp">
+      <Filter>Layer PlugIn</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\TriggerResourceDeps.cpp">
+      <Filter>Layer PlugIn</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\precomp\msvc\VCPlugInHeaders.cpp">
+      <Filter>Layer PlugIn</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\DeleteLayerButtonObserver.cpp">
+      <Filter>Observers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerPanelEyeballObserver.cpp">
+      <Filter>Observers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerPanelPencilObserver.cpp">
+      <Filter>Observers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerPanelSelectionObserver.cpp">
+      <Filter>Observers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\NewLayerButtonObserver.cpp">
+      <Filter>Observers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\ActiveView.cpp">
+      <Filter>Views</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerSwatchView.cpp">
+      <Filter>Views</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\SelectionProxyDrawData.cpp">
+      <Filter>Views</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\SelectionProxyView.cpp">
+      <Filter>Views</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\ActiveLayerWidgetTip.cpp">
+      <Filter>Tips</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\ProxyWidgetTip.cpp">
+      <Filter>Tips</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\CLayoutLayerListObserver.cpp">
+      <Filter>Layout View</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerListLayoutAction.cpp">
+      <Filter>Layout View</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerSelectionObserver.cpp">
+      <Filter>Layout View</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerSuiteDefaultCSB.cpp">
+      <Filter>Layout View</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerSuiteIntegrator.cpp">
+      <Filter>Layout View</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerSuiteLayoutCSB.cpp">
+      <Filter>Layout View</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerSuiteTableCSB.cpp">
+      <Filter>Layout View</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerSuiteTextCSB.cpp">
+      <Filter>Layout View</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerStartupShutdown.cpp">
+      <Filter>Service Providers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerNameEditObserver.cpp">
+      <Filter>Hierarchy</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerNameTextValidation.cpp">
+      <Filter>Hierarchy</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerPageItemNameEH.cpp">
+      <Filter>Hierarchy</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerPageItemPencilEH.cpp">
+      <Filter>Hierarchy</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerPageItemPencilObserver.cpp">
+      <Filter>Hierarchy</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerPanelNameILEEditingAttributes.cpp">
+      <Filter>Hierarchy</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerPanelNameView.cpp">
+      <Filter>Hierarchy</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerPanelTreeObserver.cpp">
+      <Filter>Hierarchy</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerPanelTreeViewAdapter.cpp">
+      <Filter>Hierarchy</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerPanelTreeViewWidgetMgr.cpp">
+      <Filter>Hierarchy</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayersPanelSAXHandler.cpp">
+      <Filter>Hierarchy</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayersPanelTreeViewController.cpp">
+      <Filter>Hierarchy</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayersPanelXMLGenerator.cpp">
+      <Filter>Hierarchy</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayersTreeViewTypeAhead.cpp">
+      <Filter>Hierarchy</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerSubwidgetEH.cpp">
+      <Filter>Hierarchy</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerTreeRowPanelEH.cpp">
+      <Filter>Hierarchy</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerTreeUIDNodeID.cpp">
+      <Filter>Hierarchy</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\PageItemNameEditObserver.cpp">
+      <Filter>Hierarchy</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\DVLayerElementView.cpp">
+      <Filter>Drover Related</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\source\precomp\msvc\VCPlugInHeaders.h">
+      <Filter>Layer PlugIn</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\..\..\source\open\components\layerpanel\LayerPanel.rc">
+      <Filter>Resources</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\..\..\source\open\components\layerpanel\LayerPanel.fr">
+      <Filter>Resources\Core</Filter>
+    </CustomBuild>
+  </ItemGroup>
+</Project>

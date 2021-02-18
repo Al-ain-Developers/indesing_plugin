@@ -1,0 +1,332 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{1c9117a0-0e58-440f-a5e9-fc6c28d0e1c4}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;rc;def;r;odl;hpj;bat;for;f90</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Plugin and Hacks">
+      <UniqueIdentifier>{5054b321-71b5-4f5d-adfa-70bdb7324e31}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\SWF Preview Panel">
+      <UniqueIdentifier>{b9e4d2e0-b497-4cd3-a829-b7886b3e2f36}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Animation">
+      <UniqueIdentifier>{c6cac3f8-068e-4cb5-a7a3-20bb32c7b757}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Timing Panel">
+      <UniqueIdentifier>{dea5288a-ba1c-4d6f-b9b7-d43a1a727e4b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Page Transition Panel">
+      <UniqueIdentifier>{b47e492f-00e4-453c-9a4c-48420e977be7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Motion Path">
+      <UniqueIdentifier>{ca3a9bc2-a50b-43da-89be-5507bf81688c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\SWF Export Dialog">
+      <UniqueIdentifier>{4a08acb7-cf2f-46c3-a377-35360864c36c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{43a7f449-837e-461c-b236-a6d1fe84b532}</UniqueIdentifier>
+      <Extensions>ico;cur;bmp;dlg;rc2;rct;bin;cnt;rtf;gif;jpg;jpeg;jpe</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{e191a9f8-6321-4327-9928-90db72f81002}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Liquid Layout Panel">
+      <UniqueIdentifier>{f38764c9-a54d-4ec5-9754-f6a7f2663631}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\DDPreviewSpreadButtonWidgetTip.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\DynamicDocumentsUIUtils.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\plugin\DynamicDocumentsUIID.cpp">
+      <Filter>Source Files\Plugin and Hacks</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\plugin\DynamicDocumentsUIMWHacks.cpp">
+      <Filter>Source Files\Plugin and Hacks</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\plugin\DynamicDocumentsUIPlugin.cpp">
+      <Filter>Source Files\Plugin and Hacks</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\plugin\MotionTestMenu.cpp">
+      <Filter>Source Files\Plugin and Hacks</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\libs\publiclib\statics\PlugInStatics.cpp">
+      <Filter>Source Files\Plugin and Hacks</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\plugin\TriggerResourceDeps.cpp">
+      <Filter>Source Files\Plugin and Hacks</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\precomp\msvc\VCPlugInHeaders.cpp">
+      <Filter>Source Files\Plugin and Hacks</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\motion\AnimationAdormentDrawer.cpp">
+      <Filter>Source Files\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\motion\AnimationPanelObserver.cpp">
+      <Filter>Source Files\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\motion\AnimationUIAnimateOptionTip.cpp">
+      <Filter>Source Files\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\motion\AnimationUIButtonTriggerEH.cpp">
+      <Filter>Source Files\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\motion\AnimationUIButtonTriggerToolImpls.cpp">
+      <Filter>Source Files\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\motion\AnimationUIEventInfoTip.cpp">
+      <Filter>Source Files\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\motion\AnimationUIEventMenuAction.cpp">
+      <Filter>Source Files\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\motion\AnimationUIManagePresetItemListBoxCtrl.cpp">
+      <Filter>Source Files\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\motion\AnimationUIManagePresetListBoxWidgetMgr.cpp">
+      <Filter>Source Files\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\motion\AnimationUIManagePresetsDialogListNodeView.cpp">
+      <Filter>Source Files\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\motion\AnimationUIManagePresetsDialogObserver.cpp">
+      <Filter>Source Files\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\motion\AnimationUIPanelDetailController.cpp">
+      <Filter>Source Files\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\motion\AnimationUIPanelMenuAction.cpp">
+      <Filter>Source Files\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\motion\AnimationUIPanelView.cpp">
+      <Filter>Source Files\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\motion\AnimationUIPresetPopupDynamicMenu.cpp">
+      <Filter>Source Files\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\motion\AnimationUIPresetPopupMenuAction.cpp">
+      <Filter>Source Files\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\motion\AnimationUISavePresetDialogController.cpp">
+      <Filter>Source Files\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\motion\AnimationUIXFProxyEH.cpp">
+      <Filter>Source Files\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\DynamicTargetListData.cpp">
+      <Filter>Source Files\Timing Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\TimingPanelCursorProvider.cpp">
+      <Filter>Source Files\Timing Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\TimingPanelDataExchangeHandler.cpp">
+      <Filter>Source Files\Timing Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\TimingPanelEventDDListTips.cpp">
+      <Filter>Source Files\Timing Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\TimingPanelGroupUngroupButtonDDTarget.cpp">
+      <Filter>Source Files\Timing Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\TimingPanelMenuComponent.cpp">
+      <Filter>Source Files\Timing Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\TimingPanelNameILEEditingAttributes.cpp">
+      <Filter>Source Files\Timing Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\TimingPanelObserver.cpp">
+      <Filter>Source Files\Timing Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\TimingPanelPageItemNameObserver.cpp">
+      <Filter>Source Files\Timing Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\TimingPanelTreeDDTarget.cpp">
+      <Filter>Source Files\Timing Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\TimingPanelTreeNodeDDSource.cpp">
+      <Filter>Source Files\Timing Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\TimingPanelTreeNodeEH.cpp">
+      <Filter>Source Files\Timing Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\TimingPanelTreeNodeGroupWidgetEH.cpp">
+      <Filter>Source Files\Timing Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\TimingPanelTreeNodeGroupWidgetTip.cpp">
+      <Filter>Source Files\Timing Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\TimingPanelTreeNodeGroupWidgetView.cpp">
+      <Filter>Source Files\Timing Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\TimingPanelTreeNodeID.cpp">
+      <Filter>Source Files\Timing Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\TimingPanelTreeNodeView.cpp">
+      <Filter>Source Files\Timing Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\TimingPanelTreeViewAdapter.cpp">
+      <Filter>Source Files\Timing Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\TimingPanelTreeViewWidgetMgr.cpp">
+      <Filter>Source Files\Timing Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\TimingPanelView.cpp">
+      <Filter>Source Files\Timing Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\PageTransitionsDialogController.cpp">
+      <Filter>Source Files\Page Transition Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\PageTransitionsDialogObserver.cpp">
+      <Filter>Source Files\Page Transition Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\PageTransitionsMenuComponent.cpp">
+      <Filter>Source Files\Page Transition Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\PageTransitionsPanelObserver.cpp">
+      <Filter>Source Files\Page Transition Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\PageTransitionStaticTextToolTips.cpp">
+      <Filter>Source Files\Page Transition Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\motion\MotionPathAdornmentTips.cpp">
+      <Filter>Source Files\Motion Path</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\LiquidLayoutPanelMenuComponent.cpp">
+      <Filter>Source Files\Liquid Layout Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\LiquidLayoutPanelObserver.cpp">
+      <Filter>Source Files\Liquid Layout Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\HTMLPreviewPanelMenuComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\source\precomp\msvc\VCPlugInHeaders.h">
+      <Filter>Source Files\Plugin and Hacks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\open\components\dynamicdocumentsui\includes\DynamicDocumentsUIDefs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\open\components\dynamicdocumentsui\includes\DynamicDocumentsUIFactoryList.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\interfaces\graphics\DynamicDocumentsUIID.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\source\open\components\dynamicdocumentsui\resources\AnimationPanelToolTips.fr">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\source\open\components\dynamicdocumentsui\resources\AnimationUIManagePresetsDialogViews.fr">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\source\open\components\dynamicdocumentsui\resources\AnimationUIManagePresetsDialogViews_enUS.fr">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\source\open\components\dynamicdocumentsui\resources\AnimationUIMenus.fr">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\source\open\components\dynamicdocumentsui\resources\AnimationUIPanelList.fr">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\source\open\components\dynamicdocumentsui\resources\AnimationUIPng.fr">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\source\open\components\dynamicdocumentsui\resources\AnimationUIView_enUS.fr">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\source\open\components\dynamicdocumentsui\resources\AnimationUIViews.fr">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\source\open\components\dynamicdocumentsui\resources\DynamicDocumentsUIClass.fr">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\source\open\components\dynamicdocumentsui\resources\DynamicDocumentsUIFactoryList.fr">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\source\open\components\dynamicdocumentsui\resources\DynamicDocumentsUIStrings.fr">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\source\open\components\dynamicdocumentsui\resources\DynamicDocumentsUIStrings_enUS.fr">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\source\open\components\dynamicdocumentsui\resources\PageTransitionsDialogViews.fr">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\source\open\components\dynamicdocumentsui\resources\PageTransitionsDialogViews_enUS.fr">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\source\open\components\dynamicdocumentsui\resources\PageTransitionsPanelList.fr">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\source\open\components\dynamicdocumentsui\resources\PageTransitionsPanelMenus.fr">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\source\open\components\dynamicdocumentsui\resources\PageTransitionsPanelPng.fr">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\source\open\components\dynamicdocumentsui\resources\PageTransitionsPanelViews.fr">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\source\open\components\dynamicdocumentsui\resources\PageTransitionsPanelViews_enUS.fr">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\source\open\components\dynamicdocumentsui\resources\SWFExportAdvancedOptionsPanel.fr">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\source\open\components\dynamicdocumentsui\resources\SWFExportAdvancedOptionsPanel_enUS.fr">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\source\open\components\dynamicdocumentsui\resources\SWFExportDialogViews.fr">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\source\open\components\dynamicdocumentsui\resources\SWFExportDialogViews_enUS.fr">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\source\open\components\dynamicdocumentsui\resources\SWFExportGeneralOptionsPanel.fr">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\source\open\components\dynamicdocumentsui\resources\SWFExportGeneralOptionsPanel_enUS.fr">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\source\open\components\dynamicdocumentsui\resources\TimingPanelList.fr">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\source\open\components\dynamicdocumentsui\resources\TimingPanelMenus.fr">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\source\open\components\dynamicdocumentsui\resources\TimingPanelPng.fr">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\source\open\components\dynamicdocumentsui\resources\TimingPanelToolTips.fr">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\source\open\components\dynamicdocumentsui\resources\TimingPanelViews.fr">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\source\open\components\dynamicdocumentsui\resources\TimingPanelViews_enUS.fr">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\source\open\components\dynamicdocumentsui\resources\HTMLPreviewPanelMenus.fr">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\..\..\source\open\components\dynamicdocumentsui\resources\DynamicDocumentsUI.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\..\..\source\open\components\dynamicdocumentsui\resources\DynamicDocumentsUI.fr">
+      <Filter>Resource Files</Filter>
+    </CustomBuild>
+  </ItemGroup>
+</Project>

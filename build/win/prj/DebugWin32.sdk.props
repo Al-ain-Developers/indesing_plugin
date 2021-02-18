@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Label="PropertySheets">
+    <Import Project="Debug.props" />
+    <Import Project="BaseLinkLists.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros">
+    <ID_SDK_DIR>..\..\..</ID_SDK_DIR>
+    <LIB_DIR>$(ID_SDK_DIR)\build\win\objD</LIB_DIR>
+    <BoostFilesystemLib>$(ID_SDK_DIR)\external\dva\third_party\boost_libraries\bin.v2\libs\boost_filesystem\lib\win\debug\32\boost_filesystem.lib</BoostFilesystemLib>
+    <BoostThreadLib>$(ID_SDK_DIR)\external\dva\third_party\boost_libraries\bin.v2\libs\boost_threads\lib\win\debug\32\boost_threads.lib</BoostThreadLib>
+    <BoostRegexLib>$(ID_SDK_DIR)\external\dva\third_party\boost_libraries\bin.v2\libs\boost_regex\lib\win\debug\32\boost_regex.lib</BoostRegexLib>
+    <BoostSystemLib>$(ID_SDK_DIR)\external\dva\third_party\boost_libraries\bin.v2\libs\boost_system\lib\win\debug\32\boost_system.lib</BoostSystemLib>
+    <BoostDateTimeLib>$(ID_SDK_DIR)\external\dva\third_party\boost_libraries\bin.v2\libs\boost_date_time\lib\win\debug\32\boost_date_time.lib</BoostDateTimeLib>
+    <AFLLib>$(ID_SDK_DIR)\external\afl\libs\win\debug\AFL.lib</AFLLib>
+    <OWL_LIB_DIR>$(ID_SDK_DIR)\external\owl\api\binaries\windows\win32\debug</OWL_LIB_DIR>
+    <TBBLib>$(ID_SDK_DIR)\external\dva\third_party\intel_tbb_libraries\windows\tbb\lib\ia32_win\vc14\tbb_debug.lib</TBBLib>
+    <WRServicesLib>$(ID_SDK_DIR)\external\WRServices\Public\Libraries\windows\debug\WRServices.lib</WRServicesLib>
+    <MODEL_PLUGIN_LINKLIST>$(LIB_DIR)\PMRuntime.lib;$(LIB_DIR)\Public.lib;$(LIB_DIR)\Database.lib;$(LIB_DIR)\ASLSupport.lib</MODEL_PLUGIN_LINKLIST>
+    <MODEL_TEST_PLUGIN_LINKLIST>$(MODEL_PLUGIN_LINKLIST);$(LIB_DIR)\TestLib.lib</MODEL_TEST_PLUGIN_LINKLIST>
+    <UI_PLUGIN_LINKLIST>$(MODEL_PLUGIN_LINKLIST);$(LIB_DIR)\DV_WidgetBin.lib;$(LIB_DIR)\WidgetBin.lib</UI_PLUGIN_LINKLIST>
+    <UI_TEST_PLUGIN_LINKLIST>$(UI_PLUGIN_LINKLIST);$(LIB_DIR)\TestLib.lib;$(LIB_DIR)\TestUILib.lib</UI_TEST_PLUGIN_LINKLIST>
+    <OWL_LINKLIST>$(OWL_LIB_DIR)\AdobeOwl.lib</OWL_LINKLIST>
+  </PropertyGroup>
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.40219.1</_ProjectFileVersion>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <Link>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <BuildMacro Include="ID_SDK_DIR">
+      <Value>$(ID_SDK_DIR)</Value>
+    </BuildMacro>
+    <BuildMacro Include="LIB_DIR">
+      <Value>$(LIB_DIR)</Value>
+    </BuildMacro>
+    <BuildMacro Include="BoostFilesystemLib">
+      <Value>$(BoostFilesystemLib)</Value>
+    </BuildMacro>
+    <BuildMacro Include="BoostThreadLib">
+      <Value>$(BoostThreadLib)</Value>
+    </BuildMacro>
+    <BuildMacro Include="BoostRegexLib">
+      <Value>$(BoostRegexLib)</Value>
+    </BuildMacro>
+    <BuildMacro Include="BoostSystemLib">
+      <Value>$(BoostSystemLib)</Value>
+    </BuildMacro>
+    <BuildMacro Include="BoostDateTimeLib">
+      <Value>$(BoostDateTimeLib)</Value>
+    </BuildMacro>
+    <BuildMacro Include="AFLLib">
+      <Value>$(AFLLib)</Value>
+    </BuildMacro>
+    <BuildMacro Include="OWL_LIB_DIR">
+      <Value>$(OWL_LIB_DIR)</Value>
+    </BuildMacro>
+    <BuildMacro Include="TBBLib">
+      <Value>$(TBBLib)</Value>
+    </BuildMacro>
+    <BuildMacro Include="WRServicesLib">
+      <Value>$(WRServicesLib)</Value>
+    </BuildMacro>
+    <BuildMacro Include="MODEL_PLUGIN_LINKLIST">
+      <Value>$(MODEL_PLUGIN_LINKLIST)</Value>
+    </BuildMacro>
+    <BuildMacro Include="MODEL_TEST_PLUGIN_LINKLIST">
+      <Value>$(MODEL_TEST_PLUGIN_LINKLIST)</Value>
+    </BuildMacro>
+    <BuildMacro Include="UI_PLUGIN_LINKLIST">
+      <Value>$(UI_PLUGIN_LINKLIST)</Value>
+    </BuildMacro>
+    <BuildMacro Include="UI_TEST_PLUGIN_LINKLIST">
+      <Value>$(UI_TEST_PLUGIN_LINKLIST)</Value>
+    </BuildMacro>
+    <BuildMacro Include="OWL_LINKLIST">
+      <Value>$(OWL_LINKLIST)</Value>
+    </BuildMacro>
+</ItemGroup>
+</Project>

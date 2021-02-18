@@ -1,0 +1,142 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kLayerPanelStringsRsrcID + index_enUS)
+{
+	k_enUS,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{
+		// ----- Command strings
+
+		"Layer Options",				"Layer Options",
+		"New Layer",					"New Layer",
+		"Layer Deletion",				"Delete Layer(s)",
+		"Delete Unused Layers",			"Delete Unused Layers",
+		"Lock Others",					"Lock Others",
+		"#UnlockOthers",					"Unlock Others",
+		"Show All",						"Show All",
+		"#ShowOthers",					"Show Others",
+		"Unlock All",					"Unlock All",
+		"Hide All",						"Hide All",
+		"Lock All",						"Lock All",
+		"Merge Layers",					"Merge Layers",
+		"Move To Layer",				"Move To Layer",
+		"Copy To Layer",				"Copy To Layer",
+		"Move Layer",					"Move Layer",
+		"Move Layers",					"Move Layers",
+		"kUnlockOthersSequence",		"Unlock Others",
+		"kLockOthersSequence",			"Lock Others",
+
+		// ----- Menu strings
+		
+		"Layers...",						"&Layers...",
+
+		"New Layer...",						"New Layer...",
+		"New Layer Above \"^1\"...",		"New Layer Above \"^1\"...",
+		"New Layer Below \"^1\"...",		"New Layer Below \"^1\"...",
+		"New Top Layer...",					"New Top Layer...",
+		"Delete Layer",						"Delete Layer",
+		"Delete \"^1\"",					"Delete Layer \"^1\"",
+		"Delete Layers",					"Delete Layers",
+		"#Duplicate ^1 Menu",				"Duplicate Layer \"^1\"",
+		"#Duplicate LayersMenu",			"Duplicate Layers",
+		"#DuplicatLayersCmd",				"Duplicate Layers",
+		
+		"Layer Options for \"^1\"...",		"Layer Options for \"^1\"...",
+		"Layer Options...",					"Layer Options...",
+		"Show All Layers",					"Show All Layers",
+		"Hide Others",						"Hide Others",
+		"Unlock All Layers",				"Unlock All Layers",
+		"Lock Others",						"Lock Others",
+		"Hide All Layers",					"Hide All Layers",
+		"Lock All Layers",					"Lock All Layers",
+		
+		"Paste Remembers Layers",			"Paste Remembers Layers",
+		"Ungroup Remembers Layers",			"Ungroup Remembers Layers",
+		
+		"Merge Layers",						"Merge Layers",
+		"Delete Unused Layers",				"Delete Unused Layers",
+		"Select Item(s) on \"^1\"",			"Select Item(s) on \"^1\"",
+		"Select Item(s) Layer",				"Select Item(s) on Layer",
+				
+		"#SelectLayerPageItemMenu",		"Select Item(s)",
+		"#SelectZoomLayerPageItemMenu",	"Select and Fit Item",
+		"#ZoomLockedPageItemMenu",		"Fit Item in Window",
+		
+		// Menu names for context and panel menus
+		"LayerPanelPopup",					"Layers Panel Menu",	
+		"RtMenuLayerPanelEye",				"Layers Panel Eye Context Menu",	
+		"RtMenuLayerPanelLock",				"Layers Panel Lock Context Menu",
+		"RtMenuLayerPanelItem",				"Layers Panel Layer Context Menu",	
+		"RtMenuLayerPanelPageItem",			"Layers Panel Page Item Context Menu",	
+
+		// ----- Window strings
+		"DeleteOneLayer",					"The layer \"^1\" contains one or more objects. Delete the layer anyway?",
+		"DeleteMultiLayers",				"The selected layers contain objects. Delete the layers anyway?",
+		"DeleteOneGuideLayer",				"The layer \"^1\" contains ruler guides. Delete the layer anyway?",
+		"DeleteGuideLayers",				"The selected layers contain ruler guides. Delete the layers anyway?",
+		"DeletingPlaceGunUsedLayer",		"Cannot delete layer. It is required by the snippet loaded in the place cursor.",
+
+		// ----- Window Menu
+		"Layers_WinMenu",					"&Layers",
+		
+		// ----- Panel strings
+		
+		"^1 Layer",							"^1 Layer",		// For status widget
+		"^1 Layers",						"^1 Layers",	// For status widget
+		"New Layer",						"New Layer",	// Title of New Layer dialog
+		"Layer Options",					"Layer Options", // Title of Layer Options dialog
+		"&Name:",							"&Name:",
+		"&Color:",							"&Color:",
+		"&Show Layer",						"&Show Layer",
+		"Show &Guides",						"Show &Guides",
+		"&Lock Layer",						"&Lock Layer",
+		"Loc&k Guides",						"Loc&k Guides",
+		"Keep When Layer is &Hidden",		"Suppress &Text Wrap When Layer is Hidden",
+		"&Print Layer",						"&Print Layer",
+
+		// ----- Tips strings
+
+		"DeleteLayerTip",					"Delete selected layers",
+		"NewLayerTip",						"Create new layer",
+		"EyeTip",							"Toggles visibility",
+		"PencilTip",						"Toggles layer lock (editable when blank)",
+		"PageItemPencilTip",				"Toggles page item lock (editable when blank)",
+		"SwatchTip",						"Color of selection marks on this layer",
+		"ProxyTip",							"Indicates selected items (drag to move between layers or change Z order)",
+		"ProxyChildSelectedTip",			"Contains selected object, click to select container object",
+		"UnselectedProxyTip",				"Click to select items",
+		"ActiveTip",						"Indicates current drawing layer",
+
+		// ----- Error strings
+		"EmptyLayerName",					"Layer name must be provided.",
+		"DuplicateLayer",					"Another layer already exists with this name.",
+
+		"#LayerHierPanelName",		"Layers",
+		"#Page:^1,",					"Page: ^1, ", // for layer panel status widget. Will be followed by layer count string.
+		"#Pages:^1,",					"Pages: ^1, ", // for layer panel status widget. Will be followed by layer count string.
+		"#DeletePageItemsMenu",		"Delete Page Items", // menu item name
+		"#DeletePageItem \"^1\"",		"Delete Page Item  \"^1\"", // menu item name
+		"#DuplicatePI ^1 Menu",			"Duplicate Page Item  \"^1\"", // menu item name
+		"#DuplicatePIMenu",			"Duplicate Page Items",  // menu item name
+	}
+};
+
+#endif // __ODFRC__

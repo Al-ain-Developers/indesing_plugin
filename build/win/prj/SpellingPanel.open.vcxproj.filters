@@ -1,0 +1,303 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{7d971569-2e48-45e0-b073-d6aad27fc8d1}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;rc;def;r;odl;hpj;bat;for;f90</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Shuksan">
+      <UniqueIdentifier>{2870382a-be43-47a4-94bb-84bae84d06d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Plugin">
+      <UniqueIdentifier>{5d790874-8d2e-4c86-9e53-fd6e262380e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Utils">
+      <UniqueIdentifier>{a651c429-7a36-4fc6-9717-566ba87e344c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Observer">
+      <UniqueIdentifier>{e75a07b1-1f68-4b61-b73d-0c344d37ab2b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Spelling Dialogs">
+      <UniqueIdentifier>{88f983f1-e02d-4de7-b130-c5f1c937b2b5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Spelling Dialogs\SpellPanelOptions">
+      <UniqueIdentifier>{d6e2afce-edcd-4556-af39-3becb8daa9b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Spelling Dialogs\Prefs">
+      <UniqueIdentifier>{e60e8346-5d97-4039-b7c4-398fff09b63a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Includes">
+      <UniqueIdentifier>{440dd141-0ab8-4c20-aecc-bcfab75d019e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Includes\EH">
+      <UniqueIdentifier>{e08692ac-2574-4247-a7e9-42048ab66499}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Dynamic Spell Check">
+      <UniqueIdentifier>{959eaae6-8aed-402b-9dce-597a8be25728}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\AutoCorrect">
+      <UniqueIdentifier>{e20a0d98-b6b6-4974-8cf1-9872cfc0d951}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\AutoCorrect UI">
+      <UniqueIdentifier>{425c0845-191b-4e78-8c6c-c021c9e01a70}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\AutoCorrect UI\TreeView">
+      <UniqueIdentifier>{ede21044-7e5e-4d57-903e-21312690044f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{6d2071de-9992-4505-9b52-9cf27cd76a25}</UniqueIdentifier>
+      <Extensions>ico;cur;bmp;dlg;rc2;rct;bin;cnt;rtf;gif;jpg;jpeg;jpe</Extensions>
+    </Filter>
+    <Filter Include="Resource Files\Core">
+      <UniqueIdentifier>{b56cb2da-a6e7-41df-ac9f-f3106a0ec27e}</UniqueIdentifier>
+      <Extensions>fr</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\source\public\libs\publiclib\statics\PlugInStatics.cpp">
+      <Filter>Source Files\Shuksan</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\precomp\msvc\VCPlugInHeaders.cpp">
+      <Filter>Source Files\Shuksan</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\spellpanel\LinguisticTestMenu.cpp">
+      <Filter>Source Files\Plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\spellpanel\SpellMenuComponent.cpp">
+      <Filter>Source Files\Plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\spellpanel\SpellPanelID.cpp">
+      <Filter>Source Files\Plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\spellpanel\SpellPanelMWHacks.cpp">
+      <Filter>Source Files\Plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\spellpanel\SpellPanelPlugIn.cpp">
+      <Filter>Source Files\Plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\spellpanel\TriggerResourceDeps.cpp">
+      <Filter>Source Files\Plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\spellpanel\PrivateSpellingUtils.cpp">
+      <Filter>Source Files\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\spellpanel\SpellAddToListObserver.cpp">
+      <Filter>Source Files\Observer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\spellpanel\SpellAlternativesObserver.cpp">
+      <Filter>Source Files\Observer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\spellpanel\SpellCaseSensitiveObserver.cpp">
+      <Filter>Source Files\Observer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\spellpanel\SpellChangeAllObserver.cpp">
+      <Filter>Source Files\Observer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\spellpanel\SpellChangeObserver.cpp">
+      <Filter>Source Files\Observer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\spellpanel\SpellIgnoreObserver.cpp">
+      <Filter>Source Files\Observer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\spellpanel\SpellMisspelledObserver.cpp">
+      <Filter>Source Files\Observer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\spellpanel\SpellPanelObserver.cpp">
+      <Filter>Source Files\Observer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\spellpanel\SpellScopeObserver.cpp">
+      <Filter>Source Files\Observer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\spellpanel\SpellSkipObserver.cpp">
+      <Filter>Source Files\Observer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\spellpanel\SpellStatusTextObserver.cpp">
+      <Filter>Source Files\Observer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\spellpanel\SpellTargetListObserver.cpp">
+      <Filter>Source Files\Observer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\spellpanel\SpellWordObserver.cpp">
+      <Filter>Source Files\Observer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\spellpanel\SpellCheckWalker.cpp">
+      <Filter>Source Files\Spelling Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\spellpanel\SpellCheckWalkerData.cpp">
+      <Filter>Source Files\Spelling Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\spellpanel\SpellPanelDialogController.cpp">
+      <Filter>Source Files\Spelling Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\spellpanel\SpellReplaceWalker.cpp">
+      <Filter>Source Files\Spelling Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\spellpanel\SpellTargetServer.cpp">
+      <Filter>Source Files\Spelling Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\spellpanel\ApplySpellPanelOptionsCmd.cpp">
+      <Filter>Source Files\Spelling Dialogs\SpellPanelOptions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\spellpanel\SpellPanelOptions.cpp">
+      <Filter>Source Files\Spelling Dialogs\SpellPanelOptions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\spellpanel\SpellPrefsDialogController.cpp">
+      <Filter>Source Files\Spelling Dialogs\Prefs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\spellpanel\SpellPrefsPanelCreator.cpp">
+      <Filter>Source Files\Spelling Dialogs\Prefs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\spellpanel\SpellListBoxEH.cpp">
+      <Filter>Source Files\Includes\EH</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\spellpanel\SpellMisspelledEH.cpp">
+      <Filter>Source Files\Includes\EH</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\spellpanel\SpellWordEH.cpp">
+      <Filter>Source Files\Includes\EH</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\spellpanel\DSCServiceProvider.cpp">
+      <Filter>Source Files\Dynamic Spell Check</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\spellpanel\DSCStartupShutdown.cpp">
+      <Filter>Source Files\Dynamic Spell Check</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\spellpanel\DynamicSpellCheckAdornment.cpp">
+      <Filter>Source Files\Dynamic Spell Check</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\spellpanel\DynamicSpellCheckCache.cpp">
+      <Filter>Source Files\Dynamic Spell Check</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\spellpanel\DynamicSpellCheckIdleTask.cpp">
+      <Filter>Source Files\Dynamic Spell Check</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\spellpanel\DynamicSpellCheckObserver.cpp">
+      <Filter>Source Files\Dynamic Spell Check</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\spellpanel\DynSpellCheckEventWatcher.cpp">
+      <Filter>Source Files\Dynamic Spell Check</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\spellpanel\AutoCorrectEventWatcher.cpp">
+      <Filter>Source Files\AutoCorrect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\spellpanel\AutoCorrectFolderIdleTask.cpp">
+      <Filter>Source Files\AutoCorrect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\spellpanel\AutoCorrectObserver.cpp">
+      <Filter>Source Files\AutoCorrect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\spellpanel\AutoCorrectServiceProvider.cpp">
+      <Filter>Source Files\AutoCorrect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\spellpanel\AutoCorrectStartupShutdown.cpp">
+      <Filter>Source Files\AutoCorrect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\spellpanel\AutoCorrectTypingIdleTask.cpp">
+      <Filter>Source Files\AutoCorrect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\spellpanel\AutoCorrectWSResponder.cpp">
+      <Filter>Source Files\AutoCorrect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\spellpanel\AutoCorrectAddPairDialogController.cpp">
+      <Filter>Source Files\AutoCorrect UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\spellpanel\AutoCorrectButtonObservers.cpp">
+      <Filter>Source Files\AutoCorrect UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\spellpanel\AutoCorrectLanguageObserver.cpp">
+      <Filter>Source Files\AutoCorrect UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\spellpanel\AutoCorrectPanelObserver.cpp">
+      <Filter>Source Files\AutoCorrect UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\spellpanel\AutoCorrectPrefsDialogController.cpp">
+      <Filter>Source Files\AutoCorrect UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\spellpanel\AutoCorrectPrefsPanelCreator.cpp">
+      <Filter>Source Files\AutoCorrect UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\spellpanel\AutoCorrectNodeID.cpp">
+      <Filter>Source Files\AutoCorrect UI\TreeView</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\spellpanel\AutoCorrectTreeViewAdapter.cpp">
+      <Filter>Source Files\AutoCorrect UI\TreeView</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\spellpanel\AutoCorrectTreeViewObserver.cpp">
+      <Filter>Source Files\AutoCorrect UI\TreeView</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\spellpanel\AutoCorrectTreeViewWidgetMgr.cpp">
+      <Filter>Source Files\AutoCorrect UI\TreeView</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\spellpanel\SpellPreviousObserver.cpp">
+      <Filter>Source Files\Observer</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\source\precomp\msvc\VCPlugInHeaders.h">
+      <Filter>Source Files\Shuksan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\open\interfaces\text\ISpellingUtils.h">
+      <Filter>Source Files\Includes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\open\interfaces\text\ISpellPanelOptions.h">
+      <Filter>Source Files\Includes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\open\components\spellpanel\SpellPanelDialogController.h">
+      <Filter>Source Files\Includes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\open\components\spellpanel\SpellPanelFactoryList.h">
+      <Filter>Source Files\Includes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\open\components\spellpanel\SpellPanelObserver.h">
+      <Filter>Source Files\Includes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\open\components\spellpanel\AutoCorrectButtonObservers.h">
+      <Filter>Source Files\AutoCorrect UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\open\components\spellpanel\AutoCorrectPanelObserver.h">
+      <Filter>Source Files\AutoCorrect UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\open\components\spellpanel\AutoCorrectPrefsDialogController.h">
+      <Filter>Source Files\AutoCorrect UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\open\components\spellpanel\AutoCorrectNodeID.h">
+      <Filter>Source Files\AutoCorrect UI\TreeView</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\open\components\spellpanel\AutoCorrectTreeViewObserver.h">
+      <Filter>Source Files\AutoCorrect UI\TreeView</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\source\open\components\spellpanel\AutoCorrectPrefsPanel.fr">
+      <Filter>Resource Files\Core</Filter>
+    </None>
+    <None Include="..\..\..\source\open\components\spellpanel\AutoCorrectPrefsPanel_enUS.fr">
+      <Filter>Resource Files\Core</Filter>
+    </None>
+    <None Include="..\..\..\source\open\components\spellpanel\SpellDialogViews.fr">
+      <Filter>Resource Files\Core</Filter>
+    </None>
+    <None Include="..\..\..\source\open\components\spellpanel\SpellDialogViews_enUS.fr">
+      <Filter>Resource Files\Core</Filter>
+    </None>
+    <None Include="..\..\..\source\open\components\spellpanel\SpellingPrefsPanel_enUS.fr">
+      <Filter>Resource Files\Core</Filter>
+    </None>
+    <None Include="..\..\..\source\open\components\spellpanel\SpellPanelClass.fr">
+      <Filter>Resource Files\Core</Filter>
+    </None>
+    <None Include="..\..\..\source\open\components\spellpanel\SpellPanelStrings_enUS.fr">
+      <Filter>Resource Files\Core</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\..\..\source\open\components\spellpanel\SpellPanel.rc">
+      <Filter>Resource Files\Core</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\..\..\source\open\components\spellpanel\SpellPanel.fr">
+      <Filter>Resource Files\Core</Filter>
+    </CustomBuild>
+  </ItemGroup>
+</Project>

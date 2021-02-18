@@ -1,0 +1,126 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kConditionalTextUIStringsRsrcID + index_jaJP)
+{
+    k_jaJP,                                 // Locale Id
+    kResourceUTF8Encoded,     // Character encoding converter
+    {
+		"#CondTextUI_WinMenu",	"条件テキスト(&O)",	// panel menu item
+		"#CondTextUI_PanelName","条件テキスト",		// panel name
+		"#CondTextUI_PanelMenu","条件テキストパネルメニュー",
+		"#CondTextUI_NewConditionTagMenu", "新規条件...",
+		"#CondTextUI_DeleteConditionTagMenu", "条件を削除...",
+		"#CondTextUI_DeleteConditionTagsMenu", "条件を削除...",
+		"#CondTextUI_EditConditionTagMenu", "条件オプション...",
+		"#CondTextUI_LoadConditionTagsMenu", "条件を読み込み...",
+		"#CondTextUI_LoadConditionTagsAndSetsMenu", "条件およびセットを読み込み...",
+		"#CondTextUI_ShowIndicatorsCB", "条件テキスト上にインジケーターを表示",
+		"#CondTextUI_ShowIndicatorsMenu", "条件テキスト上にインジケーターを表示",
+		"#CondTextUI_ShowAndPrintIndicatorsMenu", "条件テキスト上にインジケーターを表示してプリント",
+		"#CondTextUI_HideIndicatorsMenu", "条件テキスト上のインジケーターを隠す",
+		"#CondTextUI_ShowIndicatorsDD", "インジケーター :",
+		"#CondTextUI_ShowIndicators", "表示",
+		"#CondTextUI_ShowAndPrintIndicators", "表示と印刷",
+		"#CondTextUI_HideIndicators", "隠す",
+		"#CondTextUI_RtMenuConditionTagTVNode",    "条件ツリービューノードのコンテキストメニュー",
+		"#CondTextUI_RtMenuUnapplyTag",		"「^1」を適用不要",
+		"#CondTextUI_RtMenuDeleteTag",		"「^1」を削除",
+		"#CondTextUI_RtMenuEditTag",		"「^1」を編集...",
+		"Show Options", "オプションを表示(&O)",
+		"Hide Options", "オプションを隠す(&O)",
+		"#CondTextUI_SelectUnusedMenu", "未使用をすべて選択",
+	
+		"#ConditionTagList_NameColumnLabel", "名前",
+		"#ConditionTag_OptionsDialog", "条件オプション",
+		"#ConditionTag_OptionsDialogNew", "新規条件",
+		"#ConditionTagOptions_Name:", "名前(&N) :",
+		"#ConditionTagOptions_Method:", "形式(&M) :",
+		"#ConditionTagOptions_Appearance:", "外観(&A) :",
+		"#ConditionTagOptions_Color:", "カラー(&C) :",
+		"#ConditionTagOptions_Indicator", "インジケーター",
+		"#ConditionTagOptions_MethodUnderline", "下線",
+		"#ConditionTagOptions_MethodHighlight", "ハイライト",
+		"#ConditionTagOptions_WavyUnderline", "波状",		
+		"#ConditionTagOptions_SolidUnderline", "ベタ",		
+		"#ConditionTagOptions_DashedUnderline", "点線",		
+		"#ConditionTag_EmptyNameMsg", "条件名を指定してください。",
+		"#ConditionTag_NameInUseMsg", "この条件名は既に使用されています。他の名前を選択してください。",
+		
+		"#ConditionSetShowAll", "すべてを表示",
+		"#ConditionSetHideAll", "すべてを隠す",
+		"#ConditionSetNone", "[なし]",
+		"#ConditionSetBlank", " ",
+		"#ConditionSetLabel", "セット :",
+		"#ConditionSetNewSet", "新規セットを作成...",
+		"#ConditionSetDeleteSet", "「^1」を削除...",
+		"#ConditionSetRenameSet", "「^1」の名前を変更...",
+		"#ConditionSetRedefineSet", "「^1」を再定義...",
+		"#ConditionSetUpdateAllSets", "すべてのセットを更新",
+		"#ConditionSetUpdateAllSetsUndoName", "すべての条件セットを更新",
+		"#ConditionSetNameDialog", "条件セット名",
+		"#ConditionSetNameStatic", "名前(&N) :",
+		"#InvalidSetName", "無効な条件セット名",
+		"#DuplicateSetName", "同じ名前が既に存在します",
+		"#NoActiveSetString", "アクティブなセットがありません",
+		
+		"#ConditionalTextTip", "^1 で非表示テキストが見つかりました :",
+		"#ConditionalTextTipOneTag", "1 つの条件",
+		"#ConditionalTextTipManyTags", "複数の条件",
+		
+		"#ConditionalTextEyeballHideWidgetTip", "この条件が適用されているすべてのテキストを隠す場合はクリックします",
+		"#ConditionalTextEyeballShowWidgetTip", "この条件が適用されているすべてのテキストを表示する場合はクリックします",
+		"#ConditionalTextEyeballUnconditionalWidgetTip", "条件なしのテキストを常に表示します",
+		"#ConditionalTextAppliedAllTip",	"選択したすべてのテキストに条件が適用されています。適用不要の場合はクリックしてください。",
+		"#ConditionalTextAppliedSomeTip",	"選択した一部のテキストに条件が適用されています。選択したすべてのテキストに適用する場合はクリックしてください。",
+		"#ConditionalTextAppliedNoneTip",	"条件を適用する場合はクリックしてください",
+		"#ConditionalTextAppliedAllTipUncondition",	"選択したテキストには条件が適用されていません",
+		"#ConditionalTextAppliedSomeTipUncondition",	"選択した一部のテキストには条件が適用されていません。すべてのテキストから条件を削除する場合はクリックしてください。",
+		"#ConditionalTextAppliedNoneTipUncondition",	"テキストから条件を削除する場合はクリックしてください",
+		"#ConditionalTextApplyNoSelectionTip", "選択したテキストに条件を適用する場合はクリックしてください",
+		"#ConditionalTextNewTagTip",		"新規条件",
+		"#ConditionalTextDeleteTagTip",		"条件を削除",
+		"#ConditionalTextIndicatorTip",		"インジケーター方法は ^1 です",
+		"#ConditionalTextNewSetTip",		"新規セット",
+		"#SetOverrideTip_NewConditionsAndConditionVisibility",	"オーバーライド : 条件の可視性 (セットを再選択してクリアするか、「再定義」を選択) + 新規条件 (「すべてのセットを更新」を選択してクリアするか、「再定義」を選択)",
+		"#SetOverrideTip_NewConditions",	"オーバーライド : 新規条件 (「すべてのセットを更新」を選択してクリアするか、「再定義」を選択)",
+		"#SetOverrideTip_ConditionVisibility",	"オーバーライド : 条件の可視性 (セットを再選択してクリアするか、「再定義」を選択)",
+		
+		"#ConditionTag_DeleteConditionDialog", "条件を削除", 
+		"#ConditionTag_DeleteConditionsDialog", "条件を削除", 
+		"#ConditionTag_DeleteConditionAndReplace:", "条件を削除し、次と置換 : ", 
+		"#ConditionTag_DeleteConditionsAndReplace:", "条件を削除し、次と置換 : ", 
+		"#ConditionTag_DeleteInformationAlert", "条件を削除するには、条件をごみ箱アイコンにドラッグします。",
+		"#ConditionTag_DeleteNoReplaceChoice", "[なし]",
+		
+		"#QuickApplyConditions", "条件",
+		"#Conditions_Filter_Key", "CT", // should be upper case if there is an upper case character, this is the prefix key for quick apply for text conditions.
+		"#QuickApplyConditionSets", "条件セット",
+		"#QuickApplyConditionSets_Filter_Key", "CS",  // should be upper case if there is an upper case character, this is the prefix key for quick apply for text condition sets.
+		"#QuickApplyConditons_Menu_Key_String", "条件を含める (ct:)",
+		"#QuickApplyConditonSets_Menu_Key_String", "条件セットを含める (cs:)",
+		
+		"#SingularConditionStatusBodyString", "^1 条件が適用済み ^2",
+		"#PluralConditionStatusBodyString", "^1 条件が適用済み ^2",
+		"#MixedConditionString", " [混合]",
+		"#NoConditionsString", "条件の適用なし",
+    }
+};
+
+#endif // __ODFRC__

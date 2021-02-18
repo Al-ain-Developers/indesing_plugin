@@ -1,0 +1,399 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectName>SnippetRunner</ProjectName>
+    <ProjectGuid>{EF752051-BB99-459B-90D1-44C2BC5339F6}</ProjectGuid>
+    <RootNamespace>SnippetRunner</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.18362.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="ReleaseX64.sdk.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="DebugX64.sdk.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.40219.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\debugx64\SDK\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\..\objDx64\SnippetRunner\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\releasex64\SDK\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\..\objRx64\SnippetRunner\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectName).sdk</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ProjectName).sdk</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.pln</TargetExt>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.pln</TargetExt>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Midl>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <TargetEnvironment>X64</TargetEnvironment>
+      <TypeLibraryName>$(IntDir)SnippetRunner.tlb</TypeLibraryName>
+      <HeaderFileName>
+      </HeaderFileName>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>/vmg @SDKCPPOptions.rsp %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>..\..\..\source\sdksamples\snippetrunner;..\..\..\source\sdksamples\codesnippets;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;DEBUG;STRICT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>VCPlugInHeaders.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>$(IntDir)SnippetRunner.pch</PrecompiledHeaderOutputFile>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <CompileAs>Default</CompileAs>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+    </ResourceCompile>
+    <PreLinkEvent>
+      <Command>merge_res.cmd "$(IntDir)"  SnipRun &amp; echo Deleting old resources... &amp; del /f /s "$(TargetDir)($(TargetName) Resources)\"*.idrc &gt; $(IntDir)prevDeletedResources.txt &amp; xcopy /Q /E "$(IntDir)"*.idrc "$(TargetDir)($(TargetName) Resources)\" /Y</Command>
+    </PreLinkEvent>
+    <Link>
+      <AdditionalDependencies>$(UI_PLUGIN_LINKLIST);$(AFLLib);%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <ProgramDatabaseFile>..\debugx64\SDK\SnippetRunner.pdb</ProgramDatabaseFile>
+      <ImportLibrary>$(LIB_DIR)\SnippetRunner/SnippetRunner.lib</ImportLibrary>
+    </Link>
+    <PostBuildEvent>
+      <Command>restore_res.cmd "$(IntDir)"  SnipRun</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Midl>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <TargetEnvironment>X64</TargetEnvironment>
+      <TypeLibraryName>$(IntDir)SnippetRunner.tlb</TypeLibraryName>
+      <HeaderFileName>
+      </HeaderFileName>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>/vmg @SDKCPPOptions.rsp %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>..\..\..\source\sdksamples\snippetrunner;..\..\..\source\sdksamples\codesnippets;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;STRICT;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>VCPlugInHeaders.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>$(IntDir)SnippetRunner.pch</PrecompiledHeaderOutputFile>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <CompileAs>Default</CompileAs>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+    </ResourceCompile>
+    <PreLinkEvent>
+      <Command>merge_res.cmd "$(IntDir)"  SnipRun &amp; echo Deleting old resources... &amp; del /f /s "$(TargetDir)($(TargetName) Resources)\"*.idrc &gt; $(IntDir)prevDeletedResources.txt &amp; xcopy /Q /E "$(IntDir)"*.idrc "$(TargetDir)($(TargetName) Resources)\" /Y</Command>
+    </PreLinkEvent>
+    <Link>
+      <AdditionalDependencies>$(UI_PLUGIN_LINKLIST);$(AFLLib);%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <ProgramDatabaseFile>..\releasex64\SDK\SnippetRunner.pdb</ProgramDatabaseFile>
+      <ImportLibrary>$(LIB_DIR)\SnippetRunner/SnippetRunner.lib</ImportLibrary>
+    </Link>
+    <PostBuildEvent>
+      <Command>restore_res.cmd "$(IntDir)"  SnipRun</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpContentDropper.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpCreateAndManipulateSharedLink.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpCreateQRCode.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpHelloBridgeTalk.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpHelloCSXS.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpManipulateTextEndnotes.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpPlugPlug.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\snippetrunner\SnipRunActionComponent.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\snippetrunner\SnipRunBatch.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\snippetrunner\SnipRunControlView.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\snippetrunner\SnipRunDialogController.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\snippetrunner\SnipRunDialogData.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\snippetrunner\SnipRunErrorStringService.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\snippetrunner\SnipRunGoButtonObserver.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\snippetrunner\SnipRunGoSelectionObserver.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\snippetrunner\SnipRunLog.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\snippetrunner\SnipRunManager.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\snippetrunner\SnipRunPanelWidgetObserver.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\snippetrunner\SnipRunParameterUtils.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\snippetrunner\SnipRunQuickApplyService.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\snippetrunner\SnipRunRestoreLogCmd.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\snippetrunner\SnipRunStartupShutdown.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\snippetrunner\SnipRunSuiteASB.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\snippetrunner\SnipRunSuiteCSB.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\snippetrunner\SnpRunnable.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\snippetrunner\SnpRunnableContextCSB.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="$(id_sdk_dir)\source\public\libs\publiclib\statics\PlugInStatics.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\common\SDKPlugInEntrypoint.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\snippetrunner\SnipRunID.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\snippetrunner\SnipRunNoStrip.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\snippetrunner\TriggerResourceDeps.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="$(id_sdk_dir)\source\precomp\msvc\VCPlugInHeaders.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\snippetrunner\SnipRunScriptProvider.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\snippetrunner\SnpRunnableScript.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\snippetrunner\SnpRunnableScriptProvider.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpTemplate.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpAccessTableContent.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpCopyPasteTable.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpCreateTable.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpGetTableParcel.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpInspectTableModel.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpIterTableStories.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpIterTableUseDictHier.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpManipulateTableStyle.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpModifyTable.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpSetTableFill.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpSortTable.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpApplyTextStyleAttributes.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpCreateCrossReference.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpEstimateTextDepth.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpFindAndReplace.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpInsertGlyph.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpInspectTextModel.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpInspectTextStyles.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpManipulateConditionalText.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpManipulateInline.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpManipulateTextFootnotes.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpManipulateTextFrame.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpManipulateTextModel.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpManipulateTextOnPath.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpManipulateTextStyle.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpManipulateTrapStyles.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpPerformNoteFunction.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpPerformTextAttrLanguage.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpCreateFrame.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpCreateFrameGrid.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpHitTestFrame.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpInspectLayoutGrid.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpInspectLayoutModel.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpInspectPathInfo.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpManipulatePathandGraphics.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpManipulateSpreadsAndPages.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpManipulateSwatch.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpModifyLayoutGrid.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpPlaceFile.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpProcessDocumentLayerCmds.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpSelectShape.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpTransformPageItems.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpManipulateInCopyCJKGridAttributes.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpPerformCompFont.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpPerformKinsokuTable.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpPerformNamedGrid.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpPerformTextAttrKenten.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpPerformTextAttrRuby.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpPerformTextAttrTateChuYoko.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpPerformTextAttrWarichu.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpImportExportXML.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpInspectSelectionXMLProperties.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpManipulateStructureView.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpManipulateXMLElements.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpManipulateXMLSelection.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpManipulateXMLTags.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpPerformXMPCommands.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'"> $(id_sdk_dir)\external\bibxmp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'"> $(id_sdk_dir)\external\bibxmp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpHyphenation.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpInspectFontMgr.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpManipulateDisplayPerformance.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpManipulatePrintStyles.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpPerformFontGroupIterator.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpPrintDocument.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpShowPalette.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpGraphicHelper.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpTextAttrHelper.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpTextModelHelper.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpXMLHelper.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpXMLResolutionHelper.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpXMLSampleHelper.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpAddMediaFile.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpChooseFile.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpCreateCustomAnimation.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpCreateDocument.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpCreateInddPreview.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpExportBookAsPDF.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpExportDocAsPDF.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpExportEPub.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpImportExportSnippet.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpInspectXMPMetaData.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'"> $(id_sdk_dir)\external\bibxmp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'"> $(id_sdk_dir)\external\bibxmp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpManipulateArticles.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpManipulateAssignment.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpManipulateGraphicAttributes.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpShareAppResources.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippetsme\SnpApplyMEAttributes.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippetsme\SnpChangeTableDir.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippetsme\SnpCreateDocumentME.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippetsme\SnpCreateFrameME.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippetsme\SnpCreateTableME.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippetsme\SnpFillTextFrame.cpp" />
+    <ClCompile Include="..\..\..\source\sdksamples\common\SDKFileHelper.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\common\SDKLayoutHelper.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\source\sdksamples\snippetrunner\SnipRunBatch.h" />
+    <ClInclude Include="..\..\..\source\sdksamples\snippetrunner\SnipRunFactoryList.h" />
+    <ClInclude Include="..\..\..\source\sdksamples\snippetrunner\SnipRunID.h" />
+    <ClInclude Include="..\..\..\source\sdksamples\snippetrunner\SnipRunLog.h" />
+    <ClInclude Include="..\..\..\source\sdksamples\snippetrunner\SnipRunManager.h" />
+    <ClInclude Include="..\..\..\source\sdksamples\snippetrunner\SnipRunRezDefs.h" />
+    <ClInclude Include="..\..\..\source\sdksamples\snippetrunner\SnpRunnable.h" />
+    <ClInclude Include="..\..\..\source\sdksamples\snippetrunner\ISnipRunDialogData.h" />
+    <ClInclude Include="..\..\..\source\sdksamples\snippetrunner\ISnipRunParameterUtils.h" />
+    <ClInclude Include="..\..\..\source\sdksamples\snippetrunner\ISnipRunSuite.h" />
+    <ClInclude Include="..\..\..\source\sdksamples\snippetrunner\ISnpRunnableContext.h" />
+    <ClInclude Include="..\..\..\source\sdksamples\codesnippets\SnpCreateDocument.h" />
+    <ClInclude Include="..\..\..\source\sdksamples\codesnippets\SnpCreateFrame.h" />
+    <ClInclude Include="..\..\..\source\sdksamples\codesnippets\SnpCreateTable.h" />
+    <ClInclude Include="..\..\..\source\sdksamples\codesnippets\SnpGraphicHelper.h" />
+    <ClInclude Include="..\..\..\source\sdksamples\codesnippets\SnpTextAttrHelper.h" />
+    <ClInclude Include="..\..\..\source\sdksamples\codesnippets\SnpTextModelHelper.h" />
+    <ClInclude Include="..\..\..\source\sdksamples\codesnippets\SnpXMLHelper.h" />
+    <ClInclude Include="..\..\..\source\sdksamples\codesnippets\SnpXMLResolutionHelper.h" />
+    <ClInclude Include="..\..\..\source\sdksamples\codesnippets\SnpXMLSampleHelper.h" />
+    <ClInclude Include="..\..\..\source\sdksamples\common\SDKFileHelper.h" />
+    <ClInclude Include="..\..\..\source\sdksamples\common\SDKLayoutHelper.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\..\..\source\sdksamples\snippetrunner\SnipRun.fr">
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">odfrc $(ODFRC_ADDITIONAL_FLAGS) "%(FullPath)" -o "$(IntDir)%(Filename).fres" -d DEBUG  -i ..\..\..\source\sdksamples\snippetrunner   @SDKODFRCOptions.rsp
+</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)TriggerResourceDeps.obj;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)%(Filename).fres;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">odfrc $(ODFRC_ADDITIONAL_FLAGS) "%(FullPath)" -o "$(IntDir)%(Filename).fres"   -i ..\..\..\source\sdksamples\snippetrunner   @SDKODFRCOptions.rsp
+</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)TriggerResourceDeps.obj;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)%(Filename).fres;%(Outputs)</Outputs>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\..\..\source\sdksamples\snippetrunner\SnipRun.rc">
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">0x0809</Culture>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\..\source\sdksamples\snippetrunner;..\..\..\source\sdksamples\common;$(id_sdk_dir)\source\precomp\msvc;$(id_sdk_dir)\source\public\includes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture Condition="'$(Configuration)|$(Platform)'=='Release|x64'">0x0809</Culture>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\..\source\sdksamples\snippetrunner;..\..\..\source\sdksamples\common;$(id_sdk_dir)\source\precomp\msvc;$(id_sdk_dir)\source\public\includes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\source\sdksamples\snippetrunner\SnipRun_enUS.fr" />
+    <None Include="..\..\..\source\sdksamples\snippetrunner\SnipRun_jaJP.fr" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

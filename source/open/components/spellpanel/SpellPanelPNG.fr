@@ -1,0 +1,41 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/spellpanel/SpellPanelPNG.fr $
+//  
+//  Owner: Heath Horton
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#ifdef __ODFRC__
+
+#include "IconPNGDefs.h"
+#include "SpellPanelID.h"
+
+resource PNGA(kIconSpellCheckComplete) "S_SpellCheckReady_Md_N.png"
+resource PNGAD(kIconSpellCheckComplete) "S_SpellCheckReady_Md_N_D.png"
+
+// HiDPI
+resource PNGA(kIconSpellCheckComplete + kHIDPIIconOffset) "S_SpellCheckReady_Md_N@2x.png"
+resource PNGAD(kIconSpellCheckComplete + kHIDPIIconOffset) "S_SpellCheckReady_Md_N_D@2x.png"
+
+#ifdef WINDOWS
+resource PNGA(kIconSpellCheckComplete + kHIDPIIconOffset150) "S_SpellCheckReady_Md_N@3to2x.png"
+resource PNGAD(kIconSpellCheckComplete + kHIDPIIconOffset150) "S_SpellCheckReady_Md_N_D@3to2x.png"
+#endif
+
+#endif

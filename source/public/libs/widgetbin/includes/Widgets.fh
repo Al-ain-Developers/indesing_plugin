@@ -1,0 +1,1881 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/public/libs/widgetbin/includes/Widgets.fh $
+//  
+//  Owner: Michael Burbidge
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#ifndef __Widgets_fh__
+#define __Widgets_fh__
+
+#include "GeneralBuildFlags.h"	
+
+#include "CoreResTypes.h"
+#include "IconStyleDefs.h"
+#include "PMTypes.fh"
+#include "WidgetDefs.h"
+#include "StdHeightWidthConstants.h"
+
+#include "AppUIID.h"
+#include "CommandID.h"
+#include "DocumentID.h"
+#include "widgetid.h"
+
+#ifdef __ODFRC__
+
+type Widget : Class
+{
+};
+
+
+// ----- This is a macro so that it makes it easy for the Localization engineers to
+//		 write a tool that can replace geometry easy. They simply look for Frame(x).
+//		 And replace x with the new geometry. [amb]
+	
+type Frame : PMRect { };
+	
+type CControlView : Interface (IID = IID_ICONTROLVIEW)
+{
+	longint;		// fWidgetId
+	PMRsrcID;		// fRsrcId, fRsrcPlugin
+	integer;		// fFrameBinding
+	Frame;			// fFrame
+	integer;		// fVisible
+	integer;		// fEnabled
+};
+
+type PopupSliderButtonView : Interface (IID = IID_ICONTROLVIEW)
+{
+	longint;		// fWidgetId
+	PMRsrcID;		// fRsrcId, fRsrcPlugin
+	integer;		// fFrameBinding
+	Frame;			// fFrame
+	integer;		// fVisible
+	integer;		// fEnabled
+	longint;		// fStyles (kIconRaisedLook, kIconFlushLook)
+};
+
+	
+//-----------------------------------------------------------------------------------------
+//				START PNG ICON
+//-----------------------------------------------------------------------------------------	
+
+type PNGIconAttributes : Interface (IID = IID_IPNGICONATTRIBUTES)
+{
+	longint;	// Centering (kIconNoCentering, kIconHorizontalCentering, kIconVerticalCentering or kIconCentering)
+				// Centering value from IconStyleDefs.h
+	longint;	// Look Raised/Lowered  fStyles	
+	integer;	// bool, draw Well..	
+};
+
+type AssociatedWidgetAttributes: Interface (IID = IID_IASSOCIATEDWIDGETATTRIBUTES)
+{
+	longint;		// WidgetId for associated control for shortcut focus
+	longint = 0;	// ActionId for associated action when Option/Alt click the control.
+};
+
+type AssociatedWidgetAttributesWithAction: Interface (IID = IID_IASSOCIATEDWIDGETATTRIBUTES)
+{
+	longint;		// WidgetId for associated control for shortcut focus
+	longint;		// ActionId for associated action when Option/Alt click the control.
+};
+
+// This is a widget that is linked but not directly equal in the UI.
+// Clicking one widget should NOT tranfer control to the other widget
+// but one widget needs to know the WidgetID of the other widget
+type LinkedWidgetAttributes: Interface (IID = IID_ILINKEDWIDGETATTRIBUTES)
+{
+	longint;		// WidgetId for associated control for shortcut focus
+	longint = 0;	// ActionId for associated action when Option/Alt click the control.
+};
+
+type PopupPanelWidgetAttributes : Interface (IID = IID_IPOPUPPANELWIDGETATTRIBUTES)
+{
+	PMRsrcID;	// rsrc id of panel to pop up, plugin id that this panel resides in: fRsrcID.fId, fRsrcID.fPluginId
+	longint;	// widget id to route events to while panel is "popped". Typically a descendent widget in the panel: fWidgetID
+	longint = 0;	// uid of widget, used for caching purposes
+}
+
+type AltPopupPanelWidgetAttributes: PopupPanelWidgetAttributes (IID = IID_IALTPOPUPPANELWIDGETATTRIBUTES)
+{	
+	// Same as above, but attributes for panel to popup when "Shift" key is pressed for alternate UI.
+};
+
+type DialogPopupAttributes: Interface(IID=IID_IDIALOGPOPUPATTRIBUTES)
+{
+		PMRsrcID;		//rsrcID of the panel to popup, pluginID that the resource resides in 
+		longint;		// Boss ID of the popup resource	
+}
+
+type CTextControlData : Interface (IID = IID_ITEXTCONTROLDATA)
+{
+	PlatformPMString;		// control label
+};
+
+type CCKAlternateIconAttr: Interface (IID = IID_ICCKALTERNATEICONATTR)
+{
+	longint;		// alternate resourceID to use if the UI is set to C,C, or K
+};
+
+
+// ==============  IconWidgets ====================================================
+
+
+type RollOverIconButtonWidget (kViewRsrcType) : Widget (ClassID = kRollOverIconButtonBoss )
+{
+	CControlView;
+	PNGIconAttributes;
+};
+
+type CCKRollOverIconButtonWidget (kViewRsrcType) : RollOverIconButtonWidget ()
+{
+	CCKAlternateIconAttr;
+};
+
+type RollOverIconPushButtonWidget (kViewRsrcType) : RollOverIconButtonWidget (ClassID = kRollOverIconPushButtonBoss)
+{
+};
+
+type CCKRollOverIconPushButtonWidget (kViewRsrcType) : RollOverIconPushButtonWidget ()
+{
+	CCKAlternateIconAttr;
+};
+
+type SimpleIconSuiteButtonWidget (kViewRsrcType) : RollOverIconButtonWidget (ClassID = kSimpleIconSuiteButtonWidgetBoss)
+{
+};
+
+type IconFieldWidget (kViewRsrcType) : RollOverIconButtonWidget (ClassID = kIconFieldWidgetBoss)
+{
+};
+
+type IconEraseBackgroundSuiteWidget (kViewRsrcType) : RollOverIconButtonWidget (ClassID = kIconEraseBackgroundSuiteWidgetBoss)
+{	
+	AssociatedWidgetAttributes;
+};
+
+type IconEraseBackgroundSuiteWidgetWithAction (kViewRsrcType) : RollOverIconButtonWidget (ClassID = kIconEraseBackgroundSuiteWidgetBoss)
+{	
+	AssociatedWidgetAttributesWithAction;
+};
+
+type IconSuiteWidget (kViewRsrcType) : RollOverIconButtonWidget (ClassID = kIconSuiteWidgetBoss)
+{	
+	AssociatedWidgetAttributes;
+};
+
+type IconSuiteWidgetWithAction (kViewRsrcType) : RollOverIconButtonWidget (ClassID = kIconSuiteWidgetBoss)
+{	
+	AssociatedWidgetAttributesWithAction;
+};
+
+type RollOverIconWithAction (kViewRsrcType) : RollOverIconButtonWidget (ClassID = kRollOverIconWithAttributesWidgetBoss)
+{	
+	AssociatedWidgetAttributesWithAction;
+};
+
+type CCKIconSuiteWidget (kViewRsrcType) : IconSuiteWidget ()
+{	
+	CCKAlternateIconAttr;
+};
+
+type CCKIconEraseBackgroundSuiteWidget (kViewRsrcType) : IconEraseBackgroundSuiteWidget ()
+{	
+	CCKAlternateIconAttr;
+};
+
+type IconSuitePopupWidget (kViewRsrcType) : IconSuiteWidget (ClassID = kIconSuitePopupWidgetBoss)
+{				
+	CTextControlData;
+};
+
+type ChainButtonWidget (kViewRsrcType) : RollOverIconButtonWidget (ClassID = kChainButtonBoss )
+{
+};
+
+type BridgeIconButton (kViewRsrcType) : RollOverIconButtonWidget (ClassID = kBridgeIconButtonBoss)
+{
+};
+
+type KillerFindButton   (kViewRsrcType) : RollOverIconButtonWidget  (ClassID = kKillerFindButtonBoss) 
+{
+};
+
+type MultiResourceWidgetData : Interface (IID = IID_IMULTIRESOURCE)
+{
+    longint = $$CountOf(ImageRefs);
+    array ImageRefs
+    {
+      longint;	 // resource state
+	  PMRsrcID;  // resource
+    }	
+};
+
+
+type OverPrintWidget (kViewRsrcType) : RollOverIconButtonWidget (ClassID = kOverPrintIconPushButtonBoss)
+{
+	MultiResourceWidgetData;
+};
+
+//------------------------------------------
+
+type TreeExpanderControlView : CControlView (IID = IID_ICONTROLVIEW)
+{	
+	//The tree expander has 2 icons, one when collapsed and one when expanded.  The CControlView rsrcid
+	//identifies the collapsed icon and this identifies the expanded icon
+	PMRsrcID;		// fRsrcId, fRsrcPlugin of expander icon when node is expanded
+};
+
+type TreeExpanderOptions : Interface (IID = IID_ITREEEXPANDEROPTIONS)
+{
+	integer;	//Cmd-Click expands/collapses children
+		// --- if kTrue, when the user Cmd-clicks on the expander, all descendants of
+		// the node that was expanded will also be expanded.
+		// if kFalse, only the node clicked will be expanded, i.e. holding Cmd will do
+		// nothing different.
+	
+	integer;	// Scroll to show children of expanded node
+		// --- if kTrue, the tree view will scroll to show all children of the expanded node
+		// if there are more children than will fit in the tree view at the time, the tree view
+		// will scroll such that the expanded node is the top visible node in the tree
+		// --- if kFalse, the node will expand in place and no scrolling will occur
+};
+
+
+type TreeExpanderWidget (kViewRsrcType) : Widget (ClassID = kTreeExpanderWidgetBoss)
+{
+	TreeExpanderControlView;
+	TreeExpanderOptions;
+	PNGIconAttributes;
+};
+
+//-----------------------------------------------------------------------------------------
+
+//				END PNG ICON				
+
+//-----------------------------------------------------------------------------------------
+
+
+
+//========================================================================================
+// Interface types
+//========================================================================================
+
+type WidgetRefData : Interface (IID = IID_IWIDGETREFDATA)
+{
+	longint;		// fWidgetId
+	PMRect;			// fFrame
+	integer;		// fVisible
+	integer;		// fEnabled
+};
+
+
+type CControlViewObservers : Interface (IID = IID_ICONTROLVIEWOBSERVERS)
+{
+	longint = $$CountOf(ObserverIIDS);
+	array ObserverIIDS
+	{
+		longint;	// IID of observer interfaces
+	}
+};
+
+type ActionIDData : Interface (IID = IID_IACTIONIDDATA)
+{
+	longint;		// ActionID to associate with this widget
+};
+
+type RealNumberData : Interface (IID = IID_IREALNUMBERDATA)
+{
+	double;			// Real number
+};
+
+type CEditBoxAttributes : Interface (IID = IID_IEDITBOXATTRIBUTES)
+{
+	longint;						// WidgetId for nudge button
+	double;							// small nudge amount
+	double;							// large nudge amount
+	longint;						// max num chars
+	integer;						// is read only flag
+	integer;						// wants bo be notified for every key stroke
+	multiline: integer = kFalse;	// Multiline capability
+};
+
+type StaticTextAttributes : Interface (IID = IID_ISTATICTEXTATTRIBUTES)
+{
+	integer;				// fAlignment
+	integer;				// ellipsize style -- where to ellipsize the string if the size is larger than its frame
+							// can be kDontEllipsize (truncate the string), kEllipsizeEnd, kEllipsizeBeginning, or kEllipsizeMiddle
+	integer;				// fConvertAmpersandsToUnderline					
+	default: integer = kFalse;		// underline text					
+};
+
+type TriStateControlAttributes : Interface (IID = IID_ITRISTATECONTROLATTRIBUTES)
+{
+	integer;		// fAlignment
+};
+
+
+type CPanelServiceData : Interface (IID = IID_IPANELSERVICEDATA)
+{
+	longint;		// service ID for the panel
+};
+
+type CFillStrokeData : Interface (IID = IID_IISFILLDATA)
+{
+	longint;		// bool for fill or stroke
+};
+
+
+type TextDataValidation : Interface (IID = IID_ITEXTDATAVALIDATION)
+{
+	integer;		// range checking enabled
+	integer;		// blank entry allowed
+	double;			// upper limit
+	double;			// lower limit
+	integer = 1;	// restore last good value on error (via IID_ILASTVALIDTEXTCONTROLDATA)
+};
+
+
+type BreakStringData : Interface (IID = IID_IBREAKSTRINGDATA)
+{
+	PlatformPMString;		// control label
+};
+
+type CIntegerControlData : Interface (IID = IID_IINTEGERCONTROLDATA)
+{
+	longint;		// current value
+};
+
+type MeasureClassControlData : Interface (IID = IID_IMEASURECLASSCONTROLDATA)
+{
+	longint;		// current value
+};
+
+type CProgressBarControlData : Interface (IID = IID_IPROGRESSBARCONTROLDATA)
+{
+	integer;		// bar style
+	integer;		// min value
+	integer;		// max value
+	integer;		// current value
+};
+
+type CPanelMenuData : CTextControlData (IID = IID_IPANELMENUDATA)
+{
+};
+
+type CPanelControlData : Interface (IID = IID_IPANELCONTROLDATA)
+{
+	longint = $$CountOf(Children);
+	array Children
+	{
+		longint = endWidget[$$ArrayIndex(Children)] - startWidget[$$ArrayIndex(Children)];
+		startWidget:
+		Widget;
+		endWidget:
+	}
+};
+
+type CToggleModeDefault: CTextControlData(IID = IID_ITOGGLEMODEDEFAULT)
+{
+}
+
+type CToggleModeToggled : CTextControlData(IID = IID_ITOOGLEMODETOGGLED)
+{
+}
+
+// See SplitterPanelDefs.h for various constants used for this interface.
+type CSplitterPanelControlData : Interface (IID = IID_ISPLITTERPANELCONTROLDATA)
+{
+	//  For Vertical splitting top = left, Bottom = right
+	longint;			// Top Widget  0 or 1
+
+	integer;			// Top Visible
+	integer;			// Bottom Visible
+
+	longint;			// Splitter Current Position;
+	longint;			// Splitter Init Position used to init splitter position when splitter fist shown,												
+						// 75 will make the top half 75% of the splitter window, and the bottom half 25%
+						// Any snapping will occure after the splitter is initially position.  To set the splitter
+						// to reinitalize its state postion it to -1
+	longint;			// Top Snap less then this snap up(min number of pixels for top/left section)
+
+	integer;			// Should Snap up?  If true slider snaps up, else slider doesn't move beyond snap pos
+
+	longint;			// Frame Width - Bottom Snap more then this snap down(min # of pixels for bottom/right section)
+
+	integer;			// Should Snap down?  If true slider snaps down, else slider doesn't move beyond snap pos
+	integer;		    // Splitter Direction  kFalse == Horizontal      kTrue == Vertical	
+
+	longint;		    // Splitter Radius
+
+	longint;			// Resize splitter proportional, true, on pallet resize splitter will attempt to keep same proportions
+						// between panels. false splitter just gets clipped on resize, you most likely want this to be true	
+	longint;			// Single Click splitter Actions
+	integer;			// kDrawXORSplitter, kDrawPallets
+};
+
+type CSliderInlineRangeControlData : Interface (IID = IID_ISLIDERINLINERANGECONTROLDATA)
+{
+	double;		// scrubber min
+	double;		// scrubber max
+	double;		// scrubber default					
+	double;		// scrubber increment
+	double;		// scrubber increment multiple
+	
+	double;		// edit box min
+	double;		// edit box max
+	double;		// edit box default					
+	double;		// edit box increment
+	double;		// edit box increment multiple
+	
+	longint;	// update method (increment/decrement)		
+};
+
+type CLinkedSplitterPanelData : Interface (IID = IID_ILINKEDSPLITTERPANELCONTROLDATA)
+{
+	integer;			// Draw Splitter on move, T/F
+	integer;			// Draw Splitter
+	longint;			// WidgetID of Splitter to Link To
+};
+
+type IsSplitBarRecessed : Interface (IID = IID_IRECESSEDSPLITBAR) 
+{ 
+    default: integer = kFalse; // if this checkbox toggles to unknown state 
+};
+
+type SplitterPanelWidget(kViewRsrcType) : Widget (ClassID = kSplitterPanelWidgetBoss)
+{
+	CControlView;		        // Control view for the splitter
+    CTextControlData;           // Panel Name
+	CSplitterPanelControlData;
+	CPanelControlData;
+	IsSplitBarRecessed;	
+};
+
+type SplitterPanelWidgetWithRecessedSplitter(kViewRsrcType) : Widget (ClassID = kSplitterPanelWidgetBoss)
+{
+	CControlView;		        // Control view for the splitter
+    CTextControlData;           // Panel Name
+	CSplitterPanelControlData;
+	CPanelControlData;
+	IsSplitBarRecessed (default=kTrue);	
+};
+
+type LinkedSplitterPanelWidget(kViewRsrcType) : Widget (ClassID = kLinkedSplitterPanelWidgetBoss)
+{
+	CControlView;		        // Control view for the splitter
+    CTextControlData;           // Panel Name
+	CLinkedSplitterPanelData;
+	CPanelControlData;
+};
+
+type LayoutSplitterPanelWidget(kViewRsrcType) : SplitterPanelWidget (ClassID = kLayoutSplitterPanelWidgetBoss)
+{};
+
+type SizePanelDetailController : Interface (IID = IID_IPANELDETAILCONTROLLER)
+{
+	integer = 1;	// readingFromResource is true
+};
+
+type SetsPanelDetailController : Interface (IID = IID_IPANELDETAILCONTROLLER)
+{
+	integer = 9999;	// fCurrentLevel, set to max initially
+	longint = $$CountOf(PanelSets);
+	array PanelSets
+	{
+		longint = $$CountOf(IDs);
+		array IDs
+		{
+			longint;
+		}
+	};
+	integer;		// fDefaultLevel This is now 0 based. In CS2 and earlier, this was 1 based, and located earlier in this resource
+};
+
+#ifdef ID_DEPRECATED // listboxes will be removed from a future version of InDesign. Please use treeviews instead.
+
+type ListBoxDetailController : Interface (IID = IID_ILISTBOXDETAILCONTROLLER)
+{
+	integer = 9999;	// fCurrentLevel, set to max initially
+	longint = $$CountOf(PanelSets);
+	array PanelSets
+	{
+		longint = $$CountOf(IDs);
+		array IDs
+		{
+			longint;
+		}
+	};
+	integer;		// fDefaultLevel This is now 0 based. In CS2 and earlier, this was 1 based, and located earlier in this resource
+};
+
+type SmallRowsTreeDtlController : Interface (IID = IID_ILISTBOXDETAILCONTROLLER)
+{
+	longint;	// WidgetID of Tree View containing Small Palette Rows
+};
+#endif
+
+type ForwardPanelDetailController : Interface (IID = IID_IPANELDETAILCONTROLLER)
+{
+	integer = 1;	// readingFromResource is true
+};
+
+type KitViewData : Interface (IID = IID_IKIT)
+{
+	longint;	
+	longint = $$CountOf(Views);
+	array Views
+	{
+		longint;	// view Id (KitViewID)
+		longint;	// widget Id
+		integer kNotResizable = 0, kIsResizable = 1; // is this view resizable?
+		longint = 0;	// UID of widget, always kInvalidUID to start
+	}
+};
+
+
+#ifdef ID_DEPRECATED // listboxes will be removed from a future version of InDesign. Please use treeviews instead.
+
+type CListBoxAttributes : Interface (IID = IID_ILISTBOXATTRIBUTES)
+{
+	PMPoint;		// fListDimensions
+	double;		// fCellHeight
+	double;		// fBorderWidth
+	integer;		// fHasHScrollBar
+	integer;		// fHasVScrollBar
+	integer;		// fMultiSelection
+	integer;		// fReorderable
+	integer;		// fDraggable
+	integer;		// fDragDropable
+	integer;		// fAlwaysSelected
+	integer;		// Notify when reselecting items
+	longint;		// fItemRsrcID, fill list box with widgets of this type
+};
+
+#endif
+
+type CCounterControlData : Interface (IID = IID_ICOUNTERCONTROLDATA)
+{
+	longint;		// fMin
+	longint;		// fMax
+	longint;		// fValue
+	longint;		// fIncrement
+	longint;		// fIncrementMultiple
+};
+
+type GridAttributes : Interface (IID = IID_IGRIDATTRIBUTES)
+{
+	PMPoint;		// fGridDimensions
+	PMPoint;		// fCellDimensions
+	double;		// fBorderWidth
+};
+
+type GroupPanelAttributes : Interface (IID = IID_IGROUPPANELATTRIBUTES)
+{
+	longint;		// fWidgetID
+};
+
+type UIFontSpec : Interface (IID = IID_IUIFONTSPEC)
+{
+	longint;		// fFontID
+	longint;		// fHiliteFontID
+};
+
+type UIColorSpec : Interface (IID = IID_IUICOLORSPEC)
+{
+	longint;		// fColorID
+	longint;		// fHiliteColorID;
+	longint;		// fBackgroundColorID
+	longint;		// fBackgroundHiliteColorID
+	double = 0.0;	// fColorAGM.red;
+	double = 0.0;	// fColorAGM.red;
+	double = 0.0;	// fColorAGM.red;
+	double = 0.0;	// fHiliteColorAGM.red;
+	double = 0.0;	// fHiliteColorAGM.red;
+	double = 0.0;	// fHiliteColorAGM.red;
+	double = 0.0;	// fBackgroundColorAGM.red;
+	double = 0.0;	// fBackgroundColorAGM.red;
+	double = 0.0;	// fBackgroundColorAGM.red;
+	double = 0.0;	// fBackgroundHiliteColorAGM.red;
+	double = 0.0;	// fBackgroundHiliteColorAGM.red;
+	double = 0.0;	// fBackgroundHiliteColorAGM.red;
+};
+
+type StaticMultiLineTextAttr : Interface (IID = IID_ISTATICMULTILINETEXTATTR)
+{
+	longint;		// fScrollBarWidgetID
+	longint;		// fFontID
+	longint;		// fNumPixelsBetweenLines
+	PMPoint;		// fInset
+};
+
+type DropDownListControlData : Interface (IID = IID_ISTRINGLISTCONTROLDATA)
+{
+	longint = $$CountOf(Strings);
+	array Strings
+	{
+		PlatformPMString;
+		integer = 1;	// enabled
+	}
+};
+
+type StrokeFillProxyData : Interface (IID = IID_ISTROKEFILLCONTROLDATA)
+	{
+	longint;					// fUseMetaData;
+	longint;					// fActive;
+	longint;					// fStrokeFillWidth;
+	longint;					// fStrokeFillHeight;
+	longint;					// fStrokeFillOverlap;
+	longint;					// fStrokeFillHiliteBorderWidth;
+	longint;					// fStrokeWidth;
+	integer;					// fDraggable;
+	longint;					// fDisplayOption;
+	integer;					// fSwitchable;
+	};
+
+type ResourceSrcFileInfo : Interface (IID = IID_IRESOURCESRCFILEINFO)
+	{
+		PlatformPMString;				// fFilename
+		longint;				// fLineno
+	};
+		
+type CSliderControlData : Interface (IID = IID_ISLIDERCONTROLDATA)
+{
+	double;		// fMin
+	double;		// fMax
+	double;		// fValue
+};
+
+type ErasablePanelView : CControlView (IID = IID_ICONTROLVIEW)
+{
+	integer;					// fEraseBeforeDraw
+	longint;					// InterfaceColor to erase to
+};
+
+type PalettePanelView : ErasablePanelView (IID = IID_ICONTROLVIEW)
+{
+	integer;					// fDrawDropShadow
+};
+
+type SplitterControlData : Interface (IID = IID_ISPLITTERCONTROLDATA)
+{
+	longint = $$CountOf(WidgetIDs);
+	array WidgetIDs
+	{
+		longint;	// WidgetID of widget affected by this splitter
+		longint;	// Minimum size this widget can be
+		longint;	// Size at which this widget will snap closed
+	}
+};
+
+type TreeAttributes : Interface (IID = IID_ITREEATTRIBUTES)
+{
+	integer;		// Display Root Node
+	integer;		// Use H scroll bar
+	integer;		// Use V scroll bar
+	
+	// Scroll Button increment is the number of pixels that will scroll when either of the buttons on the end of
+	// the scroll bar is clicked.  Thumb Scroll increment is the amount of pixels that will be scrolled at a time when you
+	// grab the scroll bar thumb and drag it around.  Thumb Scroll must be a factor of Scroll Button. 
+	// i.e. Scroll Button = 20 & Thumb Scroll = 5
+	integer;		// Vertical Scroll Button increment
+	integer;		// Vertical Thumb Scroll increment
+	integer;		// Horizontal Scroll Button increment
+	integer;		// Horizontal Thumb Scroll increment
+};
+
+type TreeViewController : Interface (IID = IID_ITREEVIEWCONTROLLER)
+{
+	integer;		// Items selectable, 0 = No Selection, 1 = Single Selection, 2 = Multiple Selection
+	integer;		// Allow children from multiple parents to be selected
+	integer;		// Allow discontiguous selection
+	longint = 0;	// Selected items, there should be none when we start
+};
+
+type SortData : Interface (IID = IID_ISORTDATA) {
+	integer;
+};
+
+type PageNameStyleData : Interface (IID = IID_IPAGENAMESTYLEDATA) {
+	longint;		// See enum PageNameStyle in WidgetDefs.h for values
+};
+
+type CAccelerateControlData : Interface (IID = IID_IACCELERATECONTROLDATA)
+{
+	longint;		// fThreshold
+	longint;		// fMax
+	longint;		// fIncrement
+};
+
+type InLineEditEditingAttributes : Interface (IID = IID_IINLINEEDITEDITINGATTRIBUTES)
+{
+	integer;	// type of widget in edit part (kEditBox, kDropDown, kComboBox)
+	integer;	// take keyboard focus and tab stop
+	integer;	// is widget currently editable
+};
+
+type WidgetIDData : Interface (IID = IID_IWIDGETIDDATA)
+{
+	longint;		// WidgetID of style name in the list element
+};
+
+type ColumnHeaderAttributes : Interface (IID = IID_ICOLUMNHEADERATTRIBUTES)
+{
+	integer;		// auto resize options for the column header, see TreeViewDefs.h, one of: kDontAutoResize, kAutoResizeFirstColumn, kAutoResizeProportional
+	longint;		// minimum column width
+};
+
+type UseThemeColors : Interface (IID = IID_IUSETHEMECOLORS)
+{
+	integer;		//    bool, allow UI brightness specific theme colors in Widget drawing
+};
+
+//========================================================================================
+// Class types
+//========================================================================================
+
+type GenericPanelWidget (kViewRsrcType) : Widget (ClassID = kGenericPanelWidgetBoss)
+{
+	CControlView;
+	CTextControlData;
+	CPanelControlData;
+};
+
+type GenericPanelCustomColorWidget (kViewRsrcType) : GenericPanelWidget (ClassID = kGenericPanelCustomColorWidgetBoss)
+{
+	UIColorSpec;
+};
+
+type GenericPanelWithBorderWidget (kViewRsrcType) : GenericPanelWidget (ClassID = kGenericPanelWithBorderWidgetBoss)
+{
+};
+
+type PanelWithHiliteBorderWidget (kViewRsrcType) : GenericPanelWidget (ClassID = kPanelWithHiliteBorderWidgetBoss)
+{
+};
+
+type PanelWithWhiteBackground (kViewRsrcType) : GenericPanelWidget (ClassID = kPanelWithWhiteBackgroundWidgetBoss)
+{
+};
+
+type PanelWithInverseHiliteBorderWidget (kViewRsrcType) : GenericPanelWidget (ClassID = kPanelWithInverseHiliteBorderWidgetBoss)
+{
+};
+
+type PanelWithRollOverWidget   (kViewRsrcType) : GenericPanelWidget  (ClassID = kPanelWithRolloverWidgetBoss) 
+{
+};
+
+type PanelWithRollOverFocusWidget   (kViewRsrcType) : GenericPanelWidget  (ClassID = kPanelWithRolloverFocusWidgetBoss) 
+{
+};
+
+type ColumnHeaderWidget	(kViewRsrcType) : Widget(ClassID = kColumnHeaderWidgetBoss)
+{
+	ErasablePanelView;
+	CTextControlData;
+	CPanelControlData;
+	ColumnHeaderAttributes;
+};
+
+type PrimaryResourcePanelWidget (kViewRsrcType) : Widget (ClassID = kPrimaryResourcePanelWidgetBoss)
+{
+	ResourceSrcFileInfo;
+	CControlView;
+	CTextControlData;
+	CPanelControlData;
+};
+
+type ErasablePrimaryResourcePanelWidget (kViewRsrcType) : Widget (ClassID = kErasablePrimaryResourcePanelWidgetBoss)
+{
+	ResourceSrcFileInfo;
+	ErasablePanelView;
+	CTextControlData;
+	CPanelControlData;
+};
+
+type BasePalettePanelWidget (kViewRsrcType) : Widget (ClassID = kBasePalettePanelWidgetBoss)
+{
+	ResourceSrcFileInfo;
+	PalettePanelView;
+	CTextControlData;
+	CPanelControlData;
+};
+
+// Don't use this type if you need a special PanelDetailController. 
+// Use BasePalettePanelWidget instead.
+type PalettePanelWidget (kViewRsrcType) : BasePalettePanelWidget (ClassID = kPalettePanelWidgetBoss)
+{
+};
+
+#ifdef ID_DEPRECATED	//Use BasePalettePanelWidget instead
+#define GenericPalettePanelWidget BasePalettePanelWidget
+#endif
+
+type KitPanelWidget (kViewRsrcType) : PrimaryResourcePanelWidget (ClassID = kKitPanelWidgetBoss)
+{
+	KitViewData;
+};
+
+type ErasableKitPanelWidget (kViewRsrcType) : ErasablePrimaryResourcePanelWidget (ClassID = kErasableKitPanelWidgetBoss)
+{
+	KitViewData;
+};
+
+// Use this if you want to provide your own PanelDetailController
+type DetailKitPanelWidget (kViewRsrcType) : PrimaryResourcePanelWidget (ClassID = kDetailKitPanelWidgetBoss)
+{
+	KitViewData;
+};
+
+type DialogBoss (kViewRsrcType) : PrimaryResourcePanelWidget (ClassID = kDialogBoss)
+{
+};
+
+//Following attributes provide the edges/directions in which a dialog is resizable. These can be given as a combination of kLeftResizable, kRightResizable, kTopResizable and kBottomResizable. These constants are defined in IControlViewDefs.h. 
+//Being resizable from two adjacent edges would make the dialog resizable from the correspoding corner as well.
+type CustomResizabilityAttributes: Interface(IID = IID_ICUSTOMRESIZABILITYATTRIBUTES)
+{
+	integer;			//fCustomResizability
+	integer;			//fGripperPosition
+};
+
+type CustomResizabilityAttributesWithDefaultValue : Interface(IID = IID_ICUSTOMRESIZABILITYATTRIBUTES)
+{
+	integer = 0;			//fCustomResizability
+	integer = 0;			//fGripperPosition
+};
+
+type ResizeDialogWidget (kViewRsrcType) : ErasablePrimaryResourcePanelWidget (ClassID = kResizeDialogBoss)
+{
+	CustomResizabilityAttributesWithDefaultValue;
+};
+
+type CustomResizableDialogWidget (kViewRsrcType) : ErasablePrimaryResourcePanelWidget (ClassID = kResizeDialogBoss)
+{
+	CustomResizabilityAttributes;
+};
+
+type ClusterPanelWidget (kViewRsrcType) : Widget (ClassID = kClusterPanelWidgetBoss)
+{
+	CControlView;
+	CTextControlData;
+	CPanelControlData;
+};
+
+type SeparatorWidget (kViewRsrcType) : Widget (ClassID = kSeparatorWidgetBoss)
+{	
+	CControlView;
+};
+
+type RuleWidget (kViewRsrcType) : Widget (ClassID = kRuleWidgetBoss)
+{	
+	CControlView;
+	longint;					// IInterfaceColor index to draw with (e.g. kInterfaceBevelShadow, kInterfaceBlack, ...)
+};
+
+type RadioButtonWidget (kViewRsrcType) : Widget (ClassID = kRadioButtonWidgetBoss)
+{	
+	CControlView;
+	CTextControlData;
+};
+
+type AnyStateSupportedRadioButtonWidget (kViewRsrcType) : RadioButtonWidget (ClassID = kAnyStateSupportedRadioButtonWidgetBoss)
+{
+};
+
+type ToggleAttributes : Interface (IID = IID_ITOGGLEATTRIBUTES) 
+{ 
+    default: integer = kFalse; // if this checkbox toggles to unknown state 
+};
+
+type CheckBoxWidget (kViewRsrcType) : Widget (ClassID = kCheckBoxWidgetBoss)
+{	
+	CControlView;
+	TriStateControlAttributes;
+	CTextControlData;
+	ToggleAttributes;
+};
+/*
+type PlainBackgroundCheckBoxWidget (kViewRsrcType) : CheckBoxWidget (ClassID = kPlainBackgroundCheckBoxWidgetBoss)
+{
+};
+*/
+type TriStateCheckBoxWidget (kViewRsrcType) : Widget (ClassID = kCheckBoxWidgetBoss)
+{	
+	CControlView;
+	TriStateControlAttributes;
+	CTextControlData;
+	ToggleAttributes (default=kTrue);
+};
+
+type ScrollBarWidget (kViewRsrcType) : Widget (ClassID = kScrollBarWidgetBoss)
+{	
+	CControlView;
+	CCounterControlData;
+	CAccelerateControlData;
+};
+
+type ButtonAttributes : Interface (IID = IID_IBUTTONATTRIBUTES)
+{
+	defaultlook: integer = kFalse; // if button has default look flag
+};
+
+// Following three button types need to have 5 pixels space in all direction
+// from other widget to avoid drawing problem (for default button change)
+type ButtonWidget (kViewRsrcType) : Widget (ClassID = kButtonWidgetBoss )
+{	
+	CControlView;
+	ButtonAttributes;
+	CTextControlData;
+};
+
+// DefaultButtonWidget and CancelButtonWidget should be only used in dialog
+type DefaultButtonWidget (kViewRsrcType) : Widget (ClassID = kButtonWidgetBoss)
+{	
+	CControlView;
+	ButtonAttributes (defaultlook = kTrue);
+	CTextControlData;
+};
+
+type CancelButtonWidget (kViewRsrcType) : ButtonWidget (ClassID = kCancelButtonWidgetBoss)
+{	
+	CIntegerControlData;	// kTrue mean the cancel button turns into "Reset" when option key is down
+};
+
+type StaticTextWidget (kViewRsrcType) : Widget (ClassID = kStaticTextWidgetBoss)
+{
+	CControlView;
+	StaticTextAttributes;
+	CTextControlData;
+	AssociatedWidgetAttributes;
+};
+
+type StaticTextWidgetWithUnderline 	(kViewRsrcType) : Widget 	(ClassID = kStaticTextWidgetBoss) 
+{ 
+	CControlView;
+	StaticTextAttributes (default=kTrue);
+	CTextControlData;
+	AssociatedWidgetAttributes;
+};
+
+type URLControlData : Interface (IID = IID_IURLCONTROLDATA)
+{
+	PlatformPMString;
+};
+
+type HyperlinkTextWidget     (kViewRsrcType) : StaticTextWidgetWithUnderline     (ClassID = kHyperlinkTextWidgetBoss)
+{ 
+    UIColorSpec; 
+    UIFontSpec;
+	URLControlData;
+};
+
+type HyperlinkTextWidgetWithoutUnderline     (kViewRsrcType) : StaticTextWidget   (ClassID = kHyperlinkTextWidgetBoss)
+{ 
+    UIColorSpec; 
+    UIFontSpec;
+	URLControlData;
+};
+
+type GoURLHyperlinkWidget (kViewRsrcType) : HyperlinkTextWidget (ClassID = kGoURLHyperlinkTextWidgetBoss)
+{
+};
+
+type DialogOnHyperlinkWidget (kViewRsrcType) : HyperlinkTextWidget (ClassID = kDialogOnHyperlinkWidgetBoss)
+{
+    DialogPopupAttributes;
+};
+
+type StaticTextWidgetWithActionOnClick (kViewRsrcType) : StaticTextWidgetWithUnderline (ClassID = kClickableTextWidgetBoss)
+{
+	UIColorSpec; 
+    UIFontSpec;
+	AssociatedWidgetAttributesWithAction;
+};
+
+type StaticTextWidgetWithPopup (kViewRsrcType) : StaticTextWidgetWithUnderline (ClassID = kPopupTextWidgetBoss)
+{
+	UIColorSpec; 
+    UIFontSpec;
+	DialogPopupAttributes;
+};
+
+
+type StaticTextWidgetWithAction (kViewRsrcType) : Widget (ClassID = kStaticTextWidgetBoss)
+{
+	CControlView;
+	StaticTextAttributes;
+	CTextControlData;
+	AssociatedWidgetAttributesWithAction;
+};
+
+type ScalingWidget (kViewRsrcType) : RollOverIconButtonWidget (ClassID = kScalingWidgetBoss)
+{
+	
+}
+
+type InfoStaticTextWidget( kViewRsrcType ): StaticTextWidget( ClassID = kInfoStaticTextWidgetBoss )
+{
+	UIFontSpec;
+};
+
+type StaticMultiLineTextWidget (kViewRsrcType) : Widget (ClassID = kStaticMultiLineTextWidgetBoss)
+{
+	CControlView;
+	StaticTextAttributes;
+	StaticMultiLineTextAttr;	
+	CTextControlData;
+};
+
+type AGMStaticMultiLineTextWidget (kViewRsrcType) : Widget (ClassID = kAGMStaticMultiLineTextWidgetBoss)
+{
+	CControlView;
+	StaticTextAttributes;
+	StaticMultiLineTextAttr;	
+	CTextControlData;
+};
+
+// this is just like StaticMultiLineTextWidget but it only breaks lines at the character defined by BreakStringData.
+type DefinedBreakMultiLineTextWidget (kViewRsrcType) : StaticMultiLineTextWidget (ClassID = kDefinedBreakMultiLineTextWidgetBoss)
+{
+	BreakStringData; // string to break on.
+};
+
+type DropDownListWidget (kViewRsrcType) : Widget (ClassID = kDropDownListWidgetBoss)
+{
+	CControlView;
+	DropDownListControlData;
+};
+
+type TouchDropDownListWidget (kViewRsrcType) : DropDownListWidget (ClassID = kTouchDropDownListWidgetBoss)
+{
+};
+
+type OwnerDrawDDListWidget (kViewRsrcType) : Widget (ClassID = kOwnerDrawDDListWidgetBoss)
+{	
+	CControlView;
+	CPanelControlData;
+};
+
+type TabsWidget (kViewRsrcType) : Widget (ClassID = kTabsWidgetBoss)
+{
+	CControlView;
+	CPanelControlData;
+};
+
+type StdTreeBasedListBox (kViewRsrcType) : Widget (ClassID = kTreeBasedListBoxWidgetNewBoss)
+{
+	ErasablePanelView;
+	CListBoxAttributes;
+	TreeAttributes;
+	TreeViewController
+};
+
+type StdListBoxWidgetN (kViewRsrcType) : StdTreeBasedListBox (ClassID = kStdListBoxWidgetNewBoss)
+{
+};
+
+type StdTreeBasedListBoxSmall (kViewRsrcType) : StdTreeBasedListBox (ClassID = kTreeBasedListBoxSmallWidgetBoss)
+{
+};
+
+type WidgetListBoxWidgetN (kViewRsrcType) : Widget (ClassID = kWidgetListBoxWidgetNewBoss)
+{
+	CControlView;
+	CListBoxAttributes;
+	CPanelControlData;
+};
+
+type WidgetTreeBasedListBoxWidget (kViewRsrcType) : StdTreeBasedListBox (ClassID = kTreeBasedViewListBoxWidgetBoss)
+{
+};
+
+type OwnerDrawStdListBoxWidget (kViewRsrcType) : StdListBoxWidgetN (ClassID = kOwnerDrawStdListBoxWidgetBoss)
+{
+};
+
+type OwnerDrawStdListBoxNoSeparatorWidget (kViewRsrcType) : StdListBoxWidgetN (ClassID = kOwnerDrawStdListBoxNoSeparatorWidgetBoss)
+{
+};
+
+type CellPanelWidget (kViewRsrcType) : Widget (ClassID = kCellPanelBoss)
+{
+	CControlView;
+	CPanelControlData;
+};
+
+type KitMenuButtonWidget (kViewRsrcType) : Widget (ClassID = kKitMenuWidgetBoss)
+{
+	CControlView;
+	CTextControlData;
+}
+
+type GroupPanelWidget (kViewRsrcType) : Widget (ClassID = kGroupPanelWidgetBoss)
+{	
+	CControlView;
+	GroupPanelAttributes;
+	CPanelControlData;
+};
+
+type NudgeControlWidget (kViewRsrcType) : Widget (ClassID = kNudgeControlWidgetBoss)
+{
+	CControlView;
+};
+
+type TouchNudgeControlWidget (kViewRsrcType) : RollOverIconButtonWidget (ClassID = kTouchNudgeControlWidgetBoss)
+{
+};
+
+type ProgressBarWidget (kViewRsrcType) : Widget (ClassID = kProgressBarWidgetBoss)
+{
+	CControlView;
+	CProgressBarControlData;
+};
+
+type DocProgressBarWidget (kViewRsrcType) : Widget (ClassID = kDocProgressBarWidgetBoss)
+{
+	CControlView;
+	CProgressBarControlData;
+};
+
+type TaskProgressBarWidget (kViewRsrcType) : Widget (ClassID = kTaskProgressBarWidgetBoss)
+{
+    CControlView;
+    CProgressBarControlData;
+};
+
+type UIColorSwatchWidget (kViewRsrcType) : Widget (ClassID = kUIColorSwatchWidgetBoss)
+{
+	CControlView;
+};
+
+type SplitterWidget (kViewRsrcType) : Widget (ClassID = kSplitterWidgetBoss)
+{
+	CControlView;
+	CCounterControlData;
+	SplitterControlData;
+};
+
+type StrokeFillProxy (kViewRsrcType) : Widget (ClassID = kStrokeFillWidgetBoss)
+{
+	CControlView;
+	StrokeFillProxyData;
+};
+
+type IntEditBoxWidget (kViewRsrcType) : Widget (ClassID = kIntEditBoxWidgetBoss)
+{
+	CControlView;
+	CEditBoxAttributes;
+	TextDataValidation;
+	CTextControlData;
+};
+
+type TouchIntEditBoxWidget(kViewRsrcType) : IntEditBoxWidget (ClassID = kTouchIntEditBoxWidgetBoss)
+{
+
+}
+type RealEditBoxWidget (kViewRsrcType) : IntEditBoxWidget (ClassID = kRealEditBoxWidgetBoss)
+{
+};
+
+type ShortcutEditBoxWidget (kViewRsrcType) : IntEditBoxWidget (ClassID = kShortcutEditBoxWidgetBoss)
+{
+};
+
+type PercentageEditBoxWidget (kViewRsrcType) : IntEditBoxWidget (ClassID = kPercentageEditBoxWidgetBoss)
+{
+};
+
+type XMeasureEditBoxWidget (kViewRsrcType) : IntEditBoxWidget (ClassID = kXMeasureEditBoxWidgetBoss)
+{
+};
+
+
+// X Measure edit box that rememebers last used measurement system.
+type CustomXMeasureEditBoxWidget (kViewRsrcType) : IntEditBoxWidget (ClassID = kCustomXMeasureEditBoxWidgetBoss)
+{
+	MeasureClassControlData;	// 0 means use default x system initially. Use classID of measurement system to specify. (e.g. kInchesBoss, kPicasBoss, etc)
+};
+
+type YMeasureEditBoxWidget (kViewRsrcType) : IntEditBoxWidget (ClassID = kYMeasureEditBoxWidgetBoss)
+{
+};
+
+// Y Measure edit box that rememebers last used measurement system.
+type CustomYMeasureEditBoxWidget (kViewRsrcType) : IntEditBoxWidget (ClassID = kCustomYMeasureEditBoxWidgetBoss)
+{
+	MeasureClassControlData;	// 0 means use default y system initially. Use classID of measurement system to specify. (e.g. kInchesBoss, kPicasBoss, etc)
+};
+
+type XSessionPrefsMeasureEditBoxWidget (kViewRsrcType) : IntEditBoxWidget (ClassID = kXMeasureSessionEditBoxWidgetBoss)
+{
+};
+
+// X Session Measure edit box that rememebers last used measurement system.
+type CustomXSessionPrefsMeasureEditBoxWidget (kViewRsrcType) : IntEditBoxWidget (ClassID = kCustomXMeasureSessionEditBoxWidgetBoss)
+{
+	MeasureClassControlData;	// 0 means use default x session system initially. Use classID of measurement system to specify. (e.g. kInchesBoss, kPicasBoss, etc)
+};
+
+type YSessionPrefsMeasureEditBoxWidget (kViewRsrcType) : IntEditBoxWidget (ClassID = kYMeasureSessionEditBoxWidgetBoss)
+{
+};
+
+// Y Session Measure edit box that rememebers last used measurement system.
+type CustomYSessionPrefsMeasureEditBoxWidget (kViewRsrcType) : IntEditBoxWidget (ClassID = kCustomYMeasureSessionEditBoxWidgetBoss)
+{
+	MeasureClassControlData;	// 0 means use default y session system initially. Use classID of measurement system to specify. (e.g. kInchesBoss, kPicasBoss, etc)
+};
+
+// Defines the popup icon widget for the measurement system popup. It allows user to pick a measurement system for a Custom Edit Box Widget.
+type MeasurementPopupMenuWidget    (kViewRsrcType) : RollOverIconButtonWidget (ClassID = kMeasurementPopupMenuBoss)
+{
+    CTextControlData;
+};
+
+type TextMeasureEditBoxWidget (kViewRsrcType) : IntEditBoxWidget (ClassID = kTextMeasureEditBoxWidgetBoss)
+{
+};
+
+type TextSizeMeasureEditBoxWidget (kViewRsrcType) : IntEditBoxWidget (ClassID = kTextSizeMeasureEditBoxWidgetBoss)
+{
+};
+
+type LineWtMeasureEditBoxWidget (kViewRsrcType) : IntEditBoxWidget (ClassID = kLineWtMeasureEditBoxWidgetBoss)
+{
+};
+
+type AngleEditBoxWidget (kViewRsrcType) : IntEditBoxWidget (ClassID = kAngleEditBoxWidgetBoss)
+{
+};
+
+type TextEditBoxWidget (kViewRsrcType) : IntEditBoxWidget (ClassID = kTextEditBoxWidgetBoss)
+{
+};
+
+type SearchableTextEditWidget (kViewRsrcType) : TextEditBoxWidget (ClassID = kSearchableTextEditBoxBoss)
+{
+	DropDownListControlData;
+};
+
+type MultilineTextEditBoxWidget (kViewRsrcType) : Widget (ClassID = kTextEditBoxWidgetBoss)
+{
+	CControlView;
+	CEditBoxAttributes (multiline = kTrue);
+	TextDataValidation;
+	CTextControlData;
+};
+
+type FontSpecMultilineTextEditBoxWidget (kViewRsrcType) : MultilineTextEditBoxWidget (ClassID = kFontSpecTextEditBoxWidgetBoss)
+{
+	UIFontSpec;
+};
+
+// Use this editbox widget if you want to override default font setting
+//One Shouldn't be using kDialogWindowSystemScriptFontId. This is a slightly larger font. So, gives problem on MAC
+type FontSpecTextEditBoxWidget (kViewRsrcType) : TextEditBoxWidget (ClassID = kFontSpecTextEditBoxWidgetBoss)
+{
+	UIFontSpec;
+};
+
+
+type PasswordEditBoxWidget (kViewRsrcType) : TextEditBoxWidget( ClassID = kPasswordEditBoxWidgetBoss ) 
+{
+};
+
+type PageNumEditBoxWidget (kViewRsrcType) : IntEditBoxWidget (ClassID = kPageNumEditBoxWidgetBoss)
+{
+};
+
+type PageNumPlusMasterEditBoxWidget (kViewRsrcType) : IntEditBoxWidget (ClassID = kPageNumPlusMasterEditBoxWidgetBoss)
+{
+};
+
+type PageRangeEditBoxWidget (kViewRsrcType) : IntEditBoxWidget (ClassID = kPageRangeEditBoxWidgetBoss)
+{
+	SortData;
+};
+
+type RealComboBoxWidget (kViewRsrcType) : RealEditBoxWidget (ClassID = kRealComboBoxWidgetBoss)
+{	
+	DropDownListControlData;
+};
+
+type IntComboBoxWidget (kViewRsrcType) : IntEditBoxWidget (ClassID = kIntComboBoxWidgetBoss)
+{	
+	DropDownListControlData;
+};
+
+type PageNumComboBoxWidget (kViewRsrcType) : IntComboBoxWidget (ClassID = kPageNumComboBoxWidgetBoss)
+{ 
+}; 
+
+type PageRangeComboBoxWidget (kViewRsrcType) : IntComboBoxWidget (ClassID = kPageRangeComboBoxWidgetBoss)
+{
+	SortData;
+	PageNameStyleData;
+};
+
+type PercentageComboBoxWidget (kViewRsrcType) : PercentageEditBoxWidget (ClassID = kPercentageComboBoxWidgetBoss)
+{	
+	DropDownListControlData;
+};
+
+type AutoPercentageComboBoxWidget (kViewRsrcType) : PercentageComboBoxWidget (ClassID = kAutoPercentageComboBoxWidgetBoss)
+{
+};
+
+type XMeasureComboBoxWidget (kViewRsrcType) : XMeasureEditBoxWidget (ClassID = kXMeasureComboBoxWidgetBoss)
+{	
+	DropDownListControlData;
+};
+
+type YMeasureComboBoxWidget (kViewRsrcType) : YMeasureEditBoxWidget (ClassID = kYMeasureComboBoxWidgetBoss)
+{	
+	DropDownListControlData;
+};
+
+type TextMeasureComboBoxWidget (kViewRsrcType) : TextMeasureEditBoxWidget (ClassID = kTextMeasureComboBoxWidgetBoss)
+{	
+	DropDownListControlData;
+};
+
+type TextSizeMeasureComboBoxWidget (kViewRsrcType) : TextSizeMeasureEditBoxWidget (ClassID = kTextSizeMeasureComboBoxWidgetBoss)
+{	
+	DropDownListControlData;
+};
+type FontSizeLimitObserverBoss        (kViewRsrcType) : TextSizeMeasureComboBoxWidget        (ClassID = kFontSizeLimitObserverBoss) { }; 
+type LineWtMeasureComboBoxWidget (kViewRsrcType) : LineWtMeasureEditBoxWidget (ClassID = kLineWtMeasureComboBoxWidgetBoss)
+{	
+	DropDownListControlData;
+};
+
+type AutoLineWtMeasureComboBoxWidget (kViewRsrcType) : LineWtMeasureComboBoxWidget (ClassID = kAutoLineWtMeasureComboBoxWidgetBoss)
+{	
+};
+
+type AngleComboBoxWidget (kViewRsrcType) : AngleEditBoxWidget (ClassID = kAngleComboBoxWidgetBoss)
+{	
+	DropDownListControlData;
+};
+
+type TextComboBoxWidget (kViewRsrcType) : TextEditBoxWidget (ClassID = kTextComboBoxWidgetBoss)
+{	
+	DropDownListControlData;
+};
+
+type TypeaheadTextComboBoxWidget (kViewRsrcType) : TextEditBoxWidget (ClassID = kTypeaheadTextComboBoxWidgetBoss)
+{	
+	DropDownListControlData;
+};
+
+type UIColorDropDownListWidget (kViewRsrcType) : DropDownListWidget (ClassID = kUIColorDropDownListWidgetBoss) 
+{
+	LinkedWidgetAttributes;
+};
+
+type ColorListDropDownWidget (kViewRsrcType) : Widget (ClassID = kColorListDropDownWidgetBoss) 
+{
+	CControlView;
+	LinkedWidgetAttributes;
+};
+
+type ColorListDropDownElementWidget (kViewRsrcType) : Widget (ClassID = kColorListDropDownElementWidgetBoss) 
+{
+};
+
+//style set enabled style drop down widgets.
+type StyleGroupDropDownListWidget (kViewRsrcType) : Widget (ClassID = kStyleGroupDropDownWidgetBoss)
+{
+	CControlView;
+	ActionIDData;			// ActionID of extra menu item to add to bottom of this style drop down list. kInvalidActionID for no extra menu item.
+	CControlViewObservers;	// List of observers to attach when showing this style widget. Typically includes IID_IOBSERVER and also IID_ISTYLEGROUPOBSERVER when ActionIDData contains a non-kInvalidActionID value. Could also be empty though.
+};
+
+type StyleGroupDropDownElementWidget (kViewRsrcType) : Widget (ClassID = kStyleGroupDropDownElementWidgetBoss)
+{
+};
+
+type UIColorPickerWidget (kViewRsrcType) :  UIColorSwatchWidget (ClassID = kUIColorPickerWidgetBoss) 
+{ 
+	LinkedWidgetAttributes;
+};
+
+
+type InfoStaticTextPercentageWidget (kViewRsrcType) : InfoStaticTextWidget (ClassID = kInfoStaticTextPercentageWidgetBoss)
+{
+};
+
+type InfoStaticTextXMeasurementWidget (kViewRsrcType) : InfoStaticTextWidget (ClassID = kInfoStaticTextXMeasurementWidgetBoss)
+{
+};
+
+type InfoStaticTextYMeasurementWidget (kViewRsrcType) : InfoStaticTextWidget (ClassID = kInfoStaticTextYMeasurementWidgetBoss)
+{
+};
+
+type InfoStaticTextAngleWidget (kViewRsrcType) : InfoStaticTextWidget (ClassID = kInfoStaticTextAngleWidgetBoss)
+{
+};
+
+type InfoStaticTextIntWidget (kViewRsrcType) : InfoStaticTextWidget (ClassID = kInfoStaticTextIntWidgetBoss)
+{
+};
+
+type LineEndPopupBoss (kViewRsrcType) : OwnerDrawDDListWidget            (ClassID = kLineEndPopupBoss)
+{
+};
+
+type CornerEffectWidget		(kViewRsrcType):	OwnerDrawDDListWidget	(ClassID = kCornerEffectPopupBoss)
+{
+};
+
+type CSetControlView : Interface (IID = IID_ICONTROLVIEW)
+{
+	longint;				// fWidgetId
+	PMRsrcID;				// fRsrcId, fRsrcPlugin
+	integer;				// fFrameBinding
+	Frame;					// fFrame
+	integer;				// fVisible
+	integer = 1;			// fEnabled is always true for control sets
+};
+
+
+type BaseControlSetWidget(kViewRsrcType) : Widget (ClassID = kControlSetBoss)
+{
+	CSetControlView;
+	CTextControlData;
+	CPanelControlData;
+};
+
+type ControlSetWidget(kViewRsrcType) : BaseControlSetWidget (ClassID = kControlSetBoss)
+{
+};
+
+type ControlStripWidget(kViewRsrcType) : ControlSetWidget (ClassID = kControlStripWidgetBoss)
+{
+	CControlViewObservers;	// List of observers to attach when showing this control strip widget
+};
+
+type KitViewControlData : Interface (IID = IID_IPANELCONTROLDATA)
+{
+	longint = $$CountOf(Children);
+	array Children
+	{
+		longint = endWidget[$$ArrayIndex(Children)] - startWidget[$$ArrayIndex(Children)];
+		startWidget:
+		ControlSetWidget;
+		endWidget:
+	}
+};
+
+
+type AddStartEndPaddingForKitView : Interface (IID = IID_IADD_START_END_PADDING) 
+{ 
+    default: integer = kFalse; // Add padding before the start and end of control sets
+};
+
+type KitViewHorzWidget(kViewRsrcType) : Widget (ClassID = kKitViewHorzBoss)
+{
+	CControlView;
+	CTextControlData;
+	KitViewControlData;
+	AddStartEndPaddingForKitView;
+};
+
+type KitViewHorzWidgetWithPadding(kViewRsrcType) : Widget (ClassID = kKitViewHorzBoss)
+{
+	CControlView;
+	CTextControlData;
+	KitViewControlData;
+	AddStartEndPaddingForKitView (default=kTrue);
+};
+
+type KitViewVertWidget(kViewRsrcType) : Widget (ClassID = kKitViewVertBoss)
+{
+	PalettePanelView;
+	CTextControlData;
+	KitViewControlData;
+	AddStartEndPaddingForKitView;
+};
+
+type KitViewVertWidgetWithPadding(kViewRsrcType) : Widget (ClassID = kKitViewVertBoss)
+{
+	PalettePanelView;
+	CTextControlData;
+	KitViewControlData;
+	AddStartEndPaddingForKitView (default=kTrue);
+};
+
+type KitViewTabPanelWidget(kViewRsrcType) : Widget (ClassID = kKitViewTabPanelBoss)
+{
+	PalettePanelView;
+	CTextControlData;
+	KitViewControlData;
+	AddStartEndPaddingForKitView;
+};
+
+type KitViewTabPanelWidgetWithPadding(kViewRsrcType) : Widget (ClassID = kKitViewTabPanelBoss)
+{
+	PalettePanelView;
+	CTextControlData;
+	KitViewControlData;
+	AddStartEndPaddingForKitView (default=kTrue);
+};
+
+type KitViewTabPanelWithDetailWidget(kViewRsrcType) : Widget (ClassID = kKitViewTabPanelWithDetailBoss)
+{
+	PalettePanelView;
+	CTextControlData;
+	KitViewControlData;
+	SetsPanelDetailController;
+	AddStartEndPaddingForKitView;
+};
+
+type KitViewTabPanelWithDetailWidgetWithPadding(kViewRsrcType) : Widget (ClassID = kKitViewTabPanelWithDetailBoss)
+{
+	PalettePanelView;
+	CTextControlData;
+	KitViewControlData;
+	SetsPanelDetailController;
+	AddStartEndPaddingForKitView(default=kTrue);
+};
+
+type PrintMeasureEditBoxWidget (kViewRsrcType) : Widget (ClassID = kPrintMeasureEditBoxWidgetBoss)
+{
+	CControlView;
+	CEditBoxAttributes;
+	TextDataValidation;
+	CTextControlData;
+};
+
+type CSliderTickCount : Interface (IID = IID_ISLIDERTICKCOUNTDATA)
+{
+	longint;
+}
+
+type CSliderWidget (kViewRsrcType) : Widget (ClassID = kDV_SliderWidgetBoss)
+{
+	CControlView;
+	CSliderControlData;
+	CSliderTickCount;
+}
+
+type RealPopupSliderComboBoxWidget (kViewRsrcType) : RealEditBoxWidget (ClassID = kRealPopupSliderComboWidgetBoss)
+{
+	CIntegerControlData; // On screen length of slider in pixel
+};
+
+type IntPopupSliderComboBoxWidget (kViewRsrcType) : IntEditBoxWidget (ClassID = kIntPopupSliderComboWidgetBoss)
+{	
+	CIntegerControlData // On screen length of slider in pixel
+};
+
+type PercentPopupSliderComboBoxWidget (kViewRsrcType) : PercentageEditBoxWidget (ClassID = kPercentPopupSliderComboWidgetBoss)
+{	
+	CIntegerControlData // On screen length of slider in pixel
+};
+
+type TreeViewWidget (kViewRsrcType) : Widget (ClassID = kTreeViewWidgetBoss)
+{
+	ErasablePanelView;
+	CTextControlData;
+	TreeAttributes;
+	TreeViewController;
+	CPanelControlData;
+};
+
+type StandardTreeNodeWidget (kViewRsrcType) : Widget (ClassID = kTreeNodeWidgetBoss)
+{
+	ResourceSrcFileInfo;
+	CControlView;
+	CTextControlData;
+	CPanelControlData;
+};
+
+type StandardTreeBasedListBoxNodeWidget (kViewRsrcType) : StandardTreeNodeWidget (ClassID = kTreeBasedListBoxNodeWidgetBoss)
+{
+};
+
+type TreeViewScrollBarWidget (kViewRsrcType) : ScrollBarWidget (ClassID = kTreeViewScrollBarWidgetBoss)
+{	
+};
+
+type InLineEditBaseWidget (kViewRsrcType) : Widget (ClassID = kInLineEditBaseWidgetBoss) 
+{ 
+	CControlView;
+	StaticTextAttributes;
+	CTextControlData;
+	InLineEditEditingAttributes;
+};
+
+type TextInLineEditWidget (kViewRsrcType) : InLineEditBaseWidget (ClassID = kTextInLineEditWidgetBoss) 
+{ 
+	CIntegerControlData;			// max num chars
+};
+
+type InLineEditContainerWidget (kViewRsrcType) : InLineEditBaseWidget (ClassID = kInLineEditContainerWidgetBoss) 
+{ 
+	CPanelControlData;
+};
+
+type StrokeTypePopupWidget (kViewRsrcType) : Widget (ClassID = kStrokeTypePopupWidgetBoss) 
+{
+	CControlView;
+};
+
+type StrokeTypePopupElementWidget (kViewRsrcType) : Widget (ClassID = kStrokeTypePopupElementWidgetBoss) 
+{
+};
+
+type CObjStylesAssociatedCategoryData : Interface (IID = IID_IOBJSTYLESASSOCIATEDCATEGORIESDATA)
+{
+	longint = $$CountOf(categoryIDS);
+	array categoryIDS
+	{
+		longint;	// ClassID of category of itself
+	};
+	longint = $$CountOf(parentCategoryIDS);
+	array parentCategoryIDS
+	{
+		longint;	// ClassID of category of parent
+	};
+	integer;    // Is hierarchy node?
+};
+
+type CSwatchesPanelAttributes : Interface (IID = IID_ISWATCHESPANELATTRIBUTES)
+{
+    longint;        //     view filter class ID
+    integer;        //    list items can be edited
+    integer;        //    has show buttons
+    integer;        //    graphic state aware
+    integer;		//    add unnamed color
+	integer;		//    bool, list unnamed colors
+	integer;		//    bool, Add "Any Swatch" to the list
+	integer;		//    bool, observe IID_IRENDERINGOBJECT protocol
+};
+
+type LoadStyleSplitterWidget (kViewRsrcType) : SplitterPanelWidget (ClassID = kLoadStyleSplitterWidgetBoss){ };
+type LoadStyleListWidget(kViewRsrcType) : TreeViewWidget(ClassID = kLoadStyleListWidgetBoss) { };
+type LoadStyleInlineDropDownWidget (kViewRsrcType) : InLineEditContainerWidget(ClassID = kLoadStyleInlineDropDownWidgetBoss) { };
+type LoadStyleDropDownElementWidget (kViewRsrcType) : StaticTextWidget(ClassID = kLoadStyleDropDownElementWidgetBoss) { };
+type LoadStyleSplitterPanelwidget (kViewRsrcType) : ErasablePrimaryResourcePanelWidget(ClassID = kLoadStyleSplitterPanelwidgetBoss) { };
+type LoadStyleMultiLineTextWidget (kViewRsrcType) : DefinedBreakMultiLineTextWidget (ClassID = kLoadStyleMultiLineTextWidgetBoss) {};
+
+
+type PanelWithGroupButtonFocusWidget (kViewRsrcType) : GenericPanelWidget (ClassID = kGroupButtonFocusPanelBoss) { };
+type PanelWithClusterButtonFocusWidget (kViewRsrcType) : ClusterPanelWidget (ClassID = kClusterButtonFocusPanelBoss) { };
+
+type PanelWithClusterButtonFocusCommitWidget (kViewRsrcType) : PanelWithClusterButtonFocusWidget(ClassID = kClusterButtonCommitFocusPanelBoss)
+{};
+
+type PanelWithGroupAnyStateSupportedButtonFocusWidget (kViewRsrcType) : PanelWithGroupButtonFocusWidget (ClassID = kGroupASSButtonFocusPanelBoss) { };
+	
+type StyleGroupTreeViewWidget (kViewRsrcType) : TreeViewWidget (ClassID = kStyleGroupTreeViewBoss) { };
+type StyleGroupTreeNodeWidget (kViewRsrcType) : StandardTreeNodeWidget (ClassID = kStyleGroupTreeNodeBoss) { };
+
+type ResizePresentationWidget			(kViewRsrcType) : RollOverIconButtonWidget (ClassID = kResizePresentationWidgetBoss)
+{
+}
+
+type SliderILEWidget		(kViewRsrcType) : TextInLineEditWidget (ClassID = kSliderILEWidgetBoss) 
+{ 
+	CSliderInlineRangeControlData;	// data for min/max/increment
+} 
+type SliderILEPercentWidget			(kViewRsrcType) : SliderILEWidget (ClassID = kSliderILEPercentWidgetBoss) { }
+type SliderILEAngleWidget			(kViewRsrcType) : SliderILEWidget (ClassID = kSliderILEAngleWidgetBoss) { }
+
+type SpinningIconWidget				(kViewRsrcType) : IconSuiteWidget (ClassID = kSpinningIconWidgetBoss) { }
+
+type RoundedRampWidget			(kViewRsrcType) : Widget(ClassID = kRoundedRampWidgetBoss)
+{
+	CControlView;
+	CSliderControlData;
+}
+
+type ColorHSBSelectorWidget (kViewRsrcType) : Widget(ClassID = kColorHSBSelectorWidgetBoss)
+{
+	CControlView;
+}
+
+type RGBColorEditorWidget (kViewRsrcType) : Widget(ClassID = kRGBColorEditorWidgetBoss)
+{
+	CControlView;
+}
+
+type CMYKColorEditorWidget (kViewRsrcType) : Widget(ClassID = kCMYKColorEditorWidgetBoss)
+{
+	CControlView;
+}
+
+type ButtonBarControlData : Interface (IID = IID_IBUTTONBARCONTROLDATA)
+{
+	longint = $$CountOf(Children);
+	array Children
+	{
+		longint = endWidget[$$ArrayIndex(Children)] - startWidget[$$ArrayIndex(Children)];
+		startWidget:
+		Widget;
+		endWidget:
+	}
+};
+
+type ButtonBarAttributes : Interface (IID = IID_IBUTTONBARATTRIBUTES)
+{
+	double;
+	double;
+	integer;
+	integer;
+}
+
+type ButtonBarWidget(kViewRsrcType): Widget(ClassID = kButtonBarWidgetBoss)
+{
+	CControlView;
+}
+
+type ButtonBarGenericWidget(kViewRsrcType) : Widget(ClassID = kButtonBarGenericWidgetBoss)
+{
+	CControlView;
+	ButtonBarControlData;
+	ButtonBarAttributes;
+}
+
+type ButtonBarItemData : Interface (IID = IID_IBUTTONBARITEM)
+{
+	integer;
+	PlatformPMString;
+	PMRsrcID;		// fRsrcId, fRsrcPlugin
+	PlatformPMString;	// alt text/toop tip for picture button.
+}
+
+type ButtonBarItem(kViewRsrcType) : Widget(ClassID = kButtonBarItemBoss)
+{
+	ButtonBarItemData;
+}
+
+type ToggleWidget(kViewRsrcType): Widget(ClassID = kToggleWidgetBoss)
+{
+	CControlView;
+	CToggleModeDefault;
+	CToggleModeToggled;
+}
+
+type TouchPanelEmbeddedWindowContainerWidget(kViewRsrcType): GenericPalettePanelWidget	(ClassID = kTouchPanelEmbeddedWindowContainerBoss)
+{
+
+};
+
+type SelectedUIColorSpec : Interface (IID = IID_ISELECTEDUICOLORSPEC)
+{
+	longint;		// fColorID
+	longint;		// fHiliteColorID;
+	longint;		// fBackgroundColorID
+	longint;		// fBackgroundHiliteColorID
+	double = 0.0;	// fColorAGM.red;
+	double = 0.0;	// fColorAGM.red;
+	double = 0.0;	// fColorAGM.red;
+	double = 0.0;	// fHiliteColorAGM.red;
+	double = 0.0;	// fHiliteColorAGM.red;
+	double = 0.0;	// fHiliteColorAGM.red;
+	double = 0.0;	// fBackgroundColorAGM.red;
+	double = 0.0;	// fBackgroundColorAGM.red;
+	double = 0.0;	// fBackgroundColorAGM.red;
+	double = 0.0;	// fBackgroundHiliteColorAGM.red;
+	double = 0.0;	// fBackgroundHiliteColorAGM.red;
+	double = 0.0;	// fBackgroundHiliteColorAGM.red;
+};
+
+type DisabledUIColorSpec : Interface (IID = IID_IDISABLEDUICOLORSPEC)
+{
+	longint;		// fColorID
+	longint;		// fHiliteColorID;
+	longint;		// fBackgroundColorID
+	longint;		// fBackgroundHiliteColorID
+	double = 0.0;	// fColorAGM.red;
+	double = 0.0;	// fColorAGM.red;
+	double = 0.0;	// fColorAGM.red;
+	double = 0.0;	// fHiliteColorAGM.red;
+	double = 0.0;	// fHiliteColorAGM.red;
+	double = 0.0;	// fHiliteColorAGM.red;
+	double = 0.0;	// fBackgroundColorAGM.red;
+	double = 0.0;	// fBackgroundColorAGM.red;
+	double = 0.0;	// fBackgroundColorAGM.red;
+	double = 0.0;	// fBackgroundHiliteColorAGM.red;
+	double = 0.0;	// fBackgroundHiliteColorAGM.red;
+	double = 0.0;	// fBackgroundHiliteColorAGM.red;
+};
+
+type  ButtonCornerRadiusData : Interface (IID = IID_IROUNDINGRADIUS)
+{
+	double;			// Real number
+};
+
+type FlatButtonWidget (kViewRsrcType) : Widget (ClassID = kFlatButtonWidgetBoss )
+{	
+	CControlView;
+	ButtonAttributes;
+	CTextControlData;
+	ButtonCornerRadiusData (default=0.0);
+	UIFontSpec;
+	UIColorSpec;
+	SelectedUIColorSpec;
+	DisabledUIColorSpec;
+};
+
+type UIBrightnessButtonWidget (kViewRsrcType) : RollOverIconButtonWidget  (ClassID = kUIBrightnessButtonWidgetBoss)
+{
+};
+
+type BorderControlAttributes : Interface (IID = IID_IBORDERCONTROLATTRIBUTES) 
+{ 
+    integer;        // fBorderInfo
+	integer;		//Radius info for the rounded rect. 
+};
+type GenericPanelWithCustomBorderWidget (kViewRsrcType) : GenericPanelWithBorderWidget  (ClassID = kGenericPanelWithCustomBorderWidgetBoss)
+{
+	BorderControlAttributes;
+
+};
+
+type MenuPopupWidget (kViewRsrcType) : RollOverIconButtonWidget (ClassID = kIconPopupBoss) 
+{ 
+    CTextControlData; 
+} 
+
+
+type RectangularButtonWidget (kViewRsrcType) : DefaultButtonWidget (ClassID = kRectangularButtonWidgetBoss)
+{
+
+};
+
+type TreeBasedDropDownListWidget(kViewRsrcType) : Widget (ClassID = kTreeBasedDropDownListWidgetBoss)
+{
+	CControlView;
+};
+
+type GIFPlayerWidget(kViewRsrcType) : Widget (ClassID = kGIFPlayerWidgetBoss)
+{
+    CControlView;
+	CTextControlData; 
+};
+
+#endif // __ODFRC__
+
+#endif // __Widgets_fh__

@@ -1,0 +1,298 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kDynamicDocumentsUIStringsRsrcID + index_jaJP)
+{
+	k_jaJP,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{
+		// ----- Command strings
+
+		// ----- Window strings
+
+		// ----- Panel strings
+		"kPageTransitionsPanelPopup",			"ページ効果パネルメニュー",    
+		"kPageTransitionsSubMenu",				"ページ効果(&T)",
+		"kPageTransitionsPanelName",			"ページ効果",	   
+		"kPageTransitionStaticText",			"効果 :",
+		"kPageDirectionStaticText",				"方向 :",
+		"kPageSpeedStaticText",					"速度 :",
+        "kPTHorizontal",						"横",
+        "kPTVertical",							"縦",
+        "kPTIn",								"イン",
+        "kPTOut",								"アウト",
+        "kPTDown",								"下",
+        "kPTLeft",								"左",
+        "kPTLeftDown",							"左下",
+        "kPTLeftUp",							"左上",
+        "kPTRight",								"右",
+        "kPTRightDown",							"右下",
+        "kPTRightUp",							"右上",
+        "kPTUp",								"上",
+        "kPTHorizontalIn",						"イン (水平方向)",
+        "kPTHorizontalOut",						"アウト (水平方向)",
+        "kPTVerticalIn",						"イン (垂直方向)",
+        "kPTVerticalOut",						"アウト (垂直方向)",
+        "kPTSlow",								"低速",
+		"kPTMedium",							"標準",
+		"kPTFast",								"高速",		
+		"kPTNoTransition",						"なし",	
+              		
+		// ----- Liquid Layout panel
+		"kLiquidLayoutMenu",					"リキッドレイアウト(&L)",
+		"kLiquidLayoutPanelPopup",				"リキッドレイアウトパネルメニュー",
+		"kLiquidLayoutPanelName",				"リキッドレイアウト",	
+		"kObjectConstraintsStaticTextLabel",	"オブジェクトの制約 :",
+		"kDocumentReflowStaticTextLabel",		"ドキュメントの再フロー",
+		"kFixedSizeStaticTextLabel",			"ページに合わせてサイズ変更 :",
+		"kHeightCheckBoxLabel",					"高さ",
+		"kWidthCheckBoxLabel",					"幅",
+		"kPinLeftEdgeCheckBoxLabel",			"左端",
+		"kPinRightEdgeCheckBoxLabel",			"右端",
+		"kPinTopEdgeCheckBoxLabel",				"上端",
+		"kPinBottomEdgeCheckBoxLabel",			"下端",
+		"kPinObjectEdgesStaticTextLabel",		"固定基準 :",
+		"kContentStaticTextLabel",				"コンテンツの調整 :",
+		"kLayoutAdjustmentWarningTip",			"レイアウト調整がドキュメントに対して有効になっているため、リキッドレイアウトルールは適用されせん。クリックしてレイアウト調整を無効にしてください。",
+		"kPageLayoutPolicyDropdownLabel",		"リキッドページルール :",
+		"kLiquidLayoutPanelPageRange",			"ページ : ^1",
+		"kPinEdgeToolTip",						"チェックすると、オブジェクトがページ枠に対して相対的に固定されます。",
+		"kResizeHeightWithPageToolTip",			"チェックすると、ページの高さの変更時にオブジェクトの高さも変更されます。",
+		"kResizeWidthWithPageToolTip",			"チェックすると、ページの幅の変更時にオブジェクトの幅も変更されます。",
+		
+        // ----- Timing panel
+        "kTimingPanelPopup",					"タイミングパネルメニュー",    
+		"kTimingSubMenu",						"タイミング(&M)",
+		"kTimingPanelName",						"タイミング",	
+		"kTimingPanelEventStaticText",			"イベント : ",
+		"kTimingPanelDelayStaticText",			"遅延 : ",
+        "kTimingPanelDelaySecondStaticText",	"秒",
+        "kTimingPanelDelaySecondsStaticText",	"秒",
+        "kTimingPanelAssignPageLoadEvent",		"ページの読み込み時に再割り当て",
+        "kTimingPanelAssignStateLoadEvent",		"ステート読み込み時に再割り当て",
+        "kTimingPanelAssignPageClickEvent",		"ページクリック時に再割り当て",
+        "kTimingPanelRemoveItem",				"項目の削除",
+        "kTimingPanelEventDropDownTip",			"続行するにはクリックしてください",
+        "kTimingPanelGroupButtonTip",			"同時に再生",
+        "kTimingPanelUngroupkButtonTip",		"別々に再生",
+        "kTimingPanelPreviewButtonTip",			"スプレッドをプレビュー",
+        "kUnassignedEntry",						"割り当てなし",
+        "kTimingPanelLinkedItemStaticText",			"リンクされたアイテム :",	
+        "kTimingPanelPlayLinkedItemStaticText",		"再生 : ",
+        "kTimingPanelPlayLinkedItemTimeStaticText",	"回",
+        "kTimingPanelPlayLinkedItemTimesStaticText","回",
+        "kTimingPanelLoopCheckBoxLabel",		"ループ",
+        "kTimingPanelLinkedItemGroupWidgetTip",	"オブジェクトを同時に再生 (クリックしてグループを選択)", 
+
+        // HTML Preview menu items
+        "kHTMLFXLPreviewSpread",				"スプレッドをプレビュー : EPUB",
+		// ----- Menu Strings
+		"kTransitionPanelChooseAction",				"選択(&C)...",
+		"kTransitionPanelApplyToAllSpreadsAction",	"すべてのスプレッドに適用(&A)",
+		"kTransitionPanelClearAllTransitionsAction","すべてを消去(&L)",
+		
+		// ----- Tips strings
+		"kApplyToAllSpreadsButtonTip",			"すべてのスプレッドに適用",
+		"kMotionPathTipStr",					"モーションパス、クリックして編集",
+		"kEasingPathTipStr",					"イージングパス",
+	#ifdef WINDOWS
+		"kPreviewSpreadButtonToolTip",			"スプレッドをプレビュー : EPUB.",
+	#else
+		"kPreviewSpreadButtonToolTip",			"スプレッドをプレビュー : EPUB.",			
+	#endif
+				
+		// ----- XFL Export Dialogs
+
+		"kXFLExport",						"Flash CS6 Professional (FLA) の書き出し",
+		"kSizePixels",						"サイズ (ピクセル) :",
+		"kPagesStr",						"ページ :",
+		"kExportStr",						"書き出し :",
+		"kSpreadsStr",						"見開き(&E)",
+		"kGenerateHTMLStr",					"HTML ファイルを生成(&M)",
+		"kFlashText",						"Flash クラシックテキスト",
+		"kVectorText",						"アウトラインに変換",
+		"kRasterText",						"ピクセルに変換",
+		"kVellumText",						"Flash TLF テキスト",
+		"kInsertHyphensStr",				"任意ハイフンポイントを挿入(&N)",
+		"kFitToSize",						"合わせる(&F) :",
+		"kWidthSize",						"幅(&D) :",
+		"kHeightSize",						"高さ(&H) :",
+		"kSelectionExportedStr",			"選択範囲(&C)",
+		"kAllPagesExported",				"すべて(&A)",
+		"kAllPagesExportedStr",				"すべてのページ(&A)",
+		"kPageRangeExported",				"範囲(&R) :",
+		"kScaleSize",						"拡大・縮小(&S) :",
+		"kTextStr",							"テキスト(&X) :",
+		"kInteractivityStr",				"インタラクティビティ :",
+		"kDynamicMediaStr",					"インタラクティビティおよびメディア :",
+		"kImageCompStr",					"画像圧縮(&C) :",
+		"kQualityStr",						"JPEG 画質(&J) :",
+		"kCurveQualityStr",					"曲線の画質(&Q) :",
+		"kInclButtonsStr",					"ボタンを含む(&B)",
+		"kInclHyperLinkStr",				"ハイパーリンクを含む(&Y)",
+		"kInclPageTrans",					"ページ効果を含む(&N)",
+		"kIncludePageCurl",					"インタラクティブなページめくり効果を含む(&U)",
+		"kIncludeAllStr",					"すべて含める(&I)",
+		"kAppearanceOnlyStr",				"外観のみ(&P)",
+		"kBackgroundStr",					"背景 :",
+		"kPaperColorStr",					"紙色(&O)",
+		"kTransparentStr",					"透明(&T)",
+		"kFramesPerSecStr",					"fps",
+		"kPageTransitionsStr",				"ページ効果(&N) :",
+		"kNone",							"なし",
+		"kFromDocument",					"ドキュメントから",
+		"kOptionsStr",						"オプション :",
+		"kDescriptionStr",					"詳細 :",
+		"kFrameRateStr",					"フレームレート(&F) :",
+		"kImageCompAuto",					"自動",
+		"kJPG_Lossy",						"JPEG",
+		"kJPG_LossyStr",					"JPEG (劣化あり)",
+		"kPNG_Lossless",					"劣化なし (圧縮しない)",
+		"kPNG_LosslessStr",					"PNG (劣化なし)",
+		"kMinimumQual",						"最低画質 (高圧縮率)",
+		"kLowQual",							"低画質 (高圧縮率)",
+		"kMediumQual",						"標準",
+		"kHighQual",						"高画質 (低圧縮率)",
+		"kMaximumQual",						"最高画質 (低圧縮率)",
+		"kRasterizeStr",					"ページをラスタライズ(&T)",
+		"kFlattenXPStr",					"透明を分割・統合(&E)",
+		"k1280x800",						"1280 x 800",
+		"k1024x768",						"1024 x 768",
+		"k800x600",							"800 x 600",
+		"k640x480",							"640 x 480",
+		"k250per",							"250%",
+		"k200per",							"200%",
+		"k150per",							"150%",
+		"k100per",							"100%",
+		"k75per",							"75%",
+		"k50per",							"50%",
+		"k25per",							"25%",
+
+		// Font Embedding
+		"kEmbeddedFontsTitle",				"埋め込みフォント (Flash クラシックテキストにのみ適用)",
+		"kTotalFonts",						"合計フォント : ",
+		"kFontLicensingInfo",				"フォントのライセンス情報",
+		"kEmbeddedFontName",				"フォント名 : ",
+		"kEmbeddedVendorID",				"ベンダー ID : ",
+
+		// Add Page Transition dialog
+		"kPageTransitionsDialogTitle",			"ページ効果",
+		"kPageTransitionApplyToAllSpreads",		"すべてのスプレッドに適用",
+		"kZoomInOutString",						"ズームイン / アウト", 
+		
+		
+		//	Animation UI
+		"kAnimationUIPanelPopup",				"アニメーション UI パネルメニュー",
+		"kAnimationUISubMenu",					"アニメーション",
+		"kAnimationUIPresetPopupMenu",			"アニメーション UI プリセットメニュー",
+		"kMotionPresetsNoneTextkey",			"なし",
+		"kAnimationUILoadPresetMenuItem",		"プリセットの読み込み...",
+		"kAnimationUISaveAsPresetMenuItem",		"別名で保存...",
+		"kAnimationUISavePresetMenuItem",		"保存",
+		"kAnimationUIDeletePresetMenuItem",		"削除",
+
+		"kAnimationUIConvertToMotionPathMenuItem",	"モーションパスに変換",
+		"kAnimationUITestInBrowserMenuItem",	"ブラウザでプレビュー...",
+		"kCustomPresetName",					"モーションプリセット",
+		"kAnimationUIEventSeparator",			"、 ",
+		
+		"kAnimationUIPanelName",				"アニメーション",
+		"kAnimationUIPreviewStaticTextLabel",	"プレビュー",
+		"kAnimationUINameStaticTextLabel",		"名前 :",
+		"kAnimationUIPresetStaticTextLabel",	"プリセット :",
+		"kAnimationUICustomPreset",				"カスタム",
+		"kAnimationUIMixed",					"混在",
+		"kAnimationUIMixed:",					"混在 : ",
+		"kAnimationUIChoose",					"選択",
+		"kAnimationUIEventStaticTextLabel",		"イベント :",
+		"kAnimationUIDurationStaticTextLabel",	"期間 :",
+		"kAnimationUISecondStaticTextLabel",	"秒",
+		"kAnimationUISecondsStaticTextLabel",	"秒",
+		"kAnimationUIPlayStaticTextLabel",		"再生 :",
+		"kAnimationUITimeStaticTextLabel",		"回数",
+		"kAnimationUITimesStaticTextLabel",		"回数",
+		"kAnimationUILoopCheckBoxLabel",		"ループ",
+		"kAnimationUISpeedStaticTextLabel",		"速度 :",
+		"kAnimationUIVisibilityStaticTextLabel","表示 / 非表示 :",
+		"kAnimationUIPropertyStaticTextLabel",	"プロパティ",
+		"kAnimationUIHideBeforeAnimateCheckBoxLabel","実行前まで隠す",
+		"kAnimationUIHideAfterAnimateCheckBoxLabel","実行後に隠す",
+		"kAnimationUIOnButtonEvent",			"ボタンイベント時",
+		"kAnimationUIOnRollOffCheckBoxLabel",	"ロールオフ時に反転",
+		"kAnimationUIEaseIn",					"イーズイン",
+		"kAnimationUIEaseOut",					"イーズアウト",
+		"kAnimationUIEaseInAndOut",				"イーズインおよびイーズアウト",
+		"kAnimationUIFadeIn",					"フェードイン",
+		"kAnimationUIFadeOut",					"フェードアウト",
+		"kAnimationUINone",						"なし",
+		"kAnimationUIFromPreset",				"プリセットから",
+		"kAnimationUIPropertyDesignStaticTextLabel",		"実行 :",
+		"kAnimationUIPropertyDesignCheckBoxLabel",			"アニメーションの最後",
+		"kAnimationFromStaticTextLabel",					"終了時のオブジェクトの外観",
+		"kAnimationToStaticTextLabel",						"開始時のオブジェクトの外観",
+		"kAnimationUIPropertyDesignScaleStaticTextLabel",	"拡大・縮小率",
+		"kAnimationUIPropertyDesignScaleHorzStaticTextLabel",	"W :",
+		"kAnimationUIPropertyDesignScaleVertStaticTextLabel",	"H :",
+		"kAnimationUIPropertyDesignRotateStaticTextLabel",	"回転 :",
+		"kAnimationUIPropertyDesignOpacityStaticTextLabel",	"不透明度 :",
+		"kAnimationUIPropertyDesignProxyStaticTextLabel",	"開始位置 :",
+		
+		"kAnimationUIFrom",						"現在の外観から開始",
+		"kAnimationUITo",						"現在の外観で終了",
+		"kAnimationUIOffset",					"現在の外観から開始(現在位置で終了)",
+
+		"kAnimationPanelButtonTriggerTip",		"ボタントリガーを作成 (アイコンをクリックし、次にオブジェクトをクリックしてこのアニメーションをトリガー)",
+		"kAnimationPanelShowProxyTip",			"アニメーションプロキシを表示",
+		"kAnimationPanelLockIconTip",			"スケール値を固定します",
+		"kAnimationPanelEventMenuSelectorTip",	"下矢印をクリックしてトリガーイベントを選択します",
+		"kAnimationPanelEventInfoTip",			"アニメーションのトリガーイベント",
+		"kAnimationPanelEventInfoDefaultTip",	"アニメーションのデフォルトトリガーイベント",
+		"kAnimationPanelPreviewButtonTip",		"現在の選択範囲をプレビュー",
+		"kAnimationPanelConvertToMotionPathTip","モーションパスに変換",
+		"kAnimationUIFromTip",					"実行時のアニメーションの開始時の外観として、現在のオブジェクトのプロパティを使用します。",
+		"kAnimationUIToTip",					"実行時のアニメーションの終了時の外観として、現在のオブジェクトのプロパティを使用します。",
+		"kAnimationUIOffsetTip",				"開始時の外観として現在のオブジェクトのプロパティを使用し、実行時に現在の位置をアニメーションの終点位置として使用します。",
+		"kAnimationUIAnimationOptionTip",		"アニメーションオプション",
+		"kAnimationUITrashTip",					"アニメーションを削除",
+		"kAnimationUIXFPointTip",				"スケールおよび回転の開始ポイントを変更します。",
+		"kAnimationUIShowTimingButtonTip",		"タイミングパネルを表示",
+		
+		"kAnimationUISaveAsPresetTitle",		"選択したプリセットを別名で保存",
+		"kAnimationUISavePresetTitle",			"プリセットを保存",
+		"kAnimationUISavePresetNameLabel",		"名前 :",
+
+		"kAnimationUIEventPopupMenu",			"イベントポップアップメニュー",
+		"kAnimationUICreateButtonTriggerCmd",	"ボタントリガーを作成",
+		"kAnimationUICreateSelfTriggerCmd",		"セルフトリガーを作成",
+		
+		"kAnimationUIManagePresetsDialogTitle",	"プリセットを管理",
+		"kAnimationUIManagePresetsDoneButton",	"終了",
+		"kAnimationUIManagePresetsDeleteButton","削除(&D)",
+		"kAnimationUIManagePresetsDuplicateButton","複製(&U)",
+		"kAnimationUIManagePresetsLoadButton",	"読み込み(&L)...",
+		"kAnimationUIManagePresetsSaveAsButton","別名で保存(&S)...",
+		"kAnimationUIManagePresetMenuItem",		"プリセットを管理...",
+		"kAnimationUIManagePresetPresetsSeparator", "--------------------",
+		"kAnimationUIManagePresetNamePrefix",	"[",
+		"kAnimationUIManagePresetNameSuffix",	"]",
+	}
+};
+
+#endif // __ODFRC__

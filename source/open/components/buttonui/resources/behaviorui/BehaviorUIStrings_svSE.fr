@@ -1,0 +1,129 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kBehaviorUIStringsRsrcID + index_svSE)
+{
+	k_svSE,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{		
+		"$$$/Dialog/Behaviors/ShowHideFields/Fields_Tree", "Fältträd",
+
+		"$$$/Dialog/Behaviors/Description",				"Det här innehåller en kort beskrivning av beteendet. Det kommer också att innehåll tips om beteendealternativ. Du bör ge användaren tips om hur de kan använda det.",
+		"$$$/Dialog/Behaviors/Description Title",		"Beskrivning",
+		"$$$/Dialog/Behaviors/DeleteAlert",				"Vill du ta bort markerad åtgärd?",
+		"$$$/Dialog/Behaviors/DragDeleteAlert",			"Vill du ta bort de åtgärder du dragit?",
+		"$$$/Dialog/Behaviors/Error/Invalid URL",		"Du måste ange ett värde i URL-fältet",
+		"$$$/Dialog/Behaviors/Error/Invalid File",		"Du måste ange en giltig fil",
+		
+		"$$$/Dialog/Behaviors/Movie/Movie:",			"Video:",
+		"$$$/Dialog/Behaviors/Movie/Play Options:",		"Alternativ:",
+		"$$$/Dialog/Behaviors/Movie/Play",				"Spela upp",
+		"$$$/Dialog/Behaviors/Movie/Stop",				"Avbryt",
+		"$$$/Dialog/Behaviors/Movie/Pause",				"Paus",
+		"$$$/Dialog/Behaviors/Movie/Resume",			"Fortsätt",
+		"$$$/Dialog/Behaviors/Movie/PlayFromNavPoint",	"Spela upp från navigeringspunkt",
+		"$$$/Dialog/Behaviors/Movie/StopAll",			"Stoppa alla (endast SWF)",
+		"$$$/Dialog/Behaviors/Movie/NavPoint",			"Punkt:",
+		"$$$/Dialog/Behaviors/Movie/NoVideo",			"(ingen video)",
+		"$$$/Dialog/Behaviors/Movie/NoVideoNavPoint",	"(ingen navigeringspunkt)",
+
+		"$$$/Dialog/Behaviors/Sound/Sound:",			"Ljud:",
+		"$$$/Dialog/Behaviors/Sound/Play Options:",		"Alternativ:",
+		"$$$/Dialog/Behaviors/Sound/Play",				"Spela upp",
+		"$$$/Dialog/Behaviors/Sound/Stop",				"Avbryt",
+		"$$$/Dialog/Behaviors/Sound/Pause",				"Paus",
+		"$$$/Dialog/Behaviors/Sound/Resume",			"Fortsätt",
+		"$$$/Dialog/Behaviors/Sound/StopAll",			"Stoppa alla (endast SWF)",
+		"$$$/Dialog/Behaviors/Sound/Volume:",			"Volym:",
+		"$$$/Dialog/Behaviors/Sound/Synchronous",		"Synkron",
+		"$$$/Dialog/Behaviors/Sound/Mix",				"Mix",
+		"$$$/Dialog/Behaviors/Sound/NoSound",			"(inget ljud)",
+		
+		"$$$/Dialog/Behaviors/Animation/Animation:",	"Animering:",
+		"$$$/Dialog/Behaviors/Animation/Play Options:",	"Alternativ:",
+		"$$$/Dialog/Behaviors/Animation/Play",			"Spela upp",
+		"$$$/Dialog/Behaviors/Animation/Stop",			"Stoppa",
+		"$$$/Dialog/Behaviors/Animation/Pause",			"Paus",
+		"$$$/Dialog/Behaviors/Animation/Resume",		"Fortsätt",
+		"$$$/Dialog/Behaviors/Animation/StopAll",		"Stoppa alla",
+		"$$$/Dialog/Behaviors/Animation/Reverse",		"Omvänd",
+		"$$$/Dialog/Behaviors/Animation/AutoReverse",	"Omvänt vid avrullning",
+		"$$$/Dialog/Behaviors/Animation/NoAnimation",	"(ingen animering)",
+		
+		"$$$/Dialog/Behaviors/MSO/Object:",				"Objekt:",
+		"$$$/Dialog/Behaviors/MSO/State:",				"Läge:",
+		"$$$/Dialog/Behaviors/MSO/AutoReverse",			"Gå bakåt vid avrullning",
+		"$$$/Dialog/Behaviors/MSO/NextLoop",			"Stoppa vid sista läge",
+		"$$$/Dialog/Behaviors/MSO/PrevLoop",			"Stoppa vid första läge",
+		"$$$/Dialog/Behaviors/MSO/NoMSO",				"(inget flerlägesobjekt)",
+
+		"$$$/Dialog/Behaviors/GoToView/Go To:",			"Gå till:",
+		"$$$/Dialog/Behaviors/GoToView/First Page",		"Första sidan",
+		"$$$/Dialog/Behaviors/GoToView/Page",			"Sida",
+		"$$$/Dialog/Behaviors/GoToView/Previous Page",	"Föregående sida",
+		"$$$/Dialog/Behaviors/GoToView/Next Page",		"Nästa sida",
+		"$$$/Dialog/Behaviors/GoToView/Last Page",		"Sista sidan",
+		"$$$/Dialog/Behaviors/GoToView/Back",			"Bakåt",
+		"$$$/Dialog/Behaviors/GoToView/Forward",		"Framåt",
+		"$$$/Dialog/Behaviors/GoToView/Previous View",	"Föregående vy",
+		"$$$/Dialog/Behaviors/GoToView/Next View",		"Nästa vy",
+		"$$$/Dialog/Behaviors/GoToView/Specific Page",	"Angiven sida",
+		"$$$/Dialog/Behaviors/GoToView/Document:",		"Dokument:",
+		"$$$/Dialog/Behaviors/GoToView/Page:",			"Sida:",
+		"$$$/Dialog/Behaviors/GoToView/URL",			"URL-adress",
+		"$$$/Dialog/Behaviors/GoToView/URL:",			"URL:",
+		"$$$/Dialog/Behaviors/GoToView/Anchor",			"Textankarpunkt",
+		"$$$/Dialog/Behaviors/GoToView/Anchor:",		"Mål:",
+		"$$$/Dialog/Behaviors/GoToView/Bookmark",		"Bokmärke",
+		"$$$/Dialog/Behaviors/GoToView/Inherit Zoom",	"Ärv zoom",
+		"$$$/Dialog/Behaviors/GoToView/Actual Size",	"Faktisk storlek",
+		"$$$/Dialog/Behaviors/GoToView/Fit In Window",	"Anpassa till fönster",
+		"$$$/Dialog/Behaviors/GoToView/Fit Width",		"Anpassa bredd",
+		"$$$/Dialog/Behaviors/GoToView/Fit Height",		"Anpassa höjd",
+		"$$$/Dialog/Behaviors/GoToView/Fit Visible",	"Anpassa till synligt område",
+		"$$$/Dialog/Behaviors/GoToView/Zoom:",			"Zooma:",
+		"$$$/Dialog/Behaviors/GoToView/None",			"Ingen",
+		"$$$/Dialog/Behaviors/GoToAnchor/InDesign Format File","InDesign-formatfil",
+		
+		"$$$/Dialog/Behaviors/ViewZoom/Full Screen",	"Fullskärmsläge",
+		"$$$/Dialog/Behaviors/ViewZoom/Zoom View In",	"Zooma in",
+		"$$$/Dialog/Behaviors/ViewZoom/Zoom View Out",	"Zooma ut",
+		"$$$/Dialog/Behaviors/ViewZoom/Fit Page",		"Anpassa till fönster",
+		"$$$/Dialog/Behaviors/ViewZoom/Actual Size",	"Faktisk storlek",
+		"$$$/Dialog/Behaviors/ViewZoom/Fit Width",		"Anpassa bredd",
+		"$$$/Dialog/Behaviors/ViewZoom/Fit Visible",	"Anpassa till synligt område",
+		"$$$/Dialog/Behaviors/ViewZoom/SinglePage",		"En sida",
+		"$$$/Dialog/Behaviors/ViewZoom/OneColumn",		"Kontinuerligt",
+		"$$$/Dialog/Behaviors/ViewZoom/TwoColumns",		"Kontinuerligt - motstående sidor",
+
+		"$$$/Dialog/Behaviors/ImportData/Select File:","Välj fil:",
+		"$$$/Dialog/Behaviors/ImportData/Acrobat Format File","Acrobat-formatfil",
+
+		"$$$/Dialog/Behaviors/OpenFile/Select File:","Välj fil:",
+		"$$$/Dialog/Behaviors/OpenFile/Select File to be Opened", "Välj fil att öppna",
+		"$$$/Dialog/Behaviors/OpenFile/Acrobat Format File","Acrobat-formatfil",
+
+		"$$$/Dialog/Behaviors/SubmitForm/Submit To:","URL:",
+						
+		// ----- Tips strings
+	}
+};
+
+#endif // __ODFRC__

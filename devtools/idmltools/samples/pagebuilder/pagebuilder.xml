@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package>
+  
+    <!-- These files trigger the generation of package files. -->
+    <mimetype/>
+    <container/>
+    <fonts/>
+    <graphics/>
+    <styles/>
+    <spreads/>
+    <stories/>
+    <designmap/>
+    <masterspreads/>
+    
+    <!--  This is the atual application data  -->
+    <pagebuilder
+            pageWidth="612"
+            pageHeight="792"
+            pageBorder="72">
+        <story id="story0">
+            <title>A Story in a Single Frame</title>
+            <body>
+                <p>This is a short and simple story in a single (non-linked) frame.</p>
+                <p>We want to make sure we can create multiple stories and linked and non-linked frames.</p>
+                <p>This is only  a test.  Wait until you see the next story.</p>
+            </body>
+        </story>
+      
+        <story id="story1">
+            <title>A Story in a Linked Frame</title>
+            <body>
+                <p>This is a short and simple story in linked frames.</p>
+                <p>We want to make sure we can create multiple stories and linked and non-linked frames.</p>
+                <p>Wait until you see the next story.</p>
+            </body>
+        </story>
+        <story id="story2">
+            <title>A Longer Story in Linked Frames</title>
+            <body>
+                <p>This story shold span over several pages in a number of linked frames.</p>
+                <p>Paragraph 1</p>
+                <p>Paragraph 2</p>
+                <p>Paragraph 3</p>
+                <p>Paragraph 4</p>
+                <p>Paragraph 5</p>
+                <p>Paragraph 6</p>
+                <p>Paragraph 7</p>
+                <p>Paragraph 8</p>
+                <p>Paragraph 9</p>
+                <p>Paragraph 10</p>
+                <p>Paragraph 11</p>
+                <p>Paragraph 12</p>
+                <p>Paragraph 13</p>
+                <p>Paragraph 14</p>
+                <p>Paragraph 15</p>
+                <p>Paragraph 16</p>
+                <p>Paragraph 17</p>
+                <p>Paragraph 18</p>
+                <p>Paragraph 19</p>
+                <p>Paragraph 20</p>
+                <p>Paragraph 21</p>
+                <p>Paragraph 22</p>
+                <p>Paragraph 23</p>
+                <p>Paragraph 24</p>
+                <p>Paragraph 25</p>
+                <p>Paragraph 26</p>
+                <p>Paragraph 27</p>
+                <p>Paragraph 28</p>
+                <p>Paragraph 29</p>
+                <p>Paragraph 30</p>
+                <p>Paragraph 31</p>
+            </body>
+        </story>
+        
+        <spread id="spread1" binding="0">
+            <page>
+                <image src="file:t-shirts/f1.jpg" left="250"    top="36"    right="450" bottom="236"/>
+                <text id="textframe0" story="story0"  left="36"    top="150"    right="236" bottom="350" />
+                <text id="textframe1" story="story1"  left="36"    top="36"    right="136" bottom="136" next="textframe1a"/>
+                <text id="textframe1a" story="story1"  left="145"    top="36"    right="245" bottom="136"/>
+                
+            </page>
+        </spread>
+        <spread id="spread2" binding="1">
+            <page>
+                <image src="file:t-shirts/f2.jpg" left="36"    top="36"    right="236" bottom="236"/>
+                <text id="textframe2" story="story2"  left="300"    top="36"    right="500" bottom="236" next="textframe3"/>
+            </page>
+        </spread>
+        <spread id="spread3" binding="1">
+            <page>
+                <image src="file:t-shirts/f4.jpg" left="36"    top="36"    right="236" bottom="236"/>
+                <text id="textframe3" story="story2"  left="300"    top="36"    right="500" bottom="236" next="textframe4"/>
+            </page>
+            <page>
+                <image src="file:t-shirts/f3.jpg" left="36"    top="36"    right="236" bottom="236"/>
+                <text id="textframe4" story="story2"  left="240"    top="36"    right="440" bottom="236"/>
+            </page> 
+        </spread>
+    </pagebuilder>
+</package>

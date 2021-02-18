@@ -1,0 +1,136 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/dynamicdocumentsui/resources/DynamicDocumentsUIStrings_elGR.fr $
+//  
+//  Owner: DBerggren
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kDynamicDocumentsUIStringsRsrcID + index_elGR)
+{
+	k_elGR,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{
+		// ----- Command strings
+
+		// ----- Window strings
+
+		// ----- Panel strings
+		"kPageTransitionsPanelPopup",			"Μενού πίνακα μεταβάσεων σελίδας",    
+		"kPageTransitionsSubMenu",				"Μεταβάσεις &σελίδας",
+		"kPageTransitionsPanelName",			"Μεταβάσεις σελίδας",	   
+		"kPageTransitionStaticText",			"Μετάβαση: ",
+		"kPageDirectionStaticText",				"Κατεύθυνση: ",
+		"kPageSpeedStaticText",					"Ταχύτητα: ",
+        "kPTHorizontal",						"Οριζόντια",
+        "kPTVertical",							"Κατακόρυφα",
+        "kPTIn",								"Εντός",
+        "kPTOut",								"Εκτός",
+        "kPTDown",								"Κάτω",
+        "kPTLeft",								"Αριστερά",
+        "kPTLeftDown",							"Κάτω αριστερά",
+        "kPTLeftUp",							"Πάνω αριστερά",
+        "kPTRight",								"Δεξιά",
+        "kPTRightDown",							"Κάτω δεξιά",
+        "kPTRightUp",							"Πάνω δεξιά",
+        "kPTUp",								"Πάνω",
+        "kPTHorizontalIn",						"Οριζόντια εντός",
+        "kPTHorizontalOut",						"Οριζόντια εκτός",
+        "kPTVerticalIn",						"Κατακόρυφα εντός",
+        "kPTVerticalOut",						"Κατακόρυφα εκτός",
+        "kPTSlow",								"Αργά",
+		"kPTMedium",							"Μεσαίο",
+		"kPTFast",								"Σύντομο",		
+		"kPTNoTransition",						"Κανένα",	
+        
+		// ----- Menu Strings
+		"kTransitionPanelChooseAction",				"&Επιλογή...",
+		"kTransitionPanelApplyToAllSpreadsAction",	"&Εφαρμογή σε όλα τα αναπτύγματα",
+		"kTransitionPanelClearAllTransitionsAction","Απαλοιφή ό&λων",
+		
+		// ----- Tips strings
+		"kApplyToAllSpreadsButtonTip",			"Εφαρμογή σε όλα τα αναπτύγματα",
+		
+		// ----- SWF & XFL Export Dialogs
+
+		"kSWFExport",						"Εξαγωγή SWF",
+		"kXFLExport",						"Εξαγωγή Adobe Flash CS4 Professional (XFL)",
+		"kSizePixels",						"Μέγεθος (pixel):",
+		"kPagesStr",						"Σελίδες:",
+		"kSpreadsStr",						"Ανα&πτύγματα",
+		"kGenerateHTMLStr",					"Δημιουργία αρχείου HT&ML",
+		"kViewSWFAfterExportingStr",		"Προ&βολή SWF μετά την εξαγωγή",
+		"kFlashText",						"Κείμενο InDesign σε κείμενο Flash",
+		"kVectorText",						"Κείμενο InDesign σε διαδρομές διανύσματος",
+		"kRasterText",						"Κείμενο InDesign σε εικόνα ράστερ",
+		"kFitToSize",						"&Προσαρμογή σε:",
+		"kWidthSize",						"Πλ&άτος:",
+		"kHeightSize",						"&Ύψος:",
+		"kAllPagesExported",				"&Όλα",
+		"kPageRangeExported",				"&Περιοχή:",
+		"kScaleSize",						"&Κλίμακα:",
+		"kTextStr",							"&Κείμενο:",
+		"kInteractivityStr",				"Αλληλεπίδραση:",
+		"kImageCompStr",					"Συμπίεση &εικόνας:",
+		"kQualityStr",						"&Ποιότητα JPEG:",
+		"kCurveQualityStr",					"Ποιότητα &καμπύλης:",
+		"kInclButtonsStr",					"Συμπερίληψη &κουμπιών",
+		"kInclHyperLinkStr",				"Συμπερίληψη υ&περσυνδέσεων",
+		"kInclPageTrans",					"Συμπερίληψη μεταβάσεων σε&λίδας",
+		"kIncludePageCurl",					"Συμπερίληψη &διαδραστικού κυρτώματος σελίδας",
+		"kImageCompAuto",					"Αυτόματο",
+		"kJPG_Lossy",						"JPEG",
+		"kPNG_Lossless",					"Χωρίς απώλειες (Καμία ενέργεια)",
+		"kMinimumQual",						"Ελάχιστη",
+		"kLowQual",							"Χαμηλό",
+		"kMediumQual",						"Μεσαίο",
+		"kHighQual",						"Υψηλό",
+		"kMaximumQual",						"Μέγιστη",
+		"kRasterizeStr",					"Ραστερο&ποίηση σελίδων",
+		"kFlattenXPStr",					"Ι&σοπέδωση διαφάνειας",
+		"k1280x800",						"1280 x 800 (Πλήρης οθόνη)",
+		"k1024x768",						"1024 x 768 (Πλήρης οθόνη)",
+		"k800x600",							"800 x 600 (Πλήρης οθόνη)",
+		"k640x480",							"640 x 480 (Πλήρης οθόνη)",
+		"k250per",							"250%",
+		"k200per",							"200%",
+		"k150per",							"150%",
+		"k100per",							"100%",
+		"k75per",							"75%",
+		"k50per",							"50%",
+		"k25per",							"25%",
+
+		// Add Page Transition dialog
+		"kPageTransitionsDialogTitle",			"Μεταβάσεις σελίδας",
+		"kPageTransitionApplyToAllSpreads",		"Εφαρμογή σε όλα τα αναπτύγματα",
+		"kPageTurnSWFOnlyString",				"    (Μόνο SWF)",	// we have to leave the space to match align the text.
+		"kPageTurnTransitionSWFOnlyString",		"Γύρισμα σελίδας (μόνο SWF)",
+		"kZoomInOutString",						"Μεγέθυνση/Σμίκρυνση", 
+	}
+};
+
+#endif // __ODFRC__

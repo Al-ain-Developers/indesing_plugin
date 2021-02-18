@@ -1,0 +1,642 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/sdksamples/xdocbookworkflowui/XDocBkUI.fr $
+//  
+//  Owner: Adobe Developer Technologies
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "VCPlugInHeaders.h"
+
+// General includes:
+#include "MenuDef.fh"
+#include "ActionDef.fh"
+#include "ActionDefs.h"
+#include "AdobeMenuPositions.h"
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "StringTable.fh"
+#include "objectmodeltypes.fh"
+#include "ShuksanID.h"
+#include "ActionID.h"
+#include "CommandID.h"
+#include "WorkspaceID.h"
+#include "widgetid.h"
+#include "BuildNumber.h"
+#include "IDList.fh" 
+#include "IDListPair.fh" 
+#include "Widgets.fh" // Primary...
+#include "IControlViewDefs.h" // kBindNone
+#include "SysControlIds.h" // kSys...
+
+#include "PlugInModel_UIAttributes.h"
+
+// Project includes:
+#include "XDocBkUIID.h"
+#include "XDocBkID.h"
+
+
+#include "EveInfo.fh"
+#ifdef __ODFRC__
+
+/*
+// Plugin version definition.
+*/
+resource PluginVersion (kSDKDefPluginVersionResourceID)
+{
+	kTargetVersion,
+	kXDocBkUIPluginID,
+	kSDKDefPlugInMajorVersionNumber, kSDKDefPlugInMinorVersionNumber,
+	kSDKDefHostMajorVersionNumber, kSDKDefHostMinorVersionNumber,
+	kXDocBkUICurrentMajorFormatNumber, kXDocBkUICurrentMinorFormatNumber,
+	{kInDesignProduct},
+	{kWildFS },
+	kUIPlugIn,
+	kXDocBkUIVersion
+};
+
+
+/*
+// Dependent on XDocBookWorkflow plug-in.
+*/
+resource PluginDependency(kSDKDefPluginDependencyResourceID)
+{
+	kWildFS
+	{
+		kXDocBkPluginID,
+		kXDocBkPluginName,
+		kSDKDefPlugInMajorVersionNumber,
+		kSDKDefPlugInMinorVersionNumber,
+	}
+}
+
+
+/*
+//	Boss class definition.
+*/
+resource ClassDescriptionTable(kSDKDefClassDescriptionTableResourceID)
+{{{
+			/**	This boss class supports two interfaces:
+			IActionComponent and IPMPersist.
+			@ingroup xdocbookworkflowui 
+			*/
+			Class
+			{
+				kXDocBkUIActionComponentBoss,
+				kBaseActionComponentBoss,
+				{
+					/** Handle the actions from the menu. */
+					IID_IACTIONCOMPONENT, kXDocBkUIActionComponentImpl,
+				}
+			},
+			
+			/** 	This provides an extra panel to the global 
+			preferences selectable dialog. 
+			@ingroup xdocbookworkflowui
+			*/
+			Class
+			{
+				kXDocBkUIDialogBoss,
+				kPrimaryResourcePanelWidgetBoss,
+				{
+					/** Provides management and control over the dialog. 
+					*/
+					IID_IDIALOGCONTROLLER, kXDocBkUIDialogControllerImpl,
+					/** Identify this boss as a panel register service.
+					Implementation provided by the API.
+					*/
+					IID_IK2SERVICEPROVIDER, kDialogPanelServiceImpl,
+					/** Creates the dialog panel from it's resource definition and
+					defines which selectable dialog will include this panel.
+					*/
+					IID_IPANELCREATOR, kXDocBkUIPanelCreatorImpl,
+					/** Allows dynamic processing of dialog changes. Implementation of IObserver.
+					@see XDocBkUIDialogObserver
+					*/
+					IID_IXDOCBKUIWIDGETOBSERVER, kXDocBkUIDialogObserverImpl,
+				}
+			},
+		}}};
+
+/*
+// Implementation definition.
+*/
+resource FactoryList (kSDKDefFactoryListResourceID)
+{
+	kImplementationIDSpace,
+	{
+#include "XDocBkUIFactoryList.h"
+	}
+};
+
+/*
+// Selectable dialog ID lists
+// IDList is a list of selectable dialog IDs that we want our
+// panel to appear in.
+*/
+resource IDList (kSDKDefIDListPairResourceID)
+{
+	{
+		// Impl ID for Preferences Selectable Dialog
+		kGlobalPrefsDialogServiceImpl,	
+	},
+};
+
+/*
+// IDListPair resource specifies which resource to use in creating the
+// panel, depending upon which dialog the panel is going into.
+*/
+resource IDListPair (kSDKDefIDListPairResourceID)	
+{
+	{
+		kGlobalPrefsDialogServiceImpl,	// ID of Target Selectable Dialog (InDesign's)
+		kSDKDefPanelResourceID,			// ID of Panel Resource to be added (Mine)
+		kXDocBkUIPluginID				// Plug-in ID that "owns" the Panel Resource to be added
+	},
+};
+
+
+/*
+// Menu definition.
+*/
+resource MenuDef (kSDKDefMenuResourceID)
+{
+	{
+		// The About Plug-ins sub-menu item for this plug-in.
+		kXDocBkUIAboutActionID,				// ActionID (kInvalidActionID for positional entries)
+		kXDocBkUIAboutMenuPath,				// Menu Path.
+		kSDKDefAlphabeticPosition,			// Menu Position.
+		kSDKDefIsNotDynamicMenuFlag,		// kSDKDefIsNotDynamicMenuFlag or kSDKDefIsDynamicMenuFlag
+		
+		kXDocBkUIPrefSepActionID,
+		kXDocBkUIPrefSepMenuPath,
+		kXDocBkUIPrefSepMenuPosition,
+		kSDKDefIsNotDynamicMenuFlag,
+		
+		kXDocBkUISetOptionsActionID,
+		kSDKDefPreferencesStandardMenuPath,
+		kXDocBkUIPrefMenuPosition,
+		kSDKDefIsNotDynamicMenuFlag,
+		
+		kXDocBkUIUnitTestActionID,
+		kXDocBkUITargetMenuPath,
+		kXDocBkUIUnitTestMenuItemPosition,
+		kSDKDefIsNotDynamicMenuFlag,
+	}
+};
+
+/*
+// Action definition.
+*/
+resource ActionDef (kSDKDefActionResourceID)
+{
+	{
+		kXDocBkUIActionComponentBoss, 		// ClassID of boss class that implements the ActionID.
+		kXDocBkUIAboutActionID,				// ActionID.
+		kXDocBkUIAboutMenuKey,				// Sub-menu string.
+		kHelpMenuActionArea,				// Area name (see ActionDefs.h).
+		kNormalAction,						// Type of action (see ActionDefs.h).
+		kDisableIfLowMem,					// Enabling type (see ActionDefs.h).
+		kInvalidInterfaceID,				// Selection InterfaceID this action cares about or kInvalidInterfaceID.
+		kSDKDefInvisibleInKBSCEditorFlag,	// kSDKDefVisibleInKBSCEditorFlag or kSDKDefInvisibleInKBSCEditorFlag.
+		
+		kXDocBkUIActionComponentBoss,
+		kXDocBkUISetOptionsActionID,
+		kXDocBkUISetOptionsMenuItemKey,
+		kOtherActionArea,
+		kNormalAction,
+		kDisableIfLowMem,
+		kInvalidInterfaceID,
+		kSDKDefInvisibleInKBSCEditorFlag,
+		
+		kXDocBkUIActionComponentBoss,
+		kXDocBkUIUnitTestActionID,
+		kXDocBkUIUnitTestMenuItemKey,
+		kOtherActionArea,
+		kNormalAction,
+		kDisableIfLowMem,
+		kInvalidInterfaceID,
+		kSDKDefInvisibleInKBSCEditorFlag,	
+	}
+};
+
+
+/*
+// LocaleIndex
+// The LocaleIndex should have indicies that point at your
+// localizations for each language system that you are
+// localized for.
+*/
+
+/*
+// String LocaleIndex.
+*/
+resource LocaleIndex (kSDKDefStringsResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_enUS, kSDKDefStringsResourceID + index_enUS
+		kInDesignJapaneseFS, k_jaJP, kSDKDefStringsResourceID + index_jaJP
+		kWildFS, k_Wild, kSDKDefStringsResourceID + index_enUS
+	}
+};
+
+resource LocaleIndex (kSDKDefStringsNoTransResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_Wild, kSDKDefStringsNoTransResourceID + index_enUS
+	}
+};
+
+resource StringTable (kSDKDefStringsNoTransResourceID + index_enUS)
+{
+	k_enUS,									// Locale Id
+	kEuropeanMacToWinEncodingConverter,		// Character encoding converter
+	{
+		// No-Translate strings go here:
+	}
+};
+
+/*
+// Type definition.
+*/
+type XDocBkUIPanelWidget (kViewRsrcType) : PrimaryResourcePanelWidget (ClassID = kXDocBkUIDialogBoss) {
+	WidgetEveInfo;
+};
+
+/*
+// For the panel
+*/
+resource LocaleIndex (kSDKDefPanelResourceID) 
+{
+	kViewRsrcType,
+	{
+		kWildFS, k_Wild, kSDKDefPanelResourceID + index_enUS
+	}
+};
+
+resource XDocBkUIPanelWidget (kSDKDefPanelResourceID + index_enUS)
+{
+	__FILE__, __LINE__,
+	kXDocBkUIPanelWidgetID,					// WidgetId
+	kPMRsrcID_None,							// RsrcId
+	kBindNone,								// Frame binding
+	Frame(0,0,0,0),							// Frame: left, top, right, bottom
+	kTrue,									// Visible
+	kTrue,									// Enabled
+	kXDocBkUIPanelTitleKey,					// Panel name
+	{
+		EVEGroupPanelWidget // "Tables and Graphics" group
+		(
+			kInvalidWidgetID,							// widget ID
+			kPMRsrcID_None,								// PMRsrc ID
+			kBindNone,									// frame binding
+			Frame(0,0,0,0)								// left, top, right, bottom
+			kTrue,										// visible
+			kTrue,										// enabled
+			// GroupPanelAttributes properties
+			kXDocBkUITableGraphicsTitleTextWidgetID,	// header widget ID
+			kEVEAlignFill | kEVEExtraLargeSpaceAfter | kEVEArrangeChildrenInRow | kEVERegularMargin,
+			{
+				EVEStaticTextWidget // Group label
+				(
+					kXDocBkUITableGraphicsTitleTextWidgetID,	// widget ID
+					kSysStaticTextPMRsrcId,						// PMRsrc ID
+					kBindNone,									// frame binding
+					Frame(0,0,0,0)								// left, top, right, bottom
+					kTrue, kTrue,								// visible, enabled
+					kAlignCenter,								// Alignment
+					kDontEllipsize, kTrue,						// Ellipsize style, Convert ampersands
+					kXDocBkUITableGraphicsTitleTextWidgetKey,	// control label
+					0
+					kEVEExtraLargeSpaceAfter,
+				),
+
+				EVEGenericPanelWidget
+				(
+					kInvalidWidgetID,	// WidgetId
+					0					// RsrcId
+					0,					// Widget EVE Info
+					kBindNone,			// Frame binding
+					Frame(0,0,0,0)		// Frame
+					kTrue,				// Visible
+					kTrue,				// Enabled
+					kEVEAlignFill | kEVENoSpaceAfter | kEVEArrangeChildrenInColumn,
+					{
+						EVECheckBoxWidget // "Place images via post-import responder"
+						(
+							// CControlView properties
+							kXDocBkUIUseImagePostImportResponderWidgetID,	// widget ID
+							kSysCheckBoxPMRsrcId,							// PMRsrc ID
+							kBindNone,										// frame binding
+							Frame(0,0,0,0)									// left, top, right, bottom
+							kTrue,											// visible
+							kTrue,											// enabled
+							// TriStateControlAttributes properties
+							kAlignLeft,										// alignment
+							// CTextControlData properties
+							kXDocBkUIUseImagePostImportResponderWidgetKey,	// control label
+							kEVERegularSpaceAfter,
+						),
+						EVECheckBoxWidget // "Create tables via SAX handler"
+						(
+							// CControlView properties
+							kXDocBkUIUseCALSContentHandlerWidgetID,		// widget ID
+							kSysCheckBoxPMRsrcId,						// PMRsrc ID
+							kBindNone,									// frame binding
+							Frame(0,0,0,0)								// left, top, right, bottom
+							kTrue,										// visible
+							kTrue,										// enabled
+							// TriStateControlAttributes properties
+							kAlignLeft,									// alignment
+							// CTextControlData properties
+							kXDocBkUIUseCALSContentHandlerWidgetKey,	// control label
+							kEVERegularSpaceAfter,
+						),	
+					} // End of Eve generic panel child widgets
+				), // End of Eve generic panel widget definition
+			}
+		),
+		EVEGroupPanelWidget // "XML Template" group
+		(
+			// CControlView properties
+			kXDocBkUITemplateGroupWidgetID,		// widget ID
+			kPMRsrcID_None,						// PMRsrc ID
+			kBindNone,							// frame binding
+			Frame(0,0,0,0)						// left, top, right, bottom
+			kTrue,								// visible
+			kTrue,								// enabled
+			// GroupPanelAttributes properties
+			kXDocBkUITemplateTitleTextWidgetID,	// header widget ID
+			kEVEAlignFill | kEVEExtraLargeSpaceAfter | kEVEArrangeChildrenInRow | kEVERegularMargin,
+			{
+				// CPanelControlData Children
+				EVEStaticTextWidget // Group label
+				(
+					// CControlView properties
+					kXDocBkUITemplateTitleTextWidgetID,		// widget ID
+					kSysStaticTextPMRsrcId,					// PMRsrc ID
+					kBindNone,								// frame binding
+					Frame(0,0,0,0)							// left, top, right, bottom
+					kTrue, kTrue,							// visible, enabled
+					kAlignCenter,							// Alignment
+					kDontEllipsize, kTrue,					// Ellipsize style, Convert ampersands
+					kXDocBkUITemplateTitleTextWidgetKey,	// control label
+					0
+					kEVEExtraLargeSpaceAfter,
+				),
+				EVEGenericPanelWidget
+				(
+					kInvalidWidgetID,	// WidgetId
+					0					// RsrcId
+					0,					// Widget EVE Info
+					kBindNone,			// Frame binding
+					Frame(0,0,0,0)		// Frame
+					kTrue,				// Visible
+					kTrue,				// Enabled
+					kEVEAlignFill | kEVENoSpaceAfter | kEVEArrangeChildrenInColumn,
+					{
+						EVEStaticTextWidget // "Template file (.indt) for import" label
+						(
+							// CControlView properties
+							kXDocBkUITemplateDescriptionTextWidgetID,	// widget ID
+							kSysStaticTextPMRsrcId,						// PMRsrc ID
+							kBindNone,									// frame binding
+							Frame(0,0,0,0)								// left, top, right, bottom
+							kTrue,										// visible
+							kTrue,										// enabled
+							// StaticTextAttributes properties
+							kAlignLeft,									// Alignment
+							kEllipsizeEnd, kTrue						// Ellipsize style, Convert ampersands
+							// CTextControlData properties
+							kXDocBkUITemplateDescriptionTextWidgetKey,	// control label
+							// AssociatedWidgetAttributes properties
+							0,											// associated widget ID
+							kEVERegularSpaceAfter,
+						),
+						EVEGenericPanelWidget
+						(
+							kInvalidWidgetID,	// WidgetId
+							0					// RsrcId
+							0,					// Widget EVE Info
+							kBindNone,			// Frame binding
+							Frame(0,0,0,0)		// Frame
+							kTrue,				// Visible
+							kTrue,				// Enabled
+							kEVEAlignLeft | kEVERegularSpaceAfter | kEVEArrangeChildrenInRow,
+							{
+								EVETextEditBoxWidget // Template file path text box
+								(
+									// CControlView properties
+									kXDocBkUITemplateTextEditWidgetID,	// widget ID
+									kSysEditBoxPMRsrcId,				// PMRsrc ID
+									kBindNone,							// frame binding
+									Frame(0,0,350,0)					// left, top, right, bottom
+									kTrue,								// visible
+									kTrue,								// enabled
+									// CEditBoxAttributes
+									0,									// nudgeWidgetId (0 or kInvalidWidgetID if no nudge required)
+									1.0,								// small nudge amount
+									5.0,								// large nudge amount
+									0,									// max num chars
+									kFalse,								// read only flag
+									kFalse,								// should notify on each key stroke
+									// TextDataValidation properties
+									kTrue,								// range checking enabled
+									kFalse,								// blank entry allowed
+									30.0,								// upper limit
+									0.0,								// lower limit
+									// CTextControlData properties
+									"",									// control label
+									kEVELargeSpaceAfter,
+								),
+								EVEButtonWidget // Browse for template button "..."
+								(
+									// CControlView properties
+									kXDocBkUIChangeTemplateButtonWidgetID,		// widget ID
+									kSysButtonPMRsrcId,							// PMRsrc ID
+									kBindNone,									// frame binding
+									Frame(0,0,0,0)								// left, top, right, bottom
+									kTrue,										// visible
+									kTrue,										// enabled
+									// CTextControlData properties
+									kXDocBkUIChangeTemplateButtonWidgetKey,		// control label
+									kEVERegularSpaceAfter,
+								),
+							}
+						),
+					} // End of Eve generic panel child widgets
+				), // End of Eve generic panel widget definition
+			}
+		),
+		EVEGroupPanelWidget // "XSL parameters" group
+		(
+			// CControlView properties
+			kXDocBkUIStylesheetGroupWidgetID,		// widget ID
+			kPMRsrcID_None,							// PMRsrc ID
+			kBindNone,								// frame binding
+			Frame(0,0,0,0)							// left, top, right, bottom
+			kTrue,									// visible
+			kTrue,									// enabled
+			// GroupPanelAttributes properties
+			kXDocBkUIStylesheetTitleTextWidgetID,	// header widget ID
+			kEVEAlignFill | kEVEExtraLargeSpaceAfter | kEVEArrangeChildrenInRow | kEVERegularMargin,
+			{
+				// CPanelControlData Children
+				EVEStaticTextWidget // Group label
+				(
+					// CControlView properties
+					kXDocBkUIStylesheetTitleTextWidgetID,	// widget ID
+					kSysStaticTextPMRsrcId,					// PMRsrc ID
+					kBindNone,								// frame binding
+					Frame(0,0,0,0)							// left, top, right, bottom
+					kTrue, kTrue,							// visible, enabled
+					// StaticTextAttributes properties
+					kAlignCenter,							// Alignment
+					kDontEllipsize, kTrue,					// Ellipsize style, Convert ampersands
+					// CTextControlData properties
+					kXDocBkUIStylesheetTitleTextWidgetKey,	// control label
+					0
+					kEVEExtraLargeSpaceAfter,
+				),
+				EVEGenericPanelWidget
+				(
+					kInvalidWidgetID,	// WidgetId
+					0					// RsrcId
+					0,					// Widget EVE Info
+					kBindNone,			// Frame binding
+					Frame(0,0,0,0)	// Frame
+					kTrue,				// Visible
+					kTrue,				// Enabled
+					kEVEAlignFill | kEVENoSpaceAfter | kEVEArrangeChildrenInColumn,
+					{
+						EVEStaticTextWidget // "(Optional) XSL stylsheet" label
+						(
+							// CControlView properties
+							kXDocBkUIStylesheetDescriptionTextWidgetID,		// widget ID
+							kSysStaticTextPMRsrcId,							// PMRsrc ID
+							kBindNone,										// frame binding
+							Frame(0,0,0,0)									// left, top, right, bottom
+							kTrue,											// visible
+							kTrue,											// enabled
+							// StaticTextAttributes properties
+							kAlignLeft,										// Alignment
+							kDontEllipsize, kTrue,							// Ellipsize style, Convert ampersands
+							// CTextControlData properties
+							kXDocBkUIStylesheetDescriptionTextWidgetKey,	// control label
+							// AssociatedWidgetAttributes properties
+							kInvalidWidgetID,								// associated widget ID
+							kEVERegularSpaceAfter,
+						),
+						EVEGenericPanelWidget
+						(
+							kInvalidWidgetID,	// WidgetId
+							0					// RsrcId
+							0,					// Widget EVE Info
+							kBindNone,			// Frame binding
+							Frame(0,0,0,0)		// Frame
+							kTrue,				// Visible
+							kTrue,				// Enabled
+							kEVEAlignLeft | kEVERegularSpaceAfter | kEVEArrangeChildrenInRow,
+							{
+								EVETextEditBoxWidget // XSL file path text box
+								(
+									// CControlView properties
+									kXDocBkUIStylesheetTextEditWidgetID,	// widget ID
+									kSysEditBoxPMRsrcId,					// PMRsrc ID
+									kBindNone,								// frame binding
+									Frame(0,0,350,0)						// left, top, right, bottom
+									kTrue,									// visible
+									kTrue,									// enabled
+									// CEditBoxAttributes
+									0,										// nudgeWidgetId (0 or kInvalidWidgetID if no nudge required)
+									1.0,									// small nudge amount
+									5.0,									// large nudge amount
+									0,										// max num chars
+									kFalse,									// read only flag
+									kFalse,									// should notify on each key stroke
+									// TextDataValidation properties
+									kTrue,									// range checking enabled
+									kFalse,									// blank entry allowed
+									30.0,									// upper limit
+									0.0,									// lower limit
+									// CTextControlData properties
+									"",										// control label
+									kEVELargeSpaceAfter,
+								),
+								EVEButtonWidget // Browse for XSL file "..."
+								(
+									// CControlView properties
+									kXDocBkUIChangeStylesheetButtonWidgetID,	// widget ID
+									kSysButtonPMRsrcId,							// PMRsrc ID
+									kBindNone,									// frame binding
+									Frame(0,0,0,0)								// left, top, right, bottom
+									kTrue,										// visible
+									kTrue,										// enabled
+									// CTextControlData properties
+									kXDocBkUIChangeStylesheetButtonWidgetKey,	// control label
+									kEVERegularSpaceAfter,
+								),								
+							} // End of Eve generic panel child widgets
+						), // End of Eve generic panel widget definition
+						
+						EVECheckBoxWidget // "Use XML transformer service" checkbox
+						(
+							// CControlView properties
+							kXDocBkUIUseXMLTransformerWidgetID,		// widget ID
+							kSysCheckBoxPMRsrcId,					// PMRsrc ID
+							kBindNone,								// frame binding
+							Frame(0,0,0,0)							// left, top, right, bottom
+							kTrue,									// visible
+							kTrue,									// enabled
+							// TriStateControlAttributes properties
+							kAlignLeft,								// alignment
+							// CTextControlData properties
+							kXDocBkUIUseXMLTransformerWidgetKey,	// control label
+							kEVERegularSpaceAfter,
+						),
+						EVECheckBoxWidget // "Above XSL file overrides processing-instruction" checkbox
+						(
+							// CControlView properties
+							kXDocBkUISuppliedOverridesPIWidgetID,	// widget ID
+							kSysCheckBoxPMRsrcId,					// PMRsrc ID
+							kBindNone,								// frame binding
+							Frame(0,0,0,0)							// left, top, right, bottom
+							kTrue,									// visible
+							kTrue,									// enabled
+							// TriStateControlAttributes properties
+							kAlignLeft,								// alignment
+							// CTextControlData properties
+							kXDocBkUISuppliedOverridesPIWidgetKey,	// control label
+							kEVERegularSpaceAfter,
+						),
+					} // End of Eve generic panel child widgets
+				), // End of Eve generic panel widget definition
+				
+			}
+		),			
+	}
+	kEVEArrangeChildrenInColumn | kEVENoMargin,
+};
+
+#endif // __ODFRC__
+
+#include "XDocBkUI_enUS.fr"
+#include "XDocBkUI_jaJP.fr"
+

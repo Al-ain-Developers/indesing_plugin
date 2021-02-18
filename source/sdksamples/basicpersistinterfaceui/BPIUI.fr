@@ -1,0 +1,501 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/sdksamples/basicpersistinterfaceui/BPIUI.fr $
+//  
+//  Owner: Adobe Developer Technologies
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//  
+//  Umbrella include file for all the .fr files in the plug-in.
+//  
+//========================================================================================
+
+#include "MenuDef.fh"
+#include "ActionDef.fh"
+#include "ActionDefs.h"
+#include "AdobeMenuPositions.h"
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "StringTable.fh"
+//#include "OMTypes.h"
+#include "objectmodeltypes.fh"
+#include "ShuksanID.h"
+#include "ActionID.h"
+#include "CommandID.h"
+#include "WorkspaceID.h"
+#include "widgetid.h"
+#include "BuildNumber.h"
+#include "PanelList.fh"
+#include "Widgets.fh"	// for PalettePanelWidget
+#include "InterfaceColorDefines.h"
+#include "IControlViewDefs.h"
+#include "SysControlIds.h"
+
+// General includes:
+#include "GenericID.h"
+#include "TextID.h"
+#include "TextEditorID.h" // for kTextSelectionBoss
+#include "ErrorTableTypes.h" // for UserErrorTable
+#include "ScriptInfoTypes.fh"
+#include "ScriptingID.h"
+#include "AppFrameworkID.h" // for kApplicationObjectScriptElement
+#include "DocFrameworkID.h" // for kDocumentObjectScriptElement
+#include "TextScriptID.h" // for kTextFrameObjectScriptElement
+
+#include "PlugInModel_UIAttributes.h"
+// Project includes:
+#include "BPIUIID.h"
+#include "BPIID.h"  //for IID_IBPISUITE define in Model project
+
+#include "EveInfo.fh"
+#ifdef __ODFRC__
+
+/*
+ Plugin version definition.
+*/
+resource PluginVersion (kSDKDefPluginVersionResourceID)
+{
+	kTargetVersion,
+	kBPIUIPluginID,
+	kSDKDefPlugInMajorVersionNumber, kSDKDefPlugInMinorVersionNumber, 	
+	kSDKDefHostMajorVersionNumber, kSDKDefHostMinorVersionNumber,
+	kBPIUILastMajorFormatChange, kBPIUILastMinorFormatChange,
+	{ kInDesignProduct },
+	{ kWildFS },
+	kUIPlugIn,
+	kBPIUIVersion
+};
+
+/*
+	Boss class definition.
+*/
+resource ClassDescriptionTable(kSDKDefClassDescriptionTableResourceID)
+{{{
+
+	/** Implements this plug-in's dialog.
+		@ingroup basicpersistinterface
+	*/
+	Class 
+	{
+		kBPIUIDialogBoss,
+		kDialogBoss,
+		{
+			/** See IDialogController and BPIDlgController.
+			*/
+			IID_IDIALOGCONTROLLER,	kBPIUIDlgControllerImpl,
+		}
+	},
+
+ 
+	/**	Implements this plug-in's actions.
+		@ingroup basicpersistinterface
+	*/
+	Class
+	{
+		kBPIUIActionComponentBoss,
+		kBaseActionComponentBoss,
+		{
+			/**	See IActionComponent and BPIActionComponent.
+			  */
+			IID_IACTIONCOMPONENT, kBPIUIActionComponentImpl,
+		}
+	},
+		/**	Implements this plug-in's panel.
+		@ingroup basicpersistinterface
+	*/
+	Class
+	{
+		kBPIUIPanelWidgetBoss,
+		kPalettePanelWidgetBoss,
+		{
+			/** Connects the pop-out menu(implementation provided by the API).
+			*/ 
+			IID_IPANELMENUDATA, kCPanelMenuDataImpl,
+
+			/** See ActiveSelectionObserver and BPISelectionObserver; selection observer 
+				that updates the panel when the selection changes.
+			*/
+			IID_IOBSERVER,	kBPIUISelectionObserverImpl,
+		}
+	},
+	
+}}};
+
+/*
+// Implementation definition.
+*/
+resource FactoryList (kSDKDefFactoryListResourceID) 
+{
+	kImplementationIDSpace,
+	{
+#include "BPIUIFactoryList.h"
+	}
+};
+/*
+// Menu definition.
+*/
+resource MenuDef (kSDKDefMenuResourceID)
+{
+	{
+		// The About Plug-ins sub-menu item for this plug-in.
+		kBPIUIAboutActionID,			// ActionID (kInvalidActionID for positional entries)
+		kBPIUIAboutMenuPath,			// Menu Path.
+		kSDKDefAlphabeticPosition,			// Menu Position.
+		kSDKDefIsNotDynamicMenuFlag,		// kSDKDefIsNotDynamicMenuFlag or kSDKDefIsDynamicMenuFlag.
+
+		kBPIUISetBPIDataActionID,
+		kBPIUITargetMenuPath,
+		kBPIUISetBPIDataMenuItemPosition,
+		kSDKDefIsNotDynamicMenuFlag,
+
+		// Separator for the popup menu on the panel
+		kBPIUISeparator1ActionID,
+		kBPIUIInternalPopupMenuNameKey kSDKDefDelimiterAndSeparatorPath,	// :- to mark an item as a separator.
+		kBPIUISeparator1MenuItemPosition,
+		kSDKDefIsNotDynamicMenuFlag,
+
+		// About this plugin submenu for the popup menu on the panel
+		kBPIUIPopupAboutThisActionID,
+		kBPIUITargetMenuPath
+		kBPIUIAboutThisMenuItemPosition,
+		kSDKDefIsNotDynamicMenuFlag, 
+	}
+};
+
+/*
+// Action definition.
+*/
+resource ActionDef (kSDKDefActionResourceID)
+{
+	{ 
+		kBPIUIActionComponentBoss, 		// ClassID of boss class that implements the ActionID.
+		kBPIUIAboutActionID,	// ActionID.
+		kBPIUIAboutMenuKey,	// Sub-menu string.
+		kHelpMenuActionArea,				// Area name (see ActionDefs.h).
+		kNormalAction,					// Type of action (see ActionDefs.h).
+		kDisableIfLowMem,				// Enabling type (see ActionDefs.h).
+		kInvalidInterfaceID,			// Selection InterfaceID this action cares about or kInvalidInterfaceID.
+		kSDKDefInvisibleInKBSCEditorFlag, // kSDKDefVisibleInKBSCEditorFlag or kSDKDefInvisibleInKBSCEditorFlag.
+
+		kBPIUIActionComponentBoss,
+		kBPIUISetBPIDataActionID,		
+		kBPIUISetBPIDataMenuItemKey,		
+		kOtherActionArea,			
+		kNormalAction,				
+		kDisableIfLowMem|kDisableIfSelectionDoesNotSupportIID,	
+		IID_IBPISUITE | kCustomEnabling,		
+		kSDKDefInvisibleInKBSCEditorFlag,
+
+		kBPIUIActionComponentBoss, 
+		kBPIUIPopupAboutThisActionID, 
+		kSDKDefAboutThisPlugInMenuKey,	// Key to the name of this action
+		kOtherActionArea,
+		kNormalAction,
+		kDisableIfLowMem,	
+		kInvalidInterfaceID,
+		kSDKDefInvisibleInKBSCEditorFlag,
+	}
+};
+
+/*
+// LocaleIndex
+// The LocaleIndex should have indicies that point at your
+// localizations for each language system that you are 
+// localized for.
+*/
+
+/*
+// String LocaleIndex.
+*/
+resource LocaleIndex (kSDKDefStringsResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_enUS, kSDKDefStringsResourceID + index_enUS
+		kInDesignJapaneseFS, k_jaJP, kSDKDefStringsResourceID + index_jaJP
+		
+		kWildFS, k_Wild, kSDKDefStringsResourceID + index_enUS
+	}
+};
+
+resource LocaleIndex (kSDKDefStringsNoTransResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_Wild, kSDKDefStringsNoTransResourceID + index_enUS
+	}
+};
+
+resource StringTable (kSDKDefStringsNoTransResourceID + index_enUS)
+{
+	k_enUS,									// Locale Id
+	kEuropeanMacToWinEncodingConverter,		// Character encoding converter
+	{
+		// No-Translate strings go here:		
+
+
+		kBPIUIInternalPopupMenuNameKey,	kBPIUIInternalPopupMenuNameKey,		// No need to translate, internal menu name.
+	}
+};
+
+/*
+// Panel LocaleIndex.
+*/
+resource LocaleIndex (kSDKDefPanelResourceID)
+{
+	kViewRsrcType,
+	{
+		kWildFS, k_Wild, 	kSDKDefPanelResourceID + index_enUS
+	}
+};
+
+/*
+// Type definition.
+*/
+type BPIPanelWidget(kViewRsrcType) : PalettePanelWidget(ClassID = kBPIUIPanelWidgetBoss) 
+{
+	CPanelMenuData;
+};
+
+/*
+// PanelList definition.
+*/
+resource PanelList (kSDKDefPanelResourceID)
+{
+	{
+		// 1st panel in the list
+		kSDKDefPanelResourceID,		// Resource ID for this panel (use SDK default rsrc ID)
+		kBPIUIPluginID,			// ID of plug-in that owns this panel
+		kNotResizable,
+		kBPIUIPanelWidgetActionID,	// Action ID to show/hide the panel
+		kBPIUIPanelTitleKey,	// Shows up in the Window list.
+		"",
+		0.0,
+		0,0,						// Rsrc ID, Plugin ID for a PNG icon resource to use for this palette
+		c_Panel
+	}	
+};
+
+
+/*
+// PanelView definition.
+// The view is not currently localised: therefore, it can reside here.
+// However, if you wish to localise it, it is recommended to locate it in one of
+// the localised framework resource files (i.e. BPI_enUS.fr etc.).
+*/
+resource BPIPanelWidget(kSDKDefPanelResourceID + index_enUS)
+{
+	__FILE__, __LINE__,					// Localization macro		
+	kBPIUIPanelWidgetID,			// WidgetID 
+	kPMRsrcID_None,						// RsrcID
+	kBindNone,							// Binding (0=none)
+	Frame(0, 0, 207, 95)						// Frame: left, top, right, bottom.
+	kTrue, kTrue,						// Visible, Enabled
+	kFalse,								// Erase background
+	kInterfacePaletteFill,				// Erase to color
+	kFalse,								// Draw dropshadow
+	kBPIUIPanelTitleKey,			// Panel name	
+	{
+		StaticTextWidget
+		(
+			kBPIUILabelWidgetID,			// WidgetId (default=0)
+			kSysStaticTextPMRsrcId,		// RsrcId
+			kBindNone,						// Frame binding
+			Frame(5, 5, 202, 20)					// Frame: left, top, right, bottom.
+			kTrue, kTrue,					// Visible, Enabled
+			kAlignLeft, kEllipsizeEnd, kTrue,		// Alignment, ellipsize style, convert ampersands
+			kBPIUIDataStaticTextKey,		// Initial text.
+			0								// No associated widget
+		),
+
+		GenericPanelWithBorderWidget
+		(
+			0, kPMRsrcID_None,		// WidgetId, RsrcId
+			kBindNone,
+			Frame(5, 25, 197, 85) 	// Frame
+			kTrue, kTrue,			// Visible, Enabled
+			"",
+			{
+				StaticMultiLineTextWidget
+				(
+					kBPIUIDataWidgetID,//WidgetID
+					kPMRsrcID_None, // kSysOwnerDrawListBoxPMRsrcId,//RsrcID
+					kBindNone,//Binding
+					Frame(2, 2, 179, 58) //Frame
+					kTrue,kTrue,//Visible,Enabled
+					 // Static Text Attributes
+					kAlignLeft,                     // Alignment
+					kDontEllipsize, kTrue,                 // Ellipsize style, Convert ampersands					
+					kBPIUIDataScrollBarWidgetID,//WidgetID of scrollbar
+					kPaletteWindowFontId,//InterfaceFontID
+					3,//Number of pixels between lines
+					1,0,//Inset amount
+					"",//Initial text
+				),
+				ScrollBarWidget
+				(
+					kBPIUIDataScrollBarWidgetID,
+					kSysVScrollBarPMRsrcId,
+					kBindRight | kBindBottom,
+					Frame(179, 1, 192, 60) //Frame
+					kTrue,kTrue,
+					0, 100, 0, 1, 1,				// CCounterControlData
+					0, 0, 0, // not accelerate ( threshold, max,increment)
+				)			
+			}
+		),
+	}
+	kBPIUIInternalPopupMenuNameKey		// Popup menu name (internal)
+};
+
+//================================================================================
+// Dialogs
+// Resource definitions for any dialogs and widget types.
+//================================================================================
+//------------------------------------------------------------
+// Dialog LocaleIndex.
+//------------------------------------------------------------
+resource LocaleIndex (kSDKDefDialogResourceID)
+{
+   kViewRsrcType,
+	{
+		kWildFS,	k_Wild, kSDKDefDialogResourceID + index_enUS
+	}
+};
+
+//------------------------------------------------------------
+// Resource types
+// Define your User Interface resource types here.
+//------------------------------------------------------------
+type BPIDialogWidget(kViewRsrcType) : DialogBoss(ClassID = kBPIUIDialogBoss) 
+{
+	WidgetEveInfo;
+};
+
+//------------------------------------------------------------
+// Dialog Resource Definition.
+//------------------------------------------------------------
+
+resource BPIDialogWidget (kSDKDefDialogResourceID + index_enUS)
+{
+	__FILE__, __LINE__,
+	kBPIUIDialogWidgetID,					// WidgetID
+	kPMRsrcID_None,								// RsrcID
+	kBindNone,									// Binding
+	Frame(0,0,388,112)			// Frame (l,t,r,b)
+	kTrue, kTrue,								// Visible, Enabled
+	kBPIUIDlgTitleKey,							// Dialog name
+	{		
+		EVEGenericPanelWidget
+		(
+			kInvalidWidgetID,	// WidgetId
+			0			// RsrcId
+			0,			// Widget EVE Info
+			kBindNone,		// Frame binding
+			Frame(0,0,225,112)		// Frame
+			kTrue,			// Visible
+			kTrue,			// Enabled
+			//kEVEAlignFill | kEVERegularSpaceAfter | kEVEArrangeChildrenInColumn,
+			kEVEAlignFill | kEVEExtraLargeSpaceAfter | kEVEArrangeChildrenInColumn,
+			{
+				EVEStaticTextWidget
+				(
+					kBPIUIStaticTextWidgetID,
+					kSysStaticTextPMRsrcId, 		// WidgetId, RsrcId
+					kBindNone,
+					Frame(0,0,0,0)				// Frame left, top, right, bottom
+					kTrue, kTrue, kAlignRight,		// Visible, Enabled, Alignment
+					kEllipsizeEnd, kTrue
+					kBPIUIDataStaticTextKey,	
+					kBPIUIEditBoxWidgetID,			// WidgetID this shortcut is connected to, 0 if none.
+					
+					kEVERegularSpaceAfter,
+				),
+
+				EVETextComboBoxWidget
+				(
+					kBPIUIEditBoxWidgetID,				// WidgetId
+					kSysDropDownPMRsrcId,			// RsrcId
+					kBindNone,						// Frame binding
+					Frame(0,0,200,23)		// Frame
+					kTrue, kTrue					// Visible, Enabled
+					0,								// Widget id of nudge button (0 so we don't get one)
+					0, 0,							// small,large nudge amount
+					32,			// max num chars(0 = no limit)
+					kFalse,							// is read only
+					kFalse,							// range checking enabled
+					kFalse,							// blank entry allowed
+					0,								// Upper bounds
+					0,								// Lower bounds
+					0,
+					"",			// Initial text
+					{{
+					}}
+					
+					kEVERegularSpaceAfter,
+				),
+				
+			}  // End of Eve generic panel child widgets
+		), // End of Eve generic panel widget definition
+		
+		EVEGenericPanelWidget
+		(
+			kInvalidWidgetID,	// WidgetId
+			0			// RsrcId
+			0,			// Widget EVE Info
+			kBindNone,		// Frame binding
+			Frame(0,0,0,0)		// Frame
+			kTrue,			// Visible
+			kTrue,			// Enabled
+			kEVEAlignFill | kEVERegularSpaceAfter | kEVEArrangeChildrenInColumn,			
+			{
+				EVEDefaultButtonWidget
+				(
+					kOKButtonWidgetID,									// WidgetID 
+					kSysButtonPMRsrcId,									// RsrcID
+					kBindNone,											// Binding
+					Frame(0,0,0,0)	// Frame (l,t,r,b)
+					kTrue, kTrue,										// Visible, Enabled
+					kSDKDefOKButtonApplicationKey						// Button text
+					
+					kEVELargeSpaceAfter,
+				),
+				
+				EVECancelButtonWidget				
+				(
+					kCancelButton_WidgetID,											// WidgetID
+					kSysButtonPMRsrcId,												// RsrcID
+					kBindNone,														// Binding
+					Frame(0,0,0,0)	// Frame (l,t,r,b)
+					kTrue, kTrue,													// Visible, Enabled
+					kSDKDefCancelButtonApplicationKey,								// Button name
+					kTrue,															// Change to Reset on option-click.
+					
+					kEVELargeSpaceAfter,
+				),				
+			}  // End of Eve generic panel child widgets
+		), // End of Eve generic panel widget definition
+	},
+	
+	kEVEArrangeChildrenInRow | kEVELargeMargin,
+};
+
+#endif // __ODFRC__
+
+#include "BPIUI_enUS.fr"
+#include "BPIUI_jaJP.fr"
+

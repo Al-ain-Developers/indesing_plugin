@@ -1,0 +1,52 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// U.S. English strings
+//========================================================================================
+
+resource StringTable (kInCopyExportStringsRsrcID + index_zhCN)
+{
+	k_zhCN,								// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+
+	{
+		// ----- Miscellaneous strings
+		"Export Seq Name", 		"导出 InCopy 文章",
+		"Text",					"文本", // append "Text" to export name on a text story
+		
+		// ----- Export options dialog strings
+		"InCopyExportOptions",	"Adobe InCopy 导出选项",
+		"ExportOptions_DataType",	"编码(&E):",
+		"ExportOptions_UTF16",	"UTF16",
+		"ExportOptions_UTF8",	"UTF8",
+		"ExportOptions_DataOptions",	"选项:",
+		"ExportOptions_StyleTable",	"包含样式表(&S)",
+		"ExportOptions_SwatchList",	"包含色板列表(&W)",
+		"ExportOptions_XMPData",	"包含 XMP 信息(&I)",
+		"ExportOptions_StoryLabel",	"文章标签(&L):",
+
+		//menu
+		"ExportMenu",				"导出(&X)",
+		"kExportLayerToIC",			"图层(&L)...",
+		"kExportAllStoriesToIC",	"全部文章(&R)...",
+		"kExportAllGraphicsToIC",	"全部图形(&G)...",
+		"kExportAllItemsToIC",		"全部图形和文章(&A)...",
+
+		"INCDFeatureLost",    "此文章可能包含此文件格式不支持的特性。更新此文章时，那些特性将会丢失。",
+	}
+};
+
+#endif // __ODFRC__

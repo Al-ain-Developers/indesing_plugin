@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ADOBE SYSTEMS INCORPORATED
+Copyright 2012 Adobe Systems Incorporated
+All Rights Reserved.
+
+NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance with the 
+terms of the Adobe license agreement accompanying it.  If you have received this file from a 
+source other than Adobe, then your use, modification, or distribution of it requires the prior 
+written permission of Adobe.
+-->
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%" x="0" y="0" xmlns:UI="UI.*" initialize="init()" horizontalScrollPolicy="off">
+	<mx:Script>
+		<![CDATA[
+			import com.adobe.csawlib.indesign.InDesign;
+			import com.adobe.indesign.*;
+			import com.adobe.indesign.Rectangle;
+			import com.adobe.indesign.layouthelper.event.ConstrainsChangeEvent;
+			import com.adobe.indesign.layouthelper.event.ViewConstrainsSettingEvent;
+			
+			import mx.collections.ArrayCollection;
+			import mx.events.ListEvent;
+			
+			[Bindable]
+			private var items:ArrayCollection = new ArrayCollection();
+			
+			private function init():void 
+			{
+				this.addEventListener(ViewConstrainsSettingEvent.CHANGE, onConstrainsSetting);
+				itemid.addEventListener(MouseEvent.DOUBLE_CLICK, goToItem);
+				this.pageGrid.addEventListener(ListEvent.ITEM_CLICK, onDataGridClick);
+				
+			}
+			
+			private function onDataGridClick(event:ListEvent):void
+			{	
+			}
+
+			public function onConstrainsSetting(event:ViewConstrainsSettingEvent):void
+			{
+				var app:Application = InDesign.app;
+				var doc:Document = app.activeDocument;
+				if(doc == null)
+				{
+					return;
+				}
+				items.removeAll();
+				
+				var pageItems:PageItems = event.page.pageItems;
+				
+				for(var j:int=0; j<pageItems.length; j++)
+				{
+					var pageItem:PageItem = pageItems.item(j);
+					var obj:Object = new Object();
+					obj.id = pageItem.id;
+					try{
+						var horizontalLayoutConstrains:Object = pageItem.hostObjectDelegate.horizontalLayoutConstraints;
+						obj.left = horizontalLayoutConstrains[0].toString();
+						obj.width = horizontalLayoutConstrains[1].toString();
+						obj.right = horizontalLayoutConstrains[2].toString();
+						
+						var verticalLayoutConstrains:Object = pageItem.hostObjectDelegate.verticalLayoutConstraints;
+						obj.top = verticalLayoutConstrains[0].toString();
+						obj.height = verticalLayoutConstrains[1].toString();
+						obj.bottom = verticalLayoutConstrains[2].toString();
+						obj.test = "first time";
+					}catch(e:Error)
+					{
+						trace("exception catched:" + e.getStackTrace());
+						obj.left = "FIXED_DIMENSION";
+						obj.width = "FIXED_DIMENSION";
+						obj.right = "FIXED_DIMENSION";				
+						obj.top = "FIXED_DIMENSION";
+						obj.height = "FIXED_DIMENSION";
+						obj.bottom = "FIXED_DIMENSION";
+					}
+					
+					obj.pageitem = pageItem;
+					items.addItem(obj);
+					items.refresh();
+				}
+			}
+			
+			public function apply():void
+			{
+				for(var i:int=0;i<items.length;i++)
+				{
+					items[i].pageitem.horizontalLayoutConstraints = 
+						[
+							items[i].left == "FIXED_DIMENSION"?DimensionsConstraints.FIXED_DIMENSION:DimensionsConstraints.FLEXIBLE_DIMENSION,
+							items[i].width == "FIXED_DIMENSION"?DimensionsConstraints.FIXED_DIMENSION:DimensionsConstraints.FLEXIBLE_DIMENSION, 
+							items[i].right == "FIXED_DIMENSION"?DimensionsConstraints.FIXED_DIMENSION:DimensionsConstraints.FLEXIBLE_DIMENSION
+						];
+					items[i].pageitem.verticalLayoutConstraints = 
+						[
+							items[i].top == "FIXED_DIMENSION"?DimensionsConstraints.FIXED_DIMENSION:DimensionsConstraints.FLEXIBLE_DIMENSION,
+							items[i].height == "FIXED_DIMENSION"?DimensionsConstraints.FIXED_DIMENSION:DimensionsConstraints.FLEXIBLE_DIMENSION,
+							items[i].bottom == "FIXED_DIMENSION"?DimensionsConstraints.FIXED_DIMENSION:DimensionsConstraints.FLEXIBLE_DIMENSION
+						];
+				}
+			}
+			
+			private function goToItem(event:MouseEvent):void
+			{
+				//focus on the item in the document
+			}
+		]]>
+	</mx:Script>
+	
+	<mx:Component id="inlineComboBox">  
+		<mx:ComboBox width="100%" height="100%" 
+					 minWidth="50" 
+					 maxHeight="50" maxWidth="100" dataProvider="{constrains}" initialize="Init()">
+			
+			<mx:Script>
+				<![CDATA[
+					import com.adobe.csawlib.indesign.InDesign;
+					import com.adobe.indesign.*;
+					
+					import flash.events.Event;
+					
+					import mx.collections.ArrayCollection;
+					
+					[Bindable]
+					private var constrains:ArrayCollection = new ArrayCollection([
+						{label:"FLEXIBLE_DIMENSION", data: DimensionsConstraints.FLEXIBLE_DIMENSION}, 
+						{label:"FIXED_DIMENSION", data:DimensionsConstraints.FIXED_DIMENSION}
+					]);
+					
+					private function Init():void{
+						setComboBoxSelectedValue("FLEXIBLE_DIMENSION", "label");
+						selectedItem = constrains.getItemAt(selectedIndex);
+						
+					}
+					public function setComboBoxSelectedValue(data:Object, label:String = null):void
+					{
+						var len:uint = dataProvider.length;
+						for(var i:uint = 0; i<len; i++)
+						{
+							if(label !== null){
+								if(dataProvider[i][label] == data)
+								{
+									selectedIndex = i;
+									break;
+								}
+							}else{
+								if(dataProvider[i] == data)
+								{
+									selectedIndex = i;
+									break;
+								}
+							}
+						}
+					}
+				]]>
+			</mx:Script>
+			</mx:ComboBox>
+	</mx:Component>	
+	<mx:DataGrid width="100%" dataProvider="{items}" 
+				 x="0" y="0" 
+				 height="100%"
+				 wordWrap="true" id="pageGrid"
+				 editable="true" 
+				 verticalAlign="middle"
+				 horizontalCenter="true"
+				 rowHeight="30" 
+				 horizontalScrollPolicy="on"
+				 verticalScrollPolicy="on">
+		<mx:columns>
+			<mx:DataGridColumn id="itemid" wordWrap="true" sortable="false" editable="false" headerWordWrap="true" minWidth="30" width="50" headerText="ID" dataField="id"/>
+			<mx:DataGridColumn headerText="Top" minWidth="30" editable="true" dataField="top" editorDataField="text" itemEditor="{inlineComboBox}"/>	
+			<mx:DataGridColumn headerText="Bottom" minWidth="30" editable="true" dataField="bottom" editorDataField="text" itemEditor="{inlineComboBox}"/>
+			<mx:DataGridColumn headerText="Left" minWidth="30" editable="true" dataField="left" editorDataField="text" itemEditor="{inlineComboBox}"/>
+			<mx:DataGridColumn headerText="Right" minWidth="30" editable="true" dataField="right" editorDataField="text" itemEditor="{inlineComboBox}"/>
+			<mx:DataGridColumn headerText="Height" minWidth="30" editable="true" dataField="height" editorDataField="text" itemEditor="{inlineComboBox}"/>
+			<mx:DataGridColumn headerText="Width" minWidth="30" editable="true" dataField="width" editorDataField="text" itemEditor="{inlineComboBox}"/>
+		</mx:columns>
+	</mx:DataGrid>
+</mx:VBox>

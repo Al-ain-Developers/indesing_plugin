@@ -1,0 +1,129 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kBehaviorUIStringsRsrcID + index_huHU)
+{
+	k_huHU,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{		
+		"$$$/Dialog/Behaviors/ShowHideFields/Fields_Tree", "Mezők fastruktúra",
+
+		"$$$/Dialog/Behaviors/Description",				"Itt a viselkedés rövid leírása olvasható, és néhány tanács a viselkedés beállításaival kapcsolatban is. A felhasználó kap pár ötletet a viselkedések használatára vonatkozóan.",
+		"$$$/Dialog/Behaviors/Description Title",		"Leírás",
+		"$$$/Dialog/Behaviors/DeleteAlert",				"Törli a kijelölt műveletet?",
+		"$$$/Dialog/Behaviors/DragDeleteAlert",			"Törli az ide húzott műveleteket?",
+		"$$$/Dialog/Behaviors/Error/Invalid URL",		"Az URL-cím mező nem lehet üres",
+		"$$$/Dialog/Behaviors/Error/Invalid File",		"Érvényes fájlt kell megadni",
+		
+		"$$$/Dialog/Behaviors/Movie/Movie:",			"Videó:",
+		"$$$/Dialog/Behaviors/Movie/Play Options:",		"Beállítások:",
+		"$$$/Dialog/Behaviors/Movie/Play",				"Lejátszás",
+		"$$$/Dialog/Behaviors/Movie/Stop",				"Leállítás",
+		"$$$/Dialog/Behaviors/Movie/Pause",				"Szünet",
+		"$$$/Dialog/Behaviors/Movie/Resume",			"Újraindítás",
+		"$$$/Dialog/Behaviors/Movie/PlayFromNavPoint",	"Lejátszás navigációs ponttól",
+		"$$$/Dialog/Behaviors/Movie/StopAll",			"Minden leállítása (csak SWF)",
+		"$$$/Dialog/Behaviors/Movie/NavPoint",			"Pont:",
+		"$$$/Dialog/Behaviors/Movie/NoVideo",			"(nincs videó)",
+		"$$$/Dialog/Behaviors/Movie/NoVideoNavPoint",	"(nincs navigációs pont)",
+
+		"$$$/Dialog/Behaviors/Sound/Sound:",			"Hang:",
+		"$$$/Dialog/Behaviors/Sound/Play Options:",		"Beállítások:",
+		"$$$/Dialog/Behaviors/Sound/Play",				"Lejátszás",
+		"$$$/Dialog/Behaviors/Sound/Stop",				"Leállítás",
+		"$$$/Dialog/Behaviors/Sound/Pause",				"Szünet",
+		"$$$/Dialog/Behaviors/Sound/Resume",			"Újraindítás",
+		"$$$/Dialog/Behaviors/Sound/StopAll",			"Minden leállítása (csak SWF)",
+		"$$$/Dialog/Behaviors/Sound/Volume:",			"Kötet:",
+		"$$$/Dialog/Behaviors/Sound/Synchronous",		"Szinkronizált",
+		"$$$/Dialog/Behaviors/Sound/Mix",				"Vegyes",
+		"$$$/Dialog/Behaviors/Sound/NoSound",			"(nincs hang)",
+		
+		"$$$/Dialog/Behaviors/Animation/Animation:",	"Animáció:",
+		"$$$/Dialog/Behaviors/Animation/Play Options:",	"Beállítások:",
+		"$$$/Dialog/Behaviors/Animation/Play",			"Lejátszás",
+		"$$$/Dialog/Behaviors/Animation/Stop",			"Leállítás",
+		"$$$/Dialog/Behaviors/Animation/Pause",			"Szünet",
+		"$$$/Dialog/Behaviors/Animation/Resume",		"Újraindítás",
+		"$$$/Dialog/Behaviors/Animation/StopAll",		"Minden leállítása",
+		"$$$/Dialog/Behaviors/Animation/Reverse",		"Vissza",
+		"$$$/Dialog/Behaviors/Animation/AutoReverse",	"Vissza kurzorlehúzáskor (On Roll Off)",
+		"$$$/Dialog/Behaviors/Animation/NoAnimation",	"(nincs animáció)",
+		
+		"$$$/Dialog/Behaviors/MSO/Object:",				"Objektum:",
+		"$$$/Dialog/Behaviors/MSO/State:",				"Állapot:",
+		"$$$/Dialog/Behaviors/MSO/AutoReverse",			"Visszaáll kurzorlehúzáskor (On Roll Off)",
+		"$$$/Dialog/Behaviors/MSO/NextLoop",			"Leállítás az utolsó állapotnál",
+		"$$$/Dialog/Behaviors/MSO/PrevLoop",			"Leállítás első állapotban",
+		"$$$/Dialog/Behaviors/MSO/NoMSO",				"(nincs többállapotú objektum)",
+
+		"$$$/Dialog/Behaviors/GoToView/Go To:",			"Ugrás ide:",
+		"$$$/Dialog/Behaviors/GoToView/First Page",		"Első oldal",
+		"$$$/Dialog/Behaviors/GoToView/Page",			"Oldal",
+		"$$$/Dialog/Behaviors/GoToView/Previous Page",	"Előző oldal",
+		"$$$/Dialog/Behaviors/GoToView/Next Page",		"Következő oldal",
+		"$$$/Dialog/Behaviors/GoToView/Last Page",		"Utolsó oldal",
+		"$$$/Dialog/Behaviors/GoToView/Back",			"Vissza",
+		"$$$/Dialog/Behaviors/GoToView/Forward",		"Előre",
+		"$$$/Dialog/Behaviors/GoToView/Previous View",	"Előző nézet",
+		"$$$/Dialog/Behaviors/GoToView/Next View",		"Következő nézet",
+		"$$$/Dialog/Behaviors/GoToView/Specific Page",	"Adott oldal",
+		"$$$/Dialog/Behaviors/GoToView/Document:",		"Dokumentum:",
+		"$$$/Dialog/Behaviors/GoToView/Page:",			"Oldal:",
+		"$$$/Dialog/Behaviors/GoToView/URL",			"URL-cím",
+		"$$$/Dialog/Behaviors/GoToView/URL:",			"URL-cím:",
+		"$$$/Dialog/Behaviors/GoToView/Anchor",			"Szerkesztőpont",
+		"$$$/Dialog/Behaviors/GoToView/Anchor:",		"Cél:",
+		"$$$/Dialog/Behaviors/GoToView/Bookmark",		"Könyvjelző",
+		"$$$/Dialog/Behaviors/GoToView/Inherit Zoom",	"Nagyítás megtartása",
+		"$$$/Dialog/Behaviors/GoToView/Actual Size",	"Tényleges méret",
+		"$$$/Dialog/Behaviors/GoToView/Fit In Window",	"Ablakhoz igazítás",
+		"$$$/Dialog/Behaviors/GoToView/Fit Width",		"Nagyitás oldalszélességre",
+		"$$$/Dialog/Behaviors/GoToView/Fit Height",		"Magassághoz igazítás",
+		"$$$/Dialog/Behaviors/GoToView/Fit Visible",	"Látható részhez igazítás",
+		"$$$/Dialog/Behaviors/GoToView/Zoom:",			"Kicsinyítés/nagyítás:",
+		"$$$/Dialog/Behaviors/GoToView/None",			"Semmi",
+		"$$$/Dialog/Behaviors/GoToAnchor/InDesign Format File","InDesign formátumfájl",
+		
+		"$$$/Dialog/Behaviors/ViewZoom/Full Screen",	"Teljes képernyő",
+		"$$$/Dialog/Behaviors/ViewZoom/Zoom View In",	"Nagyítás",
+		"$$$/Dialog/Behaviors/ViewZoom/Zoom View Out",	"Kicsinyítés",
+		"$$$/Dialog/Behaviors/ViewZoom/Fit Page",		"Ablakhoz igazítás",
+		"$$$/Dialog/Behaviors/ViewZoom/Actual Size",	"Tényleges méret",
+		"$$$/Dialog/Behaviors/ViewZoom/Fit Width",		"Nagyitás oldalszélességre",
+		"$$$/Dialog/Behaviors/ViewZoom/Fit Visible",	"Látható részhez igazítás",
+		"$$$/Dialog/Behaviors/ViewZoom/SinglePage",		"Egyoldalas",
+		"$$$/Dialog/Behaviors/ViewZoom/OneColumn",		"Folyamatos",
+		"$$$/Dialog/Behaviors/ViewZoom/TwoColumns",		"Folyamatos – Oldalpár",
+
+		"$$$/Dialog/Behaviors/ImportData/Select File:","Fájl kijelölése:",
+		"$$$/Dialog/Behaviors/ImportData/Acrobat Format File","Acrobat formátumfájl",
+
+		"$$$/Dialog/Behaviors/OpenFile/Select File:","Fájl kijelölése:",
+		"$$$/Dialog/Behaviors/OpenFile/Select File to be Opened", "Megnyitandó fájl kijelölése",
+		"$$$/Dialog/Behaviors/OpenFile/Acrobat Format File","Acrobat formátumfájl",
+
+		"$$$/Dialog/Behaviors/SubmitForm/Submit To:","URL:",
+						
+		// ----- Tips strings
+	}
+};
+
+#endif // __ODFRC__

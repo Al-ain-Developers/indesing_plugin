@@ -1,0 +1,550 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/linksui/resources/CaptionSetupDialogViews_enUS.fr $
+//  
+//  Owner: lance bushore
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#ifdef __ODFRC__
+
+resource GenerateLinkCaptionDialog (kGenerateLinkCaptionDialogResID + index_enUS)
+{
+	__FILE__, __LINE__,
+	kGenerateCaptionDialogWidgetID,						// WidgetId
+	kPMRsrcID_None,			// RsrcId
+	kBindNone,				// Frame binding
+	Frame(0,0,10,10)		// Frame
+	kTrue,kTrue,			// Visible, Enabled
+	"#GenerateCaptionPrefDialogName",	// Panel name
+	{
+
+		EVEGroupPanelWidget
+		(
+			kCaptionTopSectionPanelWidgetID,					// WidgetId
+			kPMRsrcID_None,				// RsrcId
+			kBindNone,						// Frame binding
+			Frame(0,0,10,10)		// Frame
+			kTrue,							// Visible
+			kTrue,							// Enabled
+			kCaptionTopSectionLabelWidgetID,			// widget id of border widget
+			kEVEArrangeChildrenInColumn | kEVELargeMargin | kEVEExtraLargeSpaceAfter | kEVEAlignFill,						// Eve info
+			{
+				EVEStaticTextWidget
+				(
+					kCaptionTopSectionLabelWidgetID,			// WidgetId
+					kSysStaticTextPMRsrcId,			// RsrcId
+					kBindNone,
+					Frame(10,0,47,0)		// Frame
+					kTrue, kTrue,			// Visible, Enabled
+					kAlignCenter,			// Alignment
+					kDontEllipsize, kTrue,			// Ellipsize style, Convert ampersands
+					"#CaptionRowLabel",						// Initial text
+					0,
+					kEVEExtraLargeSpaceAfter
+				),
+				EVEGenericPanelWidget
+				(
+					kCaptionHeaderPanelWidgetID,					// WidgetId
+					kPMRsrcID_None,				// RsrcId
+					kBindNone,						// Frame binding
+					Frame(0,0,10,10)		// Frame
+					kTrue,							// Visible
+					kTrue,							// Enabled
+					kEVEArrangeChildrenInRow|kEVEAlignFill,						// Eve info
+					{
+						StaticTextWidget
+						(
+							kCaptionBeforeMetadataLabelWidgetID,						// WidgetId
+							kSysStaticTextPMRsrcId,	// RsrcId
+							kBindNone,				// Frame binding
+							Frame(0, 0, 185, 0)		// Frame
+							kTrue,kTrue, kAlignCenter,	// Visible, Enabled, Alignment
+							kDontEllipsize, kTrue,				// Ellipsize style, Convert ampersands
+							"#BeforeMetadataCaptionLabel",			// Initial text
+							0,
+						),
+						MetadataLabelStaticTextWidget
+						(
+							kCaptionMetadataLabelWidgetID,						// WidgetId
+							kSysStaticTextPMRsrcId,	// RsrcId
+							kBindNone,				// Frame binding
+							Frame(0, 0, 140, 0)		// Frame
+							kTrue,kTrue, kAlignCenter,	// Visible, Enabled, Alignment
+							kDontEllipsize, kTrue,				// Ellipsize style, Convert ampersands
+							"#MetadataCaptionLabel",			// Initial text
+							0,
+						),
+						StaticTextWidget
+						(
+							kCaptionAfterMetadataLabelWidgetID,						// WidgetId
+							kSysStaticTextPMRsrcId,	// RsrcId
+							kBindNone,				// Frame binding
+							Frame(0, 0, 185, 0)		// Frame
+							kTrue,kTrue, kAlignCenter,	// Visible, Enabled, Alignment
+							kDontEllipsize, kTrue,				// Ellipsize style, Convert ampersands
+							"#AfterMetadataCaptionLabel",			// Initial text
+							0,
+						),
+					}
+				)
+				
+				EVEGenericPanelWidget
+				(
+					kSelectCaptionRowsPanelWidgetID,					// WidgetId
+					kPMRsrcID_None,				// RsrcId
+					kBindNone,						// Frame binding
+					Frame(0,0,10,10)		// Frame
+					kTrue,							// Visible
+					kTrue,							// Enabled
+					kEVEArrangeChildrenInColumn,						// Eve info
+					{
+						// at runtime, one or more rows will be added here.
+					}
+				)
+				
+			}
+		)
+		EVEGroupPanelWidget
+		(
+			kCaptionBottomSectionPanelWidgetID,					// WidgetId
+			kPMRsrcID_None,				// RsrcId
+			kBindNone,						// Frame binding
+			Frame(0,0,10,10)		// Frame
+			kTrue,							// Visible
+			kTrue,							// Enabled
+			kCaptionBottomSectionLabelWidgetID,			// widget id of border widget
+			kEVEArrangeChildrenInRow | kEVELargeMargin | kEVEAlignFill | kEVELargeSpaceAfter,						// Eve info
+			{
+				EVEStaticTextWidget
+				(
+					kCaptionBottomSectionLabelWidgetID,			// WidgetId
+					kSysStaticTextPMRsrcId,			// RsrcId
+					kBindNone,
+					Frame(10,0,47,0)		// Frame
+					kTrue, kTrue,			// Visible, Enabled
+					kAlignCenter,			// Alignment
+					kDontEllipsize, kTrue,			// Ellipsize style, Convert ampersands
+					"#CaptionOptionsLabel",						// Initial text
+					0,
+					kEVEExtraLargeSpaceAfter
+				),
+				EVEGenericPanelWidget
+				(
+					kCaptionBottomLabelPanel1WidgetID,					// WidgetId
+					kPMRsrcID_None,										// RsrcId
+					kBindNone,											// Frame binding
+					Frame(0,0,10,10)									// Frame
+					kTrue,												// Visible
+					kTrue,												// Enabled
+					kEVEArrangeChildrenInColumn | kEVESmallSpaceAfter,	// Eve info
+					{
+						EVEStaticTextWidget
+						(
+							kCaptionAlignmentLabelWidgetID,						// WidgetId
+							kSysStaticTextPMRsrcId,	// RsrcId
+							kBindNone,				// Frame binding
+							Frame(0, 0, 100, 0)		// Frame
+							kTrue,kTrue, kAlignRight,	// Visible, Enabled, Alignment
+							kDontEllipsize, kTrue,				// Ellipsize style, Convert ampersands
+							"#CaptionAlignmentLabel",			// Initial text
+							kCaptionAlignmentDropDownWidgetID,
+							kEVEAlignFill
+						),
+						EVEStaticTextWidget
+						(
+							kCaptionOffsetLabelWidgetID,						// WidgetId
+							kSysStaticTextPMRsrcId,	// RsrcId
+							kBindNone,				// Frame binding
+							Frame(0, 0, 20, 0)		// Frame
+							kTrue,kTrue, kAlignRight,	// Visible, Enabled, Alignment
+							kDontEllipsize, kTrue,				// Ellipsize style, Convert ampersands
+							"#CaptionOffsetLabel",			// Initial text
+							kCaptionOffsetEditWidgetID,
+							kEVEAlignFill
+						),
+					}
+				),
+				EVEGenericPanelWidget
+				(
+					kCaptionBottomControlsPanel1WidgetID,					// WidgetId
+					kPMRsrcID_None,				// RsrcId
+					kBindNone,						// Frame binding
+					Frame(0,0,10,10)		// Frame
+					kTrue,							// Visible
+					kTrue,							// Enabled
+					kEVEArrangeChildrenInColumn | kEVEExtraLargeSpaceAfter,						// Eve info
+					{
+						DropDownListWidget
+						(
+							kCaptionAlignmentDropDownWidgetID, kSysDropDownPMRsrcId,	// WidgetId, RsrcId 
+							kBindNone,
+							Frame(0, 0, 180, 0)
+							kTrue, kTrue,									// Visible, Enabled
+							{{
+								"#CaptionAlignBelow",
+								"#CaptionAlignAbove",
+								"#CaptionAlignLeft",
+								"#CaptionAlignRight"
+							}}
+						),
+						EVEGenericPanelWidget
+						(
+							kInvalidWidgetID,	// WidgetId
+							kPMRsrcID_None,				// RsrcId
+							kBindNone,			// Frame binding
+							Frame(0,0,10,10)	// Frame
+							kTrue,				// Visible
+							kTrue,				// Enabled
+							kEVEAlignLeft|kEVEArrangeChildrenInRow,	// EVE info
+							{
+								EVENudgeControlWidget
+								(
+									kCaptionOffsetNudgeWidgetID, kPMRsrcID_None,		// WidgetId, RsrcId
+									kBindNone,												// Frame binding
+									Frame(0,0,16,0)		// Frame
+									kTrue, kTrue,										// Visible, Enabled
+									kEVENoSpaceAfter
+								),
+								YMeasureEditBoxWidget					
+								(
+									kCaptionOffsetEditWidgetID,			// WidgetId
+									kSysEditBoxPMRsrcId,			// RsrcId
+									kBindNone,
+									Frame(0,0,82,0)		// Frame
+									kTrue, kTrue					// Visible, Enabled
+									kCaptionOffsetNudgeWidgetID,	// Widget id of nudge button (0 so we don't get one)
+									1, 1,							// small,large nudge amount
+									0,										// max num chars( 0 = no limit)
+									kFalse,									// is read only
+									kFalse,									// should notify each key stroke
+									kTrue,									// range checking enabled
+									kFalse,									// blank entry allowed
+									10000,							// Upper bounds 
+									-10000,								// Lower bounds
+									"",								// Initial text
+								),											
+							}
+						),								
+					}
+				),
+				EVEGenericPanelWidget
+				(
+					kCaptionBottomLabelPanel2WidgetID,					// WidgetId
+					kPMRsrcID_None,										// RsrcId
+					kBindNone,											// Frame binding
+					Frame(0,0,10,10)									// Frame
+					kTrue,												// Visible
+					kTrue,												// Enabled
+					kEVEArrangeChildrenInColumn | kEVESmallSpaceAfter,	// Eve info
+					{
+						EVEStaticTextWidget
+						(
+							kCaptionParastyleLabelWidgetID,						// WidgetId
+							kSysStaticTextPMRsrcId,	// RsrcId
+							kBindNone,				// Frame binding
+							Frame(0, 0, 100, 0)		// Frame
+							kTrue,kTrue, kAlignRight,	// Visible, Enabled, Alignment
+							kDontEllipsize, kTrue,				// Ellipsize style, Convert ampersands
+							"#CaptionParaStyleLabel",			// Initial text
+							kCaptionParaStyleDropDownWidgetID,
+							kEVEAlignFill
+						),
+						EVEStaticTextWidget
+						(
+							kCaptionLayerLabelWidgetID,						// WidgetId
+							kSysStaticTextPMRsrcId,	// RsrcId
+							kBindNone,				// Frame binding
+							Frame(0, 0, 20, 0)		// Frame
+							kTrue,kTrue, kAlignRight,	// Visible, Enabled, Alignment
+							kDontEllipsize, kTrue,				// Ellipsize style, Convert ampersands
+							"#CaptionLayerLabel",			// Initial text
+							kCaptionLayerDropDownWidgetID,
+							kEVEAlignFill
+						),
+					}
+				),
+				EVEGenericPanelWidget
+				(
+					kCaptionBottomControlsPanel2WidgetID,					// WidgetId
+					kPMRsrcID_None,				// RsrcId
+					kBindNone,						// Frame binding
+					Frame(0,0,10,10)		// Frame
+					kTrue,							// Visible
+					kTrue,							// Enabled
+					kEVEArrangeChildrenInColumn,						// Eve info
+					{
+						CaptionParaStyleDropdownWidget
+						(
+							kCaptionParaStyleDropDownWidgetID, kSysDropDownPMRsrcId,	// WidgetId, RsrcId 
+							kBindNone,
+							Frame(0, 0, 180, 0)
+							kTrue, kTrue,									// Visible, Enabled
+							kNewParaStyleDuringDialogActionID,				// ActionID for extra menu item, kInvalidActionID for none. Here we add "New Paragraph Style..."
+							{{ IID_IOBSERVER, IID_ISTYLEGROUPOBSERVER }},
+						),
+						CaptionLayerDropDownListWidget
+						(
+							kCaptionLayerDropDownWidgetID, kSysDropDownPMRsrcId,	// WidgetId, RsrcId 
+							kBindNone,
+							Frame(0, 0, 180, 0)
+							kTrue, kTrue,									// Visible, Enabled
+							{{
+							}}
+						),
+						CheckBoxWidget
+						(
+							kCaptionGroupWithImageCheckboxWidgetID,	// WidgetId
+							kSysCheckBoxPMRsrcId,					// RsrcId
+							kBindNone,
+							Frame(0, 0, 180, 0)
+							kTrue,									// Visible
+							kTrue,									// Enabled
+							kAlignLeft,								// alignment
+							"#GroupCaptionWithImage"								// Initial text
+						),
+					}
+				),
+			}
+		)
+		EVEGenericPanelWidget
+		(
+			kCaptionButtonPanelWidgetID,					// WidgetId
+			kPMRsrcID_None,				// RsrcId
+			kBindNone,						// Frame binding
+			Frame(0,0,10,10)		// Frame
+			kTrue,							// Visible
+			kTrue,							// Enabled
+			kEVEArrangeChildrenInRow|kEVEAlignRight,						// Eve info
+			{
+#if defined(MACINTOSH) 
+				// Order of buttons along bottom of dialogs are reversed on Mac and Windows 
+				EVECancelButtonWidget
+				(
+					kCancelButton_WidgetID,			// WidgetId
+					kSysButtonPMRsrcId,				// RsrcId
+					kBindNone,						// Frame binding
+					Frame(0,0,95,0)				// Frame
+					kTrue,							// Visible
+					kTrue,							// Enabled
+					"Cancel",						// Initial text
+					kTrue,							// Cancel changes to Reset
+					kEVELargeSpaceAfter,			// Eve info
+				),
+				EVEDefaultButtonWidget
+				(
+					kOKButtonWidgetID,				// WidgetId
+					kSysButtonPMRsrcId,				// RsrcId
+					kBindNone,						// Frame binding
+					Frame(0,0,95,0)				// Frame
+					kTrue,							// Visible
+					kTrue,							// Enabled
+					"OK"							// Panel name
+					kEVENoSpaceAfter,				// Eve info	
+				),
+#endif 
+#if defined(WINDOWS) 
+				// Order of buttons along bottom of dialogs are reversed on Mac and Windows 
+				EVEDefaultButtonWidget
+				(
+					kOKButtonWidgetID,				// WidgetId
+					kSysButtonPMRsrcId,				// RsrcId
+					kBindNone,						// Frame binding
+					Frame(0,0,95,0)				// Frame
+					kTrue,							// Visible
+					kTrue,							// Enabled
+					"OK"							// Panel name
+					kEVELargeSpaceAfter,			// Eve info	
+				), 
+				EVECancelButtonWidget 
+				( 
+				    kCancelButton_WidgetID,			// WidgetId 
+				    kSysButtonPMRsrcId,				// RsrcId 
+				    kBindNone,						// Frame binding 
+				    Frame(0,0,95,0)				// Frame 
+				    kTrue,							// Visible 
+				    kTrue,							// Enabled 
+				    "Cancel",						// Panel name 
+				    kFalse,							// Cancel changes to Reset 
+				    kEVENoSpaceAfter,				// Eve info
+				), 
+#endif 
+			}
+		),
+	}
+	kEVEArrangeChildrenInColumn|kEVELargeMargin		// EVE info
+}
+
+// this is one row in the caption setup dialog. We create these on the fly depending on how many rows the user wants.
+resource EVEGenericPanelWidget(kDynamicCaptionRowResID + index_enUS)
+{
+	kDynamicCaptionRowWidgetID,					// WidgetId
+	kPMRsrcID_None,				// RsrcId
+	kBindNone,						// Frame binding
+	Frame(-1000,-1000,-900,-900)		// Frame
+	kTrue,							// Visible
+	kTrue,							// Enabled
+	kEVEArrangeChildrenInRow|kEVEAlignFill|kEVELargeSpaceAfter,						// Eve info
+	{
+		EVETextEditBoxWidget					
+		(
+			kCaptionBeforeMetadataEditWidgetID,		 						// WidgetId
+			kSysEditBoxPMRsrcId,			// RsrcId
+			kBindNone,
+			Frame(0, 0, 170, 0)		// Frame
+			kTrue, kTrue					// Visible, Enabled
+			0,								// Widget id of nudge button (0 so we don't get one)
+			1, 5,							// small,large nudge amount
+			0,										// max num chars( 0 = no limit)
+			kFalse,									// is read only
+			kFalse,									// should notify each key stroke
+			kFalse,									// range checking enabled
+			kTrue,									// blank entry allowed
+			40,								// Upper bounds
+			0,								// Lower bounds
+			"",								// Initial text
+			kEVESmallSpaceAfter,
+		),
+		EVEGenericPanelWidget // needed to help align the TextVariableMetaCharButtonWidget with the edittext widget to the left
+		(
+			kInvalidWidgetID, kPMRsrcID_None,	// WidgetId, RsrcId
+			kBindNone,							// Frame binding
+			Frame(0,0,kCC2016StdWidgetHeightNoApplyEve_Dialog,kCC2016StdWidgetHeightNoApplyEve_Dialog)					// Frame
+			kTrue, kTrue,						// Visible, Enabled
+			kEVEDontArrangeChildren | kEVESmallSpaceAfter,	// Eve info
+			{
+				EVEGenericPanelWithCustomBorderWidget
+										(
+											0,									// WidgetId
+											kPMRsrcID_None,						// RsrcId
+											kBindAll,							// Frame binding
+											Frame(0,0,kCC2016StdWidgetHeightNoApplyEve_Dialog,kCC2016StdWidgetHeightNoApplyEve_Dialog)	
+											kTrue,								// Visible
+											kTrue,								// Enabled
+											"",									
+											{
+												TextVariableMetaCharButtonWidget
+												(
+													kCaptionBeforeMetaCharButtonWidgetID,
+													kCaptionMetaCharIconRsrc,
+													kLinksUIPluginID,
+													kBindNone,
+													Frame(0,0,kCC2016StdWidgetHeightNoApplyEve_Dialog,kCC2016StdWidgetHeightNoApplyEve_Dialog)		// Frame - offset vertical slightly to align with edittext widget 
+													kTrue, kTrue,			// Visible, Enabled
+													kADBEIconSuiteButtonType,
+													"TextVariableTextMetaCharPopupMenu",
+												),			
+
+											}
+											kLeftBorder|kRightBorder|kTopBorder|kBottomBorder,
+										2,
+											kEVENoSpaceAfter,
+					),
+			}
+		),
+		EVEDropDownListWidget
+		(
+			kCaptionMetadataDropDownWidgetID,	// WidgetId
+			kSysDropDownPMRsrcId,			// RsrcId
+			kBindNone,
+			Frame(0, 0, 140, 0)		// Frame
+			kTrue,							// Visible
+			kTrue,							// Enabled
+			{{
+			}},
+			kEVEAlignFill
+
+		),
+		EVETextEditBoxWidget					
+		(
+			kCaptionAfterMetadataEditWidgetID,		 						// WidgetId
+			kSysEditBoxPMRsrcId,			// RsrcId
+			kBindNone,
+			Frame(0, 0, 170, 0)		// Frame
+			kTrue, kTrue					// Visible, Enabled
+			0,								// Widget id of nudge button (0 so we don't get one)
+			1, 5,							// small,large nudge amount
+			0,										// max num chars( 0 = no limit)
+			kFalse,									// is read only
+			kFalse,									// should notify each key stroke
+			kFalse,									// range checking enabled
+			kTrue,									// blank entry allowed
+			40,								// Upper bounds
+			0,								// Lower bounds
+			"",								// Initial text
+			kEVESmallSpaceAfter,
+		),
+		EVEGenericPanelWidget  // needed to help align the TextVariableMetaCharButtonWidget with the edittext widget to the left
+		(
+			kInvalidWidgetID, kPMRsrcID_None,	// WidgetId, RsrcId
+			kBindNone,							// Frame binding
+			Frame(0,0,kCC2016StdWidgetHeightNoApplyEve_Dialog,kCC2016StdWidgetHeightNoApplyEve_Dialog)					// Frame
+			kTrue, kTrue,						// Visible, Enabled
+			kEVEDontArrangeChildren | kEVESmallSpaceAfter,				// Eve info
+			{
+			EVEGenericPanelWithCustomBorderWidget
+										(
+											0,									// WidgetId
+											kPMRsrcID_None,						// RsrcId
+											kBindAll,							// Frame binding
+											Frame(0,0,kCC2016StdWidgetHeightNoApplyEve_Dialog,kCC2016StdWidgetHeightNoApplyEve_Dialog)	
+											kTrue,								// Visible
+											kTrue,								// Enabled
+											"",									
+											{
+												TextVariableMetaCharButtonWidget
+												(
+													kCaptionAfterMetaCharButtonWidgetID,
+													kCaptionMetaCharIconRsrc,
+													kLinksUIPluginID,
+													kBindNone,
+													Frame(0,0,kCC2016StdWidgetHeightNoApplyEve_Dialog,kCC2016StdWidgetHeightNoApplyEve_Dialog)		// Frame - offset vertical slightly to align with edittext widget
+													kTrue, kTrue,			// Visible, Enabled
+													kADBEIconSuiteButtonType,
+													"TextVariableTextMetaCharPopupMenu",
+												),
+			
+
+										}
+										kLeftBorder|kRightBorder|kTopBorder|kBottomBorder,
+										2,
+										kEVENoSpaceAfter,
+										
+									),
+			}
+		),
+		AddDeleteCaptionRowButtonWidget
+		(
+			kCaptionAddRowWidgetID, kLinksUIAddRowIconRsrcID, kLinksUIPluginID,    // WidgetId, RsrcId
+			kBindNone,
+			Frame(0,0,22,20)        // Frame
+			kTrue, kTrue,                                        // Visible, Enabled
+			kADBEIconSuiteButtonType,
+		),
+		AddDeleteCaptionRowButtonWidget
+		(
+			kCaptionDeleteRowWidgetID, kLinksUIDeleteRowIconRsrcID, kLinksUIPluginID,    // WidgetId, RsrcId
+			kBindNone,
+			Frame(0,0,22,20)        // Frame
+			kTrue, kTrue,                                        // Visible, Enabled
+			kADBEIconSuiteButtonType,
+		),
+	}
+}
+
+#endif // __ODFRC__

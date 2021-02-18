@@ -1,0 +1,43 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/sdksamples/csxsdemo/VD_jaJP.fr $
+//  
+//  Owner: Timothy Brand-Spencer
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2008 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#ifdef __ODFRC__
+
+resource StringTable (kSDKDefStringsResourceID + index_jaJP)
+{
+        k_jaJP,	// Locale Id
+        0,		// Character encoding converter
+        {
+			kVDCompanyKey,					kVDCompanyValue,
+			kVDAboutMenuKey,				kVDPluginName "[JP]...",
+			kVDPluginsMenuKey,				kVDPluginName "[JP]",
+			kSDKDefAboutThisPlugInMenuKey,	kSDKDefAboutThisPlugInMenuValue_jaJP,
+			kVDAboutBoxStringKey,			kVDPluginName " [JP], version " kVDVersion " by " kVDAuthor "\n\n" kSDKDefCopyrightStandardValue "\n\n" kSDKDefPartnersStandardValue_jaJP,
+			kVDContextMenuKey,				"Send to HTML extension [JP]",
+			kVDPlugPlugDispatchFailKey,		"Sending to HTML extension failed [JP]",
+			kVDPlugPlugInstanceErrorKey,	"Failed to get instance of PlugPlug. Unable to send to HTML extension [JP]",
+			kVDUnsupportedPageItemTypeKey,	"This plug-in doesn't currently support sending this type of page item [JP]",
+		}
+};
+
+#endif // __ODFRC__

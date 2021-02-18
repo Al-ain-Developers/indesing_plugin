@@ -1,0 +1,36 @@
+
+body {
+	text-align:center;
+	background-color:#ffffff;
+}
+
+#content {
+	margin-right:auto;
+	margin-left:auto;
+	vertical-align:middle;
+	width:100%;
+}
+
+.toolHint {
+	text-align: left;
+	font-size: 11px;
+}
+
+.toolTop {
+	box-sizing: border-box;
+	display: block;
+	padding-bottom: 32px;
+}
+
+.toolName {
+	display: inline-block;
+	float: left;
+	font-size: 11px;
+	font-weight:bold;
+}
+
+.toolIcon {
+	float: left;
+	padding-right: 10px;
+}
+

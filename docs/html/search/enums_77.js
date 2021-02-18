@@ -1,0 +1,20 @@
+var searchData=
+[
+  ['walkerstate',['WalkerState',['../class_i_object_walker.html#a71735defcfb8c583ee72457410380ef4',1,'IObjectWalker']]],
+  ['walkscopetype',['WalkScopeType',['../class_i_walker_scope_factory_utils.html#acaa629587e481485f5bf26d020b8478b',1,'IWalkerScopeFactoryUtils']]],
+  ['walktype',['WalkType',['../class_object_walker_scope_options.html#ade82a23701015af5eebea7603de394c1',1,'ObjectWalkerScopeOptions']]],
+  ['waxcollectionorientation',['WaxCollectionOrientation',['../class_i_wax_collection.html#a627d2675b41c354a5c2f4a8bca829d71',1,'IWaxCollection']]],
+  ['waxlinedamagetype',['waxLineDamageType',['../class_i_wax_anchor_pt.html#a8f6c01c2f691f99937c4f5d9696dc13d',1,'IWaxAnchorPt']]],
+  ['wgstatustype',['WGStatusType',['../class_i_managed_status.html#a4bfdbbc10765cbd0bab2382ed8d11053',1,'IManagedStatus']]],
+  ['wguicommandid',['WGUICommandID',['../class_i_a_m_u_i_enablement_rules.html#a45ece67c091660c621a6307522f02509',1,'IAMUIEnablementRules']]],
+  ['whattoclose',['WhatToClose',['../class_i_document_utils.html#a80f31557436ce2d3f5ff20f88a6c2561',1,'IDocumentUtils']]],
+  ['whattoselect',['WhatToSelect',['../class_i_table_text_selection.html#a10d10d6f32ef8d17238bacbf5b78d027',1,'ITableTextSelection']]],
+  ['whengrid',['WhenGrid',['../class_i_print_content_prefs.html#ad8564bfd3904abbe95e7b1b2c3c86c34',1,'IPrintContentPrefs']]],
+  ['whichcache',['WhichCache',['../class_i_hyperlink_table.html#aa6fcf02902ba82dcc090a17e72935b57',1,'IHyperlinkTable']]],
+  ['whichotherframe',['WhichOtherFrame',['../class_i_text_miscellany_suite.html#ab741dbf03360ba908b042d387023e3d3',1,'ITextMiscellanySuite']]],
+  ['whichscope',['WhichScope',['../class_stats_scope.html#afc33123b96bef6abee5e73fd3c6b68b3',1,'StatsScope']]],
+  ['whichtabpanes',['WhichTabPanes',['../class_palette_ref_utils.html#a05ea3bedf105b1f72dea8579150fc3de',1,'PaletteRefUtils']]],
+  ['whitespacetype',['WhitespaceType',['../class_p_m_string.html#a630154dc6d7c6114f44bf735966fdd89',1,'PMString']]],
+  ['windowspec',['WindowSpec',['../class_i_window.html#ad5b74264543742602da156d4fab82234',1,'IWindow']]],
+  ['wordcountupdateaction',['WordCountUpdateAction',['../class_i_text_utils.html#adf5b3f26a4fd3c9f278d925be7cc6fe3',1,'ITextUtils']]]
+];

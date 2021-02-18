@@ -1,0 +1,142 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kLayerPanelStringsRsrcID + index_csCZ)
+{
+	k_csCZ,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{
+		// ----- Command strings
+
+		"Layer Options",				"Volby vrstvy",
+		"New Layer",					"Nová vrstva",
+		"Layer Deletion",				"Odstranit vrstvy",
+		"Delete Unused Layers",			"Odstranit nepoužité vrstvy",
+		"Lock Others",					"Zamknout ostatní",
+		"#UnlockOthers",					"Odemknout ostatní",
+		"Show All",						"Zobrazit vše",
+		"#ShowOthers",					"Zobrazit ostatní",
+		"Unlock All",					"Odemknout vše",
+		"Hide All",						"Skrýt vše",
+		"Lock All",						"Zamknout vše",
+		"Merge Layers",					"Sloučit vrstvy",
+		"Move To Layer",				"Přesunout na vrstvu",
+		"Copy To Layer",				"Kopírovat na vrstvu",
+		"Move Layer",					"Přesunout vrstvu",
+		"Move Layers",					"Přesunout vrstvy",
+		"kUnlockOthersSequence",		"Odemknout ostatní",
+		"kLockOthersSequence",			"Zamknout ostatní",
+
+		// ----- Menu strings
+		
+		"Layers...",						"&Vrstvy...",
+
+		"New Layer...",						"Nová vrstva...",
+		"New Layer Above \"^1\"...",		"Nová vrstva nad „^1“...",
+		"New Layer Below \"^1\"...",		"Nová vrstva pod „^1“...",
+		"New Top Layer...",					"Nová horní vrstva...",
+		"Delete Layer",						"Odstranit vrstvu",
+		"Delete \"^1\"",					"Odstranit vrstvu „^1“",
+		"Delete Layers",					"Odstranit vrstvy",
+		"#Duplicate ^1 Menu",				"Duplikovat vrstvu \"^1\"",
+		"#Duplicate LayersMenu",			"Duplikovat vrstvy",
+		"#DuplicatLayersCmd",				"Duplikovat vrstvy",
+		
+		"Layer Options for \"^1\"...",		"Volby vrstvy pro „^1“...",
+		"Layer Options...",					"Volby vrstvy...",
+		"Show All Layers",					"Zobrazit všechny vrstvy",
+		"Hide Others",						"Skrýt ostatní",
+		"Unlock All Layers",				"Odemknout všechny vrstvy",
+		"Lock Others",						"Zamknout ostatní",
+		"Hide All Layers",					"Skrýt všechny vrstvy",
+		"Lock All Layers",					"Zamknout všechny vrstvy",
+		
+		"Paste Remembers Layers",			"Vkládat do stejné vrstvy",
+		"Ungroup Remembers Layers",			"Rozdělení si pamatuje vrstvy",
+		
+		"Merge Layers",						"Sloučit vrstvy",
+		"Delete Unused Layers",				"Odstranit nepoužité vrstvy",
+		"Select Item(s) on \"^1\"",			"Vybrat položky v \"^1\"",
+		"Select Item(s) Layer",				"Vybrat položky ve vrstvě",
+				
+		"#SelectLayerPageItemMenu",		"Vybrané položky",
+		"#SelectZoomLayerPageItemMenu",	"Vybrat a přizpůsobit položku",
+		"#ZoomLockedPageItemMenu",		"Přizpůsobit položku do okna",
+		
+		// Menu names for context and panel menus
+		"LayerPanelPopup",					"Nabídka panelu Vrstvy",	
+		"RtMenuLayerPanelEye",				"Kontextová nabídka oka v panelu Vrstvy",	
+		"RtMenuLayerPanelLock",				"Kontextová nabídka zámku v panelu Vrstvy",
+		"RtMenuLayerPanelItem",				"Kontextová nabídka vrstvy v panelu Vrstvy",	
+		"RtMenuLayerPanelPageItem",			"Kontextová nabídka položky stránky v panelu Vrstvy",	
+
+		// ----- Window strings
+		"DeleteOneLayer",					"Vrstva \"^1\" obsahuje jeden nebo více objektů. Chcete vrstvu přesto odstranit?",
+		"DeleteMultiLayers",				"Vybrané vrstvy obsahují objekty. Chcete vrstvy přesto odstranit?",
+		"DeleteOneGuideLayer",				"Vrstva \"^1\" obsahuje vodítka. Chcete vrstvu přesto odstranit?",
+		"DeleteGuideLayers",				"Vybrané vrstvy obsahují vodítka. Chcete vrstvy přesto odstranit?",
+		"DeletingPlaceGunUsedLayer",		"Nelze odstranit vrstvu. Je vyžadovaná pro výstřižek, načtený v umísťovacím kurzoru.",
+
+		// ----- Window Menu
+		"Layers_WinMenu",					"Vrstv&y",
+		
+		// ----- Panel strings
+		
+		"^1 Layer",							"^1 vrstva",		// For status widget
+		"^1 Layers",						"^1 vrstev",	// For status widget
+		"New Layer",						"Nová vrstva",	// Title of New Layer dialog
+		"Layer Options",					"Volby vrstvy", // Title of Layer Options dialog
+		"&Name:",							"&Název:",
+		"&Color:",							"&Barva:",
+		"&Show Layer",						"Zobrazit &vrstvu",
+		"Show &Guides",						"Zobrazovat v&odítka",
+		"&Lock Layer",						"Z&amknout vrstvu",
+		"Loc&k Guides",						"Zamkno&ut vodítka",
+		"Keep When Layer is &Hidden",		"Zastavit &obtékání textu, když je vrstva skrytá",
+		"&Print Layer",						"&Tisknout vrstvu",
+
+		// ----- Tips strings
+
+		"DeleteLayerTip",					"Odstranit vybrané vrstvy",
+		"NewLayerTip",						"Vytvořit novou vrstvu",
+		"EyeTip",							"Přepnout viditelnost",
+		"PencilTip",						"Přepne zamknutí vrstvy (lze upravovat, když je prázdné)",
+		"PageItemPencilTip",				"Přepne zamknutí položky stránky (lze upravovat, když je prázdné)",
+		"SwatchTip",						"Barva značek výběru na této vrstvě",
+		"ProxyTip",							"Označuje vybrané položky (přetažením lze provést přesun mezi vrstvami nebo změnit pořadí Z)",
+		"ProxyChildSelectedTip",			"Označuje vybrané položky (přetažením lze přesunout mezi vrstvami nebo změnit pořadí překrývání)",
+		"UnselectedProxyTip",				"Vybrat položky klepnutím",
+		"ActiveTip",						"Označuje vrstvu, na kterou se právě kreslí",
+
+		// ----- Error strings
+		"EmptyLayerName",					"Musíte zadat název vrstvy.",
+		"DuplicateLayer",					"Jiná vrstva s tímto názvem již existuje.",
+
+		"#LayerHierPanelName",		"Vrstvy",
+		"#Page:^1,",					"Stránka: ^1, ", // for layer panel status widget. Will be followed by layer count string.
+		"#Pages:^1,",					"Stránky: ^1, ", // for layer panel status widget. Will be followed by layer count string.
+		"#DeletePageItemsMenu",		"Odstranit položky stránky", // menu item name
+		"#DeletePageItem \"^1\"",		"Odstranit položku stránky \"^1\"", // menu item name
+		"#DuplicatePI ^1 Menu",			"Duplikovat položku stránky \"^1\"", // menu item name
+		"#DuplicatePIMenu",			"Duplikovat položky stránky",  // menu item name
+	}
+};
+
+#endif // __ODFRC__

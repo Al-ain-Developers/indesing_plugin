@@ -1,0 +1,129 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kBehaviorUIStringsRsrcID + index_csCZ)
+{
+	k_csCZ,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{		
+		"$$$/Dialog/Behaviors/ShowHideFields/Fields_Tree", "Strom polí",
+
+		"$$$/Dialog/Behaviors/Description",				"Zde bude krátký popis chování. Mohou zde být také nějaké pokyny, týkající se voleb chování. To dá uživateli představu, jak ho použít.",
+		"$$$/Dialog/Behaviors/Description Title",		"Popis",
+		"$$$/Dialog/Behaviors/DeleteAlert",				"Odstranit vybranou akci?",
+		"$$$/Dialog/Behaviors/DragDeleteAlert",			"Odstranit přetažené akce?",
+		"$$$/Dialog/Behaviors/Error/Invalid URL",		"Pole URL musí obsahovat hodnotu",
+		"$$$/Dialog/Behaviors/Error/Invalid File",		"Musí být určen platný soubor",
+		
+		"$$$/Dialog/Behaviors/Movie/Movie:",			"Video:",
+		"$$$/Dialog/Behaviors/Movie/Play Options:",		"Volby:",
+		"$$$/Dialog/Behaviors/Movie/Play",				"Spustit",
+		"$$$/Dialog/Behaviors/Movie/Stop",				"Stop",
+		"$$$/Dialog/Behaviors/Movie/Pause",				"Pauza",
+		"$$$/Dialog/Behaviors/Movie/Resume",			"Pokračovat",
+		"$$$/Dialog/Behaviors/Movie/PlayFromNavPoint",	"Přehrát od bodu navigace",
+		"$$$/Dialog/Behaviors/Movie/StopAll",			"Zastavit vše (pouze SWF)",
+		"$$$/Dialog/Behaviors/Movie/NavPoint",			"Bod:",
+		"$$$/Dialog/Behaviors/Movie/NoVideo",			"(žádné video)",
+		"$$$/Dialog/Behaviors/Movie/NoVideoNavPoint",	"(žádný bod navigace)",
+
+		"$$$/Dialog/Behaviors/Sound/Sound:",			"Zvuk:",
+		"$$$/Dialog/Behaviors/Sound/Play Options:",		"Volby:",
+		"$$$/Dialog/Behaviors/Sound/Play",				"Spustit",
+		"$$$/Dialog/Behaviors/Sound/Stop",				"Stop",
+		"$$$/Dialog/Behaviors/Sound/Pause",				"Pauza",
+		"$$$/Dialog/Behaviors/Sound/Resume",			"Pokračovat",
+		"$$$/Dialog/Behaviors/Sound/StopAll",			"Zastavit vše (pouze SWF)",
+		"$$$/Dialog/Behaviors/Sound/Volume:",			"Disk:",
+		"$$$/Dialog/Behaviors/Sound/Synchronous",		"Synchronní",
+		"$$$/Dialog/Behaviors/Sound/Mix",				"Míchání",
+		"$$$/Dialog/Behaviors/Sound/NoSound",			"(žádný zvuk)",
+		
+		"$$$/Dialog/Behaviors/Animation/Animation:",	"Animace:",
+		"$$$/Dialog/Behaviors/Animation/Play Options:",	"Volby:",
+		"$$$/Dialog/Behaviors/Animation/Play",			"Spustit",
+		"$$$/Dialog/Behaviors/Animation/Stop",			"Zastavit",
+		"$$$/Dialog/Behaviors/Animation/Pause",			"Pauza",
+		"$$$/Dialog/Behaviors/Animation/Resume",		"Pokračovat",
+		"$$$/Dialog/Behaviors/Animation/StopAll",		"Zastavit vše",
+		"$$$/Dialog/Behaviors/Animation/Reverse",		"Obrátit",
+		"$$$/Dialog/Behaviors/Animation/AutoReverse",	"Obrátit při odjetí myší",
+		"$$$/Dialog/Behaviors/Animation/NoAnimation",	"(žádná animace)",
+		
+		"$$$/Dialog/Behaviors/MSO/Object:",				"Objekt:",
+		"$$$/Dialog/Behaviors/MSO/State:",				"Stav:",
+		"$$$/Dialog/Behaviors/MSO/AutoReverse",			"Přejít zpět při odjetí myší",
+		"$$$/Dialog/Behaviors/MSO/NextLoop",			"Zastavit při posledním stavu",
+		"$$$/Dialog/Behaviors/MSO/PrevLoop",			"Zastavit při prvním stavu",
+		"$$$/Dialog/Behaviors/MSO/NoMSO",				"(žádný vícestavový objekt)",
+
+		"$$$/Dialog/Behaviors/GoToView/Go To:",			"Přejít na:",
+		"$$$/Dialog/Behaviors/GoToView/First Page",		"První stránku",
+		"$$$/Dialog/Behaviors/GoToView/Page",			"Stránka",
+		"$$$/Dialog/Behaviors/GoToView/Previous Page",	"Předcházející stránku",
+		"$$$/Dialog/Behaviors/GoToView/Next Page",		"Následující stránku",
+		"$$$/Dialog/Behaviors/GoToView/Last Page",		"Poslední stránku",
+		"$$$/Dialog/Behaviors/GoToView/Back",			"Zpět",
+		"$$$/Dialog/Behaviors/GoToView/Forward",		"Dopředu",
+		"$$$/Dialog/Behaviors/GoToView/Previous View",	"Předcházející zobrazení",
+		"$$$/Dialog/Behaviors/GoToView/Next View",		"Následující zobrazení",
+		"$$$/Dialog/Behaviors/GoToView/Specific Page",	"Určitou stránku",
+		"$$$/Dialog/Behaviors/GoToView/Document:",		"Dokument:",
+		"$$$/Dialog/Behaviors/GoToView/Page:",			"Stránka:",
+		"$$$/Dialog/Behaviors/GoToView/URL",			"URL",
+		"$$$/Dialog/Behaviors/GoToView/URL:",			"URL:",
+		"$$$/Dialog/Behaviors/GoToView/Anchor",			"Textová kotva",
+		"$$$/Dialog/Behaviors/GoToView/Anchor:",		"Cíl:",
+		"$$$/Dialog/Behaviors/GoToView/Bookmark",		"Záložka",
+		"$$$/Dialog/Behaviors/GoToView/Inherit Zoom",	"Zdědit zvětšení",
+		"$$$/Dialog/Behaviors/GoToView/Actual Size",	"Skutečná velikost",
+		"$$$/Dialog/Behaviors/GoToView/Fit In Window",	"Do celého okna",
+		"$$$/Dialog/Behaviors/GoToView/Fit Width",		"Podle šířky",
+		"$$$/Dialog/Behaviors/GoToView/Fit Height",		"Podle výšky",
+		"$$$/Dialog/Behaviors/GoToView/Fit Visible",	"Podle obsahu",
+		"$$$/Dialog/Behaviors/GoToView/Zoom:",			"Zvětšení:",
+		"$$$/Dialog/Behaviors/GoToView/None",			"Žádné",
+		"$$$/Dialog/Behaviors/GoToAnchor/InDesign Format File","Soubor formátu InDesign",
+		
+		"$$$/Dialog/Behaviors/ViewZoom/Full Screen",	"Na celou obrazovku",
+		"$$$/Dialog/Behaviors/ViewZoom/Zoom View In",	"Zvětšit zobrazení",
+		"$$$/Dialog/Behaviors/ViewZoom/Zoom View Out",	"Zmenšit zobrazení",
+		"$$$/Dialog/Behaviors/ViewZoom/Fit Page",		"Do celého okna",
+		"$$$/Dialog/Behaviors/ViewZoom/Actual Size",	"Skutečná velikost",
+		"$$$/Dialog/Behaviors/ViewZoom/Fit Width",		"Podle šířky",
+		"$$$/Dialog/Behaviors/ViewZoom/Fit Visible",	"Podle obsahu",
+		"$$$/Dialog/Behaviors/ViewZoom/SinglePage",		"Jedna stránka",
+		"$$$/Dialog/Behaviors/ViewZoom/OneColumn",		"Průběžně",
+		"$$$/Dialog/Behaviors/ViewZoom/TwoColumns",		"Průběžně - protilehlé",
+
+		"$$$/Dialog/Behaviors/ImportData/Select File:","Vyberte soubor:",
+		"$$$/Dialog/Behaviors/ImportData/Acrobat Format File","Soubor formátu Acrobat",
+
+		"$$$/Dialog/Behaviors/OpenFile/Select File:","Vyberte soubor:",
+		"$$$/Dialog/Behaviors/OpenFile/Select File to be Opened", "Vyberte soubor, který se otevře",
+		"$$$/Dialog/Behaviors/OpenFile/Acrobat Format File","Soubor formátu Acrobat",
+
+		"$$$/Dialog/Behaviors/SubmitForm/Submit To:","URL:",
+						
+		// ----- Tips strings
+	}
+};
+
+#endif // __ODFRC__

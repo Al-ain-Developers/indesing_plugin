@@ -1,0 +1,443 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/layerpanel/LayerPanelClass.fr $
+//  
+//  Owner: lance bushore
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "objectmodeltypes.fh"
+//#include "PlugInBuildFlags.h"
+
+
+#include "PMLocaleIds.h"
+
+#include "CrossPlatformTypes.h"
+#include "LayerPanelID.h"
+#include "ShuksanID.h"
+#include "widgetid.h"
+#include "ActionID.h"
+#include "CommandID.h"	// for kUIDDataImpl
+#include "DocumentID.h"
+#include "WorkspaceID.h"
+#include "DragDropID.h"
+#include "CursorID.h"
+#include "TipsID.h"
+#include "GenericID.h"
+#include "LayoutUIID.h"
+#include "TablesID.h"
+#include "TextID.h"
+#include "BuildNumber.h"
+#include "FormatNumber.h"
+#include "XMLID.h"
+#include "XMLParserID.h"
+
+#include "PlugInModel_UIAttributes.h"
+#ifdef __ODFRC__
+
+//---------------------------------------------------------------
+//	Plugin Version
+//---------------------------------------------------------------
+resource PluginVersion (1)
+{
+	kTargetVersion,
+	kLayerPanelPluginID,
+	kMajorVersionNumber, kMinorVersionNumber, 	
+	kMajorVersionNumber, kMinorVersionNumber, 	
+	kHotakaMajorFormatNumber, kHotakaInitialMinorFormatNumber,
+	{ kInDesignProduct, kInCopyProduct },
+	{ kWildFS },
+	kUIPlugIn,
+	kAUMComponentVersionStr
+};
+
+//---------------------------------------------------------------
+// SelectionSuiteExt
+//---------------------------------------------------------------
+
+resource kSelectionSuiteExt (1)
+{
+	kNewLayoutSelectionBoss,
+	{
+		kLayerSuiteLayoutCSBImpl,   kLayerSuiteLayoutCSBExtImpl,
+	}
+};
+
+resource ClassDescriptionTable(1)
+{{{
+	// ---- These classes moved here from the Layer plug-in.
+	
+	AddIn	// ---- ui
+	{
+		kLayoutWidgetBoss,
+		kInvalidClass,
+		{
+			IID_ILAYOUTLAYERLISTOBSERVER, kCLayoutLayerListObserverImpl,
+		}
+	}
+
+	Class	// ---- ui
+	{
+		kLayerStartupShutdownBoss,
+		kInvalidClass,
+		{
+			IID_IK2SERVICEPROVIDER,     kLazyStartupShutdownProviderImpl,
+			IID_ISTARTUPSHUTDOWN,    kLayerStartupShutdownImpl,
+		}
+	}
+
+	AddIn	// ---- ui
+	{
+		kSessionBoss,
+		kInvalidClass,
+		{
+			IID_ILAYERSELECTIONOBSERVER, kLayerSelectionObserverImpl, 
+		}
+	}
+
+	AddIn
+	{
+		kDocumentDefaultSuiteBoss,
+		kInvalidClass,
+		{
+			IID_ILAYERSUITE,	kLayerSuiteDefaultCSBImpl,
+		}
+	}
+
+	AddIn
+	{
+		kLayoutSuiteBoss,
+		kInvalidClass,
+		{
+			IID_ILAYERSUITE,	kLayerSuiteLayoutCSBImpl,
+		}
+	}
+
+	AddIn
+	{
+		kIntegratorSuiteBoss,
+		kInvalidClass,
+		{
+			IID_ILAYERSUITE,			kLayerSuiteIntegratorImpl,
+		}
+	}
+
+	AddIn
+	{
+		kTableSuiteBoss,
+		kInvalidClass,
+		{
+			IID_ILAYERSUITE,	kLayerSuiteTableCSBImpl,
+		}
+	}
+	
+	AddIn
+	{
+		kTextSuiteBoss,
+		kInvalidClass,
+		{
+			IID_ILAYERSUITE,	kLayerSuiteTextCSBImpl,
+		}
+	}
+	
+	AddIn
+	{
+		 kUtilsBoss,
+		kInvalidClass,
+		{
+			IID_ILAYERUIUTILS,  kLayerUIUtilsImpl,
+		}
+	}
+
+	Class	// ---- ui
+	{
+		kLayerListLayoutActionBoss,
+		kInvalidClass,
+		{
+			IID_IK2SERVICEPROVIDER, kLayoutActionProviderImpl,
+			IID_ILAYOUTACTION, kLayerListLayoutActionImpl,
+		}
+	}
+
+	#ifdef DEBUG
+	Class	// ---- ui
+	{
+		kLayerTestMenuBoss,
+		kBaseTestMenuBoss,
+		{
+			IID_IACTIONCOMPONENT, kLayerTestMenuImpl,
+		}
+	}
+	#endif
+		
+	Class 
+	{
+		kLayerTreeElementBoss, /** this is the boss for a layer or page item row in the layers panel */
+		kTreeNodeWidgetBoss,
+		{
+			IID_ICONTROLVIEW,		kLayerElementViewImpl,
+			IID_ITREENODEIDDATA,	kTreeNodeIDDataImpl,
+			IID_IEVENTHANDLER,		kLayerTreeRowPanelEHImpl,
+			IID_IDRAGDROPSOURCE,	kLayerZOrderDragDropSourceImpl,
+		}
+	}
+	Class 
+	{
+		kNewLayerButtonBoss, /** The boss for the 'new layer' button at the bottom of the layers panel. Also duplicates page items via drag & drop */
+		kRollOverIconButtonBoss,
+		{
+			IID_IOBSERVER, kNewLayerButtonObserverImpl,
+			IID_IDRAGDROPTARGET, kLayerDuplicateDragDropTargetImpl,
+		}
+	}
+	
+	Class 
+	{
+		kDeleteLayerButtonBoss, /** The boss for the 'delete layer' button at the bottom of the layers panel. Also deletes page items via drag & drop */
+		kRollOverIconButtonBoss,
+		{
+			IID_IOBSERVER, kDeleteLayerButtonObserverImpl,
+			IID_IDRAGDROPTARGET, kLayerDeleteDragDropTargetImpl,
+		}
+	}
+	
+	Class 
+	{
+		kLayerPanelEyeballBoss, /** boss for the eyeball widget in the layers panel. Allows users to hide/show layer, or hide/show page items */
+        kEyeballCheckboxBoss, 
+        { 
+            IID_IOBSERVER, kLayerPanelEyeballObserverImpl, 
+            IID_IDRAGDROPSOURCE, kLayerEyeDragDropSourceImpl, 
+            IID_IDRAGDROPTARGET, kLayerEyeDragDropTargetImpl, 
+            IID_IEVENTHANDLER, kLayerEyeDragDropSourceEHImpl, 
+        } 
+    }	
+	
+	Class 
+	{
+		kLayerPanelPencilBoss, /** boss for the layer pencil widget - lets users lock/unlock layers */
+		kIconSuiteButtonWidgetBoss,
+		{
+			IID_IOBSERVER, kLayerPanelPencilObserverImpl,
+			IID_IDRAGDROPSOURCE, kLayerPencilDragDropSourceImpl,
+			IID_IDRAGDROPTARGET, kLayerPencilDragDropTargetImpl,
+			IID_IEVENTHANDLER, kLayerPencilDragDropSourceEHImpl,
+		}
+	}
+	
+	Class 
+	{
+		kLayerPageItemPencilBoss, /** boss for the page item pencil widget - lets users lock/unlock page items */
+		kIconSuiteButtonWidgetBoss,
+		{
+			IID_IOBSERVER, kLayerPageItemPencilObserverImpl,
+			IID_IEVENTHANDLER, kLayerPageItemPencilEHImpl,
+			IID_IDRAGDROPSOURCE, kLayerPencilDragDropSourceImpl,
+			IID_IDRAGDROPTARGET, kLayerPencilDragDropTargetImpl,
+		}
+	}
+	
+	Class 
+	{
+		kLayerPanelSwatchBoss,  /** boss for the layer swatch widget - lets see layer color for the layer or page item */
+		kBaseWidgetBoss,
+		{
+			IID_ICONTROLVIEW, kLayerSwatchViewImpl,
+			IID_IEVENTHANDLER, kLayerSubwidgetEHImpl,	// Handle double-click
+		}
+	}
+	
+	Class 
+	{
+		kLayerPanelNameBoss, /** boss for the layer name widget - allows inline editing of layer name */
+		kTextInLineEditWidgetBoss,		
+		{
+			IID_IINLINEEDITEDITINGATTRIBUTES,	kLayerPanelNameILEEditingAttributesImpl,
+			IID_IEVENTHANDLER,					kLayerNameEHImpl,
+			IID_ITEXTDATAVALIDATION,			kLayerNameTextValidationImpl,
+			IID_IOBSERVER,						kLayerNameEditObserverImpl,
+			IID_IUIFONTSPEC,					kUIFontSpecImpl,
+		}
+	}
+		
+	Class 
+	{
+		kLayerPageItemNameBoss, /** boss for the page item name widget. Allows inline editing of page item name */
+		kTextInLineEditWidgetBoss,		
+		{
+			IID_IEVENTHANDLER,					kLayerPageItemNameEHImpl,	
+			IID_IINLINEEDITEDITINGATTRIBUTES,	kLayerPanelNameILEEditingAttributesImpl,
+			IID_IOBSERVER,						kPageItemNameEditObserverImpl,
+		}
+	}	
+	
+	Class 
+	{
+		kLayerOptionsDlgBoss,
+		kDialogBoss,
+		{
+			IID_IDIALOGCONTROLLER, kLayerOptionsDlgControllerImpl,
+			IID_IOBSERVER,			kLayerOptionsDlgObserverImpl,
+			IID_IDIALOGTYPEDATA, kIntDataImpl,	// holds Layer Options, Duplicate Layer or New Layer  dialog state
+			IID_IINTDATA, kIntDataImpl,		// holds position for New Layer (onTop, aboveActive, belowActive)
+			IID_ITARGETNEWLAYER, kPMUnknownDataImpl,	// Points to target layer for making New Layer above or below.
+			IID_IPMUNKNOWNDATA, kPMUnknownDataImpl,	// Points to target widget that invoked the dialog. Nil means selected layers in panel.
+		}
+	}
+	
+	Class 
+	{
+		kLayerPanelSelectionProxyBoss,
+		kBaseWidgetBoss,
+		{
+			IID_ISELECTIONPROXYDRAWDATA, kSelectionProxyDrawDataImpl,
+			IID_ICONTROLVIEW, kSelectionProxyViewImpl,
+			IID_IDRAGDROPSOURCE, kProxyViewDragDropSourceImpl,
+			IID_IEVENTHANDLER, kLayerProxyDragDropSourceEHImpl,
+			IID_ITIP, kProxyWidgetTipImpl,
+		}
+	}
+			
+	Class 
+	{
+		kPageItemSelectionProxyBoss,
+		kLayerPanelSelectionProxyBoss,
+		{
+			IID_IDRAGDROPSOURCE, kLayerZOrderDragDropSourceImpl,
+		}
+	}	
+
+	Class 
+	{
+		kLayerPanelActiveBoss,
+		kIconSuiteButtonWidgetBoss,
+		{
+			IID_ICONTROLVIEW, kActiveViewImpl,
+			IID_IEVENTHANDLER, kLayerSubwidgetEHImpl,	// Handle double-click
+			IID_ITIP, kActiveLayerWidgetTipImpl,
+		}
+	}
+	
+	Class 
+	{
+		kLayerProxyDEHandlerBoss,
+		kInvalidClass,
+		{
+			IID_IDATAEXCHANGEHANDLER, kLayerProxyDEHandlerImpl,
+			IID_IUIDDATA, kUIDDataImpl,	// Holds the source DocumentLayer
+			IID_IPMPERSIST, kPMPersistImpl,
+		}
+	}
+	
+	Class 
+	{
+		kLayerZOrderDEHandlerBoss,
+		kInvalidClass,
+		{
+			IID_IDATAEXCHANGEHANDLER, kLayerZOrderDEHandlerImpl,
+			IID_IUIDDATA,	kUIDDataImpl, // holds UID for layer starting drag.
+			IID_IPMPERSIST, kPMPersistImpl,
+		}
+	}
+	Class 
+	{
+		kPageItemZOrderDEHandlerBoss,
+		kInvalidClass,
+		{
+			IID_IDATAEXCHANGEHANDLER, kPageItemZOrderDEHandlerImpl,
+			IID_IUIDDATA,	kUIDDataImpl, // holds UID for page item starting drag.
+			IID_IPMPERSIST, kPMPersistImpl,
+		}
+	}
+	Class 
+	{
+		kPageItemDupDeleteDEHandlerBoss,
+		kPageItemZOrderDEHandlerBoss,
+		{
+			IID_IDATAEXCHANGEHANDLER, kPageItemDupDeleteDEHandlerImpl,
+		}
+	}
+	
+	Class 
+	{
+		kLayerEyeDEHandlerBoss,
+		kInvalidClass,
+		{
+			IID_IDATAEXCHANGEHANDLER, kLayerEyeDEHandlerImpl,
+			IID_IUIDDATA, kUIDDataImpl,	// Holds the source DocumentLayer
+			IID_IBOOLDATA, kBoolDataImpl,	// Holds the initial "are we hiding or showing" setting
+			IID_IPMPERSIST, kPMPersistImpl,
+		}
+	}
+	
+	Class 
+	{
+		kLayerPencilDEHandlerBoss,
+		kInvalidClass,
+		{
+			IID_IDATAEXCHANGEHANDLER, kLayerPencilDEHandlerImpl,
+			IID_IUIDDATA, kUIDDataImpl,	// Holds the source DocumentLayer
+			IID_IBOOLDATA, kBoolDataImpl,	// Holds the initial "are we unlocking or locking" setting
+			IID_IPMPERSIST, kPMPersistImpl,
+		}
+	}
+	
+	Class 
+	{
+		kLayerPanelMenuComponentBoss,
+		kBaseActionComponentBoss,
+		{
+			IID_IACTIONCOMPONENT, kLayerPanelMenuComponentImpl,
+		}
+	}
+	
+	Class 
+	{
+		kLayerPanelBoss,
+		kErasablePrimaryResourcePanelWidgetBoss,
+		{
+			IID_IPANELMENUDATA,				kCPanelMenuDataImpl,
+			IID_ICONTROLVIEW,				kLayerPanelViewImpl,			// handles constraining resize to row height increments
+			IID_ICURSORPROVIDER,			kPointyHandCursorProviderImpl,
+			IID_ICURSORREGION,				kCursorRegionImpl,
+			IID_IPANELDETAILCONTROLLER,		kSizePanelDetailControllerImpl,
+			IID_ILAYERPANELDOCUMENTDATA,	kUIDDataImpl,
+			IID_IXMLGENERATOR,				kLayersPanelXMLGeneratorImpl,	// write layers panel prefs to Palette Workspace XML file
+			IID_ISAXCONTENTHANDLER,			kLayersPanelSAXHandlerImpl,		// read layers panel prefs from Palette Workspace XML file
+		}
+	}
+		
+	Class
+	{
+		kLayerPanelTreeWidgetBoss,
+		kTreeViewWidgetBoss,
+		{
+			IID_ITREEVIEWHIERARCHYADAPTER, kLayerPanelTreeViewAdapterImpl,
+			IID_ITREEVIEWWIDGETMGR, kLayerPanelTreeViewWidgetMgrImpl,
+			IID_ITREEVIEWCONTROLLER, kLayersPanelTreeViewControllerImpl,
+			IID_IOBSERVER,			kLayerPanelTreeObserverImpl,
+			IID_ISELECTIONOBSERVER, kLayerPanelSelectionObserverImpl, 
+			IID_ICONTROLVIEWOBSERVERS,  kCControlViewObserversImpl,
+			IID_ISMALLPALETTEROWSBOOLDATA,	kFalseInitPersistBoolDataImpl, // Large and small palette rows
+			IID_IDRAGDROPTARGET, kLayerTreeDragDropTargetImpl,
+			IID_ITREEVIEWTYPEAHEAD,			kLayersTreeViewTypeAheadImpl,
+		}
+	};
+}}}
+
+#endif // __ODFRC__

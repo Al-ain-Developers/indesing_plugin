@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+ADOBE SYSTEMS INCORPORATED
+Copyright 2012 Adobe Systems Incorporated
+All Rights Reserved.
+
+NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance with the 
+terms of the Adobe license agreement accompanying it.  If you have received this file from a 
+source other than Adobe, then your use, modification, or distribution of it requires the prior 
+written permission of Adobe.
+-->
+<mx:HBox xmlns:mx="http://www.adobe.com/2006/mxml"
+		 width="100%" height="100%"
+		 initialize="onInitialize()" horizontalAlign="center">
+	<mx:Script>
+		<![CDATA[
+			import mx.events.ListEvent;
+			import mx.collections.ArrayCollection;
+			import com.adobe.indesign.layouthelper.event.PolicyChangeEvent; 
+			
+			[Bindable]
+			private var policys:ArrayCollection;
+			
+			private function onInitialize():void
+			{
+				//Creating the initial dataProvider for the combo box in the initialize event
+				//so that in the set data function this data is available
+				policys = new ArrayCollection([
+				    {label:"off", data:"off"}, 
+					{label:"scale", data:"scale"}, 
+					{label:"recenter", data:"recenter"},
+					{label:"guidebased", data:"guidebased"},
+					{label:"objectbased", data:"objectbased"}
+				]);
+			}
+			
+			override public function set data(value:Object):void
+			{
+				if(value != null){
+					super.data = value;
+					if(combo && policys){
+						var policyItem:Object;
+						for(var i:int=0; i<policys.length; i++){
+							policyItem = policys.getItemAt(i);
+							if(policyItem.data == value.policy){
+								
+								combo.selectedItem = policyItem;
+								combo.invalidateSize(); 
+								break;
+							}
+						}
+					}
+				}
+			}
+			
+			private function onPolicyChange(event:ListEvent):void 
+			{
+				//dispatch an event which is handled at the application level
+				var comboBoxEvent:PolicyChangeEvent = new PolicyChangeEvent(PolicyChangeEvent.CHANGE, this.data, event.target.value, true);
+				this.dispatchEvent(comboBoxEvent);
+			}
+		]]>
+	</mx:Script>
+	<mx:ComboBox id="combo" width="100%" height="100%" 
+				 minWidth="40"
+				 maxHeight="50" minHeight="30"
+				 dataProvider="{policys}" change="onPolicyChange(event)"/>
+</mx:HBox>

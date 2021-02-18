@@ -1,0 +1,442 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/linksui/resources/LinksUIClass.fr $
+//  
+//  Owner: lance bushore
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "PluginBuildFlags.h"
+#include "ShuksanID.h"
+#include "ActionID.h"
+#include "LinksUIID.h"
+#include "BuildNumber.h"
+#include "FormatNumber.h"
+#include "objectmodeltypes.fh"
+#include "PMLocaleIds.h"
+#include "WorkspaceID.h"
+#include "CursorID.h"
+#include "XMLID.h"
+#include "XMLParserID.h"
+#include "LinksUIConversionID.h"
+#include "TipsID.h"
+#include "LinksID.h"
+#include "CSXSID.h" 
+
+#include "PlugInModel_UIAttributes.h"
+#ifdef __ODFRC__
+
+//---------------------------------------------------------------
+//	Plugin Version
+//---------------------------------------------------------------
+resource PluginVersion (1)
+{
+	kTargetVersion,
+	kLinksUIPluginID,
+	kMajorVersionNumber, kMinorVersionNumber, 	
+	kMajorVersionNumber, kMinorVersionNumber, 	
+	kLinksUILastMajorFormatNumber, kLinksUILastMinorFormatNumber,
+	{ kInDesignProduct, kInCopyProduct },
+	{ kWildFS },
+	kUIPlugIn,
+	kAUMComponentVersionStr
+};
+
+
+resource ClassDescriptionTable(1)
+{{{
+
+	Class
+	{
+		kLinksUIPanelTreeWidgetBoss,
+		kTreeViewWidgetBoss,
+		{
+			IID_ITREEVIEWHIERARCHYADAPTER, kLinksUIPanelTreeViewAdapterImpl,
+			IID_ITREEVIEWWIDGETMGR, kLinksUIPanelTreeViewWidgetMgrImpl,
+			IID_ITREEVIEWCONTROLLER, kLinksUITreeViewControllerImpl,
+			IID_IOBSERVER,			kLinksUIPanelTreeObserverImpl,
+			IID_ISELECTIONOBSERVER, kLinksUIPanelSelectionObserverImpl,
+			IID_ICONTROLVIEWOBSERVERS,  kCControlViewObserversImpl,
+			IID_ILINKSTREENODELIST, kLinksTreeNodeListImpl,
+			IID_IPANELCONTROLDATA, kLinksUITreePanelControlDataImpl,
+			IID_ITREEVIEWTYPEAHEAD,			kLinksTreeViewTypeAheadImpl,
+		}
+	}; 
+	Class
+	{
+		kLinkInfoPanelWidgetBoss,
+		kGenericPanelWidgetBoss,
+		{
+			IID_ICONTROLVIEW,		kLinkInfoPanelViewImpl,
+			IID_IOBSERVER,			kLinkInfoPanelObserverImpl,
+			IID_ITREENODEIDDATA,	kTreeNodeIDDataImpl,
+			IID_IPANORAMA,			kLinkInfoPanelPanoramaImpl,
+			IID_ITOTALINFOAREAHEIGHT, kIntDataImpl, // treat as IIntData
+			IID_IEVENTHANDLER,		kLinkInfoPanelEHImpl,
+			IID_ISAVEDINFOPANESIZE, kPersistIntDataImpl, // treat as IIntData
+		}
+	};
+	Class
+	{
+		kLinksUIColumnHeaderWidgetBoss,
+		kColumnHeaderWidgetBoss,
+		{
+			IID_IOBSERVER, kLinksUIColumnHeaderObserverImpl,
+		}
+	};
+	
+	Class
+	{
+		kLinksUILinkTextBoss,		// this is used as the widget for column values that are text based
+		kInfoStaticTextWidgetBoss,
+		{
+			IID_IEVENTHANDLER, kLinkInfoIconEHImpl,
+			IID_ICONTROLVIEW, kLinkUIStaticTextViewImpl,
+			IID_LINKINFOPROVIDERINDEX, kIntDataImpl,
+			IID_ITIP, kLinkInfoIconTipImpl,
+			IID_IUICOLORSPEC,kUIColorSpecImpl,
+			IID_ICURSORREGION, kCursorRegionImpl,
+		}
+	};
+	Class
+	{
+		kLinksUILinkNameTextBoss,
+		kLinksUILinkTextBoss,
+		{
+			IID_ITIP, kLinkUILinkNameTipImpl,
+		}
+	};
+	
+	Class
+	{
+		kLinkInfoIconWidgetBoss, // this is used as the widget for column values that are icon based.
+		kIconFieldWidgetBoss,
+		{
+			IID_IEVENTHANDLER, kLinkInfoIconEHImpl,
+			IID_ICONTROLVIEW, kLinkInfoIconViewImpl,
+			IID_LINKINFOPROVIDERINDEX, kIntDataImpl,
+			IID_ITIP, kLinkInfoIconTipImpl,
+			IID_ICURSORREGION, kCursorRegionImpl,
+		}
+	};
+	Class
+	{
+		kLinksUILinkColumnTextBoss,  // this is used as the boss for the columnheaders that are text based.
+		kInfoStaticTextWidgetBoss,
+		{
+			IID_IEVENTHANDLER, kLinkInfoIconEHImpl,
+			IID_LINKINFOPROVIDERINDEX, kIntDataImpl,
+			IID_IUICOLORSPEC,kUIColorSpecImpl,
+		}
+	};
+	Class
+	{
+		kLinkColumnHeaderIconWidgetBoss, // this is used as the boss for the column headers that are icon based.
+		kIconFieldWidgetBoss,
+		{
+			IID_IEVENTHANDLER, kLinkInfoIconEHImpl,
+			IID_LINKINFOPROVIDERINDEX, kIntDataImpl,
+			IID_ITIP, kLinkInfoIconTipImpl,
+		}
+	};
+	Class
+	{
+		kLinkInfoTextLabelWidgetBoss,  // this is used as the boss for the 'Link Info' label in the link info section.
+		kInfoStaticTextWidgetBoss,
+		{
+			IID_IEVENTHANDLER, kLinkInfoTextLabelEHImpl,
+		}
+	};
+	
+	
+	Class
+	{
+		kLinksUIPanelMenuBoss,
+		kBaseActionComponentBoss,
+		{
+			IID_IACTIONCOMPONENT, kLinksUIPanelMenuComponentImpl,
+		}
+	},
+	Class
+	{
+		kLinkCaptionActionComponentBoss, /** Boss which handles all the caption menu items */
+		kBaseActionComponentBoss,
+		{
+			IID_IACTIONCOMPONENT, kLinkCaptionActionComponentImpl,
+		}
+	},
+	
+	Class
+	{
+		kLinkThumbnailBoss,
+		kBaseWidgetBoss,
+		{
+			IID_ICONTROLVIEW, kLinkThumbnailViewImpl,
+		}
+	},
+	Class 
+	{
+		kLinksUIPanelBoss,
+		kErasablePrimaryResourcePanelWidgetBoss,
+		{
+			IID_IPANELMENUDATA, kCPanelMenuDataImpl,
+			IID_ICONTROLVIEW, kLinksUIPanelViewImpl,
+            IID_IOBSERVER, kLinksUIPanelViewObserverImpl,
+			IID_LINKSPANELDRAWINGDISABLED, kFalseInitBoolDataImpl, // is drawing disabled(because we're in the middle of updating links, for example)
+			IID_IXMLGENERATOR,			kLinksUIPanelXMLGeneratorImpl, // write links panel prefs to Palette Workspace XML file
+			IID_ISAXCONTENTHANDLER,	kLinksUIPanelSAXHandlerImpl, // read links panel prefs from Palette Workspace XML file
+			IID_LINKSPANELSHOULDINVALDATA, kFalseInitBoolDataImpl, // is drawing disabled(because we're in the middle of updating links, for example)
+
+		}
+	}
+	Class 
+	{
+		kChooseLinkColumnsDialogBoss,
+		kDialogBoss,
+		{
+			IID_IDIALOGCONTROLLER, kChooseLinksColumnsDialogControllerImpl,
+		}
+	}
+	Class 
+	{
+		kGenerateLinkCaptionDialogBoss, /** Boss for the dialog which sets caption prefs. */
+		kDialogBoss,
+		{
+			IID_IDIALOGCONTROLLER, kGenerateLinkCaptionDialogControllerImpl,
+		}
+	}
+	Class 
+	{
+		kAddDeleteCaptionRowButtonBoss, /** Boss for the add and delete rows buttons in the caption prefs dialog */
+		kRollOverIconButtonBoss,
+		{
+			IID_IOBSERVER, kAddDeleteCaptionRowButtonObserverImpl,
+		}
+	}
+	Class 
+	{
+		kToggleLinkInfoButtonBoss,
+		kRollOverIconButtonBoss,
+		{
+			IID_IOBSERVER, kToggleLinkInfoButtonObserverImpl,
+		}
+	}
+	Class 
+	{
+		kNextPrevLinkButtonBoss,
+		kRollOverIconButtonBoss,
+		{
+			IID_IOBSERVER, kNextPrevLinkButtonObserverImpl,
+		}
+	}
+	Class 
+	{
+		kLinksUIButtonBoss,
+		kRollOverIconButtonBoss,
+		{
+			IID_IOBSERVER, kLinksUIButtonObserverImpl,
+			IID_ITIP, kLinksUIButtonTipsImpl,
+		}
+	}
+	Class
+	{
+		kEditOriginalWithMenuComponentBoss,
+		kBaseActionComponentBoss,
+		{
+			IID_IACTIONCOMPONENT, kEditOriginalWithMenuComponentImpl,
+			IID_IDYNAMICMENU, kEditOriginalWithMenuImpl,
+		}
+	},
+	Class
+	{
+		kEditOriginalSelectionWithMenuComponentBoss,
+		kBaseActionComponentBoss,
+		{
+			IID_IACTIONCOMPONENT, kEditOriginalSelectionWithMenuComponentImpl,
+			IID_IDYNAMICMENU, kEditOriginalSelectionWithMenuImpl,
+		}
+	},
+
+	Class
+	{
+		kProblemLinksDialogBoss,
+		kDialogBoss,
+		{
+			IID_IOBSERVER, kProblemLinksDialogObserverImpl,
+			IID_IDIALOGCONTROLLER, kProblemLinksDialogControllerImpl,
+			IID_IMISSINGCOUNT, kIntDataImpl,
+			IID_IOUTOFDATECOUNT, kIntDataImpl,
+			IID_IINACCESSIBLECOUNT, kIntDataImpl,
+			IID_IFIXLINKSSELECTED, kFalseInitBoolDataImpl,
+			IID_IHTTPLINKS, kFalseInitBoolDataImpl,
+		}
+	};
+	Class
+	{
+		kOpenProblemLinksDialogCmdBoss,
+		kInvalidClass,
+		{
+			IID_ICOMMAND, kOpenProblemLinksDialogCmdImpl,
+			IID_IMISSINGCOUNT, kIntDataImpl,
+			IID_IOUTOFDATECOUNT, kIntDataImpl,
+			IID_IINACCESSIBLECOUNT, kIntDataImpl,
+			IID_IUIDDATA, kUIDDataImpl, // the problem document
+			IID_IBOOLDATA, kFalseInitBoolDataImpl,
+			IID_IFIXLINKS, kFalseInitBoolDataImpl,
+			IID_IHTTPLINKS, kFalseInitBoolDataImpl,
+		}
+	};
+	Class
+	{
+		kLinksUITreeRowWidgetBoss,
+		kTreeNodeWidgetBoss,
+		{
+			IID_IEVENTHANDLER, kLinksUITreeRowPanelEHImpl,
+		}
+	};
+	
+	Class
+	{
+		kLinksUISchemaConversionBoss,
+		kInvalidClass,
+		{
+			IID_ICONVERSIONPROVIDER,                kSchemaBasedConversionImpl,
+			IID_IK2SERVICEPROVIDER,                 kConversionServiceImpl,
+		},
+	},
+	Class
+	{
+		kLinksUIStatusTextWidgetBoss,
+		kStaticTextWidgetBoss,
+		{
+			IID_IOBSERVER, kLinksUIStatusTextObserverImpl,
+			IID_ITIP,                kLinksUIStatusTextTipImpl,
+		},
+	},
+
+#ifdef DEBUG
+	Class
+	{
+		kLinksUITestMenuBoss,
+		kBaseTestMenuBoss,
+		{
+			IID_IACTIONCOMPONENT, kLinksUITestMenuImpl,
+		}
+	},
+#endif
+
+#ifdef DEBUG
+	Class
+	{
+		kLinkInfoDebugUIDsProviderBoss,
+		kInvalidClass,
+		{
+			IID_IK2SERVICEPROVIDER, kLinkInfoServiceImpl,
+			IID_ILINKINFOPROVIDER, kLinkInfoDebugUIDsProviderImpl,
+		}
+	},	
+#endif
+
+	Class 
+	{
+		kCaptionParaStyleObserverBoss, /** Boss for the para style control in the caption prefs dialog */
+		kStyleGroupDropDownWidgetBoss,
+		{
+			IID_IOBSERVER, 					kCaptionParaStyleObserverImpl,
+		}
+	}
+
+	Class 
+	{
+		kCaptionLayerObserverBoss, /** Boss for the layer control in the captions dialog. Handles disabling the layer controls when the group checkbox is checked. */
+		kDropDownListWidgetBoss,
+		{
+			IID_IOBSERVER, 					kCaptionLayerObserverImpl,
+		}
+	}
+
+	Class 
+	{
+		kMetadataLabelStaticTextBoss, /** Boss for the metadata label in the captions dialog. Used to correctly size the metadata label so it lines up properly above the metadata dropdown in all languages */
+		kStaticTextWidgetBoss,
+		{
+			IID_IEVEINFO, 		kMetadataLabelEVEInfoImpl,
+			IID_IALTEVEINFO,	kCEveInfoImpl, 
+		}
+	}
+	
+
+
+	// Add In classes
+	AddIn
+	{
+		kAppBoss,
+		kInvalidClass,
+		{
+			IID_ILINKSROWELEMENTCURSORPROVIDER, 		kLinksUIRowElementCursorProviderImpl,
+		}
+	}
+	AddIn
+	{
+		kWorkspaceBoss,
+		kInvalidClass,
+		{
+			IID_ILINKSUIPANELPREFS, 	kLinksUIPanelPrefsImpl,
+		}
+	}	// Add the Edit Original auto update interfaces to the session.
+	AddIn
+	{
+		kSessionBoss,
+		kInvalidClass,
+		{
+			IID_IEDITORIGINALRESUMEOBSERVER, kEditOriginalResumeObserverImpl,
+			IID_IFILESCHANGING, kFilesChangingImpl,
+		}
+	};
+	AddIn
+	{
+		 kUtilsBoss,
+		kInvalidClass,
+		{
+			IID_ILINKSUIUTILS,			 	kLinksUIUtilsImpl,
+		}
+	};
+
+	Class
+	{
+		kLinksUILinkNamePanelWidgetBoss,
+		kGenericPanelWidgetBoss,
+		{
+			 IID_ICONTROLVIEW,        kLinksUILinkNamePanelViewImpl,
+		}
+	};	
+
+	Class 
+    { 
+        kClosingDocumentsResponderBoss
+        kInvalidClass, 
+        { 
+            IID_IK2SERVICEPROVIDER,		kClosingDocumentsServiceProviderImpl, 
+            IID_IRESPONDER,				kClosingDocumentsResponderImpl, 
+        } 
+    };
+
+}}};
+
+
+#endif // __ODFRC__

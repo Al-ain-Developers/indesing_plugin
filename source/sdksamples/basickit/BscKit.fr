@@ -1,0 +1,439 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/sdksamples/basickit/BscKit.fr $
+//  
+//  Owner: Adobe Developer Technologies
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//  
+//  Umbrella include file for all the .fr files in the plug-in.
+//  
+//========================================================================================
+
+//===========================
+//  General includes:
+//===========================
+
+#include "MenuDef.fh"
+#include "ActionDef.fh"
+#include "ActionDefs.h"
+#include "AdobeMenuPositions.h"
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "StringTable.fh"
+//#include "OMTypes.h"
+#include "objectmodeltypes.fh"
+#include "ShuksanID.h"
+#include "ActionID.h"
+#include "CommandID.h"
+#include "WorkspaceID.h"
+#include "widgetid.h"
+#include "BuildNumber.h"
+#include "Widgets.fh"	// for PalettePanelWidget
+#include "InterfaceColorDefines.h"
+#include "IControlViewDefs.h"
+#include "SysControlIds.h"
+
+#include "PlugInModel_UIAttributes.h"
+#include "KitList.fh"
+
+// Project includes:
+#include "BscKitID.h"
+
+#ifdef __ODFRC__
+
+/*
+// Plugin version definition.
+*/
+resource PluginVersion (kSDKDefPluginVersionResourceID)
+{
+	kTargetVersion,
+	kBscKitPluginID,
+	kSDKDefPlugInMajorVersionNumber, kSDKDefPlugInMinorVersionNumber, 	
+	kSDKDefHostMajorVersionNumber, kSDKDefHostMinorVersionNumber,
+	kBscKitCurrentMajorFormatNumber, kBscKitCurrentMinorFormatNumber,
+	{ kInDesignProduct, kInCopyProduct }, 
+	{ kWildFS },
+	kUIPlugIn,
+	kBscKitVersion
+};
+
+/*
+//	Boss class definition.
+*/
+resource ClassDescriptionTable(kSDKDefClassDescriptionTableResourceID)
+{{{
+	/** Implements a kit, a set of widget views with the same or similar functionality, 
+		of which only one view is active at any given time. This kit contains a 
+		view that is displayed when in a tabbed palette, a  
+		view that is displayed when in a horizontal dockbar and another view that is
+		displayed in a vertical dockbar.
+
+		@ingroup basickit
+	*/
+	Class
+	{
+		kBscKitWidgetBoss,
+		kKitPanelWidgetBoss,
+		{
+			/** Provides the kit's pop out menu.
+			*/ 
+			IID_IPANELMENUDATA, kCPanelMenuDataImpl,
+		}
+	},
+
+	/** Implements the actions invoked by this plug-in's
+		sub-menu items.
+
+		@ingroup basickit
+	 */
+	Class
+	{
+		kBscKitActionComponentBoss,
+		kBaseActionComponentBoss,
+		{
+			/** See BscKitActionComponent.
+			 */
+			IID_IACTIONCOMPONENT, kBscKitActionComponentImpl,
+		}
+	},
+
+
+
+}}};
+
+/*
+// Implementation definition.
+*/
+resource FactoryList (kSDKDefFactoryListResourceID) 
+{
+	kImplementationIDSpace,
+	{
+#include "BscKitFactoryList.h"
+	}
+};
+
+/*
+// Menu definition.
+*/
+resource MenuDef (kSDKDefMenuResourceID)
+{
+	{
+		// The About Plug-ins sub-menu item for this plug-in.
+		kBscKitAboutActionID,			// ActionID (kInvalidActionID for positional entries)
+		kBscKitAboutMenuPath,			// Menu Path.
+		kSDKDefAlphabeticPosition,			// Menu Position.
+		kSDKDefIsNotDynamicMenuFlag,		// kSDKDefIsNotDynamicMenuFlag or kSDKDefIsDynamicMenuFlag.
+
+		// About this plugin submenu for the popup menu on the panel
+		kBscKitPopupAboutThisActionID,
+		kBscKitTargetMenuPath
+		kBscKitAboutThisMenuItemPosition,
+		kSDKDefIsNotDynamicMenuFlag, 
+
+	}
+};
+
+/*
+// Action definition.
+*/
+resource ActionDef (kSDKDefActionResourceID)
+{
+	{ 
+		kBscKitActionComponentBoss, 		// ClassID of boss class that implements the ActionID.
+		kBscKitAboutActionID,	// ActionID.
+		kBscKitAboutMenuKey,	// Sub-menu string.
+		kHelpMenuActionArea,				// Area name (see ActionDefs.h).
+		kNormalAction,					// Type of action (see ActionDefs.h).
+		kDisableIfLowMem,				// Enabling type (see ActionDefs.h).
+		kInvalidInterfaceID,			// Selection InterfaceID this action cares about or kInvalidInterfaceID.
+		kSDKDefInvisibleInKBSCEditorFlag, // kSDKDefVisibleInKBSCEditorFlag or kSDKDefInvisibleInKBSCEditorFlag.
+
+		kBscKitActionComponentBoss, 
+		kBscKitPopupAboutThisActionID, 
+		kSDKDefAboutThisPlugInMenuKey,	// Key to the name of this action
+		kOtherActionArea,
+		kNormalAction,
+		kDisableIfLowMem,	
+		kInvalidInterfaceID,
+		kSDKDefInvisibleInKBSCEditorFlag,
+
+	}
+};
+
+
+/*
+// LocaleIndex
+// The LocaleIndex should have indicies that point at your
+// localizations for each language system that you are 
+// localized for.
+*/
+/*
+// String LocaleIndex.
+*/
+resource LocaleIndex (kSDKDefStringsResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_enUS, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_jaJP, kSDKDefStringsResourceID + index_jaJP
+		
+		kWildFS, k_Wild, kSDKDefStringsResourceID + index_enUS
+	}
+};
+
+resource LocaleIndex (kSDKDefStringsNoTransResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_Wild, kSDKDefStringsNoTransResourceID + index_enUS
+	}
+};
+
+resource StringTable (kSDKDefStringsNoTransResourceID + index_enUS)
+{
+	k_enUS,									// Locale Id
+	kEuropeanMacToWinEncodingConverter,		// Character encoding converter
+	{
+		// No-Translate strings go here:		
+		kBscKitInternalPopupMenuNameKey,	kBscKitInternalPopupMenuNameKey,		// No need to translate, internal menu name.
+	}
+};
+
+
+/*
+// Kit View LocaleIndex.
+*/
+resource LocaleIndex (kSDKDefPanelResourceID)
+{
+	kViewRsrcType,
+	{
+		kWildFS, k_Wild, 	kSDKDefPanelResourceID + index_enUS
+	}
+};
+
+/*
+// Type definition.
+*/
+type BscKitWidget(kViewRsrcType) : KitPanelWidget(ClassID = kBscKitWidgetBoss) 
+{
+	CPanelMenuData;
+};
+
+/*
+// KitList LocaleIndex.
+*/
+resource LocaleIndex (kSDKDefKitListResourceID)
+{
+	kKitListRsrcType,
+	{
+		kInDesignAllLanguagesFS,	k_Wild,		kSDKDefKitListResourceID + index_InDesignFS + index_enUS
+		kInCopyAllLanguagesFS,		k_Wild, 	kSDKDefKitListResourceID + index_InCopyFS + index_enUS
+	}
+}
+
+/*
+// InDesign KitList definition.
+*/
+resource KitList (kSDKDefKitListResourceID + index_InDesignFS + index_enUS)
+{
+	kKitSupportsTabbedPalette,		
+	{	
+		kSDKDefPanelResourceID,		// Kit view
+		kBscKitPluginID,			// ID of plug-in that owns this kit
+		kNotResizable,
+		kBscKitWidgetActionID,		// Action ID to show/hide the panel
+		kBscKitPanelTitleKey,		// Shows up in the Window menu.
+		"",							// Alternate menu path of the form "Main:Foo" if you want your panel menu item in a second place
+		0.0,						// Alternate Menu position 
+		0,0,						// Rsrc ID, Plugin ID for a PNG icon resource to use for this palette
+		c_Panel
+	}
+};
+
+/*
+// InCopy KitList definition.
+*/
+resource KitList (kSDKDefKitListResourceID + index_InCopyFS + index_enUS)
+{
+	kKitSupportsTabbedPalette,			
+	{	
+		kSDKDefPanelResourceID,		// Kit view
+		kBscKitPluginID,			// ID of plug-in that owns this kit
+		kNotResizable,
+		kBscKitWidgetActionID,		// Action ID to show/hide the panel
+		kBscKitPanelTitleKey,		// Shows up in the Window menu.
+		"",							// Alternate menu path of the form "Main:Foo" if you want your panel menu item in a second place
+		0.0,						// Alternate Menu position 
+		0,0,						// Rsrc ID, Plugin ID for a PNG icon resource to use for this palette
+		c_Panel
+	}
+};
+
+/*
+// Kit view definition.
+// This view is not currently localised: therefore, it can reside here.
+// However, if you wish to localise it, it is recommended to locate it in one of
+// the localised framework resource files (i.e. BscKit_enUS.fr etc.).
+*/
+resource BscKitWidget (kSDKDefPanelResourceID + index_enUS)
+{
+	__FILE__, __LINE__,
+	kBscKitWidgetID, kPMRsrcID_None, 
+	kBindAll, 
+	Frame(0, 0, 207, 95)
+	kTrue, kTrue, 
+	kBscKitPanelTitleKey, 
+	{
+
+		// Tabbed palette view.
+		KitViewTabPanelWidget 
+		(
+			kBscKitPanelViewWidgetID, kPMRsrcID_None,
+			kBindAll, 
+			Frame(0, 0, 207, 95)
+			kTrue, kTrue, 
+			kTrue, 
+			kInterfacePaletteFill, 
+			kFalse, 
+			kBscKitPanelTitleKey
+			{
+				ControlSetWidget
+				(
+					kBscKitPanelViewFirstControlSetWidgetID, kPMRsrcID_None,
+					kBindNone,
+					Frame(0,0,207,30)
+					kTrue,
+					kBscKitFirstControlSetTitleKey,			// Control set title displayed by Customize menu
+					{
+						StaticTextWidget
+						(
+							kBscKitControl1WidgetID,			// WidgetId (default=0)
+							kSysStaticTextPMRsrcId,			// RsrcId
+							kBindNone,						// Frame binding
+							Frame(0,5,207,25)				// Frame: left, top, right, bottom.
+							kTrue, kTrue,					// Visible, Enabled
+							kAlignLeft, kEllipsizeEnd, kTrue,		// Alignment, ellipsize style, convert ampersands
+							kBscKitControl1LabelLongStringKey,		// String key for initial text.
+							0								// No associated widget
+						),
+					}
+				),
+			
+				ControlSetWidget
+				(
+					kBscKitPanelViewSecondControlSetWidgetID, kPMRsrcID_None,
+					kBindNone,
+					Frame(0,30,207,60)
+					kTrue,
+					kBscKitSecondControlSetTitleKey,		// Control set title displayed by Customize menu
+					{
+						StaticTextWidget
+						(
+							kBscKitControl2WidgetID,			// WidgetId (default=0)
+							kSysStaticTextPMRsrcId,			// RsrcId
+							kBindNone,						// Frame binding
+							Frame(0,5,207,25)				// Frame: left, top, right, bottom.
+							kTrue, kTrue,					// Visible, Enabled
+							kAlignLeft, kEllipsizeEnd, kTrue,		// Alignment, ellipsize style, convert ampersands
+							kBscKitControl2LabelLongStringKey,		// Initial text.
+							0								// No associated widget
+						),
+					}
+				),	
+			}
+		),
+ 
+		// Horizontal dock bar view.
+		KitViewHorzWidget 
+		( 
+			kBscKitHorzDockBarViewWidgetID, kPMRsrcID_None,
+			kBindNone, 
+			Frame(0, 0, 100, 26) 
+			kTrue, kTrue, 
+			kBscKitPanelTitleKey, 
+			{
+				ControlSetWidget
+				(
+					kBscKitDockBarViewFirstControlSetWidgetID, kPMRsrcID_None,
+					kBindNone,
+					Frame(0, 0, 40, 26)
+					kTrue,
+					kBscKitFirstControlSetTitleKey,			// Control set title displayed by Customize menu
+					{
+						StaticTextWidget
+						(
+							kBscKitControl1WidgetID,			// WidgetId (default=0)
+							kSysStaticTextPMRsrcId,			// RsrcId
+							kBindNone,						// Frame binding
+							Frame(5,4,35,22)				// Frame: left, top, right, bottom.
+							kTrue, kTrue,					// Visible, Enabled
+							kAlignLeft, kEllipsizeEnd, kTrue,		// Alignment, ellipsize style, convert ampersands
+							kBscKitControl1LabelShortStringKey,	// Initial text.
+							0								// No associated widget
+						),
+					}
+				),
+				
+				ControlSetWidget
+				(
+					kBscKitDockBarViewSecondControlSetWidgetID, kPMRsrcID_None,
+					kBindNone,
+					Frame(40,0,80,26)
+					kTrue,
+					kBscKitSecondControlSetTitleKey,		// Control set title displayed by Customize menu
+					{
+						StaticTextWidget
+						(
+							kBscKitControl2WidgetID,			// WidgetId (default=0)
+							kSysStaticTextPMRsrcId,			// RsrcId
+							kBindNone,						// Frame binding
+							Frame(5,4,35,22)				// Frame: left, top, right, bottom.
+							kTrue, kTrue,					// Visible, Enabled
+							kAlignLeft, kEllipsizeEnd, kTrue,		// Alignment, ellipsize style, convert ampersands
+							kBscKitControl2LabelShortStringKey,	// Initial text.
+							0								// No associated widget
+						),
+					}
+				),		
+			}
+		), 
+	}, 
+	
+	// This reads in the IKit interface 
+	kSelectablePanelKitViewID, // default kit view is kSelectablePanelKitViewID 
+	{ 
+		// These associate a kit view id with a widget id 
+		kSelectablePanelKitViewID, kBscKitPanelViewWidgetID, kNotResizable, //view id, widget ID 
+		kHBarKitViewID, kBscKitHorzDockBarViewWidgetID, kNotResizable, //view id, widget ID 
+	},
+
+	kBscKitInternalPopupMenuNameKey // Popup menu name 
+};
+
+#endif // __ODFRC__
+
+#include "BscKit_enUS.fr"
+#include "BscKit_jaJP.fr"
+
+// End, BscKit.fr.
+
+
+
+
+
+

@@ -1,0 +1,358 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/linksui/resources/LinksUIDialogViews_enUS.fr $
+//  
+//  Owner: lance bushore
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#ifdef __ODFRC__
+
+#include "StdHeightWidthConstants.h"
+
+#define kPrefListWidgetWidth 400
+
+// this is one row in the prefs dialog listbox - a static text label + 2 checkboxes. We create these on the fly depending on
+// what Link Info providers are found.
+resource GenericPanelWidget(kLinksUIDynamicPrefRowResID + index_enUS)
+{
+	kLinksUIPrefRowPanelWidgetID,					// WidgetId
+	kPMRsrcID_None,				// RsrcId
+	kBindNone,						// Frame binding
+	Frame(kCC2016StandardGapBetweenWidgets,0,kPrefListWidgetWidth - kCC2016StandardGapBetweenWidgets,kCC2016PanelTreeNodeHeight)		// Frame
+	kTrue,							// Visible
+	kTrue,							// Enabled
+	"",
+	{
+		StaticTextWidget
+		(
+			kLinksUIPrefRowLabelWidgetID,						// WidgetId
+			kSysStaticTextPMRsrcId,	// RsrcId
+			kBindLeft|kBindBottom|kBindRight,				// Frame binding
+			Frame(0, 0, kPrefListWidgetWidth - 175, kCC2016PanelTreeNodeContentHeight)		// Frame
+			kTrue,kTrue, kAlignLeft,	// Visible, Enabled, Alignment
+			kDontEllipsize, kTrue,				// Ellipsize style, Convert ampersands
+			"",			// Initial text
+			0,
+		),
+		CheckBoxWidget
+		(
+			kLinksUIPrefRowShowColumnCheckboxWidgetID,	// WidgetId
+			kSysCheckBoxPMRsrcId,					// RsrcId
+			kBindTop|kBindBottom,
+			Frame(kPrefListWidgetWidth - 180,0,kPrefListWidgetWidth - 160,kCC2016PanelTreeNodeContentHeight)
+			kTrue,									// Visible
+			kTrue,									// Enabled
+			kAlignLeft,								// alignment
+			""								// Initial text
+		),
+		CheckBoxWidget
+		(
+			kLinksUIPrefRowShowInfoCheckboxWidgetID,	// WidgetId
+			kSysCheckBoxPMRsrcId,					// RsrcId
+			kBindTop|kBindBottom,
+			Frame(kPrefListWidgetWidth - 70,0,kPrefListWidgetWidth - 30,kCC2016PanelTreeNodeContentHeight)
+			kTrue,									// Visible
+			kTrue,									// Enabled
+			kAlignLeft,								// alignment
+			""								// Initial text
+		)
+	}
+}
+
+
+
+resource ChooseLinkColumnsDialog (kLinkColumnDialogResID + index_enUS)
+{
+	__FILE__, __LINE__,
+	kLinksUIPrefsDialogWidgetID,						// WidgetId
+	kPMRsrcID_None,			// RsrcId
+	kBindNone,				// Frame binding
+	Frame(0,0,10,10)		// Frame
+	kTrue,kTrue,			// Visible, Enabled
+	"#LinkColumnDialog",	// Panel name
+	{
+		EVEGroupPanelWidget
+		(
+			kLinkColumnsTopSectionWidgetID,					// WidgetId
+			kPMRsrcID_None,				// RsrcId
+			kBindNone,						// Frame binding
+			Frame(0,0,10,10),		// Frame
+			kTrue,							// Visible
+			kTrue,							// Enabled
+			kLinksUIOptionsGroupboxLabelWidgetID,
+			kEVEArrangeChildrenInColumn|kEVELargeMargin|kEVEAlignFill,						// Eve info
+			{
+				EVEGenericPanelWidget
+				(
+					kLinkUIPrefRowSizePanelWidgetID,					// WidgetId
+					kPMRsrcID_None,				// RsrcId
+					kBindNone,						// Frame binding
+					Frame(0,0,10,10)		// Frame
+					kTrue,							// Visible
+					kTrue,							// Enabled
+					kEVEArrangeChildrenInRow|kEVEAlignFill|kEVELargeSpaceAfter,						// Eve info
+					{
+						StaticTextWidget
+						(
+							kLinksUIRowSizeLabelWidgetID,						// WidgetId
+							kSysStaticTextPMRsrcId,	// RsrcId
+							kBindNone,				// Frame binding
+							Frame(0, 0, 20, 0)		// Frame
+							kTrue,kTrue, kAlignLeft,	// Visible, Enabled, Alignment
+							kDontEllipsize, kTrue,				// Ellipsize style, Convert ampersands
+							"#LinksUIRowSizeLabel",			// Initial text
+							kLinksUIRowSizeDropDownWidgetID,
+						),
+						DropDownListWidget
+						(
+							kLinksUIRowSizeDropDownWidgetID, kSysDropDownPMRsrcId, kBindNone,
+							Frame(0, 0, 80, 0)
+							kTrue, kTrue, // Visible, enabled
+							{{
+								"#LinksUISmallRowStr",
+								"#LinksUIRegularRowStr",
+								"#LinksUILargeRowStr",
+							}}
+						),
+					}
+				)
+				CheckBoxWidget
+				(
+					kLinksUIPrefsCollapseMultipleCheckboxWidgetID,	// WidgetId
+					kSysCheckBoxPMRsrcId,					// RsrcId
+					kBindNone,
+					Frame(0,0,10,0)
+					kTrue,									// Visible
+					kTrue,									// Enabled
+					kAlignLeft,								// alignment
+					"#LinksUICollapseMultiple"								// Initial text
+				)
+				EVEGenericPanelWidget
+				(
+					kLinkUIThumbnailPrefPanelWidgetID,					// WidgetId
+					kPMRsrcID_None,				// RsrcId
+					kBindNone,						// Frame binding
+					Frame(0,0,10,10)		// Frame
+					kTrue,							// Visible
+					kTrue,							// Enabled
+					kEVEArrangeChildrenInRow|kEVEAlignFill,						// Eve info
+					{
+						StaticTextWidget
+						(
+							kLinksUIThumbnailPrefLabelWidgetID,						// WidgetId
+							kSysStaticTextPMRsrcId,	// RsrcId
+							kBindNone,				// Frame binding
+							Frame(0, 0, 20, 0)		// Frame
+							kTrue,kTrue, kAlignLeft,	// Visible, Enabled, Alignment
+							kDontEllipsize, kTrue,				// Ellipsize style, Convert ampersands
+							"#LinkThumbPrefLabel",			// Initial text
+							0,
+						),
+						CheckBoxWidget
+						(
+							kLinksUIShowThumbnailCheckboxWidgetID,	// WidgetId
+							kSysCheckBoxPMRsrcId,					// RsrcId
+							kBindNone,
+							Frame(0,0,10,0)
+							kTrue,									// Visible
+							kTrue,									// Enabled
+							kAlignLeft,								// alignment
+							"#LinksUIShowThumbnail"								// Initial text
+						)
+						CheckBoxWidget
+						(
+							kShowLinkInfoThumbnailCheckboxWidgetID,	// WidgetId
+							kSysCheckBoxPMRsrcId,					// RsrcId
+							kBindNone,
+							Frame(0,0,10,0)
+							kTrue,									// Visible
+							kTrue,									// Enabled
+							kAlignLeft,								// alignment
+							"#LinkInfoShowThumbnailCheckbox"								// Initial text
+						)
+					}
+				)
+				StaticTextWidget
+				(
+					kLinksUIOptionsGroupboxLabelWidgetID,						// WidgetId
+					kSysStaticTextPMRsrcId,	// RsrcId
+					kBindNone,				// Frame binding
+					Frame(0, 0, 20, 0)		// Frame
+					kTrue,kTrue, kAlignLeft,	// Visible, Enabled, Alignment
+					kDontEllipsize, kTrue,				// Ellipsize style, Convert ampersands
+					"#LinksUIPanelOptions",			// Initial text
+					0,
+				),
+			}
+		)
+		EVEGenericPanelWidget
+		(
+			kLinkUIPrefLabelsPanelWidgetID,					// WidgetId
+			kPMRsrcID_None,				// RsrcId
+			kBindNone,						// Frame binding
+			Frame(0,0,10,10)		// Frame
+			kTrue,							// Visible
+			kTrue,							// Enabled
+			kEVEArrangeChildrenInRow|kEVESmallSpaceAfter|kEVEAlignFill|kEVEChildLargeSpaceAfter,						// Eve info
+			{
+				EVEStaticTextWidget
+				(
+					kLinksUIPrefSpacerLabelWidgetID,						// WidgetId
+					kSysStaticTextPMRsrcId,	// RsrcId
+					kBindNone,				// Frame binding
+					Frame(0, 0, 100, 0)		// Frame
+					kTrue,kTrue, kAlignLeft,	// Visible, Enabled, Alignment
+					kDontEllipsize, kTrue,				// Ellipsize style, Convert ampersands
+					"",			// Initial text
+					0,
+					kEVEAlignFill,						// Eve info
+				),
+				StaticTextWidget
+				(
+					kLinksUIPrefShowColumnLabelWidgetID,						// WidgetId
+					kSysStaticTextPMRsrcId,	// RsrcId
+					kBindNone,				// Frame binding
+					Frame(0, 0, 90, 0)		// Frame
+					kTrue,kTrue, kAlignCenter,	// Visible, Enabled, Alignment
+					kDontEllipsize, kTrue,				// Ellipsize style, Convert ampersands
+					"#ShowLinksPanelColumn",			// Initial text
+					0,
+				),
+				StaticTextWidget
+				(
+					kLinksUIPrefShowInfoLabelWidgetID,						// WidgetId
+					kSysStaticTextPMRsrcId,	// RsrcId
+					kBindNone,				// Frame binding
+					Frame(0, 0, 90, 0)		// Frame
+					kTrue,kTrue, kAlignCenter,	// Visible, Enabled, Alignment
+					kDontEllipsize, kTrue,				// Ellipsize style, Convert ampersands
+					"#ShowLinksPanelInfo",			// Initial text
+					0,
+				),
+				StaticTextWidget
+				(
+					kLinksUIPrefSpacerLabelWidgetID,						// WidgetId
+					kSysStaticTextPMRsrcId,	// RsrcId
+					kBindNone,				// Frame binding
+					Frame(0, 0, 10, 0)		// Frame
+					kTrue,kTrue, kAlignLeft,	// Visible, Enabled, Alignment
+					kDontEllipsize, kTrue,				// Ellipsize style, Convert ampersands
+					"",			// Initial text
+					0,
+				),
+			}
+		),
+		EVEWidgetTreeBasedListBoxWidget
+		(
+			kLinksUIPrefTreeWidgetID, kSysOwnerDrawListBoxPMRsrcId,	// WidgetId, RsrcId
+			kBindNone,
+			Frame(0, 0, kPrefListWidgetWidth, 11*kCC2016PanelTreeNodeHeight)	// Frame
+			kTrue, kTrue,									// Visible, Enabled
+			kTrue,										// EraseBeforeDraw
+			kInterfacePaletteFill,							// InterfaceColor
+			1,0,											// List dimensions
+			kCC2016PanelTreeNodeHeight,						// Cell height
+			1,											// Border width
+			kFalse,kTrue,									// Has scroll bar (v,h)
+			kFalse,										// Multiselection
+			kFalse,										// List items can be reordered
+			kFalse,										// Draggable to new/delete buttons
+			kFalse,										// Drag/Dropable to other windows
+			kFalse,										// An item always has to be selected
+			kFalse,										// Don't notify on reselect
+			0,
+			kHideRootNode,					//Options
+			kFalse,						//Use H Scroll bar
+			kTrue,						//Use V scroll bar
+			kCC2016PanelTreeNodeHeight,	// Vertical Scroll Button Increment
+			kCC2016PanelTreeNodeHeight,	// Vertical Thumb Scroll Increment
+			0,							// Horizontal Scroll Button Increment - Not Used
+			0,							// Horizontal Thumb Scroll Increment - Not Used
+			0,							// Items selectable, 0 = No Selection, 1 = Single Selection, 2 = Multiple Selection
+			kFalse,						// Allow children from multiple parents to be selected
+			kFalse,						// Allow discontiguous selection
+			kEVEAlignFill|kEVEExtraLargeSpaceAfter,		// EVE info
+		),
+		EVEGenericPanelWidget
+		(
+			kLinkUIPrefButtonPanelWidgetID,					// WidgetId
+			kPMRsrcID_None,				// RsrcId
+			kBindNone,						// Frame binding
+			Frame(0,0,10,10)		// Frame
+			kTrue,							// Visible
+			kTrue,							// Enabled
+			kEVEArrangeChildrenInRow|kEVEAlignRight,						// Eve info
+			{
+#if defined(MACINTOSH) 
+				CancelButtonWidget
+				(
+					kCancelButton_WidgetID,			// WidgetId
+					kSysButtonPMRsrcId,				// RsrcId
+					kBindNone,						// Frame binding
+					Frame(0,0,95,0)				// Frame
+					kTrue,							// Visible
+					kTrue,							// Enabled
+					"Cancel",						// Initial text
+					kTrue,							// Cancel changes to Reset
+				),
+				EVEDefaultButtonWidget
+				(
+					kOKButtonWidgetID,				// WidgetId
+					kSysButtonPMRsrcId,				// RsrcId
+					kBindNone,						// Frame binding
+					Frame(0,0,95,0)				// Frame
+					kTrue,							// Visible
+					kTrue,							// Enabled
+					"OK"							// Panel name
+					kEVENoSpaceAfter,				// Eve info	
+				),
+#endif
+
+#if defined(WINDOWS)
+				EVEDefaultButtonWidget
+				(
+					kOKButtonWidgetID,				// WidgetId
+					kSysButtonPMRsrcId,				// RsrcId
+					kBindNone,						// Frame binding
+					Frame(0,0,95,0)				// Frame
+					kTrue,							// Visible
+					kTrue,							// Enabled
+					"OK"							// Panel name
+					kEVELargeSpaceAfter,			// Eve info	
+				),
+				CancelButtonWidget
+				(
+					kCancelButton_WidgetID,			// WidgetId
+					kSysButtonPMRsrcId,				// RsrcId
+					kBindNone,						// Frame binding
+					Frame(0,0,95,0)				// Frame
+					kTrue,							// Visible
+					kTrue,							// Enabled
+					"Cancel",						// Initial text
+					kTrue,							// Cancel changes to Reset
+				),				
+#endif
+			}
+		),
+	}
+	kEVEArrangeChildrenInColumn|kEVELargeMargin		// EVE info
+}
+
+
+#endif // __ODFRC__

@@ -1,0 +1,56 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/incopyexportui/InCopyExportMenu.fr $
+//  
+//  Owner: Ben Park
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "MenuDef.fh"
+#include "ActionDef.fh"
+#include "ActionDefs.h"
+#include "InCopyExportUIID.h"
+#include "AdobeMenuPositions.h"
+
+#ifdef __ODFRC__
+
+
+resource MenuDef (kInCopyExportMenuResID)
+{
+	{ 
+		0,								"Main:&Edit:kInCopyMenu:",	kInCopyBridgeMenuPosition,		kFalse,
+		0,								"Main:&Edit:kInCopyMenu:ExportMenu:",	kInCopyBridgeExportMenuPosition,kFalse,
+		kExportLayerToICActionID,		"Main:&Edit:kInCopyMenu:ExportMenu",	kExportLayerStoriesMenuPosition,kFalse,
+		kExportAllStoriesToICActionID,	"Main:&Edit:kInCopyMenu:ExportMenu",	kExportAllStoriesMenuPosition,	kFalse,
+		kExportAllGraphicsToICActionID,	"Main:&Edit:kInCopyMenu:ExportMenu",	kExportAllGraphicsMenuPosition,	kFalse,
+		kExportAllItemsToICActionID,	"Main:&Edit:kInCopyMenu:ExportMenu",	kExportAllItemsMenuPosition,	kFalse,
+		kICBridgeSeperatorID,			"Main:&Edit:-",				kInCopyBridgeSeparatorPosition,	kFalse,
+	}
+}
+
+resource ActionDef (kInCopyExportActionResID)
+{
+	{ 
+		kInCopyExportMenuComponentBoss, kExportLayerToICActionID, "kExportLayerToIC",kEditMenuInCopyExportActionArea,kNormalAction,kCustomEnabling|kDisableIfNoFrontDocument|kDisableIfLowMem,0,kTrue,
+		kInCopyExportMenuComponentBoss, kExportAllStoriesToICActionID, "kExportAllStoriesToIC",kEditMenuInCopyExportActionArea,kNormalAction,kCustomEnabling|kDisableIfNoFrontDocument|kDisableIfLowMem,0,kTrue,
+		kInCopyExportMenuComponentBoss, kExportAllGraphicsToICActionID, "kExportAllGraphicsToIC",kEditMenuInCopyExportActionArea,kNormalAction,kCustomEnabling|kDisableIfNoFrontDocument|kDisableIfLowMem,0,kTrue,
+		kInCopyExportMenuComponentBoss, kExportAllItemsToICActionID, "kExportAllItemsToIC",kEditMenuInCopyExportActionArea,kNormalAction,kCustomEnabling|kDisableIfNoFrontDocument|kDisableIfLowMem,0,kTrue,
+	}
+}
+
+#endif // __ODFRC__

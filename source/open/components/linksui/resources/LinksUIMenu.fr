@@ -1,0 +1,304 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/linksui/resources/LinksUIMenu.fr $
+//  
+//  Owner: ?
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "LinksUIResDefs.h"
+#include "MenuDef.fh"
+#include "ActionDef.fh"
+#include "ActionDefs.h"
+#include "AdobeMenuPositions.h"
+#include "LinksUIID.h"
+
+#ifdef __ODFRC__
+
+resource LocaleIndex (kLinksUIMenuResID)
+{
+	kMenuRsrcType,
+	{
+		kWildFS, k_Wild, kLinksUIMenuResID + index_enUS
+	}
+}
+resource LocaleIndex (kLinksUIActionResID)
+{
+	kActionRsrcType,
+	{
+		kWildFS, k_Wild, kLinksUIActionResID + index_enUS
+	}
+}
+resource LocaleIndex (kLinksUIInDesignMenuResID)
+{
+	kMenuRsrcType,
+	{
+		kInDesignAllLanguagesFS, k_Wild,    kLinksUIInDesignMenuResID + index_enUS
+	}
+}
+resource LocaleIndex (kLinksUIInDesignActionResID)
+{
+	kActionRsrcType,
+	{
+		kInDesignAllLanguagesFS, k_Wild,    kLinksUIInDesignActionResID + index_enUS
+	}
+}
+
+
+// InDesign only menus
+resource MenuDef (kLinksUIInDesignMenuResID + index_enUS)
+{
+	{
+		// content menu for selected graphic
+		0, "RtMouseLayout:#CaptionSubmenu:", kGraphicCaptionsSubmenuPosition,kFalse,
+		kGenerateCaptionPrefsDialogActionID,  "RtMouseLayout:#CaptionSubmenu",kGenerateLinkCaptionPrefsMenuPosition,kFalse,		
+		kGenerateLiveCaptionForLinkSelectionActionID, "RtMouseLayout:#CaptionSubmenu", kGenerateLiveCaptionMenuPosition,kFalse,
+		kGenerateStaticCaptionForLinkSelectionActionID, "RtMouseLayout:#CaptionSubmenu", kGenerateStaticCaptionMenuPosition,kFalse,
+		kConvertLiveCaptionToTextActionID, "RtMouseLayout:#CaptionSubmenu", kConvertCaptionVariableToTextMenuPosition,kFalse,
+
+		// content menu for selected text
+		kConvertLiveCaptionToTextActionID, "RtMouseText", kContextConvertCaptionVariableMenuPosition,kFalse,
+
+		// object:captions submenu
+		0, "Main:&Object:#CaptionSubmenu:", kCaptionsSubmenuPosition,kFalse,
+		kGenerateCaptionPrefsDialogActionID,  "Main:&Object:#CaptionSubmenu",kGenerateLinkCaptionPrefsMenuPosition,kFalse,		
+		kGenerateLiveCaptionForLinkSelectionActionID, "Main:&Object:#CaptionSubmenu", kGenerateLiveCaptionMenuPosition,kFalse,
+		kGenerateStaticCaptionForLinkSelectionActionID, "Main:&Object:#CaptionSubmenu", kGenerateStaticCaptionMenuPosition,kFalse,
+		kConvertLiveCaptionToTextActionID, "Main:&Object:#CaptionSubmenu", kConvertCaptionVariableToTextMenuPosition,kFalse,
+
+		// context menu for item in links panel
+		0, "RtMenuLinksUILinkItem:#CaptionSubmenu:", kCaptionsSubmenuPosition,kFalse,
+		kGenerateCaptionPrefsDialogActionID,  "RtMenuLinksUILinkItem:#CaptionSubmenu",kGenerateLinkCaptionPrefsMenuPosition,kFalse,		
+		kGenerateLiveCaptionForLinkActionID,  "RtMenuLinksUILinkItem:#CaptionSubmenu",kGenerateLiveCaptionMenuPosition,kFalse,		
+		kGenerateStaticCaptionForLinkActionID,  "RtMenuLinksUILinkItem:#CaptionSubmenu",kGenerateStaticCaptionMenuPosition,kFalse,		
+		kConvertLiveCaptionToTextActionID, "RtMenuLinksUILinkItem:#CaptionSubmenu", kConvertCaptionVariableToTextMenuPosition,kFalse,
+
+		// links panel menu
+		0, "#LinksUIPanelMenu:#CaptionSubmenu:", kCaptionsSubmenuPosition,kFalse,
+		kGenerateCaptionPrefsDialogActionID,  "#LinksUIPanelMenu:#CaptionSubmenu",kGenerateLinkCaptionPrefsMenuPosition,kFalse,		
+		kGenerateLiveCaptionForLinkActionID,  "#LinksUIPanelMenu:#CaptionSubmenu",kGenerateLiveCaptionMenuPosition,kFalse,		
+		kGenerateStaticCaptionForLinkActionID,  "#LinksUIPanelMenu:#CaptionSubmenu",kGenerateStaticCaptionMenuPosition,kFalse,		
+		kConvertLiveCaptionToTextActionID, "#LinksUIPanelMenu:#CaptionSubmenu", kConvertCaptionVariableToTextMenuPosition,kFalse,
+	}
+}
+
+resource MenuDef (kLinksUIMenuResID + index_enUS)
+{
+	{
+		// Edit menu
+		kEditOriginalLayoutSelectionActionID, "Main:&Edit",kEditOriginalCoreMenuPosition,kFalse,
+		0, "Main:&Edit:#EditWithApp:", kEditOriginalWithCoreMenuPosition,kFalse,
+		kEditOriginalSelectionWithActionID, "Main:&Edit:#EditWithApp", 0.0,kTrue, // dynamic menu
+		kGoToSourceLayoutSelectionActionID, "Main:&Edit",kGoToSourceCoreMenuPosition,kFalse,
+
+		// Right Mouse support document window
+		kEditOriginalLayoutSelectionActionID, "RtMouseLayout", kContextEditOriginalMenuPosition,kFalse,
+		0, "RtMouseLayout:#EditWithApp:", kContextEditOriginalWithMenuPosition,kFalse,		
+		kEditOriginalSelectionWithActionID, "RtMouseLayout:#EditWithApp", 0.0,kTrue, // dynamic menu
+		kGoToSourceLayoutSelectionActionID, "RtMouseLayout", kContextGoToSourceMenuPosition,kFalse,
+		kRevealLinkInOSSelectionActionID, "RtMouseLayout:kRtMouseGraphics", kGraphicRevealLinkInOSMenuPosition,kFalse,
+		kRevealLinkInBridgeSelectionActionID, "RtMouseLayout:kRtMouseGraphics", kGraphicRevealLinkInBrowserMenuPosition,kFalse,
+		kRevealLinkInCloudLibrariesSelectionActionID, "RtMouseLayout:kRtMouseGraphics", kGraphicRevealLinkInCloudLibrariesMenuPosition,kFalse,
+		
+		// context menu for links
+		kLinksUIRelinkActionID, "RtMenuLinksUILinkItem", kRelinkMenuPosition, kFalse,
+        kLinksUIRelinkToCloudAssetActionID, "RtMenuLinksUILinkItem", kRelinkCloudAssetMenuPosition, kFalse,
+        kLinksUIRelinkToAALAssetActionID, "RtMenuLinksUILinkItem", kRelinkAALAssetMenuPosition, kFalse,
+		kGotoLinkActionID, "RtMenuLinksUILinkItem", kGotoLinkMenuPosition, kFalse,
+		kLinksUIEditOriginalActionID, "RtMenuLinksUILinkItem",kEditOriginalMenuPosition,kFalse,
+		0, "RtMenuLinksUILinkItem:#EditWithApp:", kEditOriginalWithMenuPosition,kFalse, // position submenu
+		kEditOriginalWithActionID, "RtMenuLinksUILinkItem:#EditWithApp", 0.0,kTrue, // dynamic menu
+		kLinksUIGoToSourceActionID, "RtMenuLinksUILinkItem",kGoToSourceMenuPosition,kFalse,
+		kLinksUIUpdateLinkActionID, "RtMenuLinksUILinkItem",kUpdateLinkMenuPosition,kFalse,
+		kLicenseStockAssetActionID, "RtMenuLinksUILinkItem",kLicenseStockAssetMenuPosition,kFalse,
+		kCopyLinksActionID, "RtMenuLinksUILinkItem", kCopyLinkMenuPosition, kFalse,
+		kLinksUIPanelMenuSep1ActionID, "RtMenuLinksUILinkItem:-", kLinkSep1MenuPosition, kFalse,
+		kLinksUIPanelMenuSep2ActionID, "RtMenuLinksUILinkItem:-", kLinkSep2MenuPosition, kFalse,
+		kLinksUIPanelMenuSep3ActionID, "RtMenuLinksUILinkItem:-", kLinkSep3MenuPosition, kFalse,
+		kRevealLinkInOSActionID, "RtMenuLinksUILinkItem", kRevealLinkInOSMenuPosition, kFalse,
+		kRevealLinkInBridgeActionID, "RtMenuLinksUILinkItem",kRevealLinkInBrowserMenuPosition,kFalse,
+		kRevealLinkInCloudLibrariesActionID, "RtMenuLinksUILinkItem",kRevealLinkInCloudLibrariesMenuPosition,kFalse,
+		kLinksUIPanelFileXMPInfoActionID, "RtMenuLinksUILinkItem",kLinkFileInfoMenuPosition,kFalse,
+        kReplaceFPOWithOriginalLinkActionID, "RtMenuLinksUILinkItem", kReplaceFPOWithOriginalLinkPosition, kFalse,
+        kDownloadOriginalLinkActionID, "RtMenuLinksUILinkItem", kDownloadOriginalLinkPosition, kFalse,
+        
+		// copy info submenu
+		0, "RtMenuLinksUILinkItem:#LinksCopyInfoMenu:", kLinkCopyInfoMenuPosition,kFalse, // position submenu
+		kLinksUICopyPathActionID, "RtMenuLinksUILinkItem:#LinksCopyInfoMenu",kCopyLinkPathMenuPosition,kFalse,
+		kLinksUICopyPlatformPathActionID, "RtMenuLinksUILinkItem:#LinksCopyInfoMenu",kCopyLinkPlatformPathMenuPosition,kFalse,
+		kGenerateLinkReportActionID,  "RtMenuLinksUILinkItem:#LinksCopyInfoMenu",kGenerateLinkReportMenuPosition,kFalse,		
+		
+		kLinksUIPanelMenuSep4ActionID, "RtMenuLinksUILinkItem:-", kLinkSep4MenuPosition, kFalse,
+		kShowHideLinkInfoActionID, "RtMenuLinksUILinkItem", kLinksUIShowHideInfoMenuPosition, kFalse,
+		kLinksUIEmbedLinkActionID, "RtMenuLinksUILinkItem",kEmbedLinkMenuPosition,kFalse,
+
+		
+		// context menu for link info section
+		kLinksUIHideShowInfoThumbnailActionID, "RtMenuLinksUILinkInfo",kLinkInfoShowHideThumbnailMenuPosition,kFalse,
+		kLinksUIEditColumnsActionID, "RtMenuLinksUILinkInfo",kLinksUIHeaderPrefsMenuPosition,kFalse,
+		kLinksUIPanelFileXMPInfoActionID, "RtMenuLinksUILinkInfo",kLinkInfoShowXMPInfoMenuPosition,kFalse,
+		kLinksUICopyPathActionID, "RtMenuLinksUILinkInfo",kCopyLinkPathMenuPosition,kFalse,
+		kLinksUICopyPlatformPathActionID, "RtMenuLinksUILinkInfo",kCopyLinkPlatformPathMenuPosition,kFalse,
+		kCopyAllLinkInfoActionID, "RtMenuLinksUILinkInfo",kCopyLinkInfoMenuPosition,kFalse,
+		kCopySingleLinkInfoFieldActionID, "RtMenuLinksUILinkInfo",kCopyLinkInfoMenuPosition,kFalse,
+		kAutosizeLinkInfoActionID, "RtMenuLinksUILinkInfo",kAutoSizeLinkInfoMenuPosition,kFalse,
+
+		// context menu for link header
+		kLinksUIEditColumnsActionID, "RtMenuLinksUILinksHeader",kLinksUIHeaderPrefsMenuPosition,kFalse,
+		kLinksUIRemoveColumnActionID, "RtMenuLinksUILinksHeader",kLinksUIHeaderRemoveColumnMenuPosition,kFalse,
+		kLinksUIHideShowThumbnailActionID, "RtMenuLinksUILinksHeader",kLinksUIHeaderShowHideThumbnailMenuPosition,kFalse,
+		kGenerateLinkReportActionID, "RtMenuLinksUILinksHeader",kGenerateLinkReportMenuPosition,kFalse,
+
+
+		// panel menu
+		kLinksUIRelinkActionID, "#LinksUIPanelMenu", kRelinkMenuPosition, kFalse,
+		kLinksUIRelinkToFolderActionID, "#LinksUIPanelMenu", kRelinkToFolderMenuPosition, kFalse,
+		kLinksUIRelinkFileExtensionActionID, "#LinksUIPanelMenu", kRelinkFileExtensionMenuPosition, kFalse,
+        kLinksUIRelinkToCloudAssetActionID, "#LinksUIPanelMenu", kRelinkCloudAssetMenuPosition, kFalse,
+		kLinksUIPanelMenuSepActionID, "#LinksUIPanelMenu:-", kLinkSep0MenuPosition, kFalse,
+		kLinksUIUpdateLinkActionID, "#LinksUIPanelMenu",kUpdateLinkMenuPosition,kFalse,
+		kUpdateAllOutOfDateLinksActionID, "#LinksUIPanelMenu",kUpdateAllOutOfDateLinksMenuPosition,kFalse,
+		kLicenseStockAssetActionID, "#LinksUIPanelMenu",kLicenseStockAssetMenuPosition,kFalse,
+		kLinksUIPanelMenuSep1ActionID, "#LinksUIPanelMenu:-", kLinkSep1MenuPosition, kFalse,
+		kGotoLinkActionID, "#LinksUIPanelMenu", kGotoLinkMenuPosition, kFalse,
+		kLinksUIPanelMenuSep2ActionID, "#LinksUIPanelMenu:-", kLinkSep2MenuPosition, kFalse,
+		kLinksUIEditOriginalActionID, "#LinksUIPanelMenu",kEditOriginalMenuPosition,kFalse,
+		kEditOriginalWithActionID, "#LinksUIPanelMenu:#EditWithApp", 0.0,kTrue, // dynamic menu
+		0, "#LinksUIPanelMenu:#EditWithApp:", kEditOriginalWithMenuPosition,kFalse, // position submenu
+		kLinksUIGoToSourceActionID, "#LinksUIPanelMenu",kGoToSourceMenuPosition,kFalse,
+		kRevealLinkInOSActionID, "#LinksUIPanelMenu", kRevealLinkInOSMenuPosition, kFalse,
+		kRevealLinkInBridgeActionID, "#LinksUIPanelMenu",kRevealLinkInBrowserMenuPosition,kFalse,
+		kRevealLinkInCloudLibrariesActionID, "#LinksUIPanelMenu",kRevealLinkInCloudLibrariesMenuPosition,kFalse,
+		kLinksUIPanelMenuSep3ActionID, "#LinksUIPanelMenu:-", kLinkSep3MenuPosition, kFalse,
+		kLinksUIPanelMenuSep4ActionID, "#LinksUIPanelMenu:-", kLinkSep4MenuPosition, kFalse,
+		kLinksUIEditColumnsActionID, "#LinksUIPanelMenu",kLinksUIPrefsMenuPosition,kFalse,
+		kLinksUIEmbedLinkActionID, "#LinksUIPanelMenu",kEmbedLinkMenuPosition,kFalse,
+				
+		// panel 'utilities' submenu
+		0, "#LinksUIPanelMenu:#LinksUtilitiesSubmenu:", kLinkUtilitiesMenuPosition,kFalse, // position submenu
+		kAutoFindAllMissingLinksActionID, "#LinksUIPanelMenu:#LinksUtilitiesSubmenu",kAutoFindMissingLinksMenuPosition,kFalse,
+		kCopyLinksActionID, "#LinksUIPanelMenu:#LinksUtilitiesSubmenu", kCopyLinkMenuPosition, kFalse,
+		kLinksUIPanelFileXMPInfoActionID, "#LinksUIPanelMenu:#LinksUtilitiesSubmenu",kLinkFileInfoMenuPosition,kFalse,
+		kAutosizeLinkInfoActionID, "#LinksUIPanelMenu:#LinksUtilitiesSubmenu",kAutoSizeLinkInfoMenuPosition,kFalse,
+		kShowHideLinkInfoActionID, "#LinksUIPanelMenu:#LinksUtilitiesSubmenu", kLinksUIShowHideInfoMenuPosition, kFalse,
+
+		// panel 'copy info' submenu
+		0, "#LinksUIPanelMenu:#LinksCopyInfoMenu:", kLinkCopyInfoMenuPosition,kFalse, // position submenu
+		kLinksUICopyPathActionID, "#LinksUIPanelMenu:#LinksCopyInfoMenu",kCopyLinkPathMenuPosition,kFalse,
+		kLinksUICopyPlatformPathActionID, "#LinksUIPanelMenu:#LinksCopyInfoMenu",kCopyLinkPlatformPathMenuPosition,kFalse,
+		kCopyAllLinkInfoActionID, "#LinksUIPanelMenu:#LinksCopyInfoMenu",kCopyLinkInfoMenuPosition,kFalse,
+		kGenerateLinkReportActionID,  "#LinksUIPanelMenu:#LinksCopyInfoMenu",kGenerateLinkReportMenuPosition,kFalse,
+	}
+}
+
+// InDesign only actions.
+resource ActionDef (kLinksUIInDesignActionResID + index_enUS)
+{
+	{
+		kLinkCaptionActionComponentBoss, kGenerateLiveCaptionForLinkSelectionActionID, "#GenerateLiveCaptionGraphicSelectionMenu",kObjectMenuCaptionActionArea,kNormalAction,kDisableIfNoFrontDocument|kCustomEnabling,0,kTrue, 
+		kLinkCaptionActionComponentBoss, kGenerateStaticCaptionForLinkSelectionActionID, "#GenerateStaticCaptionGraphicSelectionMenu",kObjectMenuCaptionActionArea,kNormalAction,kDisableIfNoFrontDocument|kCustomEnabling,0,kTrue, 
+		kLinkCaptionActionComponentBoss, kGenerateLiveCaptionForLinkActionID, "#GenerateLiveLinkCaptionMenu",kPaletteMenusLinksActionArea,kNormalAction,kDisableIfNoFrontDocument|kCustomEnabling,0,kTrue,
+		kLinkCaptionActionComponentBoss, kGenerateStaticCaptionForLinkActionID, "#GenerateStaticLinkCaptionMenu",kPaletteMenusLinksActionArea,kNormalAction,kDisableIfNoFrontDocument|kCustomEnabling,0,kTrue,
+		kLinkCaptionActionComponentBoss, kGenerateCaptionPrefsDialogActionID, "#LinksUIGenerateCaptionPrefsMenu",kObjectMenuCaptionActionArea,kNormalAction,kAlwaysEnabled,0,kTrue,
+		kLinkCaptionActionComponentBoss, kConvertLiveCaptionToTextActionID, "#ConvertCaptionToTextMenu",kObjectMenuCaptionActionArea,kNormalAction,kCustomEnabling,0,kTrue,
+
+	}
+}
+
+resource ActionDef (kLinksUIActionResID + index_enUS)
+{
+	{
+		kLinksUIPanelMenuBoss, kGenerateLinkReportActionID, "#LinksUIGenerateReportMenu",kPaletteMenusLinksActionArea,kNormalAction,kDisableIfNoFrontDocument|kCustomEnabling,0,kTrue,
+		kLinksUIPanelMenuBoss, kCopySingleLinkInfoFieldActionID, "#CopyLinkFieldMenu",kPaletteMenusLinksActionArea,kNormalAction,kDisableIfNoFrontDocument|kCustomEnabling,0,kTrue,
+		kLinksUIPanelMenuBoss, kAutosizeLinkInfoActionID, "#LinksUIAutosizeLinkInfoMenu",kPaletteMenusLinksActionArea,kNormalAction,kDisableIfNoFrontDocument|kCustomEnabling,0,kTrue,
+		kLinksUIPanelMenuBoss, kCopyAllLinkInfoActionID, "#LinksUICopyLinkInfoMenu",kPaletteMenusLinksActionArea,kNormalAction,kDisableIfNoFrontDocument|kCustomEnabling,0,kTrue,
+		kLinksUIPanelMenuBoss, kShowHideLinkInfoActionID, "#LinksUIShowLinkInfoMenu",kPaletteMenusLinksActionArea,kNormalAction,kCustomEnabling,0,kTrue,
+		kLinksUIPanelMenuBoss, kLinksUIRelinkActionID, "#LinksUIRelinkLinkMenu",kPaletteMenusLinksActionArea,kNormalAction,kDisableIfNoFrontDocument|kCustomEnabling,0,kTrue,
+		kLinksUIPanelMenuBoss, kLinksUIRelinkToFolderActionID, "#LinksUIRelinkToFolderLinkMenu",kPaletteMenusLinksActionArea,kNormalAction,kDisableIfNoFrontDocument|kCustomEnabling,0,kTrue,
+		kLinksUIPanelMenuBoss, kLinksUIRelinkFileExtensionActionID, "#LinksUIRelinkFileExtensionLinkMenu",kPaletteMenusLinksActionArea,kNormalAction,kDisableIfNoFrontDocument|kCustomEnabling,0,kTrue,
+        kLinksUIPanelMenuBoss, kLinksUIRelinkToCloudAssetActionID, "#LinksUIRelinkFromCloudAssetLinkMenu",kPaletteMenusLinksActionArea,kNormalAction,kDisableIfNoFrontDocument|kCustomEnabling,0,kTrue,
+        kLinksUIPanelMenuBoss, kLinksUIRelinkToAALAssetActionID, "#LinksUIRelinkFromAALAssetLinkMenu",kPaletteMenusLinksActionArea,kNormalAction,kDisableIfNoFrontDocument|kCustomEnabling,0,kTrue,
+        kLinksUIPanelMenuBoss, kLicenseStockAssetActionID, "#LicenseStockAssetLinkMenu",kPaletteMenusLinksActionArea,kNormalAction,kDisableIfNoFrontDocument|kCustomEnabling,0,kTrue,
+
+		kLinksUIPanelMenuBoss, kLinksUIUpdateLinkActionID, "#LinksUIUpdateLinkMenu",kPaletteMenusLinksActionArea,kNormalAction,kDisableIfNoFrontDocument|kCustomEnabling,0,kTrue,
+
+		kLinksUIPanelMenuBoss, kLinksUIEmbedLinkActionID, "#LinksUIEmbedLinkMenu",kPaletteMenusLinksActionArea,kNormalAction,kDisableIfNoFrontDocument|kCustomEnabling,0,kTrue,
+		kLinksUIPanelMenuBoss, kLinksUIEditOriginalActionID, "#LinksUIEditOriginalLinkMenu",kPaletteMenusLinksActionArea,kNormalAction,kDisableIfNoFrontDocument|kCustomEnabling,0,kTrue,
+		kLinksUIPanelMenuBoss, kLinksUIGoToSourceActionID, "#LinksUIGoToSourceLinkMenu",kPaletteMenusLinksActionArea,kNormalAction,kDisableIfNoFrontDocument|kCustomEnabling,0,kTrue,
+		kLinksUIPanelMenuBoss, kLinksUIPanelFileXMPInfoActionID, "#LinksUIXMPFileInfo",kPaletteMenusLinksActionArea,kNormalAction,kDisableIfNoFrontDocument|kCustomEnabling,0,kTrue,
+		kLinksUIPanelMenuBoss, kLinksUIHideShowInfoThumbnailActionID, "#LinksUIHideInfoThumbnailMenu",kPaletteMenusLinksActionArea,kNormalAction,kCustomEnabling,0,kTrue,
+
+		kLinksUIPanelMenuBoss, kLinksUICopyPathActionID, "#LinksUICopyPath",kPaletteMenusLinksActionArea,kNormalAction,kDisableIfNoFrontDocument|kCustomEnabling,0,kTrue,
+		kLinksUIPanelMenuBoss, kLinksUICopyPlatformPathActionID, "#LinksUICopyPlatformPath",kPaletteMenusLinksActionArea,kNormalAction,kDisableIfNoFrontDocument|kCustomEnabling,0,kTrue,
+		kLinksUIPanelMenuBoss, kCopyLinksActionID, "#LinksUICopyLink",kPaletteMenusLinksActionArea,kNormalAction,kCustomEnabling,0,kTrue,
+		kLinksUIPanelMenuBoss, kUpdateAllOutOfDateLinksActionID,"#UpdateAllOutOfDateLinksMenu",kPaletteMenusLinksActionArea,kNormalAction,kCustomEnabling,0,kTrue,
+		kLinksUIPanelMenuBoss, kAutoFindAllMissingLinksActionID, "#AutoFindMissingLinksMenu",kPaletteMenusLinksActionArea,kNormalAction,kCustomEnabling,0,kTrue,
+
+        // HTTP links related action ids for FPO
+        kLinksUIPanelMenuBoss, kReplaceFPOWithOriginalLinkActionID, "#LinksUIReplaceFPOWithOriginalLink",kPaletteMenusLinksActionArea,kNormalAction,kDisableIfNoFrontDocument|kCustomEnabling,0,kTrue,
+        kLinksUIPanelMenuBoss, kReplaceAllFPOWithOriginalLinksActionID, "#LinksUIReplaceAllFPOWithOriginalLinks",kPaletteMenusLinksActionArea,kNormalAction,kDisableIfNoFrontDocument|kCustomEnabling,0,kTrue,
+        kLinksUIPanelMenuBoss, kDownloadOriginalLinkActionID, "#LinksUIDownloadOriginalLink",kPaletteMenusLinksActionArea,kNormalAction,kDisableIfNoFrontDocument|kCustomEnabling,0,kTrue,
+        kLinksUIPanelMenuBoss, kDownloadAllOriginalLinksActionID, "#LinksUIDownloadAllOriginalLinks",kPaletteMenusLinksActionArea,kNormalAction,kDisableIfNoFrontDocument|kCustomEnabling,0,kTrue,
+
+
+// these next 2 are kinda messy because they use different strings on mac vs. windows.
+		kLinksUIPanelMenuBoss, kRevealLinkInOSActionID, 
+#ifdef MACINTOSH
+			"#RevealLinkInMacFinder",
+#else // WINDOWS
+			"#RevealLinkInWinExplorer",
+#endif
+			kPaletteMenusLinksActionArea,kNormalAction,kCustomEnabling,0,kFalse, /* not user editable so that this one won't show up in quickapply, since the other one with the same name is what users probably want */ 
+		kLinksUIPanelMenuBoss, kRevealLinkInOSSelectionActionID,
+#ifdef MACINTOSH
+			"#RevealLinkInMacFinder",
+#else // WINDOWS
+			"#RevealLinkInWinExplorer",
+#endif
+			kPaletteMenusLinksActionArea,kNormalAction,kCustomEnabling,0,kTrue,
+		
+		kLinksUIPanelMenuBoss, kGotoLinkActionID, "#GoToLink",kPaletteMenusLinksActionArea,kNormalAction,kDisableIfNoFrontDocument|kCustomEnabling,0,kTrue,
+		kLinksUIPanelMenuBoss, kRevealLinkInBridgeActionID, "#RevealLinkInAdobeBridge",kPaletteMenusLinksActionArea,kNormalAction,kDisableIfNoFrontDocument|kCustomEnabling,0,kFalse, /* not user editable so that this one won't show up in quickapply, since the other one with the same name is what users probably want */ 
+		kLinksUIPanelMenuBoss, kRevealLinkInBridgeSelectionActionID, "#RevealLinkInAdobeBridge",kPaletteMenusLinksActionArea,kNormalAction,kDisableIfNoFrontDocument|kCustomEnabling,0,kTrue, 
+		kLinksUIPanelMenuBoss, kRevealLinkInCloudLibrariesActionID, "#RevealLinkInCCLibraries",kPaletteMenusLinksActionArea,kNormalAction,kDisableIfNoFrontDocument|kCustomEnabling,0,kTrue,
+		kLinksUIPanelMenuBoss, kRevealLinkInCloudLibrariesSelectionActionID, "#RevealLinkInCCLibraries",kPaletteMenusLinksActionArea,kNormalAction,kDisableIfNoFrontDocument|kCustomEnabling,0,kTrue,
+
+		kLinksUIPanelMenuBoss, kLinksUIEditColumnsActionID, "#LinksUIEditColumnsMenu",kPaletteMenusLinksActionArea,kNormalAction,kAlwaysEnabled,0,kTrue,
+		kLinksUIPanelMenuBoss, kLinksUIRemoveColumnActionID, "#LinksUIRemoveThisColumnMenu",kPaletteMenusLinksActionArea,kNormalAction,kCustomEnabling,0,kTrue,
+		kLinksUIPanelMenuBoss, kLinksUIHideShowThumbnailActionID, "#LinksUIHideThumbnailMenu",kPaletteMenusLinksActionArea,kNormalAction,kCustomEnabling,0,kTrue,
+		kLinksUIPanelMenuBoss, kEditOriginalLayoutSelectionActionID, "#LinksUIEditOriginalLinkMenu",kEditMenuActionArea,kNormalAction,kDisableIfNoFrontDocument|kCustomEnabling,0,kTrue,
+		
+		kEditOriginalWithMenuComponentBoss, kEditOriginalWithActionID,  "dynamic", kPaletteMenusLinksActionArea,kNormalAction,kCustomEnabling|kDisableIfLowMem,0,kFalse,	// dynamic menu
+		kEditOriginalSelectionWithMenuComponentBoss, kEditOriginalSelectionWithActionID,  "dynamic", kEditMenuActionArea,kNormalAction,kCustomEnabling|kDisableIfLowMem,0,kFalse,	// dynamic menu
+		kLinksUIPanelMenuBoss, kGoToSourceLayoutSelectionActionID, "#LinksUIGoToSourceLinkMenu",kEditMenuActionArea,kNormalAction,kDisableIfNoFrontDocument|kCustomEnabling,0,kTrue,
+		kLinksUIPanelMenuBoss, kEmbedLinkFromPropsPanelActionID, "#EmbedLinkFromPropsPanel", kPaletteMenusLinksActionArea, kNormalAction, kCustomEnabling|kDisableIfLowMem, 0, kTrue,
+		kLinksUIPanelMenuBoss, kRelinkAssetFromPropsPanelActionID, "#RelinkAssetFromPropsPanel", kPaletteMenusLinksActionArea, kNormalAction, kAlwaysEnabled, 0, kTrue,
+		kLinksUIPanelMenuBoss, kUpdateLinkFromPropsPanelActionID, "#UpdateLinkFromPropsPanel", kPaletteMenusLinksActionArea, kNormalAction, kAlwaysEnabled, 0, kTrue,
+		kLinksUIPanelMenuBoss, kUnlinkFromPropPanelActionID, "#UnlinkFromPropsPanel", kPaletteMenusLinksActionArea, kNormalAction, kAlwaysEnabled, 0, kTrue,
+	}
+}
+
+
+#endif // __ODFRC__
+
+
+
+
+
+
+

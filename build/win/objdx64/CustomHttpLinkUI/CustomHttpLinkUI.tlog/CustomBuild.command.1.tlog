@@ -1,0 +1,2 @@
+^C:\USERS\USER\DESKTOP\PLUGIN_SDK_V3\PLUGIN\SOURCE\SDKSAMPLES\CUSTOMHTTPLINKUI\CUSTOMHTTPLINKUI.FR
+odfrc -d WINDOWS -d ID_DROVER_ENABLE=1 -d ID_COCOA_ENABLE=0 -d DVAUI_ENABLE_CSNEXT_SKIN=1 "C:\Users\User\Desktop\plugin_sdk_v3\plugin\source\sdksamples\CustomHttpLinkUI\CustomHttpLinkUI.fr" -o "..\objDx64\CustomHttpLinkUI\CustomHttpLinkUI.fres" -d DEBUG  -i "..\..\..\source\sdksamples\customdatalinkui" -i "..\..\..\source\sdksamples\CustomHttpLinkUI" @"SDKODFRCOptions.rsp"

@@ -1,0 +1,130 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/layerpanel/LayerPanelViews.fr $
+//  
+//  Owner: Michael Burbidge
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "Widgets.fh"
+#include "SysControlIds.h"
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "LayerPanelID.h"
+#include "LayerPanelDefs.h"
+#include "IControlViewDefs.h"
+#include "AppFrameworkID.h"			// kApplicationRsrcPluginID
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// TYPES
+//========================================================================================
+
+type LayerPanelWidget (kViewRsrcType) : ErasablePrimaryResourcePanelWidget	(ClassID = kLayerPanelBoss)
+{
+	CPanelMenuData;
+	SizePanelDetailController;
+};
+
+type LayerPanelTreeWidget	(kViewRsrcType) : TreeViewWidget	(ClassID = kLayerPanelTreeWidgetBoss)
+{
+	CControlViewObservers;	// List of observers to attach when showing this widget
+};
+
+type LayerTreeElement			(kViewRsrcType) : PrimaryResourcePanelWidget (ClassID = kLayerTreeElementBoss) { };
+
+
+type NewLayerButton				(kViewRsrcType) : RollOverIconButtonWidget (ClassID = kNewLayerButtonBoss) { };
+type DeleteLayerButton			(kViewRsrcType) : RollOverIconButtonWidget (ClassID = kDeleteLayerButtonBoss) { };
+
+type LayerPageItemItemPencil		(kViewRsrcType) : RollOverIconButtonWidget (ClassID = kLayerPageItemPencilBoss) { };
+type LayerPanelEyeball			(kViewRsrcType) : RollOverIconButtonWidget (ClassID = kLayerPanelEyeballBoss) { };
+type LayerPanelPencil			(kViewRsrcType) : RollOverIconButtonWidget (ClassID = kLayerPanelPencilBoss) { };
+type LayerPanelSwatch			(kViewRsrcType) : Widget (ClassID = kLayerPanelSwatchBoss)
+{
+	CControlView
+};
+type LayerPanelName				(kViewRsrcType) : TextInLineEditWidget (ClassID = kLayerPanelNameBoss) 
+{
+};
+
+type LayerPageItemName				(kViewRsrcType) : TextInLineEditWidget (ClassID = kLayerPageItemNameBoss) 
+{
+};
+
+type LayerPanelActive			(kViewRsrcType) : RollOverIconButtonWidget (ClassID = kLayerPanelActiveBoss) { };
+
+
+type LayerPanelSelectionProxy	(kViewRsrcType) : Widget (ClassID = kLayerPanelSelectionProxyBoss) 
+{
+	CControlView;
+};
+
+type PageItemSelectionProxy	(kViewRsrcType) : LayerPanelSelectionProxy (ClassID = kPageItemSelectionProxyBoss) 
+{
+};
+
+//========================================================================================
+// RESOURCES Local Index
+//========================================================================================
+
+
+resource LocaleIndex (kLayerPanelRsrcID)
+{
+	kViewRsrcType,
+	{
+		kWildFS, k_Wild, 	kLayerPanelRsrcID + index_enUS
+	}
+}
+
+resource LocaleIndex (kLayerPageItemElementPanelRsrcID)
+{
+	kViewRsrcType,
+	{
+		kWildFS, k_Wild, 	kLayerPageItemElementPanelRsrcID + index_enUS
+	}
+}
+
+resource LocaleIndex (kLayerElementPanelRsrcID)
+{
+	kViewRsrcType,
+	{
+		kWildFS, k_Wild, 	kLayerElementPanelRsrcID + index_enUS
+	}
+}
+
+resource LocaleIndex (kLayerPageItemElementSmallRowsPanelRsrcID)
+{
+	kViewRsrcType,
+	{
+		kWildFS, k_Wild, 	kLayerPageItemElementSmallRowsPanelRsrcID + index_enUS
+	}
+}
+
+resource LocaleIndex (kLayerElementSmallRowsPanelRsrcID)
+{
+	kViewRsrcType,
+	{
+		kWildFS, k_Wild, 	kLayerElementSmallRowsPanelRsrcID + index_enUS
+	}
+}
+
+#endif // __ODFRC__
+
+#include "LayerPanelViews_enUS.fr"

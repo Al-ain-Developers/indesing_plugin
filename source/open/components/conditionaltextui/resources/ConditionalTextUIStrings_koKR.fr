@@ -1,0 +1,126 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kConditionalTextUIStringsRsrcID + index_koKR)
+{
+    k_koKR,                                 // Locale Id
+    kResourceUTF8Encoded,     // Character encoding converter
+    {
+		"#CondTextUI_WinMenu",	"조건부 텍스트(&O)",	// panel menu item
+		"#CondTextUI_PanelName","조건부 텍스트",		// panel name
+		"#CondTextUI_PanelMenu","조건부 텍스트 패널 메뉴",
+		"#CondTextUI_NewConditionTagMenu", "새 조건...",
+		"#CondTextUI_DeleteConditionTagMenu", "조건 삭제...",
+		"#CondTextUI_DeleteConditionTagsMenu", "조건 삭제...",
+		"#CondTextUI_EditConditionTagMenu", "조건 옵션...",
+		"#CondTextUI_LoadConditionTagsMenu", "조건 불러오기...",
+		"#CondTextUI_LoadConditionTagsAndSetsMenu", "조건 및 세트 불러오기...",
+		"#CondTextUI_ShowIndicatorsCB", "조건부 텍스트에서 표시기 표시",
+		"#CondTextUI_ShowIndicatorsMenu", "조건부 텍스트에서 표시기 표시",
+		"#CondTextUI_ShowAndPrintIndicatorsMenu", "조건부 텍스트에서 표시기 표시 및 인쇄",
+		"#CondTextUI_HideIndicatorsMenu", "조건부 텍스트에서 표시기 숨기기",
+		"#CondTextUI_ShowIndicatorsDD", "표시기:",
+		"#CondTextUI_ShowIndicators", "표시",
+		"#CondTextUI_ShowAndPrintIndicators", "표시 및 인쇄",
+		"#CondTextUI_HideIndicators", "숨기기",
+		"#CondTextUI_RtMenuConditionTagTVNode",    "조건 트리 보기 노드 컨텍스트 메뉴",
+		"#CondTextUI_RtMenuUnapplyTag",		"\"^1\" 적용 취소",
+		"#CondTextUI_RtMenuDeleteTag",		"\"^1\" 삭제",
+		"#CondTextUI_RtMenuEditTag",		"\"^1\" 편집...",
+		"Show Options", "옵션 표시(&O)",
+		"Hide Options", "옵션 숨기기(&O)",
+		"#CondTextUI_SelectUnusedMenu", "사용하지 않는 항목 모두 선택",
+	
+		"#ConditionTagList_NameColumnLabel", "이름",
+		"#ConditionTag_OptionsDialog", "조건 옵션",
+		"#ConditionTag_OptionsDialogNew", "새 조건",
+		"#ConditionTagOptions_Name:", "이름(&N):",
+		"#ConditionTagOptions_Method:", "방법(&M):",
+		"#ConditionTagOptions_Appearance:", "모양(&A):",
+		"#ConditionTagOptions_Color:", "색상(&C):",
+		"#ConditionTagOptions_Indicator", "표시기",
+		"#ConditionTagOptions_MethodUnderline", "밑줄",
+		"#ConditionTagOptions_MethodHighlight", "강조 표시",
+		"#ConditionTagOptions_WavyUnderline", "물결",		
+		"#ConditionTagOptions_SolidUnderline", "실선",		
+		"#ConditionTagOptions_DashedUnderline", "파선",		
+		"#ConditionTag_EmptyNameMsg", "조건 이름을 입력하십시오.",
+		"#ConditionTag_NameInUseMsg", "이 조건 이름은 이미 사용 중입니다. 다른 이름을 선택하십시오.",
+		
+		"#ConditionSetShowAll", "모두 표시",
+		"#ConditionSetHideAll", "모두 숨기기",
+		"#ConditionSetNone", "[없음]",
+		"#ConditionSetBlank", " ",
+		"#ConditionSetLabel", "세트:",
+		"#ConditionSetNewSet", "새 세트 만들기...",
+		"#ConditionSetDeleteSet", "\"^1\" 삭제...",
+		"#ConditionSetRenameSet", "\"^1\" 이름 바꾸기...",
+		"#ConditionSetRedefineSet", "\"^1\" 재정의...",
+		"#ConditionSetUpdateAllSets", "모든 세트 업데이트",
+		"#ConditionSetUpdateAllSetsUndoName", "모든 조건 세트 업데이트",
+		"#ConditionSetNameDialog", "조건 세트 이름",
+		"#ConditionSetNameStatic", "이름(&N):",
+		"#InvalidSetName", "잘못된 조건 세트 이름",
+		"#DuplicateSetName", "같은 이름이 이미 있습니다.",
+		"#NoActiveSetString", "활성 세트 없음",
+		
+		"#ConditionalTextTip", "^1이(가) 포함된 숨겨진 텍스트 찾음:  ",
+		"#ConditionalTextTipOneTag", "이 조건",
+		"#ConditionalTextTipManyTags", "이러한 조건",
+		
+		"#ConditionalTextEyeballHideWidgetTip", "이 조건이 적용된 모든 텍스트를 숨기려면 클릭하십시오.",
+		"#ConditionalTextEyeballShowWidgetTip", "이 조건이 적용된 모든 텍스트를 표시하려면 클릭하십시오.",
+		"#ConditionalTextEyeballUnconditionalWidgetTip", "무조건부 텍스트가 항상 표시됨",
+		"#ConditionalTextAppliedAllTip",	"선택한 모든 텍스트에 조건이 적용되었습니다. 적용 취소하려면 클릭하십시오.",
+		"#ConditionalTextAppliedSomeTip",	"선택한 텍스트 중 일부에 조건이 적용되었습니다. 선택한 모든 텍스트에 적용하려면 클릭하십시오.",
+		"#ConditionalTextAppliedNoneTip",	"조건을 적용하려면 클릭하십시오.",
+		"#ConditionalTextAppliedAllTipUncondition",	"선택한 텍스트가 무조건부입니다.",
+		"#ConditionalTextAppliedSomeTipUncondition",	"선택한 텍스트 중 일부가 무조건부입니다. 모두 무조건부로 만들려면 클릭하십시오.",
+		"#ConditionalTextAppliedNoneTipUncondition",	"텍스트를 무조건부로 만들려면 클릭하십시오.",
+		"#ConditionalTextApplyNoSelectionTip", "선택한 텍스트에 조건을 적용하려면 클릭하십시오.",
+		"#ConditionalTextNewTagTip",		"새 조건",
+		"#ConditionalTextDeleteTagTip",		"조건 삭제",
+		"#ConditionalTextIndicatorTip",		"표시기 방법은 ^1입니다.",
+		"#ConditionalTextNewSetTip",		"새 세트",
+		"#SetOverrideTip_NewConditionsAndConditionVisibility",	"재정의: 조건 가시성(세트를 다시 선택하여 지우거나 [재정의]를 선택함) + 새 조건([모든 세트 업데이트]를 선택하여 지우거나 [재정의]를 선택함)",
+		"#SetOverrideTip_NewConditions",	"재정의: 새 조건([모든 세트 업데이트]를 선택하여 지우거나 [재정의]를 선택함)",
+		"#SetOverrideTip_ConditionVisibility",	"재정의: 조건 가시성(세트를 다시 선택하여 지우거나 [재정의]를 선택함)",
+		
+		"#ConditionTag_DeleteConditionDialog", "조건 삭제", 
+		"#ConditionTag_DeleteConditionsDialog", "조건 삭제", 
+		"#ConditionTag_DeleteConditionAndReplace:", "조건 삭제 및 바꾸기: ", 
+		"#ConditionTag_DeleteConditionsAndReplace:", "조건 삭제 및 바꾸기: ", 
+		"#ConditionTag_DeleteInformationAlert", "조건을 휴지통 아이콘으로 드래그하여 조건을 삭제합니다.",
+		"#ConditionTag_DeleteNoReplaceChoice", "[없음]",
+		
+		"#QuickApplyConditions", "조건",
+		"#Conditions_Filter_Key", "CT", // should be upper case if there is an upper case character, this is the prefix key for quick apply for text conditions.
+		"#QuickApplyConditionSets", "조건 세트",
+		"#QuickApplyConditionSets_Filter_Key", "CS",  // should be upper case if there is an upper case character, this is the prefix key for quick apply for text condition sets.
+		"#QuickApplyConditons_Menu_Key_String", "조건 포함(ct:)",
+		"#QuickApplyConditonSets_Menu_Key_String", "조건 세트 포함(cs:)",
+		
+		"#SingularConditionStatusBodyString", "^1개의 조건 ^2에 적용됨",
+		"#PluralConditionStatusBodyString", "^1개의 조건 ^2에 적용됨",
+		"#MixedConditionString", " [혼합]",
+		"#NoConditionsString", "적용된 조건 없음",
+    }
+};
+
+#endif // __ODFRC__

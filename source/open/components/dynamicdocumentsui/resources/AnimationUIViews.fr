@@ -1,0 +1,124 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/dynamicdocumentsui/resources/AnimationUIViews.fr $
+//  
+//  Owner: SusanCL
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  ADOBE CONFIDENTIAL
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//  
+//  tnw: Merged paradigm's last version of this file. It didn't make it into Stella's checkin.
+//  
+//========================================================================================
+
+#include "AppFrameworkID.h"			// kApplicationRsrcPluginID
+#include "DynamicDocumentsUIID.h"
+#include "DynamicDocumentsUIDefs.h"
+
+#include "Widgets.fh"
+#include "EveInfo.fh"
+#include "SysControlIds.h"
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "TreeViewDefs.h"
+
+#ifdef __ODFRC__
+
+//_______________________________________________________________________________________
+// TYPES
+//_______________________________________________________________________________________
+type AnimationUIPanelWidget (kViewRsrcType) : GenericPalettePanelWidget(ClassID = kAnimationUIPanelBoss)
+{
+	CPanelMenuData;
+};
+
+type AnimationPreviewPanelWidget			(kViewRsrcType) : Widget (ClassID = kAnimationPreviewPanelWidgetBoss)
+{
+    ErasablePanelView; 
+    CTextControlData; 
+    CPanelControlData; 
+}
+
+type AnimationNameEditBoxWidget				(kViewRsrcType) : TextEditBoxWidget()  { }
+type AnimationUIPropertyExpanderWidget		(kViewRsrcType) : RollOverIconButtonWidget () { }
+type AnimationUIPresetPopupMenuWidget		(kViewRsrcType) : RollOverIconButtonWidget	(ClassID = kIconPopupBoss ) 
+{
+	CTextControlData;
+}
+
+type AnimationUIEventInfoWidget				(kViewRsrcType) : InfoStaticTextWidget		(ClassID = kAnimationUIEventInfoWidgetBoss) { }
+type AnimationUIEventPopupWidget			(kViewRsrcType) : RollOverIconButtonWidget	(ClassID = kIconPopupBoss ) 
+{
+	CTextControlData;
+}
+
+type AnimationPanelPreviewButton		(kViewRsrcType)	: RollOverIconButtonWidget(ClassID = kAnimationPanelPreviewSpreadWidgetBoss) {}
+
+type AnimationUIAnimateOptionWidget		(kViewRsrcType) : DropDownListWidget (ClassID = kAnimationUIAnimateOptionWidgetBoss) {}
+type AnimationUIButtonTriggerWidget		(kViewRsrcType) : RollOverIconButtonWidget (ClassID = kAnimationUIButtonTriggerWidgetBoss) {}
+
+type AnimationUIShowProxyButtonWidget	(kViewRsrcType) : RollOverIconButtonWidget (ClassID = kADBEIconToggleButtonWidgetBoss) {}
+
+type AnimationUIXFProxyWidget			(kViewRsrcType) : Widget (ClassID = kAnimationUIXFormPointWidgetBoss)
+{ 
+    CControlView; 
+};
+type AnimationUISavePresetDialog (kViewRsrcType) : DialogBoss (ClassID = kAnimationUISavePresetDialogBoss)
+{ 
+	WidgetEveInfo;
+};
+
+
+
+//_______________________________________________________________________________________
+//	Resources
+//_______________________________________________________________________________________
+resource LocaleIndex (kAnimationUIPanelRsrcID)
+{
+	kViewRsrcType,
+	{
+		kWildFS, k_Wild, 	kAnimationUIPanelRsrcID + index_enUS
+		kWildFS, k_deDE, 	kAnimationUIPanelRsrcID + index_deDE
+		kWildFS, k_frFR, 	kAnimationUIPanelRsrcID + index_frFR
+		kWildFS, k_jaJP, 	kAnimationUIPanelRsrcID + index_jaJP
+		kWildFS, k_ruRU, 	kAnimationUIPanelRsrcID + index_ruRU
+		kWildFS, k_daDK, 	kAnimationUIPanelRsrcID + index_deDE
+		kWildFS, k_nlNL, 	kAnimationUIPanelRsrcID + index_deDE
+		kWildFS, k_csCZ, 	kAnimationUIPanelRsrcID + index_csCZ
+		kWildFS, k_koKR, 	kAnimationUIPanelRsrcID + index_koKR
+	}
+}                                                                                                    
+
+resource LocaleIndex (kAnimationUISavePresetRsrcID)
+{
+	kViewRsrcType,
+	{
+		kWildFS, k_Wild, 	kAnimationUISavePresetRsrcID + index_enUS
+	}
+}
+
+#endif // __ODFRC__
+
+#include "AnimationUIView_enUS.fr"
+#include "AnimationUIView_deDE.fr"
+#include "AnimationUIView_jaJP.fr"
+#include "AnimationUIView_ruRU.fr"
+#include "AnimationUIView_frFR.fr"
+#include "AnimationUIView_koKR.fr"
+#include "AnimationUIView_csCZ.fr"
+

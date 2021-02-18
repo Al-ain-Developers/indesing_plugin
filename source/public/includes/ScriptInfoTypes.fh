@@ -1,0 +1,669 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/public/includes/ScriptInfoTypes.fh $
+//  
+//  Owner: Jonathan W. Brown
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#ifndef __SCRIPTINFOTYPES_FH__
+#define __SCRIPTINFOTYPES_FH__
+
+#include "CoreResTypes.h"
+#include "GUID.h"
+#include "PMTypes.fh"
+#include "Schema.fh"			//FormatNumber type
+#include "ScriptingDefs.h"		//kInvalidScriptID
+#include "ScriptInfoTypes.h"
+#include "ScriptingID.h"
+
+#ifdef __ODFRC__
+
+#ifndef LONG_MAX
+//#include "Limits.h"	//Causes ODFRC in CW to choke, so we do it manually
+#define LONG_MAX	0x7FFFFFFFL
+#endif
+
+// --------------------------------------------------------------------------
+// DOM Versions - once defined, these should never change
+// --------------------------------------------------------------------------
+
+#define kInitialScriptVersion		kInitialScriptInfoMajorVersionNumber, kInitialScriptInfoMinorVersionNumber
+#define kCS1ScriptVersion			kDragontailMajorScriptVersionNumber, kDragontailMinorScriptVersionNumber
+#define kCS2ScriptVersion			kFiredrakeMajorScriptVersionNumber, kFiredrakeMinorScriptVersionNumber
+#define kCS3ScriptVersion			kCobaltMajorScriptVersionNumber, kCobaltMinorScriptVersionNumber
+#define kCS4ScriptVersion			kBasilMajorScriptVersionNumber, kBasilMinorScriptVersionNumber
+#define kCS5ScriptVersion			kRocketMajorScriptVersionNumber, kRocketMinorScriptVersionNumber
+#define kCS5_5ScriptVersion			kOdinMajorScriptVersionNumber, kOdinMinorScriptVersionNumber
+#define kCS6ScriptVersion			kAthosMajorScriptVersionNumber, kAthosMinorScriptVersionNumber
+#define kCCScriptVersion			kCitiusMajorScriptVersionNumber, kCitiusMinorScriptVersionNumber
+#define kCC10ScriptVersion			kSiriusMajorScriptVersionNumber, kSiriusMinorScriptVersionNumber
+#define kCC10_1ScriptVersion		kSiriusR3MajorScriptVersionNumber, kSiriusR3MinorScriptVersionNumber
+#define kCC10_2ScriptVersion		kSiriusR4MajorScriptVersionNumber, kSiriusR4MinorScriptVersionNumber
+#define kCC11ScriptVersion			kR5MajorScriptVersionNumber, kR5MinorScriptVersionNumber
+#define kCC11_2ScriptVersion		kR7MajorScriptVersionNumber, kR7MinorScriptVersionNumber
+#define kCC11_3ScriptVersion		kR8MajorScriptVersionNumber, kR8MinorScriptVersionNumber
+#define kCC11_4ScriptVersion		kR9MajorScriptVersionNumber, kR9MinorScriptVersionNumber
+#define kCC12ScriptVersion			kR10MajorScriptVersionNumber, kR10MinorScriptVersionNumber
+#define kCC12_1ScriptVersion		kR11MajorScriptVersionNumber, kR11MinorScriptVersionNumber
+#define kCC13ScriptVersion			kR12MajorScriptVersionNumber, kR12MinorScriptVersionNumber
+#define kCC13_1ScriptVersion		kR13MajorScriptVersionNumber, kR13MinorScriptVersionNumber
+#define kCC14ScriptVersion			kCC14MajorScriptVersionNumber, kCC14MinorScriptVersionNumber
+#define kCC15ScriptVersion			kCC15MajorScriptVersionNumber, kCC15MinorScriptVersionNumber
+#define kCC15_1ScriptVersion		kCC15_1MajorScriptVersionNumber, kCC15_1MinorScriptVersionNumber
+#define kCC16ScriptVersion			kCC16MajorScriptVersionNumber, kCC16MinorScriptVersionNumber
+
+#ifdef ID_DEPRECATED	//deprecated in CS5; remove in CS6
+#define kDragontailScriptVersion	kCS1ScriptVersion
+#define kFiredrakeScriptVersion		kCS2ScriptVersion
+#define kCobaltScriptVersion		kCS3ScriptVersion
+#define kBasilScriptVersion			kCS4ScriptVersion
+#endif
+
+// ---------------------------------------
+// Values
+// * Unit values must be a real number in points
+// * There is no way to specify a value of these types:
+//	Int64, Date, File, Object, ObjectList, List, Record, Stream
+// ---------------------------------------
+
+#define NoValue						{s_empty{}}
+#define BoolValue(val)				{s_boolean{val}}
+#define Int16Value(val)				{s_shortint{val}}
+#define Int32Value(val)				{s_longint{val}}
+#define StringValue(val)			{s_string{val}}
+#define KeyStringValue(val)			{s_keystring{val}}	//Value is a key string (untranslated version of a translatable string)
+#define RealValue(val)				{s_double{val}}
+#define UnitValue(val)				{s_double{val}}
+#define EnumValue(val)				{s_enumeration{val}}
+
+// ---------------------------------------
+// For TypeNameType
+// ---------------------------------------
+
+//includes empty return type description
+#define VoidType										"", kScriptInfoVoidType, 1, NoValue, NoValue, NoValue, {}, ""
+#define AnyType											"", kScriptInfoAnyType, 1, NoValue, NoValue, NoValue, {}
+
+//user must supply list of subtypes
+#define VariableType									"", kScriptInfoVariableType, 1, NoValue, NoValue, NoValue,
+#define VariableDefaultType								"", kScriptInfoVariableType, 1, NoValue, NoValue,
+#define VariableArrayType(len)							"", kScriptInfoVariableType, len, NoValue, NoValue, NoValue,
+
+#define StructType										"", kScriptInfoStructType, 1, NoValue, NoValue, NoValue,
+#define StructArrayType(len)							"", kScriptInfoStructType, len, NoValue, NoValue, NoValue,
+#define StructField(name,type)							name type	//no comma so that the name string can merge with the empty string at the beginning of the type
+
+#define Int16Type										"", kScriptInfoInt16Type, 1, NoValue, NoValue, NoValue, {}
+#define Int16DefaultType(def)							"", kScriptInfoInt16Type, 1, NoValue, NoValue, Int16Value(def), {}
+#define Int16MinMaxType(min, max)						"", kScriptInfoInt16Type, 1, Int16Value(min), Int16Value(max), NoValue, {}
+#define Int16MinMaxDefaultType(min, max, def)			"", kScriptInfoInt16Type, 1, Int16Value(min), Int16Value(max), Int16Value(def), {}
+#define Int16ArrayType(len)								"", kScriptInfoInt16Type, len, NoValue, NoValue, NoValue, {}
+#define Int16MinMaxArrayType(len, min, max)				"", kScriptInfoInt16Type, len, Int16Value(min), Int16Value(max), NoValue, {}
+
+#define Int32Type										"", kScriptInfoInt32Type, 1, NoValue, NoValue, NoValue, {}
+#define Int32DefaultType(def)							"", kScriptInfoInt32Type, 1, NoValue, NoValue, Int32Value(def), {}
+#define Int32MinMaxType(min, max)						"", kScriptInfoInt32Type, 1, Int32Value(min), Int32Value(max), NoValue, {}
+#define Int32MinMaxDefaultType(min, max, def)			"", kScriptInfoInt32Type, 1, Int32Value(min), Int32Value(max), Int32Value(def), {}
+#define Int32ArrayType(len)								"", kScriptInfoInt32Type, len, NoValue, NoValue, NoValue, {}
+#define Int32MinMaxArrayType(len, min, max)				"", kScriptInfoInt32Type, len, Int32Value(min), Int32Value(max), NoValue, {}
+
+#define Int64Type										"", kScriptInfoInt64Type, 1, NoValue, NoValue, NoValue, {}
+
+#define BoolType										"", kScriptInfoBoolType, 1, NoValue, NoValue, NoValue, {}
+#define BoolDefaultType(def)							"", kScriptInfoBoolType, 1, NoValue, NoValue, BoolValue(def), {}
+#define BoolArrayType(len)								"", kScriptInfoBoolType, len, NoValue, NoValue, NoValue, {}
+
+#define StringType										"", kScriptInfoStringType, 1, NoValue, NoValue, NoValue, {}
+#define StringDefaultType(def)							"", kScriptInfoStringType, 1, NoValue, NoValue, StringValue(def), {}
+#define KeyStringDefaultType(def)						"", kScriptInfoStringType, 1, NoValue, NoValue, KeyStringValue(def), {}	//Default value is a key string (untranslated version of a translatable string)
+#define StringArrayType(len)							"", kScriptInfoStringType, len, NoValue, NoValue, NoValue, {}
+
+#define URIType											StringType	// a URIType is a UTF8, URI encoded string
+#define JsonType                                        StringType  
+//min, max, and default values must be in points
+#define UnitType										"", kScriptInfoUnitType, 1, NoValue, NoValue, NoValue, {}
+#define UnitDefaultType(def)							"", kScriptInfoUnitType, 1, NoValue, NoValue, UnitValue(def), {}
+#define UnitMinMaxType(min, max)						"", kScriptInfoUnitType, 1, UnitValue(min), UnitValue(max), NoValue, {}
+#define UnitMinMaxDefaultType(min, max, def)			"", kScriptInfoUnitType, 1, UnitValue(min), UnitValue(max), UnitValue(def), {}
+#define UnitArrayType(len)								"", kScriptInfoUnitType, len, NoValue, NoValue, NoValue, {}
+#define UnitMinMaxArrayType(len, min, max)				"", kScriptInfoUnitType, len, UnitValue(min), UnitValue(max), NoValue, {}
+
+#define RealType										"", kScriptInfoRealType, 1, NoValue, NoValue, NoValue, {}
+#define RealDefaultType(def)							"", kScriptInfoRealType, 1, NoValue, NoValue, RealValue(def), {}
+#define RealMinMaxType(min, max)						"", kScriptInfoRealType, 1, RealValue(min), RealValue(max), NoValue, {}
+#define RealMinMaxDefaultType(min, max, def)			"", kScriptInfoRealType, 1, RealValue(min), RealValue(max), RealValue(def), {}
+#define RealArrayType(len)								"", kScriptInfoRealType, len, NoValue, NoValue, NoValue, {}
+#define RealMinMaxArrayType(len, min, max)				"", kScriptInfoRealType, len, RealValue(min), RealValue(max), NoValue, {}
+
+#define DateType										"", kScriptInfoDateType, 1, NoValue, NoValue, NoValue, {}
+#define DateArrayType(len)								"", kScriptInfoDateType, len, NoValue, NoValue, NoValue, {}
+
+#define FileType										"", kScriptInfoFileType, 1, NoValue, NoValue, NoValue, {}
+#define FileArrayType(len)								"", kScriptInfoFileType, len, NoValue, NoValue, NoValue, {}
+
+#define EnumType(id)									"", id, 1, NoValue, NoValue, NoValue, {}
+#define EnumDefaultType(id, def)						"", id, 1, NoValue, NoValue, EnumValue(def), {}
+#define EnumArrayType(id, len)							"", id, len, NoValue, NoValue, NoValue, {}
+
+#define ObjectType(id)									"", id, 1, NoValue, NoValue, NoValue, {}
+#define ObjectArrayType(id, len)						"", id, len, NoValue, NoValue, NoValue, {}
+
+#define FunctionType									"", kScriptInfoFunctionType, 1, NoValue, NoValue, NoValue, {}
+#define StreamType										"", kScriptInfoStreamType, 1, NoValue, NoValue, NoValue, {}
+#define RecordType(id)									"", kScriptInfoRecordType, kVariableLength, NoValue, NoValue, NoValue, {"", id, 1, NoValue, NoValue, NoValue, {}}
+
+#define TypeDefType(id)									"", id, 1, NoValue, NoValue, NoValue, {}
+#define TypeDefDefaultType(id)							"", id, 1, NoValue, NoValue,
+#define TypeDefArrayType(id, len)						"", id, len, NoValue, NoValue, NoValue, {}
+
+//To avoid problems reading INX in a previous version, it is illegal
+//to change the type of a property. However, certain changes are OK,
+//such as adding min/max data that was previously missing. In these
+//cases, in order to avoid asserts when generating an INX DOM, add a 
+//"PermitTypeChange" type to the assignable types list of the updated 
+//version of the property resource.
+#ifdef DEBUG
+#define PermitTypeChange								"", kIgnoreTypeChangeToken, 1, NoValue, NoValue, NoValue, {}
+#else
+#define PermitTypeChange					
+#endif
+
+// ---------------------------------------
+// For ObjectElementType
+// ---------------------------------------
+
+#define NoSingularInfo				kInvalidScriptID, "", "", kInvalid_CLSID
+#define NoCollectionInfo			kInvalidScriptID, "", "", kInvalid_CLSID
+
+// --------------------------------------------------------------------------
+// Resource Types
+// --------------------------------------------------------------------------
+
+type AppVersion( kAppVersionRsrcType )
+{
+	longint ;				//Major version number of this DOM
+	longint ;				//Minor version number of this DOM
+	wstring ;				//UI version number string
+	GuidType ;				//Application GUID
+	GuidType ;				//Single-user TypeLib GUID
+	GuidType ;				//Multi-user TypeLib GUID
+	longint ;				//Major version number of the lowest DOM that can read INX files generated by this DOM 
+	longint ;				//Minor version number of the lowest DOM that can read INX files generated by this DOM
+} ;
+
+type BaseScriptDataType
+{
+	switch
+	{
+		case s_empty :
+			key longint = 0 ;	//ScriptData::s_empty
+		case s_boolean :
+			key longint = 1 ;	//ScriptData::s_boolean
+			integer ;
+		case s_shortint :
+			key longint = 3 ;	//ScriptData::s_shortint
+			integer ;
+		case s_longint :
+			key longint = 4 ;	//ScriptData::s_longint
+			longint ;
+		case s_string :
+			key longint = 2 ;	//ScriptData::s_string
+			NoTranslateString ;
+		case s_keystring :
+			key longint = 2 ;	//ScriptData::s_string
+			PlatformPMString ;
+		case s_double :
+			key longint = 6 ;	//ScriptData::s_double
+			double ;
+		case s_enumeration :
+			key longint = 12 ;	//ScriptData::s_enumeration
+			longint ;
+	}
+} ;
+
+type ScriptDataType
+{
+	switch
+	{
+		case s_empty :
+			key longint = 0 ;	//ScriptData::s_empty
+		case s_boolean :
+			key longint = 1 ;	//ScriptData::s_boolean
+			integer ;
+		case s_shortint :
+			key longint = 3 ;	//ScriptData::s_shortint
+			integer ;
+		case s_longint :
+			key longint = 4 ;	//ScriptData::s_longint
+			longint ;
+		case s_string :
+			key longint = 2 ;	//ScriptData::s_string
+			NoTranslateString ;
+		case s_keystring :
+			key longint = 2 ;	//ScriptData::s_string
+			PlatformPMString ;
+		case s_double :
+			key longint = 6 ;	//ScriptData::s_double
+			double ;
+		case s_enumeration :
+			key longint = 12 ;	//ScriptData::s_enumeration
+			longint ;
+		case s_list :
+			key longint = 9 ;	//ScriptData::s_list
+			longint = $$CountOf( ListItems ) ;
+			array ListItems
+			{
+				BaseScriptDataType ;	//we include another type rather than copying its contents to force an extra set of {} around ListItems
+			} ;
+	}
+} ;
+
+type TypeNameType
+{
+	wstring ;								//name
+	unsigned longint ;								//id
+	unsigned longint kVariableLength = 0x0 ;		//length
+	ScriptDataType ;								//min
+	ScriptDataType ;								//max
+	ScriptDataType ;								//default
+
+	//For variable, struct, and record types
+	longint = $$CountOf( SubTypes ) ;				//number of subtypes
+	array SubTypes									//array of subtypes
+	{
+		wstring ;							//name
+		unsigned longint ;							//id
+		unsigned longint kVariableLength = 0x0 ;	//length
+		ScriptDataType ;							//min
+		ScriptDataType ;							//max
+		ScriptDataType ;							//default
+
+		//For variable, struct, and record types
+		longint = $$CountOf( SubSubTypes ) ;		//number of subtypes
+		array SubSubTypes							//array of subtypes
+		{
+			wstring ;						//name
+			unsigned longint ;						//id
+			unsigned longint kVariableLength = 0x0 ;//length
+			ScriptDataType ;						//min
+			ScriptDataType ;						//max
+			ScriptDataType ;						//default
+
+			//For variable, struct, and record types
+			longint = $$CountOf( SubSubSubTypes ) ;	//number of subtypes
+			array SubSubSubTypes					//array of subtypes
+			{
+				wstring ;						//name
+				unsigned longint ;						//id
+				unsigned longint kVariableLength = 0x0 ;//length
+				ScriptDataType ;						//min
+				ScriptDataType ;						//max
+				ScriptDataType ;						//default
+
+				//For variable, struct, and record types
+				longint = $$CountOf( SubSubSubSubTypes ) ;	//number of subtypes
+				array SubSubSubSubTypes						//array of subtypes
+				{
+					wstring ;						//name
+					unsigned longint ;						//id
+					unsigned longint kVariableLength = 0x0 ;//length
+					ScriptDataType ;						//min
+					ScriptDataType ;						//max
+					ScriptDataType ;						//default
+
+					//We need to impose an arbitrary limit on the nesting of variable and struct types; exceeding 
+					//it will cause ODFRC error R32731: # Error: More than 0 elements specified for the array.
+					longint = 0 ;							//number of subtypes
+					array [0] {} ;							//array of subtypes
+				} ;
+			} ;
+		} ;
+	} ;
+} ;
+
+type DefaultElementContextType
+{
+	unsigned longint = 0 ;								//client boss id
+	integer = 0 ;										//Feature Set Locale Id
+	integer = 0 ;										//User Interface Locale Id
+	longint = kInitialScriptInfoMajorVersionNumber ;	//first version major
+	longint = kInitialScriptInfoMinorVersionNumber ;	//first version minor
+	longint = LONG_MAX ;								//last version major
+	longint = LONG_MAX ;								//last version minor
+} ;
+
+type BasicInfoType
+{
+	unsigned longint ;						//ScriptID
+	wstring ;								//name
+	wstring ;								//description
+} ;
+
+type BasicElementType
+{
+	DefaultElementContextType ;
+	unsigned longint ;						//ScriptElementID
+	unsigned longint = kInvalidPlugin ;		//PluginID
+	unsigned longint = 0 ;					//Metadata length
+	BasicInfoType ;
+} ;
+
+type TypeDefinitionType : BasicElementType
+{
+	TypeNameType ;
+}
+
+type SuiteElementType : BasicElementType
+{
+} ;
+
+type CollectionElementType
+{
+	BasicInfoType ;
+	GuidType ;
+} ;
+
+type ObjectElementType : BasicElementType
+{
+	GuidType ;								//Windows CLSID
+	CollectionElementType ;
+	unsigned longint ;						//base object element id
+	unsigned longint ;						//suite element id
+} ;
+
+type MethodElementType : BasicElementType
+{
+	TypeNameType ;							//return type
+	wstring ;								//return description
+	longint = $$CountOf( MethodParams ) ;
+	array MethodParams
+	{
+		BasicInfoType ;
+		TypeNameType ;
+		integer kOptional = kTrue, 
+				kRequired = kFalse ;		//indicates whether the parameter is optional
+	} ;
+} ;
+
+type PropertyElementType : BasicElementType
+{
+	TypeNameType ;
+	longint = $$CountOf( AlternateTypes ) ;
+	array AlternateTypes					//additional types accepted during a put to the property
+	{
+		TypeNameType ;
+	} ;
+	unsigned longint kNoAttributeClass = 0x0 ;	//attribute class id
+} ;
+
+type EventElementType : BasicElementType
+{
+	integer ;					//Bubbles
+	integer ;					//Cancelable
+	unsigned longint ;			//Event ClassID
+	unsigned longint ;			//Event ScriptID
+} ;
+
+type EnumElementType : BasicElementType
+{
+	longint = $$CountOf( EnumValues ) ;
+	array EnumValues
+	{
+		BasicInfoType ;
+	} ;
+} ;
+
+type EnumeratorElementType
+{
+	unsigned longint ;						//enum element id
+	longint = $$CountOf( EnumValues ) ;
+	array EnumValues
+	{
+		BasicInfoType ;
+	} ;
+} ;
+
+//jwb 11/3/05 ODFRC doesn't understand an alias value in the first directive of a subtype. 
+//If it did, we could use this directive as the first line of ScriptProviderType:
+//	unsigned longint kNotSupported = 0x0 ;
+//As an alternative, we define the kNotSupported alias here:
+const int32 kNotSupported = 0x0 ;
+
+type ScriptProviderType
+{
+	unsigned longint ;						//provider boss id
+	longint = $$CountOf( Definitions ) ;
+	array Definitions
+	{
+		switch
+		{
+			case Object :
+				key integer = kSIObject ;
+				unsigned longint ;			//object element id
+				integer = kFalse ;			//indicates whether this is a represent object
+			case RepresentObject :
+				key integer = kSIObject ;
+				unsigned longint ;			//object element id
+				integer = kTrue ;			//indicates whether this is a represent object
+			case Parent :
+				key integer = kSIParent ;
+				unsigned longint ;			//object element id
+				integer = kFalse ;			//indicates whether this is a surrogate parent
+			case SurrogateParent :
+				key integer = kSIParent ;
+				unsigned longint ;			//object element id
+				integer = kTrue ;			//indicates whether this is a surrogate parent
+			case Method :
+				key integer = kSIMethod ;
+				unsigned longint ;			//method element id
+				integer = kFalse ;			//indicates whether this is a collection method
+			case CollectionMethod :
+				key integer = kSIMethod ;
+				unsigned longint ;			//method element id
+				integer = kTrue ;			//indicates whether this is a collection method
+			case Property :
+				key integer = kSIProperty ;
+				unsigned longint ;			//property element id
+				integer ;					//indicates whether the property is writable
+				integer = kFalse ;			//indicates whether this is a parent property
+			case ParentProperty :
+				key integer = kSIProperty ;
+				unsigned longint ;			//property element id
+				integer ;					//indicates whether the property is writable
+				integer = kTrue ;			//indicates whether this is a parent property
+			case Event :
+				key integer = kSIEvent ;
+				unsigned longint ;			///event element id
+		}
+	} ;
+} ;
+
+//If the first statement in an ODFRC custom type is an array, and that type is included
+//by reference in the definition of another custom type, the ODFRC compiler will require
+//an extra set of {} around its values. To avoid this, we use a #define instead.  
+#define MetadataElementType \
+	unsigned longint ;		/*ScriptElementID of this metadata element*/ \
+	longint = $$CountOf( ElementIDs ) ; \
+	array ElementIDs \
+	{ \
+		unsigned longint ;	/*ScriptElementID to which to add the metadata*/ \
+	} ; \
+	longint = $$CountOf( Metadata ) ; \
+	array Metadata \
+	{ \
+		unsigned longint ;	/*Key: ScriptID*/ \
+		ScriptDataType ;	/*Value: ScriptData*/ \
+	}
+
+type TranslationElementType
+{
+	longint = $$CountOf( Translations ) ;
+	array Translations
+	{
+		wstring ;		//key (name to translate)
+		wstring ;		//translation
+	} ;
+} ;
+
+//This is the resource to define in a ScriptInfo.fr file for a versioned resource
+type VersionedScriptElementInfo( kScriptElementRsrcType2 )
+{
+	longint = $$CountOf( Contexts ) ;
+	array Contexts
+	{
+		longint ;			//first version major
+		longint ;			//first version minor
+		unsigned longint ;	//client boss id
+		//copied from type LocaleIndex (kLocaleIndexRsrcType) in LocaleIndex.h
+		integer ;			//Feature Set Locale Id
+		integer ;			//User Interface Locale Id
+	} ;
+
+	longint = $$CountOf( Elements ) ;
+	array Elements
+	{
+		switch
+		{
+			case TypeDef :
+				key integer = kSITypeDef ;
+				longint = LONG_MAX ;							//last version major
+				longint = LONG_MAX ;							//last version minor
+				TypeDefinitionType ;
+
+			case ObsoleteTypeDef :
+				key integer = kSITypeDef ;
+				FormatNumber ;									//first version in which this element is no longer supported
+				TypeDefinitionType ;
+
+			case Suite :
+				key integer = kSISuite ;
+				longint = LONG_MAX ;							//last version major
+				longint = LONG_MAX ;							//last version minor
+				SuiteElementType ;
+
+			case ObsoleteSuite :
+				key integer = kSISuite ;
+				FormatNumber ;									//first version in which this element is no longer supported
+				SuiteElementType ;
+
+			case Object :
+				key integer = kSIObject ;
+				longint = LONG_MAX ;							//last version major
+				longint = LONG_MAX ;							//last version minor
+				ObjectElementType ;
+
+			case ObsoleteObject :
+				key integer = kSIObject ;
+				FormatNumber ;									//first version in which this element is no longer supported
+				ObjectElementType ;
+
+			case Method :
+				key integer = kSIMethod ;
+				longint = LONG_MAX ;							//last version major
+				longint = LONG_MAX ;							//last version minor
+				MethodElementType ;
+
+			case ObsoleteMethod :
+				key integer = kSIMethod ;
+				FormatNumber ;									//first version in which this element is no longer supported
+				MethodElementType ;
+
+			case Property :
+				key integer = kSIProperty ;
+				longint = LONG_MAX ;							//last version major
+				longint = LONG_MAX ;							//last version minor
+				PropertyElementType ;
+
+			case ObsoleteProperty :
+				key integer = kSIProperty ;
+				FormatNumber ;									//first version in which this element is no longer supported
+				PropertyElementType ;
+
+			case Event :
+				key integer = kSIEvent ;
+				longint = LONG_MAX ;							//last version major
+				longint = LONG_MAX ;							//last version minor
+				EventElementType ;
+
+			case ObsoleteEvent :
+				key integer = kSIEvent ;
+				FormatNumber ;									//first version in which this element is no longer supported
+				EventElementType ;
+
+			case Enum :
+				key integer = kSIEnum ;
+				longint = LONG_MAX ;							//last version major
+				longint = LONG_MAX ;							//last version minor
+				EnumElementType ;
+
+			case ObsoleteEnum :
+				key integer = kSIEnum ;
+				FormatNumber ;									//first version in which this element is no longer supported
+				EnumElementType ;
+
+			case Provider :
+				key integer = kSIProvider ;
+				longint = LONG_MAX ;							//last version major
+				longint = LONG_MAX ;							//last version minor
+				ScriptProviderType ;
+
+			case ObsoleteProvider :
+				key integer = kSIProvider ;
+				FormatNumber ;									//first version in which this element is no longer supported
+				ScriptProviderType ;
+
+			case Metadata :
+				key integer = kSIMetadata ;
+				longint = LONG_MAX ;							//last version major
+				longint = LONG_MAX ;							//last version minor
+				MetadataElementType ;
+
+			case ObsoleteMetadata :
+				key integer = kSIMetadata ;
+				FormatNumber ;									//first version in which this element is no longer supported
+				MetadataElementType ;
+
+			case Enumerator :
+				key integer = kSIEnumerator ;
+				longint = LONG_MAX ;							//last version major
+				longint = LONG_MAX ;							//last version minor
+				EnumeratorElementType ;
+
+			case ObsoleteEnumerator :
+				key integer = kSIEnumerator ;
+				FormatNumber ;									//first version in which this element is no longer supported
+				EnumeratorElementType ;
+
+			case Translation :
+				key integer = kSITranslation ;
+				longint = LONG_MAX ;							//last version major
+				longint = LONG_MAX ;							//last version minor
+				TranslationElementType ;
+
+			case ObsoleteTranslation :
+				key integer = kSITranslation ;
+				FormatNumber ;									//first version in which this element is no longer supported
+				TranslationElementType ;
+		}
+	} ;
+} ;
+
+#endif //  __ODFRC__
+
+#endif // __SCRIPTINFOTYPES_FH__

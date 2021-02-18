@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExtensionManifest Version="2.0" ExtensionBundleId="ToolHints" ExtensionBundleVersion="1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<ExtensionList>
+		<Extension Id="ToolHints.extension1" Version="1.0" />
+	</ExtensionList>
+	<ExecutionEnvironment>
+		<HostList>
+			<Host Name="IDSN" Version="7.0" />
+			<Host Name="AICY" Version="7.0" />
+		</HostList>
+		<LocaleList>
+			<Locale Code="All" />
+		</LocaleList>
+		<RequiredRuntimeList>
+			<RequiredRuntime Name="CSXS" Version="2.0" />
+		</RequiredRuntimeList>
+	</ExecutionEnvironment>
+	<DispatchInfoList>
+		<Extension Id="ToolHints.extension1">
+			<DispatchInfo >
+				<Resources>
+					<SwfPath>./ToolHints.swf</SwfPath>
+				</Resources>
+				<Lifecycle>
+					<AutoVisible>true</AutoVisible>
+				</Lifecycle>
+				<UI>
+					<Type>Panel</Type>
+					<Menu>Tool Hints</Menu>
+					<Geometry>
+						<Size>
+							<Height>400</Height>
+							<Width>212</Width>
+						</Size>
+						<MaxSize>
+							<Height>480</Height>
+							<Width>212</Width>
+						</MaxSize>
+						<MinSize>
+							<Height>100</Height>
+							<Width>212</Width>
+						</MinSize>
+					</Geometry>
+				</UI>
+			</DispatchInfo>
+		</Extension>
+	</DispatchInfoList>
+</ExtensionManifest>

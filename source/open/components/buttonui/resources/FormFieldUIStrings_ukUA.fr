@@ -1,0 +1,357 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "StringTable.fh"
+
+#include "FormFieldUIDefs.h"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+//twright 12/11/2000 Removed left-over strings from group strings.
+//not sure if button/form is going to need lock warning...
+
+resource StringTable (kFormFieldUIStringsRsrcID + index_ukUA)
+{
+	k_ukUA,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{
+		// ----- Menu strings
+		"ButtonsActionsPopup",						"Меню дій кнопок",
+		
+		"$$$/Menu/AppearancePanelPopup",	"Меню панелі кнопок",	
+		"$$$/Menu/Interactive",				"Інтеракти&вне", 
+		"$$$/Menu/FormField",				"&Форма", 
+		"$$$/Menu/About",					"&Про модуль Form", 
+		"$$$/Menu/CreateButton",			"&Перетворити на кнопку", 
+		"$$$/Menu/CreateCheckBox",			"&Перетворити на прапорець",
+		"$$$/Menu/CreateComboBox",			"&Перетворити на комбінований блок", 
+		"$$$/Menu/CreateListBox",			"&Перетворити на блок списку", 
+		"$$$/Menu/CreateRadioButton",		"&Перетворити на кнопку-перемикач", 
+		"$$$/Menu/CreateSignatureField",	"&Перетворити на поле підпису", 
+		"$$$/Menu/CreateTextField",			"&Перетворити на текстове поле", 
+		"$$$/Menu/DestroyButton",			"&Перетворити на об'єкт", 
+		"$$$/Menu/FormFieldSettings",		"&Параметри кнопки...", 
+		"$$$/Menu/NewState",				"Новий стан", 
+		"$$$/Menu/DeleteState",				"Вилучити стан", 
+		"$$$/Menu/DeleteStates",			"Вилучити стани",
+		"$$$/Menu/PlaceIntoState",			"Помістіть вміст у стан...",
+		"$$$/Menu/DeleteStateContent",		"Вилучити вміст зі стану",
+		"$$$/Menu/AppearancePanelPrefs",	"Параметри панелі...",
+		"$$$/Menu/StateOptions",			"Параметри стану...",
+		"$$$/Menu/SetTabOrder",				"Встановити порядок &табуляції...",
+		"$$$/Menu/SetCalculationOrder",		"Встановити порядок обчислення...",
+		"$$$/Menu/States",					"К&нопки та форми",
+		
+		"$$$/Menu/Go To Page",				"Перейти до сторінки",
+		"$$$/Menu/Go To First Page",		"Перейти до першої сторінки",
+		"$$$/Menu/Go To Anchor",			"Перейти до цілі",
+		"$$$/Menu/Go To Last Page",			"Перейти до останньої сторінки",
+		"$$$/Menu/Go To Next Page",			"Перейти до наступної сторінки",
+		"$$$/Menu/Go To Next View",			"Перейти до наступного перегляду",
+		"$$$/Menu/Go To Previous Page",		"Перейти до попередньої сторінки",
+		"$$$/Menu/Go To Previous View",		"Перейти до попереднього перегляду",
+		"$$$/Menu/Go To URL",				"Перейти за URL-адресою",
+		"$$$/Menu/Movie",					"Відео",
+		"$$$/Menu/Open File",				"Відкрити файл",
+		"$$$/Menu/Show/Hide Buttons",		"Показати/приховати кнопки та форми",
+		"$$$/Menu/Sound",					"Звук",
+		"$$$/Menu/View Zoom",				"Масштаб перегляду",
+		"$$$/Menu/Animation",				"Анімація",
+		"$$$/Menu/SwitchToMSOState",		"Перейти до стану",
+		"$$$/Menu/SwitchToNextMSOState",	"Перейти до наступного стану",
+		"$$$/Menu/SwitchToPrevMSOState",	"Перейти до попереднього стану",
+		"$$$/Menu/EPUBOnly",					"Лише EPUB",
+		"$$$/Menu/PDFOnly",					"Лише PDF",
+		"$$$/Menu/Print Form",				"Друкувати форму",
+		"$$$/Menu/Clear Form",				"Очистити форму",
+		"$$$/Menu/Submit Form",				"Надіслати форму",
+		
+		"$$$/Menu/FormFieldSettings/ButtonLibrary",			"Зразки кнопок та форм",	// Name of menu item in Buttons Panel flyout that opens a library of Sample Buttons
+
+		"$$$/Menu/FormFieldSettings/PDFVis/Visible",		"Видиме у PDF",
+		"$$$/Menu/FormFieldSettings/PDFVis/Hidden",			"Приховане у PDF",
+		"$$$/Menu/FormFieldSettings/PDFVis/VisibleNoPrint",	"Видиме у PDF, але не друкується",
+		"$$$/Menu/FormFieldSettings/PDFVis/HiddenButPrint",	"Приховане у PDF, але друкується",	
+		"$$$/Menu/ButtonPDFOptions", "Параметри PDF...",
+
+		"$$$/Menu/ResetAllButtons",	"Скинути всі кнопки до нормального стану",	
+			
+		"PageItems",						"Елементи сторінки", 
+		"$$$/Menu/Trace Geometry",			"Відслідковувати геометрію", 
+
+		"$$$/Menu/FormFieldOptions/Button",					"Кнопка",
+		"$$$/Menu/FormFieldOptions/Check Box",				"Кнопка-прапорець",
+		"$$$/Menu/FormFieldOptions/Combo Box",				"Комбінований блок",
+		"$$$/Menu/FormFieldOptions/List Box",				"Блок списку",
+		"$$$/Menu/FormFieldOptions/Radio Button",			"Кнопка-перемикач",
+		"$$$/Menu/FormFieldOptions/Signature Field",		"Поле підпису",
+		"$$$/Menu/FormFieldOptions/Text Field",				"Текстове поле",
+
+		"InteractiveContextMenu",			"Інтерактивне",
+	
+		// ----- Dialog strings
+		"$$$/Dialog/CreateFormField/Title",		"Поле форми", 
+		"$$$/Dialog/CreateFormField/Options",	"Параметри",
+		"$$$/Dialog/CreateFormField/Width",		"&Ширина:",
+		"$$$/Dialog/CreateFormField/Height",	"&Висота:",
+
+		"$$$/Dialog/FormFieldSettings/Title",				"Загальні", 
+		"$$$/Dialog/FormFieldSettings/FieldType",			"Тип поля:",
+		"$$$/Dialog/FormFieldSettings/FieldTypeSetting",	"",
+		"$$$/Dialog/FormFieldSettings/Name",				"&Назва:",
+		"$$$/Dialog/FormFieldSettings/PDFVisibility",		"&Видимість у PDF:",
+		"$$$/Dialog/FormFieldSettings/PDFVis/Visible",		"Видимий",
+		"$$$/Dialog/FormFieldSettings/PDFVis/Hidden",		"Прихований",
+		"$$$/Dialog/FormFieldSettings/PDFVis/VisibleNoPrint",	"Видимий, але не друкується",
+		"$$$/Dialog/FormFieldSettings/PDFVis/HiddenButPrint",	"Прихований, але друкується",
+		"$$$/Dialog/FormFieldSettings/ReadOnly",			"Лише для читання",
+		"$$$/Dialog/FormFieldSettings/Export",				"Експорт",
+		"$$$/Dialog/FormFieldSettings/RequiredForExport",	"Потрібне для експорту",
+		"$$$/Dialog/FormFieldSettings/Description",			"&Опис:",
+		"$$$/Dialog/FormFieldSettings/ExportName",			"&Назва для експорту:",
+		"$$$/Dialog/FormFieldSettings/Common Settings",		"Загальні параметри",
+		"$$$/Dialog/FormFieldSettings/Options",				"Параметри",
+		"$$$/Dialog/FormFieldSettings/Holder",				"Утримувач параметрів поля форми",
+
+		"$$$/Dialog/FormOptions/Title",						"Параметри кнопки",
+		"$$$/Dialog/FormFieldSettings/Options",				"Параметри",
+		
+		"$$$/Dialog/FormFieldSettings/ExportValue",			"Значення для експорту:",
+		"$$$/Dialog/FormFieldSettings/DefaultIsChecked",	"Автоматично позначено",
+		"$$$/Dialog/FormFieldSettings/DefaultIsSelected",	"Автоматично виділено",
+		"$$$/Dialog/FormFieldSettings/Default",				"Усталено:",
+
+		"$$$/Dialog/FormFieldSettings/Multiline",				"Багаторядковий",
+		"$$$/Dialog/FormFieldSettings/Scroll",					"Прокручуваний",
+		"$$$/Dialog/FormFieldSettings/LimitOf",					"Межа для",
+		"$$$/Dialog/FormFieldSettings/Characters",				"символи",
+		"$$$/Dialog/FormFieldSettings/Password",				"Пароль",
+		"$$$/Dialog/FormFieldSettings/FieldForFileSelection",	"Використовується для вибору файлу",
+		"$$$/Dialog/FormFieldSettings/SpellCheck",				"Перевірка правопису",
+		
+		"$$$/Dialog/FormFieldSettings/Item",					"Елемент:",
+		"$$$/Dialog/FormFieldSettings/Add",						"Додати",
+		"$$$/Dialog/FormFieldSettings/Delete",					"Вилучити",
+		"$$$/Dialog/FormFieldSettings/Change",					"Змінити",
+		"$$$/Dialog/FormFieldSettings/SortItems",				"Сортувати елементи",
+		"$$$/Dialog/FormFieldSettings/AllowMultipleSelection",	"Дозволяє декілька виділень",
+		"$$$/Dialog/FormFieldSettings/Editable",				"Редагується",
+
+		"$$$/Dialog/FormFieldSettings/Align",					"Вирівняти:",
+		"$$$/Dialog/FormFieldSettings/Align/Left",				"Ліворуч",
+		"$$$/Dialog/FormFieldSettings/Align/Center",			"За центром",
+		"$$$/Dialog/FormFieldSettings/Align/Right",				"Праворуч",
+
+		"$$$/Dialog/FormFieldSettings/Font:",					"&Шрифт:",
+		"$$$/Dialog/FormFieldSettings/Size:",					"&Розмір:",
+		"$$$/Dialog/FormFieldSettings/Auto",					"Авто",
+
+		"$$$/Dialog/FormFieldSettings/SelectedIsDefault",		"Виділений елемент використовується за замовчуванням",
+		
+		"$$$/Dialog/FormFieldUI/DeleteAlert",					"Вилучення стану також вилучає пов'язаний із ним вміст.  Все одно вилучити стан?",
+		"$$$/Dialog/FormFieldUI/DestroyAlert",					"Ця дія вилучить вміст, пов’язаний з іншими станами поля форми. Все одно продовжити?",
+		"$$$/Dialog/FormFieldUI/DeleteContentAlert",			"Вилучити вміст, пов'язаний із цим станом?",
+		"$$$/Dialog/FormFieldUI/StyleChangeAlert",				"Ця дія вилучить вміст, пов’язаний із поточним станом поля форми. Все одно продовжити?",
+		"$$$/Dialog/FormFieldUI/StyleChangeFailed",				"Не вдалося застосувати вибраний стиль вигляду до поля форми.",
+
+		/* These are not visible, they are names of subpanels... */
+		
+		"$$$/Dialog/FormFieldSettings/CheckBox",				"Параметри кнопки-прапорця",	
+		"$$$/Dialog/FormFieldSettings/RadioButton",				"Параметри кнопки-перемикача",	
+		"$$$/Dialog/FormFieldSettings/TextField",				"Параметри кнопки текстового поля",	
+		"$$$/Dialog/FormFieldSettings/ListBox",					"Параметри кнопки блока списку",	
+		
+		"$$$/Dialog/About/Description",						"Модуль Forms, версія 1.0\n\n(c) 2001 Adobe Systems Incorporated. Всі права захищено.",
+
+		"$$$/Dialog/CmdName/CreateButton",					"Перетворити на кнопку",
+		"$$$/Dialog/CmdName/DestroyButton",					"Перетворити на об'єкт",
+		"$$$/Dialog/CmdName/ChangeFormSettings",			"Змінити параметри кнопки",
+
+		"$$$/Dialog/TextColor/Title",						"Колір тексту", 
+		"$$$/Dialog/Button/Color...",						"Колір шрифту...", 
+
+		"$$$/Dialog/AppearancePanelPrefs/Title",			"Параметри панелі", 
+		"$$$/Dialog/AppearancePanelPrefs/ThumbnailSize",	"Розмір мініатюри", 
+		"$$$/Dialog/AppearancePanelPrefs/None",				"Немає", 
+		
+		
+		"$$$/Dialog/StateOptions/Title",					"Параметри стану", 
+		"$$$/Dialog/StateOptions/State",					"Стан:", 
+		"$$$/Dialog/StateOptions/Enable",					"Ввімкнути стан", 
+
+		"$$$/Dialog/CalculationOrder/Title",				"Порядок обчислень", 
+		"$$$/Dialog/TabOrder/Title",						"Порядок табуляції", 
+		"$$$/Dialog/Order/MoveUp",							"Перемістити &вгору", 
+		"$$$/Dialog/Order/MoveDown",						"Перемістити &донизу",
+
+		"$$$/Dialog/ButtonPDFOptions/Title",				"Параметри PDF",
+		"$$$/Dialog/ButtonPDFOptions/InitialAppearance",	"Початковий вигляд:",
+		"$$$/Dialog/ButtonPDFOptions/Visible",				"&Видимий",
+		"$$$/Dialog/ButtonPDFOptions/Hidden",				"&Прихований",
+		"$$$/Dialog/ButtonPDFOptions/Printable",			"З можливістю &друку",
+		"$$$/Dialog/ButtonPDFOptions/Description",			"&Опис:",
+		
+		// ----- Window strings
+		
+		// ----- Panel strings
+
+		"$$$/Panel/FormFieldSettings/Action Data Holder",	"Утримувач даних дії",
+		"$$$/Panel/FormFieldSettings/+",					"+",
+		"$$$/Panel/FormFieldSettings/Event:",				"Подія:",
+		"$$$/Panel/FormFieldSettings/Actions:",				"Дії:",
+		"$$$/Panel/FormFieldSettings/URL:",					"URL:",
+		"$$$/Panel/FormFieldSettings/Mail to:",				"Надіслати поштою:",
+		"$$$/Panel/Action",									"Дія",
+		"$$$/Panel/Empty Action",							"[Жодних дій не додано]",
+		"$$$/Panel/StatesListBoxLabel/States",				"Вигляд",
+		"$$$/Panel/States",									"Кнопки та форми",
+		"$$$/Panel/FormFieldSettings/FieldType",			"Тип:",
+		"$$$/Panel/FormFieldSettings/Name",					"Назва:",
+		"$$$/Panel/ShowHide/Visibility:",					"Видимість:",
+		"$$$/Panel/GoToPage/Page:",							"Сторінка:",
+
+		"$$$/Panel/Normal",									"[Звичайний]",
+		"$$$/Panel/Over",									"[Ролловер]",
+		"$$$/Panel/Down",									"[Клацнути]",
+
+		"$$$/Panel/Off",									"[Звич. режим вимк.]",
+		"$$$/Panel/On",										"[Звич. режим увімк.]",
+
+		"$$$/Panel/RolloverOff",							"[Наведення вимкнене]",
+		"$$$/Panel/RolloverOn",								"[Наведення ввімкнене]",
+		"$$$/Panel/DowmOff",								"[Клацання вимкнене]",
+		"$$$/Panel/DownOn",									"[Клацання ввімкнене]",
+
+		"$$$/Panel/CmdName/FormFieldName",					"Назва кнопки",
+		"$$$/Panel/CmdName/FormFieldStyle",					"Вигляд кнопки",
+		
+		"$$$/Panel/FormFieldSettings/Appearance",			"Вигляд:",
+		"$$$/Panel/PDFOptions",								"Параметри PDF",
+		"$$$/Panel/Required",								"Обов'язково",
+		"$$$/Panel/Printable",								"З можливістю друку",
+		"$$$/Panel/Description",							"Опис:",
+		"$$$/Panel/SelectedByDefault",						"Вибране за замовчуванням",
+		"$$$/Panel/Multiline",								"Багаторядковий",
+		"$$$/Panel/ListItems",								"Елементи списку",
+		"$$$/Panel/MultipleSelection",						"Виділення кількох",
+		"$$$/Panel/FontSize",								"Розмір шрифту:",
+		"$$$/Panel/Font",									"Шрифт:",
+		"$$$/Panel/AutoSize",								"Авто",
+		"$$$/Panel/SortItems",								"Сортувати елементи",
+		"$$$/Panel/MERTLOption",							"Справа наліво",
+		"$$$/Panel/ExportValue",							"Значення кнопки:",
+		 
+		"$$$/Popup/Separator",								"-",
+		
+		"$$$/Dialog/Behaviors/Exit/No Data for Exit Behavior", "",
+
+		// ----- Tips strings
+
+		"$$$/Tip/StateEye",				"Увімкнення/вимкнення додаткового стану під час експорту",
+		"$$$/Tip/StateThumbnail",		"Скорочений вигляд цього стану",
+		"$$$/Tip/Show",					"Показати",
+		"$$$/Tip/Hide",					"Приховати",
+		"$$$/Tip/Ignore",				"Ігнорувати",
+		"$$$/Tip/Delete Selected Action",	"Видалити виділену дію",
+		"$$$/Tip/Add New Action",		"Додати нову дію для виділеної події",
+		"$$$/Tip/DeleteState",			"Видалити необов'язковий стан та його вміст",
+		"$$$/Tip/Convert To Button",		"Перетворити на кнопку",
+		"$$$/Tip/Convert To Object",		"Перетворити на об'єкт",
+		"$$$/Tip/DefaultChoice",		"Виберіть елемент у списку, щоб зробити його вибором за замовчуванням. Щоб установити власний порядок сортування, зніміть позначку \"Сортувати елементи\" і перетягніть елементи у потрібне положення.",
+        "$$$/Tip/MissingFontToolTip",				"Відсутній шрифт у полі форми. Клацніть «Знайти шрифт».",
+
+		// ----- Error strings
+
+		"$$$/Error/YouNeedToSpecifyAName", "Потрібно вказати назву.",
+		"$$$/Error/YouNeedToSpecifyANonBlankName", "Потрібно вказати дійсну назву.",
+		"$$$/Error/YouNeedToSpecifyANonBlankNameOrNoName", "Потрібно вказати дійсну назву або не вказувати жодної назви.",
+		"$$$/Error/YouNeedToSpecifyAnExportValue", "Потрібно вказати значення для експорту.",
+		"$$$/Error/YouNeedToSpecifyANonBlankExportValue", "Потрібно вказати дійсне значення для експорту.",
+		"$$$/Error/YouNeedToSpecifyAUniqueName", "Це ім'я стилю вже використовується. Вкажіть інше ім'я.",
+		"$$$/Error/YouNeedToSpecifyAValidFontSize", "Вкажіть значення від 0 до 300 або Авто.",
+		
+		// ----- Misc strings
+
+		"$$$/Command/DeleteStates",	"Вилучити стани",
+		"$$$/CmdName/DeleteStateContent",	"Вилучити вміст стану",
+		"$$$/Panel/CmdName/MSOName",		"Ім'я об'єкта з кількома станами",
+		
+		// ----- MultiStateObject Panel strings
+				
+		"$$$/Menu/MSOPanel", "&Стани об'єкта",
+		"$$$/Panel/MSOPanel", "Стани об'єкта",
+		"$$$/Panel/MSOPanel/ObjectName", "Ім'я об'єкта:",
+#ifdef MACINTOSH
+		"$$$/Panel/MSOPanel/MixedSelection", "Натисніть кнопку “Новий стан”, щоб створити окремий стан для кожного з об'єктів. (Клацніть мишею, утримуючи клавішу Opt, щоб об'єкти залишалися в тому самому стані).",
+		"$$$/Panel/MSOPanel/MSOAndMixedSelection", "Натисніть кнопку \"Створити\", щоб створити новий стан в усіх об'єктах з кількома станами \"^1\". (Клацніть мишею, утримуючи клавішу Opt, щоб об'єкти залишалися в тому самому стані).\n\nНатисніть кнопку “Додати”, щоб вставити об'єкти у видимий стан \"^2\".",
+#else
+		"$$$/Panel/MSOPanel/MixedSelection", "Натисніть кнопку “Новий стан”, щоб створити окремий стан для кожного з об'єктів. (Клацніть мишею, утримуючи клавішу Alt, щоб об'єкти залишалися в тому самому стані).",
+		"$$$/Panel/MSOPanel/MSOAndMixedSelection", "Натисніть кнопку \"Створити\", щоб створити новий стан в усіх об'єктах з кількома станами \"^1\". (Клацніть мишею, утримуючи клавішу Alt, щоб об'єкти залишалися в тому самому стані).\n\nНатисніть кнопку “Додати”, щоб вставити об'єкти у видимий стан \"^2\".",
+#endif
+		
+		"$$$/Menu/MSOPanelPopup", "Меню панелі “Стани об'єкта”",	
+		"$$$/Menu/MSOPanel/NewState", "Новий стан",
+		"$$$/Menu/MSOPanel/DeleteState", "Видалити стан",
+		"$$$/Menu/MSOPanel/AddToState", "Додати об'єкти до стану",
+		"$$$/Menu/MSOPanel/PasteIntoState", "Вставити в стан",
+		"$$$/Menu/MSOPanel/ReleaseState", "Застосувати стан до об'єктів",
+		"$$$/Menu/MSOPanel/ReleaseAllStates", "Застосувати всі стани до об'єктів",
+		"$$$/Menu/MSOPanel/ResetAllMSOs", "Відновити всі об'єкти з кількома станами до першого стану",
+		"$$$/Menu/MSOPanel/Options", "Параметри панелі...",
+		"$$$/Menu/MSOPanel/ContextMenu", "Контекстне меню панелі “Стани об'єкта”",
+		"$$$/Menu/MSOPanel/ReleaseStateContextMenu", "Застосувати \"^1\" до об'єктів",
+		"$$$/Menu/MSOPanel/DeleteStateContextMenu", "Видалити \"^1\"",
+		"$$$/Menu/MSOPanel/PasteIntoStateContextMenu", "Вставити у \"^1\"",
+		"$$$/Menu/MSOPanel/HiddenUntilTriggered", "Прихований до запуску",
+	
+		"$$$/Tip/MSOPanel/StateAnimated", "Об'єкт у цьому стані анімовано.",
+		"$$$/Tip/MSOPanel/NewMSO", "Конвертувати вибране в об'єкт із кількома станами",
+		"$$$/Tip/MSOPanel/NewState", "Створити новий стан",
+		"$$$/Tip/MSOPanel/DeleteState", "Видалити вибраний стан",
+		"$$$/Tip/MSOPanel/MSOIsSelected", "Об'єкт із кількома станами вибрано. Всі стани буде змінено при зміні об'єкта.",
+		"$$$/Tip/MSOPanel/MSOIsNotSelected", "Стан вибрано. Натисніть, щоб вибрати об'єкт із кількома станами.",
+		"$$$/Tip/MSOPanel/MSOStateIsSelected", "Цей стан вибрано.",
+		"$$$/Tip/MSOPanel/MSOStateContentIsSelected", "Вибрано вміст в межах цього стану. Натисніть рядок, щоб вибрати цей стан.",
+		"$$$/Tip/MSOPanel/MSOStateRowMSOIsSelected", "Вибрано об'єкт із кількома станами. Натисніть рядок, щоб переключитися та вибрати цей стан.",
+		"$$$/Tip/MSOPanel/MSOActiveStateRowMSOIsSelected", "Вибрано об'єкт із кількома станами. Натисніть рядок, щоб вибрати цей стан.",
+		"$$$/Tip/MSOPanel/MSOAnotherStateIsSelected", "Натисніть рядок, щоб переключитися та вибрати цей стан.",
+		"$$$/Tip/MSOPanel/PasteIntoState", "Вставити скопійовані об'єкти у вибраний стан",
+		"$$$/Tip/MSOPanel/AddToState", "Додати об'єкти до видимого стану",
+	
+		"$$$/Dialog/MSOPanel/ReleaseAlert", "Об'єкти з кількома станами повинні мати принаймні два стани. Ця дія видалить із документа об'єкт із кількома станами. Всі поточні об'єкти залишаться у своїх поточних позиціях як об'єкти з одним станом.",
+		"$$$/Dialog/MSOPanel/ReleaseAllAlert", "Ця дія призведе до видалення з документа об'єкта з кількома станами. Всі поточні об'єкти залишаться у своїх поточних позиціях як об'єкти з одним станом.",
+		"$$$/Dialog/MSOPanel/DeletesMSOAlert", "Об'єкти з кількома станами повинні мати принаймні два стани. Ця дія видалить із документа об'єкт із кількома станами. Об'єкти, пов'язані зі станом, що зосталися, залишаються у поточних позиціях як об'єкти з одним станом.",
+		
+		"$$$/Panel/MSOPanel/StatusOne", " об'єкти у ^1",
+		"$$$/Panel/MSOPanel/Status", " об'єктів у ^1",
+		
+		"$$$/Panel/MSOPanel/StatusMSOSelected", "Обрано всі стани",
+		"$$$/Panel/MSOPanel/StatusStateSelected", "Обрано стан",
+		"$$$/Panel/MSOPanel/StatusStateContentSelected", "Обрано об'єкт у стані",
+
+		// Command strings		
+		"$$$/Command/CheckBox", "Перетворити на прапорець",
+		"$$$/Command/ComboBox", "Перетворити на комбінований блок",
+		"$$$/Command/ListBox", "Перетворити на блок списку",
+		"$$$/Command/RadioButton", "Перетворити на кнопку-перемикач",
+		"$$$/Command/SignatureField", "Перетворити на поле підпису",
+		"$$$/Command/TextField", "Перетворити на текстове поле",
+}
+};
+
+#endif // __ODFRC__

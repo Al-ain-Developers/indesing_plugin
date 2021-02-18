@@ -1,0 +1,227 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#ifdef __ODFRC__
+
+#include "StringTable.fh"
+
+resource StringTable (kLinksUIStringsRsrcID + index_ruRU)
+{
+	k_ruRU,					// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	{
+		"Links_WinMenu",			"&Связи", // panel menu item
+		"kRtMouseGraphics",			"Графика", // context menu submenu name
+		"RtMenuLinksUILinkInfo",	"Контекстное меню информации о связи",
+		
+		"#LinksUIPanel",			"Связи", // panel name
+		"#LinksUIPanelMenu",		"Меню палитры \"Связи\"", 
+		"#LinksUtilitiesSubmenu",		"Служебные программы",		// submenu for links panel menu
+		"#SelectedLinkInfoSectionName",			"Информация о связи", // section name in links ui panel
+		
+		"#UpdateAllOutOfDateLinksMenu",	"Обновить все связи",
+		"#AutoFindMissingLinksMenu",		"Поиск пропущенных связей",
+		"#LinksUIRelinkLinkMenu",		"Связать повторно...",
+		"#LinksUIRelinkResourceMenu",	"Связать заново все экземпляры...", // menu item to relink all instances of this multiple link assets
+		"#RelinkResource ^1 Menu",		"Связать заново все экземпляры «^1»...", // menu item to relink all instances of one single link asset
+		"#ReplaceFPOWithOriginalResourceMenu",	"Заменить все вхождения...", // menu item to replace all instances of this multiple link assets
+		"#ReplaceFPOWithOriginalResource ^1 Menu", "Заменить все вхождения FPO \"^1\" оригиналом...", // menu item to replace all instances of one single link asset
+		"#RelinkCloudResource ^1 Menu",	"Повторно связать все экземпляры «^1» из CC Libraries...", // menu item to relink all instances of one single link asset
+        "#RelinkAALResource ^1 Menu",    "Повторно связать все экземпляры «^1» из Adobe Asset Link...", // menu item to relink all instances of one single link asset
+		"#LinksUIUpdateLinkMenu",			"Обновить связь", // context menu item in links ui panel
+		"#LinksUIUpdateLinkResourceMenu",	"Обновить все экземпляры",
+		"#UpdateResource ^1 Menu",		"Обновить все экземпляры \"^1\"", // menu item to update all instances of one single link asset
+		"#LinksUIEmbedLinkMenu",			"Встроить связь", // context menu item in links ui panel
+		"#LinksUIEmbedResourceMenu",		"Встроить все экземпляры",
+		"#EmbedResource ^1 Menu",			"Встроить все экземпляры \"^1\"", // menu item to embed all instances of one single link asset
+		"#LinksUIUnEmbedLinkMenu",		"Отменить встраивание связи", // context menu item in links ui panel
+		"#LinksUIUnEmbedResourceMenu",	"Извлечь все экземпляры",
+		"#UnembedResource ^1 Menu",			"Извлечь все экземпляры \"^1\"", // menu item to unembed all instances of one single link asset
+		"#LinksUIUnLinkMenu",				"Отменить связь",
+		"#UnLinkResourceMenu",			"Отменить связь всех экземпляров",
+		"#UnLinkResource ^1 Menu",			"Отменить связь всех экземпляров \"^1\"...", // menu item to unlink all instances of one single link asset
+		"#LinksUIEditOriginalLinkMenu",		"Редактировать оригинал", // context menu item in links ui panel
+		"#LinksUIGoToSourceLinkMenu",		"Перейти к источнику", // context menu item in links ui panel
+		"#LinksUIXMPFileInfo",				"Информация о файле XMP...",
+		"#LinksUICopyPath",				"Копировать полный путь",
+		"#LinksUICopyPlatformPath",			"Копировать путь стиля платформы",
+		"#RevealLinkInMacFinder",			"Показать в программе Finder",
+		"#RevealLinkInWinExplorer",			"Показать в Проводнике",
+		"#RevealLinkInAdobeBridge",			"Показать в Bridge",
+		"#RevealLinkInCCLibraries",			"Показать в CC Libraries",
+		"#GoToLink",						"Перейти к связанному элементу",
+		"#EditWithApp",					"Редактировать с помощью",
+		"ApplicationFiles",					"Приложение (*.exe)", // windows only string to list exe files in the 'edit with application' dialog.
+		"#ChooseEditingApplication",			"Выберите приложение", // dialog title
+		"#OtherApp",						"Другое…",	// Menu name for choosing a custom application via a standard file dialog for Edit With...
+		"#LinksUICopyLink",				"Скопировать связанные файлы в...",
+		"#LinksUIEditColumnsMenu",			"Параметры палитры...",
+		
+		"#LinksUIRemoveThisColumnMenu",	"Скрыть этот столбец",
+		"#LinksUIShowThumbnailMenu",		"Показывать миниатюру",
+		"#LinksUIHideThumbnailMenu",		"Скрыть миниатюру",		
+		"#LinksUIShowInfoThumbnailMenu",	"Показывать информационную миниатюру",
+		"#LinksUIHideInfoThumbnailMenu",	"Скрыть информационную миниатюру",
+		
+		"#SaveLinkVersionCmd",			"Ссылка для возврата на сервер",
+		"#ShowLinksPanelColumn",			"Показать колонку",
+		"#ShowLinksPanelInfo",				"Показать в Информации о связи",
+		"#SelectNextLinkButtonTip",			"Выделить следующую связь в списке",
+		"#SelectPrevLinkButtonTip",			"Выделить предыдущую связь в списке",
+		"#ToggleLinkInfoButtonTip",			"Показать/скрыть информацию о связи",
+
+		"#ShortLinkStatusParamStr",				"Связей: ^1",  // status string for links panel
+		"#LongLinkStatusParamStr",				"Итого связей: ^1\n\n Пропущенные: ^2\n Измененные: ^3\n Встроенные: ^4\n Уникальные: ^5\n Дочерние: ^6", // tip string for links panel status.
+		"#OneSelectedLinkStr",			"Выбрано: 1", // status string when one link is selected in the panel.
+		"#NumSelectedLinksParamStr",	"Выбрано: ^1", // status string when multiple links are selected in the panel.
+				
+		"RtMenuLinksUILinkItem",		"Контекстное меню связи",
+		"RtMenuLinksUILinksHeader",		"Контекстное меню заголовка связей",
+		
+		"#LinkColumnDialog",			"Параметры палитры", // dialog name
+		"#LinksUIPanelOptions",			"Параметры",
+		
+		"#LinkThumbPrefLabel",			"Миниатюры:",
+		"#LinksUIRowSizeLabel",		"&Размер строки:",
+		"#LinksUISmallRowStr",			"Малые строки",
+		"#LinksUIRegularRowStr",		"Обычные строки",
+		"#LinksUILargeRowStr",			"Большие строки",
+		"#LinkInfoShowThumbnailCheckbox",	"&Показать в Информации о связи",
+		"#LinksUIShowThumbnail",		"&Показать в столбце имени",
+		"#LinksUICollapseMultiple",		"&Свернуть связи, имеющие один источник",
+
+		"#SearchHereForMissingFiles",	"Поиск отсутствующих связей в этой папке", // label for checkbox in relink dialog
+		"#RelinkSkipButton",			"Пропустить", // name for 'skip' button in relink dialog
+		"#SearchFound^1Links",		"Выполнен просмотр этого каталога для повторного связывания, найдены и повторно связаны отсутствующие связи: ^1.", // alert that displays if we auto find missing links after a relink
+		"#RelinkToFolderTitle",			"Выбрать папку, чтобы связать с ней повторно. Только последние выбранные связи с совпадающим именем будут повторно с ней связаны.",
+		"#RelinkToSameFilename",		"Совпадение по имени файла и расширению", // radio button option in relink to folder dialog
+		"#RelinkToExtension",			"Совпадение по имени файла и следующему расширению:", // radio button option in relink to folder dialog
+		"#LinksUICopyLinksTitle",		"Выберите папку, в которую будут копироваться связанные файлы.",
+		"#LinksUIRelinkToFolderLinkMenu",	"Связать повторно с папкой...",
+		"#LinksUIRelinkFileExtensionLinkMenu",	"Связать повторно с расширением файла...",
+        "#LinksUIRelinkFromCloudAssetLinkMenu",	"Связать повторно с CC Libraries...",
+        "#LinksUIRelinkFromAALAssetLinkMenu",    "Повторная установка связи с Adobe Asset Link...",
+		"#LicenseStockAssetLinkMenu",	"Получить лицензию на изображение...",
+		"#LinksUIRelink: ^1",			"Связать повторно: ^1", // title for relink dialog. ^1 becomes file path.
+		"#LinksUILocate: ^1",			"Найти: ^1", // title for relink dialog when link is missing. ^1 becomes file path.
+		"#CopyLinksFailedAlert",		"Не удалось скопировать связи в папку.",
+		"#AutoFindFoundNothingAlert",	"Не найдены пропущенные связи. Используйте команду \"Связать заново\", чтобы найти первую пропущенную связь, и повторите попытку.",
+		
+		"kEditsMadeWarning",			  "Импортированная версия \"^1\" была отредактирована. При обновлении отредактированные данные будут потеряны. Все равно обновить?",
+		"kEditsMadeInLinkedStoryWarning",	"Связанный материал \"^1\" был отредактирован. При обновлении отредактированные данные будут потеряны. Все равно обновить?",
+		"kEditsMadeInLinkedArticleWarning", "В связанный элемент страницы \"^1\" были внесены правки. При обновлении они будут потеряны. Обновить?",
+		"kEditsMadeToTextOrTableWarning", "Импортированная версия \"^1\" была отредактирована. При обновлении отредактированные данные (за исключением изменений, примененных к импортированным таблицам посредством стилей ячеек или стилей таблиц) будут потеряны. Все равно обновить?",
+
+		// Strings for Problem Links dialog
+		"#LinksModifiedWarning",	"Этот документ содержит ссылки на отсутствующие или измененные источники. Можно обновить измененные связи сейчас или позднее с помощью панели «Связи».",
+		"#HTTPLinksModifiedWarning",	"Документ содержит связи с источниками, которые отсутствуют или были изменены с момента последнего сохранения документа. Обновить измененные связи можно сейчас или позднее на палитре \"Связи\".",
+		"#UpdateLinks",				"&Обновить измененные ссылки",	 // button text
+		"#Don'tUpdateLinks",		"Не обновлять связи", // button text
+		"#ProblemMissingLinksParamStr",	"^1 - пропущенные связи",
+		"#ProblemModifiedLinksParamStr",	"^1 - измененные связи",
+		"#ProblemInaccessibleLinksParamStr",	"^1 - Недоступные связи URL. Подробности см. в палитре \"Связи\".",
+        "#ProblemLinksDialogHeader",    "Проблемы со ссылками",
+		"UnembedToOriginal", 		"При извлечении будут созданы связи с исходными файлами или с файлами, созданными в папке. Создать связи с исходными файлами?",
+		"#SelectUnembedDir",
+									"Выберите папку, в которой будут создаваться файлы.",
+
+		// Show Link message.
+		 "Cannot show link: The selected item is on a hidden layer.",
+						"Не удается показать ссылку: Выбранный элемент скрыт или находится на скрытом слое.",
+		"Cannot show link: The selected item is hidden in overset text.",
+						"Не удается показать связь: Выбранный объект скрыт в вытесненном тексте.",
+		"Cannot show link: The selected item is hidden in an inactive form field state.",
+						"Не удается показать связь. Выбранный элемент скрыт при неактивном состоянии кнопки. Используйте палитру \"Кнопки\", чтобы активизировать скрытое состояние и отобразить элемент.",
+		"Cannot show link: The selected item is hidden in an inactive mso state.",
+						"Не удается показать ссылку: Выбранный элемент находится в неактивном состоянии. Сделайте скрытое состояние видимым в палитре \"Состояния объекта\".",
+		"Cannot show link: The selected item is in deleted text in a tracked change.",
+						"Не удается показать связь: Выбранный элемент находится в удаленном тексте в отслеживаемом изменении.",
+		"Cannot show link: The selected item is an XML structure element not in the layout.",
+						"Не удается показать связь. Выбранный элемент является элементом структуры XML, не содержащимся в макете.",
+		"Cannot show link: The selected item is in hidden conditional text.",
+						"Не удается показать связь: Выбранный объект располагается в скрытом условном тексте.",
+						
+						
+		"#EditOriginalButtonTip",		"Изменить оригинал",	// tip string for button in links panel
+		"#GotoLinkButtonTip",		"Перейти к связи",	// tip string for button in links panel
+		
+		"#appendedUpdateButtonTipMac",		". Удерживая кнопку \"Option\", щелкните, чтобы обновить все.", // appened to menu name for 'update link' to build tip string for update button(mac)
+		"#appendedUpdateButtonTipWin",		". Удерживая кнопку \"Alt\", щелкните, чтобы обновить все.", // appened to menu name for 'update link' to build tip string for update button(win)
+		"#appendedRelinkButtonTipMac",		" Удерживая кнопку \"Option\", щелкните, чтобы связать повторно все пропущенные связи", // appened to menu name for 'Relink' to build tip string for relink button(mac)
+		"#appendedRelinkButtonTipWin",		" Удерживая кнопку \"Alt\", щелкните, чтобы связать повторно все пропущенные связи", // appened to menu name for 'Relink' to build tip string for relink button(win)
+		
+		"#ErrorEmbeddingLink",				"Сбой при встраивании связи.",
+		"#LinksUIShowLinkInfoMenu",		"Показать палитру \"Сведения о связях\"",
+		"#LinksUIHideLinkInfoMenu",			"Скрыть палитру \"Сведения о связях\"",
+		"#LinksUICopyLinkInfoMenu",		"Копировать сведения всех связей",
+		"#LinksUIAutosizeLinkInfoMenu",		"Сведения об автоматической установке размера связи",
+		"#LinksUIGenerateReportMenu",		"Копировать сведения для выбранных связях",
+		"#LinksUIGenerateCaptionPrefsMenu",	"Настройка подписи...",
+		"#GenerateLiveLinkCaptionMenu",		"Создать интерактивные подписи",
+		"#GenerateStaticLinkCaptionMenu",	"Создать статичные подписи",
+		
+		"#GenerateCaptionPrefDialogName",	"Настройка подписи",
+		"#BeforeMetadataCaptionLabel",		"Текст до",
+		"#MetadataCaptionLabel",			"Метаданные",
+		"#AfterMetadataCaptionLabel",		"Текст после",
+		"#GenerateLiveCaptionGraphicSelectionMenu",	"Создать интерактивную подпись",
+		"#GenerateStaticCaptionGraphicSelectionMenu",	"Создать статичную подпись",
+		"#CopyLinkInfoStr '^1'",				"Копировать ^1", // Menu item name in links panel. ^1 is replaced with whatever text data is under the mouse.
+		"#CopyLinkFieldMenu",				"Копировать в поле",
+		"#InfoLabelSuffix",					": ", // suffix added to end of link info labels in the info section
+		
+		"#LinksCopyInfoMenu",				"Копировать сведения", // links panel submenu
+		
+		"#CaptionSubmenu",				"Подписи",		// name of captions submenu on Object menu
+		"#CaptionRowLabel",				"Подпись метаданных", // caption setup dialog top section title
+		"#CaptionOptionsLabel",				"Положение и стиль", // caption setup dialog bottom section title
+		"#CaptionOffsetLabel",				"&Смещение:",
+		"#CaptionParaStyleLabel",			"&Стиль абзаца:",
+		"#CaptionLayerLabel",				"&Слой:",
+		"#CaptionLayerLockedError",			"Не удается создать подпись на заблокированном слое.",
+		"#CaptionGroupFailureError",			"Не удается создать группу для подписи.",
+		"#ErrorGeneratingCaption",			"Не удалось создать подпись",
+		"#CaptionAlignmentLabel",			"&Выравнивание:",
+		
+		"#CaptionAlignBelow",				"Под изображением",
+		"#CaptionAlignAbove",				"Над изображением",
+		"#CaptionAlignLeft",					"Слева от изображения",
+		"#CaptionAlignRight",				"Справа от изображения",
+		
+		"#GroupCaptionWithImage",			"&Сгруппировать подпись с изображением",
+		 "#ConvertCaptionToTextMenu",		"Преобразовать в статичную подпись",
+		 "#ShowImportOptionsTip", 			"Показать параметры импорта", // Tool tip for custom controls in relink dialog
+		 "#SearchHereForMissingFilesTip",	"Произвести поиск отсутствующих файлов", // Tool tip for custom controls in relink dialog
+		 "#EmbedLinkFromPropsPanel",		"Встроить изобр. с панели \"Свойства\"",
+		 "#RelinkAssetFromPropsPanel",		"Связать изобр. повторно с панели \"Свойства\"",
+		 "#UpdateLinkFromPropsPanel",		"Обновить изобр. с панели \"Свойства\"",
+		 "#UnlinkFromPropsPanel",			"Изъять файл с панели \"Свойства\"",
+        
+        "kImportingAALAsset",                "Импорт ресурса",
+        "kImportingFileName",                "Импорт ^1",
+        
+        //Error Strings for AEM
+        "AEMUnsupportedFiles",     "Не удалось разместить файлов: ^1 из ^2. Тип файла не поддерживается в InDesign.",
+        "AEMInaccessibleFiles",     "Не удалось разместить файлов: ^1 из ^2. InDesign не может получить доступ к данному файлу. Проверьте подключение к сети и состояние источника материалов.",
+        "AEMUnknownFiles",     "Из-за неизвестной ошибки не удалось разместить файлов: ^1 из ^2.",
+        "AEMGenericImportFailure",     "Не удалось импортировать ресурс на основе AEM.",
+        
+        // Action id strings
+        "#LinksUIReplaceFPOWithOriginalLink",        "Заменить FPO оригиналом...",
+        "#LinksUIReplaceAllFPOWithOriginalLinks",    "Заменить все FPO оригиналами...",
+        "#LinksUIDownloadOriginalLink",                "Загрузить оригинал",
+        "#LinksUIDownloadAllOriginalLinks",            "Загрузить все оригиналы",
+	}
+};
+
+
+
+#endif //__ODFRC__

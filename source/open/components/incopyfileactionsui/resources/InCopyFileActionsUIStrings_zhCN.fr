@@ -1,0 +1,43 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kInCopyFileActionsUIStringsRsrcID + index_zhCN)
+{
+	k_zhCN,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{
+		"&Update Design",		"更新设计(&U)",
+		"AlertUnableToSave",	"无法存储下列内容。\n文件可能已锁定或您可能没有更改文件的权限。\n",
+		"Update^1Alert",		"无法存储某些内容。更新会丢失更改。\n是否要更新到“^1”的最新版本？",
+		"Undoable^1Save",		"继续之前，更新设计将存储所有可编辑的内容。“还原”命令无法还原更新所做的任何更改。\n是否仍要更新到“^1”？",
+		"AlertStoriesMissing",	"无法找到某些内容文件，因此无法对这些文件进行编辑。请尝试将文件移动到其原始位置或在 InDesign 中更新链接。",
+		"AlertStoriesMissingWF", "无法找到某些内容文件，因此无法对这些文件进行编辑。请尝试从服务器上下载内容并重新打开文档。",
+		"Update",				"更新",
+		"&Revert Story",		"恢复内容(&V)",
+//		"Revert Story",			"Revert Content", // Note to localizer: this string moved to InCopySharedStrings_enUS.fr
+		
+		"SaveAsFeatureLost",    "此文档可能包含该文件格式不支持的功能。是否要继续？",
+		"CannotSaveOntoLockedFile",		"指定的文件当前已由“^1”在 ^2 中从文档“^3”中注销。请选择其他文件名或让“^1”登记该文件。",
+		"CannotSaveOntoLockedFileMinimal",	"指定的文件当前已由“^1”注销。请选择其他文件名或让“^1”登记该文件。",
+	}
+};
+
+
+#endif // __ODFRC__

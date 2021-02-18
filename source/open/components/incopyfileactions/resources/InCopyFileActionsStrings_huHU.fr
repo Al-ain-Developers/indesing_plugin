@@ -1,0 +1,43 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kInCopyFileActionsStringsRsrcID + index_huHU)
+{
+	k_huHU,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{
+		"&Update Design",		"Terv &frissítése",
+		"AlertUnableToSave",	"A következő tartalom nem menthető.\nA fájlok zárolva vannak, vagy nincs engedélye a módosításukhoz.\n",
+		"Update^1Alert",		"Néhány tartalmat nem lehet menteni. A frissítéssel egyes módosítások elveszhetnek.\nFrissíti a(z) \"^1\" legújabb verziójára?",
+		"Undoable^1Save",		"A terv frissítése esetén a program a folytatás előtt menti az összes szerkeszthető tartalmat. A Visszavonás paranccsal nem vonható vissza semmilyen, a frissítés által végrehajtott módosítás. \nMindenképpen frissíti a(z) \"^1\"-re?",
+		"AlertStoriesMissing",	"Egyes tartalomfájlok nem találhatók, ezért azokat nem lehet szerkeszteni. Próbálja meg áthelyezni a fájlokat eredeti helyükre vagy frissíteni a csatolásokat az InDesign programban.",
+		"AlertStoriesMissingWF", "Egyes tartalomfájlok nem találhatók, ezért azokat nem lehet szerkeszteni. Próbálja meg letölteni a tartalmat a kiszolgálóról, majd ismét megnyitni a dokumentumot.",
+		"Update",				"Frissítés",
+		"&Revert Story",		"Tartalom vi&sszaállítása",
+//		"Revert Story",			"Revert Content", // Note to localizer: this string moved to InCopySharedStrings_enUS.fr
+		
+		"SaveAsFeatureLost",    "Előfordulhat, hogy a dokumentum a fájlformátum által nem támogatott beállításokat tartalmaz. Folytatja?",
+		"CannotSaveOntoLockedFile",		"A megadott fájlt a(z) \"^1\" nevű felhasználó lefoglalta a(z) ^2 helyen a(z) ^3 dokumentumból. Válasszon másik fájlnevet, vagy kérje meg a(z) \"^1\" nevű felhasználót, hogy oldja fel a fájl lefoglalását.",
+		"CannotSaveOntoLockedFileMinimal",	"A megadott fájlt lefoglalta a(z) \"^1\" nevű felhasználó.  Válasszon másik fájlnevet, vagy kérje meg a(z) \"^1\" nevű felhasználót, hogy oldja fel a fájl lefoglalását.",
+	}
+};
+
+
+#endif // __ODFRC__

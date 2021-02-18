@@ -1,0 +1,142 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kLayerPanelStringsRsrcID + index_itIT)
+{
+	k_itIT,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{
+		// ----- Command strings
+
+		"Layer Options",				"Opzioni livello",
+		"New Layer",					"Nuovo livello",
+		"Layer Deletion",				"Elimina livelli",
+		"Delete Unused Layers",			"Elimina livelli non usati",
+		"Lock Others",					"Blocca gli altri",
+		"#UnlockOthers",					"Sblocca gli altri",
+		"Show All",						"Mostra tutti",
+		"#ShowOthers",					"Mostra gli altri",
+		"Unlock All",					"Sblocca tutti",
+		"Hide All",						"Nascondi tutti",
+		"Lock All",						"Blocca tutti",
+		"Merge Layers",					"Unisci livelli",
+		"Move To Layer",				"Sposta nel livello",
+		"Copy To Layer",				"Copia nel livello",
+		"Move Layer",					"Sposta livello",
+		"Move Layers",					"Sposta livelli",
+		"kUnlockOthersSequence",		"Sblocca gli altri",
+		"kLockOthersSequence",			"Blocca gli altri",
+
+		// ----- Menu strings
+		
+		"Layers...",						"Li&velli...",
+
+		"New Layer...",						"Nuovo livello...",
+		"New Layer Above \"^1\"...",		"Nuovo livello sopra a \"^1\"...",
+		"New Layer Below \"^1\"...",		"Nuovo livello sotto a \"^1\"...",
+		"New Top Layer...",					"Nuovo livello superiore...",
+		"Delete Layer",						"Elimina livello",
+		"Delete \"^1\"",					"Elimina livello \"^1\"",
+		"Delete Layers",					"Elimina livelli",
+		"#Duplicate ^1 Menu",				"Duplica livello \"^1\"",
+		"#Duplicate LayersMenu",			"Duplica livelli",
+		"#DuplicatLayersCmd",				"Duplica livelli",
+		
+		"Layer Options for \"^1\"...",		"Opzioni livello per \"^1\"...",
+		"Layer Options...",					"Opzioni livello...",
+		"Show All Layers",					"Mostra tutti i livelli",
+		"Hide Others",						"Nascondi gli altri",
+		"Unlock All Layers",				"Sblocca tutti i livelli",
+		"Lock Others",						"Blocca gli altri",
+		"Hide All Layers",					"Nascondi tutti i livelli",
+		"Lock All Layers",					"Blocca tutti i livelli",
+		
+		"Paste Remembers Layers",			"Incolla sui livelli originali",
+		"Ungroup Remembers Layers",			"Separa livelli originali",
+		
+		"Merge Layers",						"Unisci livelli",
+		"Delete Unused Layers",				"Elimina livelli non usati",
+		"Select Item(s) on \"^1\"",			"Seleziona elementi su \"^1\"",
+		"Select Item(s) Layer",				"Seleziona elementi su livello",
+				
+		"#SelectLayerPageItemMenu",		"Seleziona elementi",
+		"#SelectZoomLayerPageItemMenu",	"Seleziona e adatta elemento",
+		"#ZoomLockedPageItemMenu",		"Adatta elemento a finestra",
+		
+		// Menu names for context and panel menus
+		"LayerPanelPopup",					"Menu del pannello Livelli",	
+		"RtMenuLayerPanelEye",				"Menu di scelta rapida visibilità del pannello Livelli",	
+		"RtMenuLayerPanelLock",				"Menu di scelta rapida di blocco del pannello Livelli",
+		"RtMenuLayerPanelItem",				"Menu di scelta rapida livello del pannello Livelli",	
+		"RtMenuLayerPanelPageItem",			"Menu di scelta rapida elemento pagina del pannello Livelli",	
+
+		// ----- Window strings
+		"DeleteOneLayer",					"Il livello \"^1\" contiene uno o più oggetti. Intendete comunque eliminare il livello?",
+		"DeleteMultiLayers",				"I livelli selezionati contengono degli oggetti. Intendete comunque eliminare i livelli?",
+		"DeleteOneGuideLayer",				"Il livello \"^1\" contiene delle guide righello. Intendete comunque eliminare il livello?",
+		"DeleteGuideLayers",				"I livelli selezionati contengono delle guide righello. Intendete comunque eliminare i livelli?",
+		"DeletingPlaceGunUsedLayer",		"Impossibile eliminare il livello. È richiesto dallo snippet caricato nel cursore di importazione.",
+
+		// ----- Window Menu
+		"Layers_WinMenu",					"&Livelli",
+		
+		// ----- Panel strings
+		
+		"^1 Layer",							"^1 livello",		// For status widget
+		"^1 Layers",						"^1 livelli",	// For status widget
+		"New Layer",						"Nuovo livello",	// Title of New Layer dialog
+		"Layer Options",					"Opzioni livello", // Title of Layer Options dialog
+		"&Name:",							"&Nome:",
+		"&Color:",							"&Colore:",
+		"&Show Layer",						"Mo&stra livello",
+		"Show &Guides",						"&Mostra guide",
+		"&Lock Layer",						"B&locca livello",
+		"Loc&k Guides",						"&Blocca guide",
+		"Keep When Layer is &Hidden",		"&Elimina Contorna con testo se il livello è nascosto",
+		"&Print Layer",						"Stam&pa livello",
+
+		// ----- Tips strings
+
+		"DeleteLayerTip",					"Elimina livelli selezionati",
+		"NewLayerTip",						"Crea nuovo livello",
+		"EyeTip",							"Attiva o disattiva la visibilità",
+		"PencilTip",						"Blocca/sblocca il livello (modificabile se vuoto)",
+		"PageItemPencilTip",				"Blocca/sblocca l'elemento (modificabile se vuoto)",
+		"SwatchTip",						"Colore dei quadratini di selezione di questo livello",
+		"ProxyTip",							"Indica gli elementi selezionati (trascinate per spostare tra livelli o modificare l'ordine di sovrapposizione)",
+		"ProxyChildSelectedTip",			"Contiene l'oggetto selezionato, fate clic per selezionare l'oggetto contenitore",
+		"UnselectedProxyTip",				"Fate clic per selezionare gli elementi",
+		"ActiveTip",						"Indica il livello del disegno corrente",
+
+		// ----- Error strings
+		"EmptyLayerName",					"Specificate il nome del livello.",
+		"DuplicateLayer",					"Esiste già un livello con lo stesso nome.",
+
+		"#LayerHierPanelName",		"Livelli",
+		"#Page:^1,",					"Pagina: ^1, ", // for layer panel status widget. Will be followed by layer count string.
+		"#Pages:^1,",					"Pagine: ^1, ", // for layer panel status widget. Will be followed by layer count string.
+		"#DeletePageItemsMenu",		"Elimina elementi pagina", // menu item name
+		"#DeletePageItem \"^1\"",		"Elimina elemento pagina \"^1\"", // menu item name
+		"#DuplicatePI ^1 Menu",			"Duplica elemento pagina \"^1\"", // menu item name
+		"#DuplicatePIMenu",			"Duplica elementi pagina",  // menu item name
+	}
+};
+
+#endif // __ODFRC__

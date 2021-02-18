@@ -1,0 +1,227 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#ifdef __ODFRC__
+
+#include "StringTable.fh"
+
+resource StringTable (kLinksUIStringsRsrcID + index_csCZ)
+{
+	k_csCZ,					// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	{
+		"Links_WinMenu",			"&Vazby", // panel menu item
+		"kRtMouseGraphics",			"Grafiky", // context menu submenu name
+		"RtMenuLinksUILinkInfo",	"Kontext. nabídka informace o sloupci",
+		
+		"#LinksUIPanel",			"Vazby", // panel name
+		"#LinksUIPanelMenu",		"Nabídka panelu Vazby", 
+		"#LinksUtilitiesSubmenu",		"Pomůcky",		// submenu for links panel menu
+		"#SelectedLinkInfoSectionName",			"Informace o vazbě", // section name in links ui panel
+		
+		"#UpdateAllOutOfDateLinksMenu",	"Aktualizovat všechny vazby",
+		"#AutoFindMissingLinksMenu",		"Vyhledat chybějící vazby",
+		"#LinksUIRelinkLinkMenu",		"Změnit vazbu...",
+		"#LinksUIRelinkResourceMenu",	"Změnit vazbu pro všechny výskyty...", // menu item to relink all instances of this multiple link assets
+		"#RelinkResource ^1 Menu",		"Změnit vazbu Všechny výskyty '^1'", // menu item to relink all instances of one single link asset
+		"#ReplaceFPOWithOriginalResourceMenu",	"Nahradit všechny výskyty...", // menu item to replace all instances of this multiple link assets
+		"#ReplaceFPOWithOriginalResource ^1 Menu", "Nahradit všechny výskyty obrazu FPO „^1“ originálem...", // menu item to replace all instances of one single link asset
+		"#RelinkCloudResource ^1 Menu",	"Změnit vazbu všech instancí '^1' z knihoven CC...", // menu item to relink all instances of one single link asset
+        "#RelinkAALResource ^1 Menu",    "Obnovit propojení všech výskytů '^1' z rozšíření Adobe Asset Link…", // menu item to relink all instances of one single link asset
+		"#LinksUIUpdateLinkMenu",			"Aktualizovat vazbu", // context menu item in links ui panel
+		"#LinksUIUpdateLinkResourceMenu",	"Aktualizovat všechny výskyty",
+		"#UpdateResource ^1 Menu",		"Aktualizovat Všechny výskyty '^1'", // menu item to update all instances of one single link asset
+		"#LinksUIEmbedLinkMenu",			"Vložit vazbu", // context menu item in links ui panel
+		"#LinksUIEmbedResourceMenu",		"Vložit všechny výskyty",
+		"#EmbedResource ^1 Menu",			"Vložit Všechny výskyty '^1'", // menu item to embed all instances of one single link asset
+		"#LinksUIUnEmbedLinkMenu",		"Vyjmout vazbu", // context menu item in links ui panel
+		"#LinksUIUnEmbedResourceMenu",	"Vyjmout všechny výskyty",
+		"#UnembedResource ^1 Menu",			"Vyjmout Všechny výskyty '^1'", // menu item to unembed all instances of one single link asset
+		"#LinksUIUnLinkMenu",				"Odpojit",
+		"#UnLinkResourceMenu",			"Odpojit Všechny výskyty",
+		"#UnLinkResource ^1 Menu",			"Odpojit Všechny výskyty '^1'", // menu item to unlink all instances of one single link asset
+		"#LinksUIEditOriginalLinkMenu",		"Upravit originál", // context menu item in links ui panel
+		"#LinksUIGoToSourceLinkMenu",		"Najít zdroj", // context menu item in links ui panel
+		"#LinksUIXMPFileInfo",				"Informace o souboru XMP...",
+		"#LinksUICopyPath",				"Kopírovat úplnou cestu",
+		"#LinksUICopyPlatformPath",			"Kopírovat cestu ke stylu platformy",
+		"#RevealLinkInMacFinder",			"Najít ve Finderu",
+		"#RevealLinkInWinExplorer",			"Najít v Exploreru",
+		"#RevealLinkInAdobeBridge",			"Najít v Bridge",
+		"#RevealLinkInCCLibraries",			"Najít v knihovnách CC",
+		"#GoToLink",						"Najít vazbu",
+		"#EditWithApp",					"Upravit v",
+		"ApplicationFiles",					"Aplikace (*.exe)", // windows only string to list exe files in the 'edit with application' dialog.
+		"#ChooseEditingApplication",			"Zvolit aplikaci", // dialog title
+		"#OtherApp",						"Jiný...",	// Menu name for choosing a custom application via a standard file dialog for Edit With...
+		"#LinksUICopyLink",				"Kopírovat vazby do...",
+		"#LinksUIEditColumnsMenu",			"Volby panelu...",
+		
+		"#LinksUIRemoveThisColumnMenu",	"Skrýt sloupec",
+		"#LinksUIShowThumbnailMenu",		"Zobrazit miniaturu",
+		"#LinksUIHideThumbnailMenu",		"Skrýt miniaturu",		
+		"#LinksUIShowInfoThumbnailMenu",	"Zobrazit informační miniaturu",
+		"#LinksUIHideInfoThumbnailMenu",	"Skrýt informační miniaturu",
+		
+		"#SaveLinkVersionCmd",			"Zpřístupnit vazbu",
+		"#ShowLinksPanelColumn",			"Zobrazit sloupec",
+		"#ShowLinksPanelInfo",				"Zobrazit v informacích o vazbě",
+		"#SelectNextLinkButtonTip",			"Vybrat další vazbu v seznamu",
+		"#SelectPrevLinkButtonTip",			"Vybrat předchozí vazbu v seznamu",
+		"#ToggleLinkInfoButtonTip",			"Zobrazit/skrýt informace o vazbě",
+
+		"#ShortLinkStatusParamStr",				"Počet vazeb: ^1",  // status string for links panel
+		"#LongLinkStatusParamStr",				"^1 Celkem vazeb\n\n   ^2 Scházející\n   ^3 Změněné\n   ^4 Vložené\n   ^5 Jedinečné\n   ^6 Podvazby", // tip string for links panel status.
+		"#OneSelectedLinkStr",			"1 vybráno", // status string when one link is selected in the panel.
+		"#NumSelectedLinksParamStr",	"^1 vybráno", // status string when multiple links are selected in the panel.
+				
+		"RtMenuLinksUILinkItem",		"Kontextová nabídka Vazba",
+		"RtMenuLinksUILinksHeader",		"Kontextová nabídka záhlaví panelu Vazby",
+		
+		"#LinkColumnDialog",			"Volby panelu", // dialog name
+		"#LinksUIPanelOptions",			"Volby",
+		
+		"#LinkThumbPrefLabel",			"Miniatury:",
+		"#LinksUIRowSizeLabel",		"&Velikost řádku:",
+		"#LinksUISmallRowStr",			"Malé řádky",
+		"#LinksUIRegularRowStr",		"Normální řádky",
+		"#LinksUILargeRowStr",			"Velké řádky",
+		"#LinkInfoShowThumbnailCheckbox",	"Zobrazit v &informacích o vazbě",
+		"#LinksUIShowThumbnail",		"Zobrazit v &názvu sloupce",
+		"#LinksUICollapseMultiple",		"Sbalit ví&ce vazeb do stejného zdroje",
+
+		"#SearchHereForMissingFiles",	"Hledat chybějící vazby v této složce", // label for checkbox in relink dialog
+		"#RelinkSkipButton",			"Přeskočit", // name for 'skip' button in relink dialog
+		"#SearchFound^1Links",		"Tento adresář změn vazeb byl prohledán a bylo nalezeno a změněno ^1 chybějících vazeb.", // alert that displays if we auto find missing links after a relink
+		"#RelinkToFolderTitle",			"Vybrat složku, na kterou bude obnovena vazba. Vazbu lze obnovit pouze na aktuálně vybrané vazby s odpovídajícími názvy.",
+		"#RelinkToSameFilename",		"Sjednotit stejné názvy souborů a koncovky ", // radio button option in relink to folder dialog
+		"#RelinkToExtension",			"Sjednotit stejné názvy souborů až na tuto koncovku:", // radio button option in relink to folder dialog
+		"#LinksUICopyLinksTitle",		"Vyberte složku, do které se nakopírují navázané soubory.",
+		"#LinksUIRelinkToFolderLinkMenu",	"Znovu navázat na složku...",
+		"#LinksUIRelinkFileExtensionLinkMenu",	"Změnit příponu souboru vazby",
+        "#LinksUIRelinkFromCloudAssetLinkMenu",	"Změnit vazbu z knihoven CC ...",
+        "#LinksUIRelinkFromAALAssetLinkMenu",    "Obnovit propojení z rozšíření Adobe Asset Link…",
+		"#LicenseStockAssetLinkMenu",	"Získat licenci k obrazu...",
+		"#LinksUIRelink: ^1",			"Změnit vazbu: ^1", // title for relink dialog. ^1 becomes file path.
+		"#LinksUILocate: ^1",			"Najít: ^1", // title for relink dialog when link is missing. ^1 becomes file path.
+		"#CopyLinksFailedAlert",		"Kopírování vazeb do složky se nezdařilo.",
+		"#AutoFindFoundNothingAlert",	"Nebyly nalezeny žádné chybějící vazby. Pomocí příkazu Obnovit vazbu vyhledejte první chybějící vazbu a zkuste to znovu.",
+		
+		"kEditsMadeWarning",			  "Importovaná verze \"^1\" byla upravena. Při aktualizaci se tyto úpravy ztratí. Chcete přesto aktualizovat?",
+		"kEditsMadeInLinkedStoryWarning",	"V připojeném článku byly provedeny úpravy \"^1\". Při aktualizaci se tyto úpravy ztratí. Chcete přesto aktualizovat?",
+		"kEditsMadeInLinkedArticleWarning", "V připojené položce stránky \"^1\" byly provedeny úpravy. Při aktualizaci se tyto úpravy ztratí. Chcete přesto aktualizovat?",
+		"kEditsMadeToTextOrTableWarning", "Importovaná verze \"^1\" byla upravena. O tyto změny přijdete (s výjimkou změn aplikovaných na tabulky přes styly buněk nebo styly tabulek), pokud vazbu aktualizujete. Chcete přesto provést aktualizaci?",
+
+		// Strings for Problem Links dialog
+		"#LinksModifiedWarning",	"Tento dokument obsahuje vazby na chybějící nebo změněné zdroje. Změněné vazby můžete aktualizovat ihned, nebo později z panelu Vazby.",
+		"#HTTPLinksModifiedWarning",	"Tento dokument obsahuje odkazy na zdroje, které chybí nebo byly od posledního uložení dokumentu upraveny. Změněné odkazy můžete aktualizovat ihned nebo později z panelu Vazby.",
+		"#UpdateLinks",				"Akt&ualizovat upravené vazby",	 // button text
+		"#Don'tUpdateLinks",		"Neaktualizovat vazby", // button text
+		"#ProblemMissingLinksParamStr",	"^1 - Scházející odkaz(y)",
+		"#ProblemModifiedLinksParamStr",	"^1 - Změněný(é) odkaz(y)",
+		"#ProblemInaccessibleLinksParamStr",	"^1 - Nepřístupné odkazy na adresy URL. Podrobnosti najdete v panelu Vazby.",
+        "#ProblemLinksDialogHeader",    "Problémy s vazbami",
+		"UnembedToOriginal", 		"Vyjmutí vložených souborů může vytvořit vazby na originální soubory nebo vazby na soubory, které se vytvoří ve složce. Chcete vytvořit vazby na originální soubory?",
+		"#SelectUnembedDir",
+									"Vyberte složku, ve které se vytvoří soubory.",
+
+		// Show Link message.
+		 "Cannot show link: The selected item is on a hidden layer.",
+						"Vazbu nelze zobrazit: Vybraná položka je skrytá nebo na skryté vrstvě.",
+		"Cannot show link: The selected item is hidden in overset text.",
+						"Vazbu nelze zobrazit: Vybraná položka je skrytá v přesahujícím textu.",
+		"Cannot show link: The selected item is hidden in an inactive form field state.",
+						"Vazbu nelze zobrazit: Vybraná položka je v neaktivním stavu tlačítka skrytá. Použijte panel Tlačítka k aktivování skrytého stavu, abyste položku zobrazili.",
+		"Cannot show link: The selected item is hidden in an inactive mso state.",
+						"Vazbu nelze zobrazit: Vybraná položka je v neaktivním stavu objektu. Pomocí panelu Stavy objektů zobrazte skrytý stav.",
+		"Cannot show link: The selected item is in deleted text in a tracked change.",
+						"Vazbu nelze zobrazit: Vybraná položka je v odstraněném textu ve sledované změně.",
+		"Cannot show link: The selected item is an XML structure element not in the layout.",
+						"Vazbu nelze zobrazit: Vybraná položka je element struktury XML, který není v rozvržení.",
+		"Cannot show link: The selected item is in hidden conditional text.",
+						"Vazbu nelze zobrazit: Vybraná položka je ve skrytém podmíněném textu.",
+						
+						
+		"#EditOriginalButtonTip",		"Upravit originál",	// tip string for button in links panel
+		"#GotoLinkButtonTip",		"Najít vazbu",	// tip string for button in links panel
+		
+		"#appendedUpdateButtonTipMac",		". Opt-klepnutím aktualizujete vše", // appened to menu name for 'update link' to build tip string for update button(mac)
+		"#appendedUpdateButtonTipWin",		". Alt-klepnutím aktualizujete vše", // appened to menu name for 'update link' to build tip string for update button(win)
+		"#appendedRelinkButtonTipMac",		" Opt-klepnutím obnovíte všechny chybějící vazby", // appened to menu name for 'Relink' to build tip string for relink button(mac)
+		"#appendedRelinkButtonTipWin",		" Alt-klepnutím obnovíte všechny chybějící vazby", // appened to menu name for 'Relink' to build tip string for relink button(win)
+		
+		"#ErrorEmbeddingLink",				"Nepodařilo se vložit odkaz.",
+		"#LinksUIShowLinkInfoMenu",		"Zobrazit podokno s informacemi o vazbách",
+		"#LinksUIHideLinkInfoMenu",			"Skrýt podokno s informacemi o vazbách",
+		"#LinksUICopyLinkInfoMenu",		"Zkopírovat všechny informace o vazbách",
+		"#LinksUIAutosizeLinkInfoMenu",		"Informace o automatické změně velikosti vazby",
+		"#LinksUIGenerateReportMenu",		"Zkopírovat informace pro vybrané vazby",
+		"#LinksUIGenerateCaptionPrefsMenu",	"Nastavení popisku...",
+		"#GenerateLiveLinkCaptionMenu",		"Generovat živé popisky",
+		"#GenerateStaticLinkCaptionMenu",	"Generovat statické popisky",
+		
+		"#GenerateCaptionPrefDialogName",	"Nastavení popisku",
+		"#BeforeMetadataCaptionLabel",		"Text před",
+		"#MetadataCaptionLabel",			"Metadata",
+		"#AfterMetadataCaptionLabel",		"Text za",
+		"#GenerateLiveCaptionGraphicSelectionMenu",	"Generovat živý popisek",
+		"#GenerateStaticCaptionGraphicSelectionMenu",	"Generovat statický popisek",
+		"#CopyLinkInfoStr '^1'",				"Zkopírovat '^1'", // Menu item name in links panel. ^1 is replaced with whatever text data is under the mouse.
+		"#CopyLinkFieldMenu",				"Zkopírovat pole informací",
+		"#InfoLabelSuffix",					": ", // suffix added to end of link info labels in the info section
+		
+		"#LinksCopyInfoMenu",				"Zkopírovat informace", // links panel submenu
+		
+		"#CaptionSubmenu",				"Popisky",		// name of captions submenu on Object menu
+		"#CaptionRowLabel",				"Popisek metadat", // caption setup dialog top section title
+		"#CaptionOptionsLabel",				"Umístění a styl", // caption setup dialog bottom section title
+		"#CaptionOffsetLabel",				"Po&sun:",
+		"#CaptionParaStyleLabel",			"&Odstavcový styl:",
+		"#CaptionLayerLabel",				"&Vrstva:",
+		"#CaptionLayerLockedError",			"Nelze generovat popisek na zamknuté vrstvě.",
+		"#CaptionGroupFailureError",			"Nelze vytvořit skupinu pro popisek.",
+		"#ErrorGeneratingCaption",			"Generování popisku se nezdařilo.",
+		"#CaptionAlignmentLabel",			"&Zarovnání:",
+		
+		"#CaptionAlignBelow",				"Pod obraz",
+		"#CaptionAlignAbove",				"Nad obraz",
+		"#CaptionAlignLeft",					"Vlevo od obrazu",
+		"#CaptionAlignRight",				"Vpravo od obrazu",
+		
+		"#GroupCaptionWithImage",			"&Seskupit popisek s obrazem",
+		 "#ConvertCaptionToTextMenu",		"Převést na statický popisek",
+		 "#ShowImportOptionsTip", 			"Zobrazit volby importu", // Tool tip for custom controls in relink dialog
+		 "#SearchHereForMissingFilesTip",	"Chybějící soubory hledejte zde", // Tool tip for custom controls in relink dialog
+		 "#EmbedLinkFromPropsPanel",		"Vložit odkaz obrázku z panelu Vlastnosti",
+		 "#RelinkAssetFromPropsPanel",		"Změna odkazu obrázku z panelu Vlastnosti",
+		 "#UpdateLinkFromPropsPanel",		"Aktualizovat obrázek z panelu Vlastnosti",
+		 "#UnlinkFromPropsPanel",			"Odpojit soubor z panelu Vlastnosti",
+        
+        "kImportingAALAsset",                "Import datového zdroje",
+        "kImportingFileName",                "Import ^1",
+        
+        //Error Strings for AEM
+        "AEMUnsupportedFiles",     "Nelze umístit ^1 z ^2 souborů. Typ souboru není aplikací InDesign podporován.",
+        "AEMInaccessibleFiles",     "Nelze umístit ^1 z ^2 souborů. InDesign nemá přístup k souboru. Zkontrolujte připojení k síti nebo původní zdroj obsahu.",
+        "AEMUnknownFiles",     "Nepodařilo se umístit ^1 z ^2 souborů z důvodu neznámé chyby.",
+        "AEMGenericImportFailure",     "Datový zdroj AEM nelze importovat.",
+        
+        // Action id strings
+        "#LinksUIReplaceFPOWithOriginalLink",        "Nahradit obraz FPO originálem...",
+        "#LinksUIReplaceAllFPOWithOriginalLinks",    "Nahradit všechny obrazy FPO originály...",
+        "#LinksUIDownloadOriginalLink",                "Stáhnout originál",
+        "#LinksUIDownloadAllOriginalLinks",            "Stáhnout všechny originály",
+	}
+};
+
+
+
+#endif //__ODFRC__

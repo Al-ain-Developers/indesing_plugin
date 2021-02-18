@@ -1,0 +1,52 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// U.S. English strings
+//========================================================================================
+
+resource StringTable (kInCopyExportStringsRsrcID + index_frFR)
+{
+	k_frFR,								// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+
+	{
+		// ----- Miscellaneous strings
+		"Export Seq Name", 		"Exporter l'article InCopy",
+		"Text",					"Texte", // append "Text" to export name on a text story
+		
+		// ----- Export options dialog strings
+		"InCopyExportOptions",	"Options d'exportation Adobe InCopy",
+		"ExportOptions_DataType",	"&Codage :",
+		"ExportOptions_UTF16",	"UTF-16",
+		"ExportOptions_UTF8",	"UTF-8",
+		"ExportOptions_DataOptions",	"Options :",
+		"ExportOptions_StyleTable",	"Inclure le tableau des &styles",
+		"ExportOptions_SwatchList",	"Inclure la liste des n&uances",
+		"ExportOptions_XMPData",	"Inclure les &informations XMP",
+		"ExportOptions_StoryLabel",	"&Libellé de l'article :",
+
+		//menu
+		"ExportMenu",				"E&xportation",
+		"kExportLayerToIC",			"&Calque...",
+		"kExportAllStoriesToIC",	"Tous les a&rticles...",
+		"kExportAllGraphicsToIC",	"Tous les &graphiques...",
+		"kExportAllItemsToIC",		"&Tous les graphiques et articles...",
+
+		"INCDFeatureLost",    "Cet article contient peut-être des fonctions non prises en charge par ce format de fichier. Ces caractéristiques seront perdues lorsque l'article sera mis à jour.",
+	}
+};
+
+#endif // __ODFRC__

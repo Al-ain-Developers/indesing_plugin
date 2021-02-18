@@ -1,0 +1,43 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kInCopyFileActionsStringsRsrcID + index_fiFI)
+{
+	k_fiFI,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{
+		"&Update Design",		"P&äivitä suunnitelma",
+		"AlertUnableToSave",	"Seuraavaa sisältöä ei voinut tallentaa.\nTiedostot saattavat olla lukittuina tai sinulla ei ehkä ole oikeuksia muuttaa niitä.\n",
+		"Update^1Alert",		"Sisältöä ei voinut tallentaa. Päivittäminen voi hävittää muutokset.\nHaluatko päivittää viimeisimpään versioon \"^1\"?",
+		"Undoable^1Save",		"Päivitystoiminto tallentaa ensin kaikki muokattavissa olevat jutut. Kumoa-komento ei voi peruuttaa päivityksen tekemiä muutoksia. \nHaluatko silti päivittää kohteeseen \"^1\"?",
+		"AlertStoriesMissing",	"Tiedostoja ei löytynyt eikä niitä voida muokata. Yritä siirtää tiedostot alkuperäiseen sijaintiinsa tai päivittää InDesignin linkit.",
+		"AlertStoriesMissingWF", "Tiedostoja ei löytynyt eikä niitä voi muokata. Yritä ladata sisältö palvelimelta ja avata julkaisu uudelleen.",
+		"Update",				"Päivitä",
+		"&Revert Story",		"&Palauta sisältö",
+//		"Revert Story",			"Revert Content", // Note to localizer: this string moved to InCopySharedStrings_enUS.fr
+		
+		"SaveAsFeatureLost",    "Tämä julkaisu saattaa sisältää ominaisuuksia, joita tiedostomuoto ei tue. Haluatko jatkaa?",
+		"CannotSaveOntoLockedFile",		"\"^1\" on uloskirjannut määritetyn tiedoston ^2 julkaisusta ^3. Valitse toinen tiedostonimi tai pyydä, että \"^1\" sisäänkirjaa tiedoston.",
+		"CannotSaveOntoLockedFileMinimal",	"\"^1\" on uloskirjannut määritetyn tiedoston.  Valitse jokin toinen tiedostonimi tai pyydä käyttäjää \"^1\" sisäänkirjaamaan tiedosto.",
+	}
+};
+
+
+#endif // __ODFRC__

@@ -1,0 +1,55 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/incopyfileactionsui/resources/InCopyFileActionsUIStrings_roRO.fr $
+//  
+//  Owner: Chris Parrish
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kInCopyFileActionsUIStringsRsrcID + index_roRO)
+{
+	k_roRO,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{
+		"&Update Design",		"&Actualizare design",
+		"AlertUnableToSave",	"Conţinutul următor nu poate fi salvat.\nFişierele sunt blocate sau nu aveţi permisiunea de a le modifica.\n",
+		"Update^1Alert",		"O parte din conţinut nu a putut fi salvat. Actualizarea poate conduce la pierderea modificărilor.\nConfirmaţi actualizarea la versiunea cea mai recentă a “^1”?",
+		"Undoable^1Save",		"Actualizarea designului va salva tot conţinutul editabil înainte de continuare. Comanda Revocare nu poate anula modificările efectuate de actualizare. \nConfirmaţi actualizarea la \"^1\"?",
+		"AlertStoriesMissing",	"Unele fişiere de conţinut nu au putut fi găsite şi, ca urmare, nu pot fi editate. Încercaţi să mutaţi fişierele în locaţia lor originală sau să actualizaţi legăturile din InDesign.",
+		"AlertStoriesMissingWF", "Unele fişiere de conţinut nu au putut fi găsite şi, ca urmare, nu pot fi editate. Încercaţi să descărcaţi conţinutul de pe server şi să redeschideţi documentul.",
+		"Update",				"Actualizare",
+		"&Revert Story",		"Re&staurare conţinut",
+		"Revert Story",			"Restaurare conţinut",
+		
+		"SaveAsFeatureLost",    "Este posibil ca acest document să conţină caracteristici care nu sunt acceptate de acest format de fişier. Doriţi să continuaţi?",
+		"CannotSaveOntoLockedFile",		"Fişierul specificat este împrumutat în acest moment de \"^1\" în ^2 din documentul ^3.  Selectaţi un alt nume de fişier sau solicitaţi-i utilizatorului \"^1\" să restituie fişierul.",
+		"CannotSaveOntoLockedFileMinimal",	"Fişierul specificat este împrumutat în acest moment de \"^1\".  Selectaţi un alt nume de fişier sau solicitaţi-i utilizatorului \"^1\" să restituie fişierul.",
+	}
+};
+
+
+#endif // __ODFRC__

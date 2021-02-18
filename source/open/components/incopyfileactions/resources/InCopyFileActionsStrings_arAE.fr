@@ -1,0 +1,55 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/incopyfileactions/resources/InCopyFileActionsStrings_arAE.fr $
+//  
+//  Owner: Chris Parrish
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kInCopyFileActionsStringsRsrcID + index_arAE)
+{
+	k_arAE,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{
+		"&Update Design",		"&تحديث التصميم",
+		"AlertUnableToSave",	"المحتوى التالي لم يمكن حفظه.\nقد تكون الملفات مقفلة أو أنك لا تملك الصلاحية لتغييرهم.\n",
+		"Update^1Alert",		"بعض المحتوى لا يمكن حفظه. التحديث قد يؤدي لفقد التغييرات.\nالتحديث إلى أحدث إصدار من ز^1س؟",
+		"Undoable^1Save",		"تحديث التصميم سيحتفظ بكل المحتوى الذي يمكن تحريره قبل الاستمرار. لا يمكن لأمر التراجع أن يعكس أي تغييرات تمت من خلال التحديث. \nتحديث إلى \"^1\" على أي حال؟",
+		"AlertStoriesMissing",	"بعض ملفات المحتوى لا يمكن العثور عليها لذا لا يمكن تحريرها. حاول نقل الملفات إلى أماكنها الأصلية أو تحديث الروابط في InDesign.",
+		"AlertStoriesMissingWF", "بعض ملفات المحتوى لا يمكن العثور عليها لذا لا يمكن تحريرها. حاول تنزيل المحتوى من الخادم وإعادة فتح الوثيقة.",
+		"Update",				"تحديث",
+		"&Revert Story",		"ار&جاع المحتوى",
+//		"Revert Story",			"Revert Content", // Note to localizer: this string moved to InCopySharedStrings_arAE.fr
+		
+		"SaveAsFeatureLost",    "قد تحتوي هذه الوثيقة على خصائص غير مدعومة من قبل هذا التنسيق للملفات. هل تريد الاستمرار؟",
+		"CannotSaveOntoLockedFile",		"الملف المحدد متاح للتحرير من قبل \"^1\" في ^2 من الوثيقة ^3. يرجى اختيار اسم ملف مختلف أو اجعل \"^1\" غير متاح للتحرير في الملف.",
+		"CannotSaveOntoLockedFileMinimal",	"الملف المحدد متاح للتحرير من قبل \"^1\".  يرجى اختيار اسم ملف مختلف أو اجعل \"^1\" يوقف اتاحة الملف.",
+	}
+};
+
+
+#endif // __ODFRC__

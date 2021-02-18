@@ -1,0 +1,852 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/sdksamples/customdatalink/CusDtLnk.fr $
+//  
+//  Owner: Adobe Developer Technologies
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "VCPlugInHeaders.h"
+
+// General includes:
+#include "MenuDef.fh"
+#include "ActionDef.fh"
+#include "ActionDefs.h"
+#include "AdobeMenuPositions.h"
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "StringTable.fh"
+#include "objectmodeltypes.fh"
+#include "ShuksanID.h"
+#include "ActionID.h"
+#include "CommandID.h"
+#include "WorkspaceID.h"
+#include "BuildNumber.h"
+
+#include "LinksID.h" // kDataLinkBoss
+#include "GenericID.h" // IID_IADORN...
+#include "ScriptInfoTypes.fh"
+#include "AppFrameworkID.h"
+#include "INXCoreID.h"	// for kINXScriptManagerBoss
+#include "EPSID.h" // for kEPS...
+#include "TextScriptID.h"  // kStory...
+#include "MovieID.h" // kMovie...
+#include "SoundID.h" // kSound...
+#include "XMLID.h" // kXML...
+#include "DocFrameworkID.h"
+// Project includes:
+#include "CusDtLnkID.h"
+#include "DocumentID.h"
+#include "CusDtLnkScriptingDefs.h"
+#include "INXMetadataDefs.h" // m_INX...
+#include "SDKSharedPNG.fr"
+
+#include "PlugInModel_UIAttributes.h"
+#ifdef __ODFRC__
+
+/*
+// Plugin version definition.
+*/
+resource PluginVersion (kSDKDefPluginVersionResourceID)
+{
+	kTargetVersion,
+	kCusDtLnkPluginID,
+	kSDKDefPlugInMajorVersionNumber, kSDKDefPlugInMinorVersionNumber,
+	kSDKDefHostMajorVersionNumber, kSDKDefHostMinorVersionNumber,
+	kCusDtLnkCurrentMajorFormatNumber, kCusDtLnkCurrentMinorFormatNumber,
+	{ kInDesignProduct},
+	{ kWildFS },
+	kUIPlugIn,
+	kCusDtLnkVersion
+};
+
+resource ImplementationAlias(1)
+{
+	{
+		kCusDtLnkDataBasesAsOptionsImpl, kCusDtLnkOptionsImpl,
+	}
+};
+
+resource ImplementationAlias(2)
+{
+	{
+		// Reuse and alias a persistent impl 
+		kCusDtLnkUniqueKeyStringDataImpl, kStringDataImpl,
+	}
+};
+
+resource IgnoreTags(1)
+{
+	kImplementationIDSpace, 
+	{
+		kCusDtLnkAliasedDataLinkImpl,
+		kCusDtLnkUniqueKeyStringDataImpl,
+		kCusDtLnkDataBasesAsOptionsImpl,
+		kCusDtLnkOptionsImpl,
+		kCusDtLnkAliasedLinkedStreamImpl,
+		kCusDtLnkAdornmentShapeImpl
+	}
+};
+
+resource IgnoreTags(2)
+{
+	kClassIDSpace, 
+	{
+		kCusDtLnkAliasedDataLinkBoss,
+		kCusDtLnkBasicCustDataLinkBoss,
+		kCusDtLnkAdornmentBoss,
+	}
+};
+
+/*
+//	Boss class definition.
+*/
+resource ClassDescriptionTable(kSDKDefClassDescriptionTableResourceID)
+{{{
+	
+	/** Command boss class to change options 
+		
+		@ingroup customdatalink
+	*/
+	Class
+	{
+		kCusDtLnkChangeOptionsCmdBoss,
+		kInvalidClass,
+		{
+			/** Implementation of ICommand 
+				@see CusDtLnkChangeOptionsCmd
+			*/
+			IID_ICOMMAND,	kCusDtLnkChangeOptionsCmdImpl,
+			
+			/** Implementation of ICusDtLnkOptions, re-used as command data interface
+				@see CusDtLnkOptions
+			*/
+			IID_ICUSDTLNKOPTIONS, kCusDtLnkOptionsImpl,
+			
+			/** IIntData interface, specifies which PMIID the options are stored in that we want to change.
+			*/
+			IID_ICUSDTLNKPMIIDINTDATA, kIntDataImpl,
+		}
+	},
+
+	
+	
+	
+	/** Puts our command facade onto the Utils boss to let client code use it. 
+		@ingroup customdatalink
+	*/
+	AddIn
+	{
+		kUtilsBoss,
+		kInvalidClass,
+		{
+			/** Implementation of ICusDtLnkFacade 
+				@see CusDtLnkFacade
+			*/
+			IID_ICUSDTLNKFACADE,	kCusDtLnkFacadeImpl,
+		}
+	},
+
+
+	/** IID_ICusDtLnkSTATEUPDATEPROCESSOR is added to maintain a link state update job packets, to be processed by the IID_ICusDtLnkIDLETASK
+		@ingroup extendedlink
+	*/
+	AddIn
+	{
+		kSessionBoss,
+		kInvalidClass,
+		{
+			IID_ICUSDTLNKIDLETASK,	kCusDtLnkLinkResourceStateUpdaterIdleTaskImpl,
+			IID_ICUSDTLNKSTATEUPDATEPROCESSOR, kCusDtLnkStateUpdateProcessorImpl,
+		}
+	},
+	
+
+	/** Pair of interfaces to store some options persistently.
+		
+		@ingroup customdatalink
+	*/
+	AddIn
+	{
+		kWorkspaceBoss,
+		kInvalidClass,
+		{
+			/** Implementation of ICusDtLnkOptions, storing general options for our custom datalinks.
+				@see CusDtLnkOptions
+			*/
+			IID_ICUSDTLNKOPTIONS,  kCusDtLnkOptionsImpl,
+			
+			/** Implementation of ICusDtLnkOptions, storing mapping from database name
+				to where DB file is in local filesystem. 
+				We've use an ImplementationAlias since the persistent data
+				is identified only by implementation impl and not PMIID, and we
+				can't add two persistent interfaces that use same implementation ID to same boss class.
+				
+				@see CusDtLnkOptions
+			*/
+			IID_ICUSDTLNKDATABASESASOPTIONS, kCusDtLnkDataBasesAsOptionsImpl,
+		 }
+	},
+
+	/** Pair of interfaces to store some options persistently.
+		
+		@ingroup customdatalink
+	*/
+	AddIn
+	{
+		kDocWorkspaceBoss,
+		kInvalidClass,
+		{
+			/** Implementation of ICusDtLnkOptions, storing general options for our custom datalinks.
+				@see CusDtLnkOptions
+			*/
+			IID_ICUSDTLNKOPTIONS,  kCusDtLnkOptionsImpl,
+			
+			/** Implementation of ICusDtLnkOptions, storing mapping from database name
+				to where DB file is in local filesystem. 
+				We've use an ImplementationAlias since the persistent data
+				is identified only by implementation impl and not PMIID, and we
+				can't add two persistent interfaces that use same implementation ID to same boss class.
+				
+				@see CusDtLnkOptions
+			*/
+			IID_ICUSDTLNKDATABASESASOPTIONS, kCusDtLnkDataBasesAsOptionsImpl,
+		 }
+	},
+
+	/** Adds a document observer to the kDocBoss
+		@ingroup customdatalink
+	*/
+	AddIn
+	{
+		kDocBoss,
+		kInvalidClass,
+		{
+			/** Implementation of IObserver that responds to document-level notifications
+				@see CusDtLnkDocObserver
+			*/
+			IID_ICUSDTLNKDOCOBSERVER, kCusDtLnkDocObserverImpl
+		}
+	};
+	
+	/** Script provider boss class
+		@ingroup customdatalink
+	*/
+	Class
+	{
+		kCusDtLnkScriptProviderBoss,
+		kBaseScriptProviderBoss,
+		{
+			/** Implementation of IScriptProvider
+				@see CusDtLnkScriptProvider
+			*/
+			IID_ISCRIPTPROVIDER,kCusDtLnkScriptProviderImpl,
+			
+		}
+		
+	},
+	
+	/** Custom data link options script provider
+		@ingroup customdatalink
+	*/
+    Class
+    {
+        kCusDtLnkOptionScriptProviderBoss,
+        kBaseScriptProviderBoss,
+        {
+            IID_ISCRIPTPROVIDER,          kCusDtLnkOptionScriptProviderImpl,
+        }
+    },
+
+	
+	/** Based on CS4 new link architecture. 
+		A link resource service provider, it includes 2 factory implementation, one to instantiate
+		link resource handler and link resource state updater and the other one to instantiate
+		an async work processor for process a link state packet
+
+		@ingroup customdatalink
+	*/
+	Class
+	{
+		kCusDtLnkLinkResourceProviderBoss,
+		kInvalidClass,
+		{
+			IID_IK2SERVICEPROVIDER,				kLinkResourceServiceImpl,
+			IID_ILINKRESOURCEFACTORY,	kCusDtLnkLinkResourceFactoryImpl,
+		}
+	}
+
+    /**
+    Service provider boss class to install the idle task on startup.
+    @ingroup paneltreeview
+    */
+    Class
+    {
+        kCusDtLnkStartupShutdownBoss,
+        kInvalidClass,
+        {
+            /** Implementation of IStartupShutdownService that installs idle task on startup */
+            IID_ISTARTUPSHUTDOWN,  kCusDtLnkStartupShutdownImpl,
+            /** identify the service type */
+            IID_IK2SERVICEPROVIDER,  kCStartupShutdownProviderImpl,
+        }
+    },
+
+   /**  Custom link resource handler boss, it includes 3 implementations, a custom link 
+		resource handler, custom link resource state updater and a default link 
+		resource helper handler.
+
+		@ingroup customdatalink
+	*/
+	Class
+	{
+		kCusDtLnkLinkResourceHandlerBoss,
+		kInvalidClass,
+		{
+			IID_ILINKRESOURCEHANDLER,	kCusDtLnkLinkResourceHandlerImpl,
+			IID_ILINKRESOURCESTATEUPDATER,	kCusDtLnkLinkResourceStateUpdaterImpl,
+			IID_ILINKRESOURCEHELPERHANDLER, kCusDtLnkLinkResourceHelperHandlerImpl,
+		}
+	},
+ 
+    /** A link info service provider, it allows us to add a column into InDesign's Links UI panel
+		so we can display customised information about our links.
+		
+		@ingroup customdatalink
+    */
+	Class
+	{
+		kCusDtLnkLinkInfoProviderBoss,
+		kInvalidClass,
+		{
+            IID_IK2SERVICEPROVIDER, kLinkInfoServiceImpl,
+            IID_ILINKINFOPROVIDER, kCusDtLnkLinkInfoProviderImpl,
+		}
+	},
+   
+	
+	/** CS3 Base class for our custom datalink. This has a marker interface, and was intended
+		as base class for more than one type of custom datalink. 
+		
+		@ingroup customdatalink
+	*/
+	Class
+	{
+	   kCusDtLnkBasicCustDataLinkBoss,
+	   kDataLinkBoss,
+		{
+			/** IBoolData implementation, 
+				serving as marker that a datalink is one of our custom types.
+				The implementation is not persistent that we're reusing so we don't 
+				need ImplementationAlias
+			*/
+			IID_ICUSDTLNKDATALINKBOOLDATA, kBoolDataImpl,
+
+		}
+	},
+
+	/** CS3 based custom datalink boss class. Exisited mainly for data conversion purpose, you should not use
+		this for CS4.
+		
+		@ingroup customdatalink
+	*/
+	Class 
+	{
+		kCusDtLnkAliasedDataLinkBoss,
+		kCusDtLnkBasicCustDataLinkBoss,
+		{
+			/** Implements IDataLink.
+				@see CusDtLnkAliasedDataLink
+			*/
+			IID_IDATALINK, kCusDtLnkAliasedDataLinkImpl,
+			
+				
+			/** Implements ILinkedStream.
+				@see CusDtLnkAliasedLinkedStream
+			*/
+			IID_ILINKEDSTREAM, kCusDtLnkAliasedLinkedStreamImpl,
+			
+			/** Implements IDataLinkAction.
+				@see CusDtLnkAliasedDataLinkAction
+			*/
+			IID_IDATALINKACTION, kCusDtLnkAliasedDataLinkActionImpl,
+			
+			/** IScript implementation
+				@see  CusDtLnkScript
+			
+			*/
+			IID_ISCRIPT, kCusDtLnkScriptImpl,
+			
+			
+			/** Implementation (persistent) of IStringData , 
+				to store the unique key persistently, as based on
+				persistent implementation of IStringData
+				
+			*/
+			IID_ICUSDTLNKUNIQUEKEYSTRINGDATA, kCusDtLnkUniqueKeyStringDataImpl,
+
+			/** Store the workspace reference where the database/file map is stored
+			*/
+            IID_IUIDDATA,           kUIDDataImpl,
+		
+			//	new CS4 implementation, added for new architecture conversion purposes.
+			IID_ILINKRESOURCE,	kCusDtLnkLinkAssetConverterImpl,
+			IID_ILINK, kCusDtLnkImportLinkConverterImpl,
+		}
+	},
+	
+	/** Responder service
+	
+		@ingroup customdatalink
+	*/
+	Class
+	{
+	   kCusDtLnkLinkResponderBoss,
+	   kInvalidClass,
+	   {
+			/** Implementation of IK2ServiceProvider
+				@see CusDtLnkRespServiceProvider
+			*/ 
+			IID_IK2SERVICEPROVIDER, 	kCusDtLnkRespServiceProviderImpl,
+			
+			/** Implementation of IResponder
+				@see CusDtLnkLinkResponder
+			*/
+			IID_IRESPONDER,         	kCusDtLnkLinkResponderImpl,
+		}
+
+	},
+	
+	
+	/** Responder service
+	
+		@ingroup customdatalink
+	*/
+	Class
+	{
+	   kCusDtLnkDocResponderBoss,
+	   kInvalidClass,
+	   {
+			/** Implementation of IK2ServiceProvider
+				@see CusDtLnkDocRespServiceProvider
+			*/ 
+			IID_IK2SERVICEPROVIDER, 	kCusDtLnkDocRespServiceProviderImpl,
+			
+			/** Implementation of IResponder
+				@see CusDtLnkDocResponder
+			*/
+			IID_IRESPONDER,         	kCusDtLnkDocResponderImpl,
+		}
+
+	},
+	
+	/** Adornment that gets drawn when container has dependent with custom datalink.
+		Non-printing.
+		
+		@ingroup customdatalink
+	 */
+	Class 
+	{
+		kCusDtLnkAdornmentBoss,
+		kInvalidClass,
+		{
+			/** See IAdornmentShape and CusDtLnkAdornmentShape.
+			 */
+			IID_IADORNMENTSHAPE, kCusDtLnkAdornmentShapeImpl,
+			
+			
+		}
+		
+	},
+	
+	/** Boss class that provides capability to read delimited text files robustly.
+		@ingroup customdatalink
+	*/
+	Class
+	{
+		kCusDtLnkDelimTextReaderBoss,
+		kInvalidClass,
+		{
+			/** Implementation of ICusDtLnkDelimTextReader
+				@see CusDtLnkDelimTextReader
+			*/
+			IID_ICUSDTLNKDELIMTEXTREADER, kCusDtLnkDelimTextReaderImpl,
+		}
+	},
+
+	
+	/** A phase 2 converter is used to convert pre-CS4 pub that has old links to the new CS4 based links
+		@ingroup customdatalink
+	*/
+	Class
+	{
+		kCusDtLnkPhase2ConversionBoss,
+		kInvalidClass,
+		{
+			IID_IRESPONDER, kCusDtLnkPhase2ConversionImpl,
+			IID_IK2SERVICEPROVIDER, kPhase2ConvSignalRespServiceImpl,
+		}
+	}
+	
+	/** Provide the real conversion implementation used by the phase 2 converter.
+		@ingroup customdatalink
+	*/
+	Class
+	{
+		kCusDtLnkNewLinkConverterBoss,
+		kInvalidClass,
+		{
+			IID_INEWLINKCONVERTER, kCusDtLnkNewLinkConverterImpl,
+		}
+	}
+	
+	
+	/** Even with a phase 2 converter, you still need a schema based converter. Just use default implementation.
+		@ingroup customdatalink
+	*/
+	Class 
+	{
+		kkCusDtLnConversionProviderBoss,
+		kInvalidClass,
+		{
+			IID_ICONVERSIONPROVIDER, kSchemaBasedConversionImpl,
+			IID_IK2SERVICEPROVIDER,  kConversionServiceImpl,
+		}
+	}
+	
+}}};
+
+/*
+// Implementation definition.
+*/
+resource FactoryList (kSDKDefFactoryListResourceID)
+{
+	kImplementationIDSpace,
+	{
+#include "CusDtLnkFactoryList.h"
+	}
+};
+
+
+/*
+// LocaleIndex
+// The LocaleIndex should have indicies that point at your
+// localizations for each language system that you are
+// localized for.
+*/
+/*
+// String LocaleIndex.
+*/
+resource LocaleIndex ( kSDKDefStringsResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_enUS, kSDKDefStringsResourceID + index_enUS
+		kInDesignJapaneseFS, k_jaJP, kSDKDefStringsResourceID + index_jaJP
+		
+		kWildFS, k_Wild, kSDKDefStringsResourceID + index_enUS
+	}
+};
+
+resource LocaleIndex (kSDKDefStringsNoTransResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_Wild, kSDKDefStringsNoTransResourceID + index_enUS
+	}
+};
+
+resource StringTable (kSDKDefStringsNoTransResourceID + index_enUS)
+{
+	k_enUS,									// Locale Id
+	kEuropeanMacToWinEncodingConverter,		// Character encoding converter
+	{
+		// No-Translate strings go here:
+
+	}
+};
+
+
+// NOTE: e_Create events are expected to have a "with properties" parameter. To ensure consistency, use this #define.
+#define WITHPROPERTIESPARAM	keyAEPropData, "with properties", "Initial values for properties of the new ^Object", RecordType( kContainerObjectScriptElement ), kOptional,
+
+
+/*
+	Define contribution to scripting DOM.
+	Owing to the way that inheritance works, we need to repeat 
+	the parents that the 'real' script element for normal datalinks 
+	works to be sure that our custom datalink appears in the same
+	way in the scripting DOM.
+	
+*/
+resource VersionedScriptElementInfo(1)
+{
+	//Contexts
+	{
+		kCS2ScriptVersion, kINXScriptManagerBoss, kWildFS, k_Wild,
+	}
+	//Elements
+	{
+		Suite
+		{
+			kCusDtLnkSuiteScriptElement,
+			s_CusDtLnkSuite,
+			"custom datalink suite",
+			"Terms applicable to CustomDataLink operations",
+		}
+		
+		Object
+		{
+			kCusDtLnkDataLinkObjectScriptElement,
+			c_CusDtLnkCustomDataLink,
+			"customdatalink",
+			"A custom data link",
+			kCusDtLnkCustomDataLink_CLSID,
+			c_CusDtLnkCustomDataLinks,
+			"customdatalinks",
+			"Every custom data link",
+			kCusDtLnkCustomDataLinks_CLSID,
+			kUIDBasedObjectScriptElement, // was kLinkObjectScriptElement,
+			kCusDtLnkSuiteScriptElement, // was kLinkSuiteScriptElement,
+		}
+
+		Method
+        {
+            kCusDtLnkUpdateMethodScriptElement,
+            e_Update,
+            "update",
+            "Updates the custom data link if the source file has been changed. ",
+            ObjectType( kCusDtLnkDataLinkObjectScriptElement ),
+            "The updated link.",
+            {}
+        }
+		
+		
+		Property
+		{
+			kCusDtLnkLinkInfoPropertyScriptElement,
+			p_CusDtLnkLinkInfo,
+			"custom datalink file info",
+			"Low-level information about the customdatalinked file",
+            VariableArrayType( kVariableLength ){ StringType, Int32Type, DateType, BoolType, Int64Type },
+            {PermitTypeChange}
+			kNoAttributeClass,
+		}
+		
+		ObsoleteProperty
+		{
+			kCS2ScriptVersion,
+			kCusDtLnkUniqueKeyPropertyScriptElement,			// this property's script element ID
+			p_CurDtLnkUniqueKey,								// ScriptID
+			"custom datalink unique key",								// name
+			"Information about Custom datalink unique key",	// description
+			StringType,								// type
+			{}										// alternate types
+			kNoAttributeClass,						// attribute class ID
+		}
+		
+		Metadata
+		{
+			kCusDtLnkObjectINXPolicies40MetadataScriptElement,
+			{
+				// Elements
+				kCusDtLnkDataLinkObjectScriptElement,
+			}
+			{
+				// Metadata
+				m_INXTreatAsLink, Int32Value(e_RelinkRequiredLink),
+				m_INXSnippetAttrImportState, Int32Value(e_SetElementAttributes),
+			}
+			
+		}
+		
+		// This is what the existing datalink does
+		Metadata
+		{
+			kCusDtLnkPropertyINXPolicies40MetadataScriptElement,
+			{
+				// Gracefully handle when we place a missing link from library
+				// or INDS snippet from desktop (say)		
+				kCusDtLnkLinkInfoPropertyScriptElement,
+			}
+			{
+				// Do not worry if the value does not appear to have
+				// been set correctly on import.
+				m_INXIgnoreDefaultValueCheck, NoValue,
+			}
+		}
+		
+		ObsoleteProvider
+		{
+			kCS2ScriptVersion,
+			kCusDtLnkScriptProviderBoss,
+			{
+				Object{ kCusDtLnkDataLinkObjectScriptElement },
+				Property{ kCusDtLnkUniqueKeyPropertyScriptElement, kReadWrite },
+			}
+		}
+		
+		Provider
+		{
+			kCusDtLnkScriptProviderBoss,
+			{
+				// CS1: NOT CS2+ SurrogateParent{ kDocumentObjectScriptElement },
+	
+				Parent{ kRectangleObjectScriptElement },
+				Parent{ kOvalObjectScriptElement },
+				Parent{ kPolygonObjectScriptElement },
+				Parent{ kStoryObjectScriptElement },
+				Parent{ kImageObjectScriptElement },
+				Parent{ kMovieObjectScriptElement },
+				Parent{ kSoundObjectScriptElement },
+				Parent{ kEPSObjectScriptElement },
+				Parent{ kWMFObjectScriptElement },
+				Parent{ kPICTObjectScriptElement },
+				Parent{ kPDFObjectScriptElement },
+				Parent{ kXMLElementObjectScriptElement },
+				
+				Object{ kCusDtLnkDataLinkObjectScriptElement },
+				CollectionMethod { kCreateMethodScriptElement },
+                Method{ kCusDtLnkUpdateMethodScriptElement },
+
+				Property{ kCusDtLnkLinkInfoPropertyScriptElement, kReadWrite },
+			}
+		}
+
+	}
+} ;
+
+
+resource VersionedScriptElementInfo(2)
+{
+	//Contexts
+	{
+		// Scripting support added at InDesign CS2.
+		kCS2ScriptVersion, kINXScriptManagerBoss, kWildFS, k_Wild,
+	}
+	
+	//Elements
+	{
+		// For INX don't support the core relationships below:
+		Provider
+		{
+			kNotSupported,
+			{
+				Parent{ kDocumentObjectScriptElement },
+				RepresentObject{ kCusDtLnkDataLinkObjectScriptElement },		
+				CollectionMethod{ kCreateMethodScriptElement }, 							
+			}
+		}		
+	}
+};
+
+// New option scripting support starting from CS4
+resource VersionedScriptElementInfo( 60000 )
+{
+    //Contexts
+    {
+        kCS4ScriptVersion, kCoreScriptManagerBoss, kWildFS, k_Wild,
+    }
+
+	//Elements
+	{
+		Object
+		{
+			kCusDtLnkOptionObjectScriptElement,
+			c_CusDtLnkOption,
+			"custom data link option",
+			"Custom data link options.",
+			kCusDtLnkOption_CLSID,
+			NoCollectionInfo,
+			kPreferencesObjectScriptElement,
+			kPreferencesSuiteScriptElement,
+		}
+
+		Property
+		{
+			kCusDtLnkOptionPropertyScriptElement,
+			p_CusDtLnkOption,
+			"custom data link options",
+			"Custom data link option settings.",
+			ObjectType( kCusDtLnkOptionObjectScriptElement ),
+			{}
+			kNoAttributeClass,
+		}
+
+
+
+		// use this type of property instead of creating new object?
+        Property
+        {
+            kCusDtLnkOptionDatabasePairListPropertyScriptElement,
+            p_CusDtLnkOptionDatabasePair,
+            "custom data link option database key value pairs",
+            "Custom data link option database key value pairs.",
+            VariableArrayType( kVariableLength ){ StringArrayType(2) },
+            {}
+            kNoAttributeClass,
+        }
+
+
+		// use this type of property instead of creating new object?
+        Property
+        {
+            kCusDtLnkOptionAssetPairListPropertyScriptElement,
+            p_CusDtLnkOptionAssetPair,
+            "custom data link option asset key value pairs",
+            "Custom data link option asset key value pairs.",
+            VariableArrayType( kVariableLength ){ StringArrayType(2) },
+            {}
+            kNoAttributeClass,
+        }
+
+	
+		//Providers
+		Provider
+		{
+			kCusDtLnkOptionScriptProviderBoss,
+			{
+				Parent{ kApplicationObjectScriptElement },
+				Parent{ kDocumentObjectScriptElement },
+				RepresentObject{ kCusDtLnkOptionObjectScriptElement },
+				ParentProperty{ kCusDtLnkOptionPropertyScriptElement, kReadOnly },
+				Property{ kCusDtLnkOptionDatabasePairListPropertyScriptElement, kReadWrite },
+				Property{ kCusDtLnkOptionAssetPairListPropertyScriptElement, kReadWrite },
+				
+			}
+		}
+	}
+} ;
+
+//================================================================================
+// SchemaFormatNumber - Define null conversions
+//================================================================================
+resource SchemaFormatNumber(1)
+{
+    {
+		{kCusDtLnkFirstMajorFormatNumber, kCusDtLnkFirstMinorFormatNumber},
+		{kBasilMajorFormatNumber, kCusDtLnkConvertLinksToNewArchitecture},
+    }
+};
+
+#endif // __ODFRC__
+
+#include "CusDtLnk_enUS.fr"
+#include "CusDtLnk_jaJP.fr"
+
+//  Code generated by DollyXs code generator

@@ -1,0 +1,121 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/incopyexport/resources/InCopyExportStringRegister.fr $
+//  
+//  Owner: craig rainwater
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "InCopyExportID.h"
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// RESOURCE Locale index
+//========================================================================================
+
+resource LocaleIndex (kInCopyExportStringsRsrcID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_Wild, kInCopyExportStringsRsrcID + index_enUS
+		kWildFS, k_enGB, kInCopyExportStringsRsrcID + index_enGB    
+		kWildFS, k_deDE, kInCopyExportStringsRsrcID + index_deDE    
+		kWildFS, k_frFR, kInCopyExportStringsRsrcID + index_frFR    
+		kWildFS, k_jaJP, kInCopyExportStringsRsrcID + index_jaJP    
+		kWildFS, k_esES, kInCopyExportStringsRsrcID + index_esES    
+		kWildFS, k_ptBR, kInCopyExportStringsRsrcID + index_ptBR    
+		kWildFS, k_svSE, kInCopyExportStringsRsrcID + index_svSE    
+		kWildFS, k_daDK, kInCopyExportStringsRsrcID + index_daDK    
+		kWildFS, k_nlNL, kInCopyExportStringsRsrcID + index_nlNL    
+		kWildFS, k_itIT, kInCopyExportStringsRsrcID + index_itIT    
+		kWildFS, k_nbNO, kInCopyExportStringsRsrcID + index_nbNO    
+		kWildFS, k_fiFI, kInCopyExportStringsRsrcID + index_fiFI    
+		kWildFS, k_koKR, kInCopyExportStringsRsrcID + index_koKR    
+		kWildFS, k_zhCN, kInCopyExportStringsRsrcID + index_zhCN    
+		kWildFS, k_zhTW, kInCopyExportStringsRsrcID + index_zhTW    
+		kWildFS, k_csCZ, kInCopyExportStringsRsrcID + index_csCZ    
+		kWildFS, k_huHU, kInCopyExportStringsRsrcID + index_huHU    
+		kWildFS, k_plPL, kInCopyExportStringsRsrcID + index_plPL    
+//		kWildFS, k_roRO, kInCopyExportStringsRsrcID + index_roRO     
+		kWildFS, k_ruRU, kInCopyExportStringsRsrcID + index_ruRU    
+		kWildFS, k_trTR, kInCopyExportStringsRsrcID + index_trTR    
+		kWildFS, k_ukUA, kInCopyExportStringsRsrcID + index_ukUA    
+#ifdef qME
+		kWildFS, k_elGR, kInCopyExportStringsRsrcID + index_elGR    
+		kWildFS, k_arAE, kInCopyExportStringsRsrcID + index_arAE    
+		kWildFS, k_heIL, kInCopyExportStringsRsrcID + index_heIL    
+#endif
+	}
+}
+
+#endif // __ODFRC__
+
+
+#include "InCopyExportStrings_enUS.fr"
+#include "InCopyExportStrings_enGB.fr"
+#include "InCopyExportStrings_deDE.fr"
+#include "InCopyExportStrings_frFR.fr"
+#include "InCopyExportStrings_jaJP.fr"
+#include "InCopyExportStrings_esES.fr"
+#include "InCopyExportStrings_ptBR.fr"
+#include "InCopyExportStrings_svSE.fr"
+#include "InCopyExportStrings_daDK.fr"
+#include "InCopyExportStrings_nlNL.fr"
+#include "InCopyExportStrings_itIT.fr"
+#include "InCopyExportStrings_nbNO.fr"
+#include "InCopyExportStrings_fiFI.fr"
+#include "InCopyExportStrings_koKR.fr"
+#include "InCopyExportStrings_zhCN.fr"
+#include "InCopyExportStrings_zhTW.fr"
+
+#include "InCopyExportStrings_csCZ.fr"
+#include "InCopyExportStrings_huHU.fr"
+#include "InCopyExportStrings_plPL.fr"
+//#include "InCopyExportStrings_roRO.fr"
+#include "InCopyExportStrings_ruRU.fr"
+#include "InCopyExportStrings_trTR.fr"
+#include "InCopyExportStrings_ukUA.fr"
+#ifdef qME
+#include "InCopyExportStrings_elGR.fr"
+#include "InCopyExportStrings_arAE.fr"
+#include "InCopyExportStrings_heIL.fr"
+#endif
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+resource LocaleIndex (kInCopyExportStringsNoTransRsrcID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_Wild, kInCopyExportStringsNoTransRsrcID + index_enUS
+	}
+}
+
+resource StringTable (kInCopyExportStringsNoTransRsrcID + index_enUS)
+{
+	k_enUS,
+	kEuropeanWinToMacEncodingConverter,
+	{
+		// No-Translate strings go here
+	}
+}
+#endif // __ODFRC__

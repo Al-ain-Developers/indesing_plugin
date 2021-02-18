@@ -1,0 +1,319 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/sdksamples/chlinguistic/CHL.fr $
+//  
+//  Owner: Adobe Developer Technologies
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//  
+//  Umbrella include file for all the .fr files in the plug-in.
+//  
+//========================================================================================
+
+//===========================
+//  General includes:
+//===========================
+
+#include "MenuDef.fh"
+#include "ActionDef.fh"
+#include "ActionDefs.h"
+#include "AdobeMenuPositions.h"
+#include "ErrorTableTypes.h"
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "StringTable.fh"
+#include "objectmodeltypes.fh"
+#include "ShuksanID.h"
+#include "ActionID.h"
+#include "CommandID.h"
+#include "WorkspaceID.h"
+#include "widgetid.h"
+#include "BuildNumber.h"
+#include "IControlViewDefs.h"
+#include "SysControlIds.h"
+//#include "Widgets.fh" // for DialogBoss
+
+#include "LinguisticID.h" // for various linguistic IDs
+#include "XMLParserID.h"
+#include "ScriptingID.h"
+#include "TextID.h"
+
+#include "PlugInModel_UIAttributes.h"
+// Project includes:
+#include "CHLID.h"
+
+#ifdef __ODFRC__
+
+/*
+// Plugin version definition.
+*/
+resource PluginVersion (kSDKDefPluginVersionResourceID)
+{
+	kTargetVersion,
+	kCHLPluginID,
+	kSDKDefPlugInMajorVersionNumber, kSDKDefPlugInMinorVersionNumber, 	
+	kSDKDefHostMajorVersionNumber, kSDKDefHostMinorVersionNumber,
+	kCHLCurrentMajorFormatNumber, kCHLCurrentMinorFormatNumber,
+	{ kInDesignProduct, kInDesignServerProduct, kInCopyProduct },
+	{ kWildFS },
+	kModelPlugIn,
+	SDK_DEF_MAKE_VERSIONSTRING(kSDKDefPlugInMajorVersionNumberForResource, kSDKDefPlugInMinorVersionNumberForResource, kSDKDefPlugInStepVersionNumberForResource, kBuildNumber)
+};
+
+/*
+//	Boss class definition.
+*/
+resource ClassDescriptionTable(kSDKDefClassDescriptionTableResourceID)
+{{{
+	/**
+	Manages the linguistic services provided by the plug-in.
+
+	@ingroup chlinguistic
+	*/
+	Class
+	{
+		kCHLinguisticBoss,
+		kInvalidClass,
+		{
+			/** Identifies this boss as a service provider
+				(ServiceID = kLinguisticService)
+			*/
+			IID_IK2SERVICEPROVIDER,			kCHLServiceProviderImpl,
+			
+			/** Companion interface for linguistic services.
+				Implementation provided by the API.
+			*/
+			IID_ILINGUISTICDATA, 			kLinguisticServiceDataImpl,
+			
+			/** Provides information about the dictionaries
+				and their language parameters.
+				@see CHLFileNameTable
+			*/
+			IID_ICHLFILENAMETABLE,			kCHLFileNameTableImpl,
+			
+			/** Spelling Manager implementation.
+				@see CHLSpellingMgr
+			*/
+			IID_ISPELLINGMGR,				kCHLSpellingMgrImpl,
+			
+			/** UserDict Manager implementation.
+				@see CHLUserDictMgr
+			*/
+			IID_IUSERDICTMGR,				kCHLUserDictMgrImpl,
+			
+			/** Thesaurus Manager implementation.
+				@see CHLThesaurusMgr
+			*/
+			IID_ITHESAURUSMGR,				kCHLThesaurusMgrImpl,
+		}
+	},
+	
+	/**
+	Provides the spelling service.
+
+	@ingroup chlinguistic
+	*/
+	Class
+	{
+		kCHLSpellingBoss,
+		kInvalidClass,
+		{
+			/** Implements the spelling service.
+					@see CHLSpelling
+			*/
+			IID_ISPELLINGSERVICE,			kCHLSpellingServiceImpl,
+			
+			/** Implements the user dict service.
+					@see CHLUserDict
+			*/
+			IID_IUSERDICTSERVICE,			kCHLUserDictServiceImpl,
+            
+			/** Implements the user dict iterator.
+					@see CHLUserDictIterator
+			*/
+			IID_IUSERDICTITERATOR,			kCHLUserDictIteratorImpl,
+			
+			/** Identifies the language parameters for this
+					particular boss class. 
+					Implementation provided by the API.
+			*/
+			IID_ILANGUAGE,					kLanguageImpl,
+			
+			/** private data for the speller/userdictionary
+			*/
+			IID_ICHLINGUISTICDATA,			kCHLDataImpl,
+			
+			/** to make the user dictionaries scriptable */
+            IID_ISCRIPT,					kUserDictScriptImpl,
+            
+			/** provides access to this object's parent object */
+            IID_ISCRIPTOBJECTPARENT,		kScriptObjectParentImpl,
+		}
+	},
+	
+	/**
+	Provides each user dictionary.
+
+	@ingroup chlinguistic
+	*/
+    Class
+    {
+        kCHLUserDictBoss,
+        kInvalidClass,
+        {
+			IID_IUSERDICT,					kCHLUserDictImpl,
+			IID_ILANGUAGE,					kLanguageImpl,
+			IID_IPMPERSIST,					kPMPersistImpl,
+        }
+    },
+    
+	/**
+	Provides the SAX handler to read the user dictionary.
+
+	@ingroup chlinguistic
+	*/
+    Class
+    {
+		kCHLUserDictContentHandlerBoss,
+		kInvalidClass,
+		{
+			IID_ISAXCONTENTHANDLER,			kCHLUserDictContentHandlerImpl,
+			IID_IUSERDICT,					kCHLUserDictImpl,
+			IID_ILANGUAGE,					kLanguageImpl,
+		}
+    },
+
+	/**
+	Provides the thesaurus service.
+
+	@ingroup chlinguistic
+	*/
+	Class
+	{
+		kCHLThesaurusBoss,
+		kInvalidClass,
+		{
+			IID_ITHESAURUSSERVICE,			kCHLThesaurusImpl,
+			IID_ILANGUAGE,					kLanguageImpl,
+		}
+	},
+
+	/** Provides error strings for the CHL plug-in. 
+
+	@ingroup chlinguistic
+	 */ 
+	Class 
+	{ 
+		kCHLErrorStringServiceBoss, 
+		kInvalidClass, 
+		{ 
+			/** See IErrorStringService / CHLErrorStringService. 
+			 */ 
+			IID_IERRORSTRINGSERVICE, kCHLErrorStringServiceImpl,         
+			/**    Identifies this boss as an error string provider. 
+			 */ 
+			IID_IK2SERVICEPROVIDER, kErrorStringProviderImpl, 
+		} 
+	}, 
+	     
+    /** -- AddIns **/
+    
+    AddIn
+    {
+		kUtilsBoss,
+		kInvalidClass,
+		{
+			IID_ICHLUSERDICTUTILS,			kCHLUserDictUtilsImpl,
+		}
+    },
+	        
+}}};
+
+/*
+// Implementation definition.
+*/
+resource FactoryList (kSDKDefFactoryListResourceID) 
+{
+	kImplementationIDSpace,
+	{
+#include "CHLFactoryList.h"
+	}
+};
+
+
+/*
+// LocaleIndex Definition.
+// The LocaleIndex should have indicies that point at your
+// localizations for each language system that you are 
+// localized for.
+*/
+/*
+// String LocaleIndex.
+*/
+resource LocaleIndex (kSDKDefStringsResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_enUS, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_jaJP, kSDKDefStringsResourceID + index_jaJP
+		
+		kWildFS, k_Wild, kSDKDefStringsResourceID + index_enUS
+	}
+};
+
+resource LocaleIndex (kSDKDefStringsNoTransResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_Wild, kSDKDefStringsNoTransResourceID + index_enUS
+	}
+};
+
+resource StringTable (kSDKDefStringsNoTransResourceID + index_enUS)
+{
+	k_enUS,				   	// Locale Id
+	kEuropeanMacToWinEncodingConverter,	// Character encoding converter
+	{
+		// No-Translate strings go here:		
+	
+		// ----- Configuration strings
+		kCHShortName, 		"Code Hawgs", //Shown under File/Preferences/Dictionary/Vendor
+	}
+};
+
+
+// The following are the error string defines
+// Please note that these are localized in the _en* files included at the bottom
+//
+resource UserErrorTable( kSDKDefErrorStringResourceID )
+{
+	{
+		// error number				// error string
+		kIncorrectSpaceError,		"kIncorrectSpaceError"
+	}
+} ;
+
+#endif // __ODFRC__
+
+#include "CHL_enUS.fr"
+#include "CHL_jaJP.fr"
+
+// End, CHL.fr.
+
+
+
+

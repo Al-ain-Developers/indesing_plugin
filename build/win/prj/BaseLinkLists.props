@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Label="UserMacros">
+    <LIB_DIR>###Actual location is set by target specific property files###</LIB_DIR>
+    <BOOSTFULL_LINKLIST>$(BoostDateTimeLib);$(BoostSystemLib);$(BoostFilesystemLib);$(BoostThreadLib);$(BoostRegexLib)</BOOSTFULL_LINKLIST>
+    <OWL_LIB_DIR>###Actual location is set by target specific property files###</OWL_LIB_DIR>
+    <DROVER_CORELIB_DIR>###Actual location is set by target specific property files###</DROVER_CORELIB_DIR>
+    <DROVER_UILIB_DIR>###Actual location is set by target specific property files###</DROVER_UILIB_DIR>
+    <DROVER_ADAMEVELIB_DIR>###Actual location is set by target specific property files###</DROVER_ADAMEVELIB_DIR>
+    <DROVER_WORKSPACELIB_DIR>###Actual location is set by target specific property files###</DROVER_WORKSPACELIB_DIR>
+    <DROVER_EXOLIB_DIR>###Actual location is set by target specific property files###</DROVER_EXOLIB_DIR>
+  </PropertyGroup>
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.40219.1</_ProjectFileVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <BuildMacro Include="LIB_DIR">
+      <Value>$(LIB_DIR)</Value>
+    </BuildMacro>
+    <BuildMacro Include="BOOSTFULL_LINKLIST">
+      <Value>$(BOOSTFULL_LINKLIST)</Value>
+    </BuildMacro>
+    <BuildMacro Include="OWL_LIB_DIR">
+      <Value>$(OWL_LIB_DIR)</Value>
+    </BuildMacro>
+  </ItemGroup>
+</Project>

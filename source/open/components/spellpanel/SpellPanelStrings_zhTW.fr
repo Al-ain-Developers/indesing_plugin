@@ -1,0 +1,159 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kSpellPanelStringsRsrcID + index_zhTW)
+{
+	k_zhTW,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{				
+		// ----- Main menu strings
+		"SpellingMenu",					"拼字檢查(&S)",
+		"Check Spelling...",			"檢查拼字(&K)...",
+		"Dynamic SpellCheck",			"動態拼字檢查(&M)",
+		"Autocorrect",					"自動更正",
+		"Auto Correct",					"自動更正(&A)",
+		"AutoCorrect",					"自動更正",
+
+		// ----- Window strings
+		"corrected",					"已更正",
+		"misspelled",					"拼錯的",
+		
+		// ----- Scope strings
+		
+		"[No spelling]",				"[無拼字檢查]",
+		"Auto",							"自動",
+		"Document",						"文件",
+		"Story",						"內文",
+		"Stories",						"內文",
+		"Selection",					"選取範圍",
+		
+		// ----- Panel strings		
+		"Spelling",						"拼字檢查",
+		"&Spelling...",					"拼字檢查(&S)...",
+		"Auto Correct...",				"自動更正(&E)...",
+		"[No language]",				"[無語言]",
+		"AutoCorrectEnable",			"啟動自動更正(&N)",
+		"AutoCorrectCapitalizationErrors",			"自動更正大寫錯誤(&C)",
+		"A&dd...",						"新增(&D)...",		// Opens a dialog
+		"EditAutoCorrectWord",			"編輯(&E)...",		// Opens a dialog
+		"Correction",					"更正",
+		"Misspelled Word",				"拼錯的單字",
+
+		// ----- Dialog strings
+		"Check Spelling",				"檢查拼字",
+		"&Change To:",					"變更為(&C):",
+		
+		"Change To",					"變更為",
+		"&Suggested Corrections:",		"建議的更正(&N):",
+		"Language:",					"語言:",
+		"Sea&rch:",						"搜尋(&R):",
+		"Include Overset",				"包含溢排文字",
+		"&Done",							"完成(&D)",
+		"C&hange",						"變更(&H)",
+		"S&tart",						"起始(&T)",
+		"Chan&ge All",					"全部變更(&G)",
+		"Skip",							"略過",	
+		"kSkipButtonInSpellingDialog",  "略過(&K)",
+		"Ignore",						"忽略",
+		"&Ignore All",					"全部忽略(&I)",
+		"&AddAndContinue",				"新增(&A)",			// Adds to dictionary automatically, continues spelling
+		"Dic&tionary...",				"字典(&Y)...",	// Launches Dict Editor dialog
+		"Add To:",						"新增至(&O):",
+
+		// Label strings in Spell Check dialog.
+		"Ready to Spell Check:", 			"準備檢查拼字",
+		"Misspelled Word:",					"拼錯的單字:",
+		"Unknown Word - No Suggestions:", 	"不明的單字 - 無建議單字:",
+		"Not in Dictionary:",				"不在字典中:",
+		"Repeated Word:",					"重複的單字:",
+		"Uncapitalized Word:",				"未以大寫字母開頭的單字:",
+		"Uncapitalized Sentence:",			"未以大寫字母開頭的句子:",
+		"Duplicate Word:",					"重複的單字:",
+		"Capitalization Error:",			"大寫錯誤:",
+		"Spell Check Complete:",			"拼字檢查已完成",
+		
+		"SpellCheckCompleteAlertStr",			"拼字檢查已完成。",	// Alert string at completion of spelling.
+
+		"Misspelled Word (Overset):",					"拼錯的單字: (溢排文字)",
+		"Unknown Word - No Suggestions (Overset):", 	"不明的單字: (溢排文字)",
+		"Not in Dictionary (Overset):",					"不在字典中: (溢排文字)",
+		"Repeated Word (Overset):",						"重複的單字: (溢排文字)",
+		"Uncapitalized Word (Overset):",				"未以大寫字母開頭的單字: (溢排文字)",
+		"Uncapitalized Sentence (Overset):",			"未以大寫字母開頭的句子: (溢排文字)",
+
+		"Misspelled Word (In Table):",					"拼錯的單字: (在表格中)",
+		"Unknown Word - No Suggestions (In Table):", 	"不明的單字: (在表格中)",
+		"Not in Dictionary (In Table):",					"不在字典中: (在表格中)",
+		"Repeated Word (In Table):",						"重複的單字: (在表格中)",
+		"Uncapitalized Word (In Table):",				"未以大寫字母開頭的單字: (在表格中)",
+		"Uncapitalized Sentence (In Table):",			"未以大寫字母開頭的句子: (在表格中)",
+
+		"Misspelled Word (Deleted Text):",				"拼錯的單字: (刪除的文字)",
+		"Unknown Word - No Suggestions (Deleted Text):","不明的單字: (刪除的文字)",
+		"Not in Dictionary (Deleted Text):",			"不在字典中: (刪除的文字)",
+		"Repeated Word (Deleted Text):",				"重複的單字: (刪除的文字)",
+		"Uncapitalized Word (Deleted Text):",			"未以大寫字母開頭的單字: (刪除的文字)",
+		"Uncapitalized Sentence (Deleted Text):",		"未以大寫字母開頭的句子: (刪除的文字)",
+		
+		"Misspelled Word (Hidden):",					"拼錯的單字: (隱藏項目)",
+		"Unknown Word - No Suggestions (Hidden):", 		"不明的單字: (隱藏項目)",
+		"Not in Dictionary (Hidden):",					"不在字典中: (隱藏項目)",
+		"Repeated Word (Hidden):",						"重複的單字: (隱藏項目)",
+		"Uncapitalized Word (Hidden):",					"未以大寫字母開頭的單字: (隱藏項目)",
+		"Uncapitalized Sentence (Hidden):",				"未以大寫字母開頭的句子: (隱藏)", // Shortened to "Hidden" for space. Like the "Overset" case above.
+
+//		"Spelling Preferences", 						"Spelling Preferences", // Note to localizer: this string moved to SpellingServiceStrings.fr
+		"Find", 										"尋找",
+		"&Misspelled Words", 							"拼錯的單字(&M)",
+		"&Repeated Words", 								"重複的單字(&R)",
+		"&Uncapitalized Words", 						"未以大寫字母開頭的單字(&U)",
+		"Uncapitalized &Sentences", 					"未以大寫字母開頭的句子(&S)",
+		"Misspelled Words Underline Color:",			"拼錯的單字(&P):",
+		"Repeated Words Underline Color:",				"重複的單字(&T):",
+		"Uncapitalized Words Underline Color:",			"未以大寫字母開頭的單字(&Z):",
+		"Uncapitalized Sentences Underline Color:",		"未以大寫字母開頭的句子(&N):",
+		"Dynamic Spellchecking",						"動態拼字檢查",
+		
+		"Underline Color",								"底線顏色",
+		
+		"&Enable Dynamic Spelling",						"啟動動態拼字檢查(&E)",
+		
+		"Search is completed.  ^1  replacement(s) made.", "搜尋已完成。進行了 ^1 次取代。", 
+
+		"Add",											"新增",
+		"Re&move",										"移除(&M)",
+		"Misspelled:",									"拼錯的:",
+		"Correction:",									"更正:",
+		"Language:",									"語言:",
+		"&Language:",									"語言(&L):",
+		"AddToAutoCorrectList",							"新增至自動更正清單",
+		"EditAutoCorrectList",							"編輯自動更正清單",
+
+		"ACAlert1",		"不允許有空白項目。",
+		"ACAlert2",		"單字與更正後的拼法和大小寫不能完全相同。",
+		"ACAlert3",		"這個拼錯的單字及其更正拼法已經列在清單中。",
+		"ACAlert4",		"無法建立項目。它超過最大字元數目 (64 個)。",
+		"ACAlert5",		"項目包含無效的字元。",
+		"ACAlert6",		"拼錯的單字中不允許有空格。",
+
+	}
+};
+
+#endif // __ODFRC__

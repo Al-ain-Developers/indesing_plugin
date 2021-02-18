@@ -1,0 +1,110 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/buttonui/resources/FormFieldUIPanelView.fr $
+//  
+//  Owner: Tim Wright
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+
+#include "EveInfo.fh"
+#include "FormFieldUIDefs.h"
+#include "FormFieldUIPanelView.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// RESOURCES Local Index
+//========================================================================================
+
+// ------------------------------------------------------------------------------------------------------
+// Appearance Panel:
+
+type ToggleStatesButtonWidget(kViewRsrcType) : RollOverIconButtonWidget(ClassID = kToggleStatesButtonBoss) { };
+
+resource LocaleIndex (kAppearancePaletteRsrcID)
+{
+	kViewRsrcType,
+	{
+		kWildFS, k_Wild, 	kAppearancePaletteRsrcID + index_enUS,
+		kWildFS, k_jaJP, 	kAppearancePaletteRsrcID + index_jaJP,
+	}
+}
+
+resource LocaleIndex (kStateListMediumElementRsrcID)
+{
+	kViewRsrcType,
+	{
+		kWildFS, k_Wild, 	kStateListMediumElementRsrcID + index_enUS
+	}
+}
+
+resource LocaleIndex (kStateListSmallElementRsrcID)
+{
+	kViewRsrcType,
+	{
+		kWildFS, k_Wild, 	kStateListSmallElementRsrcID + index_enUS
+	}
+}
+
+resource LocaleIndex (kStateListLargeElementRsrcID)
+{
+	kViewRsrcType,
+	{
+		kWildFS, k_Wild, 	kStateListLargeElementRsrcID + index_enUS
+	}
+}
+
+resource LocaleIndex (kStateListExtraLargeElementRsrcID)
+{
+	kViewRsrcType,
+	{
+		kWildFS, k_Wild, 	kStateListExtraLargeElementRsrcID + index_enUS
+	}
+}
+
+resource LocaleIndex (kBehaviorsActionNodeWidgetRsrcID)
+{
+	kViewRsrcType,
+	{
+		kWildFS, k_Wild, 	kBehaviorsActionNodeWidgetRsrcID + index_enUS
+#ifdef qME_CS3
+		kWildFS, k_arAE,	kBehaviorsActionNodeWidgetRsrcID + index_arAE
+		kWildFS, k_heIL,	kBehaviorsActionNodeWidgetRsrcID + index_arAE
+#endif
+	}
+}
+
+resource LocaleIndex (kListItemsNodeWidgetRsrcID)
+{
+	kViewRsrcType,
+	{
+		kWildFS, k_Wild, 	kListItemsNodeWidgetRsrcID + index_enUS
+	}
+}
+
+
+#endif // __ODFRC__
+
+#include "FormFieldUIPanelView_enUS.fr"
+#include "FormFieldUIPanelView_jaJP.fr"
+#ifdef qME_CS3
+#include "FormFieldUIPanelView_arAE.fr"
+#endif

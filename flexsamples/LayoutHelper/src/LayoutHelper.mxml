@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<csxs:CSExtension xmlns:fx="http://ns.adobe.com/mxml/2009" 
+				  xmlns:s="library://ns.adobe.com/flex/spark" 
+				  xmlns:csxs="com.adobe.csxs.core.*" 
+				  xmlns:mx="library://ns.adobe.com/flex/mx"
+				  applicationComplete="appComplete()" xmlns:ui="com.adobe.indesign.layouthelper.ui.*">
+	<fx:Script>
+		<![CDATA[
+		
+			import com.adobe.csxs.core.CSInterface;
+			
+			import mx.controls.FlexNativeMenu;
+
+			
+			[Bindable]
+			private var hostName:String = HostObject.mainExtension;
+			
+			
+			public function appComplete():void{
+			 	CSInterface.instance.autoThemeColorChange = true;
+			}
+			
+		]]>
+	</fx:Script>
+	
+	<mx:TabNavigator left="0" top="0" right="0" bottom="0" height="100%" width="100%" >
+		<ui:PagelayoutSetting/>
+		<ui:LayoutGenerator/>
+		<ui:ExportFile/>
+	</mx:TabNavigator>
+		
+</csxs:CSExtension>

@@ -1,0 +1,126 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kConditionalTextUIStringsRsrcID + index_zhCN)
+{
+    k_zhCN,                                 // Locale Id
+    kResourceUTF8Encoded,     // Character encoding converter
+    {
+		"#CondTextUI_WinMenu",	"条件文本(&O)",	// panel menu item
+		"#CondTextUI_PanelName","条件文本",		// panel name
+		"#CondTextUI_PanelMenu","“条件文本”面板菜单",
+		"#CondTextUI_NewConditionTagMenu", "新建条件...",
+		"#CondTextUI_DeleteConditionTagMenu", "删除条件...",
+		"#CondTextUI_DeleteConditionTagsMenu", "删除条件...",
+		"#CondTextUI_EditConditionTagMenu", "条件选项...",
+		"#CondTextUI_LoadConditionTagsMenu", "载入条件...",
+		"#CondTextUI_LoadConditionTagsAndSetsMenu", "载入条件和集...",
+		"#CondTextUI_ShowIndicatorsCB", "在条件文本上显示指示符",
+		"#CondTextUI_ShowIndicatorsMenu", "在条件文本上显示指示符",
+		"#CondTextUI_ShowAndPrintIndicatorsMenu", "在条件文本上显示和打印指示符",
+		"#CondTextUI_HideIndicatorsMenu", "在条件文本上隐藏指示符",
+		"#CondTextUI_ShowIndicatorsDD", "指示符:",
+		"#CondTextUI_ShowIndicators", "显示",
+		"#CondTextUI_ShowAndPrintIndicators", "显示并打印",
+		"#CondTextUI_HideIndicators", "隐藏",
+		"#CondTextUI_RtMenuConditionTagTVNode",    "条件树视图节点上下文菜单",
+		"#CondTextUI_RtMenuUnapplyTag",		"取消应用“^1”",
+		"#CondTextUI_RtMenuDeleteTag",		"删除“^1”",
+		"#CondTextUI_RtMenuEditTag",		"编辑“^1”...",
+		"Show Options", "显示选项(&O)",
+		"Hide Options", "隐藏选项(&O)",
+		"#CondTextUI_SelectUnusedMenu", "选择所有未使用的项目",
+	
+		"#ConditionTagList_NameColumnLabel", "名称",
+		"#ConditionTag_OptionsDialog", "条件选项",
+		"#ConditionTag_OptionsDialogNew", "新建条件",
+		"#ConditionTagOptions_Name:", "名称(&N):",
+		"#ConditionTagOptions_Method:", "方法(&M):",
+		"#ConditionTagOptions_Appearance:", "外观(&A):",
+		"#ConditionTagOptions_Color:", "颜色(&C):",
+		"#ConditionTagOptions_Indicator", "指示符",
+		"#ConditionTagOptions_MethodUnderline", "下划线",
+		"#ConditionTagOptions_MethodHighlight", "突出显示",
+		"#ConditionTagOptions_WavyUnderline", "波浪线",		
+		"#ConditionTagOptions_SolidUnderline", "实底",		
+		"#ConditionTagOptions_DashedUnderline", "虚线",		
+		"#ConditionTag_EmptyNameMsg", "请提供条件名称。",
+		"#ConditionTag_NameInUseMsg", "此条件名称已在使用。请另选一个名称。",
+		
+		"#ConditionSetShowAll", "显示全部",
+		"#ConditionSetHideAll", "隐藏全部",
+		"#ConditionSetNone", "[无]",
+		"#ConditionSetBlank", " ",
+		"#ConditionSetLabel", "集:",
+		"#ConditionSetNewSet", "创建新集...",
+		"#ConditionSetDeleteSet", "删除“^1”...",
+		"#ConditionSetRenameSet", "重命名“^1”...",
+		"#ConditionSetRedefineSet", "重新定义“^1”...",
+		"#ConditionSetUpdateAllSets", "更新所有集合",
+		"#ConditionSetUpdateAllSetsUndoName", "更新所有条件集",
+		"#ConditionSetNameDialog", "条件集名称",
+		"#ConditionSetNameStatic", "名称(&N):",
+		"#InvalidSetName", "条件集名称无效",
+		"#DuplicateSetName", "名称已存在",
+		"#NoActiveSetString", "无现用集",
+		
+		"#ConditionalTextTip", "使用“^1”找到的隐藏文本: ",
+		"#ConditionalTextTipOneTag", "此条件",
+		"#ConditionalTextTipManyTags", "这些条件",
+		
+		"#ConditionalTextEyeballHideWidgetTip", "单击可隐藏已应用此条件的所有文本",
+		"#ConditionalTextEyeballShowWidgetTip", "单击可显示已应用此条件的所有文本",
+		"#ConditionalTextEyeballUnconditionalWidgetTip", "无条件文本总是可见",
+		"#ConditionalTextAppliedAllTip",	"条件已应用于所有选定文本。单击可取消应用",
+		"#ConditionalTextAppliedSomeTip",	"条件已应用于部分选定文本。单击可应用于所有选定文本",
+		"#ConditionalTextAppliedNoneTip",	"单击可应用条件",
+		"#ConditionalTextAppliedAllTipUncondition",	"选定文本为无条件文本",
+		"#ConditionalTextAppliedSomeTipUncondition",	"部分选定文本为无条件文本。单击可使所有选定文本无条件",
+		"#ConditionalTextAppliedNoneTipUncondition",	"单击可使文本无条件",
+		"#ConditionalTextApplyNoSelectionTip", "单击可将条件应用于选定文本",
+		"#ConditionalTextNewTagTip",		"新建条件",
+		"#ConditionalTextDeleteTagTip",		"删除条件",
+		"#ConditionalTextIndicatorTip",		"指示符方法为“^1”",
+		"#ConditionalTextNewSetTip",		"新建集",
+		"#SetOverrideTip_NewConditionsAndConditionVisibility",	"优先选项: 条件可见性（重新选择要清除的集合，或选择“重新定义”）+ 新增条件（选择要清除的“更新所有集合”，或选择“重新定义”）",
+		"#SetOverrideTip_NewConditions",	"优先选项: 新增条件（选择要清除的“更新所有集合”，或者选择“重新定义”）",
+		"#SetOverrideTip_ConditionVisibility",	"优先选项: 条件可见性（重新选择要清除的集合，或者选择“重新定义”）",
+		
+		"#ConditionTag_DeleteConditionDialog", "删除条件", 
+		"#ConditionTag_DeleteConditionsDialog", "删除条件", 
+		"#ConditionTag_DeleteConditionAndReplace:", "删除条件并替换为: ", 
+		"#ConditionTag_DeleteConditionsAndReplace:", "删除条件并替换为: ", 
+		"#ConditionTag_DeleteInformationAlert", "若要删除条件，请将其拖动到废纸篓图标上。",
+		"#ConditionTag_DeleteNoReplaceChoice", "[无]",
+		
+		"#QuickApplyConditions", "条件",
+		"#Conditions_Filter_Key", "CT", // should be upper case if there is an upper case character, this is the prefix key for quick apply for text conditions.
+		"#QuickApplyConditionSets", "条件集",
+		"#QuickApplyConditionSets_Filter_Key", "CS",  // should be upper case if there is an upper case character, this is the prefix key for quick apply for text condition sets.
+		"#QuickApplyConditons_Menu_Key_String", "包含条件 (ct:)",
+		"#QuickApplyConditonSets_Menu_Key_String", "包含条件集 (cs:)",
+		
+		"#SingularConditionStatusBodyString", "^1 个条件应用了^2",
+		"#PluralConditionStatusBodyString", "^1 个条件应用了^2",
+		"#MixedConditionString", " [混合]",
+		"#NoConditionsString", "未应用条件",
+    }
+};
+
+#endif // __ODFRC__

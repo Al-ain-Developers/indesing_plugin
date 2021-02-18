@@ -1,0 +1,1409 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/buttonui/resources/FormFieldUIClass.fr $
+//  
+//  Owner: Tim Wright
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//  
+//  Adapted from Group.r
+//  
+//  Must be first to set flags before other includes
+//  
+//========================================================================================
+
+#include "PluginBuildFlags.h"
+
+#include "CrossPlatformTypes.h"
+#include "CommandID.h"
+#include "GenericID.h"
+#include "widgetid.h"
+#include "ShuksanID.h"
+#include "ActionID.h"
+#include "GraphicsID.h"
+#include "HyperlinkPanelID.h"
+#include "StandOffID.h"		// kRectToPolygonImpl
+#include "WorkspaceID.h"	// IID_ISTRINGREGISTER
+#include "ToolboxID.h"
+#include "CursorID.h"
+#include "LayoutUIID.h"
+#include "RectID.h"
+#include "GraphicStylesID.h"
+#include "DragDropID.h"
+#include "TipsID.h"
+#include "TextPanelID.h" //IID_ITEXTTARGETSERVER
+#include "TextID.h" //IID_ITEXTATTRIBUTES
+
+#include "BuildNumber.h"
+#include "FormatNumber.h"
+#include "objectmodeltypes.fh"
+#include "PMLocaleIds.h"
+
+#include "AppUIID.h"
+#include "BehaviorID.h"
+#include "BehaviorUIID.h"
+#include "DialogLayoutID.h"
+#include "FormFieldUIID.h"
+#include "FormFieldID.h"
+
+#include "PlugInModel_UIAttributes.h"
+
+#ifdef __ODFRC__
+
+//---------------------------------------------------------------
+//	Plugin Version
+//---------------------------------------------------------------
+resource PluginVersion (1)
+{
+	kTargetVersion,
+	kFormFieldUIPluginID,
+	kMajorVersionNumber, kMinorVersionNumber, 	
+	kMajorVersionNumber, kMinorVersionNumber, 	
+	kFormFieldUILatestMajorFormat, kFormFieldUILatestMinorFormat,
+	{ kInDesignProduct },
+	{ kWildFS },
+	kUIPlugIn,
+	kAUMComponentVersionStr
+}
+
+
+//---------------------------------------------------------------
+//	Plugin Version
+//---------------------------------------------------------------
+resource PluginDependency(1)
+{
+	kWildFS,
+	{
+	kFormFieldPluginID, kFormFieldPluginName,	kMajorVersionNumber, kMinorVersionNumber, 
+	kBehaviorPluginID, kBehaviorPluginName,	kMajorVersionNumber, kMinorVersionNumber, 
+	},
+};
+
+
+resource ClassDescriptionTable(1)
+{{{	
+
+	Class
+	{
+		kFormFieldUIComponentBoss,
+		kBaseActionComponentBoss,
+		{
+			IID_IACTIONCOMPONENT, kFormFieldUIComponentImpl,
+		}
+	},
+
+
+	// --------------------------------------------------------------
+
+// Remove the push button tool. [dstephens 09-13-2007]
+	AddIn
+	{	kPushButtonFactoryBoss,
+		kInvalidClass,
+		{
+			IID_IFORMFIELDUIFACTORY,	kPushButtonUIFactoryImpl,
+		}
+	},
+
+	AddIn
+	{	kGenericFieldFactoryBoss,
+		kInvalidClass,
+		{
+			IID_IFORMFIELDUIFACTORY,	kGenericFieldUIFactoryImpl,
+		}
+	},
+
+
+	//---------------------------------------------------------------
+
+	Class
+	{
+		kAppearancePanelPrefsDialogBoss,
+		kDialogBoss,
+		{
+			IID_IDIALOGCONTROLLER,	kAppearancePanelPrefsDialogControllerImpl,
+			IID_IDIALOGWASCANCELLED,	kBoolDataImpl,
+			IID_IINTDATA,	kIntDataImpl, //chosen thumbnail size.
+		}
+	},
+
+	//---------------------------------------------------------------
+
+	Class
+	{
+		kTabOrderDialogBoss,
+		kDialogBoss,
+		{
+			IID_IDIALOGCONTROLLER,	kTabOrderDialogControllerImpl,
+		}
+	},
+
+	Class
+	{
+		kOrderListBoxBoss,
+		kStdListBoxWidgetNewBoss,
+		{
+			IID_IOBSERVER, kOrderListObserverImpl,
+			IID_ILISTCONTROLDATA, kOrderListControlDataImpl,
+			IID_IDRAGDROPSOURCE, kListBoxListZOrderDDSourceImpl,
+			IID_IDRAGDROPTARGET, kOrderListBoxListZOrderDDTargetImpl,
+		}
+	},
+
+	//---------------------------------------------------------------
+	// Used both by order and list box properties dialog boxes...
+	
+	Class
+	{
+		kListBoxDEHandlerBoss,
+		kInvalidClass,
+		{
+			IID_IDATAEXCHANGEHANDLER, kListBoxDEHandlerImpl,
+			IID_IINTDATA,	kIntDataImpl, //list item index being dragged
+			IID_IPMPERSIST, kPMPersistImpl,
+		}
+	},
+
+
+	//----------------------------------------------------------------------------------------
+	// FormField Tools
+	//----------------------------------------------------------------------------------------
+	AddIn
+	{
+		kWorkspaceBoss,
+		kInvalidClass,
+		{
+			IID_IFORMFIELDPREFS,	kDrawingToolPrefsImpl,
+			IID_IPUSHBUTTONPREFS,	kDrawingToolPrefsImpl,
+			IID_ICHECKBOXPREFS,		kDrawingToolPrefsImpl,
+			IID_IRADIOBUTTONPREFS,	kDrawingToolPrefsImpl,
+			IID_ITEXTFIELDPREFS,	kDrawingToolPrefsImpl,
+			IID_ILISTBOXPREFS,		kDrawingToolPrefsImpl,
+			IID_ICOMBOBOXPREFS,		kDrawingToolPrefsImpl,
+			IID_ISIGNATUREFIELDPREFS,	kDrawingToolPrefsImpl,
+		}
+	},
+
+	// ------------------
+	
+	// For Appearance Panel
+	Class
+	{
+		kAppearancePanelBoss,
+		kErasablePrimaryResourcePanelWidgetBoss,
+		{
+			IID_IPANELMENUDATA,				kCPanelMenuDataImpl, 
+			IID_ICONTROLVIEW,				kAppearancePalettePanelImpl,
+			IID_ILISTBOXDETAILCONTROLLER,	kAppearancePanelDetailControllerImpl,
+			IID_ILISTBOXDRAWFOCUSRING,		kFalseInitBoolDataImpl,
+			IID_ILISTCONTROLDATA, 			kStrIntPairDDLControlDataImpl,	// list of <action/behavior name, action/behavior id> pairs
+			IID_IPANELDETAILCONTROLLER,		kPDFOptionsDetailControllerImpl,
+			IID_IINTDATA, 					kIntDataImpl, //event to edit/add
+			IID_IUIDDATA, 					kUIDDataImpl, //ref to behavior to edit (null) if adding
+			IID_IOBSERVER,					kAppearancePanelObserverImpl,
+		}
+	},
+
+	Class
+	{
+		kStateListElementBoss,
+		kPrimaryResourcePanelWidgetBoss,
+		{
+			IID_ISTATEDATA,	kStateDataImpl,
+		}
+	},
+
+	Class
+	{
+		kStateListBoxBoss,
+		kTreeBasedViewListBoxWidgetBoss,
+		{
+			IID_IOBSERVER, kStateListBoxObserverImpl,
+			IID_ILISTBOXCONTROLLER, kStateListBoxControllerImpl,
+			IID_IDRAGDROPSOURCE, kAPProxyViewDragDropSourceImpl,
+			IID_ILISTBOXDRAWFOCUSRING,		kFalseInitBoolDataImpl,
+		}
+	},
+
+	Class
+	{
+		kDeleteStateButtonBoss,
+		kRollOverIconButtonBoss,
+		{
+			IID_IOBSERVER, kDeleteStateButtonObserverImpl,
+			IID_IDRAGDROPTARGET, kStateDeleteDragDropTargetImpl,
+		}
+	},
+
+	Class
+	{
+		kConvertToButtonButtonBoss,
+		kRollOverIconButtonBoss,
+		{
+			IID_IOBSERVER, kConvertToButtonObserverImpl,
+		}
+	},
+
+	Class
+	{
+		kConvertToObjectButtonBoss,
+		kRollOverIconButtonBoss,
+		{
+			IID_IOBSERVER, kConvertToObjectObserverImpl,
+		}
+	},
+	
+	Class
+	{
+		kPreviewButtonBoss,
+		kRollOverIconButtonBoss,
+		{
+			// No tool-tip added here. 
+			// Tooltip is added to this boss in DynamicDocumentsUI plugin since the preview action is implemented there. 
+			//IID_ITIP,			kDDPreviewSpreadButtonWidgetTipImpl,
+		}
+	},
+	
+	Class
+	{
+		kAppearancePanelEyeballBoss,
+		kEyeballCheckboxBoss,
+		{
+			IID_IOBSERVER, kAppearancePanelEyeballObserverImpl,
+			IID_IDRAGDROPSOURCE, kStateEyeDragDropSourceImpl,
+			IID_IDRAGDROPTARGET, kStateEyeDragDropTargetImpl,
+			IID_IEVENTHANDLER, kStateEyeDragDropSourceEHImpl,
+		}
+	},
+
+	Class
+	{
+		kAppearancePanelThumbnailBoss,
+		kBaseWidgetBoss,
+		{
+			IID_ICONTROLVIEW, kStateThumbnailViewImpl,
+		}
+	},
+
+	Class
+	{
+		kAppearancePanelNameBoss,
+		kStaticTextWidgetBoss,		/* should really be 'EditTextWidget', but that doesn't exist yet */
+		{
+			IID_IUIFONTSPEC, kUIFontSpecImpl,
+		}
+	},
+
+	Class
+	{
+		kStateProxyDEHandlerBoss,
+		kInvalidClass,
+		{
+			IID_IDATAEXCHANGEHANDLER, kStateProxyDEHandlerImpl,
+			IID_ISTATEDATA,	kStateDataImpl,
+			IID_IPMPERSIST, kPMPersistImpl,
+		}
+	},
+	
+	Class
+	{
+		kStateEyeDEHandlerBoss,
+		kInvalidClass,
+		{
+			IID_IDATAEXCHANGEHANDLER, kStateEyeDEHandlerImpl,
+			IID_ISTATEDATA,	kStateDataImpl,
+			IID_IBOOLDATA, kBoolDataImpl,	// Holds the initial "are we hiding or showing" setting
+			IID_IPMPERSIST, kPMPersistImpl,
+		}
+	},
+
+
+	Class
+	{
+		kAppearancePanelMenuComponentBoss,
+		kBaseActionComponentBoss,
+		{
+			IID_IACTIONCOMPONENT, kAppearancePanelMenuComponentImpl,
+		}
+	},
+
+	
+	Class
+	{
+		kCheckBoxDataPanelBoss,
+		kBasePalettePanelWidgetBoss,
+		{
+		}
+	}
+
+
+	Class
+	{
+		kListBoxDataPanelBoss,
+		kBasePalettePanelWidgetBoss,
+		{
+			IID_IOBSERVER, 		kListBoxUIObserverImpl,
+		}
+	}
+
+	Class
+	{
+		kTextFieldDataPanelBoss,
+		kBasePalettePanelWidgetBoss,
+		{
+			IID_IOBSERVER, 		kTextFieldUIObserverImpl,		
+		}
+	}
+
+	Class
+	{
+		kRadioButtonDataPanelBoss,
+		kBasePalettePanelWidgetBoss,
+		{
+		}
+	}
+
+	AddIn 
+	{ 
+   		kAppearanceFormItemBoss,
+		kInvalidClass, 
+		{ 
+            IID_IPLACEBEHAVIORUI,	kAppearancePlaceBehaviorUIImpl, 
+		} 
+	}, 
+
+	AddIn 
+	{ 
+   		kFormFieldContentItemBoss,
+		kInvalidClass, 
+		{ 
+            IID_IPLACEBEHAVIORUI,	kCGraphicPlaceBehaviorUIImpl, 
+		} 
+	}, 
+
+	Class 
+	{
+		kToggleStatesButtonBoss,
+		kRollOverIconButtonBoss,
+		{
+			IID_IOBSERVER, kToggleStatesButtonObserverImpl,
+		}
+	}
+
+	AddIn 
+	{ 
+   		kFormFieldLabelAdornmentBoss,
+		kInvalidClass, 
+		{ 
+            IID_IFORMFIELDLABELDRAWER,	kFormFieldLabelDrawerImpl, 
+		} 
+	}, 
+	
+	// Moved from Behaviors UI plugin
+	Class
+	{
+		kButtonEventChoicesWidgetBoss,
+		kDropDownListWidgetBoss,
+		{
+			IID_ILISTCONTROLDATA, 			kStrIntPairDDLControlDataImpl,
+		}
+	},
+		
+	Class
+	{
+		kActionEnableWidgetBoss,
+		kEyeballCheckboxBoss,
+		{
+			IID_IOBSERVER,					kBehaviorEnableObserverImpl,
+		}
+	},
+
+
+	Class	
+	{
+		kActionsWidgetBoss,
+		kTreeViewWidgetBoss,
+		{
+			IID_ITREEVIEWHIERARCHYADAPTER,	kBehaviorsTreeViewAdapterImpl,
+			IID_ITREEVIEWWIDGETMGR,			kBehaviorsTreeViewMgrImpl,
+			IID_IOBSERVER,					kBehaviorsTreeObserverImpl,
+			IID_IDRAGDROPTARGET,			kBehaviorsTreeViewDDTargetImpl,
+			IID_IUIDDATA,					kUIDDataImpl,
+			IID_IMOVEBEHAVIORDATA,			kMoveBehaviorDataImpl,
+		}
+	},
+
+	Class
+	{
+		kHolderPanelWidgetBoss,
+		kGenericPanelWidgetBoss,
+		{
+			IID_IPANELCONTROLDATA, kHolderPanelControlDataImpl,
+			IID_IOBSERVER, kHolderObserverImpl,
+		}
+	},
+
+	Class
+	{
+		kZoomChoicesWidgetBoss,
+		kDropDownListWidgetBoss,
+		{
+			IID_ILISTCONTROLDATA, 			kStrIntPairDDLControlDataImpl,
+		}
+	},
+	
+	Class
+	{
+		kSelectFileButtonBoss,
+		kButtonWidgetBoss,
+		{
+			IID_IOBSERVER,					kSelectFileObserverImpl,
+		}
+	},
+	
+	Class
+	{
+		kBehaviorEnableWidgetBoss,
+		kCheckBoxWidgetBoss,
+		{
+			IID_IOBSERVER,					kBehaviorEnableObserverImpl,
+			IID_IUIFONTSPEC,				kUIFontSpecImpl,
+		}
+	},
+
+	Class
+	{
+		kStrIntPairDropDownWidgetBoss,
+		kDropDownListWidgetBoss,
+		{
+			IID_ILISTCONTROLDATA, 			kStrIntPairDDLControlDataImpl,
+		}
+	},
+	
+	Class
+	{
+		kStrStrPairDropDownWidgetBoss,
+		kDropDownListWidgetBoss,
+		{
+			IID_ILISTCONTROLDATA, 			kStrStrPairDDLControlDataImpl,
+		}
+	},
+
+	Class
+	{
+		kStandardActionMenusBoss,
+		kInvalidClass,
+		{
+			IID_IK2SERVICEPROVIDER, kActionMenuProviderImpl,
+			IID_IACTIONMENUSERVICE, kStandardActionMenusImpl,
+		}
+	},
+
+	AddIn
+	{
+		kSessionBoss,
+		kInvalidClass,
+		{
+			IID_IACTIONMENUMANAGER, kActionMenuManagerImpl,
+			IID_IEVENTBEHAVIORDATA, kEventBehaviorDataImpl,
+		}
+	},
+
+	Class	
+	{
+		kBehaviorsWidgetBoss,
+		kTreeViewWidgetBoss,
+		{
+			IID_ITREEVIEWHIERARCHYADAPTER,	kBehaviorsTreeViewAdapterImpl,
+			IID_ITREEVIEWWIDGETMGR,			kBehaviorsTreeViewMgrImpl,
+			IID_IOBSERVER,					kBehaviorsTreeObserverImpl,
+			IID_IDRAGDROPTARGET,			kBehaviorsTreeViewDDTargetImpl,
+			IID_IUIDDATA,					kUIDDataImpl,
+			IID_IMOVEBEHAVIORDATA,			kMoveBehaviorDataImpl
+			IID_IEVENTHANDLER,				kBehaviorsTreeViewEHImpl,
+		}
+	},
+
+	Class
+	{
+		kBehaviorNodeWidgetBoss,
+		kTreeNodeWidgetBoss,
+		{
+			IID_IDRAGDROPSOURCE,			kBehaviorTreeViewItemDDSourceImpl,
+			IID_IEVENTHANDLER,				kBehaviorTreeNodeEHImpl,
+		}
+	},
+
+	Class
+	{
+		kBehaviorOnOffButtonBoss,
+		kIconSuiteButtonWidgetBoss,
+		{
+			IID_ICONTROLVIEW, 				kBehaviorOnOffButtonViewImpl,
+		  	IID_IEVENTHANDLER, 				kBehaviorOnOffButtonEventHandlerImpl,
+		}
+	},
+	
+	Class
+	{
+		kEventChoicesWidgetBoss,
+		kDropDownListWidgetBoss,
+		{
+			IID_ILISTCONTROLDATA, 			kStrIntPairDDLControlDataImpl,
+		}
+	},
+	
+	Class
+	{
+		kBehaviorDragDropDEHandlerBoss,
+		kInvalidClass,
+		{
+			IID_IDATAEXCHANGEHANDLER,	kBehaviorDragDropDEHandlerImpl,
+			IID_IBEHAVIORDRAGDROPDATA,	kBehaviorDragDropDataImpl,
+			IID_IPMPERSIST,				kPMPersistImpl,
+			IID_NEVERWRITESTODOCUMENT, kNeverWritesToDocumentImpl,
+		}
+	},
+
+
+	// ----- Go To URL Behavior Data Panel -----
+		
+	AddIn
+	{
+		kGoToURLFactoryBoss,
+		kInvalidClass,
+		{
+			IID_IBEHAVIORDATAPANEL,	kGoToURLBehaviorDataPanelImpl
+		}
+	},
+
+	Class
+	{
+		kGoToURLDataPanelBoss,
+		kBasePalettePanelWidgetBoss,
+		{
+			IID_IOBSERVER, 			kGoToURLPanelObserverImpl,
+			IID_IINTDATA,			kPersistIntDataImpl,
+			IID_IUIDDATA,			kUIDDataImpl
+		}
+	},
+
+	Class
+	{
+		kAddActionIconPopUpBoss,
+		kIconPopupBoss,
+		{
+			IID_ILISTCONTROLDATA, 	kStrIntPairDDLControlDataImpl,
+			IID_IEVEINFO,			kDropDownEVEInfoImpl,
+		}
+	},
+
+	Class
+	{
+		kRemoveActionButtonBoss,
+		kRollOverIconButtonBoss,
+		{
+			IID_IOBSERVER, kDeleteBehaviorButtonObserverImpl,
+		}
+	},
+	
+	Class
+	{
+		kShowFieldButtonBoss,
+		kRollOverIconButtonBoss,
+		{
+			//IID_IOBSERVER, kDeleteBehaviorButtonObserverImpl,
+		}
+	},
+
+	Class
+	{
+		kHideFieldButtonBoss,
+		kRollOverIconButtonBoss,
+		{
+			//IID_IOBSERVER, kDeleteBehaviorButtonObserverImpl,
+		}
+	},
+
+	Class
+	{
+		kIgnoreFieldButtonBoss,
+		kRollOverIconButtonBoss,
+		{
+			//IID_IOBSERVER, kDeleteBehaviorButtonObserverImpl,
+		}
+	},
+
+	Class
+	{
+		kViewZoomDataPanelBoss,
+		kBasePalettePanelWidgetBoss,
+		{
+			IID_IOBSERVER, 				kViewZoomPanelObserverImpl,
+			IID_IINTDATA,				kPersistIntDataImpl,
+			IID_IUIDDATA,				kUIDDataImpl
+		}
+	},
+
+	AddIn
+	{
+		kViewZoomFactoryBoss,
+		kInvalidClass,
+		{
+			IID_IBEHAVIORDATAPANEL,	kViewZoomBehaviorDataPanelImpl
+		}
+	},
+
+	Class
+	{
+		kViewZoomChoicesWidgetBoss,
+		kDropDownListWidgetBoss,
+		{
+			IID_ILISTCONTROLDATA, 			kStrIntPairDDLControlDataImpl,
+		}
+	},
+
+	// ----- Movie Behavior Data Panel -----
+		
+	AddIn
+	{
+		kMovieActionFactoryBoss,
+		kInvalidClass,
+		{
+			IID_IBEHAVIORDATAPANEL,	kMovieBehaviorDataPanelImpl
+		}
+	},
+
+	Class
+	{
+		kMovieDataPanelBoss,
+		kBasePalettePanelWidgetBoss,
+		{
+			IID_IOBSERVER, 					kMovieBehaviorPanelObserverImpl,
+			IID_IINTDATA,					kPersistIntDataImpl,
+			IID_IUIDDATA,					kUIDDataImpl
+		}
+	},
+	
+	Class
+	{
+		kMovieOpChoicesWidgetBoss,
+		kDropDownListWidgetBoss,
+		{
+			IID_ILISTCONTROLDATA, 			kStrIntPairDDLControlDataImpl,
+		}
+	},
+
+	Class
+	{
+		kMovieChoicesWidgetBoss,
+		kDropDownListWidgetBoss,
+		{
+			IID_ILISTCONTROLDATA, 			kMovieDDLControlDataImpl,
+			IID_ITIP,						kBhvrTargetChoicesTipsImpl,
+		}
+	}
+
+	Class
+	{
+		kMovieNavPointChoicesWidgetBoss,
+		kDropDownListWidgetBoss,
+		{
+			IID_ILISTCONTROLDATA, 			kMovieNavPointDDLControlDataImpl,
+			IID_ITIP,						kBhvrTargetChoicesTipsImpl,
+		}
+	}
+
+	// ----- Sound Behavior Data Panel -----
+		
+	AddIn
+	{
+		kSoundActionFactoryBoss,
+		kInvalidClass,
+		{
+			IID_IBEHAVIORDATAPANEL,	kSoundBehaviorDataPanelImpl
+		}
+	},
+
+	Class
+	{
+		kSoundDataPanelBoss,
+		kBasePalettePanelWidgetBoss,
+		{
+			IID_IOBSERVER, 					kSoundBehaviorPanelObserverImpl,
+			IID_IINTDATA,					kPersistIntDataImpl,
+			IID_IUIDDATA,					kUIDDataImpl
+		}
+	},
+
+	Class
+	{
+		kSoundOpChoicesWidgetBoss,
+		kDropDownListWidgetBoss,
+		{
+			IID_ILISTCONTROLDATA, 			kStrIntPairDDLControlDataImpl,
+		}
+	},
+
+	Class
+	{
+		kSoundChoicesWidgetBoss,
+		kDropDownListWidgetBoss,
+		{
+			IID_ILISTCONTROLDATA, 			kSoundDDLControlDataImpl,
+			IID_ITIP,						kBhvrTargetChoicesTipsImpl,
+		}
+	}
+
+	// ----- Animation Behavior Data Panel -----
+		
+	AddIn
+	{
+		kAnimationActionFactoryBoss,
+		kInvalidClass,
+		{
+			IID_IBEHAVIORDATAPANEL,			kAnimationBehaviorDataPanelImpl
+		}
+	},
+
+	Class
+	{
+		kAnimationDataPanelBoss,
+		kBasePalettePanelWidgetBoss,
+		{
+			IID_IOBSERVER, 					kAnimationBehaviorPanelObserverImpl,
+			IID_IINTDATA,					kPersistIntDataImpl,
+			IID_IUIDDATA,					kUIDDataImpl
+		}
+	},
+	
+	Class
+	{
+		kAnimationOpChoicesWidgetBoss,
+		kDropDownListWidgetBoss,
+		{
+			IID_ILISTCONTROLDATA, 			kStrIntPairDDLControlDataImpl,
+		}
+	},
+
+	Class
+	{
+		kAnimationChoicesWidgetBoss,
+		kDropDownListWidgetBoss,
+		{
+			IID_ILISTCONTROLDATA, 			kAnimationDDLControlDataImpl,
+			IID_ITIP,						kBhvrTargetChoicesTipsImpl,
+		}
+	}
+
+	// ----- Switch to MSO state Behavior Data Panel -----
+		
+	AddIn
+	{
+		kSwitchToMSOStateActionFactoryBoss,
+		kInvalidClass,
+		{
+			IID_IBEHAVIORDATAPANEL,			kSwitchToMSOStateDataPanelImpl
+		}
+	},
+
+	Class
+	{
+		kSwitchToMSOStateDataPanelBoss,
+		kBasePalettePanelWidgetBoss,
+		{
+			IID_IOBSERVER, 					kSwitchToMSOStatePanelObserverImpl,
+			IID_IINTDATA,					kPersistIntDataImpl,
+			IID_IUIDDATA,					kUIDDataImpl
+		}
+	},
+	
+	Class
+	{
+		kMSOTargetChoicesWidgetBoss,
+		kDropDownListWidgetBoss,
+		{
+			IID_ILISTCONTROLDATA, 			kMSOTargetDDLControlDataImpl,
+			IID_ITIP,						kBhvrTargetChoicesTipsImpl,
+		}
+	},
+
+	Class
+	{
+		kMSOStateChoicesWidgetBoss,
+		kOwnerDrawDDListWidgetBoss,
+		{
+			IID_ITIP,						kBhvrTargetChoicesTipsImpl,
+			IID_IOWNERDRAWITEM,				kMSOStateOwnerDrawDDItemImpl,
+		}
+	}
+	
+	Class
+	{
+		kMSOStateDDLElementWidgetBoss,
+		kBaseWidgetBoss,
+		{			
+			IID_ICONTROLVIEW,				kMSOStateDDLElementViewImpl,	// Draw the thumbnail and state name
+			IID_IUIDDATA,					kUIDDataImpl,					// Holds the UIDRef of the MSO
+			IID_IINTDATA,					kIntDataImpl,					// Holds the appearance state
+		}
+	};
+	
+	// ----- Switch to next MSO state Behavior Data Panel -----
+		
+	AddIn
+	{
+		kSwitchToNextMSOStateActionFactoryBoss,
+		kInvalidClass,
+		{
+			IID_IBEHAVIORDATAPANEL,			kSwitchToNextMSOStateDataPanelImpl
+		}
+	},
+
+	Class
+	{
+		kSwitchToNextMSOStateDataPanelBoss,
+		kBasePalettePanelWidgetBoss,
+		{
+			IID_IOBSERVER, 					kSwitchToNextMSOStatePanelObserverImpl,
+			IID_IINTDATA,					kPersistIntDataImpl,
+			IID_IUIDDATA,					kUIDDataImpl
+		}
+	},
+
+	// ----- Switch to previous MSO state Behavior Data Panel -----
+		
+	AddIn
+	{
+		kSwitchToPrevMSOStateActionFactoryBoss,
+		kInvalidClass,
+		{
+			IID_IBEHAVIORDATAPANEL,			kSwitchToPrevMSOStateDataPanelImpl
+		}
+	},
+
+	Class
+	{
+		kSwitchToPrevMSOStateDataPanelBoss,
+		kBasePalettePanelWidgetBoss,
+		{
+			IID_IOBSERVER, 					kSwitchToPrevMSOStatePanelObserverImpl,
+			IID_IINTDATA,					kPersistIntDataImpl,
+			IID_IUIDDATA,					kUIDDataImpl
+		}
+	},
+
+	// ----- Show/Hide Fields Behavior Data Panel -----
+		
+	AddIn
+	{
+		kShowHideFieldActionFactoryBoss,
+		kInvalidClass,
+		{
+			IID_IBEHAVIORDATAPANEL,	kShowHideFieldsDataPanelImpl
+		}
+	},
+
+	Class
+	{
+		kShowHideFieldsDataPanelBoss,
+		kBasePalettePanelWidgetBoss,
+		{
+			IID_IOBSERVER,			kShowHideFieldsPanelObserverImpl,
+			IID_ISHOWHIDEBUTTONSOBSERVER, kShowHideFieldsButtonObserverImpl,
+			IID_IINTDATA,			kPersistIntDataImpl,
+			IID_IUIDDATA, 			kUIDDataImpl
+		}
+	},
+	
+	Class	
+	{
+		kFieldsWidgetBoss,
+		kTreeViewWidgetBoss,
+		{
+			IID_ITREEVIEWHIERARCHYADAPTER,	kFieldsTreeViewAdapterImpl,
+			IID_ITREEVIEWWIDGETMGR,			kFieldsTreeViewMgrImpl,
+		}
+	},
+
+	Class
+	{
+		kFieldsNodeWidgetBoss,
+		kTreeNodeWidgetBoss,
+		{
+			IID_IOBSERVER, kFieldsNodeObserverImpl,
+		}
+	},	
+
+	// ----- Open File Behavior Data Panel -----
+		
+	AddIn
+	{
+		kOpenFileFactoryBoss,
+		kInvalidClass,
+		{
+			IID_IBEHAVIORDATAPANEL,	kOpenFileBehaviorDataPanelImpl
+		}
+	},
+
+	// ----- Submit Form Data Panel ------
+
+	AddIn
+	{
+		kSubmitFormFactoryBoss,
+		kInvalidClass,
+		{
+			IID_IBEHAVIORDATAPANEL,	kSubmitFormBehaviorDataPanelImpl
+		}
+	},
+
+	Class
+	{
+		kOpenFileDataPanelBoss,
+		kBasePalettePanelWidgetBoss,
+		{
+			IID_IOBSERVER, 			kOpenFileBehaviorPanelObserverImpl,
+			IID_IINTDATA,			kPersistIntDataImpl,
+			IID_IUIDDATA,			kUIDDataImpl
+		}
+	},
+
+	Class
+	{
+		kSubmitFormDataPanelBoss,
+		kBasePalettePanelWidgetBoss,
+		{
+			IID_IOBSERVER, 			kSubmitFormBehaviorPanelObserverImpl,
+			IID_IINTDATA,			kPersistIntDataImpl,
+			IID_IUIDDATA,			kUIDDataImpl
+		}
+	},
+	
+	Class
+	{
+		kOpenFileBrowseObserverBoss,
+		kRollOverIconButtonBoss,
+		{
+			IID_IOBSERVER,			kOpenFileBrowseObserverImpl,
+		}
+	},
+
+	// ----- GoTo First Page Behavior Data Panel -----
+
+	AddIn
+	{
+		kGoToFirstPageFactoryBoss,
+		kInvalidClass,
+		{
+			IID_IBEHAVIORDATAPANEL,	kGoToFirstPageDataPanelImpl
+		}
+	},
+
+	Class
+	{
+		kGoToFirstPageDataPanelBoss,
+		kBasePalettePanelWidgetBoss,
+		{
+			IID_IOBSERVER, 			kGoToFirstPagePanelObserverImpl,
+			IID_IINTDATA,			kPersistIntDataImpl,
+			IID_IUIDDATA,			kUIDDataImpl
+		}
+	},
+
+	// ----- GoTo Page Behavior Data Panel -----
+
+	AddIn
+	{
+		kGoToPageFactoryBoss,
+		kInvalidClass,
+		{
+			IID_IBEHAVIORDATAPANEL,	kGoToPageDataPanelImpl
+		}
+	},
+
+	Class
+	{
+		kGoToPageDataPanelBoss,
+		kBasePalettePanelWidgetBoss,
+		{
+			IID_IOBSERVER, 			kGoToPagePanelObserverImpl,
+			IID_IINTDATA,			kPersistIntDataImpl,
+			IID_IUIDDATA,			kUIDDataImpl
+		}
+	},
+
+	// ----- GoTo Last Page Behavior Data Panel -----
+
+	AddIn
+	{
+		kGoToLastPageFactoryBoss,
+		kInvalidClass,
+		{
+			IID_IBEHAVIORDATAPANEL,	kGoToLastPageDataPanelImpl
+		}
+	},
+
+	// ----- GoTo Next Page Behavior Data Panel -----
+
+	AddIn
+	{
+		kGoToNextPageFactoryBoss,
+		kInvalidClass,
+		{
+			IID_IBEHAVIORDATAPANEL,	kGoToNextPageDataPanelImpl
+		}
+	},
+
+	// ----- GoTo Previous Page Behavior Data Panel -----
+
+	AddIn
+	{
+		kGoToPreviousPageFactoryBoss,
+		kInvalidClass,
+		{
+			IID_IBEHAVIORDATAPANEL,	kGoToPreviousPageDataPanelImpl
+		}
+	},
+	
+	// ----- GoTo Next View Behavior Data Panel -----
+
+	AddIn
+	{
+		kGoToNextViewFactoryBoss,
+		kInvalidClass,
+		{
+			IID_IBEHAVIORDATAPANEL,	kGoToNextViewDataPanelImpl
+		}
+	},
+	
+	// ----- GoTo Previous View Behavior Data Panel -----
+
+	AddIn
+	{
+		kGoToPreviousViewFactoryBoss,
+		kInvalidClass,
+		{
+			IID_IBEHAVIORDATAPANEL,	kGoToPreviousViewDataPanelImpl
+		}
+	},
+
+	// ----- Go To Anchor Behavior Data Panel -----
+		
+	AddIn
+	{
+		kGoToAnchorFactoryBoss,
+		kInvalidClass,
+		{
+			IID_IBEHAVIORDATAPANEL,	kGoToAnchorDataPanelImpl
+		}
+	},
+
+	Class
+	{
+		kGoToAnchorDataPanelBoss,
+		kBasePalettePanelWidgetBoss,
+		{
+			IID_IOBSERVER, 			kGoToAnchorPanelObserverImpl,
+			IID_IINTDATA,			kPersistIntDataImpl,
+			IID_ISTRINGDATA,		kStringDataImpl,
+			IID_IUIDDATA,			kUIDDataImpl
+		}
+	},
+
+	Class
+	{
+		kAnchorDocumentDDLObserverBoss,
+		kDropDownListWidgetBoss,
+		{
+			IID_IOBSERVER,			kAnchorDocumentDDLObserverImpl,
+			IID_IANCHORFILEDATA,	kAnchorFileListDataImpl,
+			IID_ITIP,				kBhvrTargetChoicesTipsImpl,
+		}
+	},
+
+	Class
+	{
+		kAnchorTypeDDLObserverBoss,
+		kDropDownListWidgetBoss,
+		{
+			//IID_IOBSERVER,			kAnchorTypeDDLObserverImpl,
+			IID_IANCHORTYPEDATA,	kAnchorTypeListDataImpl,
+		}
+	},
+	
+	Class
+	{
+		kOpenAnchorDocObserverBoss,
+		kRollOverIconButtonBoss,
+		{
+			IID_IOBSERVER,			kOpenAnchorDocObserverImpl,
+		}
+	},
+
+	Class
+	{
+		kDeleteBehaviorButtonBoss,
+		kButtonWidgetBoss,
+		{
+			IID_IOBSERVER, 					kDeleteBehaviorButtonObserverImpl,
+		}
+	},
+
+	Class
+	{
+		kGoToURLComboBoxWidgetBoss,
+		kTextComboBoxWidgetBoss,
+		{
+			IID_ICOMBOBOXOBSERVER, 			kGoToURLComboBoxObserverImpl,
+			IID_IDESTINATIONUIDLIST,		kDestinationUIDListDataImpl,	// the list of URL-based hyperlink destinations in the document
+			IID_IUIDDATA,					kUIDDataImpl,					// the UIDRef of the Hyperlink destination
+		}
+	}
+	
+	// 
+	// MultiStateObject Panel
+	Class
+	{
+		kMSOPanelBoss,
+		kErasablePrimaryResourcePanelWidgetBoss
+		{
+			IID_IPANELMENUDATA, kCPanelMenuDataImpl,
+			IID_ICONTROLVIEW, kMSOPanelViewImpl,
+			IID_IOBSERVER, kMSOPanelObserverImpl,
+			IID_IPANELDETAILCONTROLLER,	kMSOPanelDetailControllerImpl,
+			IID_ICURSORPROVIDER, kMSOPanelPointyHandCursorProviderImpl,
+			IID_IBOOLDATA, kFalseInitBoolDataImpl,						// Whether or not panel showing MSO states.
+		}
+	}
+		
+	Class
+	{
+		kMSOPanelMenuActionBoss,
+		kBaseActionComponentBoss,
+		{
+			IID_IACTIONCOMPONENT, kMSOPanelMenuActionImpl,
+		}
+	},
+	
+	Class
+	{
+		kMSOPanelStatusAreaWidgetBoss,
+		kStaticTextWidgetBoss,
+		{
+		}
+	}
+	
+	Class
+	{
+		kPasteIntoMSOStateButtonBoss,
+		kRollOverIconButtonBoss,
+		{
+			IID_IOBSERVER, kPasteIntoMSOStateButtonObserverImpl,
+		}
+	},
+	
+	Class
+	{
+		kAddToMSOStateButtonBoss,
+		kRollOverIconButtonBoss,
+		{
+			IID_IOBSERVER, kAddToMSOStateButtonObserverImpl,
+		}
+	},
+	
+	Class
+	{
+		kNewMSOStateButtonBoss,
+		kRollOverIconButtonBoss,
+		{
+			IID_IOBSERVER, kNewMSOStateButtonObserverImpl,
+			IID_IDRAGDROPTARGET, kNewMSOStateButtonDNDTargetImpl,
+			IID_ITIP, kMSOPanelTipsImpl,
+		}
+	},
+	
+	Class
+	{
+		kDeleteMSOStateButtonBoss,
+		kRollOverIconButtonBoss,
+		{
+			IID_IOBSERVER, kDeleteMSOStateButtonObserverImpl,
+			IID_IDRAGDROPTARGET, kDeleteMSOStateButtonDNDTargetImpl,
+		}
+	},
+	
+	Class
+	{
+		kMSOPanelTreeWidgetBoss,
+		kTreeViewWidgetBoss,
+		{
+			IID_ITREEVIEWHIERARCHYADAPTER, kMSOPanelTreeViewAdapterImpl,
+			IID_ITREEVIEWWIDGETMGR, kMSOPanelTreeViewWidgetMgrImpl,
+			IID_ITREEVIEWCONTROLLER, kMSOPanelTreeViewControllerImpl,
+			IID_IEVENTHANDLER, kMSOPanelTreeViewEHImpl,
+			IID_IOBSERVER, kMSOPanelTreeViewObserverImpl,
+			IID_ICONTROLVIEWOBSERVERS,  kCControlViewObserversImpl,
+			IID_IDRAGDROPTARGET, kMSOPanelTreeViewDNDTargetImpl,
+		}
+	},
+	
+	Class
+	{
+		kMSOPanelTreeViewNodeWidgetBoss,
+		kTreeNodeWidgetBoss,
+		{
+			IID_IDRAGDROPSOURCE, kMSOPanelStateDNDSourceImpl,
+			IID_IEVENTHANDLER, kMSOPanelTreeViewNodeEHImpl,
+			IID_ITIP, kMSOPanelTipsImpl,
+		}
+	},
+
+	Class
+	{
+		kMSOPanelStateThumbnailBoss,
+		kBaseWidgetBoss,
+		{
+			IID_ICONTROLVIEW, kMSOPanelStateThumbnailViewImpl,
+		}
+	},
+	
+	Class
+	{
+		kMSOPanelStateNameILEBoss,
+		kTextInLineEditWidgetBoss,
+		{
+			IID_IOBSERVER,						kMSOPanelStateNameILEObserverImpl,
+			IID_IINLINEEDITEDITINGATTRIBUTES,	kMSOPanelStateNameILEEditingAttributesImpl,
+			IID_ITEXTDATAVALIDATION, kMSOPanelStateNameTextValidationImpl,
+		}
+	},
+	
+	Class
+    {
+        kMSOPanelStateDNDHandlerBoss,
+        kInvalidClass,
+        {
+            IID_IDATAEXCHANGEHANDLER,	kMSOPanelStateDNDHandlerImpl,
+            IID_IPMPERSIST,				kPMPersistImpl,
+ 			IID_ISTATEDATA,				kStateDataImpl,
+       }
+    },
+    
+    Class
+    {
+		kMSOSelectionIconBoss
+		kIconSuiteWidgetBoss,
+		{
+			IID_IEVENTHANDLER, kMSOSelectionIconEHImpl,			
+			IID_ITIP, kMSOPanelTipsImpl,
+		}
+	},		
+
+	Class 
+    { 
+		kPDFOptionsWidgetBoss,
+		kRollOverIconButtonBoss,
+		{
+		}
+	 },
+
+	Class
+	{
+		kAddListOptionButtonBoss,
+		kRollOverIconButtonBoss,
+		{
+			IID_IOBSERVER, kAddListOptionButtonObserverImpl,
+		}
+	},
+
+	Class
+	{
+		kRemoveListOptionButtonBoss,
+		kRollOverIconButtonBoss,
+		{
+			IID_IOBSERVER, kRemoveListOptionButtonObserverImpl,
+		}
+	},
+
+	Class        
+	{
+		kListItemsTreeViewWidgetBoss,
+		kTreeViewWidgetBoss,
+		{
+			IID_ITREEVIEWHIERARCHYADAPTER,		kListItemsTreeViewAdapterImpl,
+			IID_ITREEVIEWWIDGETMGR,				kListItemsTreeViewMgrImpl,
+			IID_IOBSERVER,						kListItemsTreeObserverImpl,
+			IID_IEVENTHANDLER,					kListItemsTreeEHImpl,
+			IID_IDRAGDROPTARGET,				kListItemsTreeViewDDTargetImpl,
+		}
+	},
+
+	Class
+    {
+        kListItemsNodeWidgetBoss,
+        kTreeNodeWidgetBoss,
+        {
+			IID_IDRAGDROPSOURCE,				kListItemsDDSourceImpl,
+			IID_IEVENTHANDLER,					kListItemsNodeEventHandlerImpl,
+        }
+    },
+
+	Class
+    {
+       kListItemsDDHandlerBoss,
+       kInvalidClass,
+       {
+			IID_IDATAEXCHANGEHANDLER,	kListItemsDDHandlerImpl,
+			IID_IINTDATA,				kIntDataImpl,
+            IID_IPMPERSIST,				kPMPersistImpl,
+       }
+    },
+
+	Class
+    {
+		kFontSizeComboBoxWidgetBoss,
+		kComboBoxWidgetBoss,
+        {
+			IID_ITEXTDATAVALIDATION, kFontSizeTextValidationImpl,
+			IID_ITEXTVALUE,          kFontSizeTextValueImpl,
+		}
+    },
+
+	Class
+	{
+		kFormsTypeaheadTextCBWidgetObserverBoss,
+		kTypeaheadTextComboBoxWidgetBoss,
+		{
+			IID_ICONTROLVIEW,	            kFormsFontComboboxViewImpl,
+			IID_IOBSERVER,		            kFormsFontObserverImpl,
+            IID_ISTRINGLISTCONTROLDATA,		kComboBoxDDLControlDataImpl, // needed since strings aren't alphabetical
+		}
+	}
+
+	Class
+    {
+		kListItemEditBoxWidgetBoss,
+		kTextEditBoxWidgetBoss,
+        {
+			IID_IEVENTHANDLER,			kListItemsEditBoxEHImpl,		
+			IID_IBOOLDATA,				kBoolDataImpl,
+		}
+    },
+
+}}};
+
+
+#endif

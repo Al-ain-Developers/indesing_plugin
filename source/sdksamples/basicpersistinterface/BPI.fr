@@ -1,0 +1,629 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/sdksamples/basicpersistinterface/BPI.fr $
+//  
+//  Owner: Adobe Developer Technologies
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//  
+//  Umbrella include file for all the .fr files in the plug-in.
+//  
+//========================================================================================
+
+#include "MenuDef.fh"
+#include "ActionDef.fh"
+#include "ActionDefs.h"
+#include "AdobeMenuPositions.h"
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "StringTable.fh"
+//#include "OMTypes.h"
+#include "objectmodeltypes.fh"
+#include "ShuksanID.h"
+#include "ActionID.h"
+#include "CommandID.h"
+#include "WorkspaceID.h"
+#include "widgetid.h"
+#include "BuildNumber.h"
+#include "PanelList.fh"
+#include "Widgets.fh"	// for PalettePanelWidget
+#include "InterfaceColorDefines.h"
+#include "IControlViewDefs.h"
+#include "SysControlIds.h"
+
+// General includes:
+#include "GenericID.h"
+#include "TextID.h"
+#include "TextEditorID.h" // for kTextSelectionBoss
+#include "ErrorTableTypes.h" // for UserErrorTable
+#include "ScriptInfoTypes.fh"
+#include "ScriptingID.h"
+#include "AppFrameworkID.h" // for kApplicationObjectScriptElement
+#include "DocFrameworkID.h" // for kDocumentObjectScriptElement
+#include "TextScriptID.h" // for kTextFrameObjectScriptElement
+
+#include "PlugInModel_UIAttributes.h"
+// Project includes:
+#include "BPIID.h"
+#include "BPIScriptingDefs.h"
+
+#ifdef __ODFRC__
+
+/*
+ Plugin version definition.
+*/
+resource PluginVersion (kSDKDefPluginVersionResourceID)
+{
+	kTargetVersion,
+	kBPIPluginID,
+	kSDKDefPlugInMajorVersionNumber, kSDKDefPlugInMinorVersionNumber, 	
+	kSDKDefHostMajorVersionNumber, kSDKDefHostMinorVersionNumber,
+	kBPILastMajorFormatChange, kBPILastMinorFormatChange,
+	{ kInDesignProduct, kInCopyProduct, kInDesignServerProduct },
+	{ kWildFS },
+	kModelPlugIn,
+	kBPIVersion
+};
+
+/* SchemaList: a history of the persistent data formats supported by this plug-in
+*/
+resource SchemaList(1)
+{{
+    Schema
+    {
+        kBPIDataPersistImpl,
+        {kBPIInitialMajorFormat, kBPIInitialMinorFormat},
+        {
+            {Int16		{kBPIPersistentVersion, 	kBPIDefaultPersistentVersion}},
+            {PMString	{kBPIData, 		kBPIDefaultData}},
+        }
+    };
+    
+    Schema
+    {
+        kBPIDataPersistImpl,
+        {kBPILastMajorFormatChange, kBPILastMinorFormatChange},
+        {
+            {Int16		{kBPIPersistentVersion, 	kBPIDefaultPersistentVersion}},
+            {WideString	{kBPIData, 		kBPIDefaultData}},
+
+        }
+    };
+    
+    
+}};
+
+/*
+//	IgnoreTags - mark these impls/classIDs as optional.
+*/
+resource IgnoreTags(1)
+{
+	kImplementationIDSpace, 
+	{
+		kBPIDataPersistImpl,
+	}
+};
+
+/*
+	Boss class definition.
+*/
+resource ClassDescriptionTable(kSDKDefClassDescriptionTableResourceID)
+{{{
+	/** Adds persistent IBPIData implementation into kDrawablePageItemBoss.
+		IBPIData is a new data interface defined by this plug-in and used
+		here to extend the data model of a page item.
+		@ingroup basicpersistinterface
+	*/
+	AddIn
+	{
+		kDrawablePageItemBoss,
+		kInvalidClass,
+		{
+			/** See IBPIData and BPIDataPersist.
+			*/
+			IID_IBPIDATA, kBPIDataPersistImpl,
+		}
+	},
+	
+	/** Adds a persistent IBPIData implementation to the document defaults, kDocWorkspaceBoss.
+		IBPIData is a new data interface defined by this plug-in and used
+		here to extend the data model of document defaults.
+		@ingroup basicpersistinterface
+	*/
+	AddIn
+	{
+		kDocWorkspaceBoss,
+		kInvalidClass,
+		{
+			/**	See IBPIData and BPIDataPersist.
+			*/
+			IID_IBPIDATA, kBPIDataPersistImpl,
+		}
+	},
+
+	/** Adds a persistent IBPIData implementation to the application defaults, kWorkspaceBoss.
+		IBPIData is a new data interface defined by this plug-in and used
+		here to extend the data model of application defaults.
+		@ingroup basicpersistinterface
+	*/
+	AddIn
+	{
+		kWorkspaceBoss,
+		kInvalidClass,
+		{
+			/** See IBPIData and BPIDataPersist.
+			*/
+			IID_IBPIDATA, kBPIDataPersistImpl,
+		}
+	},
+
+	/** Implements the command used to change the value of IBPIData
+		in persistent objects.
+		@ingroup basicpersistinterface
+	*/
+	Class 
+	{
+		kBPISetDataCmdBoss,
+		kInvalidClass,
+		{
+			/** See ICommand and BPISetDataCmd.
+			*/
+			IID_ICOMMAND,	kBPISetDataCmdImpl,
+
+			/** See IBPIData and BPIData; this is the non-persistent version of IBPIData, 
+				since we are just passing a parameter value into the command.
+			*/
+			IID_IBPIDATA,	kBPIDataImpl,
+		}
+	},
+		
+	/** Copies the application default IBPIData value into the document
+		default IBPIData when new documents are created.
+		@ingroup basicpersistinterface
+	*/
+	Class
+	{
+		kBPINewDocResponderBoss,
+		kInvalidClass,
+		{
+			/** See IResponder and BPIDefaultResponder.
+			 */
+			IID_IRESPONDER,				kBPIDefaultResponderImpl,
+
+			/** Implementation provided by API.
+			 */
+			IID_IK2SERVICEPROVIDER,		kDuringNewDocSignalRespServiceImpl,
+		}
+	},
+    
+	/** Copies the document default IBPIData value into a page item when
+		the page item is created.
+		@ingroup basicpersistinterface
+	 */
+    Class
+    {
+		kBPINewPIResponderBoss,
+        kInvalidClass,
+        {
+			/** See IResponder and BPIDefaultResponder.
+			 */
+            IID_IRESPONDER, kBPIDefaultResponderImpl,
+
+			/** Implementation provided by API.
+			 */
+            IID_IK2SERVICEPROVIDER, kNewPISignalRespServiceImpl,
+        }
+    },
+        
+	/**	Adds IBPISuite into the integrator suite boss class making it available
+		to the abstract selection.
+		IBPISuite is a new interface added by this plug-in, it extends the
+		selection so that it can manipulate the IBPIData associated with
+		the objects that are currently selected.
+		@ingroup basicpersistinterface
+		@see Selection tech note
+	*/
+	AddIn
+	{
+		kIntegratorSuiteBoss,
+		kInvalidClass,
+		{
+			/** See IBPISuite and BPISuiteASB; integrator suite that integrates IBPISuite 
+				calls across CSB suites on concrete selection boss classes. 
+			*/
+			IID_IBPISUITE, kBPISuiteASBImpl,
+		}
+	},
+
+	/**	Adds IBPISuite into the layout suite boss making it available to
+		the layout CSB thus allowing IBPIData to be manipulated when
+		a layout selection exists.
+		IBPISuite is a new interface added by this plug-in, it extends the
+		selection so that it can manipulate the IBPIData associated with
+		the objects that are currently selected.
+		@ingroup basicpersistinterface
+		@see Selection tech note
+	*/
+	AddIn
+	{
+		kLayoutSuiteBoss,
+		kInvalidClass,
+		{
+			/** See IBPISuite and BPISuiteLayoutCSB.
+			*/
+			IID_IBPISUITE, kBPISuiteLayoutCSBImpl,
+		}
+	},
+
+	/**	Adds IBPISuite into the text suite boss making it available to
+		the text CSB  thus allowing IBPIData to be manipulated when
+		a text selection exists.
+		IBPISuite is a new interface added by this plug-in, it extends the
+		selection so that it can manipulate the IBPIData associated with
+		the objects that are currently selected.
+		@ingroup basicpersistinterface
+		@see Selection tech note
+	*/
+	AddIn
+	{
+		kTextSuiteBoss,
+		kInvalidClass,
+		{
+			/** See IBPISuite and BPISuiteTextCSB.
+			*/
+			IID_IBPISUITE, kBPISuiteTextCSBImpl,
+		}
+	},
+
+	/**	Adds IBPISuite into the document default suite boss thus allowing 
+		document default IBPIData to be manipulated when a document is
+		open and nothing is selected.
+		IBPISuite is a new interface added by this plug-in, it extends the
+		selection so that it can manipulate the document default IBPIData.
+		@ingroup basicpersistinterface
+		@see Selection tech note
+	*/
+	AddIn
+	{
+		kDocumentDefaultSuiteBoss,
+		kInvalidClass,
+		{
+			/** See BPISuiteDefaultCSB.
+			*/
+			IID_IBPISUITE, kBPISuiteDefaultCSBImpl,
+		}
+	},
+
+	/**	Adds IBPISuite into the application default suite boss thus allowing 
+		application default IBPIData to be manipulated when no documents
+		are open.
+		IBPISuite is a new interface added by this plug-in, it extends the
+		selection so that it can manipulate the document default IBPIData.
+		@ingroup basicpersistinterface
+		@see Selection tech note
+	*/
+	AddIn
+	{
+		kApplicationDefaultSuiteBoss,
+		kInvalidClass,
+		{
+			/** See IBPISuite and BPISuiteDefaultCSB.
+			*/
+			IID_IBPISUITE, kBPISuiteDefaultCSBImpl,
+		}
+	},
+
+	/** Provides error strings for the BasicPersistInterface plug-in.
+
+		Added at InDesign CS2 to support scripting.
+
+		@ingroup basicpersistinterface
+	 */
+	Class
+	{
+		kBPIErrorStringServiceBoss,
+		kInvalidClass,
+		{
+			/** See IErrorStringService / BPIErrorStringService.
+			 */
+			IID_IERRORSTRINGSERVICE, kBPIErrorStringServiceImpl,		
+			/**	Identifies this boss as an error string provider.
+			 */
+			IID_IK2SERVICEPROVIDER, kErrorStringProviderImpl,
+		}
+	},
+	
+	/** Handles scripting of BasicPersistInterface preferences
+		in interface IBPIData on the session and document workspaces.
+	
+		Added at InDesign CS2 to support scripting.
+		
+		@ingroup basicpersistinterface
+	 */
+	Class
+	{
+		kBPIPrefsScriptProviderBoss,
+		kBaseScriptProviderBoss,
+		{
+			/** See IScriptProvider / BPIPrefsScriptProvider.
+			 */
+			IID_ISCRIPTPROVIDER, kBPIPrefsScriptProviderImpl,	
+		}
+	},
+	
+	/** Handles scripting of BasicPersistInterface property
+		added into page items in interface IBPIData.
+	
+		Added at InDesign CS2 to support scripting.
+		
+		@ingroup basicpersistinterface
+	 */
+	Class
+	{
+		kBPIScriptProviderBoss,
+		kBaseScriptProviderBoss,
+		{
+			/** See IScriptProvider / BPIScriptProvider.
+			 */
+			IID_ISCRIPTPROVIDER, kBPIScriptProviderImpl,	
+		}
+	},
+	
+	/** This boss class supplies a schema-based conversion service for this plug-in.
+		@ingroup basicpersistinterface
+	*/
+	Class
+    {
+        kBPIConversionProviderBoss,
+        kInvalidClass,
+        {
+			/** Provides the conversion service.
+				Implementation provided by the API.
+			*/
+            IID_ICONVERSIONPROVIDER, kSchemaBasedConversionImpl,
+			/** Registers this boss as a conversion service provider.
+				Implementation provided by the API.
+			*/
+            IID_IK2SERVICEPROVIDER, kConversionServiceImpl,
+        }
+    },
+		
+}}};
+
+/* This resource links the selection extension implementation with the suite implementation.
+*/
+resource kSelectionSuiteExt (1)	
+{
+	kNewLayoutSelectionBoss,
+	{
+		kBPISuiteLayoutCSBImpl,		kBPISuiteLayoutSelectionExtImpl,
+	}
+};
+
+/* This resource links the selection extension implementation with the suite implementation.
+*/
+resource kSelectionSuiteExt (2)	
+{
+	kTextSelectionBoss,
+	{
+		kBPISuiteTextCSBImpl,			kBPISuiteTextSelectionExtImpl,
+	}
+};
+
+/* This resource links the selection extension implementation with the suite implementation.
+*/
+resource kSelectionSuiteExt (3)	
+{
+	kDocWorkspaceBoss,
+	{
+		kBPISuiteDefaultCSBImpl,			kBPISuiteDefaultSelectionExtImpl,
+	}
+};
+
+/* This resource links the selection extension implementation with the suite implementation.
+*/
+resource kSelectionSuiteExt (4)	
+{
+	kWorkspaceBoss,
+	{
+		kBPISuiteDefaultCSBImpl,			kBPISuiteDefaultSelectionExtImpl,
+	}
+};	
+/*
+// Implementation definition.
+*/
+resource FactoryList (kSDKDefFactoryListResourceID) 
+{
+	kImplementationIDSpace,
+	{
+#include "BPIFactoryList.h"
+	}
+};
+
+/*
+// LocaleIndex
+// The LocaleIndex should have indicies that point at your
+// localizations for each language system that you are 
+// localized for.
+*/
+
+/*
+// String LocaleIndex.
+*/
+resource LocaleIndex (kSDKDefStringsResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_enUS, kSDKDefStringsResourceID + index_enUS
+		kInDesignJapaneseFS, k_jaJP, kSDKDefStringsResourceID + index_jaJP
+		
+		kWildFS, k_Wild, kSDKDefStringsResourceID + index_enUS
+	}
+};
+
+resource LocaleIndex (kSDKDefStringsNoTransResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_Wild, kSDKDefStringsNoTransResourceID + index_enUS
+	}
+};
+
+resource StringTable (kSDKDefStringsNoTransResourceID + index_enUS)
+{
+	k_enUS,									// Locale Id
+	kEuropeanMacToWinEncodingConverter,		// Character encoding converter
+	{
+		// No-Translate strings go here:		
+
+
+		kBPIInternalPopupMenuNameKey,	kBPIInternalPopupMenuNameKey,		// No need to translate, internal menu name.
+	}
+};
+
+/*
+// Panel LocaleIndex.
+*/
+resource LocaleIndex (kSDKDefPanelResourceID)
+{
+	kViewRsrcType,
+	{
+		kWildFS, k_Wild, 	kSDKDefPanelResourceID + index_enUS
+	}
+};
+
+/*
+// User Error Table resource 
+// To be coupled with an IErrorStringService implementation and
+// string translations (see localized .fr files)
+*/
+resource UserErrorTable(kSDKDefErrorStringResourceID) 
+{
+	{
+		kBPIFailureErrorCode, kBPIFailureErrorCodeErrorCodeStringKey, 
+		kBPIDataAccessErrorCode, kBPIDataAccessErrorCodeStringKey,
+	}
+};
+
+
+/*
+// Scripting definition.
+*/
+resource VersionedScriptElementInfo(1)
+{
+	//Contexts
+	{
+		// Scripting support added at InDesign CS 2.0.
+		kCS2ScriptVersion, kCoreScriptManagerBoss, kWildFS, k_Wild,
+	}
+	
+	//Elements
+	{
+	
+		// Defines new script element object for this plug-in's preferences
+		Object
+		{
+			kBPIPrefObjectScriptElement,	// this object's script element ID
+			c_BPIPref,						// ScriptID
+			"basicpersistinterface preference",		// name
+			"BasicPersistInterface preference",		// description
+			kBPIPref_CLSID,				// Windows CLSID
+			NoCollectionInfo,					// CollectionElementType (scriptID, name, descr, CLSID)
+			kPreferencesObjectScriptElement,// base object script element ID
+			kPreferencesSuiteScriptElement,	// suite script element ID
+		}
+		
+		// Allows the object above to be accessed by clients as a property
+        Property
+        {
+            kBPIPrefObjectPropertyScriptElement,
+            p_BPIPref,
+            "basicpersistinterface preferences",
+            "BasicPersistInterface preferences",
+            ObjectType( kBPIPrefObjectScriptElement ),
+            {}
+            kNoAttributeClass,
+        }	
+        
+        // BPIData - a string label
+		Property
+		{
+			kBPIDataPropertyScriptElement,			// this property's script element ID
+			p_BPIData,								// ScriptID
+			"bpi data",								// name
+			"BasicPersistInterface label for a page item ",	// description
+			StringType,								// type
+			{}										// alternate types
+			kNoAttributeClass,						// attribute class ID
+		}
+		
+		// Connects this plug-in's preferences to scripting.
+		Provider
+		{
+			kBPIPrefsScriptProviderBoss,
+			{
+				// Parent the BasicPersistInterface preferences on the application and document:
+				Parent{ kApplicationObjectScriptElement },	
+				Parent{ kDocumentObjectScriptElement },	
+				
+				// The BasicPersistInterface object:
+				RepresentObject{ kBPIPrefObjectScriptElement },
+					
+				// The property on the parent object returns the BasicPersistInterface preferences object:
+				ParentProperty{ kBPIPrefObjectPropertyScriptElement, kReadOnly },	
+				
+				// The preferences:
+				Property{ kBPIDataPropertyScriptElement, kReadWrite },							
+			}
+		}
+
+		// Connects this plug-in's IBPIData add-in data interface on page items to scripting
+		Provider
+		{
+			kBPIScriptProviderBoss,
+			{
+				// Put the BPIData property on the page item scripting object.
+				// Scripting objects that inherit from kPageItemObjectScriptElement
+				// will inherit the property. These scripting objects include
+				// rectangle, polygon, oval, etc.
+				Object{ kPageItemObjectScriptElement },
+				
+				// Put the BPIData property on the graphic scripting object.
+				// Scripting objects that inherit from kGraphicObjectScriptElement
+				// will inherit the property. These scripting objects include
+				// image, eps, pdf, etc.				
+				Object{ kGraphicObjectScriptElement },			
+				
+				// The BPIData property
+				Property{ kBPIDataPropertyScriptElement, kReadWrite },							
+			}
+		}
+
+	}
+};
+#endif // __ODFRC__
+
+#include "BPI_enUS.fr"
+#include "BPI_jaJP.fr"
+//  Generated by Dolly build 11: template "IfPanelMenu".
+
+// End, BPI.fr.
+
+
+
+
+

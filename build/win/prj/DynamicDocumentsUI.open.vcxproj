@@ -1,0 +1,249 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectName>DynamicDocumentsUI</ProjectName>
+    <ProjectGuid>{DECB646E-E268-4072-A048-E6A9CB647519}</ProjectGuid>
+    <RootNamespace>DynamicDocumentsUI</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.18362.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="ReleaseX64.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="DebugX64.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.40219.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\debugx64\Plug-ins\Graphics\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\..\objDx64\DynamicDocumentsUI\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\releasex64\Plug-ins\Graphics\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\..\objRx64\DynamicDocumentsUI\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectName)</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ProjectName)</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.apln</TargetExt>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.apln</TargetExt>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Midl>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <TargetEnvironment>X64</TargetEnvironment>
+      <TypeLibraryName>$(IntDir)DynamicDocumentsUI.tlb</TypeLibraryName>
+      <HeaderFileName>
+      </HeaderFileName>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>/vmg @coreOpen.rsp @DynamicDocumentsUI.open.rsp %(AdditionalOptions)</AdditionalOptions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;DEBUG;STRICT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>VCPlugInHeaders.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>$(IntDir)DynamicDocumentsUI.pch</PrecompiledHeaderOutputFile>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+    </ResourceCompile>
+    <PreLinkEvent>
+      <Command>merge_res.cmd "$(IntDir)" dynamicdocumentsui &amp; echo Deleting old resources... &amp; del /f /s "$(TargetDir)($(TargetName) Resources)\"*.idrc &gt; $(IntDir)prevDeletedResources.txt &amp; xcopy /Q /E "$(IntDir)"*.idrc "$(TargetDir)($(TargetName) Resources)\" /Y</Command>
+    </PreLinkEvent>
+    <Link>
+      <AdditionalDependencies>$(UI_PLUGIN_LINKLIST);$(AFLLib);$(BoostThreadLib);%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <ProgramDatabaseFile>..\debugx64\Plug-ins\Graphics\DynamicDocumentsUI.pdb</ProgramDatabaseFile>
+      <StripPrivateSymbols>..\debugx64\strippedsymbol\DynamicDocumentsUI.pdb</StripPrivateSymbols>
+      <ImportLibrary>$(LIB_DIR)\DynamicDocumentsUI/DynamicDocumentsUI.lib</ImportLibrary>
+    </Link>
+    <PostBuildEvent>
+      <Command>restore_res.cmd "$(IntDir)" dynamicdocumentsui</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Midl>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <TargetEnvironment>X64</TargetEnvironment>
+      <TypeLibraryName>$(IntDir)DynamicDocumentsUI.tlb</TypeLibraryName>
+      <HeaderFileName>
+      </HeaderFileName>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>/vmg @coreOpen.rsp @DynamicDocumentsUI.open.rsp %(AdditionalOptions)</AdditionalOptions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;STRICT;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>VCPlugInHeaders.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>$(IntDir)DynamicDocumentsUI.pch</PrecompiledHeaderOutputFile>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <Culture>0x0409</Culture>
+    </ResourceCompile>
+    <PreLinkEvent>
+      <Command>merge_res.cmd "$(IntDir)" dynamicdocumentsui &amp; echo Deleting old resources... &amp; del /f /s "$(TargetDir)($(TargetName) Resources)\"*.idrc &gt; $(IntDir)prevDeletedResources.txt &amp; xcopy /Q /E "$(IntDir)"*.idrc "$(TargetDir)($(TargetName) Resources)\" /Y</Command>
+    </PreLinkEvent>
+    <Link>
+      <AdditionalOptions>/IGNORE:4089 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>$(UI_PLUGIN_LINKLIST);$(AFLLib);$(BoostThreadLib);%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <ProgramDatabaseFile>..\releasex64\Plug-ins\Graphics\DynamicDocumentsUI.pdb</ProgramDatabaseFile>
+      <StripPrivateSymbols>..\releasex64\strippedsymbol\DynamicDocumentsUI.pdb</StripPrivateSymbols>
+      <ImportLibrary>$(LIB_DIR)\DynamicDocumentsUI/DynamicDocumentsUI.lib</ImportLibrary>
+    </Link>
+    <PostBuildEvent>
+      <Command>restore_res.cmd "$(IntDir)" dynamicdocumentsui</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\DDPreviewSpreadButtonWidgetTip.cc" />
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\DynamicDocumentsUIUtils.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\HTMLPreviewPanelMenuComponent.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\LiquidLayoutPanelMenuComponent.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\LiquidLayoutPanelObserver.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\plugin\DynamicDocumentsUIID.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\plugin\DynamicDocumentsUIMWHacks.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\plugin\DynamicDocumentsUIPlugin.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\plugin\MotionTestMenu.cpp" />
+    <ClCompile Include="..\..\..\source\public\libs\publiclib\statics\PlugInStatics.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\plugin\TriggerResourceDeps.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)</XMLDocumentationFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)</XMLDocumentationFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\precomp\msvc\VCPlugInHeaders.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\motion\AnimationAdormentDrawer.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\motion\AnimationPanelObserver.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\motion\AnimationUIAnimateOptionTip.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\motion\AnimationUIButtonTriggerEH.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\motion\AnimationUIButtonTriggerToolImpls.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\motion\AnimationUIEventInfoTip.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\motion\AnimationUIEventMenuAction.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\motion\AnimationUIManagePresetItemListBoxCtrl.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\motion\AnimationUIManagePresetListBoxWidgetMgr.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\motion\AnimationUIManagePresetsDialogListNodeView.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\motion\AnimationUIManagePresetsDialogObserver.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\motion\AnimationUIPanelDetailController.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\motion\AnimationUIPanelMenuAction.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\motion\AnimationUIPanelView.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\motion\AnimationUIPresetPopupDynamicMenu.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\motion\AnimationUIPresetPopupMenuAction.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\motion\AnimationUISavePresetDialogController.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\motion\AnimationUIXFProxyEH.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\DynamicTargetListData.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\TimingPanelCursorProvider.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\TimingPanelDataExchangeHandler.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\TimingPanelEventDDListTips.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\TimingPanelGroupUngroupButtonDDTarget.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\TimingPanelMenuComponent.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\TimingPanelNameILEEditingAttributes.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\TimingPanelObserver.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\TimingPanelPageItemNameObserver.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\TimingPanelTreeDDTarget.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\TimingPanelTreeNodeDDSource.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\TimingPanelTreeNodeEH.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\TimingPanelTreeNodeGroupWidgetEH.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\TimingPanelTreeNodeGroupWidgetTip.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\TimingPanelTreeNodeGroupWidgetView.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\TimingPanelTreeNodeID.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\TimingPanelTreeNodeView.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\TimingPanelTreeViewAdapter.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\TimingPanelTreeViewWidgetMgr.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\TimingPanelView.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\PageTransitionsDialogController.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\PageTransitionsDialogObserver.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\PageTransitionsMenuComponent.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\PageTransitionsPanelObserver.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\PageTransitionStaticTextToolTips.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\dynamicdocumentsui\motion\MotionPathAdornmentTips.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\source\precomp\msvc\VCPlugInHeaders.h" />
+    <ClInclude Include="..\..\..\source\open\components\dynamicdocumentsui\includes\DynamicDocumentsUIDefs.h" />
+    <ClInclude Include="..\..\..\source\open\components\dynamicdocumentsui\includes\DynamicDocumentsUIFactoryList.h" />
+    <ClInclude Include="..\..\..\source\public\interfaces\graphics\DynamicDocumentsUIID.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\source\open\components\dynamicdocumentsui\resources\AnimationPanelToolTips.fr" />
+    <None Include="..\..\..\source\open\components\dynamicdocumentsui\resources\AnimationUIManagePresetsDialogViews.fr" />
+    <None Include="..\..\..\source\open\components\dynamicdocumentsui\resources\AnimationUIManagePresetsDialogViews_enUS.fr" />
+    <None Include="..\..\..\source\open\components\dynamicdocumentsui\resources\AnimationUIMenus.fr" />
+    <None Include="..\..\..\source\open\components\dynamicdocumentsui\resources\AnimationUIPanelList.fr" />
+    <None Include="..\..\..\source\open\components\dynamicdocumentsui\resources\AnimationUIPng.fr" />
+    <None Include="..\..\..\source\open\components\dynamicdocumentsui\resources\AnimationUIView_enUS.fr" />
+    <None Include="..\..\..\source\open\components\dynamicdocumentsui\resources\AnimationUIViews.fr" />
+    <CustomBuild Include="..\..\..\source\open\components\dynamicdocumentsui\resources\DynamicDocumentsUI.fr">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Compiling core resources...</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">odfrc $(ODFRC_ADDITIONAL_FLAGS) "%(FullPath)" -d WINDOWS -d DEBUG -o "$(IntDir)%(Filename)".fres -d DEBUG @coreOpen.rsp @DynamicDocumentsUI.open.rsp
+</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)TriggerResourceDeps.obj;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)%(Filename).fres;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Compiling core resources...</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">odfrc $(ODFRC_ADDITIONAL_FLAGS) "%(FullPath)" -d WINDOWS -o "$(IntDir)%(Filename)".fres @coreOpen.rsp @DynamicDocumentsUI.open.rsp
+</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)TriggerResourceDeps.obj;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)%(Filename).fres;%(Outputs)</Outputs>
+    </CustomBuild>
+    <None Include="..\..\..\source\open\components\dynamicdocumentsui\resources\DynamicDocumentsUIClass.fr" />
+    <None Include="..\..\..\source\open\components\dynamicdocumentsui\resources\DynamicDocumentsUIFactoryList.fr" />
+    <None Include="..\..\..\source\open\components\dynamicdocumentsui\resources\DynamicDocumentsUIStrings.fr" />
+    <None Include="..\..\..\source\open\components\dynamicdocumentsui\resources\DynamicDocumentsUIStrings_enUS.fr" />
+    <None Include="..\..\..\source\open\components\dynamicdocumentsui\resources\HTMLPreviewPanelMenus.fr" />
+    <None Include="..\..\..\source\open\components\dynamicdocumentsui\resources\PageTransitionsDialogViews.fr" />
+    <None Include="..\..\..\source\open\components\dynamicdocumentsui\resources\PageTransitionsDialogViews_enUS.fr" />
+    <None Include="..\..\..\source\open\components\dynamicdocumentsui\resources\PageTransitionsPanelList.fr" />
+    <None Include="..\..\..\source\open\components\dynamicdocumentsui\resources\PageTransitionsPanelMenus.fr" />
+    <None Include="..\..\..\source\open\components\dynamicdocumentsui\resources\PageTransitionsPanelPng.fr" />
+    <None Include="..\..\..\source\open\components\dynamicdocumentsui\resources\PageTransitionsPanelViews.fr" />
+    <None Include="..\..\..\source\open\components\dynamicdocumentsui\resources\PageTransitionsPanelViews_enUS.fr" />
+    <None Include="..\..\..\source\open\components\dynamicdocumentsui\resources\SWFExportAdvancedOptionsPanel.fr" />
+    <None Include="..\..\..\source\open\components\dynamicdocumentsui\resources\SWFExportAdvancedOptionsPanel_enUS.fr" />
+    <None Include="..\..\..\source\open\components\dynamicdocumentsui\resources\SWFExportDialogViews.fr" />
+    <None Include="..\..\..\source\open\components\dynamicdocumentsui\resources\SWFExportDialogViews_enUS.fr" />
+    <None Include="..\..\..\source\open\components\dynamicdocumentsui\resources\SWFExportGeneralOptionsPanel.fr" />
+    <None Include="..\..\..\source\open\components\dynamicdocumentsui\resources\SWFExportGeneralOptionsPanel_enUS.fr" />
+    <None Include="..\..\..\source\open\components\dynamicdocumentsui\resources\TimingPanelList.fr" />
+    <None Include="..\..\..\source\open\components\dynamicdocumentsui\resources\TimingPanelMenus.fr" />
+    <None Include="..\..\..\source\open\components\dynamicdocumentsui\resources\TimingPanelPng.fr" />
+    <None Include="..\..\..\source\open\components\dynamicdocumentsui\resources\TimingPanelToolTips.fr" />
+    <None Include="..\..\..\source\open\components\dynamicdocumentsui\resources\TimingPanelViews.fr" />
+    <None Include="..\..\..\source\open\components\dynamicdocumentsui\resources\TimingPanelViews_enUS.fr" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\..\..\source\open\components\dynamicdocumentsui\resources\DynamicDocumentsUI.rc">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\..\external\msvc\includes;..\..\..\source\public\includes;..\..\..\external\workflow icons;..\..\..\source\open\components\dynamicdocumentsui\includes;..\..\..\source\open\components\dynamicdocumentsui\resources;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\..\external\msvc\includes;..\..\..\source\public\includes;..\..\..\external\workflow icons;..\..\..\source\open\components\dynamicdocumentsui\includes;..\..\..\source\open\components\dynamicdocumentsui\resources;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

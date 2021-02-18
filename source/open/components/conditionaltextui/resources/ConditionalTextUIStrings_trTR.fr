@@ -1,0 +1,126 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kConditionalTextUIStringsRsrcID + index_trTR)
+{
+    k_trTR,                                 // Locale Id
+    kResourceUTF8Encoded,     // Character encoding converter
+    {
+		"#CondTextUI_WinMenu",	"&Koşullu Metin",	// panel menu item
+		"#CondTextUI_PanelName","Koşullu Metin",		// panel name
+		"#CondTextUI_PanelMenu","Koşullu Metin Paneli Menüsü",
+		"#CondTextUI_NewConditionTagMenu", "Yeni Koşul...",
+		"#CondTextUI_DeleteConditionTagMenu", "Koşulu Sil...",
+		"#CondTextUI_DeleteConditionTagsMenu", "Koşulları Sil...",
+		"#CondTextUI_EditConditionTagMenu", "Koşul Seçenekleri... ",
+		"#CondTextUI_LoadConditionTagsMenu", "Koşulları Yükle...",
+		"#CondTextUI_LoadConditionTagsAndSetsMenu", "Koşulları ve Kümeleri Yükle...",
+		"#CondTextUI_ShowIndicatorsCB", "Koşullu Metinde Göstergeleri Göster",
+		"#CondTextUI_ShowIndicatorsMenu", "Koşullu Metinde Göstergeleri Göster",
+		"#CondTextUI_ShowAndPrintIndicatorsMenu", "Koşullu Metindeki Göstergeleri Göster ve Yazdır",
+		"#CondTextUI_HideIndicatorsMenu", "Koşullu Metindeki Göstergeleri Gizle",
+		"#CondTextUI_ShowIndicatorsDD", "Göstergeler:",
+		"#CondTextUI_ShowIndicators", "Göster",
+		"#CondTextUI_ShowAndPrintIndicators", "Göster ve Yazdır",
+		"#CondTextUI_HideIndicators", "Gizle ",
+		"#CondTextUI_RtMenuConditionTagTVNode",    "Koşul Ağaç Görünüm Düğümü İçerik Menüsü",
+		"#CondTextUI_RtMenuUnapplyTag",		"\"^1\" Uygulama",
+		"#CondTextUI_RtMenuDeleteTag",		"\"^1\" Sil",
+		"#CondTextUI_RtMenuEditTag",		"\"^1\" Düzenle...",
+		"Show Options", "&Seçenekleri Göster",
+		"Hide Options", "&Seçenekleri Gizle",
+		"#CondTextUI_SelectUnusedMenu", "Tüm Kullanılmayanları Seç",
+	
+		"#ConditionTagList_NameColumnLabel", "Ad",
+		"#ConditionTag_OptionsDialog", "Koşul Seçenekleri ",
+		"#ConditionTag_OptionsDialogNew", "Yeni Koşul",
+		"#ConditionTagOptions_Name:", "&Ad:",
+		"#ConditionTagOptions_Method:", "&Yöntem:",
+		"#ConditionTagOptions_Appearance:", "&Görünüm:",
+		"#ConditionTagOptions_Color:", "&Renk:",
+		"#ConditionTagOptions_Indicator", "Gösterge",
+		"#ConditionTagOptions_MethodUnderline", "Altı Çizili",
+		"#ConditionTagOptions_MethodHighlight", "Vurgula",
+		"#ConditionTagOptions_WavyUnderline", "Dalgalı",		
+		"#ConditionTagOptions_SolidUnderline", "Düz Çizgi",		
+		"#ConditionTagOptions_DashedUnderline", "Kesik Çizgili",		
+		"#ConditionTag_EmptyNameMsg", "Lütfen bir koşul adı verin.",
+		"#ConditionTag_NameInUseMsg", "Koşul adı zaten kullanımda. Lütfen bir başkasını seçin.",
+		
+		"#ConditionSetShowAll", "Tümünü Göster",
+		"#ConditionSetHideAll", "Tümünü Gizle",
+		"#ConditionSetNone", "[Yok]",
+		"#ConditionSetBlank", " ",
+		"#ConditionSetLabel", "Ayarla:",
+		"#ConditionSetNewSet", "Yeni Küme Oluştur...",
+		"#ConditionSetDeleteSet", "\"^1\" Sil...",
+		"#ConditionSetRenameSet", "\"^1\" Yeniden Adlandır...",
+		"#ConditionSetRedefineSet", "\"^1\" Yeniden Tanımla...",
+		"#ConditionSetUpdateAllSets", "Tüm Kümeleri Güncelle",
+		"#ConditionSetUpdateAllSetsUndoName", "Tüm Koşul Kümelerini Güncelle",
+		"#ConditionSetNameDialog", "Koşul Adı Ayarla",
+		"#ConditionSetNameStatic", "&Ad:",
+		"#InvalidSetName", "Geçersiz Koşul Kümesi Adı",
+		"#DuplicateSetName", "Ad Zaten Var",
+		"#NoActiveSetString", "Etkin Küme Yok",
+		
+		"#ConditionalTextTip", "^1 ile gizli metin bulundu:  ",
+		"#ConditionalTextTipOneTag", "bu koşul",
+		"#ConditionalTextTipManyTags", "bu koşullar",
+		
+		"#ConditionalTextEyeballHideWidgetTip", " Bu koşul uygulanarak tüm metni gizlemek için tıklatın",
+		"#ConditionalTextEyeballShowWidgetTip", " Bu koşul uygulanarak tüm metni göstermek için tıklatın",
+		"#ConditionalTextEyeballUnconditionalWidgetTip", "Koşulsuz metin her zaman görünür",
+		"#ConditionalTextAppliedAllTip",	"Koşul seçilen tüm metne uygulandı. Uygulamayı kaldırmak için tıklatın",
+		"#ConditionalTextAppliedSomeTip",	"Koşul seçilen bazı metne uygulandı. Seçilen tüm metne uygulamak için tıklatın",
+		"#ConditionalTextAppliedNoneTip",	"Koşulu uygulamak için tıklatın",
+		"#ConditionalTextAppliedAllTipUncondition",	"Seçilen metin koşulsuz",
+		"#ConditionalTextAppliedSomeTipUncondition",	"Seçilen bazı metin koşulsuz. Tümünü koşulsuz yapmak için tıklatın",
+		"#ConditionalTextAppliedNoneTipUncondition",	"Metni koşulsuz yapmak için tıklatın",
+		"#ConditionalTextApplyNoSelectionTip", "Seçilen metne koşul uygulamak için tıklatın",
+		"#ConditionalTextNewTagTip",		"Yeni Koşul",
+		"#ConditionalTextDeleteTagTip",		"Koşulu Sil",
+		"#ConditionalTextIndicatorTip",		"Gösterge yöntemi ^1",
+		"#ConditionalTextNewSetTip",		"Yeni Küme",
+		"#SetOverrideTip_NewConditionsAndConditionVisibility",	"Geçersiz kılmalar: koşul görünürlüğü (temizlenecek kümeyi yeniden seçin veya Yeniden Tanımla'yı seçin) + yeni koşullar (Temizlenecek Tüm Kümeleri Güncelle'yi seçin veya Yeniden Tanımla'yı seçin)",
+		"#SetOverrideTip_NewConditions",	"Geçersiz kılmalar: yeni koşullar (Temizlenecek Tüm Kümeleri Güncelle'yi seçin veya Yeniden Tanımla'yı seçin)",
+		"#SetOverrideTip_ConditionVisibility",	"Geçersiz kılmalar: koşul görünürlüğü (temizlenecek kümeyi yeniden seçin veya Yeniden Tanımla'yı seçin)",
+		
+		"#ConditionTag_DeleteConditionDialog", "Koşulu Sil", 
+		"#ConditionTag_DeleteConditionsDialog", "Koşulları Sil", 
+		"#ConditionTag_DeleteConditionAndReplace:", "Koşulu Sil ve Bununla Değiştir: ", 
+		"#ConditionTag_DeleteConditionsAndReplace:", "Koşulları Sil ve Bununla Değiştir: ", 
+		"#ConditionTag_DeleteInformationAlert", "Koşulu silmek için koşulu çöp kutusuna sürükleyin.",
+		"#ConditionTag_DeleteNoReplaceChoice", "[Yok]",
+		
+		"#QuickApplyConditions", "Koşul",
+		"#Conditions_Filter_Key", "CT", // should be upper case if there is an upper case character, this is the prefix key for quick apply for text conditions.
+		"#QuickApplyConditionSets", "Koşul Kümesi",
+		"#QuickApplyConditionSets_Filter_Key", "CS",  // should be upper case if there is an upper case character, this is the prefix key for quick apply for text condition sets.
+		"#QuickApplyConditons_Menu_Key_String", "Koşulları Ekle (ct:)",
+		"#QuickApplyConditonSets_Menu_Key_String", "Koşul Kümelerini Ekle (cs:)",
+		
+		"#SingularConditionStatusBodyString", "^1 koşul uygulandı ^2",
+		"#PluralConditionStatusBodyString", "^1 koşul uygulandı ^2",
+		"#MixedConditionString", " [karışık]",
+		"#NoConditionsString", "hiç koşul uygulanmadı",
+    }
+};
+
+#endif // __ODFRC__

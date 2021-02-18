@@ -1,0 +1,1713 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/sdksamples/snippetrunner/SnipRun.fr $
+//  
+//  Owner: Adobe Developer Technologies
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//  
+//  Umbrella include file for all the .fr files in the plug-in.
+//  
+//========================================================================================
+
+//===========================
+//  General includes:
+//===========================
+
+#include "MenuDef.fh"
+#include "ActionDef.fh"
+#include "ActionDefs.h"
+#include "AdobeMenuPositions.h"
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "StringTable.fh"
+#include "objectmodeltypes.fh"
+#include "ShuksanID.h"
+#include "ActionID.h"
+#include "CommandID.h"
+#include "WorkspaceID.h"
+#include "widgetid.h"
+#include "BuildNumber.h"
+#include "PanelList.fh"
+#include "Widgets.fh"	// for PalettePanelWidget
+#include "InterfaceColorDefines.h"
+#include "IControlViewDefs.h"
+#include "SysControlIds.h"
+#include "FindChangeID.h"
+
+#include "ScriptingID.h" // for script related boss classes
+
+#include "ErrorTableTypes.h" // For UserErrorTable
+#include "Tips.fh"
+#include "TipsID.h"
+
+#include "GenericID.h"
+#include "TextID.h"
+#include "TablesID.h"
+#include "XMLID.h"
+
+#include "WritingModeID2.h" // for kGalleyTextSuiteBoss
+#include "NoteID.h" //kNoteTextSuiteBoss
+
+// Scripting related includes
+#include "ScriptInfoTypes.fh"
+#include "AppFrameworkID.h"  // for kApplicationObjectScriptElement
+#include "DocFrameworkID.h" // for kDocumentObjectScriptElement 
+
+// Project includes:
+#include "SnipRunID.h"
+#include "SnipRunScriptingDefs.h"
+
+#include "PlugInModel_UIAttributes.h"
+#include "INXCoreID.h"
+#include "INXMetadataDefs.h"
+
+#include "EveInfo.fh"
+#ifdef __ODFRC__
+
+/*
+// Plugin version definition.
+*/
+resource PluginVersion (kSDKDefPluginVersionResourceID)
+{
+	kTargetVersion,
+	kSnipRunPluginID,
+	kSDKDefPlugInMajorVersionNumber, kSDKDefPlugInMinorVersionNumber, 	
+	kSDKDefHostMajorVersionNumber, kSDKDefHostMinorVersionNumber,
+	kSnipRunCurrentMajorFormatNumber, kSnipRunCurrentMinorFormatNumber,
+	{ kInDesignProduct, kInCopyProduct },
+	{ kWildFS },
+	kUIPlugIn,
+	kSnipRunVersion
+};
+
+/*
+// Implementation alias resource
+//	We are reusing kStringDataImpl in the same boss. 
+//	Also, this allows us to put these Impl IDs in our plug-ins ID space
+//	without having to provide the implementation ourselves.
+*/
+resource ImplementationAlias(1)
+{
+	{
+		kSnippetNameDataImpl,			kStringDataImpl,
+		kSnippetCategoriesDataImpl,		kStringListDataImpl,
+		kSnippetDescriptionDataImpl,	kStringDataImpl,
+		kSnippetPreconditionsDataImpl,	kStringDataImpl,
+	}
+};
+
+/*
+//	Boss class definition.
+*/
+resource ClassDescriptionTable(kSDKDefClassDescriptionTableResourceID)
+{{{
+
+	/** Adds ISnipRunSuite to the abstract selection boss.
+		@ingroup snippetrunner
+	*/
+	AddIn
+	{
+		kIntegratorSuiteBoss,
+		kInvalidClass,
+		{
+			/** @see ISnipRunSuite, SnipRunSuiteASB.
+			*/
+			IID_ISNIPRUNSUITE, kSnipRunSuiteASBImpl,
+		}
+	},
+
+	/** Adds ISnipRunSuite & ISnpRunnableContext to the layout selection suite boss.
+		@ingroup snippetrunner
+	*/
+	AddIn
+	{
+		kLayoutSuiteBoss,
+		kInvalidClass,
+		{
+			/** @see ISnipRunSuite, SnipRunSuiteCSB
+			*/
+			IID_ISNIPRUNSUITE, kSnipRunSuiteCSBImpl,
+			/** @see ISnpRunnableContext, SnpRunnableContextCSB.
+			*/
+			IID_ISNPRUNNABLECONTEXT, kSnpRunnableContextCSBImpl,
+		}
+	},
+
+	/** Adds ISnipRunSuite & ISnpRunnableContext to the text suite boss.		
+		@ingroup snippetrunner
+	*/
+	AddIn
+	{
+		kTextSuiteBoss,
+		kInvalidClass,
+		{
+			/** @see ISnipRunSuite, SnipRunSuiteCSB
+			*/
+			IID_ISNIPRUNSUITE, kSnipRunSuiteCSBImpl,
+			/** @see ISnpRunnableContext, SnpRunnableContextCSB.
+			*/
+			IID_ISNPRUNNABLECONTEXT, kSnpRunnableContextCSBImpl,
+		}
+	},
+
+	/**	Adds ISnipRunSuite & ISnpRunnableContext to the table suite boss.
+		@ingroup snippetrunner
+	*/
+	AddIn
+	{
+		kTableSuiteBoss,
+		kInvalidClass,
+		{
+			/** @see ISnipRunSuite, SnipRunSuiteCSB
+			*/
+			IID_ISNIPRUNSUITE, kSnipRunSuiteCSBImpl,
+			/** @see ISnpRunnableContext, SnpRunnableContextCSB.
+			*/
+			IID_ISNPRUNNABLECONTEXT, kSnpRunnableContextCSBImpl,
+		}
+	},
+
+	/**	Adds ISnipRunSuite & ISnpRunnableContext to the xml suite boss.
+		@ingroup snippetrunner
+	*/
+	AddIn
+	{
+		kXMLStructureSuiteBoss,
+		kInvalidClass,
+		{
+			/** @see ISnipRunSuite, SnipRunSuiteCSB
+			*/
+			IID_ISNIPRUNSUITE, kSnipRunSuiteCSBImpl,
+			/** @see ISnpRunnableContext, SnpRunnableContextCSB.
+			*/
+			IID_ISNPRUNNABLECONTEXT, kSnpRunnableContextCSBImpl,
+		}
+	},
+
+	/** Adds ISnipRunSuite & ISnpRunnableContext to the galley text suite boss.
+		@ingroup snippetrunner
+	*/
+	AddIn
+	{
+		kGalleyTextSuiteBoss,
+		kInvalidClass,
+		{
+			/** @see ISnipRunSuite, SnipRunSuiteCSB
+			*/
+			IID_ISNIPRUNSUITE, kSnipRunSuiteCSBImpl,
+			/** @see ISnpRunnableContext, SnpRunnableContextCSB.
+			*/
+			IID_ISNPRUNNABLECONTEXT, kSnpRunnableContextCSBImpl,
+		}
+	},
+
+	/** Adds ISnipRunSuite & ISnpRunnableContext to the note text suite boss.
+		@ingroup snippetrunner
+	*/
+	AddIn
+	{
+		kNoteTextSuiteBoss,
+		kInvalidClass,
+		{
+			/** @see ISnipRunSuite, SnipRunSuiteCSB
+			*/
+			IID_ISNIPRUNSUITE, kSnipRunSuiteCSBImpl,
+			/** @see ISnpRunnableContext, SnpRunnableContextCSB.
+			*/
+			IID_ISNPRUNNABLECONTEXT, kSnpRunnableContextCSBImpl,
+		}
+	},
+
+	/**	Adds ISnipRunSuite & ISnpRunnableContext to the document defaults suite boss.
+		@ingroup snippetrunner
+	*/
+	AddIn
+	{
+		kDocumentDefaultSuiteBoss,
+		kInvalidClass,
+		{
+			/** @see ISnipRunSuite, SnipRunSuiteCSB
+			*/
+			IID_ISNIPRUNSUITE, kSnipRunSuiteCSBImpl,
+			/** @see ISnpRunnableContext, SnpRunnableContextCSB.
+			*/
+			IID_ISNPRUNNABLECONTEXT, kSnpRunnableContextCSBImpl,
+		}
+	}
+
+	/**	Adds ISnipRunSuite & ISnpRunnableContext to the application defaults suite boss.
+		@ingroup snippetrunner
+	*/
+	AddIn
+	{
+		kApplicationDefaultSuiteBoss,
+		kInvalidClass,
+		{
+			/** @see ISnipRunSuite, SnipRunSuiteCSB
+			*/
+			IID_ISNIPRUNSUITE, kSnipRunSuiteCSBImpl,
+			/** @see ISnpRunnableContext, SnpRunnableContextCSB.
+			*/
+			IID_ISNPRUNNABLECONTEXT, kSnpRunnableContextCSBImpl,
+		}
+	}
+
+	/**
+		 Integrates popout menu onto
+		 the plug-in's panel and observes widgets that
+		 control the display and execution of snippets.
+
+		 @ingroup snippetrunner
+	*/
+	Class
+	{
+		kSnipRunPanelWidgetBoss,
+		kErasablePrimaryResourcePanelWidgetBoss,
+		{
+			/** Integrates the popout menu onto the panel..
+			Implementation provided by the API.
+			*/ 
+			IID_IPANELMENUDATA, kCPanelMenuDataImpl,
+
+			/** 
+			Provides detail control for the panel. 
+			Implementation is provided by the API.
+			*/
+			IID_IPANELDETAILCONTROLLER, kSizePanelDetailControllerImpl,
+
+			/** @see IControlView, SnipRunControlView.
+			*/
+			IID_ICONTROLVIEW, kSnipRunControlViewImpl,
+
+			/** @see IObserver, SnipRunPanelWidgetObserver.
+			*/
+			IID_IOBSERVER, kSnipRunPanelWidgetObserverImpl,
+		}
+	},
+
+	/**	Supports the Go button which gets enabled and disabled
+		dependent on whether the snippet can run or not. When the
+		button is enabled a click on it will cause the selected
+		snippet to be run via ISnipRunSuite.
+
+		The name of the snippet this control works with is given 
+		by the IStringData interface aggregated 
+		using IID_ISNIPRUNSNIPPETNAMESTRINGDATA. To get
+		this observer to recognise a change to this data client
+		code should call this button's ISubject as shown below:
+		ISubject::Change(kTextChangeStateMessage, IID_ISNIPRUNSNIPPETNAMESTRINGDATA);
+
+		@ingroup snippetrunner
+	 */
+	Class
+	{
+		kSnipRunGoButtonBoss,
+		kRollOverIconButtonBoss,
+		{
+			/** IControlViewObservers attaches the button's observers,
+				implementation provided by the API.
+			*/
+			IID_ICONTROLVIEWOBSERVERS, kCControlViewObserversImpl,
+
+			/** IObserver implementation provided by SnipRunGoButtonObserver.
+			 */
+			IID_ISNIPRUNGOBUTTONOBSERVER, kSnipRunGoButtonObserverImpl,
+
+			/** IObserver implementation provided by SnipRunGoSelectionObserver.
+			 */
+			IID_ISNIPRUNGOSELECTIONOBSERVER, kSnipRunGoSelectionObserverImpl,
+
+			/** IStringData stores the name snippet the button operates on. This
+				is the name that is used passed to ISnipRunSuite. If the 
+				snippet cannot run the button is disabled by this control's 
+				observers.
+			 */
+			IID_ISNIPRUNSNIPPETNAMESTRINGDATA, kStringDataImpl,
+		}
+	},
+
+	/**
+		 Provides the actions invoked by this plug-in's
+		 sub-menu items. It supports two interfaces: 
+		 IActionComponent and IPMPersist. We provide the implementation 
+		 for IActionComponent in SnipRunAction.cpp. The other
+		 default implementation is provided by the API.
+			 
+		@ingroup snippetrunner
+	*/
+	Class
+	{
+		kSnipRunActionComponentBoss,
+		kBaseActionComponentBoss,
+		{
+			/** @see IActionComponent, SnipRunActionComponent.
+			*/
+			IID_IACTIONCOMPONENT, kSnipRunActionComponentImpl,
+		}
+	},
+
+
+	/** Adds ISnipRunParameterUtils to kUtilsBoss.
+
+		@ingroup snippetrunner
+	*/
+	AddIn
+	{
+		kUtilsBoss,
+		kInvalidClass,
+		{
+			/** @see ISnipRunParameterUtils, SnipRunParameterUtils.
+			*/
+			IID_ISNIPRUNPARAMETERUTILS, kSnipRunParameterUtilsImpl,
+		}
+	},
+
+	/**
+		Provides a dialogue that prompts users for parameters
+		of a type given by ISnipRunDialogData, see ISnipRunParameterUtils
+		for a utility class to help get a dialogue prompt.
+
+		@see ISnipRunParameterUtils
+		@ingroup snippetrunner
+	*/
+	Class
+	{
+		kSnipRunDialogBoss,
+		kDialogBoss,
+		{
+			/** Provides management and control over the dialog,
+				@see IDialogController, SnipRunDialogController.
+			*/
+			IID_IDIALOGCONTROLLER, kSnipRunDialogControllerImpl,
+			/** @see ISnipRunDialogData, SnipRunDialogData.
+			*/
+			IID_ISNIPRUNDIALOGDATA, kSnipRunDialogDataImpl,
+		}
+	},
+
+
+	/**	Command designed to be scheduled when resize of
+		the panel displaying the log starts. When the user
+		finishes resize the command runs and restores the 
+		contents of the log (they are cleared during the
+		resize).
+
+		 @ingroup snippetrunner
+	*/
+	Class
+	{
+		kSnipRunRestoreLogCmdBoss,
+		kInvalidClass,
+		{
+			/** ICommand implemented by SnipRunRestoreLogCmd.
+			*/ 
+			IID_ICOMMAND, kSnipRunRestoreLogCmdImpl,
+		}
+	},
+
+	/**
+	Service provider boss class to delete snippet manager's snippet dictionary on shutdown.
+	@ingroup snippetrunner
+	*/
+	Class
+	{
+		kSnipRunStartupShutdownBoss,
+		kInvalidClass,
+		{
+			/** Implementation of IStartupShutdownService that deletes snippet manager's snippet dictionary on shutdown */
+			IID_ISTARTUPSHUTDOWN,  kSnipRunStartupShutdownImpl,
+			/** identify the service type */
+			IID_IK2SERVICEPROVIDER,  kCStartupShutdownProviderImpl,
+		}
+	},
+
+	/** Error String provider for Script-related errors
+
+		@ingroup snippetrunner
+	 */
+	Class
+	{
+		kSnpRunErrorStringServiceBoss,
+		kInvalidClass,
+		{
+			/**	Identifies this boss as an error string provider.
+			  	Implementation from API (ShuksanID.h)
+			 */
+			IID_IK2SERVICEPROVIDER, kErrorStringProviderImpl,
+			/** Provides support for mapping error codes to the
+			  	strings in the UserErrorTable resource.
+			 */
+			IID_IERRORSTRINGSERVICE, kSnipRunErrorStringServiceImpl,
+		}
+	},
+
+	/** Script provider for the "SDK code snippet runner" object
+
+		@ingroup snippetrunner
+	 */
+	Class
+	{
+		kSnipRunScriptProviderBoss,
+		kBaseScriptProviderBoss,
+		{
+			/** The script provider implementation for the SDK code snippet runner object. 
+			  	Provides code to handle events, access properties, and to create the 
+			  	SDK code snippet runner object. Inherits from PrefsScriptProvider.
+				@see IScriptProvider, PrefsScriptProvider, SnipRunScriptProvider
+			 */
+			IID_ISCRIPTPROVIDER, kSnipRunScriptProviderImpl, 
+		}
+	},
+
+	/** Script object for the "SDK code snippet" object
+		This is needed since the SDK code snippet object is not UID based, 
+		and there is no boss that models it.
+
+		@ingroup snippetrunner
+	 */
+	Class
+	{
+		kSnpRunnableScriptObjectBoss,
+		kBaseProxyScriptObjectBoss,
+		{
+			/** The script object implementation for the SDK code snippet object. 
+				Inherits from CProxyScript.
+				@see IScript, CProxyScript, SnpRunnableScript
+			 */
+			IID_ISCRIPT, kSnpRunnableScriptImpl,	
+
+			/** Snippet name property. This implementation is aliased from kStringDataImpl (IStringData).
+				@see ImplementationAlias in SnipRun.fr, IStringData
+			 */
+			IID_ISNIPPETNAME, kSnippetNameDataImpl, 
+
+			/** Snippet categories property. This implementation is aliased from kStringListDataImpl (IStringListData).
+				@see ImplementationAlias in SnipRun.fr, IStringListData
+			 */
+			IID_ISNIPPETCATEGORIES, kSnippetCategoriesDataImpl,
+
+			/** Snippet desription property. This implementation is aliased from kStringDataImpl (IStringData).
+				@see ImplementationAlias in SnipRun.fr, IStringData
+			 */
+			IID_ISNIPPETDESCRIPTION, kSnippetDescriptionDataImpl,
+
+			/** Snippet preconditions property. This implementation is aliased from kStringDataImpl (IStringData).
+				@see ImplementationAlias in SnipRun.fr, IStringData
+			 */
+			IID_ISNIPPETPRECONDITIONS, kSnippetPreconditionsDataImpl,
+		}
+	},
+
+	/** Script provider for the SDK code snippet object.
+
+		@ingroup snippetrunner
+	 */
+	Class
+	{
+		kSnpRunnableScriptProviderBoss,
+		kBaseScriptProviderBoss,
+		{
+			/** The script provider implementation for the SDK code snippet runner object. 
+			  	Provides code to handle events, access properties, and to create the 
+			  	SDK code snippet object.
+			 	Inherits from RepresentScriptProvider.
+				@see IScriptProvider, RepresentScriptProvider, SnpRunnableScriptProvider
+			 */
+			IID_ISCRIPTPROVIDER, kSnpRunnableScriptProviderImpl, 
+		}
+	},
+
+	/** Provides the snippets through quick apply functionality
+		@ingroup snippetrunner
+	*/
+	Class
+	{
+		kSnippetRunnerQuickApplyServiceBoss,
+		kInvalidClass,
+		{
+			/** Identify this as a quick apply service */
+			IID_IK2SERVICEPROVIDER, kQuickApplyRegisterProviderImpl,
+			/** The quick apply service implementation. Is called to build the list of snippets as quick
+				apply items, and if one is selected in the quick apply dialog, is called to execute the 
+				snippet. 
+				@see IQuickApplyService, SnipRunQuickApplyService
+			*/
+			IID_IQUICKAPPLYSERVICE, kSnippetRunnerQuickApplyServiceImpl,
+		}
+	},
+
+}}};
+
+/*
+// Implementation definition.
+*/
+resource FactoryList (kSDKDefFactoryListResourceID) 
+{
+	kImplementationIDSpace,
+	{
+#include "SnipRunFactoryList.h"
+	}
+};
+
+/*
+// Menu definition.
+*/
+resource MenuDef (kSDKDefMenuResourceID)
+{
+	{
+		// The About Plug-ins sub-menu item for this plug-in.
+		kSnipRunAboutActionID,			// ActionID (kInvalidActionID for positional entries)
+		kSnipRunAboutMenuPath,			// Menu Path.
+		kSDKDefAlphabeticPosition,			// Menu Position.
+		kSDKDefIsNotDynamicMenuFlag,		// kSDKDefIsNotDynamicMenuFlag or kSDKDefIsDynamicMenuFlag.
+
+		kSnipRunShowParameterBoxActionID,
+		kSnipRunTargetMenuPath,
+		kSnipRunShowParameterBoxMenuItemPosition,
+		kSDKDefIsNotDynamicMenuFlag,
+
+		// Separator for the popup menu on the panel
+		kSnipRunSeparator1ActionID,
+		kSnipRunInternalPopupMenuNameKey kSDKDefDelimiterAndSeparatorPath,	// :- to mark an item as a separator.
+		kSnipRunSeparator1MenuItemPosition,
+		kSDKDefIsNotDynamicMenuFlag,
+
+		// About this plugin submenu for the popup menu on the panel
+		kSnipRunPopupAboutThisActionID,
+		kSnipRunTargetMenuPath
+		kSnipRunAboutThisMenuItemPosition,
+		kSDKDefIsNotDynamicMenuFlag, 
+	}
+};
+
+/*
+// Action definition.
+*/
+resource ActionDef (kSDKDefActionResourceID)
+{
+	{ 
+		kSnipRunActionComponentBoss, 		// ClassID of boss class that implements the ActionID.
+		kSnipRunAboutActionID,	// ActionID.
+		kSnipRunAboutMenuKey,	// Sub-menu string.
+		kHelpMenuActionArea,				// Area name (see ActionDefs.h).
+		kNormalAction,					// Type of action (see ActionDefs.h).
+		kDisableIfLowMem,				// Enabling type (see ActionDefs.h).
+		kInvalidInterfaceID,			// Selection InterfaceID this action cares about or kInvalidInterfaceID.
+		kSDKDefInvisibleInKBSCEditorFlag, // kSDKDefVisibleInKBSCEditorFlag or kSDKDefInvisibleInKBSCEditorFlag.
+				
+		kSnipRunActionComponentBoss, 
+		kSnipRunShowParameterBoxActionID, 
+		kSnipRunShowParameterBoxMenuItemKey,
+		kOtherActionArea,
+		kNormalAction,
+		kDisableIfLowMem|kCustomEnabling, 
+		kInvalidInterfaceID,
+		kSDKDefInvisibleInKBSCEditorFlag,
+				
+		kSnipRunActionComponentBoss, 
+		kSnipRunPopupAboutThisActionID, 
+		kSDKDefAboutThisPlugInMenuKey,	// Key to the name of this action
+		kOtherActionArea,
+		kNormalAction,
+		kDisableIfLowMem,	
+		kInvalidInterfaceID,
+		kSDKDefInvisibleInKBSCEditorFlag,
+	}
+};
+
+/*
+// LocaleIndex
+// The LocaleIndex should have indicies that point at your
+// localizations for each language system that you are 
+// localized for.
+*/
+/*
+// String LocaleIndex.
+*/
+resource LocaleIndex (kSDKDefStringsResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_enUS, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_enGB, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_deDE, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_frFR, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_esES, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_ptBR, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_svSE, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_daDK, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_nlNL, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_itIT, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_nbNO, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_fiFI, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_jaJP, kSDKDefStringsResourceID + index_jaJP
+	}
+};
+
+resource LocaleIndex (kSDKDefStringsNoTransResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_Wild, kSDKDefStringsNoTransResourceID + index_enUS
+	}
+};
+
+resource StringTable (kSDKDefStringsNoTransResourceID + index_enUS)
+{
+	k_enUS,									// Locale Id
+	kEuropeanMacToWinEncodingConverter,		// Character encoding converter
+	{
+		// No-Translate strings go here:
+		kSnipRunInternalPopupMenuNameKey,	kSnipRunInternalPopupMenuNameKey,		// No need to translate, internal menu name.
+		kSnipRunDefaultSnippetName,			kSnipRunDefaultSnippetName,
+		kSnipRunDefaultSnippetParameters,	kSnipRunDefaultSnippetParameters,
+		kSnipRunDialogTitleKey,				"Parameter",
+		
+		// These are translatable string but we did not provide translation.
+		// You are supposed to provide translations in localized resource files.
+		// (These are dialog/panel strings used in code snippets.)
+		"TEXT file(txt)",			"TEXT file(txt)", 
+		"TEXT file(text)",			"TEXT file(text)", 
+		"TEXT files(txt)",			"TEXT files(txt)",
+		"TEXT files(text)",			"TEXT files(text)",
+		"TEXT file(rtf)",			"TEXT file(rtf)",
+		"TEXT comma separated file(csv)", "TEXT comma separated file(csv)",
+		"TEXT XML file(xml)",		"TEXT XML file(xml)",
+		"TEXT XML files(xml)",		"TEXT XML files(xml)",
+		"TEXT HTML files(htm)",		"TEXT HTML files(htm)",
+		"TEXT HTML files(html)",	"TEXT HTML files(html)",
+		"InDesign document(indd)",	"InDesign document(indd)",
+		"InDesign template(indt)",	"InDesign template(indt)",
+		"JPEG file(jpg)",			"JPEG file(jpg)",
+		"PICT file(pic)",			"PICT file(pic)",
+		"TIFF file(tif)",			"TIFF file(tif)",
+		"GIFf file(gif)",			"GIFf file(gif)",
+		"JPEG files(jpg)",			"JPEG files(jpg)",
+		"PDF(pdf)",					"PDF(pdf)",
+		"PDF file(pdf)",			"PDF file(pdf)",
+		"EPSF file(eps)",			"EPSF file(eps)",
+		"XMP MetaData file(xmp)",	"XMP MetaData file(xmp)",
+		"XML file(xml)",			"XML file(xml)",
+		"XFL file(xfl)",			"XFL file(xfl)",
+		"Publication files",		"Publication files",
+		"JPEG files",				"JPEG files",
+		"PDF files",				"PDF files",
+		"Text files",				"Text files",
+		"XML files",				"XML files",
+		"SVG file(svg)",			"SVG file(svg)",
+		"Save Publication",			"Save Publication",
+		"Save InDesign document/template",	"Save InDesign document/template",
+		"Save image",			"Save image",
+		"Save text",			"Save text",
+		"Save Xmedia",			"Save Xmedia",
+		"Select XMP MetaData file to replace with",	"Select XMP MetaData file to replace with",
+		"Specify XMP MetaData file to save",		"Specify XMP MetaData file to save",
+		"Select XMP MetaData file to append with document",	"Select XMP MetaData file to append with document",
+		"Style dump log",	"Style dump log",
+		"Scripting DOM Reference XML Dump File",	"Scripting DOM Reference XML Dump File",
+		"Fonts dump log",	"Fonts dump log",
+		"Choose destination folder",	"Choose destination folder",		
+	}
+};
+
+/*
+// Panel LocaleIndex.
+*/
+resource LocaleIndex (kSDKDefPanelResourceID)
+{
+	kViewRsrcType,
+	{
+		kWildFS, k_Wild, 	kSDKDefPanelResourceID + index_enUS
+	}
+};
+
+resource PNGA(kSnipRunGoIconSnapResourceID) "SnipRun_P_Go_N.png"
+resource PNGR(kSnipRunGoIconSnapResourceID) "SnipRun_P_Go_R.png"
+resource PNGA(kSnipRunSaveLogIconSnapResourceID) "SnipRun_P_Save_N.png"
+resource PNGR(kSnipRunSaveLogIconSnapResourceID) "SnipRun_P_Save_R.png"
+resource PNGA(kSnipRunClearLogIconSnapResourceID) "SnipRun_P_Delete_N.png"
+resource PNGR(kSnipRunClearLogIconSnapResourceID) "SnipRun_P_Delete_R.png"
+
+/*
+// Type definition.
+*/
+type SnipRunPanelWidget(kViewRsrcType) : ErasablePrimaryResourcePanelWidget(ClassID = kSnipRunPanelWidgetBoss) 
+{
+	CPanelMenuData;
+	SizePanelDetailController;
+};
+
+type SnipRunGoButton	(kViewRsrcType) : RollOverIconButtonWidget		(ClassID = kSnipRunGoButtonBoss) 
+{ 
+	CControlViewObservers;
+};
+
+/*
+// PanelList definition.
+*/
+resource PanelList (kSDKDefPanelResourceID)
+{
+	{
+		// 1st panel in the list
+		kSDKDefPanelResourceID,		// Resource ID for this panel (use SDK default rsrc ID)
+		kSnipRunPluginID,			// ID of plug-in that owns this panel
+		kIsResizable,				// if the panel is resizable
+		kSnipRunPanelWidgetActionID,	// Action ID to show/hide the panel
+		kSnipRunPanelTitleKey,	// Shows up in the Window list.
+		"",							// Alternate menu path of the form "Main:Foo" if you want your palette menu item in a second place
+		0.0,						// Alternate Menu position Alternate Menu position for determining menu order
+		0,0,						// Rsrc ID, Plugin ID for a PNG icon resource to use for this palette
+		c_Panel
+	}	
+};
+
+/*
+// Tip definition. These static strings are popped as tips
+// for the given panel widgets.
+*/
+resource TipTable(33)
+{
+	{
+		kSnipRunGoWidgetID, kSnipRunGoTipStringKey,
+		kSnipRunNameWidgetID, kSnipRunNameTipStringKey,
+		kSnipRunPreconditionsWidgetID, kSnipRunPreconditionsTipStringKey,
+		kSnipRunParametersWidgetID, kSnipRunParametersTipStringKey,		
+		kSnipRunLogWidgetID, kSnipRunLogTipStringKey,
+		kSnipRunClearLogWidgetID, kSnipRunClearLogTipStringKey,
+		kSnipRunSaveLogWidgetID, kSnipRunSaveLogTipStringKey,
+		kSnipRunTraceLogWidgetID, kSnipRunTraceTipStringKey,
+	}
+}
+
+/*
+// PanelView definition for panel that controls snippet execution
+// and displays the log.
+// The view is not currently localised: therefore, it can reside here.
+// However, if you wish to localise it, it is recommended to locate it in one of
+// the localised framework resource files (i.e. SnipRun_enUS.fr etc.).
+*/
+resource SnipRunPanelWidget(kSDKDefPanelResourceID + index_enUS)
+{
+	__FILE__, __LINE__,					// Localization macro		
+	kSnipRunPanelWidgetID,				// WidgetID 
+	kPMRsrcID_None,						// RsrcID
+	kBindNone,							// Binding (0=none)
+	Frame(0, 0, 207, 295), 				// Frame: left, top, right, bottom.
+	kTrue, kTrue,						// Visible, Enabled
+	kFalse,								// Erase background
+	kInterfacePaletteFill,				// Erase to color
+	kSnipRunPanelTitleKey,				// Panel name	
+	{
+		// Upper panel with snippet controls.
+		ErasablePrimaryResourcePanelWidget
+		(
+			__FILE__, __LINE__,
+ 			kSnipRunSnippetControlSubPanelWidgetID,		// WidgetID
+			kPMRsrcID_None,							// RsrcID
+			kBindAll,								// Frame binding
+			Frame(0,1,207,156)						// Frame
+			kTrue, kTrue,							// Visible, Enabled
+			kTrue, kInterfacePaletteFill,
+			"",
+			{
+				SnipRunGoButton //RollOverIconButtonWidget
+				(
+					// ADBEIconSuiteButtonView properties
+					kSnipRunGoWidgetID, // widget ID
+					kSnipRunGoIconSnapResourceID, kSnipRunPluginID, // icon, plugin ID
+					kBindRight | kBindTop, // frame binding
+					Frame(162, 12, 192, 28)//  left, top, right, bottom
+					kTrue, // visible
+					kTrue, // enabled
+					kADBEIconSuiteButtonType,
+					// CControlViewObservers - the button's observers.			
+					{									
+						{
+							IID_ISNIPRUNGOBUTTONOBSERVER, 
+							IID_ISNIPRUNGOSELECTIONOBSERVER,
+						}
+					}
+				),
+				
+				StaticTextWidget
+				(
+					// CControlView properties
+					kInvalidWidgetID, // widget ID
+					kSysStaticTextPMRsrcId, // PMRsrc ID
+					kBindNone, // frame binding
+					Frame(5.0,10.0,100.0,25.0) //  left, top, right, bottom
+					kTrue, // visible
+					kTrue, // enabled
+					// StaticTextAttributes properties
+					kAlignLeft, // Alignment
+					kDontEllipsize, kTrue, // Ellipsize style, Convert ampersands
+					// CTextControlData properties
+					kSnipRunNameStringKey, // control label
+					// AssociatedWidgetAttributes properties
+					kInvalidWidgetID, // associated widget ID
+				),
+
+				TextComboBoxWidget
+				(
+					kSnipRunNameWidgetID, kPMRsrcID_None,  // WidgetId, RsrcId
+					kBindLeft | kBindRight | kBindTop,                          // Frame binding
+					Frame(5 ,30, 192 ,50) //  left, top, right, bottom
+					kTrue, kTrue,                       // Visible, Enabled
+					0,                                  // widget id of nudge button
+					0,0,                                // small/large nudge amount
+					0,                                  // max num chars( 0 = no limit)
+					kFalse,                             // is read only
+					kFalse,                             // should notify each key stroke
+					kFalse,                             // range checking enabled
+					kTrue,								// blank entry allowed
+					0, 0,                               // upper/lower bounds
+					kSnipRunDefaultSnippetName,         // initial text
+				  {{
+					kSnipRunDefaultSnippetName,
+				  }}
+				),
+
+				StaticMultiLineTextWidget
+				(
+					kSnipRunSynopsisWidgetID,//WidgetID
+					kPMRsrcID_None, //RsrcID
+					kBindLeft | kBindRight | kBindTop,//Binding
+					Frame(5.0,50.0,192,75.0)//Frame
+					kTrue,kTrue,//Visible,Enabled
+					 // Static Text Attributes
+					kAlignLeft,                     // Alignment
+					kDontEllipsize, kTrue,                 // Ellipsize style, Convert ampersands					
+					kInvalidWidgetID,//associated widgetID
+					kPaletteWindowFontId,//InterfaceFontID
+					3,//Number of pixels between lines
+					0,0,//Inset amount
+					"",//Initial text
+				),
+
+				StaticTextWidget
+				(
+					// CControlView properties
+					kInvalidWidgetID, // widget ID
+					kSysStaticTextPMRsrcId, // PMRsrc ID
+					kBindNone, // frame binding
+					Frame(5.0,80.0,192.0,95.0) //  left, top, right, bottom
+					kTrue, // visible
+					kTrue, // enabled
+					// StaticTextAttributes properties
+					kAlignLeft, // Alignment
+					kDontEllipsize, kTrue, // Ellipsize style, Convert ampersands
+					// CTextControlData properties
+					kSnipRunPreconditionsStringKey, // control label
+					// AssociatedWidgetAttributes properties
+					kInvalidWidgetID, // associated widget ID
+				),
+
+				StaticTextWidget
+				(
+					// CControlView properties
+					kSnipRunPreconditionsWidgetID, // widget ID
+					kSysStaticTextPMRsrcId, // PMRsrc ID
+					kBindNone, // frame binding
+					Frame(5.0,100.0,192.0,115.0) //Frame(5,120, 192, 135) //  left, top, right, bottom
+					kTrue, // visible
+					kTrue, // enabled
+					// StaticTextAttributes properties
+					kAlignLeft, // Alignment
+					kDontEllipsize, kTrue, // Ellipsize style, Convert ampersands
+					// CTextControlData properties
+					"", // control label
+					// AssociatedWidgetAttributes properties
+					kInvalidWidgetID, // associated widget ID
+				),
+
+				TextEditBoxWidget
+				(
+					// CControlView properties
+					kSnipRunParametersWidgetID, // widget ID
+					kSysEditBoxPMRsrcId, // PMRsrc ID
+					kBindLeft | kBindRight | kBindTop, // frame binding
+					Frame(5.0,120.0,192.0,135.0)       // Frame
+					kFalse, // visible
+					kTrue, // enabled
+					// CEditBoxAttributes
+					kInvalidWidgetID, // nudgeWidgetId (0 or kInvalidWidgetID if no nudge required)
+					1, // small nudge amount
+					5, // large nudge amount
+					0, // max num chars
+					kFalse, // read only flag
+					kFalse, // should notify on each key stroke
+					// TextDataValidation properties
+					kTrue, // range checking enabled
+					kFalse, // blank entry allowed
+					30, // upper limit
+					0, // lower limit
+					// CTextControlData properties
+					"" // control label
+				),
+
+				StaticTextWidget
+				(
+					// CControlView properties
+					kInvalidWidgetID, // widget ID
+					kSysStaticTextPMRsrcId, // PMRsrc ID
+					kBindNone, // frame binding
+					Frame(5,140 ,200, 155) //  left, top, right, bottom
+					kTrue, // visible
+					kTrue, // enabled
+					// StaticTextAttributes properties
+					kAlignLeft, // Alignment
+					kDontEllipsize, kTrue, // Ellipsize style, Convert ampersands
+					// CTextControlData properties
+					kSnipRunLogStringKey, // control label
+					// AssociatedWidgetAttributes properties
+					kInvalidWidgetID, // associated widget ID
+				),
+				// as snippetrunner can now be driven through quick apply, add the quick apply widget to the snippetrunner panel.
+				KillerFindButton
+				(
+					kKillerFindButtonID,                  // WidgetId
+					kKillerFindSmallButtonPNGRsrcID, kApplicationRsrcPluginID,        // RsrcId
+					kBindRight,
+					Frame(191, 2, 207, 18)        // Frame
+					kTrue, kTrue,                                 // Visible, Enabled
+					kStyledIconSuiteFlushedButtonType,
+				),
+
+			}
+		),
+
+		// Separator between upper and lower panels
+		SeparatorWidget
+		(
+			kInvalidWidgetID, kPMRsrcID_None,                  // WidgetId, RsrcId
+			kBindLeft | kBindRight,                                // Frame binding
+			Frame(0,156,207,158)    // Frame
+			kTrue, kTrue,                             // Visible, Enabled
+		),
+
+		// Snippet Runner Log
+		ErasablePrimaryResourcePanelWidget
+		( 
+			__FILE__, __LINE__,
+			kSnipRunLogSubPanelWidgetID,				// WidgetID
+			kPMRsrcID_None,							// RsrcID
+			kBindAll,									
+			Frame(0,159,208,275),						// Frame
+			kTrue, kTrue,							// Visible, Enabled
+			kTrue, kInterfacePaletteFill,
+			"",
+			{
+				StaticMultiLineTextWidget
+				(
+					kSnipRunLogWidgetID,//WidgetID
+					kPMRsrcID_None, //RsrcID
+					kBindAll,//Binding
+					Frame(0, 0, 192, 116) //Frame
+					kTrue,kTrue,//Visible,Enabled
+						// Static Text Attributes
+					kAlignLeft,                     // Alignment
+					kDontEllipsize, kTrue,                 // Ellipsize style, Convert ampersands					
+					kSnipRunLogScrollBarWidgetID,//WidgetID of scrollbar
+					kPaletteWindowFontId,//InterfaceFontID
+					3,//Number of pixels between lines
+					2,0,//Inset amount
+					"",//Initial text
+				),
+				ScrollBarWidget
+				(
+					kSnipRunLogScrollBarWidgetID,
+					kSysVScrollBarPMRsrcId,
+					kBindRight | kBindBottom | kBindTop,
+					Frame(194,0,207,116),
+					kTrue, kTrue,
+					0, 100, 0, 1, 1,
+					0, 0, 0, // not accelerate ( threshold, max,increment)
+				),
+			}
+		),
+
+		// Separator between upper and lower panels
+		SeparatorWidget
+		(
+			kInvalidWidgetID, kPMRsrcID_None,                  // WidgetId, RsrcId
+			kBindBottom | kBindLeft | kBindRight,              // Frame binding
+			Frame(0,275,207,277)    // Frame
+			kTrue, kTrue,                             // Visible, Enabled
+		),
+
+		// Bottom control strip with log controls
+		ErasablePrimaryResourcePanelWidget
+		(
+			__FILE__, __LINE__,
+			kSnipRunLogControlStripWidgetID,
+			kPMRsrcID_None,
+			kBindBottom | kBindLeft | kBindRight,
+			Frame(-2,277,210,300),
+			kTrue, kTrue,
+			kTrue, kInterfacePaletteFill,
+			"",
+			{
+				CheckBoxWidget
+				(
+					kSnipRunTraceLogWidgetID,           // WidgetId
+					kSysCheckBoxPMRsrcId,               // RsrcId
+					kBindLeft | kBindBottom,
+					Frame(5,4,136,16)                // Frame
+					kTrue,                              // Visible
+					kTrue,                              // Enabled
+					kAlignLeft,                       // Alignment
+					kSnipRunTraceLogStringKey             // Initial text
+				),
+
+				RollOverIconButtonWidget
+				(
+					kSnipRunSaveLogWidgetID, // widget ID
+					kSnipRunSaveLogIconSnapResourceID, kSnipRunPluginID, // icon, plugin ID
+					kBindRight | kBindBottom, // frame binding
+					Frame(136,1,166,17)//  left, top, right, bottom
+					kTrue, // visible
+					kTrue, // enabled
+					kADBEIconSuiteButtonType,
+				),
+
+				RollOverIconButtonWidget
+				(
+					kSnipRunClearLogWidgetID, // widget ID
+					kSnipRunClearLogIconSnapResourceID, kSnipRunPluginID, // icon, plugin ID
+					kBindRight | kBindBottom, // frame binding
+					Frame(165,1,195,17) //  left, top, right, bottom
+					kTrue, // visible
+					kTrue, // enabled
+					kADBEIconSuiteButtonType,
+				),
+			}
+		),				
+	}
+
+	kSnipRunInternalPopupMenuNameKey		// Popup menu name (internal)
+};
+
+/*
+// Dialog LocaleIndex.
+*/
+resource LocaleIndex (kSDKDefDialogResourceID)
+{
+   kViewRsrcType,
+	{
+		kWildFS,	k_Wild, kSDKDefDialogResourceID + index_enUS
+	}
+};
+
+/*
+// Type definition.
+*/
+type SnipRunDialogWidget(kViewRsrcType) : DialogBoss(ClassID = kSnipRunDialogBoss)
+{
+    WidgetEveInfo;
+};
+
+/*
+// Dialog definition for parameter prompting dialog.
+// This view is not localised: therefore, it can reside here.
+// However, if you wish to localise it, it is recommended to locate it in one of
+// the localised framework resource files (i.e. SnipRun_enUS.fr etc.) and
+// update your Dialog LocaleIndex accordingly.
+*/
+resource SnipRunDialogWidget (kSDKDefDialogResourceID + index_enUS)
+{
+    __FILE__, __LINE__,
+    kSnipRunDialogWidgetID,    // WidgetID
+    kPMRsrcID_None,                // RsrcID
+    kBindNone,                    // Binding
+    Frame(0,0,388,112)                // Frame (l,t,r,b)
+    kTrue, kTrue,                            // Visible, Enabled
+    kSnipRunDialogTitleKey,                // Dialog name
+    {
+       EVEGenericPanelWidget
+        (
+            kInvalidWidgetID,    // WidgetId
+            0            // RsrcId
+            0,            // Widget EVE Info
+            kBindNone,        // Frame binding
+            Frame(0,0,290,115)        // Frame
+            kTrue,            // Visible
+            kTrue,            // Enabled
+            kEVEAlignFill | kEVESmallSpaceAfter | kEVEArrangeChildrenInColumn,
+            {            
+				EVEStaticMultiLineTextWidget
+				(
+					kSnipRunParamPromptWidgetID,//WidgetID
+					kPMRsrcID_None, //RsrcID
+					kBindLeft | kBindRight | kBindTop,//Binding
+					Frame(0,0,285,35)            // Frame: left, top, right, bottom.
+					kTrue,kTrue,//Visible,Enabled
+					kAlignLeft,                     // Alignment
+					kEllipsizeEnd, kTrue                 // Ellipsize style, Convert ampersands                    
+					kInvalidWidgetID,//associated widgetID
+					kDialogWindowFontId,//InterfaceFontID
+					3,//Number of pixels between lines
+					0,0,//Inset amount
+					kSnipRunDialogTitleKey,//Initial text
+					
+					kEVERegularSpaceAfter,
+				),
+
+				EVEGenericPanelWidget
+				(
+					kInvalidWidgetID,    // WidgetId
+					0            // RsrcId
+					0,            
+					kBindNone,        // Frame binding
+					Frame(0,0,197,20)        // Frame
+					kTrue,            // Visible
+					kTrue,            // Enabled
+					kEVEAlignLeft | kEVERegularSpaceAfter | kEVEDontArrangeChildren,
+					
+					{
+						EVETextEditBoxWidget
+						(
+							kSnipRunStringParamWidgetID,    // WidgetID
+							kSysEditBoxPMRsrcId,            // RsrcID
+							kBindNone,                        // Binding
+							Frame(0,0,197,20)        // Frame (l,t,r,b)
+							kFalse, kFalse,                    // Visible, Enabled
+							0,                                // Nudge control (0 = no control)
+							1,                                // Small nudge amount
+							5,                                // Large Nudge amount
+							0,                                // Max # chars (0 = no limit)
+							kFalse,                            // read only
+							kFalse,                         // Notify every key stroke
+							kFalse,                            // Range checking enabled
+							kTrue,                            // blank allowed
+							0, 0,                            // upper/lower bounds
+							"",                                // Initial text
+							
+							kEVERegularSpaceAfter,
+						),
+						
+						EVEIntEditBoxWidget
+						(
+							kSnipRunIntParamWidgetID,    // WidgetId
+							kSysEditBoxPMRsrcId,            // RsrcId
+							kBindNone,                        // Frame binding
+							Frame(0,0,197,20)        // Frame (l,t,r,b)
+							kFalse, kFalse,                    // Visible, Enabled
+							kInvalidWidgetID,                                // widget id of nudge button            
+							1,1,                            // small/large nudge amount
+							0,                                // max num chars(0 = no limit)
+							kFalse,                            // is read only
+							kFalse,                            // should notify each key stroke
+							kFalse,                            // range checking enabled
+							kFalse,                            // blank entry allowed
+							0, 0,                            // upper/lower bounds
+							"0"                                // initial text
+							
+							kEVERegularSpaceAfter,
+						),
+						
+						EVERealEditBoxWidget
+						(
+							kSnipRunRealParamWidgetID,                // WidgetId
+							kSysEditBoxPMRsrcId,                // RsrcId
+							kBindNone,                            // Frame binding
+							Frame(0,0,197,20)        // Frame (l,t,r,b)
+							kFalse, kFalse,                        // visible, enabled
+							0,                                    // widget id of nudge button            
+							0,0,                                // small,large nudge amount
+							0,                                    // max num chars(0 = no limit)
+							kFalse,                                // is read only
+							kFalse,                                // should notify each key stroke
+							kFalse,                                // range checking enabled
+							kFalse,                                // blank entry allowed
+							0,0,                                // upper/lower bounds
+							"0"                                    // Initial text
+							
+							kEVERegularSpaceAfter,
+						),
+						
+						EVEDropDownListWidget
+						(
+							kSnipRunChoiceParamWidgetID, // widget ID
+							kSysDropDownPMRsrcId, // PMRsrc ID
+							kBindNone, // frame binding
+							Frame(0,0,197,20)        // Frame (l,t,r,b)
+							kFalse, kFalse,            // visible, enabled
+							{{
+									
+							}}
+							
+							kEVERegularSpaceAfter,
+						),						
+					}
+				),
+		
+				// Dummy widget to align other widgets properly
+				EVEStaticTextWidget
+				(
+					kInvalidWidgetID,   // WidgetId
+					kSysStaticTextPMRsrcId,          // RsrcId
+					kBindNone,             // Frame Binding
+					Frame(0,0,197,30)                   // Frame
+					kTrue, kFalse, kAlignRight,     // Visible, Enabled, Alignment
+					kDontEllipsize, kTrue,                 // Ellipsize style, Convert ampersands
+					"",
+					0 ,
+					kEVENoSpaceAfter,
+					
+				),
+
+				EVEStaticMultiLineTextWidget
+				(
+					kSnipRunParamTypeInfoWidgetID,//WidgetID
+					kPMRsrcID_None, //RsrcID
+					kBindLeft | kBindBottom,//Binding
+					Frame(0,0,197,20)        // Frame: left, top, right, bottom.
+					kTrue,kTrue,//Visible,Enabled
+					kAlignLeft,                     // Alignment
+					kDontEllipsize, kTrue,                 // Ellipsize style, Convert ampersands                    
+					kInvalidWidgetID,//associated widgetID
+					kPaletteWindowFontId,//InterfaceFontID
+					3,//Number of pixels between lines
+					0,0,//Inset amount
+					"",//Initial text
+					
+					kEVENoSpaceAfter,
+				),
+            }  // End of Eve generic panel child widgets
+        ), // End of Eve generic panel widget definition
+
+		EVEGenericPanelWidget
+		(
+			kInvalidWidgetID,    // WidgetId
+			0            // RsrcId
+			0,            
+			kBindNone,        // Frame binding
+			Frame(0,10,80,60)        // Frame
+			kTrue,            // Visible
+			kTrue,            // Enabled
+			kEVEAlignLeft | kEVERegularSpaceAfter | kEVEArrangeChildrenInColumn,
+			{
+				EVEDefaultButtonWidget
+				(
+					kOKButtonWidgetID,        // WidgetID
+					kSysButtonPMRsrcId,        // RsrcID
+					kBindNone,                // Binding
+					Frame(0,0,0,0)
+					kTrue, kTrue,            // Visible, Enabled
+					kSDKDefOKButtonApplicationKey,    // Button text
+					
+					kEVELargeSpaceAfter,
+				),
+				
+				EVECancelButtonWidget
+				(
+					kCancelButton_WidgetID,    // WidgetID
+					kSysButtonPMRsrcId,        // RsrcID
+					kBindNone,                // Binding
+					Frame(0,0,0,0)
+					kTrue, kTrue,            // Visible, Enabled
+					kSDKDefCancelButtonApplicationKey,    // Button name
+					kTrue,                    // Change to Reset on option-click.
+					
+					kEVELargeSpaceAfter,
+				),							
+			}  // End of EVE Generic panel child widgets   
+        ), // End of Eve generic panel widget definition
+    },
+    
+    kEVEArrangeChildrenInRow | kEVESmallMargin,
+};
+
+/*
+// User Error Table resource 
+// To be coupled with an IErrorStringService implementation and
+// string translations (see localized .fr files)
+*/
+resource UserErrorTable(kSDKDefErrorStringResourceID) 
+{
+	{
+		// global err code, error string
+		kSnipRunSnippetNotFoundErrorCode, kSnipRunSnippetNotFoundErrorCodeKey,
+		kSnipRunEOFErrorCode, kSnipRunEOFErrorCodeKey,
+	
+		// for scriptability - Error string service
+		kSnipRunInvalidFilePathForSaveSnipLogErrorCode, kSnipRunSaveLogFailedStringKey, 
+		kSnipRunCannotRunSnippetErrorCode, kSnipRunCannotRunSnippetErrorCodeKey,
+		kSnipRunInvalidOperationWhenPanelIsInvisibleErrorCode, kSnipRunInvalidOperationWhenPanelIsInvisibleErrorCodeKey,
+		kSnipRunInternalError, 	kSnipRunInternalErrorStringKey,
+	}
+};
+
+/*
+// VersionedScriptElementInfo - SnipRun object
+*/
+resource VersionedScriptElementInfo(10)
+{
+	//Contexts
+	{
+		kCS2ScriptVersion, kCoreScriptManagerBoss, kWildFS, k_Wild, 
+	}
+	//Elements
+	{       
+		Suite
+        {
+            kSnipRunSuiteScriptElement,
+            s_SnipRunSuite,
+            "SDK code snippet runner suite",
+            "Terms applicable to many SDK code snippet runner operations",
+        }
+
+		// specifies a new object
+		Object
+		{
+			kSnipRunObjectScriptElement,	// object's script element ID
+			c_SnipRun,			// script PropID
+			"SDK code snippet runner",		// name
+			"The SDK code snippet runner object", // description
+			kSnipRun_CLSID,			// Windows CLSID
+
+			NoCollectionInfo,			// CollectionElementType (scriptID, name, descr, CLSID)
+			kPreferencesObjectScriptElement,
+			kPreferencesSuiteScriptElement,
+		}
+        Property
+        {
+            kSnipRunObjectPropertyScriptElement,
+            p_SnipRun,
+            "SDK code snippet runner object",
+            "The SDK code snippet runner object",
+            ObjectType( kSnipRunObjectScriptElement ),
+            {}
+            kNoAttributeClass,
+        }
+                
+		// Property: panel visibility
+		Property
+		{
+			kSnipRunPanelVisibilityPropertyScriptElement,   // property's script element ID
+			p_SnipRunPanelVisibility,                   // script PropID
+			"Snip run panel visibility",           // name
+			"The visibility of the SDK code snippet runner panel", // description
+			EnumType( kSnipRunPanelVisibilityEnumScriptElement ), // type name
+			{}                              // alternate types to be handled
+			kNoAttributeClass,              // attribute class ID
+		}
+		Enum
+		{
+			kSnipRunPanelVisibilityEnumScriptElement,
+			en_SnipRunPanelVisibility,
+			"Snip run panel visibility enum",
+			"The visibility of the SDK code snippet runner panel",
+			{
+				en_SnipRunPanelVisible, "panel visible", "Panel visible",
+				en_SnipRunPanelInvisible, "panel invisible", "Panel invisible",
+			}
+		}
+
+		// Property: trace mode
+		Property
+		{
+			kSnipRunTraceModePropertyScriptElement,   // property's script element ID
+			p_SnipRunTraceMode,                   // script PropID
+			"Snip run trace mode",           // name
+			"The trace mode of the SDK code snippet runner log", // description
+			EnumType( kSnipRunTraceModeEnumScriptElement ), // type name
+			{}                              // alternate types to be handled
+			kNoAttributeClass,              // attribute class ID
+		}
+
+		Enum
+		{
+			kSnipRunTraceModeEnumScriptElement,
+			en_SnipRunTraceMode,
+			"Snip run trace mode enum",
+			"The trace mode of the SDK code snippet runner panel",
+			{
+				en_SnipRunTraceOn, "snip run trace on", "Trace on"
+				en_SnipRunTraceOff, "snip run trace off", "Trace off"
+			}
+		}
+
+		Method
+		{
+			kSnipRunIsSnippetRegisteredMethodScriptElement,
+			e_SnipRunIsSnippetRegistered,
+			"is code snippet registered",
+			"Is the SDK code snippet registered?",
+			BoolType,
+			"Flag indicating whether the specified SDK code snippet is registered"
+			{
+                p_SnipRunSnippetToCheck, 
+                "code snippet to check", 
+                "The name or the SnpRunnable object to check", 
+                VariableType { StringType,  ObjectType(kSnpRunnableObjectScriptElement) }, 
+                kRequired
+			}
+		}
+		Method
+		{
+			kSnipRunGetSnipLogMethodScriptElement,
+			e_SnipRunGetSnipLog,
+			"get snip log",
+			"Get the SnipLog text from the SDK code snippet runner panel",
+			StringType,	// the snippet text
+			"The text from the SnipLog",
+			{ /* void */ }
+		}
+		Method
+		{
+			kSnipRunClearSnipLogMethodScriptElement,
+			e_SnipRunClearSnipLog,
+			"clear snip log",
+			"Clear the SnipLog text on the SDK code snippet runner panel",
+			Int32Type, // status code
+			"Status: 0 if ok, non-zero if error"
+			{ /* void */ }
+		}
+		Method
+		{
+			kSnipRunSaveSnipLogMethodScriptElement,
+			e_SnipRunSaveSnipLog,
+			"save snip log",
+			"Save the SnipLog text from the SDK code snippet runner panel to a file", 
+			Int32Type, // status code
+			"Status: 0 if ok, non-zero if error"
+			{
+				keyAEFile, "file path", "File path to save SnipLog text to", FileType, kRequired
+			}
+
+		}
+		Provider
+		{
+			kSnipRunScriptProviderBoss,	// provider boss ID
+			{	
+				// parent to the represented object
+				Parent{ kApplicationObjectScriptElement },	
+				// the represented object
+				RepresentObject{ kSnipRunObjectScriptElement },	
+				// the property on the parent object that will refer to the represented object
+				ParentProperty{ kSnipRunObjectPropertyScriptElement, kReadOnly },	
+				// Property: Snippet Runner Panel Visbility
+				Property{ kSnipRunPanelVisibilityPropertyScriptElement, kReadWrite },	
+				// Property: Snipper Runner Trace Mode
+				Property{ kSnipRunTraceModePropertyScriptElement, kReadWrite },
+				// Method: Is snippet runner registered
+				Method{ kSnipRunIsSnippetRegisteredMethodScriptElement },
+				// Method: Get snip log
+				Method{ kSnipRunGetSnipLogMethodScriptElement },
+				// Method: Clear snip log
+				Method{ kSnipRunClearSnipLogMethodScriptElement },
+				// Method: Save snip log
+				Method{ kSnipRunSaveSnipLogMethodScriptElement }
+			}
+		}
+	}
+};
+
+/*
+// VersionedScriptElementInfo - SnpRunnable object
+*/
+resource VersionedScriptElementInfo(20)
+{   
+	//Contexts
+	{
+		kCS2ScriptVersion, kCoreScriptManagerBoss, kWildFS, k_Wild, 
+	}
+	{
+		// specifies a new object
+		Object
+		{
+			kSnpRunnableObjectScriptElement,	// object's script element ID
+			c_SnpRunnable,			// script PropID
+			"SDK code snippet",		// name
+			"An SDK code snippet", // description
+			kSnpRunnable_CLSID,			// Windows CLSID
+
+			c_SnpRunnables,			// CollectionElementType (scriptID, name, descr, CLSID)
+			"SDK code snippets",
+			"A list of registered SDK code snippets",
+			kSnpRunnables_CLSID,
+
+			kNonIDBasedObjectScriptElement,	// base object element ID
+			kSnipRunSuiteScriptElement,		// suite element ID
+		}
+
+		// Property: name
+		Property
+		{
+			kSnpRunnableNamePropertyScriptElement,   // property's script element ID
+			p_SnpRunnableName,                   // script PropID
+			"code snippet name",           // name
+			"The name of the SDK code snippet", // description
+			StringType, // type name
+			{}                              // alternate types to be handled
+			kNoAttributeClass,              // attribute class ID
+		}
+		// Property: description
+		Property
+		{
+			kSnpRunnableDescriptionPropertyScriptElement,   // property's script element ID
+			p_SnpRunnableDescription,                   // script PropID
+			"code snippet description",           // name
+			"The description of the SDK code snippet", // description
+			StringType, // type name
+			{}                              // alternate types to be handled
+			kNoAttributeClass,              // attribute class ID
+		}
+		// Property: preconditions
+		Property
+		{
+			kSnpRunnablePreconditionsPropertyScriptElement,   // property's script element ID
+			p_SnpRunnablePreconditions,                   // script PropID
+			"code snippet preconditions",           // name
+			"The preconditions of the SDK code snippet", // description
+			StringType, // type name
+			{}                              // alternate types to be handled
+			kNoAttributeClass,              // attribute class ID
+		}
+		// Property: categories
+		Property
+		{
+			kSnpRunnableCategoriesPropertyScriptElement,   // property's script element ID
+			p_SnpRunnableCategories,                   // script PropID
+			"code snippet categories",           // name
+			"The categories for the SDK code snippet", // description
+			StringArrayType( kVariableLength ), // type name
+			{}                              // alternate types to be handled
+			kNoAttributeClass,              // attribute class ID
+		}
+		Method
+		{
+			kSnpRunnableCanRunSnippetMethodScriptElement,
+			e_SnpRunnableCanRunSnippet,
+			"can run",
+			"Can the SDK code snippet be run?",
+			BoolType,
+			"Flag indicating whether the SDK code snippet can be run"
+			{ /* void */ }
+		}
+		Method
+		{
+			kSnpRunnableRunSnippetMethodScriptElement,
+			e_SnpRunnableRunSnippet,
+			"run",
+			"Run the SDK code snippet",
+			Int32Type, // status code
+			"Status: returned from the snippet"
+			{ 
+				p_SnpRunnableEnableParameterDialog, 
+					"enable snip run parameter dialog", 
+					"Whether to show the parameter dialog(s). Setting the User Interaction Level (Application) will override this parameter.", 
+					BoolDefaultType(kTrue), 
+					kOptional,
+				p_SnpRunnableParameters, 
+					"code snippet parameters", 
+					"Parameters for the snippet.", 
+					StringDefaultType(""), 
+					kOptional,
+			}
+		}
+		Provider
+		{
+			kSnpRunnableScriptProviderBoss,
+			{
+				// parent to the represented object
+				Parent { kSnipRunObjectScriptElement },
+				// the represented object
+				RepresentObject { kSnpRunnableObjectScriptElement },
+				// Property: Snippet name
+				Property { kSnpRunnableNamePropertyScriptElement, kReadOnly },
+				// Property: Snippet description
+				Property { kSnpRunnableDescriptionPropertyScriptElement, kReadOnly },
+				// Property: Snippet preconditions
+				Property { kSnpRunnablePreconditionsPropertyScriptElement, kReadOnly },
+				// Property: Snippet categories
+				Property { kSnpRunnableCategoriesPropertyScriptElement, kReadOnly },
+				// Method: Can run
+				Method { kSnpRunnableCanRunSnippetMethodScriptElement }, 
+				// Method: Run
+				Method { kSnpRunnableRunSnippetMethodScriptElement }, 
+			}
+		}
+	}
+};
+
+/*
+// VersionedScriptElementInfo (Cobalt - CS3) - SnpRunnable object
+*/
+resource VersionedScriptElementInfo(30)
+{   
+	//Contexts
+	{
+		kCS3ScriptVersion, kCoreScriptManagerBoss, kWildFS, k_Wild, 
+	}
+	{
+		// specifies a new object
+		Method
+		{
+			kSnpRunnableSetupContextMethodScriptElement,
+			e_SnpRunnableSetupContext,
+			"setup context",
+			"Setup the SDK code snippet's context",
+			BoolType,
+			"Flag indicating whether the context was set up properly"
+			{ /* void */ }
+		}
+		
+		Provider
+		{
+			kSnpRunnableScriptProviderBoss,
+			{
+				// parent to the represented object
+				Object { kSnpRunnableObjectScriptElement },
+				// Method: Run
+				Method { kSnpRunnableSetupContextMethodScriptElement }, 
+			}
+		}
+	}	
+}
+
+resource VersionedScriptElementInfo(31)
+{
+    //Contexts
+    {
+        kCS3ScriptVersion, kINXScriptManagerBoss, kWildFS, k_Wild,
+    }
+
+    //Elements
+    {
+        // For INX don't support the core relationships below:
+        Provider
+        {
+            kNotSupported,
+            {
+				// parent to the represented object
+				Parent { kSnipRunObjectScriptElement },
+				// the represented object
+				RepresentObject { kSnpRunnableObjectScriptElement },
+				// Method: Create
+                CollectionMethod{ kCreateMethodScriptElement },
+            }
+        }
+    }
+};
+
+#endif // __ODFRC__
+
+#include "SnipRun_enUS.fr"
+#include "SnipRun_jaJP.fr"

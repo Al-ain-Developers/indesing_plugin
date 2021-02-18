@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ADOBE SYSTEMS INCORPORATED
+Copyright 2012 Adobe Systems Incorporated
+All Rights Reserved.
+
+NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance with the 
+terms of the Adobe license agreement accompanying it.  If you have received this file from a 
+source other than Adobe, then your use, modification, or distribution of it requires the prior 
+written permission of Adobe.
+-->
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" 
+		   label="Layout Setting" 
+		   width="100%" height="100%" 
+		   creationComplete="onCreation()" 
+		   xmlns:Panel="com.adobe.indesign.layouthelper.ui.Panel.*" 
+		   xmlns:ui="com.adobe.indesign.layouthelper.ui.*">
+	
+	<mx:Script>
+		<![CDATA[
+			
+			//flex
+			import flash.events.MouseEvent;
+			import mx.collections.ArrayCollection;
+			
+			//indesign
+			import com.adobe.csawlib.indesign.InDesign;
+			import com.adobe.indesign.*;
+			import com.adobe.indesign.Document;
+			import com.adobe.indesign.DocumentPreset;
+			
+			//hostadapter
+			import com.adobe.cshostadapter.IDScriptingEventAdapter;
+			
+			//layouthelper
+			import com.adobe.indesign.layouthelper.PageData;
+			import com.adobe.indesign.layouthelper.Util;
+			import com.adobe.indesign.layouthelper.event.ViewConstrainsSettingEvent;
+			import com.adobe.indesign.layouthelper.event.GuideSettingEvent;
+			import com.adobe.indesign.layouthelper.event.PolicyChangeEvent;
+
+			[Bindable]
+			private var policies:ArrayCollection;
+			[Bindable]
+			private var pageDataCollection:ArrayCollection;
+			
+			private function onCreation():void
+			{
+				pageDataCollection = new ArrayCollection();
+
+				//Register UI events
+				this.addEventListener(PolicyChangeEvent.CHANGE, onPolicyChangeHandler);
+				this.addEventListener(GuideSettingEvent.CHANGE, onGuideSettingChanged);
+				pageGrid.addEventListener(MouseEvent.CLICK, itemClickEvent);
+				
+				//Register Indesign events
+				IDScriptingEventAdapter.getInstance().addEventListener("afterSelectionChanged", getPages);
+			}
+			
+			private function onPolicyChangeHandler(event:PolicyChangeEvent):void
+			{
+				var index:int = pageDataCollection.getItemIndex(event.item);
+				var object:Object = pageDataCollection.getItemAt(index);
+				object.policy = event.policy;
+				
+				pageDataCollection.refresh();
+				refreshPolicyPanel(object.policy);
+				updatePolicy(object as PageData);
+			}
+			
+			private function onGuideSettingChanged(event:GuideSettingEvent):void
+			{
+				if(pageGrid.selectedItem == null)
+				{
+					return;
+				}
+				var _idpages:Pages = InDesign.app.activeDocument.pages;
+				var page:Page = _idpages.itemByID(pageGrid.selectedItem.pageid);
+				var guide:Guide = page.guides.add();
+				
+				guide.orientation = event.orientation;
+				guide.guideType = GuideTypeOptions.LIQUID;
+				if(event.coordinate >0){
+					guide.location = event.coordinate;
+				}
+				else if (event.orientation == HorizontalOrVertical.vertical){
+					guide.location = InDesign.app.activeDocument.documentPreferences.pageWidth
+										+ event.coordinate;
+				}
+				else if (event.orientation == HorizontalOrVertical.horizontal){
+					guide.location = InDesign.app.activeDocument.documentPreferences.pageHeight
+						+ event.coordinate;
+				}	
+			}
+			
+			private function getPages(event:com.adobe.indesign.Event):void
+			{
+				pageDataCollection.removeAll();
+				var app:Application = InDesign.app;
+				
+				if(app.activeDocument == null)
+				{
+					return;
+				}
+				
+				var _idpages:Pages = app.activeDocument.pages;
+				for(var i:int=0; i<_idpages.length; i++)
+				{
+					var page:Page = _idpages.item(i);
+					var pageData:PageData = new PageData();
+					pageData.policy = Util.mapLayoutOptiontoStr(page.layoutRule);
+					pageData.pagename = page.name;
+					pageData.pageidx = page.index;
+					pageData.pageid = page.id;
+					
+					pageDataCollection.addItem(pageData);
+				}
+				if(pageGrid.selectedItem == null)
+				{
+					pageGrid.selectedIndex = 0;
+				}else
+				{
+					refreshPolicyPanel(pageGrid.selectedItem.policy);
+				}
+			}
+			
+			private function itemClickEvent(event:MouseEvent):void 
+			{
+				if(pageGrid.selectedItem != null)
+				{
+					//refresh panel
+					refreshPolicyPanel(pageGrid.selectedItem.policy);
+				}	
+			}
+			
+			private function updatePolicy(pagedata:PageData):void
+			{	
+				var policy:LayoutRuleOptions = Util.mapStrtoLayoutOption(pagedata.policy)
+					
+				var _idpages:Pages = InDesign.app.activeDocument.pages;
+				var page:Page = _idpages.itemByID(pagedata.pageid);
+				if(page.layoutRule != policy)
+				{
+					page.layoutRule = policy;
+				}
+			}
+		
+			private function refreshPolicyPanel(policy:String):void
+			{
+				if(policy == "off")
+				{
+					policyviews.selectedChild = blank;
+				}
+				else if(policy == "scale")
+				{
+					policyviews.selectedChild = scale;	
+				}
+				else if(policy == "recenter")
+				{
+					policyviews.selectedChild = recenter;
+				}
+				else if(policy == "objectbased")
+				{
+					policyviews.selectedChild = objectbased;
+					//send event to objectbased panel to refresh items
+					var _idpages:Pages = InDesign.app.activeDocument.pages;
+					var page:Page = _idpages.itemByID(pageGrid.selectedItem.pageid);
+					var constrainEvent:ViewConstrainsSettingEvent = new ViewConstrainsSettingEvent(ViewConstrainsSettingEvent.CHANGE, page, false);
+					objectbased.onConstrainsSetting(constrainEvent);
+				}
+				else if(policy == "guidebased")
+				{
+					policyviews.selectedChild = guidbased;
+				}
+				else
+				{
+					policyviews.selectedChild = blank;
+				}
+			}
+			
+			private function apply():void{
+				var child:Object = policyviews.selectedChild;
+				child.apply();
+			}
+		]]>
+	</mx:Script>
+	
+	<mx:VBox left="0" top="0" right="0" bottom="0">
+		<mx:Panel width="100%" height="200" layout="absolute" title="Page List" horizontalAlign="center" 
+				  horizontalScrollPolicy="off" verticalScrollPolicy="on">
+			<mx:DataGrid width="100%" dataProvider="{pageDataCollection}" 
+						 x="0" y="0" height="100%"
+						 wordWrap="true" id="pageGrid" 
+						 verticalAlign="middle" horizontalScrollPolicy="off">
+				<mx:columns>
+<!--					<mx:DataGridColumn headerText="Select" editable="false" dataField="select" width="50">
+						<mx:itemRenderer>
+							<mx:Component>
+								<mx:CheckBox label="" enabled="true" selected="false" click="" horizontalCenter="true"/>
+							</mx:Component>
+						</mx:itemRenderer>
+					</mx:DataGridColumn> -->
+					<mx:DataGridColumn wordWrap="true" editable="false" headerWordWrap="true" minWidth="30" width="30" headerText="Id" dataField="pageid"/>
+					<mx:DataGridColumn wordWrap="true" editable="false" headerWordWrap="true" minWidth="40" width="50" headerText="Name" dataField="pagename"/>
+					<mx:DataGridColumn headerText="Policy" dataField="policy" minWidth="60">
+						<mx:itemRenderer>
+							<mx:Component>
+								<ui:PolicyCombox/>
+							</mx:Component>
+						</mx:itemRenderer>
+					</mx:DataGridColumn>	
+				</mx:columns>
+			</mx:DataGrid>
+		</mx:Panel>
+		<mx:Panel width="100%" height="100%" layout="absolute" title="Layout Policy Options" visible="true" horizontalScrollPolicy="off" verticalScrollPolicy="on">
+			<mx:ViewStack id="policyviews" borderStyle="solid" width="100%" height="100%" color="0x323232">
+				<Panel:PanelBlank id="blank"/>
+				<Panel:PanelScale id="scale"/>
+				<Panel:PanelGuidBasePolicy id="guidbased"/>
+				<Panel:PanelObjectBasedPolicy id="objectbased"/>
+				<Panel:PanelRecenter id="recenter"/>
+			</mx:ViewStack>
+		</mx:Panel>
+		<mx:HBox width="100%" horizontalAlign="right">
+			<mx:Button label="Apply" click="apply()" toolTip="Apply changes"/>
+			<mx:Button label="Refresh" enabled="true" click="{getPages(null)}" toolTip="View layout policy setting" />
+		</mx:HBox>
+	</mx:VBox>
+</mx:Canvas>

@@ -1,0 +1,52 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// U.S. English strings
+//========================================================================================
+
+resource StringTable (kInCopyExportStringsRsrcID + index_svSE)
+{
+	k_svSE,								// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+
+	{
+		// ----- Miscellaneous strings
+		"Export Seq Name", 		"Exportera InCopy-artikel",
+		"Text",					"Text", // append "Text" to export name on a text story
+		
+		// ----- Export options dialog strings
+		"InCopyExportOptions",	"Exportalternativ för Adobe InCopy",
+		"ExportOptions_DataType",	"&Kodning:",
+		"ExportOptions_UTF16",	"UTF16",
+		"ExportOptions_UTF8",	"UTF8",
+		"ExportOptions_DataOptions",	"Alternativ:",
+		"ExportOptions_StyleTable",	"Inkludera &formattabell",
+		"ExportOptions_SwatchList",	"Inkludera f&ärgrutelista",
+		"ExportOptions_XMPData",	"Inkludera XMP-&information",
+		"ExportOptions_StoryLabel",	"Artike&letikett:",
+
+		//menu
+		"ExportMenu",				"E&xportera",
+		"kExportLayerToIC",			"&Lager...",
+		"kExportAllStoriesToIC",	"Alla a&rtiklar...",
+		"kExportAllGraphicsToIC",	"Alla &bilder...",
+		"kExportAllItemsToIC",		"&Alla bilder och artiklar...",
+
+		"INCDFeatureLost",    "Den här artikeln kan innehålla funktioner som inte kan användas i det här filformatet. De här funktionerna försvinner när du uppdaterar artikeln.",
+	}
+};
+
+#endif // __ODFRC__

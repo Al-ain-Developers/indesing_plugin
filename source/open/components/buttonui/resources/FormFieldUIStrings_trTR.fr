@@ -1,0 +1,357 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "StringTable.fh"
+
+#include "FormFieldUIDefs.h"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+//twright 12/11/2000 Removed left-over strings from group strings.
+//not sure if button/form is going to need lock warning...
+
+resource StringTable (kFormFieldUIStringsRsrcID + index_trTR)
+{
+	k_trTR,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{
+		// ----- Menu strings
+		"ButtonsActionsPopup",						"Düğme Eylemleri Menüsü",
+		
+		"$$$/Menu/AppearancePanelPopup",	"Düğme Paneli Menüsü",	
+		"$$$/Menu/Interactive",				"Etkileşi&mli", 
+		"$$$/Menu/FormField",				"&Form", 
+		"$$$/Menu/About",					"Form Eklentisi &Hakkında", 
+		"$$$/Menu/CreateButton",			"Düğmeye &Dönüştür", 
+		"$$$/Menu/CreateCheckBox",			"Onay Kutusuna &Dönüştür",
+		"$$$/Menu/CreateComboBox",			"Aşağı Açılır Kutuya &Dönüştür", 
+		"$$$/Menu/CreateListBox",			"Liste Kutusuna &Dönüştür", 
+		"$$$/Menu/CreateRadioButton",		"Radyo Düğmesine &Dönüştür", 
+		"$$$/Menu/CreateSignatureField",	"İmza Alanına &Dönüştür", 
+		"$$$/Menu/CreateTextField",			"Metin Alanına &Dönüştür", 
+		"$$$/Menu/DestroyButton",			"&Nesneye Dönüştür", 
+		"$$$/Menu/FormFieldSettings",		"&Düğme Seçenekleri...", 
+		"$$$/Menu/NewState",				"Yeni Durum", 
+		"$$$/Menu/DeleteState",				"Durumu Sil", 
+		"$$$/Menu/DeleteStates",			"Durumları Sil",
+		"$$$/Menu/PlaceIntoState",			"Duruma İçeriği Yerleştir...",
+		"$$$/Menu/DeleteStateContent",		"Durumdan İçeriği Sil",
+		"$$$/Menu/AppearancePanelPrefs",	"Panel Seçenekleri...",
+		"$$$/Menu/StateOptions",			"Durum Seçenekleri...",
+		"$$$/Menu/SetTabOrder",				"&Sekme Sırasını Ayarla...",
+		"$$$/Menu/SetCalculationOrder",		"Hesaplama Sırasını Ayarla...",
+		"$$$/Menu/States",					"D&üğmeler ve Formlar",
+		
+		"$$$/Menu/Go To Page",				"Sayfaya Git",
+		"$$$/Menu/Go To First Page",		"İlk Sayfaya Git",
+		"$$$/Menu/Go To Anchor",			"Hedefe Git",
+		"$$$/Menu/Go To Last Page",			"Son Sayfaya Git",
+		"$$$/Menu/Go To Next Page",			"Sonraki Sayfaya Git",
+		"$$$/Menu/Go To Next View",			"Sonraki Görünüme Git",
+		"$$$/Menu/Go To Previous Page",		"Önceki Sayfaya Git",
+		"$$$/Menu/Go To Previous View",		"Önceki Görünüme Git",
+		"$$$/Menu/Go To URL",				"URL’ye Git",
+		"$$$/Menu/Movie",					"Video",
+		"$$$/Menu/Open File",				"Dosya Aç",
+		"$$$/Menu/Show/Hide Buttons",		"Düğmeleri ve Formları Göster/Gizle",
+		"$$$/Menu/Sound",					"Ses",
+		"$$$/Menu/View Zoom",				"Görünüm Yakınlaştır",
+		"$$$/Menu/Animation",				"Animasyon",
+		"$$$/Menu/SwitchToMSOState",		"Duruma Git",
+		"$$$/Menu/SwitchToNextMSOState",	"Sonraki Duruma Git",
+		"$$$/Menu/SwitchToPrevMSOState",	"Önceki Duruma Git",
+		"$$$/Menu/EPUBOnly",					"Yalnızca EPUB",
+		"$$$/Menu/PDFOnly",					"Yalnızca PDF",
+		"$$$/Menu/Print Form",				"Formu Yazdır",
+		"$$$/Menu/Clear Form",				"Formu Temizle",
+		"$$$/Menu/Submit Form",				"Formu Gönder",
+		
+		"$$$/Menu/FormFieldSettings/ButtonLibrary",			"Örnek Düğmeler ve Formlar",	// Name of menu item in Buttons Panel flyout that opens a library of Sample Buttons
+
+		"$$$/Menu/FormFieldSettings/PDFVis/Visible",		"PDF'de Görünür",
+		"$$$/Menu/FormFieldSettings/PDFVis/Hidden",			"PDF'de Gizli",
+		"$$$/Menu/FormFieldSettings/PDFVis/VisibleNoPrint",	"PDF'de Görünür, Ancak Yazdırılamaz",
+		"$$$/Menu/FormFieldSettings/PDFVis/HiddenButPrint",	"PDF'de Gizli, Ancak Yazdırılabilir",	
+		"$$$/Menu/ButtonPDFOptions", "PDF Seçenekleri...",
+
+		"$$$/Menu/ResetAllButtons",	"Tüm Düğmeleri Normal Duruma Sıfırla",	
+			
+		"PageItems",						"Sayfa Öğeleri", 
+		"$$$/Menu/Trace Geometry",			"Geometriyi İzle", 
+
+		"$$$/Menu/FormFieldOptions/Button",					"Düğme",
+		"$$$/Menu/FormFieldOptions/Check Box",				"Onay Kutusu",
+		"$$$/Menu/FormFieldOptions/Combo Box",				"Aşağı Açılır Kutu",
+		"$$$/Menu/FormFieldOptions/List Box",				"Liste Kutusu",
+		"$$$/Menu/FormFieldOptions/Radio Button",			"Radyo Düğmesi",
+		"$$$/Menu/FormFieldOptions/Signature Field",		"İmza Alanı",
+		"$$$/Menu/FormFieldOptions/Text Field",				"Metin Alanı",
+
+		"InteractiveContextMenu",			"Etkileşimli",
+	
+		// ----- Dialog strings
+		"$$$/Dialog/CreateFormField/Title",		"Form Alanı", 
+		"$$$/Dialog/CreateFormField/Options",	"Seçenekler",
+		"$$$/Dialog/CreateFormField/Width",		"&Genişlik:",
+		"$$$/Dialog/CreateFormField/Height",	"&Yükseklik:",
+
+		"$$$/Dialog/FormFieldSettings/Title",				"Genel", 
+		"$$$/Dialog/FormFieldSettings/FieldType",			"Alan Türü:",
+		"$$$/Dialog/FormFieldSettings/FieldTypeSetting",	"",
+		"$$$/Dialog/FormFieldSettings/Name",				"&Ad:",
+		"$$$/Dialog/FormFieldSettings/PDFVisibility",		"PDF'de &Görünürlük:",
+		"$$$/Dialog/FormFieldSettings/PDFVis/Visible",		"Görünür",
+		"$$$/Dialog/FormFieldSettings/PDFVis/Hidden",		"Gizli",
+		"$$$/Dialog/FormFieldSettings/PDFVis/VisibleNoPrint",	"Görünür fakat Yazdırılamaz",
+		"$$$/Dialog/FormFieldSettings/PDFVis/HiddenButPrint",	"Gizli fakat Yazdırılabilir",
+		"$$$/Dialog/FormFieldSettings/ReadOnly",			"Salt Okunur",
+		"$$$/Dialog/FormFieldSettings/Export",				"Dışa Aktar",
+		"$$$/Dialog/FormFieldSettings/RequiredForExport",	"Dışa Aktarma için Gerekli",
+		"$$$/Dialog/FormFieldSettings/Description",			"Açıkla&ma:",
+		"$$$/Dialog/FormFieldSettings/ExportName",			"&Dışa Aktarma Adı:",
+		"$$$/Dialog/FormFieldSettings/Common Settings",		"Ortak Ayarlar",
+		"$$$/Dialog/FormFieldSettings/Options",				"Seçenekler",
+		"$$$/Dialog/FormFieldSettings/Holder",				"Form Alanı Ayarları Tutucusu",
+
+		"$$$/Dialog/FormOptions/Title",						"Düğme Seçenekleri",
+		"$$$/Dialog/FormFieldSettings/Options",				"Seçenekler",
+		
+		"$$$/Dialog/FormFieldSettings/ExportValue",			"Dışa Aktarma Değeri:",
+		"$$$/Dialog/FormFieldSettings/DefaultIsChecked",	"Varsayılan işaretlidir",
+		"$$$/Dialog/FormFieldSettings/DefaultIsSelected",	"Varsayılan seçili durumda",
+		"$$$/Dialog/FormFieldSettings/Default",				"Varsayılan:",
+
+		"$$$/Dialog/FormFieldSettings/Multiline",				"Çok satırlı",
+		"$$$/Dialog/FormFieldSettings/Scroll",					"Kaydırılabilir",
+		"$$$/Dialog/FormFieldSettings/LimitOf",					"Sınırı",
+		"$$$/Dialog/FormFieldSettings/Characters",				"karakterler",
+		"$$$/Dialog/FormFieldSettings/Password",				"Şifre",
+		"$$$/Dialog/FormFieldSettings/FieldForFileSelection",	"Dosya seçiminde kullanılır",
+		"$$$/Dialog/FormFieldSettings/SpellCheck",				"Yazım denetimi",
+		
+		"$$$/Dialog/FormFieldSettings/Item",					"Öğe:",
+		"$$$/Dialog/FormFieldSettings/Add",						"Ekle",
+		"$$$/Dialog/FormFieldSettings/Delete",					"Sil",
+		"$$$/Dialog/FormFieldSettings/Change",					"Değiştir",
+		"$$$/Dialog/FormFieldSettings/SortItems",				"Öğeleri Sırala",
+		"$$$/Dialog/FormFieldSettings/AllowMultipleSelection",	"Çoklu Seçime İzin Ver",
+		"$$$/Dialog/FormFieldSettings/Editable",				"Düzenlenebilir",
+
+		"$$$/Dialog/FormFieldSettings/Align",					"Hizala:",
+		"$$$/Dialog/FormFieldSettings/Align/Left",				"Sol",
+		"$$$/Dialog/FormFieldSettings/Align/Center",			"Orta",
+		"$$$/Dialog/FormFieldSettings/Align/Right",				"Sağ",
+
+		"$$$/Dialog/FormFieldSettings/Font:",					"&Font:",
+		"$$$/Dialog/FormFieldSettings/Size:",					"&Boyut:",
+		"$$$/Dialog/FormFieldSettings/Auto",					"Otomatik",
+
+		"$$$/Dialog/FormFieldSettings/SelectedIsDefault",		"Seçilen öğe varsayılan",
+		
+		"$$$/Dialog/FormFieldUI/DeleteAlert",					"Durumun silinmesi, ayrıca bununla ilişkili olan içeriği de siler.  Yine de durumu silmek istiyor musunuz?",
+		"$$$/Dialog/FormFieldUI/DestroyAlert",					"Bu eylem form alanının diğer durumlarıyla ilişkili içeriği silecek. Yine de devam edilsin mi?",
+		"$$$/Dialog/FormFieldUI/DeleteContentAlert",			"Bu durumla ilişkili içeriği silmek istediğinizden emin misiniz?",
+		"$$$/Dialog/FormFieldUI/StyleChangeAlert",				"Bu eylem form alanının geçerli durumlarıyla ilişkili içeriği silecek. Yine de devam edilsin mi?",
+		"$$$/Dialog/FormFieldUI/StyleChangeFailed",				"Seçilen görünüş stili form alanına uygulanamadı.",
+
+		/* These are not visible, they are names of subpanels... */
+		
+		"$$$/Dialog/FormFieldSettings/CheckBox",				"Onay Kutusu Seçenekleri",	
+		"$$$/Dialog/FormFieldSettings/RadioButton",				"Radyo Düğmesi Seçenekleri",	
+		"$$$/Dialog/FormFieldSettings/TextField",				"Metin Alanı Düğmesi Seçenekleri",	
+		"$$$/Dialog/FormFieldSettings/ListBox",					"Liste Kutusu Düğmesi Seçenekleri",	
+		
+		"$$$/Dialog/About/Description",						"Forms Eklentisi, sürümü 1.0\n\n(c) 2001 Adobe Systems Incorporated. Tüm hakları saklıdır.",
+
+		"$$$/Dialog/CmdName/CreateButton",					"Düğmeye Dönüştür",
+		"$$$/Dialog/CmdName/DestroyButton",					"Nesneye Dönüştür",
+		"$$$/Dialog/CmdName/ChangeFormSettings",			"Düğme Ayarlarını Değiştir",
+
+		"$$$/Dialog/TextColor/Title",						"Metin Rengi", 
+		"$$$/Dialog/Button/Color...",						"Font Rengi…", 
+
+		"$$$/Dialog/AppearancePanelPrefs/Title",			"Panel Seçenekleri", 
+		"$$$/Dialog/AppearancePanelPrefs/ThumbnailSize",	"Minik Resim Boyutu", 
+		"$$$/Dialog/AppearancePanelPrefs/None",				"Yok", 
+		
+		
+		"$$$/Dialog/StateOptions/Title",					"Durum Seçenekleri", 
+		"$$$/Dialog/StateOptions/State",					"Durum:", 
+		"$$$/Dialog/StateOptions/Enable",					"Durumu Etkinleştir", 
+
+		"$$$/Dialog/CalculationOrder/Title",				"Hesaplama Sırası", 
+		"$$$/Dialog/TabOrder/Title",						"Sekme Sırası", 
+		"$$$/Dialog/Order/MoveUp",							"&Yukarı Taşı", 
+		"$$$/Dialog/Order/MoveDown",						"&Aşağı Taşı",
+
+		"$$$/Dialog/ButtonPDFOptions/Title",				"PDF Seçenekleri",
+		"$$$/Dialog/ButtonPDFOptions/InitialAppearance",	"Başlangıç Görünümü:",
+		"$$$/Dialog/ButtonPDFOptions/Visible",				"&Görünür",
+		"$$$/Dialog/ButtonPDFOptions/Hidden",				"&Gizli",
+		"$$$/Dialog/ButtonPDFOptions/Printable",			"&Yazdırılabilir",
+		"$$$/Dialog/ButtonPDFOptions/Description",			"Açıkla&ma:",
+		
+		// ----- Window strings
+		
+		// ----- Panel strings
+
+		"$$$/Panel/FormFieldSettings/Action Data Holder",	"Eylem Verileri Tutucusu",
+		"$$$/Panel/FormFieldSettings/+",					"+",
+		"$$$/Panel/FormFieldSettings/Event:",				"Olay:",
+		"$$$/Panel/FormFieldSettings/Actions:",				"Eylemler:",
+		"$$$/Panel/FormFieldSettings/URL:",					"URL:",
+		"$$$/Panel/FormFieldSettings/Mail to:",				"Posta alıcısı:",
+		"$$$/Panel/Action",									"Eylem",
+		"$$$/Panel/Empty Action",							"[Eklenen Eylem Yok]",
+		"$$$/Panel/StatesListBoxLabel/States",				"Görünüm",
+		"$$$/Panel/States",									"Düğmeler ve Formlar",
+		"$$$/Panel/FormFieldSettings/FieldType",			"Tür:",
+		"$$$/Panel/FormFieldSettings/Name",					"Ad:",
+		"$$$/Panel/ShowHide/Visibility:",					"Görünürlük:",
+		"$$$/Panel/GoToPage/Page:",							"Sayfa:",
+
+		"$$$/Panel/Normal",									"[Normal]",
+		"$$$/Panel/Over",									"[Rollover]",
+		"$$$/Panel/Down",									"[Tıklat]",
+
+		"$$$/Panel/Off",									"[Normal Kapalı]",
+		"$$$/Panel/On",										"[Normal Açık]",
+
+		"$$$/Panel/RolloverOff",							"[Rollover Kapalı]",
+		"$$$/Panel/RolloverOn",								"[Rollover Açık]",
+		"$$$/Panel/DowmOff",								"[Tıklatma Kapalı]",
+		"$$$/Panel/DownOn",									"[Tıklatma Açık]",
+
+		"$$$/Panel/CmdName/FormFieldName",					"Düğme Adı",
+		"$$$/Panel/CmdName/FormFieldStyle",					"Düğme Görünümü",
+		
+		"$$$/Panel/FormFieldSettings/Appearance",			"Görünüm:",
+		"$$$/Panel/PDFOptions",								"PDF Seçenekleri",
+		"$$$/Panel/Required",								"Gerekli",
+		"$$$/Panel/Printable",								"Yazdırılabilir",
+		"$$$/Panel/Description",							"Açıklama:",
+		"$$$/Panel/SelectedByDefault",						"Varsayılan olarak seçilen",
+		"$$$/Panel/Multiline",								"Çok satırlı",
+		"$$$/Panel/ListItems",								"Liste Öğeleri",
+		"$$$/Panel/MultipleSelection",						"Çoklu Seçim",
+		"$$$/Panel/FontSize",								"Font Boyutu:",
+		"$$$/Panel/Font",									"Font:",
+		"$$$/Panel/AutoSize",								"Otomatik",
+		"$$$/Panel/SortItems",								"Öğeleri Sırala",
+		"$$$/Panel/MERTLOption",							"Sağdan Sola",
+		"$$$/Panel/ExportValue",							"Düğme Değeri:",
+		 
+		"$$$/Popup/Separator",								"-",
+		
+		"$$$/Dialog/Behaviors/Exit/No Data for Exit Behavior", "",
+
+		// ----- Tips strings
+
+		"$$$/Tip/StateEye",				"Dışa aktarmada isteğe bağlı durumu etkinleştir/devre dışı bırak",
+		"$$$/Tip/StateThumbnail",		"Bu durumun azaltılmış görünümü",
+		"$$$/Tip/Show",					"Göster",
+		"$$$/Tip/Hide",					"Gizle ",
+		"$$$/Tip/Ignore",				"Yoksay",
+		"$$$/Tip/Delete Selected Action",	"Seçili eylemi sil",
+		"$$$/Tip/Add New Action",		"Seçili etkinlik için yeni eylem ekle",
+		"$$$/Tip/DeleteState",			"İsteğe bağlı durumu ve içeriğini sil",
+		"$$$/Tip/Convert To Button",		"Düğmeye Dönüştür",
+		"$$$/Tip/Convert To Object",		"Nesneye Dönüştür",
+		"$$$/Tip/DefaultChoice",		"Listeden bir öğe seçerek varsayılan seçim olarak belirleyin. Özel bir sıralama düzeni belirlemek için, \"Öğeleri Sırala\" öğesinin seçimini kaldırın ve öğeleri yerlerine sürükleyin.",
+        "$$$/Tip/MissingFontToolTip",				"Form alanında eksik font. Font bulmak için tıklatın.",
+
+		// ----- Error strings
+
+		"$$$/Error/YouNeedToSpecifyAName", "Ad belirtmeniz gerekir.",
+		"$$$/Error/YouNeedToSpecifyANonBlankName", "Geçerli bir ad belirtmeniz gerekir.",
+		"$$$/Error/YouNeedToSpecifyANonBlankNameOrNoName", "Geçerli bir ad belirtmeniz veya hiçbir ad belirtmemeniz gerekir.",
+		"$$$/Error/YouNeedToSpecifyAnExportValue", "Dışa aktarma değeri belirtmeniz gerekir.",
+		"$$$/Error/YouNeedToSpecifyANonBlankExportValue", "Geçerli bir dışa aktarma değeri belirtmeniz gerekir.",
+		"$$$/Error/YouNeedToSpecifyAUniqueName", "Bu durum adı zaten kullanımda. Lütfen farklı bir ad seçin.",
+		"$$$/Error/YouNeedToSpecifyAValidFontSize", "0-300 arasında veya Otomatik bir değer belirtin.",
+		
+		// ----- Misc strings
+
+		"$$$/Command/DeleteStates",	"Durumları Sil",
+		"$$$/CmdName/DeleteStateContent",	"Durum İçeriğini Sil",
+		"$$$/Panel/CmdName/MSOName",		"Çoklu Durum Nesne Adı",
+		
+		// ----- MultiStateObject Panel strings
+				
+		"$$$/Menu/MSOPanel", "&Nesne Durumları",
+		"$$$/Panel/MSOPanel", "Nesne Durumları",
+		"$$$/Panel/MSOPanel/ObjectName", "Nesne Adı:",
+#ifdef MACINTOSH
+		"$$$/Panel/MSOPanel/MixedSelection", "Her bir nesneyi ayrı bir durum yapmak için Yeni düğmesini tıklatın. (Nesneleri aynı durumda tutmak için Opt tuşunu basılı tutup tıklatın.)",
+		"$$$/Panel/MSOPanel/MSOAndMixedSelection", "\"^1\" çoklu durum nesnesindeki her bir nesneyi yeni bir durum yapmak için Yeni düğmesini tıklatın. (Nesneleri aynı durumda tutmak için Opt tuşunu basılı tutup tıklatın.)\n\nNesneleri \"^2\" görünür durumu içine eklemek için Ekle düğmesini tıklatın.",
+#else
+		"$$$/Panel/MSOPanel/MixedSelection", "Her bir nesneyi ayrı bir durum yapmak için Yeni düğmesini tıklatın. (Nesneleri aynı durumda tutmak için Alt tuşunu basılı tutup tıklatın.)",
+		"$$$/Panel/MSOPanel/MSOAndMixedSelection", "\"^1\" çoklu durum nesnesindeki her bir nesneyi yeni bir durum yapmak için Yeni düğmesini tıklatın. (Nesneleri aynı durumda tutmak için Alt tuşunu basılı tutup tıklatın.)\n\nNesneleri \"^2\" görünür durumu içine eklemek için Ekle düğmesini tıklatın.",
+#endif
+		
+		"$$$/Menu/MSOPanelPopup", "Nesne Durumları Paneli Menüsü",	
+		"$$$/Menu/MSOPanel/NewState", "Yeni Durum",
+		"$$$/Menu/MSOPanel/DeleteState", "Durumu Sil",
+		"$$$/Menu/MSOPanel/AddToState", "Duruma Nesne Ekle",
+		"$$$/Menu/MSOPanel/PasteIntoState", "Durumun İçine Yapıştır",
+		"$$$/Menu/MSOPanel/ReleaseState", "Durumu Nesnelere Bırak",
+		"$$$/Menu/MSOPanel/ReleaseAllStates", "Tüm Durumları Nesnelere Bırak",
+		"$$$/Menu/MSOPanel/ResetAllMSOs", "Tüm Çoklu Durum Nesnelerini İlk Duruma Sıfırla",
+		"$$$/Menu/MSOPanel/Options", "Panel Seçenekleri...",
+		"$$$/Menu/MSOPanel/ContextMenu", "Nesne Durumları Paneli İçerik Menüsü",
+		"$$$/Menu/MSOPanel/ReleaseStateContextMenu", "\"^1\" Öğesini Nesnelere Bırak",
+		"$$$/Menu/MSOPanel/DeleteStateContextMenu", "\"^1\" öğesini sil",
+		"$$$/Menu/MSOPanel/PasteIntoStateContextMenu", "\"^1\" Öğesinin İçine Yapıştır",
+		"$$$/Menu/MSOPanel/HiddenUntilTriggered", "Tetiklenene Kadar Gizli",
+	
+		"$$$/Tip/MSOPanel/StateAnimated", "Bu durumdaki bir nesneye animasyon eklendi.",
+		"$$$/Tip/MSOPanel/NewMSO", "Seçimi çoklu durum nesnesine dönüştür",
+		"$$$/Tip/MSOPanel/NewState", "Yeni durum ekle",
+		"$$$/Tip/MSOPanel/DeleteState", "Seçili durumu sil",
+		"$$$/Tip/MSOPanel/MSOIsSelected", "Bu çoklu durum nesnesi seçildi. Nesneyi dönüştürürseniz tüm durumlar dönüştürülür.",
+		"$$$/Tip/MSOPanel/MSOIsNotSelected", "Bir durum seçildi. Çoklu durum nesnesini seçmek için tıklatın.",
+		"$$$/Tip/MSOPanel/MSOStateIsSelected", "Bu durum seçildi.",
+		"$$$/Tip/MSOPanel/MSOStateContentIsSelected", "Bu durumdaki içerik seçildi. Bu durumu seçmek için satırı tıklatın.",
+		"$$$/Tip/MSOPanel/MSOStateRowMSOIsSelected", "Çoklu durum nesnesi seçildi. Bu duruma geçmek ve bu durumu seçmek için satırı tıklatın.",
+		"$$$/Tip/MSOPanel/MSOActiveStateRowMSOIsSelected", "Çoklu durum nesnesi seçildi. Bu durumu seçmek için satırı tıklatın.",
+		"$$$/Tip/MSOPanel/MSOAnotherStateIsSelected", "Bu duruma geçmek ve bu durumu seçmek için satırı tıklatın.",
+		"$$$/Tip/MSOPanel/PasteIntoState", "Kopyalanan nesneleri seçili duruma yapıştır",
+		"$$$/Tip/MSOPanel/AddToState", "Nesneleri görünür duruma ekle",
+	
+		"$$$/Dialog/MSOPanel/ReleaseAlert", "Çoklu durum nesnesi en az iki durumu olması gerekir. Bu eylem çoklu durum nesnesini belgeden kaldıracak. Tüm geçerli nesneler tek durumlu nesneler olarak geçerli pozisyonlarında kalırlar.",
+		"$$$/Dialog/MSOPanel/ReleaseAllAlert", "Bu eylem çoklu durum nesnesinin belgeden kaldırılmasına neden olacak. Tüm geçerli nesneler tek durumlu nesneler olarak geçerli pozisyonlarında kalırlar.",
+		"$$$/Dialog/MSOPanel/DeletesMSOAlert", "Çoklu durum nesnesinin en az iki durumu olması gerekir. Bu eylem çoklu durum nesnesini belgeden kaldıracak. Kalan durumlarla ilişkili nesneler tek durumlu nesneler olarak geçerli pozisyonlarında kalırlar.",
+		
+		"$$$/Panel/MSOPanel/StatusOne", " ^1 öğesindeki nesne",
+		"$$$/Panel/MSOPanel/Status", " ^1 öğesindeki nesneler",
+		
+		"$$$/Panel/MSOPanel/StatusMSOSelected", "Tüm durumlar seçildi",
+		"$$$/Panel/MSOPanel/StatusStateSelected", "Durum seçildi",
+		"$$$/Panel/MSOPanel/StatusStateContentSelected", "Durumdaki nesne seçildi",
+
+		// Command strings		
+		"$$$/Command/CheckBox", "Onay Kutusuna Dönüştür",
+		"$$$/Command/ComboBox", "Aşağı Açılır Kutuya Dönüştür",
+		"$$$/Command/ListBox", "Liste Kutusuna Dönüştür",
+		"$$$/Command/RadioButton", "Radyo Düğmesine Dönüştür",
+		"$$$/Command/SignatureField", "İmza Alanına Dönüştür",
+		"$$$/Command/TextField", "Metin Alanına Dönüştür",
+}
+};
+
+#endif // __ODFRC__

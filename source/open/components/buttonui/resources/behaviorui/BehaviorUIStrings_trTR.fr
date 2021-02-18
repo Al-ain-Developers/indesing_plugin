@@ -1,0 +1,129 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kBehaviorUIStringsRsrcID + index_trTR)
+{
+	k_trTR,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{		
+		"$$$/Dialog/Behaviors/ShowHideFields/Fields_Tree", "Alanlar Ağacı",
+
+		"$$$/Dialog/Behaviors/Description",				"Burası davranışın kısa bir tanımını içerecektir. Ayrıca davranış seçenekleriyle ilgili bazı ipuçları da içerebilir. Nasıl kullanılacağıyla ilgili olarak kullanıcıya biraz fikir verir.",
+		"$$$/Dialog/Behaviors/Description Title",		"Açıklama",
+		"$$$/Dialog/Behaviors/DeleteAlert",				"Seçili eylem silinsin mi?",
+		"$$$/Dialog/Behaviors/DragDeleteAlert",			"Sürüklenen eylemler silinsin mi?",
+		"$$$/Dialog/Behaviors/Error/Invalid URL",		"URL alanı bir değer içermelidir",
+		"$$$/Dialog/Behaviors/Error/Invalid File",		"Geçerli bir dosya belirtilmeli",
+		
+		"$$$/Dialog/Behaviors/Movie/Movie:",			"Video:",
+		"$$$/Dialog/Behaviors/Movie/Play Options:",		"Seçenekler:",
+		"$$$/Dialog/Behaviors/Movie/Play",				"Oynat",
+		"$$$/Dialog/Behaviors/Movie/Stop",				"Dur",
+		"$$$/Dialog/Behaviors/Movie/Pause",				"Duraklat",
+		"$$$/Dialog/Behaviors/Movie/Resume",			"Devam Et",
+		"$$$/Dialog/Behaviors/Movie/PlayFromNavPoint",	"Gezinme Noktasından oynat",
+		"$$$/Dialog/Behaviors/Movie/StopAll",			"Tümünü Durdur (yalnızca SWF)",
+		"$$$/Dialog/Behaviors/Movie/NavPoint",			"Punto:",
+		"$$$/Dialog/Behaviors/Movie/NoVideo",			"(video yok)",
+		"$$$/Dialog/Behaviors/Movie/NoVideoNavPoint",	"(gezinme noktası yok)",
+
+		"$$$/Dialog/Behaviors/Sound/Sound:",			"Ses:",
+		"$$$/Dialog/Behaviors/Sound/Play Options:",		"Seçenekler:",
+		"$$$/Dialog/Behaviors/Sound/Play",				"Oynat",
+		"$$$/Dialog/Behaviors/Sound/Stop",				"Dur",
+		"$$$/Dialog/Behaviors/Sound/Pause",				"Duraklat",
+		"$$$/Dialog/Behaviors/Sound/Resume",			"Devam Et",
+		"$$$/Dialog/Behaviors/Sound/StopAll",			"Tümünü Durdur (yalnızca SWF)",
+		"$$$/Dialog/Behaviors/Sound/Volume:",			"Ses:",
+		"$$$/Dialog/Behaviors/Sound/Synchronous",		"Eş zamanlı",
+		"$$$/Dialog/Behaviors/Sound/Mix",				"Karıştırma",
+		"$$$/Dialog/Behaviors/Sound/NoSound",			"(ses yok)",
+		
+		"$$$/Dialog/Behaviors/Animation/Animation:",	"Animasyon:",
+		"$$$/Dialog/Behaviors/Animation/Play Options:",	"Seçenekler:",
+		"$$$/Dialog/Behaviors/Animation/Play",			"Oynat",
+		"$$$/Dialog/Behaviors/Animation/Stop",			"Dur",
+		"$$$/Dialog/Behaviors/Animation/Pause",			"Duraklat",
+		"$$$/Dialog/Behaviors/Animation/Resume",		"Devam Et",
+		"$$$/Dialog/Behaviors/Animation/StopAll",		"Tümünü Durdur",
+		"$$$/Dialog/Behaviors/Animation/Reverse",		"Ters Çevir",
+		"$$$/Dialog/Behaviors/Animation/AutoReverse",	"Üzerinden Kaldırıldığında ters çevir",
+		"$$$/Dialog/Behaviors/Animation/NoAnimation",	"(animasyon yok)",
+		
+		"$$$/Dialog/Behaviors/MSO/Object:",				"Nesne:",
+		"$$$/Dialog/Behaviors/MSO/State:",				"Durum:",
+		"$$$/Dialog/Behaviors/MSO/AutoReverse",			"Üzerinden Kaldırıldığında Geri Git",
+		"$$$/Dialog/Behaviors/MSO/NextLoop",			"Son Durumda Durdur",
+		"$$$/Dialog/Behaviors/MSO/PrevLoop",			"İlk Durumda Durdur",
+		"$$$/Dialog/Behaviors/MSO/NoMSO",				"(çoklu durum nesnesi yok)",
+
+		"$$$/Dialog/Behaviors/GoToView/Go To:",			"Git:",
+		"$$$/Dialog/Behaviors/GoToView/First Page",		"İlk Sayfa",
+		"$$$/Dialog/Behaviors/GoToView/Page",			"Sayfa",
+		"$$$/Dialog/Behaviors/GoToView/Previous Page",	"Önceki Sayfa",
+		"$$$/Dialog/Behaviors/GoToView/Next Page",		"Sonraki Sayfa",
+		"$$$/Dialog/Behaviors/GoToView/Last Page",		"Son Sayfa",
+		"$$$/Dialog/Behaviors/GoToView/Back",			"Geri",
+		"$$$/Dialog/Behaviors/GoToView/Forward",		"İleri",
+		"$$$/Dialog/Behaviors/GoToView/Previous View",	"Önceki Görünüm",
+		"$$$/Dialog/Behaviors/GoToView/Next View",		"Sonraki Görünüm",
+		"$$$/Dialog/Behaviors/GoToView/Specific Page",	"Özel Sayfa",
+		"$$$/Dialog/Behaviors/GoToView/Document:",		"Belge:",
+		"$$$/Dialog/Behaviors/GoToView/Page:",			"Sayfa:",
+		"$$$/Dialog/Behaviors/GoToView/URL",			"URL",
+		"$$$/Dialog/Behaviors/GoToView/URL:",			"URL:",
+		"$$$/Dialog/Behaviors/GoToView/Anchor",			"Metin Bağlantısı",
+		"$$$/Dialog/Behaviors/GoToView/Anchor:",		"Hedef:",
+		"$$$/Dialog/Behaviors/GoToView/Bookmark",		"Yer İmi",
+		"$$$/Dialog/Behaviors/GoToView/Inherit Zoom",	"Odaklamayı Devral",
+		"$$$/Dialog/Behaviors/GoToView/Actual Size",	"Gerçek Boy",
+		"$$$/Dialog/Behaviors/GoToView/Fit In Window",	"Pencereye Sığdır",
+		"$$$/Dialog/Behaviors/GoToView/Fit Width",		"Genişliğe Sığdır",
+		"$$$/Dialog/Behaviors/GoToView/Fit Height",		"Yüksekliği Sığdır",
+		"$$$/Dialog/Behaviors/GoToView/Fit Visible",	"Görünene Sığdır",
+		"$$$/Dialog/Behaviors/GoToView/Zoom:",			"Yakınlaştır:",
+		"$$$/Dialog/Behaviors/GoToView/None",			"Yok",
+		"$$$/Dialog/Behaviors/GoToAnchor/InDesign Format File","InDesign Format Dosyası",
+		
+		"$$$/Dialog/Behaviors/ViewZoom/Full Screen",	"Tam Ekran",
+		"$$$/Dialog/Behaviors/ViewZoom/Zoom View In",	"Yakınlaştır",
+		"$$$/Dialog/Behaviors/ViewZoom/Zoom View Out",	"Uzaklaştır",
+		"$$$/Dialog/Behaviors/ViewZoom/Fit Page",		"Pencereye Sığdır",
+		"$$$/Dialog/Behaviors/ViewZoom/Actual Size",	"Gerçek Boy",
+		"$$$/Dialog/Behaviors/ViewZoom/Fit Width",		"Genişliğe Sığdır",
+		"$$$/Dialog/Behaviors/ViewZoom/Fit Visible",	"Görünene Sığdır",
+		"$$$/Dialog/Behaviors/ViewZoom/SinglePage",		"Tek Sayfa",
+		"$$$/Dialog/Behaviors/ViewZoom/OneColumn",		"Sürekli",
+		"$$$/Dialog/Behaviors/ViewZoom/TwoColumns",		"Sürekli – Yüz yüze",
+
+		"$$$/Dialog/Behaviors/ImportData/Select File:","Dosya Seç:",
+		"$$$/Dialog/Behaviors/ImportData/Acrobat Format File","Acrobat Format Dosyası",
+
+		"$$$/Dialog/Behaviors/OpenFile/Select File:","Dosya Seç:",
+		"$$$/Dialog/Behaviors/OpenFile/Select File to be Opened", "Açılacak Dosyayı Seçin",
+		"$$$/Dialog/Behaviors/OpenFile/Acrobat Format File","Acrobat Format Dosyası",
+
+		"$$$/Dialog/Behaviors/SubmitForm/Submit To:","URL:",
+						
+		// ----- Tips strings
+	}
+};
+
+#endif // __ODFRC__

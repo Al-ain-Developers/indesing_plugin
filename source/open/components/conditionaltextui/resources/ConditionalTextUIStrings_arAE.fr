@@ -1,0 +1,132 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/conditionaltextui/resources/ConditionalTextUIStrings_arAE.fr $
+//  
+//  Owner: Michele Stutzman
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kConditionalTextUIStringsRsrcID + index_arAE)
+{
+    k_arAE,                                 // Locale Id
+    kResourceUTF8Encoded,     // Character encoding converter
+    {
+		"#CondTextUI_WinMenu",	"النص ال&شرطي",	// panel menu item
+		"#CondTextUI_PanelName","النص المشروط",		// panel name
+		"#CondTextUI_PanelMenu","قائمة لوحة النص الشرطي",
+		"#CondTextUI_NewConditionTagMenu", "شرط جديد...",
+		"#CondTextUI_DeleteConditionTagMenu", "حذف شرط...",
+		"#CondTextUI_DeleteConditionTagsMenu", "حذف شروط...",
+		"#CondTextUI_EditConditionTagMenu", "خيارات الشرط...",
+		"#CondTextUI_LoadConditionTagsMenu", "تحميل الشروط...",
+		"#CondTextUI_LoadConditionTagsAndSetsMenu", "تحميل الشروط والمجموعات الشرطية...",
+		"#CondTextUI_ShowIndicatorsCB", "إظهار المؤشرات على النص الشرطي",
+		"#CondTextUI_ShowIndicatorsMenu", "إظهار المؤشرات على النص الشرطي",
+		"#CondTextUI_ShowAndPrintIndicatorsMenu", "إظهار وطباعة المؤشرات على النص الشرطي",
+		"#CondTextUI_HideIndicatorsMenu", "إخفاء المؤشرات على النص الشرطي",
+		"#CondTextUI_ShowIndicatorsDD", "المؤشرات:",
+		"#CondTextUI_ShowIndicators", "إظهار",
+		"#CondTextUI_ShowAndPrintIndicators", "إظهار وطباعة",
+		"#CondTextUI_HideIndicators", "إخفاء",
+		"#CondTextUI_RtMenuConditionTagTVNode",    "قائمة سياق عرض شجرة الشرط",
+		"#CondTextUI_RtMenuUnapplyTag",		"إلغاء تطبيق \"^1\"",
+		"#CondTextUI_RtMenuDeleteTag",		"حذف \"^1\"",
+		"#CondTextUI_RtMenuEditTag",		"تحرير \"^1\"...",
+		"Show Options", "إ&ظهار الخيارات",
+		"Hide Options", "إ&خفاء الخيارات",
+		
+		"#ConditionTagList_NameColumnLabel", "الاسم",
+		"#ConditionTag_OptionsDialog", "خيارات الشرط",
+		"#ConditionTag_OptionsDialogNew", "شرط جديد",
+		"#ConditionTagOptions_Name:", "الإ&سم:",
+		"#ConditionTagOptions_Method:", "ال&طريقة:",
+		"#ConditionTagOptions_Appearance:", "ال&مظهر:",
+		"#ConditionTagOptions_Color:", "ال&لون:",
+		"#ConditionTagOptions_Indicator", "المؤشر",
+		"#ConditionTagOptions_MethodUnderline", "خط سفلي",
+		"#ConditionTagOptions_MethodHighlight", "إبراز",
+		"#ConditionTagOptions_WavyUnderline", "مموج",		
+		"#ConditionTagOptions_SolidUnderline", "مصمت",		
+		"#ConditionTagOptions_DashedUnderline", "متقطع",		
+		"#ConditionTag_EmptyNameMsg", "الرجاء، أوجد إسم شرط.",
+		"#ConditionTag_NameInUseMsg", "هذا اسم شرط مستخدم فعلاً. يرجى اختيار آخر.",
+		
+		"#ConditionSetShowAll", "إظهار الكل",
+		"#ConditionSetHideAll", "إخفاء الكل",
+		"#ConditionSetNone", "[لا شيء]",
+		"#ConditionSetBlank", " ",
+		"#ConditionSetLabel", "ضبط:",
+		"#ConditionSetNewSet", "إنشاء مجموعة جديدة...",
+		"#ConditionSetDeleteSet", "حذف \"^1\"...",
+		"#ConditionSetRenameSet", "إعادة تسمية \"^1\"...",
+		"#ConditionSetRedefineSet", "إعادة تعريف \"^1\"...",
+		"#ConditionSetNameDialog", "اسم المجموعة الشرطية",
+		"#ConditionSetNameStatic", "الإ&سم:",
+		"#InvalidSetName", "اسم المجموعة الشرطية غير سليم",
+		"#DuplicateSetName", "الاسم موجود بالفعل",
+		"#NoActiveSetString", "ليست مجموعة نشطة",
+		
+		"#ConditionalTextTip", "النص المخفي المعثور عليه له ^1: ",
+		"#ConditionalTextTipOneTag", "هذا الشرط",
+		"#ConditionalTextTipManyTags", "تلك الشروط",
+		
+		"#ConditionalTextEyeballHideWidgetTip", "انقر لإخفاء كل النص المطبق عليه هذا الشرط",
+		"#ConditionalTextEyeballShowWidgetTip", "انقر لإظهار كل النص المطبق عليه هذا الشرط",
+		"#ConditionalTextEyeballUnconditionalWidgetTip", "النص غير الشرطي مرئي دائماً",
+		"#ConditionalTextAppliedAllTip",	"الشرط مطبق على كل النص المحدد. انقر لإلغاء التطبيق",
+		"#ConditionalTextAppliedSomeTip",	"الشرط مطبق على بعض النص المحدد. انقر للتطبيق على كل النص المحدد",
+		"#ConditionalTextAppliedNoneTip",	"انقر لتطبيق شرط",
+		"#ConditionalTextAppliedAllTipUncondition",	"النص المحدد غير شرطي",
+		"#ConditionalTextAppliedSomeTipUncondition",	"بعض النص المحدد غير شرطي. انقر لجعل الكل غير شرطي",
+		"#ConditionalTextAppliedNoneTipUncondition",	"انقر لجعل النص غير شرطي",
+		"#ConditionalTextApplyNoSelectionTip", "انقر لتطبيق الشرط على النص المحدد",
+		"#ConditionalTextNewTagTip",		"شرط جديد",
+		"#ConditionalTextDeleteTagTip",		"حذف شرط",
+		"#ConditionalTextIndicatorTip",		"طريقة المؤشر هي ^1",
+		"#ConditionalTextNewSetTip",		"مجموعة جديدة",
+		
+		"#ConditionTag_DeleteConditionDialog", "حذف شرط", 
+		"#ConditionTag_DeleteConditionsDialog", "حذف شروط", 
+		"#ConditionTag_DeleteConditionAndReplace:", "حذف شرط واستبداله بـ: ", 
+		"#ConditionTag_DeleteConditionsAndReplace:", "حذف شروط واستبدالها بـ: ", 
+		"#ConditionTag_DeleteInformationAlert", "اسحب شرط إلى أيقونة المهملات لحذف الشرط.",
+		"#ConditionTag_DeleteNoReplaceChoice", "[لا شيء]",
+		
+		"#QuickApplyConditions", "الشرط",
+		"#Conditions_Filter_Key", "CT", // should be upper case if there is an upper case character, this is the prefix key for quick apply for text conditions.
+		"#QuickApplyConditionSets", "مجموعة شرطية",
+		"#QuickApplyConditionSets_Filter_Key", "CS",  // should be upper case if there is an upper case character, this is the prefix key for quick apply for text condition sets.
+		"#QuickApplyConditons_Menu_Key_String", "تضمين شروط (ct:)",
+		"#QuickApplyConditonSets_Menu_Key_String", "تضمين المجموعات الشرطية (cs:)",
+		
+		"#SingularConditionStatusBodyString", "^1 شرط مطبق ^2",
+		"#PluralConditionStatusBodyString", "^1 شروط مطبقة ^2",
+		"#MixedConditionString", " [مختلط]",
+		"#NoConditionsString", "لا توجد شروط مطبقة",
+    }
+};
+
+#endif // __ODFRC__

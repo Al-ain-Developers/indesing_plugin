@@ -1,0 +1,583 @@
+#include "VCPlugInHeaders.h"
+
+// General includes:
+#include "MenuDef.fh"
+#include "ActionDef.fh"
+#include "ActionDefs.h"
+#include "AdobeMenuPositions.h"
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "StringTable.fh"
+#include "objectmodeltypes.fh"
+#include "ShuksanID.h"
+#include "ActionID.h"
+#include "CommandID.h"
+#include "MasterPageID.h"
+#include "WorkspaceID.h"
+#include "widgetid.h"
+#include "BuildNumber.h"
+#include "PlugInModel_UIAttributes.h"
+#include "DocumentID.h"
+
+#include "ScriptInfoTypes.fh"
+#include "DocFrameworkID.h"
+
+// Project includes:
+#include "AppFrameworkID.h" // for kApplicationObjectScriptElement
+#include "IDHAID.h"
+#include "GenericID.h"
+#include "ShuksanID.h"
+#include "TextID.h"
+
+#include "IDHAScriptingDefs.h"
+
+
+#ifdef __ODFRC__
+
+/*  Plugin version definition.
+*/
+resource PluginVersion (kSDKDefPluginVersionResourceID)
+{
+	kTargetVersion,
+	kIDHAPluginID,
+	kSDKDefPlugInMajorVersionNumber, kSDKDefPlugInMinorVersionNumber,
+	kSDKDefHostMajorVersionNumber, kSDKDefHostMinorVersionNumber,
+	kIDHACurrentMajorFormatNumber, kIDHACurrentMinorFormatNumber,
+	{ kInDesignProduct, kInCopyProduct},
+	{ kWildFS },
+	kModelPlugIn,
+	kIDHAVersion
+};
+
+/*  The ExtraPluginInfo resource adds extra information to the Missing Plug-in dialog
+	that is popped when a document containing this plug-in's data is opened when
+	this plug-in is not present. These strings are not translatable strings
+	since they must be available when the plug-in isn't around. They get stored
+	in any document that this plug-in contributes data to.
+*/
+resource ExtraPluginInfo(1)
+{
+	kIDHACompanyValue,			// Company name
+	kIDHAMissingPluginURLValue,	// URL 
+	kIDHAMissingPluginAlertValue,	// Missing plug-in alert text
+};
+
+/* Boss class definition.
+*/
+resource ClassDescriptionTable(kSDKDefClassDescriptionTableResourceID)
+{{{
+			
+
+	Class
+	{
+		kIDHAScriptProviderBoss,
+		kBaseScriptProviderBoss,
+		{
+			IID_ISCRIPTPROVIDER,kIDHAScriptProviderImpl,
+			
+		}
+	},
+
+	Class
+	{
+		kIDHAScriptObserverBoss,
+		kInvalidClass,
+		{
+			/** Identifies this provider as a script provider service for the purpose of attaching the IID_ISCRIPTOBSERVER */
+			IID_IK2SERVICEPROVIDER,    kScriptServiceImpl,
+			/** Used to detect database close and release outstanding script client objects. @see IObserver */
+			IID_ISCRIPTOBSERVER,       kIDHAObserverImpl,
+		}
+	},
+
+	/** a RESPONDER for master page applied */
+	Class
+	{
+		kIDHAApplyMasterResponderBoss,
+		kInvalidClass,
+		{
+			IID_IRESPONDER,			   kIDHAResponderImpl,
+			IID_IK2SERVICEPROVIDER,    kApplyMasterSignalRespServiceImpl,			
+		}
+	},
+
+}}};
+
+/*  Implementation definition.
+*/
+resource FactoryList (kSDKDefFactoryListResourceID)
+{
+	kImplementationIDSpace,
+	{
+		#include "IDHAFactoryList.h"
+	}
+};
+
+
+
+/*  LocaleIndex
+	The LocaleIndex should have indicies that point at your
+	localizations for each language system that you are localized for.
+*/
+/*  String LocaleIndex.
+*/
+resource LocaleIndex ( kSDKDefStringsResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_enUS, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_enGB, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_deDE, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_frFR, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_esES, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_ptBR, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_svSE, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_daDK, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_nlNL, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_itIT, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_nbNO, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_fiFI, kSDKDefStringsResourceID + index_enUS
+		kInDesignJapaneseFS, k_jaJP, kSDKDefStringsResourceID + index_jaJP
+	}
+};
+
+resource LocaleIndex (kSDKDefStringsNoTransResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_Wild, kSDKDefStringsNoTransResourceID + index_enUS
+	}
+};
+
+resource StringTable (kSDKDefStringsNoTransResourceID + index_enUS)
+{
+	k_enUS,									// Locale Id
+	kEuropeanMacToWinEncodingConverter,		// Character encoding converter
+	{
+		// No-Translate strings go here:
+
+	}
+};
+
+/*
+
+/*  Scripting definition
+	In InDesign/InCopy, scripting resources are defined via ODFRez statements for cross-platform compatibility.
+*/
+resource VersionedScriptElementInfo(1)
+{
+	// Contexts
+	{
+		// Scripting support added at InDesign CS 2.0
+        kFiredrakeScriptVersion, kCoreScriptManagerBoss, kInDesignAllLanguagesFS, k_Wild,
+		kFiredrakeScriptVersion, kCoreScriptManagerBoss, kInCopyAllLanguagesFS, k_Wild,
+	}
+	
+	// Elements
+	{	
+		//
+		//  Hey you!  Next implementer on this plugin!  
+		//   the implementation for all this code is in IDHAObserver.cpp!
+		//
+		//  There are a number of events
+		//  commented out below.  They are commented out because there wasn't enough
+		//  time to discover how to catch them from the C++ side of InDesign.
+		//  The infrastructure is all set up for you, though.  All you gotta do
+		//  is figure out what InDesign IID you need to observe, and then
+		//  forward the event on using the DispatchAppScriptEvent method.
+		//
+		
+
+
+		// =====================
+		// Page Item Events
+		// =====================
+		/*Event 
+        { 
+            kContentChangedEventScriptElement, //ScriptElementID 
+            e_ContentChangedEvent, //ScriptID
+            "after content changed", //Name
+            "Dispatched after a property on content is changed.  Event is not canceleable.", //Description
+            kTrue, //Bubbles
+            kFalse, //Cancelable
+            kBaseScriptEventBoss, //ClassID of the Event object
+            c_Event //ScriptID of the Event object
+        }*/
+
+		/*Event 
+        { 
+            kFormatChangedEventScriptElement, //ScriptElementID 
+            e_FormatChangedEvent, //ScriptID
+            "after format changed", //Name
+            "Dispatched after a format is changed.  Event is not canceleable.", //Description
+            kTrue, //Bubbles
+            kFalse, //Cancelable
+            kBaseScriptEventBoss, //ClassID of the Event object
+            c_Event //ScriptID of the Event object
+        }*/
+
+		/*Event 
+        { 
+            kGeometryChangedEventScriptElement, //ScriptElementID 
+            e_GeometryChangedEvent, //ScriptID
+            "after geometry changed", //Name
+            "Dispatched after a property on geometry is changed.  Event is not canceleable.", //Description
+            kTrue, //Bubbles
+            kFalse, //Cancelable
+            kBaseScriptEventBoss, //ClassID of the Event object
+            c_Event //ScriptID of the Event object
+        }*/
+		// =====================
+		// =====================
+
+		// =====================
+		// Style Events
+		// =====================
+		Event 
+        { 
+            kStyleListChangedEventScriptElement, //ScriptElementID 
+            e_StyleListChangedEvent, //ScriptID
+            "after any style list changed", //Name
+            "Dispatched after a style list is changed.  Event is not canceleable.", //Description
+            kTrue, //Bubbles
+            kFalse, //Cancelable
+            kBaseScriptEventBoss, //ClassID of the Event object
+            c_Event //ScriptID of the Event object
+        }
+
+		
+		/*Event 
+        { 
+            kObjectStyleListChangedEventScriptElement, //ScriptElementID 
+            e_ObjectStyleListChangedEvent, //ScriptID
+            "object style changed", //Name
+            "Dispatched when an object style is changed.  Event is not canceleable.", //Description
+            kTrue, //Bubbles
+            kFalse, //Cancelable
+            kBaseScriptEventBoss, //ClassID of the Event object
+            c_Event //ScriptID of the Event object
+        }*/
+		
+
+		Event 
+        { 
+            kTableStyleListChangedEventScriptElement, //ScriptElementID 
+            e_TableStyleListChangedEvent, //ScriptID
+            "table style changed", //Name
+            "Dispatched when a table style is changed.  Event is not canceleable.", //Description
+            kTrue, //Bubbles
+            kFalse, //Cancelable
+            kBaseScriptEventBoss, //ClassID of the Event object
+            c_Event //ScriptID of the Event object
+        }
+
+		Event 
+        { 
+            kCellStyleListChangedEventScriptElement, //ScriptElementID 
+            e_CellStyleListChangedEvent, //ScriptID
+            "cell style changed", //Name
+            "Dispatched when a cell style is changed.  Event is not canceleable.", //Description
+            kTrue, //Bubbles
+            kFalse, //Cancelable
+            kBaseScriptEventBoss, //ClassID of the Event object
+            c_Event //ScriptID of the Event object
+        }
+
+		Event 
+        { 
+            kParaStyleListChangedEventScriptElement, //ScriptElementID 
+            e_ParaStyleListChangedEvent, //ScriptID
+            "after paragraph style list changed", //Name
+            "Dispatched after the Paragraph Style list is changed.  Event is not canceleable.", //Description
+            kTrue, //Bubbles
+            kFalse, //Cancelable
+            kBaseScriptEventBoss, //ClassID of the Event object
+            c_Event //ScriptID of the Event object
+        } 
+        
+        Event 
+        { 
+            kCharStyleListChangedEventScriptElement, //ScriptElementID 
+            e_CharStyleListChangedEvent, //ScriptID
+            "after character style list changed", //Name
+            "Dispatched after the Character Style list is changed.  Event is not canceleable.", //Description
+            kTrue, //Bubbles
+            kFalse, //Cancelable
+            kBaseScriptEventBoss, //ClassID of the Event object
+            c_Event //ScriptID of the Event object
+        } 
+        
+        Event 
+        { 
+            kSpreadListChangedEventScriptElement, //ScriptElementID 
+            e_SpreadListChangedEvent, //ScriptID
+            "after spread list changed", //Name
+            "Dispatched after the spread list is changed.  Event is not canceleable.", //Description
+            kTrue, //Bubbles
+            kFalse, //Cancelable
+            kBaseScriptEventBoss, //ClassID of the Event object
+            c_Event //ScriptID of the Event object
+        } 
+		// =====================
+		// =====================
+
+		// =====================
+		// Layer Events
+		// =====================
+		/*Event 
+        { 
+            kLayerCreatedEventScriptElement, //ScriptElementID 
+            e_LayerCreatedEvent, //ScriptID
+            "layer created", //Name
+            "Dispatched when a layer is created.  Event is not canceleable.", //Description
+            kTrue, //Bubbles
+            kFalse, //Cancelable
+            kBaseScriptEventBoss, //ClassID of the Event object
+            c_Event //ScriptID of the Event object
+        }*/
+
+		/*Event 
+        { 
+            kLayerAddedEventScriptElement, //ScriptElementID 
+            e_LayerAddedEvent, //ScriptID
+            "layer added", //Name
+            "Dispatched when a layer is added.  Event is not canceleable.", //Description
+            kTrue, //Bubbles
+            kFalse, //Cancelable
+            kBaseScriptEventBoss, //ClassID of the Event object
+            c_Event //ScriptID of the Event object
+        }*/
+		
+		Event 
+        { 
+            kLayerChangedEventScriptElement, //ScriptElementID 
+            e_LayerChangedEvent, //ScriptID
+            "layer changed", //Name
+            "Dispatched when a layer is changed.  Event is not canceleable.", //Description
+            kTrue, //Bubbles
+            kFalse, //Cancelable
+            kBaseScriptEventBoss, //ClassID of the Event object
+            c_Event //ScriptID of the Event object
+        }
+		
+		/*Event 
+        { 
+            kLayerVisibleChangedEventScriptElement, //ScriptElementID 
+            e_LayerVisibleChangedEvent, //ScriptID
+            "layer visible changed", //Name
+            "Dispatched when a layers visibility is changed.  Event is not canceleable.", //Description
+            kTrue, //Bubbles
+            kFalse, //Cancelable
+            kBaseScriptEventBoss, //ClassID of the Event object
+            c_Event //ScriptID of the Event object
+        }*/
+
+		/*Event 
+        { 
+            kLayerLockChangedEventScriptElement, //ScriptElementID 
+            e_LayerLockChangedEvent, //ScriptID
+            "layer lock changed", //Name
+            "Dispatched when a layers lock is changed.  Event is not canceleable.", //Description
+            kTrue, //Bubbles
+            kFalse, //Cancelable
+            kBaseScriptEventBoss, //ClassID of the Event object
+            c_Event //ScriptID of the Event object
+        }*/
+		
+		/*Event 
+        { 
+            kLayerOrderChangedEventScriptElement, //ScriptElementID 
+            e_LayerOrderChangedEvent, //ScriptID
+            "layer order changed", //Name
+            "Dispatched when a layers order is changed.  Event is not canceleable.", //Description
+            kTrue, //Bubbles
+            kFalse, //Cancelable
+            kBaseScriptEventBoss, //ClassID of the Event object
+            c_Event //ScriptID of the Event object
+        }*/
+
+		// =====================
+		// =====================
+
+		// =====================
+		// Drag/Drop events
+		// =====================
+		/*Event 
+        { 
+            kDropEventScriptElement, //ScriptElementID 
+            e_DropEvent, //ScriptID
+            "drop", //Name
+            "Dispatched when an item is dropped on InDesign.  Event is not canceleable.", //Description
+            kTrue, //Bubbles
+            kFalse, //Cancelable
+            kBaseScriptEventBoss, //ClassID of the Event object
+            c_Event //ScriptID of the Event object
+        }*/		
+		// =====================
+		// =====================
+
+		// =====================
+		// Keyboard Events (some way for people to implement shortcuts easily)
+		// =====================
+		/*Event 
+        { 
+            kKeyDownEventScriptElement, //ScriptElementID 
+            e_KeyDownEvent, //ScriptID
+            "key down", //Name
+            "Dispatched when a key is down.  Event is not canceleable.", //Description
+            kTrue, //Bubbles
+            kFalse, //Cancelable
+            kBaseScriptEventBoss, //ClassID of the Event object
+            c_Event //ScriptID of the Event object
+        }*/
+
+		/*Event 
+        { 
+            kKeyUpEventScriptElement, //ScriptElementID 
+            e_KeyUpEvent, //ScriptID
+            "key up", //Name
+            "Dispatched when a key is released.  Event is not canceleable.", //Description
+            kTrue, //Bubbles
+            kFalse, //Cancelable
+            kBaseScriptEventBoss, //ClassID of the Event object
+            c_Event //ScriptID of the Event object
+        }*/
+
+		/*Event 
+        { 
+            kKeyPressedEventScriptElement, //ScriptElementID 
+            e_KeyPressedEvent, //ScriptID
+            "key pressed", //Name
+            "Dispatched key is pressed.  Event is not canceleable.", //Description
+            kTrue, //Bubbles
+            kFalse, //Cancelable
+            kBaseScriptEventBoss, //ClassID of the Event object
+            c_Event //ScriptID of the Event object
+        }*/
+		// =====================
+		// =====================
+
+		// ===================
+		// Other possibilities
+		// ===================
+		Event 
+        { 
+            kMasterPageAppliedEventScriptElement, //ScriptElementID 
+            e_MasterPageAppliedEvent, //ScriptID
+            "master page applied", //Name
+            "Dispatched when a master page is applied.  Event is not canceleable.", //Description
+            kTrue, //Bubbles
+            kFalse, //Cancelable
+            kBaseScriptEventBoss, //ClassID of the Event object
+            c_Event //ScriptID of the Event object
+        }
+		
+		/*Event 
+        { 
+            kOverrideMasterPageItemEventScriptElement, //ScriptElementID 
+            e_OverrideMasterPageItemEvent, //ScriptID
+            "override master page item", //Name
+            "Dispatched when a master page item is overriden.  Event is not canceleable.", //Description
+            kTrue, //Bubbles
+            kFalse, //Cancelable
+            kBaseScriptEventBoss, //ClassID of the Event object
+            c_Event //ScriptID of the Event object
+        }*/
+
+		/*Event 
+        { 
+            kPageItemDetachFromMasterPageEventScriptElement, //ScriptElementID 
+            e_DetachFromMasterPageEvent, //ScriptID
+            "page item detach from master page", //Name
+            "Dispatched when a page item is detached from its master page.  Event is not canceleable.", //Description
+            kTrue, //Bubbles
+            kFalse, //Cancelable
+            kBaseScriptEventBoss, //ClassID of the Event object
+            c_Event //ScriptID of the Event object
+        }*/ 
+
+		/*Event 
+        { 
+            kCreateObjectEventScriptElement, //ScriptElementID 
+            e_CreateObjectEvent, //ScriptID
+            "after object created", //Name
+            "Dispatched after an object is created.  Event is not canceleable.", //Description
+            kTrue, //Bubbles
+            kFalse, //Cancelable
+            kBaseScriptEventBoss, //ClassID of the Event object
+            c_Event //ScriptID of the Event object
+        }*/ 
+
+		/*Event 
+        { 
+            kModifyObjectEventScriptElement, //ScriptElementID 
+            e_ModifyObjectEvent, //ScriptID
+            "after object modify", //Name
+            "Dispatched after an object is modified.  Event is not canceleable.", //Description
+            kTrue, //Bubbles
+            kFalse, //Cancelable
+            kBaseScriptEventBoss, //ClassID of the Event object
+            c_Event //ScriptID of the Event object
+        }*/
+		
+		// =====================
+		// =====================
+
+		// Specifies a property
+		Property
+		{
+			kIDHAPropertyScriptElement,
+			p_XMPString,
+			"xmpstring",
+			"Retrieves xmp metadata for the document",
+			StringType,
+			{}
+			kNoAttributeClass,
+		}
+		
+		// Connects this plug-in's methods and properties to scripting.
+		Provider
+		{
+			kIDHAScriptProviderBoss,	// provider boss ID
+			{
+				Object{ kApplicationObjectScriptElement }, //Target object
+				Object{ kDocumentObjectScriptElement },
+
+			//	Event{ kContentChangedEventScriptElement }, 
+			//	Event{ kFormatChangedEventScriptElement }, 
+			//	Event{ kGeometryChangedEventScriptElement }, 
+			//	Event{ kObjectStyleListChangedEventScriptElement }, 
+				Event{ kStyleListChangedEventScriptElement }, 
+				Event{ kTableStyleListChangedEventScriptElement }, 
+				Event{ kCellStyleListChangedEventScriptElement }, 
+				Event{ kParaStyleListChangedEventScriptElement }, 
+				Event{ kCharStyleListChangedEventScriptElement }, 
+				Event{ kSpreadListChangedEventScriptElement }, 
+			//	Event{ kLayerCreatedEventScriptElement }, 
+			//	Event{ kLayerAddedEventScriptElement }, 
+				Event{ kLayerChangedEventScriptElement }, 
+			//	Event{ kLayerVisibleChangedEventScriptElement }, 
+			//	Event{ kLayerLockChangedEventScriptElement }, 
+			//	Event{ kLayerOrderChangedEventScriptElement }, 
+			//	Event{ kDropEventScriptElement }, 
+			//	Event{ kKeyDownEventScriptElement }, 
+			//	Event{ kKeyUpEventScriptElement }, 
+			//	Event{ kKeyPressedEventScriptElement }, 
+				Event{ kMasterPageAppliedEventScriptElement }, 
+			//	Event{ kOverrideMasterPageItemEventScriptElement }, 
+			//	Event{ kPageItemDetachFromMasterPageEventScriptElement }, 
+			//	Event{ kCreateObjectEventScriptElement }, 
+			//	Event{ kModifyObjectEventScriptElement }, 
+
+				Property{ kIDHAPropertyScriptElement, kReadWrite },
+			}
+		}
+	}
+};
+
+	
+
+#endif // __ODFRC__
+
+#include "IDHA_enUS.fr"
+#include "IDHA_jaJP.fr"

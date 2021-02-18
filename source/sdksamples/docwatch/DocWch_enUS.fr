@@ -1,0 +1,90 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/sdksamples/docwatch/DocWch_enUS.fr $
+//  
+//  Owner: Adobe Developer Technologies
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+// English string table is defined here
+
+resource StringTable (kSDKDefStringsResourceID + index_enUS)
+{
+	k_enUS,									// Locale Id
+	kEuropeanMacToWinEncodingConverter,		// Character encoding converter
+	
+	{
+
+		// ----- Menu strings
+		kDocWchCompanyKey,					kDocWchCompanyValue,					
+		kDocWchAboutMenuKey,				kDocWchPluginName "[US]...",
+		kDocWchPluginsMenuKey,				kDocWchPluginName "[US]",
+		kDocWchUseResponderMenuItemKey,		"Use Responder[US]...",
+		kSDKDefAboutThisPlugInMenuKey,		kSDKDefAboutThisPlugInMenuValue_enUS,	
+
+		// ----- Command strings
+	
+		// ----- Window strings
+	
+		// ----- Panel/dialog strings
+
+		// ----- Error strings
+			
+		// ----- Misc strings
+		kDocWchAboutBoxStringKey,			kDocWchPluginName "[US], version " kDocWchVersion " by " kDocWchAuthor "\n\n" kSDKDefCopyrightStandardValue "\n\n" kSDKDefPartnersStandardValue_enUS,
+
+		// ----- Alertbox strings
+		kBeforeNewDocSignalStringKey,		kDocWchPluginName "[US]: DocWatch Before New Doc Signal",
+		kDuringNewDocSignalStringKey,		kDocWchPluginName "[US]: DocWatch During New Doc Signal",
+		kAfterNewDocSignalStringKey,		kDocWchPluginName "[US]: DocWatch After New Doc Signal",
+
+		kBeforeOpenDocSignalStringKey,		kDocWchPluginName "[US]: DocWatch Before Open Doc Signal",
+		kDuringOpenDocSignalStringKey,		kDocWchPluginName "[US]: DocWatch During Open Doc Signal",
+		kAfterOpenDocSignalStringKey,		kDocWchPluginName "[US]: DocWatch After Open Doc Signal",
+
+		kBeforeSaveDocSignalStringKey,		kDocWchPluginName "[US]: DocWatch Before Save Doc Signal",
+		kAfterSaveDocSignalStringKey,		kDocWchPluginName "[US]: DocWatch After Save Doc Signal",
+
+		kBeforeSaveAsDocSignalStringKey,	kDocWchPluginName "[US]: DocWatch Before Save As Signal",
+		kAfterSaveAsDocSignalStringKey,		kDocWchPluginName "[US]: DocWatch After Save As Signal",
+
+		kBeforeSaveACopyDocSignalStringKey,	kDocWchPluginName "[US]: DocWatch Before Save A Copy Signal",
+		kDuringSaveACopyDocSignalStringKey,	kDocWchPluginName "[US]: DocWatch During Save A Copy Signal",
+		kAfterSaveACopyDocSignalStringKey,	kDocWchPluginName "[US]: DocWatch After Save A Copy Signal",
+
+		kBeforeRevertDocSignalStringKey,	kDocWchPluginName "[US]: DocWatch Before Revert Doc Signal",
+		kAfterRevertDocSignalStringKey,		kDocWchPluginName "[US]: DocWatch After Revert Doc Signal",
+
+		kBeforeCloseDocSignalStringKey,		kDocWchPluginName "[US]: DocWatch Before Close Doc Signal",
+		kAfterCloseDocSignalStringKey,		kDocWchPluginName "[US]: DocWatch After Close Doc Signal",
+
+	}
+
+};
+
+#endif // __ODFRC__
+
+// End , DocWch_enUS.fr
+
+

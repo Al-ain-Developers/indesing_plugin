@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:WindowedApplication 
+	xmlns:mx="http://www.adobe.com/2006/mxml" 
+	layout="absolute" xmlns:map="com.adobe.idmltools.*" 
+	width="600" 
+	height="320" 
+	initialize="init()" 
+	close="cleanup()" 
+	maxHeight="320" 
+	maxWidth="600" 
+	minHeight="320" 
+	minWidth="600"
+	verticalScrollPolicy="off"
+	horizontalScrollPolicy="off"
+	> 
+	<mx:Script>
+		<![CDATA[
+			//import statements
+			import mx.events.CloseEvent;
+			import mx.events.ListEvent;			
+			import com.adobe.idmltools.BindableImgRef;
+			import com.adobe.idmltools.CompressionUtils;
+			import com.adobe.idmltools.PackageXmlLocator;
+			import com.adobe.idmltools.XmlUtils;	
+			import flash.filesystem.File;		
+			import mx.collections.ArrayCollection;		
+			import mx.core.DragSource;
+        	import mx.events.DragEvent;
+        	import mx.managers.DragManager;		
+        	import mx.controls.Alert;
+			
+			//member variable declarations
+			private var compressionUtils:CompressionUtils;
+			private var tempDir:File;
+			private var source:File;
+			private var destination:File;
+			private var images:ArrayCollection = new ArrayCollection;
+			private var spreadFiles:Array;
+			private var idmlFolder:PackageXmlLocator;			
+			private var xmlUtils:XmlUtils;
+			
+			/**
+			 * Initialized by the application.
+			 */ 
+			private function init():void
+			{
+				xmlUtils = new XmlUtils();		
+				compressionUtils = new CompressionUtils();
+			}
+			
+			/**
+			 * Ensures an IDML file is not currently open when a user
+			 * chooses to open a new file.
+			 */
+			private function checkForExistingSource():void
+			{
+				//If the source is not null then an IDML file must currently be open.
+				if (source != null) 
+				{ 
+					var message:String = "Are you sure you want to open a new file?\n Opening a new file will close the file you currently have open";
+					Alert.show(message,"Warning", 3 /*confirm dialog box*/, this, chooseSource);
+				}
+				//An IDML file is not currently open.
+				else
+				{
+					chooseSource(null);
+				}
+			}
+			
+			/**
+			 * Handles the alert message prompting to overwrite the 
+			 * existing file.  Prompts the user to browse to the
+			 * file they wish to open.
+			 */ 
+			private function chooseSource(evt:CloseEvent):void
+			{
+				//If there was a popup alert and the user selected "NO"
+				//terminate this method.
+				if ((evt != null) && (evt.detail == Alert.NO))
+				{
+					return;
+				}
+				//Remove all existing images from the display because only one IDML file should be opened at a time.
+				images.removeAll();	
+				
+				//Choose an IDML file to open.					
+				source = new File(); 
+				source.addEventListener(Event.SELECT, openPackageFile);
+				source.browseForOpen("Choose an IDML File", [new FileFilter("IDML Package File", "*.idml")]);
+			}
+			
+			/**
+			 * Browse for a replacement image file.
+			 */ 
+			private function chooseReplacementImage():void
+			{
+				var newImgFile:File = new File();
+				var imagesFilter:FileFilter = new FileFilter("Images", "*.jpg;*.gif;*.png;*.bmp;");
+				newImgFile.addEventListener(FileListEvent.SELECT_MULTIPLE, loadReplacementImage);
+				newImgFile.browseForOpenMultiple("Select an image to replace this image with.", [imagesFilter]);			
+			}
+			
+			/**
+			 * Handles the selection of one or many files needing replacement.
+			 */ 
+			private function loadReplacementImage(evt:FileListEvent):void
+			{
+				var selectedItems:Array = hList.selectedIndices;
+				var selectedItemsLength:int = selectedItems.length;				
+				
+				for (var i:int = 0; i < evt.files.length && i < selectedItemsLength; i++) 
+				{
+					var imgRef:BindableImgRef = images.getItemAt(selectedItems[i]) as BindableImgRef;
+					var selectedFile:File = evt.files[i] as File;
+					imgRef.update(selectedFile);
+				}
+			}
+			
+			/**
+			 * Browse for IDML package file to save.
+			 */ 
+			private function chooseDestination():void
+			{
+				if (destination == null) 
+				{ 
+					destination = new File(); 
+				}
+				destination.addEventListener(Event.SELECT, savePackage);				
+				destination.browseForSave("IDML Package");
+			}
+			
+			/**
+			 * Extracts the selected file to a temporary directory
+			 * and populates the display with content from the 
+			 * IDML file.
+			 */
+			private function openPackageFile(event:Event):void
+			{
+				tempDir = compressionUtils.decompressToTempDir(source);
+				idmlFolder = new PackageXmlLocator(tempDir);
+				spreadFiles = idmlFolder.getSpreadFiles();
+				
+				//For each spread file
+				for(var i:int = 0; i < spreadFiles.length; i++) 
+				{     					
+					//for each image reference in the spread file
+					var spreadFile:File = spreadFiles[i] as File;				
+					var spreadImages:Array = xmlUtils.getSpreadImages(spreadFile);
+					for(var j:int = 0; j < spreadImages.length; j++) 
+					{
+						//Add the image reference to the Array Collection for display.
+						images.addItem(spreadImages[j] as BindableImgRef);
+					}
+				}						
+				//Update data provider
+				hList.dataProvider = images;				
+			}
+			
+			/**
+			 * Prompts the user to browse to a file to save 
+			 * to.
+			 */
+			private function savePackage(event:Event):void
+			{
+				//for each spreadfile
+				for(var i:int = 0; i < spreadFiles.length; i++) 
+				{
+					//for each Bindable Image Reference Object.
+					var spreadFile:File = spreadFiles[i] as File;	
+					for each (var imgRef:BindableImgRef in images)
+					{
+						if (imgRef.hasChanged)
+						{
+							xmlUtils.updateSpreadFile(spreadFile, imgRef);
+						}
+					}				
+				}
+				//Compress the temp directory and write the new file to disk.
+				compressionUtils.compress(tempDir, destination);
+			}
+			
+			/**
+			 * Handles the file that is dropped over an existing image.
+			 */ 
+			private function  dropHandler(event:DragEvent):void
+			{
+				var list:List = event.currentTarget as List;
+				
+				//Get the array of files being drug into the app.
+				//Note:	Most samples that demonstrate dragging and dropping files into an 
+				//		air application use the native drag and drop handlers and events.
+				//		The problem with the native drag and drop handler is that the events
+				//		associated with them do not work for calculating the drop index.
+				//		The line below allows dragging and dropping of files using the drag 
+				//		event instead of the NativeDragEvent.
+				var imgFiles:Array = event.dragSource.dataForFormat(ClipboardFormats.FILE_LIST_FORMAT) as Array; 
+				var imgFile:File = imgFiles[0]; 
+				
+				//If the file is an image file
+				if ((imgFile.type.toString() == ".png") ||
+					(imgFile.type.toString() == ".gif") ||
+					(imgFile.type.toString() == ".jpg"))
+				{
+					//Update the image object with the new image file.
+					var lstIndex:int = list.calculateDropIndex(event);
+					var img:BindableImgRef = images.getItemAt(lstIndex) as BindableImgRef;
+					img.update(imgFile);
+				}
+				else 
+				{
+					Alert.show("Only image files can be dropped over an image.");
+				}
+			}
+			
+			/**
+			 * Handles the drag event when a file is 
+			 * dragged over the list of images.
+			 */ 
+			private function dragEnterHandler(event:DragEvent):void
+			{
+				var list:List = event.currentTarget as List;
+        		NativeDragManager.acceptDragDrop(list);
+			}
+			
+			/**
+			 * Removes the temporary directory containing
+			 * the extracted IDML file.
+			 */
+			private function cleanup():void
+			{
+				if((null != tempDir) && (tempDir.exists))
+				{
+					tempDir.deleteDirectory(true);
+				}
+			}
+			
+		]]>
+	</mx:Script>
+	<mx:Panel 
+		width="100%" 
+		height="100%" 
+		layout="absolute"
+		verticalScrollPolicy="off"
+		horizontalScrollPolicy="off"
+		>
+		<mx:Button label="Open IDML File" click="checkForExistingSource()" y="220" x="15"/>
+		<mx:Button label="Replace Selected Image" click="chooseReplacementImage()" x="145" y="220"/>
+		<mx:Button label="Save IDML File" click="chooseDestination()" x="330" y="220"/>
+		<mx:List 
+			id="hList" 
+			height="200" 
+			columnCount="2" 
+			columnWidth="200"
+			verticalScrollPolicy="on"
+			horizontalScrollPolicy="on"
+			dragEnter="dragEnterHandler(event)"
+			dragDrop="dropHandler(event)"
+			width="550" 
+			x="15" 
+			y="10" 
+			allowMultipleSelection="true">
+				<mx:itemRenderer>
+			       <mx:Component>
+			           <mx:HBox width="300" height="120" paddingLeft="10" paddingRight="10">
+						<mx:Image source="file:///{data.nativePath}" width="100" height="100" />
+			               <mx:VBox>
+			               	<mx:Label text="Name: {data.fileName}"/>
+				               <mx:HBox>
+				               <mx:Label text="Path:"/>
+				               	<mx:TextInput text="{data.nativePath}"/>
+				               </mx:HBox>				               
+				               <mx:Label text="Embedded: {data.showEmbedded()}" />
+			               </mx:VBox>
+			           </mx:HBox>
+			       </mx:Component>
+			   </mx:itemRenderer>
+		</mx:List >
+	</mx:Panel>
+</mx:WindowedApplication>

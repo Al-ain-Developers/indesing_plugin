@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4266d968-3961-405e-8c8a-f28393291c66}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;rc;def;r;odl;hpj;bat;for;f90</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Plugin and Hacks">
+      <UniqueIdentifier>{1e05b065-7b82-4dfd-a780-d95435da6d80}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{2a6e850c-3134-417a-ac8a-2dcac24ef03d}</UniqueIdentifier>
+      <Extensions>ico;cur;bmp;dlg;rc2;rct;bin;cnt;rtf;gif;jpg;jpeg;jpe</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{97d82baf-a8fd-423b-bcdd-b201f343b62e}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\source\open\components\conditionaltextui\ConditionalTextLayoutAction.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\conditionaltextui\ConditionalTextLayoutObserver.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\conditionaltextui\ConditionalTextTips.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\conditionaltextui\ConditionalTextUIFacade.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\conditionaltextui\ConditionalTextUIPanelDetailController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\conditionaltextui\ConditionalTextUIPanelMenuAction.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\conditionaltextui\ConditionalTextUIPanelView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\conditionaltextui\ConditionalTextUIUtils.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\conditionaltextui\ConditionalTextVisitorHelper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\conditionaltextui\ConditionSetDropDownObserver.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\conditionaltextui\ConditionSetDropDownTip.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\conditionaltextui\ConditionSetNameDialogController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\conditionaltextui\ConditionsQuickApplyService.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\conditionaltextui\ConditionStaticTextView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\conditionaltextui\ConditionStatusTextSelectionObserver.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\conditionaltextui\ConditionTagColorSwatchView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\conditionaltextui\ConditionTagDeleteDialogController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\conditionaltextui\ConditionTagEyeballObserver.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\conditionaltextui\ConditionTagEyeballView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\conditionaltextui\ConditionTagListDNDHandler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\conditionaltextui\ConditionTagListDNDSource.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\conditionaltextui\ConditionTagListTreeController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\conditionaltextui\ConditionTagListTreeObserver.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\conditionaltextui\ConditionTagListTreeSelectionObserver.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\conditionaltextui\ConditionTagListTreeViewAdapter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\conditionaltextui\ConditionTagListTreeViewWidgetMgr.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\conditionaltextui\ConditionTagNameILEEditingAttributes.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\conditionaltextui\ConditionTagNameILEObserver.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\conditionaltextui\ConditionTagNameTextValidation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\conditionaltextui\ConditionTagOptionsDialogController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\conditionaltextui\ConditionTagOptionsDialogObserver.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\conditionaltextui\ConditionTagTVNodeContextMenu.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\conditionaltextui\ConditionTagTVNodeEH.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\conditionaltextui\ConditionTagTVNodeTip.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\conditionaltextui\DeleteConditionTagButtonDNDTarget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\conditionaltextui\DeleteConditionTagButtonObserver.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\conditionaltextui\NewConditionSetButtonObserver.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\conditionaltextui\NewConditionTagButtonObserver.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\conditionaltextui\ShowConditionIndicatorsObserver.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\conditionaltextui\plugin\ConditionalTextUIID.cpp">
+      <Filter>Source Files\Plugin and Hacks</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\conditionaltextui\plugin\ConditionalTextUIMWHacks.cpp">
+      <Filter>Source Files\Plugin and Hacks</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\conditionaltextui\plugin\ConditionalTextUIPlugin.cpp">
+      <Filter>Source Files\Plugin and Hacks</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\libs\publiclib\statics\PlugInStatics.cpp">
+      <Filter>Source Files\Plugin and Hacks</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\conditionaltextui\plugin\TriggerResourceDeps.cpp">
+      <Filter>Source Files\Plugin and Hacks</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\precomp\msvc\VCPlugInHeaders.cpp">
+      <Filter>Source Files\Plugin and Hacks</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\source\precomp\msvc\VCPlugInHeaders.h">
+      <Filter>Source Files\Plugin and Hacks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\open\components\conditionaltextui\includes\ConditionalTextUIDefs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\open\components\conditionaltextui\includes\ConditionalTextUIFactoryList.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\public\interfaces\text\ConditionalTextUIID.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\open\components\conditionaltextui\includes\ConditionalTextUIUtils.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\source\open\components\conditionaltextui\resources\ConditionalTextUIClass.fr">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\source\open\components\conditionaltextui\resources\ConditionalTextUIFactoryList.fr">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\source\open\components\conditionaltextui\resources\ConditionalTextUIMenu.fr">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\source\open\components\conditionaltextui\resources\ConditionalTextUIPanelList.fr">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\source\open\components\conditionaltextui\resources\ConditionalTextUIPNG.fr">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\source\open\components\conditionaltextui\resources\ConditionalTextUIStrings.fr">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\source\open\components\conditionaltextui\resources\ConditionalTextUIStrings_enUS.fr">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\source\open\components\conditionaltextui\resources\ConditionalTextUIViews.fr">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\source\open\components\conditionaltextui\resources\ConditionalTextUIViews_enUS.fr">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\..\..\source\open\components\conditionaltextui\resources\ConditionalTextUI.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\..\..\source\open\components\conditionaltextui\resources\ConditionalTextUI.fr">
+      <Filter>Resource Files</Filter>
+    </CustomBuild>
+  </ItemGroup>
+</Project>

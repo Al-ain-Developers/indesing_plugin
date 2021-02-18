@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd" [
+<!-- Begin Document Specific Declarations -->
+<?Fm Validation Off?>
+<!NOTATION jpeg PUBLIC "">
+<!NOTATION pdf PUBLIC "">
+
+<!-- End Document Specific Declarations -->
+]>
+<?Fm Condition Background Maroon SINGLE_UNDERLINE show?>
+<?Fm Condition Comment Red SINGLE_UNDERLINE show?>
+<?Fm Condition FooterRevisionDate Black NO_OVERRIDE show?>
+<?Fm Condition InformationOnly Blue STRIKETHROUGH show?>
+<?Fm Condition InternalOnly Dark%20Gray NO_OVERRIDE show?>
+<?Fm Condition PathName Red NO_OVERRIDE hide?>
+<?Fm Condition TBD Red NO_OVERRIDE show?>
+<article>
+<title>&num;10006 Selection</title>
+<section>
+<title>
+<?FM MARKER [Cross-Ref] 34387: 1HeadingTop: 1.2 Page Layout (1HeadingTop)?>Overview</title>
+<para>This document describes the selection architecture for InDesign
+CS&sol;InCopy CS.</para>
+<para>One of the most wide-reaching changes that was made between
+version 1.x and 2.0 of the application was to overhaul the selection
+architecture. This was primarily a consequence of the introduction
+of the table and XML features that both needed to support selectable
+objects, and the recognition that new features would require this
+same capability in the future. The changes were not fully complete
+at 2.0, and some of the so-called &ldquo;old&rdquo; selection
+architecture (ISelection&sol;ISpecifier&sol;CSelectionObserver)
+was still present in the 2.0 API. These old selection architecture
+constructs have been eliminated from the API and all InDesign CS&sol;InCopy
+CS plug-ins are required to be compliant with the &ldquo;new&rdquo; selection
+architecture.</para>
+<para>The new selection architecture is based on the concept of
+suites, which are abstract interfaces that allow client code to
+interact with an abstract selection; that is, they remain neutral
+to the underlying format of the objects that are selected.</para>
+<para>Although there would appear to be complexity in the new selection
+architecture, it is a fairly straightforward facade design pattern,
+and implementing a custom suite is largely a question of obeying
+conventions that dictate where to place your own implementations.
+Writing client code is particularly straightforward with the new
+architecture, and there are a host of new suites in the API that
+can be used to modify the properties of selections. Writing code
+that is new selection architecture enabled is also a good way to
+factor plug-in code, since it enforces a clear separation of client
+code and model code.</para>
+</section>
+
+<section>
+<title>Terminology and definitions</title>
+<itemizedlist>
+<listitem>
+<para>
+<emphasis>Abstract selection</emphasis>;
+the layer that allows client code to access and change attributes
+of selected objects. It decouples client code from the need to know
+where or how these attributes are stored in the underlying model.
+See also ASB.</para>
+</listitem>
+<listitem>
+<para>
+<emphasis>Abstract selection boss</emphasis>; see
+also ASB.</para>
+</listitem>
+<listitem>
+<para>
+<emphasis>Active context</emphasis>; there can be
+several views open, each with its own selection subsystem, but only
+one view is active at any one time. The active context refers to
+the context the user has chosen to work with. It is represented
+by interface IActiveContext and gives access to the key constructs
+such as the document, view, workspace and selection manager.</para>
+</listitem>
+<listitem>
+<para>
+<emphasis>ASB</emphasis>; abstract selection boss.
+Class that represents the abstract selection and lets client code
+use suites to access or change selection attributes. </para>
+</listitem>
+<listitem>
+<para>
+<emphasis>Client</emphasis>; any code that interacts
+with the selection, typically user interface code. This includes
+widgets in palettes, menu items, actions and tools. The interaction
+can include reflecting the value of some selection attribute, changing
+the attribute, or both.</para>
+</listitem>
+<listitem>
+<para>
+<emphasis>Concrete selection</emphasis>; the layer
+underlying abstract selection that knows which objects are selected
+and how to access and change their attributes in the underlying
+model. Comprises one or more CSBs. See also CSB.</para>
+</listitem>
+<listitem>
+<para>
+<emphasis>Concrete selection boss</emphasis>; see
+also CSB.</para>
+</listitem>
+<listitem>
+<para>
+<emphasis>CSB</emphasis>; concrete selection boss.
+Class that encapsulates a selection format and supports access,
+change and observation of the selected objects in its underlying
+model.</para>
+</listitem>
+<listitem>
+<para>
+<emphasis>CSB suite</emphasis>; suite implementation
+for a selection format that understands how to access and change
+some attributes of the selected objects in the underlying model. </para>
+</listitem>
+<listitem>
+<para>
+<emphasis>Hybrid selection</emphasis>; the ability
+to select objects of differing selection format simultaneously. Selecting
+a frame containing a picture (a layout selection) and adding a range
+of text (a text selection) to that selection then changing the color
+of both the frame and the text with a single gesture is an example
+of hybrid selection in action. Hybrid selection is not currently supported
+but the new selection architecture has been implemented to accommodate
+it in the future via intergator suites. </para>
+</listitem>
+<listitem>
+<para>
+<emphasis>Integrator suite</emphasis>; suite implementation
+on an ASB called by client code to access or change attributes of
+the selection. An integrator suite forwards any member function
+call to its corresponding CSB suite on one or more CSBs. </para>
+</listitem>
+<listitem>
+<para>
+<emphasis>Model</emphasis>; the boss objects where
+data is stored. Also, from the perspective of selection, the commands
+that mutate this data are part of the model. There may be several
+distinct yet related models in a document. For example the layout
+model represents layout, stories and their text models represent
+text, tables and their table model represents tables and so on.
+A selection format sits atop each distinct model that contains selectable
+objects.</para>
+</listitem>
+<listitem>
+<para>
+<emphasis>New selection architecture</emphasis>;
+the architecture of the selection subsystem at the current version
+of the application, which was present in similar form at version
+2.0. </para>
+</listitem>
+<listitem>
+<para>
+<emphasis>Old selection architecture</emphasis>;
+effectively the selection architecture at version 1.0 of the application
+that remained active at version 2.0. This architecture is now obsolete. </para>
+</listitem>
+<listitem>
+<para>
+<emphasis>Selection</emphasis>; the act of choosing
+amongst several, to pick out. </para>
+</listitem>
+<listitem>
+<para>
+<emphasis>Selection attribute</emphasis>; a property
+of a selectable object, stroke color, height or opacity for example.</para>
+</listitem>
+<listitem>
+<para>
+<emphasis>Selection extension</emphasis>; an extension
+that can be made to a suite implementation when advanced features
+are needed. </para>
+</listitem>
+<listitem>
+<para>
+<emphasis>Selection format</emphasis>; the model
+format of a selectable object. Some examples of selection formats
+are: layout (page items), text, table cells, XML structure. </para>
+</listitem>
+<listitem>
+<para>
+<emphasis>Selection manager</emphasis>; the abstraction
+ISelectionManager that manages a selection subsystem. </para>
+</listitem>
+<listitem>
+<para>
+<emphasis>Selection observer</emphasis>; the abstraction
+ActiveSelectionObserver that allows client code to be notified when
+the selection changes. </para>
+</listitem>
+<listitem>
+<para>
+<emphasis>Selection subsystem</emphasis>; the abstraction
+responsible for managing selection in a particular view. </para>
+</listitem>
+<listitem>
+<para>
+<emphasis>Selection target</emphasis>; the means
+by which a selection format identifies the set of objects that are
+selected. </para>
+</listitem>
+<listitem>
+<para>
+<emphasis>Subject identifier</emphasis>; each selection
+format has a means of uniquely identifying the selected objects.
+This data is referred to as the selection format's subject identifier.
+For example, layout page items have a subject identifier similar
+to a UIDList, text uses a story UID and a text range. All of the
+boss classes, interfaces and relationships that contribute to the
+functioning of a selectable object are also part of that selectable
+object's selection format. This also includes commands and observers.</para>
+</listitem>
+<listitem>
+<para>
+<emphasis>Suite</emphasis>; an interface that allows
+client code to access and change attributes of selected objects.
+It decouples client code from the underlying model where the attributes
+are stored.</para>
+</listitem>
+<listitem>
+<para>
+<emphasis>Suite boss class</emphasis>; boss classes
+to which suite interfaces get added to extend the set of attributes
+of selected objects that can be accessed and changed. </para>
+</listitem>
+<listitem>
+<para>
+<emphasis>Target</emphasis>; see selection target.</para>
+</listitem>
+</itemizedlist>
+</section>
+</article>

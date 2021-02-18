@@ -1,0 +1,2108 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/sdksamples/snapshot/Snap.fr $
+//  
+//  Owner: Adobe Developer Technologies
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//  
+//  Umbrella include file for all the .fr files in the plug - in.
+//  
+//========================================================================================
+
+//===========================
+//  General includes:
+//===========================
+
+#include "MenuDef.fh"
+#include "ActionDef.fh"
+#include "ActionDefs.h"
+#include "AdobeMenuPositions.h"
+#include "Tool.fh"
+#include "ToolBoxDefs.h"
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "StringTable.fh"
+//#include "OMTypes.h"
+#include "objectmodeltypes.fh"
+#include "ShuksanID.h"
+#include "ActionID.h"
+#include "CommandID.h"
+#include "WorkspaceID.h"
+#include "widgetid.h"
+#include "BuildNumber.h"
+#include "ToolboxID.h"
+#include "CursorID.h"
+#include "GraphicsID.h"
+#include "LayoutUIID.h"
+#include "IControlViewDefs.h"
+#include "SysControlIds.h"
+#include "Widgets.fh"
+#include "GenericID.h"
+#include "ScriptInfoTypes.fh"
+#include "ErrorTableTypes.h" // For UserErrorTable
+#include "AppFrameworkID.h" // for kApplicationObjectScriptElement
+
+// Project includes:
+#include "SnapID.h"
+#include "SnapRezDefs.h"
+#include "SnapScriptingDefs.h"
+
+#include "PlugInModel_UIAttributes.h"
+
+#include "EveInfo.fh"
+#ifdef __ODFRC__
+
+#include "Schema.fh"
+
+
+/*
+// Plugin version definition.
+*/
+resource PluginVersion (kSDKDefPluginVersionResourceID)
+{
+    kTargetVersion,
+    kSnapPluginID,
+    kSDKDefPlugInMajorVersionNumber, kSDKDefPlugInMinorVersionNumber,     
+    kSDKDefHostMajorVersionNumber, kSDKDefHostMinorVersionNumber,
+    kSnapLastMajorFormatChange, kSnapLastMinorFormatChange,
+    {kInDesignProduct, kInCopyProduct }, 
+    {kWildFS },
+    kUIPlugIn,
+    kSnapVersion
+};
+
+resource IgnoreTags (1)
+{
+    kImplementationIDSpace,
+    {
+        kSnapPrefsDataPersistImpl,
+    }
+};
+
+/* 
+// Schema definition for the persistent implementation of ISnapPrefsData.
+*/
+resource SchemaList(1)
+{{
+        Schema
+        {
+            kSnapPrefsDataPersistImpl,
+            {RezLong(1), RezLong(0)},
+            {
+                {PMString    {0x0001, ""}},         // dialog default file name 
+                {ClassID     {0x0002, 0}},          // format class ID, fFormatClassID
+                {Real        {0x0003, 1.0}},        // fScale 
+                {Real        {0x0004, 72.0}},       // fResolution 
+                {Real        {0x0005, 72.0}},       // fMinimumResolution 
+                {Real        {0x0006, 0.0}},        // fBleed 
+                {Bool16        {0x0007, 0}},        // fDrawArea
+                {Bool16        {0x0008, 0}},        // fFullResolutionGraphics
+                {Bool16        {0x0009, 0}},        // fDrawGray
+                {Bool16        {0x000a, 0}},        // fAddAlpha
+                {Int32         {0x000b, 512}},      // fDrawingFlags, set default to IShape::kPrinting == 512
+                {Bool16        {0x000c, 0}},        // fIndexedColour
+            }
+        };
+        
+        Schema
+        {
+            kSnapPrefsDataPersistImpl,
+            {kSDKDef_1J_PersistMajorVersionNumber, kSDKDef_1J_PersistMinorVersionNumber},
+            {
+                {PMString    {0x0001, ""}},         // dialog default file name 
+                {ClassID    {0x0002, 0}},           // format class ID, fFormatClassID
+                {Real        {0x0003, 1.0}},        // fScale 
+                {Real        {0x0004, 72.0}},       // fResolution 
+                {Real        {0x0005, 72.0}},       // fMinimumResolution 
+                {Real        {0x0006, 0.0}},        // fBleed 
+                {Bool16        {0x0007, 0}},        // fDrawArea
+                {Bool16        {0x0008, 0}},        // fFullResolutionGraphics
+                {Bool16        {0x0009, 0}},        // fDrawGray
+                //{Bool16        {0x000a, 0}},      // fAddAlpha
+                {Int32        {0x000b, 512}},       // fDrawingFlags, set default to IShape::kPrinting == 512
+                //{Bool16        {0x000c, 0}},      // fIndexedColour
+                {Int32        {0x000d, 0}},         // fJPEGEncoding
+                {Int32        {0x000e, 0}},         // fJPEGQuality
+                {Int32        {0x000f, 0}},         // fTIFFPaletteType
+                {Int32        {0x0010, 0}},         // fGIFPaletteType
+                {Bool16        {0x0011, 0}},        // fTIFFTransparent
+                {Bool16        {0x0012, 0}},        // fGIFTransparent
+                {Bool16        {0x0013, 0}},        // fGIFInterlaced
+            }
+        };
+        
+        Schema
+        {
+            kSnapPrefsDataPersistImpl,
+            {kSnapStoreWideStringMajorFormat, kSnapStoreWideStringMinorFormat},
+            {
+                {WideString    {0x0001, ""}},       // dialog default file name 
+                {ClassID    {0x0002, 0}},           // format class ID, fFormatClassID
+                {Real        {0x0003, 1.0}},        // fScale 
+                {Real        {0x0004, 72.0}},       // fResolution 
+                {Real        {0x0005, 72.0}},       // fMinimumResolution 
+                {Real        {0x0006, 0.0}},        // fBleed 
+                {Bool16        {0x0007, 0}},        // fDrawArea
+                {Bool16        {0x0008, 0}},        // fFullResolutionGraphics
+                {Bool16        {0x0009, 0}},        // fDrawGray
+                //{Bool16        {0x000a, 0}},      // fAddAlpha
+                {Int32        {0x000b, 512}},       // fDrawingFlags, set default to IShape::kPrinting == 512
+                //{Bool16        {0x000c, 0}},      // fIndexedColour
+                {Int32        {0x000d, 0}},         // fJPEGEncoding
+                {Int32        {0x000e, 0}},         // fJPEGQuality
+                {Int32        {0x000f, 0}},         // fTIFFPaletteType
+                {Int32        {0x0010, 0}},         // fGIFPaletteType
+                {Bool16        {0x0011, 0}},        // fTIFFTransparent
+                {Bool16        {0x0012, 0}},        // fGIFTransparent
+                {Bool16        {0x0013, 0}},        // fGIFInterlaced
+            }
+        };
+    }};
+
+/*
+//    Boss class definition.
+*/
+resource ClassDescriptionTable(kSDKDefClassDescriptionTableResourceID)
+{{{
+            
+            /**
+            Provides the actions invoked by this plug - in's
+            sub - menu items. 
+            
+            @ingroup snapshot
+            */
+            Class
+            {
+                kSnapActionComponentBoss,
+                kBaseActionComponentBoss,
+                {
+                    /** 
+                    Handle the actions from the menu. 
+                    */
+                    IID_IACTIONCOMPONENT, kSnapActionComponentImpl,
+                }
+            },
+            
+            /**
+            Registers the tracker for this plug-in.
+            
+            @ingroup snapshot
+            */
+            Class
+            {
+                kSnapTrackerRegisterBoss,
+                kInvalidClass,
+                {
+                    /** 
+                    Register the tracker with the application. 
+                    */
+                    IID_ITRACKERREGISTER, kSnapTrackerRegisterImpl,
+                    /** 
+                    Identify this boss as a tracker register service.
+                    Implementation provided by the API.
+                    */
+                    IID_IK2SERVICEPROVIDER, kCTrackerRegisterProviderImpl,
+                }
+            },
+            
+            /** 
+            Provides the tool behavior for this plug-in.
+            
+            @ingroup snapshot
+            */
+            Class
+            {
+                kSnapToolBoss,
+                kGenericToolBoss,
+                {
+                    /**
+                    Provide the implementation for the tool's behavior.
+                    */
+                    IID_ITOOL, kSnapToolImpl,
+                    /** 
+                    Identify this boss as a cursor provider service.
+                    Implementation provided by the API.
+                    */
+                    IID_ICURSORPROVIDER, kSnapCursorProviderImpl,
+                    /** 
+                    Persist the state of the tool across application instantiation.
+                    Implementation provided by the API.
+                    */
+                    IID_IPMPERSIST, kPMPersistImpl,
+                }
+            },
+            
+            /** 
+            Provides the tracker behavior for the tool in this plug-in.
+            
+            @ingroup snapshot
+            */
+            Class
+            {
+                kSnapTrackerBoss,
+                kInvalidClass,
+                {
+                    /** 
+                    Provide the implementation for the tool's tracker.
+                    */
+                    IID_ITRACKER, kSnapTrackerImpl,
+                }
+            },
+            
+            /**
+            Provides the snapshot preference dialog.
+            
+            @ingroup snapshot
+            */
+            Class
+            {
+                kSnapDialogBoss,
+                kDialogBoss,
+                {
+                    /** 
+                    Provide the implementation for the dialog initialization and validation.
+                    */
+                    IID_IDIALOGCONTROLLER, kSnapDialogControllerImpl,
+                }
+            },
+            
+            /**
+            Provides the command for setting the Snapshot tool's preference. 
+            
+            @ingroup snapshot
+            */
+            Class
+            {
+                kSnapSetPrefsCmdBoss,
+                kInvalidClass,
+                {
+                    /** 
+                    Provide the implementation for the command to set up the snapshot tool's 
+                    preference. The prefs are saved only on the session workspace & the itemlist
+                    is not used in the command. The command performs notification on kWorkspaceBoss
+                    for IID_ISNAPPREFSDATA.
+                    
+                    */
+                    IID_ICOMMAND, kSnapSetPrefsCmdImpl,
+                    /** 
+                    Provide the non-persistent implementation for ISnapPrefsData.
+                    */
+                    IID_ISNAPPREFSDATA, kSnapPrefsDataImpl,
+                }
+            },
+            
+            /**
+            Registers the content iterator for the persistent implementation 
+            of ISnapPrefsData interface.
+            
+            @ingroup snapshot
+            */
+            Class
+            {
+                kSnapIteratorRegisterBoss,
+                kInvalidClass,
+                {
+                    /** 
+                    Register the content iterator for persistent implementation of ISnapPrefsData.
+                    */
+                    IID_ICONTENTITERATORREGISTER, kSnapIteratorRegisterImpl,
+                    /** 
+                    Implementation provided by the API.
+                    */
+                    IID_IK2SERVICEPROVIDER,  kContentIteratorRegisterServiceImpl,
+                }
+            },
+            
+            /**
+            Adds one interface ISnapPrefsData to kWorkspaceBoss. The 
+            implementation specifies how to get and set a set of preference value.
+            
+            @ingroup snapshot
+            */
+            AddIn
+            {
+                kWorkspaceBoss,
+                kInvalidClass,
+                {
+                    /** 
+                    Persistent implementation of ISnapPrefsData interface. 
+                    */
+                    IID_ISNAPPREFSDATA, kSnapPrefsDataPersistImpl
+                }
+            },
+            
+            /** Adds our custom selection suite interface to kIntegratorSuiteBoss.
+            
+            @ingroup snapshot
+            
+            */
+            AddIn
+            {
+                kIntegratorSuiteBoss,
+                kInvalidClass,
+                {
+                    /**    Suite interface. 
+                    @see SnapSelectionSuiteASB
+                    */
+                    IID_ISNAPSELECTIONSUITE, kSnapSelectionSuiteASBImpl,
+                }
+            },
+            
+            /** Adds our custom selection suite interface to kLayoutSuiteBoss
+            
+            @ingroup snapshot
+            */
+            AddIn
+            {
+                kLayoutSuiteBoss,
+                kInvalidClass,
+                {
+                    /** Suite interface.
+                    @see SnapSelectionSuiteCSB
+                    */
+                    IID_ISNAPSELECTIONSUITE, kSnapSelectionSuiteCSBImpl,
+                }
+                
+            },
+            
+            /** Provides error strings for the SnapShot plug-in.
+            
+            Added at InDesign CS2 to support scripting.
+            
+            @ingroup snapshot
+            */
+            Class
+            {
+                kSnapErrorStringServiceBoss,
+                kInvalidClass,
+                {
+                    /** See IErrorStringService / SnapErrorStringService.
+                    */
+                    IID_IERRORSTRINGSERVICE, kSnapErrorStringServiceImpl,        
+                    /**    Identifies this boss as an error string provider.
+                    */
+                    IID_IK2SERVICEPROVIDER, kErrorStringProviderImpl,
+                }
+            },
+            
+            /** Handles scripting of SnapShot preferences
+            in interface ISnapPrefsData on the session workspaces.
+            
+            Added at InDesign CS2 to support scripting.
+            
+            @ingroup snapshot
+            */
+            Class
+            {
+                kSnapPrefsScriptProviderBoss,
+                kBaseScriptProviderBoss,
+                {
+                    /** See IScriptProvider / SnapPrefsScriptProvider.
+                    */
+                    IID_ISCRIPTPROVIDER, kSnapPrefsScriptProviderImpl,    
+                }
+            },
+            
+            /** This boss class supplies a schema-based conversion service for this plug-in.
+            @ingroup snapshot
+            */
+            Class
+            {
+                kSnapConversionProviderBoss,
+                kInvalidClass,
+                {
+                    /** Provides the conversion service.
+                    Implementation provided by the API.
+                    */
+                    IID_ICONVERSIONPROVIDER, kSchemaBasedConversionImpl,
+                    /** Registers this boss as a conversion service provider.
+                    Implementation provided by the API.
+                    */
+                    IID_IK2SERVICEPROVIDER, kConversionServiceImpl,
+                }
+            },
+        }}};
+
+/*
+// Implementation definition.
+*/
+resource FactoryList (kSDKDefFactoryListResourceID) 
+{
+    kImplementationIDSpace,
+    {
+#include "SnapFactoryList.h"
+    }
+};
+
+/*
+// Menu definition.
+*/
+resource MenuDef (kSDKDefMenuResourceID)
+{
+    {
+        // The About Plug - ins sub - menu item for this plug - in.
+        kSnapAboutActionID,            // ActionID (kInvalidActionID for positional entries)
+        kSnapAboutMenuPath,            // Menu Path.
+        kSDKDefAlphabeticPosition,     // Menu Position.
+        kSDKDefIsNotDynamicMenuFlag,   // kSDKDefIsNotDynamicMenuFlag or kSDKDefIsDynamicMenuFlag.
+        
+    }
+};
+
+/*
+// Action definition.
+*/
+resource ActionDef (kSDKDefActionResourceID)
+{
+    {
+        kSnapActionComponentBoss,         // ClassID of boss class that implements the ActionID.
+        kSnapAboutActionID,               // ActionID.
+        kSnapAboutMenuKey,                // Sub - menu string.
+        kHelpMenuActionArea,              // Area name (see ActionDefs.h).
+        kNormalAction,                    // Type of action (see ActionDefs.h).
+        kDisableIfLowMem,                 // Enabling type (see ActionDefs.h).
+        kInvalidInterfaceID,              // Selection InterfaceID this action cares about or kInvalidInterfaceID.
+        kSDKDefInvisibleInKBSCEditorFlag, // kSDKDefVisibleInKBSCEditorFlag or kSDKDefInvisibleInKBSCEditorFlag.
+        
+    }
+};
+
+/*
+// Tool Definitions.
+*/
+resource ToolDef (kIconSnapResource)
+{
+    kSnapToolBoss,                // classID for tool boss
+    kPointerToolBoss,             // classID for tool type(boss of default tool for this type)
+    kDoesNotApply,                // classID for parent tool boss
+    kSixthAdobeToolsGroup  +  1,  // group number  -  -  was kLayoutToolsGroup in 1.0, is kSixthAdobeToolsGroup in 1.5.
+    kSecondAdobeTool,             // tool number
+    kDoesNotApply,                // subtool number
+    kSnapToolActionID,            // action ID associated with shortcut  -  need to look into this some more                
+    kIconSnapResourceID,          // Icon ID
+    kSnapPluginID,                // plug - in ID
+    kADBEIconSuiteButtonType
+};
+
+/*
+// LocaleIndex
+// The LocaleIndex should have indicies that point at your
+// localizations for each language system that you are 
+// localized for.
+*/
+
+/*
+// LocaleIndex (Strings)
+*/
+resource LocaleIndex (kSDKDefStringsResourceID)
+{
+    kStringTableRsrcType,
+    {
+        kWildFS, k_enUS, kSDKDefStringsResourceID + index_enUS
+        kWildFS, k_jaJP, kSDKDefStringsResourceID  +  index_jaJP
+        
+        kWildFS, k_Wild, kSDKDefStringsResourceID + index_enUS
+    }
+};
+
+resource LocaleIndex (kSDKDefStringsNoTransResourceID)
+{
+    kStringTableRsrcType,
+    {
+        kWildFS, k_Wild, kSDKDefStringsNoTransResourceID  +  index_enUS
+    }
+};
+
+resource StringTable (kSDKDefStringsNoTransResourceID  +  index_enUS)
+{
+    k_enUS,                                    // Locale Id
+    kEuropeanMacToWinEncodingConverter,        // Character encoding converter
+    {
+        // No - Translate strings go here:        
+        
+        
+    }
+};
+
+/*
+// Dialog LocaleIndex.
+*/
+resource LocaleIndex (kSDKDefDialogResourceID)
+{
+    kViewRsrcType,
+    {
+        kWildFS, k_Wild, kSDKDefDialogResourceID  +  index_enUS
+    }
+};
+
+/*
+// Type definition.
+*/
+type SnapDialogWidget(kViewRsrcType) : DialogBoss(ClassID = kSnapDialogBoss) {
+    WidgetEveInfo;
+};
+
+/*
+// Dialog definition.
+// This view is not localised: therefore, it can reside here.
+// However, if you wish to localise it, it is recommended to locate it in one of 
+// the localised framework resource files (i.e. TblBsc_enUS.fr etc.) and 
+// update your Dialog LocaleIndex accordingly.
+*/
+resource SnapDialogWidget (kSDKDefDialogResourceID  +  index_enUS)
+{
+    __FILE__, __LINE__,
+    kSnapDialogWidgetID,                // WidgetID
+    kPMRsrcID_None,                     // RsrcID
+    kBindNone,                          // Binding
+    Frame(0,0,445,582),                 // Frame (l,t,r,b)
+    kTrue, kTrue,                       // Visible, Enabled
+    kDialogTitleKey,                    // Dialog name
+    {
+        //<FREDDYWIDGETDEFLISTUS>
+        
+        EVEGenericPanelWidget
+        (
+            kInvalidWidgetID, // WidgetId
+            0                 // RsrcId
+            0,                // Widget EVE Info
+            kBindNone,        // Frame binding
+            Frame(0,0,445,60) // Frame
+            kTrue,            // Visible
+            kTrue,            // Enabled
+            kEVEAlignFill | kEVERegularSpaceAfter | kEVEArrangeChildrenInRow,
+            
+            {
+                // begin of the File group
+                EVEGroupPanelWidget
+                (
+                    // CControlView properties
+                    0,                  // widget ID
+                    kPMRsrcID_None,     // PMRsrc ID
+                    kBindNone,          // frame binding
+                    Frame(0,0,325,40)   //  left, top, right, bottom
+                    kTrue,              // visible
+                    kTrue,              // enabled
+                    // GroupPanelAttributes properties
+                    kFileOptionsGroupTextWidgetID, // header widget ID
+                            
+                    kEVEAlignFill | kEVERegularSpaceAfter | kEVEArrangeChildrenInRow | kEVERegularMargin,
+                    {// CPanelControlData Children
+                                
+                        EVEStaticTextWidget
+                        (
+                            // CControlView properties
+                            kFileOptionsGroupTextWidgetID, // widget ID
+                            kSysStaticTextPMRsrcId,        // PMRsrc ID
+                            kBindNone,                     // frame binding
+                            Frame(0,0,0,0)                 // left, top, right, bottom
+                            kTrue,                         // visible
+                            kTrue,                         // enabled
+                            // StaticTextAttributes properties
+                            kAlignLeft,                    // Alignment
+                            kEllipsizeEnd, kTrue           // Ellipsize style, Convert ampersands
+                            // CTextControlData properties
+                            kDialogFileOptionsKey,         // control label
+                            // AssociatedWidgetAttributes properties
+                            0,                             // associated widget ID
+                                                    
+                            kEVERegularSpaceAfter,
+                        ),
+
+                        EVEGenericPanelWidget
+                        (
+                            kInvalidWidgetID,   // WidgetId
+                            0                   // RsrcId
+                            0,                  // Widget EVE Info
+                            kBindNone,          // Frame binding
+                            Frame(0,0,145,20)   // Frame
+                            kTrue,              // Visible
+                            kTrue,              // Enabled
+                            kEVEAlignFill | kEVERegularSpaceAfter | kEVEArrangeChildrenInRow,
+                                                    
+                            {
+                                EVEStaticTextWidget
+                                (
+                                    // CControlView properties
+                                    kFilenameStaticTextWidgetID, // widget ID
+                                    kSysStaticTextPMRsrcId,      // PMRsrc ID
+                                    kBindNone,                   // frame binding
+                                    Frame(0,0,0,0)               // left, top, right, bottom
+                                    kTrue,                       // visible
+                                    kTrue,                       // enabled
+                                    // StaticTextAttributes properties
+                                    kAlignRight,                 // Alignment
+                                    kEllipsizeEnd, kTrue         // Ellipsize style, Convert ampersands
+                                    // CTextControlData properties
+                                    kDialogFilenameKey,          // control label
+                                    // AssociatedWidgetAttributes properties
+                                    0,                           // associated widget ID
+                                                            
+                                    kEVERegularSpaceAfter,
+                                ),
+                                EVETextEditBoxWidget
+                                (
+                                    // CControlView properties
+                                    kFilenameTextEditBoxWidgetID, // widget ID
+                                    kSysEditBoxPMRsrcId,          // PMRsrc ID
+                                    kBindNone,                    // frame binding
+                                    Frame(0,0,145,20) 
+                                    kTrue,                        // visible
+                                    kTrue,                        // enabled
+                                    // CEditBoxAttributes
+                                    0.0,                          // nudgeWidgetId (0 if no nudge
+                                    0.0,                          // small nudge amount
+                                    0.0,                          // large nudge amount
+                                    kPMNamedItemMaxChars,         // max num chars
+                                    kFalse,                       // read only flag
+                                    kFalse,                       // should notify on each key stroke
+                                    // TextDataValidation properties
+                                    kFalse,                       // range checking enabled
+                                    kFalse,                       // blank entry allowed
+                                    0.0,                          // upper limit
+                                    0.0,                          // lower limit
+                                    // CTextControlData properties
+                                    kDialogDefaultFilenameKey,    // control label
+                                                                
+                                    kEVERegularSpaceAfter,
+                                ),
+                                                        
+                            }  // End of Eve generic panel child widgets
+                        ), // End of Eve generic panel widget definition
+
+                        EVEGenericPanelWidget
+                        (
+                            kInvalidWidgetID,    // WidgetId
+                            0                    // RsrcId
+                            0,                   // Widget EVE Info
+                            kBindNone,           // Frame binding
+                            Frame(0,0,80,60)     // Frame
+                            kTrue,               // Visible
+                            kTrue,               // Enabled
+                            kEVEAlignFill | kEVERegularSpaceAfter | kEVEArrangeChildrenInRow,
+                                        
+                            {
+                                EVEStaticTextWidget
+                                (
+                                    // CControlView properties
+                                    kFileFormatStaticTextWidgetID, // widget ID
+                                    kSysStaticTextPMRsrcId,        // PMRsrc ID
+                                    kBindNone,                     // frame binding
+                                    Frame(0,0,0,0)                 // left, top, right, bottom
+                                    kTrue,                         // visible
+                                    kTrue,                         // enabled
+                                    // StaticTextAttributes properties
+                                    kAlignRight,                   // Alignment
+                                    kEllipsizeEnd, kTrue           // Ellipsize style, Convert ampersands
+                                    // CTextControlData properties
+                                    kDialogFileFormatKey,          // control label
+                                    // AssociatedWidgetAttributes properties
+                                    0,                             // associated widget ID
+                                                
+                                    kEVERegularSpaceAfter,
+                                ),
+
+                                EVEDropDownListWidget
+                                (
+                                    // CControlView properties
+                                    kFileFormatDropDownWidgetId, // widget ID
+                                    kSysDropDownPMRsrcId,        // PMRsrc ID
+                                    kBindNone,                   // frame binding
+                                    Frame(0,0,0,0)               // left, top, right, bottom
+                                    kTrue,                       // visible
+                                    kTrue,                       // enabled
+                                    // DropDownListControlData properties
+                                    {{
+                                        kDialogDefaultFileFormatKey
+                                    }}
+                                                
+                                    kEVERegularSpaceAfter,
+                                ),
+                                            
+                            }  // End of Eve generic panel child widgets
+                        ), // End of Eve generic panel widget definition
+    
+                    }  // End of Eve generic panel child widgets
+                ), // End of Eve generic panel widget definition
+                            
+                EVEGenericPanelWidget
+                (
+                    kInvalidWidgetID,    // WidgetId
+                    0                    // RsrcId
+                    0,            
+                    kBindNone,           // Frame binding
+                    Frame(0,0,80,50)     // Frame
+                    kTrue,               // Visible
+                    kTrue,               // Enabled
+                    kEVEAlignLeft | kEVERegularSpaceAfter | kEVEArrangeChildrenInColumn,
+                            
+                    {
+                        EVEDefaultButtonWidget
+                        (
+                            // CControlView properties
+                            kOKButtonWidgetID,   // widget ID
+                            kSysButtonPMRsrcId,  // PMRsrc ID
+                            kBindNone,           // frame binding
+                            Frame(0,0,0,0)       // left, top, right, bottom
+                            kTrue,               // visible
+                            kTrue,               // enabled
+                            // CTextControlData properties
+                            kSDKDefOKButtonApplicationKey, // control label
+                                        
+                            kEVELargeSpaceAfter,
+                        ),
+                                    
+                        EVECancelButtonWidget
+                        (
+                            // CControlView properties
+                            kCancelButton_WidgetID, // widget ID
+                            kSysButtonPMRsrcId,     // PMRsrc ID
+                            kBindNone,              // frame binding
+                            Frame(0,0,0,0)          // left, top, right, bottom
+                            kTrue,                  // visible
+                            kTrue,                  // enabled
+                            // CTextControlData properties
+                            kSDKDefCancelButtonApplicationKey, // control label
+                            // CIntegerControlData properties
+                            kTrue,                  // current value
+                                        
+                            kEVENoSpaceAfter,
+                        ),
+                                                    
+                    }  // End of EVE Generic panel child widgets
+                ), // End of EVE Generic panel widget definition
+                    
+            }  // End of Eve generic panel child widgets
+        ), // End of Eve generic panel widget definition   
+        // end of the File group
+            
+        // begin of the General group
+        EVEGenericPanelWidget
+        (
+            kInvalidWidgetID,    // WidgetId
+            0                    // RsrcId
+            0,                   // Widget EVE Info
+            kBindNone,           // Frame binding
+            Frame(0,0,445,171)   // Frame
+            kTrue,               // Visible
+            kTrue,               // Enabled
+            kEVEAlignFill | kEVERegularSpaceAfter | kEVEArrangeChildrenInRow,
+                
+            {
+                EVEGroupPanelWidget
+                (
+                    // CControlView properties
+                    0,                  // widget ID
+                    kPMRsrcID_None,     // PMRsrc ID
+                    kBindNone,          // frame binding
+                    Frame(0,0,417,160)  // left, top, right, bottom    
+                    kTrue,              // visible
+                    kTrue,              // enabled
+                    // GroupPanelAttributes properties
+                    kGeneralOptionsGroupTextWidgetID, // header widget ID                        
+                    kEVEAlignFill | kEVEExtraLargeSpaceAfter | kEVEArrangeChildrenInRow | kEVERegularMargin,
+
+                    {// CPanelControlData Children
+                            
+                        EVEStaticTextWidget
+                        (
+                            // CControlView properties
+                            kGeneralOptionsGroupTextWidgetID, // widget ID
+                            kSysStaticTextPMRsrcId,           // PMRsrc ID
+                            kBindNone,                        // frame binding
+                            Frame(0,0,0,0)                    // left, top, right, bottom
+                            kTrue,                            // visible
+                            kTrue,                            // enabled
+                            // StaticTextAttributes properties
+                            kAlignLeft,                       // Alignment
+                            kEllipsizeEnd, kTrue              // Ellipsize style, Convert ampersands
+                            // CTextControlData properties
+                            kDialogGeneralOptionsKey,         // control label
+                            // AssociatedWidgetAttributes properties
+                            0,                                // associated widget ID
+                                                
+                            kEVERegularSpaceAfter,
+                        ),
+
+                        EVEGenericPanelWidget
+                        (
+                            kInvalidWidgetID,                 // WidgetId
+                            0                                 // RsrcId
+                            0,                                // Widget EVE Info
+                            kBindNone,                        // Frame binding
+                            Frame(0,0,340,179)                // Frame
+                            kTrue,                            // Visible
+                            kTrue,                            // Enabled
+                            kEVEAlignFill | kEVELargeSpaceAfter | kEVEArrangeChildrenInColumn,
+                                
+                            {
+                                EVEGenericPanelWidget
+                                (
+                                    kInvalidWidgetID,    // WidgetId
+                                    0                    // RsrcId
+                                    0,                   // Widget EVE Info
+                                    kBindNone,           // Frame binding
+                                    Frame(0,0,340,20)    // Frame
+                                    kTrue,               // Visible
+                                    kTrue,               // Enabled
+                                    kEVEAlignFill | kEVERegularSpaceAfter | kEVEArrangeChildrenInRow,
+                                        
+                                    {
+                                        EVEStaticTextWidget
+                                        (
+                                            // CControlView properties
+                                            kScaleStaticTextWidgetID, // widget ID
+                                            kSysStaticTextPMRsrcId,   // PMRsrc ID
+                                            kBindNone,                // frame binding
+                                            Frame(0,0,0,0)            // left, top, right, bottom
+                                            kTrue,                    // visible
+                                            kTrue,                    // enabled
+                                            // StaticTextAttributes properties
+                                            kAlignRight,              // Alignment
+                                            kEllipsizeEnd, kTrue      // Ellipsize style, Convert ampersands
+                                            // CTextControlData properties
+                                            kDialogScaleKey,          // control label
+                                            // AssociatedWidgetAttributes properties
+                                            0,                        // associated widget ID
+                                                
+                                            kEVERegularSpaceAfter,
+                                        ),
+                                        EVEPercentageComboBoxWidget
+                                        (
+                                            // CControlView properties
+                                            kScalePercentageComboBoxWidgetID, // widget ID
+                                            kPMRsrcID_None,                   // PMRsrc ID
+                                            kBindNone,                        // frame binding
+                                            Frame(0,0,80,20)                  // left, top, right, bottom
+                                            kTrue,                            // visible
+                                            kTrue,                            // enabled
+                                            // CEditBoxAttributes
+                                            0.0,                              // nudgeWidgetId (0 if no nudge
+                                            10.0,                             // small nudge amount
+                                            100.0,                            // large nudge amount
+                                            9,                                // max num chars
+                                            kFalse,                           // read only flag
+                                            kFalse,                           // should notify on each key stroke
+                                            // TextDataValidation properties
+                                            kTrue,                            // range checking enabled
+                                            kTrue,                            // blank entry allowed
+                                            4000.0,                           // upper limit
+                                            5.0,                              // lower limit
+                                            // CTextControlData properties
+                                            "100%",                           // control label
+                                            // DropDownListControlData properties
+                                            {{
+                                                "5%" , "12.5%" , "25%" , "50%" , "75%" , "100%" , "200%" , "400%" , "800%" , "1200%" , "1600%" , "2400%" , "3200%" , "4000%"
+                                            }}
+                                                    
+                                            kEVERegularSpaceAfter,
+                                        ),
+                                                
+                                    }  // End of Eve generic panel child widgets
+                                ), // End of Eve generic panel widget definition
+                                        
+                                EVEGenericPanelWidget
+                                (
+                                    kInvalidWidgetID,    // WidgetId
+                                    0                    // RsrcId
+                                    0,                   // Widget EVE Info
+                                    kBindNone,           // Frame binding
+                                    Frame(0,0,340,30)    // Frame
+                                    kTrue,               // Visible
+                                    kTrue,               // Enabled
+                                    kEVEAlignFill | kEVERegularSpaceAfter | kEVEArrangeChildrenInRow,
+                                        
+                                    {
+                                        EVEStaticTextWidget
+                                        (
+                                            // CControlView properties
+                                            kBleedStaticTextWidgetID, // widget ID
+                                            kSysStaticTextPMRsrcId,   // PMRsrc ID
+                                            kBindNone,                // frame binding
+                                            Frame(0,0,0,0)            // left, top, right, bottom
+                                            kTrue,                    // visible
+                                            kTrue,                    // enabled
+                                            // StaticTextAttributes properties
+                                            kAlignRight,              // Alignment
+                                            kEllipsizeEnd, kTrue      // Ellipsize style, Convert ampersands
+                                            // CTextControlData properties
+                                            kDialogBleedKey,          // control label
+                                            // AssociatedWidgetAttributes properties
+                                            0,                        // associated widget ID
+                                                    
+                                            kEVESmallSpaceAfter,
+                                        ),
+                                                
+                                        EVEGenericPanelWidget
+                                        (
+                                            kInvalidWidgetID,  // WidgetId
+                                            0                  // RsrcId
+                                            0,            
+                                            kBindNone,         // Frame binding
+                                            Frame(0,0,80,20)   // Frame
+                                            kTrue,             // Visible
+                                            kTrue,             // Enabled
+                                            kEVEAlignLeft | kEVERegularSpaceAfter | kEVEArrangeChildrenInRow,
+                                                    
+                                            {
+                                                EVENudgeControlWidget
+                                                (
+                                                    // CControlView properties
+                                                    kBleedXMeasureEditBoxNudgeWidgetID, // widget ID
+                                                    kPMRsrcID_None,                     // PMRsrc ID
+                                                    kBindNone,                          // frame binding
+                                                    Frame(0,0,0,0)                      // left, top, right, bottom
+                                                    kTrue,                              // visible
+                                                    kTrue,                              // enabled
+                                                            
+                                                    kEVENoSpaceAfter,
+                                                ),
+                                                EVEXMeasureEditBoxWidget                    
+                                                (
+                                                    kBleedXMeasureEditBoxWidgetID,  // WidgetId
+                                                    kSysEditBoxPMRsrcId,            // RsrcId
+                                                    kBindNone,
+                                                    Frame(0,0,0,0)                  // Frame
+                                                    kTrue, kTrue                    // Visible, Enabled
+                                                    kBleedXMeasureEditBoxNudgeWidgetID,            // Widget id of nudge button (0 so we don't get one)
+                                                    1, 10,                          // small,large nudge amount
+                                                    0,                              // max num chars(0 = no limit)
+                                                    kFalse,                         // is read only
+                                                    kFalse,                         // should notify each key stroke
+                                                    kTrue,                          // range checking enabled
+                                                    kFalse,                         // blank entry allowed
+                                                    1440,                           // Upper bounds
+                                                    -1440,                          // Lower bounds
+                                                    "",                             // Initial text
+                                                            
+                                                    kEVERegularSpaceAfter,
+                                                ),
+                                                        
+                                            }  // End of EVE Generic panel child widgets
+                                        ), // End of EVE Generic panel widget definition
+                                                
+                                    }  // End of Eve generic panel child widgets
+                                ), // End of Eve generic panel widget definition
+
+                                EVECheckBoxWidget
+                                (
+                                    // CControlView properties
+                                    kFullResolutionWidgetID, // widget ID
+                                    kSysCheckBoxPMRsrcId,    // PMRsrc ID
+                                    kBindNone,               // frame binding
+                                    Frame(0,0,0,0)           // left, top, right, bottom    
+                                    kTrue,                   // visible
+                                    kTrue,                   // enabled
+                                    // TriStateControlAttributes properties
+                                    kAlignLeft,              // alignment
+                                    // CTextControlData properties
+                                    kDialogFullResolutionKey,// control label
+                                                    
+                                    kEVERegularSpaceAfter,
+                                ),
+        
+                                EVECheckBoxWidget
+                                (
+                                    // CControlView properties
+                                    kGrayscaleWidgetID,   // widget ID
+                                    kSysCheckBoxPMRsrcId, // PMRsrc ID
+                                    kBindNone,            // frame binding
+                                    Frame(0,0,0,0)        // left, top, right, bottom
+                                    kTrue,                // visible
+                                    kTrue,                // enabled
+                                    // TriStateControlAttributes properties
+                                    kAlignLeft,           // alignment
+                                    // CTextControlData properties
+                                    kDialogGrayscaleKey,  // control label
+                                                    
+                                    kEVERegularSpaceAfter,
+                                ),
+                                EVECheckBoxWidget
+                                (
+                                    // CControlView properties
+                                    kPrintingWidgetID,    // widget ID
+                                    kSysCheckBoxPMRsrcId, // PMRsrc ID
+                                    kBindNone,            // frame binding
+                                    Frame(0,0,0,0)        // left, top, right, bottom 
+                                    kTrue,                // visible
+                                    kTrue,                // enabled
+                                    // TriStateControlAttributes properties
+                                    kAlignLeft,           // alignment
+                                    // CTextControlData properties
+                                    kDialogPrintingKey,   // control label
+                                                    
+                                    kEVERegularSpaceAfter,
+                                ),                                        
+                            }  // End of Eve generic panel child widgets
+                        ), // End of Eve generic panel widget definition
+                                
+                        EVEGenericPanelWidget
+                        (
+                            kInvalidWidgetID,    // WidgetId
+                            0                    // RsrcId
+                            0,                   // Widget EVE Info
+                            kBindNone,           // Frame binding
+                            Frame(0,0,0,0)       // Frame
+                            kTrue,               // Visible
+                            kTrue,               // Enabled
+                            kEVEAlignFill | kEVERegularSpaceAfter | kEVEArrangeChildrenInColumn,
+                                    
+                            {
+                                EVEGenericPanelWidget
+                                (
+                                    kInvalidWidgetID,    // WidgetId
+                                    0                    // RsrcId
+                                    0,                   // Widget EVE Info
+                                    kBindNone,           // Frame binding
+                                    Frame(0,0,0,0)       // Frame
+                                    kTrue,               // Visible
+                                    kTrue,               // Enabled
+                                    kEVEAlignRight | kEVERegularSpaceAfter | kEVEArrangeChildrenInRow,
+                                    
+                                    {
+                                        EVEStaticTextWidget
+                                        (
+                                            // CControlView properties
+                                            kResolutionStaticTextWidgetID, // widget ID
+                                            kSysStaticTextPMRsrcId,        // PMRsrc ID
+                                            kBindNone,                     // frame binding
+                                            Frame(0,0,0,0)                 // left, top, right, bottom
+                                            kTrue,                         // visible
+                                            kTrue,                         // enabled
+                                            // StaticTextAttributes properties
+                                            kAlignRight,                   // Alignment
+                                            kEllipsizeEnd, kTrue           // Ellipsize style, Convert ampersands
+                                            // CTextControlData properties
+                                            kDialogResolutionKey,          // control label
+                                            // AssociatedWidgetAttributes properties
+                                            0,                             // associated widget ID
+                                                    
+                                            kEVERegularSpaceAfter,
+                                        ),
+
+                                        EVERealComboBoxWidget
+                                        (
+                                            // CControlView properties
+                                            kResolutionRealComboBoxWidgetID, // widget ID
+                                            kPMRsrcID_None,                  // PMRsrc ID
+                                            kBindNone,                       // frame binding
+                                            Frame(0,0,60,20)                 // left, top, right, bottom
+                                            kTrue,                           // visible
+                                            kTrue,                           // enabled
+                                            // CEditBoxAttributes
+                                            0.0,                             // nudgeWidgetId (0 if no nudge
+                                            10.0,                            // small nudge amount
+                                            100.0,                           // large nudge amount
+                                            5,                               // max num chars
+                                            kFalse,                          // read only flag
+                                            kFalse,                          // should notify on each key stroke
+                                            // TextDataValidation properties
+                                            kTrue,                           // range checking enabled
+                                            kFalse,                          // blank entry allowed
+                                            576.0,                           // upper limit
+                                            9.0,                             // lower limit
+                                            // CTextControlData properties
+                                            k72dpiKey,                       // control label
+                                            // DropDownListControlData properties
+                                            {{
+                                                k9dpiKey , k18dpiKey , k36dpiKey , k72dpiKey , k144dpiKey , k288dpiKey , k576dpiKey
+                                            }}
+                                                
+                                            kEVERegularSpaceAfter,
+                                        ),
+                                    }
+                                )
+
+                                EVEGenericPanelWidget
+                                (
+                                    kInvalidWidgetID,    // WidgetId
+                                    0                    // RsrcId
+                                    0,                   // Widget EVE Info
+                                    kBindNone,           // Frame binding
+                                    Frame(0,0,0,0)       // Frame
+                                    kTrue,               // Visible
+                                    kTrue,               // Enabled
+                                    kEVEAlignRight | kEVERegularSpaceAfter | kEVEArrangeChildrenInRow,
+                                    
+                                    {
+                                        EVEStaticTextWidget
+                                        (
+                                            // CControlView properties
+                                            kMinimumResolutionStaticTextWidgetID, // widget ID
+                                            kSysStaticTextPMRsrcId,               // PMRsrc ID
+                                            kBindNone,                            // frame binding
+                                            Frame(0,0,0,0)                        // left, top, right, bottom
+                                            kTrue,                                // visible
+                                            kTrue,                                // enabled
+                                            // StaticTextAttributes properties
+                                            kAlignRight,                          // Alignment
+                                            kEllipsizeEnd, kTrue                  // Ellipsize style, Convert ampersands
+                                            // CTextControlData properties
+                                            kDialogMinimumResolutionKey,          // control label
+                                            // AssociatedWidgetAttributes properties
+                                            0,                                    // associated widget ID
+                                                    
+                                            kEVERegularSpaceAfter,
+                                        ),
+                                        EVERealComboBoxWidget
+                                        (
+                                            // CControlView properties
+                                            kMinimumResolutionRealComboBoxWidgetID, // widget ID
+                                            kPMRsrcID_None,                         // PMRsrc ID
+                                            kBindNone,                              // frame binding
+                                            Frame(0,0,60,20)                        // left, top, right, bottom
+                                            kTrue,                                  // visible
+                                            kTrue,                                  // enabled
+                                            // CEditBoxAttributes
+                                            0.0,                                    // nudgeWidgetId (0 if no nudge
+                                            10.0,                                   // small nudge amount
+                                            100.0,                                  // large nudge amount
+                                            5,                                      // max num chars
+                                            kFalse,                                 // read only flag
+                                            kFalse,                                 // should notify on each key stroke
+                                            // TextDataValidation properties
+                                            kTrue,                                  // range checking enabled
+                                            kFalse,                                 // blank entry allowed
+                                            576.0,                                  // upper limit
+                                            9.0,                                    // lower limit
+                                            // CTextControlData properties
+                                            k72dpiKey,                              // control label
+                                            // DropDownListControlData properties
+                                            {{
+                                                k9dpiKey , k18dpiKey , k36dpiKey , k72dpiKey , k144dpiKey , k288dpiKey , k576dpiKey
+                                            }}
+                                                    
+                                            kEVERegularSpaceAfter,
+                                        ),
+                                    }
+                                )
+    
+                            }  // End of Eve generic panel child widgets
+                        ), // End of Eve generic panel widget definition
+                    }                                    
+                ),
+                                            
+            }  // End of Eve generic panel child widgets
+        ), // End of Eve generic panel widget definition
+        // end of the General group
+                        
+        // begin of the TIFF group
+        EVEGenericPanelWidget
+        (
+            kInvalidWidgetID,    // WidgetId
+            0                    // RsrcId
+            0,                   // Widget EVE Info
+            kBindNone,           // Frame binding
+            Frame(0,0,445,65)    // Frame
+            kTrue,               // Visible
+            kTrue,               // Enabled
+            kEVEAlignFill | kEVERegularSpaceAfter | kEVEArrangeChildrenInRow,
+                            
+            {
+                EVEGroupPanelWidget
+                (
+                    // CControlView properties
+                    0,                // widget ID
+                    kPMRsrcID_None,   // PMRsrc ID
+                    kBindNone,        // frame binding
+                    Frame(0,0,417,40) //  left, top, right, bottom
+                    kTrue,            // visible
+                    kTrue,            // enabled
+                    // GroupPanelAttributes properties
+                    kTIFFOptionsGroupTextWidgetID, // header widget ID
+                                    
+                    kEVEAlignFill | kEVEExtraLargeSpaceAfter | kEVEArrangeChildrenInRow | kEVERegularMargin,
+                    {// CPanelControlData Children
+                        EVEStaticTextWidget
+                        (
+                            // CControlView properties
+                            kTIFFOptionsGroupTextWidgetID, // widget ID
+                            kSysStaticTextPMRsrcId,        // PMRsrc ID
+                            kBindNone,                     // frame binding
+                            Frame(0,0,0,0)                 // left, top, right, bottom
+                            kTrue,                         // visible
+                            kTrue,                         // enabled
+                            // StaticTextAttributes properties
+                            kAlignLeft,                    // Alignment
+                            kEllipsizeEnd, kTrue           // Ellipsize style, Convert ampersands
+                            // CTextControlData properties
+                            kDialogTIFFOptionsKey,         // control label
+                            // AssociatedWidgetAttributes properties
+                            0,                             // associated widget ID
+                                                            
+                            kEVERegularSpaceAfter,
+                        ),    
+                        EVEGenericPanelWidget
+                        (
+                            kInvalidWidgetID,    // WidgetId
+                            0                    // RsrcId
+                            0,                   // Widget EVE Info
+                            kBindNone,           // Frame binding
+                            Frame(0,0,100,71)    // Frame
+                            kTrue,               // Visible
+                            kTrue,               // Enabled
+                            kEVEAlignFill | kEVERegularSpaceAfter | kEVEArrangeChildrenInRow,
+                                                    
+                            {
+                                EVEStaticTextWidget
+                                (
+                                    // CControlView properties
+                                    kPaletteTypeStaticTextWidgetID, // widget ID
+                                    kSysStaticTextPMRsrcId,         // PMRsrc ID
+                                    kBindNone,                      // frame binding
+                                    Frame(0,0,0,0)                  // left, top, right, bottom    
+                                    kTrue,                          // visible
+                                    kTrue,                          // enabled
+                                    // StaticTextAttributes properties
+                                    kAlignRight,                    // Alignment
+                                    kEllipsizeEnd, kTrue            // Ellipsize style, Convert ampersands
+                                    // CTextControlData properties
+                                    kDialogPaletteTypeKey,          // control label
+                                    // AssociatedWidgetAttributes properties
+                                    0,                              // associated widget ID
+                                                            
+                                    kEVERegularSpaceAfter,
+                                ),
+
+                                EVEDropDownListWidget
+                                (
+                                    // CControlView properties
+                                    kTIFFPaletteTypeDropDownWidgetID, // widget ID
+                                    kSysDropDownPMRsrcId,             // PMRsrc ID
+                                    kBindNone,                        // frame binding
+                                    Frame(0,0,0,0)                    // left, top, right, bottom
+                                    kTrue,                            // visible
+                                    kTrue,                            // enabled
+                                    // DropDownListControlData properties
+                                    {{
+                                        kNoPaletteTypeKey , kExactThenAdaptivePaletteTypeKey , kMacPaletteTypeKey , kWebPaletteTypeKey , kWinPaletteTypeKey
+                                    }}
+                                                    
+                                    kEVERegularSpaceAfter,
+                                ),
+                                                        
+                            }  // End of Eve generic panel child widgets
+                        ), // End of Eve generic panel widget definition
+                                        
+                        EVECheckBoxWidget
+                        (
+                            // CControlView properties
+                            kTIFFTransparentWidgetID, // widget ID
+                            kSysCheckBoxPMRsrcId,     // PMRsrc ID
+                            kBindNone,                // frame binding
+                            Frame(0,0,0,0)            // left, top, right, bottom    
+                            kTrue,                    // visible
+                            kTrue,                    // enabled
+                            // TriStateControlAttributes properties
+                            kAlignLeft,               // alignment
+                            // CTextControlData properties
+                            kDialogTransparentKey,    // control label
+                                                    
+                            kEVERegularSpaceAfter,
+                        ),    
+                    }        
+                ),
+                                
+            }  // End of Eve generic panel child widgets
+        ), // End of Eve generic panel widget definition
+        // end of the TIFF group
+                        
+        // begin of the GIF group
+        EVEGenericPanelWidget
+        (
+            kInvalidWidgetID,  // WidgetId
+            0                  // RsrcId
+            0,                 // Widget EVE Info
+            kBindNone,         // Frame binding
+            Frame(0,0,445,95)  // Frame
+            kTrue,             // Visible
+            kTrue,             // Enabled
+            kEVEAlignFill | kEVERegularSpaceAfter | kEVEArrangeChildrenInRow,
+                            
+            {
+                EVEGroupPanelWidget
+                (
+                    // CControlView properties
+                    0,                  // widget ID
+                    kPMRsrcID_None,     // PMRsrc ID
+                    kBindNone,          // frame binding
+                    Frame(0,0,417,70)   // left, top, right, bottom
+                    kTrue,              // visible
+                    kTrue,              // enabled
+                    // GroupPanelAttributes properties
+                    kGIFOptionsGroupTextWidgetID, // header widget ID
+                                    
+                    kEVEAlignFill | kEVEExtraLargeSpaceAfter | kEVEArrangeChildrenInRow | kEVERegularMargin,
+                    {// CPanelControlData Children
+                    
+                        EVEStaticTextWidget
+                        (
+                            // CControlView properties
+                            kGIFOptionsGroupTextWidgetID, // widget ID
+                            kSysStaticTextPMRsrcId,       // PMRsrc ID
+                            kBindNone,                    // frame binding
+                            Frame(0,0,0,0)                // left, top, right, bottom
+                            kTrue,                        // visible
+                            kTrue,                        // enabled
+                            // StaticTextAttributes properties
+                            kAlignLeft,                   // Alignment
+                            kEllipsizeEnd, kTrue          // Ellipsize style, Convert ampersands
+                            // CTextControlData properties
+                            kDialogGIFOptionsKey,         // control label
+                            // AssociatedWidgetAttributes properties
+                            0,                            // associated widget ID
+                                                    
+                            kEVERegularSpaceAfter,
+                        ),    
+
+                        EVEGenericPanelWidget
+                        (
+                            kInvalidWidgetID,    // WidgetId
+                            0                    // RsrcId
+                            0,                   // Widget EVE Info
+                            kBindNone,           // Frame binding
+                            Frame(0,0,417,73)    // Frame
+                            kTrue,               // Visible
+                            kTrue,               // Enabled
+                            kEVEAlignFill | kEVERegularSpaceAfter | kEVEArrangeChildrenInColumn,
+                                            
+                            {
+                                EVEGenericPanelWidget
+                                (
+                                    kInvalidWidgetID,    // WidgetId
+                                    0                    // RsrcId
+                                    0,                   // Widget EVE Info
+                                    kBindNone,           // Frame binding
+                                    Frame(0,0,417,20)    // Frame
+                                    kTrue,               // Visible
+                                    kTrue,               // Enabled
+                                    kEVEAlignFill | kEVERegularSpaceAfter | kEVEArrangeChildrenInRow,
+                                            
+                                    {
+                                        EVEStaticTextWidget
+                                        (
+                                            // CControlView properties
+                                            kPaletteTypeStaticTextWidgetID, // widget ID
+                                            kSysStaticTextPMRsrcId,         // PMRsrc ID
+                                            kBindNone,                      // frame binding
+                                            Frame(0,0,0,0)                  // left, top, right, bottom
+                                            kTrue,                          // visible
+                                            kTrue,                          // enabled
+                                            // StaticTextAttributes properties
+                                            kAlignRight,                    // Alignment
+                                            kEllipsizeEnd, kTrue            // Ellipsize style, Convert ampersands
+                                            // CTextControlData properties
+                                            kDialogPaletteTypeKey,          // control label
+                                            // AssociatedWidgetAttributes properties
+                                            0,                              // associated widget ID
+                                                    
+                                            kEVERegularSpaceAfter,
+                                        ),
+                                        EVEDropDownListWidget
+                                        (
+                                            // CControlView properties
+                                            kGIFPaletteTypeDropDownWidgetID, // widget ID
+                                            kSysDropDownPMRsrcId,            // PMRsrc ID
+                                            kBindNone,                       // frame binding
+                                            Frame(0,0,0,0)                   // left, top, right, bottom
+                                            kTrue,                           // visible
+                                            kTrue,                           // enabled
+                                            // DropDownListControlData properties
+                                            {{
+                                                kExactThenAdaptivePaletteTypeKey , kMacPaletteTypeKey , kWebPaletteTypeKey , kWinPaletteTypeKey
+                                            }}
+                                                    
+                                            kEVERegularSpaceAfter,
+                                        ),
+
+                                    }  // End of Eve generic panel child widgets
+                                ), // End of Eve generic panel widget definition    
+
+                                EVECheckBoxWidget
+                                (
+                                    // CControlView properties
+                                    kGIFInterlacedWidgetID, // widget ID
+                                    kSysCheckBoxPMRsrcId,   // PMRsrc ID
+                                    kBindNone,              // frame binding
+                                    Frame(0,0,0,0)          // left, top, right, bottom    
+                                    kTrue,                  // visible
+                                    kTrue,                  // enabled
+                                    // TriStateControlAttributes properties
+                                    kAlignLeft,             // alignment
+                                    // CTextControlData properties
+                                    kGIFInterlacedKey,      // control label
+                                                    
+                                    kEVERegularSpaceAfter,
+                                ),    
+                                                
+                            }  // End of Eve generic panel child widgets
+                        ), // End of Eve generic panel widget definition
+                                        
+                        EVECheckBoxWidget
+                        (
+                            // CControlView properties
+                            kGIFTransparentWidgetID, // widget ID
+                            kSysCheckBoxPMRsrcId,    // PMRsrc ID
+                            kBindNone,               // frame binding
+                            Frame(0,0,0,0)           // left, top, right, bottom    
+                            kTrue,                   // visible
+                            kTrue,                   // enabled
+                            // TriStateControlAttributes properties
+                            kAlignLeft,              // alignment
+                            // CTextControlData properties
+                            kDialogTransparentKey,   // control label
+                                                    
+                            kEVERegularSpaceAfter,
+                        ),    
+
+                    }                
+                ),
+                                                        
+            }  // End of Eve generic panel child widgets
+        ), // End of Eve generic panel widget definition
+        // end of the GIP group
+                        
+        // begin of the JPEG group
+        EVEGenericPanelWidget
+        (
+            kInvalidWidgetID,    // WidgetId
+            0                    // RsrcId
+            0,                   // Widget EVE Info
+            kBindNone,           // Frame binding
+            Frame(0,0,445,65)    // Frame
+            kTrue,               // Visible
+            kTrue,               // Enabled
+            kEVEAlignFill | kEVERegularSpaceAfter | kEVEArrangeChildrenInRow,
+                            
+            {
+                EVEGroupPanelWidget
+                (
+                    // CControlView properties
+                    0,                 // widget ID
+                    kPMRsrcID_None,    // PMRsrc ID
+                    kBindNone,         // frame binding
+                    Frame(0,0,417,40)  //  left, top, right, bottom
+                    kTrue,             // visible
+                    kTrue,             // enabled
+                    // GroupPanelAttributes properties
+                    kJPEGOptionsGroupTextWidgetID, // header widget ID
+                                    
+                    kEVEAlignFill | kEVEExtraLargeSpaceAfter | kEVEArrangeChildrenInRow | kEVERegularMargin,
+                    {// CPanelControlData Children
+                                        
+                        EVEStaticTextWidget
+                        (
+                            // CControlView properties
+                            kJPEGOptionsGroupTextWidgetID, // widget ID
+                            kSysStaticTextPMRsrcId,        // PMRsrc ID
+                            kBindNone,                     // frame binding
+                            Frame(0,0,0,0)                 // left, top, right, bottom
+                            kTrue,                         // visible
+                            kTrue,                         // enabled
+                            // StaticTextAttributes properties
+                            kAlignLeft,                    // Alignment
+                            kEllipsizeEnd, kTrue           // Ellipsize style, Convert ampersands
+                            // CTextControlData properties
+                            kDialogJPEGOptionsKey,         // control label
+                            // AssociatedWidgetAttributes properties
+                            0,                             // associated widget ID
+                                                    
+                            kEVERegularSpaceAfter,
+                        ),    
+                        EVEGenericPanelWidget
+                        (
+                            kInvalidWidgetID,    // WidgetId
+                            0                    // RsrcId
+                            0,                   // Widget EVE Info
+                            kBindNone,           // Frame binding
+                            Frame(0,0,0,0)       // Frame
+                            kTrue,               // Visible
+                            kTrue,               // Enabled
+                            kEVEAlignFill | kEVERegularSpaceAfter | kEVEArrangeChildrenInRow,
+                                            
+                            {
+                                EVEStaticTextWidget
+                                (
+                                    // CControlView properties
+                                    kJPEGEncodingStaticTextWidgetID, // widget ID
+                                    kSysStaticTextPMRsrcId,          // PMRsrc ID
+                                    kBindNone,                       // frame binding
+                                    Frame(0,0,0,0)                   // left, top, right, bottom
+                                    kTrue,                           // visible
+                                    kTrue,                           // enabled
+                                    // StaticTextAttributes properties
+                                    kAlignRight,                     // Alignment
+                                    kEllipsizeEnd, kTrue             // Ellipsize style, Convert ampersands
+                                    // CTextControlData properties
+                                    kDialogJPEGEncodingKey,          // control label
+                                    // AssociatedWidgetAttributes properties
+                                    0,                               // associated widget ID
+                                                    
+                                    kEVERegularSpaceAfter,
+                                ),
+
+                                EVEDropDownListWidget
+                                (
+                                    // CControlView properties
+                                    kJPEGEncodingDropDownWidgetID, // widget ID
+                                    kSysDropDownPMRsrcId,          // PMRsrc ID
+                                    kBindNone,                     // frame binding
+                                    Frame(0,0,0,0)                 // left, top, right, bottom
+                                    kTrue,                         // visible
+                                    kTrue,                         // enabled
+                                    // DropDownListControlData properties
+                                    {{
+                                        kJPEGEncodingBaselineKey , kJPEGEncodingProgressiveKey
+                                    }}
+                                                    
+                                    kEVERegularSpaceAfter,
+                                ),
+                                                
+                            }  // End of Eve generic panel child widgets
+                        ), // End of Eve generic panel widget definition
+                                        
+                        EVEGenericPanelWidget
+                        (
+                            kInvalidWidgetID,    // WidgetId
+                            0                    // RsrcId
+                            0,                   // Widget EVE Info
+                            kBindNone,           // Frame binding
+                            Frame(0,0,0,0)       // Frame
+                            kTrue,               // Visible
+                            kTrue,               // Enabled
+                            kEVEAlignRight | kEVERegularSpaceAfter | kEVEArrangeChildrenInRow,
+                                            
+                            {
+                                EVEStaticTextWidget
+                                (
+                                    // CControlView properties
+                                    kJPEGQualityStaticTextWidgetID, // widget ID
+                                    kSysStaticTextPMRsrcId,         // PMRsrc ID
+                                    kBindNone,                      // frame binding
+                                    Frame(0,0,0,0)                  // left, top, right, bottom
+                                    kTrue,                          // visible
+                                    kTrue,                          // enabled
+                                    // StaticTextAttributes properties
+                                    kAlignRight,                    // Alignment
+                                    kEllipsizeEnd, kTrue            // Ellipsize style, Convert ampersands
+                                    // CTextControlData properties
+                                    kDialogJPEGQualityKey,          // control label
+                                    // AssociatedWidgetAttributes properties
+                                    0,                              // associated widget ID
+                                                    
+                                    kEVERegularSpaceAfter,
+                                ),
+                                EVEDropDownListWidget
+                                (
+                                    // CControlView properties
+                                    kJPEGQualityDropDownWidgetID, // widget ID
+                                    kSysDropDownPMRsrcId,         // PMRsrc ID
+                                    kBindNone,                    // frame binding
+                                    Frame(0,0,0,0)                // left, top, right, bottom
+                                    kTrue,                        // visible
+                                    kTrue,                        // enabled
+                                    // DropDownListControlData properties
+                                    {{
+                                        kJPEGQualityLowKey , kJPEGQualityGoodKey , kJPEGQualityExcellentKey , kJPEGQualityGreatKey
+                                    }}
+                                                    
+                                    kEVERegularSpaceAfter,
+                                ),
+                                                
+                            }  // End of Eve generic panel child widgets
+                        ), // End of Eve generic panel widget definition
+        
+                    }                
+                ),
+                                
+            }  // End of Eve generic panel child widgets
+        ), // End of Eve generic panel widget definition
+        // end of the GPEG group
+                        
+        // begin of the Selection group
+        EVEGenericPanelWidget
+        (
+            kInvalidWidgetID,    // WidgetId
+            0                    // RsrcId
+            0,                   // Widget EVE Info
+            kBindNone,           // Frame binding
+            Frame(0,0,445,120)   // Frame
+            kTrue,               // Visible
+            kTrue,               // Enabled
+            kEVEAlignFill | kEVERegularSpaceAfter | kEVEArrangeChildrenInRow,
+                            
+            {
+                EVEGroupPanelWidget
+                (
+                    // CControlView properties
+                    0,                // widget ID
+                    kPMRsrcID_None,   // PMRsrc ID
+                    kBindNone,        // frame binding
+                    Frame(0,0,417,40) //  left, top, right, bottom
+                    kTrue,            // visible
+                    kTrue,            // enabled
+                    // GroupPanelAttributes properties
+                    kSelectionOptionsGroupTextWidgetID, // header widget ID
+                                    
+                    kEVEAlignFill | kEVEExtraLargeSpaceAfter | kEVEArrangeChildrenInColumn | kEVERegularMargin,
+                    {// CPanelControlData Children
+                                        
+                        EVEStaticTextWidget
+                        (
+                            // CControlView properties
+                            kSelectionOptionsGroupTextWidgetID, // widget ID
+                            kSysStaticTextPMRsrcId,             // PMRsrc ID
+                            kBindNone,                          // frame binding
+                            Frame(0,0,0,0)                      // left, top, right, bottom
+                            kTrue,                              // visible
+                            kTrue,                              // enabled
+                            // StaticTextAttributes properties
+                            kAlignLeft,                         // Alignment
+                            kEllipsizeEnd, kTrue                // Ellipsize style, Convert ampersands
+                            // CTextControlData properties
+                            kDialogSelectionOptionsKey,         // control label
+                            // AssociatedWidgetAttributes properties
+                            0,                                  // associated widget ID
+                                                    
+                            kEVERegularSpaceAfter,
+                        ),
+                                                
+                        EVEGenericPanelWidget
+                        (
+                            kInvalidWidgetID,    // WidgetId
+                            0                    // RsrcId
+                            0,                   // Widget EVE Info
+                            kBindNone,           // Frame binding
+                            Frame(0,0,417,25)    // Frame
+                            kTrue,               // Visible
+                            kTrue,               // Enabled
+                            kEVEAlignFill | kEVERegularSpaceAfter | kEVEArrangeChildrenInRow,
+                                                    
+                            {
+                                EVEStaticTextWidget
+                                (
+                                    // CControlView properties
+                                    kDrawStaticTextWidgetID, // widget ID
+                                    kSysStaticTextPMRsrcId,  // PMRsrc ID
+                                    kBindNone,               // frame binding
+                                    Frame(0,0,0,0)           // left, top, right, bottom
+                                    kTrue,                   // visible
+                                    kTrue,                   // enabled
+                                    // StaticTextAttributes properties
+                                    kAlignRight,             // Alignment
+                                    kEllipsizeEnd, kTrue     // Ellipsize style, Convert ampersands
+                                    // CTextControlData properties
+                                    kDialogDrawKey,          // control label
+                                    // AssociatedWidgetAttributes properties
+                                    0,                       // associated widget ID
+                                                            
+                                    kEVERegularSpaceAfter,
+                                ),
+                                EVEClusterPanelWidget
+                                (
+                                    // CControlView properties
+                                    0,                // widget ID
+                                    kPMRsrcID_None,   // PMRsrc ID
+                                    kBindNone,        // frame binding
+                                    Frame(0,0,224,23) //  left, top, right, bottom
+                                    kTrue,            // visible
+                                    kTrue,            // enabled
+                                    // CTextControlData properties
+                                    ,                 // control label
+                                                            
+                                    kEVERegularSpaceAfter | kEVEArrangeChildrenInRow,
+                                    {// CPanelControlData Children
+                                        EVERadioButtonWidget
+                                        (
+                                            // CControlView properties
+                                            kDrawAreaRadioWidgetID,  // widget ID
+                                            kSysRadioButtonPMRsrcId, // PMRsrc ID
+                                            kBindNone,               // frame binding
+                                            Frame(0,0,0,0)           // left, top, right, bottom
+                                            kTrue,                   // visible
+                                            kTrue,                   // enabled
+                                            // CTextControlData properties
+                                            kDialogDrawAreaKey,      // control label
+                                                                    
+                                            kEVERegularSpaceAfter,
+                                        ),
+                                        EVERadioButtonWidget
+                                        (
+                                            // CControlView properties
+                                            kDrawItemRadioWidgetID,  // widget ID
+                                            kSysRadioButtonPMRsrcId, // PMRsrc ID
+                                            kBindNone,               // frame binding
+                                            Frame(0,0,0,0)           // left, top, right, bottom
+                                            kTrue,                   // visible
+                                            kTrue,                   // enabled
+                                            // CTextControlData properties
+                                            kDialogDrawItemKey,      // control label
+                                                                    
+                                            kEVERegularSpaceAfter,
+                                        ),
+                                    }
+                                ),
+                            }  // End of Eve generic panel child widgets
+                        ), // End of Eve generic panel widget definition
+                                                                            
+                    }
+                ),
+                
+            }  // End of Eve generic panel child widgets
+        ), // End of Eve generic panel widget definition
+    },
+                    
+    kEVEArrangeChildrenInColumn | kEVELargeMargin,
+};
+
+/*
+// User Error Table resource 
+// To be coupled with an IErrorStringService implementation and
+// string translations (see localized .fr files)
+*/
+resource UserErrorTable(kSDKDefErrorStringResourceID) 
+{
+    {
+        kSnapFailureErrorCode, kSnapFailureErrorCodeErrorCodeStringKey, 
+        kSnapDataAccessErrorCode, kSnapDataAccessErrorCodeStringKey,
+    }
+};
+
+
+/*
+// Scripting definition.
+*/
+resource VersionedScriptElementInfo(1)
+{
+    //Contexts
+    {
+        // Scripting support added at InDesign CS 2.0.
+        kCS2ScriptVersion, kCoreScriptManagerBoss, kWildFS, k_Wild,
+    }
+    
+    //Elements
+    {
+        
+        // Defines new script element object for this plug-in's preferences
+        Object
+        {
+            kSnapPrefObjectScriptElement,    // this object's script element ID
+            c_SnapPref,                      // ScriptID
+            "snapshot preference",           // name
+            "SnapShot preference",           // description
+            kSnapPref_CLSID,                 // Windows CLSID
+            NoCollectionInfo,                // CollectionElementType (scriptID, name, descr, CLSID)
+            kPreferencesObjectScriptElement, // base object script element ID
+            kPreferencesSuiteScriptElement,  // suite script element ID
+        }
+        
+        // Allows the object above to be accessed by clients as a property
+        Property
+        {
+            kSnapPrefObjectPropertyScriptElement,
+            p_SnapPref,
+            "snapshot preferences",
+            "SnapShot preferences",
+            ObjectType(kSnapPrefObjectScriptElement ),
+            {}
+            kNoAttributeClass,
+        }    
+        
+        // file name for your snap shot - a string label
+        Property
+        {
+            kSnapFileNamePropertyScriptElement,        // this property's script element ID
+            p_SnapFileName,                            // ScriptID
+            "snapshot file name",                      // name
+            "File name to which you want your snap shot saved",    // description
+            StringType,                                // type
+            {}                                         // alternate types
+            kNoAttributeClass,                         // attribute class ID
+        }
+        
+        // enum for image write format
+        Enum
+        {
+            kSnapImageWriteFormatEnumScriptElement,
+            en_SnapImgeWriteFormat,
+            "snapshot image write format enum",
+            "Available SnapShot image output format",
+            {
+                en_SnapExPNG, "snapshot PNG", "Portable Network Graphics",
+                en_SnapExGIF, "snapshot GIF", "CompuServe GIF",
+                en_SnapExSCT, "snapshot SCT", "SciTexCT",
+                en_SnapExTIFF, "snapshot TIFF", "TIFF",
+                en_SnapExJPEG, "snapshot JPEG", "JPEG",
+            },
+        }
+        
+        // image write format - an enum declared in kSnapImageWriteFormatEnumScriptElement
+        Property
+        {
+            kSnapImageFormatPropertyScriptElement,        // this property's script element ID
+            p_SnapImageFormat,                            // ScriptID
+            "snapshot image write format",                // name
+            "Image write format class ID",                // description
+            EnumType(kSnapImageWriteFormatEnumScriptElement),   // type
+            {}                                            // alternate types
+            kNoAttributeClass,                            // attribute class ID
+        }
+        
+        // snap shot x and y scale factor, a real
+        Property
+        {
+            kSnapScaleFactorPropertyScriptElement,  // this property's script element ID
+            p_SnapScale,                            // ScriptID
+            "snapshot scale factor",                // name
+            "Snap shot x and y scale factor",       // description
+            RealType,                               // type
+            {}                                      // alternate types
+            kNoAttributeClass,                      // attribute class ID
+        }
+        
+        // snap shot image resolution, a real
+        Property
+        {
+            kSnapResolutionPropertyScriptElement,   // this property's script element ID
+            p_SnapResolution,                       // ScriptID
+            "snapshot image resolution",            // name
+            "Snap shot image resolution",           // description
+            RealType,                               // type
+            {}                                      // alternate types
+            kNoAttributeClass,                      // attribute class ID
+        }
+        
+        // snap shot minimum image resolution, a real
+        Property
+        {
+            kSnapMinimumResolutionPropertyScriptElement, // this property's script element ID
+            p_SnapMinimumResolution,                     // ScriptID
+            "snapshot minimum image resolution",         // name
+            "Snap shot minimum image resolution",        // description
+            RealType,                                    // type
+            {}                                           // alternate types
+            kNoAttributeClass,                           // attribute class ID
+        }
+        
+        // snap shot bleed, a real based on unit of measurement
+        Property
+        {
+            kSnapBleedPropertyScriptElement,        // this property's script element ID
+            p_SnapBleed,                            // ScriptID
+            "snapshot bleed",                       // name
+            "Snap shot bleed",                      // description
+            UnitMinMaxType(-1440, 1440),            // type
+            {}                                      // alternate types
+            kNoAttributeClass,                      // attribute class ID
+        }
+        
+        // snap shot's draw area, a bool that returns kTrue if draw the clicked spread, returns kFalse if draw the selected items.
+        Property
+        {
+            kSnapDrawAreaPropertyScriptElement,        // this property's script element ID
+            p_SnapDrawArea,                            // ScriptID
+            "snapshot draw area",                      // name
+            "Snap shot the whole clicked spread or selected items",    // description
+            BoolType,                                  // type
+            {}                                         // alternate types
+            kNoAttributeClass,                         // attribute class ID
+        }
+        
+        // snap shot's graphic resolution, a bool that returns kTrue if the image is drawn at full resolution, otherwise returns kFalse.
+        Property
+        {
+            kSnapFullResolutionPropertyScriptElement,  // this property's script element ID
+            p_SnapFullResolutionGraphics,              // ScriptID
+            "snapshot full resolution graphics",       // name
+            "Snap shot graphic drawn in full resolution or proxy",    // description
+            BoolType,                                  // type
+            {}                                         // alternate types
+            kNoAttributeClass,                         // attribute class ID
+        }
+        
+        // snap shot's color mode, a bool that returns kTrue if image is draw in grayscale, otherwise returns kFalse.
+        Property
+        {
+            kSnapDrawGrayPropertyScriptElement,        // this property's script element ID
+            p_SnapDrawGray,                            // ScriptID
+            "snapshot draw gray",                      // name
+            "Snap shot drawn in grayscale or rdb",     // description
+            BoolType,                                  // type
+            {}                                         // alternate types
+            kNoAttributeClass,                         // attribute class ID
+        }
+        
+        // snap shot drawing flags.
+        Property
+        {
+            kSnapDrawingFlagsPropertyScriptElement,    // this property's script element ID
+            p_SnapDrawingFlags,                        // ScriptID
+            "snapshot drawing flags",                  // name
+            "Snap shot's drawing flags",               // description
+            Int32Type,                                 // type
+            {}                                         // alternate types
+            kNoAttributeClass,                         // attribute class ID
+        }
+        
+        // snap shot JPEG encoding.
+        Property
+        {
+            kSnapJPEGEncodingPropertyScriptElement,    // this property's script element ID
+            p_SnapJPEGEncoding,                        // ScriptID
+            "snapshot JPEG encoding",                  // name
+            "Snap shot's JPEG encoding",               // description
+            Int32Type,                                 // type
+            {}                                         // alternate types
+            kNoAttributeClass,                         // attribute class ID
+        }
+        
+        // snap shot JPEG quality.
+        Property
+        {
+            kSnapJPEGQualityPropertyScriptElement,    // this property's script element ID
+            p_SnapJPEGQuality,                        // ScriptID
+            "snapshot JPEG quality",                  // name
+            "Snap shot's JPEG quality",               // description
+            Int32Type,                                // type
+            {}                                        // alternate types
+            kNoAttributeClass,                        // attribute class ID
+        }
+        
+        // snap shot palette type for TIFF image.
+        Property
+        {
+            kSnapTIFFPaletteTypePropertyScriptElement,// this property's script element ID
+            p_SnapTIFFPaletteType,                    // ScriptID
+            "snapshot TIFF palette type",             // name
+            "Snap shot's TIFF Palette Type",          // description
+            Int32Type,                                // type
+            {}                                        // alternate types
+            kNoAttributeClass,                        // attribute class ID
+        }
+        
+        // snap shot palette type for GIF image.
+        Property
+        {
+            kSnapGIFPaletteTypePropertyScriptElement, // this property's script element ID
+            p_SnapGIFPaletteType,                     // ScriptID
+            "snapshot GIF palette type",              // name
+            "Snap shot's GIF Palette Type",           // description
+            Int32Type,                                // type
+            {}                                        // alternate types
+            kNoAttributeClass,                        // attribute class ID
+        }
+        
+        // snap shot transparency flag for TIFF image.
+        Property
+        {
+            kSnapTIFFTransparentPropertyScriptElement,// this property's script element ID
+            p_SnapTIFFTransparent,                    // ScriptID
+            "snapshot TIFF transparency",             // name
+            "Snap shot's TIFF Transparency",          // description
+            BoolType,                                 // type
+            {}                                        // alternate types
+            kNoAttributeClass,                        // attribute class ID
+        }
+        
+        // snap shot transparency flag for GIF image.
+        Property
+        {
+            kSnapGIFTransparentPropertyScriptElement, // this property's script element ID
+            p_SnapGIFTransparent,                     // ScriptID
+            "snapshot GIF transparency",              // name
+            "Snap shot's GIF Transparency",           // description
+            BoolType,                                 // type
+            {}                                        // alternate types
+            kNoAttributeClass,                        // attribute class ID
+        }
+        
+        // snap shot interlace flag for GIF image.
+        Property
+        {
+            kSnapGIFInterlacedPropertyScriptElement,  // this property's script element ID
+            p_SnapGIFInterlaced,                      // ScriptID
+            "snapshot interlace flag",                // name
+            "Snap shot's interlace flag",             // description
+            BoolType,                                 // type
+            {}                                        // alternate types
+            kNoAttributeClass,                        // attribute class ID
+        }
+        
+        // Connects this plug-in's preferences to scripting.
+        Provider
+        {
+            kSnapPrefsScriptProviderBoss,
+            {
+                // Parent the SnapShot preferences on the application:
+                Parent{kApplicationObjectScriptElement },    
+                
+                // The SnapShot object:
+                RepresentObject{kSnapPrefObjectScriptElement },
+                
+                // The property on the parent object returns the SnapShot preferences object:
+                ParentProperty{kSnapPrefObjectPropertyScriptElement, kReadOnly },    
+                
+                // The preferences:
+                Property{kSnapFileNamePropertyScriptElement, kReadWrite },                            
+                Property{kSnapImageFormatPropertyScriptElement, kReadWrite },                            
+                Property{kSnapScaleFactorPropertyScriptElement, kReadWrite },                            
+                Property{kSnapResolutionPropertyScriptElement, kReadWrite },                            
+                Property{kSnapMinimumResolutionPropertyScriptElement, kReadWrite },                            
+                Property{kSnapBleedPropertyScriptElement, kReadWrite },                            
+                Property{kSnapDrawAreaPropertyScriptElement, kReadWrite },                            
+                Property{kSnapFullResolutionPropertyScriptElement, kReadWrite },                            
+                Property{kSnapDrawGrayPropertyScriptElement, kReadWrite },                            
+                Property{kSnapDrawingFlagsPropertyScriptElement, kReadWrite },                            
+                Property{kSnapJPEGEncodingPropertyScriptElement, kReadWrite },                            
+                Property{kSnapJPEGQualityPropertyScriptElement, kReadWrite },                            
+                Property{kSnapTIFFPaletteTypePropertyScriptElement, kReadWrite },                            
+                Property{kSnapGIFPaletteTypePropertyScriptElement, kReadWrite },                            
+                Property{kSnapTIFFTransparentPropertyScriptElement, kReadWrite },                            
+                Property{kSnapGIFTransparentPropertyScriptElement, kReadWrite },                            
+                Property{kSnapGIFInterlacedPropertyScriptElement, kReadWrite },                            
+            }
+        }
+    }
+};
+/*
+// Add the ScriptID that identifies the tool to kkToolBoxEnumScriptElement
+*/
+resource VersionedScriptElementInfo(10 ) 
+{
+    //Contexts 
+    {
+        kCS5ScriptVersion, kCoreScriptManagerBoss, kInDesignAllLanguagesFS,k_Wild, 
+    } 
+    //Elements 
+    {
+        Enumerator 
+        {
+            kToolBoxEnumScriptElement,
+            {
+                en_SnapTool,    "snapshot tool",    "The snapshot tool", 
+            } 
+        } 
+    } 
+};
+#endif // __ODFRC__
+
+#include "Snap_enUS.fr"
+#include "Snap_jaJP.fr"
+#include "SnapCursorsIcons.fr"
+
+// End, Snap.fr.

@@ -1,0 +1,126 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kConditionalTextUIStringsRsrcID + index_enUS)
+{
+    k_enUS,                                 // Locale Id
+    kResourceUTF8Encoded,     // Character encoding converter
+    {
+		"#CondTextUI_WinMenu",	"C&onditional Text",	// panel menu item
+		"#CondTextUI_PanelName","Conditional Text",		// panel name
+		"#CondTextUI_PanelMenu","Conditional Text Panel Menu",
+		"#CondTextUI_NewConditionTagMenu", "New Condition...",
+		"#CondTextUI_DeleteConditionTagMenu", "Delete Condition...",
+		"#CondTextUI_DeleteConditionTagsMenu", "Delete Conditions...",
+		"#CondTextUI_EditConditionTagMenu", "Condition Options...",
+		"#CondTextUI_LoadConditionTagsMenu", "Load Conditions...",
+		"#CondTextUI_LoadConditionTagsAndSetsMenu", "Load Conditions and Sets...",
+		"#CondTextUI_ShowIndicatorsCB", "Show Indicators on Conditional Text",
+		"#CondTextUI_ShowIndicatorsMenu", "Show Indicators on Conditional Text",
+		"#CondTextUI_ShowAndPrintIndicatorsMenu", "Show and Print Indicators on Conditional Text",
+		"#CondTextUI_HideIndicatorsMenu", "Hide Indicators on Conditional Text",
+		"#CondTextUI_ShowIndicatorsDD", "Indicators:",
+		"#CondTextUI_ShowIndicators", "Show",
+		"#CondTextUI_ShowAndPrintIndicators", "Show and Print",
+		"#CondTextUI_HideIndicators", "Hide",
+		"#CondTextUI_RtMenuConditionTagTVNode",    "Condition Tree View Node Context Menu",
+		"#CondTextUI_RtMenuUnapplyTag",		"Unapply \"^1\"",
+		"#CondTextUI_RtMenuDeleteTag",		"Delete \"^1\"",
+		"#CondTextUI_RtMenuEditTag",		"Edit \"^1\"...",
+		"Show Options", "Show &Options",
+		"Hide Options", "Hide &Options",
+		"#CondTextUI_SelectUnusedMenu", "Select All Unused",
+	
+		"#ConditionTagList_NameColumnLabel", "Name",
+		"#ConditionTag_OptionsDialog", "Condition Options",
+		"#ConditionTag_OptionsDialogNew", "New Condition",
+		"#ConditionTagOptions_Name:", "&Name:",
+		"#ConditionTagOptions_Method:", "&Method:",
+		"#ConditionTagOptions_Appearance:", "&Appearance:",
+		"#ConditionTagOptions_Color:", "&Color:",
+		"#ConditionTagOptions_Indicator", "Indicator",
+		"#ConditionTagOptions_MethodUnderline", "Underline",
+		"#ConditionTagOptions_MethodHighlight", "Highlight",
+		"#ConditionTagOptions_WavyUnderline", "Wavy",		
+		"#ConditionTagOptions_SolidUnderline", "Solid",		
+		"#ConditionTagOptions_DashedUnderline", "Dashed",		
+		"#ConditionTag_EmptyNameMsg", "Please supply a condition name.",
+		"#ConditionTag_NameInUseMsg", "This condition name is already in use. Please choose another.",
+		
+		"#ConditionSetShowAll", "Show All",
+		"#ConditionSetHideAll", "Hide All",
+		"#ConditionSetNone", "[None]",
+		"#ConditionSetBlank", " ",
+		"#ConditionSetLabel", "Set:",
+		"#ConditionSetNewSet", "Create New Set...",
+		"#ConditionSetDeleteSet", "Delete \"^1\"...",
+		"#ConditionSetRenameSet", "Rename \"^1\"...",
+		"#ConditionSetRedefineSet", "Redefine \"^1\"...",
+		"#ConditionSetUpdateAllSets", "Update All Sets",
+		"#ConditionSetUpdateAllSetsUndoName", "Update All Condition Sets",
+		"#ConditionSetNameDialog", "Condition Set Name",
+		"#ConditionSetNameStatic", "&Name:",
+		"#InvalidSetName", "Invalid Condition Set Name",
+		"#DuplicateSetName", "Name Already Exists",
+		"#NoActiveSetString", "No Active Set",
+		
+		"#ConditionalTextTip", "Found hidden text with ^1: ",
+		"#ConditionalTextTipOneTag", "this condition",
+		"#ConditionalTextTipManyTags", "these conditions",
+		
+		"#ConditionalTextEyeballHideWidgetTip", "Click to hide all text with this condition applied",
+		"#ConditionalTextEyeballShowWidgetTip", "Click to show all text with this condition applied",
+		"#ConditionalTextEyeballUnconditionalWidgetTip", "Unconditional text is always visible",
+		"#ConditionalTextAppliedAllTip",	"Condition applied to all selected text. Click to unapply",
+		"#ConditionalTextAppliedSomeTip",	"Condition applied to some selected text. Click to apply to all selected text",
+		"#ConditionalTextAppliedNoneTip",	"Click to apply condition",
+		"#ConditionalTextAppliedAllTipUncondition",	"Selected text is unconditional",
+		"#ConditionalTextAppliedSomeTipUncondition",	"Some selected text is unconditional. Click to make all unconditional",
+		"#ConditionalTextAppliedNoneTipUncondition",	"Click to make text unconditional",
+		"#ConditionalTextApplyNoSelectionTip", "Click to apply condition to selected text",
+		"#ConditionalTextNewTagTip",		"New Condition",
+		"#ConditionalTextDeleteTagTip",		"Delete Condition",
+		"#ConditionalTextIndicatorTip",		"Indicator method is ^1",
+		"#ConditionalTextNewSetTip",		"New Set",
+		"#SetOverrideTip_NewConditionsAndConditionVisibility",	"Overrides: condition visibility (reselect set to clear, or choose Redefine) + new conditions (choose Update All Sets to clear, or choose Redefine)",
+		"#SetOverrideTip_NewConditions",	"Overrides: new conditions (choose Update All Sets to clear, or choose Redefine)",
+		"#SetOverrideTip_ConditionVisibility",	"Overrides: condition visibility (reselect set to clear, or choose Redefine)",
+		
+		"#ConditionTag_DeleteConditionDialog", "Delete Condition", 
+		"#ConditionTag_DeleteConditionsDialog", "Delete Conditions", 
+		"#ConditionTag_DeleteConditionAndReplace:", "Delete Condition and Replace With: ", 
+		"#ConditionTag_DeleteConditionsAndReplace:", "Delete Conditions and Replace With: ", 
+		"#ConditionTag_DeleteInformationAlert", "Drag a condition to the trash icon to delete the condition.",
+		"#ConditionTag_DeleteNoReplaceChoice", "[None]",
+		
+		"#QuickApplyConditions", "Condition",
+		"#Conditions_Filter_Key", "CT", // should be upper case if there is an upper case character, this is the prefix key for quick apply for text conditions.
+		"#QuickApplyConditionSets", "Condition Set",
+		"#QuickApplyConditionSets_Filter_Key", "CS",  // should be upper case if there is an upper case character, this is the prefix key for quick apply for text condition sets.
+		"#QuickApplyConditons_Menu_Key_String", "Include Conditions (ct:)",
+		"#QuickApplyConditonSets_Menu_Key_String", "Include Condition Sets (cs:)",
+		
+		"#SingularConditionStatusBodyString", "^1 condition applied ^2",
+		"#PluralConditionStatusBodyString", "^1 conditions applied ^2",
+		"#MixedConditionString", " [mixed]",
+		"#NoConditionsString", "no conditions applied",
+    }
+};
+
+#endif // __ODFRC__

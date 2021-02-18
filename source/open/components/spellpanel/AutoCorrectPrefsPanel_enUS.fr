@@ -1,0 +1,622 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/spellpanel/AutoCorrectPrefsPanel_enUS.fr $
+//  
+//  Owner: Heath Horton
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//  
+//  Proj:	SpellPanel
+//  
+//========================================================================================
+
+#ifdef __ODFRC__
+
+#include "InterfaceColorDefines.h"
+#include "StdHeightWidthConstants.h"
+
+//========================================================================================
+// Dialog:				"Preferences:AutoCorrect"
+// UI Spec File:		??
+//========================================================================================
+
+#define kRowWidth		405
+
+resource AutoCorrectPrefsPanel (kAutoCorrectPrefsPaletteRsrcID + index_enUS)
+{
+	__FILE__, __LINE__,
+	kAutoCorrectPrefsDialogPanelWidgetID,	// WidgetId
+	kPMRsrcID_None,							// RsrcId
+	kBindNone,
+	Frame(0,0,450,430),						// Frame, bottom same as lowest control
+	kTrue,									// Visible
+	kTrue,									// Enabled
+	"AutoCorrect",							// Panel name
+	{
+		/////////////////////////////////////////////////////
+		// The following controls are for AutoCorrect Options //
+		/////////////////////////////////////////////////////		
+		EVEGroupPanelWidget
+		(
+			kAutoCorrectPrefsPanelWidgetID,			// WidgetId
+			kPMRsrcID_None,							// RsrcId
+			kBindNone,
+			Frame(0,0,435,60)						// Frame
+			kTrue,									// Visible
+			kTrue,									// Enabled
+			kAutoCorrectPrefsTitleTextWidgetID,		// widget id of border widget
+			
+			kEVEAlignFill | kEVEExtraLargeSpaceAfter | kEVEArrangeChildrenInRow | kEVERegularMargin,
+			{
+				EVEStaticTextWidget
+				(
+					kAutoCorrectPrefsTitleTextWidgetID,		// WidgetId
+					kSysStaticTextPMRsrcId,					// RsrcId
+					kBindNone,
+					Frame(0,0,0,0)					// Frame
+					kTrue, kTrue, 						// Visible, Enabled
+					kAlignCenter,							// Alignment
+					kDontEllipsize, kTrue,							// Ellipsize style, Convert ampersands
+					"Options",								// Initial text
+					0
+					
+					kEVEExtraLargeSpaceAfter,
+				),
+			
+				EVEGenericPanelWidget
+				(
+					kInvalidWidgetID,	// WidgetId
+					0			// RsrcId
+					0,			// Widget EVE Info
+					kBindNone,		// Frame binding
+					Frame(0,0,344,90)		// Frame
+					kTrue,			// Visible
+					kTrue,			// Enabled
+					kEVEAlignFill | kEVENoSpaceAfter | kEVEArrangeChildrenInColumn,
+					
+					{
+						EVEAutoCorrectCheckBoxWidget
+						(
+							kAutoCorrectEnableCheckboxWidgetID,		// WidgetId
+							kSysCheckBoxPMRsrcId,					// RsrcId
+							kBindNone,
+							Frame(0,0,0,0)						// Frame
+							kTrue,									// Visible
+							kTrue,									// Enabled
+							kAlignLeft,								// Alignment
+							"AutoCorrectEnable"						// Initial text
+							
+							kEVERegularSpaceAfter,
+						),
+						EVEGenericPanelWidget
+						(
+							kInvalidWidgetID,	// WidgetId
+							0			// RsrcId
+							0,			// Widget EVE Info
+							kBindNone,		// Frame binding
+							Frame(0,0,344,90)		// Frame
+							kTrue,			// Visible
+							kTrue,			// Enabled
+							kEVEAlignFill | kEVENoSpaceAfter | kEVEArrangeChildrenInRow,
+							{
+								// Adding a dummy widget to align other widgets properly
+								EVEStaticTextWidget
+								(
+									kInvalidWidgetID,   // WidgetId
+									kSysStaticTextPMRsrcId,          // RsrcId
+									kBindNone, 			// Frame Binding
+									Frame(0,0,20,kCC2016StandardWidgetHeight) 	              // Frame
+									kTrue, kFalse, kAlignRight,     // Visible, Enabled, Alignment
+									kDontEllipsize, kTrue,                 // Ellipsize style, Convert ampersands
+									"",
+									0 ,
+									kEVENoSpaceAfter,
+								),							
+
+								EVEAutoCorrectCapCheckBoxWidget
+								(
+									kAutoCorrectCapitalizationErrorsCheckboxWidgetID,	// WidgetId
+									kSysCheckBoxPMRsrcId,					// RsrcId
+									kBindNone,
+									Frame(0,0,0,0)						// Frame
+									kTrue,									// Visible
+									kTrue,									// Enabled
+									kAlignLeft,								// Alignment
+									"AutoCorrectCapitalizationErrors"		// Initial text
+									kEVENoSpaceAfter,
+								),
+							}
+						)
+						
+					}  // End of Eve generic panel child widgets
+				), // End of Eve generic panel widget definition
+			},
+		),
+		
+		EVEGroupPanelWidget
+		(
+			kAutoCorrectSettingsPanelWidgetID,		// WidgetId
+			kPMRsrcID_None,							// RsrcId
+			kBindNone,
+			Frame(0,0,435,310)					// Frame
+			kTrue,									// Visible
+			kTrue,									// Enabled
+			kAutoCorrectLanguageGroupWidgetID,		// widget id of border widget
+			
+			kEVEAlignFill | kEVEExtraLargeSpaceAfter | kEVEArrangeChildrenInColumn | kEVERegularMargin,
+			{
+						EVEGenericPanelWidget
+						(
+							kAutoCorrectLanguageGroupWidgetID, 			// WidgetId
+							kPMRsrcID_None,								// RsrcId
+							kBindNone,
+							Frame(0,0,234,21)						// Frame
+							kTrue, kTrue,
+							kEVEAlignFill|kEVEArrangeChildrenInRow,        // EVE info 
+							{
+								// Line 1
+								EVEStaticTextWidget
+								(
+									kAutoCorrectLanguageTextWidgetID, 	// WidgetId
+									kSysStaticTextPMRsrcId,				// RsrcId
+									kBindNone,
+									Frame(0,0,0,0)					// Frame
+									kTrue, kTrue, 					// Visible, Enabled,
+									kAlignRight,						// Alignment
+									kDontEllipsize, kTrue,						// Ellipsize style, Convert ampersands
+									"&Language:",							// Text
+									kAutoCorrectLanguageWidgetID
+									kEVERegularSpaceAfter,
+								),	
+								EVEAutoCorrectLanguageWidget
+								(
+									kAutoCorrectLanguageWidgetID, 				// WidgetId
+									kSysDropDownPMRsrcId,				// RsrcId
+									kBindNone,
+									Frame(0,0,0,0)					// Frame
+									kTrue, kTrue,						// Visible, Enabled
+									{{
+										"[No language]"
+									}}
+									kEVERegularSpaceAfter,
+								),
+							}
+						),
+						
+						
+				
+				EVEGenericPanelWidget
+				(
+					kInvalidWidgetID,	// WidgetId
+					0			// RsrcId
+					0,			// Widget EVE Info
+					kBindNone,		// Frame binding
+					Frame(0,0,435,259)		// Frame
+					kTrue,			// Visible
+					kTrue,			// Enabled
+					kEVEAlignFill | kEVERegularSpaceAfter | kEVEArrangeChildrenInColumn|kEVEChildAlignFill,
+					
+					{
+						EVEGenericPanelWithCustomBorderWidget
+						(
+							kAutoCorrectColumnLabelBorderWidgetID,				// WidgetID
+							kPMRsrcID_None,										// RsrcID
+							kBindAll,											// Frame binding
+							Frame(0,0,405,kCC2016PanelTreeNodeHeight)									// Frame
+							kTrue, kTrue,										// Visible, Enabled
+							"",
+							{
+								EVEInfoStaticTextWidget
+								(
+									kInvalidWidgetID, 	// WidgetId
+									kSysStaticTextPMRsrcId,						// RsrcId
+									kBindNone,
+									Frame(0,0,5,kCC2016PanelTreeNodeContentHeight)					// Frame
+									kTrue, kFalse,								// Visible, Enabled,
+									kAlignLeft,									// Alignment
+									kDontEllipsize, kTrue,								// Ellipsize style, Convert ampersands
+									"",							// Text
+									0,
+									kDialogWindowSmallHiliteFontId, kDialogWindowSmallHiliteFontId
+									kEVENoSpaceAfter,
+								),	
+
+								EVEInfoStaticTextWidget
+								(
+									kAutoCorrectMispelledColumnTextWidgetID, 	// WidgetId
+									kSysStaticTextPMRsrcId,						// RsrcId
+									kBindNone,
+									Frame(0,0,200,kCC2016PanelTreeNodeContentHeight)					// Frame
+									kTrue, kTrue,								// Visible, Enabled,
+									kAlignLeft,									// Alignment
+									kDontEllipsize, kTrue,								// Ellipsize style, Convert ampersands
+									"Misspelled Word",							// Text
+									0,
+									kDialogWindowSmallHiliteFontId, kDialogWindowSmallHiliteFontId
+									
+									kEVERegularSpaceAfter,
+								),	
+								EVEInfoStaticTextWidget
+								(
+									kAutoCorrectCorrectionColumnTextWidgetID, 	// WidgetId
+									kSysStaticTextPMRsrcId,						// RsrcId
+									kBindNone,
+									Frame(200,0,405,kCC2016PanelTreeNodeContentHeight)			// Frame
+									kTrue, kTrue,								// Visible, Enabled,
+									kAlignLeft,									// AlignmentkautocorrectcorrectioncolumnTextwidgetid
+									kDontEllipsize, kTrue,								// Ellipsize style, Convert ampersands
+									"Correction",								// Text
+									0,
+									kDialogWindowSmallHiliteFontId, kDialogWindowSmallHiliteFontId
+									
+									kEVERegularSpaceAfter,
+								),	
+							}
+							kLeftBorder|kRightBorder|kTopBorder,
+							0,
+							kEVENoSpaceAfter | kEVEArrangeChildrenInRow|kEVEAlignFill,
+						),
+						
+						EVEGenericPanelWithCustomBorderWidget
+						(
+							kAutoCorrectTreeViewBorderWidgetID,     // WidgetID
+							kPMRsrcID_None,							// RsrcID
+							kBindAll,								// Frame binding
+							Frame(0,0,0,0)					// Frame
+							kTrue, kTrue,										// Visible, Enabled
+							"",
+							{
+								EVEAutoCorrectTreeViewWidget
+								(
+									kAutoCorrectTreeViewWidgetID,	// WidgetId
+									1, kSpellPanelPluginID,			// RsrcId
+									kBindAll,
+									Frame(0,0,405,kCC2016PanelTreeNodeHeight*11)	// Frame
+									kTrue, kTrue,					// Visible, Enabled
+									kTrue,							// EraseBeforeDraw
+									kInterfacePaletteFill,			// InterfaceColor
+									"",
+									kHideRootNode,						// Options
+									kFalse,							// Use H Scroll bar
+									kTrue,							// Use V scroll bar
+									kCC2016PanelTreeNodeHeight,						// Vertical Scroll Button Increment
+									kCC2016PanelTreeNodeHeight,						// Vertical Thumb Scroll Increment
+									0,								// Horizontal Scroll Button Increment
+									0,								// Horizontal Thumb Scroll Increment
+									2,								// Items selectable, 0 = No Selection, 1 = Single Selection, 2 = Multiple Selection
+									kFalse,							// Allow children from multiple parents to be selected
+									kTrue,							// Allow discontiguous selection
+									{
+									}
+									
+									kEVENoSpaceAfter|kEVEAlignFill,
+								),
+							}	
+							kLeftBorder|kRightBorder|kTopBorder|kBottomBorder,	
+							0,			
+							kEVERegularSpaceAfter | kEVEArrangeChildrenInRow | kEVEMinimalMargin,
+						),		
+					}  // End of Eve generic panel child widgets
+				), // End of Eve generic panel widget definition
+				
+				EVEGenericPanelWidget
+				(
+					kInvalidWidgetID,	// WidgetId
+					0			// RsrcId
+					0,			// Widget EVE Info
+					kBindNone,		// Frame binding
+					Frame(0,0,435,150)		// Frame
+					kTrue,			// Visible
+					kTrue,			// Enabled
+					kEVEAlignFill | kEVERegularSpaceAfter | kEVEArrangeChildrenInRow,
+					
+					{
+						EVEGenericPanelWidget
+						(
+							kInvalidWidgetID,	// WidgetId
+							0			// RsrcId
+							0,			
+							kBindNone,		// Frame binding
+							Frame(0,0,20,kCC2016StandardWidgetHeight)		// Frame
+							kTrue,			// Visible
+							kTrue,			// Enabled
+							kEVEAlignLeft | kEVERegularSpaceAfter | kEVEArrangeChildrenInRow,
+							
+							{
+								EVEAutoCorrectAddButtonWidget
+								(
+									kAutoCorrectAddButtonWidgetID,		// WidgetId
+									kSysButtonPMRsrcId,					// RsrcId
+									kBindNone,
+									Frame(0,0,0,0)				// Frame
+									kTrue, kTrue,						// Visible, Enabled
+									"A&dd..."							// Text
+									
+									kEVELargeSpaceAfter,
+								),
+								EVEAutoCorrectEditButtonWidget
+								(
+									kAutoCorrectEditButtonWidgetID,	// WidgetId
+									kSysButtonPMRsrcId,					// RsrcId
+									kBindNone,
+									Frame(0,0,0,0)				// Frame
+									kTrue, kTrue,						// Visible, Enabled
+									"EditAutoCorrectWord"				// Text
+									
+									kEVELargeSpaceAfter,
+								),
+								EVEAutoCorrectRemoveButtonWidget
+								(
+									kAutoCorrectRemoveButtonWidgetID,	// WidgetId
+									kSysButtonPMRsrcId,					// RsrcId
+									kBindNone,
+									Frame(0,0,0,0)				// Frame
+									kTrue, kTrue,						// Visible, Enabled
+									"Re&move"							// Text
+									
+									kEVELargeSpaceAfter,
+								),
+								
+								
+							}  // End of EVE Generic panel child widgets
+						), // End of EVE Generic panel widget definition
+						
+					}  // End of Eve generic panel child widgets
+				), // End of Eve generic panel widget definition
+			},
+		),
+	}
+	
+	kEVEArrangeChildrenInColumn | kEVENoMargin|kEVEChildExtraLargeSpaceAfter,
+};
+
+
+resource AutoCorrectTreeNodeWidget (kAutoCorrectTreeWidgetNodeRsrcID + index_enUS)
+{
+	__FILE__, __LINE__,
+	kAutoCorrectTreeNodeWidgetId, kPMRsrcID_None,				// WidgetId, RsrcId
+	kBindLeft | kBindRight,
+	Frame(0,0,405,kCC2016PanelTreeNodeHeight),										// Frame
+	kTrue, kTrue,												// Visible, Enabled
+	"",															// Panel name
+	{
+		EVEStaticTextWidget
+		(
+			kAutoCorrectMisspelledStaticTextWidgetID,			// WidgetId
+			kSysStaticTextPMRsrcId,								// RsrcId
+			kBindNone,											// Frame binding
+			Frame(5,0,205,kCC2016PanelTreeNodeContentHeight)									// Frame
+			kTrue,												// Visible
+			kTrue,												// Enabled
+			kAlignLeft,											// Alignment
+			kDontEllipsize, kTrue,										// Ellipsize style, Convert ampersands
+			"",													// Initial text
+			0
+			
+			kEVERegularSpaceAfter,
+		),
+		EVEStaticTextWidget
+		(
+			kAutoCorrectCorrectedStaticTextWidgetID,			// WidgetId
+			kSysStaticTextPMRsrcId,								// RsrcId
+			kBindNone,											// Frame binding
+			Frame(205,0,405,kCC2016PanelTreeNodeContentHeight)									// Frame
+			kTrue,												// Visible
+			kTrue,												// Enabled
+			kAlignLeft,											// Alignment
+			kDontEllipsize, kTrue,										// Ellipsize style, Convert ampersands
+			"",													// Initial text
+			0
+			
+			kEVERegularSpaceAfter,
+		),
+	}
+	
+	kEVEArrangeChildrenInRow | kEVELargeMargin,
+}
+
+resource AutoCorrectAddPairDialog (kAutoCorrectAddPairDialogRsrcID + index_enUS)
+{
+	__FILE__, __LINE__,
+	kAutoCorrectPrefsDialogWidgetID, kPMRsrcID_None,				// WidgetId, RsrcId
+	kBindNone,
+	Frame(0,0,420,70),										// Frame
+	kTrue, kTrue,												// Visible, Enabled
+	"",															// Panel name
+	{
+
+		
+		EVEGenericPanelWidget
+		(
+			kInvalidWidgetID,	// WidgetId
+			0			// RsrcId
+			0,			// Widget EVE Info
+			kBindNone,		// Frame binding
+			Frame(0,0,320,70)		// Frame
+			kTrue,			// Visible
+			kTrue,			// Enabled
+			kEVEAlignRight | kEVERegularSpaceAfter | kEVEArrangeChildrenInRow,
+			
+			{
+				
+				EVEGenericPanelWidget
+				(
+					kInvalidWidgetID,	// WidgetId
+					0			// RsrcId
+					0,			
+					kBindNone,		// Frame binding
+					Frame(0,0,310,kCC2016StandardWidgetHeight)		// Frame
+					kTrue,			// Visible
+					kTrue,			// Enabled
+					kEVEChildAlignRight | kEVERegularSpaceAfter | kEVEArrangeChildrenInColumn,
+					
+					{
+						EVEStaticTextWidget
+						(
+							kAutoCorrectMisspelledStaticTextWidgetID,			// WidgetId
+							kSysStaticTextPMRsrcId,								// RsrcId
+							kBindNone,											// Frame binding
+							Frame(0,0,0,0)									// Frame
+							kTrue,												// Visible
+							kTrue,												// Enabled
+							kAlignRight,											// Alignment
+							kDontEllipsize, kTrue,										// Ellipsize style, Convert ampersands
+							"Misspelled Word:",										// Initial text
+							kAutoCorrectMisspelledEditTextWidgetID
+							
+							kEVERegularSpaceAfter,
+						),
+						EVEStaticTextWidget
+						(
+							kAutoCorrectCorrectedStaticTextWidgetID,		// WidgetId
+							kSysStaticTextPMRsrcId,							// RsrcId
+							kBindNone,										// Frame binding
+							Frame(0,0,0,0)								// Frame
+							kTrue,											// Visible
+							kTrue,											// Enabled
+							kAlignRight,									// Alignment
+							kDontEllipsize, kTrue,									// Ellipsize style, Convert ampersands
+							"Correction:",									// Initial text
+							kAutoCorrectCorrectedEditTextWidgetID
+							
+							kEVERegularSpaceAfter,
+						),
+					}  // End of EVE Generic panel child widgets
+				), // End of EVE Generic panel widget definition
+				
+				EVEGenericPanelWidget
+				(
+					kInvalidWidgetID,	// WidgetId
+					0			// RsrcId
+					0,			
+					kBindNone,		// Frame binding
+					Frame(0,0,310,kCC2016StandardWidgetHeight)		// Frame
+					kTrue,			// Visible
+					kTrue,			// Enabled
+					kEVERegularSpaceAfter | kEVEArrangeChildrenInColumn,
+					
+					{
+
+						EVETextEditBoxWidget
+						(
+							kAutoCorrectMisspelledEditTextWidgetID,			// WidgetId
+							kSysEditBoxPMRsrcId,							// RsrcId
+							kBindNone,
+							Frame(0,0,160,0)							// Frame
+							kTrue, kTrue,                                   // Visible, Enabled
+							0,                                              // WidgetId for nudge button
+							0,                                              // small nudge amount
+							0,                                              // large nudge amount
+							64,                                              // max num chars
+							kFalse,                                         // is read only flag
+							kFalse,                                         // should notify each key stroke
+							kFalse,                                         // range checking enabled
+							kFalse,                                         // blank entry allowed
+							0,                                              // upper limit
+							0,                                              // lower limit
+							"",												// Text
+							
+							kEVERegularSpaceAfter,
+						),						
+						EVETextEditBoxWidget
+						(
+							kAutoCorrectCorrectedEditTextWidgetID,			// WidgetId
+							kSysEditBoxPMRsrcId,							// RsrcId
+							kBindNone,
+							Frame(0,0,160,0)							// Frame
+							kTrue, kTrue,									// Visible, Enabled
+							0,												// WidgetId for nudge button
+							0,												// small nudge amount
+							0,												// large nudge amount
+							64,												// max num chars
+							kFalse,											// is read only flag
+							kFalse,											// should notify each key stroke
+							kFalse,											// range checking enabled
+							kFalse,											// blank entry allowed
+							0,												// upper limit
+							0,												// lower limit
+							"",												// Text
+							
+							kEVERegularSpaceAfter,
+						),
+					}  // End of EVE Generic panel child widgets
+				), // End of EVE Generic panel widget definition
+				
+			}  // End of Eve generic panel child widgets
+		), // End of Eve generic panel widget definition
+
+		// OK/Cancel buttons		
+		EVEGenericPanelWidget
+		(
+			kInvalidWidgetID,	// WidgetId
+			0			// RsrcId
+			0,			// Widget EVE Info
+			kBindNone,		// Frame binding
+			Frame(0,0,100,70)		// Frame
+			kTrue,			// Visible
+			kTrue,			// Enabled
+			kEVEAlignFill | kEVERegularSpaceAfter | kEVEArrangeChildrenInRow,
+			
+			{
+				
+				EVEGenericPanelWidget
+				(
+					kInvalidWidgetID,	// WidgetId
+					0			// RsrcId
+					0,			
+					kBindNone,		// Frame binding
+					Frame(0,0,76,50)		// Frame
+					kTrue,			// Visible
+					kTrue,			// Enabled
+					kEVEAlignLeft | kEVERegularSpaceAfter | kEVEArrangeChildrenInColumn,
+					
+					{
+						EVEDefaultButtonWidget                                        // Type
+						(
+							kOKButtonWidgetID, kSysButtonPMRsrcId,                    // WidgetId, RsrcId
+							kBindNone,
+							Frame(0,0,0,0),            // Frame
+							kTrue, kTrue,                                        // Visible, Enabled
+							"OK"                                            // Text
+							
+							kEVELargeSpaceAfter,
+						),
+						EVECancelButtonWidget
+						(
+							kCancelButton_WidgetID,            // WidgetId
+							kSysButtonPMRsrcId,                // RsrcId
+							kBindNone,
+							Frame(0,0,0,0)            // Frame
+							kTrue,                            // Visible
+							kTrue,                            // Enabled
+							"Cancel",                        // Initial text
+							kFalse,                            // Cancel does not change to Reset
+							
+							kEVELargeSpaceAfter,
+						),
+						
+					}  // End of EVE Generic panel child widgets
+				), // End of EVE Generic panel widget definition
+				
+			}  // End of Eve generic panel child widgets
+		), // End of Eve generic panel widget definition
+	}
+	
+	kEVEArrangeChildrenInRow | kEVELargeMargin,
+}
+
+#endif

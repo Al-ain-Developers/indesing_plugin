@@ -1,0 +1,227 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#ifdef __ODFRC__
+
+#include "StringTable.fh"
+
+resource StringTable (kLinksUIStringsRsrcID + index_deDE)
+{
+	k_deDE,					// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	{
+		"Links_WinMenu",			"Verknü&pfungen", // panel menu item
+		"kRtMouseGraphics",			"Grafiken", // context menu submenu name
+		"RtMenuLinksUILinkInfo",	"Verknüpfungsinformationen-Kontextmenü",
+		
+		"#LinksUIPanel",			"Verknüpfungen", // panel name
+		"#LinksUIPanelMenu",		"Verknüpfungsbedienfeldmenü", 
+		"#LinksUtilitiesSubmenu",		"Hilfsprogramme",		// submenu for links panel menu
+		"#SelectedLinkInfoSectionName",			"Verknüpfungsinformationen", // section name in links ui panel
+		
+		"#UpdateAllOutOfDateLinksMenu",	"Alle Verknüpfungen aktualisieren",
+		"#AutoFindMissingLinksMenu",		"Nach fehlenden Verknüpfungen suchen",
+		"#LinksUIRelinkLinkMenu",		"Erneut verknüpfen...",
+		"#LinksUIRelinkResourceMenu",	"Alle Instanzen erneut verknüpfen...", // menu item to relink all instances of this multiple link assets
+		"#RelinkResource ^1 Menu",		"Alle Instanzen von '^1' neu verknüpfen...", // menu item to relink all instances of one single link asset
+		"#ReplaceFPOWithOriginalResourceMenu",	"Alle Instanzen ersetzen...", // menu item to replace all instances of this multiple link assets
+		"#ReplaceFPOWithOriginalResource ^1 Menu", "Alle Instanzen von FPO „^1“ durch Original ersetzen...", // menu item to replace all instances of one single link asset
+		"#RelinkCloudResource ^1 Menu",	"Alle Instanzen von „^1“ erneut aus CC Libraries verknüpfen...", // menu item to relink all instances of one single link asset
+        "#RelinkAALResource ^1 Menu",    "Alle Instanzen von „^1“ aus Adobe Asset Link erneut verknüpfen...", // menu item to relink all instances of one single link asset
+		"#LinksUIUpdateLinkMenu",			"Verknüpfung aktualisieren", // context menu item in links ui panel
+		"#LinksUIUpdateLinkResourceMenu",	"Alle Instanzen aktualisieren",
+		"#UpdateResource ^1 Menu",		"Alle Instanzen von '^1' aktualisieren", // menu item to update all instances of one single link asset
+		"#LinksUIEmbedLinkMenu",			"Verknüpfung einbetten", // context menu item in links ui panel
+		"#LinksUIEmbedResourceMenu",		"Alle Instanzen einbetten",
+		"#EmbedResource ^1 Menu",			"Alle Instanzen von '^1' einbetten", // menu item to embed all instances of one single link asset
+		"#LinksUIUnEmbedLinkMenu",		"Einbettung von Verknüpfung aufheben", // context menu item in links ui panel
+		"#LinksUIUnEmbedResourceMenu",	"Einbettung aller Instanzen aufheben",
+		"#UnembedResource ^1 Menu",			"Einbettung aller Instanzen von '^1' aufheben", // menu item to unembed all instances of one single link asset
+		"#LinksUIUnLinkMenu",				"Verknüpfung aufheben",
+		"#UnLinkResourceMenu",			"Verknüpfung aller Instanzen aufheben",
+		"#UnLinkResource ^1 Menu",			"Verknüpfung aller Instanzen von '^1' aufheben", // menu item to unlink all instances of one single link asset
+		"#LinksUIEditOriginalLinkMenu",		"Original bearbeiten", // context menu item in links ui panel
+		"#LinksUIGoToSourceLinkMenu",		"Gehe zu Quelle", // context menu item in links ui panel
+		"#LinksUIXMPFileInfo",				"XMP-Dateiinformationen...",
+		"#LinksUICopyPath",				"Vollständigen Pfad kopieren",
+		"#LinksUICopyPlatformPath",			"Plattformstilpfad kopieren",
+		"#RevealLinkInMacFinder",			"Im Finder anzeigen",
+		"#RevealLinkInWinExplorer",			"Im Explorer anzeigen",
+		"#RevealLinkInAdobeBridge",			"In Bridge anzeigen",
+		"#RevealLinkInCCLibraries",			"In CC Libraries anzeigen",
+		"#GoToLink",						"Gehe zu Verknüpfung",
+		"#EditWithApp",					"Bearbeiten mit",
+		"ApplicationFiles",					"Anwendung (*.exe)", // windows only string to list exe files in the 'edit with application' dialog.
+		"#ChooseEditingApplication",			"Anwendung auswählen", // dialog title
+		"#OtherApp",						"Andere...",	// Menu name for choosing a custom application via a standard file dialog for Edit With...
+		"#LinksUICopyLink",				"Verknüpfung(en) kopieren nach...",
+		"#LinksUIEditColumnsMenu",			"Bedienfeldoptionen...",
+		
+		"#LinksUIRemoveThisColumnMenu",	"Diese Spalte ausblenden",
+		"#LinksUIShowThumbnailMenu",		"Miniatur anzeigen",
+		"#LinksUIHideThumbnailMenu",		"Miniatur ausblenden",		
+		"#LinksUIShowInfoThumbnailMenu",	"Info-Miniatur anzeigen",
+		"#LinksUIHideInfoThumbnailMenu",	"Info-Miniatur ausblenden",
+		
+		"#SaveLinkVersionCmd",			"Verknüpfung einchecken",
+		"#ShowLinksPanelColumn",			"Spalte anzeigen",
+		"#ShowLinksPanelInfo",				"In Verknüpfungsinformationen anzeigen",
+		"#SelectNextLinkButtonTip",			"Nächste Verknüpfung in der Liste auswählen",
+		"#SelectPrevLinkButtonTip",			"Vorherige Verknüpfung in der Liste auswählen",
+		"#ToggleLinkInfoButtonTip",			"Verknüpfungsinformationen ein-/ausblenden",
+
+		"#ShortLinkStatusParamStr",				"^1 Verknüpfung(en)",  // status string for links panel
+		"#LongLinkStatusParamStr",				"^1 Verknüpfung(en) insgesamt\n\n   ^2 fehlend\n   ^3 geändert\n   ^4 eingebettet\n   ^5 eindeutig\n   ^6 Unterverknüpfung(en)", // tip string for links panel status.
+		"#OneSelectedLinkStr",			"1 ausgewählt", // status string when one link is selected in the panel.
+		"#NumSelectedLinksParamStr",	"^1 ausgewählt", // status string when multiple links are selected in the panel.
+				
+		"RtMenuLinksUILinkItem",		"Verknüpfungskontextmenü",
+		"RtMenuLinksUILinksHeader",		"Verknüpfungskopfzeilen-Kontextmenü",
+		
+		"#LinkColumnDialog",			"Bedienfeldoptionen", // dialog name
+		"#LinksUIPanelOptions",			"Optionen",
+		
+		"#LinkThumbPrefLabel",			"Miniaturen:",
+		"#LinksUIRowSizeLabel",		"&Zeilengröße:",
+		"#LinksUISmallRowStr",			"Kleine Zeilen",
+		"#LinksUIRegularRowStr",		"Normale Zeilen",
+		"#LinksUILargeRowStr",			"Große Zeilen",
+		"#LinkInfoShowThumbnailCheckbox",	"In Verknüpfungs&informationen anzeigen",
+		"#LinksUIShowThumbnail",		"In &Namensspalte anzeigen",
+		"#LinksUICollapseMultiple",		"Mehrere Verknüpfungen mit glei&cher Quelle minimieren",
+
+		"#SearchHereForMissingFiles",	"Nach fehlenden Verknüpfungen in diesem Ordner suchen", // label for checkbox in relink dialog
+		"#RelinkSkipButton",			"Überspringen", // name for 'skip' button in relink dialog
+		"#SearchFound^1Links",		"Dieses Verzeichnis für erneute Verknüpfungen wurde durchsucht; es wurden ^1 fehlende Verknüpfungen gefunden und erneut verknüpft.", // alert that displays if we auto find missing links after a relink
+		"#RelinkToFolderTitle",			"Wählen Sie den Ordner aus, zu dem erneut eine Verknüpfung erstellt werden soll. Nur derzeit ausgewählte Verknüpfungen mit einem übereinstimmenden Namen werden erneut verknüpft.",
+		"#RelinkToSameFilename",		"Gleicher Dateiname und gleiche Erweiterung", // radio button option in relink to folder dialog
+		"#RelinkToExtension",			"Gleicher Dateiname, jedoch mit dieser Erweiterung:", // radio button option in relink to folder dialog
+		"#LinksUICopyLinksTitle",		"Wählen Sie den Ordner aus, in den die verknüpften Dateien kopiert werden sollen.",
+		"#LinksUIRelinkToFolderLinkMenu",	"Erneut mit Ordner verknüpfen...",
+		"#LinksUIRelinkFileExtensionLinkMenu",	"Dateierweiterung erneut verknüpfen...",
+        "#LinksUIRelinkFromCloudAssetLinkMenu",	"Erneut aus CC Libraries verknüpfen...",
+        "#LinksUIRelinkFromAALAssetLinkMenu",    "Aus Adobe Asset Link erneut verknüpfen...",
+		"#LicenseStockAssetLinkMenu",	"Bild lizenzieren...",
+		"#LinksUIRelink: ^1",			"Erneut verknüpfen: ^1", // title for relink dialog. ^1 becomes file path.
+		"#LinksUILocate: ^1",			"Suchen: ^1", // title for relink dialog when link is missing. ^1 becomes file path.
+		"#CopyLinksFailedAlert",		"Kopieren von Verknüpfungen in einen Ordner fehlgeschlagen.",
+		"#AutoFindFoundNothingAlert",	"Keine fehlenden Verknüpfungen gefunden. Verwenden Sie den Befehl \"Erneut verknüpfen\", um die erste fehlende Verknüpfung zu suchen, und versuchen Sie es erneut.",
+		
+		"kEditsMadeWarning",			  "Die importierte Version von \"^1\" wurde bearbeitet. Diese Änderungen gehen bei der Aktualisierung verloren. Trotzdem aktualisieren?",
+		"kEditsMadeInLinkedStoryWarning",	"Der verknüpfte Textabschnitt \"^1\" wurde bearbeitet. Diese Änderungen gehen beim Aktualisieren verloren. Möchten Sie die Aktualisierung dennoch durchführen?",
+		"kEditsMadeInLinkedArticleWarning", "Das verknüpfte Seitenelement \"^1\" wurde bearbeitet. Diese Änderungen gehen bei der Aktualisierung verloren. Trotzdem aktualisieren?",
+		"kEditsMadeToTextOrTableWarning", "Die importierte Version von \"^1\" wurde bearbeitet. Diese Änderungen (mit Ausnahme von Änderungen an Kalkulationstabellen, die über Zellen- oder Tabellenformate vorgenommen wurden) gehen bei der Aktualisierung der Verknüpfung verloren. Trotzdem aktualisieren?",
+
+		// Strings for Problem Links dialog
+		"#LinksModifiedWarning",	"Dokument enthält Verknüpfungen mit fehlenden/geänderten Quellen. Aktualisieren Sie die geänderten Verknüpfungen jetzt hier oder später über das Verknüpfungen-Bedienfeld.",
+		"#HTTPLinksModifiedWarning",	"Dieses Dokument enthält Verknüpfungen zu Quellen, die seit dem letzten Speichern des Dokuments fehlen/geändert wurden. Sie können die geänderten Verknüpfungen jetzt oder später über das Verknüpfungsbedienfeld aktualisieren.",
+		"#UpdateLinks",				"&Geänderte Verknüpfungen aktualisieren",	 // button text
+		"#Don'tUpdateLinks",		"Verknüpfungen nicht aktualisieren", // button text
+		"#ProblemMissingLinksParamStr",	"^1 - Fehlende Verknüpfung(en)",
+		"#ProblemModifiedLinksParamStr",	"^1 - Geänderte Verknüpfung(en)",
+		"#ProblemInaccessibleLinksParamStr",	"^1 - URL-Verknüpfung(en) sind nicht zugänglich. Informationen finden Sie im Verknüpfungen-Bedienfeld.",
+        "#ProblemLinksDialogHeader",    "Problem mit Verknüpfungen",
+		"UnembedToOriginal", 		"Durch Aufheben einer Einbettung kann eine Verknüpfung zu den Originaldateien oder zu den Dateien hergestellt werden, die in einem Ordner erstellt werden. Verknüpfung zu Originaldateien herstellen?",
+		"#SelectUnembedDir",
+									"Wählen Sie den Ordner aus, in dem Dateien erstellt werden sollen.",
+
+		// Show Link message.
+		 "Cannot show link: The selected item is on a hidden layer.",
+						"Verknüpfung kann nicht angezeigt werden: Das ausgewählte Element ist ausgeblendet oder befindet sich auf einer ausgeblendeten Ebene.",
+		"Cannot show link: The selected item is hidden in overset text.",
+						"Verknüpfung kann nicht angezeigt werden. Das ausgewählte Objekt ist in Übersatztext verborgen.",
+		"Cannot show link: The selected item is hidden in an inactive form field state.",
+						"Die Verknüpfung kann nicht angezeigt werden: Das ausgewählte Element ist bei inaktiver Schaltfläche ausgeblendet. Aktivieren Sie die Schaltfläche über das Schalflächenbedienfeld, um das Element anzuzeigen.",
+		"Cannot show link: The selected item is hidden in an inactive mso state.",
+						"Die Verknüpfung kann nicht angezeigt werden: Das ausgewählte Element befindet sich in einem inaktiven Objektstatus. Machen Sie den ausgeblendeten Status über das Objektstatusbedienfeld sichtbar.",
+		"Cannot show link: The selected item is in deleted text in a tracked change.",
+						"Die Verknüpfung kann nicht angezeigt werden: Das ausgewählte Element befindet sich in gelöschtem Text (verfolgte Änderung).",
+		"Cannot show link: The selected item is an XML structure element not in the layout.",
+						"Die Verknüpfung kann nicht angezeigt werden: Das ausgewählte Element ist ein XML-Strukturelement und befindet sich nicht im Layout.",
+		"Cannot show link: The selected item is in hidden conditional text.",
+						"Verknüpfung kann nicht angezeigt werden: Das ausgewählte Objekt befindet sich in verborgenem bedingten Text.",
+						
+						
+		"#EditOriginalButtonTip",		"Original bearbeiten",	// tip string for button in links panel
+		"#GotoLinkButtonTip",		"Gehe zu Verknüpfung",	// tip string for button in links panel
+		
+		"#appendedUpdateButtonTipMac",		". Wahltaste+Klicken, um alle zu aktualisieren", // appened to menu name for 'update link' to build tip string for update button(mac)
+		"#appendedUpdateButtonTipWin",		". Alt-Taste+Klicken, um alle zu aktualisieren", // appened to menu name for 'update link' to build tip string for update button(win)
+		"#appendedRelinkButtonTipMac",		" Wahltaste+Klicken, um alle fehlenden Verknüpfungen erneut zu verknüpfen", // appened to menu name for 'Relink' to build tip string for relink button(mac)
+		"#appendedRelinkButtonTipWin",		" Alt-Taste+Klicken, um alle fehlenden Verknüpfungen erneut zu verknüpfen", // appened to menu name for 'Relink' to build tip string for relink button(win)
+		
+		"#ErrorEmbeddingLink",				"Verknüpfung konnte nicht eingebettet werden.",
+		"#LinksUIShowLinkInfoMenu",		"Verknüpfungsinformationen-Fenster einblenden",
+		"#LinksUIHideLinkInfoMenu",			"Verknüpfungsinformationen-Fenster ausblenden",
+		"#LinksUICopyLinkInfoMenu",		"Alle Verknüpfungsinformationen kopieren",
+		"#LinksUIAutosizeLinkInfoMenu",		"Größe der Verknüpfungsinformationen automatisch ändern",
+		"#LinksUIGenerateReportMenu",		"Infos für ausgewählte Verknüpfungen kopieren",
+		"#LinksUIGenerateCaptionPrefsMenu",	"Beschriftung einrichten...",
+		"#GenerateLiveLinkCaptionMenu",		"Dynamische Beschriftungen erstellen",
+		"#GenerateStaticLinkCaptionMenu",	"Statische Beschriftungen erstellen",
+		
+		"#GenerateCaptionPrefDialogName",	"Beschriftung einrichten",
+		"#BeforeMetadataCaptionLabel",		"Text davor",
+		"#MetadataCaptionLabel",			"Metadaten",
+		"#AfterMetadataCaptionLabel",		"Text danach",
+		"#GenerateLiveCaptionGraphicSelectionMenu",	"Dynamische Beschriftung erstellen",
+		"#GenerateStaticCaptionGraphicSelectionMenu",	"Statische Beschriftung erstellen",
+		"#CopyLinkInfoStr '^1'",				"'^1' kopieren", // Menu item name in links panel. ^1 is replaced with whatever text data is under the mouse.
+		"#CopyLinkFieldMenu",				"Informationen-kopieren-Feld",
+		"#InfoLabelSuffix",					": ", // suffix added to end of link info labels in the info section
+		
+		"#LinksCopyInfoMenu",				"Informationen kopieren", // links panel submenu
+		
+		"#CaptionSubmenu",				"Beschriftungen",		// name of captions submenu on Object menu
+		"#CaptionRowLabel",				"Metadatenbeschriftung", // caption setup dialog top section title
+		"#CaptionOptionsLabel",				"Position und Format", // caption setup dialog bottom section title
+		"#CaptionOffsetLabel",				"Versat&z:",
+		"#CaptionParaStyleLabel",			"&Absatzformat:",
+		"#CaptionLayerLabel",				"&Ebene:",
+		"#CaptionLayerLockedError",			"Es kann keine Beschriftung auf einer gesperrten Ebene erstellt werden.",
+		"#CaptionGroupFailureError",			"Es kann keine Gruppe für die Beschriftung erstellt werden.",
+		"#ErrorGeneratingCaption",			"Beschriftung konnte nicht erstellt werden.",
+		"#CaptionAlignmentLabel",			"A&usrichtung:",
+		
+		"#CaptionAlignBelow",				"Unter dem Bild",
+		"#CaptionAlignAbove",				"Über dem Bild",
+		"#CaptionAlignLeft",					"Links vom Bild",
+		"#CaptionAlignRight",				"Rechts vom Bild",
+		
+		"#GroupCaptionWithImage",			"Beschriftung mit Bild &gruppieren",
+		 "#ConvertCaptionToTextMenu",		"In statische Beschriftung konvertieren",
+		 "#ShowImportOptionsTip", 			"Importoptionen anzeigen", // Tool tip for custom controls in relink dialog
+		 "#SearchHereForMissingFilesTip",	"Hier nach fehlenden Dateien suchen", // Tool tip for custom controls in relink dialog
+		 "#EmbedLinkFromPropsPanel",		"Bild aus Eigenschaftenbedienfeld einbetten",
+		 "#RelinkAssetFromPropsPanel",		"Bild aus Eigenschaftenbedienfeld erneut verknüpfen",
+		 "#UpdateLinkFromPropsPanel",		"Bild aus Eigenschaftenbedienfeld aktualisieren",
+		 "#UnlinkFromPropsPanel",			"Verknüpfung der Datei mit dem Eigenschaftenbedienfeld aufheben",
+        
+        "kImportingAALAsset",                "Asset wird importiert",
+        "kImportingFileName",                "Import von ^1 läuft",
+        
+        //Error Strings for AEM
+        "AEMUnsupportedFiles",     "^1 von ^2 Datei(en) konnte(n) nicht platziert werden. Der Dateityp wird von InDesign nicht unterstützt.",
+        "AEMInaccessibleFiles",     "^1 von ^2 Datei(en) konnte(n) nicht platziert werden. InDesign kann auf die Datei nicht zugreifen. Überprüfen Sie Ihre Netzwerkverbindung oder die ursprüngliche Quelle der Inhalte.",
+        "AEMUnknownFiles",     "^1 von ^2 Datei(en) konnte(n) aufgrund eines unbekannten Fehlers nicht platziert werden.",
+        "AEMGenericImportFailure",     "AEM-basiertes Asset kann nicht importiert werden.",
+        
+        // Action id strings
+        "#LinksUIReplaceFPOWithOriginalLink",        "FPO durch Original ersetzen...",
+        "#LinksUIReplaceAllFPOWithOriginalLinks",    "Alle FPOs durch Originale ersetzen...",
+        "#LinksUIDownloadOriginalLink",                "Original herunterladen",
+        "#LinksUIDownloadAllOriginalLinks",            "Alle Originale herunterladen",
+	}
+};
+
+
+
+#endif //__ODFRC__

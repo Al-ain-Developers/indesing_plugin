@@ -1,0 +1,92 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/sdksamples/snippetrunner/SnipRun_enUS.fr $
+//  
+//  Owner: Adobe Developer Technologies
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+// English string table is defined here
+
+resource StringTable (kSDKDefStringsResourceID + index_enUS)
+{
+	k_enUS,									// Locale Id
+	kEuropeanMacToWinEncodingConverter,		// Character encoding converter
+	
+	{
+
+		// ----- Menu strings
+		kSnipRunCompanyKey,					kSnipRunCompanyValue,					
+		kSnipRunAboutMenuKey,					kSnipRunPluginName "[US]...",
+		kSnipRunPluginsMenuKey,				kSnipRunPluginName "[US]",
+		kSnipRunShowParameterBoxMenuItemKey,	"Show parameter box[US]",
+		kSDKDefAboutThisPlugInMenuKey,			kSDKDefAboutThisPlugInMenuValue_enUS,	
+
+		// ----- Command strings
+
+		
+		// ----- Window strings
+
+		
+		// ----- Panel/dialog strings
+		kSnipRunPanelTitleKey,				kSnipRunPluginName "[US]",
+		kSnipRunNameStringKey,				"Snippet name" "[US]",
+		kSnipRunPreconditionsStringKey,		"Preconditions" "[US]",
+		kSnipRunParametersStringKey,		"Parameters" "[US]",
+		kSnipRunGoStringKey,				"Go" "[US]",
+		kSnipRunLogStringKey,				"Log" "[US]",
+		kSnipRunGoTipStringKey,				"Go: click to run snippet (alt-click to run without parameter prompts)" "[US]",
+		kSnipRunNameTipStringKey,			"Select snippet to be run here" "[US]",
+		kSnipRunPreconditionsTipStringKey,	"Conditions that must be met before the snippet can run" "[US]",
+		kSnipRunParametersTipStringKey,		"Enter parameter values (comma separated), clear to use defaults" "[US]",
+		kSnipRunLogTipStringKey,			"Check status here" "[US]",
+		kSnipRunTraceLogStringKey,			"Trace" "[US]",
+		kSnipRunHelpTipStringKey,			"Help: click for help on snippet" "[US]",
+		kSnipRunTraceTipStringKey,			"Toggle TRACE on/off" "[US]",
+		kSnipRunClearLogTipStringKey,		"Clear: click to clear the log" "[US]",
+		kSnipRunSaveLogTipStringKey,		"Save: click to save log to file" "[US]",
+		kSnipRunFamilyStringKey,			kSnipRunPluginName " log file" "[US]",
+		kSnipRunSaveDialogNameStringKey,	"Save log file" "[US]",
+		kSnipRunDefaultFilenameStringKey,	kSnipRunPluginName,
+
+		// ----- Error strings
+		kSnipRunSaveLogFailedStringKey,		"Failed to save the log, sorry, is the file open?" "[US]",
+		kSnipRunSnippetNotFoundErrorCodeKey, "Failed: Can't find this snippet" "[US]",
+		kSnipRunEOFErrorCodeKey, "Reached end of batch list" "[US]",
+		// for scriptability - Error string service
+		kSnipRunCannotRunSnippetErrorCodeKey,  "This snippet cannot be run at this time." "[US]",
+		kSnipRunInvalidOperationWhenPanelIsInvisibleErrorCodeKey, "This operation is invalid when the Snippet Runner panel is invisible." "[US]",
+		kSnipRunInternalErrorStringKey, "The SnippetRunner plug-in encountered an internal programming error. This is most likely an assertion failure.[US]",
+
+		// ----- Misc strings
+		kSnipRunAboutBoxStringKey,			kSnipRunPluginName " [US], version " kSnipRunVersion " by " kSnipRunAuthor "\n\n" kSDKDefCopyrightStandardValue "\n\n" kSDKDefPartnersStandardValue_enUS,
+		kSnipRunQuickApplyFilterKey, "G", // can only have a single character - G for Go
+		kSnipRunQuickApplyNameKey, "Code Snippets[US]", // UI name for quick apply
+		kSnipRunHelloCSXSMessage, "Hello from CSXS! [US]",
+	}
+
+};
+
+#endif // __ODFRC__
+// End , SnipRun_enUS.fr

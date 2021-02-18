@@ -1,0 +1,163 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/private/toolkit/diagnosticlog/DiagLogClass.fr $
+//  
+//  Owner:
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  ADOBE CONFIDENTIAL
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  All information contained herein is, and remains
+//  the property of Adobe Systems Incorporated and its suppliers,
+//  if any.  The intellectual and technical concepts contained
+//  herein are proprietary to Adobe Systems Incorporated and its
+//  suppliers and may be covered by U.S. and Foreign Patents,
+//  patents in process, and are protected by trade secret or copyright law.
+//  Dissemination of this information or reproduction of this material
+//  is strictly forbidden unless prior written permission is obtained
+//  from Adobe Systems Incorporated.
+//  
+//========================================================================================
+
+#include "objectmodeltypes.fh"
+#include "BuildNumber.h"
+#include "FormatNumber.h"
+#include "PMLocaleIds.h"
+
+//#include "CommandID.h"
+#include "XMLParserID.h"
+//#include "ActionID.h"
+
+#include "PlugInModel_UIAttributes.h"
+#include "DiagnosticLogID.h"
+//#include "ActivityLogDefs.h"
+
+#ifdef __ODFRC__
+
+//--------------------------
+// Plug-in definition
+//--------------------------
+
+resource PluginVersion (1)
+{
+	kTargetVersion,
+	kDiagnosticLogPluginID,
+	kMajorVersionNumber, kMinorVersionNumber,	
+	kMajorVersionNumber, kMinorVersionNumber,	
+	kAnnaMajorFormatNumber,	kAnnaInitialMinorFormatNumber,
+	{ kInDesignProduct,	kInCopyProduct,	kInDesignServerProduct },
+	{ kWildFS },
+	kModelPlugIn,
+	kAUMComponentVersionStr
+};
+
+//___________________________________________________________________________________
+//	Plugin Dependency
+//___________________________________________________________________________________
+
+
+resource ClassDescriptionTable(1)
+{{{	
+	Class
+	{
+		kDiagLogConfigManagerBoss,
+		kInvalidClass,
+		{
+			IID_IDIAGLOGCONFIGMANAGER,	kDiagLogConfigManagerImpl,
+			IID_ISAXCONTENTHANDLER,		kDiagLogPrefsContentHandlerImpl,
+		}
+	},
+
+	Class
+	{
+		kDiagLoggerManagerBoss,
+		kInvalidClass,
+		{
+			IID_IDIAGLOGIDDATABASE,		kDiagLogIDDatabaseImpl,
+			IID_ISAXCONTENTHANDLER,		kDiagLogIDDBContentHandlerImpl,
+			IID_IDIAGLOGGERMANAGER,		kDiagLoggerManagerImpl,
+		}
+	},
+
+	Class
+	{
+		kDiagLogStartupShutdownBoss,
+		kInvalidClass,
+		{
+			IID_ISTARTUPSHUTDOWN,	kDiagLogStartupShutdownImpl,
+			// This is a model plug-in, but we only want the startup shutdown service to run in main thread.
+			IID_IK2SERVICEPROVIDER,	kCMainThreadStartupShutdownProviderImpl,
+		}
+	},
+
+	Class
+	{
+		kXMLDiagnosticLoggerBoss,
+		kInvalidClass,
+		{		
+			IID_IDIAGNOSTICLOGGER,		kXMLDiagnosticLoggerImpl,
+			IID_IK2SERVICEPROVIDER,		kDiagLoggerServiceProviderImpl,
+		}
+	},
+
+	Class
+	{
+		kTextDiagnosticLoggerBoss,
+		kInvalidClass,
+		{
+			IID_IDIAGNOSTICLOGGER,		kTextDiagnosticLoggerImpl,
+			IID_IK2SERVICEPROVIDER,		kDiagLoggerServiceProviderImpl,
+		}
+	},
+
+	Class
+	{
+		kDiagLogModifierBoss,
+		kInvalidClass,
+		{			
+			IID_IDIAGLOGMODIFIER,		kDiagLogModifierImpl,
+			IID_IK2SERVICEPROVIDER,		kDiagLogModifierServiceProviderImpl,
+		}
+	},
+
+	Class
+	{
+		kDiagnosticLogIdleTaskBoss,
+		kInvalidClass,
+		{			
+            IID_IIDLETASK,	kDiagnosticLogIdleTaskImpl,
+		}
+	},
+
+/*
+	Class
+	{
+		kActLogActionDataManagerBoss,
+		kInvalidClass,
+		{
+			IID_IACTLOGACTIONDATAMANAGER,	kActLogActionDataManagerImpl,
+			IID_IPMPERSIST,					kPMPersistImpl,
+		}
+	},
+*/
+	AddIn
+	{
+		kSessionBoss,
+		kInvalidClass,
+		{			
+			IID_IDIAGNOSTICLOG,				kDiagnosticLogImpl,
+		}
+	},
+
+}}};
+
+#endif // __ODFRC__

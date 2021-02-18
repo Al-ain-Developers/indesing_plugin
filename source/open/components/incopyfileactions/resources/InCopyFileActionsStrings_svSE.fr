@@ -1,0 +1,43 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kInCopyFileActionsStringsRsrcID + index_svSE)
+{
+	k_svSE,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{
+		"&Update Design",		"Uppdatera desi&gn",
+		"AlertUnableToSave",	"Det gick inte att spara följande innehåll.\nDet kan bero på att filerna är låsta eller att du inte har behörighet att ändra dem.\n",
+		"Update^1Alert",		"Det gick inte att spara en del innehåll. Om du uppdaterar kan du förlora de ändringar du har gjort.\nVill du uppdatera till den senaste versionen av “^1”?",
+		"Undoable^1Save",		"Om du uppdaterar designen kommer allt redigerbart innehåll att sparas innan du fortsätter. Det går inte att använda kommandot Ångra till att ångra eventuella ändringar som sker när du uppdaterar. \nVill du uppdatera till \"^1\" ändå?",
+		"AlertStoriesMissing",	"Det gick inte att hitta en eller flera innehållsfiler, och de kan därför inte redigeras. Prova att flytta filerna till originalplaceringen eller uppdatera länkarna i InDesign.",
+		"AlertStoriesMissingWF", "Det gick inte att hitta en eller flera innehållsfiler, och de kan därför inte redigeras. Prova att hämta innehållet från servern och öppna dokumentet igen.",
+		"Update",				"Uppdatera",
+		"&Revert Story",		"Åt&erställ innehåll",
+//		"Revert Story",			"Revert Content", // Note to localizer: this string moved to InCopySharedStrings_enUS.fr
+		
+		"SaveAsFeatureLost",    "Det här dokumentet kan innehålla funktioner som inte kan användas i det här filformatet. Vill du fortsätta?",
+		"CannotSaveOntoLockedFile",		"Den angivna filen är för närvarande utcheckad av \"^1\" i ^2 från dokumentet ^3. Välj ett annat filnamn eller be \"^1\" att checka in filen.",
+		"CannotSaveOntoLockedFileMinimal",	"Den angivna filen är utcheckad av \"^1\". Välj en annan fil eller be \"^1\" checka in filen.",
+	}
+};
+
+
+#endif // __ODFRC__

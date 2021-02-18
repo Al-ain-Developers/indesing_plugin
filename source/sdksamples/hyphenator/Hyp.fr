@@ -1,0 +1,254 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/sdksamples/hyphenator/Hyp.fr $
+//  
+//  Owner: Adobe Developer Technologies
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+//===========================
+//  General includes:
+//===========================
+
+#include "MenuDef.fh"
+#include "ActionDef.fh"
+#include "ActionDefs.h"
+#include "AdobeMenuPositions.h"
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "StringTable.fh"
+//#include "OMTypes.h"
+#include "objectmodeltypes.fh"
+#include "ScriptInfoTypes.fh"
+#include "ShuksanID.h"
+#include "ActionID.h"
+#include "CommandID.h"
+#include "WorkspaceID.h"
+#include "widgetid.h"
+#include "BuildNumber.h"
+#include "LinguisticID.h"
+#include "PerformanceMetricsID.h"
+#include "ScriptingID.h"
+#include "AppFrameworkID.h"
+
+#include "PlugInModel_UIAttributes.h"
+
+// Project includes:
+#include "HypID.h"
+
+#ifdef __ODFRC__
+
+/*
+// Plugin version definition.
+*/
+resource PluginVersion (kSDKDefPluginVersionResourceID)
+{
+	kTargetVersion,
+	kHypPluginID,
+	kSDKDefPlugInMajorVersionNumber, kSDKDefPlugInMinorVersionNumber, 	
+	kSDKDefHostMajorVersionNumber, kSDKDefHostMinorVersionNumber,
+	kHypCurrentMajorFormatNumber, kHypCurrentMinorFormatNumber,
+	{ kInDesignProduct, kInDesignServerProduct, kInCopyProduct },
+	{ kWildFS },
+	kModelPlugIn,
+	kHypVersion
+};
+
+/*
+//	Boss class definition.
+*/
+resource ClassDescriptionTable(kSDKDefClassDescriptionTableResourceID)
+{{{
+	/** This boss provides performance metrics support. 
+	  	@ingroup hyphenator
+	 */
+	Class
+	{
+		kHypServiceProviderBoss,
+		kInvalidClass,
+		{
+			IID_IK2SERVICEPROVIDER,		kPerformanceMetricProviderImpl,
+			IID_IPERFORMANCEMETRIC,		kHypPerformanceMetricImpl,
+		}
+	},
+
+	/** This boss provides scripting support by means of handling events and property 
+	  	accesses that are delegated by the script manager. 
+	  	@ingroup hyphenator
+	 */
+	Class
+	{
+		kHypScriptProviderBoss,
+		kBaseScriptProviderBoss,
+		{
+			IID_ISCRIPTPROVIDER, kHypScriptProviderImpl,
+		}
+	},
+	
+	/** Manages the hyphenation services provided by this plug-in.
+		An instance is of kHypHyphenationServiceBoss is created for 
+		each language this plug-in can hyphenate.
+		
+		@ingroup hyphenator
+	 */
+	Class
+	{
+		kHypLinguisticServiceBoss,
+		kInvalidClass,
+		{
+			/** See HypHyphenationMgr.
+			 */
+			IID_IHYPHENATIONMGR, kHypHyphenationMgrImpl,
+
+			/** See HypServiceProvider.
+			 */
+			IID_IK2SERVICEPROVIDER, kHypServiceProviderImpl,
+
+			/** Implementation provided by API.
+			 */
+			IID_ILINGUISTICDATA, kLinguisticServiceDataImpl,				
+		}
+	},
+
+	/** Hyphenates a single language. An instance is created for 
+		each language this plug-in can hyphenate.
+		
+		@ingroup hyphenator
+	 */
+	Class
+	{
+		kHypHyphenationServiceBoss,
+		kInvalidClass,
+		{
+			/** See HypHyphenationService.
+			 */
+			IID_IHYPHENATIONSERVICE, kHypHyphenationServiceImpl,
+
+			/** Implementation provided by the API. Configuration
+			 of data like languageID and name performed by 
+			 HypAdaptor::Install.
+			 */
+			IID_ILANGUAGE, kLanguageImpl,	
+			
+			/** Vendor name of the lingustic service
+			*/
+            IID_ISTRINGDATA,            kStringDataImpl,              
+				
+		}
+	},
+}}};
+
+/*
+// Implementation definition.
+*/
+resource FactoryList (kSDKDefFactoryListResourceID) 
+{
+	kImplementationIDSpace,
+	{
+#include "HypFactoryList.h"
+	}
+};
+
+/*
+// LocaleIndex
+// The LocaleIndex should have indices that point at your
+// localizations for each language system that you are 
+// localized for.
+*/
+/*
+// String LocaleIndex.
+*/
+resource LocaleIndex (kSDKDefStringsResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_enUS, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_jaJP, kSDKDefStringsResourceID + index_jaJP
+		
+		kWildFS, k_Wild, kSDKDefStringsResourceID + index_enUS
+	}
+};
+
+resource LocaleIndex (kSDKDefStringsNoTransResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_Wild, kSDKDefStringsNoTransResourceID + index_enUS
+	}
+};
+
+resource StringTable (kSDKDefStringsNoTransResourceID + index_enUS)
+{
+	k_enUS,									// Locale Id
+	kEuropeanMacToWinEncodingConverter,		// Character encoding converter
+	{
+		// No-Translate strings go here:		
+	}
+};
+
+resource VersionedScriptElementInfo (1) 
+{ 
+    //Contexts 
+    { 
+        kCS4ScriptVersion, kCoreScriptManagerBoss, kWildFS, k_Wild, 
+    } 
+         
+    //Elements 
+    { 
+		Property
+		{
+			kHypMaxPropertyScriptElement,
+			p_HypMax,
+			"hyphenation max",	
+			"The maximum number of hyphenations in any word",
+			Int32Type,
+			{}
+			kNoAttributeClass,
+		}
+		Property
+		{
+			kHypTotalPropertyScriptElement,
+			p_HypTotal, 
+			"hyphenation total", 
+			"The total number of hyphenation calls",
+			Int32Type,
+			{}
+			kNoAttributeClass,
+		}
+        Provider
+        {
+            kHypScriptProviderBoss
+            {
+                Object{ kApplicationObjectScriptElement },
+                Property{ kHypMaxPropertyScriptElement, kReadOnly },
+                Property{ kHypTotalPropertyScriptElement, kReadOnly },
+            }
+        }
+	}
+};
+
+#endif // __ODFRC__
+
+#include "Hyp_enUS.fr"
+#include "Hyp_jaJP.fr"
+//  Generated by Dolly build 3.0.1: template "IfPanelMenu".
+// End, Hyp.fr.
+
+
+
+

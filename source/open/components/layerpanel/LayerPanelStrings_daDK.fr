@@ -1,0 +1,142 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kLayerPanelStringsRsrcID + index_daDK)
+{
+	k_daDK,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{
+		// ----- Command strings
+
+		"Layer Options",				"Lagindstillinger",
+		"New Layer",					"Nyt lag",
+		"Layer Deletion",				"Slet lag",
+		"Delete Unused Layers",			"Slet ubrugte lag",
+		"Lock Others",					"Lås andre",
+		"#UnlockOthers",					"Lås andre op",
+		"Show All",						"Vis alle",
+		"#ShowOthers",					"Vis andre",
+		"Unlock All",					"Lås alle op",
+		"Hide All",						"Skjul alle",
+		"Lock All",						"Lås alle",
+		"Merge Layers",					"Sammenflet lag",
+		"Move To Layer",				"Flyt til lag",
+		"Copy To Layer",				"Kopier til lag",
+		"Move Layer",					"Flyt lag",
+		"Move Layers",					"Flyt lag",
+		"kUnlockOthersSequence",		"Lås andre op",
+		"kLockOthersSequence",			"Lås andre",
+
+		// ----- Menu strings
+		
+		"Layers...",						"L&ag...",
+
+		"New Layer...",						"Nyt lag...",
+		"New Layer Above \"^1\"...",		"Nyt lag over \"^1\"...",
+		"New Layer Below \"^1\"...",		"Nyt lag under \"^1\"...",
+		"New Top Layer...",					"Nyt toplag...",
+		"Delete Layer",						"Slet lag",
+		"Delete \"^1\"",					"Slet lag \"^1\"",
+		"Delete Layers",					"Slet lag",
+		"#Duplicate ^1 Menu",				"Dubler lag \"^1\"",
+		"#Duplicate LayersMenu",			"Dubler lag",
+		"#DuplicatLayersCmd",				"Dubler lag",
+		
+		"Layer Options for \"^1\"...",		"Lagindstillinger for \"^1\"...",
+		"Layer Options...",					"Lagindstillinger...",
+		"Show All Layers",					"Vis alle lag",
+		"Hide Others",						"Skjul andre",
+		"Unlock All Layers",				"Lås alle lag op",
+		"Lock Others",						"Lås andre",
+		"Hide All Layers",					"Skjul alle lag",
+		"Lock All Layers",					"Lås alle lag",
+		
+		"Paste Remembers Layers",			"Bevar lag ved indsættelse",
+		"Ungroup Remembers Layers",			"Opdel lag ved indsættelse",
+		
+		"Merge Layers",						"Sammenflet lag",
+		"Delete Unused Layers",				"Slet ubrugte lag",
+		"Select Item(s) on \"^1\"",			"Marker element(er) på \"^1\"",
+		"Select Item(s) Layer",				"Marker element(er) på lag",
+				
+		"#SelectLayerPageItemMenu",		"Marker element(er)",
+		"#SelectZoomLayerPageItemMenu",	"Marker og tilpas element",
+		"#ZoomLockedPageItemMenu",		"Tilpas element i vindue",
+		
+		// Menu names for context and panel menus
+		"LayerPanelPopup",					"Panelmenuen Lag",	
+		"RtMenuLayerPanelEye",				"Panelmenuen Lag, Genvejsmenuen Øje",	
+		"RtMenuLayerPanelLock",				"Panelmenuen Lag, Genvejsmenuen Lås",
+		"RtMenuLayerPanelItem",				"Genvejsmenuen Lag i lagpanelet",	
+		"RtMenuLayerPanelPageItem",			"Genvejsmenuen Sideelement i lagpanelet",	
+
+		// ----- Window strings
+		"DeleteOneLayer",					"Laget \"^1\" indeholder et eller flere objekter. Skal laget slettes alligevel?",
+		"DeleteMultiLayers",				"De markerede lag indeholder objekter. Skal lagene slettes alligevel?",
+		"DeleteOneGuideLayer",				"Laget \"^1\" indeholder linealhjælpelinjer. Skal laget slettes alligevel?",
+		"DeleteGuideLayers",				"De markerede lag indeholder linealhjælpelinjer. Skal lagene slettes alligevel?",
+		"DeletingPlaceGunUsedLayer",		"Kan ikke slette lag. Det kræves af den snippet, der er indlæst på markørens position.",
+
+		// ----- Window Menu
+		"Layers_WinMenu",					"&Lag",
+		
+		// ----- Panel strings
+		
+		"^1 Layer",							"^1 lag",		// For status widget
+		"^1 Layers",						"^1 lag",	// For status widget
+		"New Layer",						"Nyt lag",	// Title of New Layer dialog
+		"Layer Options",					"Lagindstillinger", // Title of Layer Options dialog
+		"&Name:",							"&Navn:",
+		"&Color:",							"&Farve:",
+		"&Show Layer",						"Vi&s lag",
+		"Show &Guides",						"Vis h&jælpelinjer",
+		"&Lock Layer",						"&Lås lag",
+		"Loc&k Guides",						"Lås &hjælpelinjer",
+		"Keep When Layer is &Hidden",		"U&delad figursats, når laget er skjult",
+		"&Print Layer",						"&Udskriv lag",
+
+		// ----- Tips strings
+
+		"DeleteLayerTip",					"Slet markerede lag",
+		"NewLayerTip",						"Opret nyt lag",
+		"EyeTip",							"Slår synlighed til og fra",
+		"PencilTip",						"Slår lås til og fra for lag (kan redigeres, når det er tomt)",
+		"PageItemPencilTip",				"Slår lås til og fra for sideelement (kan redigeres, når det er tomt)",
+		"SwatchTip",						"Farve på markeringsmærker på dette lag",
+		"ProxyTip",							"Angiver markerede elementer (træk for at flytte mellem lag eller ændre Z-rækkefølge)",
+		"ProxyChildSelectedTip",			"Indeholder det markerede objekt. Klik på objektet med objektbeholderen for at markere det",
+		"UnselectedProxyTip",				"Klik for at markere elementer",
+		"ActiveTip",						"Angiver det aktuelle tegnelag",
+
+		// ----- Error strings
+		"EmptyLayerName",					"Der skal angives et lagnavn.",
+		"DuplicateLayer",					"Der eksisterer allerede et lag med dette navn.",
+
+		"#LayerHierPanelName",		"Lag",
+		"#Page:^1,",					"Side: ^1, ", // for layer panel status widget. Will be followed by layer count string.
+		"#Pages:^1,",					"Sider: ^1, ", // for layer panel status widget. Will be followed by layer count string.
+		"#DeletePageItemsMenu",		"Slet sideelementer", // menu item name
+		"#DeletePageItem \"^1\"",		"Slet sideelementet \"^1\"", // menu item name
+		"#DuplicatePI ^1 Menu",			"Dubler sideelementet \"^1\"", // menu item name
+		"#DuplicatePIMenu",			"Dubler sideelementer",  // menu item name
+	}
+};
+
+#endif // __ODFRC__

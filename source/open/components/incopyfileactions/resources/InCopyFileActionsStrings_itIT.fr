@@ -1,0 +1,43 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kInCopyFileActionsStringsRsrcID + index_itIT)
+{
+	k_itIT,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{
+		"&Update Design",		"Aggiorna str&uttura",
+		"AlertUnableToSave",	"Impossibile salvare i seguenti contenuti.\nI file potrebbero essere protetti o non disponete delle autorizzazioni necessarie alla loro modifica.\n",
+		"Update^1Alert",		"Impossibile salvare alcuni contenuti. In seguito all'aggiornamento alcune modifiche potrebbero andare perse.\nDesiderate eseguire l'aggiornamento all'ultima versione di \"^1\"?",
+		"Undoable^1Save",		"Aggiorna struttura salva tutti i contenuti modificabili prima di procedere. Con il comando Annulla non è possibile ripristinare le modifiche che derivano dall'aggiornamento.\nIntendete comunque effettuare l'aggiornamento a \"^1\"?",
+		"AlertStoriesMissing",	"Impossibile trovare uno o più file di contenuti, che non possono pertanto essere modificati. Provate a riportare i file alla rispettiva posizione originale o ad aggiornare i collegamenti in InDesign.",
+		"AlertStoriesMissingWF", "Impossibile trovare uno o più file di contenuti, che non possono pertanto essere modificati. Provate a scaricare tali contenuti dal server e a riaprire il documento.",
+		"Update",				"Aggiorna",
+		"&Revert Story",		"Ri&pristina contenuti",
+//		"Revert Story",			"Revert Content", // Note to localizer: this string moved to InCopySharedStrings_enUS.fr
+		
+		"SaveAsFeatureLost",    "Questo documento potrebbe contenere funzioni non supportate da questo formato di file. Intendete continuare?",
+		"CannotSaveOntoLockedFile",		"Il file specificato è attualmente ritirato da \"^1\" in ^2 dal documento ^3. Scegliete un nome di file diverso o chiedete a \"^1\" di consegnare il file.",
+		"CannotSaveOntoLockedFileMinimal",	"Il file specificato è attualmente ritirato da \"^1\".  Scegliete un diverso nome file o richiedete che \"^1\" consegni il file.",
+	}
+};
+
+
+#endif // __ODFRC__

@@ -1,0 +1,184 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/sdksamples/cellpanel/CelPnlClass.fr $
+//  
+//  Owner: Adobe Developer Technologies
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//  
+//  This is the Boss Definition file. It includes the definitions for all of the
+//  Bosses in this plug-in, as well as the plug-in version resource, and the 
+//  plug-in dependencies resource.
+//  
+//========================================================================================
+
+//===========================
+//  General includes:
+//===========================
+
+#include "MenuDef.fh"
+#include "ActionDef.fh"
+#include "ActionDefs.h"
+#include "AdobeMenuPositions.h"
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "StringTable.fh"
+#include "objectmodeltypes.fh"
+#include "ShuksanID.h"
+#include "ActionID.h"
+#include "CommandID.h"
+#include "widgetid.h"				// needed for kAutoStringRegisterImpl
+#include "WorkspaceID.h"			// needed for IID_ISTRINGREGISTER
+#include "TextPanelID.h"
+#include "BuildNumber.h"
+#include "PanelList.fh"
+#include "Widgets.fh"				// for PalettePanelWidget
+#include "InterfaceColorDefines.h"
+#include "IControlViewDefs.h"
+#include "SysControlIds.h"
+
+
+#include "PlugInModel_UIAttributes.h"
+#include "CelPnlID.h"
+
+#ifdef __ODFRC__
+
+//================================================================================
+// Version resource for the plug-in:
+//================================================================================
+resource PluginVersion (kSDKDefPluginVersionResourceID)
+{
+	kTargetVersion,
+	kCelPnlPlugInID,
+	kSDKDefPlugInMajorVersionNumber,	kSDKDefPlugInMinorVersionNumber, 	
+	kSDKDefHostMajorVersionNumber,		kSDKDefHostMinorVersionNumber,
+	kCelPnlLastMajorFormatChange,	kCelPnlLastMinorFormatChange,
+	{ kInDesignProduct, kInCopyProduct },
+	{ kWildFS },
+	kUIPlugIn,
+	kCelPnlVersion
+}
+
+//================================================================================
+//	Boss class definition.
+//================================================================================
+resource ClassDescriptionTable(kClassResourceID)
+{{{
+
+
+
+	/** This boss class provides the actions invoked by this plug-in's sub-menu items. 
+		It supports two interfaces:
+		IActionComponent and IPMPersist. We provide the implementation for IActionComponent in HWMAction.cpp.
+		The other default implementation is provided by the API.
+		
+		@ingroup cellpanel
+	*/
+	Class
+	{
+		kCelPnlActionComponentBoss,
+		kBaseActionComponentBoss,
+		{
+			/** Handle the actions from the menu.
+							
+				@see CelPnlActionComponent 
+			*/
+			IID_IACTIONCOMPONENT, 		kCelPnlActionComponentImpl,
+		}
+	},
+
+	/** The Boss Class for the panel.
+			
+		@ingroup cellpanel
+	*/
+	Class
+	{
+		kCelPnlPanelWidgetBoss,
+		kPalettePanelWidgetBoss,
+		{
+			IID_ICONTROLVIEW,			kCelPnlPanelViewImpl,
+			
+			/** CelPnlPanelView restrict the size of the panel when a panel draws.
+			*/
+			IID_IINTEGERCONTROLDATA,	kCIntegerControlDataImpl,
+			
+			/** Implementation provided by the API.
+			*/
+			IID_IPANELMENUDATA,			kCPanelMenuDataImpl,
+			
+			/** TableCellData is an interface for an implementation that manages the data in TableCell.
+			*/
+			IID_ITABLECELLDATA,			kTableCellDataImpl,					
+			
+			/** Implementation provided by the API.
+			*/
+			IID_IPANELDETAILCONTROLLER,	kSizePanelDetailControllerImpl,
+		}
+	},
+		
+	/** The Boss Class extending kTextEditBoxWidgetBoss.
+			
+		@ingroup cellpanel
+	*/
+	Class
+	{
+		kCelPnlTextEditBoxWidgetBoss,
+		kTextEditBoxWidgetBoss,
+		{
+			/** The plug-in's implementation of an event handler,
+				extending CIDEditBoxEventHandler.
+			
+			*/
+			IID_IEVENTHANDLER,			kCelPnlEditBoxEventHandlerImpl,	
+			
+			/** The plug-in's implementation.
+				This observer is empty! Edit this method to observe the EditBox widget.
+			*/
+			IID_IOBSERVER, 				kCelPnlEditBoxObserverImpl,		
+		}
+	},
+	
+	/**	The Boss Class for the table cell widget.
+	
+		@ingroup cellpanel
+	*/
+	Class
+	{
+		kTableCellWidgetBoss,
+		kBaseWidgetBoss,
+		{
+			/** This implementation draws the table and the cell contents.
+			*/
+			IID_ICONTROLVIEW, 			kTableCellViewImpl,					
+			
+			/** When the user clicks on the table,
+				this implementation calculates the coordinate of the clicked cell in the table.
+			*/
+			IID_IEVENTHANDLER,			kTableCellEventHImpl,				
+			
+			/** This implementation handles the updating of the scroll bars and updates
+				the table cell widget (kTableCellWidgetBoss).
+			*/
+			IID_IOBSERVER,				kTableCellObserverImpl,				
+		}
+	}
+}}};
+
+#endif
+
+// End, CelPnlClass.fr
+

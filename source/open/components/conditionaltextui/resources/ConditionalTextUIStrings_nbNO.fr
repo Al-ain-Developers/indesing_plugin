@@ -1,0 +1,126 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kConditionalTextUIStringsRsrcID + index_nbNO)
+{
+    k_nbNO,                                 // Locale Id
+    kResourceUTF8Encoded,     // Character encoding converter
+    {
+		"#CondTextUI_WinMenu",	"&Betinget tekst",	// panel menu item
+		"#CondTextUI_PanelName","Betinget tekst",		// panel name
+		"#CondTextUI_PanelMenu","Betinget tekst-panelmeny",
+		"#CondTextUI_NewConditionTagMenu", "Ny betingelse...",
+		"#CondTextUI_DeleteConditionTagMenu", "Slett betingelse...",
+		"#CondTextUI_DeleteConditionTagsMenu", "Slett betingelser...",
+		"#CondTextUI_EditConditionTagMenu", "Betingelsesvalg...",
+		"#CondTextUI_LoadConditionTagsMenu", "Last inn betingelser...",
+		"#CondTextUI_LoadConditionTagsAndSetsMenu", "Last inn betingelser og sett...",
+		"#CondTextUI_ShowIndicatorsCB", "Vis indikatorer på betinget tekst",
+		"#CondTextUI_ShowIndicatorsMenu", "Vis indikatorer på betinget tekst",
+		"#CondTextUI_ShowAndPrintIndicatorsMenu", "Vis og skriv ut indikatorer på betinget tekst",
+		"#CondTextUI_HideIndicatorsMenu", "Skjul indikatorer på betinget tekst",
+		"#CondTextUI_ShowIndicatorsDD", "Indikatorer:",
+		"#CondTextUI_ShowIndicators", "Vis",
+		"#CondTextUI_ShowAndPrintIndicators", "Vis og skriv ut",
+		"#CondTextUI_HideIndicators", "Skjul",
+		"#CondTextUI_RtMenuConditionTagTVNode",    "Hurtigmeny for betingelse i trevisningsnode",
+		"#CondTextUI_RtMenuUnapplyTag",		"Deaktiver \"^1\"",
+		"#CondTextUI_RtMenuDeleteTag",		"Slett \"^1\"",
+		"#CondTextUI_RtMenuEditTag",		"Rediger \"^1\"...",
+		"Show Options", "Vis &valg",
+		"Hide Options", "Skjul &valg",
+		"#CondTextUI_SelectUnusedMenu", "Merk alle ubrukte",
+	
+		"#ConditionTagList_NameColumnLabel", "Navn",
+		"#ConditionTag_OptionsDialog", "Betingelsesvalg",
+		"#ConditionTag_OptionsDialogNew", "Ny betingelse",
+		"#ConditionTagOptions_Name:", "&Navn:",
+		"#ConditionTagOptions_Method:", "&Metode:",
+		"#ConditionTagOptions_Appearance:", "&Utseende:",
+		"#ConditionTagOptions_Color:", "F&arge:",
+		"#ConditionTagOptions_Indicator", "Indikator",
+		"#ConditionTagOptions_MethodUnderline", "Understreking",
+		"#ConditionTagOptions_MethodHighlight", "Utheving",
+		"#ConditionTagOptions_WavyUnderline", "Bølgeformet",		
+		"#ConditionTagOptions_SolidUnderline", "Heltrukket",		
+		"#ConditionTagOptions_DashedUnderline", "Stiplet",		
+		"#ConditionTag_EmptyNameMsg", "Angi et betingelsesnavn.",
+		"#ConditionTag_NameInUseMsg", "Betingelsesnavnet er allerede i bruk. Velg et annet navn.",
+		
+		"#ConditionSetShowAll", "Vis alle",
+		"#ConditionSetHideAll", "Skjul alle",
+		"#ConditionSetNone", "[Ingen]",
+		"#ConditionSetBlank", " ",
+		"#ConditionSetLabel", "Sett:",
+		"#ConditionSetNewSet", "Opprett nytt sett...",
+		"#ConditionSetDeleteSet", "Slett \"^1\"...",
+		"#ConditionSetRenameSet", "Endre navn på \"^1\"...",
+		"#ConditionSetRedefineSet", "Omdefiner \"^1\"...",
+		"#ConditionSetUpdateAllSets", "Oppdater alle sett",
+		"#ConditionSetUpdateAllSetsUndoName", "Oppdater alle tilstandssett",
+		"#ConditionSetNameDialog", "Navn på betingelsessett",
+		"#ConditionSetNameStatic", "&Navn:",
+		"#InvalidSetName", "Ugyldig navn på betingelsessett",
+		"#DuplicateSetName", "Navnet finnes allerede",
+		"#NoActiveSetString", "Ingen aktive sett",
+		
+		"#ConditionalTextTip", "Fant skjult tekst med ^1: ",
+		"#ConditionalTextTipOneTag", "denne betingelsen",
+		"#ConditionalTextTipManyTags", "disse betingelsene",
+		
+		"#ConditionalTextEyeballHideWidgetTip", "Klikk for å skjule all tekst der denne betingelsen brukes",
+		"#ConditionalTextEyeballShowWidgetTip", "Klikk for å vise all tekst der denne betingelsen brukes",
+		"#ConditionalTextEyeballUnconditionalWidgetTip", "Ubetinget tekst er alltid synlig",
+		"#ConditionalTextAppliedAllTip",	"Betingelse brukt på all markert tekst. Klikk for å deaktivere",
+		"#ConditionalTextAppliedSomeTip",	"Betingelse brukt på noe markert tekst. Klikk for å bruke på all markert tekst",
+		"#ConditionalTextAppliedNoneTip",	"Klikk for å bruke betingelse",
+		"#ConditionalTextAppliedAllTipUncondition",	"Markert tekst er ubetinget",
+		"#ConditionalTextAppliedSomeTipUncondition",	"Noe markert tekst er ubetinget. Klikk for å fjerne betingelser for all tekst",
+		"#ConditionalTextAppliedNoneTipUncondition",	"Klikk for å fjerne betingelser for tekst",
+		"#ConditionalTextApplyNoSelectionTip", "Klikk for å bruke betingelsen på markert tekst",
+		"#ConditionalTextNewTagTip",		"Ny betingelse",
+		"#ConditionalTextDeleteTagTip",		"Slett betingelse",
+		"#ConditionalTextIndicatorTip",		"Indikatormetoden er ^1",
+		"#ConditionalTextNewSetTip",		"Nytt sett",
+		"#SetOverrideTip_NewConditionsAndConditionVisibility",	"Overstyringer: tilstandssynlighet (merk sett på nytt for å fjerne, eller velg Omdefiner) + nye tilstander (velg Oppdater alle sett for å fjerne, eller velg Omdefiner)",
+		"#SetOverrideTip_NewConditions",	"Overstyringer: nye tilstander (velg Oppdater alle sett for å fjerne, eller velg Omdefiner)",
+		"#SetOverrideTip_ConditionVisibility",	"Overstyringer: tilstandssynlighet (merk sett på nytt for å fjerne, eller velg Omdefiner)",
+		
+		"#ConditionTag_DeleteConditionDialog", "Slett betingelse", 
+		"#ConditionTag_DeleteConditionsDialog", "Slett betingelser", 
+		"#ConditionTag_DeleteConditionAndReplace:", "Slett betingelse, og erstatt den med: ", 
+		"#ConditionTag_DeleteConditionsAndReplace:", "Slett betingelser, og erstatt dem med: ", 
+		"#ConditionTag_DeleteInformationAlert", "Dra en betingelse til papirkurvikonet for å slette betingelsen.",
+		"#ConditionTag_DeleteNoReplaceChoice", "[Ingen]",
+		
+		"#QuickApplyConditions", "Betingelse",
+		"#Conditions_Filter_Key", "CT", // should be upper case if there is an upper case character, this is the prefix key for quick apply for text conditions.
+		"#QuickApplyConditionSets", "Betingelsessett",
+		"#QuickApplyConditionSets_Filter_Key", "CS",  // should be upper case if there is an upper case character, this is the prefix key for quick apply for text condition sets.
+		"#QuickApplyConditons_Menu_Key_String", "Inkluder betingelser (ct:)",
+		"#QuickApplyConditonSets_Menu_Key_String", "Inkluder betingelsessett (cs:)",
+		
+		"#SingularConditionStatusBodyString", "^1 betingelse brukt ^2",
+		"#PluralConditionStatusBodyString", "^1 betingelser brukt ^2",
+		"#MixedConditionString", " [blandet]",
+		"#NoConditionsString", "ingen betingelser er brukt",
+    }
+};
+
+#endif // __ODFRC__

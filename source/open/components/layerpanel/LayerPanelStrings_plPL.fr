@@ -1,0 +1,142 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kLayerPanelStringsRsrcID + index_plPL)
+{
+	k_plPL,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{
+		// ----- Command strings
+
+		"Layer Options",				"Opcje warstwy",
+		"New Layer",					"Nowa warstwa",
+		"Layer Deletion",				"Usuń warstwy",
+		"Delete Unused Layers",			"Usuń nieużywane warstwy",
+		"Lock Others",					"Zablokuj inne",
+		"#UnlockOthers",					"Odblokuj inne",
+		"Show All",						"Pokaż wszystko",
+		"#ShowOthers",					"Pokaż inne",
+		"Unlock All",					"Odblokuj wszystkie",
+		"Hide All",						"Ukryj wszystkie",
+		"Lock All",						"Zablokuj wszystkie",
+		"Merge Layers",					"Scal warstwy",
+		"Move To Layer",				"Przenieś na warstwę",
+		"Copy To Layer",				"Kopiuj na warstwę",
+		"Move Layer",					"Przenieś warstwę",
+		"Move Layers",					"Przenieś warstwy",
+		"kUnlockOthersSequence",		"Odblokuj inne",
+		"kLockOthersSequence",			"Zablokuj inne",
+
+		// ----- Menu strings
+		
+		"Layers...",						"&Warstwy...",
+
+		"New Layer...",						"Nowa warstwa...",
+		"New Layer Above \"^1\"...",		"Nowa warstwa nad \"^1\"...",
+		"New Layer Below \"^1\"...",		"Nowa warstwa pod \"^1\"...",
+		"New Top Layer...",					"Nowa warstwa górna...",
+		"Delete Layer",						"Usuń warstwę",
+		"Delete \"^1\"",					"Usuń warstwę \"^1\"",
+		"Delete Layers",					"Usuń warstwy",
+		"#Duplicate ^1 Menu",				"Powiel warstwę \"^1\"",
+		"#Duplicate LayersMenu",			"Powiel warstwy",
+		"#DuplicatLayersCmd",				"Powiel warstwy",
+		
+		"Layer Options for \"^1\"...",		"Opcje warstwy \"^1\"...",
+		"Layer Options...",					"Opcje warstwy...",
+		"Show All Layers",					"Pokaż wszystkie warstwy",
+		"Hide Others",						"Ukryj inne",
+		"Unlock All Layers",				"Odblokuj wszystkie warstwy",
+		"Lock Others",						"Zablokuj inne",
+		"Hide All Layers",					"Ukryj wszystkie warstwy",
+		"Lock All Layers",					"Zablokuj wszystkie warstwy",
+		
+		"Paste Remembers Layers",			"Wklejanie z zapamiętaniem warstwy",
+		"Ungroup Remembers Layers",			"Funkcja Rozgrupuj zapamiętuje warstwy",
+		
+		"Merge Layers",						"Scal warstwy",
+		"Delete Unused Layers",				"Usuń nieużywane warstwy",
+		"Select Item(s) on \"^1\"",			"Zaznacz elementy na warstwie \"^1\"",
+		"Select Item(s) Layer",				"Zaznacz elementy na warstwie",
+				
+		"#SelectLayerPageItemMenu",		"Zaznacz element(y)",
+		"#SelectZoomLayerPageItemMenu",	"Zaznacz i dopasuj element",
+		"#ZoomLockedPageItemMenu",		"Zmieść element w oknie",
+		
+		// Menu names for context and panel menus
+		"LayerPanelPopup",					"Menu panelu Warstwy",	
+		"RtMenuLayerPanelEye",				"Menu kontekstowe oka na panelu Warstwy",	
+		"RtMenuLayerPanelLock",				"Menu kontekstowe kłódki na panelu Warstwy",
+		"RtMenuLayerPanelItem",				"Menu kontekstowe warstwy na panelu Warstwy",	
+		"RtMenuLayerPanelPageItem",			"Menu kontekstowe pozycji strony na panelu Warstwy",	
+
+		// ----- Window strings
+		"DeleteOneLayer",					"Warstwa \"^1\" zawiera jeden lub więcej obiektów. Czy mimo to usunąć warstwę?",
+		"DeleteMultiLayers",				"Wybrana warstwa zawiera obiekty. Czy mimo to usunąć warstwy?",
+		"DeleteOneGuideLayer",				"Warstwa \"^1\" zawiera linie pomocnicze miarki. Czy mimo to usunąć warstwę?",
+		"DeleteGuideLayers",				"Wybrane warstwy zawierają linie pomocnicze miarki. Czy mimo to usunąć warstwy?",
+		"DeletingPlaceGunUsedLayer",		"Nie można usunąć warstwy. Jest wymagana przez zajawkę załadowaną w kursorze umieszczania.",
+
+		// ----- Window Menu
+		"Layers_WinMenu",					"&Warstwy",
+		
+		// ----- Panel strings
+		
+		"^1 Layer",							"^1 warstwa",		// For status widget
+		"^1 Layers",						"^1 warstwy",	// For status widget
+		"New Layer",						"Nowa warstwa",	// Title of New Layer dialog
+		"Layer Options",					"Opcje warstwy", // Title of Layer Options dialog
+		"&Name:",							"&Nazwa:",
+		"&Color:",							"&Kolor:",
+		"&Show Layer",						"Pokaż war&stwę",
+		"Show &Guides",						"Pokaż linie po&mocnicze",
+		"&Lock Layer",						"Zab&lokuj warstwę",
+		"Loc&k Guides",						"&Zablokuj linie pomocnicze",
+		"Keep When Layer is &Hidden",		"Pomiń &oblewanie tekstem, gdy warstwa jest ukryta",
+		"&Print Layer",						"&Drukuj warstwę",
+
+		// ----- Tips strings
+
+		"DeleteLayerTip",					"Usuń zaznaczone warstwy",
+		"NewLayerTip",						"Utwórz nową warstwę",
+		"EyeTip",							"Przełącza widoczność",
+		"PencilTip",						"Przełącza blokadę warstwy (można edytować tylko, gdy jest puste)",
+		"PageItemPencilTip",				"Przełącza blokadę elementu strony (można edytować tylko, gdy jest puste)",
+		"SwatchTip",						"Kolor znaczników zaznaczenia na tej warstwie",
+		"ProxyTip",							"Wskazuje zaznaczone elementy (przeciągnięcie pozwala przenieść między warstwami lub zmienić kolejność wg osi Z)",
+		"ProxyChildSelectedTip",			"Zawiera wybrany obiekt, kliknij, aby wybrać obiekt kontenera",
+		"UnselectedProxyTip",				"Kliknij, aby zaznaczyć elementy",
+		"ActiveTip",						"Wskazuje bieżącą warstwę rysowania",
+
+		// ----- Error strings
+		"EmptyLayerName",					"Należy podać nazwę warstwy.",
+		"DuplicateLayer",					"Istnieje już warstwa o tej nazwie.",
+
+		"#LayerHierPanelName",		"Warstwy",
+		"#Page:^1,",					"Strona: ^1, ", // for layer panel status widget. Will be followed by layer count string.
+		"#Pages:^1,",					"Strony: ^1, ", // for layer panel status widget. Will be followed by layer count string.
+		"#DeletePageItemsMenu",		"Usuń elementy strony", // menu item name
+		"#DeletePageItem \"^1\"",		"Usuń element \"^1\" strony", // menu item name
+		"#DuplicatePI ^1 Menu",			"Powiel element \"^1\" strony", // menu item name
+		"#DuplicatePIMenu",			"Powiel elementy strony",  // menu item name
+	}
+};
+
+#endif // __ODFRC__

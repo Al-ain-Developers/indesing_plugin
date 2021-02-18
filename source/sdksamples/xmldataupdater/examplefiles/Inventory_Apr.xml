@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Root><Story><_DataUpdater_TABLE_ table="Inventory">
+SKU, Price, Description
+A175, £50, Electric Drill
+B456, £5, Hammer
+A767, £1, Screwdriver
+C199, £4, Pliers
+A334, £6, Saw
+</_DataUpdater_TABLE_></Story></Root>

@@ -1,0 +1,458 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/sdksamples/detailcontrollistsize/DCLSiz.fr $
+//  
+//  Owner: Adobe Developer Technologies
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//  
+//  Umbrella include file for all the .fr files in the plug-in.
+//  
+//========================================================================================
+
+//===========================
+//  General includes:
+//===========================
+
+#include "MenuDef.fh"
+#include "ActionDef.fh"
+#include "ActionDefs.h"
+#include "AdobeMenuPositions.h"
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "StringTable.fh"
+//#include "OMTypes.h"
+#include "objectmodeltypes.fh"
+#include "ShuksanID.h"
+#include "ActionID.h"
+#include "CommandID.h"
+#include "WorkspaceID.h"
+#include "widgetid.h"
+#include "BuildNumber.h"
+#include "PanelList.fh"
+#include "Widgets.fh"	// for PalettePanelWidget
+#include "InterfaceColorDefines.h"
+#include "IControlViewDefs.h"
+#include "SysControlIds.h"
+#include "XMLID.h"
+#include "XMLParserID.h"
+#include "TreeViewDefs.h"
+
+#include "PlugInModel_UIAttributes.h"
+// Project includes:
+#include "DCLSizID.h"
+
+#ifdef __ODFRC__
+
+/*
+// Plugin version definition.
+*/
+resource PluginVersion (kSDKDefPluginVersionResourceID)
+{
+	kTargetVersion,
+	kDCLSizPluginID,
+	kSDKDefPlugInMajorVersionNumber, kSDKDefPlugInMinorVersionNumber, 	
+	kSDKDefHostMajorVersionNumber, kSDKDefHostMinorVersionNumber,
+	kDCLSizCurrentMajorFormatNumber, kDCLSizCurrentMinorFormatNumber,
+	{ kInDesignProduct, kInCopyProduct },
+	{ kWildFS },
+	kUIPlugIn,
+	kDCLSizVersion
+};
+
+/*
+//	Boss class definition.
+*/
+resource ClassDescriptionTable(kSDKDefClassDescriptionTableResourceID)
+{{{
+	/**
+	 Provides the actions invoked by this plug-in's menu items.
+
+	@ingroup detailcontrollistsize
+	*/
+	Class
+	{
+		kDCLSizActionComponentBoss,
+		kBaseActionComponentBoss,
+		{
+			/** Handle the actions from the menu, see DCLSizActionComponent. */
+			IID_IACTIONCOMPONENT, kDCLSizActionComponentImpl,
+		}
+	},
+
+	/**
+		 Handles the panel widget menu and list box size for this plug-in.
+
+		 	@ingroup detailcontrollistsize
+	*/
+
+	Class
+	{
+		kDCLSizPanelWidgetBoss,
+		kErasablePrimaryResourcePanelWidgetBoss,
+		{
+			/** Controls the pop-up menu on the panel. 
+			*/ 
+			IID_IPANELMENUDATA, kCPanelMenuDataImpl,
+
+			/** Constrain dimensions to avoid listbox collapsing when we
+				shrink the rows, see DCLSizPalettePanelView.
+			*/
+			IID_ICONTROLVIEW, kDCLSizPalettePanelViewImpl,		
+   			/**
+  				Allows varying level of detail exposed by a widget.
+  			*/
+  			IID_IPANELDETAILCONTROLLER, kSizePanelDetailControllerImpl,
+			/**
+				Panel option to be persisted thru IXMLGenerator.
+			*/
+			IID_IDCLSizPanelOptions, kDCLSizPanelOptionsImpl,
+			/**
+				Allows writing kDCLSizPanelWidgetBoss panel prefs to Palette Workspace XML file
+			*/
+			IID_IXMLGENERATOR,			kDCLSizPanelXMLGeneratorImpl, 
+			/**
+				Allows reading kDCLSizPanelWidgetBoss panel prefs from Palette Workspace XML file.
+			*/
+			IID_ISAXCONTENTHANDLER,		kDCLSizPanelSAXHandlerImpl, 
+
+		}
+	},
+
+	/**
+		Make the list-box selections notify our client code.
+		Adds an observer interface to the list box widget boss class.
+		
+		@ingroup detailcontrollistsize
+	*/
+	Class 
+	{
+		kDCLSizListBoxWidgetBoss,
+		kTreeViewWidgetBoss,
+		{
+			/** Furnishes application framework with widgets as needed 
+			*/
+			IID_ITREEVIEWWIDGETMGR,  kDCLSizTreeViewWidgetMgrImpl,
+			/** Adapts our data model to the needs of the application framework 
+			*/
+			IID_ITREEVIEWHIERARCHYADAPTER,  kDCLSizTreeViewAdapterImpl,			
+			/** 
+			   Implements the observer that receives the messages from the application
+			when user clicks in the list box, see DCLSizListBoxObserver.
+			
+			*/
+			IID_IOBSERVER,	kDCLSizListBoxObserverImpl,
+		}
+	},
+}}};
+
+/*
+// Implementation definition.
+*/
+resource FactoryList (kSDKDefFactoryListResourceID) 
+{
+	kImplementationIDSpace,
+	{
+#include "DCLSizFactoryList.h"
+	}
+};
+
+/*
+// Menu definition.
+*/
+resource MenuDef (kSDKDefMenuResourceID)
+{
+	{
+		// The About Plug-ins sub-menu item for this plug-in.
+		kDCLSizAboutActionID,			// ActionID (kInvalidActionID for positional entries)
+		kDCLSizAboutMenuPath,			// Menu Path.
+		kSDKDefAlphabeticPosition,			// Menu Position.
+		kSDKDefIsNotDynamicMenuFlag,		// kSDKDefIsNotDynamicMenuFlag or kSDKDefIsDynamicMenuFlag.
+
+		kDCLSizSmallPaletteRowsActionID,
+		kDCLSizTargetMenuPath,
+		kDCLSizSmallPaletteRowsMenuItemPosition,
+		kSDKDefIsNotDynamicMenuFlag,
+
+		// Separator for the popup menu on the panel
+		kDCLSizSeparator1ActionID,
+		kDCLSizInternalPopupMenuNameKey kSDKDefDelimiterAndSeparatorPath,	// :- to mark an item as a separator.
+		kDCLSizSeparator1MenuItemPosition,
+		kSDKDefIsNotDynamicMenuFlag,
+
+		// About this plugin submenu for the popup menu on the panel
+		kDCLSizPopupAboutThisActionID,
+		kDCLSizTargetMenuPath
+		kDCLSizAboutThisMenuItemPosition,
+		kSDKDefIsNotDynamicMenuFlag, 
+
+	}
+};
+
+/*
+// Action definition.
+*/
+resource ActionDef (kSDKDefActionResourceID)
+{
+	{ 
+		kDCLSizActionComponentBoss, 		// ClassID of boss class that implements the ActionID.
+		kDCLSizAboutActionID,	// ActionID.
+		kDCLSizAboutMenuKey,	// Sub-menu string.
+		kHelpMenuActionArea,				// Area name (see ActionDefs.h).
+		kNormalAction,					// Type of action (see ActionDefs.h).
+		kDisableIfLowMem,				// Enabling type (see ActionDefs.h).
+		kInvalidInterfaceID,			// Selection InterfaceID this action cares about or kInvalidInterfaceID.
+		kSDKDefInvisibleInKBSCEditorFlag, // kSDKDefVisibleInKBSCEditorFlag or kSDKDefInvisibleInKBSCEditorFlag.
+
+		kDCLSizActionComponentBoss,
+		kDCLSizSmallPaletteRowsActionID,		
+		kDCLSizSmallPaletteRowsMenuItemKey,		
+		kOtherActionArea,			
+		kNormalAction,				
+		kCustomEnabling,	// to get UpdateActionStates message	
+		kInvalidInterfaceID,		
+		kSDKDefInvisibleInKBSCEditorFlag,
+				
+		kDCLSizActionComponentBoss, 
+		kDCLSizPopupAboutThisActionID, 
+		kSDKDefAboutThisPlugInMenuKey,	// Key to the name of this action
+		kOtherActionArea,
+		kNormalAction,
+		kDisableIfLowMem,	
+		kInvalidInterfaceID,
+		kSDKDefInvisibleInKBSCEditorFlag,
+
+	}
+};
+
+
+/*
+// LocaleIndex
+// The LocaleIndex should have indicies that point at your
+// localizations for each language system that you are 
+// localized for.
+*/
+/*
+// String LocaleIndex.
+*/
+resource LocaleIndex (kSDKDefStringsResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_enUS, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_jaJP, kSDKDefStringsResourceID + index_jaJP
+		
+		kWildFS, k_Wild, kSDKDefStringsResourceID + index_enUS
+	}
+};
+
+resource LocaleIndex (kSDKDefStringsNoTransResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_Wild, kSDKDefStringsNoTransResourceID + index_enUS
+	}
+};
+
+resource StringTable (kSDKDefStringsNoTransResourceID + index_enUS)
+{
+	k_enUS,									// Locale Id
+	kEuropeanMacToWinEncodingConverter,		// Character encoding converter
+	{
+		// No-Translate strings go here:		
+
+		kDCLSizInternalPopupMenuNameKey,	kDCLSizInternalPopupMenuNameKey,		// No need to translate, internal menu name.
+	}
+};
+
+
+
+/*
+// Panel LocaleIndex.
+*/
+resource LocaleIndex (kSDKDefPanelResourceID)
+{
+	kViewRsrcType,
+	{
+		kWildFS, k_Wild, 	kSDKDefPanelResourceID + index_enUS
+	}
+};
+
+// added to support the list elements in the list box
+resource LocaleIndex (kDCLSizListElementRsrcID)
+{
+	kViewRsrcType,
+	{
+		kWildFS, k_Wild,	kDCLSizListElementRsrcID + index_enUS
+	}
+}
+
+// added to support the small list elements in the list box
+resource LocaleIndex (kDCLSizSmallListElementRsrcID)
+{
+	kViewRsrcType,
+	{
+		kWildFS, k_Wild, 	kDCLSizSmallListElementRsrcID + index_enUS
+	}
+}
+
+/*
+// Type definition.
+*/
+type DCLSizPanelWidget(kViewRsrcType) : /*PalettePanelWidget*/ ErasablePrimaryResourcePanelWidget(ClassID = kDCLSizPanelWidgetBoss) 
+{
+	CPanelMenuData;
+	SizePanelDetailController;
+};
+
+type DCLSizListBox			(kViewRsrcType) : TreeViewWidget	(ClassID = kDCLSizListBoxWidgetBoss) { };
+
+type DCLSizStaticTextWidget(kViewRsrcType) : InfoStaticTextWidget	(ClassID = kInfoStaticTextWidgetBoss) { };
+
+
+/*
+// PanelList definition.
+*/
+resource PanelList (kSDKDefPanelResourceID)
+{
+	{
+		// 1st panel in the list
+		kSDKDefPanelResourceID,		// Resource ID for this panel (use SDK default rsrc ID)
+		kDCLSizPluginID,			// ID of plug-in that owns this panel
+		kNotResizable,
+		kDCLSizPanelWidgetActionID,	// Action ID to show/hide the panel
+		kDCLSizPanelTitleKey,		// Shows up in the Window list.
+		"",							// Alternate menu path of the form "Main:Foo" if you want your palette menu item in a second place
+		0.0,						// Alternate Menu position Alternate Menu position for determining menu order
+		0,0,						// Rsrc ID, Plugin ID for a PNG icon resource to use for this palette
+		c_Panel
+	}	
+};
+
+/*
+// PanelView definition.
+// The view is not currently localised: therefore, it can reside here.
+// However, if you wish to localise it, it is recommended to locate it in one of
+// the localised framework resource files (i.e. DCLSiz_enUS.fr etc.).
+*/
+resource DCLSizPanelWidget(kSDKDefPanelResourceID + index_enUS)
+{
+	__FILE__, __LINE__,					// Localization macro		
+	kDCLSizPanelWidgetID,			// WidgetID 
+	kPMRsrcID_None,						// RsrcID
+	kBindNone,							// Binding (0=none)
+	0, 0, 207, 95,						// Frame: left, top, right, bottom.
+	kTrue, kTrue,						// Visible, Enabled
+	kFalse,								// Erase background
+	kInterfacePaletteFill,				// Erase to color
+	kDCLSizPanelTitleKey,			// Panel name	
+	{
+		DCLSizListBox
+		(
+			kDCLSizListBoxWidgetID, kPMRsrcID_None,// WidgetId, RsrcId
+			kBindAll,
+			Frame(-1,0,208,96)		// Frame
+			kTrue, kTrue,				// Visible, Enabled
+			kTrue, // EraseBeforeDraw
+			kInterfacePaletteFill, // Erase to color,
+			"detail size",
+			kHideRootNode | kDrawEndLine,	// Options
+			kFalse,						//Use H Scroll bar
+			kTrue,						//Use V scroll bar
+			20,							// Vertical Scroll Button Increment
+			20,							// Vertical Thumb Scroll Increment
+			0,							// Horizontal Scroll Button Increment - Not Used
+			0,							// Horizontal Thumb Scroll Increment - Not Used
+			2,							// Items selectable, 0 = No Selection, 1 = Single Selection, 2 = Multiple Selection
+			kFalse,						// Allow children from multiple parents to be selected
+			kTrue,						// Allow discontiguous selection
+			{
+			}
+		),
+				
+	},
+	
+
+	kDCLSizInternalPopupMenuNameKey		// Popup menu name (internal)
+};
+
+resource StandardTreeNodeWidget (kDCLSizListElementRsrcID + index_enUS)
+{
+	__FILE__, __LINE__,
+	kDCLSizListParentWidgetId, 0,// WidgetId, RsrcId
+	kDCLSizPluginID,
+	kBindLeft | kBindRight,		// Frame binding
+	Frame(0, 0, 208, 20),		// Frame
+	kTrue, kTrue,				// Visible, Enabled
+	"",							// name
+	{
+	
+		// Just a info-static text widget 
+		DCLSizStaticTextWidget
+		(
+			kDCLSizTextWidgetID, kPMRsrcID_None,		// WidgetId, RsrcId
+			kBindLeft | kBindRight,						// Frame binding
+			Frame(2,1,208,18)							// Frame
+			kTrue, kTrue, kAlignLeft, 
+			kEllipsizeEnd, kTrue					// Visible, Enabled
+			"",											// Text
+			0,
+			kPaletteWindowSystemScriptFontId, 
+			kPaletteWindowSystemScriptHiliteFontId,
+		),
+		
+	}
+};
+
+resource StandardTreeNodeWidget (kDCLSizSmallListElementRsrcID + index_enUS)
+{
+	__FILE__, __LINE__,
+	kDCLSizListParentWidgetId, 0,// WidgetId, RsrcId
+	kDCLSizPluginID,
+	kBindLeft | kBindRight,		// Frame binding
+	Frame(0, 0, 208, 12),		// Frame
+	kTrue, kTrue,				// Visible, Enabled
+	"",							// name
+	{
+	
+		// Just a info-static text widget 
+		DCLSizStaticTextWidget
+		(
+			kDCLSizTextWidgetID, kPMRsrcID_None,		// WidgetId, RsrcId
+			kBindLeft | kBindRight,						// Frame binding
+			Frame(0,0,208,12)							// Frame
+			kTrue, kTrue, kAlignLeft, 
+			kEllipsizeEnd, kTrue					// Visible, Enabled
+			"",											// Text
+			0,
+			kPaletteWindowSystemScriptFontId, 
+			kPaletteWindowSystemScriptHiliteFontId,
+		),
+		
+	}
+};
+
+#endif // __ODFRC__
+
+#include "DCLSiz_enUS.fr"
+#include "DCLSiz_jaJP.fr"
+//  Generated by Dolly build 12: template "IfPanelMenu".
+// End, DCLSiz.fr.
+
+
+
+

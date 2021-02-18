@@ -1,0 +1,550 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/sdksamples/transparencyeffect/TranFx.fr $
+//  
+//  Owner: Adobe Developer Technologies
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//  
+//  Umbrella include file for all the .fr files in the plug-in.
+//  
+//========================================================================================
+
+//===========================
+//  General includes:
+//===========================
+
+#include "MenuDef.fh"
+#include "ActionDef.fh"
+#include "ActionDefs.h"
+#include "AdobeMenuPositions.h"
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "StringTable.fh"
+//#include "OMTypes.h"
+#include "objectmodeltypes.fh"
+#include "ShuksanID.h"
+#include "ActionID.h"
+#include "CommandID.h"
+#include "WorkspaceID.h"
+#include "widgetid.h"
+#include "BuildNumber.h"
+#include "PanelList.fh"
+#include "Widgets.fh"	// for PalettePanelWidget
+#include "InterfaceColorDefines.h"
+#include "IControlViewDefs.h"
+#include "SysControlIds.h"
+#include "GraphicStylesID.h" // kGraphicsAttrBoss
+#include "GenericID.h"		// kLayoutISuiteBoss
+#include "TextID.h"			// kTextISuiteBoss
+#include "XPID.h"	// IID_IAD...
+#include "TablesID.h"
+#include "XMLID.h"
+#include "StandOffID.h"
+#include "ColorSystemID.h"	//IID_IADORNMENTINKRESOURCES
+#include "ScriptingID.h" // for kBaseScriptProviderBoss
+#include "ErrorTableTypes.h" // For UserErrorTable
+#include "ScriptInfoTypes.fh" // for VersionedScript...
+#include "INXMetadataDefs.h"
+// Project includes:
+#include "TranFxID.h"
+#include "TranFxScriptingDefs.h"
+#include "TextScriptID.h"
+
+#include "PlugInModel_UIAttributes.h"
+#ifdef __ODFRC__
+
+/*
+// Plugin version definition.
+*/
+resource PluginVersion (kSDKDefPluginVersionResourceID)
+{
+	kTargetVersion,
+	kTranFxPluginID,
+	kSDKDefPlugInMajorVersionNumber, kSDKDefPlugInMinorVersionNumber, 	
+	kSDKDefHostMajorVersionNumber, kSDKDefHostMinorVersionNumber,
+	kTranFxLastMajorFormatChange, kTranFxLastMinorFormatChange,
+	{ kInDesignProduct, kInDesignServerProduct },
+	{ kWildFS },
+	kModelPlugIn,
+	kTranFxVersion
+};
+
+
+/*
+// The ExtraPluginInfo resource adds extra information to the Missing Plug-in dialog
+// that is popped when a document containing this plug-in's data is opened when
+// this plug-in is not present. These strings are not translatable strings
+// since they must be available when the plug-in isn't around. They get stored
+// in any document that this plug-in contributes data to.
+*/
+resource ExtraPluginInfo(1)
+{
+	kTranFxCompanyValue,				// Company name
+	kTranFxMissingPluginURLValue,		// URL 
+	kTranFxMissingPluginAlertValue,		// Missing plug-in alert text
+};
+
+/*
+//	Boss class definition.
+*/
+resource ClassDescriptionTable(kSDKDefClassDescriptionTableResourceID)
+{{{
+	/** Adds ITranFxSuite to the integrator suite boss class making
+		it available to the abstract selection.
+		@ingroup transparencyeffect
+	*/
+	AddIn
+	{
+		kIntegratorSuiteBoss,
+		kInvalidClass,
+		{
+			/** See ITranFxSuite and TranFxSuiteASB.
+			*/
+			IID_ITRANFXSUITE, kTranFxSuiteASBImpl,
+		}
+	},
+
+	/** Adds ITranFxSuite into the layout suite boss class making it
+		available to the layout CSB thus making ITranFxSuite available
+		when a layout selection exists.
+		@ingroup transparencyeffect
+	*/
+	AddIn
+	{
+		kLayoutSuiteBoss,
+		kInvalidClass,
+		{
+			/** See ITranFxSuite and TranFxSuiteLayoutCSB.
+			*/
+			IID_ITRANFXSUITE, kTranFxSuiteLayoutCSBImpl,
+		}
+	},
+	
+	/** Adornment that draw's this plug-in's effect. It
+		is added to a page item when this plug-in's
+		effect is applied and removed when then effect
+		is removed.
+		@ingroup transparencyeffect
+	 */
+	Class 
+	{
+		kTranFxAdornmentBoss,
+		kInvalidClass,
+		{
+			/** See IAdornmentShape and TranFxAdornment.
+			 */
+			IID_IADORNMENTSHAPE, kTranFxAdornmentImpl,
+			
+			/** See IAdornmentFlattenerUsage and TranFxFlattenerUsage.
+			*/
+			IID_IADORNMENTFLATTENERUSAGE, kTranFxFlattenerUsageImpl,
+		}
+	},
+	 
+	/** Custom boolean graphic attribute,
+		kTrue causes darker pixels in the page item to be more opaque in the matte effect (black is fully opaque) 
+		and lighter pixels to be more transparent (white is fully transparent). kFalse causes darker pixels in the
+		page item to be more transparent in the matte effect (black is fully transparent) and lighter pixels to be 
+		more opaque(white is fully opaque). When kFalse the matte effect generated will appear visually 
+		as a negative image of the page item. 
+		
+		For example, if you want black text or a graphic with a black stroke to cast a matte effect, then make this kTrue.
+		Alternatively, if you want white text or a graphic with a white stroke to cast a matte effect, make this kFalse.
+		@ingroup transparencyeffect
+	 */
+	Class 
+	{
+		kTranFxUseBlackAsOpaqueAttrBoss
+		kGraphicsAttrBoss,
+		{
+			/** Type IGraphicAttrBoolean, default value kFalse.
+			 */
+			IID_IGRAPHICATTR_BOOLEAN,		kGraphicAttrBooleanImpl,
+			
+			/** See IGraphicAttributeInfo and TranFxGraphicAttributeInfo.
+			 */
+			IID_IGRAPHICATTR_INFO,		kTranFxGraphicAttributeInfoImpl,
+		}
+	},
+	
+	/** Custom boolean graphic attribute, kTrue if alpha channel associated with page item 
+		should be applied to the effect, kFalse if not. 
+		@ingroup transparencyeffect
+	 */
+	Class 
+	{
+		kTranFxUseAlphaAttrBoss
+		kGraphicsAttrBoss,
+		{
+			/** Type IGraphicAttrBoolean, default value kFalse.
+			 */
+			IID_IGRAPHICATTR_BOOLEAN,		kGraphicAttrBooleanImpl,
+			
+			/** See IGraphicAttributeInfo and TranFxGraphicAttributeInfo.
+			 */
+			IID_IGRAPHICATTR_INFO,		kTranFxGraphicAttributeInfoImpl,
+		}
+	},
+	
+	
+	/** Custom boolean graphic attribute, kTrue if the effect should be blurred and reduced in intensity, kFalse if not.
+		@ingroup transparencyeffect
+	 */
+	Class 
+	{
+		kTranFxUseBlurAttrBoss
+		kGraphicsAttrBoss,
+		{
+			/** Type IGraphicAttrBoolean, default value kFalse.
+			 */
+			IID_IGRAPHICATTR_BOOLEAN,		kGraphicAttrBooleanImpl,
+			
+			/** See IGraphicAttributeInfo and TranFxGraphicAttributeInfo.
+			 */
+			IID_IGRAPHICATTR_INFO,		kTranFxGraphicAttributeInfoImpl,
+		}
+	},
+	
+	
+
+	/** Custom graphic attribute that controls the X offset from the page
+		item at which the effect is drawn.
+		@ingroup transparencyeffect
+	 */
+	Class 
+	{
+		kTranFxOffsetXAttrBoss,
+		kGraphicsAttrBoss,
+		{
+			/** X offset in points. 
+				See IGraphicAttrRealNumber.
+			 */
+			IID_IGRAPHICATTR_REALNUMBER, kGraphicAttrRealNumberImpl,
+			
+			/** See IGraphicAttributeInfo and TranFxGraphicAttributeInfo.
+			 */
+			IID_IGRAPHICATTR_INFO,		kTranFxGraphicAttributeInfoImpl,
+		}
+	},
+	
+	/** Custom graphic attribute that controls the Y offset from the page
+		item at which the effect is drawn.
+		@ingroup transparencyeffect
+	 */
+	Class 
+	{
+		kTranFxOffsetYAttrBoss,
+		kGraphicsAttrBoss,
+		{
+			/** Y offset in points. 
+				See IGraphicAttrRealNumber.
+			 */
+			IID_IGRAPHICATTR_REALNUMBER,	kGraphicAttrRealNumberImpl,
+			
+			/** See IGraphicAttributeInfo and TranFxGraphicAttributeInfo.
+			 */
+			IID_IGRAPHICATTR_INFO,		kTranFxGraphicAttributeInfoImpl,
+		}
+	},
+
+
+	/** Purges this plug-ins images from the image cache when a document closes.
+		@ingroup transparencyeffect
+	*/
+	Class
+	{
+		kTranFxCloseDocResponderBoss,
+		kInvalidClass,
+		{
+			/** See IResponder and TranFxDocResponder.
+			 */
+			IID_IRESPONDER,				kTranFxResponderImpl,
+
+			/** Provided by API.
+			 */
+			IID_IK2SERVICEPROVIDER,		kBeforeCloseDocSignalRespServiceImpl,
+		}
+	},
+	
+	/** Added at InDesign CS2 to support scripting.
+		
+		@ingroup transparencyeffect
+	 */
+	Class
+	{
+		kTranFxScriptProviderBoss,
+		kBaseScriptProviderBoss,
+		{
+			/** See IScriptProvider / TranFxScriptProvider.
+			 */
+			IID_ISCRIPTPROVIDER, kTranFxScriptProviderImpl,	
+		}
+	},
+	
+	
+	/** Provides error strings for this plug-in.
+
+		Added at InDesign CS2 to support scripting.
+
+		@ingroup transparencyeffect
+	 */
+	Class
+	{
+		kTranFxErrorStringServiceBoss,
+		kInvalidClass,
+		{
+			/** See IErrorStringService / TranFxErrorStringService.
+			 */
+			IID_IERRORSTRINGSERVICE, kTranFxErrorStringServiceImpl,		
+			/**	Identifies this boss as an error string provider.
+			 */
+			IID_IK2SERVICEPROVIDER, kErrorStringProviderImpl,
+		}
+	},
+
+}}};
+
+/*
+// Implementation definition.
+*/
+resource FactoryList (kSDKDefFactoryListResourceID) 
+{
+	kImplementationIDSpace,
+	{
+#include "TranFxFactoryList.h"
+	}
+};
+
+
+
+/*
+// LocaleIndex
+// The LocaleIndex should have indicies that point at your
+// localizations for each language system that you are 
+// localized for.
+*/
+/*
+// String LocaleIndex.
+*/
+resource LocaleIndex (kSDKDefStringsResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_enUS, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_jaJP, kSDKDefStringsResourceID + index_jaJP
+		
+		kWildFS, k_Wild, kSDKDefStringsResourceID + index_enUS
+	}
+};
+
+resource LocaleIndex (kSDKDefStringsNoTransResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_Wild, kSDKDefStringsNoTransResourceID + index_enUS
+	}
+};
+
+resource StringTable (kSDKDefStringsNoTransResourceID + index_enUS)
+{
+	k_enUS,									// Locale Id
+	kEuropeanMacToWinEncodingConverter,		// Character encoding converter
+	{
+		// No-Translate strings go here:		
+	}
+};
+
+
+/*
+// Scripting definition.
+*/
+resource VersionedScriptElementInfo(1)
+{
+	//Contexts
+	{
+		kTranFxFirstScriptVersion, kCoreScriptManagerBoss, kWildFS, k_Wild,
+	}
+			
+	//Elements
+	{
+	
+		Metadata
+		{
+			kTranFxSettingsINXPoliciesMetadataScriptElement,
+			{
+				// Elements
+				kTranFxSettingsObjectScriptElement,
+			}
+			{
+				m_NoDefaultsCache, NoValue,
+				// How to handle these elements during import.
+				m_INXSnippetAttrImportState, Int32Value(e_SetElementAttributes),
+			}
+		}
+
+		// Defines new script element object for this plug-in's settings
+		Object
+		{
+			kTranFxSettingsObjectScriptElement,	// this object's script element ID
+			c_TranFxSettings,						// ScriptID
+			"transparencyeffectsettings",		// name
+			"TransparencyEffect settings controlling how the effect appears",		// description
+			kTranFxSettings_CLSID,				// Windows CLSID
+			NoCollectionInfo,					// CollectionElementType (scriptID, name, descr, CLSID)
+			kPreferencesObjectScriptElement,// base object script element ID
+			kPreferencesSuiteScriptElement,	// suite script element ID
+		}
+		
+		// Allows the object above to be accessed by clients as a property
+        Property
+        {
+            kTranFxSettingsPropertyScriptElement,
+            p_TranFxSettings,
+            "transparencyeffectsettingsproperty",
+            "TransparencyEffect settings exposed as property to clients",
+            ObjectType( kTranFxSettingsObjectScriptElement ),
+            {}
+            kNoAttributeClass,
+        }	
+        
+	    // Allows the mode (adornment on or off) to be accessed by client
+		Property
+		{
+			kTranFxModePropertyScriptElement,				// this property's script element ID
+			p_TranFxMode,									// ScriptID
+			"transparencyeffectmode",
+			"The transparency-effect mode, whether off or on",
+			BoolType,  
+  			{}												// alternate types
+			kNoAttributeClass,								// attribute class ID
+		}
+		// Allows x-offset (where the effect is drawn relative to page item, horizontally)
+		// to be accessed by client
+		Property
+		{
+			kTranFxOffsetXPropertyScriptElement,				// this property's script element ID
+			p_TranFxOffsetX,									// ScriptID
+			"transparencyeffectoffsetxdirection",						// name
+			"The amount of X offset for TransparencyEffect",	// description
+			RealType,										// type
+			{}												// alternate types
+			kNoAttributeClass,								// attribute class ID
+		}
+		
+		// Allows y-offset for effect to be accessed by client
+		Property
+		{
+			kTranFxOffsetYPropertyScriptElement,				// this property's script element ID
+			p_TranFxOffsetY,									// ScriptID
+			"transparencyeffectoffsetydirection",						// name
+			"The amount of Y offset for TransparencyEffect",	// description
+			RealType,										// type
+			{}												// alternate types
+			kNoAttributeClass,								// attribute class ID
+		}
+     
+		// Allows the property of treating black pixels as opaque pixels to be accessed by client
+		Property
+		{
+			kTranFxUseBlackAsOpaquePropertyScriptElement,				// this property's script element ID
+			p_TranFxUseBlackAsOpaque,									// ScriptID
+			"transparencyeffectuseblackasopaque",						// name
+			"Whether to use black as opaque in TransparencyEffect",		// description
+			BoolType,										// type
+			{}												// alternate types
+			kNoAttributeClass,								// attribute class ID
+		}
+		
+		// Allows property of whether to use alpha channel when drawing effect to be accessed by client
+		Property
+		{
+			kTranFxUseAlphaPropertyScriptElement,				// this property's script element ID
+			p_TranFxUseAlpha,									// ScriptID
+			"transparencyeffectusealpha",				// name
+			"Whether to use alpha in TransparencyEffect",		// description
+			BoolType,										// type
+			{}												// alternate types
+			kNoAttributeClass,								// attribute class ID
+		}
+     
+		// Allows property of whether to use blur in the effect to be accessed by client
+		Property
+		{
+			kTranFxUseBlurPropertyScriptElement,				// this property's script element ID
+			p_TranFxUseBlur,									// ScriptID
+			"transparencyeffectuseblur",						// name
+			"Whether to use blur in TransparencyEffect",		// description
+			BoolType,										// type
+			{}												// alternate types
+			kNoAttributeClass,								// attribute class ID
+		}
+   		
+
+		Provider	
+		{
+			kTranFxScriptProviderBoss,
+			{
+				
+				Parent { kPageItemObjectScriptElement },
+				Parent { kOvalObjectScriptElement },		//we need this because the ParentProperty is inherited from kPageItemObjectScriptElement but the Child is not
+				Parent { kRectangleObjectScriptElement },	//we need this because the ParentProperty is inherited from kPageItemObjectScriptElement but the Child is not
+				Parent { kGraphicLineObjectScriptElement },	//we need this because the ParentProperty is inherited from kPageItemObjectScriptElement but the Child is not
+				Parent { kPolygonObjectScriptElement },		//we need this because the ParentProperty is inherited from kPageItemObjectScriptElement but the Child is not
+				Parent { kGroupObjectScriptElement },		//we need this because the ParentProperty is inherited from kPageItemObjectScriptElement but the Child is not
+				Parent { kTextFrameObjectScriptElement },	//we need this because the ParentProperty is inherited from kPageItemObjectScriptElement but the Child is not
+				RepresentObject{ kTranFxSettingsObjectScriptElement },
+				ParentProperty{ kTranFxSettingsPropertyScriptElement, kReadOnly },					
+				Property{ kTranFxModePropertyScriptElement, kReadWrite },
+				Property{ kTranFxOffsetXPropertyScriptElement, kReadWrite },
+				Property{ kTranFxOffsetYPropertyScriptElement, kReadWrite },
+				Property{ kTranFxUseBlackAsOpaquePropertyScriptElement, kReadWrite },
+				Property{ kTranFxUseAlphaPropertyScriptElement, kReadWrite },
+				Property{ kTranFxUseBlurPropertyScriptElement, kReadWrite },
+				
+			}
+		}
+		
+		
+
+	} // close elements
+
+};
+
+/*
+// User Error Table resource 
+// To be coupled with an IErrorStringService implementation and
+// string translations (see localized .fr files)
+*/
+resource UserErrorTable(kSDKDefErrorStringResourceID) 
+{
+	{
+		kTranFxGenericFailureErrorCode, kTranFxGenericFailureErrorCodeStringKey, 
+	}
+};
+
+#endif // __ODFRC__
+
+#include "TranFx_enUS.fr"
+#include "TranFx_jaJP.fr"
+//  Generated by Dolly build 17: template "IfPanelMenu".
+// End, TranFx.fr.
+
+
+
+
+

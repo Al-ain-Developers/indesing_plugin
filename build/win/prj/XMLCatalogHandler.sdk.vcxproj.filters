@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{53243a55-b36d-4761-b613-59674718da1c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Plugin">
+      <UniqueIdentifier>{54611adf-fde7-427d-a3ad-117d19fbacc6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\building-blocks">
+      <UniqueIdentifier>{67864d01-9a23-4aab-9345-439aed0f4e8b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{4f6fcda7-34b5-4f00-a742-1de122499b89}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{391e2ac6-304f-4a6b-9cd1-834c1a5656b9}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\source\sdksamples\common\SDKFileHelper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(id_sdk_dir)\source\public\libs\publiclib\statics\PlugInStatics.cpp">
+      <Filter>Source Files\Plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\common\SDKPlugInEntrypoint.cpp">
+      <Filter>Source Files\Plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\xmlcataloghandler\TriggerResourceDeps.cpp">
+      <Filter>Source Files\Plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="$(id_sdk_dir)\source\precomp\msvc\VCPlugInHeaders.cpp">
+      <Filter>Source Files\Plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\xmlcataloghandler\XCatHndID.cpp">
+      <Filter>Source Files\Plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\xmlcataloghandler\XCatHndNoStrip.cpp">
+      <Filter>Source Files\Plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\xmlcataloghandler\XCatHndAcquirerFilter.cpp">
+      <Filter>Source Files\building-blocks</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\xmlcataloghandler\XCatHndAcquirerXMLImportPrefs.cpp">
+      <Filter>Source Files\building-blocks</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\xmlcataloghandler\XCatHndChangeEntityMappingCmd.cpp">
+      <Filter>Source Files\building-blocks</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\xmlcataloghandler\XCatHndEntityMapping.cpp">
+      <Filter>Source Files\building-blocks</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\xmlcataloghandler\XCatHndEntityResolver.cpp">
+      <Filter>Source Files\building-blocks</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\xmlcataloghandler\XCatHndErrorStringService.cpp">
+      <Filter>Source Files\building-blocks</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\xmlcataloghandler\XCatHndFacade.cpp">
+      <Filter>Source Files\building-blocks</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\xmlcataloghandler\XCatHndParsingContext.cpp">
+      <Filter>Source Files\building-blocks</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\xmlcataloghandler\XCatHndSAXContentHandler.cpp">
+      <Filter>Source Files\building-blocks</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\xmlcataloghandler\XCatHndStartupShutdown.cpp">
+      <Filter>Source Files\building-blocks</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\source\sdksamples\common\SDKFileHelper.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\sdksamples\xmlcataloghandler\IXCatHndEntityMapping.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\sdksamples\xmlcataloghandler\IXCatHndFacade.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\sdksamples\xmlcataloghandler\IXCatHndParsingContext.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\sdksamples\xmlcataloghandler\XCatHndFactoryList.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\sdksamples\xmlcataloghandler\XCatHndID.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\source\sdksamples\xmlcataloghandler\XCatHnd_enUS.fr">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\source\sdksamples\xmlcataloghandler\XCatHnd_jaJP.fr">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\..\..\source\sdksamples\xmlcataloghandler\XCatHnd.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\..\..\source\sdksamples\xmlcataloghandler\XCatHnd.fr">
+      <Filter>Resource Files</Filter>
+    </CustomBuild>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,142 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kLayerPanelStringsRsrcID + index_fiFI)
+{
+	k_fiFI,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{
+		// ----- Command strings
+
+		"Layer Options",				"Tason asetukset",
+		"New Layer",					"Uusi taso",
+		"Layer Deletion",				"Poista tasot",
+		"Delete Unused Layers",			"Poista käyttämättömät tasot",
+		"Lock Others",					"Lukitse muut",
+		"#UnlockOthers",					"Vapauta muut",
+		"Show All",						"Näytä kaikki",
+		"#ShowOthers",					"Näytä muut",
+		"Unlock All",					"Vapauta kaikki",
+		"Hide All",						"Kätke kaikki",
+		"Lock All",						"Lukitse kaikki",
+		"Merge Layers",					"Yhdistä tasot",
+		"Move To Layer",				"Siirrä tasolle",
+		"Copy To Layer",				"Kopioi tasolle",
+		"Move Layer",					"Siirrä taso",
+		"Move Layers",					"Siirrä tasot",
+		"kUnlockOthersSequence",		"Vapauta muut",
+		"kLockOthersSequence",			"Lukitse muut",
+
+		// ----- Menu strings
+		
+		"Layers...",						"Tas&ot...",
+
+		"New Layer...",						"Uusi taso...",
+		"New Layer Above \"^1\"...",		"Uusi taso kohteen \"^1\" yläpuolelle...",
+		"New Layer Below \"^1\"...",		"Uusi taso kohteen \"^1\" alapuolelle...",
+		"New Top Layer...",					"Uusi ylin taso...",
+		"Delete Layer",						"Poista taso",
+		"Delete \"^1\"",					"Poista taso \"^1\"",
+		"Delete Layers",					"Poista tasot",
+		"#Duplicate ^1 Menu",				"Monista taso \"^1\"",
+		"#Duplicate LayersMenu",			"Monista tasot",
+		"#DuplicatLayersCmd",				"Monista tasot",
+		
+		"Layer Options for \"^1\"...",		"Tason asetukset kohteelle \"^1\"...",
+		"Layer Options...",					"Tason asetukset...",
+		"Show All Layers",					"Näytä kaikki tasot",
+		"Hide Others",						"Kätke muut",
+		"Unlock All Layers",				"Vapauta kaikki tasot",
+		"Lock Others",						"Lukitse muut",
+		"Hide All Layers",					"Kätke kaikki tasot",
+		"Lock All Layers",					"Lukitse kaikki tasot",
+		
+		"Paste Remembers Layers",			"Liitä-toiminto muistaa tasot",
+		"Ungroup Remembers Layers",			"Poista ryhmitys -toiminto muistaa tasot",
+		
+		"Merge Layers",						"Yhdistä tasot",
+		"Delete Unused Layers",				"Poista käyttämättömät tasot",
+		"Select Item(s) on \"^1\"",			"Valitse kohteet kohteessa \"^1\"",
+		"Select Item(s) Layer",				"Valitse tason kohteet",
+				
+		"#SelectLayerPageItemMenu",		"Valittu kohde tai kohteet",
+		"#SelectZoomLayerPageItemMenu",	"Valitse ja sovita kohde",
+		"#ZoomLockedPageItemMenu",		"Sovita kohde ikkunaan",
+		
+		// Menu names for context and panel menus
+		"LayerPanelPopup",					"Tasot-paneelivalikko",	
+		"RtMenuLayerPanelEye",				"Tasot-paneelin Silmä-pikavalikko",	
+		"RtMenuLayerPanelLock",				"Tasot-paneelin Lukitus-pikavalikko",
+		"RtMenuLayerPanelItem",				"Tasot-paneelin Kerros-pikavalikko",	
+		"RtMenuLayerPanelPageItem",			"Tasot-paneelin Sivukohde-pikavalikko",	
+
+		// ----- Window strings
+		"DeleteOneLayer",					"Taso \"^1\" sisältää yhden tai useamman objektin. Haluatko silti poistaa tason?",
+		"DeleteMultiLayers",				"Valitut tasot sisältävät objekteja. Haluatko silti poistaa tasot?",
+		"DeleteOneGuideLayer",				"Taso \"^1\" sisältää viivainlinjoja. Haluatko silti poistaa tason?",
+		"DeleteGuideLayers",				"Valitut tasot sisältävät viivainlinjoja. Haluatko silti poistaa tasot?",
+		"DeletingPlaceGunUsedLayer",		"Tasoa ei voi poistaa. Sijoituskohdistimeen ladattu katkelma vaatii sen.",
+
+		// ----- Window Menu
+		"Layers_WinMenu",					"&Tasot",
+		
+		// ----- Panel strings
+		
+		"^1 Layer",							"^1 taso",		// For status widget
+		"^1 Layers",						"^1 tasoa",	// For status widget
+		"New Layer",						"Uusi taso",	// Title of New Layer dialog
+		"Layer Options",					"Tason asetukset", // Title of Layer Options dialog
+		"&Name:",							"&Nimi:",
+		"&Color:",							"&Väri:",
+		"&Show Layer",						"Näytä ta&so",
+		"Show &Guides",						"Näytä a&puviivat",
+		"&Lock Layer",						"&Lukitse taso",
+		"Loc&k Guides",						"Lu&kitse apuviivat",
+		"Keep When Layer is &Hidden",		"&Ei tekstinkierrätystä, kun taso on kätketty",
+		"&Print Layer",						"&Tulosta taso",
+
+		// ----- Tips strings
+
+		"DeleteLayerTip",					"Poista valitut tasot",
+		"NewLayerTip",						"Luo taso",
+		"EyeTip",							"Näkyvyyden vaihto",
+		"PencilTip",						"Tason lukituksen vaihto (muokattavissa tyhjänä)",
+		"PageItemPencilTip",				"Sivukohteen lukituksen vaihto (muokattavissa tyhjänä)",
+		"SwatchTip",						"Tämän tason valintamerkkien väri",
+		"ProxyTip",							"Osoittaa valitut kohteet (siirrä tasolta toiselle vetämällä tai muuta Z-järjestystä)",
+		"ProxyChildSelectedTip",			"Sisältää valitun objektin, voit valita säilöobjektin napsauttamalla",
+		"UnselectedProxyTip",				"Valitse kohteita napsauttamalla",
+		"ActiveTip",						"Osoittaa nykyisen piirtotason",
+
+		// ----- Error strings
+		"EmptyLayerName",					"Tason nimi on annettava.",
+		"DuplicateLayer",					"Tämänniminen taso on jo olemassa.",
+
+		"#LayerHierPanelName",		"Tasot",
+		"#Page:^1,",					"Sivu: ^1, ", // for layer panel status widget. Will be followed by layer count string.
+		"#Pages:^1,",					"Sivut: ^1, ", // for layer panel status widget. Will be followed by layer count string.
+		"#DeletePageItemsMenu",		"Poista sivukohteet", // menu item name
+		"#DeletePageItem \"^1\"",		"Poista sivukohde ^1", // menu item name
+		"#DuplicatePI ^1 Menu",			"Monista sivukohde ^1", // menu item name
+		"#DuplicatePIMenu",			"Monista sivukohteet",  // menu item name
+	}
+};
+
+#endif // __ODFRC__

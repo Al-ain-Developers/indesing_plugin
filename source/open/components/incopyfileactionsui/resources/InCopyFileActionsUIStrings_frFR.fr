@@ -1,0 +1,43 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kInCopyFileActionsUIStringsRsrcID + index_frFR)
+{
+	k_frFR,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{
+		"&Update Design",		"Mettre &à jour la maquette",
+		"AlertUnableToSave",	"Impossible d'enregistrer le contenu suivant.\nLes fichiers sont peut-être verrouillés ou vous ne disposez pas des droits nécessaires pour les modifier.\n",
+		"Update^1Alert",		"Une partie du contenu n'a pu être enregistrée. La mise à jour peut vous faire perdre vos modifications.\nVoulez-vous effectuer la mise à jour vers la dernière version de \"^1\" ?",
+		"Undoable^1Save",		"La mise à jour de la maquette va enregistrer tout le contenu modifiable avant la suite des opérations. La commande Annuler ne peut annuler tous les modifications effectuées par une mise à jour. \nVoulez-vous effectuer la mise à jour vers \"^1\" ?",
+		"AlertStoriesMissing",	"Certains fichiers de contenu n'ont pu être trouvés, ils n'ont donc pas pu être modifiés. Essayez de remettre les fichiers à leur emplacement original ou de mettre à jour les liens dans InDesign.",
+		"AlertStoriesMissingWF", "Certains fichiers de contenu n'ont pu être trouvés, ils n'ont donc pas pu être modifiés. Essayez de télécharger le contenu à partir du serveur et d'ouvrir le document à nouveau.",
+		"Update",				"Mettre à jour",
+		"&Revert Story",		"R&établir le contenu",
+//		"Revert Story",			"Revert Content", // Note to localizer: this string moved to InCopySharedStrings_enUS.fr
+		
+		"SaveAsFeatureLost",    "Ce document contient peut-être des fonctions non prises en charge par ce format de fichier. Voulez-vous continuer ?",
+		"CannotSaveOntoLockedFile",		"Le fichier spécifié est en cours d'extraction par \"^1\" dans ^2 à partir du document ^3.  Choisissez un nom du fichier différent ou laissez \"^1\" archiver le fichier.",
+		"CannotSaveOntoLockedFileMinimal",	"Le fichier spécifié est en cours d'extraction par \"^1\".  Choisissez un nom de fichier différent ou laissez \"^1\" archiver le fichier.",
+	}
+};
+
+
+#endif // __ODFRC__

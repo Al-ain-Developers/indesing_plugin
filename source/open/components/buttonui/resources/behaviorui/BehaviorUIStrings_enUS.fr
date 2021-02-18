@@ -1,0 +1,129 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kBehaviorUIStringsRsrcID + index_enUS)
+{
+	k_enUS,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{		
+		"$$$/Dialog/Behaviors/ShowHideFields/Fields_Tree", "Fields Tree",
+
+		"$$$/Dialog/Behaviors/Description",				"This will contain a short description of the behavior. It may also contain some hints about behavior options. Gives the user a bit of an idea how to use it.",
+		"$$$/Dialog/Behaviors/Description Title",		"Description",
+		"$$$/Dialog/Behaviors/DeleteAlert",				"Delete selected action?",
+		"$$$/Dialog/Behaviors/DragDeleteAlert",			"Delete dragged actions?",
+		"$$$/Dialog/Behaviors/Error/Invalid URL",		"The URL field must have a value",
+		"$$$/Dialog/Behaviors/Error/Invalid File",		"A valid file must be specified",
+		
+		"$$$/Dialog/Behaviors/Movie/Movie:",			"Video:",
+		"$$$/Dialog/Behaviors/Movie/Play Options:",		"Options:",
+		"$$$/Dialog/Behaviors/Movie/Play",				"Play",
+		"$$$/Dialog/Behaviors/Movie/Stop",				"Stop",
+		"$$$/Dialog/Behaviors/Movie/Pause",				"Pause",
+		"$$$/Dialog/Behaviors/Movie/Resume",			"Resume",
+		"$$$/Dialog/Behaviors/Movie/PlayFromNavPoint",	"Play from Navigation Point",
+		"$$$/Dialog/Behaviors/Movie/StopAll",			"Stop All (SWF only)",
+		"$$$/Dialog/Behaviors/Movie/NavPoint",			"Point:",
+		"$$$/Dialog/Behaviors/Movie/NoVideo",			"(no video)",
+		"$$$/Dialog/Behaviors/Movie/NoVideoNavPoint",	"(no navigation point)",
+
+		"$$$/Dialog/Behaviors/Sound/Sound:",			"Sound:",
+		"$$$/Dialog/Behaviors/Sound/Play Options:",		"Options:",
+		"$$$/Dialog/Behaviors/Sound/Play",				"Play",
+		"$$$/Dialog/Behaviors/Sound/Stop",				"Stop",
+		"$$$/Dialog/Behaviors/Sound/Pause",				"Pause",
+		"$$$/Dialog/Behaviors/Sound/Resume",			"Resume",
+		"$$$/Dialog/Behaviors/Sound/StopAll",			"Stop All (SWF only)",
+		"$$$/Dialog/Behaviors/Sound/Volume:",			"Volume:",
+		"$$$/Dialog/Behaviors/Sound/Synchronous",		"Synchronous",
+		"$$$/Dialog/Behaviors/Sound/Mix",				"Mix",
+		"$$$/Dialog/Behaviors/Sound/NoSound",			"(no sound)",
+		
+		"$$$/Dialog/Behaviors/Animation/Animation:",	"Animation:",
+		"$$$/Dialog/Behaviors/Animation/Play Options:",	"Options:",
+		"$$$/Dialog/Behaviors/Animation/Play",			"Play",
+		"$$$/Dialog/Behaviors/Animation/Stop",			"Stop",
+		"$$$/Dialog/Behaviors/Animation/Pause",			"Pause",
+		"$$$/Dialog/Behaviors/Animation/Resume",		"Resume",
+		"$$$/Dialog/Behaviors/Animation/StopAll",		"Stop All",
+		"$$$/Dialog/Behaviors/Animation/Reverse",		"Reverse",
+		"$$$/Dialog/Behaviors/Animation/AutoReverse",	"Reverse on Roll Off",
+		"$$$/Dialog/Behaviors/Animation/NoAnimation",	"(no animation)",
+		
+		"$$$/Dialog/Behaviors/MSO/Object:",				"Object:",
+		"$$$/Dialog/Behaviors/MSO/State:",				"State:",
+		"$$$/Dialog/Behaviors/MSO/AutoReverse",			"Go Back on Roll Off",
+		"$$$/Dialog/Behaviors/MSO/NextLoop",			"Stop at Last State",
+		"$$$/Dialog/Behaviors/MSO/PrevLoop",			"Stop at First State",
+		"$$$/Dialog/Behaviors/MSO/NoMSO",				"(no multi-state object)",
+
+		"$$$/Dialog/Behaviors/GoToView/Go To:",			"Go To:",
+		"$$$/Dialog/Behaviors/GoToView/First Page",		"First Page",
+		"$$$/Dialog/Behaviors/GoToView/Page",			"Page",
+		"$$$/Dialog/Behaviors/GoToView/Previous Page",	"Previous Page",
+		"$$$/Dialog/Behaviors/GoToView/Next Page",		"Next Page",
+		"$$$/Dialog/Behaviors/GoToView/Last Page",		"Last Page",
+		"$$$/Dialog/Behaviors/GoToView/Back",			"Back",
+		"$$$/Dialog/Behaviors/GoToView/Forward",		"Forward",
+		"$$$/Dialog/Behaviors/GoToView/Previous View",	"Previous View",
+		"$$$/Dialog/Behaviors/GoToView/Next View",		"Next View",
+		"$$$/Dialog/Behaviors/GoToView/Specific Page",	"Specific Page",
+		"$$$/Dialog/Behaviors/GoToView/Document:",		"Document:",
+		"$$$/Dialog/Behaviors/GoToView/Page:",			"Page:",
+		"$$$/Dialog/Behaviors/GoToView/URL",			"URL",
+		"$$$/Dialog/Behaviors/GoToView/URL:",			"URL:",
+		"$$$/Dialog/Behaviors/GoToView/Anchor",			"Text Anchor",
+		"$$$/Dialog/Behaviors/GoToView/Anchor:",		"Destination:",
+		"$$$/Dialog/Behaviors/GoToView/Bookmark",		"Bookmark",
+		"$$$/Dialog/Behaviors/GoToView/Inherit Zoom",	"Inherit Zoom",
+		"$$$/Dialog/Behaviors/GoToView/Actual Size",	"Actual Size",
+		"$$$/Dialog/Behaviors/GoToView/Fit In Window",	"Fit In Window",
+		"$$$/Dialog/Behaviors/GoToView/Fit Width",		"Fit Width",
+		"$$$/Dialog/Behaviors/GoToView/Fit Height",		"Fit Height",
+		"$$$/Dialog/Behaviors/GoToView/Fit Visible",	"Fit Visible",
+		"$$$/Dialog/Behaviors/GoToView/Zoom:",			"Zoom:",
+		"$$$/Dialog/Behaviors/GoToView/None",			"None",
+		"$$$/Dialog/Behaviors/GoToAnchor/InDesign Format File","InDesign Format File",
+		
+		"$$$/Dialog/Behaviors/ViewZoom/Full Screen",	"Full Screen",
+		"$$$/Dialog/Behaviors/ViewZoom/Zoom View In",	"Zoom In",
+		"$$$/Dialog/Behaviors/ViewZoom/Zoom View Out",	"Zoom Out",
+		"$$$/Dialog/Behaviors/ViewZoom/Fit Page",		"Fit In Window",
+		"$$$/Dialog/Behaviors/ViewZoom/Actual Size",	"Actual Size",
+		"$$$/Dialog/Behaviors/ViewZoom/Fit Width",		"Fit Width",
+		"$$$/Dialog/Behaviors/ViewZoom/Fit Visible",	"Fit Visible",
+		"$$$/Dialog/Behaviors/ViewZoom/SinglePage",		"Single Page",
+		"$$$/Dialog/Behaviors/ViewZoom/OneColumn",		"Continuous",
+		"$$$/Dialog/Behaviors/ViewZoom/TwoColumns",		"Continuous-Facing",
+
+		"$$$/Dialog/Behaviors/ImportData/Select File:","Select File:",
+		"$$$/Dialog/Behaviors/ImportData/Acrobat Format File","Acrobat Format File",
+
+		"$$$/Dialog/Behaviors/OpenFile/Select File:","Select File:",
+		"$$$/Dialog/Behaviors/OpenFile/Select File to be Opened", "Select File to be Opened",
+		"$$$/Dialog/Behaviors/OpenFile/Acrobat Format File","Acrobat Format File",
+
+		"$$$/Dialog/Behaviors/SubmitForm/Submit To:","URL:",
+						
+		// ----- Tips strings
+	}
+};
+
+#endif // __ODFRC__

@@ -1,0 +1,96 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/spellpanel/SpellDialogViews.fr $
+//  
+//  Owner: Bernd Spelldies
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "Widgets.fh"
+#include "SysControlIds.h"
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "SpellPanelID.h"
+#include "TextPanelID.h"
+#include "IControlViewDefs.h"
+
+#include "IDList.fh"
+#include "IconStyleDefs.h"
+
+#include "Widgets.fh"
+#include "SysControlIds.h"
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "SpellPanelID.h"
+#include "TextPanelID.h"
+#include "InterfaceColorDefines.h"
+#include "EVEInfo.fh"
+
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// TYPES
+//========================================================================================
+
+type SpellScopeWidget (kViewRsrcType) : EVEDropDownListWidget (ClassID = kSpellScopeObserverBoss ) { };
+
+type SpellDialogWidget				(kViewRsrcType) : DialogBoss (ClassID = kSpellPanelDialogBoss)
+{
+	CControlViewObservers;
+	WidgetEveInfo;
+};
+type SpellLanguageBoss			(kViewRsrcType) : EVEStaticTextWidget(ClassID = kSpellLanguageBoss) { };
+
+type SpellServiceObserverBoss		(kViewRsrcType) : EVEStaticTextWidget	(ClassID = kSpellServiceObserverBoss) { };
+
+type SpellChangeButtonWidget		(kViewRsrcType) : EVEButtonWidget 	(ClassID = kSpellChangeButtonBoss) { };
+type SpellChangeAllButtonWidget		(kViewRsrcType) : EVEButtonWidget 	(ClassID = kSpellChangeAllButtonBoss) { };
+type SpellSkipButtonWidget			(kViewRsrcType) : EVEButtonWidget 	(ClassID = kSpellSkipButtonBoss) { };
+type SpellIgnoreButtonWidget		(kViewRsrcType) : EVEButtonWidget 	(ClassID = kSpellIgnoreButtonBoss) { };
+type SpellAddAndContinueButtonWidget (kViewRsrcType): EVEButtonWidget 	(ClassID = kSpellAddAndContinueButtonBoss) { };
+type SpellAddToListButtonWidget		(kViewRsrcType) : EVEButtonWidget 	(ClassID = kSpellAddToListButtonBoss) { };
+
+type SpellMisspelledWordBoss			(kViewRsrcType) : EVEFontSpecTextEditBoxWidget 		(ClassID = kSpellMisspelledWordBoss) { };
+type SpellWordObserverBoss			(kViewRsrcType) : EVEFontSpecTextEditBoxWidget 		(ClassID = kSpellWordObserverBoss) { };
+type SpellAlternativesObserverBoss	(kViewRsrcType) : EVEStdTreeBasedListBox 	(ClassID = kSpellAlternativesObserverBoss) { };
+
+type TextWalkerScopeObserverBoss	(kViewRsrcType) : EVEStaticTextWidget				(ClassID = kTextWalkerScopeObserverBoss) { };
+
+type SpellMisspelledTextBoss		(kViewRsrcType) : EVEStaticTextWidget	(ClassID = kSpellMisspelledTextBoss) { };
+type SpellTargetWidget (kViewRsrcType) : EVEDropDownListWidget (ClassID = kSpellTargetListBoss) { };
+type SpellCaseSensitiveCheckBoxWidget (kViewRsrcType) : EVECheckBoxWidget (ClassID = kSpellCaseSensitiveObserverBoss) { };
+
+type EVESpellForwardRadioButton (kViewRsrcType) : EVERadioButtonWidget (ClassID = kSpellForwardRadioButtonWidgetBoss) { }; 
+type EVESpellBackwardsRadioButton (kViewRsrcType) : EVERadioButtonWidget (ClassID = kSpellBackwardRadioButtonWidgetBoss) { }; 
+
+//========================================================================================
+// RESOURCES Local Index
+//========================================================================================
+
+resource LocaleIndex (kSpellDialogRsrcID)
+{
+	kViewRsrcType,
+	{
+		kWildFS, k_Wild, 	kSpellDialogRsrcID + index_enUS
+	}
+}
+
+#endif // __ODFRC__
+
+#include "SpellDialogViews_enUS.fr"

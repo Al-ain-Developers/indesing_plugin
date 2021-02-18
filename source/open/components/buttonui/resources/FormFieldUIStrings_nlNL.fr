@@ -1,0 +1,357 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "StringTable.fh"
+
+#include "FormFieldUIDefs.h"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+//twright 12/11/2000 Removed left-over strings from group strings.
+//not sure if button/form is going to need lock warning...
+
+resource StringTable (kFormFieldUIStringsRsrcID + index_nlNL)
+{
+	k_nlNL,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{
+		// ----- Menu strings
+		"ButtonsActionsPopup",						"Menu Knopacties",
+		
+		"$$$/Menu/AppearancePanelPopup",	"Deelvenstermenu Knoppen",	
+		"$$$/Menu/Interactive",				"Interactie&f", 
+		"$$$/Menu/FormField",				"&Formulier", 
+		"$$$/Menu/About",					"Info &over Forms Plugin", 
+		"$$$/Menu/CreateButton",			"&Omzetten in knop", 
+		"$$$/Menu/CreateCheckBox",			"&Omzetten in selectievakje",
+		"$$$/Menu/CreateComboBox",			"&Omzetten in keuzelijst met invoervak", 
+		"$$$/Menu/CreateListBox",			"&Omzetten in lijstvak", 
+		"$$$/Menu/CreateRadioButton",		"&Omzetten in keuzerondje", 
+		"$$$/Menu/CreateSignatureField",	"Om&zetten in handtekeningenveld", 
+		"$$$/Menu/CreateTextField",			"&Omzetten in tekstveld", 
+		"$$$/Menu/DestroyButton",			"&Omzetten in object", 
+		"$$$/Menu/FormFieldSettings",		"&Knopopties...", 
+		"$$$/Menu/NewState",				"Nieuwe status", 
+		"$$$/Menu/DeleteState",				"Status verwijderen", 
+		"$$$/Menu/DeleteStates",			"Statussen verwijderen",
+		"$$$/Menu/PlaceIntoState",			"Inhoud in status plaatsen...",
+		"$$$/Menu/DeleteStateContent",		"Inhoud uit status verwijderen",
+		"$$$/Menu/AppearancePanelPrefs",	"Deelvensteropties...",
+		"$$$/Menu/StateOptions",			"Statusopties...",
+		"$$$/Menu/SetTabOrder",				"&Tabvolgorde instellen...",
+		"$$$/Menu/SetCalculationOrder",		"Rekenvolgorde instellen...",
+		"$$$/Menu/States",					"Knoppen en form&ulieren",
+		
+		"$$$/Menu/Go To Page",				"Ga naar pagina",
+		"$$$/Menu/Go To First Page",		"Ga naar eerste pagina",
+		"$$$/Menu/Go To Anchor",			"Ga naar doel",
+		"$$$/Menu/Go To Last Page",			"Ga naar laatste pagina",
+		"$$$/Menu/Go To Next Page",			"Ga naar volgende pagina",
+		"$$$/Menu/Go To Next View",			"Ga naar volgende weergave",
+		"$$$/Menu/Go To Previous Page",		"Ga naar vorige pagina",
+		"$$$/Menu/Go To Previous View",		"Ga naar vorige weergave",
+		"$$$/Menu/Go To URL",				"Ga naar URL",
+		"$$$/Menu/Movie",					"Video",
+		"$$$/Menu/Open File",				"Bestand openen",
+		"$$$/Menu/Show/Hide Buttons",		"Knoppen en formulieren tonen/verbergen",
+		"$$$/Menu/Sound",					"Geluid",
+		"$$$/Menu/View Zoom",				"Weergavezoom",
+		"$$$/Menu/Animation",				"Animatie",
+		"$$$/Menu/SwitchToMSOState",		"Ga naar status",
+		"$$$/Menu/SwitchToNextMSOState",	"Ga naar volgende status",
+		"$$$/Menu/SwitchToPrevMSOState",	"Ga naar vorige status",
+		"$$$/Menu/EPUBOnly",					"Alleen EPUB",
+		"$$$/Menu/PDFOnly",					"Alleen PDF",
+		"$$$/Menu/Print Form",				"Formulier afdrukken",
+		"$$$/Menu/Clear Form",				"Formulier wissen",
+		"$$$/Menu/Submit Form",				"Formulier versturen",
+		
+		"$$$/Menu/FormFieldSettings/ButtonLibrary",			"Voorbeeldknoppen en -formulieren",	// Name of menu item in Buttons Panel flyout that opens a library of Sample Buttons
+
+		"$$$/Menu/FormFieldSettings/PDFVis/Visible",		"Zichtbaar in PDF",
+		"$$$/Menu/FormFieldSettings/PDFVis/Hidden",			"Verborgen in PDF",
+		"$$$/Menu/FormFieldSettings/PDFVis/VisibleNoPrint",	"Zichtbaar in PDF, maar wordt niet afgedrukt",
+		"$$$/Menu/FormFieldSettings/PDFVis/HiddenButPrint",	"Verborgen in PDF, maar afdrukbaar",	
+		"$$$/Menu/ButtonPDFOptions", "PDF-opties...",
+
+		"$$$/Menu/ResetAllButtons",	"Alle knoppen opnieuw instellen op de normale status",	
+			
+		"PageItems",						"Pagina-items", 
+		"$$$/Menu/Trace Geometry",			"Geometrie volgen", 
+
+		"$$$/Menu/FormFieldOptions/Button",					"Knop",
+		"$$$/Menu/FormFieldOptions/Check Box",				"Selectievakje",
+		"$$$/Menu/FormFieldOptions/Combo Box",				"Keuzelijst met invoervak",
+		"$$$/Menu/FormFieldOptions/List Box",				"Lijstvak",
+		"$$$/Menu/FormFieldOptions/Radio Button",			"Keuzerondje",
+		"$$$/Menu/FormFieldOptions/Signature Field",		"Handtekeningenveld",
+		"$$$/Menu/FormFieldOptions/Text Field",				"Tekstveld",
+
+		"InteractiveContextMenu",			"Interactief",
+	
+		// ----- Dialog strings
+		"$$$/Dialog/CreateFormField/Title",		"Formulierveld", 
+		"$$$/Dialog/CreateFormField/Options",	"Opties",
+		"$$$/Dialog/CreateFormField/Width",		"Br&eedte:",
+		"$$$/Dialog/CreateFormField/Height",	"&Hoogte:",
+
+		"$$$/Dialog/FormFieldSettings/Title",				"Algemeen", 
+		"$$$/Dialog/FormFieldSettings/FieldType",			"Veldtype:",
+		"$$$/Dialog/FormFieldSettings/FieldTypeSetting",	"",
+		"$$$/Dialog/FormFieldSettings/Name",				"&Naam:",
+		"$$$/Dialog/FormFieldSettings/PDFVisibility",		"&Zichtbaar in PDF:",
+		"$$$/Dialog/FormFieldSettings/PDFVis/Visible",		"Zichtbaar",
+		"$$$/Dialog/FormFieldSettings/PDFVis/Hidden",		"Verborgen",
+		"$$$/Dialog/FormFieldSettings/PDFVis/VisibleNoPrint",	"Zichtbaar maar kan niet worden afgedrukt",
+		"$$$/Dialog/FormFieldSettings/PDFVis/HiddenButPrint",	"Verborgen maar kan worden afgedrukt",
+		"$$$/Dialog/FormFieldSettings/ReadOnly",			"Alleen-lezen",
+		"$$$/Dialog/FormFieldSettings/Export",				"Exporteren",
+		"$$$/Dialog/FormFieldSettings/RequiredForExport",	"Vereist voor export",
+		"$$$/Dialog/FormFieldSettings/Description",			"&Beschrijving:",
+		"$$$/Dialog/FormFieldSettings/ExportName",			"&Exportnaam:",
+		"$$$/Dialog/FormFieldSettings/Common Settings",		"Standaardinstellingen",
+		"$$$/Dialog/FormFieldSettings/Options",				"Opties",
+		"$$$/Dialog/FormFieldSettings/Holder",				"Formulierveldinstellingenhouder",
+
+		"$$$/Dialog/FormOptions/Title",						"Knopopties",
+		"$$$/Dialog/FormFieldSettings/Options",				"Opties",
+		
+		"$$$/Dialog/FormFieldSettings/ExportValue",			"Exportwaarde:",
+		"$$$/Dialog/FormFieldSettings/DefaultIsChecked",	"Standaard is ingeschakeld",
+		"$$$/Dialog/FormFieldSettings/DefaultIsSelected",	"Standaard is geselecteerd",
+		"$$$/Dialog/FormFieldSettings/Default",				"Standaard:",
+
+		"$$$/Dialog/FormFieldSettings/Multiline",				"Meerdere regels",
+		"$$$/Dialog/FormFieldSettings/Scroll",					"Schuifbaar",
+		"$$$/Dialog/FormFieldSettings/LimitOf",					"Maximaal",
+		"$$$/Dialog/FormFieldSettings/Characters",				"tekens",
+		"$$$/Dialog/FormFieldSettings/Password",				"Wachtwoord",
+		"$$$/Dialog/FormFieldSettings/FieldForFileSelection",	"Gebruikt voor bestandsselectie",
+		"$$$/Dialog/FormFieldSettings/SpellCheck",				"Spellingcontrole",
+		
+		"$$$/Dialog/FormFieldSettings/Item",					"Item:",
+		"$$$/Dialog/FormFieldSettings/Add",						"Toevoegen",
+		"$$$/Dialog/FormFieldSettings/Delete",					"Verwijderen",
+		"$$$/Dialog/FormFieldSettings/Change",					"Wijzigen",
+		"$$$/Dialog/FormFieldSettings/SortItems",				"Items sorteren",
+		"$$$/Dialog/FormFieldSettings/AllowMultipleSelection",	"Meerdere selecties toestaan",
+		"$$$/Dialog/FormFieldSettings/Editable",				"Bewerkbaar",
+
+		"$$$/Dialog/FormFieldSettings/Align",					"Uitlijnen:",
+		"$$$/Dialog/FormFieldSettings/Align/Left",				"Links",
+		"$$$/Dialog/FormFieldSettings/Align/Center",			"Gecentreerd",
+		"$$$/Dialog/FormFieldSettings/Align/Right",				"Rechts",
+
+		"$$$/Dialog/FormFieldSettings/Font:",					"&Lettertype:",
+		"$$$/Dialog/FormFieldSettings/Size:",					"&Grootte:",
+		"$$$/Dialog/FormFieldSettings/Auto",					"Automatisch",
+
+		"$$$/Dialog/FormFieldSettings/SelectedIsDefault",		"Geselecteerd item is het standaarditem",
+		
+		"$$$/Dialog/FormFieldUI/DeleteAlert",					"Als u de status verwijdert, wordt ook de bijbehorende inhoud verwijderd. Wilt u de status verwijderen?",
+		"$$$/Dialog/FormFieldUI/DestroyAlert",					"Hiermee verwijdert u de inhoud van de andere statussen van het formulierveld. Wilt u doorgaan?",
+		"$$$/Dialog/FormFieldUI/DeleteContentAlert",			"Wilt u de inhoud van de status verwijderen?",
+		"$$$/Dialog/FormFieldUI/StyleChangeAlert",				"Hiermee verwijdert u de inhoud van de huidige statussen van het formulierveld. Wilt u doorgaan?",
+		"$$$/Dialog/FormFieldUI/StyleChangeFailed",				"Kan de geselecteerde vormgevingsstijl niet op het formulierveld toepassen.",
+
+		/* These are not visible, they are names of subpanels... */
+		
+		"$$$/Dialog/FormFieldSettings/CheckBox",				"Opties selectievakje",	
+		"$$$/Dialog/FormFieldSettings/RadioButton",				"Opties keuzerondje",	
+		"$$$/Dialog/FormFieldSettings/TextField",				"Knopopties tekstveld",	
+		"$$$/Dialog/FormFieldSettings/ListBox",					"Knopopties lijstvak",	
+		
+		"$$$/Dialog/About/Description",						"Forms Plugin, versie 1.0\n\n(c) 2001 Adobe Systems Incorporated. Alle rechten voorbehouden.",
+
+		"$$$/Dialog/CmdName/CreateButton",					"Omzetten in knop",
+		"$$$/Dialog/CmdName/DestroyButton",					"Omzetten in object",
+		"$$$/Dialog/CmdName/ChangeFormSettings",			"Knopinstellingen wijzigen",
+
+		"$$$/Dialog/TextColor/Title",						"Tekstkleur", 
+		"$$$/Dialog/Button/Color...",						"Lettertypekleur...", 
+
+		"$$$/Dialog/AppearancePanelPrefs/Title",			"Deelvensteropties", 
+		"$$$/Dialog/AppearancePanelPrefs/ThumbnailSize",	"Miniatuurformaat", 
+		"$$$/Dialog/AppearancePanelPrefs/None",				"Geen", 
+		
+		
+		"$$$/Dialog/StateOptions/Title",					"Statusopties", 
+		"$$$/Dialog/StateOptions/State",					"Status:", 
+		"$$$/Dialog/StateOptions/Enable",					"Status inschakelen", 
+
+		"$$$/Dialog/CalculationOrder/Title",				"Rekenvolgorde", 
+		"$$$/Dialog/TabOrder/Title",						"Tabvolgorde", 
+		"$$$/Dialog/Order/MoveUp",							"Om&hoog verplaatsen", 
+		"$$$/Dialog/Order/MoveDown",						"Om&laag verplaatsen",
+
+		"$$$/Dialog/ButtonPDFOptions/Title",				"PDF-opties",
+		"$$$/Dialog/ButtonPDFOptions/InitialAppearance",	"Beginvormgeving:",
+		"$$$/Dialog/ButtonPDFOptions/Visible",				"&Zichtbaar",
+		"$$$/Dialog/ButtonPDFOptions/Hidden",				"&Verborgen",
+		"$$$/Dialog/ButtonPDFOptions/Printable",			"A&fdrukbaar",
+		"$$$/Dialog/ButtonPDFOptions/Description",			"&Omschrijving:",
+		
+		// ----- Window strings
+		
+		// ----- Panel strings
+
+		"$$$/Panel/FormFieldSettings/Action Data Holder",	"Actie gegevenshouder",
+		"$$$/Panel/FormFieldSettings/+",					"+",
+		"$$$/Panel/FormFieldSettings/Event:",				"Gebeurtenis:",
+		"$$$/Panel/FormFieldSettings/Actions:",				"Acties:",
+		"$$$/Panel/FormFieldSettings/URL:",					"URL:",
+		"$$$/Panel/FormFieldSettings/Mail to:",				"E-mailen naar:",
+		"$$$/Panel/Action",									"Actie",
+		"$$$/Panel/Empty Action",							"[Geen acties toegevoegd]",
+		"$$$/Panel/StatesListBoxLabel/States",				"Vormgeving",
+		"$$$/Panel/States",									"Knoppen en formulieren",
+		"$$$/Panel/FormFieldSettings/FieldType",			"Type:",
+		"$$$/Panel/FormFieldSettings/Name",					"Naam:",
+		"$$$/Panel/ShowHide/Visibility:",					"Zichtbaarheid:",
+		"$$$/Panel/GoToPage/Page:",							"Pagina:",
+
+		"$$$/Panel/Normal",									"[Normaal]",
+		"$$$/Panel/Over",									"[Rollover]",
+		"$$$/Panel/Down",									"[Klikken]",
+
+		"$$$/Panel/Off",									"[Normaal uitgeschakeld]",
+		"$$$/Panel/On",										"[Normaal ingeschakeld]",
+
+		"$$$/Panel/RolloverOff",							"[Rollover uitgeschakeld]",
+		"$$$/Panel/RolloverOn",								"[Rollover ingeschakeld]",
+		"$$$/Panel/DowmOff",								"[Klik om uit te schakelen]",
+		"$$$/Panel/DownOn",									"[Klik om in te schakelen]",
+
+		"$$$/Panel/CmdName/FormFieldName",					"Naam knop",
+		"$$$/Panel/CmdName/FormFieldStyle",					"Vormgeving knop",
+		
+		"$$$/Panel/FormFieldSettings/Appearance",			"Vormgeving:",
+		"$$$/Panel/PDFOptions",								"PDF-opties",
+		"$$$/Panel/Required",								"Vereist",
+		"$$$/Panel/Printable",								"Afdrukbaar",
+		"$$$/Panel/Description",							"Beschrijving:",
+		"$$$/Panel/SelectedByDefault",						"Standaard geselecteerd",
+		"$$$/Panel/Multiline",								"Meerdere regels",
+		"$$$/Panel/ListItems",								"Lijstitems",
+		"$$$/Panel/MultipleSelection",						"Meervoudige selectie",
+		"$$$/Panel/FontSize",								"Tekengrootte:",
+		"$$$/Panel/Font",									"Lettertype:",
+		"$$$/Panel/AutoSize",								"Automatisch",
+		"$$$/Panel/SortItems",								"Items sorteren",
+		"$$$/Panel/MERTLOption",							"Van rechts naar links",
+		"$$$/Panel/ExportValue",							"Knopwaarde:",
+		 
+		"$$$/Popup/Separator",								"-",
+		
+		"$$$/Dialog/Behaviors/Exit/No Data for Exit Behavior", "",
+
+		// ----- Tips strings
+
+		"$$$/Tip/StateEye",				"Optionele status bij export inschakelen/uitschakelen",
+		"$$$/Tip/StateThumbnail",		"Verkleinde weergave van deze status",
+		"$$$/Tip/Show",					"Tonen",
+		"$$$/Tip/Hide",					"Verbergen",
+		"$$$/Tip/Ignore",				"Negeren",
+		"$$$/Tip/Delete Selected Action",	"Geselecteerde actie verwijderen",
+		"$$$/Tip/Add New Action",		"Nieuwe actie toevoegen aan geselecteerde gebeurtenis",
+		"$$$/Tip/DeleteState",			"Optionele status en inhoud verwijderen",
+		"$$$/Tip/Convert To Button",		"Omzetten in knop",
+		"$$$/Tip/Convert To Object",		"Omzetten in object",
+		"$$$/Tip/DefaultChoice",		"Selecteer een item in de lijst om het de standaardinstelling te maken. Schakel Items sorteren uit en sleep items naar de gewenste positie om een aangepaste volgorde in te stellen.",
+        "$$$/Tip/MissingFontToolTip",				"Ontbrekend lettertype in formulierveld. Klik op Lettertype zoeken.",
+
+		// ----- Error strings
+
+		"$$$/Error/YouNeedToSpecifyAName", "U moet een naam opgeven.",
+		"$$$/Error/YouNeedToSpecifyANonBlankName", "U moet een geldige naam opgeven.",
+		"$$$/Error/YouNeedToSpecifyANonBlankNameOrNoName", "U moet een geldige naam of geen naam opgeven.",
+		"$$$/Error/YouNeedToSpecifyAnExportValue", "U moet een exportwaarde opgeven.",
+		"$$$/Error/YouNeedToSpecifyANonBlankExportValue", "U moet een geldige exportwaarde opgeven.",
+		"$$$/Error/YouNeedToSpecifyAUniqueName", "Deze statusnaam bestaat al. Kies een andere naam.",
+		"$$$/Error/YouNeedToSpecifyAValidFontSize", "Geef een waarde op tussen 0 en 300 of kies Automatisch.",
+		
+		// ----- Misc strings
+
+		"$$$/Command/DeleteStates",	"Statussen verwijderen",
+		"$$$/CmdName/DeleteStateContent",	"Statusinhoud verwijderen",
+		"$$$/Panel/CmdName/MSOName",		"Naam van object met meerdere statussen",
+		
+		// ----- MultiStateObject Panel strings
+				
+		"$$$/Menu/MSOPanel", "&Objectstatussen",
+		"$$$/Panel/MSOPanel", "Objectstatussen",
+		"$$$/Panel/MSOPanel/ObjectName", "Objectnaam:",
+#ifdef MACINTOSH
+		"$$$/Panel/MSOPanel/MixedSelection", "Klik op de knop Nieuw om van elk object een aparte status te maken. (Houd Option ingedrukt en klik om de status van de objecten ongewijzigd te laten.)",
+		"$$$/Panel/MSOPanel/MSOAndMixedSelection", "Klik op de knop Nieuw om van elk object een nieuwe status te maken in het object met meerdere statussen \"^1\". (Houd Option ingedrukt en klik om de status van de objecten ongewijzigd te laten.)\n\nKlik op de knop Toevoegen om de objecten in te voegen in de zichtbare status van \"^2\".",
+#else
+		"$$$/Panel/MSOPanel/MixedSelection", "Klik op de knop Nieuw om van elk object een aparte status te maken. (Houd Alt ingedrukt en klik om de status van de objecten ongewijzigd te laten.)",
+		"$$$/Panel/MSOPanel/MSOAndMixedSelection", "Klik op de knop Nieuw om van elk object een nieuwe status te maken in het object met meerdere statussen \"^1\". (Houd Alt ingedrukt en klik om de status van de objecten ongewijzigd te laten.)\n\nKlik op de knop Toevoegen om de objecten in te voegen in de zichtbare status van \"^2\".",
+#endif
+		
+		"$$$/Menu/MSOPanelPopup", "Menu van deelvenster Objectstatussen",	
+		"$$$/Menu/MSOPanel/NewState", "Nieuwe status",
+		"$$$/Menu/MSOPanel/DeleteState", "Status verwijderen",
+		"$$$/Menu/MSOPanel/AddToState", "Objecten aan status toevoegen",
+		"$$$/Menu/MSOPanel/PasteIntoState", "Plakken in status",
+		"$$$/Menu/MSOPanel/ReleaseState", "Status vrijgeven voor objecten",
+		"$$$/Menu/MSOPanel/ReleaseAllStates", "Alle statussen vrijgeven voor objecten",
+		"$$$/Menu/MSOPanel/ResetAllMSOs", "Alle objecten met meerdere statussen opnieuw instellen op de eerste status",
+		"$$$/Menu/MSOPanel/Options", "Deelvensteropties...",
+		"$$$/Menu/MSOPanel/ContextMenu", "Contextmenu van deelvenster Objectstatussen",
+		"$$$/Menu/MSOPanel/ReleaseStateContextMenu", "\"^1\" vrijgeven voor objecten",
+		"$$$/Menu/MSOPanel/DeleteStateContextMenu", "\"^1\" verwijderen",
+		"$$$/Menu/MSOPanel/PasteIntoStateContextMenu", "Plakken in \"^1\"",
+		"$$$/Menu/MSOPanel/HiddenUntilTriggered", "Verborgen totdat activering plaatsvindt",
+	
+		"$$$/Tip/MSOPanel/StateAnimated", "Een object in deze status is geanimeerd.",
+		"$$$/Tip/MSOPanel/NewMSO", "Selectie omzetten in object met meerdere statussen",
+		"$$$/Tip/MSOPanel/NewState", "Nieuwe status maken",
+		"$$$/Tip/MSOPanel/DeleteState", "Geselecteerde status verwijderen",
+		"$$$/Tip/MSOPanel/MSOIsSelected", "Dit object met meerdere statussen is geselecteerd. Als u het object transformeert, worden alle statussen getransformeerd.",
+		"$$$/Tip/MSOPanel/MSOIsNotSelected", "Er is een status geselecteerd. Klik om het object met meerdere statussen te selecteren.",
+		"$$$/Tip/MSOPanel/MSOStateIsSelected", "Deze status is geselecteerd.",
+		"$$$/Tip/MSOPanel/MSOStateContentIsSelected", "Inhoud van deze status is geselecteerd. Klik op de rij om deze status te selecteren.",
+		"$$$/Tip/MSOPanel/MSOStateRowMSOIsSelected", "Het object met meerdere statussen is geselecteerd. Klik op de rij om over te schakelen op deze status en om deze status te selecteren.",
+		"$$$/Tip/MSOPanel/MSOActiveStateRowMSOIsSelected", "Het object met meerdere statussen is geselecteerd. Klik op de rij om deze status te selecteren.",
+		"$$$/Tip/MSOPanel/MSOAnotherStateIsSelected", "Klik op de rij om over te schakelen op deze status en om deze status te selecteren.",
+		"$$$/Tip/MSOPanel/PasteIntoState", "Gekopieerde objecten in geselecteerde status plakken",
+		"$$$/Tip/MSOPanel/AddToState", "Objecten aan zichtbare status toevoegen",
+	
+		"$$$/Dialog/MSOPanel/ReleaseAlert", "Het object met meerdere statussen moet minstens twee statussen hebben. Met deze handeling wordt het object met meerdere statussen uit het document verwijderd. Alle huidige objecten blijven hun huidige positie als objecten met één status behouden.",
+		"$$$/Dialog/MSOPanel/ReleaseAllAlert", "Met deze handeling wordt het object met meerdere statussen uit het document verwijderd. Alle huidige objecten blijven hun huidige positie als objecten met één status behouden.",
+		"$$$/Dialog/MSOPanel/DeletesMSOAlert", "Het object met meerdere statussen moet minstens twee statussen hebben. Met deze handeling wordt het object met meerdere statussen uit het document verwijderd. De objecten die aan de resterende status zijn gekoppeld, blijven hun huidige positie als objecten met één status behouden.",
+		
+		"$$$/Panel/MSOPanel/StatusOne", " object in ^1",
+		"$$$/Panel/MSOPanel/Status", " objecten in ^1",
+		
+		"$$$/Panel/MSOPanel/StatusMSOSelected", "Alle statussen geselecteerd",
+		"$$$/Panel/MSOPanel/StatusStateSelected", "Status geselecteerd",
+		"$$$/Panel/MSOPanel/StatusStateContentSelected", "Object in geselecteerde status",
+
+		// Command strings		
+		"$$$/Command/CheckBox", "Omzetten in selectievakje",
+		"$$$/Command/ComboBox", "Omzetten in keuzelijst met invoervak",
+		"$$$/Command/ListBox", "Omzetten in lijstvak",
+		"$$$/Command/RadioButton", "Omzetten in keuzerondje",
+		"$$$/Command/SignatureField", "Omzetten in handtekeningenveld",
+		"$$$/Command/TextField", "Omzetten in tekstveld",
+}
+};
+
+#endif // __ODFRC__

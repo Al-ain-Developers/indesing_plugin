@@ -1,0 +1,50 @@
+// =================================================================================================
+// Copyright 2014 Adobe Systems Incorporated
+// All Rights Reserved.
+//
+// NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance with the terms
+// of the Adobe license agreement accompanying it.
+// =================================================================================================
+
+#if AdobePrivate
+// =================================================================================================
+// Change history
+// ==============
+//
+// Writers:
+//  ADC	Amandeep Chawla
+//
+// mm/dd/yy who Description of changes, most recent on top.
+//
+// 02-24-14 HK  5.6-c004 Added new internal XMP DOM interfaces + fixed memory leaks + implemented qualifiers for new XMP DOM.
+// 02-13-14 ADC 5.5-c031 Refactoring XMPCore, implementing few APIs and fixing issues.
+// 02-09-14 ADC 5.5-c026 Re-factoring of XMPCommon Framework
+// 02-05-14 ADC 5.5-c024 Added a new API to the XMPCore to return pointer to interface
+//						 IXMPDOMFactory
+//
+// =================================================================================================
+#endif // AdobePrivate
+
+#include "XMPCore/Interfaces/IXMPPathSegment.h"
+#include "XMPCore/Interfaces/IXMPDOMFactory.h"
+
+namespace NS_XMPCORE {
+
+
+	spIXMPPathSegment_latest IXMPPathSegment_v1::CreatePropertySegment( const char * nameSpace, const char * name ) {
+		return IXMPDOMFactory_latest::GetInstance()->CreatePropertySegment( nameSpace, name );
+	}
+
+	spIXMPPathSegment_latest IXMPPathSegment_v1::CreateArrayIndexSegment( const char * nameSpace, size_t index ) {
+		return IXMPDOMFactory_latest::GetInstance()->CreateArrayIndexSegment( nameSpace, index );
+	}
+
+	spIXMPPathSegment_latest IXMPPathSegment_v1::CreateQualifierSegment( const char * nameSpace, const char * name ) {
+		return IXMPDOMFactory_latest::GetInstance()->CreateQualifierSegment( nameSpace, name );
+	}
+
+	spIXMPPathSegment_latest IXMPPathSegment_v1::CreateQualifierSelectorSegment( const char * nameSpace, const char * name, const char * value ) {
+		return IXMPDOMFactory_latest::GetInstance()->CreateQualifierSelectorSegment( nameSpace, name, value );
+	}
+
+}

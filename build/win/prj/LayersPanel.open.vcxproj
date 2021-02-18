@@ -1,0 +1,226 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectName>LayersPanel</ProjectName>
+    <ProjectGuid>{55C10219-E8D1-4677-B0A9-78EF8A78691A}</ProjectGuid>
+    <RootNamespace>LayersPanel</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.18362.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="ReleaseX64.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="DebugX64.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.40219.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\Debugx64\Plug-ins\Layout\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\..\objDx64\LayersPanel\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\Releasex64\Plug-ins\Layout\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\..\objRx64\LayersPanel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Layers Panel</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Layers Panel</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.apln</TargetExt>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.apln</TargetExt>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Midl>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <TargetEnvironment>X64</TargetEnvironment>
+      <TypeLibraryName>$(IntDir)LayersPanel.tlb</TypeLibraryName>
+      <HeaderFileName>
+      </HeaderFileName>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>/vmg @coreOpen.rsp @LayersPanel.open.rsp %(AdditionalOptions)</AdditionalOptions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;DEBUG;STRICT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>VCPlugInHeaders.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>$(IntDir)LayersPanel.pch</PrecompiledHeaderOutputFile>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+    </ResourceCompile>
+    <PreLinkEvent>
+      <Command>merge_res.cmd "$(IntDir)" LayerPanel &amp; echo Deleting old resources... &amp; del /f /s "$(TargetDir)($(TargetName) Resources)\"*.idrc &gt; $(IntDir)prevDeletedResources.txt &amp; xcopy /Q /E "$(IntDir)"*.idrc "$(TargetDir)($(TargetName) Resources)\" /Y</Command>
+    </PreLinkEvent>
+    <Link>
+      <AdditionalDependencies>$(UI_PLUGIN_LINKLIST);%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <ProgramDatabaseFile>..\debugx64\Plug-ins\Layout\Layers Panel.pdb</ProgramDatabaseFile>
+      <StripPrivateSymbols>..\debugx64\strippedsymbol\Layers Panel.pdb</StripPrivateSymbols>
+      <ImportLibrary>$(LIB_DIR)\LayersPanel/Layers Panel.lib</ImportLibrary>
+    </Link>
+    <PostBuildEvent>
+      <Command>restore_res.cmd "$(IntDir)" LayerPanel</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Midl>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <TargetEnvironment>X64</TargetEnvironment>
+      <TypeLibraryName>$(IntDir)LayersPanel.tlb</TypeLibraryName>
+      <HeaderFileName>
+      </HeaderFileName>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>/vmg @coreOpen.rsp @LayersPanel.open.rsp %(AdditionalOptions)</AdditionalOptions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;STRICT;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>VCPlugInHeaders.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>$(IntDir)LayersPanel.pch</PrecompiledHeaderOutputFile>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+    </ResourceCompile>
+    <PreLinkEvent>
+      <Command>merge_res.cmd "$(IntDir)" LayerPanel &amp; echo Deleting old resources... &amp; del /f /s "$(TargetDir)($(TargetName) Resources)\"*.idrc &gt; $(IntDir)prevDeletedResources.txt &amp; xcopy /Q /E "$(IntDir)"*.idrc "$(TargetDir)($(TargetName) Resources)\" /Y</Command>
+    </PreLinkEvent>
+    <Link>
+      <AdditionalOptions>/IGNORE:4089 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>$(UI_PLUGIN_LINKLIST);%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <ProgramDatabaseFile>..\releasex64\Plug-ins\Layout\Layers Panel.pdb</ProgramDatabaseFile>
+      <StripPrivateSymbols>..\releasex64\strippedsymbol\Layers Panel.pdb</StripPrivateSymbols>
+      <ImportLibrary>$(LIB_DIR)\LayersPanel/Layers Panel.lib</ImportLibrary>
+    </Link>
+    <PostBuildEvent>
+      <Command>restore_res.cmd "$(IntDir)" LayerPanel</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\DebuggingLayers.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\DVLayerElementView.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerPanelMenuComponent.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerPanelUtils.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerPanelView.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\PointyHandCursorProvider.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerDeleteDragDropTarget.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerProxyDEHandler.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\ProxyViewDragDropSource.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerTreeDragDropTarget.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerZOrderDEHandler.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerZOrderDragDropSource.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\PageItemDupDeleteDEHandler.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\PageItemZOrderDEHandler.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerEyeDEHandler.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerEyeDragDropSource.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerEyeDragDropTarget.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerPencilDEHandler.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerPencilDragDropSource.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerPencilDragDropTarget.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerDuplicateDragDropTarg.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerEyeDragDropSourceEH.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerNameEH.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerPencilDragDropSourceEH.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerProxyDragDropSourceEH.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerOptionsDlgController.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerOptionsDlgObserver.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerPanelID.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerPanelMWHacks.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerPanelPlugIn.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerUIUtils.cpp" />
+    <ClCompile Include="..\..\..\source\public\libs\publiclib\statics\PlugInStatics.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\TriggerResourceDeps.cpp" />
+    <ClCompile Include="..\..\..\source\precomp\msvc\VCPlugInHeaders.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\DeleteLayerButtonObserver.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerPanelEyeballObserver.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerPanelPencilObserver.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerPanelSelectionObserver.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\NewLayerButtonObserver.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\ActiveView.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerSwatchView.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\SelectionProxyDrawData.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\SelectionProxyView.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\ActiveLayerWidgetTip.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\ProxyWidgetTip.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\CLayoutLayerListObserver.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerListLayoutAction.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerSelectionObserver.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerSuiteDefaultCSB.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerSuiteIntegrator.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerSuiteLayoutCSB.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerSuiteTableCSB.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerSuiteTextCSB.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerStartupShutdown.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerNameEditObserver.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerNameTextValidation.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerPageItemNameEH.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerPageItemPencilEH.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerPageItemPencilObserver.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerPanelNameILEEditingAttributes.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerPanelNameView.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerPanelTreeObserver.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerPanelTreeViewAdapter.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerPanelTreeViewWidgetMgr.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayersPanelSAXHandler.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayersPanelTreeViewController.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayersPanelXMLGenerator.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayersTreeViewTypeAhead.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerSubwidgetEH.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerTreeRowPanelEH.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\LayerTreeUIDNodeID.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\layerpanel\PageItemNameEditObserver.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\source\precomp\msvc\VCPlugInHeaders.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\..\..\source\open\components\layerpanel\LayerPanel.rc">
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">_CRT_SECURE_NO_DEPRECATE;DEBUG</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\..\external\workflow icons;..\..\..\source\open\components\layerpanel;..\..\..\source\precomp\common;..\..\..\source\precomp\msvc;..\..\..\source\public\includes;..\..\..\source\public\libs\widgetbin\includes;..\..\..\source\public\interfaces\architecture;..\..\..\source\public\interfaces\graphics;..\..\..\source\public\interfaces\layout;..\..\..\source\public\interfaces\text;..\..\..\source\public\interfaces\ui;..\..\..\source\open\components\layerpanel\winres;..\..\..\external\msvc\includes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\..\external\workflow icons;..\..\..\source\open\components\layerpanel;..\..\..\source\precomp\common;..\..\..\source\precomp\msvc;..\..\..\source\public\includes;..\..\..\source\public\libs\widgetbin\includes;..\..\..\source\public\interfaces\architecture;..\..\..\source\public\interfaces\graphics;..\..\..\source\public\interfaces\layout;..\..\..\source\public\interfaces\cjk;..\..\..\source\public\interfaces\text;..\..\..\source\public\interfaces\ui;..\..\..\source\open\components\layerpanel\winres;..\..\..\external\msvc\includes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\..\..\source\open\components\layerpanel\LayerPanel.fr">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Compiling core resources...</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">odfrc $(ODFRC_ADDITIONAL_FLAGS) "%(FullPath)" -o "$(IntDir)%(Filename)".fres -d DEBUG @coreOpen.rsp @LayersPanel.open.rsp -i ..\..\..\source\public\interfaces\tables -i ..\..\..\source\precomp\common -i ..\..\..\source\precomp\msvc -i ..\..\..\source\public\includes -i ..\..\..\source\public\libs\widgetbin\includes -i ..\..\..\source\public\interfaces\architecture -i ..\..\..\source\public\interfaces\graphics -i ..\..\..\source\public\interfaces\layout -i ..\..\..\source\public\interfaces\text -i ..\..\..\source\public\interfaces\ui -i ..\..\..\source\precomp\common -i ..\..\..\source\precomp\msvc -i ..\..\..\devtools\ODFRC_Development\Tests\K2\K2Src\Includes
+</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)TriggerResourceDeps.obj;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)%(Filename).fres;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">odfrc $(ODFRC_ADDITIONAL_FLAGS) "%(FullPath)" -o "$(IntDir)%(Filename)".fres @coreOpen.rsp @LayersPanel.open.rsp -i ..\..\..\source\public\interfaces\tables -i ..\..\..\source\precomp\common -i ..\..\..\source\precomp\msvc -i ..\..\..\source\public\includes -i ..\..\..\source\public\libs\widgetbin\includes -i ..\..\..\source\public\interfaces\architecture -i ..\..\..\source\public\interfaces\graphics -i ..\..\..\source\public\interfaces\layout -i ..\..\..\source\public\interfaces\text -i ..\..\..\source\public\interfaces\ui
+</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)TriggerResourceDeps.obj;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)%(Filename).fres;%(Outputs)</Outputs>
+    </CustomBuild>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

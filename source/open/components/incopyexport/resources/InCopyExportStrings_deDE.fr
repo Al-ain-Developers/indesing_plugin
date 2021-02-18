@@ -1,0 +1,52 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// U.S. English strings
+//========================================================================================
+
+resource StringTable (kInCopyExportStringsRsrcID + index_deDE)
+{
+	k_deDE,								// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+
+	{
+		// ----- Miscellaneous strings
+		"Export Seq Name", 		"InCopy-Textabschnitt exportieren",
+		"Text",					"Text", // append "Text" to export name on a text story
+		
+		// ----- Export options dialog strings
+		"InCopyExportOptions",	"Adobe InCopy-Exportoptionen",
+		"ExportOptions_DataType",	"Kodi&erung:",
+		"ExportOptions_UTF16",	"UTF-16",
+		"ExportOptions_UTF8",	"UTF-8",
+		"ExportOptions_DataOptions",	"Optionen:",
+		"ExportOptions_StyleTable",	"Formattabelle ein&schließen",
+		"ExportOptions_SwatchList",	"Farb&feldliste einschließen",
+		"ExportOptions_XMPData",	"XMP-&Informationen einschließen",
+		"ExportOptions_StoryLabel",	"T&extabschnittsetikett:",
+
+		//menu
+		"ExportMenu",				"&Exportieren",
+		"kExportLayerToIC",			"&Ebene...",
+		"kExportAllStoriesToIC",	"Alle &Textabschnitte...",
+		"kExportAllGraphicsToIC",	"Alle &Grafiken...",
+		"kExportAllItemsToIC",		"A&lle Grafiken und Textabschnitte...",
+
+		"INCDFeatureLost",    "Dieser Textabschnitt enthält möglicherweise Funktionen, die von diesem Dateiformat nicht unterstützt werden. Diese Funktionen gehen verloren, wenn der Textabschnitt aktualisiert wird.",
+	}
+};
+
+#endif // __ODFRC__

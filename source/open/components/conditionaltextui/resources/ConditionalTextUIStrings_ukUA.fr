@@ -1,0 +1,126 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kConditionalTextUIStringsRsrcID + index_ukUA)
+{
+    k_ukUA,                                 // Locale Id
+    kResourceUTF8Encoded,     // Character encoding converter
+    {
+		"#CondTextUI_WinMenu",	"У&мовний текст",	// panel menu item
+		"#CondTextUI_PanelName","Умовний текст",		// panel name
+		"#CondTextUI_PanelMenu","Панельне меню умовного тексту",
+		"#CondTextUI_NewConditionTagMenu", "Нова умова...",
+		"#CondTextUI_DeleteConditionTagMenu", "Видалити умову...",
+		"#CondTextUI_DeleteConditionTagsMenu", "Видалити умови...",
+		"#CondTextUI_EditConditionTagMenu", "Параметри умови...",
+		"#CondTextUI_LoadConditionTagsMenu", "Завантажити умови...",
+		"#CondTextUI_LoadConditionTagsAndSetsMenu", "Завантажити умови та набори...",
+		"#CondTextUI_ShowIndicatorsCB", "Показати індикатори на умовному тексті",
+		"#CondTextUI_ShowIndicatorsMenu", "Показати індикатори на умовному тексті",
+		"#CondTextUI_ShowAndPrintIndicatorsMenu", "Показати та друкувати індикатори на умовному тексті",
+		"#CondTextUI_HideIndicatorsMenu", "Приховати індикатори на умовному тексті",
+		"#CondTextUI_ShowIndicatorsDD", "Індикатори:",
+		"#CondTextUI_ShowIndicators", "Показати",
+		"#CondTextUI_ShowAndPrintIndicators", "Показати та надрукувати",
+		"#CondTextUI_HideIndicators", "Приховати",
+		"#CondTextUI_RtMenuConditionTagTVNode",    "Контекстне меню вузла дерева умов",
+		"#CondTextUI_RtMenuUnapplyTag",		"Скасувати застосування \"^1\"",
+		"#CondTextUI_RtMenuDeleteTag",		"Видалити \"^1\"",
+		"#CondTextUI_RtMenuEditTag",		"Редагувати \"^1\"...",
+		"Show Options", "Показати &параметри",
+		"Hide Options", "Сховати &параметри",
+		"#CondTextUI_SelectUnusedMenu", "Виділити всі невикористані",
+	
+		"#ConditionTagList_NameColumnLabel", "Ім'я",
+		"#ConditionTag_OptionsDialog", "Параметри умови",
+		"#ConditionTag_OptionsDialogNew", "Нова умова",
+		"#ConditionTagOptions_Name:", "&Ім'я:",
+		"#ConditionTagOptions_Method:", "&Метод:",
+		"#ConditionTagOptions_Appearance:", "&Вигляд:",
+		"#ConditionTagOptions_Color:", "&Колір:",
+		"#ConditionTagOptions_Indicator", "Індикатор",
+		"#ConditionTagOptions_MethodUnderline", "Підкреслення",
+		"#ConditionTagOptions_MethodHighlight", "Підсвічування",
+		"#ConditionTagOptions_WavyUnderline", "Хвилястий",		
+		"#ConditionTagOptions_SolidUnderline", "Суцільний",		
+		"#ConditionTagOptions_DashedUnderline", "Пунктир",		
+		"#ConditionTag_EmptyNameMsg", "Уведіть ім'я умови.",
+		"#ConditionTag_NameInUseMsg", "Це ім'я умови вже використовується. Укажіть інше ім'я.",
+		
+		"#ConditionSetShowAll", "Показати все",
+		"#ConditionSetHideAll", "Приховати все",
+		"#ConditionSetNone", "[Немає]",
+		"#ConditionSetBlank", " ",
+		"#ConditionSetLabel", "Набір:",
+		"#ConditionSetNewSet", "Створити новий набір...",
+		"#ConditionSetDeleteSet", "Видалити \"^1\"...",
+		"#ConditionSetRenameSet", "Перейменувати \"^1\"...",
+		"#ConditionSetRedefineSet", "Визначити повторно \"^1\"...",
+		"#ConditionSetUpdateAllSets", "Оновити всі набори",
+		"#ConditionSetUpdateAllSetsUndoName", "Оновити всі набори умов",
+		"#ConditionSetNameDialog", "Ім'я набору умов",
+		"#ConditionSetNameStatic", "&Назва:",
+		"#InvalidSetName", "Недійсне ім'я набору умов",
+		"#DuplicateSetName", "Ім'я вже існує",
+		"#NoActiveSetString", "Немає активного набору",
+		
+		"#ConditionalTextTip", "Знайдено прихований текст з ^1: ",
+		"#ConditionalTextTipOneTag", "цією умовою",
+		"#ConditionalTextTipManyTags", "цими умовами",
+		
+		"#ConditionalTextEyeballHideWidgetTip", "Клацніть, щоб приховати весь текст із цією застосованою умовою",
+		"#ConditionalTextEyeballShowWidgetTip", "Клацніть, щоб показати весь текст із цією застосованою умовою",
+		"#ConditionalTextEyeballUnconditionalWidgetTip", "Неумовний текст завжди видимий",
+		"#ConditionalTextAppliedAllTip",	"Умову застосовано до всього виділеного тексту. Клацніть для скасування",
+		"#ConditionalTextAppliedSomeTip",	"Умову застосовано до частини виділеного тексту. Клацніть для застосування до всього виділеного тексту",
+		"#ConditionalTextAppliedNoneTip",	"Клацніть, щоб застосувати умову",
+		"#ConditionalTextAppliedAllTipUncondition",	"Виділений текст не є умовним",
+		"#ConditionalTextAppliedSomeTipUncondition",	"Частина виділеного тексту не є умовною. Клацніть, щоб зробити умовним весь текст",
+		"#ConditionalTextAppliedNoneTipUncondition",	"Клацніть, щоб зробити текст неумовним",
+		"#ConditionalTextApplyNoSelectionTip", "Клацніть, щоб застосувати умову до виділеного тексту",
+		"#ConditionalTextNewTagTip",		"Нова умова",
+		"#ConditionalTextDeleteTagTip",		"Видалити умову",
+		"#ConditionalTextIndicatorTip",		"Метод індикатора — ^1",
+		"#ConditionalTextNewSetTip",		"Новий набір",
+		"#SetOverrideTip_NewConditionsAndConditionVisibility",	"Заміщення: видимість умови (повторно виберіть набір, щоб очистити, або виберіть команду “Перевизначити”) + нові умови (виберіть “Оновити всі набори”, щоб очистити, або виберіть команду “Перевизначити”)",
+		"#SetOverrideTip_NewConditions",	"Заміщення: нові умови (виберіть “Оновити всі набори”, щоб очистити, або виберіть команду “Перевизначити”)",
+		"#SetOverrideTip_ConditionVisibility",	"Заміщення: видимість умови (повторно виберіть набір, щоб очистити, або виберіть команду “Перевизначити”)",
+		
+		"#ConditionTag_DeleteConditionDialog", "Видалити умову", 
+		"#ConditionTag_DeleteConditionsDialog", "Видалити умови", 
+		"#ConditionTag_DeleteConditionAndReplace:", "Видалити умову і замінити на: ", 
+		"#ConditionTag_DeleteConditionsAndReplace:", "Видалити умови і замінити на: ", 
+		"#ConditionTag_DeleteInformationAlert", "Щоб видалити умову, перетягніть її на значок кошика.",
+		"#ConditionTag_DeleteNoReplaceChoice", "[Немає]",
+		
+		"#QuickApplyConditions", "Умова",
+		"#Conditions_Filter_Key", "УМ", // should be upper case if there is an upper case character, this is the prefix key for quick apply for text conditions.
+		"#QuickApplyConditionSets", "Набір умов",
+		"#QuickApplyConditionSets_Filter_Key", "НУ",  // should be upper case if there is an upper case character, this is the prefix key for quick apply for text condition sets.
+		"#QuickApplyConditons_Menu_Key_String", "Включно з умовами (ct:)",
+		"#QuickApplyConditonSets_Menu_Key_String", "Включно з наборами умов (cs:)",
+		
+		"#SingularConditionStatusBodyString", "^1 умову застосовано ^2",
+		"#PluralConditionStatusBodyString", "^1 умови застосовано ^2",
+		"#MixedConditionString", " [змішані]",
+		"#NoConditionsString", "жодних умов не застосовано",
+    }
+};
+
+#endif // __ODFRC__

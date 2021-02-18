@@ -1,0 +1,142 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kLayerPanelStringsRsrcID + index_ruRU)
+{
+	k_ruRU,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{
+		// ----- Command strings
+
+		"Layer Options",				"Параметры слоя",
+		"New Layer",					"Новый слой",
+		"Layer Deletion",				"Удалить слои",
+		"Delete Unused Layers",			"Удалить неиспользуемые слои",
+		"Lock Others",					"Заблокировать остальные",
+		"#UnlockOthers",					"Разблокировать другие",
+		"Show All",						"Показать все",
+		"#ShowOthers",					"Показать другие",
+		"Unlock All",					"Разблокировать все",
+		"Hide All",						"Скрыть все",
+		"Lock All",						"Заблокировать все",
+		"Merge Layers",					"Объединить слои",
+		"Move To Layer",				"Переместить в слой",
+		"Copy To Layer",				"Скопировать на слой",
+		"Move Layer",					"Переместить слой",
+		"Move Layers",					"Переместить слои",
+		"kUnlockOthersSequence",		"Разблокировать другие",
+		"kLockOthersSequence",			"Заблокировать остальные",
+
+		// ----- Menu strings
+		
+		"Layers...",						"&Слои...",
+
+		"New Layer...",						"Новый слой...",
+		"New Layer Above \"^1\"...",		"Новый слой над \"^1\"...",
+		"New Layer Below \"^1\"...",		"Новый слой под \"^1\"...",
+		"New Top Layer...",					"Создать верхний слой...",
+		"Delete Layer",						"Удалить слой",
+		"Delete \"^1\"",					"Удалить слой \"^1\"",
+		"Delete Layers",					"Удалить слои",
+		"#Duplicate ^1 Menu",				"Дублировать слой \"^1\"",
+		"#Duplicate LayersMenu",			"Дублировать слои",
+		"#DuplicatLayersCmd",				"Дублировать слои",
+		
+		"Layer Options for \"^1\"...",		"Параметры слоя \"^1\"...",
+		"Layer Options...",					"Параметры слоя...",
+		"Show All Layers",					"Показать все слои",
+		"Hide Others",						"Скрыть остальные",
+		"Unlock All Layers",				"Разблокировать все слои",
+		"Lock Others",						"Заблокировать остальные",
+		"Hide All Layers",					"Скрыть все слои",
+		"Lock All Layers",					"Заблокировать все слои",
+		
+		"Paste Remembers Layers",			"Вставить скопированные слои",
+		"Ungroup Remembers Layers",			"Разгруппировать скопированные слои",
+		
+		"Merge Layers",						"Объединить слои",
+		"Delete Unused Layers",				"Удалить неиспользуемые слои",
+		"Select Item(s) on \"^1\"",			"Выбрать элементы в \"^1\"",
+		"Select Item(s) Layer",				"Выбрать элементы в слое",
+				
+		"#SelectLayerPageItemMenu",		"Выбрать элемент(ы)",
+		"#SelectZoomLayerPageItemMenu",	"Выбрать и подогнать элемент",
+		"#ZoomLockedPageItemMenu",		"Подогнать элемент под размер окна",
+		
+		// Menu names for context and panel menus
+		"LayerPanelPopup",					"Меню палитры \"Слои\"",	
+		"RtMenuLayerPanelEye",				"Контекстное меню палитры \"Слои\"",	
+		"RtMenuLayerPanelLock",				"Контекстное меню блокировки палитры \"Слои\"",
+		"RtMenuLayerPanelItem",				"Палитра \"Слои\":Слой:Контекстное меню",	
+		"RtMenuLayerPanelPageItem",			"Палитра \"Слои\":Элемент страницы:Контекстное меню",	
+
+		// ----- Window strings
+		"DeleteOneLayer",					"Слой \"^1\" содержит по меньшей мере один объект. Все равно удалить этот слой?",
+		"DeleteMultiLayers",				"Выделенные слои содержат объекты. Все равно удалить эти слои?",
+		"DeleteOneGuideLayer",				"Слой \"^1\" содержит направляющие линейки. Все равно удалить этот слой?",
+		"DeleteGuideLayers",				"Выделенные слои содержат направляющие линейки. Все равно удалить эти слои?",
+		"DeletingPlaceGunUsedLayer",		"Не удается удалить слой. Он необходим для сниппета, загруженного в курсоре размещения.",
+
+		// ----- Window Menu
+		"Layers_WinMenu",					"С&лои",
+		
+		// ----- Panel strings
+		
+		"^1 Layer",							"Слоев: ^1",		// For status widget
+		"^1 Layers",						"Слоев: ^1",	// For status widget
+		"New Layer",						"Новый слой",	// Title of New Layer dialog
+		"Layer Options",					"Параметры слоя", // Title of Layer Options dialog
+		"&Name:",							"&Имя:",
+		"&Color:",							"&Цвет:",
+		"&Show Layer",						"&Показать слой",
+		"Show &Guides",						"&Показать направляющие",
+		"&Lock Layer",						"&Заблокировать слой",
+		"Loc&k Guides",						"&Заблокировать направляющие",
+		"Keep When Layer is &Hidden",		"&Отменить обтекание текстом на скрытом слое",
+		"&Print Layer",						"&Печатать слой",
+
+		// ----- Tips strings
+
+		"DeleteLayerTip",					"Удалить выделенные слои",
+		"NewLayerTip",						"Создать новый слой",
+		"EyeTip",							"Переключатель \"Видимый\"/\"Невидимый\"",
+		"PencilTip",						"Переключение блокировки слоя (может редактироваться, если является пустым)",
+		"PageItemPencilTip",				"Переключение блокировки элемента страницы (может редактироваться, если является пустым)",
+		"SwatchTip",						"Цвет отметок выделения в этом слое",
+		"ProxyTip",							"Указание выделенных элементов (перетаскивайте элементы, чтобы переместиться между слоями или изменить порядок Z)",
+		"ProxyChildSelectedTip",			"Содержит выбранный объект, щелкните, чтобы выбрать объект контейнера",
+		"UnselectedProxyTip",				"Щелкните, чтобы выбрать элемент",
+		"ActiveTip",						"Указывает на текущий слой для рисования",
+
+		// ----- Error strings
+		"EmptyLayerName",					"Требуется имя слоя.",
+		"DuplicateLayer",					"Слой с таким именем уже существует.",
+
+		"#LayerHierPanelName",		"Слои",
+		"#Page:^1,",					"Страница: ^1, ", // for layer panel status widget. Will be followed by layer count string.
+		"#Pages:^1,",					"Страницы: ^1, ", // for layer panel status widget. Will be followed by layer count string.
+		"#DeletePageItemsMenu",		"Удалить элементы страницы", // menu item name
+		"#DeletePageItem \"^1\"",		"Удалить элемент страницы  \"^1\"", // menu item name
+		"#DuplicatePI ^1 Menu",			"Дублировать элемент страницы  \"^1\"", // menu item name
+		"#DuplicatePIMenu",			"Дублировать элементы страницы",  // menu item name
+	}
+};
+
+#endif // __ODFRC__

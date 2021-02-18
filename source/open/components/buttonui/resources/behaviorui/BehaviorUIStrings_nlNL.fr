@@ -1,0 +1,129 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kBehaviorUIStringsRsrcID + index_nlNL)
+{
+	k_nlNL,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{		
+		"$$$/Dialog/Behaviors/ShowHideFields/Fields_Tree", "Veldenstructuur",
+
+		"$$$/Dialog/Behaviors/Description",				"Dit gedeelte bevat een korte beschrijving van de werking, plus enkele tips over de opties van de werking. De gebruiker krijgt zo een beter idee hoe het te gebruiken.",
+		"$$$/Dialog/Behaviors/Description Title",		"Beschrijving",
+		"$$$/Dialog/Behaviors/DeleteAlert",				"Wilt u de geselecteerde actie verwijderen?",
+		"$$$/Dialog/Behaviors/DragDeleteAlert",			"Wilt u de versleepte acties verwijderen?",
+		"$$$/Dialog/Behaviors/Error/Invalid URL",		"In het URL-veld moet een waarde staan",
+		"$$$/Dialog/Behaviors/Error/Invalid File",		"Er moet een geldig bestand worden opgegeven",
+		
+		"$$$/Dialog/Behaviors/Movie/Movie:",			"Video:",
+		"$$$/Dialog/Behaviors/Movie/Play Options:",		"Opties:",
+		"$$$/Dialog/Behaviors/Movie/Play",				"Afspelen",
+		"$$$/Dialog/Behaviors/Movie/Stop",				"Stoppen",
+		"$$$/Dialog/Behaviors/Movie/Pause",				"Pauzeren",
+		"$$$/Dialog/Behaviors/Movie/Resume",			"Hervatten",
+		"$$$/Dialog/Behaviors/Movie/PlayFromNavPoint",	"Afspelen vanaf navigatiepunt",
+		"$$$/Dialog/Behaviors/Movie/StopAll",			"Alles stoppen (alleen SWF)",
+		"$$$/Dialog/Behaviors/Movie/NavPoint",			"Punt:",
+		"$$$/Dialog/Behaviors/Movie/NoVideo",			"(geen video)",
+		"$$$/Dialog/Behaviors/Movie/NoVideoNavPoint",	"(geen navigatiepunt)",
+
+		"$$$/Dialog/Behaviors/Sound/Sound:",			"Geluid:",
+		"$$$/Dialog/Behaviors/Sound/Play Options:",		"Opties:",
+		"$$$/Dialog/Behaviors/Sound/Play",				"Afspelen",
+		"$$$/Dialog/Behaviors/Sound/Stop",				"Stoppen",
+		"$$$/Dialog/Behaviors/Sound/Pause",				"Pauzeren",
+		"$$$/Dialog/Behaviors/Sound/Resume",			"Hervatten",
+		"$$$/Dialog/Behaviors/Sound/StopAll",			"Alles stoppen (alleen SWF)",
+		"$$$/Dialog/Behaviors/Sound/Volume:",			"Volume:",
+		"$$$/Dialog/Behaviors/Sound/Synchronous",		"Synchroon",
+		"$$$/Dialog/Behaviors/Sound/Mix",				"Mixen",
+		"$$$/Dialog/Behaviors/Sound/NoSound",			"(geen geluid)",
+		
+		"$$$/Dialog/Behaviors/Animation/Animation:",	"Animatie:",
+		"$$$/Dialog/Behaviors/Animation/Play Options:",	"Opties:",
+		"$$$/Dialog/Behaviors/Animation/Play",			"Afspelen",
+		"$$$/Dialog/Behaviors/Animation/Stop",			"Stoppen",
+		"$$$/Dialog/Behaviors/Animation/Pause",			"Pauzeren",
+		"$$$/Dialog/Behaviors/Animation/Resume",		"Hervatten",
+		"$$$/Dialog/Behaviors/Animation/StopAll",		"Alles stoppen",
+		"$$$/Dialog/Behaviors/Animation/Reverse",		"Omkeren",
+		"$$$/Dialog/Behaviors/Animation/AutoReverse",	"Omkeren bij rolloff",
+		"$$$/Dialog/Behaviors/Animation/NoAnimation",	"(geen animatie)",
+		
+		"$$$/Dialog/Behaviors/MSO/Object:",				"Object:",
+		"$$$/Dialog/Behaviors/MSO/State:",				"Status:",
+		"$$$/Dialog/Behaviors/MSO/AutoReverse",			"Terug bij rolloff",
+		"$$$/Dialog/Behaviors/MSO/NextLoop",			"Stoppen bij laatste status",
+		"$$$/Dialog/Behaviors/MSO/PrevLoop",			"Stoppen bij eerste status",
+		"$$$/Dialog/Behaviors/MSO/NoMSO",				"(geen object met meerdere statussen)",
+
+		"$$$/Dialog/Behaviors/GoToView/Go To:",			"Ga naar:",
+		"$$$/Dialog/Behaviors/GoToView/First Page",		"Eerste pagina",
+		"$$$/Dialog/Behaviors/GoToView/Page",			"Pagina",
+		"$$$/Dialog/Behaviors/GoToView/Previous Page",	"Vorige pagina",
+		"$$$/Dialog/Behaviors/GoToView/Next Page",		"Volgende pagina",
+		"$$$/Dialog/Behaviors/GoToView/Last Page",		"Laatste pagina",
+		"$$$/Dialog/Behaviors/GoToView/Back",			"Terug",
+		"$$$/Dialog/Behaviors/GoToView/Forward",		"Vooruit",
+		"$$$/Dialog/Behaviors/GoToView/Previous View",	"Vorige weergave",
+		"$$$/Dialog/Behaviors/GoToView/Next View",		"Volgende weergave",
+		"$$$/Dialog/Behaviors/GoToView/Specific Page",	"Specifieke pagina",
+		"$$$/Dialog/Behaviors/GoToView/Document:",		"Document:",
+		"$$$/Dialog/Behaviors/GoToView/Page:",			"Pagina:",
+		"$$$/Dialog/Behaviors/GoToView/URL",			"URL",
+		"$$$/Dialog/Behaviors/GoToView/URL:",			"URL:",
+		"$$$/Dialog/Behaviors/GoToView/Anchor",			"Tekstanker",
+		"$$$/Dialog/Behaviors/GoToView/Anchor:",		"Doel:",
+		"$$$/Dialog/Behaviors/GoToView/Bookmark",		"Bladwijzer",
+		"$$$/Dialog/Behaviors/GoToView/Inherit Zoom",	"Vergroting overnemen",
+		"$$$/Dialog/Behaviors/GoToView/Actual Size",	"Ware grootte",
+		"$$$/Dialog/Behaviors/GoToView/Fit In Window",	"In venster passen",
+		"$$$/Dialog/Behaviors/GoToView/Fit Width",		"Aan breedte aanpassen",
+		"$$$/Dialog/Behaviors/GoToView/Fit Height",		"Aan hoogte aanpassen",
+		"$$$/Dialog/Behaviors/GoToView/Fit Visible",	"Aan zichtbaar gebied aanpassen",
+		"$$$/Dialog/Behaviors/GoToView/Zoom:",			"Zoomen:",
+		"$$$/Dialog/Behaviors/GoToView/None",			"Geen",
+		"$$$/Dialog/Behaviors/GoToAnchor/InDesign Format File","InDesign-bestandsindeling",
+		
+		"$$$/Dialog/Behaviors/ViewZoom/Full Screen",	"Volledig scherm",
+		"$$$/Dialog/Behaviors/ViewZoom/Zoom View In",	"Inzoomen",
+		"$$$/Dialog/Behaviors/ViewZoom/Zoom View Out",	"Uitzoomen",
+		"$$$/Dialog/Behaviors/ViewZoom/Fit Page",		"In venster passen",
+		"$$$/Dialog/Behaviors/ViewZoom/Actual Size",	"Ware grootte",
+		"$$$/Dialog/Behaviors/ViewZoom/Fit Width",		"Aan breedte aanpassen",
+		"$$$/Dialog/Behaviors/ViewZoom/Fit Visible",	"Aan zichtbaar gebied aanpassen",
+		"$$$/Dialog/Behaviors/ViewZoom/SinglePage",		"Enkele pagina",
+		"$$$/Dialog/Behaviors/ViewZoom/OneColumn",		"Doorlopend",
+		"$$$/Dialog/Behaviors/ViewZoom/TwoColumns",		"Doorlopend - naast elkaar",
+
+		"$$$/Dialog/Behaviors/ImportData/Select File:","Bestand selecteren:",
+		"$$$/Dialog/Behaviors/ImportData/Acrobat Format File","Acrobat-bestandsindeling",
+
+		"$$$/Dialog/Behaviors/OpenFile/Select File:","Bestand selecteren:",
+		"$$$/Dialog/Behaviors/OpenFile/Select File to be Opened", "Selecteer bestand dat u wilt openen",
+		"$$$/Dialog/Behaviors/OpenFile/Acrobat Format File","Acrobat-bestandsindeling",
+
+		"$$$/Dialog/Behaviors/SubmitForm/Submit To:","URL:",
+						
+		// ----- Tips strings
+	}
+};
+
+#endif // __ODFRC__

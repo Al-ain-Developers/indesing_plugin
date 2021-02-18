@@ -1,0 +1,49 @@
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta content="text/xhtml;charset=UTF-8" http-equiv="Content-Type" /><meta content="IE=9" http-equiv="X-UA-Compatible" /><meta content="Doxygen 1.8.3.1" name="generator" /><title>namespaceidt__syncprimitives</title><link href="tabs.css" rel="stylesheet" type="text/css" /><script src="jquery.js" type="text/javascript"></script><script src="dynsections.js" type="text/javascript"></script><link href="navtree.css" rel="stylesheet" type="text/css" /><script src="resize.js" type="text/javascript"></script><script src="navtree.js" type="text/javascript"></script><script type="text/javascript">
+
+  $(document).ready(initResizable);
+
+  $(window).load(resizeHeight);
+
+</script><link href="search/search.css" rel="stylesheet" type="text/css" /><script src="search/search.js" type="text/javascript"></script><script type="text/javascript">
+
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+
+</script><link href="doxygen.css" rel="stylesheet" type="text/css" /></head><body><div id="top"><div id="titlearea"><table cellpadding="0" cellspacing="0"><tbody><tr style="height: 56px;"><td id="projectlogo"><img alt="Logo" src="adobe_logo.png" /></td><td style="padding-left: 0.5em;"><div id="projectname">InDesign SDK &nbsp;<span id="projectnumber">16.0.1</span></div></td></tr></tbody></table></div><script type="text/javascript">
+
+var searchBox = new SearchBox("searchBox", "search",false,'Search');
+
+</script><div class="tabs" id="navrow1"><ul class="tablist"><li><a href="index.html"><span>InDesign&nbsp;SDK</span></a><li><a href="pages.html"><span>Documentation</span></a><li><a href="group__bosses__parent.html"><span>Bosses</span></a><li><a href="group__sdk.html"><span>Sample&nbsp;plug-ins</span></a><li><a href="classes.html"><span>Class&nbsp;Index</span></a><li><div class="MSearchBoxInactive" id="MSearchBox"><span class="left"> <img alt="" id="MSearchSelect" onmouseout="return searchBox.OnSearchSelectHide()" onmouseover="return searchBox.OnSearchSelectShow()" src="search/mag_sel.png" /> <input accesskey="S" id="MSearchField" onblur="searchBox.OnSearchFieldFocus(false)" onfocus="searchBox.OnSearchFieldFocus(true)" onkeyup="searchBox.OnSearchFieldChange(event)" type="text" value="Search" /> </span><span class="right"> <a href="javascript:searchBox.CloseResultsWindow()" id="MSearchClose"><img alt="" border="0" id="MSearchCloseImg" src="search/close.png" /></a> </span></div></ul></div></div><div class="ui-resizable side-nav-resizable" id="side-nav"><div id="nav-tree"><div id="nav-tree-contents"><div class="sync" id="nav-sync"></div></div></div><div class="ui-resizable-handle" id="splitbar" style="-moz-user-select:none;"></div></div><script type="text/javascript">
+
+$(document).ready(function(){initNavTree('namespaceidt__syncprimitives.html','');});
+
+</script><div id="doc-content"><div id="MSearchSelectWindow" onkeydown="return searchBox.OnSearchSelectKey(event)" onmouseout="return searchBox.OnSearchSelectHide()" onmouseover="return searchBox.OnSearchSelectShow()"><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&nbsp;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&nbsp;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&nbsp;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&nbsp;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&nbsp;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&nbsp;</span>Pages</a></div><div id="MSearchResultsWindow"><iframe frameborder="0" id="MSearchResults" name="MSearchResults" src="javascript:void(0)"></iframe></div><div class="header"><div class="headertitle"><div class="title">idt_syncprimitives Namespace Reference</div></div></div><div class="contents"><a id="details" name="details"></a><h2 class="groupheader">Detailed Description</h2><div class="textblock"><p>An implementation of <a class="el" href="class_i_idle_task.html">IIdleTask</a> that uses cooperative threads to perform its task. You would use this if your idle task might take a long time to execute and you want to be able to yield back to the event loop without &quot;losing your place&quot;, (i.e., you keep track of how far along your task is by using the stack and the program counter). You must override TaskName() and RunThread(). You do your work in RunThread(), periodically calling YieldToEventLoop(). At calls to YieldToEventLoop, if the IdleTaskMgr thinks you&#39;ve had enough time because the user has generated an event or another IdleTask is ready to run, your RunThread() method will be suspended and scheduled to run again as soon as possible. At that time, the call to YieldToEventLoop() will unblock exactly where it left off. When you return from your RunThread() method, the thread will be destroyed and this IdleTask will be removed from the IdleTaskMgr&#39;s queue. Calling InstallTask() again will create a new thread and reinstall this IdleTask in the IdleTaskMgr&#39;s queue to be run as soon as possible.<p>Note that this class provides no facility for checking to see if the user wants to interrupt this task or if the task should end early for some other reason. You would have to do that by some other facility, perhaps by setting some state in response to a user event and checking that state the next time your thread wakes from the YieldToEventLoop() call. Simply returning anyplace from RunThread will then cause the thread to be destroyed and the IdleTask to be removed from the IdleTaskMgr.<pre>
+
+include &quot;CIdleTaskThread.h&quot;</pre><pre>class MyIdleTask : public <a class="el" href="class_c_idle_task_thread.html">CIdleTaskThread</a></pre><pre>public:
+
+MyIdleTask(IPMUnknown * boss) : CIdleTaskThread(boss){}
+
+void RunThread();
+
+const char* TaskName();</pre><pre>void MyIdleTask::RunThread()</pre><pre>uint32 flags;
+
+work,work,work
+
+flags = YieldToEventLoop(0);
+
+work,work,work
+
+flags = YieldToEventLoop(1000); //rest for 1 second
+
+work,work,work
+
+flags = YieldToEventLoop(0);
+
+if( flags &amp; kMouseTracking)
+
+YieldToEventLoop(kOnFlagChange); //sleep til user stops tracking
+
+work,work,work</pre><pre>if ( flags &amp; kCITT_Shutdown )
+
+    return;</pre><pre>const char* MyIdleTask::TaskName()</pre><pre>return &quot;MyIdleTask&quot;;
+
+</pre></div></div></div><div class="navpath" id="nav-path"><ul><li class="navelem"><a class="el" href="namespaceidt__syncprimitives.html">idt_syncprimitives</a><li class="footer">Generated on Wed Nov 11 2020 04:51:37 for InDesign SDK by <a href="http://www.doxygen.org/index.html"> <img alt="doxygen" class="footer" src="doxygen.png" /></a> 1.8.3.1 </ul></div></body></html>

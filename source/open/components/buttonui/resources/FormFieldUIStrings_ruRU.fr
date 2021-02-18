@@ -1,0 +1,357 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "StringTable.fh"
+
+#include "FormFieldUIDefs.h"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+//twright 12/11/2000 Removed left-over strings from group strings.
+//not sure if button/form is going to need lock warning...
+
+resource StringTable (kFormFieldUIStringsRsrcID + index_ruRU)
+{
+	k_ruRU,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{
+		// ----- Menu strings
+		"ButtonsActionsPopup",						"Меню действия кнопок",
+		
+		"$$$/Menu/AppearancePanelPopup",	"Меню палитр кнопок",	
+		"$$$/Menu/Interactive",				"&Интерактивные элементы", 
+		"$$$/Menu/FormField",				"&Форма", 
+		"$$$/Menu/About",					"&О внешнем модуле Form", 
+		"$$$/Menu/CreateButton",			"&Преобразовать в кнопку", 
+		"$$$/Menu/CreateCheckBox",			"&Преобразовать во флажок",
+		"$$$/Menu/CreateComboBox",			"&Преобразовать в раскрывающийся список", 
+		"$$$/Menu/CreateListBox",			"&Преобразовать в поле списка", 
+		"$$$/Menu/CreateRadioButton",		"&Преобразовать в переключатель", 
+		"$$$/Menu/CreateSignatureField",	"&Преобразовать в поле подписи", 
+		"$$$/Menu/CreateTextField",			"&Преобразовать в поле текста", 
+		"$$$/Menu/DestroyButton",			"&Преобразовать в объект", 
+		"$$$/Menu/FormFieldSettings",		"&Параметры кнопки...", 
+		"$$$/Menu/NewState",				"Новое состояние", 
+		"$$$/Menu/DeleteState",				"Удалить состояние", 
+		"$$$/Menu/DeleteStates",			"Удалить состояния",
+		"$$$/Menu/PlaceIntoState",			"Поместить содержимое в состояние...",
+		"$$$/Menu/DeleteStateContent",		"Удалить содержимое из состояния",
+		"$$$/Menu/AppearancePanelPrefs",	"Параметры палитры...",
+		"$$$/Menu/StateOptions",			"Параметры состояния...",
+		"$$$/Menu/SetTabOrder",				"&Задать порядок табуляции...",
+		"$$$/Menu/SetCalculationOrder",		"Задать порядок вычислений...",
+		"$$$/Menu/States",					"&Кнопки и формы",
+		
+		"$$$/Menu/Go To Page",				"Перейти к странице",
+		"$$$/Menu/Go To First Page",		"Перейти на первую страницу",
+		"$$$/Menu/Go To Anchor",			"Перейти к назначению",
+		"$$$/Menu/Go To Last Page",			"Перейти на последнюю страницу",
+		"$$$/Menu/Go To Next Page",			"Перейти на следующую страницу",
+		"$$$/Menu/Go To Next View",			"Перейти к следующему виду",
+		"$$$/Menu/Go To Previous Page",		"Перейти на предыдущую страницу",
+		"$$$/Menu/Go To Previous View",		"Перейти к предыдущему виду",
+		"$$$/Menu/Go To URL",				"Перейти к URL",
+		"$$$/Menu/Movie",					"Видео",
+		"$$$/Menu/Open File",				"Открыть файл",
+		"$$$/Menu/Show/Hide Buttons",		"Показать/скрыть кнопки и формы",
+		"$$$/Menu/Sound",					"Звук",
+		"$$$/Menu/View Zoom",				"Масштаб просмотра",
+		"$$$/Menu/Animation",				"Анимация",
+		"$$$/Menu/SwitchToMSOState",		"Перейти в состояние",
+		"$$$/Menu/SwitchToNextMSOState",	"Перейти в следующее состояние",
+		"$$$/Menu/SwitchToPrevMSOState",	"Перейти в предыдущее состояние",
+		"$$$/Menu/EPUBOnly",					"Только EPUB",
+		"$$$/Menu/PDFOnly",					"Только PDF",
+		"$$$/Menu/Print Form",				"Печать формы",
+		"$$$/Menu/Clear Form",				"Очистить форму",
+		"$$$/Menu/Submit Form",				"Отправить форму",
+		
+		"$$$/Menu/FormFieldSettings/ButtonLibrary",			"Образец кнопок и форм",	// Name of menu item in Buttons Panel flyout that opens a library of Sample Buttons
+
+		"$$$/Menu/FormFieldSettings/PDFVis/Visible",		"Видимое в PDF",
+		"$$$/Menu/FormFieldSettings/PDFVis/Hidden",			"Скрытое в PDF",
+		"$$$/Menu/FormFieldSettings/PDFVis/VisibleNoPrint",	"Видимое в PDF, но не печатаемое",
+		"$$$/Menu/FormFieldSettings/PDFVis/HiddenButPrint",	"Скрытое в PDF, но печатаемое",	
+		"$$$/Menu/ButtonPDFOptions", "Параметры PDF...",
+
+		"$$$/Menu/ResetAllButtons",	"Сброс всех кнопок в нормальное состояние",	
+			
+		"PageItems",						"PageItems", 
+		"$$$/Menu/Trace Geometry",			"Отслеживать геометрию", 
+
+		"$$$/Menu/FormFieldOptions/Button",					"Кнопка",
+		"$$$/Menu/FormFieldOptions/Check Box",				"Флажок",
+		"$$$/Menu/FormFieldOptions/Combo Box",				"Раскрывающийся список",
+		"$$$/Menu/FormFieldOptions/List Box",				"Поле списка",
+		"$$$/Menu/FormFieldOptions/Radio Button",			"Переключатель",
+		"$$$/Menu/FormFieldOptions/Signature Field",		"Поле подписи",
+		"$$$/Menu/FormFieldOptions/Text Field",				"Текстовое поле",
+
+		"InteractiveContextMenu",			"Интерактивные элементы",
+	
+		// ----- Dialog strings
+		"$$$/Dialog/CreateFormField/Title",		"Поле формы", 
+		"$$$/Dialog/CreateFormField/Options",	"Параметры",
+		"$$$/Dialog/CreateFormField/Width",		"&Ширина:",
+		"$$$/Dialog/CreateFormField/Height",	"&Высота:",
+
+		"$$$/Dialog/FormFieldSettings/Title",				"Основные", 
+		"$$$/Dialog/FormFieldSettings/FieldType",			"Тип поля:",
+		"$$$/Dialog/FormFieldSettings/FieldTypeSetting",	"",
+		"$$$/Dialog/FormFieldSettings/Name",				"&Имя:",
+		"$$$/Dialog/FormFieldSettings/PDFVisibility",		"&Отображение в PDF:",
+		"$$$/Dialog/FormFieldSettings/PDFVis/Visible",		"Видимое",
+		"$$$/Dialog/FormFieldSettings/PDFVis/Hidden",		"Скрытое",
+		"$$$/Dialog/FormFieldSettings/PDFVis/VisibleNoPrint",	"Видимое, но не печатается",
+		"$$$/Dialog/FormFieldSettings/PDFVis/HiddenButPrint",	"Скрытое, но печатается",
+		"$$$/Dialog/FormFieldSettings/ReadOnly",			"Только для чтения",
+		"$$$/Dialog/FormFieldSettings/Export",				"Экспортировать",
+		"$$$/Dialog/FormFieldSettings/RequiredForExport",	"Необходимо для экспорта",
+		"$$$/Dialog/FormFieldSettings/Description",			"&Описание:",
+		"$$$/Dialog/FormFieldSettings/ExportName",			"&Экспортировать имя:",
+		"$$$/Dialog/FormFieldSettings/Common Settings",		"Общие настройки",
+		"$$$/Dialog/FormFieldSettings/Options",				"Параметры",
+		"$$$/Dialog/FormFieldSettings/Holder",				"Набор настроек поля формы",
+
+		"$$$/Dialog/FormOptions/Title",						"Параметры кнопки",
+		"$$$/Dialog/FormFieldSettings/Options",				"Параметры",
+		
+		"$$$/Dialog/FormFieldSettings/ExportValue",			"Экспортировать значение:",
+		"$$$/Dialog/FormFieldSettings/DefaultIsChecked",	"Задан вариант по умолчанию",
+		"$$$/Dialog/FormFieldSettings/DefaultIsSelected",	"Выбран вариант по умолчанию",
+		"$$$/Dialog/FormFieldSettings/Default",				"По умолчанию:",
+
+		"$$$/Dialog/FormFieldSettings/Multiline",				"Несколько строк",
+		"$$$/Dialog/FormFieldSettings/Scroll",					"С прокруткой",
+		"$$$/Dialog/FormFieldSettings/LimitOf",					"Максимум",
+		"$$$/Dialog/FormFieldSettings/Characters",				"символов",
+		"$$$/Dialog/FormFieldSettings/Password",				"Пароль",
+		"$$$/Dialog/FormFieldSettings/FieldForFileSelection",	"Используется для выделения файлов",
+		"$$$/Dialog/FormFieldSettings/SpellCheck",				"Проверка орфографии",
+		
+		"$$$/Dialog/FormFieldSettings/Item",					"Элемент:",
+		"$$$/Dialog/FormFieldSettings/Add",						"Добавить",
+		"$$$/Dialog/FormFieldSettings/Delete",					"Удалить",
+		"$$$/Dialog/FormFieldSettings/Change",					"Изменить",
+		"$$$/Dialog/FormFieldSettings/SortItems",				"Сортировать элементы",
+		"$$$/Dialog/FormFieldSettings/AllowMultipleSelection",	"Разрешить выделение нескольких элементов",
+		"$$$/Dialog/FormFieldSettings/Editable",				"Редактируемый",
+
+		"$$$/Dialog/FormFieldSettings/Align",					"Выровнять:",
+		"$$$/Dialog/FormFieldSettings/Align/Left",				"По левому краю",
+		"$$$/Dialog/FormFieldSettings/Align/Center",			"По центру",
+		"$$$/Dialog/FormFieldSettings/Align/Right",				"По правому краю",
+
+		"$$$/Dialog/FormFieldSettings/Font:",					"&Шрифт:",
+		"$$$/Dialog/FormFieldSettings/Size:",					"Р&азмер:",
+		"$$$/Dialog/FormFieldSettings/Auto",					"Авт.",
+
+		"$$$/Dialog/FormFieldSettings/SelectedIsDefault",		"Выделен элемент по умолчанию",
+		
+		"$$$/Dialog/FormFieldUI/DeleteAlert",					"При удалении состояния удаляется и ассоциированное с ним содержимое.  Удалить состояние в любом случае?",
+		"$$$/Dialog/FormFieldUI/DestroyAlert",					"Выполнение этой операции приведет к удалению содержимого, ассоциированного с другими состояниями поля формы. Продолжить?",
+		"$$$/Dialog/FormFieldUI/DeleteContentAlert",			"Вы действительно хотите удалить содержимое, ассоциированное с этим состоянием?",
+		"$$$/Dialog/FormFieldUI/StyleChangeAlert",				"Выполнение этой операции приведет к удалению содержимого, ассоциированного с текущими состояниями поля формы. Продолжить?",
+		"$$$/Dialog/FormFieldUI/StyleChangeFailed",				"Не удалось применить выбранный стиль оформления к полю формы.",
+
+		/* These are not visible, they are names of subpanels... */
+		
+		"$$$/Dialog/FormFieldSettings/CheckBox",				"Параметры флажка",	
+		"$$$/Dialog/FormFieldSettings/RadioButton",				"Параметры переключателя",	
+		"$$$/Dialog/FormFieldSettings/TextField",				"Параметры кнопки текстового поля",	
+		"$$$/Dialog/FormFieldSettings/ListBox",					"Параметры кнопки поля списка",	
+		
+		"$$$/Dialog/About/Description",						"Forms Plugin, версия 1.0\n\n(c) Adobe Systems Incorporated, 2001. Все права защищены.",
+
+		"$$$/Dialog/CmdName/CreateButton",					"Преобразовать в кнопку",
+		"$$$/Dialog/CmdName/DestroyButton",					"Преобразовать в объект",
+		"$$$/Dialog/CmdName/ChangeFormSettings",			"Изменить настройки кнопки",
+
+		"$$$/Dialog/TextColor/Title",						"Цвет текста", 
+		"$$$/Dialog/Button/Color...",						"Цвет шрифта...", 
+
+		"$$$/Dialog/AppearancePanelPrefs/Title",			"Параметры палитры", 
+		"$$$/Dialog/AppearancePanelPrefs/ThumbnailSize",	"Размер миниатюр", 
+		"$$$/Dialog/AppearancePanelPrefs/None",				"Не показывать", 
+		
+		
+		"$$$/Dialog/StateOptions/Title",					"Параметры состояния", 
+		"$$$/Dialog/StateOptions/State",					"Состояние:", 
+		"$$$/Dialog/StateOptions/Enable",					"Включить состояние", 
+
+		"$$$/Dialog/CalculationOrder/Title",				"Порядок вычислений", 
+		"$$$/Dialog/TabOrder/Title",						"Порядок табуляции", 
+		"$$$/Dialog/Order/MoveUp",							"&Переместить вверх", 
+		"$$$/Dialog/Order/MoveDown",						"&Переместить вниз",
+
+		"$$$/Dialog/ButtonPDFOptions/Title",				"Параметры PDF",
+		"$$$/Dialog/ButtonPDFOptions/InitialAppearance",	"Исходное оформление:",
+		"$$$/Dialog/ButtonPDFOptions/Visible",				"&Видимый",
+		"$$$/Dialog/ButtonPDFOptions/Hidden",				"&Скрытый",
+		"$$$/Dialog/ButtonPDFOptions/Printable",			"&Печатаемое",
+		"$$$/Dialog/ButtonPDFOptions/Description",			"&Описание:",
+		
+		// ----- Window strings
+		
+		// ----- Panel strings
+
+		"$$$/Panel/FormFieldSettings/Action Data Holder",	"Данные операции",
+		"$$$/Panel/FormFieldSettings/+",					"+",
+		"$$$/Panel/FormFieldSettings/Event:",				"Событие:",
+		"$$$/Panel/FormFieldSettings/Actions:",				"Операции:",
+		"$$$/Panel/FormFieldSettings/URL:",					"URL:",
+		"$$$/Panel/FormFieldSettings/Mail to:",				"Отправить письмо:",
+		"$$$/Panel/Action",									"Операция",
+		"$$$/Panel/Empty Action",							"[Список пуст]",
+		"$$$/Panel/StatesListBoxLabel/States",				"Оформление",
+		"$$$/Panel/States",									"Кнопки и формы",
+		"$$$/Panel/FormFieldSettings/FieldType",			"Тип:",
+		"$$$/Panel/FormFieldSettings/Name",					"Имя:",
+		"$$$/Panel/ShowHide/Visibility:",					"Видимость:",
+		"$$$/Panel/GoToPage/Page:",							"Страница:",
+
+		"$$$/Panel/Normal",									"[Не нажата]",
+		"$$$/Panel/Over",									"[Курсор над кнопкой]",
+		"$$$/Panel/Down",									"[Нажата]",
+
+		"$$$/Panel/Off",									"[Ненормально]",
+		"$$$/Panel/On",										"[Нормально]",
+
+		"$$$/Panel/RolloverOff",							"[Курсор не над кнопкой]",
+		"$$$/Panel/RolloverOn",								"[Курсор над кнопкой]",
+		"$$$/Panel/DowmOff",								"[Не нажата]",
+		"$$$/Panel/DownOn",									"[Нажата]",
+
+		"$$$/Panel/CmdName/FormFieldName",					"Имя кнопки",
+		"$$$/Panel/CmdName/FormFieldStyle",					"Стиль оформления кнопки",
+		
+		"$$$/Panel/FormFieldSettings/Appearance",			"Стиль:",
+		"$$$/Panel/PDFOptions",								"Параметры PDF",
+		"$$$/Panel/Required",								"Требуемые",
+		"$$$/Panel/Printable",								"Печатаемое",
+		"$$$/Panel/Description",							"Описание:",
+		"$$$/Panel/SelectedByDefault",						"Выбранное по умолчанию",
+		"$$$/Panel/Multiline",								"Несколько строк",
+		"$$$/Panel/ListItems",								"Элементы списка",
+		"$$$/Panel/MultipleSelection",						"Выделение нескольких элементов",
+		"$$$/Panel/FontSize",								"Кегль:",
+		"$$$/Panel/Font",									"Шрифт:",
+		"$$$/Panel/AutoSize",								"Авт.",
+		"$$$/Panel/SortItems",								"Сортировать элементы",
+		"$$$/Panel/MERTLOption",							"Справа налево",
+		"$$$/Panel/ExportValue",							"Значение кнопки:",
+		 
+		"$$$/Popup/Separator",								"-",
+		
+		"$$$/Dialog/Behaviors/Exit/No Data for Exit Behavior", "",
+
+		// ----- Tips strings
+
+		"$$$/Tip/StateEye",				"Включить/отключить дополнительное состояние при экспорте",
+		"$$$/Tip/StateThumbnail",		"Уменьшенный вид этого состояния",
+		"$$$/Tip/Show",					"Показать",
+		"$$$/Tip/Hide",					"Скрыть",
+		"$$$/Tip/Ignore",				"Игнорировать",
+		"$$$/Tip/Delete Selected Action",	"Удалить выделенное действие",
+		"$$$/Tip/Add New Action",		"Добавить новую операцию для выбранного события",
+		"$$$/Tip/DeleteState",			"Удалить дополнительное состояние и его содержимое",
+		"$$$/Tip/Convert To Button",		"Преобразовать в кнопку",
+		"$$$/Tip/Convert To Object",		"Преобразовать в объект",
+		"$$$/Tip/DefaultChoice",		"Выберите в списке элемент, чтобы задать его в качестве элемента по умолчанию. Чтобы задать нестандартный порядок сортировки, снимите флажок \"Сортировать элементы\" и перетащите элементы в необходимое положение.",
+        "$$$/Tip/MissingFontToolTip",				"В поле формы отсутствует шрифт. Нажмите \"Найти шрифт\".",
+
+		// ----- Error strings
+
+		"$$$/Error/YouNeedToSpecifyAName", "Необходимо задать имя.",
+		"$$$/Error/YouNeedToSpecifyANonBlankName", "Необходимо задать корректное имя.",
+		"$$$/Error/YouNeedToSpecifyANonBlankNameOrNoName", "Задайте корректное имя или оставьте поле пустым.",
+		"$$$/Error/YouNeedToSpecifyAnExportValue", "Необходимо задать экспортируемое значение.",
+		"$$$/Error/YouNeedToSpecifyANonBlankExportValue", "Необходимо задать корректное экспортируемое значение.",
+		"$$$/Error/YouNeedToSpecifyAUniqueName", "Это имя состояния уже используется. Выберите другое имя.",
+		"$$$/Error/YouNeedToSpecifyAValidFontSize", "Укажите значение от 0 до 300 или выберите вариант \"Автоматически\".",
+		
+		// ----- Misc strings
+
+		"$$$/Command/DeleteStates",	"Удалить состояния",
+		"$$$/CmdName/DeleteStateContent",	"Удалить содержимое состояния",
+		"$$$/Panel/CmdName/MSOName",		"Имя объекта с несколькими состояниями",
+		
+		// ----- MultiStateObject Panel strings
+				
+		"$$$/Menu/MSOPanel", "&Состояния объекта",
+		"$$$/Panel/MSOPanel", "Состояния объекта",
+		"$$$/Panel/MSOPanel/ObjectName", "Имя объекта:",
+#ifdef MACINTOSH
+		"$$$/Panel/MSOPanel/MixedSelection", "Щелкните кнопку \"Создать\", чтобы создать отдельное состояние для каждого объекта (Opt+щелчок для сохранения объектов в текущем состоянии).",
+		"$$$/Panel/MSOPanel/MSOAndMixedSelection", "Щелкните кнопку \"Создать\", чтобы создать новое состояние во всех объектах с несколькими состояниями \"^1\" (Opt+щелчок для сохранения объектов в текущем состоянии).\n\nЩелкните кнопку \"Добавить\", чтобы вставить объекты в видимое состояние \"^2\".",
+#else
+		"$$$/Panel/MSOPanel/MixedSelection", "Щелкните кнопку \"Создать\", чтобы создать отдельное состояние для каждого объекта (Alt+щелчок для сохранения объектов в текущем состоянии).",
+		"$$$/Panel/MSOPanel/MSOAndMixedSelection", "Щелкните кнопку \"Создать\", чтобы создать новое состояние во всех объектах с несколькими состояниями \"^1\" (Alt+щелчок для сохранения объектов в текущем состоянии).\n\nЩелкните кнопку \"Добавить\", чтобы вставить объекты в видимое состояние \"^2\".",
+#endif
+		
+		"$$$/Menu/MSOPanelPopup", "Меню палитры \"Состояния объекта\"",	
+		"$$$/Menu/MSOPanel/NewState", "Новое состояние",
+		"$$$/Menu/MSOPanel/DeleteState", "Удалить состояние",
+		"$$$/Menu/MSOPanel/AddToState", "Добавить объекты в состояние",
+		"$$$/Menu/MSOPanel/PasteIntoState", "Вставить в состояние",
+		"$$$/Menu/MSOPanel/ReleaseState", "Преобразовать состояние в объекты",
+		"$$$/Menu/MSOPanel/ReleaseAllStates", "Преобразовать все состояния в объекты",
+		"$$$/Menu/MSOPanel/ResetAllMSOs", "Сброс всех объектов с несколькими состояниями в первое состояние",
+		"$$$/Menu/MSOPanel/Options", "Параметры палитры...",
+		"$$$/Menu/MSOPanel/ContextMenu", "Контекстное меню палитры \"Состояния объекта\"",
+		"$$$/Menu/MSOPanel/ReleaseStateContextMenu", "Преобразовать \"^1\" в объекты",
+		"$$$/Menu/MSOPanel/DeleteStateContextMenu", "Удалить \"^1\"",
+		"$$$/Menu/MSOPanel/PasteIntoStateContextMenu", "Вставить в \"^1\"",
+		"$$$/Menu/MSOPanel/HiddenUntilTriggered", "Скрыть до запуска",
+	
+		"$$$/Tip/MSOPanel/StateAnimated", "Объект в этом состоянии анимирован.",
+		"$$$/Tip/MSOPanel/NewMSO", "Преобразовать выделенные объекты в объект с несколькими состояниями",
+		"$$$/Tip/MSOPanel/NewState", "Создать новое состояние",
+		"$$$/Tip/MSOPanel/DeleteState", "Удалить выбранное состояние",
+		"$$$/Tip/MSOPanel/MSOIsSelected", "Выбран этот объект с несколькими состояниями. При трансформировании объекта трансформируются все его состояния.",
+		"$$$/Tip/MSOPanel/MSOIsNotSelected", "Выбрано состояние. Щелкните для выбора объекта с несколькими состояниями.",
+		"$$$/Tip/MSOPanel/MSOStateIsSelected", "Выбрано это состояние.",
+		"$$$/Tip/MSOPanel/MSOStateContentIsSelected", "Выбрано содержимое этого состояния. Щелкните строку для выбора этого состояния.",
+		"$$$/Tip/MSOPanel/MSOStateRowMSOIsSelected", "Выбран объект с несколькими состояниями. Щелкните строку для переключения и выбора этого состояния.",
+		"$$$/Tip/MSOPanel/MSOActiveStateRowMSOIsSelected", "Выбран объект с несколькими состояниями. Щелкните строку для выбора этого состояния.",
+		"$$$/Tip/MSOPanel/MSOAnotherStateIsSelected", "Щелкните строку для переключения и выбора этого состояния.",
+		"$$$/Tip/MSOPanel/PasteIntoState", "Вставить скопированные объекты в выбранное состояние",
+		"$$$/Tip/MSOPanel/AddToState", "Добавить объекты в видимое состояние",
+	
+		"$$$/Dialog/MSOPanel/ReleaseAlert", "Объект с несколькими состояниями должен иметь не менее двух состояний. Это действие приводит к удалению из документа объекта с несколькими состояниями. Все текущие объекты сохраняются в текущем положении в виде объектов с одним состоянием.",
+		"$$$/Dialog/MSOPanel/ReleaseAllAlert", "Это действие приводит к удалению из документа объекта с несколькими состояниями. Все текущие объекты остаются в текущем положении в виде объектов с одним состоянием.",
+		"$$$/Dialog/MSOPanel/DeletesMSOAlert", "Объект с несколькими состояниями должен иметь не менее двух состояний. Это действие приводит к удалению из документа объекта с несколькими состояниями. Объекты, связанные с оставшимся состоянием, сохраняются в текущем положении в виде объектов с одним состоянием.",
+		
+		"$$$/Panel/MSOPanel/StatusOne", " объект в ^1",
+		"$$$/Panel/MSOPanel/Status", " объектов в ^1",
+		
+		"$$$/Panel/MSOPanel/StatusMSOSelected", "Все выбранные состояния",
+		"$$$/Panel/MSOPanel/StatusStateSelected", "Выбранное состояние",
+		"$$$/Panel/MSOPanel/StatusStateContentSelected", "Объект в выбранном состоянии",
+
+		// Command strings		
+		"$$$/Command/CheckBox", "Преобразовать во флажок",
+		"$$$/Command/ComboBox", "Преобразовать в раскрывающийся список",
+		"$$$/Command/ListBox", "Преобразовать в поле списка",
+		"$$$/Command/RadioButton", "Преобразовать в переключатель",
+		"$$$/Command/SignatureField", "Преобразовать в поле подписи",
+		"$$$/Command/TextField", "Преобразовать в поле текста",
+}
+};
+
+#endif // __ODFRC__

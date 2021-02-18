@@ -1,0 +1,535 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{0ac935ce-95c7-438d-9b37-b75454ca1bed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Plugin">
+      <UniqueIdentifier>{6764159b-b134-475f-945b-da94cc83e8db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Scripting">
+      <UniqueIdentifier>{3f6cb12f-abab-4252-9523-d3ab76fab6cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{07cb4d24-ac2a-473e-a2af-018577ccd6e2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Interfaces">
+      <UniqueIdentifier>{87b1d724-9fd2-44ca-ba2e-d7b1ca620ef8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{75c581be-0f71-425b-a63c-22b23ca2ee79}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CodeSnippets">
+      <UniqueIdentifier>{19589744-e0ec-4cdd-8d8c-1fbfaea023e3}</UniqueIdentifier>
+      <Extensions>.h, .cpp</Extensions>
+    </Filter>
+    <Filter Include="CodeSnippets\Snippets %2868%29">
+      <UniqueIdentifier>{6be34a11-aade-4473-9773-43a69a4112c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CodeSnippets\Snippets %2868%29\Table">
+      <UniqueIdentifier>{c1a311e0-0bfd-45c4-9463-30dc42230021}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CodeSnippets\Snippets %2868%29\Text">
+      <UniqueIdentifier>{39b063aa-6738-4520-9d8f-0c695bb8879c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CodeSnippets\Snippets %2868%29\Layout">
+      <UniqueIdentifier>{0fdc19bf-f79b-4666-a255-1688a5ea5f35}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CodeSnippets\Snippets %2868%29\Layout\Japanese Feature Set">
+      <UniqueIdentifier>{aac55de9-84f0-47d3-acf1-d6de9c5b8982}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CodeSnippets\Snippets %2868%29\XML">
+      <UniqueIdentifier>{962d4eec-8e04-467c-8bce-926d0ecc85fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CodeSnippets\Snippets %2868%29\Workspace">
+      <UniqueIdentifier>{f954f323-79f0-4838-91c6-03c65d582cc9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CodeSnippets\Snippets %2868%29\Helpers">
+      <UniqueIdentifier>{bffa9b6a-e177-4e54-801f-5e8c9fe0b910}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CodeSnippets\Snippets %2868%29\Miscellaneous">
+      <UniqueIdentifier>{3e6053c0-df70-4b84-a528-d16fc4cf93e6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CodeSnippets\Snippets %2868%29\ME Feature Set">
+      <UniqueIdentifier>{f13de613-3d8e-45fe-a849-4f4734a5e968}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CodeSnippets\Snippets %2868%29\Headers">
+      <UniqueIdentifier>{2554893b-4787-4750-8738-7cdf82fd2271}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common">
+      <UniqueIdentifier>{24a19e78-97ae-44f6-945b-1ef52be48b84}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\source\sdksamples\snippetrunner\SnipRunActionComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\snippetrunner\SnipRunBatch.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\snippetrunner\SnipRunControlView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\snippetrunner\SnipRunDialogController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\snippetrunner\SnipRunDialogData.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\snippetrunner\SnipRunErrorStringService.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\snippetrunner\SnipRunGoButtonObserver.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\snippetrunner\SnipRunGoSelectionObserver.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\snippetrunner\SnipRunLog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\snippetrunner\SnipRunManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\snippetrunner\SnipRunPanelWidgetObserver.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\snippetrunner\SnipRunParameterUtils.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\snippetrunner\SnipRunQuickApplyService.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\snippetrunner\SnipRunRestoreLogCmd.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\snippetrunner\SnipRunStartupShutdown.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\snippetrunner\SnipRunSuiteASB.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\snippetrunner\SnipRunSuiteCSB.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\snippetrunner\SnpRunnable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\snippetrunner\SnpRunnableContextCSB.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(id_sdk_dir)\source\public\libs\publiclib\statics\PlugInStatics.cpp">
+      <Filter>Source Files\Plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\common\SDKPlugInEntrypoint.cpp">
+      <Filter>Source Files\Plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\snippetrunner\SnipRunID.cpp">
+      <Filter>Source Files\Plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\snippetrunner\SnipRunNoStrip.cpp">
+      <Filter>Source Files\Plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\snippetrunner\TriggerResourceDeps.cpp">
+      <Filter>Source Files\Plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="$(id_sdk_dir)\source\precomp\msvc\VCPlugInHeaders.cpp">
+      <Filter>Source Files\Plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\snippetrunner\SnipRunScriptProvider.cpp">
+      <Filter>Source Files\Scripting</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\snippetrunner\SnpRunnableScript.cpp">
+      <Filter>Source Files\Scripting</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\snippetrunner\SnpRunnableScriptProvider.cpp">
+      <Filter>Source Files\Scripting</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpTemplate.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpAccessTableContent.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\Table</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpCopyPasteTable.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\Table</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpCreateTable.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\Table</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpGetTableParcel.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\Table</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpInspectTableModel.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\Table</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpIterTableStories.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\Table</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpIterTableUseDictHier.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\Table</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpManipulateTableStyle.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\Table</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpModifyTable.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\Table</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpSetTableFill.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\Table</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpSortTable.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\Table</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpApplyTextStyleAttributes.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\Text</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpCreateCrossReference.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\Text</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpEstimateTextDepth.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\Text</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpFindAndReplace.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\Text</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpInsertGlyph.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\Text</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpInspectTextModel.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\Text</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpInspectTextStyles.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\Text</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpManipulateConditionalText.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\Text</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpManipulateInline.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\Text</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpManipulateTextFootnotes.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\Text</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpManipulateTextFrame.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\Text</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpManipulateTextModel.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\Text</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpManipulateTextOnPath.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\Text</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpManipulateTextStyle.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\Text</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpManipulateTrapStyles.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\Text</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpPerformNoteFunction.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\Text</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpPerformTextAttrLanguage.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\Text</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpCreateFrame.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\Layout</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpCreateFrameGrid.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\Layout</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpHitTestFrame.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\Layout</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpInspectLayoutGrid.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\Layout</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpInspectLayoutModel.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\Layout</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpInspectPathInfo.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\Layout</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpManipulatePathandGraphics.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\Layout</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpManipulateSpreadsAndPages.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\Layout</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpManipulateSwatch.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\Layout</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpModifyLayoutGrid.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\Layout</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpPlaceFile.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\Layout</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpProcessDocumentLayerCmds.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\Layout</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpSelectShape.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\Layout</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpTransformPageItems.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\Layout</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpManipulateInCopyCJKGridAttributes.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\Layout\Japanese Feature Set</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpPerformCompFont.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\Layout\Japanese Feature Set</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpPerformKinsokuTable.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\Layout\Japanese Feature Set</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpPerformNamedGrid.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\Layout\Japanese Feature Set</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpPerformTextAttrKenten.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\Layout\Japanese Feature Set</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpPerformTextAttrRuby.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\Layout\Japanese Feature Set</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpPerformTextAttrTateChuYoko.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\Layout\Japanese Feature Set</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpPerformTextAttrWarichu.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\Layout\Japanese Feature Set</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpImportExportXML.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\XML</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpInspectSelectionXMLProperties.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\XML</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpManipulateStructureView.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\XML</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpManipulateXMLElements.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\XML</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpManipulateXMLSelection.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\XML</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpManipulateXMLTags.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\XML</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpPerformXMPCommands.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\XML</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpHyphenation.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\Workspace</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpInspectFontMgr.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\Workspace</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpManipulateDisplayPerformance.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\Workspace</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpManipulatePrintStyles.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\Workspace</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpPerformFontGroupIterator.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\Workspace</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpPrintDocument.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\Workspace</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpShowPalette.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\Workspace</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpGraphicHelper.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpTextAttrHelper.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpTextModelHelper.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpXMLHelper.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpXMLResolutionHelper.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpXMLSampleHelper.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpAddMediaFile.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\Miscellaneous</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpChooseFile.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\Miscellaneous</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpCreateCustomAnimation.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\Miscellaneous</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpCreateDocument.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\Miscellaneous</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpCreateInddPreview.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\Miscellaneous</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpExportBookAsPDF.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\Miscellaneous</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpExportDocAsPDF.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\Miscellaneous</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpExportEPub.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\Miscellaneous</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpImportExportSnippet.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\Miscellaneous</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpInspectXMPMetaData.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\Miscellaneous</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpManipulateArticles.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\Miscellaneous</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpManipulateAssignment.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\Miscellaneous</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpManipulateGraphicAttributes.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\Miscellaneous</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpShareAppResources.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\Miscellaneous</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippetsme\SnpApplyMEAttributes.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\ME Feature Set</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippetsme\SnpChangeTableDir.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\ME Feature Set</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippetsme\SnpCreateDocumentME.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\ME Feature Set</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippetsme\SnpCreateFrameME.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\ME Feature Set</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippetsme\SnpCreateTableME.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\ME Feature Set</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippetsme\SnpFillTextFrame.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\ME Feature Set</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\common\SDKFileHelper.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\common\SDKLayoutHelper.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpCreateAndManipulateSharedLink.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\Layout</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpContentDropper.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\Miscellaneous</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpHelloCSXS.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\Miscellaneous</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpHelloBridgeTalk.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\Miscellaneous</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpCreateQRCode.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\Miscellaneous</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpPlugPlug.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\Miscellaneous</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\codesnippets\SnpManipulateTextEndnotes.cpp">
+      <Filter>CodeSnippets\Snippets %2868%29\Text</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\source\sdksamples\snippetrunner\SnipRunBatch.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\sdksamples\snippetrunner\SnipRunFactoryList.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\sdksamples\snippetrunner\SnipRunID.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\sdksamples\snippetrunner\SnipRunLog.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\sdksamples\snippetrunner\SnipRunManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\sdksamples\snippetrunner\SnipRunRezDefs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\sdksamples\snippetrunner\SnpRunnable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\sdksamples\snippetrunner\ISnipRunDialogData.h">
+      <Filter>Header Files\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\sdksamples\snippetrunner\ISnipRunParameterUtils.h">
+      <Filter>Header Files\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\sdksamples\snippetrunner\ISnipRunSuite.h">
+      <Filter>Header Files\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\sdksamples\snippetrunner\ISnpRunnableContext.h">
+      <Filter>Header Files\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\sdksamples\codesnippets\SnpCreateDocument.h">
+      <Filter>CodeSnippets\Snippets %2868%29\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\sdksamples\codesnippets\SnpCreateFrame.h">
+      <Filter>CodeSnippets\Snippets %2868%29\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\sdksamples\codesnippets\SnpCreateTable.h">
+      <Filter>CodeSnippets\Snippets %2868%29\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\sdksamples\codesnippets\SnpGraphicHelper.h">
+      <Filter>CodeSnippets\Snippets %2868%29\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\sdksamples\codesnippets\SnpTextAttrHelper.h">
+      <Filter>CodeSnippets\Snippets %2868%29\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\sdksamples\codesnippets\SnpTextModelHelper.h">
+      <Filter>CodeSnippets\Snippets %2868%29\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\sdksamples\codesnippets\SnpXMLHelper.h">
+      <Filter>CodeSnippets\Snippets %2868%29\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\sdksamples\codesnippets\SnpXMLResolutionHelper.h">
+      <Filter>CodeSnippets\Snippets %2868%29\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\sdksamples\codesnippets\SnpXMLSampleHelper.h">
+      <Filter>CodeSnippets\Snippets %2868%29\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\sdksamples\common\SDKFileHelper.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\sdksamples\common\SDKLayoutHelper.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\..\..\source\sdksamples\snippetrunner\SnipRun.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\..\..\source\sdksamples\snippetrunner\SnipRun.fr">
+      <Filter>Resource Files</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\source\sdksamples\snippetrunner\SnipRun_enUS.fr">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\source\sdksamples\snippetrunner\SnipRun_jaJP.fr">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+</Project>

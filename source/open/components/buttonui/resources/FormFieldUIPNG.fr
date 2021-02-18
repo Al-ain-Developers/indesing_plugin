@@ -1,0 +1,194 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/buttonui/resources/FormFieldUIPNG.fr $
+//  
+//  Owner: Mark VerMurlen
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//  
+//  Based on Group.rc
+//  
+//========================================================================================
+
+#ifdef __ODFRC__
+
+#include "IconPNGDefs.h"
+#include "FormFieldUIDefs.h"
+
+resource PNGA(kStateEnabledIcon) "S_Visibility_Xs_N.png"
+resource PNGAD(kStateEnabledIcon) "S_Visibility_Xs_N_D.png"
+
+resource PNGA(kStateBlankIcon) "S_Blank_Md_N.png"
+resource PNGA(kConvertToButtonIcon) "S_ConvertToButton_Wi_N.png"
+resource PNGAD(kConvertToButtonIcon) "S_ConvertToButton_Wi_N_D.png"
+
+resource PNGA(kConvertToObjectIcon) "S_ConvertToObject_Wi_N.png"
+resource PNGAD(kConvertToObjectIcon) "S_ConvertToObject_Wi_N_D.png"
+
+resource PNGA(kShowPreviewIconRsrcID) "S_ShowPreviewPanel_Wi_N.png"
+resource PNGAD(kShowPreviewIconRsrcID) "S_ShowPreviewPanel_Wi_N_D.png"
+
+resource PNGA(kAppearancePaletteIconRsrcID) "S_PL_ButtonsAndForms_N.png"
+resource PNGAD(kAppearancePaletteIconRsrcID) "S_PL_ButtonsAndForms_N_D.png"
+
+resource PNGA(kAddActionIconRsrcId) "S_AddPopup_Wi_N.png"
+resource PNGAD(kAddActionIconRsrcId) "S_AddPopup_Wi_N_D.png"
+
+resource PNGA(kRemoveActionIconRsrcId) "S_Remove_Wi_N.png"
+resource PNGAD(kRemoveActionIconRsrcId) "S_Remove_Wi_N_D.png"
+
+resource PNGA(kChooseFileIconRsrcId) "S_Folder_Wi_N.png"
+resource PNGAD(kChooseFileIconRsrcId) "S_Folder_Wi_N_D.png"
+
+resource PNGA(kMediumThumbnailPictRsrcID) "S_ThumbnailSize_31x31_N.png"
+resource PNGA(kLargeThumbnailPictRsrcID) "S_ThumbnailSize_56x56_N.png"
+resource PNGA(kExtraLargeThumbnailPictRsrcID) "S_ThumbnailSize_81x81_N.png"
+
+resource PNGA(kMSOPanelIconRsrcID) "S_PL_States_N.png"
+resource PNGAD(kMSOPanelIconRsrcID) "S_PL_States_N_D.png"
+
+resource PNGA(kMSOIsSelectedIconRsrcID) "SP_MultipleStates_Md_N.png"
+resource PNGAD(kMSOIsSelectedIconRsrcID) "SP_MultipleStates_Md_N_D.png"
+
+resource PNGA(kMSOIsNotSelectedIconRsrcID) "S_DLnone_Xs_N.png"
+resource PNGAD(kMSOIsNotSelectedIconRsrcID) "S_DLnone_Xs_N_D.png"
+
+resource PNGA(kMSOStateIsSelectedIconRsrcID) "S_StatesObjectSelected_Sm_N.png"
+resource PNGAD(kMSOStateIsSelectedIconRsrcID) "S_StatesObjectSelected_Sm_N_D.png"
+
+resource PNGA(kMSOStateContentIsSelectedIconRsrcID) "S_StatesContentSelected_Sm_N.png"
+resource PNGAD(kMSOStateContentIsSelectedIconRsrcID) "S_StatesContentSelected_Sm_N_D.png"
+
+resource PNGA(kPasteIntoMSOStateIconRsrcID) "S_PasteInState_Wi_N.png"
+resource PNGAD(kPasteIntoMSOStateIconRsrcID) "S_PasteInState_Wi_N_D.png"
+
+resource PNGA(kAddToMSOStateIconRsrcID) "S_AddToState_Wi_N.png"
+resource PNGAD(kAddToMSOStateIconRsrcID) "S_AddToState_Wi_N_D.png"
+
+resource PNGA(kAddListOptionIconRsrcId) "S_Add_Wi_N.png"
+resource PNGAD(kAddListOptionIconRsrcId) "S_Add_Wi_N_D.png"
+
+// HiDPI
+resource PNGA(kStateEnabledIcon + kHIDPIIconOffset) "S_Visibility_Xs_N@2x.png"
+resource PNGAD(kStateEnabledIcon + kHIDPIIconOffset) "S_Visibility_Xs_N_D@2x.png"
+
+resource PNGA(kStateBlankIcon + kHIDPIIconOffset) "S_Blank_Md_N@2x.png"
+resource PNGA(kConvertToButtonIcon + kHIDPIIconOffset) "S_ConvertToButton_Wi_N@2x.png"
+resource PNGAD(kConvertToButtonIcon + kHIDPIIconOffset) "S_ConvertToButton_Wi_N_D@2x.png"
+
+resource PNGA(kConvertToObjectIcon + kHIDPIIconOffset) "S_ConvertToObject_Wi_N@2x.png"
+resource PNGAD(kConvertToObjectIcon + kHIDPIIconOffset) "S_ConvertToObject_Wi_N_D@2x.png"
+
+resource PNGA(kShowPreviewIconRsrcID + kHIDPIIconOffset) "S_ShowPreviewPanel_Wi_N@2x.png"
+resource PNGAD(kShowPreviewIconRsrcID + kHIDPIIconOffset) "S_ShowPreviewPanel_Wi_N_D@2x.png"
+
+resource PNGA(kAppearancePaletteIconRsrcID + kHIDPIIconOffset) "S_PL_ButtonsAndForms_N@2x.png"
+resource PNGAD(kAppearancePaletteIconRsrcID + kHIDPIIconOffset) "S_PL_ButtonsAndForms_N_D@2x.png"
+
+resource PNGA(kAddActionIconRsrcId + kHIDPIIconOffset) "S_AddPopup_Wi_N@2x.png"
+resource PNGAD(kAddActionIconRsrcId + kHIDPIIconOffset) "S_AddPopup_Wi_N_D@2x.png"
+
+resource PNGA(kRemoveActionIconRsrcId + kHIDPIIconOffset) "S_Remove_Wi_N@2x.png"
+resource PNGAD(kRemoveActionIconRsrcId + kHIDPIIconOffset) "S_Remove_Wi_N_D@2x.png"
+
+resource PNGA(kChooseFileIconRsrcId + kHIDPIIconOffset) "S_Folder_Wi_N@2x.png"
+resource PNGAD(kChooseFileIconRsrcId + kHIDPIIconOffset) "S_Folder_Wi_N_D@2x.png"
+
+resource PNGA(kMediumThumbnailPictRsrcID + kHIDPIIconOffset) "S_ThumbnailSize_31x31_N@2x.png"
+resource PNGA(kLargeThumbnailPictRsrcID + kHIDPIIconOffset) "S_ThumbnailSize_56x56_N@2x.png"
+resource PNGA(kExtraLargeThumbnailPictRsrcID + kHIDPIIconOffset) "S_ThumbnailSize_81x81_N@2x.png"
+
+resource PNGA(kMSOPanelIconRsrcID + kHIDPIIconOffset) "S_PL_States_N@2x.png"
+resource PNGAD(kMSOPanelIconRsrcID + kHIDPIIconOffset) "S_PL_States_N_D@2x.png"
+
+resource PNGA(kMSOIsSelectedIconRsrcID + kHIDPIIconOffset) "SP_x2_MultipleStates_Md_N.png"
+resource PNGAD(kMSOIsSelectedIconRsrcID + kHIDPIIconOffset) "SP_x2_MultipleStates_Md_N_D.png"
+
+resource PNGA(kMSOIsNotSelectedIconRsrcID + kHIDPIIconOffset) "S_DLnone_Xs_N@2x.png"
+resource PNGAD(kMSOIsNotSelectedIconRsrcID + kHIDPIIconOffset) "S_DLnone_Xs_N_D@2x.png"
+
+resource PNGA(kMSOStateIsSelectedIconRsrcID + kHIDPIIconOffset) "S_StatesObjectSelected_Sm_N@2x.png"
+resource PNGAD(kMSOStateIsSelectedIconRsrcID + kHIDPIIconOffset) "S_StatesObjectSelected_Sm_N_D@2x.png"
+
+resource PNGA(kMSOStateContentIsSelectedIconRsrcID + kHIDPIIconOffset) "S_StatesContentSelected_Sm_N@2x.png"
+resource PNGAD(kMSOStateContentIsSelectedIconRsrcID + kHIDPIIconOffset) "S_StatesContentSelected_Sm_N_D@2x.png"
+
+resource PNGA(kPasteIntoMSOStateIconRsrcID + kHIDPIIconOffset) "S_PasteInState_Wi_N@2x.png"
+resource PNGAD(kPasteIntoMSOStateIconRsrcID + kHIDPIIconOffset) "S_PasteInState_Wi_N_D@2x.png"
+
+resource PNGA(kAddToMSOStateIconRsrcID + kHIDPIIconOffset) "S_AddToState_Wi_N@2x.png"
+resource PNGAD(kAddToMSOStateIconRsrcID + kHIDPIIconOffset) "S_AddToState_Wi_N_D@2x.png"
+
+resource PNGA(kAddListOptionIconRsrcId + kHIDPIIconOffset) "S_Add_Wi_N@2x.png"
+resource PNGAD(kAddListOptionIconRsrcId + kHIDPIIconOffset) "S_Add_Wi_N_D@2x.png"
+
+#ifdef WINDOWS
+resource PNGA(kStateEnabledIcon + kHIDPIIconOffset150) "S_Visibility_Xs_N@3to2x.png"
+resource PNGAD(kStateEnabledIcon + kHIDPIIconOffset150) "S_Visibility_Xs_N_D@3to2x.png"
+
+resource PNGA(kStateBlankIcon + kHIDPIIconOffset150) "S_Blank_Md_N@3to2x.png"
+resource PNGA(kConvertToButtonIcon + kHIDPIIconOffset150) "S_ConvertToButton_Wi_N@3to2x.png"
+resource PNGAD(kConvertToButtonIcon + kHIDPIIconOffset150) "S_ConvertToButton_Wi_N_D@3to2x.png"
+
+resource PNGA(kConvertToObjectIcon + kHIDPIIconOffset150) "S_ConvertToObject_Wi_N@3to2x.png"
+resource PNGAD(kConvertToObjectIcon + kHIDPIIconOffset150) "S_ConvertToObject_Wi_N_D@3to2x.png"
+
+resource PNGA(kShowPreviewIconRsrcID + kHIDPIIconOffset150) "S_ShowPreviewPanel_Wi_N@3to2x.png"
+resource PNGAD(kShowPreviewIconRsrcID + kHIDPIIconOffset150) "S_ShowPreviewPanel_Wi_N_D@3to2x.png"
+
+resource PNGA(kAppearancePaletteIconRsrcID + kHIDPIIconOffset150) "S_PL_ButtonsAndForms_N@3to2x.png"
+resource PNGAD(kAppearancePaletteIconRsrcID + kHIDPIIconOffset150) "S_PL_ButtonsAndForms_N_D@3to2x.png"
+
+resource PNGA(kAddActionIconRsrcId + kHIDPIIconOffset150) "S_AddPopup_Wi_N@3to2x.png"
+resource PNGAD(kAddActionIconRsrcId + kHIDPIIconOffset150) "S_AddPopup_Wi_N_D@3to2x.png"
+
+resource PNGA(kRemoveActionIconRsrcId + kHIDPIIconOffset150) "S_Remove_Wi_N@3to2x.png"
+resource PNGAD(kRemoveActionIconRsrcId + kHIDPIIconOffset150) "S_Remove_Wi_N_D@3to2x.png"
+
+resource PNGA(kChooseFileIconRsrcId + kHIDPIIconOffset150) "S_Folder_Wi_N@3to2x.png"
+resource PNGAD(kChooseFileIconRsrcId + kHIDPIIconOffset150) "S_Folder_Wi_N_D@3to2x.png"
+
+resource PNGA(kMediumThumbnailPictRsrcID + kHIDPIIconOffset150) "S_ThumbnailSize_31x31_N@3to2x.png"
+resource PNGA(kLargeThumbnailPictRsrcID + kHIDPIIconOffset150) "S_ThumbnailSize_56x56_N@3to2x.png"
+resource PNGA(kExtraLargeThumbnailPictRsrcID + kHIDPIIconOffset150) "S_ThumbnailSize_81x81_N@3to2x.png"
+
+resource PNGA(kMSOPanelIconRsrcID + kHIDPIIconOffset150) "S_PL_States_N@3to2x.png"
+resource PNGAD(kMSOPanelIconRsrcID + kHIDPIIconOffset150) "S_PL_States_N_D@3to2x.png"
+
+resource PNGA(kMSOIsSelectedIconRsrcID + kHIDPIIconOffset150) "SP_x150_MultipleStates_Md_N.png"
+resource PNGAD(kMSOIsSelectedIconRsrcID + kHIDPIIconOffset150) "SP_x150_MultipleStates_Md_N_D.png"
+
+resource PNGA(kMSOIsNotSelectedIconRsrcID + kHIDPIIconOffset150) "S_DLnone_Xs_N@3to2x.png"
+resource PNGAD(kMSOIsNotSelectedIconRsrcID + kHIDPIIconOffset150) "S_DLnone_Xs_N_D@3to2x.png"
+
+resource PNGA(kMSOStateIsSelectedIconRsrcID + kHIDPIIconOffset150) "S_StatesObjectSelected_Sm_N@3to2x.png"
+resource PNGAD(kMSOStateIsSelectedIconRsrcID + kHIDPIIconOffset150) "S_StatesObjectSelected_Sm_N_D@3to2x.png"
+
+resource PNGA(kMSOStateContentIsSelectedIconRsrcID + kHIDPIIconOffset150) "S_StatesContentSelected_Sm_N@3to2x.png"
+resource PNGAD(kMSOStateContentIsSelectedIconRsrcID + kHIDPIIconOffset150) "S_StatesContentSelected_Sm_N_D@3to2x.png"
+
+resource PNGA(kPasteIntoMSOStateIconRsrcID + kHIDPIIconOffset150) "S_PasteInState_Wi_N@3to2x.png"
+resource PNGAD(kPasteIntoMSOStateIconRsrcID + kHIDPIIconOffset150) "S_PasteInState_Wi_N_D@3to2x.png"
+
+resource PNGA(kAddToMSOStateIconRsrcID + kHIDPIIconOffset150) "S_AddToState_Wi_N@3to2x.png"
+resource PNGAD(kAddToMSOStateIconRsrcID + kHIDPIIconOffset150) "S_AddToState_Wi_N_D@3to2x.png"
+
+resource PNGA(kAddListOptionIconRsrcId + kHIDPIIconOffset150) "S_Add_Wi_N@3to2x.png"
+resource PNGAD(kAddListOptionIconRsrcId + kHIDPIIconOffset150) "S_Add_Wi_N_D@3to2x.png"
+#endif
+
+#endif

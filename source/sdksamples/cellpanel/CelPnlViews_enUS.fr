@@ -1,0 +1,120 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/sdksamples/cellpanel/CelPnlViews_enUS.fr $
+//  
+//  Owner: Adobe Developer Technologies
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//  
+//  Table cell panel resource definitions.
+//  
+//========================================================================================
+
+#ifdef __ODFRC__
+//========================================================================================
+// English View resource.
+//========================================================================================
+
+#define AlignCtrlLeftTop( x0, y0, w, h )	x0, y0, (x0 + w), (y0 + h)
+#define AlignCtrlRightTop( x1, y0, w, h )	(x1 - w), y0, x1, (y0 + h)
+
+resource TableCellPanelWidget(kPanelResourceID + index_enUS)
+{
+	__FILE__, __LINE__,							// Localization macro		
+	kTableCellPanelWidgetID,					// WidgetID 
+	kPMRsrcID_None,								// RsrcID
+	kBindNone,									// Binding
+	Frame( 0, 0, kPanelWidth, kPanelHeight ),	// Frame: left, top, right, bottom.
+	kTrue, kTrue,						// Visible, Enabled
+	kTrue,								// Erase background
+	kInterfacePaletteFill,				// Erase to color
+	kFalse,								// Draw dropshadow
+	kCelPnlTitleKey,						// Panel name	
+	{
+		// Table Cell content edit box Widget.
+		TableCellEditBoxWidget					
+		(
+			kTableCellEditBoxWidgetID,		// WidgetId
+			kSysEditBoxPMRsrcId,			// RsrcId
+			kBindRight | kBindLeft,			// Frame binding
+			Frame( AlignCtrlLeftTop( 0, 0, kPanelWidth, kEditBoxHeight) ), 	// Frame
+			kTrue, kTrue					// Visible, Enabled
+			0,								// Widget id of nudge button (0 so we dont get one)
+			0, 0,							// small,large nudge amount
+			0,								// max num chars( 0 = no limit)
+			kFalse,							// is read only
+			kFalse,							// should notify each key stroke
+			kFalse,							// range checking enabled
+			kFalse,							// blank entry allowed
+			0,								// Upper bounds
+			0,								// Lower bounds
+			""								// Initial text
+		),
+		// Table Cell Widget
+		TableCellWidget 
+		(
+			kTableCellWidgetID,			// WidgetId
+			kPMRsrcID_None,				// RsrcId
+			kBindRight | kBindLeft | kBindTop | kBindBottom,					// Frame binding
+			Frame( AlignCtrlLeftTop( -1, kEditBoxHeight - 1, kDefaultCellWidth * 3, kDefaultCellHeight  * 3) ), // Frame 
+			kTrue, kTrue,				// Visible, Enabled
+		),
+		// ScrollBar Widget
+		ScrollBarWidget
+		(
+			kTableCellScrollWidgetID,				// WidgetId
+			kSysVScrollBarPMRsrcId,					// RsrcId
+			kBindRight | kBindTop | kBindBottom,	// Frame binding
+			Frame( AlignCtrlRightTop( kPanelWidth, kEditBoxHeight - 1, kScrolBarWidth, kPanelHeight - kSizeBoxSize - kEditBoxHeight + 3)	),	// Frame
+			kTrue, kTrue,							// Visible, Enabled
+			0,		// fMin
+			100,	// fMax
+			0,		// fValue
+			1,		// fIncrement
+			2,		// fIncrementMultiple
+			// CAccelerateControlData
+			0,		// fThreshold
+			0,		// fMax
+			0,		// fIncrement
+		),
+		// ScrollBar Widget
+		ScrollBarWidget
+		(
+			kTableCellHScrollWidgetID,				// WidgetId
+			kSysHScrollBarPMRsrcId,					// RsrcId
+			kBindRight | kBindLeft | kBindBottom,	// Frame binding
+			Frame( AlignCtrlLeftTop( -1 , kPanelHeight - kSizeBoxSize + 1, kPanelWidth - kSizeBoxSize + 2, kSizeBoxSize )	),	// Frame
+			kTrue, kTrue,							// Visible, Enabled
+			0,		// fMin
+			100,	// fMax
+			0,		// fValue
+			1,		// fIncrement
+			2,		// fIncrementMultiple
+			// CAccelerateControlData
+			0,		// fThreshold
+			0,		// fMax
+			0,		// fIncrement
+		),
+
+	}
+
+	kCelPnlPopupMenuNameKey		// Popup menu name (internal)
+};
+
+#endif // __ODFRC__
+
+// End, CelPnlViews_enUS.fr.

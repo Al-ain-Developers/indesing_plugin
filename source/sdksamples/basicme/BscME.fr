@@ -1,0 +1,362 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/sdksamples/basicme/BscME.fr $
+//  
+//  Owner: Adobe Developer Technologies
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "VCPlugInHeaders.h"
+
+// General includes:
+#include "MenuDef.fh"
+#include "ActionDef.fh"
+#include "ActionDefs.h"
+#include "AdobeMenuPositions.h"
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "StringTable.fh"
+#include "ObjectModelTypes.fh"
+#include "ShuksanID.h"
+#include "ActionID.h"
+#include "CommandID.h"
+#include "WorkspaceID.h"
+#include "WidgetID.h"
+#include "BuildNumber.h"
+#include "PlugInModel_UIAttributes.h"
+
+#include "ScriptInfoTypes.fh"
+#include "AppFrameworkID.h"
+#include "DocFrameworkID.h"
+#include "TextScriptID.h"
+#include "SpreadID.h"
+
+// Project includes:
+#include "BscMEID.h"
+#include "GenericID.h"
+#include "ShuksanID.h"
+#include "TextID.h"
+
+#include "BscMEScriptingDefs.h"
+
+
+#ifdef __ODFRC__
+
+/*  Plugin version definition.
+*/
+resource PluginVersion (kSDKDefPluginVersionResourceID)
+{
+	kTargetVersion,
+	kBscMEPluginID,
+	kSDKDefPlugInMajorVersionNumber, kSDKDefPlugInMinorVersionNumber,
+	kSDKDefHostMajorVersionNumber, kSDKDefHostMinorVersionNumber,
+	kBscMECurrentMajorFormatNumber, kBscMECurrentMinorFormatNumber,
+	{ kInDesignServerProduct},
+	{ kWildFS },
+	kModelPlugIn,
+	kBscMEVersion
+};
+
+/*  The ExtraPluginInfo resource adds extra information to the Missing Plug-in dialog
+	that is popped when a document containing this plug-in's data is opened when
+	this plug-in is not present. These strings are not translatable strings
+	since they must be available when the plug-in isn't around. They get stored
+	in any document that this plug-in contributes data to.
+*/
+resource ExtraPluginInfo(1)
+{
+	kBscMECompanyValue,			// Company name
+	kBscMEMissingPluginURLValue,	// URL 
+	kBscMEMissingPluginAlertValue,	// Missing plug-in alert text
+};
+
+/* Boss class definition.
+*/
+resource ClassDescriptionTable(kSDKDefClassDescriptionTableResourceID)
+{{{
+			
+	/**
+		Adds IBscMEInvertFacade into kUtilsBoss.
+				
+		@ingroup basicme
+	*/
+   AddIn
+   {
+	   kUtilsBoss,
+	   kInvalidClass,
+	   {
+			/** See IBscMEInvertFacade / BscMEInvertFacade.
+			*/
+		   IID_IBSCMEINVERTFACADE, kBscMEInvertFacadeImpl,
+	   }
+   },
+
+	/** Script provider for the "basicme" object
+        @ingroup basicme
+	 */
+	Class
+	{
+		kBscMEScriptProviderBoss,
+		kBaseScriptProviderBoss,
+		{
+			IID_ISCRIPTPROVIDER,kBscMEScriptProviderImpl,
+			
+		}
+	},
+	
+		
+	/** Packages up supported scripting operations in a BasicME script object
+		in the scripting DOM.
+        @ingroup basicme
+	 */
+    Class
+	{
+		kBscMEScriptObjectBoss,
+		kBaseProxyScriptObjectBoss,
+		{
+			/** See IScript/DiagScript.
+			 */
+			IID_ISCRIPT, kBscMEScriptImpl,
+		}
+	},
+	
+
+}}};
+
+/*  Implementation definition.
+*/
+resource FactoryList (kSDKDefFactoryListResourceID)
+{
+	kImplementationIDSpace,
+	{
+		#include "BscMEFactoryList.h"
+	}
+};
+
+
+
+/*  LocaleIndex
+	The LocaleIndex should have indicies that point at your
+	localizations for each language system that you are localized for.
+*/
+/*  String LocaleIndex.
+*/
+resource LocaleIndex ( kSDKDefStringsResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_enUS, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_enGB, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_deDE, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_frFR, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_esES, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_ptBR, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_svSE, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_daDK, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_nlNL, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_itIT, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_nbNO, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_fiFI, kSDKDefStringsResourceID + index_enUS
+		kInDesignJapaneseFS, k_jaJP, kSDKDefStringsResourceID + index_jaJP
+	}
+};
+
+resource LocaleIndex (kSDKDefStringsNoTransResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_Wild, kSDKDefStringsNoTransResourceID + index_enUS
+	}
+};
+
+resource StringTable (kSDKDefStringsNoTransResourceID + index_enUS)
+{
+	k_enUS,									// Locale Id
+	kEuropeanMacToWinEncodingConverter,		// Character encoding converter
+	{
+		// No-Translate strings go here:
+
+	}
+};
+
+
+/*
+
+/*  Scripting definition
+	In InDesign/InCopy, scripting resources are defined via ODFRez statements for cross-platform compatibility.
+*/
+resource VersionedScriptElementInfo(2)
+{
+	// Contexts
+	{
+		// Scripting support added at InDesign CS5
+        kCS5ScriptVersion, kCoreScriptManagerBoss, kInDesignServerAllLanguagesFS, k_Wild,
+	}
+	
+	// Elements
+	{
+		Suite
+        {
+            kBscMESuiteScriptElement,
+            s_BscMESuite,
+            "Basic me suite",
+            "Scripting support for basic me operations.",
+        }
+		
+		Object
+		{
+			kBscMEObjectScriptElement,	// object's script element ID
+			c_BscME,			// script PropID
+			"basicme",		// name
+			"basic ME object.", // description
+			kBscME_CLSID,			// Windows CLSID
+			NoCollectionInfo,			// CollectionElementType (scriptID, name, descr, CLSID)
+			kNonIDBasedObjectScriptElement,	// base object element ID
+			kBscMESuiteScriptElement,		// suite element ID
+		}
+				
+        Property
+        {
+            kBscMEObjectPropertyScriptElement,
+            p_BscME,
+            "basicme",
+            "A basic ME object.",
+            ObjectType( kBscMEObjectScriptElement ),
+            {}
+            kNoAttributeClass,
+        }	
+
+		Enum
+		{
+			kBscMEDirectionEnumElement,
+			en_BscMEDirection,
+			"basicme dicrection",
+			"Basic me direction enum type.",
+			{
+				en_BscMEDefault, "default", "Default direction."				
+				en_BscMELeftToRight, "left to right", "Left to right direction."
+				en_BscMERightToLeft, "right to left", "Right to left direction."
+			}
+		}
+		
+		Method
+		{
+			kBscMECreateDocumentMethodScriptElement,
+			e_BscMECreateDoc,
+			"create document",
+			"create a new document",
+			ObjectType( kDocumentObjectScriptElement ),
+			"new document",
+			{
+				p_BscMEDirection, "direction", "page binding direction", EnumType( kBscMEDirectionEnumElement ), kRequired,
+			}
+		}
+
+		Method
+		{
+			kBscMECreateTextFrameMethodScriptElement,
+			e_BscMECreateTextFrame,
+			"create text frame",
+			"create a new text frame",
+			ObjectType( kTextFrameObjectScriptElement ),
+			"new text frame",
+			{
+				p_BscMEPage, "page object", "The page that the text frame place on", ObjectType(kPageObjectScriptElement), kRequired,
+				p_GeometricBounds, "geometric bounds", "The bounds of the page item excluding the stroke width, in the format [y1, x1, y2, x2].", UnitArrayType(4), kRequired,
+   				p_BscMEDirection, "direction", "page binding direction", EnumType( kBscMEDirectionEnumElement ), kRequired,
+				p_TextColumnCount, "text column count", "The number of columns in the text frame. Note: Depending on the value of use fixed column width, the number of columns can change automatically when the text frame size changes.", Int32MinMaxType( 1, 40 ), kRequired,
+			}
+		}
+		
+		Enum
+		{
+			kBscMELanguageEnumElement,
+			en_BscMElanguage,
+			"basicme language",
+			"Basic me language enum type.",
+			{
+				en_BscMeArabic, "arabic", "Arabic"				
+				en_BscMEHebrew, "hebrew", "Hebrew"
+				en_BscMERoman, "roman", "Roman"
+			}
+		}
+				
+		Method
+		{
+			kBscMEChangeParagraphAttrMethodScriptElement,
+			e_BscMEChangeParagraphAttr,
+			"change paragraph attr",
+			"change paragraph attributes, composer, font name, paragraph direction, character direction",
+			VoidType,
+			{
+				p_BscMEPara, "paragraph object", "The paragraph object the attribute changed to", ObjectType(kParagraphObjectScriptElement), kRequired,
+				p_TextCompEngine, "composer name", "The composer name", StringType, kRequired,
+				p_BscMELang, "language", "The language", EnumType(kBscMELanguageEnumElement), kRequired,
+				p_BscMEFont, "font name", "Font apply the paragraph", StringType, kRequired,
+			}
+		}		
+
+		Method
+		{
+			kBscMEInvertDocumentMethodScriptElement,
+			e_BscMEInvertDocument,
+			"invert document",
+			"invert page items in document",
+			VoidType,
+			{
+				p_DocItem, "document", "The input document to invert", ObjectType(kDocumentObjectScriptElement), kRequired,
+   				p_BscMEDirection, "direction", "page binding direction", EnumType( kBscMEDirectionEnumElement ), kOptional,
+				p_BscMEInvertStories, "invert stories", "invert stories option or not", BoolType, kOptional,
+				p_BscMEChangeTableDir, "change table dir", "change table direction or not", BoolType, kOptional,
+				p_BscMEMovePageItem, "move page item", "move page item or not", BoolType, kOptional,
+				p_BscMEFlipObjectAngle, "flip object angle", "flip object angle or not", BoolType, kOptional,
+			}
+		}		
+
+		// Connects this plug-in's methods and properties to scripting.
+		Provider
+		{
+			kBscMEScriptProviderBoss,	// provider boss ID
+			{
+				Parent{ kApplicationObjectScriptElement },
+				RepresentObject{ kBscMEObjectScriptElement },
+				
+				// The property on the parent object returns the basic me object:
+				ParentProperty{ kBscMEObjectPropertyScriptElement, kReadOnly },	
+
+				Method{ kBscMECreateDocumentMethodScriptElement },
+				
+				Method{ kBscMECreateTextFrameMethodScriptElement },
+				
+				Method{ kBscMEChangeParagraphAttrMethodScriptElement },
+				
+				Method{ kBscMEInvertDocumentMethodScriptElement },
+				
+			}
+		}
+	}
+};
+
+	
+
+#endif // __ODFRC__
+
+#include "BscME_enUS.fr"
+#include "BscME_jaJP.fr"
+
+//  Code generated by DollyXs code generator

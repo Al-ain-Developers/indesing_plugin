@@ -1,0 +1,250 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/buttonui/resources/FormFieldUIStrings_arAE.fr $
+//  
+//  Owner: Mark VerMurlen
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "StringTable.fh"
+
+#include "FormFieldUIDefs.h"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+//twright 12/11/2000 Removed left-over strings from group strings.
+//not sure if button/form is going to need lock warning...
+
+resource StringTable (kFormFieldUIStringsRsrcID + index_arAE)
+{
+	k_arAE,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{
+		// ----- Menu strings
+		"ButtonsActionsPopup",				"قائمة عمليات الأزرار",
+		
+		"$$$/Menu/AppearancePanelPopup",	"قائمة لوحة الأزرار",	
+		"$$$/Menu/Interactive",				"ت&فاعلي", 
+		"$$$/Menu/FormField",				"ن&موذج", 
+		"$$$/Menu/About",					"&حول إضافة النماذج", 
+		"$$$/Menu/CreateButton",			"التحويل إلى &زر", 
+		"$$$/Menu/DestroyButton",			"&تحويل إلى كائن", 
+		"$$$/Menu/FormFieldSettings",		"&خيارات الزر...", 
+		"$$$/Menu/NewState",				"حالة جديدة", 
+		"$$$/Menu/DeleteState",				"حذف حالة", 
+		"$$$/Menu/DeleteStates",			"حذف حالات",
+		"$$$/Menu/PlaceIntoState",			"وضع المحتويات في حالة...",
+		"$$$/Menu/DeleteStateContent",		"حذف المحتويات من حالة",
+		"$$$/Menu/AppearancePanelPrefs",	"خيارات اللوحة...",
+		"$$$/Menu/StateOptions",			"خيارات الحالة...",
+		"$$$/Menu/SetTabOrder",				"ضبط &ترتيب الحقول...",
+		"$$$/Menu/SetCalculationOrder",		"ضبط ترتيب الحساب...",
+		"$$$/Menu/States",					"ال&أزرار",
+		
+		"$$$/Menu/Close",					"إغلاق",
+		"$$$/Menu/Exit",					"خروج",
+		"$$$/Menu/Go To Page",				"الانتقال إلى الصفحة (SWF فقط)",
+		"$$$/Menu/Go To First Page",		"الذهاب إلى الصفحة الأولى",
+		"$$$/Menu/Go To Anchor",			"الذهاب إلى الرابط",
+		"$$$/Menu/Go To Last Page",			"الذهاب إلى الصفحة الأخيرة",
+		"$$$/Menu/Go To Next Page",			"الذهاب إلى الصفحة التالية",
+		"$$$/Menu/Go To Next View",			"الذهاب إلى المنظر التالي",
+		"$$$/Menu/Go To Previous Page",		"الذهاب إلى الصفحة السابقة",
+		"$$$/Menu/Go To Previous View",		"الذهاب إلى المنظر السابق",
+		"$$$/Menu/Go To URL",				"الذهاب إلى الـ URL",
+		"$$$/Menu/Movie",					"الفيلم",
+		"$$$/Menu/Open File",				"فتح الملف",
+		"$$$/Menu/Show/Hide Buttons",		"إظهار/إخفاء الأزرار",
+		"$$$/Menu/Sound",					"الصوت",
+		"$$$/Menu/View Zoom",				"تحجيم المنظر",
+
+		"$$$/Menu/FormFieldSettings/ButtonLibrary",			"نموذج أزرار",	// Name of menu item in Buttons Panel flyout that opens a library of Sample Buttons
+
+		"$$$/Menu/FormFieldSettings/PDFVis/Visible",		"مرئي في PDF",
+		"$$$/Menu/FormFieldSettings/PDFVis/Hidden",			"مخفي في PDF",
+		"$$$/Menu/FormFieldSettings/PDFVis/VisibleNoPrint",	"مرئي في PDF ولكن لا يطبع",
+		"$$$/Menu/FormFieldSettings/PDFVis/HiddenButPrint",	"مخفي في PDF لكن يمكن طباعته",	
+			
+		"PageItems",						"عناصر الصفحة", 
+		"$$$/Menu/Trace Geometry",			"تتبع هندسي", 
+
+		"InteractiveContextMenu",			"تفاعلي",
+	
+		// ----- Dialog strings
+		"$$$/Dialog/CreateFormField/Title",		"حقل نموذج", 
+		"$$$/Dialog/CreateFormField/Options",	"الخيارات",
+		"$$$/Dialog/CreateFormField/Width",		"&العرض:",
+		"$$$/Dialog/CreateFormField/Height",	"الارت&فاع:",
+
+		"$$$/Dialog/FormFieldSettings/Title",				"عام", 
+		"$$$/Dialog/FormFieldSettings/FieldType",			"نوع الحقل:",
+		"$$$/Dialog/FormFieldSettings/FieldTypeSetting",	"",
+		"$$$/Dialog/FormFieldSettings/Name",				"الإ&سم:",
+		"$$$/Dialog/FormFieldSettings/PDFVisibility",		"وضع ال&ظهور في PDF:",
+		"$$$/Dialog/FormFieldSettings/PDFVis/Visible",		"مرئي",
+		"$$$/Dialog/FormFieldSettings/PDFVis/Hidden",		"مختفي",
+		"$$$/Dialog/FormFieldSettings/PDFVis/VisibleNoPrint",	"مرئي ولكن لا يظهر في الطباعة",
+		"$$$/Dialog/FormFieldSettings/PDFVis/HiddenButPrint",	"مختفي ولكن يظهر في الطباعة",
+		"$$$/Dialog/FormFieldSettings/ReadOnly",			"للقراءة فقط",
+		"$$$/Dialog/FormFieldSettings/Export",				"تصدير",
+		"$$$/Dialog/FormFieldSettings/RequiredForExport",	"مطلوب للتصدير",
+		"$$$/Dialog/FormFieldSettings/Description",			"ال&توصيف:",
+		"$$$/Dialog/FormFieldSettings/ExportName",			"إسم الت&صدير:",
+		"$$$/Dialog/FormFieldSettings/Common Settings",		"الإعدادات العامة",
+		"$$$/Dialog/FormFieldSettings/Options",				"الخيارات",
+		"$$$/Dialog/FormFieldSettings/Holder",				"حافظة ضوابط حقل نموذج",
+
+		"$$$/Dialog/FormOptions/Title",						"خيارات الزر",
+		"$$$/Dialog/FormFieldSettings/Options",				"الخيارات",
+		
+		"$$$/Dialog/FormFieldSettings/ExportValue",			"قيمة التصدير:",
+		"$$$/Dialog/FormFieldSettings/DefaultIsChecked",	"تم تعيين القيمة الافتراضية",
+		"$$$/Dialog/FormFieldSettings/DefaultIsSelected",	"تم تحديد القيمة الافتراضية",
+		"$$$/Dialog/FormFieldSettings/Default",				"الإفتراضي:",
+
+		"$$$/Dialog/FormFieldSettings/Multiline",				"سطور متعددة",
+		"$$$/Dialog/FormFieldSettings/Scroll",					"قابل للتمرير",
+		"$$$/Dialog/FormFieldSettings/LimitOf",					"الحد الخاص بـ",
+		"$$$/Dialog/FormFieldSettings/Characters",				"الحروف",
+		"$$$/Dialog/FormFieldSettings/Password",				"كلمة المرور",
+		"$$$/Dialog/FormFieldSettings/FieldForFileSelection",	"مستخدم لتحديد الملف",
+		"$$$/Dialog/FormFieldSettings/SpellCheck",				"تدقيق إملائي",
+		
+		"$$$/Dialog/FormFieldSettings/Item",					"العنصر:",
+		"$$$/Dialog/FormFieldSettings/Add",						"إضافة",
+		"$$$/Dialog/FormFieldSettings/Delete",					"حذف",
+		"$$$/Dialog/FormFieldSettings/Change",					"تغيير",
+		"$$$/Dialog/FormFieldSettings/SortItems",				"ترتيب العناصر",
+		"$$$/Dialog/FormFieldSettings/AllowMultipleSelection",	"السماح بالتحديد المتعدد",
+		"$$$/Dialog/FormFieldSettings/Editable",				"قابل للتحرير",
+
+		"$$$/Dialog/FormFieldSettings/Align",					"المحاذاة:",
+		"$$$/Dialog/FormFieldSettings/Align/Left",				"يسار",
+		"$$$/Dialog/FormFieldSettings/Align/Center",			"المركز",
+		"$$$/Dialog/FormFieldSettings/Align/Right",				"يمين",
+
+		"$$$/Dialog/FormFieldSettings/Font:",					"ال&خط:",
+		"$$$/Dialog/FormFieldSettings/Size:",					"ال&حجم:",
+		"$$$/Dialog/FormFieldSettings/Auto",					"تلقائي",
+
+		"$$$/Dialog/FormFieldSettings/SelectedIsDefault",		"العنصر المحدد هو الافتراضي",
+		
+		"$$$/Dialog/FormFieldUI/DeleteAlert",					"حذف الحالة يؤدي إلى حذف المحتويات المرتبطة بها أيضاً، هل تريد حذف الحالة على أي حال؟",
+		"$$$/Dialog/FormFieldUI/DestroyAlert",					"هذه العملية سوف تؤدي إلى حذف المحتويات المرتبطة بحالات الزر الأخرى،  هل تريد الإستمرار على أي حال؟",
+		"$$$/Dialog/FormFieldUI/DeleteContentAlert",			"هل أنت متأكد من أنك تريد حذف المحتويات المرتبطة بهذه الحالة؟",
+		"$$$/Dialog/FormFieldUI/StyleChangeAlert",				"هذه العملية سوف تؤدي إلى حذف المحتويات المرتبطة بحالات الزر الحالية،  هل تريد الإستمرار على أي حال؟",
+		"$$$/Dialog/FormFieldUI/StyleChangeFailed",				"فشلت عملية تطبيق نمط المظهر المحدد على الزر.",
+
+		/* These are not visible, they are names of subpanels... */
+		
+		"$$$/Dialog/FormFieldSettings/CheckBox",				"خيارات مربع الإختيار",	
+		"$$$/Dialog/FormFieldSettings/RadioButton",				"خيارات زر الراديو",	
+		"$$$/Dialog/FormFieldSettings/TextField",				"خيارات زر حقل النص",	
+		"$$$/Dialog/FormFieldSettings/ListBox",					"خيارات زر قائمة الإختيار",	
+		
+		"$$$/Dialog/About/Description",						"إضافة النماذج Forms, إصدار 1.0\n\n(c) لعام 2001 Adobe Systems Incorporated. جميع الحقوق محفوظة.",
+
+		"$$$/Dialog/CmdName/CreateButton",					"التحويل إلى زر",
+		"$$$/Dialog/CmdName/DestroyButton",					"تحويل إلى كائن",
+		"$$$/Dialog/CmdName/ChangeFormSettings",			"تغيير ضوابط الزر",
+
+		"$$$/Dialog/TextColor/Title",						"لون النص", 
+		"$$$/Dialog/Button/Color...",						"لون الخط...", 
+
+		"$$$/Dialog/AppearancePanelPrefs/Title",			"خيارات اللوحة", 
+		"$$$/Dialog/AppearancePanelPrefs/ThumbnailSize",	"حجم المصغرات", 
+		"$$$/Dialog/AppearancePanelPrefs/None",				"لا شيء", 
+		
+		
+		"$$$/Dialog/StateOptions/Title",					"خيارات الحالة", 
+		"$$$/Dialog/StateOptions/State",					"الحالة:", 
+		"$$$/Dialog/StateOptions/Enable",					"تمكين الحالة", 
+
+		"$$$/Dialog/CalculationOrder/Title",				"ترتيب الحساب", 
+		"$$$/Dialog/TabOrder/Title",						"ترتيب الحقول", 
+		"$$$/Dialog/Order/MoveUp",							"التحرك لأ&على", 
+		"$$$/Dialog/Order/MoveDown",						"التحرك لأ&سفل",
+
+		// ----- Window strings
+		
+		// ----- Panel strings
+
+		"$$$/Panel/FormFieldSettings/Action Data Holder",	"معامل بيانات عملية",
+		"$$$/Panel/FormFieldSettings/+",					"+",
+		"$$$/Panel/FormFieldSettings/Event:",				"حدث:",
+		"$$$/Panel/FormFieldSettings/Actions:",				"العمليات:",
+		"$$$/Panel/FormFieldSettings/URL:",					"عنوان موقع الويب:",
+		"$$$/Panel/Action",									"عملية",
+		"$$$/Panel/Empty Action",							"[ليست هناك عمليات مضافة]",
+		"$$$/Panel/StatesListBoxLabel/States",				"مظهر الحالة",
+		"$$$/Panel/States",									"الأزرار",
+		"$$$/Panel/FormFieldSettings/FieldType",			"النوع:",
+		"$$$/Panel/FormFieldSettings/Name",					"الإسم:",
+		"$$$/Panel/ShowHide/Visibility:",					"الرؤية:",
+		"$$$/Panel/GoToPage/Page:",							"الصفحة:",
+
+		"$$$/Panel/Normal",									"[عادي]",
+		"$$$/Panel/Over",									"[تمرير فوقي]",
+		"$$$/Panel/Down",									"[انقر]",
+
+		"$$$/Panel/CmdName/FormFieldName",					"إسم الزر",
+		"$$$/Panel/CmdName/FormFieldStyle",					"مظهر الزر",
+		
+		"$$$/Panel/FormFieldSettings/Appearance",			"المظهر:",
+
+		"$$$/Popup/Separator",								"-",
+		
+		"$$$/Dialog/Behaviors/Exit/No Data for Exit Behavior", "",
+
+		// ----- Tips strings
+
+		"$$$/Tip/FormName",				"إسم الزر",
+		"$$$/Tip/StateEye",				"تمكين/عدم تمكين الحالة الإختيارية في PDF أو SWF المصدرة",
+		"$$$/Tip/StateThumbnail",		"منظر مصغر لهذه الحالة",
+		"$$$/Tip/Show",					"إظهار",
+		"$$$/Tip/Hide",					"إخفاء",
+		"$$$/Tip/Ignore",				"تجاهل",
+		"$$$/Tip/Delete Selected Action",	"حذف العملية المحددة",
+		"$$$/Tip/Add New Action",		"إضافة عملية جديدة للحدث المحدد",
+		"$$$/Tip/DeleteState",			"حذف الحالة الاختيارية والمحتويات الخاصة بها",
+		"$$$/Tip/Convert To Button",		"تحويل كائن إلى زر",
+		"$$$/Tip/Convert To Object",		"تحويل زر إلى كائن",
+
+		// ----- Error strings
+
+		"$$$/Error/YouNeedToSpecifyAName", "يجب أن تقوم بتحديد إسم.",
+		"$$$/Error/YouNeedToSpecifyANonBlankName", "يجب أن تقوم بتحديد إسم صحيح.",
+		"$$$/Error/YouNeedToSpecifyANonBlankNameOrNoName", "يجب أن تقوم بتحديد إسم صحيح أو بدون إسم.",
+		"$$$/Error/YouNeedToSpecifyAnExportValue", "يجب أن تقوم بتحديد قيمة تصدير.",
+		"$$$/Error/YouNeedToSpecifyANonBlankExportValue", "يجب أن تقوم بتحديد قيمة تصدير صحيحة.",
+		
+		// ----- Misc strings
+
+		"$$$/Command/DeleteStates",	"حذف حالات",
+		"$$$/CmdName/DeleteStateContent",	"حذف محتويات حالة",
+	}
+};
+
+#endif // __ODFRC__

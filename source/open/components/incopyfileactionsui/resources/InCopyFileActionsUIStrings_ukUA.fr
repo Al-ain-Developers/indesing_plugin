@@ -1,0 +1,43 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kInCopyFileActionsUIStringsRsrcID + index_ukUA)
+{
+	k_ukUA,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{
+		"&Update Design",		"&Оновити оформлення",
+		"AlertUnableToSave",	"Не вдалося зберегти наступний вміст.\nМожливо, файли заблоковані або у вас немає прав для внесення змін у ці файли.\n",
+		"Update^1Alert",		"Деякий вміст неможливо зберегти. Під час оновлення зміни можуть бути втрачені. \nОновити до останньої версії “^1”?",
+		"Undoable^1Save",		"Перед продовженням оновлене оформлення збереже весь вміст, який можна редагувати. Команда \"Скасувати\" не може відмінити зміни, внесені оновленням. \nВсе одно оновити до \"^1\" ?",
+		"AlertStoriesMissing",	"Деякі файли вмісту неможливо знайти, а тому і редагувати. Спробуйте перемістити файли в їх початкові теки або оновити зв'язки в InDesign.",
+		"AlertStoriesMissingWF", "Деякі файли вмісту неможливо знайти, а тому і редагувати. Спробуйте завантажити вміст із сервера та знову відкрити документ.",
+		"Update",				"Оновлення",
+		"&Revert Story",		"По&вернути вміст",
+//		"Revert Story",			"Revert Content", // Note to localizer: this string moved to InCopySharedStrings_enUS.fr
+		
+		"SaveAsFeatureLost",    "Цей документ може містити функції, які не підтримуються цим форматом файлу. Продовжити?",
+		"CannotSaveOntoLockedFile",		"Вказаний файл зараз перевіряється користувачем \"^1\" в ^2 з документа ^3. Оберіть інше ім'я файлу або дочекайтесь, поки \"^1\" поверне файл.",
+		"CannotSaveOntoLockedFileMinimal",	"Вказаний файл зараз перевіряється користувачем \"^1\".  Оберіть інше ім'я файлу або дочекайтесь, поки \"^1\" поверне файл.",
+	}
+};
+
+
+#endif // __ODFRC__

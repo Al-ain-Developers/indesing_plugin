@@ -1,0 +1,219 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/buttonui/resources/FormFieldUIStrings_roRO.fr $
+//  
+//  Owner: Mark VerMurlen
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "StringTable.fh"
+
+#include "FormFieldUIDefs.h"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+//twright 12/11/2000 Removed left-over strings from group strings.
+//not sure if button/form is going to need lock warning...
+
+resource StringTable (kFormFieldUIStringsRsrcID + index_roRO)
+{
+	k_roRO,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{
+		// ----- Menu strings
+		"$$$/Menu/AppearancePanelPopup",	"Meniu panou: Stări",	
+		"$$$/Menu/Interactive",				"Interacti&v", 
+		"$$$/Menu/FormField",				"&Formular", 
+		"$$$/Menu/About",					"&Despre plugin-ul Form", 
+		"$$$/Menu/CreateButton",			"Buton &Conversie în", 
+		"$$$/Menu/DestroyButton",			"Buton &Conversie din", 
+		"$$$/Menu/FormFieldSettings",		"Opţiuni &buton...", 
+		"$$$/Menu/NewState",				"Creare stare", 
+		"$$$/Menu/DeleteState",				"Ştergere stare", 
+		"$$$/Menu/DeleteStates",			"Ştergere stări",
+		"$$$/Menu/PlaceIntoState",			"Plasare conţinut în stare...",
+		"$$$/Menu/DeleteStateContent",		"Ştergere conţinut din stare",
+		"$$$/Menu/AppearancePanelPrefs",	"Opţiuni panou...",
+		"$$$/Menu/StateOptions",			"Opţiuni stare...",
+		"$$$/Menu/SetTabOrder",				"Setare ordine &file...",
+		"$$$/Menu/SetCalculationOrder",		"Setare ordine de calcul...",
+		"$$$/Menu/States",					"&Stări",
+		
+		"PageItems",						"Articole din pagină", 
+		"$$$/Menu/Trace Geometry",			"Urmărire geometrie", 
+
+		"InteractiveContextMenu",			"Interactiv",
+	
+		// ----- Dialog strings
+		"$$$/Dialog/CreateFormField/Title",		"Câmp formular", 
+		"$$$/Dialog/CreateFormField/Options",	"Opţiuni",
+		"$$$/Dialog/CreateFormField/Width",		"&Lăţime:",
+		"$$$/Dialog/CreateFormField/Height",	"&Înălţime:",
+
+		"$$$/Dialog/FormFieldSettings/Title",				"General", 
+		"$$$/Dialog/FormFieldSettings/FieldType",			"Tip câmp:",
+		"$$$/Dialog/FormFieldSettings/FieldTypeSetting",	"",
+		"$$$/Dialog/FormFieldSettings/Name",				"&Nume:",
+		"$$$/Dialog/FormFieldSettings/PDFVisibility",		"&Vizibilitate în PDF:",
+		"$$$/Dialog/FormFieldSettings/PDFVis/Visible",		"Vizibil",
+		"$$$/Dialog/FormFieldSettings/PDFVis/Hidden",		"Ascuns",
+		"$$$/Dialog/FormFieldSettings/PDFVis/VisibleNoPrint",	"Vizibil, dar nu se tipăreşte",
+		"$$$/Dialog/FormFieldSettings/PDFVis/HiddenButPrint",	"Ascuns, dar tipăribil",
+		"$$$/Dialog/FormFieldSettings/ReadOnly",			"Read-Only",
+		"$$$/Dialog/FormFieldSettings/Export",				"Export",
+		"$$$/Dialog/FormFieldSettings/RequiredForExport",	"Obligatoriu pt. export",
+		"$$$/Dialog/FormFieldSettings/Description",			"&Descriere:",
+		"$$$/Dialog/FormFieldSettings/ExportName",			"&Nume export:",
+		"$$$/Dialog/FormFieldSettings/Common Settings",		"Setări comune",
+		"$$$/Dialog/FormFieldSettings/Options",				"Opţiuni",
+		"$$$/Dialog/FormFieldSettings/Holder",				"Suport setări câmp de formular",
+
+		"$$$/Dialog/FormOptions/Title",						"Opţiuni buton",
+		"$$$/Dialog/FormFieldSettings/Options",				"Opţiuni",
+		
+		"$$$/Dialog/FormFieldSettings/ExportValue",			"Valoare export:",
+		"$$$/Dialog/FormFieldSettings/DefaultIsChecked",	"Valoarea implicită este bifată",
+		"$$$/Dialog/FormFieldSettings/DefaultIsSelected",	"Valoarea implicită este selectată",
+		"$$$/Dialog/FormFieldSettings/Default",				"Implicit:",
+
+		"$$$/Dialog/FormFieldSettings/Multiline",				"Mai multe linii",
+		"$$$/Dialog/FormFieldSettings/Scroll",					"Derulabil",
+		"$$$/Dialog/FormFieldSettings/LimitOf",					"Limită de",
+		"$$$/Dialog/FormFieldSettings/Characters",				"caractere",
+		"$$$/Dialog/FormFieldSettings/Password",				"Parolă",
+		"$$$/Dialog/FormFieldSettings/FieldForFileSelection",	"Se utilizează pt. selecţia fişierelor",
+		"$$$/Dialog/FormFieldSettings/SpellCheck",				"Verificare ortografie",
+		
+		"$$$/Dialog/FormFieldSettings/Item",					"Element:",
+		"$$$/Dialog/FormFieldSettings/Add",						"Adăugare",
+		"$$$/Dialog/FormFieldSettings/Delete",					"Ştergere",
+		"$$$/Dialog/FormFieldSettings/Change",					"Modificare",
+		"$$$/Dialog/FormFieldSettings/SortItems",				"Sortare elemente",
+		"$$$/Dialog/FormFieldSettings/AllowMultipleSelection",	"Se permit selecţii multiple",
+		"$$$/Dialog/FormFieldSettings/Editable",				"Editabil",
+
+		"$$$/Dialog/FormFieldSettings/Align",					"Aliniere:",
+		"$$$/Dialog/FormFieldSettings/Align/Left",				"Stânga",
+		"$$$/Dialog/FormFieldSettings/Align/Center",			"Centru",
+		"$$$/Dialog/FormFieldSettings/Align/Right",				"Dreapta",
+
+		"$$$/Dialog/FormFieldSettings/Font:",					"&Font:",
+		"$$$/Dialog/FormFieldSettings/Size:",					"&Dimensiune:",
+		"$$$/Dialog/FormFieldSettings/Auto",					"Automat",
+
+		"$$$/Dialog/FormFieldSettings/SelectedIsDefault",		"Articolul selectat este implicit",
+		
+		"$$$/Dialog/FormFieldUI/DeleteAlert",					"Ştergerea stării va determina şi ştergerea conţinutului asociat acesteia.  Confirmaţi ştergerea stării?",
+		"$$$/Dialog/FormFieldUI/DestroyAlert",					"Această acţiune va determina ştergerea conţinutului asociat cu celelalte stări ale butonului.  Continuaţi oricum?",
+		"$$$/Dialog/FormFieldUI/DeleteContentAlert",			"Confirmaţi ştergerea conţinutului asociat cu această stare?",
+		"$$$/Dialog/FormFieldUI/StyleChangeAlert",				"Această acţiune va determina ştergerea conţinutului asociat cu stările curente ale butonului.  Continuaţi oricum?",
+		"$$$/Dialog/FormFieldUI/StyleChangeFailed",				"Nu s-a putut aplica stilul de afişare selectat pt. buton.",
+
+		/* These are not visible, they are names of subpanels... */
+		
+		"$$$/Dialog/FormFieldSettings/CheckBox",				"Opţiuni casetă de validare",	
+		"$$$/Dialog/FormFieldSettings/RadioButton",				"Opţiuni buton radio",	
+		"$$$/Dialog/FormFieldSettings/TextField",				"Opţiuni buton câmp text",	
+		"$$$/Dialog/FormFieldSettings/ListBox",					"Opţiuni Buton casetă listă",	
+		
+		"$$$/Dialog/About/Description",						"IPlugin Forms, versiunea 1.0\n\n(c) 2001 Adobe Systems Incorporated. Toate drepturile rezervate.",
+
+		"$$$/Dialog/CmdName/CreateButton",					"Buton Conversie în",
+		"$$$/Dialog/CmdName/DestroyButton",					"Buton Conversie din",
+		"$$$/Dialog/CmdName/ChangeFormSettings",			"Schimbare setări buton",
+
+		"$$$/Dialog/TextColor/Title",						"Culoare text", 
+		"$$$/Dialog/Button/Color...",						"Culoare font...", 
+
+		"$$$/Dialog/AppearancePanelPrefs/Title",			"Opţiuni panou", 
+		"$$$/Dialog/AppearancePanelPrefs/ThumbnailSize",	"Dimensiune miniatură", 
+		"$$$/Dialog/AppearancePanelPrefs/None",				"Niciunul", 
+		
+		
+		"$$$/Dialog/StateOptions/Title",					"Opţiuni stare", 
+		"$$$/Dialog/StateOptions/State",					"Stare:", 
+		"$$$/Dialog/StateOptions/Enable",					"Activare stare", 
+
+		"$$$/Dialog/CalculationOrder/Title",				"Ordine calcul", 
+		"$$$/Dialog/TabOrder/Title",						"Ordine file", 
+		"$$$/Dialog/Order/MoveUp",							"Deplasare în &sus", 
+		"$$$/Dialog/Order/MoveDown",						"Deplasare în &jos",
+
+		// ----- Window strings
+		
+		// ----- Panel strings
+
+		"$$$/Panel/States",									"Stări",
+		"$$$/Panel/FormFieldSettings/FieldType",			"Text:",
+		"$$$/Panel/FormFieldSettings/Name",					"Nume:",
+
+		"$$$/Panel/CmdName/FormFieldName",					"Nume buton",
+		"$$$/Panel/CmdName/FormFieldStyle",					"Aspect buton",
+		
+		"$$$/Panel/FormFieldSettings/Appearance",			"Aspect:",
+
+		"$$$/Popup/Separator",								"-",
+
+		"$$$/ToolName/PushButtonTool",				"Instrument Buton",
+		"$$$/ToolName/CheckBoxTool",				"Instrument Casetă de validare",
+		"$$$/ToolName/RadioButtonTool",				"Instrument Buton radio",
+		"$$$/ToolName/TextFieldTool",				"Instrument Câmp text",
+		"$$$/ToolName/ListBoxTool",					"Instrument Casetă listă",
+		"$$$/ToolName/ComboBoxTool",				"Instrument Casetă combinată",
+		"$$$/ToolName/SignatureFieldTool",			"Instrument Câmp semnătură",
+
+
+		// ----- Tips strings
+
+		"$$$/Tip/FormType",				"Tip formular",
+		"$$$/Tip/FormName",				"Nume pt. buton",
+		"$$$/Tip/FormAppearances",		"Aspect pt. buton",
+		"$$$/Tip/DeleteStateContent",	"Ştergere conţinut al stării selectate",
+		"$$$/Tip/PlaceIntoState",		"Plasare conţinut în starea selectată",
+		"$$$/Tip/DeleteState",			"Ştergere stare opţională şi conţinut aferent",
+		"$$$/Tip/NewState",				"Creare stare opţională nouă",
+		"$$$/Tip/StateEye",				"Activare/Dezactivare stare opţională în PDF-ul exportat",
+		"$$$/Tip/StateThumbnail",		"Vizualizare redusă a acestei stări",
+
+		// ----- Error strings
+
+		"$$$/Error/YouNeedToSpecifyAName", "Trebuie să specificaţi un nume.",
+		"$$$/Error/YouNeedToSpecifyANonBlankName", "Trebuie să specificaţi un nume valid.",
+		"$$$/Error/YouNeedToSpecifyANonBlankNameOrNoName", "Trebuie să specificaţi un nume valid sau să nu specificaţi niciun nume.",
+		"$$$/Error/YouNeedToSpecifyAnExportValue", "Trebuie să specificaţi o valoare de export.",
+		"$$$/Error/YouNeedToSpecifyANonBlankExportValue", "Trebuie să specificaţi o valoare de export validă.",
+		
+		// ----- Misc strings
+
+		"$$$/StateCount/^1 State",  "Stare ^1",
+		"$$$/StateCount/^1 States", "Stări ^1",
+
+
+		"$$$/Command/DeleteStates",	"Ştergere stări",
+		"$$$/CmdName/DeleteStateContent",	"Ştergere conţinut stare",
+	}
+};
+
+#endif // __ODFRC__

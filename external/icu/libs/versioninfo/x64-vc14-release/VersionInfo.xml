@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest version="2.0">
+ <versioninfo>
+  <build build="20170714.1001" compilertarget="Release" datetime="2017/07/14:18:06:26" format="Folder" lang="mul" licensemodel="None" platform="win64" product="AGL" subproduct="Library" version="6.0">
+   <repository authority="redcloud.corp.adobe.com:1850" path="//releases/gtlib/gtlib_10.0/source/aglc/aglc58.2/source/..." query="@1739064" scheme="p4"/>
+   <metadata>
+    <item key="BuildVersion" value="gtlib_10.0.22542"/>
+   </metadata>
+  </build>
+ </versioninfo>
+</manifest>

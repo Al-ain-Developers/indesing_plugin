@@ -1,0 +1,924 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/sdksamples/basicselectabledialog/BscSlDlg.fr $
+//  
+//  Owner: Adobe Developer Technologies
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//  
+//  Umbrella include file for all the .fr files in the plug-in.
+//  
+//========================================================================================
+
+//===========================
+//  General includes:
+//===========================
+
+#include "MenuDef.fh"
+#include "ActionDef.fh"
+#include "Widgets.fh"   // for DialogBoss
+#include "StringTable.fh"
+#include "objectmodeltypes.fh"
+#include "IDList.fh"
+#include "IDListPair.fh"
+
+#include "ActionDefs.h"
+#include "AdobeMenuPositions.h"
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "ShuksanID.h"
+#include "ActionID.h"
+#include "CommandID.h"
+#include "WorkspaceID.h"
+#include "widgetid.h"
+#include "BuildNumber.h"
+#include "SysControlIds.h"
+#include "InterfaceColorDefines.h"
+#include "IControlViewDefs.h"
+#include "TreeViewDefs.h"
+#include "PlugInModel_UIAttributes.h"
+#include "BscSlDlgID.h"
+#include "SDKSharedPNG.fr"
+#include "EveInfo.fh"
+
+#ifdef __ODFRC__
+
+/*
+// Plugin version definition.
+*/
+resource PluginVersion (kSDKDefPluginVersionResourceID)
+{
+    kTargetVersion,
+    kBscSlDlgPluginID,
+    kSDKDefPlugInMajorVersionNumber, kSDKDefPlugInMinorVersionNumber,     
+    kSDKDefHostMajorVersionNumber, kSDKDefHostMinorVersionNumber,
+    kBscSlDlgCurrentMajorFormatNumber, kBscSlDlgCurrentMinorFormatNumber,
+    {kInDesignProduct, kInCopyProduct },
+    {kWildFS },
+    kUIPlugIn,
+    kBscSlDlgVersion
+};
+
+/*
+//    Boss class definition.
+*/
+resource ClassDescriptionTable(kSDKDefClassDescriptionTableResourceID)
+{{{
+    /**    This boss class implements a selectable dialog. 
+    Specialization of IObserver is added to handle widget changes dynamically.
+    In addition, an implementation of IDialogCreator was added to handle the 
+    dialog creation as part of providing a selectable dialog.
+            
+    Note that we are using the IID_IDIALOGCONTROLLER from kSelectableDialogBoss.
+    If you want to provide your own behavior for the Ok/Cancel buttons, 
+    add your own implementation of IDialogController based on the partial
+    implementation, CDialogController. Refer to the BasicDialog sample
+    for more information.
+            
+    @ingroup basicselectabledialog
+    */
+    Class
+    {
+        kBscSlDlgDialogBoss,
+        kSelectableDialogBoss,
+        {
+            /** Creates the selectable dialog. 
+            Also provides panel ordering information via 
+            BscSlDlgDialogCreator::GetOrderedPanelsRsrcID.
+            */
+            IID_IDIALOGCREATOR, kBscSlDlgDialogCreatorImpl,
+            /** Allows dynamic processing of dialog widget changes, such as the info button.
+            Also provides support for specific switching mechanism.
+            This implementation subclasses CSelectableDialogObserver, not CObserver.
+            @see BscSlDlgDialogObserver
+            */
+            IID_IOBSERVER, kBscSlDlgDialogObserverImpl,
+            /** Dynamically switch dialog with tree view selection
+            */
+            IID_ISELECTABLEDIALOGSWITCHER,  kBscSlDlgTreeViewDlgSwitcherImpl,
+        }
+    },
+            
+    /**    This boss class implements the tab style dialog for this plug-in. 
+    Specialization of IObserver is added to handle widget changes dynamically.
+    In addition, an implementation of IDialogCreator was added to handle the 
+    dialog creation as part of providing a selectable dialog.
+            
+    Note that we are using the IID_IDIALOGCONTROLLER from kTabSelectableDialogBoss.
+    If you want to provide your own behavior for the Ok/Cancel buttons, 
+    add your own implementation of IDialogController based on the partial
+    implementation, CDialogController. Refer to the BasicDialog sample
+    for more information..
+            
+    @ingroup basicselectabledialog
+    */
+    Class
+    {
+        kBscSlDlgTabDialogBoss,
+        kTabSelectableDialogBoss,
+        {
+            /** Creates the tab selectable dialog. 
+            Also provides panel ordering information via 
+            BscSlDlgTabDialogCreator::GetOrderedPanelsRsrcID.
+            */
+            IID_IDIALOGCREATOR, kBscSlDlgTabDialogCreatorImpl,
+            /** Allows dynamic processing of dialog widget changes, such as the info button.
+            Also provides support for specific switching mechanism.
+            This implementation subclasses CSelectableDialogObserver, not CObserver.
+            @see BscSlDlgTabDialogObserver
+            */
+            IID_IOBSERVER, kBscSlDlgTabDialogObserverImpl,
+        }
+    },
+            
+            
+    /**    This boss class implements the Yin panel for this plug-in by providing
+    a customized IPanelCreator and IK2ServiceProvider implementation.
+            
+    @ingroup basicselectabledialog
+    */
+    Class
+    {
+        kYinPanelBoss,
+        kPrimaryResourcePanelWidgetBoss,
+        {
+            /** Creates the Yin panel by informing the DialogPanelService 
+            of the service IDs and panel view resource IDs used by this boss.
+            */
+            IID_IPANELCREATOR, kYinPanelCreatorImpl,
+            /** Registers panel as member of the DialogPanelService. 
+            */
+            IID_IK2SERVICEPROVIDER, kDialogPanelServiceImpl,
+        }
+    },
+            
+    /**    This boss class implements the Yang panel for this plug-in by providing 
+    a customized IPanelCreator and IK2ServiceProvider implementation.
+            
+    @ingroup basicselectabledialog
+    */
+    Class
+    {
+        kYangPanelBoss,
+        kPrimaryResourcePanelWidgetBoss,
+        {
+            /** Creates the Yin panel by informing the DialogPanelService 
+            of the service IDs and panel view resource IDs used by this boss.
+            */
+            IID_IPANELCREATOR, kYangPanelCreatorImpl,
+            /** Registers panel as member of the DialogPanelService. 
+            */
+            IID_IK2SERVICEPROVIDER, kDialogPanelServiceImpl,
+        }
+    },
+            
+    /**    This boss class implements the list box of the left pane using tree view widget.
+            
+    @ingroup basicselectabledialog
+    */
+    Class
+    {
+        kBscSlDlgTreeViewWidgetBoss,
+        kTreeViewWidgetBoss,
+        {
+            IID_ITREEVIEWWIDGETMGR,            kBscSlDlgTreeViewWidgetMgrImpl,
+            IID_ITREEVIEWHIERARCHYADAPTER,    kBscSlDlgTreeViewAdapterImpl,
+        }
+    },
+            
+    /**    This boss class provides the actions invoked by this plug-in's
+    sub-menu items. It supports two interfaces: 
+    IActionComponent and IPMPersist. We provide the implementation 
+    for IActionComponent in BscSlDlgAction.cpp. The other
+    default implementation is provided by the API.
+            
+    @ingroup basicselectabledialog
+    */
+    Class
+    {
+        kBscSlDlgActionComponentBoss,
+        kBaseActionComponentBoss,
+        {
+            /** Handle the actions from the menu. 
+            */
+            IID_IACTIONCOMPONENT, kBscSlDlgActionComponentImpl,
+        }
+    },
+            
+}}};
+
+/*
+// Implementation definition.
+*/
+resource FactoryList (kSDKDefFactoryListResourceID) 
+{
+    kImplementationIDSpace,
+    {
+#include "BscSlDlgFactoryList.h"
+    }
+};
+
+/*
+// Dialog panel ordering definition.
+*/
+resource IDList (kBscSlDlgPanelOrderingResourceID)
+{
+    {
+        kYinPanelBoss,
+        kYangPanelBoss,
+    },
+};
+
+/*
+// Menu definition.
+*/
+resource MenuDef (kSDKDefMenuResourceID)
+{
+    {
+        // The About Plug-ins sub-menu item for this plug-in.
+        kBscSlDlgAboutActionID,            // ActionID (kInvalidActionID for positional entries)
+        kBscSlDlgAboutMenuPath,            // Menu Path.
+        kSDKDefAlphabeticPosition,        // Menu Position.
+        kSDKDefIsNotDynamicMenuFlag,    // kSDKDefIsNotDynamicMenuFlag or kSDKDefIsDynamicMenuFlag.
+        
+        // The Plug-ins menu sub-menu items for this plug-in, for default style selectable dialog.
+        kBscSlDlgDialogActionID,
+        kBscSlDlgPluginsMenuPath,
+        kBscSlDlgDialogMenuItemPosition,
+        kSDKDefIsNotDynamicMenuFlag,
+        
+        // The Plug-ins menu sub-menu items for this plug-in, for tab style selectable dialog.
+        kBscSlDlgTabDialogActionID,
+        kBscSlDlgPluginsMenuPath,
+        kBscSlDlgTabDialogMenuItemPosition,
+        kSDKDefIsNotDynamicMenuFlag,
+    }
+};
+
+/*
+// Action definition.
+*/
+resource ActionDef (kSDKDefActionResourceID)
+{
+    {
+        kBscSlDlgActionComponentBoss,      // ClassID of boss class that implements the ActionID.
+        kBscSlDlgAboutActionID,            // ActionID.
+        kBscSlDlgAboutMenuKey,             // Sub-menu string.
+        kHelpMenuActionArea,               // Area name (see ActionDefs.h).
+        kNormalAction,                     // Type of action (see ActionDefs.h).
+        kDisableIfLowMem,                  // Enabling type (see ActionDefs.h).
+        kInvalidInterfaceID,               // Selection InterfaceID this action cares about or kInvalidInterfaceID.
+        kSDKDefInvisibleInKBSCEditorFlag,  // kSDKDefVisibleInKBSCEditorFlag or kSDKDefInvisibleInKBSCEditorFlag.
+        
+        kBscSlDlgActionComponentBoss,
+        kBscSlDlgDialogActionID,        
+        kBscSlDlgDialogMenuItemKey,        
+        kOtherActionArea,            
+        kNormalAction,                
+        kDisableIfLowMem,    
+        kInvalidInterfaceID,        
+        kSDKDefInvisibleInKBSCEditorFlag,
+        
+        kBscSlDlgActionComponentBoss,
+        kBscSlDlgTabDialogActionID,        
+        kBscSlDlgTabDialogMenuItemKey,        
+        kOtherActionArea,            
+        kNormalAction,                
+        kDisableIfLowMem,    
+        kInvalidInterfaceID,        
+        kSDKDefInvisibleInKBSCEditorFlag,
+    }
+};
+
+/*
+// String LocaleIndex.
+*/
+resource LocaleIndex (kSDKDefStringsResourceID)
+{
+    kStringTableRsrcType,
+    {
+        kWildFS, k_enUS, kSDKDefStringsResourceID + index_enUS
+        kWildFS, k_jaJP, kSDKDefStringsResourceID + index_jaJP
+        
+        kWildFS, k_Wild, kSDKDefStringsResourceID + index_enUS
+    }
+};
+
+resource LocaleIndex (kSDKDefStringsNoTransResourceID)
+{
+    kStringTableRsrcType,
+    {
+        kWildFS, k_Wild, kSDKDefStringsNoTransResourceID + index_enUS
+    }
+};
+
+resource StringTable (kSDKDefStringsNoTransResourceID + index_enUS)
+{
+    k_enUS,                                    // Locale Id
+    kEuropeanMacToWinEncodingConverter,        // Character encoding converter
+    {
+        // No-Translate strings go here:           
+    }
+};
+
+/*
+// Dialog LocaleIndex.
+*/
+resource LocaleIndex (kBscSlDlgDialogResourceID)
+{
+    kViewRsrcType,
+    {
+        kWildFS,    k_Wild, kBscSlDlgDialogResourceID
+    }
+};
+
+/*
+// Dialog LocaleIndex.
+*/
+resource LocaleIndex (kBscSlDlgTabDialogResourceID)
+{
+    kViewRsrcType,
+    {
+        kWildFS,    k_Wild, kBscSlDlgTabDialogResourceID
+    }
+};
+
+/*
+// Type definitions.
+*/
+type BscSlDlgDialogWidget(kViewRsrcType) : DialogBoss(ClassID = kBscSlDlgDialogBoss) 
+{
+    WidgetEveInfo;
+};
+
+type BscSlDlgTabDialogWidget(kViewRsrcType) : DialogBoss(ClassID = kBscSlDlgTabDialogBoss) 
+{
+    WidgetEveInfo;
+};
+
+type BscSlDlgTreeViewWidget (kViewRsrcType) : TreeViewWidget  (ClassID = kBscSlDlgTreeViewWidgetBoss)
+{
+    WidgetEveInfo;
+};
+
+/*
+ * Dialog definition for list style dialog.
+ */
+resource BscSlDlgDialogWidget (kBscSlDlgDialogResourceID)
+{
+    __FILE__, __LINE__,
+    kBscSlDlgDialogWidgetID,       // WidgetId
+    kPMRsrcID_None,                // RsrcId
+    kBindNone,                     // Frame binding
+    Frame(0,0,440,275)             // Frame, dynamically sizes based on subpanels.
+    kTrue,                         // Visible
+    kTrue,                         // Enabled
+    kBscSlDlgDialogTitleKey,       // Panel name
+    {    
+
+        EVEGenericPanelWidget
+        (
+            kInvalidWidgetID,    // WidgetId
+            0                    // RsrcId
+            0,                   // Widget EVE Info
+            kBindNone,           // Frame binding
+            Frame(0,0,175,275)   // Frame
+            kTrue,               // Visible
+            kTrue,               // Enabled
+            kEVEAlignFill | kEVELargeSpaceAfter | kEVEArrangeChildrenInColumn,
+                    
+            {
+				BscSlDlgTreeViewWidget
+				(
+					kSelectDialogSelectionWidgetID, kPMRsrcID_None,// WidgetId, RsrcId
+					kBindNone,
+					Frame(15,15,175,225),		// Frame
+					kTrue, kTrue,				// Visible, Enabled
+					kTrue,						// EraseBeforeDraw
+					kInterfacePaletteFill,		// InterfaceColor
+					"",
+					kHideRootNode | kDrawBorder, //Options
+					kFalse,						//Use H Scroll bar
+					kFalse,						//Use V scroll bar
+					20,							// Vertical Scroll Button Increment
+					20,							// Vertical Thumb Scroll Increment
+					0,							// Horizontal Scroll Button Increment - Not Used
+					0,							// Horizontal Thumb Scroll Increment - Not Used
+					1,							// Items selectable, 0 = No Selection, 1 = Single Selection, 2 = Multiple Selection
+					kFalse,						// Allow children from multiple parents to be selected
+					kFalse,						// Allow discontiguous selection
+					{
+					}
+					kEVEExtraLargeSpaceAfter
+				),
+
+                EVERollOverIconButtonWidget
+                (
+                    // (CHANGED: Was ADBEIconSuiteButtonWidget) 
+                    // ADBEIconSuiteButtonView properties
+                    kBscSlDlgIconSuiteWidgetID,       // WidgetID
+                    kSDKDefIconInfoResourceID,        // Icon resource ID 
+                    kBscSlDlgPluginID,                // Plug-in ID
+                    kBindNone,                        // Binding
+                    Frame(0,0,0,0)                    // Frame (l,t,r,b)
+                    kTrue, kTrue,                     // Visible, Enabled
+                    kADBEIconSuiteButtonDrawWellType, // PNGIconAttributes, new for InDesign 3.0
+                            
+                    kEVERegularSpaceAfter,
+                ),
+                        
+            }  // End of Eve generic panel child widgets
+        ), // End of Eve generic panel widget definition
+
+        
+        EVEGenericPanelWidget
+        (
+            kInvalidWidgetID,    // WidgetId
+            0                    // RsrcId
+            0,                   // Widget EVE Info
+            kBindNone,           // Frame binding
+            Frame(0,0,265,275)   // Frame
+            kTrue,               // Visible
+            kTrue,               // Enabled
+            kEVEAlignFill | kEVESmallSpaceAfter | kEVEArrangeChildrenInColumn | kEVESmallMargin,
+            
+            {
+                
+                EVEStaticTextWidget
+                (
+                    kSelectDialogTitleTextWidgetID, // WidgetId
+                    kSysStaticTextPMRsrcId,         // RsrcId
+                    kBindNone,                      // Frame binding
+                    Frame(0,0,100,20)               // Frame
+                    kTrue,                          // Visible
+                    kTrue,                          // Enabled
+                    kAlignLeft,
+                    kDontEllipsize, kTrue,
+                    "",
+                    0
+                            
+                    kEVENoSpaceAfter,
+                ),
+                        
+                EVESeparatorWidget
+                (
+                    0,                     // WidgetId 
+                    kPMRsrcID_None,        // RsrcId
+                    kBindNone,
+                    Frame(20,0,240,0)      // Frame
+                    kTrue, kTrue,          // Visible, Enabled
+                            
+                    kEVELargeSpaceAfter,
+                ),
+
+                EVEGenericPanelWidget
+                (
+                    kDialogGroupPanelWidgetID,        // WidgetId
+                    kPMRsrcID_None,                   // RsrcId
+                    kBindNone,                        // Frame binding
+                    Frame(0,0,0,0)                    // Frame, dynamically sizes based on subpanels.
+                    kTrue,                            // Visible
+                    kTrue,                            // Enabled
+                    , 
+                            
+                    kEVEJumboSpaceAfter | kEVEArrangeChildrenInRow,
+                    {
+                    }
+                ),
+                        
+                // Widget displaying the title of the currently active panel
+                EVEGenericPanelWidget
+                (
+                    kInvalidWidgetID,    // WidgetId
+                    0                    // RsrcId
+                    0,                   // Widget EVE Info
+                    kBindNone,           // Frame binding
+                    Frame(0,0,265,50)    // Frame
+                    kTrue,               // Visible
+                    kTrue,               // Enabled
+                    kEVEAlignRight | kEVERegularSpaceAfter | kEVEArrangeChildrenInRow,
+                    
+                    {
+#ifdef WINDOWS                            
+                        EVEDefaultButtonWidget
+                        (
+                            kOKButtonWidgetID,            // WidgetId
+                            kSysButtonPMRsrcId,           // RsrcId
+                            kBindNone,                    // Frame binding
+                                    
+                            Frame(0,0,0,0)                // Frame
+                                    
+                            kTrue,                        // Visible
+                            kTrue,                        // Enabled
+                            kSDKDefOKButtonApplicationKey // Button name
+                                    
+                            kEVELargeSpaceAfter,
+                        ),
+                                
+                        EVECancelButtonWidget
+                        (
+                            kCancelButton_WidgetID,           // WidgetId
+                            kSysButtonPMRsrcId,               // RsrcId
+                            kBindNone,                        // Frame binding
+                                    
+                            Frame(0,0,0,0)                    // Frame
+                                    
+                            kTrue,                            // Visible
+                            kTrue,                            // Enabled
+                            kSDKDefCancelButtonApplicationKey,// Button name
+                            kTrue,                            // Cancel changes to Reset
+                                    
+                            kEVELargeSpaceAfter,
+                        ),    
+#else
+                        EVECancelButtonWidget
+                        (
+                            kCancelButton_WidgetID,           // WidgetId
+                            kSysButtonPMRsrcId,               // RsrcId
+                            kBindNone,                        // Frame binding
+                                    
+                            Frame(0,0,0,0)                    // Frame
+                                    
+                            kTrue,                            // Visible
+                            kTrue,                            // Enabled
+                            kSDKDefCancelButtonApplicationKey,        // Button name
+                            kTrue,                            // Cancel changes to Reset
+                                    
+                            kEVELargeSpaceAfter,
+                        ),
+
+                        EVEDefaultButtonWidget
+                        (
+                            kOKButtonWidgetID,                // WidgetId
+                            kSysButtonPMRsrcId,               // RsrcId
+                            kBindNone,                        // Frame binding
+                                    
+                            Frame(0,0,0,0)                    // Frame
+                                    
+                            kTrue,                            // Visible
+                            kTrue,                            // Enabled
+                            kSDKDefOKButtonApplicationKey     // Button name
+                                    
+                            kEVELargeSpaceAfter,
+                        ),
+#endif                            
+                                                    
+                    }  // End of Eve generic panel child widgets
+                ), // End of Eve generic panel widget definition    
+                        
+            }  // End of Eve generic panel child widgets
+        ), // End of Eve generic panel widget definition
+                
+    }
+    
+    kEVEArrangeChildrenInRow | kEVERegularMargin,
+};
+
+/*
+ * Dialog definition for tab style dialog.
+ */
+resource BscSlDlgTabDialogWidget (kBscSlDlgTabDialogResourceID)
+{
+    __FILE__, __LINE__,
+    kBscSlDlgTabDialogWidgetID,              // WidgetID
+    kPMRsrcID_None,                          // RsrcID
+    kBindNone,                               // Binding
+    Frame(0,0,440,275)                       // Frame (l,t,r,b)
+    kTrue, kTrue,                            // Visible, Enabled
+    kBscSlDlgDialogTitleKey,                 // Dialog name
+    {    
+        EVEGenericPanelWidget
+        (
+            kInvalidWidgetID,    // WidgetId
+            0                    // RsrcId
+            0,                   // Widget EVE Info
+            kBindNone,           // Frame binding
+            Frame(0,0,0,0)		 // Frame
+            kTrue,               // Visible
+            kTrue,               // Enabled
+            kEVEAlignFill | kEVELargeSpaceAfter | kEVEArrangeChildrenInRow,   
+            {
+				EVETabsWidget
+				(
+					kSelectDialogSelectionWidgetID,			
+					kPMRsrcID_None,					
+					kBindNone,						
+					Frame(0,0,0,0)		
+					kTrue,							
+					kTrue,						
+					kEVEAlignFill | kEVERegularSpaceAfter | kEVEArrangeChildrenInRow | kEVERegularMargin,
+					{
+					
+					}
+				),
+                
+            }  // End of Eve generic panel child widgets
+        ), // End of Eve generic panel widget definition
+        
+		// container for buttons at bottom of dialog (info icon button, OK button and Cancel button)
+        EVEGenericPanelWidget
+        (
+            kInvalidWidgetID,    // WidgetId
+            0                    // RsrcId
+            0,                   // Widget EVE Info
+            kBindNone,           // Frame binding
+            Frame(0,0,440,50)    // Frame
+            kTrue,               // Visible
+            kTrue,               // Enabled
+            kEVEAlignFill | kEVERegularSpaceAfter | kEVEArrangeChildrenInRow,
+            
+            {
+                EVERollOverIconButtonWidget
+                (
+                    // (CHANGED: Was ADBEIconSuiteButtonWidget) 
+                    // ADBEIconSuiteButtonView properties
+                    kBscSlDlgIconSuiteWidgetID,       // WidgetID
+                    kSDKDefIconInfoResourceID,        // Icon resource ID 
+                    kBscSlDlgPluginID,                // Plug-in ID
+                    kBindNone,                        // Binding
+                    Frame(0,0,0,0)                    // Frame (l,t,r,b)
+                    kTrue, kTrue,                     // Visible, Enabled
+                    kADBEIconSuiteButtonDrawWellType, // PNGIconAttributes, new for InDesign 3.0
+                    
+                    kEVEJumboSpaceAfter,
+                ),
+                
+                // Adding a dummy widget to align other widgets properly
+                EVEStaticTextWidget
+                (
+                    kInvalidWidgetID,                // WidgetId
+                    kSysStaticTextPMRsrcId,          // RsrcId
+                    kBindNone,                       // Frame Binding
+                    Frame(0,0,130,0)                 // Frame
+                    kTrue, kFalse, kAlignRight,      // Visible, Enabled, Alignment
+                    kDontEllipsize, kTrue,           // Ellipsize style, Convert ampersands
+                    "",
+                    0 ,
+                    kEVEJumboSpaceAfter, 
+                ),
+#ifdef WINDOWS
+                EVEDefaultButtonWidget
+                (
+                    kOKButtonWidgetID,            // WidgetID 
+                    kSysButtonPMRsrcId,           // RsrcID
+                    kBindNone,                    // Binding
+                    Frame(0,0,0,0)                // Frame (l,t,r,b)
+                            
+                    kTrue, kTrue,                 // Visible, Enabled
+                    kSDKDefOKButtonApplicationKey,// Button text
+                            
+                    kEVERegularSpaceAfter,
+                ),
+
+                EVECancelButtonWidget                
+                (
+                    kCancelButton_WidgetID,               // WidgetID
+                    kSysButtonPMRsrcId,                   // RsrcID
+                    kBindNone,                            // Binding
+                    Frame(0,0,0,0)                        // Frame (l,t,r,b)
+                            
+                    kTrue, kTrue,                         // Visible, Enabled
+                    kSDKDefCancelButtonApplicationKey,    // Button name
+                    kTrue,                                // Change to Reset on option-click.
+                            
+                    kEVERegularSpaceAfter,
+                ),
+#else
+                EVECancelButtonWidget                
+                (
+                    kCancelButton_WidgetID,               // WidgetID
+                    kSysButtonPMRsrcId,                   // RsrcID
+                    kBindNone,                            // Binding
+                    Frame(0,0,0,0)                        // Frame (l,t,r,b)
+                            
+                    kTrue, kTrue,                         // Visible, Enabled
+                    kSDKDefCancelButtonApplicationKey,    // Button name
+                    kTrue,                                // Change to Reset on option-click.
+                            
+                    kEVERegularSpaceAfter,
+                ),
+                
+                EVEDefaultButtonWidget
+                (
+                    kOKButtonWidgetID,                // WidgetID 
+                    kSysButtonPMRsrcId,               // RsrcID
+                    kBindNone,                        // Binding
+                    Frame(0,0,0,0)                    // Frame (l,t,r,b)
+                            
+                    kTrue, kTrue,                     // Visible, Enabled
+                    kSDKDefOKButtonApplicationKey,    // Button text
+                            
+                    kEVERegularSpaceAfter,
+                ),
+
+#endif                        
+            }  // End of Eve generic panel child widgets
+        ), // End of Eve generic panel widget definition
+    },
+    
+    kEVEArrangeChildrenInColumn | kEVELargeMargin,
+};
+
+/*
+// ------------Yin Panel resources.--------------
+*/
+
+/*
+// IDList and pair for the YinPanel
+*/
+resource IDList (kYinPanelCreatorResourceID)
+{
+    {
+        kBscSlDlgService,
+    },
+};
+
+// Specifies which resource to use in creating the
+// panel, depending on which dialog the panel is going into.
+resource IDListPair (kYinPanelCreatorResourceID)
+{
+    {
+        kBscSlDlgService, kYinPanelResourceID, kBscSlDlgPluginID,
+    },
+};
+
+/*
+// Yin Panel LocaleIndex.
+*/
+resource LocaleIndex (kYinPanelResourceID)
+{
+    kViewRsrcType,
+    {
+        kWildFS,    k_Wild, kYinPanelResourceID
+    }
+};
+
+/*
+// Type definition.
+*/
+type YinPanelWidget(kViewRsrcType) : PrimaryResourcePanelWidget(ClassID = kYinPanelBoss) {
+    WidgetEveInfo;
+};
+
+/*
+// Panel definition.
+// This view is not localized: therefore, it can reside here.
+// However, if you wish to localize it, it is recommended to 
+// locate it in one of the localized framework resource files 
+// (i.e. BscSlDlg_enUS.fr etc.) and update your Panel 
+// LocaleIndex accordingly.
+*/
+resource YinPanelWidget (kYinPanelResourceID)
+{
+    __FILE__, __LINE__,
+    kYinPanelWidgetID,      // WidgetId
+    kPMRsrcID_None,         // RsrcId
+    kBindNone,              // Frame binding
+    Frame(0,0,250,190)      // Frame
+    kTrue,                  // Visible
+    kTrue,                  // Enabled
+    kYinPanelTitleKey,      // Panel name
+    {
+        EVEStaticTextWidget
+        (
+            kYinPanelStaticTextWidgetID,       // Widget ID
+            kSysStaticTextPMRsrcId,            // RsrcID
+            kBindNone,                         // Binding
+            Frame(15,15,235,115)
+            kTrue, kTrue, kAlignLeft,          // Visible, Enabled, Alignment
+            kDontEllipsize, kTrue,
+            kYinPanelStaticTextKey,            // Text
+            0                                  // WidgetId for associated control for shortcut focus
+            
+            kEVERegularSpaceAfter,
+        ),
+    }
+    
+    kEVEArrangeChildrenInRow | kEVELargeMargin,
+};
+
+/*
+// ------------Yang Panel resources.--------------
+*/
+
+/*
+// IDList and pair for the YangPanel
+*/
+resource IDList (kYangPanelCreatorResourceID)
+{
+    {
+        kBscSlDlgService,
+    },
+};
+
+// Specifies which resource to use in creating the
+// panel, depending on which dialog the panel is going into.
+resource IDListPair (kYangPanelCreatorResourceID)
+{
+    {
+        kBscSlDlgService, kYangPanelResourceID, kBscSlDlgPluginID,
+    },
+};
+
+/*
+// Yang Panel LocaleIndex.
+*/
+resource LocaleIndex (kYangPanelResourceID)
+{
+    kViewRsrcType,
+    {
+        kWildFS,    k_Wild, kYangPanelResourceID
+    }
+};
+
+/*
+// Type definition.
+*/
+type YangPanelWidget(kViewRsrcType) : PrimaryResourcePanelWidget(ClassID = kYangPanelBoss) {
+    WidgetEveInfo;
+};
+
+/*
+// Panel definition.
+// This view is not localized: therefore, it can reside here.
+// However, if you wish to localize it, it is recommended to 
+// locate it in one of the localized framework resource files 
+// (i.e. BscSlDlg_enUS.fr etc.) and update your Panel 
+// LocaleIndex accordingly.
+*/
+resource YangPanelWidget (kYangPanelResourceID)
+{
+    __FILE__, __LINE__,
+    kYangPanelWidgetID,     // WidgetId
+    kPMRsrcID_None,         // RsrcId
+    kBindNone,              // Frame binding
+    Frame(0,0,250,190)      // Frame
+    kTrue,                  // Visible
+    kTrue,                  // Enabled
+    kYangPanelTitleKey,     // Panel name
+    {
+        EVEStaticTextWidget
+        (
+            kYangPanelStaticTextWidgetID,    // Widget ID
+            kSysStaticTextPMRsrcId,          // RsrcID
+            kBindNone,                       // Binding
+            Frame(15,15,235,115)
+            kTrue, kTrue, kAlignLeft,        // Visible, Enabled, Alignment
+            kDontEllipsize, kTrue,
+            kYangPanelStaticTextKey,         // Text
+            0                                // WidgetId for associated control for shortcut focus
+            
+            kEVERegularSpaceAfter,
+        ),
+    }
+    
+    kEVEArrangeChildrenInRow | kEVELargeMargin,
+};
+
+type BscSlDlgTreeNodeWidget (kViewRsrcType) : PrimaryResourcePanelWidget (ClassID = kTreeNodeWidgetBoss){
+};
+
+resource BscSlDlgTreeNodeWidget (kBscSlDlgTreeNodeRsrcID)
+{
+    __FILE__, __LINE__,
+    kBscSlDlgTreeNodeWidgetID, kPMRsrcID_None,                // WidgetId, RsrcId
+    kBindLeft | kBindRight,
+    Frame(0,0,149,18),                                        // Frame
+    kTrue, kTrue,                                             // Visible, Enabled
+    "",                                                       // Panel name
+    {
+        InfoStaticTextWidget
+        (
+            kBscSlDlgTreeNodeNameWidgetID,
+            kSysStaticTextPMRsrcId,                           // WidgetId, RsrcId
+            kBindNone,                                        // Frame binding
+            Frame(3,1,120,17)                                 // Frame
+            kTrue, kTrue, kAlignLeft,                         // Visible, Enabled, Alignment
+            kDontEllipsize, kTrue,                            // Ellipsize style, Convert ampersands
+            "",
+            0,
+            kDialogWindowSmallFontId, kDialogWindowSmallHiliteFontId,
+        ),
+    }
+}
+
+#endif // __ODFRC__
+
+#include "BscSlDlg_enUS.fr"
+#include "BscSlDlg_jaJP.fr"
+
+// End, BscSlDlg.fr.

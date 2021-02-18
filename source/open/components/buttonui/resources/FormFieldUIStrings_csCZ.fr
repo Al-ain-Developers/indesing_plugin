@@ -1,0 +1,357 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "StringTable.fh"
+
+#include "FormFieldUIDefs.h"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+//twright 12/11/2000 Removed left-over strings from group strings.
+//not sure if button/form is going to need lock warning...
+
+resource StringTable (kFormFieldUIStringsRsrcID + index_csCZ)
+{
+	k_csCZ,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{
+		// ----- Menu strings
+		"ButtonsActionsPopup",						"Nabídka akcí tlačítek",
+		
+		"$$$/Menu/AppearancePanelPopup",	"Nabídka panelu tlačítek",	
+		"$$$/Menu/Interactive",				"Interakti&vní", 
+		"$$$/Menu/FormField",				"&Formulář", 
+		"$$$/Menu/About",					"&Co je zásuvný modul Formulář", 
+		"$$$/Menu/CreateButton",			"&Převést na tlačítko", 
+		"$$$/Menu/CreateCheckBox",			"&Převést na zaškrtávací pole",
+		"$$$/Menu/CreateComboBox",			"&Převést na kombinované pole", 
+		"$$$/Menu/CreateListBox",			"&Převést na seznam", 
+		"$$$/Menu/CreateRadioButton",		"&Převést na přepínací tlačítko", 
+		"$$$/Menu/CreateSignatureField",	"&Převést na pole podpisu", 
+		"$$$/Menu/CreateTextField",			"&Převést na textové pole", 
+		"$$$/Menu/DestroyButton",			"&Převést na objekt", 
+		"$$$/Menu/FormFieldSettings",		"&Volby tlačítka...", 
+		"$$$/Menu/NewState",				"Nový stav", 
+		"$$$/Menu/DeleteState",				"Odstranit stav", 
+		"$$$/Menu/DeleteStates",			"Odstranit stavy",
+		"$$$/Menu/PlaceIntoState",			"Umístit obsah do stavu...",
+		"$$$/Menu/DeleteStateContent",		"Odstranit obsah ze stavu",
+		"$$$/Menu/AppearancePanelPrefs",	"Volby panelu...",
+		"$$$/Menu/StateOptions",			"Volby stavu...",
+		"$$$/Menu/SetTabOrder",				"&Nastavit pořadí polí...",
+		"$$$/Menu/SetCalculationOrder",		"Nastavit pořadí výpočtů...",
+		"$$$/Menu/States",					"T&lačítka a formuláře",
+		
+		"$$$/Menu/Go To Page",				"Přejít na stránku",
+		"$$$/Menu/Go To First Page",		"Přejít na první stránku",
+		"$$$/Menu/Go To Anchor",			"Najít cílové místo",
+		"$$$/Menu/Go To Last Page",			"Přejít na poslední stránku",
+		"$$$/Menu/Go To Next Page",			"Přejít na následující stránku",
+		"$$$/Menu/Go To Next View",			"Přejít na následující zobrazení",
+		"$$$/Menu/Go To Previous Page",		"Přejít na předcházející stránku",
+		"$$$/Menu/Go To Previous View",		"Přejít na předcházející zobrazení",
+		"$$$/Menu/Go To URL",				"Přejít na URL",
+		"$$$/Menu/Movie",					"Video",
+		"$$$/Menu/Open File",				"Otevřít soubor",
+		"$$$/Menu/Show/Hide Buttons",		"Zobrazit/skrýt tlačítka a formuláře",
+		"$$$/Menu/Sound",					"Zvuk",
+		"$$$/Menu/View Zoom",				"Nastavit zvětšení",
+		"$$$/Menu/Animation",				"Animace",
+		"$$$/Menu/SwitchToMSOState",		"Přejít na stav",
+		"$$$/Menu/SwitchToNextMSOState",	"Přejít na další stav",
+		"$$$/Menu/SwitchToPrevMSOState",	"Přejít na předchozí stav",
+		"$$$/Menu/EPUBOnly",					"Pouze EPUB",
+		"$$$/Menu/PDFOnly",					"Pouze PDF",
+		"$$$/Menu/Print Form",				"Tisknout formulář",
+		"$$$/Menu/Clear Form",				"Vymazat formulář",
+		"$$$/Menu/Submit Form",				"Odeslat formulář",
+		
+		"$$$/Menu/FormFieldSettings/ButtonLibrary",			"Vzorová tlačítka a formuláře",	// Name of menu item in Buttons Panel flyout that opens a library of Sample Buttons
+
+		"$$$/Menu/FormFieldSettings/PDFVis/Visible",		"Viditelné v PDF",
+		"$$$/Menu/FormFieldSettings/PDFVis/Hidden",			"Skryté v PDF",
+		"$$$/Menu/FormFieldSettings/PDFVis/VisibleNoPrint",	"Viditelné v PDF, ale netištěné",
+		"$$$/Menu/FormFieldSettings/PDFVis/HiddenButPrint",	"Skryté v PDF, ale tištěné",	
+		"$$$/Menu/ButtonPDFOptions", "Volby PDF...",
+
+		"$$$/Menu/ResetAllButtons",	"Obnovit všechna tlačítka do normálního stavu",	
+			
+		"PageItems",						"Položky stránky", 
+		"$$$/Menu/Trace Geometry",			"Obkreslit geometrii", 
+
+		"$$$/Menu/FormFieldOptions/Button",					"Tlačítko",
+		"$$$/Menu/FormFieldOptions/Check Box",				"Zaškrtávací pole",
+		"$$$/Menu/FormFieldOptions/Combo Box",				"Kombinované pole",
+		"$$$/Menu/FormFieldOptions/List Box",				"Seznam",
+		"$$$/Menu/FormFieldOptions/Radio Button",			"Přepínací tlačítko",
+		"$$$/Menu/FormFieldOptions/Signature Field",		"Pole podpisu",
+		"$$$/Menu/FormFieldOptions/Text Field",				"Textové pole",
+
+		"InteractiveContextMenu",			"Interaktivně",
+	
+		// ----- Dialog strings
+		"$$$/Dialog/CreateFormField/Title",		"Pole formuláře", 
+		"$$$/Dialog/CreateFormField/Options",	"Volby",
+		"$$$/Dialog/CreateFormField/Width",		"Šíř&ka:",
+		"$$$/Dialog/CreateFormField/Height",	"&Výška:",
+
+		"$$$/Dialog/FormFieldSettings/Title",				"Všeobecné", 
+		"$$$/Dialog/FormFieldSettings/FieldType",			"Typ pole:",
+		"$$$/Dialog/FormFieldSettings/FieldTypeSetting",	"",
+		"$$$/Dialog/FormFieldSettings/Name",				"&Název:",
+		"$$$/Dialog/FormFieldSettings/PDFVisibility",		"&Viditelnost v PDF:",
+		"$$$/Dialog/FormFieldSettings/PDFVis/Visible",		"Viditelné",
+		"$$$/Dialog/FormFieldSettings/PDFVis/Hidden",		"Skryté",
+		"$$$/Dialog/FormFieldSettings/PDFVis/VisibleNoPrint",	"Viditelné, ale netištěné",
+		"$$$/Dialog/FormFieldSettings/PDFVis/HiddenButPrint",	"Skryté, ale tištěné",
+		"$$$/Dialog/FormFieldSettings/ReadOnly",			"Pouze ke čtení",
+		"$$$/Dialog/FormFieldSettings/Export",				"Exportovat",
+		"$$$/Dialog/FormFieldSettings/RequiredForExport",	"Vyžadované pro export",
+		"$$$/Dialog/FormFieldSettings/Description",			"&Popis:",
+		"$$$/Dialog/FormFieldSettings/ExportName",			"&Název pro export:",
+		"$$$/Dialog/FormFieldSettings/Common Settings",		"Společná nastavení",
+		"$$$/Dialog/FormFieldSettings/Options",				"Volby",
+		"$$$/Dialog/FormFieldSettings/Holder",				"Zásobník nastavení polí",
+
+		"$$$/Dialog/FormOptions/Title",						"Volby tlačítka",
+		"$$$/Dialog/FormFieldSettings/Options",				"Volby",
+		
+		"$$$/Dialog/FormFieldSettings/ExportValue",			"Exportní hodnota:",
+		"$$$/Dialog/FormFieldSettings/DefaultIsChecked",	"Výchozí je zaškrtnuté",
+		"$$$/Dialog/FormFieldSettings/DefaultIsSelected",	"Výchozí je vybrané",
+		"$$$/Dialog/FormFieldSettings/Default",				"Výchozí:",
+
+		"$$$/Dialog/FormFieldSettings/Multiline",				"Víceřádkové",
+		"$$$/Dialog/FormFieldSettings/Scroll",					"Rolovací",
+		"$$$/Dialog/FormFieldSettings/LimitOf",					"Omezit na",
+		"$$$/Dialog/FormFieldSettings/Characters",				"znaků",
+		"$$$/Dialog/FormFieldSettings/Password",				"Heslo",
+		"$$$/Dialog/FormFieldSettings/FieldForFileSelection",	"Pro výběr souboru",
+		"$$$/Dialog/FormFieldSettings/SpellCheck",				"Kontrola pravopisu",
+		
+		"$$$/Dialog/FormFieldSettings/Item",					"Položka:",
+		"$$$/Dialog/FormFieldSettings/Add",						"Přidat",
+		"$$$/Dialog/FormFieldSettings/Delete",					"Odstranit",
+		"$$$/Dialog/FormFieldSettings/Change",					"Změnit",
+		"$$$/Dialog/FormFieldSettings/SortItems",				"Uspořádat položky",
+		"$$$/Dialog/FormFieldSettings/AllowMultipleSelection",	"Povolit vícenásobný výběr",
+		"$$$/Dialog/FormFieldSettings/Editable",				"Povolit úpravy",
+
+		"$$$/Dialog/FormFieldSettings/Align",					"Zarovnání:",
+		"$$$/Dialog/FormFieldSettings/Align/Left",				"Doleva",
+		"$$$/Dialog/FormFieldSettings/Align/Center",			"Na střed",
+		"$$$/Dialog/FormFieldSettings/Align/Right",				"Doprava",
+
+		"$$$/Dialog/FormFieldSettings/Font:",					"&Písmo:",
+		"$$$/Dialog/FormFieldSettings/Size:",					"&Velikost:",
+		"$$$/Dialog/FormFieldSettings/Auto",					"Automaticky",
+
+		"$$$/Dialog/FormFieldSettings/SelectedIsDefault",		"Vybraná položka je výchozí",
+		
+		"$$$/Dialog/FormFieldUI/DeleteAlert",					"Při odstranění stavu se odstraní také s ním spojený obsah.  Přesto odstranit stav?",
+		"$$$/Dialog/FormFieldUI/DestroyAlert",					"Tato akce odstraní obsah spojený s jinými stavy pole formuláře. Chcete přesto pokračovat?",
+		"$$$/Dialog/FormFieldUI/DeleteContentAlert",			"Opravdu chcete odstranit obsah spojený s tímto stavem?",
+		"$$$/Dialog/FormFieldUI/StyleChangeAlert",				"Tato akce odstraní obsah spojený s existujícími stavy pole formuláře.  Chcete přesto pokračovat?",
+		"$$$/Dialog/FormFieldUI/StyleChangeFailed",				"Aplikování vybraného stylu vzhledu na pole formuláře se nezdařilo.",
+
+		/* These are not visible, they are names of subpanels... */
+		
+		"$$$/Dialog/FormFieldSettings/CheckBox",				"Volby zaškrtávacího pole ",	
+		"$$$/Dialog/FormFieldSettings/RadioButton",				"Volby přepínacího tlačítka",	
+		"$$$/Dialog/FormFieldSettings/TextField",				"Volby textového pole",	
+		"$$$/Dialog/FormFieldSettings/ListBox",					"Volby pole seznamu",	
+		
+		"$$$/Dialog/About/Description",						"Zásuvný modul Formuláře, verze 1.0\n\n(c) 2001 Adobe Systems Incorporated. Všechna práva vyhrazena.",
+
+		"$$$/Dialog/CmdName/CreateButton",					"Převést na tlačítko",
+		"$$$/Dialog/CmdName/DestroyButton",					"Převést na objekt",
+		"$$$/Dialog/CmdName/ChangeFormSettings",			"Změnit nastavení tlačítka",
+
+		"$$$/Dialog/TextColor/Title",						"Barva textu", 
+		"$$$/Dialog/Button/Color...",						"Barva písma...", 
+
+		"$$$/Dialog/AppearancePanelPrefs/Title",			"Volby panelu", 
+		"$$$/Dialog/AppearancePanelPrefs/ThumbnailSize",	"Velikost miniatur", 
+		"$$$/Dialog/AppearancePanelPrefs/None",				"Žádné", 
+		
+		
+		"$$$/Dialog/StateOptions/Title",					"Volby stavu", 
+		"$$$/Dialog/StateOptions/State",					"Stav:", 
+		"$$$/Dialog/StateOptions/Enable",					"Zapnout stav", 
+
+		"$$$/Dialog/CalculationOrder/Title",				"Pořadí výpočtů", 
+		"$$$/Dialog/TabOrder/Title",						"Pořadí polí", 
+		"$$$/Dialog/Order/MoveUp",							"Posunout na&horu", 
+		"$$$/Dialog/Order/MoveDown",						"Posunout &dolů",
+
+		"$$$/Dialog/ButtonPDFOptions/Title",				"Volby PDF",
+		"$$$/Dialog/ButtonPDFOptions/InitialAppearance",	"Počáteční vzhled:",
+		"$$$/Dialog/ButtonPDFOptions/Visible",				"&Viditelné",
+		"$$$/Dialog/ButtonPDFOptions/Hidden",				"&Skrytý",
+		"$$$/Dialog/ButtonPDFOptions/Printable",			"&Tisknutelné",
+		"$$$/Dialog/ButtonPDFOptions/Description",			"&Popis:",
+		
+		// ----- Window strings
+		
+		// ----- Panel strings
+
+		"$$$/Panel/FormFieldSettings/Action Data Holder",	"Zásobník dat akcí",
+		"$$$/Panel/FormFieldSettings/+",					"+",
+		"$$$/Panel/FormFieldSettings/Event:",				"Událost:",
+		"$$$/Panel/FormFieldSettings/Actions:",				"Akce:",
+		"$$$/Panel/FormFieldSettings/URL:",					"URL:",
+		"$$$/Panel/FormFieldSettings/Mail to:",				"Odeslat e-mailem na:",
+		"$$$/Panel/Action",									"Akce",
+		"$$$/Panel/Empty Action",							"[Nepřidány žádné akce]",
+		"$$$/Panel/StatesListBoxLabel/States",				"Vzhled",
+		"$$$/Panel/States",									"Tlačítka a formuláře",
+		"$$$/Panel/FormFieldSettings/FieldType",			"Typ:",
+		"$$$/Panel/FormFieldSettings/Name",					"Název:",
+		"$$$/Panel/ShowHide/Visibility:",					"Viditelnost:",
+		"$$$/Panel/GoToPage/Page:",							"Stránka:",
+
+		"$$$/Panel/Normal",									"[Normální]",
+		"$$$/Panel/Over",									"[Myš nad]",
+		"$$$/Panel/Down",									"[Klepnutí]",
+
+		"$$$/Panel/Off",									"[Normální vypnuto]",
+		"$$$/Panel/On",										"[Normální zapnuto]",
+
+		"$$$/Panel/RolloverOff",							"[Přejetí myší vypnuto]",
+		"$$$/Panel/RolloverOn",								"[Přejetí myší zapnuto]",
+		"$$$/Panel/DowmOff",								"[Kliknutí vypnuto]",
+		"$$$/Panel/DownOn",									"[Kliknutí zapnuto]",
+
+		"$$$/Panel/CmdName/FormFieldName",					"Název tlačítka",
+		"$$$/Panel/CmdName/FormFieldStyle",					"Vzhled tlačítka",
+		
+		"$$$/Panel/FormFieldSettings/Appearance",			"Vzhled:",
+		"$$$/Panel/PDFOptions",								"Volby PDF",
+		"$$$/Panel/Required",								"Vyžadovaný",
+		"$$$/Panel/Printable",								"Tisknutelné",
+		"$$$/Panel/Description",							"Popis:",
+		"$$$/Panel/SelectedByDefault",						"Vybráno jako výchozí",
+		"$$$/Panel/Multiline",								"Víceřádkové",
+		"$$$/Panel/ListItems",								"Seznam položek",
+		"$$$/Panel/MultipleSelection",						"Výběr více položek",
+		"$$$/Panel/FontSize",								"Velikost písma:",
+		"$$$/Panel/Font",									"Písmo:",
+		"$$$/Panel/AutoSize",								"Automaticky",
+		"$$$/Panel/SortItems",								"Uspořádat položky",
+		"$$$/Panel/MERTLOption",							"Zprava doleva",
+		"$$$/Panel/ExportValue",							"Hodnota tlačítka:",
+		 
+		"$$$/Popup/Separator",								"-",
+		
+		"$$$/Dialog/Behaviors/Exit/No Data for Exit Behavior", "",
+
+		// ----- Tips strings
+
+		"$$$/Tip/StateEye",				"Zapnout/vypnout volitelný stav při exportu",
+		"$$$/Tip/StateThumbnail",		"Zmenšené zobrazení tohoto stavu",
+		"$$$/Tip/Show",					"Zobrazit",
+		"$$$/Tip/Hide",					"Skrýt ",
+		"$$$/Tip/Ignore",				"Ignorovat",
+		"$$$/Tip/Delete Selected Action",	"Odstranit vybranou akci",
+		"$$$/Tip/Add New Action",		"Přidat novou akci pro vybranou událost",
+		"$$$/Tip/DeleteState",			"Odstranit volitelný stav a jeho obsah",
+		"$$$/Tip/Convert To Button",		"Převést na tlačítko",
+		"$$$/Tip/Convert To Object",		"Převést na objekt",
+		"$$$/Tip/DefaultChoice",		"Vyberte ze seznamu položku, kterou chcete použít jako výchozí volbu. Chcete-li nastavit vlastní pořadí seřazení, odstraňte zaškrtnutí volby Uspořádat položky a přetáhněte položky do požadovaných pozic.",
+        "$$$/Tip/MissingFontToolTip",				"Chybějící písmo v poli formuláře. Klikněte na Najít písma.",
+
+		// ----- Error strings
+
+		"$$$/Error/YouNeedToSpecifyAName", "Musíte zadat název.",
+		"$$$/Error/YouNeedToSpecifyANonBlankName", "Musíte zadat platný název.",
+		"$$$/Error/YouNeedToSpecifyANonBlankNameOrNoName", "Musíte zadat platný název nebo nezadat žádný název.",
+		"$$$/Error/YouNeedToSpecifyAnExportValue", "Musíte zadat exportní hodnotu.",
+		"$$$/Error/YouNeedToSpecifyANonBlankExportValue", "Musíte zadat platnou exportní hodnotu.",
+		"$$$/Error/YouNeedToSpecifyAUniqueName", "Tento název stavu se již používá. Zadejte prosím jiný.",
+		"$$$/Error/YouNeedToSpecifyAValidFontSize", "Zadejte hodnotu od 0 do 300 nebo hodnotu Automaticky.",
+		
+		// ----- Misc strings
+
+		"$$$/Command/DeleteStates",	"Odstranit stavy",
+		"$$$/CmdName/DeleteStateContent",	"Odstranit obsah stavu",
+		"$$$/Panel/CmdName/MSOName",		"Název vícestavového objektu",
+		
+		// ----- MultiStateObject Panel strings
+				
+		"$$$/Menu/MSOPanel", "&Stavy objektu",
+		"$$$/Panel/MSOPanel", "Stavy objektů",
+		"$$$/Panel/MSOPanel/ObjectName", "Název objektu:",
+#ifdef MACINTOSH
+		"$$$/Panel/MSOPanel/MixedSelection", "Klepnutím na tlačítko Nový se každý objekt stane samostatným stavem. (Option-klepnutí zachová objekty ve stejném stavu.)",
+		"$$$/Panel/MSOPanel/MSOAndMixedSelection", "Klepnutím na tlačítko Nový se každý objekt stane novým stavem ve vícestavovém objektu \"^1\". (Option-klepnutí zachová objekty ve stejném stavu.)\n\nKlepnutím na tlačítko Přidat vložíte objekty do viditelného stavu \"^2\".",
+#else
+		"$$$/Panel/MSOPanel/MixedSelection", "Klepnutím na tlačítko Nový se každý objekt stane samostatným stavem. (Alt-klepnutí zachová objekty ve stejném stavu.)",
+		"$$$/Panel/MSOPanel/MSOAndMixedSelection", "Klepnutím na tlačítko Nový se každý objekt stane novým stavem ve vícestavovém objektu \"^1\". (Alt-klepnutí zachová objekty ve stejném stavu.)\n\nKlepnutím na tlačítko Přidat vložíte objekty do viditelného stavu \"^2\".",
+#endif
+		
+		"$$$/Menu/MSOPanelPopup", "Nabídka panelu Stavy objektu",	
+		"$$$/Menu/MSOPanel/NewState", "Nový stav",
+		"$$$/Menu/MSOPanel/DeleteState", "Odstranit stav",
+		"$$$/Menu/MSOPanel/AddToState", "Přidat objekty do stavu",
+		"$$$/Menu/MSOPanel/PasteIntoState", "Vložit do stavu",
+		"$$$/Menu/MSOPanel/ReleaseState", "Uvolnit stav do objektů",
+		"$$$/Menu/MSOPanel/ReleaseAllStates", "Uvolnit všechny stavy do objektů",
+		"$$$/Menu/MSOPanel/ResetAllMSOs", "Obnovit všechny vícestavové objekty do prvního stavu",
+		"$$$/Menu/MSOPanel/Options", "Volby panelu...",
+		"$$$/Menu/MSOPanel/ContextMenu", "Kontextová nabídka panelu Stavy objektu",
+		"$$$/Menu/MSOPanel/ReleaseStateContextMenu", "Uvolnit \"^1\" do objektů",
+		"$$$/Menu/MSOPanel/DeleteStateContextMenu", "Odstranit \"^1\"",
+		"$$$/Menu/MSOPanel/PasteIntoStateContextMenu", "Vložit do \"^1\"",
+		"$$$/Menu/MSOPanel/HiddenUntilTriggered", "Skrytý do spuštění",
+	
+		"$$$/Tip/MSOPanel/StateAnimated", "Objekt v tomto stavu je animovaný.",
+		"$$$/Tip/MSOPanel/NewMSO", "Převést výběr na vícestavový objekt",
+		"$$$/Tip/MSOPanel/NewState", "Vytvořit nový stav",
+		"$$$/Tip/MSOPanel/DeleteState", "Odstranit vybraný stav",
+		"$$$/Tip/MSOPanel/MSOIsSelected", "Je vybrán vícestavový objekt. Pokud ho transformujete, transformují se všechny stavy.",
+		"$$$/Tip/MSOPanel/MSOIsNotSelected", "Je vybrán stav. Klepnutím vyberete vícestavový objekt.",
+		"$$$/Tip/MSOPanel/MSOStateIsSelected", "Tento stav je vybrán.",
+		"$$$/Tip/MSOPanel/MSOStateContentIsSelected", "Je vybrán obsah uvnitř tohoto stavu. Klepnutím na řádek vyberete tento stav.",
+		"$$$/Tip/MSOPanel/MSOStateRowMSOIsSelected", "Je vybrán vícestavový objekt. Klepnutím na řádek přepnete na tento stav a vyberete ho.",
+		"$$$/Tip/MSOPanel/MSOActiveStateRowMSOIsSelected", "Je vybrán vícestavový objekt. Klepnutím na řádek vyberete tento stav.",
+		"$$$/Tip/MSOPanel/MSOAnotherStateIsSelected", "Klepnutím na řádek přepnete a vyberete tento stav.",
+		"$$$/Tip/MSOPanel/PasteIntoState", "Vložit kopírované objekty do vybraného stavu",
+		"$$$/Tip/MSOPanel/AddToState", "Přidat objekty do viditelného stavu",
+	
+		"$$$/Dialog/MSOPanel/ReleaseAlert", "Vícestavové objekty musí mít nejméně dva stavy. Tato akce odstraní vícestavový objekt z dokumentu. Všechny stávající objekty zůstanou ve svých stávajících polohách jako objekty s jedním stavem.",
+		"$$$/Dialog/MSOPanel/ReleaseAllAlert", "Tato akce způsobí odebrání vícestavového objektu z dokumentu. Všechny stávající objekty zůstanou ve svých stávajících polohách jako objekty s jedním stavem.",
+		"$$$/Dialog/MSOPanel/DeletesMSOAlert", "Vícestavové objekty musí mít nejméně dva stavy. Tato akce odstraní vícestavový objekt z dokumentu. Objekty spojené se zbývajícím stavem zůstanou ve svých stávajících polohách jako objekty s jedním stavem.",
+		
+		"$$$/Panel/MSOPanel/StatusOne", " objekt ve stavu ^1",
+		"$$$/Panel/MSOPanel/Status", " objekty ve stavu ^1",
+		
+		"$$$/Panel/MSOPanel/StatusMSOSelected", "Všechny stavy jsou vybrané",
+		"$$$/Panel/MSOPanel/StatusStateSelected", "Vybraný stav",
+		"$$$/Panel/MSOPanel/StatusStateContentSelected", "Objekt ve vybraném stavu",
+
+		// Command strings		
+		"$$$/Command/CheckBox", "Převést na zaškrtávací pole",
+		"$$$/Command/ComboBox", "Převést na kombinované pole",
+		"$$$/Command/ListBox", "Převést na seznam",
+		"$$$/Command/RadioButton", "Převést na přepínací tlačítko",
+		"$$$/Command/SignatureField", "Převést na pole podpisu",
+		"$$$/Command/TextField", "Převést na textové pole",
+}
+};
+
+#endif // __ODFRC__

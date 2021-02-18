@@ -1,0 +1,561 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/sdksamples/customconditionaltextui/CusCondTxtUI.fr $
+//  
+//  Owner: Adobe Developer Technologies
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "VCPlugInHeaders.h"
+
+// General includes:
+#include "MenuDef.fh"
+#include "ActionDef.fh"
+#include "ActionDefs.h"
+#include "AdobeMenuPositions.h"
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "StringTable.fh"
+#include "ObjectModelTypes.fh"
+#include "ShuksanID.h"
+#include "ActionID.h"
+#include "CommandID.h"
+#include "WorkspaceID.h"
+#include "WidgetID.h"
+#include "BuildNumber.h"
+#include "PanelList.fh"
+#include "ConditionalTextID.h"
+#include "ConditionalTextScriptID.h"
+#include "ScriptingID.h"
+#include "ScriptInfoTypes.fh"
+#include "TreeViewDefs.h"
+#include "TipsID.h"
+#include "PrintID.h"
+
+#include "InterfaceColorDefines.h"
+#include "IControlViewDefs.h"
+#include "SysControlIDs.h"
+#include "Widgets.fh"	// for PalettePanelWidget or DialogBoss
+#include "GenericID.h"
+#include "ShuksanID.h"
+#include "TextID.h"
+
+
+#include "PlugInModel_UIAttributes.h"
+// Project includes:
+#include "CusCondTxtUIID.h"
+#include "CusCondTxtScriptingDefs.h"
+#include "CusCondTxtRezDefs.h"
+#include "CusCondTxtID.h"
+
+#ifdef __ODFRC__
+
+/*  Plugin version definition.
+*/
+resource PluginVersion (kSDKDefPluginVersionResourceID)
+{
+	kTargetVersion,
+	kCusCondTxtUIPluginID,
+	kSDKDefPlugInMajorVersionNumber, kSDKDefPlugInMinorVersionNumber,
+	kSDKDefHostMajorVersionNumber, kSDKDefHostMinorVersionNumber,
+	kCusCondTxtUICurrentMajorFormatNumber, kCusCondTxtUICurrentMinorFormatNumber,
+	{ kInDesignProduct},
+	{ kWildFS },
+	kUIPlugIn,
+	kCusCondTxtUIVersion
+};
+
+resource PNGA(kIsPrintedIndicatorRsrcID) "CusCond_Print.png"
+resource PNGA(kIsIdmlIndicatorRsrcID) "CusCond_IDML.png"
+
+/*  The ExtraPluginInfo resource adds extra information to the Missing Plug-in dialog
+	that is popped when a document containing this plug-in's data is opened when
+	this plug-in is not present. These strings are not translatable strings
+	since they must be available when the plug-in isn't around. They get stored
+	in any document that this plug-in contributes data to.
+*/
+resource ExtraPluginInfo(1)
+{
+	kCusCondTxtUICompanyValue,			// Company name
+	kCusCondTxtMissingPluginURLValue,	// URL 
+	kCusCondTxtMissingPluginAlertValue,	// Missing plug-in alert text
+};
+
+resource ImplementationAlias(1)
+{
+	{
+		kCusCondTxtUIPrintVisibleImpl,	kBoolDataImpl,
+		kCusCondTxtUIIdmlVisibleImpl,		kBoolDataImpl,
+		kCusCondTxtUITurnOffStateImpl,	kBoolDataImpl,
+	}
+};
+
+/* Boss class definition.
+*/
+resource ClassDescriptionTable(kSDKDefClassDescriptionTableResourceID)
+{{{
+	/**
+	 This boss class supports two interfaces:
+	 IActionComponent and IPMPersist.
+	 
+	 @ingroup customconditionaltext
+	*/
+	Class
+	{
+		kCusCondTxtUIActionComponentBoss,
+		kBaseActionComponentBoss,
+		{
+			/** Handle the actions from the menu. */
+			IID_IACTIONCOMPONENT, kCusCondTxtUIActionComponentImpl,
+		}
+	},
+
+	/**
+		 This boss class inherits from an API panel boss class, and
+		 adds an interface to control a pop-up menu on the panel.
+		 The implementation for this interface is provided by the API.
+
+		 
+		 @ingroup customconditionaltext
+	*/
+	Class
+	{
+		kCusCondTxtUIPanelWidgetBoss,
+		kPalettePanelWidgetBoss,
+		{
+			/** The plug-in's implementation of ITextControlData with an exotic IID of IID_IPANELMENUDATA.
+			Implementation provided by the API.
+			*/
+			IID_IPANELMENUDATA, kCPanelMenuDataImpl,
+
+			IID_ICONTROLVIEW, kCusCondTxtUIPanelViewImpl,
+			
+			IID_IINTEGERCONTROLDATA, kCIntegerControlDataImpl,
+		}
+	},
+	
+	Class
+	{
+		kCusCondTxtUIIconBoss,		
+		kIconSuiteWidgetBoss,
+		{	
+			IID_IEVENTHANDLER, kCusCondTxtUIIconEventHandlerImpl,				
+			IID_ITIP, kCusCondTxtUIIconTipImpl,
+		}
+	},
+
+	Class 
+	{
+		kCusCondTxtUITreeViewWidgetBoss,
+		kTreeViewWidgetBoss,
+		{
+			/** Furnishes application framework with widgets as needed */
+			IID_ITREEVIEWWIDGETMGR, kCusCondTxtUITreeViewWidgetMgrImpl,
+			
+			/** Adapts our data model to the needs of the application framework */
+			IID_ITREEVIEWHIERARCHYADAPTER, kCusCondTxtUITreeViewHierarchyAdapterImpl,
+			
+			IID_IOBSERVER, kCusCondTxtUITreeViewObserverImpl,
+		}
+	},	
+	
+	Class
+	{
+		kCusCondTxtUITreeViewNodeWidgetBoss,
+		kTreeNodeWidgetBoss,
+		{
+			IID_ICONTROLVIEW, kTreeNodeControlViewImpl,
+		}
+	},
+
+}}};
+
+/*  Implementation definition.
+*/
+resource FactoryList (kSDKDefFactoryListResourceID)
+{
+	kImplementationIDSpace,
+	{
+		#include "CusCondTxtUIFactoryList.h"
+	}
+};
+
+type CusCondTxtPanelWidget(kViewRsrcType) : PalettePanelWidget(ClassID = kCusCondTxtUIPanelWidgetBoss) 
+{
+	CPanelMenuData;
+};
+
+type CusCondTxtTreeViewWidget(kViewRsrcType) : TreeViewWidget(ClassID = kCusCondTxtUITreeViewWidgetBoss) 
+{
+};
+
+type CusCondTxtTreeNodeWidget(kViewRsrcType) : PrimaryResourcePanelWidget(ClassID = kCusCondTxtUITreeViewNodeWidgetBoss) 
+{
+};
+
+
+type CusCondTxtIconWidget(kViewRsrcType) : IconSuiteWidget(ClassID = kCusCondTxtUIIconBoss)
+{
+};
+
+
+resource CusCondTxtPanelWidget(kSDKDefPanelResourceID + index_enUS)
+{
+	__FILE__, __LINE__,					// Localization macro		
+	kCusCondTxtPanelWidgetID,			// WidgetID 
+	kPMRsrcID_None,						// RsrcID
+	kBindNone,							// Binding (0=none)
+	0, 0, 208, 350,						// Frame: left, top, right, bottom.
+	kTrue, kTrue,						// Visible, Enabled
+	kTrue,								// Erase background
+	kInterfacePaletteFill,				// Erase to color
+	kFalse,								// Draw dropshadow
+	kCusCondTxtUIPanelTitleKey
+	{
+		GenericPanelWithBorderWidget
+		(
+			0, kPMRsrcID_None,
+			kBindTop | kBindLeft | kBindRight,
+			Frame(2,2,209,161)		// Frame
+			kTrue, kTrue,
+			"",
+			{	
+				CusCondTxtTreeViewWidget   //Tree view
+				(
+					kCusCondTxtTreeViewWidgetID, kPMRsrcID_None,	// WidgetId, RsrcId
+					kBindAll,					// Frame binding
+					Frame(0, 2, 207, 159)			// Frame
+					kTrue, kTrue,				// Visible, Enabled
+					kTrue, 						// EraseBeforeDraw
+					kInterfacePaletteFill,	 	// InterfaceColor
+					"CusCondTxt",
+					kHideRootNode,	// Options
+					kFalse,		// Use H Scroll bar
+					kTrue,		// Use V scroll bar
+					20,			// fVScrollButtonIncrement
+					20,			// fVThumbScrollIncrement
+					0,			// fHScrollButtonIncrement
+					0,			// fHThumbScrollIncrement
+					1,			// Items selectable, 0 = No Selection, 1 = Single Selection, 2 = Multiple Selection
+					kFalse,		// Allow children from multiple parents to be selected
+					kTrue,		// Allow discontiguous selection
+					{
+					}
+				),
+			}
+		),
+		
+		ErasablePrimaryResourcePanelWidget
+		( 
+			__FILE__, __LINE__,
+			kCusCondTxtInfoPanelWidgetID,				// WidgetID
+			kPMRsrcID_None,							// RsrcID
+			kBindAll,
+			Frame(0,166,208,350),						// Frame
+			kTrue, kTrue,							// Visible, Enabled
+			kTrue, kInterfacePaletteFill,
+			"",
+			{
+				SeparatorWidget
+				(
+					kInvalidWidgetID, kPMRsrcID_None,                  // WidgetId, RsrcId
+					kBindTop | kBindLeft | kBindRight,                                // Frame binding
+					Frame(-1,0,208,1)    // Frame
+					kTrue, kTrue,                             // Visible, Enabled
+				),
+		
+				StaticMultiLineTextWidget
+				(
+					kCusCondTxtMultiLineStaticTextWidgetID,//WidgetID
+					kPMRsrcID_None, //RsrcID
+					kBindAll,//Binding
+					Frame(2, 4, 192, 173) //Frame
+					kTrue,kTrue,//Visible,Enabled
+					 // Static Text Attributes
+					kAlignLeft,                     // Alignment
+					kDontEllipsize, kTrue,                 // Ellipsize style, Convert ampersands					
+					kCusCondTxtInfoScrollBarWidgetID,//WidgetID of scrollbar
+					kPaletteWindowFontId,//InterfaceFontID
+					3,//Number of pixels between lines
+					2,0,//Inset amount
+					"",//Initial text
+				),
+				
+				ScrollBarWidget
+				(
+					kCusCondTxtInfoScrollBarWidgetID,
+					kSysVScrollBarPMRsrcId,
+					kBindRight | kBindBottom | kBindTop,
+					Frame(193,4,209,173),
+					kTrue, kTrue,
+					0, 100, 0, 1, 1,
+					0, 0, 0, // not accelerate ( threshold, max,increment)
+				),
+			}
+		),
+	}
+	kCusCondTxtUIInternalPopupMenuNameKey		// Popup menu name (internal)	
+};
+
+
+resource CusCondTxtTreeNodeWidget (kCusCondTxtTreeNodeRsrcID + index_enUS)
+{
+	__FILE__, __LINE__,
+	kCusCondTxtTreeNodeWidgetId, kPMRsrcID_None,	// WidgetId, RsrcId
+	kBindLeft | kBindRight,							// Frame binding
+	Frame(0, 0, 194, 20),							// Frame
+	kTrue, kTrue,									// Visible, Enabled
+	"",												// Panel name
+	{		
+		CusCondTxtIconWidget
+		(
+			kConditionTagIsPrintedStateWidgetId, 
+			kIsPrintedIndicatorRsrcID, 
+			kCusCondTxtUIPluginID,			
+			kBindNone,	
+			Frame(3,0,21,19),						// Frame
+			kTrue, kTrue,							// Visible, Enabled
+			kADBEIconSuiteButtonDrawWellType,
+			0,
+		),
+		
+		CusCondTxtIconWidget
+		(
+			kConditionTagIsIdmlStateWidgetId, 
+			kIsIdmlIndicatorRsrcID, 
+			kCusCondTxtUIPluginID,			
+			kBindNone,	
+			Frame(22,0,40,19),						// Frame
+			kTrue, kTrue,							// Visible, Enabled
+			kADBEIconSuiteButtonDrawWellType,
+			0,
+		),	
+		
+		SeparatorWidget
+		(
+			0, kPMRsrcID_None,						// WidgetId, RsrcId
+			kBindNone,
+			Frame(45,0,46,19)						// Frame
+			kTrue, kTrue,							// Visible, Enabled
+		),
+		
+		
+		InfoStaticTextWidget
+		(
+			kTreeNodeNameWidgetID, kPMRsrcID_None,		// WidgetId, RsrcId
+			kBindLeft | kBindRight,								// Frame binding
+			Frame(49,0,180,19)									// Frame
+			kTrue, kTrue, kAlignLeft,kEllipsizeEnd,kTrue,		// Visible, Enabled, ellipsize style, convert ampersands
+			"",													// Initial text
+			0,													// Associated widget for focus
+			kPaletteWindowSystemScriptFontId,					// default font 
+			kPaletteWindowSystemScriptHiliteFontId,				// for highlight state.
+		),
+		
+
+	
+	}
+};
+
+// added to support the list elements in the list box
+resource LocaleIndex (kCusCondTxtTreeNodeRsrcID)
+{
+	kViewRsrcType,
+	{
+		kWildFS, k_Wild, kCusCondTxtTreeNodeRsrcID + index_enUS
+	}
+};
+
+/*  Menu definition.
+*/
+resource MenuDef (kSDKDefMenuResourceID)
+{
+	{
+		// The About Plug-ins sub-menu item for this plug-in.
+		kCusCondTxtUIAboutActionID,			// ActionID (kInvalidActionID for positional entries)
+		kCusCondTxtUIAboutMenuPath,			// Menu Path.
+		kSDKDefAlphabeticPosition,			// Menu Position.
+		kSDKDefIsNotDynamicMenuFlag,		// kSDKDefIsNotDynamicMenuFlag or kSDKDefIsDynamicMenuFlag
+
+
+		// Separator for the popup menu on the panel
+		kCusCondTxtUISeparator1ActionID,
+		kCusCondTxtUIInternalPopupMenuNameKey kSDKDefDelimiterAndSeparatorPath,	// :- to mark an item as a separator.
+		kCusCondTxtUISeparator1MenuItemPosition,
+		kSDKDefIsNotDynamicMenuFlag,
+
+		// About this plugin submenu for the popup menu on the panel
+		kCusCondTxtUIPopupAboutThisActionID,
+		kCusCondTxtUITargetMenuPath
+		kCusCondTxtUIAboutThisMenuItemPosition,
+		kSDKDefIsNotDynamicMenuFlag,
+
+		kCusCondTxtUIListConditionsActionID,
+		kCusCondTxtUITargetMenuPath
+		kCusCondTxtUIListConditionsMenuItemPosition,
+		kSDKDefIsNotDynamicMenuFlag,
+
+		kCusCondTxtUIListHiddenTextActionID,
+		kCusCondTxtUITargetMenuPath
+		kCusCondTxtUIListHiddenTextMenuItemPosition,
+		kSDKDefIsNotDynamicMenuFlag,
+	}
+};
+
+/* Action definition.
+*/
+resource ActionDef (kSDKDefActionResourceID)
+{
+	{
+		kCusCondTxtUIActionComponentBoss, 		// ClassID of boss class that implements the ActionID.
+		kCusCondTxtUIAboutActionID,	// ActionID.
+		kCusCondTxtUIAboutMenuKey,	// Sub-menu string.
+		kOtherActionArea,				// Area name (see ActionDefs.h).
+		kNormalAction,					// Type of action (see ActionDefs.h).
+		kDisableIfLowMem,				// Enabling type (see ActionDefs.h).
+		kInvalidInterfaceID,			// Selection InterfaceID this action cares about or kInvalidInterfaceID.
+		kSDKDefInvisibleInKBSCEditorFlag, // kSDKDefVisibleInKBSCEditorFlag or kSDKDefInvisibleInKBSCEditorFlag.
+
+
+		kCusCondTxtUIActionComponentBoss,
+		kCusCondTxtUIPopupAboutThisActionID,
+		kSDKDefAboutThisPlugInMenuKey,	// Key to the name of this action
+		kOtherActionArea,
+		kNormalAction,
+		kDisableIfLowMem,
+		kInvalidInterfaceID,
+		kSDKDefInvisibleInKBSCEditorFlag,
+
+		kCusCondTxtUIActionComponentBoss,
+		kCusCondTxtUIListConditionsActionID,
+		kCusCondTxtUIListConditionsMenuKey,
+		kOtherActionArea,
+		kNormalAction,
+		kDisableIfSelectionDoesNotSupportIID | kCustomEnabling | kDisableIfLowMem,	
+		IID_ICUSCONDTXTSUITE,
+		kSDKDefInvisibleInKBSCEditorFlag,
+
+		kCusCondTxtUIActionComponentBoss,
+		kCusCondTxtUIListHiddenTextActionID,
+		kCusCondTxtUIListHiddenTextMenuKey,	// Key to the name of this action
+		kOtherActionArea,
+		kNormalAction,
+		kDisableIfSelectionDoesNotSupportIID | kCustomEnabling | kDisableIfLowMem,	
+		IID_ICUSCONDTXTSUITE,
+		kSDKDefInvisibleInKBSCEditorFlag,
+	}
+};
+
+
+/*  LocaleIndex
+	The LocaleIndex should have indicies that point at your
+	localizations for each language system that you are localized for.
+*/
+/*  String LocaleIndex.
+*/
+resource LocaleIndex ( kSDKDefStringsResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_enUS, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_enGB, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_deDE, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_frFR, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_esES, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_ptBR, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_svSE, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_daDK, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_nlNL, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_itIT, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_nbNO, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_fiFI, kSDKDefStringsResourceID + index_enUS
+		kInDesignJapaneseFS, k_jaJP, kSDKDefStringsResourceID + index_jaJP
+	}
+};
+
+resource LocaleIndex (kSDKDefStringsNoTransResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_Wild, kSDKDefStringsNoTransResourceID + index_enUS
+	}
+};
+
+resource StringTable (kSDKDefStringsNoTransResourceID + index_enUS)
+{
+	k_enUS,									// Locale Id
+	kEuropeanMacToWinEncodingConverter,		// Character encoding converter
+	{
+		// No-Translate strings go here:
+
+		//kCusCondTxtUIInternalPopupMenuNameKey,	kCusCondTxtUIInternalPopupMenuNameKey,		// No need to translate, internal menu name.
+
+	}
+};
+
+
+/*  Panel LocaleIndex.
+*/
+resource LocaleIndex (kSDKDefPanelResourceID)
+{
+	kViewRsrcType,
+	{
+		kWildFS, k_Wild, 	kSDKDefPanelResourceID + index_enUS
+	}
+};
+
+/*  PanelList definition.
+*/
+resource PanelList (kSDKDefPanelResourceID)
+{
+	{
+		// 1st panel in the list
+		kSDKDefPanelResourceID,		// Resource ID for this panel (use SDK default rsrc ID)
+		kCusCondTxtUIPluginID,		// ID of plug-in that owns this panel
+		kIsResizable,				// Panel is resizeable
+		kCusCondTxtUIPanelWidgetActionID,	// Action ID to show/hide the panel
+		kCusCondTxtUIPanelTitleKey,	// Shows up in the Window list.
+		"",							// Alternate menu path of the form "Main:Foo" if you want your palette menu item in a second place
+		0.0,						// Alternate Menu position Alternate Menu position for determining menu order
+		0,0,						// Rsrc ID, Plugin ID for a PNG icon resource to use for this palette
+		c_Panel
+	}
+};
+
+/*  PanelView definition.
+	The view is not currently localised: therefore, it can reside here.
+	However, if you wish to localise it, it is recommended to locate it in one of
+	the localised framework resource files (i.e. CusCondTxt_enUS.fr etc.).
+*/
+/*  Dialog LocaleIndex.
+*/
+resource LocaleIndex (kSDKDefDialogResourceID)
+{
+   kViewRsrcType,
+	{
+		kWildFS,	k_Wild, kSDKDefDialogResourceID + index_enUS
+	}
+};
+
+
+#endif // __ODFRC__
+
+#include "CusCondTxtUI_enUS.fr"
+#include "CusCondTxtUI_jaJP.fr"
+
+//  Code generated by DollyXs code generator

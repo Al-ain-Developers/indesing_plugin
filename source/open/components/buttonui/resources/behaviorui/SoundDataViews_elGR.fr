@@ -1,0 +1,125 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/buttonui/resources/behaviorui/SoundDataViews_elGR.fr $
+//  
+//  Owner: Mark VerMurlen
+//  
+//  $Author: vans $
+//  
+//  $DateTime: 2020/11/06 05:06:09 $
+//  
+//  $Revision: #1 $
+//  
+//  $Change: 1088554 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#if 0
+//Not necessary anymore
+#ifdef __ODFRC__
+#include "InterfaceColorDefines.h"
+
+//========================================================================================
+// AlignPanelView resource
+//========================================================================================
+
+resource SoundDataPanel (kSoundPanelRsrcID + index_elGR)
+{
+	__FILE__, __LINE__,
+	kSoundPanelWidgetID, kPMRsrcID_None, // WidgetId, RsrcId
+	kBindNone,					// Frame binding
+	Frame(0,0,398,213)		// Frame
+	kTrue, kTrue,				// Visible, Enabled
+	kTrue,						// EraseBeforeDraw
+	kInterfacePaletteFill,		// Erase to color
+	kFalse,						// DrawDropShadow
+	"",				// Panel name	
+	{
+		EVEGenericPanelWidget
+		(
+			kInvalidWidgetID,	// WidgetId
+			0,0,				// RsrcId
+			kBindNone,						// Frame binding
+			Frame(0, 0, 211, 50)		// Frame
+			kTrue,							// Visible
+			kTrue,							// Enabled
+			kEVENoSpaceAfter|kEVEArrangeChildrenInRow|kEVEAlignLeft|kEVENoMargin,		//EVE info
+			{
+				EVEGenericPanelWidget
+				(
+					kInvalidWidgetID,	// WidgetId
+					0,0,				// RsrcId
+					kBindNone,						// Frame binding
+					Frame(0, 0, 50, 45)		// Frame
+					kTrue,							// Visible
+					kTrue,							// Enabled
+					kEVERegularSpaceAfter|kEVEArrangeChildrenInColumn|kEVEAlignRight|kEVEChildRegularSpaceAfter,		//EVE info
+					{
+						EVEStaticTextWidget
+						(
+							kSoundLabelWidgetID, kSysStaticTextPMRsrcId,					// WidgetId, RsrcId
+							kBindNone,											// Frame binding
+							Frame(0, 5, 50,22)		// Frame
+							kTrue, kTrue, kAlignRight,							// Visible, Enabled, Alignment
+							kDontEllipsize,	kTrue,									// Ellipsize style, Convert ampersands
+							"$$$/Dialog/Behaviors/Sound/Sound:",
+							kSoundWidgetID,
+							kEVERegularSpaceAfter
+						),
+						EVEStaticTextWidget
+						(
+							kOperationLabelWidgetID, kSysStaticTextPMRsrcId,					// WidgetId, RsrcId
+							kBindNone,											// Frame binding
+							Frame(0, 25, 50,42)		// Frame
+							kTrue, kTrue, kAlignRight,							// Visible, Enabled, Alignment
+							kDontEllipsize,	kTrue,									// Ellipsize style, Convert ampersands
+							"$$$/Dialog/Behaviors/Sound/Play Options:",
+							kOperationWidgetID,
+							kEVERegularSpaceAfter
+						),
+					}
+				)
+						
+				EVEGenericPanelWidget
+				(
+					kInvalidWidgetID,	// WidgetId
+					0,0,				// RsrcId
+					kBindNone,						// Frame binding
+					Frame(55, 0, 205, 45)		// Frame
+					kTrue,							// Visible
+					kTrue,							// Enabled
+					kEVENoSpaceAfter|kEVEArrangeChildrenInColumn|kEVEAlignLeft|kEVEChildRegularSpaceAfter,		//EVE info
+					{
+						SoundChoice
+						(
+							kSoundWidgetID, kSysDropDownPMRsrcId, kBindNone,
+							Frame(0, 5, 150,22)		// Frame
+							kTrue, kTrue,
+							{{
+							}}
+						),
+						SoundOpChoice
+						(
+							kOperationWidgetID, kSysDropDownPMRsrcId, kBindNone,
+							Frame(0, 25, 150,42)		// Frame
+							kTrue, kTrue,
+							{{
+							}}
+						),
+					}
+				)
+			}
+		)
+	},
+	kSoundBehavior
+}
+
+#endif
+#endif

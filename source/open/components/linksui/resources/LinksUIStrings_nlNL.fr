@@ -1,0 +1,227 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#ifdef __ODFRC__
+
+#include "StringTable.fh"
+
+resource StringTable (kLinksUIStringsRsrcID + index_nlNL)
+{
+	k_nlNL,					// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	{
+		"Links_WinMenu",			"Koppelin&gen", // panel menu item
+		"kRtMouseGraphics",			"Afbeeldingen", // context menu submenu name
+		"RtMenuLinksUILinkInfo",	"Contextmenu koppelingsinfo",
+		
+		"#LinksUIPanel",			"Koppelingen", // panel name
+		"#LinksUIPanelMenu",		"Menu van deelvenster Koppelingen", 
+		"#LinksUtilitiesSubmenu",		"Hulpmiddelen",		// submenu for links panel menu
+		"#SelectedLinkInfoSectionName",			"Koppelingsinfo", // section name in links ui panel
+		
+		"#UpdateAllOutOfDateLinksMenu",	"Alle koppelingen bijwerken",
+		"#AutoFindMissingLinksMenu",		"Ontbrekende koppelingen zoeken",
+		"#LinksUIRelinkLinkMenu",		"Opnieuw koppelen...",
+		"#LinksUIRelinkResourceMenu",	"Alle instanties opnieuw koppelen...", // menu item to relink all instances of this multiple link assets
+		"#RelinkResource ^1 Menu",		"Alle instanties van '^1' opnieuw koppelen...", // menu item to relink all instances of one single link asset
+		"#ReplaceFPOWithOriginalResourceMenu",	"Alle exemplaren vervangen...", // menu item to replace all instances of this multiple link assets
+		"#ReplaceFPOWithOriginalResource ^1 Menu", "Alle exemplaren van FPO ^1 vervangen door origineel...", // menu item to replace all instances of one single link asset
+		"#RelinkCloudResource ^1 Menu",	"Alle gevallen van ^1 opnieuw koppelen vanuit CC Libraries...", // menu item to relink all instances of one single link asset
+        "#RelinkAALResource ^1 Menu",    "Alle exemplaren van '^1' opnieuw koppelen vanaf Adobe Asset Link...", // menu item to relink all instances of one single link asset
+		"#LinksUIUpdateLinkMenu",			"Koppeling bijwerken", // context menu item in links ui panel
+		"#LinksUIUpdateLinkResourceMenu",	"Alle instanties bijwerken",
+		"#UpdateResource ^1 Menu",		"Alle instanties van '^1' bijwerken", // menu item to update all instances of one single link asset
+		"#LinksUIEmbedLinkMenu",			"Koppeling insluiten", // context menu item in links ui panel
+		"#LinksUIEmbedResourceMenu",		"Alle instanties insluiten",
+		"#EmbedResource ^1 Menu",			"Alle instanties van '^1' insluiten", // menu item to embed all instances of one single link asset
+		"#LinksUIUnEmbedLinkMenu",		"Insluiten van koppeling ongedaan maken", // context menu item in links ui panel
+		"#LinksUIUnEmbedResourceMenu",	"Alle instanties insluiten ongedaan maken",
+		"#UnembedResource ^1 Menu",			"Alle instanties van '^1' insluiten ongedaan maken", // menu item to unembed all instances of one single link asset
+		"#LinksUIUnLinkMenu",				"Ontkoppelen",
+		"#UnLinkResourceMenu",			"Alle instanties ontkoppelen",
+		"#UnLinkResource ^1 Menu",			"Alle instanties van '^1' ontkoppelen", // menu item to unlink all instances of one single link asset
+		"#LinksUIEditOriginalLinkMenu",		"Origineel bewerken", // context menu item in links ui panel
+		"#LinksUIGoToSourceLinkMenu",		"Naar bron", // context menu item in links ui panel
+		"#LinksUIXMPFileInfo",				"XMP-bestandsinfo...",
+		"#LinksUICopyPath",				"Volledig pad kopiëren",
+		"#LinksUICopyPlatformPath",			"Pad van platformstijl kopiëren",
+		"#RevealLinkInMacFinder",			"Tonen in Finder",
+		"#RevealLinkInWinExplorer",			"Tonen in Verkenner",
+		"#RevealLinkInAdobeBridge",			"Tonen in Bridge",
+		"#RevealLinkInCCLibraries",			"Tonen in CC Libraries",
+		"#GoToLink",						"Ga naar koppeling",
+		"#EditWithApp",					"Bewerken met",
+		"ApplicationFiles",					"Toepassing (*.exe)", // windows only string to list exe files in the 'edit with application' dialog.
+		"#ChooseEditingApplication",			"Toepassing kiezen", // dialog title
+		"#OtherApp",						"Overige...",	// Menu name for choosing a custom application via a standard file dialog for Edit With...
+		"#LinksUICopyLink",				"Koppeling(en) kopiëren naar...",
+		"#LinksUIEditColumnsMenu",			"Deelvensteropties...",
+		
+		"#LinksUIRemoveThisColumnMenu",	"Deze kolom verbergen",
+		"#LinksUIShowThumbnailMenu",		"Miniatuur tonen",
+		"#LinksUIHideThumbnailMenu",		"Miniatuur verbergen",		
+		"#LinksUIShowInfoThumbnailMenu",	"Infominiatuur tonen",
+		"#LinksUIHideInfoThumbnailMenu",	"Infominiatuur verbergen",
+		
+		"#SaveLinkVersionCmd",			"Koppeling inchecken",
+		"#ShowLinksPanelColumn",			"Kolom tonen",
+		"#ShowLinksPanelInfo",				"Tonen in koppelingsinfo",
+		"#SelectNextLinkButtonTip",			"Selecteer volgende koppeling in de lijst",
+		"#SelectPrevLinkButtonTip",			"Selecteer vorige koppeling in de lijst",
+		"#ToggleLinkInfoButtonTip",			"Koppelingsinformatie tonen/verbergen",
+
+		"#ShortLinkStatusParamStr",				"^1 koppelingen",  // status string for links panel
+		"#LongLinkStatusParamStr",				"^1 koppelingen in totaal\n\n   ^2 ontbrekend\n   ^3 gewijzigd\n   ^4 ingesloten\n   ^5 uniek\n   ^6 subkoppelingen", // tip string for links panel status.
+		"#OneSelectedLinkStr",			"1 geselecteerd", // status string when one link is selected in the panel.
+		"#NumSelectedLinksParamStr",	"^1 geselecteerd", // status string when multiple links are selected in the panel.
+				
+		"RtMenuLinksUILinkItem",		"Contextmenu Koppeling",
+		"RtMenuLinksUILinksHeader",		"Contextmenu Koppelingenheader",
+		
+		"#LinkColumnDialog",			"Deelvensteropties", // dialog name
+		"#LinksUIPanelOptions",			"Opties",
+		
+		"#LinkThumbPrefLabel",			"Miniaturen:",
+		"#LinksUIRowSizeLabel",		"&Rijgrootte:",
+		"#LinksUISmallRowStr",			"Kleine rijen",
+		"#LinksUIRegularRowStr",		"Standaardrijen",
+		"#LinksUILargeRowStr",			"Grote rijen",
+		"#LinkInfoShowThumbnailCheckbox",	"Tonen in koppelings&info",
+		"#LinksUIShowThumbnail",		"Tonen in &naamkolom",
+		"#LinksUICollapseMultiple",		"&Meerdere koppelingen naar dezelfde bron samenvouwen",
+
+		"#SearchHereForMissingFiles",	"Naar ontbrekende koppelingen in deze map zoeken", // label for checkbox in relink dialog
+		"#RelinkSkipButton",			"Overslaan", // name for 'skip' button in relink dialog
+		"#SearchFound^1Links",		"Deze map voor opnieuw koppelen is doorzocht en er zijn ^1 ontbrekende koppelingen gevonden en opnieuw gekoppeld.", // alert that displays if we auto find missing links after a relink
+		"#RelinkToFolderTitle",			"Selecteer de map om opnieuw naar te koppelen. Alleen geselecteerde koppelingen met een overeenkomende naam worden opnieuw gekoppeld.",
+		"#RelinkToSameFilename",		"Overeenkomstige bestandsnaam en extensie", // radio button option in relink to folder dialog
+		"#RelinkToExtension",			"Overeenkomstige bestandsnaam, maar met deze extensie:", // radio button option in relink to folder dialog
+		"#LinksUICopyLinksTitle",		"Selecteer de map waarnaar u gekoppelde bestanden wilt kopiëren.",
+		"#LinksUIRelinkToFolderLinkMenu",	"Opnieuw koppelen naar map...",
+		"#LinksUIRelinkFileExtensionLinkMenu",	"Bestandsextensie opnieuw koppelen...",
+        "#LinksUIRelinkFromCloudAssetLinkMenu",	"Inkomende stijl van CC Libraries",
+        "#LinksUIRelinkFromAALAssetLinkMenu",    "Opnieuw koppelen vanaf Adobe Asset Link...",
+		"#LicenseStockAssetLinkMenu",	"Licentie verkrijgen voor afbeelding...",
+		"#LinksUIRelink: ^1",			"Opnieuw koppelen: ^1", // title for relink dialog. ^1 becomes file path.
+		"#LinksUILocate: ^1",			"Zoeken: ^1", // title for relink dialog when link is missing. ^1 becomes file path.
+		"#CopyLinksFailedAlert",		"Kopiëren van koppelingen naar een map is mislukt.",
+		"#AutoFindFoundNothingAlert",	"Geen ontbrekende koppelingen gevonden. Gebruik de opdracht Opnieuw koppelen om de eerste ontbrekende koppeling te vinden en probeer het nogmaals.",
+		
+		"kEditsMadeWarning",			  "Er zijn bewerkingen uitgevoerd in de geïmporteerde versie van \"^1\". Deze bewerkingen gaan bij het bijwerken verloren. Toch bijwerken?",
+		"kEditsMadeInLinkedStoryWarning",	"Er zijn bewerkingen uitgevoerd in de gekoppelde versie van \"^1\". Deze bewerkingen gaan bij het bijwerken verloren. Toch bijwerken?",
+		"kEditsMadeInLinkedArticleWarning", "Er zijn bewerkingen uitgevoerd in het gekoppelde pagina-item ^1. Deze bewerkingen gaan bij het bijwerken verloren. Toch bijwerken?",
+		"kEditsMadeToTextOrTableWarning", "De geïmporteerde versie van \"^1\" is bewerkt. Deze bewerkingen (met uitzondering van wijzigingen die zijn toegepast op spreadsheets via cel- of tabelstijlen) gaan verloren als u de koppeling bijwerkt. Wilt u de koppeling toch bijwerken?",
+
+		// Strings for Problem Links dialog
+		"#LinksModifiedWarning",	"Dit document bevat koppelingen naar bronnen die zijn gewijzigd/ontbreken. U kunt de gewijzigde koppelingen nu bijwerken of u kunt ze later bijwerken via het deelvenster Koppelingen.",
+		"#HTTPLinksModifiedWarning",	"Dit document bevat koppelingen naar bronnen die zijn gewijzigd/ontbreken nadat er voor het laatst een document is opgeslagen. U kunt de gewijzigde koppelingen nu bijwerken of u kunt ze later bijwerken via het deelvenster Koppelingen.",
+		"#UpdateLinks",				"&Gewijzigde koppelingen bijwerken",	 // button text
+		"#Don'tUpdateLinks",		"Koppelingen niet bijwerken", // button text
+		"#ProblemMissingLinksParamStr",	"^1 - Ontbrekende koppeling(en)",
+		"#ProblemModifiedLinksParamStr",	"^1 - Gewijzigde koppeling(en)",
+		"#ProblemInaccessibleLinksParamStr",	"^1 - Niet-toegankelijke URL-koppeling(en). Raadpleeg het deelvenster Koppelingen voor nadere informatie.",
+        "#ProblemLinksDialogHeader",    "Problemen met koppelingen",
+		"UnembedToOriginal", 		"Insluiten ongedaan maken kan koppelingen maken naar de oorspronkelijke bestanden of naar bestanden die in een map worden gemaakt. Wilt u een koppeling naar de oorspronkelijke bestanden maken?",
+		"#SelectUnembedDir",
+									"Selecteer de map waarin bestanden moeten worden gemaakt.",
+
+		// Show Link message.
+		 "Cannot show link: The selected item is on a hidden layer.",
+						"Kan koppeling niet tonen: het geselecteerde item is verborgen of bevindt zich op een verborgen laag.",
+		"Cannot show link: The selected item is hidden in overset text.",
+						"Kan koppeling niet tonen: het geselecteerde item is verborgen in overlopende tekst.",
+		"Cannot show link: The selected item is hidden in an inactive form field state.",
+						"Kan koppeling niet tonen: het geselecteerde item wordt verborgen bij een niet-actieve knopstatus. Gebruik het deelvenster Knoppen als u de verborgen status wilt activeren om het item weer te geven.",
+		"Cannot show link: The selected item is hidden in an inactive mso state.",
+						"Kan koppeling niet tonen: het geselecteerde item bevindt zich in een niet-actieve objectstatus. Gebruik het deelvenster Objectstatussen om de verborgen status zichtbaar te maken.",
+		"Cannot show link: The selected item is in deleted text in a tracked change.",
+						"Kan koppeling niet tonen: het geselecteerde item bevindt zich in verwijderde tekst in een bijgehouden wijziging.",
+		"Cannot show link: The selected item is an XML structure element not in the layout.",
+						"Kan koppeling niet tonen: het geselecteerde item is een XML-structuurelement dat zich niet in de layout bevindt.",
+		"Cannot show link: The selected item is in hidden conditional text.",
+						"Kan koppeling niet tonen: het geselecteerde item bevindt zich in verborgen voorwaardelijke tekst.",
+						
+						
+		"#EditOriginalButtonTip",		"Origineel bewerken",	// tip string for button in links panel
+		"#GotoLinkButtonTip",		"Ga naar koppeling",	// tip string for button in links panel
+		
+		"#appendedUpdateButtonTipMac",		". Houd Option ingedrukt en klik om alles bij te werken", // appened to menu name for 'update link' to build tip string for update button(mac)
+		"#appendedUpdateButtonTipWin",		". Houd Alt ingedrukt en klik om alles bij te werken", // appened to menu name for 'update link' to build tip string for update button(win)
+		"#appendedRelinkButtonTipMac",		" Houd Option ingedrukt en klik om alle ontbrekende koppelingen opnieuw te koppelen", // appened to menu name for 'Relink' to build tip string for relink button(mac)
+		"#appendedRelinkButtonTipWin",		" Houd Alt ingedrukt en klik om alle ontbrekende koppelingen opnieuw te koppelen", // appened to menu name for 'Relink' to build tip string for relink button(win)
+		
+		"#ErrorEmbeddingLink",				"Kan koppeling niet insluiten.",
+		"#LinksUIShowLinkInfoMenu",		"Deelvenster Koppelingsinfo tonen",
+		"#LinksUIHideLinkInfoMenu",			"Deelvenster Koppelingsinfo verbergen",
+		"#LinksUICopyLinkInfoMenu",		"Alle koppelingsinformatie kopiëren",
+		"#LinksUIAutosizeLinkInfoMenu",		"Koppelingsinformatie automatisch passend maken",
+		"#LinksUIGenerateReportMenu",		"Informatie voor geselecteerde koppelingen kopiëren",
+		"#LinksUIGenerateCaptionPrefsMenu",	"Bijschriftinstellingen...",
+		"#GenerateLiveLinkCaptionMenu",		"Actieve bijschriften genereren",
+		"#GenerateStaticLinkCaptionMenu",	"Statische bijschriften genereren",
+		
+		"#GenerateCaptionPrefDialogName",	"Bijschrift instellen",
+		"#BeforeMetadataCaptionLabel",		"Tekst voor",
+		"#MetadataCaptionLabel",			"Metagegevens",
+		"#AfterMetadataCaptionLabel",		"Tekst na",
+		"#GenerateLiveCaptionGraphicSelectionMenu",	"Actief bijschrift genereren",
+		"#GenerateStaticCaptionGraphicSelectionMenu",	"Statisch bijschrift genereren",
+		"#CopyLinkInfoStr '^1'",				"'^1' kopiëren", // Menu item name in links panel. ^1 is replaced with whatever text data is under the mouse.
+		"#CopyLinkFieldMenu",				"Veld Informatie kopiëren",
+		"#InfoLabelSuffix",					": ", // suffix added to end of link info labels in the info section
+		
+		"#LinksCopyInfoMenu",				"Informatie kopiëren", // links panel submenu
+		
+		"#CaptionSubmenu",				"Bijschriften",		// name of captions submenu on Object menu
+		"#CaptionRowLabel",				"Metagegevensbijschrift", // caption setup dialog top section title
+		"#CaptionOptionsLabel",				"Positie en stijl", // caption setup dialog bottom section title
+		"#CaptionOffsetLabel",				"Ver&schuiving:",
+		"#CaptionParaStyleLabel",			"&Alineastijl:",
+		"#CaptionLayerLabel",				"&Laag:",
+		"#CaptionLayerLockedError",			"Kan geen bijschrift op een vergrendelde laag genereren.",
+		"#CaptionGroupFailureError",			"Kan geen groep voor bijschrift maken.",
+		"#ErrorGeneratingCaption",			"Kan geen bijschrift genereren.",
+		"#CaptionAlignmentLabel",			"&Uitlijnen:",
+		
+		"#CaptionAlignBelow",				"Onder afbeelding",
+		"#CaptionAlignAbove",				"Boven afbeelding",
+		"#CaptionAlignLeft",					"Links van afbeelding",
+		"#CaptionAlignRight",				"Rechts van afbeelding",
+		
+		"#GroupCaptionWithImage",			"Bijschrift met afbeelding &groeperen",
+		 "#ConvertCaptionToTextMenu",		"Omzetten in statisch bijschrift",
+		 "#ShowImportOptionsTip", 			"Importopties tonen", // Tool tip for custom controls in relink dialog
+		 "#SearchHereForMissingFilesTip",	"Hier zoeken naar ontbrekende bestanden", // Tool tip for custom controls in relink dialog
+		 "#EmbedLinkFromPropsPanel",		"Afbeelding insluiten vanuit het deelvenster Materialen",
+		 "#RelinkAssetFromPropsPanel",		"Afbeelding opnieuw koppelen vanuit het deelvenster Materialen",
+		 "#UpdateLinkFromPropsPanel",		"Afbeelding bijwerken vanuit het deelvenster Materialen",
+		 "#UnlinkFromPropsPanel",			"Koppeling tussen bestand en deelvenster Materialen verbreken",
+        
+        "kImportingAALAsset",                "Middel importeren",
+        "kImportingFileName",                "^1 importeren",
+        
+        //Error Strings for AEM
+        "AEMUnsupportedFiles",     "Kan ^1 van ^2 bestand(en) niet plaatsen. Bestandstype wordt niet ondersteund door InDesign.",
+        "AEMInaccessibleFiles",     "Kan ^1 van ^2 bestanden niet plaatsen. InDesign heeft geen toegang tot het bestand. Controleer de netwerkverbinding van de originele bron van de inhoud.",
+        "AEMUnknownFiles",     "Kan ^1 van ^2 bestand(en) niet plaatsen vanwege een onbekende fout.",
+        "AEMGenericImportFailure",     "Kan AEM-gebaseerd middel niet importeren.",
+        
+        // Action id strings
+        "#LinksUIReplaceFPOWithOriginalLink",        "FPO vervangen door origineel...",
+        "#LinksUIReplaceAllFPOWithOriginalLinks",    "Alle FPO's vervangen door originelen...",
+        "#LinksUIDownloadOriginalLink",                "Origineel downloaden",
+        "#LinksUIDownloadAllOriginalLinks",            "Alle originelen downloaden",
+	}
+};
+
+
+
+#endif //__ODFRC__

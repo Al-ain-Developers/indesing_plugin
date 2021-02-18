@@ -1,0 +1,199 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/buttonui/resources/behaviorui/ShowHideFieldsViews_elGR.fr $
+//  
+//  Owner: Mark VerMurlen
+//  
+//  $Author: vans $
+//  
+//  $DateTime: 2020/11/06 05:06:09 $
+//  
+//  $Revision: #1 $
+//  
+//  $Change: 1088554 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "IconStyleDefs.h"
+#include "InterfaceColorDefines.h"
+
+#ifdef __ODFRC__
+
+
+//========================================================================================
+// AlignPanelView resource
+//========================================================================================
+
+resource ShowHideFieldsDataPanel (kShowHideFieldsPanelRsrcID + index_elGR)
+{
+	__FILE__, __LINE__,
+	kShowHideFieldsPanelWidgetID, kPMRsrcID_None, // WidgetId, RsrcId
+	kBindNone,					// Frame binding
+	Frame(0,0,370+3,247)		// Frame
+	kTrue, kTrue,				// Visible, Enabled
+	kTrue,						// EraseBeforeDraw
+	kInterfacePaletteFill,		// Erase to color
+	kFalse,						// DrawDropShadow
+	"",				// Panel name	
+	{
+		EVEGenericPanelWidget
+		(
+			kInvalidWidgetID,	// WidgetId
+			0,0,				// RsrcId
+			kBindNone,						// Frame binding
+			Frame(0, 0, 211, 90)		// Frame
+			kTrue,							// Visible
+			kTrue,							// Enabled
+			kEVENoSpaceAfter|kEVEArrangeChildrenInRow|kEVEAlignLeft|kEVEChildSmallSpaceAfter,		//EVE info
+			{
+				EVEStaticTextWidget
+				(
+					kSHVisibilityLabelWidgetID, kSysStaticTextPMRsrcId,					// WidgetId, RsrcId
+					kBindNone,											// Frame binding
+					Frame(0, 0, 50,17)		// Frame
+					kTrue, kTrue, kAlignRight,							// Visible, Enabled, Alignment
+					kDontEllipsize,	kTrue,									// Ellipsize style, Convert ampersands
+					"$$$/Panel/ShowHide/Visibility:",
+					0,
+					kEVERegularSpaceAfter|kEVENoMargin
+				),
+				
+				EVEGenericPanelWidget
+				(
+					kInvalidWidgetID,	// WidgetId
+					0,0,				// RsrcId
+					kBindNone,						// Frame binding
+					Frame(0, 0, 211, 90)		// Frame
+					kTrue,							// Visible
+					kTrue,							// Enabled
+					kEVENoSpaceAfter|kEVEArrangeChildrenInColumn|kEVEAlignLeft|kEVEChildNoSpaceAfter,		//EVE info
+					{
+						EVEGenericPanelWithBorderWidget
+						(
+							kSHFieldsBorderWidgetID, kPMRsrcID_None,
+							kBindNone,
+							Frame(55,1,211,62)		// Frame
+							kTrue, kTrue,
+							"",
+							{
+								FieldsWidget
+								(
+									kSHFieldsWidgetID, kPMRsrcID_None,// WidgetId, RsrcId
+									kBindAll,
+									Frame(1,1,150,61)		// Frame
+									kTrue, kTrue,				// Visible, Enabled
+									kTrue,						// EraseBeforeDraw
+									kInterfacePaletteFill,		// Erase to color
+									"$$$/Dialog/Behaviors/ShowHideFields/Fields_Tree",
+									kHideRootNode,					//Options
+									kFalse,						//Use H Scroll bar
+									kTrue,						//Use V scroll bar
+									20,							// Vertical Scroll Button Increment
+									20,							// Vertical Thumb Scroll Increment
+									0,							// Horizontal Scroll Button Increment
+									0,							// Horizontal Thumb Scroll Increment
+									2,							// Items selectable, 0 = No Selection, 1 = Single Selection, 2 = Multiple Selection
+									kFalse,						// Allow children from multiple parents to be selected
+									kTrue,						// Allow discontiguous selection
+									{
+									}
+								)
+							}
+							kEVESmallSpaceAfter,	// EVE Info
+						),
+						
+						EVEGenericPanelWidget
+						(
+							kInvalidWidgetID,	// WidgetId
+							0,0,				// RsrcId
+							kBindNone,						// Frame binding
+							Frame(0, 65, 206, 85)		// Frame
+							kTrue,							// Visible
+							kTrue,							// Enabled
+							kEVENoSpaceAfter|kEVEArrangeChildrenInRow|kEVEAlignLeft|kEVEChildSmallSpaceAfter,		//EVE info
+							{
+								ShowFieldIconButton
+								(
+									kShowFieldButtonWidgetID, 
+									kShowFieldIconRsrcID, kFormFieldUIPluginID,// WidgetId, RsrcId
+									kBindNone,							// Frame binding
+									Frame(0, 0, 20, 17)		// Frame
+									kTrue, kTrue,										// Visible, Enabled
+									kADBEIconSuiteButtonType,
+								),
+								HideFieldIconButton
+								(
+									kHideFieldButtonWidgetID, 
+									kHideFieldIconRsrcID, kFormFieldUIPluginID,// WidgetId, RsrcId
+									kBindNone,							// Frame binding
+									Frame(25, 0, 45, 17)		// Frame
+									kTrue, kTrue,										// Visible, Enabled
+									kADBEIconSuiteButtonType,
+								),
+								IgnoreFieldIconButton
+								(
+									kIgnoreFieldButtonWidgetID, 
+									kBlankIconRsrcID, kFormFieldUIPluginID,// WidgetId, RsrcId
+									kBindNone,							// Frame binding
+									Frame(50, 0, 70, 17)		// Frame
+									kTrue, kTrue,										// Visible, Enabled
+									kADBEIconSuiteButtonType,
+								),
+							}
+						)
+					}
+				)
+			}
+		),
+	},
+	kShowHideFieldsBehavior
+}
+
+resource FieldsNodeWidget (kFieldsTreeNodeWidgetRsrcID + index_elGR)
+{
+	__FILE__, __LINE__,
+	kSHFieldsNodeWidgetId, kPMRsrcID_None,						// WidgetId, RsrcId
+	kBindLeft | kBindRight,
+	Frame(0,0,201,20)		// Frame
+	kTrue, kTrue,												// Visible, Enabled
+	"",															// Panel name
+	{
+		RaisedIconPanel
+		(
+			kRaisedIconPanelWidgetID, kPMRsrcID_None,
+			kBindNone,
+			Frame(0,0,22,19)		// Frame
+			kTrue, kTrue,
+			"",
+			{
+				BehaviorOnOffButton
+				(
+					kSHShowOnOffButtonWidgetID, kShowFieldIconRsrcID, kBehaviorUIPluginID, // WidgetId, RsrcId
+					kBindLeft,					// Frame binding
+					Frame(1,0,20,19)		// Frame
+					kTrue, kTrue,										// Visible, Enabled
+					kADBEIconSuiteButtonDrawWellType,
+				)
+			}
+		),
+		StaticTextWidget
+		(
+			kSHFieldTitleWidgetId, kSysStaticTextPMRsrcId,				// WidgetId, RsrcId
+			kBindLeft | kBindRight,
+			Frame(30,1,203,19)		// Frame
+			kTrue, kTrue, kAlignLeft,							// Visible, Enabled, Alignment
+			kDontEllipsize, kTrue,										// Ellipsize style, Convert ampersands
+			"",
+			0
+		)
+	},
+}
+
+#endif

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article SYSTEM "sdocbook.dtd">
+<article>
+<section>
+<title>Multiple rows and columns</title>
+<informaltable>
+<tgroup cols="2">
+<tbody>
+<row>
+<entry>One entry</entry>
+<entry>Second entry</entry>
+</row>
+<row>
+<entry>Another entry</entry>
+<entry>Yet another entry</entry>
+</row>
+</tbody>
+</tgroup>
+</informaltable>
+</section>
+</article>

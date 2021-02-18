@@ -1,0 +1,357 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "StringTable.fh"
+
+#include "FormFieldUIDefs.h"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+//twright 12/11/2000 Removed left-over strings from group strings.
+//not sure if button/form is going to need lock warning...
+
+resource StringTable (kFormFieldUIStringsRsrcID + index_svSE)
+{
+	k_svSE,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{
+		// ----- Menu strings
+		"ButtonsActionsPopup",						"Meny för knappfunktioner",
+		
+		"$$$/Menu/AppearancePanelPopup",	"Panelmeny för knappar",	
+		"$$$/Menu/Interactive",				"In&teraktivt", 
+		"$$$/Menu/FormField",				"&Formulär", 
+		"$$$/Menu/About",					"&Om plugin-programmet Formulär", 
+		"$$$/Menu/CreateButton",			"&Konvertera till knapp", 
+		"$$$/Menu/CreateCheckBox",			"&Konvertera till kryssruta",
+		"$$$/Menu/CreateComboBox",			"&Konvertera till kombinationsruta", 
+		"$$$/Menu/CreateListBox",			"&Konvertera till listruta", 
+		"$$$/Menu/CreateRadioButton",		"&Konvertera till alternativknapp", 
+		"$$$/Menu/CreateSignatureField",	"&Konvertera till signaturfält", 
+		"$$$/Menu/CreateTextField",			"&Konvertera till textfält", 
+		"$$$/Menu/DestroyButton",			"&Konvertera till objekt", 
+		"$$$/Menu/FormFieldSettings",		"K&nappalternativ...", 
+		"$$$/Menu/NewState",				"Nytt läge", 
+		"$$$/Menu/DeleteState",				"Ta bort läge", 
+		"$$$/Menu/DeleteStates",			"Ta bort lägen",
+		"$$$/Menu/PlaceIntoState",			"Montera innehåll i läge...",
+		"$$$/Menu/DeleteStateContent",		"Ta bort innehåll från läge",
+		"$$$/Menu/AppearancePanelPrefs",	"Panelalternativ...",
+		"$$$/Menu/StateOptions",			"Lägesalternativ...",
+		"$$$/Menu/SetTabOrder",				"Ange &tabbordning...",
+		"$$$/Menu/SetCalculationOrder",		"Ange beräkningsordning...",
+		"$$$/Menu/States",					"K&nappar och formulär",
+		
+		"$$$/Menu/Go To Page",				"Gå till sida",
+		"$$$/Menu/Go To First Page",		"Gå till första sidan",
+		"$$$/Menu/Go To Anchor",			"Gå till mål",
+		"$$$/Menu/Go To Last Page",			"Gå till sista sidan",
+		"$$$/Menu/Go To Next Page",			"Gå till nästa sida",
+		"$$$/Menu/Go To Next View",			"Gå till nästa vy",
+		"$$$/Menu/Go To Previous Page",		"Gå till föregående sida",
+		"$$$/Menu/Go To Previous View",		"Gå till föregående vy",
+		"$$$/Menu/Go To URL",				"Gå till URL-adress",
+		"$$$/Menu/Movie",					"Video",
+		"$$$/Menu/Open File",				"Öppna fil",
+		"$$$/Menu/Show/Hide Buttons",		"Visa/dölj knappar och formulär",
+		"$$$/Menu/Sound",					"Ljud",
+		"$$$/Menu/View Zoom",				"Zooma vy",
+		"$$$/Menu/Animation",				"Animering",
+		"$$$/Menu/SwitchToMSOState",		"Gå till läge",
+		"$$$/Menu/SwitchToNextMSOState",	"Gå till nästa läge",
+		"$$$/Menu/SwitchToPrevMSOState",	"Gå till föregående läge",
+		"$$$/Menu/EPUBOnly",					"Endast EPUB",
+		"$$$/Menu/PDFOnly",					"Endast PDF",
+		"$$$/Menu/Print Form",				"Skriv ut formulär",
+		"$$$/Menu/Clear Form",				"Rensa formulär",
+		"$$$/Menu/Submit Form",				"Lämna in formulär",
+		
+		"$$$/Menu/FormFieldSettings/ButtonLibrary",			"Exempelknappar och formulär",	// Name of menu item in Buttons Panel flyout that opens a library of Sample Buttons
+
+		"$$$/Menu/FormFieldSettings/PDFVis/Visible",		"Visas i PDF",
+		"$$$/Menu/FormFieldSettings/PDFVis/Hidden",			"Döljs i PDF",
+		"$$$/Menu/FormFieldSettings/PDFVis/VisibleNoPrint",	"Visas i PDF men skrivs inte ut",
+		"$$$/Menu/FormFieldSettings/PDFVis/HiddenButPrint",	"Döljs i PDF men kan skrivas ut",	
+		"$$$/Menu/ButtonPDFOptions", "PDF-alternativ...",
+
+		"$$$/Menu/ResetAllButtons",	"Återställ alla knappar till normalläge",	
+			
+		"PageItems",						"Sidobjekt", 
+		"$$$/Menu/Trace Geometry",			"Spåra geometri", 
+
+		"$$$/Menu/FormFieldOptions/Button",					"Knapp",
+		"$$$/Menu/FormFieldOptions/Check Box",				"Kryssruta",
+		"$$$/Menu/FormFieldOptions/Combo Box",				"Kombinationsruta",
+		"$$$/Menu/FormFieldOptions/List Box",				"Listruta",
+		"$$$/Menu/FormFieldOptions/Radio Button",			"Alternativknapp",
+		"$$$/Menu/FormFieldOptions/Signature Field",		"Signaturfält",
+		"$$$/Menu/FormFieldOptions/Text Field",				"Textfält",
+
+		"InteractiveContextMenu",			"Interaktivt",
+	
+		// ----- Dialog strings
+		"$$$/Dialog/CreateFormField/Title",		"Formulärfält", 
+		"$$$/Dialog/CreateFormField/Options",	"Alternativ",
+		"$$$/Dialog/CreateFormField/Width",		"&Bredd:",
+		"$$$/Dialog/CreateFormField/Height",	"&Höjd:",
+
+		"$$$/Dialog/FormFieldSettings/Title",				"Allmänt", 
+		"$$$/Dialog/FormFieldSettings/FieldType",			"Fältformat:",
+		"$$$/Dialog/FormFieldSettings/FieldTypeSetting",	"",
+		"$$$/Dialog/FormFieldSettings/Name",				"&Namn:",
+		"$$$/Dialog/FormFieldSettings/PDFVisibility",		"&Visa i PDF-filen:",
+		"$$$/Dialog/FormFieldSettings/PDFVis/Visible",		"Visa",
+		"$$$/Dialog/FormFieldSettings/PDFVis/Hidden",		"Dölj",
+		"$$$/Dialog/FormFieldSettings/PDFVis/VisibleNoPrint",	"Visa men skriv inte ut",
+		"$$$/Dialog/FormFieldSettings/PDFVis/HiddenButPrint",	"Dölj och skriv inte ut",
+		"$$$/Dialog/FormFieldSettings/ReadOnly",			"Skrivskyddat",
+		"$$$/Dialog/FormFieldSettings/Export",				"Exportera",
+		"$$$/Dialog/FormFieldSettings/RequiredForExport",	"Krävs för export",
+		"$$$/Dialog/FormFieldSettings/Description",			"B&eskrivning:",
+		"$$$/Dialog/FormFieldSettings/ExportName",			"&Exportnamn:",
+		"$$$/Dialog/FormFieldSettings/Common Settings",		"Vanliga inställningar",
+		"$$$/Dialog/FormFieldSettings/Options",				"Alternativ",
+		"$$$/Dialog/FormFieldSettings/Holder",				"Behållare för formulärfältsbeskrivning",
+
+		"$$$/Dialog/FormOptions/Title",						"Knappalternativ",
+		"$$$/Dialog/FormFieldSettings/Options",				"Alternativ",
+		
+		"$$$/Dialog/FormFieldSettings/ExportValue",			"Exportvärde:",
+		"$$$/Dialog/FormFieldSettings/DefaultIsChecked",	"Standard är markerat",
+		"$$$/Dialog/FormFieldSettings/DefaultIsSelected",	"Standard är markerat",
+		"$$$/Dialog/FormFieldSettings/Default",				"Standard:",
+
+		"$$$/Dialog/FormFieldSettings/Multiline",				"Flera rader",
+		"$$$/Dialog/FormFieldSettings/Scroll",					"Rullbar",
+		"$$$/Dialog/FormFieldSettings/LimitOf",					"Begränsa till",
+		"$$$/Dialog/FormFieldSettings/Characters",				"tecken",
+		"$$$/Dialog/FormFieldSettings/Password",				"Lösenord",
+		"$$$/Dialog/FormFieldSettings/FieldForFileSelection",	"Använd för val av filer",
+		"$$$/Dialog/FormFieldSettings/SpellCheck",				"Stavningskontroll",
+		
+		"$$$/Dialog/FormFieldSettings/Item",					"Objekt:",
+		"$$$/Dialog/FormFieldSettings/Add",						"Lägg till",
+		"$$$/Dialog/FormFieldSettings/Delete",					"Ta bort",
+		"$$$/Dialog/FormFieldSettings/Change",					"Ändra",
+		"$$$/Dialog/FormFieldSettings/SortItems",				"Sortera objekt",
+		"$$$/Dialog/FormFieldSettings/AllowMultipleSelection",	"Tillåt flera val",
+		"$$$/Dialog/FormFieldSettings/Editable",				"Redigerbar",
+
+		"$$$/Dialog/FormFieldSettings/Align",					"Justering:",
+		"$$$/Dialog/FormFieldSettings/Align/Left",				"Vänster",
+		"$$$/Dialog/FormFieldSettings/Align/Center",			"Mitt",
+		"$$$/Dialog/FormFieldSettings/Align/Right",				"Höger",
+
+		"$$$/Dialog/FormFieldSettings/Font:",					"T&eckensnitt:",
+		"$$$/Dialog/FormFieldSettings/Size:",					"&Storlek:",
+		"$$$/Dialog/FormFieldSettings/Auto",					"Auto",
+
+		"$$$/Dialog/FormFieldSettings/SelectedIsDefault",		"Valt objekt är standard",
+		
+		"$$$/Dialog/FormFieldUI/DeleteAlert",					"Om du tar bort läget kommer du också att ta bort det innehåll som är kopplat till det. Vill du ta bort läget ändå?",
+		"$$$/Dialog/FormFieldUI/DestroyAlert",					"Om du utför den här åtgärden kommer det innehåll som är kopplat till formulärfältets andra lägen att tas bort. Vill du fortsätta?",
+		"$$$/Dialog/FormFieldUI/DeleteContentAlert",			"Är du säker på att du vill ta bort det innehåll som är kopplat till det här läget?",
+		"$$$/Dialog/FormFieldUI/StyleChangeAlert",				"Om du utför den här åtgärden kommer det innehåll som är kopplat till formulärfältets aktuella lägen att tas bort. Vill du fortsätta?",
+		"$$$/Dialog/FormFieldUI/StyleChangeFailed",				"Det gick inte att använda det valda utseendeformatet i formulärfältet.",
+
+		/* These are not visible, they are names of subpanels... */
+		
+		"$$$/Dialog/FormFieldSettings/CheckBox",				"Kryssrutealternativ",	
+		"$$$/Dialog/FormFieldSettings/RadioButton",				"Alternativ för alternativknapp",	
+		"$$$/Dialog/FormFieldSettings/TextField",				"Alternativ för textfältsknapp",	
+		"$$$/Dialog/FormFieldSettings/ListBox",					"Alternativ för listruteknapp",	
+		
+		"$$$/Dialog/About/Description",						"Forms Plugin, version 1.0\n\n(c) 2001 Adobe Systems Incorporated. Alla rättigheter förbehålles.",
+
+		"$$$/Dialog/CmdName/CreateButton",					"Konvertera till knapp",
+		"$$$/Dialog/CmdName/DestroyButton",					"Konvertera till objekt",
+		"$$$/Dialog/CmdName/ChangeFormSettings",			"Ändra knappinställningar",
+
+		"$$$/Dialog/TextColor/Title",						"Textfärg", 
+		"$$$/Dialog/Button/Color...",						"Teckenfärg...", 
+
+		"$$$/Dialog/AppearancePanelPrefs/Title",			"Panelalternativ", 
+		"$$$/Dialog/AppearancePanelPrefs/ThumbnailSize",	"Miniatyrbildsstorlek", 
+		"$$$/Dialog/AppearancePanelPrefs/None",				"Ingen", 
+		
+		
+		"$$$/Dialog/StateOptions/Title",					"Lägesalternativ", 
+		"$$$/Dialog/StateOptions/State",					"Läge:", 
+		"$$$/Dialog/StateOptions/Enable",					"Aktivera läge", 
+
+		"$$$/Dialog/CalculationOrder/Title",				"Beräkningsordning", 
+		"$$$/Dialog/TabOrder/Title",						"Tabbordning", 
+		"$$$/Dialog/Order/MoveUp",							"Flytta &uppåt", 
+		"$$$/Dialog/Order/MoveDown",						"Flytta &nedåt",
+
+		"$$$/Dialog/ButtonPDFOptions/Title",				"PDF-alternativ",
+		"$$$/Dialog/ButtonPDFOptions/InitialAppearance",	"Initialt utseende:",
+		"$$$/Dialog/ButtonPDFOptions/Visible",				"&Synligt",
+		"$$$/Dialog/ButtonPDFOptions/Hidden",				"&Dolt",
+		"$$$/Dialog/ButtonPDFOptions/Printable",			"&Utskrivbar",
+		"$$$/Dialog/ButtonPDFOptions/Description",			"B&eskrivning:",
+		
+		// ----- Window strings
+		
+		// ----- Panel strings
+
+		"$$$/Panel/FormFieldSettings/Action Data Holder",	"Databehållare för åtgärd",
+		"$$$/Panel/FormFieldSettings/+",					"+",
+		"$$$/Panel/FormFieldSettings/Event:",				"Händelse:",
+		"$$$/Panel/FormFieldSettings/Actions:",				"Makron:",
+		"$$$/Panel/FormFieldSettings/URL:",					"URL-adress:",
+		"$$$/Panel/FormFieldSettings/Mail to:",				"Skicka i e-post till:",
+		"$$$/Panel/Action",									"Funktionsmakro",
+		"$$$/Panel/Empty Action",							"[Inga åtgärder tillagda]",
+		"$$$/Panel/StatesListBoxLabel/States",				"Utseende",
+		"$$$/Panel/States",									"Knappar och formulär",
+		"$$$/Panel/FormFieldSettings/FieldType",			"Typ: ",
+		"$$$/Panel/FormFieldSettings/Name",					"Namn:",
+		"$$$/Panel/ShowHide/Visibility:",					"Visning:",
+		"$$$/Panel/GoToPage/Page:",							"Sida:",
+
+		"$$$/Panel/Normal",									"[Normal]",
+		"$$$/Panel/Over",									"[Överrullning]",
+		"$$$/Panel/Down",									"[Klickning]",
+
+		"$$$/Panel/Off",									"[Normal av]",
+		"$$$/Panel/On",										"[Normal på]",
+
+		"$$$/Panel/RolloverOff",							"[Överrullning av]",
+		"$$$/Panel/RolloverOn",								"[Överrullning på]",
+		"$$$/Panel/DowmOff",								"[Klickning av]",
+		"$$$/Panel/DownOn",									"[Klickning på]",
+
+		"$$$/Panel/CmdName/FormFieldName",					"Knappnamn",
+		"$$$/Panel/CmdName/FormFieldStyle",					"Knapputseende",
+		
+		"$$$/Panel/FormFieldSettings/Appearance",			"Utseende:",
+		"$$$/Panel/PDFOptions",								"PDF-alternativ",
+		"$$$/Panel/Required",								"Obligatoriskt",
+		"$$$/Panel/Printable",								"Utskrivbar",
+		"$$$/Panel/Description",							"Beskrivning:",
+		"$$$/Panel/SelectedByDefault",						"Markerat som standard",
+		"$$$/Panel/Multiline",								"Flera rader",
+		"$$$/Panel/ListItems",								"Lista objekt",
+		"$$$/Panel/MultipleSelection",						"Flera markerade",
+		"$$$/Panel/FontSize",								"Teckenstorlek:",
+		"$$$/Panel/Font",									"Typsnitt:",
+		"$$$/Panel/AutoSize",								"Auto",
+		"$$$/Panel/SortItems",								"Sortera objekt",
+		"$$$/Panel/MERTLOption",							"Höger-till-vänster",
+		"$$$/Panel/ExportValue",							"Knappvärde:",
+		 
+		"$$$/Popup/Separator",								" - ",
+		
+		"$$$/Dialog/Behaviors/Exit/No Data for Exit Behavior", "",
+
+		// ----- Tips strings
+
+		"$$$/Tip/StateEye",				"Aktivera/avaktivera alternativt läge vid export",
+		"$$$/Tip/StateThumbnail",		"Förminskad vy av det här läget",
+		"$$$/Tip/Show",					"Visa",
+		"$$$/Tip/Hide",					"Göm ",
+		"$$$/Tip/Ignore",				"Ignorera",
+		"$$$/Tip/Delete Selected Action",	"Ta bort markerad åtgärd",
+		"$$$/Tip/Add New Action",		"Lägg till ny åtgärd för markerad händelse",
+		"$$$/Tip/DeleteState",			"Ta bort alternativt läge och dess innehåll",
+		"$$$/Tip/Convert To Button",		"Konvertera till knapp",
+		"$$$/Tip/Convert To Object",		"Konvertera till objekt",
+		"$$$/Tip/DefaultChoice",		"Välj ett objekt i listan och gör det till standardvalet. Ange en anpassad sorteringsordning genom att avmarkera Sortera objekt och dra objekten till rätt plats.",
+        "$$$/Tip/MissingFontToolTip",				"Typsnitt saknas i formulärfältet. Klicka för att söka efter typsnitt.",
+
+		// ----- Error strings
+
+		"$$$/Error/YouNeedToSpecifyAName", "Du måste ange ett namn.",
+		"$$$/Error/YouNeedToSpecifyANonBlankName", "Du måste ange ett giltigt namn.",
+		"$$$/Error/YouNeedToSpecifyANonBlankNameOrNoName", "Du måste ange ett giltigt namn alternativt inte använda något namn.",
+		"$$$/Error/YouNeedToSpecifyAnExportValue", "Du måste ange ett exportvärde.",
+		"$$$/Error/YouNeedToSpecifyANonBlankExportValue", "Du måste ange ett giltigt exportvärde.",
+		"$$$/Error/YouNeedToSpecifyAUniqueName", "Det här lägesnamnet används redan. Välj ett annat.",
+		"$$$/Error/YouNeedToSpecifyAValidFontSize", "Ange ett värde mellan 0 och 300 eller Auto.",
+		
+		// ----- Misc strings
+
+		"$$$/Command/DeleteStates",	"Ta bort lägen",
+		"$$$/CmdName/DeleteStateContent",	"Ta bort innehåll för läge",
+		"$$$/Panel/CmdName/MSOName",		"Namn på flerlägesobjekt",
+		
+		// ----- MultiStateObject Panel strings
+				
+		"$$$/Menu/MSOPanel", "&Objektlägen",
+		"$$$/Panel/MSOPanel", "Objektlägen",
+		"$$$/Panel/MSOPanel/ObjectName", "Objektnamn:",
+#ifdef MACINTOSH
+		"$$$/Panel/MSOPanel/MixedSelection", "Klicka på Nytt för att göra ett separat läge av varje objekt. (Alt-klicka för att låta objekten behålla samma läge.)",
+		"$$$/Panel/MSOPanel/MSOAndMixedSelection", "Klicka på Nytt för att göra varje objekt till ett nytt läge i flerlägesobjektet ^1. (Alt-klicka för att låta objekten behålla samma läge.)\n\nKlicka på Lägg till för att infoga objekten i det synliga läget för ^2.",
+#else
+		"$$$/Panel/MSOPanel/MixedSelection", "Klicka på Nytt för att göra ett separat läge av varje objekt. (Alt-klicka för att låta objekten behålla samma läge.)",
+		"$$$/Panel/MSOPanel/MSOAndMixedSelection", "Klicka på Nytt för att göra varje objekt till ett nytt läge i flerlägesobjektet ^1. (Alt-klicka för att låta objekten behålla samma läge.)\n\nKlicka på Lägg till för att infoga objekten i det synliga läget för ^2.",
+#endif
+		
+		"$$$/Menu/MSOPanelPopup", "Panelmeny för objektformat",	
+		"$$$/Menu/MSOPanel/NewState", "Nytt läge",
+		"$$$/Menu/MSOPanel/DeleteState", "Ta bort läge",
+		"$$$/Menu/MSOPanel/AddToState", "Lägg till objekt till läge",
+		"$$$/Menu/MSOPanel/PasteIntoState", "Klistra in i läge",
+		"$$$/Menu/MSOPanel/ReleaseState", "Frigör läge till objekt",
+		"$$$/Menu/MSOPanel/ReleaseAllStates", "Frigör alla lägen till objekt",
+		"$$$/Menu/MSOPanel/ResetAllMSOs", "Återställ alla flerlägesobjekt till första läge",
+		"$$$/Menu/MSOPanel/Options", "Panelalternativ...",
+		"$$$/Menu/MSOPanel/ContextMenu", "Snabbmeny för objektlägespanel",
+		"$$$/Menu/MSOPanel/ReleaseStateContextMenu", "Frigör ^1 till objekt",
+		"$$$/Menu/MSOPanel/DeleteStateContextMenu", "Ta bort ^1",
+		"$$$/Menu/MSOPanel/PasteIntoStateContextMenu", "Klistra in i ^1",
+		"$$$/Menu/MSOPanel/HiddenUntilTriggered", "Dold tills utlöst",
+	
+		"$$$/Tip/MSOPanel/StateAnimated", "Ett objekt i det här läget är animerat.",
+		"$$$/Tip/MSOPanel/NewMSO", "Konvertera markering till flerlägesobjekt",
+		"$$$/Tip/MSOPanel/NewState", "Skapa nytt läge",
+		"$$$/Tip/MSOPanel/DeleteState", "Radera markerat läge",
+		"$$$/Tip/MSOPanel/MSOIsSelected", "Det här flerlägesobjektet är markerat. Alla lägen omformas om du omformar objektet.",
+		"$$$/Tip/MSOPanel/MSOIsNotSelected", "Ett läge är markerat. Klicka för att välja flerlägesobjektet.",
+		"$$$/Tip/MSOPanel/MSOStateIsSelected", "Det här läget är markerat.",
+		"$$$/Tip/MSOPanel/MSOStateContentIsSelected", "Innehåll i det här läget är markerat. Klicka på raden för att välja det här läget.",
+		"$$$/Tip/MSOPanel/MSOStateRowMSOIsSelected", "Flerlägesobjektet är markerat. Klicka på raden för att växla till och välja det här läget.",
+		"$$$/Tip/MSOPanel/MSOActiveStateRowMSOIsSelected", "Flerlägesobjektet är markerat. Klicka på raden för att välja det här läget.",
+		"$$$/Tip/MSOPanel/MSOAnotherStateIsSelected", "Klicka på raden för att växla till och markera det här läget.",
+		"$$$/Tip/MSOPanel/PasteIntoState", "Klistra in kopierade objekt i markerat läge",
+		"$$$/Tip/MSOPanel/AddToState", "Lägg till objekt till synligt läge",
+	
+		"$$$/Dialog/MSOPanel/ReleaseAlert", "Flerlägesobjektet måste ha minst två lägen. Den här åtgärden tar bort flerlägesobjektet från dokumentet. Alla aktuella objekt behåller sin placering som objekt med ett läge.",
+		"$$$/Dialog/MSOPanel/ReleaseAllAlert", "Den här åtgärden tar bort flerlägesobjektet från dokumentet. Alla aktuella objekt behåller sin placering som objekt med ett läge.",
+		"$$$/Dialog/MSOPanel/DeletesMSOAlert", "Flerlägesobjektet måste ha minst två lägen. Den här åtgärden tar bort flerlägesobjektet från dokumentet. Objekt som är kopplade till det återstående läget behåller sin placering som objekt med ett läge.",
+		
+		"$$$/Panel/MSOPanel/StatusOne", " objekt i ^1",
+		"$$$/Panel/MSOPanel/Status", " objekt i ^1",
+		
+		"$$$/Panel/MSOPanel/StatusMSOSelected", "Alla markerade lägen",
+		"$$$/Panel/MSOPanel/StatusStateSelected", "Markerat läge",
+		"$$$/Panel/MSOPanel/StatusStateContentSelected", "Objekt i markerat läge",
+
+		// Command strings		
+		"$$$/Command/CheckBox", "Konvertera till kryssruta",
+		"$$$/Command/ComboBox", "Konvertera till kombinationsruta",
+		"$$$/Command/ListBox", "Konvertera till listruta",
+		"$$$/Command/RadioButton", "Konvertera till alternativknapp",
+		"$$$/Command/SignatureField", "Konvertera till signaturfält",
+		"$$$/Command/TextField", "Konvertera till textfält",
+}
+};
+
+#endif // __ODFRC__

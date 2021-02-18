@@ -1,0 +1,83 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/incopyimport/resources/InCopyImportClass.fr $
+//  
+//  Owner: Frank Rubino
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "objectmodeltypes.fh"
+#include "BuildNumber.h"
+#include "FormatNumber.h"
+#include "PMLocaleIds.h"
+
+#include "ActionID.h"
+#include "CommandID.h"
+#include "GenericID.h"
+#include "GraphicsID.h"
+#include "OpenPlaceID.h"
+#include "InCopyImportID.h"
+#include "SplineID.h"
+#include "widgetid.h"
+#include "WorkspaceID.h"
+
+
+#include "PlugInModel_UIAttributes.h"
+
+#ifdef __ODFRC__
+
+//---------------------------------------------------------------
+//	Plugin Version
+//---------------------------------------------------------------
+resource PluginVersion (1)
+{
+	kTargetVersion,
+	kInCopyImportPluginID,
+	kMajorVersionNumber, kMinorVersionNumber, 	
+	kMajorVersionNumber, kMinorVersionNumber, 	
+	kHotakaMajorFormatNumber, kHotakaInitialMinorFormatNumber,
+	{ kInDesignProduct, kInCopyProduct, kInDesignServerProduct },
+	{ kWildFS },
+	kModelPlugIn,
+	kAUMComponentVersionStr
+};
+
+
+resource IgnoreTags(1)
+{
+	kClassIDSpace,
+	{
+		kInCopyImportProviderBoss,
+	}
+}
+
+resource ClassDescriptionTable(1)
+{{{
+	Class
+	{
+		kInCopyImportProviderBoss,
+		kInvalidClass,
+		{
+			IID_IK2SERVICEPROVIDER, 	kInCopyImportServiceImpl,
+			IID_IIMPORTPROVIDER, 		kInCopyImportProviderImpl,
+		}
+	},
+	
+}}};
+
+#endif // __ODFRC__

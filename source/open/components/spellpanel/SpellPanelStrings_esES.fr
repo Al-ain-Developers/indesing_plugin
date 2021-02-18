@@ -1,0 +1,159 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kSpellPanelStringsRsrcID + index_esES)
+{
+	k_esES,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{				
+		// ----- Main menu strings
+		"SpellingMenu",					"&Ortografía",
+		"Check Spelling...",			"Revisar orto&grafía...",
+		"Dynamic SpellCheck",			"Revisión ortográfica diná&mica",
+		"Autocorrect",					"Autocorrección",
+		"Auto Correct",					"&Autocorrección",
+		"AutoCorrect",					"Autocorrección",
+
+		// ----- Window strings
+		"corrected",					"corregido",
+		"misspelled",					"con errores ortográficos",
+		
+		// ----- Scope strings
+		
+		"[No spelling]",				"[Ninguna]",
+		"Auto",							"Automático",
+		"Document",						"Documento",
+		"Story",						"Artículo",
+		"Stories",						"Artículos",
+		"Selection",					"Selección",
+		
+		// ----- Panel strings		
+		"Spelling",						"Ortografía",
+		"&Spelling...",					"&Ortografía...",
+		"Auto Correct...",				"&Autocorrección...",
+		"[No language]",				"[Ninguno]",
+		"AutoCorrectEnable",			"A&ctivar autocorrección",
+		"AutoCorrectCapitalizationErrors",			"Autocorregir uso erróneo de &mayúsculas",
+		"A&dd...",						"Aña&dir...",		// Opens a dialog
+		"EditAutoCorrectWord",			"&Editar...",		// Opens a dialog
+		"Correction",					"Corrección",
+		"Misspelled Word",				"Error ortográfico",
+
+		// ----- Dialog strings
+		"Check Spelling",				"Revisar ortografía",
+		"&Change To:",					"Cam&biar a:",
+		
+		"Change To",					"Cambiar a",
+		"&Suggested Corrections:",		"Sugere&ncias:",
+		"Language:",					"Idioma:",
+		"Sea&rch:",						"Busca&r:",
+		"Include Overset",				"Incluir desbordamiento",
+		"&Done",							"&Hecho",
+		"C&hange",						"&Cambiar",
+		"S&tart",						"I&niciar",
+		"Chan&ge All",					"Cambiar &todo",
+		"Skip",							"Omitir",	
+		"kSkipButtonInSpellingDialog",  "&Omitir",
+		"Ignore",						"Ignorar",
+		"&Ignore All",					"I&gnorar todo",
+		"&AddAndContinue",				"&Añadir",			// Adds to dictionary automatically, continues spelling
+		"Dic&tionary...",				"Diccionar&io...",	// Launches Dict Editor dialog
+		"Add To:",						"Añadir a&:",
+
+		// Label strings in Spell Check dialog.
+		"Ready to Spell Check:", 			"Listo para revisión ortográfica:",
+		"Misspelled Word:",					"Error ortográfico:",
+		"Unknown Word - No Suggestions:", 	"Palabra desconocida. No hay sugerencias:",
+		"Not in Dictionary:",				"No está en el diccionario:",
+		"Repeated Word:",					"Palabra repetida:",
+		"Uncapitalized Word:",				"Palabra sin mayúsculas:",
+		"Uncapitalized Sentence:",			"Frase sin mayúsculas:",
+		"Duplicate Word:",					"Palabra repetida:",
+		"Capitalization Error:",			"Uso erróneo de mayúsculas:",
+		"Spell Check Complete:",			"Revisión ortográfica finalizada",
+		
+		"SpellCheckCompleteAlertStr",			"Revisión ortográfica finalizada.",	// Alert string at completion of spelling.
+
+		"Misspelled Word (Overset):",					"Error ortográfico: (texto desbordado)",
+		"Unknown Word - No Suggestions (Overset):", 	"Palabra desconocida: (texto desbordado)",
+		"Not in Dictionary (Overset):",					"No está en el diccionario: (texto desbordado)",
+		"Repeated Word (Overset):",						"Palabra repetida: (texto desbordado)",
+		"Uncapitalized Word (Overset):",				"Palabra sin mayúsculas: (texto desbordado)",
+		"Uncapitalized Sentence (Overset):",			"Frase sin mayúsculas: (texto desbordado)",
+
+		"Misspelled Word (In Table):",					"Error ortográfico: (en tabla)",
+		"Unknown Word - No Suggestions (In Table):", 	"Palabra desconocida: (en tabla)",
+		"Not in Dictionary (In Table):",					"No está en el diccionario: (en tabla)",
+		"Repeated Word (In Table):",						"Palabra repetida: (en tabla)",
+		"Uncapitalized Word (In Table):",				"Palabra sin mayúsculas: (en tabla)",
+		"Uncapitalized Sentence (In Table):",			"Frase sin mayúsculas: (en tabla)",
+
+		"Misspelled Word (Deleted Text):",				"Error ortográfico: (texto eliminado)",
+		"Unknown Word - No Suggestions (Deleted Text):","Palabra desconocida: (texto eliminado)",
+		"Not in Dictionary (Deleted Text):",			"No está en el diccionario: (texto eliminado)",
+		"Repeated Word (Deleted Text):",				"Palabra repetida: (texto eliminado)",
+		"Uncapitalized Word (Deleted Text):",			"Palabra sin mayúsculas: (texto eliminado)",
+		"Uncapitalized Sentence (Deleted Text):",		"Frase sin mayúsculas: (eliminado)",
+		
+		"Misspelled Word (Hidden):",					"Error ortográfico: (elemento oculto)",
+		"Unknown Word - No Suggestions (Hidden):", 		"Palabra desconocida: (elemento oculto)",
+		"Not in Dictionary (Hidden):",					"No está en el diccionario: (elemento oculto)",
+		"Repeated Word (Hidden):",						"Palabra repetida: (elemento oculto)",
+		"Uncapitalized Word (Hidden):",					"Palabra sin mayúsculas: (oculto)",
+		"Uncapitalized Sentence (Hidden):",				"Frase sin mayúsculas: (oculto)", // Shortened to "Hidden" for space. Like the "Overset" case above.
+
+//		"Spelling Preferences", 						"Spelling Preferences", // Note to localizer: this string moved to SpellingServiceStrings.fr
+		"Find", 										"Buscar",
+		"&Misspelled Words", 							"&Palabras con errores ortográficos",
+		"&Repeated Words", 								"Palabras &repetidas",
+		"&Uncapitalized Words", 						"Pala&bras sin mayúsculas",
+		"Uncapitalized &Sentences", 					"&Frases sin mayúsculas",
+		"Misspelled Words Underline Color:",			"Palabras con &errores ortográficos:",
+		"Repeated Words Underline Color:",				"Palabras repe&tidas:",
+		"Uncapitalized Words Underline Color:",			"Palabras &sin mayúsculas:",
+		"Uncapitalized Sentences Underline Color:",		"Frases sin &mayúsculas:",
+		"Dynamic Spellchecking",						"Revisión ortográfica dinámica",
+		
+		"Underline Color",								"Color de subrayado",
+		
+		"&Enable Dynamic Spelling",						"&Activar ortografía dinámica",
+		
+		"Search is completed.  ^1  replacement(s) made.", "Finalizó la búsqueda. Cambios efectuados: ^1.", 
+
+		"Add",											"Añadir",
+		"Re&move",										"&Quitar",
+		"Misspelled:",									"Con errores ortográficos:",
+		"Correction:",									"Corrección:",
+		"Language:",									"Idioma:",
+		"&Language:",									"&Idioma:",
+		"AddToAutoCorrectList",							"Añadir a lista de autocorrección",
+		"EditAutoCorrectList",							"Editar lista de autocorrección",
+
+		"ACAlert1",		"No se permiten las entradas en blanco.",
+		"ACAlert2",		"La palabra y su corrección no pueden tener el mismo uso de mayúsculas y la misma ortografía.",
+		"ACAlert3",		"El error ortográfico y su corrección ya existen en la lista.",
+		"ACAlert4",		"No se puede crear la entrada. Sobrepasa el número máximo de caracteres (64).",
+		"ACAlert5",		"La entrada contiene un carácter no válido.",
+		"ACAlert6",		"No se permite un espacio en blanco en el error ortográfico.",
+
+	}
+};
+
+#endif // __ODFRC__

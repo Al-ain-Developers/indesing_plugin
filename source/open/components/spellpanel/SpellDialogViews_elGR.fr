@@ -1,0 +1,318 @@
+//========================================================================================
+//  
+// 
+//  
+//  Owner: Bernd Paradies
+//  
+// 
+//  
+//  
+//  
+//  
+//  
+//  
+//  
+//  ADOBE CONFIDENTIAL
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#ifdef __ODFRC__   
+
+//========================================================================================
+// Dialog:				"Check Spelling"
+// UI Spec File:		PM_CheckSpelling-v09.tif
+//========================================================================================
+
+resource SpellDialogWidget( kSpellDialogRsrcID + index_elGR )
+{
+	__FILE__, __LINE__,
+	kSpellDlgParentWidgetID, kPMRsrcID_None,					// WidgetId, RsrcId
+	kBindNone,
+	Frame(0,0,510+25,345)		// Frame
+	kTrue, kTrue,				// Visible, Enabled
+	"Check Spelling",                // Panel name
+	{
+		SpellSkipButtonWidget
+		(
+			kSpellSkipButtonID, kSysButtonPMRsrcId,			// WidgetId, RsrcId
+			kBindNone,
+			Frame(375,45,495+25,65)		// Frame
+			kTrue, kTrue,										// Visible, Disabled per default
+			"S&tart"
+		),	
+		
+		// ----- ok/cancel buttons
+		ButtonWidget
+		(
+			kOKButtonWidgetID, kSysButtonPMRsrcId,						// WidgetId, RsrcId
+			kBindNone,
+			Frame(375,15,495+25,35)		// Frame
+			kTrue, kTrue,										// Visible, Enabled
+			"&Done",								// Text
+		),	
+
+		SpellChangeButtonWidget
+		(
+			kSpellChangeButtonID, kSysButtonPMRsrcId,			// WidgetId, RsrcId
+			kBindNone,
+			Frame(375,75,495+25,95)		// Frame
+			kTrue, kFalse,										// Visible, Disabled
+			"C&hange"			// flips between Start/Change
+		),	
+
+		SpellIgnoreButtonWidget
+		(
+			kSpellIgnoreButtonID, kSysButtonPMRsrcId,			// WidgetId, RsrcId
+			kBindNone,
+			Frame(375,105,495+25,125)		// Frame
+			kTrue, kFalse,										// Visible, Disabled
+			"&Ignore All"
+		),	
+
+		SpellChangeAllButtonWidget
+		(
+			kSpellChangeAllButtonID, kSysButtonPMRsrcId,			// WidgetId, RsrcId
+			kBindNone,
+			Frame(375,135,495+25,155)		// Frame
+			kTrue, kFalse,										// Visible, Disabled
+			"Chan&ge All"
+		),	
+
+		SpellAddAndContinueButtonWidget
+		(
+			kSpellAddAndContinueButtonID, kSysButtonPMRsrcId,			// WidgetId, RsrcId
+			kBindNone,
+			Frame(375,240,495+25,260)		// Frame
+			kTrue, kFalse,										// Visible, Disabled
+			"&AddAndContinue"		// Adds to dictionary automatically, continues spelling
+		),	
+
+		SpellAddToListButtonWidget
+		(
+			kSpellAddToListButtonID, kSysButtonPMRsrcId,			// WidgetId, RsrcId
+			kBindNone,
+			Frame(375,165,495+25,185)		// Frame
+			kTrue, kFalse,										// Visible, Disabled
+			"Dic&tionary..."		// launches the DictEditor
+		),	
+
+		// Line 1
+		IconSuiteWidget
+		(
+			kSpellCompleteIconWidgetID, 
+			kIconSpellCheckComplete, 
+			kSpellPanelPluginID,		// WidgetId, RsrcId
+			kBindNone,
+			Frame(15,15,33,33)        // Frame
+			kTrue, kTrue,                                        // Visible, Enabled
+			kADBEIconSuiteButtonType,
+			kSpellStatusTextWidgetID,
+		),
+		
+		SpellMisspelledTextBoss
+		(
+			kSpellStatusTextWidgetID, kSysStaticTextPMRsrcId,			// WidgetId, RsrcId
+			kBindNone,
+			Frame(15,15,360,35)		// Frame
+			kTrue, kTrue, kAlignLeft,							// Visible, Enabled, Alignment
+			kDontEllipsize, kTrue,										// Ellipsize style, Convert ampersands
+			"Ready to Spell Check:",
+			0
+		),
+
+		// Line 2
+		SpellMisspelledWordBoss					
+		(
+			kSpellWordEditBoxID,				// WidgetId
+			kSysEditBoxPMRsrcId,			// RsrcId
+			kBindNone,						// Frame binding
+			Frame(15,35,360,55)		// Frame
+			kTrue, kFalse					// Visible, Enabled
+			0,								// Widget id of nudge button (0 so we don't get one)
+			0, 0,							// small,large nudge amount
+			0,			// max num chars( 0 = no limit)
+			kFalse,							// is read only
+			kFalse,							// should notify each key stroke
+			kFalse,							// range checking enabled
+			kFalse,							// blank entry allowed
+			0,								// Upper bounds
+			0,								// Lower bounds
+			"",								// Initial text
+			kDialogWindowSystemScriptFontId, kDialogWindowSystemScriptFontId,
+		),
+		// Line 3
+		StaticTextWidget
+		(
+			kSpellChangeToTextWidgetID, kSysStaticTextPMRsrcId,			// WidgetId, RsrcId
+			kBindNone,
+			Frame(15,60,360,80)		// Frame
+			kTrue, kTrue, kAlignLeft,							// Visible, Enabled, Alignment
+			kDontEllipsize, kTrue,										// Ellipsize style, Convert ampersands
+			"&Change To:",
+			kSpellAlternativeEditBoxID
+		),
+
+		// Line 4
+		SpellWordObserverBoss					
+		(
+			kSpellAlternativeEditBoxID,				// WidgetId
+			kSysEditBoxPMRsrcId,			// RsrcId
+			kBindNone,						// Frame binding
+			Frame(15,80,360,100)		// Frame
+			kTrue, kFalse					// Visible, Enabled
+			0,								// Widget id of nudge button (0 so we don't get one)
+			0, 0,							// small,large nudge amount
+			0,			// max num chars( 0 = no limit)
+			kFalse,							// is read only
+			kTrue,							// should notify each key stroke
+			kFalse,							// range checking enabled
+			kFalse,							// blank entry allowed
+			0,								// Upper bounds
+			0,								// Lower bounds
+			"",								// Initial text
+			kDialogWindowSystemScriptFontId, kDialogWindowSystemScriptFontId,
+		),
+		// Line 5
+		StaticTextWidget
+		(
+			kSpellCorrectionsTextWidgetID, kSysStaticTextPMRsrcId,			// WidgetId, RsrcId
+			kBindNone,
+			Frame(15,105,360,125)		// Frame
+			kTrue, kTrue, kAlignLeft,							// Visible, Enabled, Alignment
+			kDontEllipsize, kTrue,										// Ellipsize style, Convert ampersands
+			"&Suggested Corrections:",
+			kSpellAlternativesID
+		),
+
+		// Line 6
+		SpellAlternativesObserverBoss
+		(
+			kSpellAlternativesID, kSysOwnerDrawListBoxPMRsrcId,	// WidgetId, RsrcId
+			kBindNone,
+			Frame(15,126,360,232)			// Frame
+			kTrue, kTrue,								// Visible, Enabled			
+			kTrue,												// EraseBeforeDraw
+			kInterfacePaletteFill,								// InterfaceColor
+			1,0,										// List dimensions
+			12,											// Cell height
+			1,											// Border width
+			kFalse, kTrue,								// Has scroll bar (v,h)
+			kFalse,										// Multiselection
+			kFalse,										// List items can be reordered
+			kFalse,										// Draggable to new/delete buttons
+			kFalse,										// Drag/Dropable to other windows
+			kFalse,										// An item always has to be selected
+			kFalse,										// Don't notify on reselect
+			0,											// Fill list box with widgets with this ID (default is 0)
+			kHideRootNode,					//Options
+			kFalse,						//Use H Scroll bar
+			kTrue,						//Use V scroll bar
+			12,							// Vertical Scroll Button Increment
+			12,							// Vertical Thumb Scroll Increment
+			0,							// Horizontal Scroll Button Increment - Not Used
+			0,							// Horizontal Thumb Scroll Increment - Not Used
+			1,							// Items selectable, 0 = No Selection, 1 = Single Selection, 2 = Multiple Selection
+			kFalse,						// Allow children from multiple parents to be selected
+			kFalse,						// Allow discontiguous selection
+		),
+		// Line 7
+		StaticTextWidget
+		(
+			kSpellLanguageTextWidgetID, kSysStaticTextPMRsrcId,			// WidgetId, RsrcId
+			kBindNone,
+			Frame(15,240,130,260)		// Frame
+			kTrue, kTrue, kAlignRight,							// Visible, Enabled, Alignment
+			kDontEllipsize, kTrue,										// Ellipsize style, Convert ampersands
+			"Add To:",
+			0
+		),
+		SpellTargetWidget		
+		(
+			kUserDictTargetPopupID,			// WidgetId
+			kSysDropDownPMRsrcId,
+			kBindNone,
+			Frame(135,240,360,260)			// Frame
+			kTrue,							// Visible
+			kTrue,							// Enabled
+			{{
+				"User Dictionary"
+			}}							
+		)
+		
+		// Line 8
+		SpellCaseSensitiveCheckBoxWidget
+		(
+			kSpellCaseSensitiveWidgetID,                     // WidgetId
+			kSysCheckBoxPMRsrcId,                            // RsrcId
+			kBindNone,
+			Frame(135,265,460,285)        // Frame
+			kTrue, kTrue, kAlignLeft,                        // Visible, Enabled, Alignment
+			"kCaseSensitive",                                // Text
+		),
+
+		// Line 9
+		StaticTextWidget
+		(
+			kSpellLanguageTextWidgetID, kSysStaticTextPMRsrcId,			// WidgetId, RsrcId
+			kBindNone,
+			Frame(15,285,130,305)		// Frame
+			kTrue, kTrue, kAlignRight,							// Visible, Enabled, Alignment
+			kDontEllipsize, kTrue,										// Ellipsize style, Convert ampersands
+			"Language:",
+			0
+		),
+		SpellLanguageBoss
+		(
+			kSpellLanguageBossWidgetID, kSysStaticTextPMRsrcId,			// WidgetId, RsrcId
+			kBindNone,
+			Frame(135,285,460,305)		// Frame
+			kTrue, kTrue, kAlignLeft,							// Visible, Enabled, Alignment
+			kDontEllipsize, kTrue,										// Ellipsize style, Convert ampersands
+			"",
+			0
+		),
+
+		// Line 10
+		StaticTextWidget
+		(
+			kSpellSearchTextWidgetID, kSysStaticTextPMRsrcId,			// WidgetId, RsrcId
+			kBindNone,
+			Frame(15,310,130,330)		// Frame
+			kTrue, kTrue, kAlignRight,							// Visible, Enabled, Alignment
+			kDontEllipsize, kTrue,										// Ellipsize style, Convert ampersands
+			"Sea&rch:",
+			kSpellScopePopupID
+		),
+
+		// ------------------------------------- //		
+		// ----- Search Scope dropdown menu ---- //
+		// ------------------------------------- //
+		SpellScopeWidget		
+		(
+			kSpellScopePopupID,			// WidgetId
+			kSysDropDownPMRsrcId,
+			kBindNone,
+			Frame(135,310,360,330)		// Frame
+			kTrue,							// Visible
+			kTrue,							// Enabled
+			{{
+				"Document",
+				"All Documents",				
+				"Story",
+				"To End of Story",
+				"Selection"
+			}}							
+		)
+	},
+	{{ IID_ITEXTTARGETSERVER, IID_IOBSERVER }}
+};
+
+#endif // __ODFRC__
+

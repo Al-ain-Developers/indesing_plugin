@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" paddingTop="10" paddingRight="10" paddingBottom="10" paddingLeft="10" backgroundColor="#FFFFFF" name="Tool Hints" layout="vertical" width="100%" height="100%" historyManagementEnabled="false" applicationComplete="appinit()" creationComplete="onCreationComplete()" backgroundGradientAlphas="[1.0, 1.0]" backgroundGradientColors="[#FFFFFF, #FFFFFF]" horizontalAlign="left" verticalAlign="top" borderColor="#FFFFFF">
+	<mx:Script>
+		<![CDATA[
+			////////////////////////// Imports /////////////////////////////////////////////
+			
+			import mx.events.StateChangeEvent;
+			import com.adobe.csxs.core.CSXSInterface;
+			import com.adobe.csxs.events.*;
+			import com.adobe.csxs.types.*;
+			
+ 			import flash.external.HostObject;
+			import mx.controls.Alert; 
+							
+			///////////////////////// / Data /////////////////////////////////////////////
+ 
+			[Bindable] public var currentTool:String; 
+			[Bindable] public var currentToolHint:String; 
+			[Bindable] public var currentToolIcon:String; 
+			[Bindable] public var currentToolIconPath:String; 
+			[Bindable] public var currentAppRoot:String;
+
+			[Bindable] public var fontsizetouse:Number;
+			
+			private function appinit():void
+			{
+				try {
+					currentAppRoot = "com.adobe.indesign.TH";
+					HostObject.getRoot(currentAppRoot).registerAppObject(this);
+				} catch (e:Error) {
+					try {
+						currentAppRoot = "com.adobe.incopy.TH";
+						HostObject.getRoot(currentAppRoot).registerAppObject(this);
+					} catch (e1:Error) {
+						Alert.show("appinit problem: " + e1, "Problem", Alert.OK, Sprite(Application.application));
+					}
+				}
+			}
+
+			private function onCreationComplete():void  
+			{
+				try {
+					var result:SyncRequestResult = CSXSInterface.getInstance().evalScript("addListeners");
+					getToolInfo();  
+					 
+				} catch (e:Error) {
+					Alert.show("onCreationComplete problem: " + e, "Problem", Alert.OK, Sprite(Application.application));
+				}
+				if (HostObject.getRoot(currentAppRoot).app.locale.toString() == "KOREAN_LOCALE")
+				{
+					fontsizetouse = 12;
+				}
+				else
+				{
+					fontsizetouse = 10;
+				}
+		 	} 
+
+			public function getToolInfo():void
+			{
+				currentTool = HostObject.getRoot(currentAppRoot).app.toolBoxTools.currentToolName;
+				currentToolHint = HostObject.getRoot(currentAppRoot).app.toolBoxTools.currentToolHint;
+				if (currentToolHint == "")
+					currentToolHint = "<Tool has no hint text.>";
+				currentToolIconPath = HostObject.getRoot(currentAppRoot).app.toolBoxTools.currentToolIconFile.fsName;
+				currentToolIconPath = "file:///" + currentToolIconPath;
+				
+			}
+		
+		  
+		]]> 
+	</mx:Script>
+	<mx:Canvas width="100%" height="100%" id="myCanvas" fontWeight="bold" backgroundColor="#FFFFFF">
+		<mx:VBox width="100%" height="100%" top="0" left="0"  backgroundColor="#FFFFFF">
+			<mx:HBox width="100%">
+				<mx:Image x="1" y="3" width="22" height="18" source='{currentToolIconPath}' /> 
+				<mx:TextArea id="toolname" fontSize="{fontsizetouse}" condenseWhite="true" x="33" y="3" width="100%" editable="false" borderStyle="none" wordWrap="true" text="{currentTool}" backgroundColor="#FFFFFF" height="24"/>
+			</mx:HBox>
+			<mx:TextArea id="myTextArea"  fontSize="{fontsizetouse}" condenseWhite="true" htmlText="{currentToolHint}" wordWrap="true" borderStyle="none" editable="false" fontWeight="normal" top="29" left="1" width="100%" height="100%" backgroundColor="#FFFFFF"/>	
+		</mx:VBox> 
+	</mx:Canvas> 
+	 
+</mx:Application>

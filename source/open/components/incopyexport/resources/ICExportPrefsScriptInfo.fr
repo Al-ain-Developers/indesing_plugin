@@ -1,0 +1,145 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/incopyexport/resources/ICExportPrefsScriptInfo.fr $
+//  
+//  Owner: Jon Pugh
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "ScriptInfoTypes.fh"
+
+#include "AppFrameworkID.h"
+#include "GalleyPrefID.h"
+#include "InCopySharedID.h"
+#include "InCopyExportID.h"
+
+#ifdef __ODFRC__
+
+resource VersionedScriptElementInfo( 10 )
+{
+	//Contexts
+	{
+		kInitialScriptVersion, kCoreScriptManagerBoss, kInDesignAllLanguagesFS, k_Wild,
+		kInitialScriptVersion, kCoreScriptManagerBoss, kInDesignServerAllLanguagesFS, k_Wild,
+	}
+	//Elements
+	{
+		ObsoleteObject
+		{
+			kCS4ScriptVersion,
+			kICExportPreferencesObjectScriptElement,
+			c_ICExportPref,
+			"story export preference",
+			"Story export preferences.",
+			kICExportPref_CLSID,
+			NoCollectionInfo,
+			kPreferencesObjectScriptElement,
+			kPreferencesSuiteScriptElement,
+		}
+
+		ObsoleteProperty
+		{
+			kCS4ScriptVersion,
+			kICExportPreferencesPropertyScriptElement,
+			p_ICExportPref,
+			"story export preferences",
+			"Story export preference settings.",
+			ObjectType( kICExportPreferencesObjectScriptElement ),
+			{}
+			kNoAttributeClass,
+		}
+
+		ObsoleteProperty
+		{
+			kCS4ScriptVersion,
+			kIncludeStyleTablePropertyScriptElement,
+			p_IncludeStyleTable,
+			"include style table",
+			"If true, embeds character and paragraph styles in the exported story.",
+			BoolType,
+			{}
+			kNoAttributeClass,
+		}
+
+		ObsoleteProperty
+		{
+			kCS4ScriptVersion,
+			kIncludeSwatchListPropertyScriptElement,
+			p_IncludeSwatchList,
+			"include swatch list",
+			"If true, embeds swatches in the exported story.",
+			BoolType,
+			{}
+			kNoAttributeClass,
+		}
+
+		ObsoleteProperty
+		{
+			kCS4ScriptVersion,
+			kIncludeXMPPropertyScriptElement,
+			p_IncludeXMP,
+			"include XMP data",
+			"If true, embeds Extensible Metadata Platform (XMP) information in the exported story.",
+			BoolType,
+			{}
+			kNoAttributeClass,
+		}
+
+		ObsoleteEnum
+		{
+			kCS4ScriptVersion,
+			kICExportEncodingEnumScriptElement,
+			en_InCopyFileEncoding,
+			"InCopy story file encoding",
+			"File encoding options for exported stories.",
+			{
+				en_UTF8, "UTF8", "Uses UTF-8 file encoding; contains all the characters needed for the language structure of HTML in 8-bit characters, which are the same as those in ASCII.",
+				en_UTF16, "UTF16", "Uses UTF-16 file encoding; supports world languages.",
+			}
+		}
+
+		ObsoleteProperty
+		{
+			kCS4ScriptVersion,
+			kICExportEncodingPropertyScriptElement,
+			p_Encoding,
+			"story file encoding",
+			"The unicode encoding for exported stories.",
+			EnumType( kICExportEncodingEnumScriptElement ),
+			{}
+			kNoAttributeClass,
+		}
+
+		ObsoleteProvider
+		{
+			kCS4ScriptVersion,
+			kICExportPrefsScriptProviderBoss,
+			{
+		        Parent{ kApplicationObjectScriptElement },
+				RepresentObject{ kICExportPreferencesObjectScriptElement },
+				ParentProperty{ kICExportPreferencesPropertyScriptElement, kReadOnly },
+				Property{ kIncludeStyleTablePropertyScriptElement, kReadWrite },
+				Property{ kIncludeSwatchListPropertyScriptElement, kReadWrite },
+				Property{ kIncludeXMPPropertyScriptElement, kReadWrite },
+				Property{ kICExportEncodingPropertyScriptElement, kReadWrite },
+			}
+		}
+	}
+} ;
+
+#endif // __ODFRC__

@@ -1,0 +1,43 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kInCopyFileActionsStringsRsrcID + index_zhTW)
+{
+	k_zhTW,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{
+		"&Update Design",		"更新設計(&U)",
+		"AlertUnableToSave",	"無法儲存下列內容。\n檔案可能已鎖定，或者您沒有變更檔案的權限。\n",
+		"Update^1Alert",		"無法儲存某些內容。更新可能會喪失變更。\n是否要更新為「^1」的最新版本?",
+		"Undoable^1Save",		"更新設計會在繼續操作之前儲存所有可編輯的內容。「還原」指令無法撤銷由更新所做的任何變更。\n是否仍要更新為「^1」?",
+		"AlertStoriesMissing",	"找不到某些內容檔案，因此無法編輯。請嘗試將檔案移到其原始位置或在 InDesign 中更新連結。",
+		"AlertStoriesMissingWF", "找不到某些內容檔案，因此無法編輯。請嘗試從伺服器下載內容並重新開啟文件。",
+		"Update",				"更新",
+		"&Revert Story",		"回復內容(&V)",
+//		"Revert Story",			"Revert Content", // Note to localizer: this string moved to InCopySharedStrings_enUS.fr
+		
+		"SaveAsFeatureLost",    "這份文件可能包含這種檔案格式不支援的功能。是否要繼續?",
+		"CannotSaveOntoLockedFile",		"指定的檔案目前已由「^1」在 ^2 中從文件「^3」取出。請選擇其他檔案名稱或讓「^1」存回檔案。",
+		"CannotSaveOntoLockedFileMinimal",	"指定的檔案目前已由「^1」取出。請選擇其他檔案名稱或讓「^1」存回檔案。",
+	}
+};
+
+
+#endif // __ODFRC__

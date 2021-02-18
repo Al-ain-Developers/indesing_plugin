@@ -1,0 +1,122 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/spellpanel/SpellPanelStrings.fr $
+//  
+//  Owner: Michael Burbidge
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "SpellPanelID.h"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// RESOURCE Locale index
+//========================================================================================
+
+resource LocaleIndex (kSpellPanelStringsRsrcID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_Wild, kSpellPanelStringsRsrcID + index_enUS
+		kWildFS, k_enGB, kSpellPanelStringsRsrcID + index_enGB
+		kWildFS, k_deDE, kSpellPanelStringsRsrcID + index_deDE
+		kWildFS, k_frFR, kSpellPanelStringsRsrcID + index_frFR
+		kWildFS, k_jaJP, kSpellPanelStringsRsrcID + index_jaJP
+		kWildFS, k_svSE, kSpellPanelStringsRsrcID + index_svSE
+		kWildFS, k_esES, kSpellPanelStringsRsrcID + index_esES
+		kWildFS, k_itIT, kSpellPanelStringsRsrcID + index_itIT
+		kWildFS, k_nlNL, kSpellPanelStringsRsrcID + index_nlNL
+		kWildFS, k_nbNO, kSpellPanelStringsRsrcID + index_nbNO
+		kWildFS, k_daDK, kSpellPanelStringsRsrcID + index_daDK
+		kWildFS, k_fiFI, kSpellPanelStringsRsrcID + index_fiFI
+		kWildFS, k_ptBR, kSpellPanelStringsRsrcID + index_ptBR
+		kWildFS, k_koKR, kSpellPanelStringsRsrcID + index_koKR
+		kWildFS, k_zhCN, kSpellPanelStringsRsrcID + index_zhCN
+		kWildFS, k_zhTW, kSpellPanelStringsRsrcID + index_zhTW
+		kWildFS, k_csCZ, kSpellPanelStringsRsrcID + index_csCZ
+		kWildFS, k_huHU, kSpellPanelStringsRsrcID + index_huHU
+		kWildFS, k_plPL, kSpellPanelStringsRsrcID + index_plPL
+//		kWildFS, k_roRO, kSpellPanelStringsRsrcID + index_roRO
+		kWildFS, k_ruRU, kSpellPanelStringsRsrcID + index_ruRU
+		kWildFS, k_trTR, kSpellPanelStringsRsrcID + index_trTR
+		kWildFS, k_ukUA, kSpellPanelStringsRsrcID + index_ukUA
+		kWildFS, k_elGR, kSpellPanelStringsRsrcID + index_elGR
+		kWildFS, k_arAE, kSpellPanelStringsRsrcID + index_arAE
+		kWildFS, k_heIL, kSpellPanelStringsRsrcID + index_heIL
+	}
+}
+
+#endif // __ODFRC__
+
+#include "SpellPanelStrings_enUS.fr"
+#include "SpellPanelStrings_enGB.fr"
+#include "SpellPanelStrings_deDE.fr"
+#include "SpellPanelStrings_frFR.fr"
+#include "SpellPanelStrings_jaJP.fr"
+#include "SpellPanelStrings_svSE.fr"
+#include "SpellPanelStrings_esES.fr"
+#include "SpellPanelStrings_itIT.fr"
+#include "SpellPanelStrings_nlNL.fr"
+#include "SpellPanelStrings_nbNO.fr"
+#include "SpellPanelStrings_daDK.fr"
+#include "SpellPanelStrings_fiFI.fr"
+#include "SpellPanelStrings_ptBR.fr"
+#include "SpellPanelStrings_koKR.fr"
+#include "SpellPanelStrings_zhCN.fr"
+#include "SpellPanelStrings_zhTW.fr"
+
+#include "SpellPanelStrings_csCZ.fr"
+#include "SpellPanelStrings_huHU.fr"
+#include "SpellPanelStrings_plPL.fr"
+//#include "SpellPanelStrings_roRO.fr"
+#include "SpellPanelStrings_ruRU.fr"
+#include "SpellPanelStrings_trTR.fr"
+#include "SpellPanelStrings_ukUA.fr"
+#include "SpellPanelStrings_elGR.fr"
+#include "SpellPanelStrings_arAE.fr"
+#include "SpellPanelStrings_heIL.fr"
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+resource LocaleIndex (kSpellPanelStringsNoTransRsrcID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_Wild, 	kSpellPanelStringsNoTransRsrcID + index_enUS
+	}
+}
+
+resource StringTable (kSpellPanelStringsNoTransRsrcID + index_enUS)
+{
+	k_enUS,
+	kEuropeanWinToMacEncodingConverter,
+	{
+		// No-Translate strings go here
+
+		// ----- Scope strings
+		"$",							"$",	// Don't translate? - WP; Moved from string file
+		
+#ifdef DEBUG
+		"SpellCheckStoryCmd",			"SpellCheckStoryCmd",
+#endif
+	}
+}
+#endif // __ODFRC__

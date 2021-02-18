@@ -1,0 +1,229 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/sdksamples/textimportfilter/TxtImp.fr $
+//  
+//  Owner: Adobe Developer Technologies
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//  
+//  Umbrella include file for all the .fr files in the plug-in.
+//  
+//========================================================================================
+
+//===========================
+//  General includes:
+//===========================
+
+#include "MenuDef.fh"
+#include "ActionDef.fh"
+#include "ActionDefs.h"
+#include "AdobeMenuPositions.h"
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "StringTable.fh"
+//#include "OMTypes.h"
+#include "objectmodeltypes.fh"
+#include "ShuksanID.h"
+#include "ActionID.h"
+#include "CommandID.h"
+#include "WorkspaceID.h"
+#include "widgetid.h"
+#include "BuildNumber.h"
+#include "IControlViewDefs.h"
+#include "SysControlIds.h"
+
+#include "OpenPlaceID.h"
+
+#include "PlugInModel_UIAttributes.h"
+
+// Project includes:
+#include "TxtImpID.h"
+
+#ifdef __ODFRC__
+
+/*
+// Plugin version definition.
+*/
+resource PluginVersion (kSDKDefPluginVersionResourceID)
+{
+	kTargetVersion,
+	kTxtImpPluginID,
+	kSDKDefPlugInMajorVersionNumber, kSDKDefPlugInMinorVersionNumber, 	
+	kSDKDefHostMajorVersionNumber, kSDKDefHostMinorVersionNumber,
+	kTxtImpCurrentMajorFormatNumber, kTxtImpCurrentMinorFormatNumber,
+	{ kInDesignProduct, kInDesignServerProduct, kInCopyProduct },
+	{ kWildFS },
+	kModelPlugIn,
+	kTxtImpVersion
+};
+
+/*
+//	Boss class definition.
+*/
+resource ClassDescriptionTable(kSDKDefClassDescriptionTableResourceID)
+{{{
+	/**
+	 Provides the import filter provider.
+	
+	@ingroup textimportfilter
+	*/
+	Class
+	{
+		kTxtImpFilterBoss,
+		kInvalidClass,
+		{
+			/** 
+			Register import provider with application. 
+			Implementation provided by the API.
+			*/
+			IID_IK2SERVICEPROVIDER, 	kImportServiceImpl, 
+			/** 
+			Identify this boss as an import provider.
+			Implementation provided in this sample in TxtImpFilter.cpp.
+			*/
+			IID_IIMPORTPROVIDER, 		kTxtImpFilterImpl,
+		}
+	},
+	/** 
+	 Implements ITxtImpFileReader for ASCII encoded files..
+
+	 	 @ingroup textimportfilter
+	*/
+	Class
+	{
+		kASCIIFileReaderBoss,
+		kInvalidClass,
+		{
+			/**
+			Implements ITxtImpFileReader for ASCII encoded files.
+			*/
+			IID_ITXTIMPFILEREADER, kASCIIFileReaderImpl
+		}
+	},
+	/** 
+	 Implements ITxtImpFileReader for UNICODE encoded files..
+	
+		 @ingroup textimportfilter
+	*/
+	Class
+	{
+		kUNICODEFileReaderBoss,
+		kInvalidClass,
+		{
+			/** 
+			Implements ITxtImpFileReader for UNICODE encoded files.
+			*/
+			IID_ITXTIMPFILEREADER, kUNICODEFileReaderImpl
+		}
+	},
+	/** 
+	 Implements ITxtImpFileReader for ShiftJIS encoded files..
+
+	 	 @ingroup textimportfilter
+	*/
+	Class
+	{
+		kShiftJISFileReaderBoss,
+		kInvalidClass,
+		{
+			/** 
+			Implements ITxtImpFileReader for ShiftJIS encoded files.
+			*/
+			IID_ITXTIMPFILEREADER, kShiftJISFileReaderImpl
+		}
+	},
+	/** 
+	 Implements ITxtImpFileReader for JIS encoded files..
+
+	 	 @ingroup textimportfilter
+	*/
+	Class
+	{
+		kJISFileReaderBoss,
+		kInvalidClass,
+		{
+			/** 
+			Implements ITxtImpFileReader for JIS encoded files.
+			*/
+			IID_ITXTIMPFILEREADER, kJISFileReaderImpl
+		}
+	},
+}}};
+
+/*
+// Implementation definition.
+*/
+resource FactoryList (kSDKDefFactoryListResourceID) 
+{
+	kImplementationIDSpace,
+	{
+#include "TxtImpFactoryList.h"
+	}
+};
+
+/*
+// LocaleIndex
+// The LocaleIndex should have indicies that point at your
+// localizations for each language system that you are 
+// localized for.
+*/
+/*
+// String LocaleIndex.
+*/
+resource LocaleIndex (kSDKDefStringsResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_enUS, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_jaJP, kSDKDefStringsResourceID + index_jaJP
+		
+		kWildFS, k_Wild, kSDKDefStringsResourceID + index_enUS
+	}
+};
+
+resource LocaleIndex (kSDKDefStringsNoTransResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_Wild, kSDKDefStringsNoTransResourceID + index_enUS
+	}
+};
+
+resource StringTable (kSDKDefStringsNoTransResourceID + index_enUS)
+{
+	k_enUS,									// Locale Id
+	kEuropeanMacToWinEncodingConverter,		// Character encoding converter
+	{
+		// No-Translate strings go here:		
+
+	}
+};
+
+
+#endif // __ODFRC__
+
+#include "TxtImp_enUS.fr"
+#include "TxtImp_jaJP.fr"
+//  Generated by Dolly build 17: template "IfPanelMenu".
+// End, TxtImp.fr.
+
+
+
+
+
+
+

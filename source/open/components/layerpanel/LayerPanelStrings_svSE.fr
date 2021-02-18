@@ -1,0 +1,142 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kLayerPanelStringsRsrcID + index_svSE)
+{
+	k_svSE,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{
+		// ----- Command strings
+
+		"Layer Options",				"Lageralternativ",
+		"New Layer",					"Nytt lager",
+		"Layer Deletion",				"Ta bort lager",
+		"Delete Unused Layers",			"Ta bort oanvända lager",
+		"Lock Others",					"Lås övriga",
+		"#UnlockOthers",					"Lås upp övriga",
+		"Show All",						"Visa alla",
+		"#ShowOthers",					"Visa övriga",
+		"Unlock All",					"Lås upp alla",
+		"Hide All",						"Dölj alla",
+		"Lock All",						"Lås alla",
+		"Merge Layers",					"Sammanfoga lager",
+		"Move To Layer",				"Flytta till lager",
+		"Copy To Layer",				"Kopiera till lager",
+		"Move Layer",					"Flytta lager",
+		"Move Layers",					"Flytta lager",
+		"kUnlockOthersSequence",		"Lås upp övriga",
+		"kLockOthersSequence",			"Lås övriga",
+
+		// ----- Menu strings
+		
+		"Layers...",						"La&ger...",
+
+		"New Layer...",						"Nytt lager...",
+		"New Layer Above \"^1\"...",		"Nytt lager ovanför \"^1\"...",
+		"New Layer Below \"^1\"...",		"Nytt lager nedanför \"^1\"...",
+		"New Top Layer...",					"Nytt övre lager...",
+		"Delete Layer",						"Ta bort lager",
+		"Delete \"^1\"",					"Ta bort lager \"^1\"",
+		"Delete Layers",					"Ta bort lager",
+		"#Duplicate ^1 Menu",				"Duplicera lagret ^1...",
+		"#Duplicate LayersMenu",			"Duplicera lager",
+		"#DuplicatLayersCmd",				"Duplicera lager",
+		
+		"Layer Options for \"^1\"...",		"Lageralternativ för \"^1\"...",
+		"Layer Options...",					"Lageralternativ...",
+		"Show All Layers",					"Visa alla lager",
+		"Hide Others",						"Dölj övriga",
+		"Unlock All Layers",				"Lås upp alla lager",
+		"Lock Others",						"Lås övriga",
+		"Hide All Layers",					"Dölj alla lager",
+		"Lock All Layers",					"Lås alla lager",
+		
+		"Paste Remembers Layers",			"Klistra in med lagerinformation",
+		"Ungroup Remembers Layers",			"Dela upp med lagerinformation",
+		
+		"Merge Layers",						"Sammanfoga lager",
+		"Delete Unused Layers",				"Ta bort oanvända lager",
+		"Select Item(s) on \"^1\"",			"Markera objekt på \"^1\"",
+		"Select Item(s) Layer",				"Markera objekt på lager",
+				
+		"#SelectLayerPageItemMenu",		"Markera objekt",
+		"#SelectZoomLayerPageItemMenu",	"Markera och anpassa objekt",
+		"#ZoomLockedPageItemMenu",		"Anpassa objekt i fönster",
+		
+		// Menu names for context and panel menus
+		"LayerPanelPopup",					"Menyn i panelen Lager",	
+		"RtMenuLayerPanelEye",				"Snabbmenyn Öga i panelen Lager",	
+		"RtMenuLayerPanelLock",				"Snabbmenyn Lås i panelen Lager",
+		"RtMenuLayerPanelItem",				"Lagersnabbmeny på panelen Lager",	
+		"RtMenuLayerPanelPageItem",			"Sidobjektsnabbmeny på panelen Lager",	
+
+		// ----- Window strings
+		"DeleteOneLayer",					"Lagret \"^1\" innehåller ett eller flera objekt. Vill du ta bort det ändå?",
+		"DeleteMultiLayers",				"De valda lagren innehåller objekt. Vill du ta bort dem ändå?",
+		"DeleteOneGuideLayer",				"Lagret \"^1\" innehåller stödlinjer. Vill du ta bort det ändå?",
+		"DeleteGuideLayers",				"De valda lagren innehåller stödlinjer. Vill du ta bort dem ändå?",
+		"DeletingPlaceGunUsedLayer",		"Det gick inte att ta bort lager. Det krävs av utdraget som är inläst i monteringspekaren.",
+
+		// ----- Window Menu
+		"Layers_WinMenu",					"La&ger",
+		
+		// ----- Panel strings
+		
+		"^1 Layer",							"^1 lager",		// For status widget
+		"^1 Layers",						"^1 lager",	// For status widget
+		"New Layer",						"Nytt lager",	// Title of New Layer dialog
+		"Layer Options",					"Lageralternativ", // Title of Layer Options dialog
+		"&Name:",							"&Namn:",
+		"&Color:",							"&Färg:",
+		"&Show Layer",						"&Visa lager",
+		"Show &Guides",						"Visa stö&dlinjer",
+		"&Lock Layer",						"Lås la&ger",
+		"Loc&k Guides",						"Lås stödlin&jer",
+		"Keep When Layer is &Hidden",		"Ingen figursä&ttning när lagret är dolt",
+		"&Print Layer",						"&Skriv ut lager",
+
+		// ----- Tips strings
+
+		"DeleteLayerTip",					"Ta bort markerade lager",
+		"NewLayerTip",						"Skapa nytt lager",
+		"EyeTip",							"Växlar mellan visa/dölj",
+		"PencilTip",						"Växlar låsning av lager (kan redigeras om tom)",
+		"PageItemPencilTip",				"Växlar låsning av sidobjekt (kan redigeras om tom)",
+		"SwatchTip",						"Färg på markeringar i det här lagret",
+		"ProxyTip",							"Visar markerade objekt (dra om du vill flytta mellan lager eller ändra Z-ordning)",
+		"ProxyChildSelectedTip",			"Innehåller valt objekt, klicka för att välja objektet i behållaren",
+		"UnselectedProxyTip",				"Klicka för att markera objekt",
+		"ActiveTip",						"Visar aktuellt ritlager",
+
+		// ----- Error strings
+		"EmptyLayerName",					"Namn på lagret måste anges.",
+		"DuplicateLayer",					"Det finns redan ett lager med det här namnet.",
+
+		"#LayerHierPanelName",		"Lager",
+		"#Page:^1,",					"Sida: ^1, ", // for layer panel status widget. Will be followed by layer count string.
+		"#Pages:^1,",					"Sidor: ^1, ", // for layer panel status widget. Will be followed by layer count string.
+		"#DeletePageItemsMenu",		"Ta bort sidobjekt", // menu item name
+		"#DeletePageItem \"^1\"",		"Ta bort sidobjektet ^1", // menu item name
+		"#DuplicatePI ^1 Menu",			"Duplicera sidobjektet ^1", // menu item name
+		"#DuplicatePIMenu",			"Duplicera sidobjekt",  // menu item name
+	}
+};
+
+#endif // __ODFRC__

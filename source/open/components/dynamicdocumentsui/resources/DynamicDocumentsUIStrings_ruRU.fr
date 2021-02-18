@@ -1,0 +1,298 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kDynamicDocumentsUIStringsRsrcID + index_ruRU)
+{
+	k_ruRU,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{
+		// ----- Command strings
+
+		// ----- Window strings
+
+		// ----- Panel strings
+		"kPageTransitionsPanelPopup",			"Меню палитры \"Переходы страницы\"",    
+		"kPageTransitionsSubMenu",				"Переходы &страницы",
+		"kPageTransitionsPanelName",			"Переходы страницы",	   
+		"kPageTransitionStaticText",			"Переход: ",
+		"kPageDirectionStaticText",				"Направление: ",
+		"kPageSpeedStaticText",					"Скорость: ",
+        "kPTHorizontal",						"По горизонтали",
+        "kPTVertical",							"По вертикали",
+        "kPTIn",								"Внутрь",
+        "kPTOut",								"Наружу",
+        "kPTDown",								"Вниз",
+        "kPTLeft",								"Влево",
+        "kPTLeftDown",							"Влево вниз",
+        "kPTLeftUp",							"Влево вверх",
+        "kPTRight",								"Вправо",
+        "kPTRightDown",							"Вправо вниз",
+        "kPTRightUp",							"Вправо вверх",
+        "kPTUp",								"Вверх",
+        "kPTHorizontalIn",						"Горизонтально внутрь",
+        "kPTHorizontalOut",						"Горизонтально наружу",
+        "kPTVerticalIn",						"Вертикально внутрь",
+        "kPTVerticalOut",						"Вертикально наружу",
+        "kPTSlow",								"Медленно",
+		"kPTMedium",							"Со средней скоростью",
+		"kPTFast",								"Быстро",		
+		"kPTNoTransition",						"Нет",	
+              		
+		// ----- Liquid Layout panel
+		"kLiquidLayoutMenu",					"&\"Жидкий\" макет",
+		"kLiquidLayoutPanelPopup",				"Меню палитры \"жидкого\" макета",
+		"kLiquidLayoutPanelName",				"\"Жидкий\" макет",	
+		"kObjectConstraintsStaticTextLabel",	"Ограничения объектов:",
+		"kDocumentReflowStaticTextLabel",		"Перекомпоновка документа",
+		"kFixedSizeStaticTextLabel",			"Изменить размер отн-но страницы:",
+		"kHeightCheckBoxLabel",					"Высота",
+		"kWidthCheckBoxLabel",					"Ширина",
+		"kPinLeftEdgeCheckBoxLabel",			"Слева",
+		"kPinRightEdgeCheckBoxLabel",			"Справа",
+		"kPinTopEdgeCheckBoxLabel",				"Сверху",
+		"kPinBottomEdgeCheckBoxLabel",			"Снизу",
+		"kPinObjectEdgesStaticTextLabel",		"Ось вращения: ",
+		"kContentStaticTextLabel",				"Содержимое:",
+		"kLayoutAdjustmentWarningTip",			"Правила \"жидкого\" макета не применяются, поскольку включена настройка макета. Нажмите, чтобы выключить настройку макета.",
+		"kPageLayoutPolicyDropdownLabel",		"Правило стр. с адапт.:",
+		"kLiquidLayoutPanelPageRange",			"Страница: ^1",
+		"kPinEdgeToolTip",						"Установите флажок, чтобы закрепить объект относительно края страницы.",
+		"kResizeHeightWithPageToolTip",			"Установите флажок, чтобы изменить высоту объекта при изменении высоты страницы.",
+		"kResizeWidthWithPageToolTip",			"Установите флажок, чтобы изменить ширину объекта при изменении ширины страницы.",
+		
+        // ----- Timing panel
+        "kTimingPanelPopup",					"Меню палитры \"Синхронизация\"",    
+		"kTimingSubMenu",						"Си&нхронизация",
+		"kTimingPanelName",						"Синхронизация",	
+		"kTimingPanelEventStaticText",			"Событие: ",
+		"kTimingPanelDelayStaticText",			"Задержка: ",
+        "kTimingPanelDelaySecondStaticText",	"с",
+        "kTimingPanelDelaySecondsStaticText",	"с",
+        "kTimingPanelAssignPageLoadEvent",		"Переопределить на \"При загрузке страницы\"",
+        "kTimingPanelAssignStateLoadEvent",		"Переопределить на \"При загрузке состояния\"",
+        "kTimingPanelAssignPageClickEvent",		"Переопределить на \"При щелчке страницы\"",
+        "kTimingPanelRemoveItem",				"Удалить элемент",
+        "kTimingPanelEventDropDownTip",			"Щелкните, чтобы продолжить",
+        "kTimingPanelGroupButtonTip",			"Воспроизвести вместе",
+        "kTimingPanelUngroupkButtonTip",		"Воспроизвести раздельно",
+        "kTimingPanelPreviewButtonTip",			"Просмотр разворота",
+        "kUnassignedEntry",						"Не назначено",
+        "kTimingPanelLinkedItemStaticText",			"Связанные элементы:",	
+        "kTimingPanelPlayLinkedItemStaticText",		"Запуск: ",
+        "kTimingPanelPlayLinkedItemTimeStaticText",	"раз",
+        "kTimingPanelPlayLinkedItemTimesStaticText","раз",
+        "kTimingPanelLoopCheckBoxLabel",		"По кругу",
+        "kTimingPanelLinkedItemGroupWidgetTip",	"Одновременно воспроизводимые объекты (щелкните, чтобы выбрать группу)", 
+
+        // HTML Preview menu items
+        "kHTMLFXLPreviewSpread",				"Предпросмотр разворота: EPUB",
+		// ----- Menu Strings
+		"kTransitionPanelChooseAction",				"&Выбрать...",
+		"kTransitionPanelApplyToAllSpreadsAction",	"&Применить ко всем разворотам",
+		"kTransitionPanelClearAllTransitionsAction","Очистить в&се",
+		
+		// ----- Tips strings
+		"kApplyToAllSpreadsButtonTip",			"Применить ко всем разворотам",
+		"kMotionPathTipStr",					"Траектория движения, щелкнуть для изменения",
+		"kEasingPathTipStr",					"Траектория изменения скорости",
+	#ifdef WINDOWS
+		"kPreviewSpreadButtonToolTip",			"Предпросмотр разворота: EPUB.",
+	#else
+		"kPreviewSpreadButtonToolTip",			"Предпросмотр разворота: EPUB.",			
+	#endif
+				
+		// ----- XFL Export Dialogs
+
+		"kXFLExport",						"Экспорт Flash CS6 Professional (FLA)",
+		"kSizePixels",						"Размер (пикс.):",
+		"kPagesStr",						"Страницы:",
+		"kExportStr",						"Экспорт:",
+		"kSpreadsStr",						"Раз&вороты",
+		"kGenerateHTMLStr",					"Генерировать файл HT&ML",
+		"kFlashText",						"Классический текст Flash",
+		"kVectorText",						"Преобразовать в кривые",
+		"kRasterText",						"Преобразовать в пикселы",
+		"kVellumText",						"Текст Flash TLF",
+		"kInsertHyphensStr",				"В&ставить точки дискреционного переноса",
+		"kFitToSize",						"&Вписать в:",
+		"kWidthSize",						"Ши&рина:",
+		"kHeightSize",						"&Высота:",
+		"kSelectionExportedStr",			"Выд&еление",
+		"kAllPagesExported",				"В&се",
+		"kAllPagesExportedStr",				"&Все страницы",
+		"kPageRangeExported",				"&Диапазон:",
+		"kScaleSize",						"&Масштаб:",
+		"kTextStr",							"Тек&ст:",
+		"kInteractivityStr",				"Интерактивность:",
+		"kDynamicMediaStr",					"Интерактивность и медиафункции:",
+		"kImageCompStr",					"Сжатие &изображения:",
+		"kQualityStr",						"Качество &JPEG:",
+		"kCurveQualityStr",					"Качество &кривых:",
+		"kInclButtonsStr",					"Включить &кнопки",
+		"kInclHyperLinkStr",				"Включить г&иперссылки",
+		"kInclPageTrans",					"Включить пер&еходы страницы",
+		"kIncludePageCurl",					"В&ключить интерактивное переворачивание страниц",
+		"kIncludeAllStr",					"&Включить все",
+		"kAppearanceOnlyStr",				"Т&олько оформление",
+		"kBackgroundStr",					"Фон:",
+		"kPaperColorStr",					"Цвет б&умаги",
+		"kTransparentStr",					"&Прозрачный",
+		"kFramesPerSecStr",					"кадр./сек",
+		"kPageTransitionsStr",				"Переходы с&траниц:",
+		"kNone",							"Нет",
+		"kFromDocument",					"Из документа",
+		"kOptionsStr",						"Параметры:",
+		"kDescriptionStr",					"Описание:",
+		"kFrameRateStr",					"&Частота кадров:",
+		"kImageCompAuto",					"Авт.",
+		"kJPG_Lossy",						"JPEG",
+		"kJPG_LossyStr",					"JPEG (с потерей качества)",
+		"kPNG_Lossless",					"Без потери качества (отсутствие действий)",
+		"kPNG_LosslessStr",					"PNG (без потери качества)",
+		"kMinimumQual",						"Минимальное",
+		"kLowQual",							"Низкое",
+		"kMediumQual",						"Среднее",
+		"kHighQual",						"Высокое",
+		"kMaximumQual",						"Максимальное",
+		"kRasterizeStr",					"Растриро&вать страницы",
+		"kFlattenXPStr",					"Св&ести прозрачность",
+		"k1280x800",						"1280 x 800",
+		"k1024x768",						"1024 x 768",
+		"k800x600",							"800 x 600",
+		"k640x480",							"640 x 480",
+		"k250per",							"250%",
+		"k200per",							"200%",
+		"k150per",							"150%",
+		"k100per",							"100%",
+		"k75per",							"75%",
+		"k50per",							"50%",
+		"k25per",							"25%",
+
+		// Font Embedding
+		"kEmbeddedFontsTitle",				"Встроенные шрифты (только для классического текста Flash)",
+		"kTotalFonts",						"Всего шрифтов: ",
+		"kFontLicensingInfo",				"Информация о лицензии на шрифт",
+		"kEmbeddedFontName",				"Имя шрифта: ",
+		"kEmbeddedVendorID",				"Идентификатор поставщика: ",
+
+		// Add Page Transition dialog
+		"kPageTransitionsDialogTitle",			"Переходы страницы",
+		"kPageTransitionApplyToAllSpreads",		"Применить ко всем разворотам",
+		"kZoomInOutString",						"Увеличить/Уменьшить", 
+		
+		
+		//	Animation UI
+		"kAnimationUIPanelPopup",				"Меню палитры \"Пользовательский интерфейс анимации\"",
+		"kAnimationUISubMenu",					"Анимация",
+		"kAnimationUIPresetPopupMenu",			"Меню набора настроек \"Пользовательский интерфейс анимации\"",
+		"kMotionPresetsNoneTextkey",			"Нет",
+		"kAnimationUILoadPresetMenuItem",		"Загрузить стиль...",
+		"kAnimationUISaveAsPresetMenuItem",		"Сохранить как...",
+		"kAnimationUISavePresetMenuItem",		"Сохранить",
+		"kAnimationUIDeletePresetMenuItem",		"Удалить",
+
+		"kAnimationUIConvertToMotionPathMenuItem",	"Преобразовать в траекторию движения",
+		"kAnimationUITestInBrowserMenuItem",	"Тестировать в браузере...",
+		"kCustomPresetName",					"Набор настроек движения",
+		"kAnimationUIEventSeparator",			", ",
+		
+		"kAnimationUIPanelName",				"Анимация",
+		"kAnimationUIPreviewStaticTextLabel",	"Предварительный просмотр",
+		"kAnimationUINameStaticTextLabel",		"Имя:",
+		"kAnimationUIPresetStaticTextLabel",	"Стиль:",
+		"kAnimationUICustomPreset",				"Заказной",
+		"kAnimationUIMixed",					"Смешанный",
+		"kAnimationUIMixed:",					"Смешанное: ",
+		"kAnimationUIChoose",					"Выбрать",
+		"kAnimationUIEventStaticTextLabel",		"Событие(я):",
+		"kAnimationUIDurationStaticTextLabel",	"Длительность:",
+		"kAnimationUISecondStaticTextLabel",	"с",
+		"kAnimationUISecondsStaticTextLabel",	"с",
+		"kAnimationUIPlayStaticTextLabel",		"Воспроизвести:",
+		"kAnimationUITimeStaticTextLabel",		"раз",
+		"kAnimationUITimesStaticTextLabel",		"раз",
+		"kAnimationUILoopCheckBoxLabel",		"По кругу",
+		"kAnimationUISpeedStaticTextLabel",		"Скорость:",
+		"kAnimationUIVisibilityStaticTextLabel","Видимость:",
+		"kAnimationUIPropertyStaticTextLabel",	"Свойства",
+		"kAnimationUIHideBeforeAnimateCheckBoxLabel","Скрыть до выполнения анимации",
+		"kAnimationUIHideAfterAnimateCheckBoxLabel","Скрыть после выполнения анимации",
+		"kAnimationUIOnButtonEvent",			"При событии кнопки",
+		"kAnimationUIOnRollOffCheckBoxLabel",	"Сброс при отведении курсора",
+		"kAnimationUIEaseIn",					"Замедление",
+		"kAnimationUIEaseOut",					"Ускорение",
+		"kAnimationUIEaseInAndOut",				"Замедление и ускорение",
+		"kAnimationUIFadeIn",					"Медленное появление",
+		"kAnimationUIFadeOut",					"Медленное исчезание",
+		"kAnimationUINone",						"Нет",
+		"kAnimationUIFromPreset",				"Из стиля",
+		"kAnimationUIPropertyDesignStaticTextLabel",		"Анимировать:",
+		"kAnimationUIPropertyDesignCheckBoxLabel",			"Конец анимации",
+		"kAnimationFromStaticTextLabel",					"Анимировать с",
+		"kAnimationToStaticTextLabel",						"Анимировать до",
+		"kAnimationUIPropertyDesignScaleStaticTextLabel",	"Масштаб",
+		"kAnimationUIPropertyDesignScaleHorzStaticTextLabel",	"Ш:",
+		"kAnimationUIPropertyDesignScaleVertStaticTextLabel",	"В:",
+		"kAnimationUIPropertyDesignRotateStaticTextLabel",	"Угол поворота:",
+		"kAnimationUIPropertyDesignOpacityStaticTextLabel",	"Непрозр.:",
+		"kAnimationUIPropertyDesignProxyStaticTextLabel",	"Исходное положение:",
+		
+		"kAnimationUIFrom",						"Из текущего оформления",
+		"kAnimationUITo",						"До текущего оформления",
+		"kAnimationUIOffset",					"До текущего положения",
+
+		"kAnimationPanelButtonTriggerTip",		"Создать триггер кнопки (щелкнуть значок, затем щелкнуть объект для запуска анимации)",
+		"kAnimationPanelShowProxyTip",			"Показать экранную версию анимации",
+		"kAnimationPanelLockIconTip",			"Сохранить значение масштаба",
+		"kAnimationPanelEventMenuSelectorTip",	"Выберите событие запуска, нажав стрелку вниз",
+		"kAnimationPanelEventInfoTip",			"Событие(я) запуска по умолчанию для анимации",
+		"kAnimationPanelEventInfoDefaultTip",	"Событие запуска по умолчанию для анимации",
+		"kAnimationPanelPreviewButtonTip",		"Просмотр текущего выделения",
+		"kAnimationPanelConvertToMotionPathTip","Преобразовать в траекторию движения",
+		"kAnimationUIFromTip",					"Использование свойств текущего объекта в качестве исходного оформления анимации.",
+		"kAnimationUIToTip",					"Использование свойств текущего объекта в качестве конечного оформления анимации.",
+		"kAnimationUIOffsetTip",				"Использование свойств текущего объекта в качестве исходного оформления, а текущего положения в качестве конечного положения анимации.",
+		"kAnimationUIAnimationOptionTip",		"Параметры анимации",
+		"kAnimationUITrashTip",					"Удалить анимацию",
+		"kAnimationUIXFPointTip",				"Изменить исходную точку масштабирования и поворота.",
+		"kAnimationUIShowTimingButtonTip",		"Палитра \"Показать синхронизацию\"",
+		
+		"kAnimationUISaveAsPresetTitle",		"Сохранить выбранный стиль как",
+		"kAnimationUISavePresetTitle",			"Сохранить стиль",
+		"kAnimationUISavePresetNameLabel",		"Имя:",
+
+		"kAnimationUIEventPopupMenu",			"Всплывающее меню \"Событие\"",
+		"kAnimationUICreateButtonTriggerCmd",	"Создать триггер кнопки",
+		"kAnimationUICreateSelfTriggerCmd",		"Создать самостоятельный триггер",
+		
+		"kAnimationUIManagePresetsDialogTitle",	"Управлять стилями",
+		"kAnimationUIManagePresetsDoneButton",	"Готово",
+		"kAnimationUIManagePresetsDeleteButton","&Удалить",
+		"kAnimationUIManagePresetsDuplicateButton","&Дублировать",
+		"kAnimationUIManagePresetsLoadButton",	"&Загрузить...",
+		"kAnimationUIManagePresetsSaveAsButton","&Сохранить как...",
+		"kAnimationUIManagePresetMenuItem",		"Управление стилями...",
+		"kAnimationUIManagePresetPresetsSeparator", "--------------------",
+		"kAnimationUIManagePresetNamePrefix",	"[",
+		"kAnimationUIManagePresetNameSuffix",	"]",
+	}
+};
+
+#endif // __ODFRC__

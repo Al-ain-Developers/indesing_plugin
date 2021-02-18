@@ -1,0 +1,89 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/dynamicdocumentsui/resources/AnimationUIMenus.fr $
+//  
+//  Owner: SusanCL
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "MenuDef.fh"
+#include "ActionDef.fh"
+#include "ActionDefs.h"
+#include "AdobeMenuPositions.h"
+#include "DynamicDocumentsUIID.h"
+#include "DynamicDocumentsUIDefs.h"
+
+#ifdef __ODFRC__
+
+resource MenuDef(kMenuDef_AnimationUIPanelRsrcID)
+{	
+	{ 
+		//ActionID,									menupath,						menuposition,						isDynamic
+		//---------------------------------------------------------------------------------------------------------------------------
+		kAnimationUIAction_SavePresetID,	"kAnimationUIPanelPopup",			kAnimationUISavePresetMenuPosition,			kFalse,
+		//kAnimationUIAction_SaveAsPresetID,	"kAnimationUIPanelPopup",			kAnimationUISaveAsPresetMenuPosition,		kFalse,
+		//kAnimationUIAction_DeletePresetID,	"kAnimationUIPanelPopup",			kAnimationUIDeletePresetMenuPosition,		kFalse,
+		//kAnimationUIAction_LoadPresetID,	"kAnimationUIPanelPopup",			kAnimationUILoadPresetMenuPosition,			kFalse,
+		kAnimationUIAction_ManagePresetID,	"kAnimationUIPanelPopup",			kAnimationUIManagePresetMenuPosition,		kFalse,
+
+		
+		kAnimationUIAction_SepPresetID,				"kAnimationUIPanelPopup:-",	kAnimationUISepMenuPosition,				kFalse,
+		kHTMLFXLPreviewActionID, 						"kAnimationUIPanelPopup",	kAnimationUIPreviewHTMLFXLMenuPosition,		kFalse,	
+		kAnimationUIAction_ConvertToMotionPathActionID,	"kAnimationUIPanelPopup",	kAnimationUIConvertToMotionPathMenuPosition,		kFalse,	
+		
+		kAnimationUIAction_OnPageLoadEventActionID,		"kAnimationUIEventPopupMenu", kAnimationUIOnPageLoadEventMenuPosition,		kFalse,
+		kAnimationUIAction_OnPageClickEventActionID,	"kAnimationUIEventPopupMenu", kAnimationUIOnPageClickEventMenuPosition,		kFalse,
+		kAnimationUIAction_OnClickSelfEventActionID,	"kAnimationUIEventPopupMenu", kAnimationUIOnClickSelfEventMenuPosition,		kFalse,
+		kAnimationUIAction_OnRollOverSelfEventActionID,	"kAnimationUIEventPopupMenu", kAnimationUIOnRollOverSelfEventMenuPosition,	kFalse,
+		kAnimationUIAction_SepEventActionID,			"kAnimationUIEventPopupMenu:-",	kAnimationUISepEventMenuPosition,			kFalse,
+		kAnimationUIAction_OnButtonEventActionID,		"kAnimationUIEventPopupMenu",	kAnimationUIOnButtonEventMenuPosition,		kFalse,
+
+		// Main menu, Object, Interactive submenu
+		kAnimationUIAction_ConvertToMotionPathActionID,	 "Main:&Object:$$$/Menu/Interactive",	kInteractiveAnimationUIConvertToMotionPathMenuPosition,		kFalse,	
+
+		// Context menu for Object, Interactive submenu
+		kAnimationUIAction_ConvertToMotionPathActionID,	  "RtMouseLayout:InteractiveContextMenu",	kContextInteractiveAnimationUIConvertToMotionPathMenuPosition,		kFalse,	
+
+		kAnimationUIAction_PresetPopupMenuActionID,	"kAnimationUIPresetPopupMenu", 0.0, kTrue,
+	}
+}
+
+resource ActionDef (kAnimationUIActionsRsrcID)
+{
+	{ 
+		//Menu action boss,				ActionID,						menu item name,						action area (KBSC)				action type		enabling type
+		//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+		kAnimationUIPanelMenuBoss, kAnimationUIAction_SavePresetID,		"kAnimationUISavePresetMenuItem",	kPaletteMenusAnimationUIActionArea, kNormalAction,kCustomEnabling|kDisableIfNoFrontLayoutView,0,kTrue,		
+		//kAnimationUIPanelMenuBoss, kAnimationUIAction_SaveAsPresetID,	"kAnimationUISaveAsPresetMenuItem",	kPaletteMenusAnimationUIActionArea, kNormalAction,kCustomEnabling,0,kTrue,		
+		//kAnimationUIPanelMenuBoss, kAnimationUIAction_DeletePresetID,	"kAnimationUIDeletePresetMenuItem",	kPaletteMenusAnimationUIActionArea, kNormalAction,kCustomEnabling,0,kTrue,				
+		//kAnimationUIPanelMenuBoss, kAnimationUIAction_LoadPresetID,		"kAnimationUILoadPresetMenuItem",	kPaletteMenusAnimationUIActionArea, kNormalAction,kAlwaysEnabled|kEnableEvenDuringDialogs,0,kTrue,
+		kAnimationUIPanelMenuBoss, kAnimationUIAction_ManagePresetID,	"kAnimationUIManagePresetMenuItem",	kPaletteMenusAnimationUIActionArea, kNormalAction,kAlwaysEnabled|kEnableEvenDuringDialogs,0,kTrue,
+	
+		kAnimationUIPanelMenuBoss, kAnimationUIAction_ConvertToMotionPathActionID,"kAnimationUIConvertToMotionPathMenuItem",kPaletteMenusAnimationUIActionArea, kNormalAction,kCustomEnabling|kDisableIfNoFrontLayoutView|kDisableIfLowMem,0,kTrue,
+		
+		kAnimationUIEventMenuBoss, kAnimationUIAction_OnPageLoadEventActionID,		"kOnPageLoad",				kPaletteMenusAnimationUIActionArea,kNormalAction,kCustomEnabling|kDisableIfNoFrontLayoutView,0,kFalse,
+		kAnimationUIEventMenuBoss, kAnimationUIAction_OnPageClickEventActionID,		"kOnPageClick",				kPaletteMenusAnimationUIActionArea,kNormalAction,kCustomEnabling|kDisableIfNoFrontLayoutView,0,kFalse,
+		kAnimationUIEventMenuBoss, kAnimationUIAction_OnClickSelfEventActionID,		"kOnSelfClick",	        	kPaletteMenusAnimationUIActionArea,kNormalAction,kCustomEnabling|kDisableIfNoFrontLayoutView,0,kFalse,
+		kAnimationUIEventMenuBoss, kAnimationUIAction_OnRollOverSelfEventActionID,	"kOnSelfRollover",			kPaletteMenusAnimationUIActionArea,kNormalAction,kCustomEnabling|kDisableIfNoFrontLayoutView,0,kFalse,
+		kAnimationUIEventMenuBoss, kAnimationUIAction_OnButtonEventActionID,		"kAnimationUIOnButtonEvent",	kPaletteMenusAnimationUIActionArea,kNormalAction,kCustomEnabling|kDisableIfNoFrontLayoutView,0,kFalse,
+
+		kAnimationUIPresetPopupMenuBoss, kAnimationUIAction_PresetPopupMenuActionID, "dynamic", kPaletteMenusAnimationUIActionArea,kNormalAction,kCustomEnabling|kDisableIfNoFrontLayoutView,0,kFalse,
+	}
+}
+
+#endif //__ODFRC__

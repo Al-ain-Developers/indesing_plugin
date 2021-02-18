@@ -1,0 +1,65 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/incopyexport/resources/InCopyExportStrings_roRO.fr $
+//  
+//  Owner: craig rainwater
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// U.S. English strings
+//========================================================================================
+
+resource StringTable (kInCopyExportStringsRsrcID + index_roRO)
+{
+	k_roRO,								// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+
+	{
+		// ----- Miscellaneous strings
+		"Export Seq Name", 		"Export articol InCopy",
+		"Graphic",				"Grafic", // append "Graphic" to export name on a graphic item
+		"Text",					"Text", // append "Text" to export name on a text story
+		
+		// ----- Export options dialog strings
+		"InCopyExportOptions",	"Opţiuni de export Adobe InCopy",
+		"ExportOptions_DataType",	"Codar&e:",
+		"ExportOptions_UTF16",	"UTF16",
+		"ExportOptions_UTF8",	"UTF8",
+		"ExportOptions_DataOptions",	"Opţiuni:",
+		"ExportOptions_StyleTable",	"Includere tabel de &stiluri",
+		"ExportOptions_SwatchList",	"Includere listă de s&pecimene",
+		"ExportOptions_XMPData",	"Includere &informaţii XMP",
+		"ExportOptions_StoryLabel",	"Etichetă artico&l:",
+
+		//menu
+		"ExportMenu",				"E&xport",
+		"kExportLayerToIC",			"&Strat...",
+		"kExportAllStoriesToIC",	"Toate a&rticolele...",
+		"kExportAllGraphicsToIC",	"Toate &graficele...",
+		"kExportAllItemsToIC",		"To&ate graficele şi articolele...",
+
+		"INCDFeatureLost",    "Acest articol ar putea conţine caracteristici care nu sunt acceptate de acest format de fişier.  Aceste caracteristici se vor pierde la actualizarea articolului.",
+	}
+};
+
+#endif // __ODFRC__

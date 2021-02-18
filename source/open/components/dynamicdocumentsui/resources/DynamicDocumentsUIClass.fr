@@ -1,0 +1,560 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/dynamicdocumentsui/resources/DynamicDocumentsUIClass.fr $
+//  
+//  Owner: DBerggren
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//  
+//  Must be first to set flags before other includes
+//  
+//========================================================================================
+
+#include "BuildNumber.h"
+#include "FormatNumber.h"
+#include "objectmodeltypes.fh"
+#include "PMLocaleIds.h"
+
+#include "DynamicDocumentsUIFormatNumber.h"
+#include "DynamicDocumentsID.h"
+#include "DynamicDocumentsUIID.h"
+#include "TransformPanelID.h"
+
+#include "CommandID.h"
+#include "PDFID.h"
+#include "widgetid.h"
+#include "ActionID.h"
+#include "AppUIID.h"
+#include "TipsID.h"
+#include "WorkspaceID.h"
+#include "DocumentID.h"
+#include "CommandID.h"
+#include "DragDropID.h"
+#include "CursorID.h"
+#include "ToolboxID.h"
+#include "GenericID.h"
+#include "GraphicsID.h"
+#include "LayoutUIID.h"
+#include "HyperlinkID.h"		// for IID_IINTLIST 
+#include "HyperlinkPanelID.h"	// for kIntListImpl 
+#include "FormFieldUIID.h"
+#include "ShuksanID.h"
+
+#include "PlugInModel_UIAttributes.h"
+
+#ifdef __ODFRC__
+
+//---------------------------------------------------------------
+//	Plugin Version
+//---------------------------------------------------------------
+resource PluginVersion(1)
+{
+	kTargetVersion,
+	kDynamicDocumentsUIPluginID,
+	kMajorVersionNumber, kMinorVersionNumber,
+	kMajorVersionNumber, kMinorVersionNumber,
+	kDynamicDocumentsUILastMajorFormat, kDynamicDocumentsUILastMinorFormat
+	{ kInDesignProduct },
+	{ kWildFS },
+	kUIPlugIn,
+	kAUMComponentVersionStr
+};
+
+
+//--------------------------------------------------------------- 
+// ResourcePlugInDependency 
+//--------------------------------------------------------------- 
+
+resource PluginDependency(1) 
+{ 
+	kWildFS, 
+	{ 
+	kTransformPanelPluginID, kTransformPanelPluginName, kMajorVersionNumber, kMinorVersionNumber,  // needed for 9-point proxy widgets 
+	} 
+}; 
+
+//-----------------------------------------------------------------------------
+// ImplementationAlias
+//-----------------------------------------------------------------------------
+
+resource ImplementationAlias(1)
+{
+	{
+		kAssociatedPageTransitionClassIDDataImpl,	kPersistClassIDDataImpl,
+		kSelectedContainerWidgetIDDataImpl,			kWidgetIDDataImpl,
+	}
+}
+
+//-----------------------------------------------------------------------------
+// ClassDescription
+//-----------------------------------------------------------------------------
+
+resource ClassDescriptionTable(1)
+{{{
+	
+	// The followings are for the pages transition panel
+	Class
+    {
+        kPageTransitionsPanelBoss,
+        kPalettePanelWidgetBoss,
+        {
+            IID_IPANELMENUDATA,					kCPanelMenuDataImpl,	// this is for popup menu on the panel
+            IID_IOBSERVER,						kPageTransitionsPanelObserverImpl,
+        }
+    },
+    
+    Class
+	{
+		kPageTransitionsPanelMenuBoss,
+		kBaseActionComponentBoss,
+		{
+			IID_IACTIONCOMPONENT,				kPageTransitionsMenuComponentImpl,
+		}
+	}
+
+	Class
+	{
+		kPageTransitionsDialogBoss,
+		kDialogBoss,
+		{
+			 IID_IDIALOGCONTROLLER,					kPageTransitionsDialogControllerImpl,
+			 IID_IOBSERVER,							kPageTransitionsDialogObserverImpl,
+			 IID_ISELECTEDCONTAINERWIDGETIDDATA,	kSelectedContainerWidgetIDDataImpl,
+		}
+	}
+	
+	Class
+	{
+		kPageTransitionPreviewProxyContainerWidgetBoss,
+		kGenericPanelWidgetBoss,
+		{
+			IID_IASSICIATEDPAGETRANSITIONCLASSIDDATA, kAssociatedPageTransitionClassIDDataImpl,		
+		}
+	}
+	
+	Class
+	{
+		kPageTransitionRadioButtonWidgetBoss,
+		kRadioButtonWidgetBoss,
+		{
+			IID_ITIP, kPageTransitionStaticTextToolTipsImpl,
+		}
+	}
+
+    AddIn	// UI, adornment is actually in the model since AdornmentList is saved persistently in document
+    {
+		kMotionPresetAdornmentHandleShapeBoss,
+		kInvalidClass,
+		{
+			IID_ITIP,							kMotionPathAdornmentTipImpl,
+			IID_IALTLAYOUTTIP,					kEasingPathAdornmentTipImpl,
+			
+			/**	Draw the animation proxy as adornment for the animated page item.
+			*/
+			IID_IANIMATIONADORNMENTDRAWER,		kAnimationAdornmentDrawerImpl,
+		}
+	};
+
+	Class 
+    { 
+        kHTMLFXLPreviewPanelMenuBoss, 
+        kBaseActionComponentBoss, 
+        { 
+            IID_IACTIONCOMPONENT,    kHTMLFXLPreviewPanelMenuComponentImpl, 
+        } 
+    }
+
+	AddIn
+	{
+		kSessionBoss,
+		kInvalidClass,
+		{
+			IID_IHTMLFXLPREVIEWMANUALLAUNCHBOOLDATA, kFalseInitBoolDataImpl,
+            IID_IHTMLFXLPREVIEWDOCUMENTBOOLDATA, kFalseInitBoolDataImpl,
+		}
+	}
+     
+    /*
+    Class 
+    { 
+        kPreviewChoicesWidgetBoss, 
+        kDropDownListWidgetBoss, 
+        { 
+            IID_ILISTCONTROLDATA,             kStrIntPairDDLControlDataImpl, 
+        } 
+    },
+    */
+    
+	// Liquid Layout Panel
+	
+	/** Panel for setting liquid layout policies for HTML output
+	*/
+	Class
+	{
+		kLiquidLayoutPanelBoss,
+        kPalettePanelWidgetBoss,
+        {
+            IID_IPANELMENUDATA,					kCPanelMenuDataImpl,	
+			IID_ICONTROLVIEWOBSERVERS,			kCControlViewObserversImpl    /* IDs of observers to be autoattached */ 
+            IID_IOBSERVER,						kLiquidLayoutPanelObserverImpl,
+			IID_IAUTOLAYOUTWARNINGOBSERVER,		kLayoutAdjustmentWarningObserverImpl,
+        }
+    },
+
+	/** Popup menu that is attached to the panel 
+	@param IID_IACTIONCOMPONENT --- implementation of menu component to update menu state and fire off command. 
+	*/
+    Class
+	{
+		kLiquidLayoutPanelMenuBoss,
+		kBaseActionComponentBoss,
+		{
+			IID_IACTIONCOMPONENT,	kLiquidLayoutPanelMenuComponentImpl,
+		}
+	},
+
+    //  Timing Panel
+	Class
+    {
+        kTimingPanelBoss,
+        kErasablePrimaryResourcePanelWidgetBoss,
+        {
+            IID_IPANELMENUDATA,					kCPanelMenuDataImpl,	// this is for popup menu on the panel
+            IID_ICONTROLVIEW,					kTimingPanelViewImpl,   // handles constraining resize to row height increments   
+            IID_IOBSERVER,						kTimingPanelObserverImpl,
+   			IID_ICURSORPROVIDER,				kTimingPanelCursorProviderImpl,
+        }
+    },
+    
+    Class
+    {
+        kTimingPanelEventDDListWidgetBoss,
+        kDropDownListWidgetBoss,
+        {
+           	IID_ITIP,							kTimingPanelEventDDListTipsImpl,
+        }
+    },
+    
+    Class
+	{
+		kTimingPanelTreeWidgetBoss,
+		kTreeViewWidgetBoss,
+		{
+			IID_ITREEVIEWHIERARCHYADAPTER,		kTimingPanelTreeViewAdapterImpl,
+			IID_ITREEVIEWWIDGETMGR,				kTimingPanelTreeViewWidgetMgrImpl,
+			IID_IDRAGDROPTARGET,				kTimingPanelTreeDDTargetImpl,		// Reorder items in the tree view
+		}
+	},
+	
+	Class 
+    { 
+        kTimingPanelTreeNodeBoss, 
+        kTreeNodeWidgetBoss, 
+        { 
+            IID_ICONTROLVIEW,		kTimingPanelTreeNodeViewImpl,		
+            IID_ITREENODEIDDATA,    kTreeNodeIDDataImpl, 
+            IID_IDRAGDROPSOURCE,	kTimingPanelTreeNodeDDSourceImpl,
+            IID_IEVENTHANDLER,		kTimingPanelTreeNodeEHImpl, 
+        } 
+    },   
+
+	Class 
+    { 
+        kTimingPanelTreeNodeGroupWidgetBoss, 
+        kBaseWidgetBoss, 
+        { 
+            IID_ICONTROLVIEW,       kTimingPanelTreeNodeGroupWidgetViewImpl, 
+            IID_IEVENTHANDLER,		kTimingPanelTreeNodeGroupWidgetEHImpl, 
+            IID_IDRAGDROPSOURCE,	kTimingPanelTreeNodeDDSourceImpl,
+            IID_ITIP,				kTimingPanelTreeNodeGroupWidgetTipImpl,
+        } 
+    }, 
+	
+	Class 
+	{
+		kTimingPanelPageItemNameBoss, /** boss for the page item name widget. Allows inline editing of page item name */
+		kTextInLineEditWidgetBoss,		
+		{
+			IID_IINLINEEDITEDITINGATTRIBUTES,	kTimingPanelNameILEEditingAttributesImpl,
+			IID_IOBSERVER,						kTimingPanelPageItemNameObserverImpl,
+		}
+	}
+	
+	Class
+	{
+		kTimingPanelDataExchangeHandlerBoss,
+		kInvalidClass,
+		{
+			IID_IDATAEXCHANGEHANDLER,			kTimingPanelDataExchangeHandlerImpl,
+			IID_IDYNAMICTARGETLISTDATA,			kDynamicTargetListDataImpl,				// selected nodes
+			IID_IPMPERSIST,						kPMPersistImpl,
+			IID_NEVERWRITESTODOCUMENT,			kNeverWritesToDocumentImpl,
+		}
+	};
+
+
+	Class
+    {
+        kTimingPanelGroupButtonBoss,
+        kRollOverIconButtonBoss,
+        {
+            IID_IDRAGDROPTARGET,				kTimingPanelGroupButtonDDTargetImpl,
+        }
+    };
+    
+    Class
+    {
+        kTimingPanelUngroupButtonBoss,
+        kRollOverIconButtonBoss,
+        {
+            IID_IDRAGDROPTARGET,				kTimingPanelUngroupButtonDDTargetImpl,
+        }
+    };
+    	
+    /** Customized widget that shows the tips which including the KBSC.
+	@param IID_ITIP --- show the tooltip when mouse hover over.  
+	*/
+    Class 
+    { 
+        kTimingPanelPreviewSpreadWidgetBoss, 
+		kRollOverIconButtonBoss,
+		{
+			IID_ITIP,			kDDPreviewSpreadButtonWidgetTipImpl,
+		}
+    } 
+     	
+    /** Customized widget that shows the tips which including the KBSC.
+	@param IID_ITIP --- show the tooltip when mouse hover over.  
+	*/
+    AddIn 
+    { 
+        kPreviewButtonBoss, 
+		kRollOverIconButtonBoss,
+		{
+			IID_ITIP,			kDDPreviewSpreadButtonWidgetTipImpl,
+		}
+    } 
+   
+	Class
+	{
+		kTimingPanelMenuBoss,
+		kBaseActionComponentBoss,
+		{
+			IID_IACTIONCOMPONENT,	kTimingPanelMenuComponentImpl,
+		}
+	},
+	
+	//	Animation UI
+	AddIn
+	{
+		kDrawablePageItemBoss,
+		kInvalidClass,
+		{
+			/**	Draw the adornment for the animated page item.
+			*/
+			IID_IANIMATIONADORNMENTDRAWER, kAnimationAdornmentDrawerImpl,
+		}
+	}
+
+	
+	Class
+	{
+		kAnimationUIPanelBoss,
+		kPalettePanelWidgetBoss,
+		{
+			IID_ICONTROLVIEW,		kAnimationUIPanelViewImpl,
+            IID_IPANELMENUDATA,		kCPanelMenuDataImpl,	// this is for flyout menu on the panel
+            IID_IOBSERVER,			kAnimationPanelObserverImpl,
+			IID_IPANELDETAILCONTROLLER, kAnimationUIPanelDetailControllerImpl, 
+		}
+	},
+	
+	Class
+	{
+		kAnimationPreviewPanelWidgetBoss,
+		kGenericPanelWidgetBoss,
+		{
+			IID_ICONTROLVIEW,		kErasablePanelViewImpl,
+		}
+	},
+	
+	Class
+	{
+		kAnimationUIPanelMenuBoss,
+		kBaseActionComponentBoss,
+		{
+			IID_IACTIONCOMPONENT,	kAnimationUIPanelMenuActionImpl,
+		}
+	},
+
+	Class
+   	{
+   		kAnimationUIEventMenuBoss,
+   		kBaseActionComponentBoss,
+   		{
+   			IID_IACTIONCOMPONENT,	kAnimationUIEventMenuActionImpl,
+   		}
+   	},
+
+	Class 
+    { 
+        kAnimationUIEventInfoWidgetBoss, 
+		kInfoStaticTextWidgetBoss,
+		{
+			IID_ITIP,							kAnimationUIEventInfoTipImpl,
+			IID_IANIMATIONTRIGGERTYPEDATA,		kIntDataImpl,	// cache the current trigger event string
+            IID_IINTLIST,						kIntListImpl,	// List of trigger event for this animation
+		}
+    } 
+
+	/** Customized widget that shows the tips which including the KBSC.
+	@param IID_ITIP --- show the tooltip when mouse hover over. 
+	*/
+    Class 
+    { 
+        kAnimationPanelPreviewSpreadWidgetBoss, 
+		kRollOverIconButtonBoss,
+		{
+			IID_ITIP,			kDDPreviewSpreadButtonWidgetTipImpl,
+		}
+    } 
+
+	Class 
+	{
+		kAnimationUIAnimateOptionWidgetBoss,
+		kDropDownListWidgetBoss,
+		{
+			IID_ITIP, kAnimationUIAnimateOptionTipImpl,
+		}
+	}
+	
+	Class
+	{
+		kAnimationUIButtonTriggerWidgetBoss,
+		kRollOverIconButtonBoss,
+		{
+            IID_IEVENTHANDLER, kAnimationUIButtonTriggerEHImpl, 
+		}
+	}
+
+	Class 
+    { 
+        kAnimationUIButtonTriggerTrackerRegisterBoss, 
+        kInvalidClass, 
+        { 
+            IID_ITRACKERREGISTER, kAnimationUIButtonTriggerTrackerRegisterImpl, 
+            IID_IK2SERVICEPROVIDER, kCTrackerRegisterProviderImpl, 
+        } 
+    }, 
+
+    Class 
+    { 
+        kAnimationUIButtonTriggerTrackerBoss, 
+        kInvalidClass, 
+        { 
+            IID_ITRACKER, kAnimationUIButtonTriggerTrackerImpl, 
+			IID_IEVENTHANDLER, kAnimationUIButtonTriggerTrackerEHImpl, 
+        } 
+    }, 	
+
+    Class 
+    { 
+        kAnimationUIXFormPointWidgetBoss, 
+        kTPProxyWidgetBoss, 
+        { 
+            IID_IEVENTHANDLER, kAnimationUIXFProxyEHImpl , 
+            IID_IBOOLDATA,     kFalseInitBoolDataImpl ,  // flag indicates if we need to do erase before draw(used in ProxyWidget::Draw()) 
+            IID_PROXYWIDGETGETSFOCUSONSHORTCUT,    kBoolDataImpl    // flag indicates if we should give this control focus if the shortcut for its associated label widget is hit. 
+        } 
+    }, 
+    
+	Class 
+	{
+		kAnimationUISavePresetDialogBoss,
+		kDialogBoss,
+		{
+			IID_IDIALOGCONTROLLER, kAnimationUISavePresetDialogControllerImpl,
+			IID_ISTRINGDATA,	   kStringDataImpl,
+			IID_IUIDDATA,		   kUIDDataImpl, // this is used for duplicate [IN] is the preset to duplicate; [OUT] is the duplicated preset.
+		}
+	}
+	
+	Class
+	{
+		kAnimationUIManagePresetsDialogBoss,
+		kDialogBoss,
+		{
+			 IID_IOBSERVER,			kAnimationUIManagePresetsDialogObserverImpl,
+		}
+	}
+	
+	Class
+    {
+        kAnimationUIManagePresetsDialogListNodeWidgetBoss,
+        kTreeBasedListBoxNodeWidgetBoss,
+        {
+            IID_ICONTROLVIEW,		kAnimationUIManagePresetsDialogListNodeViewImpl,
+        }
+    },
+    
+	Class
+    {
+        kAnimationUIManagePresetsDialogStaticTextWidgetBoss,
+        kStaticTextWidgetBoss,
+        {
+            IID_ICONTROLVIEW,				kAnimationUIManagePresetsDialogStaticTextWidgetViewImpl,
+        }
+    },
+    
+	Class 
+    { 
+        kAnimationUIManagePresetsListBoxBoss, 
+        kTreeBasedListBoxWidgetNewBoss,             
+        { 
+			IID_ILASTCUSTOMPRESETINDEX,		kIntDataImpl,
+            IID_ILISTBOXCONTROLLER,			kAnimationUIManagePresetItemListBoxCtrlImpl, 
+   			IID_ITREEVIEWWIDGETMGR,			kAnimationUIManagePresetListBoxWidgetMgrImpl,
+        } 
+    } 
+
+	Class
+	{
+		kAnimationUIPresetPopupMenuBoss,
+		kBaseActionComponentBoss,
+		{
+			IID_IACTIONCOMPONENT, kAnimationUIPresetPopupMenuActionImpl,
+			IID_IDYNAMICMENU, kAnimationUIPresetPopupDynamicMenuImpl,
+			IID_IACTIONIDTOUIDDATA, kActionIDToUIDDataImpl,
+		}
+	},
+	
+
+	
+#ifdef DEBUG
+	Class
+	{
+		kMotinonTestMenuBoss,
+		kBaseTestMenuBoss,
+		{
+			IID_IACTIONCOMPONENT, kMotionTestMenuImpl,
+		}
+	}
+#endif
+
+}}};
+
+#endif // __ODFRC__

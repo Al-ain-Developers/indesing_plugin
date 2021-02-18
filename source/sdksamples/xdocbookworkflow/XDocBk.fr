@@ -1,0 +1,575 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/sdksamples/xdocbookworkflow/XDocBk.fr $
+//  
+//  Owner: Adobe Developer Technologies
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//  
+//  Umbrella include file for all the .fr files in the plug-in.
+//  
+//========================================================================================
+
+//===========================
+//  General includes:
+//===========================
+
+#include "MenuDef.fh"
+
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "StringTable.fh"
+#include "objectmodeltypes.fh"
+#include "ShuksanID.h"
+#include "ActionID.h"
+#include "CommandID.h"
+#include "WorkspaceID.h"
+#include "widgetid.h"
+#include "BuildNumber.h"
+#include "OpenPlaceID.h" // for kOpenServiceImpl
+#include "DocFrameworkID.h"
+#include "ImportExportUIID.h"
+#include "XMLID.h"
+#include "XMLParserID.h"
+#include "ErrorTableTypes.h" // for UserErrorTable
+#include "ScriptInfoTypes.fh"
+#include "AppFrameworkID.h" // for kApplicationObjectScriptElement
+//#include "DocFrameworkID.h" // for kDocumentObjectScriptElement
+#include "Schema.fh" // for SchemaList
+
+#include "PlugInModel_UIAttributes.h"
+// Project includes:
+#include "XDocBkID.h"
+#include "XDocBkScriptingDefs.h"
+
+#ifdef __ODFRC__
+
+/*
+// Plugin version definition.
+*/
+resource PluginVersion (kSDKDefPluginVersionResourceID)
+{
+	kTargetVersion,
+	kXDocBkPluginID,
+	kSDKDefPlugInMajorVersionNumber, kSDKDefPlugInMinorVersionNumber, 	
+	kSDKDefHostMajorVersionNumber, kSDKDefHostMinorVersionNumber,
+	kXDocBkLastMajorFormatChange, kXDocBkLastMinorFormatChange,
+	{ kInDesignProduct,kInDesignServerProduct},
+	{ kWildFS },
+	kModelPlugIn,
+	kXDocBkVersion
+};
+
+
+/*
+//	IgnoreTags - mark these impls/classIDs as optional.
+*/
+resource IgnoreTags(1)
+{
+	kImplementationIDSpace, 
+	{
+		kXDocBkOptionsImpl,
+	}
+};
+
+/* SchemaList: a history of the persistent data formats supported by this plug-in
+*/
+
+resource SchemaList(1)
+{{
+    Schema
+    {
+        kXDocBkOptionsImpl,
+        {kSDKDef_20_PersistMajorVersionNumber,kSDKDef_20_PersistMinorVersionNumber},
+        {
+            {FieldArray	{0x0001,    {Uint32{0}}, 
+											{{PMString{0x0002, ""}},											 
+											},
+	        }},
+	    }
+    };   
+
+    Schema
+    {
+        kXDocBkOptionsImpl,
+        {kXDocBkLastMajorFormatChange, kXDocBkLastMinorFormatChange},
+        {
+            {FieldArray	{0x0001,    {Uint32{0}}, 
+											{{WideString{0x0002, ""}},											 
+											},
+			}},
+		}
+    };
+    
+    
+}};
+
+
+/*
+//	Boss class definition.
+*/
+resource ClassDescriptionTable(kSDKDefClassDescriptionTableResourceID)
+{{{
+
+	/** This boss class supplies a schema-based conversion service for this plug-in.	
+	*/
+	Class
+    {
+        kXDocBkConversionProviderBoss,
+        kInvalidClass,  
+        {
+			/** Provides the conversion service.
+				Implementation provided by the API.
+			*/
+            IID_ICONVERSIONPROVIDER, kSchemaBasedConversionImpl,
+			/** Registers this boss as a conversion service provider.
+				Implementation provided by the API.
+			*/
+            IID_IK2SERVICEPROVIDER, kConversionServiceImpl,
+        }
+    },
+
+	/** Command to correctly size images to fit within column width.
+		@ingroup xdocbookworkflow
+	*/
+	Class
+	{
+		kXDocBkImageSizerCmdBoss,
+		kInvalidClass,
+		{
+			/** Implementation of ICommand
+				@see XDocBkImageSizerCmd
+			
+			*/
+			IID_ICOMMAND,	kXDocBkImageSizerCmdImpl,
+		}
+	},
+	
+	/** Command boss class to change options 
+		
+		@ingroup xdocbookworkflow
+	*/
+	Class
+	{
+		kXDocBkChangeOptionsCmdBoss,
+		kInvalidClass,
+		{
+			/** Implementation of ICommand 
+				@see XDocBkChangeOptionsCmd
+			*/
+			IID_ICOMMAND,	kXDocBkChangeOptionsCmdImpl,
+			
+			/** Implementation of IXDocBkOptions re-used as command data interface
+				@see XDocBkOptions
+			*/
+			IID_IXDOCBKOPTIONS, kXDocBkOptionsImpl,
+		}
+	},
+
+	/** This boss class is open provider for DCBK format.
+		It adds .dcbk to the set of readable
+		files presented in the File>Open dialog.
+		
+		@ingroup xdocbookworkflow
+	 */ 
+	Class 
+	{
+		kXDocBkImportProviderBoss,
+		kInvalidClass,
+		{
+			/** Identify boss as a service provider.  
+				@see IK2ServiceProvider
+			*/
+			IID_IK2SERVICEPROVIDER, 	kOpenServiceImpl, 
+			
+			/** Implements IImportProvider, and supplies
+				 the import service implementation for DCBK format.
+				@see XDocBkImportProvide
+			*/
+			IID_IIMPORTPROVIDER, 		kXDocBkImportProviderImpl,
+		}
+	},
+
+	/** This boss class furnishes the export provider service for DCBK format. 
+		This adds .dcbk to the set of exportable
+		formats presented in the File>Export dialog.
+	
+		@ingroup xdocbookworkflow
+	 */ 
+	Class
+	{
+		kXDocBkExportProviderBoss,
+		kInvalidClass,
+		{
+			/** Implementation of IK2ServiceProvider marking this as an export service. */
+			IID_IK2SERVICEPROVIDER, kExportServiceImpl,
+			
+			/** IExportProvider implementation. 
+				@see XDocBkExportProvider
+			*/
+			IID_IEXPORTPROVIDER, kXDocBkExportProviderImpl,
+		}
+	},
+
+	/** Put our command facade onto the Utils boss to let client code use it. 
+		@ingroup xdocbookworkflow
+	*/
+	AddIn
+	{
+		kUtilsBoss,
+		kInvalidClass,
+		{
+			/** Implementation of IXDocBkFacade 
+				@see XDocBkFacade
+			*/
+			IID_IXDOCBKFACADE,	kXDocBkFacadeImpl,
+		}
+	},
+
+	/** Stores the options that we're working with.
+		
+		@ingroup xdocbookworkflow
+	*/
+	AddIn
+	{
+		kWorkspaceBoss,
+		kInvalidClass,
+		{
+			/** Implementation of IXDocBkOptions
+				@see XDocBkOptions
+			*/
+			IID_IXDOCBKOPTIONS,  kXDocBkOptionsImpl,
+		 }
+	},
+	
+	
+	/** SAX handler building block for reading tables from XML 
+	
+		@ingroup xdocbookworkflow
+	*/
+	Class
+	{
+		kXDocBkCALSContentHandlerBoss,
+		kInvalidClass,
+		{
+ 			/** Implementation of IXMLImportPreferences that lets us turn this service on or off
+ 				@see XDocBkCALSContentXMLImportPrefs
+ 			*/
+			IID_IXMLIMPORTPREFERENCES, kXDocBkCALSContentXMLImportPrefsImpl,   
+			/** Implementation of IK2ServiceProvider marking this as a SAX handler
+			*/    
+ 			IID_IK2SERVICEPROVIDER, kXMLContentServiceProviderImpl,
+ 			/** Implementation of ISAXDOMSerializerHandler for reading tables from XML.
+ 				@see XDocBkCALSContentHandler
+ 			*/
+			IID_ISAXDOMSERIALIZERHANDLER ,	kXDocBkCALSContentHandlerImpl,
+		}
+	},
+	
+	/** XML post-import iteration responder, responsible for placing images and
+		cleaning up logical structure*/
+	Class
+    {
+        kXDocBkXMLPostImportIterationBoss,
+        kInvalidClass,
+        {     
+			/** Implementation of IXMLImportPreferences that lets us turn this service on or off
+				@see XDocBkXPostImpXMLImportPrefs
+			*/
+			IID_IXMLIMPORTPREFERENCES, kXDocBkXPostImpXMLImportPrefsImpl,       
+           /** Implementation of IK2ServiceProvider marking this as a post-import iteration
+			*/   
+			IID_IK2SERVICEPROVIDER,	kXMLPostImportIterationServiceProviderImpl,
+			/** Implementation of IXMLPostImportIteration
+				@see XDocBkXMLPostImportIteration
+			*/
+			IID_IXMLPOSTIMPORTITERATION, kXDocBkXMLPostImportIterationImpl,
+       }
+    },
+    
+    /** XML transformer building block, supports transforming DOM to create 
+		context-sensitive tag to style map
+	*/
+    Class
+    {
+        kXDocBkXMLTransformerBoss,
+        kInvalidClass,
+        {
+              
+			/** Implementation of IXMLImportPreferences that lets us turn this individual service on or off
+				@see XDocBkXTransXMLImportPref
+			*/
+			IID_IXMLIMPORTPREFERENCES, kXDocBkXTransXMLImportPrefsImpl,       
+	        /** Implementation of IK2ServiceProvider marking this as XML transformer
+			*/   
+			IID_IK2SERVICEPROVIDER,	kXMLImportTransformerSignalServiceImpl,
+			/** Implementation of IXMLTransformer	
+				@see XDocBkXMLTransformer
+			*/
+            IID_IXMLTRANSFORMER, kXDocBkXMLTransformerImpl,
+        }
+    },
+    
+    /** Command boss class to change service specific preferences (IXMLImportPreferences).
+    */
+    Class
+	{
+		kXDocBkChangeServiceXMLImportPrefsCmdBoss,
+		kInvalidClass,
+		{
+			/** Implementation of ICommand 
+				@see XDocBkChangeServiceXMLImportPrefsCmd
+			*/
+			IID_ICOMMAND,	kXDocBkChangeServiceXMLImportPrefsCmdImpl,
+			
+			/** Implementation of IBoolData, stores value to set
+				
+			*/
+			IID_IBOOLDATA,	kBoolDataImpl,
+			
+			/** Implementation of IIntData, stores preference index to change
+			*/
+			IID_IINTDATA,	kIntDataImpl,
+			
+			/** Implementation of IIntData storing ServiceID of interest */
+			IID_IXDOCBKSERVICEIDINTDATA,	kIntDataImpl,
+			
+			/** Implementation of IClassIDData storing ClassID whose preference we're modifying */
+			IID_ICLASSIDDATA, kClassIDDataImpl,
+		}
+	},
+	
+	/** Error-string service to enable us to provide user-friendly errors.
+	*/
+	Class
+	{
+		kXDocBkErrorStringServiceBoss,
+		kInvalidClass,
+		{
+			/** Implementation of IErrorStringService from this plug-in
+			*/
+			IID_IERRORSTRINGSERVICE,	kXDocBkErrorStringServiceImpl,
+			/** Implementation of IK2ServiceProvider identifying this class as errorstring service
+			*/
+			IID_IK2SERVICEPROVIDER,		kErrorStringProviderImpl,
+		}
+	},
+	
+	Class
+	{
+		kXDocBkPrefsScriptProviderBoss
+		kBaseScriptProviderBoss,
+		{
+			/** See IScriptProvider / XDocBkPrefsScriptProvider.
+			 */
+			IID_ISCRIPTPROVIDER, kXDocBkPrefsScriptProviderImpl,	
+		}
+	}		
+	
+}}};
+
+/*
+// Implementation definition.
+*/
+resource FactoryList (kSDKDefFactoryListResourceID) 
+{
+	kImplementationIDSpace,
+	{
+#include "XDocBkFactoryList.h"
+	}
+};
+
+
+/*
+// LocaleIndex
+// The LocaleIndex should have indicies that point at your
+// localizations for each language system that you are 
+// localized for.
+*/
+/*
+// String LocaleIndex.
+*/
+resource LocaleIndex (kSDKDefStringsResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_enUS, kSDKDefStringsResourceID + index_enUS
+		kInDesignJapaneseFS, k_jaJP, kSDKDefStringsResourceID + index_jaJP
+		
+		kWildFS, k_Wild, kSDKDefStringsResourceID + index_enUS
+	}
+};
+
+resource LocaleIndex (kSDKDefStringsNoTransResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_Wild, kSDKDefStringsNoTransResourceID + index_enUS
+	}
+};
+
+resource StringTable (kSDKDefStringsNoTransResourceID + index_enUS)
+{
+	k_enUS,									// Locale Id
+	kEuropeanMacToWinEncodingConverter,		// Character encoding converter
+	{
+		// No-Translate strings go here:
+	}
+};
+
+
+resource UserErrorTable( kXDocBkErrorStringTableRsrcID )
+{
+	{
+		// -- General model errors
+		kXDocBkTemplateUninitializedErr,				kXDocBkTemplateUninitializedErrKey,
+		kXDocBkXMLParseAlreadyInTableElementErr,		kXDocBkXMLParseAlreadyInTableElementErrKey,
+		kXDocBkXMLParseInTableNotInCellElementErr,		kXDocBkXMLParseInTableNotInCellElementErrKey,
+		kXDocBkXMLParseNotInRowElementErr,				kXDocBkXMLParseNotInRowElementErrKey,
+		kXDocBkXMLParseUnknownElementErr,				kXDocBkXMLParseUnknownElementErrKey,
+		kXDocBkXMLParseCantGetTextChunkErr,				kXDocBkXMLParseCantGetTextChunkErrKey,
+		kXDocBkXMLParseHeaderCantGoHereErr,				kXDocBkXMLParseHeaderCantGoHereErrKey,
+		kXDocBkXMLHeaderFirstRowsErr,					kXDocBkXMLHeaderFirstRowsErrKey,
+		kXDocBkXMLParseCantAddRowNotInTableErr,			kXDocBkXMLParseCantAddRowNotInTableErrKey,
+		kXDocBkAlreadyInHeaderOrBodyErr,				kXDocBkAlreadyInHeaderOrBodyErrKey,
+		kXDocBkCantGetTextModelFromContentItemErr,		kXDocBkCantGetTextModelFromContentItemErrKey,
+		kXDocBkXMLParseNotInTableElementErr,			kXDocBkXMLParseNotInTableElementErrKey,
+		kXDocBkXMLParseDontHaveTableErr,				kXDocBkXMLParseDontHaveTableErrKey,
+	}
+};
+
+/*
+// Scripting resources
+*/
+/*
+// Core scripting resources
+*/
+resource VersionedScriptElementInfo(1)
+{
+	//Contexts
+	{
+		// Scripting support added at InDesign CS5.
+		kCS5ScriptVersion, kCoreScriptManagerBoss, kWildFS, k_Wild,
+	}
+	//Elements
+	{
+		Object
+		{
+			kXDocBkPrefObjectScriptElement,		// this object's script element ID
+			c_XDocBkPref,						// ScriptID
+			"xdocbookworkflow preference",		// name
+			"Xdocbookworkflow preference",		// description
+			kXDocBkPref_CLSID,					// Windows CLSID
+			NoCollectionInfo,					// CollectionElementType (scriptID, name, descr, CLSID)
+			kPreferencesObjectScriptElement,	// base object script element ID
+			kPreferencesSuiteScriptElement,		// suite script element ID
+		}
+		
+		// Allows the object above to be accessed by clients as a property
+        Property
+        {
+            kXDocBkPrefObjectPropertyScriptElement,
+            p_XDocPref,
+            "xdocbookworkflow preferences",
+            "Xdocbookworkflow preferences",
+            ObjectType(kXDocBkPrefObjectScriptElement),
+            {}
+            kNoAttributeClass,
+        }	
+		
+		Property
+		{
+			kXDocBkOptionPropertyScriptElement,
+			p_XDocSetOption,
+			"template paths",
+			"Xdoc set template file path and xsl stylesheet file path",
+			StringArrayType(2),						// type
+			{}										// alternate types
+			kNoAttributeClass,						// attribute class ID
+		}
+		
+		Property
+		{
+			kXDocBkImportItPropertyScriptElement,
+			p_XDocUseImportIt,
+			"place images via post import responder",
+			"Xdoc whether place images via post-import responder",
+			BoolType,								// type
+			{}										// alternate types
+			kNoAttributeClass,						// attribute class ID
+		}
+		
+		Property
+		{
+			kXDocBkXMLTsfPropertyScriptElement,
+			p_XDocUseXMLTsf,
+			"use xml transformer service",
+			"Xdoc whether use xml transform service",
+			BoolType,								// type
+			{}										// alternate types
+			kNoAttributeClass,						// attribute class ID
+		}
+		
+		Property
+		{
+			kXDocBkCALSContendHndlPropertyScriptElement,
+			p_XDocUseCALSContentHndl,
+			"create table via sax handler",
+			"Xdoc whether create table via sax handler",
+			BoolType,								// type
+			{}										// alternate types
+			kNoAttributeClass,						// attribute class ID
+		}
+		
+		Property
+		{
+			kXDocBkSuppliedXSLOverridingPIPropertyScriptElement,
+			p_XDocSuppliedXSLOverridingPI,
+			"xsl file overrides processing instruction",
+			"Xdoc whether supplied xsl file overrides processing-instruction",
+			BoolType,								// type
+			{}										// alternate types
+			kNoAttributeClass,						// attribute class ID
+		}
+		
+		Provider
+		{
+			kXDocBkPrefsScriptProviderBoss,
+			{
+				// Parent the kXDocBookWorkflow preferences on the application:
+				Parent{ kApplicationObjectScriptElement },	
+				// The property on the parent object returns the XDocBkPersistInterface preferences object:
+				ParentProperty{ kXDocBkPrefObjectPropertyScriptElement, kReadOnly },	
+				RepresentObject{kXDocBkPrefObjectScriptElement},
+				// The preferences:
+				Property{ kXDocBkOptionPropertyScriptElement, kReadWrite },
+				Property{ kXDocBkImportItPropertyScriptElement, kReadWrite},
+				Property{ kXDocBkXMLTsfPropertyScriptElement, kReadWrite},	
+				Property{ kXDocBkCALSContendHndlPropertyScriptElement, kReadWrite},	
+				Property{ kXDocBkSuppliedXSLOverridingPIPropertyScriptElement, kReadWrite},	
+			}
+		}
+	}
+};
+#endif // __ODFRC__
+
+#include "XDocBk_enUS.fr"
+#include "XDocBk_jaJP.fr"
+//  Generated by Dolly build 17: template "IfPanelMenu".
+// End, XDocBk.fr.
+
+

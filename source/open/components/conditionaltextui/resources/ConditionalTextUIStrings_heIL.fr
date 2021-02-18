@@ -1,0 +1,132 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/conditionaltextui/resources/ConditionalTextUIStrings_heIL.fr $
+//  
+//  Owner: Michele Stutzman
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kConditionalTextUIStringsRsrcID + index_heIL)
+{
+    k_heIL,                                 // Locale Id
+    kResourceUTF8Encoded,     // Character encoding converter
+    {
+		"#CondTextUI_WinMenu",	"&טקסט מותנה",	// panel menu item
+		"#CondTextUI_PanelName","טקסט מותנה",		// panel name
+		"#CondTextUI_PanelMenu","תפריט החלונית 'טקסט מותנה'",
+		"#CondTextUI_NewConditionTagMenu", "תנאי חדש...",
+		"#CondTextUI_DeleteConditionTagMenu", "מחק תנאי...",
+		"#CondTextUI_DeleteConditionTagsMenu", "מחק תנאים...",
+		"#CondTextUI_EditConditionTagMenu", "אפשרויות תנאי...",
+		"#CondTextUI_LoadConditionTagsMenu", "טען תנאים...",
+		"#CondTextUI_LoadConditionTagsAndSetsMenu", "טען תנאים וערכות...",
+		"#CondTextUI_ShowIndicatorsCB", "הצג מציינים בטקסט מותנה",
+		"#CondTextUI_ShowIndicatorsMenu", "הצג מציינים בטקסט מותנה",
+		"#CondTextUI_ShowAndPrintIndicatorsMenu", "הצג והדפס מציינים בטקסט מותנה",
+		"#CondTextUI_HideIndicatorsMenu", "הסתר מציינים בטקסט מותנה",
+		"#CondTextUI_ShowIndicatorsDD", "מציינים:",
+		"#CondTextUI_ShowIndicators", "הצג",
+		"#CondTextUI_ShowAndPrintIndicators", "הצג והדפס",
+		"#CondTextUI_HideIndicators", "הסתר",
+		"#CondTextUI_RtMenuConditionTagTVNode",    "תפריט תלוי-הקשר לתצוגת צומת של עץ תנאים",
+		"#CondTextUI_RtMenuUnapplyTag",		"הסר החלה של \"^1\"",
+		"#CondTextUI_RtMenuDeleteTag",		"מחק \"^1\"",
+		"#CondTextUI_RtMenuEditTag",		"עריכת \"^1\"...",
+		"Show Options", "הצג &אפשרויות",
+		"Hide Options", "ה&סתר אפשרויות",
+		
+		"#ConditionTagList_NameColumnLabel", "שם",
+		"#ConditionTag_OptionsDialog", "אפשרויות תנאי",
+		"#ConditionTag_OptionsDialogNew", "תנאי חדש",
+		"#ConditionTagOptions_Name:", "&שם:",
+		"#ConditionTagOptions_Method:", "&שיטה:",
+		"#ConditionTagOptions_Appearance:", "&מראה:",
+		"#ConditionTagOptions_Color:", "צ&בע:",
+		"#ConditionTagOptions_Indicator", "מציין",
+		"#ConditionTagOptions_MethodUnderline", "קו תחתי",
+		"#ConditionTagOptions_MethodHighlight", "הדגש",
+		"#ConditionTagOptions_WavyUnderline", "מקף גלי",		
+		"#ConditionTagOptions_SolidUnderline", "אחיד",		
+		"#ConditionTagOptions_DashedUnderline", "מקווקו",		
+		"#ConditionTag_EmptyNameMsg", "אנא ציין שם תנאי.",
+		"#ConditionTag_NameInUseMsg", "שם תנאי זה כבר נמצא בשימוש. אנא בחר שם אחר.",
+		
+		"#ConditionSetShowAll", "הצג הכל",
+		"#ConditionSetHideAll", "הסתר הכל",
+		"#ConditionSetNone", "[ללא]",
+		"#ConditionSetBlank", " ",
+		"#ConditionSetLabel", "הגדר:",
+		"#ConditionSetNewSet", "צור ערכה חדשה...",
+		"#ConditionSetDeleteSet", "מחק \"^1\"...",
+		"#ConditionSetRenameSet", "שנה שם של \"^1\"...",
+		"#ConditionSetRedefineSet", "הגדר מחדש את \"^1\"...",
+		"#ConditionSetNameDialog", "שם ערכת תנאים",
+		"#ConditionSetNameStatic", "&שם:",
+		"#InvalidSetName", "שם ערכת תנאים לא חוקי",
+		"#DuplicateSetName", "השם כבר קיים",
+		"#NoActiveSetString", "אין ערכה פעילה",
+		
+		"#ConditionalTextTip", "נמצא טקסט מוסתר עם ^1: ",
+		"#ConditionalTextTipOneTag", "תנאי זה",
+		"#ConditionalTextTipManyTags", "תנאים אלה",
+		
+		"#ConditionalTextEyeballHideWidgetTip", "לחץ להסתרת כל הטקסט שהוחל עליו תנאי זה",
+		"#ConditionalTextEyeballShowWidgetTip", "לחץ להצגת כל הטקסט שהוחל עליו תנאי זה",
+		"#ConditionalTextEyeballUnconditionalWidgetTip", "טקסט לא מותנה מוצג תמיד",
+		"#ConditionalTextAppliedAllTip",	"התנאי הוחל על כל הטקסט שנבחר. לחץ לביטול ההחלה",
+		"#ConditionalTextAppliedSomeTip",	"התנאי הוחל על חלק מהטקסט שנבחר. לחץ להחלה על כל הטקסט שנבחר",
+		"#ConditionalTextAppliedNoneTip",	"לחץ להחלת התנאי",
+		"#ConditionalTextAppliedAllTipUncondition",	"הטקסט שנבחר אינו מותנה",
+		"#ConditionalTextAppliedSomeTipUncondition",	"חלק מהטקסט שנבחר אינו מותנה לחץ כדי להפוך את כל הטקסט ללא מותנה",
+		"#ConditionalTextAppliedNoneTipUncondition",	"לחץ כדי להפוך את הטקסט ללא מותנה",
+		"#ConditionalTextApplyNoSelectionTip", "לחץ להחלץ התנאי על הטקסט שנבחר",
+		"#ConditionalTextNewTagTip",		"תנאי חדש",
+		"#ConditionalTextDeleteTagTip",		"מחק תנאי",
+		"#ConditionalTextIndicatorTip",		"שיטת המציין היא ^1",
+		"#ConditionalTextNewSetTip",		"ערכה חדשה",
+		
+		"#ConditionTag_DeleteConditionDialog", "מחק תנאי", 
+		"#ConditionTag_DeleteConditionsDialog", "מחק תנאים", 
+		"#ConditionTag_DeleteConditionAndReplace:", "מחק תנאי והחלף ב: ", 
+		"#ConditionTag_DeleteConditionsAndReplace:", "מחק תנאים והחלף ב: ", 
+		"#ConditionTag_DeleteInformationAlert", "גרור תנאי לסמל פח האשפה כדי למחוק את התנאי.",
+		"#ConditionTag_DeleteNoReplaceChoice", "[ללא]",
+		
+		"#QuickApplyConditions", "תנאי",
+		"#Conditions_Filter_Key", "CT", // should be upper case if there is an upper case character, this is the prefix key for quick apply for text conditions.
+		"#QuickApplyConditionSets", "ערכת תנאים",
+		"#QuickApplyConditionSets_Filter_Key", "CS",  // should be upper case if there is an upper case character, this is the prefix key for quick apply for text condition sets.
+		"#QuickApplyConditons_Menu_Key_String", "כלול תנאים (ct:)",
+		"#QuickApplyConditonSets_Menu_Key_String", "כלול ערכת תנאים (cs:)",
+		
+		"#SingularConditionStatusBodyString", "^1 תנאי החיל ^2",
+		"#PluralConditionStatusBodyString", "^1 תנאים החילו ^2",
+		"#MixedConditionString", " ‏[מעורב]",
+		"#NoConditionsString", "לא הוחלו תנאים",
+    }
+};
+
+#endif // __ODFRC__

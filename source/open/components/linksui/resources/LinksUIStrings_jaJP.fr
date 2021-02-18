@@ -1,0 +1,227 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#ifdef __ODFRC__
+
+#include "StringTable.fh"
+
+resource StringTable (kLinksUIStringsRsrcID + index_jaJP)
+{
+	k_jaJP,					// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	{
+		"Links_WinMenu",			"リンク(&K)", // panel menu item
+		"kRtMouseGraphics",			"グラフィック", // context menu submenu name
+		"RtMenuLinksUILinkInfo",	"リンク情報のコンテキストメニュー",
+		
+		"#LinksUIPanel",			"リンク", // panel name
+		"#LinksUIPanelMenu",		"リンクパネルメニュー", 
+		"#LinksUtilitiesSubmenu",		"ユーティリティ",		// submenu for links panel menu
+		"#SelectedLinkInfoSectionName",			"リンク情報", // section name in links ui panel
+		
+		"#UpdateAllOutOfDateLinksMenu",	"すべてのリンクを更新",
+		"#AutoFindMissingLinksMenu",		"無効なリンクを検索",
+		"#LinksUIRelinkLinkMenu",		"再リンク...",
+		"#LinksUIRelinkResourceMenu",	"すべてのインスタンスを再リンク...", // menu item to relink all instances of this multiple link assets
+		"#RelinkResource ^1 Menu",		"「^1」のすべてのインスタンスを再リンク...", // menu item to relink all instances of one single link asset
+		"#ReplaceFPOWithOriginalResourceMenu",	"すべてのインスタンスを置換...", // menu item to replace all instances of this multiple link assets
+		"#ReplaceFPOWithOriginalResource ^1 Menu", "FPO「^1」のすべてのインスタンスをオリジナルに置換...", // menu item to replace all instances of one single link asset
+		"#RelinkCloudResource ^1 Menu",	"CC ライブラリから「^1」のすべてのインスタンスを再リンク...", // menu item to relink all instances of one single link asset
+        "#RelinkAALResource ^1 Menu",    "Adobe Asset Link から「^1」のすべてのインスタンスを再リンク...", // menu item to relink all instances of one single link asset
+		"#LinksUIUpdateLinkMenu",			"リンクを更新", // context menu item in links ui panel
+		"#LinksUIUpdateLinkResourceMenu",	"すべてのインスタンスを更新",
+		"#UpdateResource ^1 Menu",		"「^1」のすべてのインスタンスを更新", // menu item to update all instances of one single link asset
+		"#LinksUIEmbedLinkMenu",			"リンクを埋め込み", // context menu item in links ui panel
+		"#LinksUIEmbedResourceMenu",		"すべてのインスタンスを埋め込み",
+		"#EmbedResource ^1 Menu",			"「^1」のすべてのインスタンスを埋め込み", // menu item to embed all instances of one single link asset
+		"#LinksUIUnEmbedLinkMenu",		"リンクを埋め込み解除", // context menu item in links ui panel
+		"#LinksUIUnEmbedResourceMenu",	"すべてのインスタンスの埋め込み解除",
+		"#UnembedResource ^1 Menu",			"「^1」のすべてのインスタンスを埋め込み解除", // menu item to unembed all instances of one single link asset
+		"#LinksUIUnLinkMenu",				"リンク解除",
+		"#UnLinkResourceMenu",			"すべてのインスタンスをリンク解除",
+		"#UnLinkResource ^1 Menu",			"「^1」のすべてのインスタンスをリンク解除", // menu item to unlink all instances of one single link asset
+		"#LinksUIEditOriginalLinkMenu",		"元データを編集", // context menu item in links ui panel
+		"#LinksUIGoToSourceLinkMenu",		"ソースに移動", // context menu item in links ui panel
+		"#LinksUIXMPFileInfo",				"XMP ファイル情報...",
+		"#LinksUICopyPath",				"フルパスをコピー",
+		"#LinksUICopyPlatformPath",			"プラットフォームのスタイルパスをコピー",
+		"#RevealLinkInMacFinder",			"Finder で表示",
+		"#RevealLinkInWinExplorer",			"エクスプローラーで表示",
+		"#RevealLinkInAdobeBridge",			"Bridge で表示",
+		"#RevealLinkInCCLibraries",			"CC ライブラリで表示",
+		"#GoToLink",						"リンクへ移動",
+		"#EditWithApp",					"編集ツール",
+		"ApplicationFiles",					"アプリケーション (*.exe)", // windows only string to list exe files in the 'edit with application' dialog.
+		"#ChooseEditingApplication",			"アプリケーションを選択", // dialog title
+		"#OtherApp",						"その他...",	// Menu name for choosing a custom application via a standard file dialog for Edit With...
+		"#LinksUICopyLink",				"場所を指定してリンクをコピー...",
+		"#LinksUIEditColumnsMenu",			"パネルオプション...",
+		
+		"#LinksUIRemoveThisColumnMenu",	"この列を隠す",
+		"#LinksUIShowThumbnailMenu",		"サムネールを表示",
+		"#LinksUIHideThumbnailMenu",		"サムネールを隠す",		
+		"#LinksUIShowInfoThumbnailMenu",	"情報サムネールを表示",
+		"#LinksUIHideInfoThumbnailMenu",	"情報サムネールを隠す",
+		
+		"#SaveLinkVersionCmd",			"リンクをチェックイン",
+		"#ShowLinksPanelColumn",			"コラムに表示",
+		"#ShowLinksPanelInfo",				"リンク情報に表示",
+		"#SelectNextLinkButtonTip",			"リスト内の次のリンクを選択",
+		"#SelectPrevLinkButtonTip",			"リスト内の前のリンクを選択",
+		"#ToggleLinkInfoButtonTip",			"リンク情報の表示 / 非表示",
+
+		"#ShortLinkStatusParamStr",				"^1 個のリンク",  // status string for links panel
+		"#LongLinkStatusParamStr",				"リンク総数 ^1 個\n\n   無効なリンク ^2 個\n   変更済み ^3 個\n   埋め込み ^4 個\n   固有 ^5 個\n   サブリンク ^6 個", // tip string for links panel status.
+		"#OneSelectedLinkStr",			"1 個選択", // status string when one link is selected in the panel.
+		"#NumSelectedLinksParamStr",	"^1 個選択", // status string when multiple links are selected in the panel.
+				
+		"RtMenuLinksUILinkItem",		"リンクのコンテキストメニュー",
+		"RtMenuLinksUILinksHeader",		"リンクヘッダーのコンテキストメニュー",
+		
+		"#LinkColumnDialog",			"パネルオプション", // dialog name
+		"#LinksUIPanelOptions",			"オプション",
+		
+		"#LinkThumbPrefLabel",			"サムネール :",
+		"#LinksUIRowSizeLabel",		"行サイズ(&R) :",
+		"#LinksUISmallRowStr",			"行 (小)",
+		"#LinksUIRegularRowStr",		"行 (標準)",
+		"#LinksUILargeRowStr",			"行 (大)",
+		"#LinkInfoShowThumbnailCheckbox",	"リンク情報に表示(&I)",
+		"#LinksUIShowThumbnail",		"名前のコラムに表示(&N)",
+		"#LinksUICollapseMultiple",		"複数のリンクを同じソースに折りたたみ(&C)",
+
+		"#SearchHereForMissingFiles",	"このフォルダー内の無効なリンクを検索", // label for checkbox in relink dialog
+		"#RelinkSkipButton",			"スキップ", // name for 'skip' button in relink dialog
+		"#SearchFound^1Links",		"この再リンクディレクトリを検索し、^1 個の無効なリンクを検出して再リンクしました。", // alert that displays if we auto find missing links after a relink
+		"#RelinkToFolderTitle",			"再リンク先のフォルダーを選択します。現在選択しているリンクで名前が一致するものだけが再リンクされます。",
+		"#RelinkToSameFilename",		"ファイル名と拡張子が一致する", // radio button option in relink to folder dialog
+		"#RelinkToExtension",			"次の拡張子でファイル名が一致する :", // radio button option in relink to folder dialog
+		"#LinksUICopyLinksTitle",		"リンクされたファイルをコピーするフォルダーを選択してください。",
+		"#LinksUIRelinkToFolderLinkMenu",	"フォルダーに再リンク...",
+		"#LinksUIRelinkFileExtensionLinkMenu",	"ファイル拡張子にリンクを再設定...",
+        "#LinksUIRelinkFromCloudAssetLinkMenu",	"CC ライブラリから再リンク…",
+        "#LinksUIRelinkFromAALAssetLinkMenu",    "Adobe Asset Link から再リンク...",
+		"#LicenseStockAssetLinkMenu",	"画像をライセンス認証...",
+		"#LinksUIRelink: ^1",			"再リンク : ^1", // title for relink dialog. ^1 becomes file path.
+		"#LinksUILocate: ^1",			"場所 : ^1", // title for relink dialog when link is missing. ^1 becomes file path.
+		"#CopyLinksFailedAlert",		"フォルダーへのリンクのコピーに失敗しました。",
+		"#AutoFindFoundNothingAlert",	"不明なリンクが見つかりません。「再リンク」コマンドを使用して、最初の不明なリンクを検索してから、やり直してください。",
+		
+		"kEditsMadeWarning",			  "読み込んだバージョンの「^1」に編集が加えられています。更新するとこれらの編集内容は失われます。更新しますか？",
+		"kEditsMadeInLinkedStoryWarning",	"リンクされたストーリー「^1」に編集が加えられています。更新するとこれらの編集内容は失われます。更新しますか？",
+		"kEditsMadeInLinkedArticleWarning", "リンクされたページアイテム「^1」に編集が加えられています。更新するとこれらの編集内容は失われます。更新しますか？",
+		"kEditsMadeToTextOrTableWarning", "読み込んだバージョンの「^1」に編集が加えられています。リンクを更新すると、これらの編集内容 (セルスタイルまたは表スタイルを使用してスプレッドシートに適用した変更内容を除く) は失われます。更新しますか？",
+
+		// Strings for Problem Links dialog
+		"#LinksModifiedWarning",	"このドキュメントに含まれるリンク先のソースが見つからないか変更されています。これらのリンクを今すぐ更新するか、リンクパネルを使用して後で更新することができます。",
+		"#HTTPLinksModifiedWarning",	"このドキュメントには、最後にドキュメントが保存されて以降見つからないまたは変更されたソースへのリンクが含まれています。リンクパネルを使用して、これらのリンクを今すぐ更新するか、後で更新することができます。",
+		"#UpdateLinks",				"変更されたリンクを更新(&U)",	 // button text
+		"#Don'tUpdateLinks",		"リンクを更新しない", // button text
+		"#ProblemMissingLinksParamStr",	"無効なリンク - ^1 個",
+		"#ProblemModifiedLinksParamStr",	"変更されたリンク - ^1 個",
+		"#ProblemInaccessibleLinksParamStr",	"^1 - アクセスできない URL リンクです。詳しくは、リンクパネルを参照してください。",
+        "#ProblemLinksDialogHeader",    "リンクの問題",
+		"UnembedToOriginal", 		"埋め込み解除を行うと、オリジナルファイル、またはフォルダー内に作成されるファイルにリンクできます。オリジナルファイルにリンクしますか？",
+		"#SelectUnembedDir",
+									"ファイルを作成するフォルダーを選択してください。",
+
+		// Show Link message.
+		 "Cannot show link: The selected item is on a hidden layer.",
+						"リンクを表示できません : 選択したアイテムは非表示であるか、非表示レイヤー上に存在します。",
+		"Cannot show link: The selected item is hidden in overset text.",
+						"リンクを表示できません : 選択したアイテムはオーバーセットテキスト内に隠されています。",
+		"Cannot show link: The selected item is hidden in an inactive form field state.",
+						"リンクを表示できません : 選択したアイテムはボタンが非アクティブ状態であるために非表示になっています。ボタンパネルを使用して、非表示状態のボタンをアクティブ化し、アイテムを表示します。",
+		"Cannot show link: The selected item is hidden in an inactive mso state.",
+						"リンクを表示できません : 選択したアイテムは、非アクティブのオブジェクトステートにあります。オブジェクトステートパネルを使用して、非表示状態のステートを表示可能にします。",
+		"Cannot show link: The selected item is in deleted text in a tracked change.",
+						"リンクを表示できません : 選択したアイテムは、トラックした変更内の削除されたテキストに含まれています。",
+		"Cannot show link: The selected item is an XML structure element not in the layout.",
+						"リンクを表示できません : 選択したアイテムは、レイアウトに存在しない XML 構造要素です。",
+		"Cannot show link: The selected item is in hidden conditional text.",
+						"リンクを表示できません : 選択したアイテムは非表示の条件テキスト内にあります。",
+						
+						
+		"#EditOriginalButtonTip",		"元データを編集",	// tip string for button in links panel
+		"#GotoLinkButtonTip",		"リンクへ移動",	// tip string for button in links panel
+		
+		"#appendedUpdateButtonTipMac",		"。すべてを更新する場合は、Option キーを押しながらクリックしてください", // appened to menu name for 'update link' to build tip string for update button(mac)
+		"#appendedUpdateButtonTipWin",		"。すべてを更新する場合は、Alt キーを押しながらクリックしてください", // appened to menu name for 'update link' to build tip string for update button(win)
+		"#appendedRelinkButtonTipMac",		"すべてを更新する場合は、Option キーを押しながらクリックしてください", // appened to menu name for 'Relink' to build tip string for relink button(mac)
+		"#appendedRelinkButtonTipWin",		"すべてを更新する場合は、Alt キーを押しながらクリックしてください", // appened to menu name for 'Relink' to build tip string for relink button(win)
+		
+		"#ErrorEmbeddingLink",				"リンクの埋め込みに失敗しました。",
+		"#LinksUIShowLinkInfoMenu",		"リンク情報ウィンドウを表示する",
+		"#LinksUIHideLinkInfoMenu",			"リンク情報ウィンドウを隠す",
+		"#LinksUICopyLinkInfoMenu",		"すべてのリンク情報をコピー",
+		"#LinksUIAutosizeLinkInfoMenu",		"自動サイズリンク情報",
+		"#LinksUIGenerateReportMenu",		"選択されたリンクの情報をコピー",
+		"#LinksUIGenerateCaptionPrefsMenu",	"キャプション設定...",
+		"#GenerateLiveLinkCaptionMenu",		"ライブキャプションの作成",
+		"#GenerateStaticLinkCaptionMenu",	"キャプションの作成",
+		
+		"#GenerateCaptionPrefDialogName",	"キャプション設定",
+		"#BeforeMetadataCaptionLabel",		"先行テキスト",
+		"#MetadataCaptionLabel",			"メタデータ",
+		"#AfterMetadataCaptionLabel",		"後続テキスト",
+		"#GenerateLiveCaptionGraphicSelectionMenu",	"ライブキャプションの作成",
+		"#GenerateStaticCaptionGraphicSelectionMenu",	"キャプションの作成",
+		"#CopyLinkInfoStr '^1'",				"「^1」をコピー", // Menu item name in links panel. ^1 is replaced with whatever text data is under the mouse.
+		"#CopyLinkFieldMenu",				"フィールドにコピー",
+		"#InfoLabelSuffix",					": ", // suffix added to end of link info labels in the info section
+		
+		"#LinksCopyInfoMenu",				"情報をコピー", // links panel submenu
+		
+		"#CaptionSubmenu",				"キャプション",		// name of captions submenu on Object menu
+		"#CaptionRowLabel",				"メタデータキャプション", // caption setup dialog top section title
+		"#CaptionOptionsLabel",				"位置とスタイル", // caption setup dialog bottom section title
+		"#CaptionOffsetLabel",				"オフセット(&O) :",
+		"#CaptionParaStyleLabel",			"段落スタイル(&P) :",
+		"#CaptionLayerLabel",				"レイヤー(&L) :",
+		"#CaptionLayerLockedError",			"ロックされたレイヤーのキャプションを作成できません。",
+		"#CaptionGroupFailureError",			"キャプションのグループを作成できません。",
+		"#ErrorGeneratingCaption",			"キャプションの作成に失敗しました。",
+		"#CaptionAlignmentLabel",			"揃え(&A) :",
+		
+		"#CaptionAlignBelow",				"画像の下",
+		"#CaptionAlignAbove",				"画像の上",
+		"#CaptionAlignLeft",					"画像の左",
+		"#CaptionAlignRight",				"画像の右",
+		
+		"#GroupCaptionWithImage",			"キャプションと画像をグループ化(&G)",
+		 "#ConvertCaptionToTextMenu",		"キャプションに変換",
+		 "#ShowImportOptionsTip", 			"読み込みオプションを表示", // Tool tip for custom controls in relink dialog
+		 "#SearchHereForMissingFilesTip",	"見つからないファイルをここで検索", // Tool tip for custom controls in relink dialog
+		 "#EmbedLinkFromPropsPanel",		"プロパティパネルから画像を埋め込みます",
+		 "#RelinkAssetFromPropsPanel",		"プロパティパネルから画像を再度リンクする",
+		 "#UpdateLinkFromPropsPanel",		"プロパティパネルから画像を更新する",
+		 "#UnlinkFromPropsPanel",			"プロパティパネルからファイルをリンク解除する",
+        
+        "kImportingAALAsset",                "アセットの書き出し",
+        "kImportingFileName",                "^1 を読み込み中",
+        
+        //Error Strings for AEM
+        "AEMUnsupportedFiles",     "^1 / ^2 のファイルを配置できません。InDesign でサポートされていないファイル形式です。",
+        "AEMInaccessibleFiles",     "^1 / ^2 のファイルを配置できません。InDesign はこのファイルにアクセスできません。ネットワーク接続またはコンテンツの元のソースを確認してください。",
+        "AEMUnknownFiles",     "不明なエラーのため、^1 / ^2 のファイルを配置できませんでした。",
+        "AEMGenericImportFailure",     "AEM ベースのアセットを読み込めません。",
+        
+        // Action id strings
+        "#LinksUIReplaceFPOWithOriginalLink",        "FPO をオリジナルに置換...",
+        "#LinksUIReplaceAllFPOWithOriginalLinks",    "すべての FPO をオリジナルに置換...",
+        "#LinksUIDownloadOriginalLink",                "オリジナルをダウンロード",
+        "#LinksUIDownloadAllOriginalLinks",            "すべてのオリジナルをダウンロード",
+	}
+};
+
+
+
+#endif //__ODFRC__

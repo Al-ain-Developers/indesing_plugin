@@ -1,0 +1,102 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/layerpanel/layerpanelpng.fr $
+//  
+//  Owner: Michael Burbidge
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#ifdef __ODFRC__
+
+#include "IconPNGDefs.h"
+#include "LayerPanelDefs.h"
+
+resource PNGA(kLayerBlankIcon) "S_Blank_Md_N.png"
+
+resource PNGA(kLayerLockedIcon) "S_Locked_Xs_N.png"
+resource PNGAD(kLayerLockedIcon) "S_Locked_Xs_N_D.png"
+
+resource PNGA(kLayerPenIcon) "S_PenPalette_Xs_N.png"
+resource PNGAD(kLayerPenIcon) "S_PenPalette_Xs_N_D.png"
+
+resource PNGA(kLayerPenLockedIcon) "S_LockPen_Xs_N.png"
+resource PNGAD(kLayerPenLockedIcon) "S_LockPen_Xs_N_D.png"
+
+resource PNGA(kLayerPenSmallIcon) "S_PenPalette_Xs_N.png"
+resource PNGAD(kLayerPenSmallIcon) "S_PenPalette_Xs_N_D.png"
+
+resource PNGA(kLayerPenLockedSmallIcon) "S_LockPen_Xs_N.png"
+resource PNGAD(kLayerPenLockedSmallIcon) "S_LockPen_Xs_N_D.png"
+
+resource PNGA(kLayerProxyCantDropIcon) "S_NoTarget_Xs_N.png"
+resource PNGAD(kLayerProxyCantDropIcon) "S_NoTarget_Xs_N_D.png"
+
+// Palette Icons
+resource PNGA(kLayerPaletteIconRsrcID) "S_PL_Layers_N.png"
+resource PNGAD(kLayerPaletteIconRsrcID) "S_PL_Layers_N_D.png"
+
+// HiDPI
+resource PNGA(kLayerBlankIcon + kHIDPIIconOffset) "S_Blank_Md_N@2x.png"
+
+resource PNGA(kLayerLockedIcon + kHIDPIIconOffset) "S_Locked_Xs_N@2x.png"
+resource PNGAD(kLayerLockedIcon + kHIDPIIconOffset) "S_Locked_Xs_N_D@2x.png"
+
+resource PNGA(kLayerPenIcon + kHIDPIIconOffset) "S_PenPalette_Xs_N@2x.png"
+resource PNGAD(kLayerPenIcon + kHIDPIIconOffset) "S_PenPalette_Xs_N_D@2x.png"
+
+resource PNGA(kLayerPenLockedIcon + kHIDPIIconOffset) "S_LockPen_Xs_N@2x.png"
+resource PNGAD(kLayerPenLockedIcon + kHIDPIIconOffset) "S_LockPen_Xs_N_D@2x.png"
+
+resource PNGA(kLayerPenSmallIcon + kHIDPIIconOffset) "S_PenPalette_Xs_N@2x.png"
+resource PNGAD(kLayerPenSmallIcon + kHIDPIIconOffset) "S_PenPalette_Xs_N_D@2x.png"
+
+resource PNGA(kLayerPenLockedSmallIcon + kHIDPIIconOffset) "S_LockPen_Xs_N@2x.png"
+resource PNGAD(kLayerPenLockedSmallIcon + kHIDPIIconOffset) "S_LockPen_Xs_N_D@2x.png"
+
+resource PNGA(kLayerProxyCantDropIcon + kHIDPIIconOffset) "S_NoTarget_Xs_N@2x.png"
+resource PNGAD(kLayerProxyCantDropIcon + kHIDPIIconOffset) "S_NoTarget_Xs_N_D@2x.png"
+
+resource PNGA(kLayerPaletteIconRsrcID + kHIDPIIconOffset) "S_PL_Layers_N@2x.png"
+resource PNGAD(kLayerPaletteIconRsrcID + kHIDPIIconOffset) "S_PL_Layers_N_D@2x.png"
+
+#ifdef WINDOWS
+resource PNGA(kLayerBlankIcon + kHIDPIIconOffset150) "S_Blank_Md_N@3to2x.png"
+
+resource PNGA(kLayerLockedIcon + kHIDPIIconOffset150) "S_Locked_Xs_N@3to2x.png"
+resource PNGAD(kLayerLockedIcon + kHIDPIIconOffset150) "S_Locked_Xs_N_D@3to2x.png"
+
+resource PNGA(kLayerPenIcon + kHIDPIIconOffset150) "S_PenPalette_Xs_N@3to2x.png"
+resource PNGAD(kLayerPenIcon + kHIDPIIconOffset150) "S_PenPalette_Xs_N_D@3to2x.png"
+
+resource PNGA(kLayerPenLockedIcon + kHIDPIIconOffset150) "S_LockPen_Xs_N@3to2x.png"
+resource PNGAD(kLayerPenLockedIcon + kHIDPIIconOffset150) "S_LockPen_Xs_N_D@3to2x.png"
+
+resource PNGA(kLayerPenSmallIcon + kHIDPIIconOffset150) "S_PenPalette_Xs_N@3to2x.png"
+resource PNGAD(kLayerPenSmallIcon + kHIDPIIconOffset150) "S_PenPalette_Xs_N_D@3to2x.png"
+
+resource PNGA(kLayerPenLockedSmallIcon + kHIDPIIconOffset150) "S_LockPen_Xs_N@3to2x.png"
+resource PNGAD(kLayerPenLockedSmallIcon + kHIDPIIconOffset150) "S_LockPen_Xs_N_D@3to2x.png"
+
+resource PNGA(kLayerProxyCantDropIcon + kHIDPIIconOffset150) "S_NoTarget_Xs_N@3to2x.png"
+resource PNGAD(kLayerProxyCantDropIcon + kHIDPIIconOffset150) "S_NoTarget_Xs_N_D@3to2x.png"
+
+resource PNGA(kLayerPaletteIconRsrcID + kHIDPIIconOffset150) "S_PL_Layers_N@3to2x.png"
+resource PNGAD(kLayerPaletteIconRsrcID + kHIDPIIconOffset150) "S_PL_Layers_N_D@3to2x.png"
+#endif
+
+#endif

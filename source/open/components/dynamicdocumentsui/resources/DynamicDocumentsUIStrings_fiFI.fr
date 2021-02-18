@@ -1,0 +1,298 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kDynamicDocumentsUIStringsRsrcID + index_fiFI)
+{
+	k_fiFI,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{
+		// ----- Command strings
+
+		// ----- Window strings
+
+		// ----- Panel strings
+		"kPageTransitionsPanelPopup",			"Sivun siirtymät -paneelivalikko",    
+		"kPageTransitionsSubMenu",				"&Sivun siirtymät",
+		"kPageTransitionsPanelName",			"Sivun siirtymät",	   
+		"kPageTransitionStaticText",			"Siirtymä: ",
+		"kPageDirectionStaticText",				"Suunta: ",
+		"kPageSpeedStaticText",					"Nopeus: ",
+        "kPTHorizontal",						"Vaaka",
+        "kPTVertical",							"Pysty",
+        "kPTIn",								"Keskelle",
+        "kPTOut",								"Ulos",
+        "kPTDown",								"Alas",
+        "kPTLeft",								"Vasen",
+        "kPTLeftDown",							"Vasemmalle alas",
+        "kPTLeftUp",							"Vasemmalle ylös",
+        "kPTRight",								"Oikea",
+        "kPTRightDown",							"Oikealle alas",
+        "kPTRightUp",							"Oikealle ylös",
+        "kPTUp",								"Ylös",
+        "kPTHorizontalIn",						"Vaakasuunnassa keskelle",
+        "kPTHorizontalOut",						"Vaakasuunnassa ulos",
+        "kPTVerticalIn",						"Pystysuunnassa keskelle",
+        "kPTVerticalOut",						"Pystysuunnassa ulos",
+        "kPTSlow",								"Hidas",
+		"kPTMedium",							"Kohtalainen",
+		"kPTFast",								"Nopea",		
+		"kPTNoTransition",						"Ei mitään",	
+              		
+		// ----- Liquid Layout panel
+		"kLiquidLayoutMenu",					"Joustava sivuasette&lu",
+		"kLiquidLayoutPanelPopup",				"Joustavan sivuasettelun paneelivalikko",
+		"kLiquidLayoutPanelName",				"Joustava sivuasettelu",	
+		"kObjectConstraintsStaticTextLabel",	"Objektin rajoitukset:",
+		"kDocumentReflowStaticTextLabel",		"Dokumentin sijoittelu",
+		"kFixedSizeStaticTextLabel",			"Muuta kokoa sivulla:",
+		"kHeightCheckBoxLabel",					"Korkeus",
+		"kWidthCheckBoxLabel",					"Leveys",
+		"kPinLeftEdgeCheckBoxLabel",			"Vasen",
+		"kPinRightEdgeCheckBoxLabel",			"Oikea",
+		"kPinTopEdgeCheckBoxLabel",				"Ylös",
+		"kPinBottomEdgeCheckBoxLabel",			"Alas",
+		"kPinObjectEdgesStaticTextLabel",		"Kiinnitä:",
+		"kContentStaticTextLabel",				"Sisältö:",
+		"kLayoutAdjustmentWarningTip",			"Joustavat sivuasettelusäännöt eivät ole käytettävissä, sillä sivuasettelun säätö on otettu asiakirjassa käyttöön.",
+		"kPageLayoutPolicyDropdownLabel",		"Joustava sivusääntö:",
+		"kLiquidLayoutPanelPageRange",			"Sivu: ^1",
+		"kPinEdgeToolTip",						"Valitse tämä, jos haluat kiinnittää objektin sivun reunaan nähden.",
+		"kResizeHeightWithPageToolTip",			"Valitse tämä, jos haluat muuttaa objektin korkeutta sivun korkeuden muuttuessa.",
+		"kResizeWidthWithPageToolTip",			"Valitse tämä, jos haluat muuttaa objektin leveyttä sivun leveyden muuttuessa.",
+		
+        // ----- Timing panel
+        "kTimingPanelPopup",					"Ajoituksen paneelivalikko",    
+		"kTimingSubMenu",						"Aj&oitus",
+		"kTimingPanelName",						"Ajoitus",	
+		"kTimingPanelEventStaticText",			"Tapahtuma: ",
+		"kTimingPanelDelayStaticText",			"Viive: ",
+        "kTimingPanelDelaySecondStaticText",	"sekunti",
+        "kTimingPanelDelaySecondsStaticText",	"sekuntia",
+        "kTimingPanelAssignPageLoadEvent",		"Määritä uudelleen kohteelle sivua ladattaessa",
+        "kTimingPanelAssignStateLoadEvent",		"Määritä uudelleen kohteelle tilaa ladattaessa",
+        "kTimingPanelAssignPageClickEvent",		"Määritä uudelleen kohteelle sivua napsautettaessa",
+        "kTimingPanelRemoveItem",				"Poista kohde",
+        "kTimingPanelEventDropDownTip",			"Napsauta, jos haluat jatkaa",
+        "kTimingPanelGroupButtonTip",			"Toista yhdessä",
+        "kTimingPanelUngroupkButtonTip",		"Toista erikseen",
+        "kTimingPanelPreviewButtonTip",			"Esikatsele aukeamaa",
+        "kUnassignedEntry",						"Määrittämätön",
+        "kTimingPanelLinkedItemStaticText",			"Linkitetyt kohteet:",	
+        "kTimingPanelPlayLinkedItemStaticText",		"Toista: ",
+        "kTimingPanelPlayLinkedItemTimeStaticText",	"kerran",
+        "kTimingPanelPlayLinkedItemTimesStaticText","kertaa",
+        "kTimingPanelLoopCheckBoxLabel",		"Silmukka",
+        "kTimingPanelLinkedItemGroupWidgetTip",	"Objektit toistetaan yhdessä (valitse ryhmä napsauttamalla)", 
+
+        // HTML Preview menu items
+        "kHTMLFXLPreviewSpread",				"Esikatsele aukeamaa: EPUB",
+		// ----- Menu Strings
+		"kTransitionPanelChooseAction",				"&Valitse...",
+		"kTransitionPanelApplyToAllSpreadsAction",	"&Käytä kaikilla aukeamilla",
+		"kTransitionPanelClearAllTransitionsAction","&Tyhjennä kaikki",
+		
+		// ----- Tips strings
+		"kApplyToAllSpreadsButtonTip",			"Käytä kaikilla aukeamilla",
+		"kMotionPathTipStr",					"Liikkeen polku, muokkaa napsauttamalla",
+		"kEasingPathTipStr",					"Pehmennyspolku",
+	#ifdef WINDOWS
+		"kPreviewSpreadButtonToolTip",			"Esikatsele aukeamaa: EPUB.",
+	#else
+		"kPreviewSpreadButtonToolTip",			"Esikatsele aukeamaa: EPUB.",			
+	#endif
+				
+		// ----- XFL Export Dialogs
+
+		"kXFLExport",						"Vie Flash CS6 Professional (FLA) -tiedostoon",
+		"kSizePixels",						"Koko (pikseleinä):",
+		"kPagesStr",						"Sivut:",
+		"kExportStr",						"Vie:",
+		"kSpreadsStr",						"Aukea&mat",
+		"kGenerateHTMLStr",					"Luo HTML-tie&dosto",
+		"kFlashText",						"Flash Classic -teksti",
+		"kVectorText",						"Muunna ääriviivoiksi",
+		"kRasterText",						"Muunna pikseleiksi",
+		"kVellumText",						"Flash TLF -teksti",
+		"kInsertHyphensStr",				"Lisää tavutusvih&jepisteet",
+		"kFitToSize",						"S&ovitus:",
+		"kWidthSize",						"Le&veys:",
+		"kHeightSize",						"Ko&rkeus:",
+		"kSelectionExportedStr",			"Vali&nta",
+		"kAllPagesExported",				"&Kaikki",
+		"kAllPagesExportedStr",				"Ka&ikki sivut",
+		"kPageRangeExported",				"Alu&e:",
+		"kScaleSize",						"&Skaalaus:",
+		"kTextStr",							"Te&ksti:",
+		"kInteractivityStr",				"Vuorovaikutteisuus:",
+		"kDynamicMediaStr",					"Vuorovaikutteisuus ja väline:",
+		"kImageCompStr",					"K&uvan pakkaus:",
+		"kQualityStr",						"&JPEG-laatu:",
+		"kCurveQualityStr",					"Kaare&n laatu:",
+		"kInclButtonsStr",					"Sisäll&ytä painikkeet",
+		"kInclHyperLinkStr",				"Sisällytä &hyperlinkit",
+		"kInclPageTrans",					"S&isällytä sivun siirtymät",
+		"kIncludePageCurl",					"Sis&ällytä interaktiivinen sivun kääntö",
+		"kIncludeAllStr",					"Sisäll&ytä kaikki",
+		"kAppearanceOnlyStr",				"V&ain ulkoasu",
+		"kBackgroundStr",					"Tausta:",
+		"kPaperColorStr",					"&Paperin väri",
+		"kTransparentStr",					"&Läpinäkyvä",
+		"kFramesPerSecStr",					"ruutua sekunnissa",
+		"kPageTransitionsStr",				"Sivun siir&tymät:",
+		"kNone",							"Ei mitään",
+		"kFromDocument",					"Julkaisusta",
+		"kOptionsStr",						"Asetukset:",
+		"kDescriptionStr",					"Kuvaus:",
+		"kFrameRateStr",					"&Ruutunopeus:",
+		"kImageCompAuto",					"Autom.",
+		"kJPG_Lossy",						"JPEG",
+		"kJPG_LossyStr",					"JPEG (häviöllinen)",
+		"kPNG_Lossless",					"Häviötön (älä tee mitään)",
+		"kPNG_LosslessStr",					"PNG (häviötön)",
+		"kMinimumQual",						"Minimi",
+		"kLowQual",							"Matala",
+		"kMediumQual",						"Kohtalainen",
+		"kHighQual",						"Korkea",
+		"kMaximumQual",						"Maksimi",
+		"kRasterizeStr",					"Ras&teroi sivut",
+		"kFlattenXPStr",					"Y&hdistä läpinäkyvyys",
+		"k1280x800",						"1 280 x 800",
+		"k1024x768",						"1 024 x 768",
+		"k800x600",							"800 x 600",
+		"k640x480",							"640 x 480",
+		"k250per",							"250 %",
+		"k200per",							"200 %",
+		"k150per",							"150 %",
+		"k100per",							"100 %",
+		"k75per",							"75 %",
+		"k50per",							"50 %",
+		"k25per",							"25 %",
+
+		// Font Embedding
+		"kEmbeddedFontsTitle",				"Sisällytetyt kirjasimet (koskee vain Flash Classic -tekstiä)",
+		"kTotalFonts",						"Kirjasimia yhteensä: ",
+		"kFontLicensingInfo",				"Kirjasimien lisenssitiedot",
+		"kEmbeddedFontName",				"Kirjasimen nimi: ",
+		"kEmbeddedVendorID",				"Toimittajatunnus: ",
+
+		// Add Page Transition dialog
+		"kPageTransitionsDialogTitle",			"Sivun siirtymät",
+		"kPageTransitionApplyToAllSpreads",		"Käytä kaikilla aukeamilla",
+		"kZoomInOutString",						"Lähennä/loitonna", 
+		
+		
+		//	Animation UI
+		"kAnimationUIPanelPopup",				"Animaatiokäyttöliittymän paneelivalikko",
+		"kAnimationUISubMenu",					"Animaatio",
+		"kAnimationUIPresetPopupMenu",			"Animaatiokäyttöliittymän esimääritysvalikko",
+		"kMotionPresetsNoneTextkey",			"Ei mitään",
+		"kAnimationUILoadPresetMenuItem",		"Lataa oletusarvo...",
+		"kAnimationUISaveAsPresetMenuItem",		"Tallenna nimellä...",
+		"kAnimationUISavePresetMenuItem",		"Tallenna",
+		"kAnimationUIDeletePresetMenuItem",		"Poista",
+
+		"kAnimationUIConvertToMotionPathMenuItem",	"Muunna liikepoluksi",
+		"kAnimationUITestInBrowserMenuItem",	"Kokeile selaimessa...",
+		"kCustomPresetName",					"Liikkeen oletusarvo",
+		"kAnimationUIEventSeparator",			", ",
+		
+		"kAnimationUIPanelName",				"Animaatio",
+		"kAnimationUIPreviewStaticTextLabel",	"Esikatselu",
+		"kAnimationUINameStaticTextLabel",		"Nimi:",
+		"kAnimationUIPresetStaticTextLabel",	"Oletusarvo:",
+		"kAnimationUICustomPreset",				"Mukautettu",
+		"kAnimationUIMixed",					"Sekoitettu",
+		"kAnimationUIMixed:",					"Sekoitettu: ",
+		"kAnimationUIChoose",					"Valitse ",
+		"kAnimationUIEventStaticTextLabel",		"Tapahtuma(t):",
+		"kAnimationUIDurationStaticTextLabel",	"Kesto:",
+		"kAnimationUISecondStaticTextLabel",	"sekunti",
+		"kAnimationUISecondsStaticTextLabel",	"sekuntia",
+		"kAnimationUIPlayStaticTextLabel",		"Toista:",
+		"kAnimationUITimeStaticTextLabel",		"kerran",
+		"kAnimationUITimesStaticTextLabel",		"kertaa",
+		"kAnimationUILoopCheckBoxLabel",		"Silmukka",
+		"kAnimationUISpeedStaticTextLabel",		"Nopeus:",
+		"kAnimationUIVisibilityStaticTextLabel","Näkyvyys:",
+		"kAnimationUIPropertyStaticTextLabel",	"Ominaisuudet",
+		"kAnimationUIHideBeforeAnimateCheckBoxLabel","Piilota ennen animaatiota",
+		"kAnimationUIHideAfterAnimateCheckBoxLabel","Piilota animaation jälkeen",
+		"kAnimationUIOnButtonEvent",			"Painikkeen painamistapahtuma",
+		"kAnimationUIOnRollOffCheckBoxLabel",	"Toista takap. siir. pois painikkeelta",
+		"kAnimationUIEaseIn",					"Aloita hitaasti",
+		"kAnimationUIEaseOut",					"Lopeta hitaasti",
+		"kAnimationUIEaseInAndOut",				"Aloita hitaasti ja lopeta hitaasti",
+		"kAnimationUIFadeIn",					"Tulee vähitellen näkyviin",
+		"kAnimationUIFadeOut",					"Häipyy vähitellen näkyvistä",
+		"kAnimationUINone",						"Ei mitään",
+		"kAnimationUIFromPreset",				"Oletusarvosta",
+		"kAnimationUIPropertyDesignStaticTextLabel",		"Animoi:",
+		"kAnimationUIPropertyDesignCheckBoxLabel",			"Animaation loppuun",
+		"kAnimationFromStaticTextLabel",					"Animoi kohteesta",
+		"kAnimationToStaticTextLabel",						"Animoi kohteeseen",
+		"kAnimationUIPropertyDesignScaleStaticTextLabel",	"Skaalaus",
+		"kAnimationUIPropertyDesignScaleHorzStaticTextLabel",	"L:",
+		"kAnimationUIPropertyDesignScaleVertStaticTextLabel",	"K:",
+		"kAnimationUIPropertyDesignRotateStaticTextLabel",	"Kierrä:",
+		"kAnimationUIPropertyDesignOpacityStaticTextLabel",	"Peittävyys:",
+		"kAnimationUIPropertyDesignProxyStaticTextLabel",	"Lähtöpiste:",
+		
+		"kAnimationUIFrom",						"Nykyisestä ulkoasusta",
+		"kAnimationUITo",						"Nykyiseen ulkoasuun",
+		"kAnimationUIOffset",					"Nykyiseen sijaintiin",
+
+		"kAnimationPanelButtonTriggerTip",		"Luo liipaisinpainike (napsauta kuvaketta ja napsauta sitten objektia, niin tämä animaatio liipaistaan)",
+		"kAnimationPanelShowProxyTip",			"Näytä animaation sijaiskuva",
+		"kAnimationPanelLockIconTip",			"Rajoita skaalausarvoa",
+		"kAnimationPanelEventMenuSelectorTip",	"Valitse liipaisintapahtuma napsauttamalla alanuolta",
+		"kAnimationPanelEventInfoTip",			"Animaation liipaisintapahtuma(t)",
+		"kAnimationPanelEventInfoDefaultTip",	"Animaation oletusarvoinen liipaisintapahtuma",
+		"kAnimationPanelPreviewButtonTip",		"Esikatsele nykyistä valintaa",
+		"kAnimationPanelConvertToMotionPathTip","Muunna liikepoluksi",
+		"kAnimationUIFromTip",					"Käyttää valittuna olevan objektin asetuksia animaation ulkoasun pohjana sen suorituksen aikana.",
+		"kAnimationUIToTip",					"Käyttää valittuna olevan objektin asetuksia animaation päättävänä ulkoasuna sen suorituksen aikana.",
+		"kAnimationUIOffsetTip",				"Käyttää valittuna olevan objektin asetuksia animaation ulkoasun pohjana ja nykyistä paikkaa loppusijaintina sen suorituksen aikana.",
+		"kAnimationUIAnimationOptionTip",		"Animaatioasetukset",
+		"kAnimationUITrashTip",					"Poista animaatio",
+		"kAnimationUIXFPointTip",				"Muta skaalauksen ja kierron alkupistettä.",
+		"kAnimationUIShowTimingButtonTip",		"Näytä ajoitusikkuna",
+		
+		"kAnimationUISaveAsPresetTitle",		"Tallenna valittu oletusarvo nimellä",
+		"kAnimationUISavePresetTitle",			"Tallenna oletusarvo",
+		"kAnimationUISavePresetNameLabel",		"Nimi:",
+
+		"kAnimationUIEventPopupMenu",			"Tapahtuman pikavalikko",
+		"kAnimationUICreateButtonTriggerCmd",	"Luo painikeliipaisin",
+		"kAnimationUICreateSelfTriggerCmd",		"Luo itseliipaisin",
+		
+		"kAnimationUIManagePresetsDialogTitle",	"Oletusarvojen hallinta",
+		"kAnimationUIManagePresetsDoneButton",	"Valmis",
+		"kAnimationUIManagePresetsDeleteButton","&Poista",
+		"kAnimationUIManagePresetsDuplicateButton","&Monista",
+		"kAnimationUIManagePresetsLoadButton",	"&Lataa...",
+		"kAnimationUIManagePresetsSaveAsButton","&Tallenna nimellä...",
+		"kAnimationUIManagePresetMenuItem",		"Oletusarvojen hallinta...",
+		"kAnimationUIManagePresetPresetsSeparator", "--------------------",
+		"kAnimationUIManagePresetNamePrefix",	"[",
+		"kAnimationUIManagePresetNameSuffix",	"]",
+	}
+};
+
+#endif // __ODFRC__

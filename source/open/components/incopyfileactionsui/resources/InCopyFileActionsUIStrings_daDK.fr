@@ -1,0 +1,43 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kInCopyFileActionsUIStringsRsrcID + index_daDK)
+{
+	k_daDK,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{
+		"&Update Design",		"Opda&ter design",
+		"AlertUnableToSave",	"Følgende indhold kunne ikke arkiveres.\nFilerne kunne ikke låses, eller du har ikke ret til at ændre dem.\n",
+		"Update^1Alert",		"Noget af indholdet kan ikke arkiveres. Opdatering kan medføre tab af ændringer.\nVil du opdatere den seneste version af \"^1\"?",
+		"Undoable^1Save",		"Opdatering af designet arkiverer alt redigerbart indhold, inden der fortsættes. Kommandoen Fortryd kan ikke bruges til at fortryde ændringer, der er foretaget af opdateringen. \nVil du opdatere til \"^1\" alligevel?",
+		"AlertStoriesMissing",	"Nogle indholdsfiler kunne ikke findes og kan derfor ikke redigeres. Prøv at flytte filerne til deres oprindelige placering, eller opdater lænkerne i InDesign.",
+		"AlertStoriesMissingWF", "Nogle indholdsfiler kunne ikke findes og kan derfor ikke redigeres. Prøv at hente indholdet fra serveren og genåbne dokumentet.",
+		"Update",				"Opdater",
+		"&Revert Story",		"&Genindlæs indhold",
+//		"Revert Story",			"Revert Content", // Note to localizer: this string moved to InCopySharedStrings_enUS.fr
+		
+		"SaveAsFeatureLost",    "Dette dokument kan indeholde funktioner, der ikke understøttes af dette filformat. Vil du fortsætte?",
+		"CannotSaveOntoLockedFile",		"Den angivne fil er i øjeblikket checket ud af \"^1\" i ^2 fra dokument ^3. Vælg et andet filnavn eller få \"^1\" til at checke filen ind.",
+		"CannotSaveOntoLockedFileMinimal",	"Den angivne fil er i øjeblikket checket ud af \"^1\".  Vælg et andet filnavn eller få \"^1\" til at checke filen ind.",
+	}
+};
+
+
+#endif // __ODFRC__

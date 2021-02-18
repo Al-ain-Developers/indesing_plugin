@@ -1,0 +1,52 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// U.S. English strings
+//========================================================================================
+
+resource StringTable (kInCopyExportStringsRsrcID + index_fiFI)
+{
+	k_fiFI,								// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+
+	{
+		// ----- Miscellaneous strings
+		"Export Seq Name", 		"Export InCopy Story",
+		"Text",					"Teksti", // append "Text" to export name on a text story
+		
+		// ----- Export options dialog strings
+		"InCopyExportOptions",	"Adobe InCopyn vientiasetukset",
+		"ExportOptions_DataType",	"&Koodaus:",
+		"ExportOptions_UTF16",	"UTF16",
+		"ExportOptions_UTF8",	"UTF8",
+		"ExportOptions_DataOptions",	"Asetukset:",
+		"ExportOptions_StyleTable",	"Sisällytä &tyylitaulukko",
+		"ExportOptions_SwatchList",	"Sisällytä &värimallien luettelo",
+		"ExportOptions_XMPData",	"Sisällytä XMP-&tiedot",
+		"ExportOptions_StoryLabel",	"Jutun &nimi:",
+
+		//menu
+		"ExportMenu",				"V&ie",
+		"kExportLayerToIC",			"&Taso...",
+		"kExportAllStoriesToIC",	"Kaikki jut&ut...",
+		"kExportAllGraphicsToIC",	"Kaikki &grafiikka...",
+		"kExportAllItemsToIC",		"&Kaikki grafiikka ja jutut...",
+
+		"INCDFeatureLost",    "Tämä juttu saattaa sisältää ominaisuuksia, joita tiedostomuoto ei tue. Nämä ominaisuudet häviävät, kun juttu päivitetään.",
+	}
+};
+
+#endif // __ODFRC__

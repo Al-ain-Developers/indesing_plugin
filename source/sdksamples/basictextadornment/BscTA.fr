@@ -1,0 +1,429 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/sdksamples/basictextadornment/BscTA.fr $
+//  
+//  Owner: Adobe Developer Technologies
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//  
+//  Umbrella include file for all the .fr files in the plug-in.
+//  
+//========================================================================================
+
+//===========================
+//  General includes:
+//===========================
+
+#include "MenuDef.fh"
+#include "ActionDef.fh"
+#include "ActionDefs.h"
+#include "AdobeMenuPositions.h"
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "StringTable.fh"
+#include "objectmodeltypes.fh"
+#include "ShuksanID.h"
+#include "ActionID.h"
+#include "CommandID.h"
+#include "WorkspaceID.h"
+#include "widgetid.h"
+#include "BuildNumber.h"
+#include "TextID.h"
+#include "TextAttrID.h"
+#include "TextAttrImplID.h"
+#include "DocumentID.h" // for kAfterNewDocSignalRespServiceImpl and kAfterOpenDocSignalRespServiceImpl
+#include "ScriptInfoTypes.fh" // for VersionedScriptElementInfo
+#include "ScriptingID.h" // for kBaseScriptProviderBoss
+#include "ErrorTableTypes.h" // for UserErrorTable
+#include "TextScriptID.h" // for kTextObjectScriptElement
+
+#include "PlugInModel_UIAttributes.h"
+// Project includes:
+#include "BscTAID.h"
+#include "BscTAScriptingDefs.h"
+
+#ifdef __ODFRC__
+
+/*
+// Plugin version definition.
+*/
+resource PluginVersion (kSDKDefPluginVersionResourceID)
+{
+	kTargetVersion,
+	kBscTAPluginID,
+	kSDKDefPlugInMajorVersionNumber, kSDKDefPlugInMinorVersionNumber, 	
+	kSDKDefHostMajorVersionNumber, kSDKDefHostMinorVersionNumber,
+	kBscTALastMajorFormatChange, kBscTALastMinorFormatChange,
+	{ kInDesignProduct, kInCopyProduct},
+	{ kWildFS },
+	kUIPlugIn,
+	kBscTAVersion
+};
+
+/*
+// The ExtraPluginInfo resource adds extra information to the Missing Plug-in dialog
+// that is popped when a document containing this plug-in's data is opened when
+// this plug-in is not present. These strings are not translatable strings
+// since they must be available when the plug-in isn't around. They get stored
+// in any document that this plug-in contributes data to.
+*/
+resource ExtraPluginInfo(1)
+{
+	kBscTACompanyValue,					// Company name
+	kBscTAMissingPluginURLValue,		// URL 
+	kBscTAMissingPluginAlertValue,		// Missing plug-in alert text
+};
+
+resource IgnoreTags(1)
+{
+       kImplementationIDSpace
+       {
+        kBscTAAttrReportImpl
+        kTextAttrBooleanOffImpl
+       }
+};
+
+resource IgnoreTags(2)
+{
+       kClassIDSpace
+       {
+        kBscTAAttrBoss,
+       }
+};
+
+/*
+//	Boss class definition.
+*/
+resource ClassDescriptionTable(kSDKDefClassDescriptionTableResourceID)
+{{{
+	/** Provides the actions invoked by this plug-in's menu items. 
+	
+		@ingroup basictextadornment
+	*/
+	Class
+	{
+		kBscTAActionComponentBoss,
+		kBaseActionComponentBoss,
+		{
+			/** Handle the actions from the menu.
+			*/
+			IID_IACTIONCOMPONENT, kBscTAActionComponentImpl,
+		}
+	},
+
+	/** Provides support for the new character attribute 
+		introduced by this plug-in. 
+		The application recognizes this boss as a text attribute
+		because it aggregates an IAttrReport interface.
+		TheITextAttrBoolean holds the current state of the attribute. 
+		by default, it is OFF.
+		@ingroup basictextadornment
+	*/
+	Class
+	{
+		kBscTAAttrBoss,
+		kAttrBossReferencingBoss,
+		{
+			/** Hooks into the text composer by telling it that
+				a text adornment needs to be added.  Also provides
+				a description of the added text adornment. 
+				See BscTAAttrReport.
+			*/
+			IID_IATTRREPORT, kBscTAAttrReportImpl,
+			/**	Holds the current state of the text attribute 
+				(adornment).  By default, it is OFF. (API-provided implementation) 
+			*/
+			IID_ITEXTATTRBOOLEAN, kTextAttrBooleanOffImpl,
+		}
+	},
+	
+	/** Provides the adornment behavior.
+
+		@ingroup basictextadornment
+	*/
+	Class
+	{
+		kBscTAAdornmentBoss,
+		kInvalidClass,
+		{
+			/** Provides the drawing behavior and other adornment
+				properties.  
+				See BscTAAdornment.
+			*/
+			IID_ITEXTADORNMENT, kBscTAAdornmentImpl,
+		}
+	},
+	
+	/** Provides a responder that checks that kBscTAAttrBoss
+		is present in the root style of a new document and adds it
+		in if it's missing.
+		
+		Added at InDesign CS 2 to fix 1102261.
+		
+		@ingroup basictextadornment
+	*/
+	Class
+	{
+		kBscTANewDocResponderBoss,
+		kInvalidClass,
+		{
+			/** See IResponder and BscTADocResponder.
+			 */
+			IID_IRESPONDER,				kBscTADocResponderImpl,
+
+			/** Implementation provided by API.
+			 */
+			IID_IK2SERVICEPROVIDER,		kAfterNewDocSignalRespServiceImpl,
+		}
+	},
+    
+	/** Provides a responder that checks that kBscTAAttrBoss
+		is present in the root style of a document and adds it
+		in if it's missing.
+		
+		Added at InDesign CS 2 to fix 1102261.
+		
+		@ingroup basictextadornment
+	 */
+    Class
+    {
+		kBscTAOpenDocResponderBoss,
+        kInvalidClass,
+        {
+			/** See IResponder and BscTADocResponder.
+			 */
+            IID_IRESPONDER, kBscTADocResponderImpl,
+
+			/** Implementation provided by API.
+			 */
+            IID_IK2SERVICEPROVIDER, kAfterOpenDocSignalRespServiceImpl,
+        }
+    },
+
+	/** Provides error strings for the BasicTextAdornment plug-in.
+
+		Added at InDesign CS2 to support scripting.
+
+		@ingroup basictextadornment
+	 */
+	Class
+	{
+		kBscTAErrorStringServiceBoss,
+		kInvalidClass,
+		{
+			/** See IErrorStringService / BscTAErrorStringService.
+			 */
+			IID_IERRORSTRINGSERVICE, kBscTAErrorStringServiceImpl,		
+			/**	Identifies this boss as an error string provider.
+			 */
+			IID_IK2SERVICEPROVIDER, kErrorStringProviderImpl,
+		}
+	},
+
+	/** Handles scripting of BasicTextAdornment's kBscTAAttrBoss text attribute.
+	
+		Added at InDesign CS2 to support scripting.
+		
+		@ingroup basictextadornment
+	 */
+	Class
+	{
+		kBscTAScriptProviderBoss,
+		kBaseScriptProviderBoss,
+		{
+			/** See IScriptProvider / BscTAScriptProvider.
+			 */
+			IID_ISCRIPTPROVIDER, kBscTAScriptProviderImpl,	
+		}
+	},
+
+}}};
+
+/*
+// Implementation definition.
+*/
+resource FactoryList (kSDKDefFactoryListResourceID) 
+{
+	kImplementationIDSpace,
+	{
+#include "BscTAFactoryList.h"
+	}
+};
+
+/*
+// Menu definition.
+*/
+resource MenuDef (kSDKDefMenuResourceID)
+{
+	{
+		// The About Plug-ins sub-menu item for this plug-in.
+		kBscTAAboutActionID,			// ActionID (kInvalidActionID for positional entries)
+		kBscTAAboutMenuPath,			// Menu Path.
+		kSDKDefAlphabeticPosition,			// Menu Position.
+		kSDKDefIsNotDynamicMenuFlag,		// kSDKDefIsNotDynamicMenuFlag or kSDKDefIsDynamicMenuFlag.
+
+		kBscTAAddTextAdornmentActionID,
+		kBscTATargetMenuPath,
+		kBscTAAddTextAdornmentMenuItemPosition,
+		kSDKDefIsNotDynamicMenuFlag,
+
+		kBscTARemoveTextAdornmentActionID,
+		kBscTATargetMenuPath,
+		kBscTARemoveTextAdornmentMenuItemPosition,
+		kSDKDefIsNotDynamicMenuFlag,
+
+	}
+};
+
+/*
+// Action definition.
+*/
+resource ActionDef (kSDKDefActionResourceID)
+{
+	{ 
+		kBscTAActionComponentBoss, 		// ClassID of boss class that implements the ActionID.
+		kBscTAAboutActionID,	// ActionID.
+		kBscTAAboutMenuKey,	// Sub-menu string.
+		kHelpMenuActionArea,				// Area name (see ActionDefs.h).
+		kNormalAction,					// Type of action (see ActionDefs.h).
+		kDisableIfLowMem,				// Enabling type (see ActionDefs.h).
+		kInvalidInterfaceID,			// Selection InterfaceID this action cares about or kInvalidInterfaceID.
+		kSDKDefInvisibleInKBSCEditorFlag, // kSDKDefVisibleInKBSCEditorFlag or kSDKDefInvisibleInKBSCEditorFlag.
+
+		kBscTAActionComponentBoss,
+		kBscTAAddTextAdornmentActionID,		
+		kBscTAAddTextAdornmentMenuItemKey,		
+		kOtherActionArea,			
+		kNormalAction,				
+		kDisableIfNoFrontDocument,	
+		kInvalidInterfaceID,		
+		kSDKDefInvisibleInKBSCEditorFlag,
+				
+		kBscTAActionComponentBoss, 
+		kBscTARemoveTextAdornmentActionID, 
+		kBscTARemoveTextAdornmentMenuItemKey,
+		kOtherActionArea,
+		kNormalAction,
+		kDisableIfNoFrontDocument,	
+		kInvalidInterfaceID,		
+		kSDKDefInvisibleInKBSCEditorFlag,
+
+	}
+};
+
+
+/*
+// LocaleIndex
+// The LocaleIndex should have indicies that point at your
+// localizations for each language system that you are 
+// localized for.
+*/
+/*
+// String LocaleIndex.
+*/
+resource LocaleIndex (kSDKDefStringsResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_enUS, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_jaJP, kSDKDefStringsResourceID + index_jaJP
+		
+		kWildFS, k_Wild, kSDKDefStringsResourceID + index_enUS
+	}
+};
+
+resource LocaleIndex (kSDKDefStringsNoTransResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_Wild, kSDKDefStringsNoTransResourceID + index_enUS
+	}
+};
+
+resource StringTable (kSDKDefStringsNoTransResourceID + index_enUS)
+{
+	k_enUS,									// Locale Id
+	kEuropeanMacToWinEncodingConverter,		// Character encoding converter
+	{
+		// No-Translate strings go here:		
+
+
+	}
+};
+
+/*
+// User Error Table resource 
+// To be coupled with an IErrorStringService implementation and
+// string translations (see localized .fr files)
+*/
+resource UserErrorTable(kSDKDefErrorStringResourceID) 
+{
+	{
+		kBscTAFailureErrorCode, kBscTAFailureErrorCodeStringKey, 
+		kBscTADataAccessErrorCode, kBscTADataAccessErrorCodeStringKey,
+	}
+};
+
+/*
+// Scripting definition.
+*/
+resource VersionedScriptElementInfo(1)
+{
+	//Contexts
+	{
+		kCS2ScriptVersion, kCoreScriptManagerBoss, kWildFS, k_Wild,
+	}
+	
+	//Elements
+	{	
+		// BasicTextAdornment's text attribute that controls whether to shade behind the text.
+		Property
+		{
+			kBscTAShadePropertyScriptElement,
+			p_BscTAShade,
+			"basictextadornment shade",
+			"Whether to shade behind the text",
+			BoolType,
+			{}
+			kBscTAAttrBoss,
+		}
+
+		// Connects this plug-in's text attribute to scripting and INX round trip.
+		Provider
+		{
+			kBscTAScriptProviderBoss,
+			{
+				// Expose this plug-in's text attribute property on the textStyleRange and text scripting objects.	
+				Object{ kTextStyleRangeObjectScriptElement }, 				
+				Object{ kTextObjectScriptElement },
+				// Note: this also allows the property to be set for text, character, word, line, 
+				// paragraph and insertionPoint scripting objects.					
+
+				// The property that allows this plug-in's text attribute to be applied to a range of text.	
+				Property{ kBscTAShadePropertyScriptElement, kReadWrite },								
+			}
+		}
+
+	}
+};
+
+#endif // __ODFRC__
+
+#include "BscTA_enUS.fr"
+#include "BscTA_jaJP.fr"
+//  Generated by Dolly build 17: template "IfPanelMenu".
+// End, BscTA.fr.

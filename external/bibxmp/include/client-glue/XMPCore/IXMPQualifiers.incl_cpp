@@ -1,0 +1,39 @@
+// =================================================================================================
+// Copyright 2014 Adobe Systems Incorporated
+// All Rights Reserved.
+//
+// NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance with the terms
+// of the Adobe license agreement accompanying it.
+// =================================================================================================
+
+#if AdobePrivate
+// =================================================================================================
+// Change history
+// ==============
+//
+// Writers:
+//  HK  Honey Kansal
+//  ADC	Amandeep Chawla
+//
+// mm/dd/yy who Description of changes, most recent on top.
+//
+// 02-24-14 HK  5.6-c004 Added new internal XMP DOM interfaces + fixed memory leaks + implemented qualifiers for new XMP DOM.
+// 02-13-14 ADC 5.5-c031 Refactoring XMPCore, implementing few APIs and fixing issues.
+// 02-12-14 HK  5.5-c030 Creating client glue code for XMP DOM APIs.
+//
+// =================================================================================================
+#endif // AdobePrivate
+
+#include "XMPCore/Interfaces/IXMPQualifiers.h"
+
+namespace NS_XMPCORE {
+
+	spcIXMPNode_latest IXMPQualifiers_v1::GetHost() const{
+		CALL_EQUIVALENT_CVIRTUAL_FUNCTION_NO_ARGS ( IXMPNode, GetHost );
+	}
+	
+	spIXMPNode_latest IXMPQualifiers_v1::GetHost(){
+		CALL_EQUIVALENT_VIRTUAL_FUNCTION_NO_ARGS ( IXMPNode, GetHost );
+	}
+
+}

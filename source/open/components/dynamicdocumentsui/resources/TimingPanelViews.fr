@@ -1,0 +1,112 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/dynamicdocumentsui/resources/TimingPanelViews.fr $
+//  
+//  Owner: Yeming Liu
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "Widgets.fh"
+#include "SysControlIds.h"
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "DynamicDocumentsUIID.h"
+#include "DynamicDocumentsUIDefs.h"
+#include "IControlViewDefs.h"
+#include "IconStyleDefs.h"
+#include "EveInfo.fh"
+#include "StdHeightWidthConstants.h"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// TYPES
+//========================================================================================
+type TimingPanelWidget   (kViewRsrcType) : ErasablePrimaryResourcePanelWidget (ClassID = kTimingPanelBoss)
+{
+    CPanelMenuData;
+}
+
+type TimingPanelEventDropDownListWidget (kViewRsrcType) : DropDownListWidget (ClassID = kTimingPanelEventDDListWidgetBoss)
+{
+}
+
+type TimingPanelTreeWidget	(kViewRsrcType) : TreeViewWidget	(ClassID = kTimingPanelTreeWidgetBoss) { }
+
+type TimingPanelTreeNode          (kViewRsrcType) : PrimaryResourcePanelWidget (ClassID = kTimingPanelTreeNodeBoss) { } 
+type TimingPanelTreeNodeGroupWidget (kViewRsrcType) : Widget (ClassID = kTimingPanelTreeNodeGroupWidgetBoss) 
+{ 
+	CControlView;
+}
+
+type TimingPanelPageItemName		(kViewRsrcType) : TextInLineEditWidget (ClassID = kTimingPanelPageItemNameBoss) 
+{
+};
+
+type TimingPanelPreviewButton	(kViewRsrcType)	: RollOverIconButtonWidget(ClassID = kTimingPanelPreviewSpreadWidgetBoss) { } 
+
+type TimingPanelGroupButton		(kViewRsrcType)	: RollOverIconButtonWidget(ClassID = kTimingPanelGroupButtonBoss) { }
+type TimingPanelUngroupButton	(kViewRsrcType)	: RollOverIconButtonWidget(ClassID = kTimingPanelUngroupButtonBoss) { }
+
+
+
+//========================================================================================
+// RESOURCES Local Index
+//========================================================================================
+
+resource LocaleIndex (kTimingPaletteRsrcID)
+{
+	kViewRsrcType,
+	{
+		kWildFS, k_Wild, 	kTimingPaletteRsrcID + index_enUS
+		kWildFS, k_deDE, 	kTimingPaletteRsrcID + index_deDE
+		kWildFS, k_frFR, 	kTimingPaletteRsrcID + index_deDE
+		kWildFS, k_esES, 	kTimingPaletteRsrcID + index_deDE
+		kWildFS, k_ptBR, 	kTimingPaletteRsrcID + index_deDE
+		kWildFS, k_svSE, 	kTimingPaletteRsrcID + index_deDE
+		kWildFS, k_daDK, 	kTimingPaletteRsrcID + index_deDE
+		kWildFS, k_nlNL, 	kTimingPaletteRsrcID + index_deDE
+		kWildFS, k_itIT, 	kTimingPaletteRsrcID + index_deDE
+		kWildFS, k_nbNO, 	kTimingPaletteRsrcID + index_deDE
+		kWildFS, k_jaJP, 	kTimingPaletteRsrcID + index_jaJP
+		kWildFS, k_fiFI, 	kTimingPaletteRsrcID + index_fiFI
+		kWildFS, k_csCZ, 	kTimingPaletteRsrcID + index_ukUA
+		kWildFS, k_plPL, 	kTimingPaletteRsrcID + index_ukUA
+		kWildFS, k_huHU, 	kTimingPaletteRsrcID + index_huHU
+		kWildFS, k_ruRU, 	kTimingPaletteRsrcID + index_ukUA
+		kWildFS, k_trTR, 	kTimingPaletteRsrcID + index_ukUA
+		kWildFS, k_ukUA, 	kTimingPaletteRsrcID + index_ukUA
+	}
+}
+
+resource LocaleIndex (kTimingPanelTreeNodeRsrcID)
+{
+	kViewRsrcType,
+	{
+		kWildFS, k_Wild, 	kTimingPanelTreeNodeRsrcID + index_enUS	
+	}
+}
+
+#endif // __ODFRC__
+
+#include "TimingPanelViews_enUS.fr"
+#include "TimingPanelViews_deDE.fr"
+#include "TimingPanelViews_fiFI.fr"
+#include "TimingPanelViews_huHU.fr"
+#include "TimingPanelViews_ukUA.fr"
+#include "TimingPanelViews_jaJP.fr"

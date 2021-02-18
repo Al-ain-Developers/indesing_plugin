@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest version="2.0">
+ <versioninfo>
+  <build build="20180814.001" compilertarget="Release" datetime="2018/08/14:13:27:56" format="Folder" lang="mul" licensemodel="None" platform="win32" product="Lipika" subproduct="Library" version="14.0.0.0">
+   <repository authority="ssl:wasabi.corp.adobe.com:20300" path="//releases/gtlib/gtlib_11.0/source/lipika/wrservices/External/..." query="@1870111" scheme="p4"/>
+   <repository authority="ssl:wasabi.corp.adobe.com:20300" path="//releases/gtlib/gtlib_11.0/source/lipika/wrservices/Source/..." query="@1874508" scheme="p4"/>
+   <repository authority="ssl:wasabi.corp.adobe.com:20300" path="//releases/gtlib/gtlib_11.0/public/lipika/wrservices/Includes/..." query="@1874508" scheme="p4"/>
+   <repository authority="ssl:wasabi.corp.adobe.com:20300" path="//releases/gtlib/gtlib_11.0/source/lipika/wrservices/External/zlib/build/..." query="@1844646" scheme="p4"/>
+   <metadata>
+    <item key="BuildVersion" value="14.0.0.23627"/>
+   </metadata>
+  </build>
+ </versioninfo>
+</manifest>

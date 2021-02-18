@@ -1,0 +1,52 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// U.S. English strings
+//========================================================================================
+
+resource StringTable (kInCopyExportStringsRsrcID + index_esES)
+{
+	k_esES,								// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+
+	{
+		// ----- Miscellaneous strings
+		"Export Seq Name", 		"Exportar artículo de InCopy",
+		"Text",					"Texto", // append "Text" to export name on a text story
+		
+		// ----- Export options dialog strings
+		"InCopyExportOptions",	"Opciones de exportación de Adobe InCopy",
+		"ExportOptions_DataType",	"&Codificación:",
+		"ExportOptions_UTF16",	"UTF16",
+		"ExportOptions_UTF8",	"UTF8",
+		"ExportOptions_DataOptions",	"Opciones:",
+		"ExportOptions_StyleTable",	"Incluir tabla de &estilos",
+		"ExportOptions_SwatchList",	"Incluir lista de m&uestras",
+		"ExportOptions_XMPData",	"Incluir &información de XMP",
+		"ExportOptions_StoryLabel",	"&Etiqueta de artículo:",
+
+		//menu
+		"ExportMenu",				"E&xportar",
+		"kExportLayerToIC",			"&Capa...",
+		"kExportAllStoriesToIC",	"Todos los a&rtículos...",
+		"kExportAllGraphicsToIC",	"Todos los &gráficos...",
+		"kExportAllItemsToIC",		"&Todos los gráficos y artículos...",
+
+		"INCDFeatureLost",    "Este artículo puede contener funciones que no son compatibles con este formato de archivo. Esas funciones se perderán cuando se actualice este artículo.",
+	}
+};
+
+#endif // __ODFRC__

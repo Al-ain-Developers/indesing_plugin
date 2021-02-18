@@ -1,0 +1,756 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/public/libs/widgetbin/includes/EveInfo.fh $
+//  
+//  Owner: lance bushore
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#ifndef __EveInfo_fh__
+#define __EveInfo_fh__
+
+#include "DialogLayoutID.h"
+
+
+// alignment values. valid for all widgets
+const uint32 kEVEAlignMask = (0x0000000FUL);
+
+const uint32 kEVEAlignLeft = 1;
+const uint32 kEVEAlignRight = 2;
+const uint32 kEVEAlignCenter = 3;
+const uint32 kEVEAlignFill = 4;
+const uint32 kEVEDontAlignWidth = 5;
+
+// space after values. valid for all widgets
+const uint32 kEVESpaceAfterMask = (0x000000F0UL);
+
+const uint32 kEVENoSpaceAfter = (1UL << 4);
+const uint32 kEVESmallSpaceAfter = (2UL << 4);
+const uint32 kEVERegularSpaceAfter = (3UL << 4);
+const uint32 kEVELargeSpaceAfter = (4UL << 4);
+const uint32 kEVEExtraLargeSpaceAfter = (5UL << 4);
+const uint32 kEVEJumboSpaceAfter = (6UL << 4);
+const uint32 kEVEVerySmallSpaceAfter = (7UL << 4);
+const uint32 kEVEExtremeSmallSpaceAfter = (8UL << 4);
+
+// arrangement(row/column) is only valid for panel widgets - it specifies how to lay out children.
+const uint32 kEVEChildArrangeMask = (0x00000F00UL);
+
+const uint32 kEVEArrangeChildrenInRow = (1UL << 8);
+const uint32 kEVEArrangeChildrenInColumn = (2UL << 8);
+const uint32 kEVEArrangeChildrenStacked = (4UL << 8);
+const uint32 kEVEDontArrangeChildren = (3UL << 8);
+
+
+// child alignment values - only valid for panel widgets. Specifies the default alignment of children
+// if the child doesn't specify it's own.
+const uint32 kEVEChildAlignMask = (0x0000F000UL);
+
+const uint32 kEVEChildAlignLeft = (1UL << 12);
+const uint32 kEVEChildAlignRight = (2UL << 12);
+const uint32 kEVEChildAlignCenter = (3UL << 12);
+const uint32 kEVEChildAlignFill = (4UL << 12);
+
+// child space after values - only valid for panels. Sets default space after of children who don't specify it themselves.
+const uint32 kEVEChildSpaceAfterMask = (0x000F0000UL);
+
+const uint32 kEVEChildNoSpaceAfter = (1UL << 16);
+const uint32 kEVEChildSmallSpaceAfter = (2UL << 16);
+const uint32 kEVEChildRegularSpaceAfter = (3UL << 16);
+const uint32 kEVEChildLargeSpaceAfter = (4UL << 16);
+const uint32 kEVEChildExtraLargeSpaceAfter = (5UL << 16);
+const uint32 kEVEChildJumboSpaceAfter = (6UL << 16);
+
+// margin values - only valid for panels
+const uint32 kEVEMarginMask = (0x00F00000UL);
+
+const uint32 kEVENoMargin = (1UL << 20);
+const uint32 kEVESmallMargin = (2UL << 20);
+const uint32 kEVERegularMargin = (3UL << 20);
+const uint32 kEVELargeMargin = (4UL << 20);
+const uint32 kEVEMinimalMargin = (5UL << 20);
+const uint32 kEVERegularButSmallBottomMargin = (6UL << 20);
+const uint32 kEVELargeButSmallBottomMargin = (7UL << 20);
+const uint32 kEVERegularButExtraLargeTopMargin = (8UL << 20);
+
+// Column Alignment value - only valid for widgets, that have static text widgets which need to be aligned with other labels in sibling group panels
+const uint32 kEVEIncludeForFirstColumnAlignmentMask = (0x0F000000UL);
+const uint32 kEVEIncludeForFirstColumnAlignment = (1UL << 24);			//only valid for panel widgets
+const uint32 kEVEDoNotIncludeForAlignmentOfLables = (1UL << 24);   //only vaid for static text widgets
+
+
+#ifdef __ODFRC__
+
+type WidgetEveInfo : Interface (IID = IID_IEVEINFO)
+{
+	integer = 1;	// has EVE info.
+	
+	longint;  	// eve info - see eve constants above to specify alignment, space after,
+	// child arrangement, child alignment, child space after, margin
+};
+
+
+type EVEGenericPanelWidget (kViewRsrcType):	Widget	(ClassID = kGenericPanelWidgetBoss)
+{
+	CControlView;
+	WidgetEveInfo;
+	CPanelControlData;
+};
+
+type EVEGenericPanelCustomColorWidget (kViewRsrcType):	EVEGenericPanelWidget	(ClassID = kGenericPanelCustomColorWidgetBoss)
+{
+	UIColorSpec;
+};
+
+type EVEClusterPanelWidget (kViewRsrcType) : Widget (ClassID = kClusterPanelWidgetBoss)
+{
+	CControlView;
+	WidgetEveInfo;
+	CPanelControlData;
+};
+
+type EVEClusterPanelMuteWidget (kViewRsrcType) : Widget (ClassID = kClusterPanelMuteWidgetBoss)
+{
+	CControlView;
+	WidgetEveInfo;
+	CPanelControlData;
+};
+
+type EVEGroupPanelWidget (kViewRsrcType):	Widget	(ClassID = kGroupPanelWidgetBoss)
+{
+	CControlView;
+	GroupPanelAttributes;
+	WidgetEveInfo;
+	CPanelControlData;
+};
+
+type EVETabsWidget( kViewRsrcType) : Widget (ClassID = kTabsWidgetBoss)
+{
+	CControlView;
+	WidgetEveInfo;
+	CPanelControlData;
+}
+
+type EVEButtonBarWidget( kViewRsrcType) : Widget(ClassID = kButtonBarWidgetBoss)
+{
+	CControlView;
+	WidgetEveInfo;
+}
+
+type EVEStdTreeBasedListBox (kViewRsrcType) : StdTreeBasedListBox()
+{
+	WidgetEveInfo;
+};
+
+type EVEWidgetTreeBasedListBoxWidget (kViewRsrcType):	WidgetTreeBasedListBoxWidget()
+{
+	WidgetEveInfo;
+};
+
+type EVEDefaultButtonWidget (kViewRsrcType):	DefaultButtonWidget	(ClassID = kButtonWidgetBoss)
+{
+	WidgetEveInfo;
+};
+
+type EVEButtonWidget (kViewRsrcType):	ButtonWidget	(ClassID = kButtonWidgetBoss)
+{
+	WidgetEveInfo;
+};
+
+type EVEPictureTextButtonWidget (kViewRsrcType):	ButtonWidget	(ClassID = kPictureTextButtonWidgetBoss)
+{
+	WidgetEveInfo;
+};
+
+type EVEInfoStaticTextWidget (kViewRsrcType):	InfoStaticTextWidget	(ClassID = kInfoStaticTextWidgetBoss)
+{
+	WidgetEveInfo;
+};
+
+type EVEStaticTextWidget (kViewRsrcType): StaticTextWidget(ClassID = kStaticTextWidgetBoss)
+{
+	WidgetEveInfo;
+};
+
+type EVECancelButtonWidget (kViewRsrcType): CancelButtonWidget()
+{
+	WidgetEveInfo;
+};
+
+type EVECheckBoxWidget (kViewRsrcType): CheckBoxWidget()
+{
+	WidgetEveInfo;
+};
+
+type EVETriStateCheckBoxWidget (kViewRsrcType): TriStateCheckBoxWidget()
+{
+	WidgetEveInfo;
+};
+
+type EVERadioButtonWidget (kViewRsrcType):	RadioButtonWidget()
+{
+	WidgetEveInfo;
+};
+
+type EVEDropDownListWidget (kViewRsrcType):	DropDownListWidget()
+{
+	WidgetEveInfo;
+};
+
+type EVETouchDropDownListWidget (kViewRsrcType): TouchDropDownListWidget()
+{
+	WidgetEveInfo;
+};
+
+type EVESeparatorWidget (kViewRsrcType):	SeparatorWidget	()
+{
+	WidgetEveInfo;
+};
+
+type EVERuleWidget (kViewRsrcType):	RuleWidget()
+{
+	WidgetEveInfo;
+};
+
+type EVEGenericPanelWithBorderWidget (kViewRsrcType):	GenericPanelWithBorderWidget	()
+{
+	WidgetEveInfo;
+};
+
+
+
+type EVEPanelWithWhiteBackground (kViewRsrcType):	EVEGenericPanelWidget (ClassID = kPanelWithWhiteBackgroundWidgetBoss)
+{
+};
+
+type EVENudgeControlWidget (kViewRsrcType):	NudgeControlWidget	()
+{
+	WidgetEveInfo;
+};
+
+type EVETouchNudgeControlWidget (kViewRsrcType):	TouchNudgeControlWidget	(ClassID = kTouchNudgeControlWidgetBoss)
+{
+	WidgetEveInfo;
+};
+
+type EVEPanelWithHiliteBorderWidget (kViewRsrcType): EVEGenericPanelWidget	(ClassID = kPanelWithHiliteBorderWidgetBoss)
+{
+};
+
+type EVEPanelWithGroupButtonFocusWidget (kViewRsrcType) : EVEGenericPanelWidget (ClassID = kGroupButtonFocusPanelBoss) 
+{
+};
+
+type EVEPanelWithGroupASSButtonFocusWidget (kViewRsrcType) : EVEPanelWithGroupButtonFocusWidget (ClassID = kGroupASSButtonFocusPanelBoss) 
+{
+};
+
+type EVEPanelWithClusterButtonFocusWidget (kViewRsrcType) : EVEGenericPanelWidget (ClassID = kClusterButtonFocusPanelBoss) 
+{
+};
+
+type EVEPanelWithClusterButtonFocusCommitWidget (kViewRsrcType) : EVEPanelWithClusterButtonFocusWidget (ClassID = kClusterButtonCommitFocusPanelBoss)
+{
+};
+
+type EVETextEditBoxWidget (kViewRsrcType): TextEditBoxWidget (ClassID = kTextEditBoxWidgetBoss) 
+{
+	WidgetEveInfo; 
+}; 
+
+type EVEPageNumEditBoxWidget (kViewRsrcType) : PageNumEditBoxWidget  (ClassID = kPageNumEditBoxWidgetBoss)
+{
+	WidgetEveInfo; 
+};
+
+type EVEPageNumComboBoxWidget (kViewRsrcType) : PageNumComboBoxWidget (ClassID = kPageNumComboBoxWidgetBoss)
+{
+	WidgetEveInfo;
+};
+
+//One Shouldn't be using kDialogWindowSystemScriptFontId. This is a slightly larger font. So, gives problem on MAC
+type EVEFontSpecTextEditBoxWidget (kViewRsrcType) : FontSpecTextEditBoxWidget (ClassID = kFontSpecTextEditBoxWidgetBoss)
+{
+	WidgetEveInfo;
+};
+
+type EVEMultilineTextEditBoxWidget (kViewRsrcType) : MultilineTextEditBoxWidget (ClassID = kTextEditBoxWidgetBoss)
+{
+	WidgetEveInfo;
+};
+
+type EVEPercentageEditBoxWidget	(kViewRsrcType) : PercentageEditBoxWidget (ClassID = kPercentageEditBoxWidgetBoss)
+{
+	WidgetEveInfo;
+}; 
+
+type EVEShortcutEditBoxWidget (kViewRsrcType) : ShortcutEditBoxWidget(ClassID = kShortcutEditBoxWidgetBoss)
+{
+	WidgetEveInfo;
+}
+
+type EVEPercentageComboBoxWidget	(kViewRsrcType) : PercentageComboBoxWidget (ClassID = kPercentageComboBoxWidgetBoss)
+{
+	WidgetEveInfo;
+}; 
+
+type EVERealEditBoxWidget		(kViewRsrcType) : RealEditBoxWidget (ClassID = kRealEditBoxWidgetBoss)
+{
+	WidgetEveInfo;
+}; 
+
+type EVEYMeasureEditBoxWidget	(kViewRsrcType) : YMeasureEditBoxWidget (ClassID = kYMeasureEditBoxWidgetBoss)
+{
+	WidgetEveInfo;
+}; 
+
+type EVEIconFieldWidget (kViewRsrcType) : IconFieldWidget (ClassID = kIconFieldWidgetBoss) 
+{
+	WidgetEveInfo; 
+}; 
+
+type EVEStaticMultiLineTextWidget (kViewRsrcType) : StaticMultiLineTextWidget (ClassID = kStaticMultiLineTextWidgetBoss)
+{
+	WidgetEveInfo;
+};
+
+type EVEDefinedBreakStaticMultiLineTextWidget (kViewRsrcType) : DefinedBreakMultiLineTextWidget (ClassID = kDefinedBreakMultiLineTextWidgetBoss)
+{
+	WidgetEveInfo;
+};
+
+type EVEAGMStaticMultiLineTextWidget (kViewRsrcType) : AGMStaticMultiLineTextWidget (ClassID = kAGMStaticMultiLineTextWidgetBoss)
+{
+	WidgetEveInfo;
+};
+
+
+
+type EVEChainButtonWidget (kViewRsrcType) : RollOverIconButtonWidget (ClassID = kChainButtonBoss ) 
+{
+	WidgetEveInfo;
+}; 
+
+type EVEXMeasureEditBoxWidget	(kViewRsrcType) : XMeasureEditBoxWidget (ClassID = kXMeasureEditBoxWidgetBoss)
+{
+	WidgetEveInfo;
+};
+
+type EVEXMeasureComboBoxWidget	(kViewRsrcType) :  XMeasureComboBoxWidget (ClassID =  kXMeasureComboBoxWidgetBoss)
+{
+	WidgetEveInfo;
+};
+
+type EVEYMeasureComboBoxWidget	(kViewRsrcType) :  YMeasureComboBoxWidget (ClassID =  kYMeasureComboBoxWidgetBoss)
+{
+	WidgetEveInfo;
+};
+
+type EVECustomXMeasureEditBoxWidget	(kViewRsrcType) : CustomXMeasureEditBoxWidget (ClassID = kCustomXMeasureEditBoxWidgetBoss)
+{
+	WidgetEveInfo;
+};
+
+type EVETouchCustomXMeasureEditBoxWidget	(kViewRsrcType) : EVECustomXMeasureEditBoxWidget (ClassID = kTouchCustomXMeasureEditBoxWidgetBoss)
+{
+};
+
+type EVECustomWidthMeasureEditBoxWidget	(kViewRsrcType) : EVECustomXMeasureEditBoxWidget (ClassID = kCustomWidthMeasureEditBoxWidgetBoss)
+{
+};
+
+
+type EVECustomXSessionPrefsMeasureEditBoxWidget	(kViewRsrcType) : CustomXSessionPrefsMeasureEditBoxWidget (ClassID = kCustomXMeasureSessionEditBoxWidgetBoss)
+{
+	WidgetEveInfo;
+};
+
+type EVECustomMarginXSessionPrefsMeasureEditBoxWidget	(kViewRsrcType) : CustomXSessionPrefsMeasureEditBoxWidget (ClassID = kCustomMarginXMeasureSessionEditBoxWidgetBoss)
+{
+	WidgetEveInfo;
+};
+
+
+
+
+
+type EVECustomYMeasureEditBoxWidget	(kViewRsrcType) : CustomYMeasureEditBoxWidget (ClassID = kCustomYMeasureEditBoxWidgetBoss)
+{
+	WidgetEveInfo;
+};
+
+type EVETouchCustomYMeasureEditBoxWidget	(kViewRsrcType) : EVECustomYMeasureEditBoxWidget (ClassID = kTouchCustomYMeasureEditBoxWidgetBoss)
+{
+};
+
+type EVECustomHeightMeasureEditBoxWidget	(kViewRsrcType) : EVECustomYMeasureEditBoxWidget (ClassID = kCustomHeightMeasureEditBoxWidgetBoss)
+{
+};
+
+type EVECustomYSessionPrefsMeasureEditBoxWidget	(kViewRsrcType) : CustomYSessionPrefsMeasureEditBoxWidget (ClassID = kCustomYMeasureSessionEditBoxWidgetBoss)
+{
+	WidgetEveInfo;
+};
+
+
+type EVECustomMarginYSessionPrefsMeasureEditBoxWidget	(kViewRsrcType) : CustomYSessionPrefsMeasureEditBoxWidget (ClassID = kCustomMarginYMeasureSessionEditBoxWidgetBoss)
+{
+	WidgetEveInfo;
+};
+
+
+type EVEIntEditBoxWidget	(kViewRsrcType) : IntEditBoxWidget (ClassID = kIntEditBoxWidgetBoss)
+{
+	WidgetEveInfo;
+};  
+
+type EVEAngleEditBoxWidget	(kViewRsrcType) : AngleEditBoxWidget (ClassID = kAngleEditBoxWidgetBoss)
+{
+	WidgetEveInfo;
+};  
+
+type EVEColorListDropDownWidget (kViewRsrcType): ColorListDropDownWidget (ClassID = kColorListDropDownWidgetBoss) 
+{
+	WidgetEveInfo; 
+}; 
+
+type EVEIconSuiteWidget (kViewRsrcType) : IconSuiteWidget (ClassID = kIconSuiteWidgetBoss)
+{
+	WidgetEveInfo; 
+};
+
+type EVEScrollBarWidget (kViewRsrcType) : ScrollBarWidget (ClassID = kScrollBarWidgetBoss)
+{
+	WidgetEveInfo; 
+};
+
+type EVETextComboBoxWidget (kViewRsrcType) : TextEditBoxWidget (ClassID = kTextComboBoxWidgetBoss)
+{
+	DropDownListControlData;
+	WidgetEveInfo;
+};
+
+type EVEPageRangeEditBoxWidget (kViewRsrcType) : PageRangeEditBoxWidget (ClassID = kPageRangeEditBoxWidgetBoss)
+{
+	WidgetEveInfo;
+};
+
+type EVEPageRangeComboBoxWidget (kViewRsrcType) : PageRangeComboBoxWidget (ClassID = kPageRangeComboBoxWidgetBoss)
+{
+	WidgetEveInfo;
+};
+
+type EVEIntComboBoxWidget (kViewRsrcType) : IntComboBoxWidget (ClassID = kIntComboBoxWidgetBoss) 
+{
+	WidgetEveInfo; 
+}; 
+
+type EVERealComboBoxWidget (kViewRsrcType) : RealComboBoxWidget (ClassID = kRealComboBoxWidgetBoss) 
+{
+	WidgetEveInfo; 
+}; 
+
+type EVEStdListBoxWidgetN (kViewRsrcType) : StdListBoxWidgetN ()
+{
+	WidgetEveInfo;
+};
+
+type EVEStyleGroupDropDownListWidget (kViewRsrcType) : Widget (ClassID = kStyleGroupDropDownWidgetBoss)
+{
+	CControlView;
+	ActionIDData;			// ActionID of extra menu item to add to bottom of this style drop down list. kInvalidActionID for no extra menu item.
+	CControlViewObservers;	// List of observers to attach when showing this style widget. Typically includes IID_IOBSERVER and also IID_ISTYLEGROUPOBSERVER when ActionIDData contains a non-kInvalidActionID value. Could also be empty though.
+	WidgetEveInfo;
+}; 
+
+type EVEPasswordEditBoxWidget (kViewRsrcType) : TextEditBoxWidget(ClassID = kPasswordEditBoxWidgetBoss ) 
+{
+	WidgetEveInfo;
+}; 
+
+type EVETreeExpanderWidget (kViewRsrcType) : Widget (ClassID = kTreeExpanderWidgetBoss)
+{
+	TreeExpanderControlView;
+	TreeExpanderOptions;
+	PNGIconAttributes;
+	WidgetEveInfo;
+};
+
+type EVEOwnerDrawStdListBoxWidget (kViewRsrcType) : OwnerDrawStdListBoxWidget ()
+{
+	WidgetEveInfo;
+};
+
+type EVEOwnerDrawStdListBoxNoSeparatorWidget (kViewRsrcType) : OwnerDrawStdListBoxNoSeparatorWidget ()
+{
+	WidgetEveInfo;
+};
+
+type EVEPanelWithInverseHiliteBorderWidget (kViewRsrcType) : GenericPanelWidget (ClassID = kPanelWithInverseHiliteBorderWidgetBoss)
+{
+	WidgetEveInfo;
+};
+
+type EVEUIColorSwatchWidget (kViewRsrcType) : Widget (ClassID = kUIColorSwatchWidgetBoss)
+{
+	CControlView;
+	WidgetEveInfo;
+};
+
+type EVERollOverIconButtonWidget (kViewRsrcType) : Widget (ClassID = kRollOverIconButtonBoss )
+{
+	CControlView;
+	PNGIconAttributes;
+	WidgetEveInfo;
+};
+
+type EVETextSizeMeasureEditBoxWidget (kViewRsrcType) : IntEditBoxWidget (ClassID = kTextSizeMeasureEditBoxWidgetBoss)
+{
+	WidgetEveInfo;
+};
+
+type EVETextMeasureEditBoxWidget (kViewRsrcType) : IntEditBoxWidget (ClassID = kTextMeasureEditBoxWidgetBoss)
+{
+	WidgetEveInfo;
+};
+
+type EVEControlSetWidget(kViewRsrcType) : BaseControlSetWidget (ClassID = kControlSetBoss) 
+{
+	WidgetEveInfo; 
+};
+
+type EVELineWtMeasureEditBoxWidget (kViewRsrcType) : IntEditBoxWidget (ClassID = kLineWtMeasureEditBoxWidgetBoss)
+{
+	
+	WidgetEveInfo;
+}; 
+
+type EVETextSizeMeasureComboBoxWidget (kViewRsrcType) : TextSizeMeasureEditBoxWidget (ClassID = kTextSizeMeasureComboBoxWidgetBoss)
+{
+	DropDownListControlData;
+	WidgetEveInfo;
+}; 
+
+type EVEStrokeTypePopupWidget (kViewRsrcType) : Widget (ClassID = kStrokeTypePopupWidgetBoss) 
+{
+	CControlView;
+	
+	WidgetEveInfo;
+};
+
+type EVEProgressBarWidget (kViewRsrcType) : Widget (ClassID = kProgressBarWidgetBoss)
+{
+	CControlView;
+	CProgressBarControlData;
+	
+	WidgetEveInfo;
+};
+
+type EVELineWtMeasureComboBoxWidget (kViewRsrcType) : LineWtMeasureEditBoxWidget (ClassID = kLineWtMeasureComboBoxWidgetBoss)
+{
+	DropDownListControlData;
+	WidgetEveInfo;
+};
+
+type EVETextMeasureComboBoxWidget (kViewRsrcType) : TextMeasureEditBoxWidget (ClassID = kTextMeasureComboBoxWidgetBoss)
+{
+	DropDownListControlData;
+	WidgetEveInfo;
+};
+
+type EVEErasablePrimaryResourcePanelWidget (kViewRsrcType) : Widget (ClassID = kErasablePrimaryResourcePanelWidgetBoss)
+{
+	ResourceSrcFileInfo;
+	ErasablePanelView;
+	CTextControlData;
+	CPanelControlData;
+	
+	WidgetEveInfo;
+};
+
+type EVELoadStyleSplitterPanelwidget (kViewRsrcType) : LoadStyleSplitterPanelwidget (ClassID = kLoadStyleSplitterPanelwidgetBoss)
+{
+	WidgetEveInfo;
+};
+
+type EVELinkedSplitterPanelWidget(kViewRsrcType) : Widget (ClassID = kLinkedSplitterPanelWidgetBoss)
+{
+	CControlView;		        // Control view for the splitter
+    CTextControlData;           // Panel Name
+	CLinkedSplitterPanelData;
+	CPanelControlData;
+	
+	WidgetEveInfo;
+};
+
+type EVESimpleIconSuiteButtonWidget (kViewRsrcType) : RollOverIconButtonWidget (ClassID = kSimpleIconSuiteButtonWidgetBoss)
+{
+	
+	WidgetEveInfo;
+};
+
+type EVERealPopupSliderComboBoxWidget (kViewRsrcType) : RealPopupSliderComboBoxWidget (ClassID = kRealPopupSliderComboWidgetBoss)
+{
+	WidgetEveInfo;
+};
+
+type EVEPercentPopupSliderComboBoxWidget (kViewRsrcType) : PercentPopupSliderComboBoxWidget (ClassID = kPercentPopupSliderComboWidgetBoss)
+{
+	WidgetEveInfo;
+};
+
+type EVEIntPopupSliderComboBoxWidget (kViewRsrcType) : IntPopupSliderComboBoxWidget (ClassID = kIntPopupSliderComboWidgetBoss)
+{
+	WidgetEveInfo;
+};
+
+type EVELoadStyleSplitterWidget (kViewRsrcType) : LoadStyleSplitterWidget (ClassID = kLoadStyleSplitterWidgetBoss)
+{
+	WidgetEveInfo;
+};
+
+type EVELoadStyleListWidget(kViewRsrcType) : TreeViewWidget(ClassID = kLoadStyleListWidgetBoss) 
+{
+	WidgetEveInfo;
+};
+
+type EVELoadStyleDropDownWidget (kViewRsrcType) : EVEDropDownListWidget (ClassID = kLoadStyleDropDownWidgetBoss) { };
+
+type EVEStyleGroupTreeViewWidget (kViewRsrcType) : StyleGroupTreeViewWidget (ClassID = kStyleGroupTreeViewBoss) 
+{
+	WidgetEveInfo;
+};
+
+type EVESpinningIconWidget (kViewRsrcType):	SpinningIconWidget	(ClassID = kSpinningIconWidgetBoss)
+{
+	WidgetEveInfo;
+};
+
+type EVEDesktopColorSamplerIconButton    (kViewRsrcType) : EVERollOverIconButtonWidget (ClassID = kDesktopColorSamplerIconButtonBoss) { };
+
+type EVEHyperlinkTextWidget     (kViewRsrcType) : HyperlinkTextWidget     (ClassID = kHyperlinkTextWidgetBoss)
+{
+	WidgetEveInfo;
+}
+
+type EVEHyperlinkTextWidgetWithoutUnderline     (kViewRsrcType) : HyperlinkTextWidgetWithoutUnderline     (ClassID = kHyperlinkTextWidgetBoss)
+{
+	WidgetEveInfo;
+}
+
+type EVEGoURLHyperlinkWidget (kViewRsrcType) : EVEHyperlinkTextWidget (ClassID = kGoURLHyperlinkTextWidgetBoss)
+{
+}
+
+type EVEFlatButtonWidget (kViewRsrcType) : FlatButtonWidget (ClassID = kFlatButtonWidgetBoss)
+{
+	WidgetEveInfo;
+}
+
+type  BorderColorData : Interface (IID = IID_IWIDGETBORDERCOLOR)
+{
+ 	longint;			// border color id
+};
+
+type EVEFlatButtonBorderWidget (kViewRsrcType) : EVEFlatButtonWidget (ClassID = kFlatButtonBorderWidgetBoss)
+{
+	BorderColorData
+}
+
+
+
+type EVEAddToCCLibraryPanel (kViewRsrcType) : EVEGenericPanelWidget (ClassID = kAddToCCLibraryPanelWidgetBoss)
+{
+};
+
+type EVEUIBrightnessButtonWidget (kViewRsrcType) : UIBrightnessButtonWidget (ClassID = kUIBrightnessButtonWidgetBoss)
+{
+	WidgetEveInfo;
+}
+
+type EVEGenericPanelWithCustomBorderWidget (kViewRsrcType):	GenericPanelWithCustomBorderWidget	()
+{
+	WidgetEveInfo;
+	
+};
+
+type EVEStaticTextWidgetWithAction (kViewRsrcType) : Widget (ClassID = kStaticTextWidgetBoss) 
+{ 
+    CControlView; 
+    StaticTextAttributes; 
+    CTextControlData; 
+    AssociatedWidgetAttributesWithAction; 
+	WidgetEveInfo;
+};
+
+type EVEIconSuiteWidgetWithAction (kViewRsrcType) : RollOverIconButtonWidget (ClassID = kIconSuiteWidgetBoss) 
+{     
+    AssociatedWidgetAttributesWithAction; 
+	WidgetEveInfo;
+}; 
+ 
+
+type EVEStaticTextWidgetWithActionOnClick (kViewRsrcType) : StaticTextWidgetWithActionOnClick (ClassID = kClickableTextWidgetBoss) 
+{     
+	WidgetEveInfo;
+}; 
+
+
+type EVEIconEraseBackgroundSuiteWidgetWithAction (kViewRsrcType) : IconEraseBackgroundSuiteWidgetWithAction () 
+{     
+	WidgetEveInfo;
+}
+type EVEStaticTextWidgetWithPopup (kViewRsrcType) : StaticTextWidgetWithPopup (ClassID = kPopupTextWidgetBoss) 
+{     
+	WidgetEveInfo;
+}; 
+
+type PropsPanelStaticTextWidgetWithActionOnClick (kViewRsrcType) : StaticTextWidgetWithActionOnClick (ClassID = kPropsPanelClickableTextWidgetBoss) 
+{      
+    WidgetEveInfo;
+};
+
+type PropsPanelButtonBarGenericWidget (kViewRsrcType) : ButtonBarGenericWidget (ClassID = kPropsPanelButtonBarGenericWidgetBoss) 
+{     
+	WidgetEveInfo;
+};
+
+type EVEStaticTextWidgetWithUnderline (kViewRsrcType) : StaticTextWidgetWithUnderline ()
+{
+	WidgetEveInfo;
+};
+
+type EVEButtonBarGenericWidget (kViewRsrcType) : ButtonBarGenericWidget(ClassID = kButtonBarGenericWidgetBoss)
+{
+	WidgetEveInfo;
+};
+
+type EVERectangularButtonWidgetWithAction (kViewRsrcType) : RectangularButtonWidget (ClassID = kRectangularButtonWidgetWithActionBoss)
+{
+	AssociatedWidgetAttributesWithAction; 
+	WidgetEveInfo;
+};
+
+type EVEDialogOnHyperlinkWidget (kViewRsrcType) : EVEHyperlinkTextWidget (ClassID = kDialogOnHyperlinkWidgetBoss)
+{
+    DialogPopupAttributes;
+};
+
+#endif // __ODFRC__
+
+#endif //__EveInfo_fh__

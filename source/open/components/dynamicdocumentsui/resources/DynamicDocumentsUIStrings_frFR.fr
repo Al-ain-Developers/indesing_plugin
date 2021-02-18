@@ -1,0 +1,298 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kDynamicDocumentsUIStringsRsrcID + index_frFR)
+{
+	k_frFR,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{
+		// ----- Command strings
+
+		// ----- Window strings
+
+		// ----- Panel strings
+		"kPageTransitionsPanelPopup",			"Menu du panneau Transitions de page",    
+		"kPageTransitionsSubMenu",				"&Transitions de page",
+		"kPageTransitionsPanelName",			"Transitions de page",	   
+		"kPageTransitionStaticText",			"Transition : ",
+		"kPageDirectionStaticText",				"Sens : ",
+		"kPageSpeedStaticText",					"Vitesse : ",
+        "kPTHorizontal",						"Horizontal",
+        "kPTVertical",							"Vertical",
+        "kPTIn",								"Ouverture",
+        "kPTOut",								"Fermeture",
+        "kPTDown",								"Vers le bas",
+        "kPTLeft",								"Vers la gauche",
+        "kPTLeftDown",							"Vers la gauche en bas",
+        "kPTLeftUp",							"Vers la gauche en haut",
+        "kPTRight",								"Vers la droite",
+        "kPTRightDown",							"Vers la droite en bas",
+        "kPTRightUp",							"Vers la droite en haut",
+        "kPTUp",								"Vers le haut",
+        "kPTHorizontalIn",						"Fermeture horizontale",
+        "kPTHorizontalOut",						"Ouverture horizontale",
+        "kPTVerticalIn",						"Fermeture verticale",
+        "kPTVerticalOut",						"Ouverture verticale",
+        "kPTSlow",								"Lente",
+		"kPTMedium",							"Moyenne",
+		"kPTFast",								"Rapide",		
+		"kPTNoTransition",						"Sans",	
+              		
+		// ----- Liquid Layout panel
+		"kLiquidLayoutMenu",					"Mise en page &liquide",
+		"kLiquidLayoutPanelPopup",				"Menu du panneau Mise en page liquide",
+		"kLiquidLayoutPanelName",				"Mise en page liquide",	
+		"kObjectConstraintsStaticTextLabel",	"Contraintes d'objet :",
+		"kDocumentReflowStaticTextLabel",		"Redistribution du document",
+		"kFixedSizeStaticTextLabel",			"Redimensionner avec la page :",
+		"kHeightCheckBoxLabel",					"Hauteur",
+		"kWidthCheckBoxLabel",					"Largeur",
+		"kPinLeftEdgeCheckBoxLabel",			"Gauche",
+		"kPinRightEdgeCheckBoxLabel",			"Droite",
+		"kPinTopEdgeCheckBoxLabel",				"Haut",
+		"kPinBottomEdgeCheckBoxLabel",			"Bas",
+		"kPinObjectEdgesStaticTextLabel",		"Point de référence :",
+		"kContentStaticTextLabel",				"Contenu :",
+		"kLayoutAdjustmentWarningTip",			"Les règles de mise en page liquide ne s'appliquent pas car la modification de mise en page est activée pour le document. Cliquez pour désactiver la modification de mise en page.",
+		"kPageLayoutPolicyDropdownLabel",		"Règle de page liquide :",
+		"kLiquidLayoutPanelPageRange",			"Page : ^1",
+		"kPinEdgeToolTip",						"Cochez cette case pour maintenir toujours le même espace entre l'objet et le bord de la page.",
+		"kResizeHeightWithPageToolTip",			"Cochez cette case pour adapter la hauteur de l'objet à la hauteur de page.",
+		"kResizeWidthWithPageToolTip",			"Cochez cette case pour adapter la largeur de l'objet à la largeur de page.",
+		
+        // ----- Timing panel
+        "kTimingPanelPopup",					"Menu du panneau Minutage",    
+		"kTimingSubMenu",						"&Minutage",
+		"kTimingPanelName",						"Minutage",	
+		"kTimingPanelEventStaticText",			"Evénement : ",
+		"kTimingPanelDelayStaticText",			"Délai : ",
+        "kTimingPanelDelaySecondStaticText",	"seconde",
+        "kTimingPanelDelaySecondsStaticText",	"secondes",
+        "kTimingPanelAssignPageLoadEvent",		"Réattribuer au chargement de la page",
+        "kTimingPanelAssignStateLoadEvent",		"Réattribuer au chargement de l'état",
+        "kTimingPanelAssignPageClickEvent",		"Réattribuer au clic sur la page",
+        "kTimingPanelRemoveItem",				"Supprimer l'élément",
+        "kTimingPanelEventDropDownTip",			"Cliquer pour continuer",
+        "kTimingPanelGroupButtonTip",			"Lire ensemble",
+        "kTimingPanelUngroupkButtonTip",		"Lire séparément",
+        "kTimingPanelPreviewButtonTip",			"Aperçu de la planche",
+        "kUnassignedEntry",						"Non attribuée",
+        "kTimingPanelLinkedItemStaticText",			"Eléments liés :",	
+        "kTimingPanelPlayLinkedItemStaticText",		"Lecture : ",
+        "kTimingPanelPlayLinkedItemTimeStaticText",	"fois",
+        "kTimingPanelPlayLinkedItemTimesStaticText","fois",
+        "kTimingPanelLoopCheckBoxLabel",		"En boucle",
+        "kTimingPanelLinkedItemGroupWidgetTip",	"Lire les objets ensemble (cliquer pour sélectionner un groupe)", 
+
+        // HTML Preview menu items
+        "kHTMLFXLPreviewSpread",				"Aperçu de la planche : EPUB",
+		// ----- Menu Strings
+		"kTransitionPanelChooseAction",				"&Sélectionner...",
+		"kTransitionPanelApplyToAllSpreadsAction",	"&Appliquer à toutes les planches",
+		"kTransitionPanelClearAllTransitionsAction","To&ut effacer",
+		
+		// ----- Tips strings
+		"kApplyToAllSpreadsButtonTip",			"Appliquer à toutes les planches",
+		"kMotionPathTipStr",					"Trajectoire (cliquer pour modifier)",
+		"kEasingPathTipStr",					"Trajectoire d'accélération",
+	#ifdef WINDOWS
+		"kPreviewSpreadButtonToolTip",			"Aperçu de la planche : EPUB.",
+	#else
+		"kPreviewSpreadButtonToolTip",			"Aperçu de la planche : EPUB.",			
+	#endif
+				
+		// ----- XFL Export Dialogs
+
+		"kXFLExport",						"Exporter au format Flash CS6 Professional (FLA)",
+		"kSizePixels",						"Taille (pixels) :",
+		"kPagesStr",						"Pages :",
+		"kExportStr",						"Exporter :",
+		"kSpreadsStr",						"Planc&hes",
+		"kGenerateHTMLStr",					"Générer le fichier HT&ML",
+		"kFlashText",						"Texte Flash classique",
+		"kVectorText",						"Vectoriser",
+		"kRasterText",						"Pixelliser",
+		"kVellumText",						"Texte Flash TLF",
+		"kInsertHyphensStr",				"I&nsérer des points de tirets conditionnels",
+		"kFitToSize",						"&Ajuster à :",
+		"kWidthSize",						"&Largeur :",
+		"kHeightSize",						"&Hauteur :",
+		"kSelectionExportedStr",			"Séle&ction",
+		"kAllPagesExported",				"&Toutes",
+		"kAllPagesExportedStr",				"Toutes les p&ages",
+		"kPageRangeExported",				"&Etendue :",
+		"kScaleSize",						"Ec&helle :",
+		"kTextStr",							"Te&xte :",
+		"kInteractivityStr",				"Interactivité :",
+		"kDynamicMediaStr",					"Interactivité et multimédia :",
+		"kImageCompStr",					"&Compression d'image :",
+		"kQualityStr",						"Qualité &JPEG :",
+		"kCurveQualityStr",					"&Qualité de la courbe :",
+		"kInclButtonsStr",					"Inclure les &boutons",
+		"kInclHyperLinkStr",				"Inclure les h&yperliens",
+		"kInclPageTrans",					"Inclure les tra&nsitions de page",
+		"kIncludePageCurl",					"Incl&ure le coin de page interactif",
+		"kIncludeAllStr",					"Tout &inclure",
+		"kAppearanceOnlyStr",				"A&spect seulement",
+		"kBackgroundStr",					"Arrière-plan :",
+		"kPaperColorStr",					"C&ouleur du papier",
+		"kTransparentStr",					"&Transparent",
+		"kFramesPerSecStr",					"images par seconde",
+		"kPageTransitionsStr",				"Tra&nsitions de page :",
+		"kNone",							"Sans",
+		"kFromDocument",					"Du document",
+		"kOptionsStr",						"Options :",
+		"kDescriptionStr",					"Description :",
+		"kFrameRateStr",					"Cade&nce :",
+		"kImageCompAuto",					"Automatique",
+		"kJPG_Lossy",						"JPEG",
+		"kJPG_LossyStr",					"JPEG (avec perte)",
+		"kPNG_Lossless",					"Sans perte (ne rien faire)",
+		"kPNG_LosslessStr",					"PNG (sans perte)",
+		"kMinimumQual",						"Minimum",
+		"kLowQual",							"Faible",
+		"kMediumQual",						"Moyenne",
+		"kHighQual",						"Elevée",
+		"kMaximumQual",						"Maximum",
+		"kRasterizeStr",					"Pi&xelliser les pages",
+		"kFlattenXPStr",					"Aplatir la transpar&ence",
+		"k1280x800",						"1280 x 800",
+		"k1024x768",						"1024 x 768",
+		"k800x600",							"800 x 600",
+		"k640x480",							"640 x 480",
+		"k250per",							"250 %",
+		"k200per",							"200 %",
+		"k150per",							"150 %",
+		"k100per",							"100 %",
+		"k75per",							"75 %",
+		"k50per",							"50 %",
+		"k25per",							"25 %",
+
+		// Font Embedding
+		"kEmbeddedFontsTitle",				"Polices incorporées (applicables au texte Flash classique seulement)",
+		"kTotalFonts",						"Total des polices : ",
+		"kFontLicensingInfo",				"Licences des polices",
+		"kEmbeddedFontName",				"Nom de la police : ",
+		"kEmbeddedVendorID",				"ID du fournisseur : ",
+
+		// Add Page Transition dialog
+		"kPageTransitionsDialogTitle",			"Transitions de page",
+		"kPageTransitionApplyToAllSpreads",		"Appliquer à toutes les planches",
+		"kZoomInOutString",						"Zoom av/ar", 
+		
+		
+		//	Animation UI
+		"kAnimationUIPanelPopup",				"Menu du panneau d'interface utilisateur d'animation",
+		"kAnimationUISubMenu",					"Animation",
+		"kAnimationUIPresetPopupMenu",			"Menu des paramètres prédéfinis d'interface utilisateur d'animation",
+		"kMotionPresetsNoneTextkey",			"Sans",
+		"kAnimationUILoadPresetMenuItem",		"Charger le paramètre prédéfini...",
+		"kAnimationUISaveAsPresetMenuItem",		"Enregistrer sous...",
+		"kAnimationUISavePresetMenuItem",		"Enregistrer",
+		"kAnimationUIDeletePresetMenuItem",		"Supprimer",
+
+		"kAnimationUIConvertToMotionPathMenuItem",	"Convertir en trajectoire",
+		"kAnimationUITestInBrowserMenuItem",	"Test dans le navigateur...",
+		"kCustomPresetName",					"Mouvement prédéfini",
+		"kAnimationUIEventSeparator",			", ",
+		
+		"kAnimationUIPanelName",				"Animation",
+		"kAnimationUIPreviewStaticTextLabel",	"Aperçu",
+		"kAnimationUINameStaticTextLabel",		"Nom :",
+		"kAnimationUIPresetStaticTextLabel",	"Animation prédéf. :",
+		"kAnimationUICustomPreset",				"Personnalisé",
+		"kAnimationUIMixed",					"Mixte",
+		"kAnimationUIMixed:",					"Mixte : ",
+		"kAnimationUIChoose",					"Sélectionner",
+		"kAnimationUIEventStaticTextLabel",		"Evénement(s) :",
+		"kAnimationUIDurationStaticTextLabel",	"Durée :",
+		"kAnimationUISecondStaticTextLabel",	"seconde",
+		"kAnimationUISecondsStaticTextLabel",	"secondes",
+		"kAnimationUIPlayStaticTextLabel",		"Lecture :",
+		"kAnimationUITimeStaticTextLabel",		"fois",
+		"kAnimationUITimesStaticTextLabel",		"fois",
+		"kAnimationUILoopCheckBoxLabel",		"En boucle",
+		"kAnimationUISpeedStaticTextLabel",		"Vitesse :",
+		"kAnimationUIVisibilityStaticTextLabel","Visibilité :",
+		"kAnimationUIPropertyStaticTextLabel",	"Propriétés",
+		"kAnimationUIHideBeforeAnimateCheckBoxLabel","Masquer jusqu'à l'animation",
+		"kAnimationUIHideAfterAnimateCheckBoxLabel","Masquer après l'animation",
+		"kAnimationUIOnButtonEvent",			"A l'événement du bouton",
+		"kAnimationUIOnRollOffCheckBoxLabel",	"Inversion à la fin du survol",
+		"kAnimationUIEaseIn",					"Accélération",
+		"kAnimationUIEaseOut",					"Décélération",
+		"kAnimationUIEaseInAndOut",				"Accélération et décélération",
+		"kAnimationUIFadeIn",					"Fondu en entrée",
+		"kAnimationUIFadeOut",					"Fondu en sortie",
+		"kAnimationUINone",						"Sans",
+		"kAnimationUIFromPreset",				"Du paramètre prédéfini",
+		"kAnimationUIPropertyDesignStaticTextLabel",		"Animation :",
+		"kAnimationUIPropertyDesignCheckBoxLabel",			"Fin de l'animation",
+		"kAnimationFromStaticTextLabel",					"Animer depuis",
+		"kAnimationToStaticTextLabel",						"Animer jusqu'à",
+		"kAnimationUIPropertyDesignScaleStaticTextLabel",	"Mise à l'échelle",
+		"kAnimationUIPropertyDesignScaleHorzStaticTextLabel",	"l :",
+		"kAnimationUIPropertyDesignScaleVertStaticTextLabel",	"H :",
+		"kAnimationUIPropertyDesignRotateStaticTextLabel",	"Rotation :",
+		"kAnimationUIPropertyDesignOpacityStaticTextLabel",	"Opacité :",
+		"kAnimationUIPropertyDesignProxyStaticTextLabel",	"Origine :",
+		
+		"kAnimationUIFrom",						"De l'aspect actuel",
+		"kAnimationUITo",						"A l'aspect actuel",
+		"kAnimationUIOffset",					"A l'emplacement actuel",
+
+		"kAnimationPanelButtonTriggerTip",		"Créer un déclencheur de bouton (cliquer sur l'icône puis cliquer sur un objet pour déclencher cette animation)",
+		"kAnimationPanelShowProxyTip",			"Afficher la doublure de l'animation",
+		"kAnimationPanelLockIconTip",			"Conserver la valeur d'échelle",
+		"kAnimationPanelEventMenuSelectorTip",	"Sélectionner l'événement de déclenchement en cliquant sur la flèche vers le bas",
+		"kAnimationPanelEventInfoTip",			"Evénement(s) de déclenchement pour l'animation",
+		"kAnimationPanelEventInfoDefaultTip",	"Evénement de déclenchement par défaut pour l'animation",
+		"kAnimationPanelPreviewButtonTip",		"Aperçu de la sélection actuelle",
+		"kAnimationPanelConvertToMotionPathTip","Convertir en trajectoire",
+		"kAnimationUIFromTip",					"Utilise les propriétés de l'objet actuel comme aspect de début de l'animation au moment de l'exécution.",
+		"kAnimationUIToTip",					"Utilise les propriétés de l'objet actuel comme aspect de fin de l'animation au moment de l'exécution.",
+		"kAnimationUIOffsetTip",				"Utilise les propriétés de l'objet actuel comme aspect de début et la position actuelle comme emplacement de fin de l'animation au moment de l'exécution.",
+		"kAnimationUIAnimationOptionTip",		"Options d'animation",
+		"kAnimationUITrashTip",					"Supprimer l'animation",
+		"kAnimationUIXFPointTip",				"Modifiez le point d'origine pour l'échelle et la rotation.",
+		"kAnimationUIShowTimingButtonTip",		"Afficher le panneau Minutage",
+		
+		"kAnimationUISaveAsPresetTitle",		"Enregistrer le paramètre prédéfini sélectionné sous",
+		"kAnimationUISavePresetTitle",			"Enreg. prédéfini",
+		"kAnimationUISavePresetNameLabel",		"Nom :",
+
+		"kAnimationUIEventPopupMenu",			"Menu contextuel Evénement",
+		"kAnimationUICreateButtonTriggerCmd",	"Créer un déclencheur de bouton",
+		"kAnimationUICreateSelfTriggerCmd",		"Créer un auto-déclenchement",
+		
+		"kAnimationUIManagePresetsDialogTitle",	"Gérer les paramètres prédéfinis",
+		"kAnimationUIManagePresetsDoneButton",	"Terminer",
+		"kAnimationUIManagePresetsDeleteButton","&Supprimer",
+		"kAnimationUIManagePresetsDuplicateButton","D&upliquer",
+		"kAnimationUIManagePresetsLoadButton",	"&Charger...",
+		"kAnimationUIManagePresetsSaveAsButton","Enregi&strer sous...",
+		"kAnimationUIManagePresetMenuItem",		"Gérer les paramètres prédéfinis...",
+		"kAnimationUIManagePresetPresetsSeparator", "--------------------",
+		"kAnimationUIManagePresetNamePrefix",	"[",
+		"kAnimationUIManagePresetNameSuffix",	"]",
+	}
+};
+
+#endif // __ODFRC__

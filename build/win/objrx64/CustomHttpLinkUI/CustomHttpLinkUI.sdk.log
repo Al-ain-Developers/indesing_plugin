@@ -1,0 +1,30 @@
+﻿  VCPlugInHeaders.cpp
+  PlugInStatics.cpp
+  SDKFileHelper.cpp
+  SDKPlugInEntrypoint.cpp
+  CustomHttpLinkUIActionComponent.cpp
+  CustomHttpLinkUIID.cpp
+  CustomHttpLinkUINoStrip.cpp
+  CustomHttpLinkUIObserver.cpp
+  CustomHttpLinkUIPlaceButtonObserver.cpp
+  TriggerResourceDeps.cpp
+  Performing Custom Build Tools
+  ODFRC deleting old resources... 
+  "..\objRx64\CustomHttpLinkUI"\CusDtLnkUI.res doesn't exist
+  Bad arguments to merge_res.cmd  
+     Usage 
+        1)merge_res.cmd $(IntDir) ResourceFile
+        2)merge_res.cmd $(IntDir) ResourceFile CoreResourceFile
+  Use 1) if the platform and core resourfile names are the same.
+     Use 2) if they are different.
+     Where ResourceFile is the filename without .res 
+           CoreResourceFile is the filename without .fres 
+     Example: 1) merge_res.cmd $(IntDir) TableModel
+              2) merge_res.cmd $(IntDir) TableModel TableModelCore
+  merge_res.cmd done.
+  Deleting old resources... 
+  15 File(s) copied
+     Creating library ..\..\..\build\win\objRx64\CustomHttpLinkUI/CustomHttpLinkUI.lib and object ..\..\..\build\win\objRx64\CustomHttpLinkUI/CustomHttpLinkUI.exp
+LINK : warning LNK4098: defaultlib 'LIBCMT' conflicts with use of other libs; use /NODEFAULTLIB:library
+  CustomHttpLinkUI.sdk.vcxproj -> C:\Users\User\Desktop\plugin_sdk_v3\plugin\build\win\releasex64\sdk\CustomHttpLinkUI.sdk.pln
+  restore_res.cmd done.

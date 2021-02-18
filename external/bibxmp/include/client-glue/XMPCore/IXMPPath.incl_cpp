@@ -1,0 +1,67 @@
+// =================================================================================================
+// Copyright 2014 Adobe Systems Incorporated
+// All Rights Reserved.
+//
+// NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance with the terms
+// of the Adobe license agreement accompanying it.
+// =================================================================================================
+
+#if AdobePrivate
+// =================================================================================================
+// Change history
+// ==============
+//
+// Writers:
+//  ADC	Amandeep Chawla
+//
+// mm/dd/yy who Description of changes, most recent on top.
+//
+// 05-19-14 ADC 5.6-c012 Refactoring XMPCommon code and appropriate changes in XMPCore and XMPCompareAndMerge.
+// 02-24-14 HK  5.6-c004 Added new internal XMP DOM interfaces + fixed memory leaks + implemented qualifiers for new XMP DOM.
+// 02-18-14 HK  5.5-c034 Implementing Serialize(), Clone() and all setter/modifier methods of XMP DOM.
+// 02-13-14 ADC 5.5-c031 Refactoring XMPCore, implementing few APIs and fixing issues.
+// 02-09-14 ADC 5.5-c026 Re-factoring of XMPCommon Framework
+// 02-05-14 ADC 5.5-c024 Added a new API to the XMPCore to return pointer to interface
+//						 IXMPDOMFactory
+//
+// =================================================================================================
+#endif // AdobePrivate
+
+#include "XMPCore/Interfaces/IXMPPath.h"
+#include "XMPCore/Interfaces/IXMPDOMFactory.h"
+
+#define CALL_EQUIVALENT_VIRTUAL_FUNCTION( nameSpace, className, functionName, ... ) {			\
+			pIError error ( NULL );																\
+			p##className##_base ptr = functionName( __VA_ARGS__, error );						\
+			if ( error )																		\
+				throw nameSpace::MakeUncheckedSharedPointer( error );							\
+			return nameSpace::MakeSharedPointer< className##_latest, className##_base >( ptr );	\
+		}
+
+namespace NS_XMPCORE {
+
+	using namespace NS_XMPCOMMON;
+
+	spIUTF8String IXMPPath_v1::Serialize( bool useFullNSAsPrefix ) const {
+		CALL_EQUIVALENT_VIRTUAL_FUNCTION ( NS_XMPCOMMON, IUTF8String, Serialize, useFullNSAsPrefix );
+	}
+
+	void IXMPPath_v1::AppendSegment( spIXMPPathSegment_latest sPtr) {
+		CALL_EQUIVALENT_VIRTUAL_FUNCTION_RETURNING_NOTHING ( NS_XMPCOMMON, AppendSegment, static_cast < pIXMPPathSegment_latest>(sPtr.get()) );
+	}
+
+	spIXMPPathSegment_latest IXMPPath_v1::GetSegment( SizeT size ) const {
+		CALL_EQUIVALENT_VIRTUAL_FUNCTION ( NS_XMPCOMMON, IXMPPathSegment, GetSegment, size );
+	}
+
+	spIXMPPath_latest IXMPPath_v1::CreateEmptyPath() {
+		return IXMPDOMFactory_latest::GetInstance()->CreateEmptyPath();
+	}
+
+	spIXMPPath_latest IXMPPath_v1::CreatePathByParsing( const char * str ) {
+		return IXMPDOMFactory_latest::GetInstance()->CreatePathByParsing( str );
+	}
+
+
+
+}

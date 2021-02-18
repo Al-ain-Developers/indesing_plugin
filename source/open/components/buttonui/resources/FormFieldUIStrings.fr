@@ -1,0 +1,141 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/buttonui/resources/FormFieldUIStrings.fr $
+//  
+//  Owner: Tim Wright
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//  
+//  Adapted from GroupStrings.fr
+//  
+//  twright SPAM 01/17/2001 Should either rename this file, or move the dialog def somewhere else...
+//  
+//========================================================================================
+
+#include "ErrorTableTypes.h"
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "StringTable.fh"
+
+#include "FormFieldUIDefs.h"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// RESOURCE Locale index
+//========================================================================================
+
+resource LocaleIndex (kFormFieldUIStringsRsrcID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_Wild, kFormFieldUIStringsRsrcID + index_enUS
+		kWildFS, k_enGB, kFormFieldUIStringsRsrcID + index_enGB
+		kWildFS, k_deDE, kFormFieldUIStringsRsrcID + index_deDE
+		kWildFS, k_frFR, kFormFieldUIStringsRsrcID + index_frFR
+		kWildFS, k_jaJP, kFormFieldUIStringsRsrcID + index_jaJP
+		kWildFS, k_esES, kFormFieldUIStringsRsrcID + index_esES    
+		kWildFS, k_ptBR, kFormFieldUIStringsRsrcID + index_ptBR    
+		kWildFS, k_svSE, kFormFieldUIStringsRsrcID + index_svSE    
+		kWildFS, k_daDK, kFormFieldUIStringsRsrcID + index_daDK    
+		kWildFS, k_nlNL, kFormFieldUIStringsRsrcID + index_nlNL    
+		kWildFS, k_itIT, kFormFieldUIStringsRsrcID + index_itIT    
+		kWildFS, k_nbNO, kFormFieldUIStringsRsrcID + index_nbNO    
+		kWildFS, k_fiFI, kFormFieldUIStringsRsrcID + index_fiFI    
+		kWildFS, k_koKR, kFormFieldUIStringsRsrcID + index_koKR    
+		kWildFS, k_zhCN, kFormFieldUIStringsRsrcID + index_zhCN    
+		kWildFS, k_zhTW, kFormFieldUIStringsRsrcID + index_zhTW    
+
+		kWildFS, k_csCZ, kFormFieldUIStringsRsrcID + index_csCZ    
+		kWildFS, k_huHU, kFormFieldUIStringsRsrcID + index_huHU    
+		kWildFS, k_plPL, kFormFieldUIStringsRsrcID + index_plPL    
+//		kWildFS, k_roRO, kFormFieldUIStringsRsrcID + index_roRO    
+		kWildFS, k_ruRU, kFormFieldUIStringsRsrcID + index_ruRU    
+		kWildFS, k_trTR, kFormFieldUIStringsRsrcID + index_trTR    
+		kWildFS, k_ukUA, kFormFieldUIStringsRsrcID + index_ukUA    
+		kWildFS, k_elGR, kFormFieldUIStringsRsrcID + index_elGR    
+		kWildFS, k_arAE, kFormFieldUIStringsRsrcID + index_arAE    
+		kWildFS, k_heIL, kFormFieldUIStringsRsrcID + index_heIL    
+//twright 12/21/2000 SPAM Need translation...
+
+	}
+}
+
+//================================================================================
+// No Translate strings.
+//========================================================================================
+
+resource LocaleIndex (kFormFieldUIStringsNoTransRsrcID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS,	k_Wild, 	kFormFieldUIStringsNoTransRsrcID + index_enUS
+	}
+}
+
+
+resource StringTable (kFormFieldUIStringsNoTransRsrcID + index_enUS)
+{
+	k_enUS,
+	kEuropeanWinToMacEncodingConverter,
+	{
+		// No-Translate strings go here
+		"$$$/ActionArea/FormField", 			"FormField",
+		
+		// Used by font drop downs...
+		"$$$/DummyEntry", 					"Dummy entry",
+
+		"$$$/NoLabel", 						"",
+		
+		"$$$/SampleButtonsLibary",			"ButtonLibrary.indl",
+
+		"10",								"10",
+		"12",								"12",
+		"14",								"14",
+		"18",								"18",
+		
+	}
+}
+
+#endif // __ODFRC__
+
+#include "FormFieldUIStrings_enUS.fr"
+#include "FormFieldUIStrings_enGB.fr"
+#include "FormFieldUIStrings_deDE.fr"
+#include "FormFieldUIStrings_frFR.fr"
+#include "FormFieldUIStrings_jaJP.fr"
+#include "FormFieldUIStrings_esES.fr"
+#include "FormFieldUIStrings_ptBR.fr"
+#include "FormFieldUIStrings_svSE.fr"
+#include "FormFieldUIStrings_daDK.fr"
+#include "FormFieldUIStrings_nlNL.fr"
+#include "FormFieldUIStrings_itIT.fr"
+#include "FormFieldUIStrings_nbNO.fr"
+#include "FormFieldUIStrings_fiFI.fr"
+#include "FormFieldUIStrings_koKR.fr"
+#include "FormFieldUIStrings_zhCN.fr"
+#include "FormFieldUIStrings_zhTW.fr"
+#include "FormFieldUIStrings_csCZ.fr"
+#include "FormFieldUIStrings_huHU.fr"
+#include "FormFieldUIStrings_plPL.fr"
+//#include "FormFieldUIStrings_roRO.fr"
+#include "FormFieldUIStrings_ruRU.fr"
+#include "FormFieldUIStrings_trTR.fr"
+#include "FormFieldUIStrings_ukUA.fr"
+#include "FormFieldUIStrings_elGR.fr"
+#include "FormFieldUIStrings_arAE.fr"
+#include "FormFieldUIStrings_heIL.fr"

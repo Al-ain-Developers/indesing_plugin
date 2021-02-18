@@ -1,0 +1,43 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kInCopyFileActionsUIStringsRsrcID + index_csCZ)
+{
+	k_csCZ,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{
+		"&Update Design",		"&Aktualizovat návrh",
+		"AlertUnableToSave",	"Následující obsah nelze uložit. \nSoubory mohly být zamknuté nebo nemáte dostatečná práva pro jejich změny. \n",
+		"Update^1Alert",		"Nějaký obsah nelze uložit. Při aktualizaci by se mohly ztratit změny. \nChcete aktualizovat na nejnovější verzi „^1“?",
+		"Undoable^1Save",		"Aktualizace návrhu před pokračováním uloží veškerý upravitelný obsah. Příkaz Zpět nemůže vrátit žádné změny provedené pomocí aktualizace. \nChcete přesto aktualizovat na \"^1\"?",
+		"AlertStoriesMissing",	"Některé soubory obsahu nelze najít, proto je nelze upravovat. Zkuste přemístit soubory do jejich původních umístění nebo aktualizujte vazby v InDesign.",
+		"AlertStoriesMissingWF", "Některé soubory obsahu nelze najít, proto je nelze upravovat. Zkuste stáhnout obsah ze serveru a dokument znovu otevřít.",
+		"Update",				"Aktualizovat",
+		"&Revert Story",		"Obno&vit obsah",
+//		"Revert Story",			"Revert Content", // Note to localizer: this string moved to InCopySharedStrings_enUS.fr
+		
+		"SaveAsFeatureLost",    "Tento dokument může obsahovat vlastnosti, které tento formát souboru nepodporuje. Chcete pokračovat?",
+		"CannotSaveOntoLockedFile",		"Určený soubor je nyní vyhrazený pro uživatele \"^1\" v ^2 z dokumentu ^3.  Zvolte prosím jiný název soubor nebo požádejte uživatele \"^1\", aby soubor zpřístupnil.",
+		"CannotSaveOntoLockedFileMinimal",	"Určený soubor je nyní vyhrazený pro uživatele \"^1\".  Zvolte prosím jiný název soubor nebo požádejte uživatele \"^1\", aby soubor zpřístupnil.",
+	}
+};
+
+
+#endif // __ODFRC__

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas 
+	xmlns:mx="http://www.adobe.com/2006/mxml" 
+	label="Text" 
+	width="100%" 
+	height="100%">
+   	<mx:List 
+		id="lstTextFrames" 
+		columnCount="1" 
+		verticalScrollPolicy="on"
+		horizontalScrollPolicy="off"
+		width="100%"
+		height="100%">
+		<mx:itemRenderer>
+	       <mx:Component>
+	           <mx:HBox>
+	               	<mx:Label 
+	               		width="200"
+	               		text="{data.scriptLabel}"			               		
+	               	/>
+					<mx:TextArea
+						id="txtContent"
+						width="450" height="100"
+		            	text="{data.storyContent}"
+		            	change="{data.updateContent(txtContent.text)}" 
+					/>
+	           </mx:HBox>
+		   </mx:Component>
+	   </mx:itemRenderer>
+	</mx:List >
+</mx:Canvas>

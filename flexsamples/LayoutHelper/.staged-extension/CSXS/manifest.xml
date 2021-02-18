@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ExtensionManifest Version="3.0" ExtensionBundleId="com.adobe.indesign.layouthelper" ExtensionBundleVersion="1.0.0"
+		ExtensionBundleName="LayoutHelper" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<ExtensionList>
+		<Extension Id="com.adobe.indesign.layouthelper.extension1" Version="1.0" />
+	</ExtensionList>
+	<ExecutionEnvironment>
+		<HostList>
+			<Host Name="IDSN" Version="[9.0,9.9]" />
+		</HostList>
+		<LocaleList>
+			<Locale Code="All" />
+		</LocaleList>
+		<RequiredRuntimeList>
+			<RequiredRuntime Name="CSXS" Version="3.0" />
+		</RequiredRuntimeList>
+	</ExecutionEnvironment>
+	<DispatchInfoList>
+		<Extension Id="com.adobe.indesign.layouthelper.extension1">
+			<DispatchInfo >
+				<Resources>
+					<SwfPath>./LayoutHelper.swf</SwfPath>
+				</Resources>
+				<Lifecycle>
+					<AutoVisible>true</AutoVisible>
+				</Lifecycle>
+				<UI>
+					<Type>Panel</Type>
+					<Menu>LayoutHelper</Menu>
+					<Geometry>
+						<Size>
+							<Height>450</Height>
+							<Width>300</Width>
+						</Size>
+						<MaxSize>
+							<Height>900</Height>
+							<Width>600</Width>
+						</MaxSize>
+						<MinSize>
+							<Height>450</Height>
+							<Width>300</Width>
+						</MinSize>
+					</Geometry>
+				</UI>
+			</DispatchInfo>
+		</Extension>
+	</DispatchInfoList>
+</ExtensionManifest>

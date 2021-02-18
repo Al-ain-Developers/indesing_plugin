@@ -1,0 +1,396 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/sdksamples/hiddentext/HidTxt.fr $
+//  
+//  Owner: Adobe Developer Technologies
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+//===========================
+//  General includes:
+//===========================
+
+#include "MenuDef.fh"
+#include "ActionDef.fh"
+#include "ActionDefs.h"
+#include "AdobeMenuPositions.h"
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "StringTable.fh"
+//#include "OMTypes.h"
+#include "objectmodeltypes.fh"
+#include "ShuksanID.h"
+#include "ActionID.h"
+#include "CommandID.h"
+#include "WorkspaceID.h"
+#include "widgetid.h"
+#include "BuildNumber.h"
+#include "PanelList.fh"
+#include "Widgets.fh"	// for PalettePanelWidget
+#include "InterfaceColorDefines.h"
+#include "IControlViewDefs.h"
+#include "SysControlIds.h"
+#include "TextEditorID.h"
+#include "TextID.h"
+#include "TextAttrID.h"
+#include "TextAttrImplID.h"
+
+#include "PlugInModel_UIAttributes.h"
+// Project includes:
+#include "HidTxtID.h"
+
+#ifdef __ODFRC__
+
+/*
+// Plugin version definition.
+*/
+resource PluginVersion (kSDKDefPluginVersionResourceID)
+{
+	kTargetVersion,
+	kHidTxtPluginID,
+	kSDKDefPlugInMajorVersionNumber, kSDKDefPlugInMinorVersionNumber, 	
+	kSDKDefHostMajorVersionNumber, kSDKDefHostMinorVersionNumber,
+	kHidTxtLastMajorFormatChange, kHidTxtLastMinorFormatChange,
+	{ kInDesignProduct, kInCopyProduct, kInDesignServerProduct},
+	{ kWildFS },
+	kModelPlugIn,
+	kHidTxtVersion
+};
+
+/*
+// Custom story thread (ITextStoryThread) and owned item (IOwnedItem) implementations are 
+// not supported by missing plug-in workflows. If a document with hidden text is passed to a 
+// user that does not have the HiddenText plug-in the application may become unstable and 
+// document corruption may happen. Therefore we mark this plug-in's data as critical so the
+// user will receive a string warning not to open documents with hidden text data when the
+// plug-in is missing.
+*/
+resource CriticalTags(1)
+{ 
+	kClassIDSpace, 
+	{ 
+		kHidTxtModelBoss,
+		kHidTxtAnchorTextAdornmentBoss
+	}, 
+
+};
+
+resource CriticalTags(2)
+{ 
+	kImplementationIDSpace, 
+	{ 
+		kHidTxtModelImpl,
+		kHidTxtOwnedItemImpl
+	}, 
+};
+
+/*
+// The ExtraPluginInfo resource adds extra information to the Missing Plug-in dialog
+// that is popped when a document containing this plug-in's data is opened when
+// this plug-in is not present. These strings are not translatable strings
+// since they must be available when the plug-in isn't around. They get stored
+// in any document that this plug-in contributes data to.
+*/
+resource  ExtraPluginInfo(1)
+{
+	kHidTxtCompanyValue,				// Company name
+	kHidTxtMissingPluginURLValue,		// URL 
+	kHidTxtMissingPluginAlertValue,		// Missing plug-in alert text
+};
+
+/*
+//	Boss class definition.
+*/
+resource ClassDescriptionTable(kSDKDefClassDescriptionTableResourceID)
+{{{
+	/** Allows hidden text to be embedded in a story anchored on
+		an owned item (IOwnedItem) associated with a TextIndex, 
+		the range of text in the story that stores the 
+		hidden text content is represented by this boss class's 
+		story thread (ITextStoryThread).
+		In this implementation there is only one story thread  
+		in the story thread dictionary (ITextStoryThreadDict). 
+		It has a fixed key kHidTxtStoryThreadDictKey. 
+		
+		The hidden text is not composed or displayed in a parcel list.
+					
+		@ingroup hiddentext
+	*/
+	Class
+	{
+		kHidTxtModelBoss,
+		kInvalidClass,
+		{
+			/** See IHidTxtModel and HidTxtModel.
+			*/		
+			IID_IHIDTXTMODEL, kHidTxtModelImpl,
+			/** See ITextStoryThreadDict and HidTxtStoryThreadDict.
+			*/	
+			IID_ITEXTSTORYTHREADDICT, kHidTxtStoryThreadDictImpl,
+			/** See ITextStoryThread and HidTxtStoryThread.
+			*/				
+			IID_ITEXTSTORYTHREAD, kHidTxtStoryThreadImpl,
+			/** See IOwnedItem and HidTxtOwnedItem.
+			*/				
+			IID_IOWNEDITEM, kHidTxtOwnedItemImpl,
+			/** See IPMPersist, implementation is provided by the API.
+			*/				
+			IID_IPMPERSIST, kPMPersistImpl,
+			/** See IParcelList and HidTxtParcelList stub.
+				Even though hidden text is never composed
+				for display in a parcel we need
+				a stubbed parcel implementation to keep the
+				application happy.
+			*/				
+			IID_IPARCELLIST, kHidTxtParcelListImpl,
+			/** See ITextParcelList, implementation provided by the API.
+			*/				
+			IID_ITEXTPARCELLIST, kTextParcelListImpl,
+			/** See  ITextParcelListData and HidTxtParcelListData stub.
+			*/				
+			IID_ITEXTPARCELLISTDATA, kHidTxtParcelListDataImpl,
+			/** See ITextParcelListComposer and HidTxtParcelListComposer stub.
+			*/				
+			IID_ITEXTPARCELLISTCOMPOSER, kHidTxtParcelListComposerImpl,
+		}
+	},
+
+	/** Manages the hidden text (kHidTxtModelBoss) when text model
+		operations affect it.
+		
+		@ingroup hiddentext
+	*/
+	Class
+	{
+		kHidTxtTextModelMementoBoss,
+		kInvalidClass,						
+		{
+			/** See ITextModelMemento and HidTxtMemento.
+			*/			
+			IID_ITEXTMODELMEMENTO,		kHidTxtMementoImpl,
+			/** UIDRef of associated owned item (kHidTxtModelBoss),
+				see IUIDData (implementation provided by the API). 
+			*/				
+			IID_IHIDTXTOWNEDITEMUIDDATA,	kUIDDataImpl, // 
+		}
+	},
+
+	/** Indicates presence of hidden text by drawing an icon
+		at the TextIndex where the hidden text is anchored.
+		@ingroup hiddentext
+		@see HidTxtOwnedItem, the owned item attaches the adornment to the wax.
+	*/
+	Class
+	{
+		kHidTxtAnchorTextAdornmentBoss,
+		kInvalidClass,
+		{
+			/** See ITextAdornment and HidTxtAnchorTextAdornment.
+			*/
+			IID_ITEXTADORNMENT, kHidTxtAnchorTextAdornmentImpl,
+		}
+	},
+
+	/** Creates a kHidTxtModelBoss object.
+		
+		@ingroup hiddentext
+	*/
+	Class
+	{
+		kHidTxtModelCreateCmdBoss,
+		kInvalidClass,
+		{
+			/** See ICommand and HidTxtModelCreateCmd.
+				\li ItemList Input: UID at index 0 refers to the text model (ITextModel) the hidden
+					text is to be embedded in.
+				\li ItemList Output: UID at index 0 refers to the created kHidTxtModelBoss object.
+				\li Notification Subject: Document (kDocBoss) that contains the hidden text.
+				\li Notification Protocol: IHidTxtModel::kDefaultIID.
+			*/			
+			IID_ICOMMAND, kHidTxtModelCreateCmdImpl,
+			/** See IRangeData, implementation provided by the API.
+				\li IN: gives the TextIndex on which the hidden text should be anchored.
+			*/				
+			IID_IRANGEDATA, kRangeDataImpl,
+		}
+	},
+
+	/** Modifies the hidden text string embedded in the text model.
+		
+		@ingroup hiddentext
+	*/
+	Class
+	{
+		kHidTxtModelModifyTextCmdBoss,
+		kInvalidClass,
+		{
+			/** See ICommand and HidTxtModelModifyTextCmd.
+				\li ItemList Input: UID at index 0 refers to the kHidTxtModelBoss object to be modified.
+				\li ItemList Output: unchanged from input.
+				\li Notification Subject: Document (kDocBoss) that contains the hidden text.
+				\li Notification Protocol: IHidTxtModel::kDefaultIID. 
+			*/			
+			IID_ICOMMAND, kHidTxtModelModifyTextCmdImpl,
+			/** See IInsertTextData, implementation provided by the API.
+				\li IN: the text to be stored as hidden text.
+			*/				
+			IID_IINSERTTEXTDATA, kInsertTextDataImpl,
+		}
+	},
+
+	/** Deletes a kHidTxtModelBoss object.
+		
+		@ingroup hiddentext
+	*/
+	Class
+	{
+		kHidTxtModelDeleteCmdBoss,
+		kInvalidClass,
+		{
+			/** See ICommand and HidTxtModelDeleteCmd.
+				\li ItemList Input: UID at index 0 refers to the kHidTxtModelBoss object to be deleted.
+				\li ItemList Output: unchanged from input.
+				\li Notification Subject: Document (kDocBoss) that contained the hidden text.
+				\li Notification Protocol: IHidTxtModel::kDefaultIID.
+			*/	
+			IID_ICOMMAND, kHidTxtModelDeleteCmdImpl,
+		}
+	},
+
+	/** Copies a kHidTxtModelBoss object to the given story.
+		
+		@ingroup hiddentext
+	*/
+	Class
+	{
+		kHidTxtModelCopyCmdBoss,
+		kInvalidClass,
+		{
+			/** See ICommand and HidTxtModelCopyCmd.
+				\li ItemList Input: UID at index 0 refers to the kHidTxtModelBoss object to be copied.
+				\li ItemList Output: unchanged from input.
+				\li Notification Subject: none.
+				\li Notification Protocol: none.
+			*/	
+			IID_ICOMMAND, kHidTxtModelCopyCmdImpl,
+			/** See IUIDData, implementation provided by the API.
+				\li IN: references the story the object is to be copied into.
+			*/	
+			IID_IHIDTXTTOSTORYUIDDATA, kUIDDataImpl,
+		}
+	},
+
+	/** Extends the selection so that it can manipulate hidden text.
+		@ingroup hiddentext	
+	*/
+	AddIn
+	{
+		kIntegratorSuiteBoss,
+		kInvalidClass,
+		{
+			/** See IHidTxtSuite and HidTxtSuiteASB.
+			*/
+			IID_IHIDTXTSUITE, kHidTxtSuiteASBImpl,
+		}
+	},
+
+	/**	Manipulates hidden text when a text selection is active.
+		@ingroup hiddentext	
+	*/
+	AddIn
+	{
+		kTextSuiteBoss,
+		kInvalidClass,
+		{
+			/** See IHidTxtSuite and HidTxtSuiteTextCSB.
+			*/
+			IID_IHIDTXTSUITE, kHidTxtSuiteTextCSBImpl,
+		}
+	},
+		
+}}};
+
+/* This resource links the selection extension implementation with the suite implementation.
+*/
+resource kSelectionSuiteExt (1)	
+{
+	kTextSelectionBoss,
+	{
+		kHidTxtSuiteTextCSBImpl,	kHidTxtSuiteTextCSBSelectionExtImpl,
+	}
+};
+
+/*
+// Implementation definition.
+*/
+resource FactoryList (kSDKDefFactoryListResourceID) 
+{
+	kImplementationIDSpace,
+	{
+#include "HidTxtFactoryList.h"
+	}
+};
+
+/*
+// LocaleIndex
+// The LocaleIndex should have indicies that point at your
+// localizations for each language system that you are 
+// localized for.
+*/
+/*
+// String LocaleIndex.
+*/
+resource LocaleIndex (kSDKDefStringsResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_enUS, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_jaJP, kSDKDefStringsResourceID + index_jaJP
+		
+		kWildFS, k_Wild, kSDKDefStringsResourceID + index_enUS
+	}
+};
+
+resource LocaleIndex (kSDKDefStringsNoTransResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_Wild, kSDKDefStringsNoTransResourceID + index_enUS
+	}
+};
+
+resource StringTable (kSDKDefStringsNoTransResourceID + index_enUS)
+{
+	k_enUS,									// Locale Id
+	kEuropeanMacToWinEncodingConverter,		// Character encoding converter
+	{
+		// No-Translate strings go here:		
+	}
+};
+
+#endif // __ODFRC__
+
+#include "HidTxt_enUS.fr"
+#include "HidTxt_jaJP.fr"
+
+//  Generated by Dolly build 17: template "IfPanelMenu".
+// End, HidTxt.fr.
+
+
+
+

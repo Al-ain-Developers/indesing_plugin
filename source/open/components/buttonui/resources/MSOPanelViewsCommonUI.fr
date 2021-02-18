@@ -1,0 +1,193 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/buttonui/resources/MSOPanelViewsCommonUI.fr $
+//  
+//  Owner: Michele Stutzman
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#ifdef __ODFRC__
+
+		GenericPanelWidget
+		(
+			kMSOPanelNameStripWidgetID, kPMRsrcID_None,			// WidgetId, RsrcId
+			kBindRight | kBindLeft,				// Frame binding
+			Frame(0,0,kCC2016PanelStandardWidth,kHeaderHeight)		// Frame
+			kTrue, kTrue,										// Visible, Enabled
+			""
+			{
+				StaticTextWidget
+				(
+					kMSONameStaticWidgetID, kSysStaticTextPMRsrcId,		// WidgetId, RsrcId
+					kBindLeft,											// Frame binding
+					Frame(kCC2016StandardGapBetweenWidgets,0,(OBJECTNAME_TEXT_WIDTH+kCC2016StandardGapBetweenWidgets),kHeaderHeight)									// Frame
+					kTrue, kTrue, kAlignRight,							// Visible, Enabled
+					kDontEllipsize, kTrue,								// Ellipsize style, Convert ampersands
+					"$$$/Panel/MSOPanel/ObjectName",					// Text
+					kMSONameEditWidgetID
+				),
+				TextEditBoxWidget
+				(
+					kMSONameEditWidgetID, kSysEditBoxPMRsrcId, 
+					kBindLeft | kBindRight,
+					Frame((OBJECTNAME_TEXT_WIDTH+2*kCC2016StandardGapBetweenWidgets),kMSOPanelHeaderContentVerticalOffset,(OBJECTNAME_TEXT_WIDTH+2*kCC2016StandardGapBetweenWidgets + 110),kMSOPanelHeaderContentVerticalOffset+kCC2016StandardWidgetHeight)			// Frame
+					kTrue, kTrue,				// Visible, Enabled			
+					0,							// widget id of nudge button			
+					0, 0,						// small/large nudge amount
+					32,							// max num chars( 0 = no limit)
+					kFalse,						// is read only
+					kFalse,						//Notified for every key stroke
+					kFalse,						// range checking enabled
+					kFalse,						// blank entry allowed
+					0, 0,						// upper/lower bounds
+					"",							// initial text
+				),
+				MSOSelectionIcon
+				(
+					kMSOSelectionIconWidgetID,			// WidgetId
+					kMSOIsSelectedIconRsrcID,							// RsrcId
+					kFormFieldUIPluginID,
+					kBindRight,								// Frame binding
+					Frame(kCC2016PanelStandardWidth - kCC2016StandardGapBetweenWidgets - kCC2016StandardWidgetHeight,kMSOPanelHeaderContentVerticalOffset,kCC2016PanelStandardWidth - kCC2016StandardGapBetweenWidgets,kHeaderHeight - kMSOPanelHeaderContentVerticalOffset),	// Frame
+					kTrue,									// Visible
+					kTrue,									// Enabled
+					kADBEIconSuiteButtonType,
+					0,
+				),
+			}
+		),
+		
+		GenericPanelWithBorderWidget
+		(
+			kMSOTreeBorderPanelWidgetID, kPMRsrcID_None,			// WidgetId, RsrcId
+			kBindAll,				// Frame binding
+			Frame(0, kHeaderHeight, kCC2016PanelStandardWidth, kHeaderHeight + 2*kMSOStateMediumRowHeight)		// Frame
+			kTrue, kTrue,										// Visible, Enabled
+			""
+			{
+				StaticMultiLineTextWidget
+				(
+					kMSOMixedStaticWidgetID, kSysStaticTextPMRsrcId,		// WidgetId, RsrcId
+					kBindAll,
+					Frame(kCC2016StandardGapBetweenWidgets,kCC2016StandardGapBetweenWidgets,kCC2016PanelStandardWidth - kCC2016StandardGapBetweenWidgets,60+kCC2016StandardGapBetweenWidgets)		// Frame
+					kTrue, kTrue, kAlignLeft,		// Visible, Enabled, Alignment
+					kEllipsizeEnd, kTrue,					// Ellipsize style, Convert ampersands
+					// StaticMultiLineTextAttr
+					0,											// fScrollBarWidgetID
+					kPaletteWindowFontId;					// fFontID
+					3,											// fNumPixelsBetweenLines
+					0,0,										// fInset
+					"$$$/Panel/MSOPanel/MixedSelection",
+				),
+				MSOPanelTreeWidget
+				(
+					kMSOPanelTreeWidgetID, kPMRsrcID_None,// WidgetId, RsrcId
+					kBindAll,
+					Frame(0, 0, kCC2016PanelStandardWidth - 1, 2*kMSOStateMediumRowHeight)		// Frame
+					kTrue, kTrue,				// Visible, Enabled
+					kFalse,						// EraseBeforeDraw
+					kInterfacePaletteFill,		// InterfaceColor
+					"",							// name
+					kHideRootNode | kDrawEndLine, //Options
+					kFalse,						//Use H Scroll bar
+					kTrue,						//Use V scroll bar
+					kMSOStateMediumRowHeight,	// Vertical Scroll Button Increment
+					kMSOStateMediumRowHeight,	// Vertical Thumb Scroll Increment
+					10,							// Horizontal Scroll Button Increment - Not Used
+					10,							// Horizontal Thumb Scroll Increment - Not Used
+					1,							// Items selectable, 0 = No Selection, 1 = Single Selection, 2 = Multiple Selection
+					kTrue,						// Allow children from multiple parents to be selected
+					kFalse,						// Allow discontiguous selection
+					{
+					},
+					{{
+						IID_IOBSERVER, // need to attach this one first, so it rebuilds the tree
+						IID_ISELECTIONOBSERVER,
+					}},
+			
+				),
+			}
+		),
+		
+		// ----- Control strip
+		GenericPanelWidget
+		(
+			kMSOPanelControlStripWidgetID, kPMRsrcID_None,			// WidgetId, RsrcId
+			kBindBottom | kBindRight | kBindLeft,				// Frame binding
+			Frame(0,kHeaderHeight + 2*kMSOStateMediumRowHeight,kCC2016PanelStandardWidth,kHeaderHeight + 2*kMSOStateMediumRowHeight + kCC2016PanelIconHeight)		// Frame
+			kTrue, kTrue,										// Visible, Enabled
+			""
+			{
+				PreviewButtonWidget
+				(
+					kShowPreviewButtonWidgetID, kShowPreviewIconRsrcID, kFormFieldUIPluginID,	// WidgetId, RsrcId
+					kBindLeft,											// Frame binding
+					Frame(0, 0, kCC2016PanelIconWidth, kCC2016PanelIconHeight)													// Frame
+					kTrue, kTrue,														// Visible, Enabled
+					kADBEIconSuiteButtonType,
+				),				
+				
+				StaticTextWidget
+				(
+					kMSOPanelStatusAreaWidgetID, kSysStaticTextPMRsrcId,		// WidgetId, RsrcId
+					kBindBottom | kBindRight | kBindLeft,								// Frame binding
+					Frame(kCC2016PanelIconWidth + kCC2016StandardGapBetweenWidgets, 0, kCC2016ResizablePanelBottomBottomBarWidth - (3*kCC2016PanelIconWidth) - kCC2016StandardGapBetweenWidgets, kCC2016PanelIconHeight)		// Frame
+					kTrue, kTrue, kAlignLeft,							// Visible, Enabled
+					kEllipsizeEnd, kTrue,										// Ellipsize style, Convert ampersands
+					"",													// Text
+					0
+				),
+	 			PasteIntoMSOStateButton
+				(
+					kPasteIntoMSOStateButtonWidgetID, 
+					kPasteIntoMSOStateIconRsrcID, 
+					kFormFieldUIPluginID,	// WidgetId, RsrcId
+					kBindBottom | kBindRight,							// Frame binding
+					Frame(kCC2016ResizablePanelBottomBottomBarWidth - (3*kCC2016PanelIconWidth),0, kCC2016ResizablePanelBottomBottomBarWidth - (2*kCC2016PanelIconWidth), kCC2016PanelIconHeight)		// Frame
+					kTrue, kTrue,										// Visible, Enabled
+					kADBEIconSuiteButtonType,
+				),
+	 			AddToMSOStateButton
+				(
+					kAddToMSOStateButtonWidgetID, 
+					kAddToMSOStateIconRsrcID, 
+					kFormFieldUIPluginID,	// WidgetId, RsrcId
+					kBindBottom | kBindRight,							// Frame binding
+					Frame(kCC2016ResizablePanelBottomBottomBarWidth - (3*kCC2016PanelIconWidth),0, kCC2016ResizablePanelBottomBottomBarWidth - (2*kCC2016PanelIconWidth), kCC2016PanelIconHeight)		// Frame
+					kTrue, kTrue,										// Visible, Enabled
+					kADBEIconSuiteButtonType,
+				),
+	 			NewMSOStateButton
+				(
+					kNewMSOStateButtonWidgetID, kIconNew, kApplicationRsrcPluginID,	// WidgetId, RsrcId
+					kBindBottom | kBindRight,							// Frame binding
+					Frame(kCC2016ResizablePanelBottomBottomBarWidth - (2*kCC2016PanelIconWidth), 0, kCC2016ResizablePanelBottomBottomBarWidth-kCC2016PanelIconWidth, kCC2016PanelIconHeight)		// Frame
+					kTrue, kTrue,										// Visible, Enabled
+					kADBEIconSuiteButtonType,
+				),
+				DeleteMSOStateButton
+				(
+					kDeleteMSOStateButtonWidgetID, kIconDelete, kApplicationRsrcPluginID,// WidgetId, RsrcId
+					kBindBottom | kBindRight,							// Frame binding
+					Frame(kCC2016ResizablePanelBottomBottomBarWidth-kCC2016PanelIconWidth,0, kCC2016ResizablePanelBottomBottomBarWidth, kCC2016PanelIconHeight)		// Frame
+					kTrue, kTrue,										// Visible, Enabled
+					kADBEIconSuiteButtonType,
+				),
+			}
+		),
+#endif

@@ -1,0 +1,93 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/spellpanel/SpellMenu.fr $
+//  
+//  Owner: Bernd Paradies
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "MenuDef.fh"
+#include "ActionDef.fh"
+#include "ActionDefs.h"
+#include "AdobeMenuPositions.h"
+#include "SpellPanelID.h"
+#include "SpellingServiceID.h"
+#include "ActionID.h"
+#include "TextID.h"		// For IID_ITEXTEDIT_ISUITE
+
+#ifdef __ODFRC__
+
+resource LocaleIndex (kSpellPanelMenuRsrcID)
+{
+	kMenuRsrcType,
+	{
+		kWildFS, k_Wild, kSpellPanelMenuRsrcID + index_enUS
+	}
+}
+
+resource MenuDef (kSpellPanelMenuRsrcID + index_enUS)
+{
+	{ 
+		0, "Main:&Edit:SpellingMenu:",kSpellingMenuPosition,kFalse,
+		kSpellCheckActionID, "Main:&Edit:SpellingMenu",kSpellCheckMenuPosition,kFalse,
+		kDynamicSpellCheckActionID, "Main:&Edit:SpellingMenu",kDynamicSpellCheckMenuPosition,kFalse,
+		kSpellPrefsActionID, "Main:&Edit:Preferences",kSpellPrefsMenuPosition,kFalse,
+		kSpellPrefsSepActionID, "Main:&Edit:Preferences:-",kSpellPrefsSepMenuPosition,kFalse,
+		kAutoCorrectActionID, "Main:&Edit:SpellingMenu",kAutoCorrectMenuPosition,kFalse,
+		kAutoCorrectPrefsActionID, "Main:&Edit:Preferences",kAutoCorrectPrefsMenuPosition,kFalse,
+
+		// Right Mouse support
+		0, "RtMouseText:SpellingMenu:",kContextSpellcheckMenuPosition,kFalse,
+		kSpellCheckActionID, "RtMouseText:SpellingMenu",kSpellCheckMenuPosition,kFalse,
+		kDynamicSpellCheckActionID, "RtMouseText:SpellingMenu",kDynamicSpellCheckMenuPosition,kFalse,
+		kAutoCorrectActionID, "RtMouseText:SpellingMenu",kAutoCorrectMenuPosition,kFalse,
+
+		//kSpellCheckActionID, "RtMouseText",kContextSpellcheckMenuPosition,kFalse,
+		//kDynamicSpellCheckActionID, "RtMouseText",kContextDynamicSpellcheckMenuPosition,kFalse,
+		//kNothingTextSpellSepActionID, "RtMouseText:-",kContextSpellSepMenuPosition,kFalse,
+	}
+}
+
+
+resource LocaleIndex (kSpellActionRsrcID)
+{
+	kActionRsrcType,
+	{
+		kWildFS, k_Wild, kSpellActionRsrcID + index_enUS
+	}
+}
+
+
+resource ActionDef (kSpellActionRsrcID + index_enUS)
+{
+	{ 
+		kSpellMenuComponentBoss, kSpellCheckActionID, "Check Spelling...",kEditMenuSpellingActionArea, kNormalAction, kDisableIfNoFrontDocument, 0, kTrue, 
+		kSpellMenuComponentBoss, kSpellPrefsActionID, "&Spelling...",kEditMenuPreferencesActionArea,kNormalAction,kAlwaysEnabled,0, kTrue,
+		kSpellMenuComponentBoss, kDynamicSpellCheckActionID, "Dynamic SpellCheck",kEditMenuSpellingActionArea,kNormalAction,kCustomEnabling,0,kTrue,
+		kSpellMenuComponentBoss, kAutoCorrectActionID, "Auto Correct",kEditMenuSpellingActionArea,kNormalAction,kCustomEnabling,0,kTrue,
+		kSpellMenuComponentBoss, kAutoCorrectPrefsActionID, "Auto Correct...",kEditMenuPreferencesActionArea,kNormalAction,kAlwaysEnabled,0, kTrue,
+	}
+}
+
+#endif // __ODFRC__
+
+
+
+
+
+

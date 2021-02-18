@@ -1,0 +1,429 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/sdksamples/gotolasttextedit/GTTxtEdt.fr $
+//  
+//  Owner: Adrian O'Lenskie
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "VCPlugInHeaders.h"
+  
+// General includes:
+#include "MenuDef.fh"
+#include "ActionDef.fh"
+#include "ActionDefs.h"
+#include "AdobeMenuPositions.h"
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "StringTable.fh"
+//#include "OMTypes.h"
+#include "objectmodeltypes.fh"
+#include "ShuksanID.h"
+#include "ActionID.h"
+#include "CommandID.h"
+#include "WorkspaceID.h"
+#include "widgetid.h"
+#include "BuildNumber.h"
+#include "PanelList.fh"
+#include "Widgets.fh"	
+#include "InterfaceColorDefines.h"
+#include "IControlViewDefs.h"
+#include "ControlStripID.h"
+#include "TextPanelID.h"
+#include "SysControlIds.h"
+#include "ControlStripDefs.h"
+#include "AboutBoxID.h"		// for kAboutBoxStaticTextViewImpl
+#include "TextID.h"
+#include "Tips.fh"
+#include "GenericID.h"
+
+#include "PlugInModel_UIAttributes.h"
+
+// Project includes:
+#include "GTTxtEdtID.h"
+#include "GTTxtEdtResDefs.h"
+
+#ifdef __ODFRC__
+
+/*  Plugin version definition.
+*/
+resource PluginVersion (kSDKDefPluginVersionResourceID)
+{
+	kTargetVersion,
+	kGTTxtEdtPluginID,
+	kSDKDefPlugInMajorVersionNumber, kSDKDefPlugInMinorVersionNumber,
+	kSDKDefHostMajorVersionNumber, kSDKDefHostMinorVersionNumber,
+	kGTTxtEdtCurrentMajorFormatNumber, kGTTxtEdtCurrentMinorFormatNumber,
+	{ kInDesignProduct, kInCopyProduct},
+	{ kWildFS },
+	kUIPlugIn,
+	kGTTxtEdtVersion
+};
+
+/* Boss class definition.
+*/
+resource ClassDescriptionTable(kSDKDefClassDescriptionTableResourceID)
+{{{
+	
+	/**
+	 This boss class supports two interfaces:
+	 IActionComponent and IPMPersist.
+
+	 
+	 @ingroup gotolasttextedit
+	*/
+	Class
+	{
+		kGTTxtEdtActionComponentBoss,
+		kInvalidClass,
+		{
+			/** Handle the actions from the menu. */
+			IID_IACTIONCOMPONENT, kGTTxtEdtActionComponentImpl,
+			/** Persist the state of the menu across application instantiation.
+			Implementation provided by the API.*/
+			IID_IPMPERSIST, kPMPersistImpl
+		}
+	},
+	
+	/**
+	 The snapshot interface maintains a cache ofthe last story edited, and the last edited position within
+	 the story. This cache is maintained on a per document basis.
+	 
+	 The new/delete story observer is used to attach/detach the text edit observer on creation or deletion of stories.
+
+	 
+	 @ingroup gotolasttextedit
+	*/
+	AddIn
+	{
+		kDocBoss,
+		kInvalidClass,
+		{
+			/** Maintain last edited story on the document as asnapshot interface
+			*/
+			IID_IGTTXTEDTSNAPSHOTINTERFACE, kGTTxtEdtSnapshotInterfaceImpl,
+			/** Track the creation and deletion of stories for autoundo purposes
+			*/
+			IID_IGTTXTEDTSTORYCREATEDELETEOBSERVER,kGTTxtEdtNewDeleteStoryObserverImpl,
+
+		}
+	}
+
+	/**
+	 Add our utility interface onto the utils boss
+	 
+	 @ingroup gotolasttextedit
+	*/
+	AddIn
+	{
+		kUtilsBoss,
+		kInvalidClass,
+		{
+			/** Our utility interface
+			*/
+			IID_IGTTXTEDTUTILS, kGTTxtEdtUtilsImpl,
+		}
+	},
+
+	/**
+	 Indicate our control strip should be available when the layout suite is active. We only activate the control strip when
+	 the layout, or document default suite is active. If the user is in a position to edit text (with the text selection
+	 suite being active) we do not enable the control strip.
+	 
+	 @ingroup gotolasttextedit
+	*/
+    AddIn
+    {
+        kLayoutSuiteBoss,
+        kInvalidClass,
+        {
+			/**
+				Our control strip suite interface.
+			*/
+            IID_IGTTXTEDTCONTROLSTRIPSUITE, kGTTxtEdtControlStripSuiteImpl,
+        }
+    },
+
+	/**
+	 Indicate our control strip should be available when the document default suite is active. We only activate the control strip when
+	 the layout, or document default suite is active. If the user is in a position to edit text (with the text selection
+	 suite being active) we do not enable the control strip.
+	 
+	 @ingroup gotolasttextedit
+	*/
+    AddIn
+    {
+        kDocumentDefaultSuiteBoss,
+        kInvalidClass,
+        {
+			/**
+				Our control strip suite interface.
+			*/
+            IID_IGTTXTEDTCONTROLSTRIPSUITE, kGTTxtEdtControlStripSuiteImpl,
+        }
+    },
+	
+    /**
+		Observes the goto text button in the Control Palette.		
+
+		@ingroup gotolasttextedit
+	*/
+    Class
+    {
+        kGTTxtEdtGoToTextButtonBoss,
+        kRollOverIconButtonBoss,
+        {
+			/**
+				Observer used to track the state of the goto text button.
+			*/
+            IID_IOBSERVER,             kGTTxtEdtGoToTextButtonObserverImpl,
+        }
+    },
+    
+
+	/**
+		Registers as a control strip component (i.e. provides the IID of the control strip suite interface to the application).		
+		 @ingroup gotolasttextedit
+	*/
+    Class
+    {
+        kGTTxtEdtControlStripRegisterBoss,
+        kInvalidClass,
+        {
+			/** See IK2ServiceProvider */
+            IID_IK2SERVICEPROVIDER,    kControlStripRegisterServiceImpl,
+
+			/** See IControlStripRegister */
+            IID_ICONTROLSTRIPREGISTER, kGTTxtEdtControlStripRegisterImpl,
+        }
+    },
+
+	/**
+		Observer on the story that allows us to track key edit operations.
+		@ingroup gotolasttextedit	
+	*/
+	AddIn
+	{
+		kTextStoryBoss,
+		kInvalidClass,
+		{
+			/** This observer allows us to track edits to a particular story
+			*/
+			IID_IGTTXTEDTSTORYOBSERVER, kGTTxtEdtStoryObserverImpl,
+		}
+	},
+
+	/**
+		Provides the hooks for adding/removing our text story observer
+		@ingroup gotolasttextedit
+	*/
+	Class
+	{
+		kGTTxtEdtResponderServiceBoss,
+		kInvalidClass,
+		{
+			/** 
+			Identifies this boss as providing a responder service 
+			*/
+			IID_IK2SERVICEPROVIDER,	kGTTxtEdtServiceProviderImpl,
+			/** 
+				responds to story creation/deletion and document open/close signals.
+			*/
+			IID_IRESPONDER,	kGTTxtEdtResponderImpl,
+		}
+	},
+
+
+}}};
+
+/*  Implementation definition.
+*/
+resource FactoryList (kSDKDefFactoryListResourceID)
+{
+	kImplementationIDSpace,
+	{
+		#include "GTTxtEdtFactoryList.h"
+	}
+};
+
+
+/*  Menu definition.
+*/
+resource MenuDef (kSDKDefMenuResourceID)
+{
+	{
+		// The About Plug-ins sub-menu item for this plug-in.
+		kGTTxtEdtAboutActionID,			// ActionID (kInvalidActionID for positional entries)
+		kGTTxtEdtAboutMenuPath,			// Menu Path.
+		kSDKDefAlphabeticPosition,			// Menu Position.
+		kSDKDefIsNotDynamicMenuFlag,		// kSDKDefIsNotDynamicMenuFlag or kSDKDefIsDynamicMenuFlag
+
+
+	}
+};
+
+/* Action definition.
+*/
+resource ActionDef (kSDKDefActionResourceID)
+{
+	{
+		kGTTxtEdtActionComponentBoss, 		// ClassID of boss class that implements the ActionID.
+		kGTTxtEdtAboutActionID,	// ActionID.
+		kGTTxtEdtAboutMenuKey,	// Sub-menu string.
+		kOtherActionArea,				// Area name (see ActionDefs.h).
+		kNormalAction,					// Type of action (see ActionDefs.h).
+		kDisableIfLowMem,				// Enabling type (see ActionDefs.h).
+		kInvalidInterfaceID,			// Selection InterfaceID this action cares about or kInvalidInterfaceID.
+		kSDKDefInvisibleInKBSCEditorFlag, // kSDKDefVisibleInKBSCEditorFlag or kSDKDefInvisibleInKBSCEditorFlag.
+
+		kGTTxtEdtActionComponentBoss, 
+		kGTTxtEdtLastUsedActionID, 
+		"",
+		kOtherActionArea,
+		kNormalAction,
+		kCustomEnabling,	// so that UpdateActionStates will get called	
+		kInvalidInterfaceID,
+		kSDKDefInvisibleInKBSCEditorFlag,
+
+
+	}
+};
+
+
+/*  LocaleIndex
+	The LocaleIndex should have indicies that point at your
+	localizations for each language system that you are localized for.
+*/
+/*  String LocaleIndex.
+*/
+resource LocaleIndex ( kSDKDefStringsResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_enUS, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_jaJP, kSDKDefStringsResourceID + index_jaJP
+		
+		kWildFS, k_Wild, kSDKDefStringsResourceID + index_enUS
+	}
+};
+
+resource LocaleIndex (kSDKDefStringsNoTransResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_Wild, kSDKDefStringsNoTransResourceID + index_enUS
+	}
+};
+
+resource StringTable (kSDKDefStringsNoTransResourceID + index_enUS)
+{
+	k_enUS,									// Locale Id
+	kEuropeanMacToWinEncodingConverter,		// Character encoding converter
+	{
+		// No-Translate strings go here:
+
+	}
+};
+
+
+////////////////////////////////
+// Control strip UI
+////////////////////////////////
+type GTTxtEdtControlStripPanelWidget(kViewRsrcType): ControlStripWidget(ClassID = kTextControlSetBoss)
+{
+};
+
+type GTTxtEdtGoToTextButtonWidget(kViewRsrcType): RollOverIconButtonWidget(ClassID = kGTTxtEdtGoToTextButtonBoss)
+{
+};
+
+resource GTTxtEdtControlStripPanelWidget(kGTTxtEdtControlStripPanelResId + index_enUS)
+{
+    kGTTxtEdtControlStripPanelWidgetID,  // WidgetId
+    kPMRsrcID_None,                // RsrcId
+    kBindNone,                     // Binding
+    Frame(0, 0, 25, kControlStripBottom), // Frame (left, top, right, bottom)
+    kFalse,                        // Visible
+   	"kGTTxtEdtControlStripName"	// Name of control set, used for menu display, use key string here
+
+    // Child Controls
+    {
+        PanelWithGroupButtonFocusWidget 
+        (
+			// CControlView properties
+			kGTTxtEdtControlStripClusterWidgetID,  // WidgetId
+			kPMRsrcID_None,                  // RsrcId
+			kBindNone,                       // Binding
+			Frame(0, 0, 25, kControlStripBottom), // Frame (left, top, right, bottom)
+			kTrue,                           // Visible
+			kTrue,                           // Enabled
+			// CTextControlData properties
+            "",                              // Control Label
+			// Child Controls
+			{
+			    GTTxtEdtGoToTextButtonWidget
+			    (
+			        // CControlView properties
+			        kGTTxtEdtGoToTextButtonWidgetID,  kGTTxtEdtGoToTextButtonIconRsrcID,  kGTTxtEdtPluginID, //  WidgetId, RsrcId, PluginId
+			        kBindNone,                 // Binding
+					Frame(0,0,24,22)			// Frame
+			        kTrue,                     // Visible
+			        kTrue,                     // Enabled
+
+			        // PNGIcon properties
+			        kStyledIconSuiteFlushedButtonType,
+			    ),
+			}
+		),
+    },
+
+    {{
+        IID_ITEXTTARGETSERVER 
+    }}
+};
+
+
+resource PNGA(kGTTxtEdtGoToTextButtonIconRsrcID)         "gototext.PNG"
+resource PNGR(kGTTxtEdtGoToTextButtonIconRsrcID)         "gototext_i.PNG"
+
+
+resource LocaleIndex(kGTTxtEdtControlStripPanelResId)
+{
+    kViewRsrcType,
+    {
+        kWildFS, k_Wild, kGTTxtEdtControlStripPanelResId + index_enUS
+    }
+};
+
+//////////////////
+// tips
+//////////////////
+resource TipTable (22)
+{
+  {
+	kGTTxtEdtGoToTextButtonWidgetID,		kGTTxtEdtGoToTextButtonTipKey,
+  }
+};
+
+
+#endif // __ODFRC__
+
+#include "GTTxtEdt_enUS.fr"
+#include "GTTxtEdt_jaJP.fr"
+
+//  Code generated by DollyXs code generator

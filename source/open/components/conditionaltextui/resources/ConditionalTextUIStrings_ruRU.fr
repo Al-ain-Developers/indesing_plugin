@@ -1,0 +1,126 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kConditionalTextUIStringsRsrcID + index_ruRU)
+{
+    k_ruRU,                                 // Locale Id
+    kResourceUTF8Encoded,     // Character encoding converter
+    {
+		"#CondTextUI_WinMenu",	"Усл&овный текст",	// panel menu item
+		"#CondTextUI_PanelName","Условный текст",		// panel name
+		"#CondTextUI_PanelMenu","Меню палитры \"Условный текст\"",
+		"#CondTextUI_NewConditionTagMenu", "Новое условие...",
+		"#CondTextUI_DeleteConditionTagMenu", "Удалить условие...",
+		"#CondTextUI_DeleteConditionTagsMenu", "Удалить условия...",
+		"#CondTextUI_EditConditionTagMenu", "Параметры условия...",
+		"#CondTextUI_LoadConditionTagsMenu", "Загрузить условия...",
+		"#CondTextUI_LoadConditionTagsAndSetsMenu", "Загрузить условия и наборы...",
+		"#CondTextUI_ShowIndicatorsCB", "Показать индикаторы условного текста",
+		"#CondTextUI_ShowIndicatorsMenu", "Показать индикаторы условного текста",
+		"#CondTextUI_ShowAndPrintIndicatorsMenu", "Показать и распечатать индикаторы условного текста",
+		"#CondTextUI_HideIndicatorsMenu", "Скрыть индикаторы условного текста",
+		"#CondTextUI_ShowIndicatorsDD", "Индикаторы:",
+		"#CondTextUI_ShowIndicators", "Показать",
+		"#CondTextUI_ShowAndPrintIndicators", "Показать и распечатать",
+		"#CondTextUI_HideIndicators", "Скрыть",
+		"#CondTextUI_RtMenuConditionTagTVNode",    "Контекстное меню узлов для дерева условий",
+		"#CondTextUI_RtMenuUnapplyTag",		"Отменить применение \"^1\"",
+		"#CondTextUI_RtMenuDeleteTag",		"Удалить \"^1\"",
+		"#CondTextUI_RtMenuEditTag",		"Изменить \"^1\"...",
+		"Show Options", "&Показать параметры",
+		"Hide Options", "&Скрыть параметры",
+		"#CondTextUI_SelectUnusedMenu", "Выделить все неиспользованные",
+	
+		"#ConditionTagList_NameColumnLabel", "Имя",
+		"#ConditionTag_OptionsDialog", "Параметры условия",
+		"#ConditionTag_OptionsDialogNew", "Новое условие",
+		"#ConditionTagOptions_Name:", "&Имя:",
+		"#ConditionTagOptions_Method:", "&Метод:",
+		"#ConditionTagOptions_Appearance:", "&Оформление:",
+		"#ConditionTagOptions_Color:", "&Цвет:",
+		"#ConditionTagOptions_Indicator", "Индикатор",
+		"#ConditionTagOptions_MethodUnderline", "Подчеркивание",
+		"#ConditionTagOptions_MethodHighlight", "Выделение цветом",
+		"#ConditionTagOptions_WavyUnderline", "Волнистая",		
+		"#ConditionTagOptions_SolidUnderline", "Сплошная",		
+		"#ConditionTagOptions_DashedUnderline", "Пунктирная",		
+		"#ConditionTag_EmptyNameMsg", "Задайте имя условия.",
+		"#ConditionTag_NameInUseMsg", "Это имя условия уже используется. Выберите другое имя.",
+		
+		"#ConditionSetShowAll", "Показать все",
+		"#ConditionSetHideAll", "Скрыть все",
+		"#ConditionSetNone", "[Нет]",
+		"#ConditionSetBlank", " ",
+		"#ConditionSetLabel", "Набор:",
+		"#ConditionSetNewSet", "Создать новый набор...",
+		"#ConditionSetDeleteSet", "Удалить \"^1\"...",
+		"#ConditionSetRenameSet", "Переименовать \"^1\"...",
+		"#ConditionSetRedefineSet", "Переопределить \"^1\"...",
+		"#ConditionSetUpdateAllSets", "Обновить все наборы",
+		"#ConditionSetUpdateAllSetsUndoName", "Обновить все наборы условий",
+		"#ConditionSetNameDialog", "Имя набора условия",
+		"#ConditionSetNameStatic", "&Имя:",
+		"#InvalidSetName", "Недопустимое имя набора условия",
+		"#DuplicateSetName", "Имя уже существует",
+		"#NoActiveSetString", "Нет активного набора",
+		
+		"#ConditionalTextTip", "Найден скрытый текст с ^1:  ",
+		"#ConditionalTextTipOneTag", "данным условием",
+		"#ConditionalTextTipManyTags", "данными условиями",
+		
+		"#ConditionalTextEyeballHideWidgetTip", "Щелкните, чтобы скрыть весь текст с применением этого условия",
+		"#ConditionalTextEyeballShowWidgetTip", "Щелкните, чтобы показать весь текст с применением этого условия",
+		"#ConditionalTextEyeballUnconditionalWidgetTip", "Безусловный текст всегда является видимым",
+		"#ConditionalTextAppliedAllTip",	"Условие применено ко всему выделенному тексту. Щелкните для отмены",
+		"#ConditionalTextAppliedSomeTip",	"Условие применено к части выделенного текста. Щелкните для применения ко всему выделенному тексту",
+		"#ConditionalTextAppliedNoneTip",	"Щелкните для применения условия",
+		"#ConditionalTextAppliedAllTipUncondition",	"Выделенный текст является безусловным",
+		"#ConditionalTextAppliedSomeTipUncondition",	"Часть выделенного текста является безусловной. Щелкните, чтобы сделать весь текст безусловным",
+		"#ConditionalTextAppliedNoneTipUncondition",	"Щелкните, чтобы сделать текст безусловным",
+		"#ConditionalTextApplyNoSelectionTip", "Щелкните для применения условия к выделенному тексту",
+		"#ConditionalTextNewTagTip",		"Новое условие",
+		"#ConditionalTextDeleteTagTip",		"Удалить условие",
+		"#ConditionalTextIndicatorTip",		"Метод индикатора ^1",
+		"#ConditionalTextNewSetTip",		"Новый набор",
+		"#SetOverrideTip_NewConditionsAndConditionVisibility",	"Дополнительные настройки: видимость условия (для отмены повторно выберите набор или нажмите \"Переопределить\") + новые условия (для отмены нажмите \"Обновить все наборы\" или \"Переопределить\")",
+		"#SetOverrideTip_NewConditions",	"Дополнительные настройки: новые условия (для отмены нажмите \"Обновить все наборы\" или \"Переопределить\")",
+		"#SetOverrideTip_ConditionVisibility",	"Дополнительные настройки: видимость условия (для отмены повторно выберите набор или нажмите \"Переопределить\")",
+		
+		"#ConditionTag_DeleteConditionDialog", "Удалить условие", 
+		"#ConditionTag_DeleteConditionsDialog", "Удалить условия", 
+		"#ConditionTag_DeleteConditionAndReplace:", "Удалить условие и заменить на: ", 
+		"#ConditionTag_DeleteConditionsAndReplace:", "Удалить условия и заменить на: ", 
+		"#ConditionTag_DeleteInformationAlert", "Для удаления условия перетащите его в значок \"Корзина\".",
+		"#ConditionTag_DeleteNoReplaceChoice", "[Нет]",
+		
+		"#QuickApplyConditions", "Условие",
+		"#Conditions_Filter_Key", "CT", // should be upper case if there is an upper case character, this is the prefix key for quick apply for text conditions.
+		"#QuickApplyConditionSets", "Набор условия",
+		"#QuickApplyConditionSets_Filter_Key", "CS",  // should be upper case if there is an upper case character, this is the prefix key for quick apply for text condition sets.
+		"#QuickApplyConditons_Menu_Key_String", "Включить условия (ct:)",
+		"#QuickApplyConditonSets_Menu_Key_String", "Включить наборы условий (cs:)",
+		
+		"#SingularConditionStatusBodyString", "^1 условие применено ^2",
+		"#PluralConditionStatusBodyString", "^1 условия(й) применены ^2",
+		"#MixedConditionString", " [смешанное]",
+		"#NoConditionsString", "нет примененных условий",
+    }
+};
+
+#endif // __ODFRC__

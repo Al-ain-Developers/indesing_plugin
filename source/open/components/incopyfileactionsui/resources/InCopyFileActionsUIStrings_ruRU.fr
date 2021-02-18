@@ -1,0 +1,43 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kInCopyFileActionsUIStringsRsrcID + index_ruRU)
+{
+	k_ruRU,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{
+		"&Update Design",		"&Обновить проект",
+		"AlertUnableToSave",	"Невозможно сохранить следующее содержимое.\nДоступ к файлам закрыт, или у вас нет разрешения вносить в них изменения.\n",
+		"Update^1Alert",		"Не удается сохранить некоторое содержимое. При обновлении могли быть потеряны изменения.\nОбновить до последней версии \"^1\"?",
+		"Undoable^1Save",		"При обновлении проекта все изменяемое содержимое будет сохранено. Изменения, внесенные обновлением, невозможно отменить с помощью команды \"Отменить\". \nОбновить в \"^1\" в любом случае?",
+		"AlertStoriesMissing",	"Не удалось найти некоторые файлы содержимого, поэтому их редактирование невозможно. Попробуйте переместить файлы в исходное местоположение или обновить ссылки в InDesign.",
+		"AlertStoriesMissingWF", "Не удалось найти некоторые файлы содержимого, поэтому их редактирование невозможно. Попробуйте загрузить содержимое с сервера и повторно открыть документ.",
+		"Update",				"Обновить",
+		"&Revert Story",		"Вос&становить содержимое",
+//		"Revert Story",			"Revert Content", // Note to localizer: this string moved to InCopySharedStrings_enUS.fr
+		
+		"SaveAsFeatureLost",    "Данный документ может содержать функции, не поддерживаемые выбранным форматом файла. Продолжить?",
+		"CannotSaveOntoLockedFile",		"Указанный файл в настоящее время заблокирован для записи \"^1\" в \"^2\" из документа \"^3\".  Выберите другое имя файла или обеспечьте разблокирование \"^1\" данного файла.",
+		"CannotSaveOntoLockedFileMinimal",	"Указанный файл в настоящее время заблокирован для записи \"^1\".  Выберите другое имя файла или обеспечьте разблокирование \"^1\" данного файла.",
+	}
+};
+
+
+#endif // __ODFRC__

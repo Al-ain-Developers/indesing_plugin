@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article SYSTEM "sdocbook.dtd">
+<?xml-stylesheet href="copy-with-contxt-sens-styling.xsl" type="text/xsl"?>
+<article>
+<title>Captioned images</title>
+<section><title>Section</title>
+<figure><title>Documents and snippets</title>
+<mediaobject><imageobject><imagedata fileref="images/inx-and-snippet-formats.pdf"></imagedata></imageobject>
+<caption><para>This diagram shows high-level relationships between an InDesign binary document and other files, such as an INX (InDesign Interchange) file, INCX (InCopy Interchange) file and a INDS (InDesign Snippet) file. Although the legacy InCopy story format INCD is still supported, the default file format for InCopy CS2 is now INCX. The main difference between an INX file and a snippet file is that an INX file is an alternate representation of a complete InDesign binary document, whereas a snippet file only represents a subset of the information in an InDesign binary document.</para>
+</caption></mediaobject></figure>
+<figure><title>Boss object diagram for single swatch</title>
+<mediaobject><imageobject><imagedata fileref="images/obj-snp-single-spot-color.pdf"></imagedata></imageobject>
+<caption><para>This object diagram shows some of the boss objects that represent a swatch in an InDesign document, and relationships between them. In this case, the swatch was added from the Pantone library, a violet colour. The solid colour swatch is represented by the class kPMColorBoss, and because we have defined a spot colour, a new ink object is added to the document (kPMInkDataBoss).</para>
+</caption></mediaobject></figure>
+</section>
+</article>

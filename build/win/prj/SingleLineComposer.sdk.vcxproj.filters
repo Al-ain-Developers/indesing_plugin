@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{0e06dcb5-ddc7-40d1-98ad-c7718adacb6f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Plugin">
+      <UniqueIdentifier>{9cc1fd0b-8429-4cca-9660-305933c109e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GlyphNode">
+      <UniqueIdentifier>{39f3ae35-064c-43e6-9177-2af131d392e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{e5a7e1af-693c-4b4f-9c04-29e1ac068e90}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GlyphNodeHeader">
+      <UniqueIdentifier>{d2fdc8e5-fa10-4148-9497-9e3cb7fcacc2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{b68ee835-00b8-416a-8591-d92a3f4f1b6b}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\source\sdksamples\singlelinecomposer\SLCDiagnostics.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\singlelinecomposer\SLCGlyphNodeList.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\singlelinecomposer\SLCLineBreaker.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\singlelinecomposer\SLCLineFitter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\singlelinecomposer\SLCParagraphComposer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\singlelinecomposer\SLCServiceProvider.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\singlelinecomposer\SLCTileComposer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\singlelinecomposer\SLCTileManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(id_sdk_dir)\source\public\libs\publiclib\statics\PlugInStatics.cpp">
+      <Filter>Source Files\Plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\common\SDKPlugInEntrypoint.cpp">
+      <Filter>Source Files\Plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\singlelinecomposer\SLCID.cpp">
+      <Filter>Source Files\Plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\singlelinecomposer\SLCNoStrip.cpp">
+      <Filter>Source Files\Plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\singlelinecomposer\TriggerResourceDeps.cpp">
+      <Filter>Source Files\Plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="$(id_sdk_dir)\source\precomp\msvc\VCPlugInHeaders.cpp">
+      <Filter>Source Files\Plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\singlelinecomposer\SLCGlyphNode.cpp">
+      <Filter>Source Files\GlyphNode</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\singlelinecomposer\SLCInlineGraphicGlyphNode.cpp">
+      <Filter>Source Files\GlyphNode</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\singlelinecomposer\SLCTextGlyphNode.cpp">
+      <Filter>Source Files\GlyphNode</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\source\sdksamples\singlelinecomposer\SLC.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\sdksamples\singlelinecomposer\SLCDiagnostics.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\sdksamples\singlelinecomposer\SLCFactoryList.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\sdksamples\singlelinecomposer\SLCGlyphNodeList.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\sdksamples\singlelinecomposer\SLCID.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\sdksamples\singlelinecomposer\SLCLineBreaker.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\sdksamples\singlelinecomposer\SLCLineFitter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\sdksamples\singlelinecomposer\SLCLineMetrics.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\sdksamples\singlelinecomposer\SLCTileComposer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\sdksamples\singlelinecomposer\SLCTileManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\sdksamples\singlelinecomposer\SLCTileMeasure.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\sdksamples\singlelinecomposer\SLCGlyphNode.h">
+      <Filter>Header Files\GlyphNodeHeader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\sdksamples\singlelinecomposer\SLCInlineGraphicGlyphNode.h">
+      <Filter>Header Files\GlyphNodeHeader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\sdksamples\singlelinecomposer\SLCTextGlyphNode.h">
+      <Filter>Header Files\GlyphNodeHeader</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\..\..\source\sdksamples\singlelinecomposer\SLC.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\..\..\source\sdksamples\singlelinecomposer\SLC.fr">
+      <Filter>Resource Files</Filter>
+    </CustomBuild>
+  </ItemGroup>
+</Project>

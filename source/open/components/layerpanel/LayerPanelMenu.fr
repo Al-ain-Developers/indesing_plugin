@@ -1,0 +1,170 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/layerpanel/LayerPanelMenu.fr $
+//  
+//  Owner: Michael Burbidge
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "LayerPanelDefs.h"
+#include "MenuDef.fh"
+#include "ActionDef.fh"
+#include "ActionDefs.h"
+#include "LayerPanelID.h"
+#include "GenericID.h"
+#include "AdobeMenuPositions.h"
+
+#ifdef __ODFRC__
+
+
+resource LocaleIndex (kLayerMenuResID)
+{
+    kMenuRsrcType,
+ {
+        kInDesignAllLanguagesFS, k_Wild,    kLayerMenuResID
+        kInCopyAllLanguagesFS,   k_Wild,    kLayerMenuResID + index_InCopyFS
+ }
+}
+
+resource LocaleIndex (kLayerPanelActionResID)
+{
+    kActionRsrcType,
+ {
+        kInDesignAllLanguagesFS, k_Wild,    kLayerPanelActionResID
+        kInCopyAllLanguagesFS,   k_Wild,    kLayerPanelActionResID + index_InCopyFS
+ }
+}
+
+
+// InDesign layer menu def
+resource MenuDef (kLayerMenuResID)
+{
+	{ 
+		// Layers Panel flyout
+		kNewLayerActionID, "LayerPanelPopup",kLayerNewMenuPosition,kFalse,
+		kDuplicateLayerOrPageItemActionID, "LayerPanelPopup",kLayerDuplicateMenuPosition,kFalse,
+		kDeleteLayerOrPageItemActionID, "LayerPanelPopup",kLayerDeleteMenuPosition,kFalse,
+		kLayerPanelSep1ActionID, "LayerPanelPopup:-",kLayerSep1MenuPosition,kFalse,
+		
+		kLayerOptionsActionID, "LayerPanelPopup",kLayerOptionsMenuPosition,kFalse,
+		kLayerPanelSep2ActionID, "LayerPanelPopup:-",kLayerSep2MenuPosition,kFalse,
+		
+		kShowHideLayersActionID, "LayerPanelPopup",kLayerShowHideMenuPosition,kFalse,
+		kLockUnlockLayersActionID, "LayerPanelPopup",kLayerUnlockMenuPosition,kFalse,
+		kUnlockAllActionID, "LayerPanelPopup", kLayerUnlockAllMenuPosition,kFalse,
+		kLayerPanelSep3ActionID, "LayerPanelPopup:-",kLayerSep3MenuPosition,kFalse,
+		
+		kUngroupRemembersLayersActionID, "LayerPanelPopup",kLayerUngroupRememberMenuPosition,kFalse,
+		kPasteRemembersLayersActionID, "LayerPanelPopup",kLayerPasteRememberMenuPosition,kFalse,
+		kLayerPanelSep4ActionID, "LayerPanelPopup:-",kLayerSep4MenuPosition,kFalse,
+		
+		kMergeLayersActionID, "LayerPanelPopup",kLayerMergeMenuPosition,kFalse,
+		kDeleteUnusedLayersActionID, "LayerPanelPopup",kLayerDeleteUnusedMenuPosition,kFalse,
+		kLayerPanelSep5ActionID, "LayerPanelPopup:-",kLayerSep5MenuPosition,kFalse,
+		kSelectLayerPageItemActionID, "LayerPanelPopup", kLayerPageItemSelectMenuPosition, kFalse,
+		kSelectZoomLayerPageItemActionID, "LayerPanelPopup", kLayerPageItemSelectAndZoomMenuPosition, kFalse,
+		kLayerPanelSep6ActionID, "LayerPanelPopup:-",kLayerSep6MenuPosition,kFalse,
+
+		kSmallPaletteRowsActionID, "LayerPanelPopup",kLayerSmallRowsMenuPosition,kFalse,
+
+		// Layers Panel Eye context menu
+		kShowHideLayersActionID, "RtMenuLayerPanelEye",kLayerShowHideMenuPosition,kFalse,
+
+		// Layers Panel Lock context menu
+		kLockUnlockLayersActionID, "RtMenuLayerPanelLock",kLayerShowHideMenuPosition,kFalse,
+
+		// Layers Panel Item context menu
+		kNewLayerContextActionID, "RtMenuLayerPanelItem",kLayerNewMenuPosition,kFalse,
+		kDuplicateLayerContextActionID, "RtMenuLayerPanelItem",kLayerDuplicateMenuPosition,kFalse,
+		kDeleteLayerContextActionID, "RtMenuLayerPanelItem",kLayerDeleteMenuPosition,kFalse,
+		kLayerPanelSep1ActionID, "RtMenuLayerPanelItem:-",kLayerSep1MenuPosition,kFalse,
+		
+		kLayerOptionsContextActionID, "RtMenuLayerPanelItem",kLayerOptionsMenuPosition,kFalse,
+		kLayerPanelSep2ActionID, "RtMenuLayerPanelItem:-",kLayerSep2MenuPosition,kFalse,
+		
+		kMergeLayersContextActionID, "RtMenuLayerPanelItem",kLayerMergeMenuPosition,kFalse,
+//		kDeleteUnusedLayersActionID, "RtMenuLayerPanelItem",kLayerDeleteUnusedMenuPosition,kFalse,
+		kSelectLayerContextActionID, "RtMenuLayerPanelItem", kLayerSelectLayerMenuPosition, kFalse,
+
+
+		// This menu appears when user clicks on particular items, let's user modify selection to select to add the item(s) to the layout selection
+		kSelectLayerPageItemActionID, "RtMenuLayerPanelPageItem", kLayerPageItemSelectMenuPosition, kFalse,
+		kSelectZoomLayerPageItemActionID, "RtMenuLayerPanelPageItem", kLayerPageItemSelectAndZoomMenuPosition, kFalse,
+	}
+}
+
+// InCopy layer menu def
+resource MenuDef (kLayerMenuResID + index_InCopyFS)
+{
+	{ 		
+		kShowHideLayersActionID, "LayerPanelPopup",kLayerShowHideMenuPosition,kFalse,
+		kLayerPanelSep5ActionID, "LayerPanelPopup:-",kLayerSep5MenuPosition,kFalse,
+
+		kSmallPaletteRowsActionID, "LayerPanelPopup",kLayerSmallRowsMenuPosition,kFalse,
+	}
+}
+
+
+
+// InDesign layer actions
+resource ActionDef (kLayerPanelActionResID)
+{
+	{ 
+		// Regular Layer Panel menu actions
+		kLayerPanelMenuComponentBoss, kNewLayerActionID, "New Layer",kPaletteMenusLayerActionArea,kNormalAction,kCustomEnabling|kDisableIfNoFrontDocument|kDisableIfLowMem,0,kTrue,
+		kLayerPanelMenuComponentBoss, kDuplicateLayerOrPageItemActionID, "Duplicate Layer",kPaletteMenusLayerActionArea,kNormalAction,kCustomEnabling|kDisableIfNoFrontDocument|kDisableIfLowMem,0,kTrue,
+		kLayerPanelMenuComponentBoss, kDeleteLayerOrPageItemActionID, "Delete Layer",kPaletteMenusLayerActionArea,kNormalAction,kCustomEnabling| kDisableIfNoFrontDocument|kDisableIfLowMem,0,kTrue,
+		kLayerPanelMenuComponentBoss, kLayerOptionsActionID, "Layer Options...",kPaletteMenusLayerActionArea,kNormalAction,kCustomEnabling|kDisableIfNoFrontDocument,0,kTrue,
+		kLayerPanelMenuComponentBoss, kShowHideLayersActionID, "Show All Layers",kPaletteMenusLayerActionArea,kNormalAction,kCustomEnabling|kDisableIfNoFrontDocument,0,kTrue,
+		kLayerPanelMenuComponentBoss, kLockUnlockLayersActionID, "Unlock All Layers",kPaletteMenusLayerActionArea,kNormalAction,kCustomEnabling|kDisableIfNoFrontDocument,0,kTrue,
+		kLayerPanelMenuComponentBoss, kUngroupRemembersLayersActionID, "Ungroup Remembers Layers",kPaletteMenusLayerActionArea,kNormalAction,kCustomEnabling,0,kTrue,
+		kLayerPanelMenuComponentBoss, kPasteRemembersLayersActionID, "Paste Remembers Layers",kPaletteMenusLayerActionArea,kNormalAction,kCustomEnabling,0,kTrue,
+		kLayerPanelMenuComponentBoss, kMergeLayersActionID, "Merge Layers",kPaletteMenusLayerActionArea,kNormalAction,kCustomEnabling|kDisableIfNoFrontDocument|kDisableIfLowMem,0,kTrue,
+		kLayerPanelMenuComponentBoss, kDeleteUnusedLayersActionID, "Delete Unused Layers",kPaletteMenusLayerActionArea,kNormalAction,kCustomEnabling|kDisableIfNoFrontDocument|kDisableIfLowMem,0,kTrue,
+		kLayerPanelMenuComponentBoss, kSmallPaletteRowsActionID, "Small Palette Rows",kPaletteMenusLayerActionArea,kNormalAction,kCustomEnabling,0,kTrue,
+
+		// Context Layer Panel menu actions
+		kLayerPanelMenuComponentBoss, kNewLayerContextActionID, "New Layer",kPaletteMenusLayerActionArea,kNormalAction,kCustomEnabling|kDisableIfNoFrontDocument|kDisableIfLowMem,0,kFalse,
+		kLayerPanelMenuComponentBoss, kDuplicateLayerContextActionID, "Duplicate Layer",kPaletteMenusLayerActionArea,kNormalAction,kCustomEnabling|kDisableIfNoFrontDocument|kDisableIfLowMem,0,kFalse,
+		kLayerPanelMenuComponentBoss, kDeleteLayerContextActionID, "Delete Layer",kPaletteMenusLayerActionArea,kNormalAction,kCustomEnabling| kDisableIfNoFrontDocument|kDisableIfLowMem,0,kFalse,
+		kLayerPanelMenuComponentBoss, kLayerOptionsContextActionID, "Layer Options...",kPaletteMenusLayerActionArea,kNormalAction,kCustomEnabling|kDisableIfNoFrontDocument,0,kFalse,
+		kLayerPanelMenuComponentBoss, kMergeLayersContextActionID, "Merge Layers",kPaletteMenusLayerActionArea,kNormalAction,kCustomEnabling|kDisableIfNoFrontDocument|kDisableIfLowMem,0,kFalse,
+		kLayerPanelMenuComponentBoss, kSelectLayerContextActionID, "Select Item(s) Layer",kPaletteMenusLayerActionArea,kNormalAction,kCustomEnabling|kDisableIfNoFrontDocument|kDisableIfLowMem,0,kFalse,
+
+		kLayerPanelMenuComponentBoss, kSelectLayerPageItemActionID, "#SelectLayerPageItemMenu",kPaletteMenusLayerActionArea,kNormalAction,kCustomEnabling|kDisableIfNoFrontDocument|kDisableIfLowMem,0,kTrue,
+		kLayerPanelMenuComponentBoss, kSelectZoomLayerPageItemActionID, "#SelectZoomLayerPageItemMenu",kPaletteMenusLayerActionArea,kNormalAction,kCustomEnabling|kDisableIfNoFrontDocument|kDisableIfLowMem,0,kTrue,
+
+	}
+}
+
+// InCopy layer actions
+resource ActionDef (kLayerPanelActionResID + index_InCopyFS)
+{
+	{ 
+		kLayerPanelMenuComponentBoss, kShowHideLayersActionID, "Show All Layers",kPaletteMenusLayerActionArea,kNormalAction,kCustomEnabling|kDisableIfNoFrontDocument,0,kTrue,
+		kLayerPanelMenuComponentBoss, kSmallPaletteRowsActionID, "Small Palette Rows",kPaletteMenusLayerActionArea,kNormalAction,kCustomEnabling,0,kTrue,
+	}
+}
+
+#endif // __ODFRC__
+
+
+
+
+
+

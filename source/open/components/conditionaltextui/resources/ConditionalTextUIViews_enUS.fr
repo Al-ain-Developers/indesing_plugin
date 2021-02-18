@@ -1,0 +1,964 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/conditionaltextui/resources/ConditionalTextUIViews_enUS.fr $
+//  
+//  Owner: Michele Stutzman
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "InterfaceColorDefines.h"
+#include "AboutBoxID.h"
+#include "ApplDefs.h"
+#include "IconStyleDefs.h"
+#include "EveInfo.fh"
+
+#ifdef __ODFRC__
+
+/***********************************************************************/
+
+resource ConditionalTextUIPanelWidget(kConditionalTextUIPanelRsrcID + index_enUS)
+{
+	__FILE__, __LINE__,
+	kConditionalTextUIPanelWidgetID, kPMRsrcID_None,		// WidgetId, RsrcId
+	kBindAll,
+	Frame(0,0,kCC2016PanelStandardWidth,266),					// Frame
+	kTrue, kTrue,						// Visible, Enabled
+	kTrue,								// EraseBeforeDrawing
+	kInterfacePaletteFill,				// Erase to color
+	"#CondTextUI_PanelName",			// Panel name
+	{
+		GenericPanelWidget
+		(
+			kConditionalTextUIPanelListWidgetId, kPMRsrcID_None,
+			kBindAll,
+			Frame(0,0,kCC2016PanelStandardWidth,266)		// Frame
+			kTrue, kTrue,
+			"",
+			{	
+				GenericPanelWithBorderWidget
+				(
+					kConditionalTextUIPanelListWidgetId, kPMRsrcID_None,
+					kBindAll,
+					Frame(0,0,kCC2016PanelStandardWidth,178)		// Frame
+					kTrue, kTrue,
+					"",
+					{	
+						ConditionTagListTreeViewWidget
+						(
+							kConditionTagListTreeViewWidgetID, kPMRsrcID_None,// WidgetId, RsrcId
+							kBindAll,
+							Frame(0,0,kCC2016PanelStandardWidth - 1,176)			// Frame
+							kTrue, kTrue,				// Visible, Enabled
+							kFalse,						// EraseBeforeDraw
+							kInterfacePaletteFill,		// Erase to color,
+							"",							// Name
+							kDisplayRootNode,			// Options
+							kFalse,						// Use H Scroll bar
+							kTrue,						// Use V scroll bar
+							kCC2016PanelTreeNodeHeight,							// Vertical Scroll Button Increment
+							kCC2016PanelTreeNodeHeight,							// Vertical Thumb Scroll Increment
+							0,							// Horizontal Scroll Button Increment - Not Used
+							0,							// Horizontal Thumb Scroll Increment - Not Used
+							2,							// Items selectable, 0 = No Selection, 1 = Single Selection, 2 = Multiple Selection
+							kTrue,						// Allow children from multiple parents to be selected
+							kTrue,						// Allow discontiguous selection
+							{
+							},
+							{{ 
+								IID_IOBSERVER,
+								IID_ISELECTIONOBSERVER,
+							}}
+						),
+					}
+				),
+				
+				GenericPanelWidget
+				(
+					kConditionalTextUIPanelIndicatorsAreaWidgetId, kPMRsrcID_None,
+					kBindBottom | kBindLeft | kBindRight,
+					Frame(kCC2016StandardGapBetweenWidgets,183,kCC2016PanelStandardWidth-kCC2016StandardGapBetweenWidgets,204)		// Frame
+					kTrue, kTrue,
+					"",
+					{
+						StaticTextWidget
+						(
+							0, kSysStaticTextPMRsrcId,	// WidgetId, RsrcId
+							kBindLeft,				// Frame binding
+							Frame(0,0,55,kCC2016StandardWidgetHeight)									// Frame
+							kTrue, kTrue, kAlignRight,							// Visible, Enabled
+							kDontEllipsize,	kTrue,								// Ellipsize style, Convert ampersands
+							"#CondTextUI_ShowIndicatorsDD",						// Text
+							kShowConditionIndicatorsWidgetId,
+						),
+						
+						ShowConditionIndicatorsDropDownWidget
+						(
+							kShowConditionIndicatorsWidgetId,			// WidgetId
+							kSysDropDownPMRsrcId,						// RsrcId
+							kBindLeft | kBindRight,
+							Frame(55+kCC2016StandardGapBetweenWidgets,0,230,kCC2016StandardWidgetHeight)					// Frame
+							kTrue,										// Visible
+							kTrue,										// Enabled
+							{{
+								"#CondTextUI_ShowIndicators",
+								"#CondTextUI_ShowAndPrintIndicators",
+								"#CondTextUI_HideIndicators"
+							}}
+						),
+					}
+				)
+						
+				GenericPanelWidget
+				(
+					kConditionalTextUIPanelSetsAreaWidgetId,	// WidgetId
+					0,0,						// RsrcId
+					kBindBottom | kBindRight | kBindLeft,				// Frame binding
+					Frame(kCC2016StandardGapBetweenWidgets,209,kCC2016PanelStandardWidth-kCC2016StandardGapBetweenWidgets,241)		// Frame
+					kTrue,						// Visible
+					kTrue,	
+					"",					// Enabled
+					{
+						SeparatorWidget
+						(
+							kConditionUISeperator1WidgetID, kSysGenericSeparatorPMRsrcId,	// WidgetId, RsrcId
+							kBindLeft | kBindRight,
+							Frame(0,0,kCC2016PanelStandardWidth-2*kCC2016StandardGapBetweenWidgets,1)						// Frame
+							kTrue, kTrue,								// Visible, Enabled
+						),
+						
+						StaticTextWidget
+						(
+							kConditionSetsDropDownLabelWidgetID, kSysStaticTextPMRsrcId,	// WidgetId, RsrcId
+							kBindLeft,				// Frame binding
+							Frame(0,1+kCC2016StandardGapBetweenWidgets,55,1+kCC2016StandardGapBetweenWidgets+kCC2016StandardWidgetHeight)									// Frame
+							kTrue, kTrue, kAlignRight,							// Visible, Enabled
+							kDontEllipsize,	kTrue,								// Ellipsize style, Convert ampersands
+							"#ConditionSetLabel",								// Text
+							kConditionSetsDropDownWidgetID,
+						),
+				
+						ConditionSetsDropDownWidget
+						(
+							kConditionSetsDropDownWidgetID,			// WidgetId
+							kSysDropDownPMRsrcId,				// RsrcId
+							kBindLeft | kBindRight,
+							Frame(55+kCC2016StandardGapBetweenWidgets,1+kCC2016StandardGapBetweenWidgets,230,1+kCC2016StandardGapBetweenWidgets+kCC2016StandardWidgetHeight)					// Frame
+							kTrue,								// Visible
+							kTrue,								// Enabled
+							{{
+								"#ConditionSetNewSet"
+							}}
+						),
+					}
+				)
+						
+				// ----- The control strip ----- //
+				GenericPanelWidget
+				(
+					kConditionalTextUIPanelControlStripWidgetId, kPMRsrcID_None,
+					kBindBottom | kBindLeft | kBindRight,
+					Frame(kCC2016StandardGapBetweenWidgets,241,kCC2016PanelStandardWidth-kCC2016StandardGapBetweenWidgets,266)		// Frame
+					kTrue, kTrue,
+					"",
+					{									
+						SeparatorWidget
+						(
+							kConditionUISeperator2WidgetID, kSysGenericSeparatorPMRsrcId,	// WidgetId, RsrcId
+							kBindLeft | kBindRight,
+							Frame(kCC2016StandardGapBetweenWidgets,0,kCC2016PanelStandardWidth-kCC2016StandardGapBetweenWidgets,1)							// Frame
+							kTrue, kTrue,								// Visible, Enabled
+						),
+						ConditionStatusTextWidget
+						(
+							kConditionalTextUIStatusWidgetID, kSysStaticTextPMRsrcId,	// WidgetId, RsrcId
+							kBindLeft | kBindRight,				// Frame binding
+							Frame(kCC2016StandardGapBetweenWidgets,1,130,kCC2016StandardWidgetHeight+1)									// Frame
+							kTrue, kTrue, kAlignLeft,							// Visible, Enabled
+							kEllipsizeEnd,	kTrue,								// Ellipsize style, Convert ampersands
+							"",													// Text
+							0
+						),
+						NewConditionTagButtonWidget
+						(
+							kNewConditionTagButtonWidgetID, 		// WidgetId
+							kIconNew, kApplicationRsrcPluginID,		// RsrcId
+							kBindRight,
+							Frame(169,1,169+kCC2016PanelIconWidth,kCC2016PanelIconHeight+1)					// Frame
+							kTrue, kTrue,							// Visible, Enabled
+							kADBEIconSuiteButtonType,
+						),
+						DeleteConditionTagButtonWidget
+						(
+							kDeleteConditionTagButtonWidgetID,		// WidgetId 
+							kIconDelete, kApplicationRsrcPluginID,	// RsrcId
+							kBindRight,
+							Frame(169+kCC2016PanelIconWidth,1,169+(2*kCC2016PanelIconWidth),kCC2016PanelIconHeight+1)					// Frame
+							kTrue, kTrue,							// Visible, Enabled
+							kADBEIconSuiteButtonType,
+						),
+					}
+				),
+			}
+		),
+	},
+	"#CondTextUI_PanelMenu", // panel menu name	
+}
+
+resource ConditionTagTreeViewNodeWidget(kConditionTagTreeViewNodeRsrcID + index_enUS)
+{
+	__FILE__, __LINE__,
+	kConditionTagTreeViewNodeWidgetID, kPMRsrcID_None,	// WidgetId, RsrcId
+	kBindLeft | kBindRight,
+	Frame(0, 0, kCC2016PanelStandardWidth, kCC2016PanelTreeNodeHeight),								// Frame
+	kTrue, kTrue,										// Visible, Enabled
+	"",													// Panel name
+	{
+	GenericPanelWithCustomBorderWidget
+										(
+											0,									// WidgetId
+											kPMRsrcID_None,						// RsrcId
+											kBindLeft,							// Frame binding
+											Frame(0,0,20,kCC2016PanelTreeNodeContentHeight),
+											kTrue,								// Visible
+											kTrue,								// Enabled
+											"",									
+											{
+												ConditionTagEyeballWidget
+												(
+													kConditionTagEyeballWidgetID,				// WidgetId,
+													kEyeballIcon,								// RsrcId
+													kApplicationRsrcPluginID,					// RsrcPlugin
+													kBindLeft,									// Frame binding
+													Frame(0,0,20,kCC2016PanelTreeNodeContentHeight),							// Frame
+													kTrue, kTrue,								// Visible, Enabled
+													kIconCentering,    (kIconFlushLook ), kFalse,
+												),
+		
+											}
+											kRightBorder,
+											0,
+										),
+		GenericPanelWithCustomBorderWidget
+										(
+											0,									// WidgetId
+											kPMRsrcID_None,						// RsrcId
+											kBindLeft,							// Frame binding
+											Frame(20,0,40,kCC2016PanelTreeNodeContentHeight),
+											kTrue,								// Visible
+											kTrue,								// Enabled
+											"",									
+											{
+												ConditionAppliedIcon
+												(
+													kConditionTagAppliedStateWidgetId, 
+													kAppliedToSomeCharactersIndicatorRsrcID, 
+													kConditionalTextUIPluginID,			
+													kBindLeft,	
+													Frame(0,0,20,kCC2016PanelTreeNodeContentHeight),							// Frame
+													kTrue, kTrue,							// Visible, Enabled
+													kIconCentering,    (kIconFlushLook ), kFalse ,
+													0,
+												),
+		
+											}
+									kRightBorder,
+									0,
+									),
+
+		
+		
+		ConditionTagNameILEWidget
+		(
+			kTreeNodeNameWidgetID, kSysEditBoxPMRsrcId,	// WidgetId, RsrcId
+			kBindRight | kBindLeft,
+			Frame(46,0,211,kCC2016PanelTreeNodeContentHeight)						// Frame
+			kTrue, kTrue,								// Visible, Enabled
+			kAlignLeft,									// Alignment
+			kEllipsizeEnd, kFalse,						// Ellipsize style, Convert ampersands
+			"",											// Text Control Data	
+			kEditbox,
+			kFalse, kTrue,								// key focus, editable
+			100											// max num chars allowed
+		),
+		ConditionTagUIColorSwatchWidget
+		(
+			kConditionTagColorSwatchWidgetID,		// WidgetId
+			kPMRsrcID_None,							// RsrcId
+			kBindRight,								// Frame binding
+			Frame(216,0,216+kCC2016PanelTreeNodeContentHeight,kCC2016PanelTreeNodeContentHeight),					// Frame
+			kTrue,									// Visible
+			kTrue									// Enabled
+		),
+	}
+}
+
+resource NoConditionTagTreeViewNodeWidget(kNoConditionTagTreeViewNodeRsrcID + index_enUS)
+{
+	__FILE__, __LINE__,
+	kNoConditionTagTreeViewNodeWidgetID, kPMRsrcID_None,	// WidgetId, RsrcId
+	kBindLeft | kBindRight,
+	Frame(0, 0, kCC2016PanelStandardWidth, kCC2016PanelTreeNodeHeight),								// Frame
+	kTrue, kTrue,										// Visible, Enabled
+	"",													// Panel name
+	{
+		GenericPanelWithCustomBorderWidget
+										(
+											0,									// WidgetId
+											kPMRsrcID_None,						// RsrcId
+											kBindLeft,							// Frame binding
+											Frame(0,0,20,kCC2016PanelTreeNodeContentHeight),
+											kTrue,								// Visible
+											kTrue,								// Enabled
+											"",									
+											{
+												IconSuiteWidget
+												(
+													kConditionTagEyeballWidgetID,				// WidgetId,
+													kEyeballIcon,								// RsrcId
+													kApplicationRsrcPluginID,					// RsrcPlugin
+													kBindLeft,									// Frame binding
+													Frame(0,0,20,kCC2016PanelTreeNodeContentHeight),							// Frame
+													kTrue, kTrue,								// Visible, Enabled
+													kIconCentering,    (kIconFlushLook ), kFalse ,
+													0,
+												),
+		
+											}
+											kRightBorder,
+											0,
+										),
+		GenericPanelWithCustomBorderWidget
+										(
+											0,									// WidgetId
+											kPMRsrcID_None,						// RsrcId
+											kBindLeft,							// Frame binding
+											Frame(20,0,40,kCC2016PanelTreeNodeContentHeight),
+											kTrue,								// Visible
+											kTrue,								// Enabled
+											"",									
+											{
+												IconSuiteWidget
+												(
+													kConditionTagAppliedStateWidgetId, 
+													kAppliedToAllCharactersIndicatorRsrcID, 
+													kConditionalTextUIPluginID,			
+													kBindLeft,	
+													Frame(0,0,20,kCC2016PanelTreeNodeContentHeight),							// Frame
+													kTrue, kTrue,							// Visible, Enabled
+													kIconCentering,    (kIconFlushLook ), kFalse ,
+													0,
+												),
+		
+											}
+										kRightBorder,
+										0,
+									),
+	
+
+		StaticTextWidget
+		(
+			kTreeNodeNameWidgetID,
+			kSysStaticTextPMRsrcId,						// RsrcId
+			kBindRight | kBindLeft,
+			Frame(46,0,211,kCC2016PanelTreeNodeContentHeight),							// Frame
+			kTrue, kTrue, kAlignLeft,					// Visible, Enabled, Alignment
+			kDontEllipsize, kTrue,						// Ellipsize style, Convert ampersands
+			"#ConditionTag_Unconditional",				// Initial text
+			0
+		),
+	}
+}
+
+
+resource ConditionTagOptionsDialog(kConditionTagOptionsDialogRsrcID + index_enUS)
+{
+	__FILE__, __LINE__,
+	kConditionTagOptionsDialogWidgetId,		// WidgetId
+	kPMRsrcID_None,							// RsrcId
+	kBindNone,
+	Frame(0,0,440,205)		// Frame
+	kTrue,									// Visible
+	kTrue,									// Enabled
+	"#ConditionTag_OptionsDialog",						// Panel name
+	{
+		EVEGenericPanelWidget
+		(
+			kConditionTagOptionsPanelWidgetID,					// WidgetId
+			0,0,				// RsrcId
+			kBindNone,						// Frame binding
+			Frame(0,0,440,188)		// Frame
+			kTrue,							// Visible
+			kTrue,							// Enabled
+			kEVELargeSpaceAfter|kEVEArrangeChildrenInColumn|kEVEChildAlignFill,	// EVE info
+			{
+				// Widgets for all the Name (and shortcut?) controls
+				EVEGenericPanelWidget
+				(
+					kConditionTagOptionsNamePanelWidgetId,								// WidgetId
+					kPMRsrcID_None,					// RsrcId
+					kBindNone,
+					Frame(0,5,147,70)		// Frame
+					kTrue,							// Visible
+					kTrue,							// Enabled
+					kEVEAlignFill|kEVELargeSpaceAfter|kEVEArrangeChildrenInRow|kEVELargeMargin,		// EVE info
+					{
+						EVEGenericPanelWidget
+						(
+							kConditionTagNameLabelsPanelWidgetID,					// WidgetId
+							0,0,				// RsrcId
+							kBindNone,						// Frame binding
+							Frame(10,0,67,45)		// Frame
+							kTrue,							// Visible
+							kTrue,							// Enabled
+							kEVEArrangeChildrenInColumn|kEVERegularSpaceAfter|kEVEChildAlignRight|kEVEChildLargeSpaceAfter,		// EVE info
+							{
+								EVEStaticTextWidget
+								(
+									kConditionTagNameStaticWidgetID,		// WidgetId
+									kSysStaticTextPMRsrcId,			// RsrcId
+									kBindNone,
+									Frame(0,0,0,0)		// Frame
+									kTrue, kTrue, kAlignRight,		// Visible, Enabled, Alignment
+									kDontEllipsize, kTrue,					// Ellipsize style, Convert ampersands
+									"#ConditionTagOptions_Name:",							// Initial text
+									kConditionTagNameEditWidgetID,
+									kEVERegularSpaceAfter
+								)
+							}
+						),
+						EVEGenericPanelWidget
+						(
+							kConditionTagNameEditPanelWidgetID,					// WidgetId
+							0,0,				// RsrcId
+							kBindNone,						// Frame binding
+							Frame(67,0,137,45)		// Frame
+							kTrue,							// Visible
+							kTrue,							// Enabled
+							kEVEArrangeChildrenInColumn|kEVENoSpaceAfter,		// EVE info
+							{
+								EVETextEditBoxWidget 					
+								(
+									kConditionTagNameEditWidgetID,				// WidgetId
+									kSysEditBoxPMRsrcId,			// RsrcId
+									kBindNone,						// Frame binding
+									Frame(0,0,230,0)		// Frame
+									kTrue, kTrue					// Visible, Enabled
+									0,								// Widget id of nudge button (0 so we don't get one)
+									0, 0,							// small,large nudge amount
+									kPMNamedItemMaxChars,			// max num chars( 0 = no limit)
+									kFalse,							// is read only
+									kFalse,							// should notify each key stroke
+									kFalse,							// range checking enabled
+									kFalse,							// blank entry allowed
+									0,								// Upper bounds
+									0,								// Lower bounds
+									"",								// Initial text
+									kEVERegularSpaceAfter
+								),
+							}
+						),
+					},
+				),
+				
+				// Group widget for all the Indicator controls
+				EVEGroupPanelWidget
+				(
+					kConditionTagOptionsIndicatorGroupPanelWidgetId,								// WidgetId
+					kPMRsrcID_None,					// RsrcId
+					kBindNone,
+					Frame(0,0,440,173)		// Frame
+					kTrue,							// Visible
+					kTrue,							// Enabled
+					kConditionTagOptionsIndicatorHeaderWidgetID,		// widget id of group header
+					kEVEAlignFill|kEVELargeSpaceAfter|kEVEArrangeChildrenInRow|kEVELargeMargin,		// EVE info
+					{
+								EVEGenericPanelWidget
+								(
+									kConditionTagIndicatorLabelsPanelWidgetID,					// WidgetId
+									0,0,				// RsrcId
+									kBindNone,						// Frame binding
+									Frame(10,10,67,55)		// Frame
+									kTrue,							// Visible
+									kTrue,							// Enabled
+									kEVEArrangeChildrenInColumn|kEVERegularSpaceAfter|kEVEChildAlignRight|kEVEChildLargeSpaceAfter,		// EVE info
+									{
+										EVEStaticTextWidget
+										(
+											kConditionTagIndicatorMethodStaticWidgetID,		// WidgetId
+											kSysStaticTextPMRsrcId,			// RsrcId
+											kBindNone,
+											Frame(0,0,0,0)		// Frame
+											kTrue, kTrue, kAlignRight,		// Visible, Enabled, Alignment
+											kDontEllipsize, kTrue,					// Ellipsize style, Convert ampersands
+											"#ConditionTagOptions_Method:",							// Initial text
+											kConditionTagIndicatorMethodEditWidgetID,
+											kEVERegularSpaceAfter
+										)
+										EVEStaticTextWidget
+										(
+											kConditionTagIndicatorAppearanceStaticWidgetID,		// WidgetId
+											kSysStaticTextPMRsrcId,			// RsrcId
+											kBindNone,
+											Frame(0,0,0,0)		// Frame
+											kTrue, kTrue, kAlignRight,		// Visible, Enabled, Alignment
+											kDontEllipsize, kTrue,					// Ellipsize style, Convert ampersands
+											"#ConditionTagOptions_Appearance:",							// Initial text
+											kConditionTagIndicatorAppearanceEditWidgetID,
+											kEVERegularSpaceAfter
+										)
+										EVEStaticTextWidget
+										(
+											kConditionTagIndicatorColorStaticWidgetID,		// WidgetId
+											kSysStaticTextPMRsrcId,			// RsrcId
+											kBindNone,
+											Frame(0,0,0,0)		// Frame
+											kTrue, kTrue, kAlignRight,		// Visible, Enabled, Alignment
+											kDontEllipsize, kTrue,					// Ellipsize style, Convert ampersands
+											"#ConditionTagOptions_Color:",							// Initial text
+											kConditionTagIndicatorColorEditWidgetID,
+											kEVERegularSpaceAfter
+										)
+									}
+								),
+								EVEGenericPanelWidget
+								(
+									kConditionTagIndicatorEditPanelWidgetID,					// WidgetId
+									0,0,				// RsrcId
+									kBindNone,						// Frame binding
+									Frame(67,10,137,55)		// Frame
+									kTrue,							// Visible
+									kTrue,							// Enabled
+									kEVEArrangeChildrenInColumn|kEVENoSpaceAfter|kEVEChildLargeSpaceAfter,		// EVE info
+									{
+										EVEDropDownListWidget
+										(
+											kConditionTagIndicatorMethodEditWidgetID,	// WidgetId
+											kSysDropDownPMRsrcId,				// RsrcId
+											kBindNone,
+											Frame(57,0,235,0)		// Frame
+											kTrue, kTrue,									// Visible, Enabled
+											{{
+												"#ConditionTagOptions_MethodUnderline",
+												"#ConditionTagOptions_MethodHighlight",
+											}},
+											kEVERegularSpaceAfter
+										),
+										EVEDropDownListWidget
+										(
+											kConditionTagIndicatorAppearanceEditWidgetID,	// WidgetId
+											kSysDropDownPMRsrcId,				// RsrcId
+											kBindNone,
+											Frame(57,0,235,0)		// Frame
+											kTrue, kTrue,									// Visible, Enabled
+											{{
+												"#ConditionTagOptions_WavyUnderline",
+												"#ConditionTagOptions_SolidUnderline",
+												"#ConditionTagOptions_DashedUnderline",
+											}},
+											kEVERegularSpaceAfter
+										),
+										EVEColorListDropDownWidget
+										(
+											kConditionTagIndicatorColorEditWidgetID,	// WidgetId
+											kSysDropDownPMRsrcId,				// RsrcId
+											kBindNone,					
+											Frame(57,0,235,0)					// Frame
+											kTrue,								// Visible
+											kTrue,								// Enabled
+											0,									// Associated Widget
+											kEVERegularSpaceAfter,
+										)	
+							}
+						),
+						EVEStaticTextWidget
+						(
+							kConditionTagOptionsIndicatorHeaderWidgetID,		// WidgetId
+							kSysStaticTextPMRsrcId,			// RsrcId
+							kBindNone,
+							Frame(10,0,61,0)		// Frame
+							kTrue, kTrue, 			// Visible, Enabled,
+							kAlignCenter,					// Alignment
+							kDontEllipsize, kTrue,					// Ellipsize style, Convert ampersands
+							"#ConditionTagOptions_Indicator",				// Initial text
+							0,
+							kEVERegularSpaceAfter
+						),
+					},
+				),
+				// Button widgets
+				EVEGenericPanelWidget
+				(
+					kConditionTagOptionsButtonsPanelWidgetID,					// WidgetId
+					0,0,				// RsrcId
+					kBindNone,						// Frame binding
+					Frame(0,0,440,220)		// Frame
+					kTrue,							// Visible
+					kTrue,							// Enabled
+					kEVENoSpaceAfter|kEVEArrangeChildrenInRow|kEVEAlignRight|kEVEChildAlignRight		//EVE info
+					{
+#ifdef MACINTOSH
+						EVECancelButtonWidget
+						(
+							kCancelButton_WidgetID,				// WidgetId
+							kSysButtonPMRsrcId,				// RsrcId
+							kBindNone,
+							Frame(0,0,0,0)		// Frame
+							kTrue,							// Visible
+							kTrue,							// Enabled
+							"Cancel",						// Initial text
+							kFalse,							// cancel doesn't change to reset
+							kEVERegularSpaceAfter
+						),
+						EVEDefaultButtonWidget 
+						(
+							kOKButtonWidgetID,					// WidgetId
+							kSysButtonPMRsrcId,				// RsrcId
+							kBindNone,
+							Frame(0,0,0,0)		// Frame
+							kTrue,							// Visible
+							kTrue,							// Enabled
+							"OK",							// Initial text
+							kEVERegularSpaceAfter
+						),
+#else
+						EVEDefaultButtonWidget 
+						(
+							kOKButtonWidgetID,					// WidgetId
+							kSysButtonPMRsrcId,				// RsrcId
+							kBindNone,
+							Frame(0,0,0,0)		// Frame
+							kTrue,							// Visible
+							kTrue,							// Enabled
+							"OK",							// Initial text
+							kEVERegularSpaceAfter
+						),
+						EVECancelButtonWidget
+						(
+							kCancelButton_WidgetID,				// WidgetId
+							kSysButtonPMRsrcId,				// RsrcId
+							kBindNone,
+							Frame(0,0,0,0)		// Frame
+							kTrue,							// Visible
+							kTrue,							// Enabled
+							"Cancel",						// Initial text
+							kFalse,							// cancel doesn't change to reset
+							kEVERegularSpaceAfter
+						),
+#endif
+					}
+				),
+			},
+		),
+	}
+	kEVEArrangeChildrenInRow|kEVELargeMargin,		// EVE child layout(row/column)
+};
+
+resource ConditionTagDeleteDialog(kConditionTagDeleteDialogRsrcID + index_enUS)
+{
+	__FILE__, __LINE__,
+	kConditionTagDeleteDialogWidgetId,		// WidgetId
+	kPMRsrcID_None,							// RsrcId
+	kBindNone,								// Frame binding
+	Frame(0,0,10070,86)						// Frame
+	kTrue,									// Visible
+	kTrue,									// Enabled
+	"#ConditionTag_DeleteConditionDialog",	// Panel name
+	{
+		EVEGenericPanelWidget
+		(
+			0,								// WidgetId
+			0,0,							// RsrcId
+			kBindNone,						// Frame binding
+			Frame(0,0,0,0)				// Frame
+			kTrue,							// Visible
+			kTrue,							// Enabled
+			kEVEAlignLeft|kEVEArrangeChildrenInColumn|kEVEChildAlignLeft|kEVEChildRegularSpaceAfter|kEVEExtraLargeSpaceAfter,	// EVE info
+			{
+				EVEIconFieldWidget 
+				(
+					kConditionTagDeleteWarningIconWidgetId, 	// WidgetId
+					kLargeWarningSignRsrcID, 					// RsrcId
+					kApplicationRsrcPluginID,			
+					kBindNone,
+				#if defined(MACINTOSH)
+					Frame(0,0,64,64)
+				#elif defined(WINDOWS)
+					Frame(0,0,32,32)
+				#endif
+					kTrue, kTrue,								// Invisible, Enabled	
+					kADBEIconSuiteButtonType,
+					kEVERegularSpaceAfter
+				),
+			}
+		)
+		
+		EVEGenericPanelWidget
+		(
+			0,							// WidgetId
+			0,	0,						// RsrcId
+			kBindNone,					// Frame binding
+			Frame(0,0,0,0)				// Frame
+			kTrue,						// Visible
+			kTrue,						// Enabled
+			kEVEAlignRight|kEVEArrangeChildrenInColumn|kEVEChildAlignRight|kEVEChildRegularSpaceAfter|kEVERegularSpaceAfter,	// EVE info
+			{				
+				EVEGenericPanelWidget
+				(
+					0,					// WidgetId
+					0,0,				// RsrcId
+					kBindNone,						// Frame binding
+					Frame(0,0,0,0)		// Frame
+					kTrue,							// Visible
+					kTrue,							// Enabled
+					kEVEExtraLargeSpaceAfter|kEVEArrangeChildrenInRow|kEVEAlignRight|kEVEChildAlignRight		//EVE info
+					{
+						EVEStaticTextWidget
+						(
+							kConditionTagDeleteStaticWidgetID,			// WidgetId
+							kSysStaticTextPMRsrcId,						// RsrcId
+							kBindNone,									// Frame binding
+							Frame(0,0,190,0)							// Frame
+							kTrue, kTrue, 								// Visible, Enabled
+							kAlignRight,								// Alignment
+							kDontEllipsize, kTrue,						// Ellipsize style, Convert ampersands
+							"#ConditionTag_DeleteConditionAndReplace:",			// Initial text
+							kConditionTagDeletePopupWidgetID,
+							kEVERegularSpaceAfter
+						),
+						
+						EVEDropDownListWidget
+						(
+							kConditionTagDeletePopupWidgetID, kSysDropDownPMRsrcId,				// WidgetId, RsrcId
+							kBindNone,						// Frame binding
+							Frame(0,0,110,0)
+							kTrue, kTrue,					// Visible, Enabled
+							{{
+							}},
+							kEVENoSpaceAfter,
+						),
+					}
+				)
+				
+				// Button widgets
+				EVEGenericPanelWidget
+				(
+					0,					// WidgetId
+					0,0,				// RsrcId
+					kBindNone,						// Frame binding
+					Frame(0,0,0,0)		// Frame
+					kTrue,							// Visible
+					kTrue,							// Enabled
+					kEVENoSpaceAfter|kEVEArrangeChildrenInRow|kEVEAlignRight|kEVEChildAlignRight		//EVE info
+					{
+#ifdef MACINTOSH
+						EVECancelButtonWidget
+						(
+							kCancelButton_WidgetID,				// WidgetId
+							kSysButtonPMRsrcId,				// RsrcId
+							kBindNone,
+							Frame(0,0,0,0)		// Frame
+							kTrue,							// Visible
+							kTrue,							// Enabled
+							"Cancel",						// Initial text
+							kFalse,							// cancel doesn't change to reset
+							kEVERegularSpaceAfter
+						),
+						EVEDefaultButtonWidget 
+						(
+							kOKButtonWidgetID,					// WidgetId
+							kSysButtonPMRsrcId,				// RsrcId
+							kBindNone,
+							Frame(0,0,0,0)		// Frame
+							kTrue,							// Visible
+							kTrue,							// Enabled
+							"OK",							// Initial text
+							kEVERegularSpaceAfter
+						),
+#else
+						EVEDefaultButtonWidget 
+						(
+							kOKButtonWidgetID,					// WidgetId
+							kSysButtonPMRsrcId,				// RsrcId
+							kBindNone,
+							Frame(0,0,0,0)		// Frame
+							kTrue,							// Visible
+							kTrue,							// Enabled
+							"OK",							// Initial text
+							kEVERegularSpaceAfter
+						),
+						EVECancelButtonWidget
+						(
+							kCancelButton_WidgetID,				// WidgetId
+							kSysButtonPMRsrcId,				// RsrcId
+							kBindNone,
+							Frame(0,0,0,0)		// Frame
+							kTrue,							// Visible
+							kTrue,							// Enabled
+							"Cancel",						// Initial text
+							kFalse,							// cancel doesn't change to reset
+							kEVERegularSpaceAfter
+						),
+#endif
+					}
+				),
+			},
+		),
+	}
+	kEVEArrangeChildrenInRow|kEVELargeMargin,		// EVE child layout(row/column)
+};
+
+resource ConditionSetNameDialog (kConditionSetNameDialogRsrcID + index_enUS)
+{
+	__FILE__, __LINE__,
+	kConditionSetNameDialogWidgetID,		// WidgetId
+	kPMRsrcID_None,							// RsrcId
+	kBindNone,								// Frame binding
+	Frame(0,0,440,205)						// Frame
+	kTrue,									// Visible
+	kTrue,									// Enabled
+	"#ConditionSetNameDialog",				// Panel name
+	{
+		EVEGenericPanelWidget
+		(
+			0,							// WidgetId
+			0,	0,						// RsrcId
+			kBindNone,					// Frame binding
+			Frame(0,0,0,0)				// Frame
+			kTrue,						// Visible
+			kTrue,						// Enabled
+			kEVEAlignRight|kEVEArrangeChildrenInColumn|kEVEChildAlignRight|kEVEChildRegularSpaceAfter|kEVERegularSpaceAfter,	// EVE info
+			{				
+				EVEGenericPanelWidget
+				(
+					0,					// WidgetId
+					0,0,				// RsrcId
+					kBindNone,			// Frame binding
+					Frame(0,0,0,0)		// Frame
+					kTrue,				// Visible
+					kTrue,				// Enabled
+					kEVEExtraLargeSpaceAfter|kEVEArrangeChildrenInRow|kEVEAlignRight|kEVEChildAlignRight		//EVE info
+					{
+						EVEStaticTextWidget
+						(
+							kConditionSetNameStaticWidgetID,			// WidgetId
+							kSysStaticTextPMRsrcId,						// RsrcId
+							kBindNone,									// Frame binding
+							Frame(0,0,0,0)							// Frame
+							kTrue, kTrue, 								// Visible, Enabled
+							kAlignRight,								// Alignment
+							kDontEllipsize, kTrue,						// Ellipsize style, Convert ampersands
+							"#ConditionSetNameStatic",			// Initial text
+							kConditionSetNameEditBoxWidgetID,
+							kEVERegularSpaceAfter
+						),
+						
+						EVETextEditBoxWidget 
+						(
+							kConditionSetNameEditBoxWidgetID,	// WidgetId
+							kSysEditBoxPMRsrcId,			// RsrcId
+							kBindNone,
+							Frame(0,0,180,0)	 			// Frame
+							kTrue,							// Visible
+							kTrue,							// Enabled
+							0,								// Widget id of nudge button
+							0, 0,							// small, large nudge amount
+							0,								// max num chars (0 = no limit)
+							kFalse,							// is read only
+							kFalse,							// should notify each key stroke
+							kFalse,							// range checking enable
+							kFalse,							// blank entry allowed
+							0,								// upper bounds
+							0,								// lower bounds
+							"",								// Initial text
+							kEVERegularSpaceAfter
+						),	
+					}
+				)
+		
+				// Button widgets
+				EVEGenericPanelWidget
+				(
+					0,					// WidgetId
+					0,0,				// RsrcId
+					kBindNone,						// Frame binding
+					Frame(0,0,0,0)		// Frame
+					kTrue,							// Visible
+					kTrue,							// Enabled
+					kEVENoSpaceAfter|kEVEArrangeChildrenInRow|kEVEAlignRight|kEVEChildAlignRight		//EVE info
+					{
+#ifdef MACINTOSH
+						EVECancelButtonWidget
+						(
+							kCancelButton_WidgetID,				// WidgetId
+							kSysButtonPMRsrcId,				// RsrcId
+							kBindNone,
+							Frame(0,0,0,0)		// Frame
+							kTrue,							// Visible
+							kTrue,							// Enabled
+							"Cancel",						// Initial text
+							kFalse,							// cancel doesn't change to reset
+							kEVERegularSpaceAfter
+						),
+						EVEDefaultButtonWidget 
+						(
+							kOKButtonWidgetID,					// WidgetId
+							kSysButtonPMRsrcId,				// RsrcId
+							kBindNone,
+							Frame(0,0,0,0)		// Frame
+							kTrue,							// Visible
+							kTrue,							// Enabled
+							"OK",							// Initial text
+							kEVERegularSpaceAfter
+						),
+#else
+						EVEDefaultButtonWidget 
+						(
+							kOKButtonWidgetID,					// WidgetId
+							kSysButtonPMRsrcId,				// RsrcId
+							kBindNone,
+							Frame(0,0,0,0)		// Frame
+							kTrue,							// Visible
+							kTrue,							// Enabled
+							"OK",							// Initial text
+							kEVERegularSpaceAfter
+						),
+						EVECancelButtonWidget
+						(
+							kCancelButton_WidgetID,				// WidgetId
+							kSysButtonPMRsrcId,				// RsrcId
+							kBindNone,
+							Frame(0,0,0,0)		// Frame
+							kTrue,							// Visible
+							kTrue,							// Enabled
+							"Cancel",						// Initial text
+							kFalse,							// cancel doesn't change to reset
+							kEVERegularSpaceAfter
+						),
+#endif
+					}
+				),
+			}
+		),
+
+	}
+	kEVEArrangeChildrenInRow|kEVELargeMargin,		// EVE child layout(row/column)
+}
+
+#endif	// __ODFRC__
+
+

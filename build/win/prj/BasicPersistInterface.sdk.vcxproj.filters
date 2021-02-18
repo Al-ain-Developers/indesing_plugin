@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{1727bb0d-5626-4650-aa19-f8e19b6f6b5b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Plugin">
+      <UniqueIdentifier>{d542168b-5f22-4b89-9a89-4604a96f56e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Model">
+      <UniqueIdentifier>{20884882-1d0f-4a7d-9c22-0c87d6716a03}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Suite">
+      <UniqueIdentifier>{76049812-09ae-4d89-b5d8-be8e1439c1f6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Scripting">
+      <UniqueIdentifier>{9c8dda72-36ee-4028-9b45-9616b8220e40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{e30d447d-c7d8-432a-9258-d32faef2099a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{e07429bc-387b-4eae-9f22-637e60395a08}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\source\sdksamples\basicpersistinterface\BPIID.cpp">
+      <Filter>Source Files\Plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\basicpersistinterface\BPINoStrip.cpp">
+      <Filter>Source Files\Plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\libs\publiclib\statics\PlugInStatics.cpp">
+      <Filter>Source Files\Plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\common\SDKPlugInEntrypoint.cpp">
+      <Filter>Source Files\Plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\basicpersistinterface\TriggerResourceDeps.cpp">
+      <Filter>Source Files\Plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\precomp\msvc\VCPlugInHeaders.cpp">
+      <Filter>Source Files\Plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\basicpersistinterface\BPIData.cpp">
+      <Filter>Source Files\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\basicpersistinterface\BPIDataPersist.cpp">
+      <Filter>Source Files\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\basicpersistinterface\BPIDefaultResponder.cpp">
+      <Filter>Source Files\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\basicpersistinterface\BPIHelper.cpp">
+      <Filter>Source Files\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\basicpersistinterface\BPISetDataCmd.cpp">
+      <Filter>Source Files\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\basicpersistinterface\BPISuiteASB.cpp">
+      <Filter>Source Files\Suite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\basicpersistinterface\BPISuiteCSB.cpp">
+      <Filter>Source Files\Suite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\basicpersistinterface\BPISuiteDefaultCSB.cpp">
+      <Filter>Source Files\Suite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\basicpersistinterface\BPISuiteLayoutCSB.cpp">
+      <Filter>Source Files\Suite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\basicpersistinterface\BPISuiteTextCSB.cpp">
+      <Filter>Source Files\Suite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\basicpersistinterface\BPIErrorStringService.cpp">
+      <Filter>Source Files\Scripting</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\basicpersistinterface\BPIPrefsScriptProvider.cpp">
+      <Filter>Source Files\Scripting</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\basicpersistinterface\BPIScriptProvider.cpp">
+      <Filter>Source Files\Scripting</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\source\sdksamples\basicpersistinterface\BPIFactoryList.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\sdksamples\basicpersistinterface\BPIHelper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\sdksamples\basicpersistinterface\BPIID.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\sdksamples\basicpersistinterface\BPIScriptingDefs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\sdksamples\basicpersistinterface\BPISuiteCSB.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\sdksamples\basicpersistinterface\IBPIData.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\sdksamples\basicpersistinterface\IBPISuite.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\..\..\source\sdksamples\basicpersistinterface\BPI.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\..\..\source\sdksamples\basicpersistinterface\BPI.fr">
+      <Filter>Resource Files</Filter>
+    </CustomBuild>
+  </ItemGroup>
+</Project>

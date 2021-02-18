@@ -1,0 +1,419 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/sdksamples/CustomHttpLinkUI/CustomHttpLinkUI.fr $
+//  
+//  Owner: swagarg
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//
+//  ADOBE CONFIDENTIAL
+//  
+//  Copyright 2019 Adobe
+//  All Rights Reserved.
+//
+//  NOTICE: Adobe permits you to use, modify, and distribute this file in
+//  accordance with the terms of the Adobe license agreement accompanying
+//  it. If you have received this file from a source other than Adobe,
+//  then your use, modification, or distribution of it requires the prior
+//  written permission of Adobe. 
+//  
+//========================================================================================
+
+#include "VCPlugInHeaders.h"
+
+// General includes:
+#include "MenuDef.fh"
+#include "ActionDef.fh"
+#include "ActionDefs.h"
+#include "AdobeMenuPositions.h"
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "StringTable.fh"
+#include "ObjectModelTypes.fh"
+#include "ShuksanID.h"
+#include "ActionID.h"
+#include "CommandID.h"
+#include "WorkspaceID.h"
+#include "WidgetID.h"
+#include "BuildNumber.h"
+#include "PlugInModel_UIAttributes.h"
+#include "PanelList.fh"
+#include "InterfaceColorDefines.h"
+#include "IControlViewDefs.h"
+#include "SysControlIDs.h"
+#include "Widgets.fh"	// for PalettePanelWidget or DialogBoss
+#include "EveInfo.fh"
+
+// Project includes:
+#include "CustomHttpLinkUIID.h"
+#include "GenericID.h"
+#include "ShuksanID.h"
+#include "TextID.h"
+
+
+#ifdef __ODFRC__
+
+/*  
+ * Plugin version definition.
+ */
+resource PluginVersion (kSDKDefPluginVersionResourceID)
+{
+	kTargetVersion,
+	kCustomHttpLinkUIPluginID,
+	kSDKDefPlugInMajorVersionNumber, kSDKDefPlugInMinorVersionNumber,
+	kSDKDefHostMajorVersionNumber, kSDKDefHostMinorVersionNumber,
+	kCustomHttpLinkUICurrentMajorFormatNumber, kCustomHttpLinkUICurrentMinorFormatNumber,
+	{ kInDesignProduct, kInCopyProduct },
+	{ kWildFS },
+	kUIPlugIn,
+	kCustomHttpLinkUIVersion
+};
+
+/*  
+ * The ExtraPluginInfo resource adds extra information to the Missing Plug-in dialog
+ * that is popped when a document containing this plug-in's data is opened when
+ * this plug-in is not present. These strings are not translatable strings
+ * since they must be available when the plug-in isn't around. They get stored
+ * in any document that this plug-in contributes data to.
+ */
+resource ExtraPluginInfo(1)
+{
+	kCustomHttpLinkUICompanyValue,			// Company name
+	kCustomHttpLinkUIMissingPluginURLValue,	// URL 
+	kCustomHttpLinkUIMissingPluginAlertValue,	// Missing plug-in alert text
+};
+
+/* 
+ * Boss class definitions.
+ */
+resource ClassDescriptionTable(kSDKDefClassDescriptionTableResourceID)
+{{{
+
+	/*
+	 * This boss class supports two interfaces:
+	 * IActionComponent and IPMPersist.
+     *
+	 * 
+	 * @ingroup customhttplinkui.sdk
+	 */
+	Class
+	{
+		kCustomHttpLinkUIActionComponentBoss,
+		kInvalidClass,
+		{
+			// Handle the actions from the menu.
+			IID_IACTIONCOMPONENT, kCustomHttpLinkUIActionComponentImpl,
+			// Persist the state of the menu across application instantiation. Implementation provided by the API.
+			IID_IPMPERSIST, kPMPersistImpl
+		}
+	},
+
+    /*
+	 * This boss class inherits from an API panel boss class, and
+	 * adds an interface to control a pop-up menu on the panel.
+	 * The implementation for this interface is provided by the API.
+     *
+	 * 
+	 * @ingroup customhttplinkui.sdk
+	 */
+	Class
+	{
+		kCustomHttpLinkUIPanelWidgetBoss,
+		kPalettePanelWidgetBoss,
+		{
+			/*
+			 * The plug-in's implementation of ITextControlData with an exotic IID of IID_IPANELMENUDATA.
+			 * Implementation provided by the API.
+			 */
+			IID_IPANELMENUDATA, kCPanelMenuDataImpl,
+            IID_IOBSERVER, kCustomHttpLinkUIObserverImpl,
+		}
+	},
+    
+    /*
+     * This boss class inherits from buttonWidget, and
+     * adds an interface to get updates on placeButton
+     *
+     * @ingroup customhttplinkui.sdk
+     */
+    Class
+    {
+        kPlaceButtonBoss,
+        kButtonWidgetBoss,
+        {
+            IID_IOBSERVER, kCustomHttpLinkUIPlaceButtonObserverImpl,
+        }
+    },
+    
+
+}}};
+
+/*  
+ * Implementation definition.
+ */
+resource FactoryList (kSDKDefFactoryListResourceID)
+{
+	kImplementationIDSpace,
+	{
+		#include "CustomHttpLinkUIFactoryList.h"
+	}
+};
+
+/*  
+ * Menu definition.
+ */
+resource MenuDef (kSDKDefMenuResourceID)
+{
+	{
+		// The About sub-menu item for this plug-in.
+		kCustomHttpLinkUIAboutActionID,			// ActionID (kInvalidActionID for positional entries)
+		kCustomHttpLinkUIAboutMenuPath,			// Menu Path.
+		kSDKDefAlphabeticPosition,											// Menu Position.
+		kSDKDefIsNotDynamicMenuFlag,										// kSDKDefIsNotDynamicMenuFlag or kSDKDefIsDynamicMenuFlag
+
+		// Separator for the popup menu on the panel
+		kCustomHttpLinkUISeparator1ActionID,
+		kCustomHttpLinkUIInternalPopupMenuNameKey kSDKDefDelimiterAndSeparatorPath,	// :- to mark an item as a separator.
+		kCustomHttpLinkUISeparator1MenuItemPosition,
+		kSDKDefIsNotDynamicMenuFlag,
+
+		// About this plug-in sub-menu for the popup menu on the panel
+		kCustomHttpLinkUIPopupAboutThisActionID,
+		kCustomHttpLinkUITargetMenuPath
+		kCustomHttpLinkUIAboutThisMenuItemPosition,
+		kSDKDefIsNotDynamicMenuFlag,
+        
+        // Login action in popup menu on the panel
+        kCustomHttpLinkUILoginActionID,
+        kCustomHttpLinkUITargetMenuPath
+        kCustomHttpLinkUILoginMenuItemPosition,
+        kFalse,
+        
+        // Logout action in popup menu on the panel
+        kCustomHttpLinkUILogoutActionID,
+        kCustomHttpLinkUITargetMenuPath
+        kCustomHttpLinkUILogoutMenuItemPosition,
+        kFalse,
+	}
+};
+
+/* 
+ * Action definition.
+ */
+resource ActionDef (kSDKDefActionResourceID)
+{
+	{
+		kCustomHttpLinkUIActionComponentBoss, 		// ClassID of boss class that implements the ActionID.
+		kCustomHttpLinkUIAboutActionID,	// ActionID.
+		kCustomHttpLinkUIAboutMenuKey,	// Sub-menu string.
+		kOtherActionArea,				// Area name (see ActionDefs.h).
+		kNormalAction,					// Type of action (see ActionDefs.h).
+		kDisableIfLowMem,				// Enabling type (see ActionDefs.h).
+		kInvalidInterfaceID,			// Selection InterfaceID this action cares about or kInvalidInterfaceID.
+		kSDKDefInvisibleInKBSCEditorFlag, // kSDKDefVisibleInKBSCEditorFlag or kSDKDefInvisibleInKBSCEditorFlag.
+
+		kCustomHttpLinkUIActionComponentBoss,
+		kCustomHttpLinkUIPopupAboutThisActionID,
+		kSDKDefAboutThisPlugInMenuKey,	// Key to the name of this action
+		kOtherActionArea,
+		kNormalAction,
+		kDisableIfLowMem,
+		kInvalidInterfaceID,
+		kSDKDefInvisibleInKBSCEditorFlag,
+
+        
+        kCustomHttpLinkUIActionComponentBoss,
+        kCustomHttpLinkUILoginActionID,
+        "kCustomHttpLinkUILoginMenuKey",    // Key to the name of this action
+        kOtherActionArea,
+        kNormalAction,
+        kCustomEnabling,
+        0,
+        kTrue,
+        
+        
+        kCustomHttpLinkUIActionComponentBoss,
+        kCustomHttpLinkUILogoutActionID,
+        "kCustomHttpLinkUILogoutMenuKey",    // Key to the name of this action
+        kOtherActionArea,
+        kNormalAction,
+        kCustomEnabling,
+        0,
+        kTrue,
+        
+	}
+};
+
+
+/*  
+ * Locale Indicies.
+ * The LocaleIndex should have indicies that point at your
+ * localizations for each language system that you are localized for.
+ */
+
+/*  
+ * String LocaleIndex.
+ */
+resource LocaleIndex ( kSDKDefStringsResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_enUS, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_enGB, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_deDE, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_frFR, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_esES, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_ptBR, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_svSE, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_daDK, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_nlNL, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_itIT, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_nbNO, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_fiFI, kSDKDefStringsResourceID + index_enUS
+		kInDesignJapaneseFS, k_jaJP, kSDKDefStringsResourceID + index_jaJP
+	}
+};
+
+resource LocaleIndex (kSDKDefStringsNoTransResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_Wild, kSDKDefStringsNoTransResourceID + index_enUS
+	}
+};
+
+// Strings not being localized
+resource StringTable (kSDKDefStringsNoTransResourceID + index_enUS)
+{
+	k_enUS,									// Locale Id
+	kEuropeanMacToWinEncodingConverter,		// Character encoding converter
+	{
+		kCustomHttpLinkUIInternalPopupMenuNameKey,	kCustomHttpLinkUIInternalPopupMenuNameKey,		// No need to translate, internal menu name.
+	
+	}
+};
+
+/*  
+ * Panel LocaleIndex.
+ */
+resource LocaleIndex (kSDKDefPanelResourceID)
+{
+	kViewRsrcType,
+	{
+		kWildFS, k_Wild, 	kSDKDefPanelResourceID + index_enUS
+	}
+};
+
+/*  
+ * Type definition.
+ */
+type CustomHttpLinkUIPanelWidget(kViewRsrcType) : PalettePanelWidget(ClassID = kCustomHttpLinkUIPanelWidgetBoss)
+{
+	CPanelMenuData;
+    WidgetEveInfo;
+};
+
+type PlaceButtonBoss (kViewRsrcType) : EVEButtonWidget (ClassID = kPlaceButtonBoss)
+{
+    
+};
+
+/*  
+ * PanelList definition.
+ */
+resource PanelList (kSDKDefPanelResourceID)
+{
+	{
+		// 1st panel in the list
+		kSDKDefPanelResourceID,		// Resource ID for this panel (use SDK default rsrc ID)
+		kCustomHttpLinkUIPluginID,			// ID of plug-in that owns this panel
+		kIsResizable,
+		kCustomHttpLinkUIPanelWidgetActionID,	// Action ID to show/hide the panel
+		kCustomHttpLinkUIPanelTitleKey,	// Shows up in the Window list.
+		"",							// Alternate menu path of the form "Main:Foo" if you want your palette menu item in a second place
+		0.0,						// Alternate Menu position Alternate Menu position for determining menu order
+		0,0,						// Rsrc ID, Plugin ID for a PNG icon resource to use for this palette
+		c_Panel
+	}
+};
+
+/* 
+ * PanelView definition.
+ * Note: it is not necessary to use EVE for panels.
+ * The view is not currently localised: therefore, it can reside here.
+ * However, if you wish to localise it, it is recommended to locate it in one of
+ * the localised framework resource files (i.e. CustomHttpLinkUI_enUS.fr etc.).
+ */
+resource CustomHttpLinkUIPanelWidget(kSDKDefPanelResourceID + index_enUS)
+{
+	__FILE__, __LINE__,					// Localization macro
+	kCustomHttpLinkUIPanelWidgetID,					// WidgetID
+	kPMRsrcID_None,						// RsrcID
+	kBindNone,							// Binding (0=none)
+	Frame(0, 0, 250, 250),				// Frame: left, top, right, bottom.
+	kTrue, kTrue,						// Visible, Enabled
+	kFalse,								// Erase background
+	kInterfacePaletteFill,				// Erase to color
+	kFalse,								// Draw dropshadow
+	kCustomHttpLinkUIPanelTitleKey,					// Panel name
+	{
+        EVEGenericPanelWidget
+        (
+             kInvalidWidgetID,    // WidgetId
+             0,0,                // RsrcId
+             kBindLeft | kBindRight,                        // Frame binding
+             Frame(0,0,0,0) ,                   // Frame
+             kTrue,                            // Visible
+             kTrue,
+             kEVEArrangeChildrenInColumn
+             {
+                 EVEStaticTextWidget
+                 (
+                      kInvalidWidgetID, kSysStaticTextPMRsrcId, kBindLeft | kBindRight,
+                      Frame(0,0,0,50)        // Frame
+                      kTrue, kTrue,                     // Visible, Enabled,
+                      kAlignLeft, kEllipsizeEnd,kTrue,        //Alignment, Ellipsize, Convert ampersands
+                      "SelectAsset",
+                      kFileListWidgetID,            // WidgetID this textwidget is connected to, 0 if none.
+                      kEVERegularSpaceAfter
+                  ),
+                 
+                 
+                 EVEDropDownListWidget
+                 (
+                      kFileListWidgetID, kSysDropDownPMRsrcId,  // WidgetId, RsrcId - for the moment this is menuID and sys control id
+                      kBindNone,
+                      Frame(0,0,220,21)      // Frame
+                      kTrue, kTrue,                       // Visible, Enabled
+                      {{""}},
+                      kEVELargeSpaceAfter,
+                  ),
+                 
+                 PlaceButtonBoss
+                 (
+                      kChooseFileWidgetID,
+                      kSysButtonPMRsrcId,                // RsrcId
+                      kBindNone,
+                      Frame(0,22,220,41),        // Frame
+                      kTrue, kTrue,                            // Visible, Enabled
+                      "Placefile",
+                      kEVERegularSpaceAfter,
+                  ),
+             }
+        )
+	}
+
+	kCustomHttpLinkUIInternalPopupMenuNameKey,		// Popup menu name (internal)
+    kEVEArrangeChildrenInRow | kEVESmallMargin,
+};
+
+#endif // __ODFRC__
+
+#include "CustomHttpLinkUI_enUS.fr"
+#include "CustomHttpLinkUI_jaJP.fr"

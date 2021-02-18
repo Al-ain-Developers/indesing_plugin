@@ -1,0 +1,50 @@
+﻿  VCPlugInHeaders.cpp
+  CusDtLnkImportLinkConverter.cpp
+  CusDtLnkLinkAssetConverter.cpp
+  CusDtLnkLinkInfoProvider.cpp
+  CusDtLnkLinkResourceFactory.cpp
+  CusDtLnkLinkResourceHandler.cpp
+  CusDtLnkLinkResourceHelperHandler.cpp
+  CusDtLnkLinkResourceStatePacket.cpp
+  CusDtLnkLinkResourceStateUpdater.cpp
+  CusDtLnkLinkResourceStateUpdaterIdleTask.cpp
+  CusDtLnkNewLinkConverter.cpp
+  CusDtLnkPhase2Conversion.cpp
+  CusDtLnkStartupShutdown.cpp
+  CusDtLnkStateUpdateProcessor.cpp
+  CusDtLnkID.cpp
+  CusDtLnkNoStrip.cpp
+  PlugInStatics.cpp
+  SDKPlugInEntrypoint.cpp
+  TriggerResourceDeps.cpp
+  CusDtLnkAdornmentShape.cpp
+  CusDtLnkAliasedDataLink.cpp
+  CusDtLnkAliasedDataLinkAction.cpp
+  CusDtLnkAliasedLinkedStream.cpp
+  CusDtLnkDelimTextReader.cpp
+  CusDtLnkDocObserver.cpp
+  CusDtLnkDocResponder.cpp
+  CusDtLnkDocRespServiceProvider.cpp
+  CusDtLnkLinkResponder.cpp
+  CusDtLnkOptionScriptProvider.cpp
+  CusDtLnkRespServiceProvider.cpp
+  CusDtLnkScript.cpp
+  CusDtLnkScriptProvider.cpp
+  SDKFileHelper.cpp
+  CusDtLnkChangeOptionsCmd.cpp
+  CusDtLnkFacade.cpp
+  CusDtLnkOptions.cpp
+  Performing Custom Build Tools
+  ODFRC deleting old resources... 
+  Could Not Find C:\Users\User\Desktop\plugin_sdk_v3\plugin\build\win\objRx64\CustomDataLink\*.idrc
+  merge_res.cmd - calling ConcatRes
+          1 file(s) copied.
+  ConcatRes skipped since "..\objRx64\CustomDataLink"\CusDtLnk.fres is an empty file.
+  merge_res.cmd done.
+  Deleting old resources... 
+  The system cannot find the file specified.
+  21 File(s) copied
+     Creating library ..\..\..\build\win\objRx64\CustomDataLink/CustomDataLink.lib and object ..\..\..\build\win\objRx64\CustomDataLink/CustomDataLink.exp
+  CustomDataLink.sdk.vcxproj -> C:\Users\User\Desktop\plugin_sdk_v3\plugin\build\win\releasex64\sdk\CustomDataLink.sdk.pln
+          1 file(s) copied.
+  restore_res.cmd done.

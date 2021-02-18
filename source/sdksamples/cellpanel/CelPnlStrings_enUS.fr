@@ -1,0 +1,54 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings.
+//========================================================================================
+
+resource StringTable (kStringsResourceID + index_enUS)
+{
+	k_enUS,	// Locale Id
+	kResourceUTF8Encoded,
+
+	{
+		// ----- Menu strings
+
+
+		kSDKDefAboutThisPlugInMenuKey,		kSDKDefAboutThisPlugInMenuValue_enUS,
+		//kSDKDefOptionsMenuKey,				kSDKDefOptionsMenuValue_enUS,
+		kSDKDefPlugInCompanyKey,			kSDKDefPlugInCompanyValue,
+		
+		kCelPnlCompanyKey,						kCelPnlCompanyValue,	// Change to your own company.
+				
+		kCelPnlMenuAboutMenuKey,				kCelPnlTitle "[US]...",
+		kCelPnlMenuItemkey,					kCelPnlTitle "[US]...",
+		kCelPnlPopupMenuNameKey,				kCelPnlTitle "Popup [US]...",
+	
+		// ----- Window strings
+		
+		// ----- Panel strings
+		kCelPnlTitleKey,						kCelPnlTitle "[US]",
+
+		// ----- Alert strings
+		
+		// ----- Misc strings
+		kCelPnlAboutBoxStringKey,				kCelPnlTitle "[US], version " kCelPnlVersion " by "kCelPnlAuthor "\n\n" kSDKDefCopyrightStandardValue "\n\n" kSDKDefPartnersStandardValue_enUS ,
+
+	}
+};
+
+#endif // __ODFRC__
+
+// End, CelPnlString_enUS.fr.
+
+

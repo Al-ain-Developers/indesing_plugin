@@ -1,0 +1,298 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kDynamicDocumentsUIStringsRsrcID + index_zhCN)
+{
+	k_zhCN,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{
+		// ----- Command strings
+
+		// ----- Window strings
+
+		// ----- Panel strings
+		"kPageTransitionsPanelPopup",			"页面过渡效果面板菜单",    
+		"kPageTransitionsSubMenu",				"页面过渡效果(&T)",
+		"kPageTransitionsPanelName",			"页面过渡效果",	   
+		"kPageTransitionStaticText",			"过渡效果: ",
+		"kPageDirectionStaticText",				"方向:",
+		"kPageSpeedStaticText",					"速度: ",
+        "kPTHorizontal",						"水平",
+        "kPTVertical",							"垂直",
+        "kPTIn",								"向内",
+        "kPTOut",								"向外",
+        "kPTDown",								"向下",
+        "kPTLeft",								"向左",
+        "kPTLeftDown",							"向左下",
+        "kPTLeftUp",							"向左上",
+        "kPTRight",								"向右",
+        "kPTRightDown",							"向右下",
+        "kPTRightUp",							"向右上",
+        "kPTUp",								"向上",
+        "kPTHorizontalIn",						"上下向中央",
+        "kPTHorizontalOut",						"中央向上下",
+        "kPTVerticalIn",						"左右向中央",
+        "kPTVerticalOut",						"中央向左右",
+        "kPTSlow",								"慢速",
+		"kPTMedium",							"中速",
+		"kPTFast",								"快速",		
+		"kPTNoTransition",						"无",	
+              		
+		// ----- Liquid Layout panel
+		"kLiquidLayoutMenu",					"自适应版面(&L)",
+		"kLiquidLayoutPanelPopup",				"“自适应版面”面板菜单",
+		"kLiquidLayoutPanelName",				"自适应版面",	
+		"kObjectConstraintsStaticTextLabel",	"对象约束:",
+		"kDocumentReflowStaticTextLabel",		"文档重排",
+		"kFixedSizeStaticTextLabel",			"随页面调整大小:",
+		"kHeightCheckBoxLabel",					"高度",
+		"kWidthCheckBoxLabel",					"宽度",
+		"kPinLeftEdgeCheckBoxLabel",			"左",
+		"kPinRightEdgeCheckBoxLabel",			"右",
+		"kPinTopEdgeCheckBoxLabel",				"上",
+		"kPinBottomEdgeCheckBoxLabel",			"下",
+		"kPinObjectEdgesStaticTextLabel",		"固定:",
+		"kContentStaticTextLabel",				"内容:",
+		"kLayoutAdjustmentWarningTip",			"未应用自适应版面规则，原因是该文档启用了版面调整。单击可禁用版面调整。",
+		"kPageLayoutPolicyDropdownLabel",		"自适应页面规则:",
+		"kLiquidLayoutPanelPageRange",			"页面: ^1",
+		"kPinEdgeToolTip",						"选中可相对于页面边缘固定对象。",
+		"kResizeHeightWithPageToolTip",			"选中可在页面高度更改时也随之调整对象高度。",
+		"kResizeWidthWithPageToolTip",			"选中可在页面宽度更改时也随之调整对象宽度。",
+		
+        // ----- Timing panel
+        "kTimingPanelPopup",					"“计时”面板菜单",    
+		"kTimingSubMenu",						"计时(&M)",
+		"kTimingPanelName",						"计时",	
+		"kTimingPanelEventStaticText",			"事件: ",
+		"kTimingPanelDelayStaticText",			"延迟: ",
+        "kTimingPanelDelaySecondStaticText",	"秒",
+        "kTimingPanelDelaySecondsStaticText",	"秒",
+        "kTimingPanelAssignPageLoadEvent",		"重新指定为“载入页面”",
+        "kTimingPanelAssignStateLoadEvent",		"重新指定为“载入状态”",
+        "kTimingPanelAssignPageClickEvent",		"重新指定为“单击页面”",
+        "kTimingPanelRemoveItem",				"删除项目",
+        "kTimingPanelEventDropDownTip",			"需要单击鼠标才能继续执行操作",
+        "kTimingPanelGroupButtonTip",			"一起播放",
+        "kTimingPanelUngroupkButtonTip",		"单独播放",
+        "kTimingPanelPreviewButtonTip",			"预览跨页",
+        "kUnassignedEntry",						"未指定",
+        "kTimingPanelLinkedItemStaticText",			"链接的项目:",	
+        "kTimingPanelPlayLinkedItemStaticText",		"播放: ",
+        "kTimingPanelPlayLinkedItemTimeStaticText",	"次",
+        "kTimingPanelPlayLinkedItemTimesStaticText","次",
+        "kTimingPanelLoopCheckBoxLabel",		"循环",
+        "kTimingPanelLinkedItemGroupWidgetTip",	"对象一起播放（单击此处可选择组）", 
+
+        // HTML Preview menu items
+        "kHTMLFXLPreviewSpread",				"预览跨页: EPUB",
+		// ----- Menu Strings
+		"kTransitionPanelChooseAction",				"选择(&C)...",
+		"kTransitionPanelApplyToAllSpreadsAction",	"应用到所有跨页(&A)",
+		"kTransitionPanelClearAllTransitionsAction","清除全部(&L)",
+		
+		// ----- Tips strings
+		"kApplyToAllSpreadsButtonTip",			"应用到所有跨页",
+		"kMotionPathTipStr",					"移动路径，单击鼠标可进行编辑",
+		"kEasingPathTipStr",					"缓慢移动路径",
+	#ifdef WINDOWS
+		"kPreviewSpreadButtonToolTip",			"预览跨页：EPUB。",
+	#else
+		"kPreviewSpreadButtonToolTip",			"预览跨页：EPUB。",			
+	#endif
+				
+		// ----- XFL Export Dialogs
+
+		"kXFLExport",						"导出 Flash CS6 Professional (FLA)",
+		"kSizePixels",						"大小（像素）:",
+		"kPagesStr",						"页面:",
+		"kExportStr",						"导出:",
+		"kSpreadsStr",						"跨页(&E)",
+		"kGenerateHTMLStr",					"生成 HTML 文件(&M)",
+		"kFlashText",						"Flash 传统文本",
+		"kVectorText",						"转换为轮廓",
+		"kRasterText",						"转换为像素",
+		"kVellumText",						"Flash TLF 文本",
+		"kInsertHyphensStr",				"插入自由连字点(&N)",
+		"kFitToSize",						"适合(&F):",
+		"kWidthSize",						"宽度(&D):",
+		"kHeightSize",						"高度(&H):",
+		"kSelectionExportedStr",			"选定范围(&C)",
+		"kAllPagesExported",				"全部(&A)",
+		"kAllPagesExportedStr",				"所有页面(&A)",
+		"kPageRangeExported",				"范围(&R):",
+		"kScaleSize",						"缩放(&S):",
+		"kTextStr",							"文本(&X):",
+		"kInteractivityStr",				"交互性:",
+		"kDynamicMediaStr",					"交互性和媒体:",
+		"kImageCompStr",					"图像压缩(&C):",
+		"kQualityStr",						"JPEG 品质(&J):",
+		"kCurveQualityStr",					"曲线品质(&Q):",
+		"kInclButtonsStr",					"包含按钮(&B)",
+		"kInclHyperLinkStr",				"包含超链接(&Y)",
+		"kInclPageTrans",					"包含页面过渡效果(&N)",
+		"kIncludePageCurl",					"包含交互卷边(&U)",
+		"kIncludeAllStr",					"包含全部(&I)",
+		"kAppearanceOnlyStr",				"仅限外观(&P)",
+		"kBackgroundStr",					"背景:",
+		"kPaperColorStr",					"纸张颜色(&O)",
+		"kTransparentStr",					"透明(&T)",
+		"kFramesPerSecStr",					"帧/秒",
+		"kPageTransitionsStr",				"页面过渡效果(&N):",
+		"kNone",							"无",
+		"kFromDocument",					"通过文档",
+		"kOptionsStr",						"选项:",
+		"kDescriptionStr",					"说明:",
+		"kFrameRateStr",					"帧速率(&F):",
+		"kImageCompAuto",					"自动",
+		"kJPG_Lossy",						"JPEG",
+		"kJPG_LossyStr",					"JPEG（有损式压缩）",
+		"kPNG_Lossless",					"无损（不压缩）",
+		"kPNG_LosslessStr",					"PNG（无损式压缩）",
+		"kMinimumQual",						"最低",
+		"kLowQual",							"低",
+		"kMediumQual",						"中",
+		"kHighQual",						"高",
+		"kMaximumQual",						"最高",
+		"kRasterizeStr",					"栅格化页面(&T)",
+		"kFlattenXPStr",					"拼合透明度(&E)",
+		"k1280x800",						"1280 x 800",
+		"k1024x768",						"1024 x 768",
+		"k800x600",							"800 x 600",
+		"k640x480",							"640 x 480",
+		"k250per",							"250%",
+		"k200per",							"200%",
+		"k150per",							"150%",
+		"k100per",							"100%",
+		"k75per",							"75%",
+		"k50per",							"50%",
+		"k25per",							"25%",
+
+		// Font Embedding
+		"kEmbeddedFontsTitle",				"嵌入式字体（仅适用于 Flash 传统文本）",
+		"kTotalFonts",						"字体总数: ",
+		"kFontLicensingInfo",				"字体许可信息",
+		"kEmbeddedFontName",				"字体名称: ",
+		"kEmbeddedVendorID",				"供应商 ID: ",
+
+		// Add Page Transition dialog
+		"kPageTransitionsDialogTitle",			"页面过渡效果",
+		"kPageTransitionApplyToAllSpreads",		"应用到所有跨页",
+		"kZoomInOutString",						"放大/缩小", 
+		
+		
+		//	Animation UI
+		"kAnimationUIPanelPopup",				"“动画 UI”面板菜单",
+		"kAnimationUISubMenu",					"动画",
+		"kAnimationUIPresetPopupMenu",			"“动画 UI”预设菜单",
+		"kMotionPresetsNoneTextkey",			"无",
+		"kAnimationUILoadPresetMenuItem",		"载入预设...",
+		"kAnimationUISaveAsPresetMenuItem",		"存储为...",
+		"kAnimationUISavePresetMenuItem",		"存储",
+		"kAnimationUIDeletePresetMenuItem",		"删除",
+
+		"kAnimationUIConvertToMotionPathMenuItem",	"转换为移动路径",
+		"kAnimationUITestInBrowserMenuItem",	"在浏览器中测试...",
+		"kCustomPresetName",					"移动预设",
+		"kAnimationUIEventSeparator",			", ",
+		
+		"kAnimationUIPanelName",				"动画",
+		"kAnimationUIPreviewStaticTextLabel",	"预览",
+		"kAnimationUINameStaticTextLabel",		"名称:",
+		"kAnimationUIPresetStaticTextLabel",	"预设:",
+		"kAnimationUICustomPreset",				"自定",
+		"kAnimationUIMixed",					"混合",
+		"kAnimationUIMixed:",					"混合: ",
+		"kAnimationUIChoose",					"选择",
+		"kAnimationUIEventStaticTextLabel",		"事件: ",
+		"kAnimationUIDurationStaticTextLabel",	"持续时间:",
+		"kAnimationUISecondStaticTextLabel",	"秒",
+		"kAnimationUISecondsStaticTextLabel",	"秒",
+		"kAnimationUIPlayStaticTextLabel",		"播放:",
+		"kAnimationUITimeStaticTextLabel",		"次",
+		"kAnimationUITimesStaticTextLabel",		"次",
+		"kAnimationUILoopCheckBoxLabel",		"循环",
+		"kAnimationUISpeedStaticTextLabel",		"速度:",
+		"kAnimationUIVisibilityStaticTextLabel","可见性:",
+		"kAnimationUIPropertyStaticTextLabel",	"属性",
+		"kAnimationUIHideBeforeAnimateCheckBoxLabel","执行动画前隐藏",
+		"kAnimationUIHideAfterAnimateCheckBoxLabel","执行动画后隐藏",
+		"kAnimationUIOnButtonEvent",			"按钮事件",
+		"kAnimationUIOnRollOffCheckBoxLabel",	"鼠标指针移开时还原",
+		"kAnimationUIEaseIn",					"渐入",
+		"kAnimationUIEaseOut",					"渐出",
+		"kAnimationUIEaseInAndOut",				"渐入和渐出",
+		"kAnimationUIFadeIn",					"渐显",
+		"kAnimationUIFadeOut",					"渐隐",
+		"kAnimationUINone",						"无",
+		"kAnimationUIFromPreset",				"根据预设",
+		"kAnimationUIPropertyDesignStaticTextLabel",		"制作动画:",
+		"kAnimationUIPropertyDesignCheckBoxLabel",			"动画结束",
+		"kAnimationFromStaticTextLabel",					"动画来源",
+		"kAnimationToStaticTextLabel",						"动画目标",
+		"kAnimationUIPropertyDesignScaleStaticTextLabel",	"缩放",
+		"kAnimationUIPropertyDesignScaleHorzStaticTextLabel",	"宽:",
+		"kAnimationUIPropertyDesignScaleVertStaticTextLabel",	"高:",
+		"kAnimationUIPropertyDesignRotateStaticTextLabel",	"旋转:",
+		"kAnimationUIPropertyDesignOpacityStaticTextLabel",	"不透明度:",
+		"kAnimationUIPropertyDesignProxyStaticTextLabel",	"原点:",
+		
+		"kAnimationUIFrom",						"起始时使用当前外观",
+		"kAnimationUITo",						"结束时使用当前外观",
+		"kAnimationUIOffset",					"结束时回到当前位置",
+
+		"kAnimationPanelButtonTriggerTip",		"创建按钮触发器（单击图标，然后单击某个对象即可触发此动画）",
+		"kAnimationPanelShowProxyTip",			"显示动画代理",
+		"kAnimationPanelLockIconTip",			"限制缩放值",
+		"kAnimationPanelEventMenuSelectorTip",	"通过单击向下箭头键选择触发器事件",
+		"kAnimationPanelEventInfoTip",			"动画的触发器事件",
+		"kAnimationPanelEventInfoDefaultTip",	"动画的默认触发器事件",
+		"kAnimationPanelPreviewButtonTip",		"预览当前选定范围",
+		"kAnimationPanelConvertToMotionPathTip","转换为移动路径",
+		"kAnimationUIFromTip",					"使用当前对象的属性作为运行时动画的起始外观。",
+		"kAnimationUIToTip",					"使用当前对象的属性作为运行时动画的结束外观。",
+		"kAnimationUIOffsetTip",				"使用当前对象的属性作为运行时动画的起始外观，并使用当前位置作为结束位置。",
+		"kAnimationUIAnimationOptionTip",		"动画选项",
+		"kAnimationUITrashTip",					"删除动画",
+		"kAnimationUIXFPointTip",				"更改用于缩放和旋转的原点。",
+		"kAnimationUIShowTimingButtonTip",		"“显示计时”面板",
+		
+		"kAnimationUISaveAsPresetTitle",		"将选定预设存储为",
+		"kAnimationUISavePresetTitle",			"存储预设",
+		"kAnimationUISavePresetNameLabel",		"名称:",
+
+		"kAnimationUIEventPopupMenu",			"“事件”弹出式菜单",
+		"kAnimationUICreateButtonTriggerCmd",	"创建按钮触发器",
+		"kAnimationUICreateSelfTriggerCmd",		"创建自行触发器",
+		
+		"kAnimationUIManagePresetsDialogTitle",	"管理预设",
+		"kAnimationUIManagePresetsDoneButton",	"完成",
+		"kAnimationUIManagePresetsDeleteButton","删除(&D)",
+		"kAnimationUIManagePresetsDuplicateButton","复制(&U)",
+		"kAnimationUIManagePresetsLoadButton",	"载入(&L)...",
+		"kAnimationUIManagePresetsSaveAsButton","存储为(&S)...",
+		"kAnimationUIManagePresetMenuItem",		"管理预设...",
+		"kAnimationUIManagePresetPresetsSeparator", "--------------------",
+		"kAnimationUIManagePresetNamePrefix",	"[",
+		"kAnimationUIManagePresetNameSuffix",	"]",
+	}
+};
+
+#endif // __ODFRC__

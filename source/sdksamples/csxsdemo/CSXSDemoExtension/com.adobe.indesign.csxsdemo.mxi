@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<macromedia-extension id="com.adobe.indesign.csxsdemo" name="CSXSDemoExtension" requires-restart="true" version="1.0.0">
+  <author name="Timothy Brand-Spencer"/>
+  <description>Demo extension showing how to build a hybrid extension for InDesign where the extension and plug-in communicate using CSXS events.</description>
+  <license-agreement></license-agreement>
+  <products>
+    <product name="InDesign" version="10.0" maxversion="10.9"/>
+    <product name="InCopy" version="10.0" maxversion="10.9"/>
+  </products>
+  <files>
+    <file destination="" file-type="CSXS" products="" source="CSXSDemo.zxp"/>
+  </files>
+</macromedia-extension>

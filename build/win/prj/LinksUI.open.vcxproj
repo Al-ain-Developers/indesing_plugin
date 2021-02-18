@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectName>LinksUI</ProjectName>
+    <ProjectGuid>{65AAB8DA-34F0-4991-959B-B7024FB52C64}</ProjectGuid>
+    <WindowsTargetPlatformVersion>10.0.18362.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="ReleaseX64.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="DebugX64.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.40219.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\Debugx64\Plug-ins\Layout\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\..\objDx64\LinksUI\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\Releasex64\Plug-ins\Layout\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\..\objRx64\LinksUI\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Links UI</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Links UI</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.apln</TargetExt>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.apln</TargetExt>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Midl>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <TargetEnvironment>X64</TargetEnvironment>
+      <TypeLibraryName>$(IntDir)LinksUI.tlb</TypeLibraryName>
+      <HeaderFileName>
+      </HeaderFileName>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>/vmg @coreOpen.rsp @LinksUI.open.rsp %(AdditionalOptions)</AdditionalOptions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;DEBUG;STRICT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>VCPlugInHeaders.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>$(IntDir)LinksUI.pch</PrecompiledHeaderOutputFile>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+    </ResourceCompile>
+    <PreLinkEvent>
+      <Command>merge_res.cmd "$(IntDir)" linksui &amp; echo Deleting old resources... &amp; del /f /s "$(TargetDir)($(TargetName) Resources)\"*.idrc &gt; $(IntDir)prevDeletedResources.txt &amp; xcopy /Q /E "$(IntDir)"*.idrc "$(TargetDir)($(TargetName) Resources)\" /Y</Command>
+    </PreLinkEvent>
+    <Link>
+      <AdditionalDependencies>$(UI_PLUGIN_LINKLIST);$(AFLLib);%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <ProgramDatabaseFile>..\debugx64\Plug-ins\Layout\Links UI.pdb</ProgramDatabaseFile>
+      <StripPrivateSymbols>..\debugx64\strippedsymbol\Links UI.pdb</StripPrivateSymbols>
+      <ImportLibrary>$(LIB_DIR)\LinksUI/Links UI.lib</ImportLibrary>
+    </Link>
+    <PostBuildEvent>
+      <Command>restore_res.cmd "$(IntDir)" linksui</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Midl>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <TargetEnvironment>X64</TargetEnvironment>
+      <TypeLibraryName>$(IntDir)LinksUI.tlb</TypeLibraryName>
+      <HeaderFileName>
+      </HeaderFileName>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>/vmg @coreOpen.rsp @LinksUI.open.rsp %(AdditionalOptions)</AdditionalOptions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;STRICT;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>VCPlugInHeaders.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>$(IntDir)LinksUI.pch</PrecompiledHeaderOutputFile>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <Culture>0x0409</Culture>
+    </ResourceCompile>
+    <PreLinkEvent>
+      <Command>merge_res.cmd "$(IntDir)" linksui &amp; echo Deleting old resources... &amp; del /f /s "$(TargetDir)($(TargetName) Resources)\"*.idrc &gt; $(IntDir)prevDeletedResources.txt &amp; xcopy /Q /E "$(IntDir)"*.idrc "$(TargetDir)($(TargetName) Resources)\" /Y</Command>
+    </PreLinkEvent>
+    <Link>
+      <AdditionalOptions>/IGNORE:4089 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>$(UI_PLUGIN_LINKLIST);$(AFLLib);%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <ProgramDatabaseFile>..\releasex64\Plug-ins\Layout\Links UI.pdb</ProgramDatabaseFile>
+      <StripPrivateSymbols>..\releasex64\strippedsymbol\Links UI.pdb</StripPrivateSymbols>
+      <ImportLibrary>$(LIB_DIR)\LinksUI/Links UI.lib</ImportLibrary>
+    </Link>
+    <PostBuildEvent>
+      <Command>restore_res.cmd "$(IntDir)" linksui</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\source\open\components\linksui\ClosingDocumentsResponder.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\linksui\LinksUIID.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\linksui\LinksUILinkNamePanelView.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\linksui\LinksUIPanelViewObserver.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\linksui\LinksUIPlugin.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\linksui\LinksUITestMenu.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\linksui\LinksUIVCHacks.cpp" />
+    <ClCompile Include="..\..\..\source\public\libs\publiclib\statics\PlugInStatics.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\linksui\Templates_LinksUI.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\linksui\TriggerResourceDeps.cpp" />
+    <ClCompile Include="..\..\..\source\precomp\msvc\VCPlugInHeaders.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\linksui\AddDeleteCaptionRowButtonObserver.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\linksui\CaptionLayerObserver.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\linksui\CaptionParaStyleObserver.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\linksui\CEditOriginalWithMenu.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\linksui\CEditOriginalWithMenuComponent.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\linksui\ChooseLinksColumnsDialogController.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\linksui\EditOriginalResumeObserver.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\linksui\FilesChanging.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\linksui\LinkCaptionActionComponent.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\linksui\LinkInfoDebugUIDsProvider.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\linksui\LinkInfoIconEH.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\linksui\LinkInfoIconTip.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\linksui\LinkInfoIconView.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\linksui\LinkInfoPanelEH.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\linksui\LinkInfoPanelObserver.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\linksui\LinkInfoPanelPanorama.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\linksui\LinkInfoPanelView.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\linksui\LinkInfoTextLabelEH.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\linksui\LinksTreeNodeList.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\linksui\LinksTreeUIDNodeID.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\linksui\LinksTreeViewTypeAhead.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\linksui\LinksUIButtonObserver.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\linksui\LinksUIButtonTips.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\linksui\LinksUIColumnHeaderObserver.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\linksui\LinksUIPanelMenuComponent.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\linksui\LinksUIPanelPrefs.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\linksui\LinksUIPanelSAXHandler.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\linksui\LinksUIPanelSelectionObserver.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\linksui\LinksUIPanelTreeObserver.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\linksui\LinksUIPanelTreeViewAdapter.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\linksui\LinksUIPanelTreeViewWidgetMgr.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\linksui\LinksUIPanelView.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\linksui\LinksUIPanelXMLGenerator.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\linksui\LinksUIRowElementCursorProvider.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\linksui\LinksUIStatusTextObserver.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\linksui\LinksUIStatusTextTip.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\linksui\LinksUITreePanelControlData.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\linksui\LinksUITreeRowPanelEH.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\linksui\LinksUITreeViewController.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\linksui\LinksUIUtils.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\linksui\LinkThumbnailView.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\linksui\LinkUILinkNameTip.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\linksui\LinkUIStaticTextView.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\linksui\NextPrevLinkButtonObserver.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\linksui\ToggleLinkInfoButtonObserver.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\linksui\GenerateLinkCaptionDialogController.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\linksui\MetadataLabelEVEInfo.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\linksui\OpenProblemLinksDialogCmd.cpp" />
+    <ClCompile Include="..\..\..\source\open\components\linksui\ProblemLinksDialogObserver.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\source\precomp\msvc\VCPlugInHeaders.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\..\..\source\open\components\linksui\resources\LinksUI.rc">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\..\source\public\includes; ..\..\..\source\open\components\linksui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\..\source\public\includes; ..\..\..\source\open\components\linksui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\..\..\source\open\components\linksui\resources\LinksUI.fr">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Compiling core resources...</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">odfrc $(ODFRC_ADDITIONAL_FLAGS) "%(FullPath)" -o "$(IntDir)%(Filename)".fres -d DEBUG @coreOpen.rsp @LinksUI.open.rsp
+</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)TriggerResourceDeps.obj;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)%(Filename).fres;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Compiling core resources...</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">odfrc $(ODFRC_ADDITIONAL_FLAGS) "%(FullPath)" -o "$(IntDir)%(Filename)".fres @coreOpen.rsp @LinksUI.open.rsp
+</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)TriggerResourceDeps.obj;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)%(Filename).fres;%(Outputs)</Outputs>
+    </CustomBuild>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

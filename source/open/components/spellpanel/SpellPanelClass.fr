@@ -1,0 +1,891 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/spellpanel/SpellPanelClass.fr $
+//  
+//  Owner: Bernd Paradies
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "objectmodeltypes.fh"
+
+#include "ActionID.h"
+#include "BuildNumber.h"
+#include "CommandID.h"
+#include "CrossPlatformTypes.h"
+#include "DocumentID.h"		
+#include "FormatNumber.h"
+#include "GenericID.h"
+#include "GraphicsID.h"
+#include "LayoutUIID.h"
+#include "LinguisticID.h"
+#include "ShuksanID.h"
+#include "SpellPanelID.h"
+#include "SpellingServiceID.h"
+#include "TextAttrID.h"
+#include "TextEditorID.h"		// IID_ITEXTWALKER
+#include "TextID.h"
+#include "TextPanelID.h"
+#include "TextWalkerServiceProviderID.h"		// IID_ITEXTWALKERCLIENT
+#include "FindChangeID.h"
+#include "widgetid.h"
+#include "WritingModeID.h"
+#include "writingModeUIID.h"
+#include "WorkspaceID.h"
+#include "ScriptingID.h"
+#include "DictEditorID.h"
+
+#include "PMLocaleIds.h"
+
+#include "PlugInModel_UIAttributes.h"
+#ifdef __ODFRC__
+
+//---------------------------------------------------------------
+//	Plugin Version
+//---------------------------------------------------------------
+resource PluginVersion (1)
+{
+	kTargetVersion,
+	kSpellPanelPluginID,
+	kMajorVersionNumber, kMinorVersionNumber, 	
+	kMajorVersionNumber, kMinorVersionNumber, 	
+	kHotakaMajorFormatNumber, kHotakaInitialMinorFormatNumber,
+	{ kInDesignProduct, kInCopyProduct },
+	{ kWildFS },
+	kUIPlugIn,
+	kAUMComponentVersionStr
+};
+
+
+//---------------------------------------------------------------
+// SpellPanel dependencies
+//---------------------------------------------------------------
+
+resource PluginDependency(1) 
+{
+	kWildFS,
+	{
+	kTextPanelPluginID, kTextPanelPluginName,		kMajorVersionNumber, kMinorVersionNumber, 	// TAObserverData,
+	kLinguisticPluginID, kLinguisticPluginName,		kMajorVersionNumber, kMinorVersionNumber, 	// kLanguageImpl,
+	kGlobalPrefsDialogPluginID, kGlobalPrefsDialogPluginName, kMajorVersionNumber, kMinorVersionNumber, 	
+	kTextWalkerServicePluginID, kTextWalkerServicePluginName,		kMajorVersionNumber, kMinorVersionNumber,
+	}
+};
+
+resource IgnoreTags(1)
+{
+	kImplementationIDSpace,
+	{
+		kSpellPanelOptionsImpl
+	}
+};
+
+resource ClassDescriptionTable(1)
+	{{{
+	
+	//---------------------------------------------------------------
+	// SpellPanel adds interfaces to foreign bosses
+	//---------------------------------------------------------------
+	
+	AddIn
+	{
+		kWorkspaceBoss,
+		kInvalidClass,
+		{
+			IID_ISPELLPANELOPTIONS,		 		kSpellPanelOptionsImpl,
+			IID_IDYNAMICSPELLINGRANGEDATA,		kRangeDataImpl,
+			IID_IAUTOCORRECTRANGEDATA,			kRangeDataImpl,
+		}
+	};
+	
+	AddIn
+	{
+		kWritingModeWidgetBoss,
+		kInvalidClass,
+		{
+			IID_IGALLEYTEXTADORNMENT, 		kGalleyDynamicSpellCheckAdornmentImpl,
+		}
+	};
+	
+	
+	
+	//---------------------------------------------------------------
+	// SpellServiceObserver
+	//---------------------------------------------------------------
+	
+	Class
+	{
+		kSpellServiceObserverBoss,
+		kStaticTextWidgetBoss,
+		{
+			IID_IOBSERVER, 					kSpellServiceObserver,
+		}
+	};
+	
+	//---------------------------------------------------------------
+	// SpellBackgroundObserver
+	//---------------------------------------------------------------
+	
+	Class
+	{
+		kSpellBackgroundObserverBoss,
+		kCheckBoxWidgetBoss,
+		{
+			IID_IOBSERVER, 					kSpellBackgroundObserver,
+		}
+	};
+	
+	//---------------------------------------------------------------
+	// SpellWordObserver
+	//---------------------------------------------------------------
+	
+	Class
+	{
+		kSpellWordObserverBoss,
+		kFontSpecTextEditBoxWidgetBoss,
+		{
+			IID_IOBSERVER, 					kSpellWordObserver,
+			IID_IEVENTHANDLER, 				kSpellWordEventHandler,
+	//		IID_ISPELLDELAYTHREAD,	 			kSpellDelayThread,
+		}
+	};
+	
+	//---------------------------------------------------------------
+	// SpellAlternativesObserver
+	//---------------------------------------------------------------
+	
+	Class
+	{
+		kSpellAlternativesObserverBoss,
+		kTreeBasedListBoxSmallWidgetBoss,
+		{
+			IID_IOBSERVER, 						kSpellAlternativesObserver,
+			IID_IEVENTHANDLER,					kSpellListBoxEH,
+			IID_ISTRINGDATA,					kStringDataImpl,			// contains the word that should be displayed in the word editbox.
+			IID_IBOOLDATA,						kBoolDataImpl,			// true if it is correct.
+			IID_ITREEVIEWWIDGETMGR,				kStringListBoxLargeSmallWidgetMgrImpl, 
+		}
+	};
+	
+	//---------------------------------------------------------------
+	// SpellCorrectObserver
+	//---------------------------------------------------------------
+	
+	Class
+	{
+		kSpellCorrectObserverBoss,
+		kRollOverIconButtonBoss,
+		{
+			IID_IOBSERVER, 					kSpellCorrectObserver,
+		}
+	};
+	
+	//---------------------------------------------------------------
+	// SpellAddRemoveObserver
+	//---------------------------------------------------------------
+	
+	Class
+	{
+		kSpellAddRemoveObserverBoss,
+		kRollOverIconButtonBoss,
+		{
+			IID_IOBSERVER, 					kSpellAddRemoveObserver,
+		}
+	};
+	
+	//---------------------------------------------------------------
+	// SpellIgnoreObserver
+	//---------------------------------------------------------------
+	
+	Class
+	{
+		kSpellIgnoreObserverBoss,
+		kADBEIconToggleButtonWidgetBoss,
+		{
+			IID_IOBSERVER, 					kSpellIgnoreObserver,
+		}
+	};
+	
+	//---------------------------------------------------------------
+	// SpellCheckObserver
+	//---------------------------------------------------------------
+	
+	Class
+	{
+		kSpellCheckObserverBoss,
+		kADBEIconToggleButtonWidgetBoss,
+		{
+			IID_IOBSERVER, 					kSpellCheckObserver,
+	//		IID_ITEXTWALKER, 					kTextWalkerImpl,
+	//		IID_ITEXTWALKERTERMINATOR, 		kTextWalkerTerminatorImpl,
+		}
+	};
+
+	//---------------------------------------------------------------
+	// Spell Forward Observer
+	//---------------------------------------------------------------
+
+	Class 
+	{ 
+		kSpellForwardRadioButtonWidgetBoss, 
+		kRadioButtonWidgetBoss, 
+		{ 
+			IID_IOBSERVER,        kSpellPreviousObserverImpl, 
+		} 
+	};
+
+	//---------------------------------------------------------------
+	// Spell Backward Observer
+	//---------------------------------------------------------------
+	
+	Class 
+	{ 
+		kSpellBackwardRadioButtonWidgetBoss, 
+		kRadioButtonWidgetBoss, 
+		{ 
+			IID_IOBSERVER,        kSpellPreviousObserverImpl, 
+		} 
+	};
+
+	//---------------------------------------------------------------
+	// SpellSkipObserver
+	//---------------------------------------------------------------
+	
+	Class
+	{
+		kSpellSkipObserverBoss,
+		kADBEIconToggleButtonWidgetBoss,
+		{
+			IID_IOBSERVER, 					kSpellSkipObserver,
+		}
+	};
+	
+	
+	//---------------------------------------------------------------
+	// SpellLightObserverBoss
+	//---------------------------------------------------------------
+	
+	/*
+	Class
+	{
+		kSpellLightObserverBoss,
+		kIconWidgetBoss,
+		{
+			IID_IOBSERVER, 					kSpellLightObserver,
+		}
+	};
+	*/
+	
+	//---------------------------------------------------------------
+	// SpellScopeObserver
+	//---------------------------------------------------------------
+	
+	Class
+	{
+		kSpellScopeObserverBoss,
+		kDropDownListWidgetBoss,
+		{
+			IID_IOBSERVER, 					kSpellScopeObserver,
+		}
+	};
+	
+	//---------------------------------------------------------------
+	// SpellWrapObserver
+	//---------------------------------------------------------------
+	
+	Class
+	{
+		kSpellWrapObserverBoss,
+		kCheckBoxWidgetBoss,
+		{
+			IID_IOBSERVER, 					kSpellWrapObserver,
+		}
+	};
+	
+	//---------------------------------------------------------------
+	// SpellOversetObserver
+	//---------------------------------------------------------------
+	
+	Class
+	{
+		kSpellOversetObserverBoss,
+		kCheckBoxWidgetBoss,
+		{
+			IID_IOBSERVER, 					kSpellOversetObserver,
+		}
+	};
+		
+	//----------------------------------------------------------------------------------------
+	// kSpellMenuComponentBoss
+	//----------------------------------------------------------------------------------------
+	
+	Class
+	{
+		 kSpellMenuComponentBoss ,
+		kBaseActionComponentBoss,
+		{
+			IID_IACTIONCOMPONENT, 				kSpellMenuComponent,
+		}
+	};
+	
+	//---------------------------------------------------------------
+	// kSpellChangeButtonBoss
+	//---------------------------------------------------------------
+	
+	Class
+	{
+		kSpellChangeButtonBoss,
+		kButtonWidgetBoss,
+		{
+			IID_IOBSERVER, 					kSpellChangeObserver,
+		}
+	};
+	
+	//---------------------------------------------------------------
+	// kSpellChangeAllButtonBoss
+	//---------------------------------------------------------------
+	
+	Class
+	{
+		kSpellChangeAllButtonBoss,
+		kButtonWidgetBoss,
+		{
+			IID_IOBSERVER, 					kSpellChangeAllObserver,
+		}
+	};
+	
+	//---------------------------------------------------------------
+	// kSpellSkipButtonBoss
+	//---------------------------------------------------------------
+	
+	Class
+	{
+		kSpellSkipButtonBoss,
+		kButtonWidgetBoss,
+		{
+			IID_IOBSERVER, 					kSpellSkipObserver,
+		}
+	};
+	
+	//---------------------------------------------------------------
+	// kSpellIgnoreButtonBoss
+	//---------------------------------------------------------------
+	
+	Class
+	{
+		kSpellIgnoreButtonBoss,
+		kButtonWidgetBoss,
+		{
+			IID_IOBSERVER, 					kSpellIgnoreObserver,
+		}
+	};
+	
+	//---------------------------------------------------------------
+	// kSpellAddAndContinueButtonBoss
+	//---------------------------------------------------------------
+	
+	Class
+	{
+		kSpellAddAndContinueButtonBoss,
+		kButtonWidgetBoss,
+		{
+			IID_IOBSERVER, 					kSpellAddToListObserver,
+		}
+	};
+
+	//---------------------------------------------------------------
+	// kSpellAddToListButtonBoss
+	//---------------------------------------------------------------
+	
+	Class
+	{
+		kSpellAddToListButtonBoss,
+		kButtonWidgetBoss,
+		{
+			IID_IOBSERVER, 					kSpellAddToListObserver,
+		}
+	};
+	
+	//---------------------------------------------------------------
+	// kSpellMisspelledWordBoss
+	//---------------------------------------------------------------
+	
+	Class
+	{
+		kSpellMisspelledWordBoss,
+		kFontSpecTextEditBoxWidgetBoss,
+		{
+			IID_IOBSERVER, 					kSpellMisspelledObserver,
+			IID_IEVENTHANDLER, 				kSpellMisspelledEH,
+		}
+	};
+	
+	
+	//---------------------------------------------------------------
+	// kSpellLanguageBoss
+	//---------------------------------------------------------------
+	
+	Class
+	{
+		kSpellLanguageBoss,
+		kStaticTextWidgetBoss,
+		{
+			IID_IOBSERVER, 						kTALanguageObserverImpl,
+			IID_ITEXTATTROBSERVERDATA, 			kTAObserverDataImpl,
+		}
+	};
+	
+	Class
+	{
+		kSpellTargetListBoss,
+		kDropDownListWidgetBoss,
+		{
+			IID_IOBSERVER, 						kSpellTargetListObserverImpl,
+		}
+	},
+	
+	Class
+	{
+		kSpellCaseSensitiveObserverBoss,
+		kCheckBoxWidgetBoss,
+		{
+			IID_IOBSERVER, 						kSpellCaseSensitiveObserverImpl,
+		}
+	},
+
+
+	//---------------------------------------------------------------
+	// kApplySpellPanelOptionsCmdBoss
+	//---------------------------------------------------------------
+	
+	Class
+	{
+		kApplySpellPanelOptionsCmdBoss,
+		kInvalidClass,
+		{
+			IID_ICOMMAND, 				kApplySpellPanelOptionsCmd,
+			IID_ISPELLPANELOPTIONS, 		kSpellPanelOptionsImpl,
+			IID_ISAVEDSPELLPANELOPTIONS, 	kSpellPanelOptionsImpl2,
+		}
+	};
+	
+	//---------------------------------------------------------------
+	// kSpellMisspelledTextBoss
+	//---------------------------------------------------------------
+	
+	Class
+	{
+		kSpellMisspelledTextBoss,
+		kStaticTextWidgetBoss,
+		{
+			IID_IOBSERVER, 					kSpellStatusTextObserverImpl,
+		}
+	};
+	
+	
+	
+	//---------------------------------------------------------------
+	// kSpellPanelDialogBoss
+	//---------------------------------------------------------------
+	
+	Class
+	{
+		kSpellPanelDialogBoss,
+		kTextDialogWidgetBoss,
+		{
+			IID_IWORDTOSPELL,					kPersistStringDataImpl,		// word on the spread
+			IID_ITEXTTARGETSERVER,				kSpellTargetServer,	// is derived from kTextTargetServerImpl.
+			IID_ILANGUAGE,					kLanguageImpl,		
+	
+			// centralized
+			IID_ISPELLCHECKWALKERDATA,		kSpellCheckWalkerDataImpl,
+	
+	
+			// kTextWalkerServiceProviderBoss interfaces,  see SpellPanelObserver::QueryTextWalker().
+			IID_ITEXTWALKER, 					kTextWalkerImpl,
+			IID_ITEXTWALKERTERMINATOR, 			kTextWalkerTerminatorImpl,
+			IID_ITEXTWALKERSELECTIONUTILS,  	kTextWalkerSelectionUtilsImpl,	
+			IID_ICONTROLVIEWOBSERVERS,			kCControlViewObserversImpl,
+	
+			IID_IDIALOGCONTROLLER,				kSpellPanelDialogControllerImpl,
+	
+	        IID_IPMUNKNOWNDATA,					kPMUnknownDataImpl,            // Holds the user dict or document (Target)
+
+	//		IID_ISUBJECT, 						kCSubjectImpl,
+	//		IID_IOBSERVER, 					kCEmptyObserverImpl,
+		}
+	};
+	
+	#ifdef DEBUG
+		//----------------------------------------------------------------------------------------
+		// kSpellPanelTestMenuBoss
+		//----------------------------------------------------------------------------------------
+	
+		Class
+		{
+			kSpellPanelTestMenuBoss,
+			kBaseTestMenuBoss,
+			{
+				IID_IACTIONCOMPONENT, 		kSpellPanelTestMenu,
+			}
+		};
+	#endif
+	
+	Class	// ---- model
+	{
+		kSpellReplaceClientBoss,
+		kInvalidClass,
+		{
+			IID_ITEXTWALKERCLIENT,		kSpellReplaceClientImpl,
+			IID_ITEXTWALKERPROGRESSMONITOR,		kTextWalkerProgressMonitorImpl,		
+			IID_ILANGUAGE,				kLanguageImpl,		
+		}
+	};
+	
+	Class	// ---- model
+	{
+		kSpellCheckClientBoss,
+		kInvalidClass,
+		{
+			IID_ITEXTWALKERCLIENT,	kSpellCheckClientImpl,		
+		}
+	};
+	
+	//Class
+	//{
+	//	kDynamicSpellHitTestServiceBoss,
+	//	kInvalidClass,
+	//	{
+	//		IID_IK2SERVICEPROVIDER, 	kDynamicSpellHitTestServiceImpl,
+	//		IID_IDRWEVTHANDLER, 		kDynamicSpellHitTestHandlerImpl,
+	//		//IID_IOPTIONALDRAWPASS,  	kPreviewOptionalDrawPassImpl,  // Add this interface to disable in layout preview drawing mode
+	//	}
+	//};
+	
+	//---------------------------------------------------------------
+	//	IBeamTool
+	//---------------------------------------------------------------
+	
+	//Class
+	//{
+	//	kIBeamToolBoss,
+	//	kGenericToolBoss,
+	//	{
+	//		IID_ITOOL, 				kIBeamToolImpl,
+	//		IID_ICURSORPROVIDER, 	kHorizontalIBeamCrsrProviderImpl,
+	//	}
+	//},
+	
+	Class
+	{
+		kAutoCorrectPrefsDialogBoss,
+		kPrimaryResourcePanelWidgetBoss,
+		{
+			IID_IDIALOGCONTROLLER, 				kAutoCorrectPrefsDialogControllerImpl,
+			IID_IK2SERVICEPROVIDER, 			kDialogPanelServiceImpl,
+			IID_IPANELCREATOR, 					kAutoCorrectPrefsPanelCreatorImpl,
+            IID_IAUTOCORRECTPANELMSG,			kBoolDataImpl,// this marks the central PanelSubject.
+            IID_ILANGUAGE,						kLanguageImpl,// language ID
+		}
+	}
+		
+	Class
+	{
+		kSpellPrefsDialogBoss,
+		kPrimaryResourcePanelWidgetBoss,
+		{
+			IID_IDIALOGCONTROLLER, 		kSpellPrefsDialogControllerImpl,
+			IID_IK2SERVICEPROVIDER, 	kDialogPanelServiceImpl,
+			IID_IPANELCREATOR, 			kSpellPrefsPanelCreatorImpl,
+		}
+	}
+	
+	Class
+	{
+		kDynamicSpellCheckThreadBoss,
+		kInvalidClass,
+		{
+			IID_IIDLETASK, 				kDynamicSpellCheckTypingIdleTaskImpl,
+			IID_IEVENTWATCHER, 			kDynamicSpellCheckKeyEventWatcherImpl,
+			IID_IK2SERVICEPROVIDER, 	kDynamicSpellCheckServiceProviderImpl,
+			IID_ISTARTUPSHUTDOWN, 	kDynamicSpellCheckStartupShutdownImpl,
+			IID_IOBSERVER, 				kDynamicSpellCheckObserverImpl,
+			IID_IINTDATA, 				kIntDataImpl,
+		}
+	}
+
+	Class
+	{
+		kAutoCorrectTypingBoss,
+		kInvalidClass,
+		{
+			IID_IIDLETASK, 				kAutoCorrectTypingIdleTaskImpl,
+			IID_IEVENTWATCHER, 			kAutoCorrectKeyEventWatcherImpl,
+			IID_IK2SERVICEPROVIDER, 	kAutoCorrectServiceProviderImpl,
+			IID_ISTARTUPSHUTDOWN, 	kAutoCorrectStartupShutdownImpl,
+			IID_IOBSERVER, 				kAutoCorrectObserverImpl,
+			IID_IINTDATA, 				kIntDataImpl,
+		}
+	}
+
+	Class
+	{
+		kAutoCorrectFolderIdleTaskBoss,
+		kInvalidClass,
+		{
+			IID_IIDLETASK, 				kAutoCorrectFolderIdleTaskImpl,
+		}
+	}
+
+    Class
+    {
+        kAutoCorrectTreeViewWidgetBoss,
+        kTreeViewWidgetBoss,
+        {
+            IID_ITREEVIEWHIERARCHYADAPTER,				kAutoCorrectTreeViewAdapterImpl,
+            IID_ITREEVIEWWIDGETMGR,						kAutoCorrectTreeViewWidgetMgrImpl,
+			IID_IOBSERVER, 								kAutoCorrectTreeViewObserverImpl,
+
+            //IID_ITREEVIEWHIERARCHYADAPTER,				kInkListTreeViewAdapterImpl,
+            //IID_ITREEVIEWWIDGETMGR,						kNewInkGroupTreeViewWidgetMgrImpl,
+            //IID_INEWINKGROUPLISTPANEL_ATTACHOBSERVER,		kNewInkGroupInkListAttachObserverImpl,
+            //IID_IUIDLISTDATA,								kUIDListDataImpl,
+        }
+    },
+
+    Class
+    {
+		kAutoCorrectTreeNodeWidgetBoss,
+		kTreeNodeWidgetBoss,
+		{
+		}
+	},
+
+    Class
+    {
+        kAutoCorrectLanguageObserverBoss,
+        kDropDownListWidgetBoss,
+        {
+            IID_IOBSERVER,                         kAutoCorrectLanguageObserverImpl,
+        }
+    },
+
+	Class
+	{
+		kAutoCorrectAddButtonBoss,
+		kButtonWidgetBoss,
+		{
+			IID_IOBSERVER, 					kAutoCorrectAddButtonObserverImpl,
+		}
+	},
+	
+	Class
+	{
+		kAutoCorrectEditButtonBoss,
+		kButtonWidgetBoss,
+		{
+			IID_IOBSERVER, 					kAutoCorrectEditButtonObserverImpl,
+		}
+	},
+
+	Class
+	{
+		kAutoCorrectRemoveButtonBoss,
+		kButtonWidgetBoss,
+		{
+			IID_IOBSERVER, 					kAutoCorrectRemoveButtonObserverImpl,
+		}
+	},
+	
+	Class
+	{
+		kAutoCorrectAddPairDialogBoss,
+		kDialogBoss,
+		{
+			IID_IBOOLDATA,					kBoolDataImpl,
+			IID_IDIALOGCONTROLLER,			kAutoCorrectAddPairDialogControllerImpl,
+			IID_ISTRINGDATA,				kStringDataImpl,
+			IID_ICORRECTEDSTRINGDATA,		kCorrectedStringDataImpl,
+			IID_IADDINGWORDMODEBOOLDATA,	kBoolDataImpl,
+		}
+	},
+	
+    Class
+    {
+        kAutoCorrectCheckBoxObserverBoss,
+        kCheckBoxWidgetBoss,
+        {
+            IID_IOBSERVER,                     kAutoCorrectCheckBoxObserverImpl,
+            IID_ITEXTATTROBSERVERDATA,         kTAObserverDataImpl,
+        }
+    }
+	
+    Class
+    {
+        kAutoCorrectCapCheckBoxObserverBoss,
+        kCheckBoxWidgetBoss,
+        {
+            IID_IOBSERVER,                     kAutoCorrectCapCheckBoxObserverImpl,
+            IID_ITEXTATTROBSERVERDATA,         kTAObserverDataImpl,
+        }
+    }
+    
+	Class
+	{
+		kAutoCorrectNewWSResponderBoss,
+		kInvalidClass,
+		{
+			IID_IK2SERVICEPROVIDER,				kNewWorkspaceSigRespServiceImpl,
+			IID_IRESPONDER,						kAutoCorrectNewWSResponderImpl,
+		}
+	}
+	
+	//AddIn
+	//{
+	//	kLayoutWidgetBoss,
+	//	kInvalidClass,
+	//	{
+	//		IID_IIDLETASK, 						kDynamicSpellCheckIdleTaskImpl,
+	//		IID_IEVENTWATCHER, 					kDynamicSpellCheckKeyEventWatcherImpl,
+	//	}
+	//}
+	
+	
+	AddIn
+	{
+		kDynamicSpellCheckAdornmentBoss,
+		kInvalidClass,
+		{
+			IID_IK2SERVICEPROVIDER, 		kGlobalTextAdornmentServiceImpl,
+			IID_IGLOBALTEXTADORNMENT, 		kDynamicSpellCheckAdornmentImpl,
+		}
+	}
+	
+	AddIn	// ---- model
+	{
+		kWaxTextRunBoss,
+		kInvalidClass,
+		{
+			IID_IDYNAMICSPELLCHECKCACHE, 	kDynamicSpellCheckCacheImpl,
+		}
+	}
+
+	AddIn
+	{
+		 kUtilsBoss,
+		kInvalidClass,
+		{
+			IID_IPRIVATESPELLINGUTILS,		kPrivateSpellingUtilsImpl,
+		}
+	},
+	
+	AddIn
+	{
+		kDocBoss,
+		kInvalidClass,
+		{
+			IID_IDOCUMENTDSCOBSERVER,		kDocumentDynamicSpellCheckObserverImpl,
+		}
+	},
+	
+    Class
+    {
+        kDynamicSpellCheckNewDocResponderBoss,
+        kInvalidClass,
+        {
+            IID_IK2SERVICEPROVIDER,            kAfterNewDocSignalRespServiceImpl,
+            IID_IRESPONDER,                    kDynamicSpellCheckDocResponderImpl,
+        }
+    },
+	
+    Class
+    {
+        kDynamicSpellCheckOpenDocResponderBoss,
+        kInvalidClass,
+        {
+            IID_IK2SERVICEPROVIDER,            kAfterOpenDocSignalRespServiceImpl,
+            IID_IRESPONDER,                    kDynamicSpellCheckDocResponderImpl,
+        }
+    },
+	
+    Class
+    {
+        kDynamicSpellCheckCloseDocResponderBoss,
+        kInvalidClass,
+        {
+            IID_IK2SERVICEPROVIDER,            kBeforeCloseDocSignalRespServiceImpl,
+            IID_IRESPONDER,                    kDynamicSpellCheckDocResponderImpl,
+        }
+    },
+
+	#ifdef DEBUG
+	//----------------------------------------------------------------------------------------
+	// kLinguisticTestMenuBoss
+	//----------------------------------------------------------------------------------------
+
+	Class	// ---- [model-ui]
+	{
+		kLinguisticTestMenuBoss,
+		kBaseTestMenuBoss,
+		{
+			IID_IACTIONCOMPONENT, kLinguisticTestMenuImpl,
+		}
+	},
+
+	//----------------------------------------------------------------------------------------
+	// kHyphenateStoryCmdBoss
+	//----------------------------------------------------------------------------------------
+
+	Class
+	{
+		kHyphenateStoryCmdBoss,
+		kInvalidClass,
+		{
+			IID_ICOMMAND, 			kHyphenateStoryCmdImpl,
+			IID_ITEXTWALKER, 		kTextWalkerImpl,
+			IID_ITEXTWALKERCLIENT, 	kHyphenateStoryWalkerImpl,
+			
+		}
+	},
+
+	//----------------------------------------------------------------------------------------
+	// kSpellCheckStoryCmdBoss
+	//----------------------------------------------------------------------------------------
+
+	Class
+	{
+		kSpellCheckStoryCmdBoss,
+		kInvalidClass,
+		{
+			IID_ICOMMAND, 			kSpellCheckStoryCmdImpl,
+			IID_ITEXTWALKER, 		kTextWalkerImpl,
+			IID_ITEXTWALKERCLIENT, 	kSpellCheckStoryWalkerImpl,
+		}
+	},
+
+	#endif
+	
+	}}};
+
+resource ImplementationAlias(1)
+{
+    {
+        kCorrectedStringDataImpl, kStringDataImpl,
+    }
+};
+
+#endif // __ODFRC__

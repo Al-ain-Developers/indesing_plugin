@@ -1,0 +1,894 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/dynamicdocumentsui/resources/AnimationUIView_csCZ.fr $
+//  
+//  Owner: neershar
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  ADOBE CONFIDENTIAL
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "InterfaceColorDefines.h"
+#include "IControlViewDefs.h"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// RESOURCES
+//========================================================================================
+
+resource AnimationUIPanelWidget (kAnimationUIPanelRsrcID + index_csCZ)
+{
+	__FILE__, __LINE__,
+	kAnimationUIPanelWID, kPMRsrcID_None,			// WidgetId, RsrcId
+	kBindNone,										// Frame binding
+	Frame(0, 0, kAnimationPaletteWidth_CZ, kAnimationUIPanelMinHeight),		// Frame
+	kTrue, kTrue,									// Visible, Enabled
+	kTrue,											// EraseBackground
+	kInterfacePaletteFill,							// Erase to color
+	kFalse,											// DrawDropShadow
+	"kAnimationUIPanelName",						// Panel name	
+	{
+		// ----- Preview Group -----
+		//	Height of this panel group should be kAnimationUIPreviewPanelHeight (or 140)
+		GenericPanelWidget
+		(
+			kAnimationUIPreviewGroupWID, kPMRsrcID_None,
+			kBindAll,
+			Frame(0,5,kAnimationPaletteWidth_CZ,135)		// Frame
+			kTrue, kTrue,
+			""
+			{
+				// ----- Preview Proxy ----- 
+                GIFPlayerWidget // for previewable video
+                (
+					kGIFPlayerWidgetID,    //Widget ID
+					kPMRsrcID_None,                //Resource ID
+					kBindNone,
+					Frame(5,0,kAnimationPaletteWidth_CZ-5,120)		// Frame
+					kTrue, kTrue,                // Visible, Enabled,
+					""
+                ),
+
+				AnimationPreviewPanelWidget
+				(
+					kAnimationUINoSelectionPreviewProxyWID, kPMRsrcID_None,
+					kBindNone,
+					Frame(5,0,kAnimationPaletteWidth_CZ-5,120)		// Frame
+					kTrue, kTrue,
+					kTrue,										// EraseBackground
+					kInterfaceWhite,							// Erase to color
+					"",
+					{
+					}
+				)		
+			}
+		)
+		
+		//	Main group
+		//	Height of this panel group should be kAnimationUIMainPanelHeight (or 155)
+		GenericPanelWidget
+		(	
+			kAnimationUIMainPanelWID, kPMRsrcID_None,// WidgetId, RsrcId
+			kBindTop | kBindLeft | kBindRight,			// Frame binding
+			Frame(2, 135, kAnimationPaletteWidth_CZ, 312)
+			kTrue, kTrue, ""							// Visible, Enabled, Title
+			{				
+				// ----- Name Group -----
+				GenericPanelWidget
+				(
+					kAnimationUINameGroupWID, kPMRsrcID_None,
+					kBindAll,
+					Frame(5,0,kAnimationPaletteWidth_CZ-5,21)		// Frame
+					kTrue, kTrue,
+					""
+					{
+						// ----- Animation Name Label -----
+						StaticTextWidget
+						(
+							kAnimationUINameLabelWID, kSysStaticTextPMRsrcId,// WidgetId, RsrcId
+							kBindLeft | kBindTop,							// Frame binding
+							Frame(0,0,kAMUITextWidth_CZ,21),					// Frame
+							kTrue, kTrue, kAlignRight,						// Visible, Enabled
+							kDontEllipsize, kTrue,							// Ellipsize style, Convert ampersands
+							"kAnimationUINameStaticTextLabel",				// Text
+							kAnimationUINameEditBoxWID,
+						),
+						
+						// ----- Animation Name Edit box -----
+						AnimationNameEditBoxWidget
+						(
+							kAnimationUINameEditBoxWID, kSysEditBoxPMRsrcId, 
+							kBindLeft | kBindRight,
+							Frame(kAMUITextWidth_CZ+5,0,kAnimationPaletteWidth_CZ-10,21)	// Frame
+							kTrue, kTrue,							// Visible, Enabled			
+							0,										// widget id of nudge button			
+							0,	0,									// small/large nudge amount
+							100,									// max num chars( 0 = no limit)
+							kFalse,									// is read only
+							kFalse,									// Notified for every key stroke
+							kFalse,									// range checking enabled
+							kFalse,									// blank entry allowed
+							0, 0,									// upper/lower bounds
+							"",										// initial text
+						),
+					}
+				)
+				
+				// ----- Animation Preset Group -----
+				GenericPanelWidget
+				(
+					kAnimationUIPresetGroupWID, kPMRsrcID_None,
+					kBindAll,
+					Frame(0,26,kAnimationPaletteWidth_CZ,47)		// Frame
+					kTrue, kTrue,
+					""
+					{
+						// ----- Animation Preset Label -----
+						StaticTextWidget
+						(
+							kAnimationUIPresetLabelWID, kSysStaticTextPMRsrcId,// WidgetId, RsrcId
+							kBindLeft | kBindTop,							// Frame binding
+							Frame(5,0,kAMUITextWidth_CZ+5,21)					// Frame
+							kTrue, kTrue, kAlignRight,						// Visible, Enabled
+							kDontEllipsize, kTrue,							// Ellipsize style, Convert ampersands
+							"kAnimationUIPresetStaticTextLabel",			// Text
+							0,
+						),
+
+						PanelWithHiliteBorderWidget
+						(
+							0,	// WidgetId
+							kPMRsrcID_None,								// RsrcId
+							kBindNone,									// Frame binding
+							Frame(kAMUITextWidth_CZ+10,0,kAnimationPaletteWidth_CZ-5,21)	
+							kTrue,										// Visible
+							kTrue,										// Enabled
+							"",
+							{
+								// ----- Animation Preset Static Text and Popup Menu -----
+								AnimationPreviewPanelWidget
+								(
+									kInvalidWidgetID, kPMRsrcID_None,
+									kBindNone,
+									Frame(1, 1, 154,20)		// Frame
+									kTrue, kTrue,
+									kTrue,										// EraseBackground
+									kInterfacePaletteFill,							// Erase to color
+									"",
+									{
+										InfoStaticTextWidget
+										(
+											kAnimationUIPresetStaticTextWID,	// WidgetId
+											kSysStaticTextPMRsrcId,				// RsrcId
+											kBindLeft | kBindRight,				// Frame binding
+											Frame(1, 1, 154,20)	// Frame
+											kTrue,								// Visible
+											kTrue,								// Enabled
+											kAlignLeft,							// Alignment
+											kEllipsizeEnd, kTrue,				// Ellipsize style, Convert ampersands
+											"kAnimationUIChoose",				// Initial text
+											kAnimationUIPresetPopupMenuWID,		// Associated widgetID
+											kPaletteWindowFontId,				// FontID
+											kPaletteWindowHiliteFontId,			// HiliteFontID
+										),
+									}
+								),
+								PanelWithHiliteBorderWidget
+								(
+									0,	// WidgetId
+									kPMRsrcID_None,								// RsrcId
+									kBindNone,									// Frame binding
+									Frame(154,0,175,21)	
+									kTrue,										// Visible
+									kTrue,										// Enabled
+									"",
+									{
+										AnimationUIPresetPopupMenuWidget 
+										( 
+											kAnimationUIPresetPopupMenuWID, 		// WidgetId 
+											kAnimationUIPresetPopupMenuIconRsrcID,	// RsrcId 
+											kDynamicDocumentsUIPluginID,
+											kBindLeft | kBindRight,
+											Frame(0,0,21,21) // Frame 
+											kTrue, kTrue,                           // Visible, Enabled 
+											kADBEIconSuiteButtonType, 
+											"kAnimationUIPresetPopupMenu"			// Menu name appears in the resource file (FindChangeMenu.fr) 
+										) 
+									}
+								)
+							}
+						)
+					}
+				)
+				
+				// ----- Settings Group -----
+				GenericPanelWidget
+				(
+					kAnimationUIPresetSettingsGroupWID, kPMRsrcID_None,
+					kBindAll,
+					Frame(0,52,kAnimationPaletteWidth_CZ,177)			// Frame
+					kTrue, kTrue,
+					""
+					{				
+						// ----- Animation Event Group -----
+						GenericPanelWidget
+						(
+							kAnimationUIEventGroupWID, kPMRsrcID_None,
+							kBindAll,
+							Frame(0,0,kAnimationPaletteWidth_CZ,21)					// Frame
+							kTrue, kTrue,
+							""
+							{
+								// ----- Animation Event Label -----
+								StaticTextWidget
+								(
+									kAnimationUIEventLabelWID, kSysStaticTextPMRsrcId,// WidgetId, RsrcId
+									kBindLeft | kBindTop,							// Frame binding
+									Frame(5,0,kAMUITextWidth_CZ+5,21)					// Frame
+									kTrue, kTrue, kAlignRight,						// Visible, Enabled
+									kDontEllipsize, kTrue,							// Ellipsize style, Convert ampersands
+									"kAnimationUIEventStaticTextLabel",				// Text
+									kAnimationUIEventDropDownWID,
+								),
+								PanelWithHiliteBorderWidget
+								(
+									0,	// WidgetId
+									kPMRsrcID_None,								// RsrcId
+									kBindNone,									// Frame binding
+									Frame(kAMUITextWidth_CZ+10, 0, kAnimationPaletteWidth_CZ-52+21, 21)	
+									kTrue,										// Visible
+									kTrue,										// Enabled
+									"",
+									{
+										// ----- Animation Event Drop Down List -----
+										AnimationUIEventInfoWidget
+										(
+											kAnimationUIEventStaticTextWID,		// WidgetId
+											kSysStaticTextPMRsrcId,				// RsrcId
+											kBindLeft | kBindRight,				// Frame binding
+											Frame(2, 0, 128, 21)	// Frame
+											kTrue,								// Visible
+											kTrue,								// Enabled
+											kAlignLeft,							// Alignment
+											kEllipsizeEnd, kTrue,				// Ellipsize style, Convert ampersands
+											"kAnimationUIChoose",				// Initial text
+											kAnimationUIEventMenuSelectorWID,	// Associated widgetID
+											kPaletteWindowFontId,				// FontID
+											kPaletteWindowHiliteFontId,			// HiliteFontID
+										),
+										PanelWithHiliteBorderWidget
+										(
+											0,	// WidgetId
+											kPMRsrcID_None,								// RsrcId
+											kBindNone,									// Frame binding
+											Frame(128,0,149,21)	
+											kTrue,										// Visible
+											kTrue,										// Enabled
+											"",
+											{
+												AnimationUIEventPopupWidget 
+												( 
+													kAnimationUIEventMenuSelectorWID,  kAnimationUIEventSelectorIconRsrcID, kDynamicDocumentsUIPluginID,  // WidgetId, RsrcId 
+													kBindLeft | kBindRight,
+													Frame(0,0,21,21)						// Frame 
+													kTrue, kTrue,                           // Visible, Enabled 
+													kADBEIconSuiteButtonType, 
+													"kAnimationUIEventPopupMenu"			// Menu name appears in the resource file (FindChangeMenu.fr) 
+												)
+											}
+										)
+									}
+								)
+								AnimationUIButtonTriggerWidget
+								(
+									kAnimationUIButtonTriggerWID, kAnimationUIButtonTriggerIcon, kDynamicDocumentsUIPluginID,	// WidgetId, RsrcId
+									kBindLeft | kBindRight,												// Frame binding
+									Frame(kAnimationPaletteWidth_CZ-26,0,kAnimationPaletteWidth_CZ-5,21)													// Frame
+									kTrue, kTrue,														// Visible, Enabled
+									kADBEIconSuiteButtonType,
+								),
+							}
+						)
+						
+						// ----- Animation On Roll Off Check Box -----
+						CheckBoxWidget 
+						(     
+							kAnimationUIOnRollOffCheckboxWID,			// WidgetId 
+							kSysCheckBoxPMRsrcId,						// RsrcId 
+							kBindNone,									// Frame binding 
+							Frame(kAMUITextWidth_CZ+10,26,kAnimationPaletteWidth_CZ-5,47)	// Frame 
+							kTrue,										// Visible 
+							kFalse,										// Enabled 
+							kAlignLeft,									// Alignment 
+							"kAnimationUIOnRollOffCheckBoxLabel",		// Initial text 
+						),
+						
+						// ----- Animation Duration Group -----
+						GenericPanelWidget
+						(
+							kAnimationUIDurationGroupWID, kPMRsrcID_None,
+							kBindAll,
+							Frame(0,52,kAnimationPaletteWidth_CZ,73)		// Frame
+							kTrue, kTrue,
+							""
+							{
+								// ----- Animation During Label -----
+								StaticTextWidget
+								(
+									kAnimationUIDurationLabelWID, kSysStaticTextPMRsrcId,	// WidgetId, RsrcId
+									kBindLeft | kBindTop,								// Frame binding
+									Frame(5,0,kAMUITextWidth_CZ+5,21)						// Frame
+									kTrue, kTrue, kAlignRight,							// Visible, Enabled
+									kDontEllipsize, kTrue,								// Ellipsize style, Convert ampersands
+									"kAnimationUIDurationStaticTextLabel",				// Text
+									kAnimationUIDurationILEWID,
+								),
+								// ----- Animation During Slider Widget -----
+                                NudgeControlWidget 
+                                ( 
+                                    kAnimationUIDurationNudgeWID, kPMRsrcID_None,	// WidgetId, RsrcId 
+                                    kBindLeft,										// Frame binding 
+                                    Frame(kAMUITextWidth_CZ+10,0,kAMUITextWidth_CZ+10+kCC2016NudgeControlWidth,21)	// Frame 
+                                    kTrue, kTrue,									// Visible, Enabled 
+                                ),
+                                RealEditBoxWidget
+								(
+									kAnimationUIDurationILEWID, kSysEditBoxPMRsrcId, 
+									kBindLeft,
+									Frame(kAMUITextWidth_CZ+10+kCC2016NudgeControlWidth,0,kAMUITextWidth_CZ+10 + kCC2016NudgeControlWidth+kAMUIEditWidth1,21), // Frame  
+									kTrue, kTrue,									// Visible, Enabled			
+									kAnimationUIDurationNudgeWID,					// widget id of nudge button			
+									0.25,	1.0,									// small/large nudge amount
+									8,												// max num chars( 0 = no limit)
+									kFalse,											// is read only
+									kFalse,											//Notified for every key stroke
+									kTrue,											// range checking enabled
+									kFalse,											// blank entry allowed
+									60.0, 0.125, 									// upper/lower bounds
+									"",												// initial text
+								),
+								// ----- Animation Second Label -----
+								StaticTextWidget
+								(
+									kAnimationUIDurationSecondLabelWID, kSysStaticTextPMRsrcId,// WidgetId, RsrcId
+									kBindLeft | kBindTop,							// Frame binding
+									Frame(kAMUITextWidth_CZ+10 + kCC2016NudgeControlWidth+kAMUIEditWidth1+10,0,kAnimationPaletteWidth_CZ-5,21)			// Frame
+									kTrue, kTrue, kAlignLeft,						// Visible, Enabled
+									kDontEllipsize, kTrue,							// Ellipsize style, Convert ampersands
+									"kAnimationUISecondStaticTextLabel",			// Text
+									kAnimationUIDurationILEWID,
+								),
+							}
+						)
+						
+						// ----- Animation Play Group -----
+						GenericPanelWidget
+						(
+							kAnimationUIPlayGroupWID, kPMRsrcID_None,
+							kBindAll,
+							Frame(0,78,kAnimationPaletteWidth_CZ,99)		// Frame
+							kTrue, kTrue,
+							""
+							{
+								// ----- Animation Play Label -----
+								StaticTextWidget
+								(
+									kAnimationUIPlayLabelWID, kSysStaticTextPMRsrcId,// WidgetId, RsrcId
+									kBindLeft | kBindTop,							// Frame binding
+									Frame(5,0,kAMUITextWidth_CZ+5,21)					// Frame
+									kTrue, kTrue, kAlignRight,						// Visible, Enabled
+									kDontEllipsize, kTrue,							// Ellipsize style, Convert ampersands
+									"kAnimationUIPlayStaticTextLabel",				// Text
+									kAnimationUIPlayILEWID,
+								),
+								// ----- Animation Time Slider Widget -----
+                                NudgeControlWidget 
+                                ( 
+                                    kAnimationUIPlayNudgeWID, kPMRsrcID_None,		// WidgetId, RsrcId 
+                                    kBindLeft,										// Frame binding 
+                                    Frame(kAMUITextWidth_CZ+10,0,kAMUITextWidth_CZ+10+kCC2016NudgeControlWidth,21)	// Frame 
+                                    kTrue, kTrue,									// Visible, Enabled 
+                                ),
+								IntEditBoxWidget
+								(
+									kAnimationUIPlayILEWID, kSysEditBoxPMRsrcId, 
+									kBindLeft,
+									Frame(kAMUITextWidth_CZ+10+kCC2016NudgeControlWidth,0,kAMUITextWidth_CZ+10+kCC2016NudgeControlWidth+kAMUIEditWidth1,21), // Frame  
+									kTrue, kTrue,									// Visible, Enabled			
+									kAnimationUIPlayNudgeWID,						// widget id of nudge button			
+									1,	5,											// small/large nudge amount
+									8,												// max num chars( 0 = no limit)
+									kFalse,											// is read only
+									kFalse,											//Notified for every key stroke
+									kTrue,											// range checking enabled
+									kFalse,											// blank entry allowed
+									99, 1, 											// upper/lower bounds
+									"",												// initial text
+								)
+								// ----- Animation Play Time Label -----
+								StaticTextWidget
+								(
+									kAnimationUITimeLabelWID, kSysStaticTextPMRsrcId,// WidgetId, RsrcId
+									kBindLeft | kBindTop,							// Frame binding
+									Frame(kAMUITextWidth_CZ+15+kCC2016NudgeControlWidth+kAMUIEditWidth1+5,0,kAnimationPaletteWidth_CZ-90,21)// Frame
+									kTrue, kTrue, kAlignLeft,						// Visible, Enabled
+									kDontEllipsize, kTrue,							// Ellipsize style, Convert ampersands
+									"kAnimationUITimeStaticTextLabel",				// Text
+									kAnimationUIPlayILEWID,
+								),
+								// ----- Animation Loop Check Box -----
+								CheckBoxWidget 
+								(     
+									kAnimationUILoopCheckboxWID,				// WidgetId 
+									kSysCheckBoxPMRsrcId,						// RsrcId 
+									kBindNone,									// Frame binding 
+									Frame(kAnimationPaletteWidth_CZ-85,0,kAnimationPaletteWidth_CZ-5,21)// Frame 
+									kTrue,										// Visible 
+									kTrue,										// Enabled
+									kAlignLeft,									// Alignment 
+									"kAnimationUILoopCheckBoxLabel",			// Initial text 
+								), 
+							}
+						)
+						
+						// ----- Animation Speed Group -----
+						GenericPanelWidget
+						(
+							kAnimationUISpeedGroupWID, kPMRsrcID_None,
+							kBindAll,
+							Frame(0,104,kAnimationPaletteWidth_CZ-5,125)			// Frame
+							kTrue, kTrue,
+							""
+							{
+								// ----- Animation Speed Label -----
+								StaticTextWidget
+								(
+									kAnimationUISpeedLabelWID, kSysStaticTextPMRsrcId,// WidgetId, RsrcId
+									kBindLeft | kBindTop,							// Frame binding
+									Frame(2,0,kAMUITextWidth_CZ+5,21)					// Frame
+									kTrue, kTrue, kAlignRight,						// Visible, Enabled
+									kDontEllipsize, kTrue,							// Ellipsize style, Convert ampersands
+									"kAnimationUISpeedStaticTextLabel",				// Text
+									kAnimationUISpeedDropDownWID,
+								),
+								// ----- Animation Speed Drop Down List -----
+								DropDownListWidget
+								(
+									kAnimationUISpeedDropDownWID,					// WidgetId
+									kSysDropDownPMRsrcId,							// RsrcId
+									kBindLeft | kBindRight,	
+									Frame(kAMUITextWidth_CZ+10,0,kAnimationPaletteWidth_CZ-5,21)// Frame
+									kTrue, kTrue,
+									{{
+										"kAnimationUINone",	
+										"kAnimationUIEaseIn",
+										"kAnimationUIEaseOut",
+										"kAnimationUIEaseInAndOut",
+									}}
+								),
+							}
+						)
+					}
+				)
+			}
+		)	
+		
+		// ----- Properties Title Group -----
+		//	Height of this panel group should be kAnimationUISubPanelControlHeight (or 22)
+		GenericPanelWidget
+		(
+			kAnimationUIPropertyTitleGroupWID, kPMRsrcID_None,	// WidgetId, RsrcId
+			kBindBottom | kBindRight | kBindLeft,				// Frame binding
+			Frame(0, 312, kAnimationPaletteWidth_CZ, 334)			// Frame
+			kTrue, kTrue,										// Visible, Enabled
+			""
+			{
+				//	Expand Icon
+				AnimationUIPropertyExpanderWidget
+				(
+					kAnimationUIPropertyExpanderWidgetIconWID, 
+					kTreeBranchCollapsedRsrcID, kApplicationRsrcPluginID,	// RsrcId of icon when node is collapsed 
+					kBindLeft,
+					//kBindNone,
+					Frame(5,0,25,21)										// Frame
+					kTrue, kTrue,											// Visible, Enabled
+					kADBEIconSuiteButtonType,
+				),
+				// Title
+				StaticTextWidget
+				(		
+					kAnimationUIPropertyExpanderWidgetLabelWID, kSysStaticTextPMRsrcId,// WidgetId, RsrcId
+					kBindLeft | kBindTop,									// Frame binding
+					Frame(27,0,kAnimationPaletteWidth_CZ-5,21)					// Frame
+					kTrue, kTrue, kAlignLeft,								// Visible, Enabled
+					kDontEllipsize, kTrue,									// Ellipsize style, Convert ampersands
+					"kAnimationUIPropertyStaticTextLabel",					// Text
+					0,
+				),
+			}
+		)
+		
+		// ----- Properties Group -----
+		GenericPanelWidget
+		(
+			kAnimationUIPropertySubPanelGroupWID, kPMRsrcID_None,			// WidgetId, RsrcId
+			kBindBottom | kBindRight | kBindLeft,
+			Frame(0, 339, kAnimationPaletteWidth_CZ, 339+kAnimationUIPropertySubPanelHeight)	// Frame
+			kFalse, kTrue, ""												// Visible, Enabled, Title
+			{
+				// ----- Animation Design Group -----
+				GenericPanelWidget
+				(
+					kAnimationUIDesignGroupWID, kPMRsrcID_None,
+					kBindAll,
+					Frame(0,0,kAnimationPaletteWidth_CZ,21)					// Frame
+					kTrue, kTrue,
+					""
+					{
+						// ----- Design Label -----
+						StaticTextWidget
+						(		
+							kAnimationUIPropertyDesignLabelWID, kSysStaticTextPMRsrcId,// WidgetId, RsrcId
+							kBindLeft | kBindTop,							// Frame binding
+							Frame(5,0,kAMUITextWidth_CZ+5,21)								// Frame
+							kTrue, kTrue, kAlignRight,						// Visible, Enabled
+							kDontEllipsize, kTrue,							// Ellipsize style, Convert ampersands
+							"kAnimationUIPropertyDesignStaticTextLabel",	// Text
+							kAnimationUIPropertyDesignCheckBoxWID,
+						),
+
+						// ----- Design Drop Down List -----
+						AnimationUIAnimateOptionWidget
+						(
+							kAnimationUIPropertyDesignDropDownWID,			// WidgetId
+							kSysDropDownPMRsrcId,							// RsrcId
+							kBindLeft | kBindRight,	
+							Frame(kAMUITextWidth_CZ+10,0,kAnimationPaletteWidth_CZ-5,21) // Frame
+							kTrue, kTrue,
+							{{
+								"kAnimationUIFrom",	
+								"kAnimationUITo",
+								"kAnimationUIOffset",
+							}}
+						),	
+					}
+				)
+				
+				// ----- Design Info Label (Animation To/From) -----
+				StaticTextWidget
+				(		
+					kAnimationUIPropertyDesignInfoLabelWID, kSysStaticTextPMRsrcId,// WidgetId, RsrcId
+					kBindLeft | kBindTop,							// Frame binding
+					Frame(kAMUITextWidth_CZ+10,26,kAnimationPaletteWidth_CZ-5,47)	// Frame
+					kTrue, kTrue, kAlignLeft,						// Visible, Enabled
+					kDontEllipsize, kTrue,							// Ellipsize style, Convert ampersands
+					"kAnimationToStaticTextLabel",					// Text
+					0,
+				),
+				
+					
+				// ----- Rotate Label -----		
+				StaticTextWidget
+				(		
+					kAnimationUIPropertyRotateLabelWID, kSysStaticTextPMRsrcId,// WidgetId, RsrcId
+					kBindLeft | kBindTop,							// Frame binding
+					Frame(5,52, kAMUITextWidth_CZ+5,73)					// Frame
+					kTrue, kTrue, kAlignRight,						// Visible, Enabled
+					kDontEllipsize, kTrue,							// Ellipsize style, Convert ampersands
+					"kAnimationUIPropertyDesignRotateStaticTextLabel",	// Text
+					kAnimationUIRotateILEWID,
+				),
+				// ----- Animation Rotate Slider Widget -----
+                NudgeControlWidget 
+                ( 
+                    kAnimationUIRotateNudgeWID, kPMRsrcID_None,		// WidgetId, RsrcId 
+                    kBindLeft,										// Frame binding 
+                    Frame(kAMUITextWidth_CZ+10,52,kAMUITextWidth_CZ+10+kCC2016NudgeControlWidth,73)	// Frame 
+                    kTrue, kTrue,									// Visible, Enabled 
+                ),
+				AngleComboBoxWidget
+                ( 
+                    kAnimationUIRotateILEWID, kSysEditBoxPMRsrcId,	// WidgetId, RsrcId 
+                    kBindNone,										// Frame binding 
+                    Frame(kAMUITextWidth_CZ+10+kCC2016NudgeControlWidth,52,kAMUITextWidth_CZ+10+kCC2016NudgeControlWidth+kAMUIEditWidth2_CZ,73)// Frame 
+                    kTrue, kTrue,									// Visible, Enabled 
+                    kAnimationUIRotateNudgeWID,						// widget id of nudge button             
+                    1,5,											// small/larg	e nudge amount 
+                    0,												// max num chars( 0 = no limit) 
+                    kFalse,											// is read only 
+                    kFalse,											// should notify each key stroke 
+                    kTrue,											// range checking enabled 
+                    kFalse,											// blank entry allowed 
+                    72000, -72000,									// upper/lower bounds 
+                    "0"												// initial text 
+                    {{ 
+						"-180deg",             
+						"-150deg",             
+						"-120deg",             
+						"-90deg",             
+						"-60deg",         
+						"-45deg",             
+						"-30deg",         
+						"0deg",     
+						"30deg", 
+						"45deg", 
+						"60deg", 
+						"90deg", 
+						"120deg", 
+						"150deg", 
+						"180deg", 
+                    }}, 
+                ) 
+				// --- Proxy control ---          
+				AnimationUIXFProxyWidget 
+				( 
+					kAnimationUIXFPointProxyWID, 0,kDynamicDocumentsUIPluginID, // WidgetId, RsrcId 
+					kBindLeft,										// Frame binding 
+					Frame(kAnimationPaletteWidth_CZ-35,43,kAnimationPaletteWidth_CZ-5,73)	// Frame 
+					kTrue, kTrue,									// Visible, Enabled 
+				),
+                
+				// ----- Scale Label -----
+				StaticTextWidget
+				(		
+					kAnimationUIPropertyScaleLabelWID, kSysStaticTextPMRsrcId,// WidgetId, RsrcId
+					kBindLeft | kBindTop,							// Frame binding
+					Frame(0,78,kAMUITextWidth_CZ-kAMUIScaleWidth,99)	// Frame
+					kTrue, kTrue, kAlignRight,						// Visible, Enabled
+					kDontEllipsize, kTrue,							// Ellipsize style, Convert ampersands
+					"kAnimationUIPropertyDesignScaleStaticTextLabel",// Text
+					kAnimationUIScaleHorzILEWID,
+				),
+				
+				// ----- Scale Horz Label -----
+				StaticTextWidget
+				(		
+					kAnimationUIPropertyScaleHorzLabelWID, kSysStaticTextPMRsrcId,// WidgetId, RsrcId
+					kBindLeft | kBindTop,							// Frame binding
+					Frame(kAMUITextWidth_CZ-kAMUIScaleWidth+5,78,kAMUITextWidth_CZ+5,99)	// Frame
+					kTrue, kTrue, kAlignRight,						// Visible, Enabled
+					kDontEllipsize, kTrue,							// Ellipsize style, Convert ampersands
+					"kAnimationUIPropertyDesignScaleHorzStaticTextLabel",	// Text
+					kAnimationUIScaleHorzILEWID,
+				),
+				// ----- Animation Scale Horizontal Slider Widget -----
+                NudgeControlWidget 
+                ( 
+                    kAnimationUIScaleHorzNudgeWID, kPMRsrcID_None,	// WidgetId, RsrcId 
+                    kBindLeft,										// Frame binding 
+                    Frame(kAMUITextWidth_CZ+10,78,kAMUITextWidth_CZ+10+ kCC2016NudgeControlWidth,99)	// Frame 
+                    kTrue, kTrue,									// Visible, Enabled 
+                ),
+                PercentageEditBoxWidget 
+				(
+					kAnimationUIScaleHorzILEWID, kSysEditBoxPMRsrcId, 
+					kBindLeft,
+					Frame(kAMUITextWidth_CZ+10+ kCC2016NudgeControlWidth,78,kAMUITextWidth_CZ+10+ kCC2016NudgeControlWidth+35,99), // Frame  
+					kTrue, kTrue,									// Visible, Enabled			
+					kAnimationUIScaleHorzNudgeWID,					// widget id of nudge button			
+					1.0,	10.0,									// small/large nudge amount
+					8,												// max num chars( 0 = no limit)
+					kFalse,											// is read only
+					kFalse,											//Notified for every key stroke
+					kTrue,											// range checking enabled
+					kFalse,											// blank entry allowed
+					10000, 0, 										// upper/lower bounds
+					"",												// initial text
+				),
+				// ----- Scale Vert Label -----	
+				StaticTextWidget
+				(		
+					kAnimationUIPropertyScaleVertLabelWID, kSysStaticTextPMRsrcId,// WidgetId, RsrcId
+					kBindLeft | kBindTop,							// Frame binding
+					Frame(kAMUITextWidth_CZ+10+ kCC2016NudgeControlWidth+kAMUIEditWidth2_CZ+5,78,kAMUITextWidth_CZ+10+ kCC2016NudgeControlWidth+kAMUIEditWidth2_CZ+kAMUIScaleWidth,99)							// Frame
+					kTrue, kTrue, kAlignRight,						// Visible, Enabled
+					kDontEllipsize, kTrue,							// Ellipsize style, Convert ampersands
+					"kAnimationUIPropertyDesignScaleVertStaticTextLabel",	// Text
+					kAnimationUIScaleVertILEWID,
+				),
+				// ----- Animation Scale Vertical Slider Widget -----
+                NudgeControlWidget 
+                ( 
+                    kAnimationUIScaleVertNudgeWID, kPMRsrcID_None,	// WidgetId, RsrcId 
+                    kBindLeft,										// Frame binding 
+                    Frame(kAMUITextWidth_CZ+10+ kCC2016NudgeControlWidth+kAMUIEditWidth2_CZ+kAMUIScaleWidth+5,78,kAMUITextWidth_CZ+10+ 2*kCC2016NudgeControlWidth+kAMUIEditWidth2_CZ+kAMUIScaleWidth+5,99)// Frame 
+                    kTrue, kTrue,									// Visible, Enabled 
+                ),
+                PercentageEditBoxWidget 
+				(
+					kAnimationUIScaleVertILEWID, kSysEditBoxPMRsrcId, 
+					kBindLeft,
+					Frame(kAMUITextWidth_CZ+10+ 2*kCC2016NudgeControlWidth+kAMUIEditWidth2_CZ+kAMUIScaleWidth+5,78,kAMUITextWidth_CZ+10+ 2*kCC2016NudgeControlWidth+kAMUIEditWidth2_CZ+kAMUIScaleWidth+5+35,99), 							// Frame  
+					kTrue, kTrue,									// Visible, Enabled			
+					kAnimationUIScaleVertNudgeWID,					// widget id of nudge button			
+					1.0,	5.0,									// small/large nudge amount
+					8,												// max num chars( 0 = no limit)
+					kFalse,											// is read only
+					kFalse,											//Notified for every key stroke
+					kTrue,											// range checking enabled
+					kFalse,											// blank entry allowed
+					10000, 0, 										// upper/lower bounds
+					"",												// initial text
+				),
+				RollOverIconButtonWidget
+				(
+					kAnimationUIScaleLockButtonWID, kAnimationUIScaleLockIcon, kDynamicDocumentsUIPluginID,	// WidgetId, RsrcId
+					kBindLeft,																// Frame binding
+					Frame(kAnimationPaletteWidth_CZ-29,75,kAnimationPaletteWidth_CZ-5,99)	// Frame 
+					kTrue, kTrue,															// Visible, Enabled
+					kADBEIconSuiteButtonType,
+				),
+                
+					
+				// ----- Animation opacity Group -----
+				GenericPanelWidget
+				(
+					kAnimationUIPropertyOpacityGroupWID, kPMRsrcID_None,
+					kBindAll,
+					Frame(0,104,kAnimationPaletteWidth_CZ,125)		// Frame
+					kTrue, kTrue,
+					""
+					{
+						// ----- Opacity Label -----
+						StaticTextWidget
+						(		
+							kAnimationUIPropertyDesignOpacityLabelWID, kSysStaticTextPMRsrcId,// WidgetId, RsrcId
+							kBindLeft | kBindTop,							// Frame binding
+							Frame(5,0,kAMUITextWidth_CZ+5,21)								// Frame
+							kTrue, kTrue, kAlignRight,						// Visible, Enabled
+							kDontEllipsize, kTrue,							// Ellipsize style, Convert ampersands
+							"kAnimationUIPropertyDesignOpacityStaticTextLabel",	// Text
+							kAnimationUIPropertyOpacityDropDownWID,
+						),
+						
+						// ----- Opacity Drop Down List -----
+						DropDownListWidget
+						(
+							kAnimationUIPropertyOpacityDropDownWID,				// WidgetId
+							kSysDropDownPMRsrcId,						// RsrcId
+							kBindLeft | kBindRight,	
+							Frame(kAMUITextWidth_CZ+10,0,kAnimationPaletteWidth_CZ-5,21)		// Frame
+							kTrue, kTrue,
+							{{
+								"kAnimationUINone",	
+								"kAnimationUIFadeIn",
+								"kAnimationUIFadeOut",
+							}}
+						),		
+					}
+				)
+				// ----- Animation Visibility Group -----
+				GenericPanelWidget
+				(
+					kAnimationUIVisibilityGroupWID, kPMRsrcID_None,
+					kBindAll,
+					Frame(0,130,kAnimationPaletteWidth_CZ,172)		// Frame
+					kTrue, kTrue,
+					""
+					{
+						// ----- Animation Visibility Label -----
+						StaticTextWidget
+						(
+							kAnimationUIVisibilityLabelWID, kSysStaticTextPMRsrcId,// WidgetId, RsrcId
+							kBindLeft | kBindTop,							// Frame binding
+							Frame(5,0,kAMUITextWidth_CZ+5,21)								// Frame
+							kTrue, kTrue, kAlignRight,						// Visible, Enabled
+							kDontEllipsize, kTrue,							// Ellipsize style, Convert ampersands
+							"kAnimationUIVisibilityStaticTextLabel",		// Text
+							kAnimationUIHideBeforeAnimateCheckboxWID,
+						),
+						
+						CheckBoxWidget 
+						(     
+							kAnimationUIHideBeforeAnimateCheckboxWID,	// WidgetId 
+							kSysCheckBoxPMRsrcId,						// RsrcId 
+							kBindNone,									// Frame binding 
+							Frame(kAMUITextWidth_CZ+10,0,kAnimationPaletteWidth_CZ-5,21)		// Frame 
+							kTrue,										// Visible 
+							kTrue,										// Enabled 
+							kAlignLeft,									// Alignment 
+							"kAnimationUIHideBeforeAnimateCheckBoxLabel",// Initial text 
+						), 
+						CheckBoxWidget 
+						(     
+							kAnimationUIHideAfterAnimateCheckboxWID,	// WidgetId 
+							kSysCheckBoxPMRsrcId,						// RsrcId 
+							kBindNone,									// Frame binding 
+							Frame(kAMUITextWidth_CZ+10,21,kAnimationPaletteWidth_CZ-5,42)	// Frame 
+							kTrue,										// Visible 
+							kTrue,										// Enabled 
+							kAlignLeft,									// Alignment 
+							"kAnimationUIHideAfterAnimateCheckBoxLabel",// Initial text 
+						), 
+					}
+				)
+			}
+		)
+
+		// ----- Animation panel control strip (icons) -----
+		//	Height of this panel group should be kAnimationUIControlStripHeight (or 23)
+		GenericPanelWidget
+		(
+			kAnimationUIControlStripWID, kPMRsrcID_None,	// WidgetId, RsrcId
+			kBindBottom | kBindRight | kBindLeft,			// Frame binding
+			Frame(0,339+177, kAnimationPaletteWidth_CZ,339+177+26)		// Frame
+			kTrue, kTrue,									// Visible, Enabled
+			""
+			{
+				// ----- Separator -----
+				SeparatorWidget
+				(
+					kAnimationUISeperatorWID, kPMRsrcID_None,			// WidgetId, RsrcId
+					kBindLeft | kBindRight,	
+					Frame(5,1,kAnimationPaletteWidth_CZ-5,2)				// Frame
+					kTrue, kTrue,										// Visible, Enabled
+				)
+				// Preview Spread Button
+				AnimationPanelPreviewButton
+				(
+					kAnimationUIPreviewButtonWID, kAnimationUIShowPreviewIcon, kDynamicDocumentsUIPluginID,	// WidgetId, RsrcId
+					kBindBottom | kBindLeft,											// Frame binding
+					Frame(5,2,33,26)													// Frame
+					kTrue, kTrue,														// Visible, Enabled
+					kADBEIconSuiteButtonType,
+				),
+				// Show Proxy button
+				AnimationUIShowProxyButtonWidget 
+				(
+					kAnimationUIShowProxyButtonWID, kAnimationUIShowProxyIcon, kDynamicDocumentsUIPluginID,	// WidgetId, RsrcId
+					kBindBottom | kBindLeft,											// Frame binding
+					Frame(33,2,33+28,26)													// Frame
+					kTrue, kTrue,														// Visible, Enabled
+					kADBEIconSuiteButtonType,
+				),
+				// Show Timing button
+				RollOverIconButtonWidget 
+				(
+					kAnimationUIShowTimingButtonWID, kAnimationUIShowTimingIcon, kDynamicDocumentsUIPluginID,	// WidgetId, RsrcId
+					kBindBottom | kBindLeft,											// Frame binding
+					Frame(33+28,2,33+56,26)													// Frame
+					kTrue, kTrue,														// Visible, Enabled
+					kADBEIconSuiteButtonType,
+				),
+				// Convert to Motion Path button
+				RollOverIconButtonWidget
+				(
+					kAnimationUIConvertToMotionPathButtonWID, kConvertToMotionPath, kDynamicDocumentsUIPluginID,	// WidgetId, RsrcId
+					kBindBottom | kBindRight,											// Frame binding
+					Frame(kAnimationPaletteWidth_CZ-5-56,2,kAnimationPaletteWidth_CZ-5-28,26)	// Frame
+					kTrue, kTrue,														// Visible, Enabled
+					kADBEIconSuiteButtonType,
+				),
+				// Convert to Motion Path button
+				RollOverIconButtonWidget
+				(
+					kAnimationUIClearAnimationButtonWID, kAnimationUIClearAnimationIcon, kDynamicDocumentsUIPluginID,	// WidgetId, RsrcId
+					kBindBottom | kBindRight,											// Frame binding
+					Frame(kAnimationPaletteWidth_CZ-5-28,2,kAnimationPaletteWidth_CZ-5,26)	// Frame
+					kTrue, kTrue,														// Visible, Enabled
+					kADBEIconSuiteButtonType,
+				),
+			}
+		),
+	},
+	"kAnimationUIPanelPopup",	// name of menu (so menu resources can bind to it)
+
+}
+
+#endif

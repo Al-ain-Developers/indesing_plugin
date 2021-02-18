@@ -1,0 +1,144 @@
+// =================================================================================================
+// Copyright 2014 Adobe Systems Incorporated
+// All Rights Reserved.
+//
+// NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance with the terms
+// of the Adobe license agreement accompanying it.
+// =================================================================================================
+
+#if AdobePrivate
+// =================================================================================================
+// Change history
+// ==============
+//
+// Writers:
+//  HK  Honey Kansal
+//  ADC	Amandeep Chawla
+//
+// mm/dd/yy who Description of changes, most recent on top.
+//
+// 02-24-14 HK  5.6-c004 Added new internal XMP DOM interfaces + fixed memory leaks + implemented qualifiers for new XMP DOM.
+// 02-24-14 ADC 5.6-c001 XMPCommon Framework and XMPCore new APIs ported to Mac Environment.
+//
+// 02-13-14 ADC 5.5-c031 Refactoring XMPCore, implementing few APIs and fixing issues.
+// 02-12-14 HK  5.5-c030 Creating client glue code for XMP DOM APIs.
+//
+// =================================================================================================
+#endif // AdobePrivate
+
+#include "XMPCore/Interfaces/IXMPNode.h"
+#include "XMPCore/Interfaces/IXMPSimpleNode.h"
+#include "XMPCore/Interfaces/IXMPStructNode.h"
+#include "XMPCore/Interfaces/IXMPArrayNode.h"
+
+namespace NS_XMPCORE {
+	spcIXMPNode_latest IXMPNode_v1::GetParent() const{
+		CALL_EQUIVALENT_CVIRTUAL_FUNCTION_NO_ARGS ( IXMPNode, GetParent );
+	}
+	
+	spIXMPNode_latest IXMPNode_v1::GetParent(){
+		CALL_EQUIVALENT_VIRTUAL_FUNCTION_NO_ARGS ( IXMPNode, GetParent );
+	}
+	
+	spcIUTF8String IXMPNode_v1::GetName() const{
+		CALL_EQUIVALENT_CVIRTUAL_FUNCTION_NO_ARGS ( IUTF8String, GetName );
+	}
+	
+	spIUTF8String IXMPNode_v1::GetName(){
+		CALL_EQUIVALENT_VIRTUAL_FUNCTION_NO_ARGS ( IUTF8String, GetName );
+	}
+	
+	spcIUTF8String IXMPNode_v1::GetNameSpace() const{
+		CALL_EQUIVALENT_CVIRTUAL_FUNCTION_NO_ARGS ( IUTF8String, GetNameSpace );
+	}
+	
+	spIUTF8String IXMPNode_v1::GetNameSpace(){
+		CALL_EQUIVALENT_VIRTUAL_FUNCTION_NO_ARGS ( IUTF8String, GetNameSpace );
+	}
+	
+	spcIXMPPath_latest IXMPNode_v1::GetPath() const{
+		CALL_EQUIVALENT_CVIRTUAL_FUNCTION_NO_ARGS ( IXMPPath, GetPath );
+	}
+	
+	spIXMPPath_latest IXMPNode_v1::GetPath(){
+		CALL_EQUIVALENT_VIRTUAL_FUNCTION_NO_ARGS ( IXMPPath, GetPath );
+	}
+	
+	spcIXMPNode_latest IXMPNode_v1::GetNode( const spcIXMPPath_latest & path ) const{
+		CALL_EQUIVALENT_CVIRTUAL_FUNCTION ( IXMPNode, GetNode, static_cast<pcIXMPPath_base>(path.get()) );
+	}
+	
+	spIXMPNode_latest IXMPNode_v1::GetNode( const spcIXMPPath_latest & path ){
+		CALL_EQUIVALENT_VIRTUAL_FUNCTION ( IXMPNode, GetNode, static_cast<pcIXMPPath_base>(path.get()) );
+	}
+	
+	spcIXMPSimpleNode_latest IXMPNode_v1::GetSimpleNode( const spcIXMPPath_latest & path ) const{
+		return dynamic_pointer_cast< const IXMPSimpleNode_latest, const IXMPNode_latest>( GetNode( path ) );
+		//TODO:@Aman throw error in case conversion fails
+	}
+	
+	spIXMPSimpleNode_latest IXMPNode_v1::GetSimpleNode( const spcIXMPPath_latest & path ){
+		return dynamic_pointer_cast< IXMPSimpleNode_latest, IXMPNode_latest>( GetNode( path ) );
+		//TODO:@Aman throw error in case conversion fails
+	}
+	
+	spcIXMPStructNode_latest IXMPNode_v1::GetStructNode( const spcIXMPPath_latest & path ) const{
+		return dynamic_pointer_cast< const IXMPStructNode_latest, const IXMPNode_latest>( GetNode( path ) );
+		//TODO:@Aman throw error in case conversion fails
+	}
+	
+	spIXMPStructNode_latest IXMPNode_v1::GetStructNode( const spcIXMPPath_latest & path ){
+		return dynamic_pointer_cast< IXMPStructNode_latest, IXMPNode_latest>( GetNode( path ) );
+		//TODO:@Aman throw error in case conversion fails
+	}
+	
+	spcIXMPArrayNode_latest IXMPNode_v1::GetArrayNode( const spcIXMPPath_latest & path ) const{
+		return dynamic_pointer_cast< const IXMPArrayNode_latest, const IXMPNode_latest>( GetNode( path ) );
+		//TODO:@Aman throw error in case conversion fails
+	}
+	
+	spIXMPArrayNode_latest IXMPNode_v1::GetArrayNode( const spcIXMPPath_latest & path ){
+		return dynamic_pointer_cast< IXMPArrayNode_latest, IXMPNode_latest>( GetNode( path ) );
+		//TODO:@Aman throw error in case conversion fails
+	}
+	
+	//spcIXMPLanguageAlternative IXMPNode_v1::GetLangAlt( const spcIXMPPath_latest & path ) const{
+	//	pIError_latest err( NULL );
+	//	pcIXMPLanguageAlternative_base ptr = GetLangAlt( path.get(), err );
+	//	if ( err ) {
+	//		throw NS_XMPCOMMON::CreateUncheckedSharedPointer( err ) ;
+	//	}
+	//	return NS_XMPCOMMON::CreateSharedPointer< IXMPLanguageAlternative_latest, IXMPLanguageAlternative_base >( ptr );
+	//}
+	//
+	//spIXMPLanguageAlternative IXMPNode_v1::GetLangAlt( const spcIXMPPath_latest & path ){
+	//	pIError_latest err( NULL );
+	//	pIXMPLanguageAlternative_base ptr = GetLangAlt( path.get(), err );
+	//	if ( err ) {
+	//		throw NS_XMPCOMMON::CreateUncheckedSharedPointer( err ) ;
+	//	}
+	//	return NS_XMPCOMMON::CreateSharedPointer< IXMPLanguageAlternative_latest, IXMPLanguageAlternative_base >( ptr );
+	//}
+	
+	spcIXMPQualifiers_latest IXMPNode_v1::GetQualifiers( ) const{
+		CALL_EQUIVALENT_CVIRTUAL_FUNCTION_NO_ARGS ( IXMPQualifiers, GetQualifiers );
+	}
+	
+	spIXMPQualifiers_latest IXMPNode_v1::GetQualifiers( ){
+		CALL_EQUIVALENT_VIRTUAL_FUNCTION_NO_ARGS ( IXMPQualifiers, GetQualifiers );
+	}
+	
+
+	spIXMPNode_latest IXMPNode_v1::Remove( const spcIXMPPath_latest & path){
+		CALL_EQUIVALENT_VIRTUAL_FUNCTION ( IXMPNode, Remove, static_cast<pcIXMPPath_base>(path.get()) );
+	}
+
+	spIXMPConstNodeIterator_latest IXMPNode_v1::Iterator() const{
+		CALL_EQUIVALENT_VIRTUAL_FUNCTION_NO_ARGS ( IXMPConstNodeIterator, Iterator );
+	}
+
+	spIXMPNodeIterator_latest IXMPNode_v1::Iterator(){
+		CALL_EQUIVALENT_VIRTUAL_FUNCTION_NO_ARGS ( IXMPNodeIterator, Iterator );
+	}
+	
+}

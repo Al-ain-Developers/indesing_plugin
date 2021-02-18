@@ -1,0 +1,28 @@
+# swf_template.html
+#
+# There are many different ways of embedding SWF files in web pages and they all
+# have their advantages and disadvantages.
+# When InDesign exports data as XHTML it loads this file and uses it as a template.
+#
+# Lines starting with a # are removed.
+# Every occurrence of ${swf} gets replaced with the URL of the SWF file.
+# Every occurrence of ${width} gets replaced with the width of the SWF file
+#	as it appears in InDesign.
+# Every occurrence of ${height} gets replaced with the height of the SWF file
+#	as it appears in InDesign.
+# Every occurrence of ${id} gets replaced with unique id based on the 
+#	name of the SWF file
+#
+<!-- Although the following construct doesn't validate against the XHTML 1.0 DTDs, 
+	it is currently the most compatible way of embedding SWF files in XHTML 
+	that doesn't involve embedded scripts. 
+	To change the way InDesign embeds SWF files you can edit the template file at
+	[application folder]/Scripts/export as xhtml/resources/swf_template.html
+-->
+<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+		id="${id}" width="${width}" height="${height}">
+	<param name="movie" value="${swf}" />
+	<embed src="${swf}" 
+			type="application/x-shockwave-flash" 
+			width="${width}" height="${height}" />
+</object>

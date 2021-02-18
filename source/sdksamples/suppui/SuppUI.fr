@@ -1,0 +1,305 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/sdksamples/suppui/SuppUI.fr $
+//  
+//  Owner: Adobe Developer Technologies
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "VCPlugInHeaders.h"
+
+// General includes:
+#include "MenuDef.fh"
+#include "ActionDef.fh"
+#include "ActionDefs.h"
+#include "AdobeMenuPositions.h"
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "StringTable.fh"
+#include "objectmodeltypes.fh"
+#include "ShuksanID.h"
+#include "ActionID.h"
+#include "CommandID.h"
+#include "WorkspaceID.h"
+#include "widgetid.h"
+#include "BuildNumber.h"
+#include "FindChangeID.h"
+
+#include "InterfaceColorDefines.h"
+#include "IControlViewDefs.h"
+#include "SysControlIds.h"
+#include "Widgets.fh"	// for PalettePanelWidget or DialogBoss
+
+
+#include "PlugInModel_UIAttributes.h"
+// Project includes:
+#include "AppUIID.h"
+#include "SuppUIID.h"
+
+
+#ifdef __ODFRC__
+
+/*
+// Plugin version definition.
+*/
+resource PluginVersion (kSDKDefPluginVersionResourceID)
+{
+	kTargetVersion,
+	kSuppUIPluginID,
+	kSDKDefPlugInMajorVersionNumber, kSDKDefPlugInMinorVersionNumber,
+	kSDKDefHostMajorVersionNumber, kSDKDefHostMinorVersionNumber,
+	kSuppUICurrentMajorFormatNumber, kSuppUICurrentMinorFormatNumber,
+	{ kInDesignProduct, kInCopyProduct },
+	{ kWildFS },
+	kUIPlugIn,
+	kSuppUIVersion
+};
+
+/*
+//	Boss class definition.
+*/
+resource ClassDescriptionTable(kSDKDefClassDescriptionTableResourceID)
+{{{
+	
+	/**
+	 This boss class supports two interfaces:
+	 IActionComponent and IPMPersist.
+
+	 
+	 @ingroup supui
+	*/
+	Class
+	{
+		kSuppUIActionComponentBoss,
+		kBaseActionComponentBoss,
+		{
+			/** Handle the actions from the menu. */
+			IID_IACTIONCOMPONENT, kSuppUIActionComponentImpl,
+		}
+	},
+
+	/**
+		This boss provides a kSuppressedUIService service.
+		In this case, a custom ISuppressedUI implementation
+		is provided.
+		
+		@ingroup supui
+	*/
+	Class
+	{
+		kSuppUISuppressedUIServiceBoss,
+		kInvalidClass,
+		{
+			/** Identifies the ServiceID.*/
+			IID_IK2SERVICEPROVIDER, kSuppressedUIServiceProviderImpl,
+			/** Suppresses UI*/
+			IID_ISUPPRESSEDUI, kSuppUISuppressedUIImpl
+		}
+	},
+	
+	/**
+		This boss provides a kSuppressedUIService service.
+		It reuses the XML based implementation (kSuppressedUIWithXMLFileImpl).
+		
+		@ingroup supui
+	*/
+	Class
+	{
+		kSuppUISuppressedUIWithXMLServiceBoss,
+		kInvalidClass,
+		{
+			/** Identifies the ServiceID*/
+			IID_IK2SERVICEPROVIDER, kSuppressedUIServiceProviderImpl,
+			/** The XML based implementation of ISuppressedUI*/
+			IID_ISUPPRESSEDUI, kSuppressedUIWithXMLFileImpl,
+			/** Where to look for the XML file*/
+			IID_ISYSFILEDATA, kSuppUISysFileDataImpl,
+		}
+	},
+
+	/**
+		This boss provides a kQuickApplyFilterService service.
+		
+		@ingroup supui
+	*/
+	Class
+	{
+		kSuppUIQuickApplyFilterServiceBoss,
+		kInvalidClass,
+		{
+			/** Identifies the ServiceID, the API does not supply a custom provider. */
+			IID_IK2SERVICEPROVIDER, kSuppUIQuickApplyFilterProviderImpl,
+			/** The quick apply filter service */
+			IID_IQUICKAPPLYFILTERSERVICE, kSuppUIQuickApplyFilterServiceImpl,
+		}
+	},
+
+}}};
+
+/*
+// Implementation definition.
+*/
+resource FactoryList (kSDKDefFactoryListResourceID)
+{
+	kImplementationIDSpace,
+	{
+#include "SuppUIFactoryList.h"
+	}
+};
+
+
+/*
+// Menu definition.
+*/
+resource MenuDef (kSDKDefMenuResourceID)
+{
+	{
+		// The About Plug-ins sub-menu item for this plug-in.
+		kSuppUIAboutActionID,			// ActionID (kInvalidActionID for positional entries)
+		kSuppUIAboutMenuPath,			// Menu Path.
+		kSDKDefAlphabeticPosition,			// Menu Position.
+		kSDKDefIsNotDynamicMenuFlag,		// kSDKDefIsNotDynamicMenuFlag or kSDKDefIsDynamicMenuFlag
+
+		// Suppress Style Changes
+		kSuppUISuppressStyleChangesActionID,
+		kSuppUIPluginsMenuPath,
+		kSuppUISuppressStyleChangesMenuItemPosition,
+		kSDKDefIsNotDynamicMenuFlag,
+		
+		// Suppress Font and Size Menus
+		kSuppUISuppressFontAndSizeActionID,
+		kSuppUIPluginsMenuPath,
+		kSuppUISuppressFontAndSizeMenuItemPosition,
+		kSDKDefIsNotDynamicMenuFlag,
+		
+		// Suppress Open File Dialog Controls
+		kSuppUISuppressOpenFileDialogControlsActionID,
+		kSuppUIPluginsMenuPath,
+		kSuppUISuppressOpenFileDialogControlsMenuItemPosition,
+		kSDKDefIsNotDynamicMenuFlag,
+		
+		// Suppress OParagraph styles in the quick apply dialog
+		kSuppUISuppressParaStyleQuickApplyActionID,
+		kSuppUIPluginsMenuPath,
+		kSuppUISuppressParaStyleQuickApplyMenuItemPosition,
+		kSDKDefIsNotDynamicMenuFlag,
+		
+	}
+};
+
+/*
+// Action definition.
+*/
+resource ActionDef (kSDKDefActionResourceID)
+{
+	{
+		kSuppUIActionComponentBoss, 		// ClassID of boss class that implements the ActionID.
+		kSuppUIAboutActionID,	// ActionID.
+		kSuppUIAboutMenuKey,	// Sub-menu string.
+		kOtherActionArea,				// Area name (see ActionDefs.h).
+		kNormalAction,					// Type of action (see ActionDefs.h).
+		kDisableIfLowMem,				// Enabling type (see ActionDefs.h).
+		kInvalidInterfaceID,			// Selection InterfaceID this action cares about or kInvalidInterfaceID.
+		kSDKDefInvisibleInKBSCEditorFlag, // kSDKDefVisibleInKBSCEditorFlag or kSDKDefInvisibleInKBSCEditorFlag.
+		
+		kSuppUIActionComponentBoss,
+		kSuppUISuppressStyleChangesActionID,		
+		kSuppUISuppressStyleChangesKey,		
+		kOtherActionArea,			
+		kNormalAction,				
+		kCustomEnabling|kDisableIfLowMem,	
+		kInvalidInterfaceID,		
+		kSDKDefInvisibleInKBSCEditorFlag,
+		
+		kSuppUIActionComponentBoss,
+		kSuppUISuppressFontAndSizeActionID,		
+		kSuppUISuppressFontAndSizeKey,		
+		kOtherActionArea,			
+		kNormalAction,				
+		kCustomEnabling|kDisableIfLowMem,	
+		kInvalidInterfaceID,		
+		kSDKDefInvisibleInKBSCEditorFlag,
+		
+		kSuppUIActionComponentBoss,
+		kSuppUISuppressOpenFileDialogControlsActionID,		
+		kSuppUISuppressOpenFileDialogControlsKey,		
+		kOtherActionArea,			
+		kNormalAction,				
+		kCustomEnabling|kDisableIfLowMem,	
+		kInvalidInterfaceID,		
+		kSDKDefInvisibleInKBSCEditorFlag,
+
+
+		kSuppUIActionComponentBoss,
+		kSuppUISuppressParaStyleQuickApplyActionID,		
+		kSuppUISuppressParaStyleQuickApplyKey,		
+		kOtherActionArea,			
+		kNormalAction,				
+		kCustomEnabling|kDisableIfLowMem,	
+		kInvalidInterfaceID,		
+		kSDKDefInvisibleInKBSCEditorFlag,
+
+	}
+};
+
+
+/*
+// LocaleIndex
+// The LocaleIndex should have indicies that point at your
+// localizations for each language system that you are
+// localized for.
+*/
+/*
+// String LocaleIndex.
+*/
+resource LocaleIndex ( kSDKDefStringsResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_enUS, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_jaJP, kSDKDefStringsResourceID + index_jaJP
+		
+		kWildFS, k_Wild, kSDKDefStringsResourceID + index_enUS
+	}
+};
+
+resource LocaleIndex (kSDKDefStringsNoTransResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_Wild, kSDKDefStringsNoTransResourceID + index_enUS
+	}
+};
+
+resource StringTable (kSDKDefStringsNoTransResourceID + index_enUS)
+{
+	k_enUS,									// Locale Id
+	kEuropeanMacToWinEncodingConverter,		// Character encoding converter
+	{
+		// No-Translate strings go here:
+
+	}
+};
+
+
+#endif // __ODFRC__
+
+#include "SuppUI_enUS.fr"
+#include "SuppUI_jaJP.fr"
+
+//  Code generated by DollyXs code generator

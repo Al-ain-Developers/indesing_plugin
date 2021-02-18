@@ -1,0 +1,43 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kInCopyFileActionsUIStringsRsrcID + index_ptBR)
+{
+	k_ptBR,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{
+		"&Update Design",		"Atuali&zar design",
+		"AlertUnableToSave",	"Não foi possível salvar o conteúdo a seguir.\nTalvez os arquivos estejam bloqueados ou você não tenha permissão para alterá-los.\n",
+		"Update^1Alert",		"Não foi possível salvar uma parte do conteúdo. A atualização poderá causar a perda das alterações.\nAtualizar para a versão mais recente de \"^1\"?",
+		"Undoable^1Save",		"A atualização do design salvará todo o conteúdo editável antes de prosseguir. O comando 'Desfazer' não pode reverter as alterações feitas pela atualização. \nAtualizar para \"^1\" mesmo assim?",
+		"AlertStoriesMissing",	"Alguns arquivos de conteúdo não foram encontrados e, por isso, não podem ser editados. Tente mover os arquivos para o local de origem ou atualizar os vínculos no InDesign.",
+		"AlertStoriesMissingWF", "Alguns arquivos de conteúdo não foram encontrados e, por isso, não podem ser editados. Tente baixar o conteúdo do servidor e reabrir o documento.",
+		"Update",				"Atualizar",
+		"&Revert Story",		"Re&verter conteúdo",
+//		"Revert Story",			"Revert Content", // Note to localizer: this string moved to InCopySharedStrings_enUS.fr
+		
+		"SaveAsFeatureLost",    "Este documento pode conter recursos não aceitos por este formato de arquivo. Deseja continuar?",
+		"CannotSaveOntoLockedFile",		"\"^1\" deu baixa no arquivo especificado em ^2 no documento ^3. Escolha outro nome de arquivo ou solicite a \"^1\" que dê entrada no arquivo.",
+		"CannotSaveOntoLockedFileMinimal",	"\"^1\" deu baixa no arquivo especificado. Escolha outro nome de arquivo ou solicite a \"^1\" que dê entrada no arquivo.",
+	}
+};
+
+
+#endif // __ODFRC__

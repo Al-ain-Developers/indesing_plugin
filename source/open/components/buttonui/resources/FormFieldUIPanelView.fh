@@ -1,0 +1,125 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/buttonui/resources/FormFieldUIPanelView.fh $
+//  
+//  Owner: Mark VerMurlen
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#ifndef __FormFieldUIPanelView_fh__
+#define __FormFieldUIPanelView_fh__
+
+//========================================================================================
+// TYPES
+//========================================================================================
+
+#ifdef __ODFRC__
+
+#include "BehaviorUITypes.fh"
+#include "Widgets.fh"
+
+type AppearancePanelWidget	(kViewRsrcType) : ErasablePrimaryResourcePanelWidget	(ClassID = kAppearancePanelBoss)
+{
+	CPanelMenuData;
+	ListBoxDetailController;	// Controls small palette rows
+	WidgetEveInfo;
+	//SizePanelDetailController;
+};
+
+type StateListBox				(kViewRsrcType) : EVEWidgetTreeBasedListBoxWidget			(ClassID = kStateListBoxBoss) { };
+
+type DeleteStateButton			(kViewRsrcType) : RollOverIconButtonWidget		(ClassID = kDeleteStateButtonBoss) { };
+type DeleteStateContentButton	(kViewRsrcType) : RollOverIconButtonWidget		(ClassID = kDeleteStateContentButtonBoss) { };
+
+type ConvertToButtonButton			(kViewRsrcType) : EVERollOverIconButtonWidget		(ClassID = kConvertToButtonButtonBoss) { };
+type ConvertToObjectButton			(kViewRsrcType) : EVERollOverIconButtonWidget		(ClassID = kConvertToObjectButtonBoss) { };
+
+type PreviewButtonWidget			(kViewRsrcType) : RollOverIconButtonWidget		(ClassID = kPreviewButtonBoss){ };
+type EVEPreviewButtonWidget			(kViewRsrcType) : EVERollOverIconButtonWidget	(ClassID = kPreviewButtonBoss){ };
+
+type EVEEventChoicesWidget             (kViewRsrcType) : EVEDropDownListWidget         (ClassID = kButtonEventChoicesWidgetBoss) { };
+
+type StateListSmallElement		(kViewRsrcType) : PrimaryResourcePanelWidget	(ClassID = kStateListElementBoss) { };
+type StateListMediumElement		(kViewRsrcType) : PrimaryResourcePanelWidget	(ClassID = kStateListElementBoss) { };
+type StateListLargeElement		(kViewRsrcType) : PrimaryResourcePanelWidget	(ClassID = kStateListElementBoss) { };
+type StateListExtraLargeElement	(kViewRsrcType) : PrimaryResourcePanelWidget	(ClassID = kStateListElementBoss) { };
+
+type AddActionIconPopup		(kViewRsrcType) : RollOverIconButtonWidget		(ClassID = kAddActionIconPopUpBoss) 
+{ 
+	CTextControlData;
+	WidgetEveInfo;
+};
+type RemoveActionIconButton		(kViewRsrcType) : RollOverIconButtonWidget		(ClassID = kRemoveActionButtonBoss) { };
+type EVERemoveActionIconButton	(kViewRsrcType) : EVERollOverIconButtonWidget	(ClassID = kRemoveActionButtonBoss) { };
+
+type ShowFieldIconButton		(kViewRsrcType) : RollOverIconButtonWidget		(ClassID = kShowFieldButtonBoss) { };
+type HideFieldIconButton		(kViewRsrcType) : RollOverIconButtonWidget		(ClassID = kHideFieldButtonBoss) { };
+type IgnoreFieldIconButton		(kViewRsrcType) : RollOverIconButtonWidget		(ClassID = kIgnoreFieldButtonBoss) { };
+
+type AppearancePanelEyeball		(kViewRsrcType) : RollOverIconButtonWidget		(ClassID = kAppearancePanelEyeballBoss) { };
+type AppearancePanelThumbnail	(kViewRsrcType) : Widget						(ClassID = kAppearancePanelThumbnailBoss)
+{
+	CControlView
+};
+type AppearancePanelName				(kViewRsrcType) : StaticTextWidget				(ClassID = kAppearancePanelNameBoss) 
+{
+	UIFontSpec;
+};
+type AppearancePanelActive			(kViewRsrcType) : Widget						(ClassID = kAppearancePanelActiveBoss)
+{
+	CControlView;
+};
+
+type AppearancePanelSelectionProxy	(kViewRsrcType) : Widget				(ClassID = kAppearancePanelSelectionProxyBoss) 
+{
+	CControlView;
+};
+
+type ActionsTreeViewWidget (kViewRsrcType) : TreeViewWidget (ClassID = kBehaviorsWidgetBoss)  { };
+
+type ActionTreeNodeWidget (kViewRsrcType) : PrimaryResourcePanelWidget (ClassID = kBehaviorNodeWidgetBoss) 
+{ 
+};
+
+//type ActionChoicesWidget		(kViewRsrcType) : DropDownListWidget			(ClassID = kBehaviorChoicesWidgetBoss) { };
+type ActionEnableWidget			(kViewRsrcType) : CheckBoxWidget				(ClassID = kBehaviorEnableWidgetBoss) 
+{
+	UIFontSpec;
+};
+
+type PDFOptionsExpanderWidget	(kViewRsrcType) : EVERollOverIconButtonWidget		(ClassID = kPDFOptionsWidgetBoss) { };
+
+type AddListOptionIconButton		(kViewRsrcType) : EVERollOverIconButtonWidget		(ClassID = kAddListOptionButtonBoss) { };
+type RemoveListOptionIconButton		(kViewRsrcType) : EVERollOverIconButtonWidget		(ClassID = kRemoveListOptionButtonBoss) { };
+type ListItemsTreeViewWidget		(kViewRsrcType) : TreeViewWidget				(ClassID = kListItemsTreeViewWidgetBoss)  { };
+type ListItemsNodeWidget			(kViewRsrcType) : PrimaryResourcePanelWidget	(ClassID = kListItemsNodeWidgetBoss) { };
+type ListItemTextEditBoxWidget		(kViewRsrcType) : EVETextEditBoxWidget				(ClassID = kListItemEditBoxWidgetBoss) { };
+type FontSizeComboBoxWidget			(kViewRsrcType) : EVETextEditBoxWidget 				(ClassID = kFontSizeComboBoxWidgetBoss) 
+{
+	DropDownListControlData;
+};
+
+
+type FormsFontTypeaheadTextComboBoxWidget (kViewRsrcType) : TypeaheadTextComboBoxWidget ( ClassID = kFormsTypeaheadTextCBWidgetObserverBoss)
+{
+	WidgetEveInfo;
+};
+
+#endif //__ODFRC__
+
+#endif //  __FormFieldUIPanelView_fh__

@@ -1,0 +1,160 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/sdksamples/cellpanel/CelPnlViews.fr $
+//  
+//  Owner: Adobe Developer Technologies
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//  
+//  Table cell panel resource definitions.
+//  
+//========================================================================================
+
+#include "MenuDef.fh"
+#include "ActionDef.fh"
+#include "ActionDefs.h"
+#include "AdobeMenuPositions.h"
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "StringTable.fh"
+#include "objectmodeltypes.fh"
+#include "ShuksanID.h"
+#include "ActionID.h"
+#include "WorkspaceID.h"
+#include "widgetid.h"
+#include "BuildNumber.h"
+#include "PanelList.fh"
+#include "Widgets.fh"
+#include "InterfaceColorDefines.h"
+#include "IControlViewDefs.h"
+#include "SysControlIds.h"
+
+#include "CelPnlID.h"
+#include "CelPnlDefines.h"
+
+#ifdef __ODFRC__
+//================================================================================
+// Panel List definition.
+//================================================================================
+resource PanelList (kPanelResourceID)
+{
+	{
+		// 1st panel in the list
+		kPanelResourceID,			// Resource ID for this panel
+		kCelPnlPlugInID,				// ID of plug-in that owns this panel
+		kIsResizable,
+		kCelPnlActionID,				// Action ID to show/hide the panel
+		kCelPnlTitleKey,				// Menu Path for show/hide the panel.
+									// Defaults to Main:Window
+		"",							// Alternate menu path of the form "Main:Foo" if you want your palette menu item in a second place
+		0.0,						// Alternate Menu position Alternate Menu position for determining menu order
+		0,0,						// Rsrc ID, Plugin ID for a PNG icon resource to use for this palette
+		c_Panel
+	}	
+};
+
+
+//========================================================================================
+// TYPES
+//========================================================================================
+//PalettePanelWidget
+type TableCellPanelWidget(kViewRsrcType) : GenericPalettePanelWidget (ClassID = kCelPnlPanelWidgetBoss) 
+{
+	CPanelMenuData;
+	SizePanelDetailController;
+};
+
+type TableCellEditBoxWidget (kViewRsrcType) : TextEditBoxWidget (ClassID = kCelPnlTextEditBoxWidgetBoss) {};
+
+type TableCellWidget(kViewRsrcType)		 : Widget (ClassID = kTableCellWidgetBoss )
+{	
+	CControlView;
+};
+
+//================================================================================
+// Menu definition.
+//================================================================================
+resource MenuDef (kMenuResourceID)
+{
+	{
+		// About Plug-in sub-menu item.
+		kCelPnlAboutActionID, 
+		kCelPnlMenuAboutMenuPath,
+		kSDKDefAlphabeticPosition,
+		kSDKDefIsNotDynamicMenuFlag,
+		
+		// About this plugin submenu for the popup menu on the panel
+		kCelPnlAboutThisActionID,
+		kCelPnlPopupMenuPath,
+		kSDKDefAlphabeticPosition,
+		kSDKDefIsNotDynamicMenuFlag,
+	}
+};
+
+//================================================================================
+// Action definition.
+//================================================================================
+resource ActionDef (kActionResourceID)
+{
+	{
+		// Define action for Apple/Help menu
+		kCelPnlActionComponentBoss,		// ClassID of boss that implements the ActionID 
+		kCelPnlAboutActionID,				// ActionID 
+		kCelPnlMenuAboutMenuKey,			// Sub-menu string 
+		kHelpMenuActionArea,				// Area name (see ActionDefs.h)
+		kNormalAction,					// Type of action (see ActionDefs.h)
+		kDisableIfLowMem,				// enabling type (see ActionDefs.h)
+		kInvalidInterfaceID,			// Selection InterfaceID this action cares about or kInvalidInterfaceID
+		kSDKDefInvisibleInKBSCEditorFlag,	// kSDKDefVisibleInKBSCEditorFlag or kSDKDefInvisibleInKBSCEditorFlag
+
+		// No action def for the show/hide panel.  The panel list does that.
+
+		// We don't define an action for a separator, so there is
+		// no entry corresponding to the MenuDefs entry.
+		
+		// Define action for "About this Plugin" in panel popup menu
+		kCelPnlActionComponentBoss, 
+		kCelPnlAboutThisActionID, 
+		kSDKDefAboutThisPlugInMenuKey,
+		kPaletteMenusActionArea,
+		kNormalAction,
+		kAlwaysEnabled,
+		kInvalidInterfaceID,
+		kSDKDefInvisibleInKBSCEditorFlag,
+	}
+
+};
+
+//========================================================================================
+// RESOURCES Locale Index
+//========================================================================================
+
+resource LocaleIndex (kPanelResourceID)
+{
+	kViewRsrcType,
+	{
+		// Feature set locale, UI locale, Resource ID
+		kWildFS, k_Wild, kPanelResourceID + index_enUS
+//		kInDesignJapaneseFS, k_jaJP, kPanelResourceID + index_jaJP
+	}
+};
+
+#endif // __ODFRC__
+
+#include "CelPnlViews_enUS.fr"
+
+//End, CelPnlViews.fr.

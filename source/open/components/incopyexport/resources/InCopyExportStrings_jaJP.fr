@@ -1,0 +1,52 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// U.S. English strings
+//========================================================================================
+
+resource StringTable (kInCopyExportStringsRsrcID + index_jaJP)
+{
+	k_jaJP,								// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+
+	{
+		// ----- Miscellaneous strings
+		"Export Seq Name", 		"InCopy ストーリーの書き出し",
+		"Text",					"テキスト", // append "Text" to export name on a text story
+		
+		// ----- Export options dialog strings
+		"InCopyExportOptions",	"Adobe InCopy 書き出しオプション",
+		"ExportOptions_DataType",	"エンコーディング(&E) :",
+		"ExportOptions_UTF16",	"UTF16",
+		"ExportOptions_UTF8",	"UTF8",
+		"ExportOptions_DataOptions",	"オプション :",
+		"ExportOptions_StyleTable",	"スタイルテーブルを含む(&S)",
+		"ExportOptions_SwatchList",	"スウォッチリストを含む(&W)",
+		"ExportOptions_XMPData",	"XMP 情報を含む(&I)",
+		"ExportOptions_StoryLabel",	"ストーリーラベル(&L) :",
+
+		//menu
+		"ExportMenu",				"書き出し(&X)",
+		"kExportLayerToIC",			"レイヤー(&L)...",
+		"kExportAllStoriesToIC",	"すべてのストーリー(&R)...",
+		"kExportAllGraphicsToIC",	"すべてのグラフィック(&G)...",
+		"kExportAllItemsToIC",		"すべてのグラフィックとストーリー(&A)...",
+
+		"INCDFeatureLost",    "このストーリーには、このファイル形式でサポートされていない機能が含まれている可能性があります。それらの機能はストーリーを更新する際に失われます。",
+	}
+};
+
+#endif // __ODFRC__

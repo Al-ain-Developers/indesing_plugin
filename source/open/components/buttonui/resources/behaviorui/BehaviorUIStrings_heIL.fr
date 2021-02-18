@@ -1,0 +1,124 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/buttonui/resources/behaviorui/BehaviorUIStrings_heIL.fr $
+//  
+//  $Owner: Mark VerMurlen $
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kBehaviorUIStringsRsrcID + index_heIL)
+{
+	k_heIL,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{		
+		"$$$/Dialog/Behaviors/ShowHideFields/Fields_Tree", "עץ שדות",
+
+		"$$$/Dialog/Behaviors/Description",				"שדה זה יכלול תיאור קצר של התנהגות המשימה. הוא עשוי לכלול גם רמזים לגבי אפשרויות המשימה. מעניק למשתמש מושג כלשהו לגבי השימוש במשימה.",
+		"$$$/Dialog/Behaviors/Description Title",		"תיאור",
+		"$$$/Dialog/Behaviors/DeleteAlert",				"האם למחוק את הפעולה שנבחרה?",
+		"$$$/Dialog/Behaviors/DragDeleteAlert",			"האם למחוק את הפעולות שנגררו?",
+		"$$$/Dialog/Behaviors/Error/Invalid URL",		"שדה כתובת URL חייב לכלול ערך",
+		"$$$/Dialog/Behaviors/Error/Invalid File",		"יש לציין קובץ חוקי",
+		
+		"$$$/Dialog/Behaviors/Movie/Movie:",			"&סרט:",
+		"$$$/Dialog/Behaviors/Movie/Play Options:",		"&אפשרויות:",
+		"$$$/Dialog/Behaviors/Movie/Play",				"הפעל",
+		"$$$/Dialog/Behaviors/Movie/Stop",				"עצור",
+		"$$$/Dialog/Behaviors/Movie/Pause",				"השהה",
+		"$$$/Dialog/Behaviors/Movie/Resume",			"חדש הפעלה",
+
+		"$$$/Dialog/Behaviors/Sound/Sound:",			"&צליל:",
+		"$$$/Dialog/Behaviors/Sound/Play Options:",		"&אפשרויות:",
+		"$$$/Dialog/Behaviors/Sound/Play",				"הפעל",
+		"$$$/Dialog/Behaviors/Sound/Stop",				"עצור",
+		"$$$/Dialog/Behaviors/Sound/Pause",				"השהה",
+		"$$$/Dialog/Behaviors/Sound/Resume",			"חדש הפעלה",
+		"$$$/Dialog/Behaviors/Sound/Volume:",			"עוצמת קול:",
+		"$$$/Dialog/Behaviors/Sound/Synchronous",		"סינכרוני",
+		"$$$/Dialog/Behaviors/Sound/Mix",				"מיקס",
+		
+		"$$$/Dialog/Behaviors/GoToView/Go To:",			"עבור אל:",
+		"$$$/Dialog/Behaviors/GoToView/First Page",		"עמוד ראשון",
+		"$$$/Dialog/Behaviors/GoToView/Page",			"עמוד",
+		"$$$/Dialog/Behaviors/GoToView/Previous Page",	"העמוד הקודם",
+		"$$$/Dialog/Behaviors/GoToView/Next Page",		"העמוד הבא",
+		"$$$/Dialog/Behaviors/GoToView/Last Page",		"עמוד אחרון",
+		"$$$/Dialog/Behaviors/GoToView/Back",			"הקודם",
+		"$$$/Dialog/Behaviors/GoToView/Forward",		"קדימה",
+		"$$$/Dialog/Behaviors/GoToView/Previous View",	"התצוגה הקודמת",
+		"$$$/Dialog/Behaviors/GoToView/Next View",		"התצוגה הבאה",
+		"$$$/Dialog/Behaviors/GoToView/Specific Page",	"עמוד מסוים",
+		"$$$/Dialog/Behaviors/GoToView/Document:",		"מ&סמך:",
+		"$$$/Dialog/Behaviors/GoToView/Page:",			"עמוד:",
+		"$$$/Dialog/Behaviors/GoToView/URL",			"URL",
+		"$$$/Dialog/Behaviors/GoToView/URL:",			"כתובת &URL:",
+		"$$$/Dialog/Behaviors/GoToView/DefaultURL",		"http://",
+		"$$$/Dialog/Behaviors/GoToView/Anchor",			"עוגן טקסט",
+		"$$$/Dialog/Behaviors/GoToView/Anchor:",		"נקודת עיגון של טקסט:",
+		"$$$/Dialog/Behaviors/GoToView/Bookmark",		"סימנייה",
+		"$$$/Dialog/Behaviors/GoToView/Inherit Zoom",	"קבל זום בירושה",
+		"$$$/Dialog/Behaviors/GoToView/Actual Size",	"גודל ממשי",
+		"$$$/Dialog/Behaviors/GoToView/Fit In Window",	"התאם לחלון",
+		"$$$/Dialog/Behaviors/GoToView/Fit Width",		"התאם לרוחב",
+		"$$$/Dialog/Behaviors/GoToView/Fit Height",		"התאם לגובה",
+		"$$$/Dialog/Behaviors/GoToView/Fit Visible",	"התאם לשטח גלוי",
+		"$$$/Dialog/Behaviors/GoToView/Zoom:",			"&זום:",
+		"$$$/Dialog/Behaviors/GoToView/None",			"ללא",
+		"$$$/Dialog/Behaviors/GoToAnchor/InDesign Format File","תבנית קובץ InDesign",
+		
+		"$$$/Dialog/Behaviors/ViewZoom/Full Screen",	"מסך מלא",
+		"$$$/Dialog/Behaviors/ViewZoom/Zoom View In",	"התקרב",
+		"$$$/Dialog/Behaviors/ViewZoom/Zoom View Out",	"התרחק",
+		"$$$/Dialog/Behaviors/ViewZoom/Fit Page",		"התאם לחלון",
+		"$$$/Dialog/Behaviors/ViewZoom/Actual Size",	"גודל ממשי",
+		"$$$/Dialog/Behaviors/ViewZoom/Fit Width",		"התאם לרוחב",
+		"$$$/Dialog/Behaviors/ViewZoom/Fit Visible",	"התאם לשטח גלוי",
+		"$$$/Dialog/Behaviors/ViewZoom/Reflow",			"הזרם מחדש",
+		"$$$/Dialog/Behaviors/ViewZoom/SinglePage",		"עמוד יחיד",
+		"$$$/Dialog/Behaviors/ViewZoom/OneColumn",		"המשכי",
+		"$$$/Dialog/Behaviors/ViewZoom/TwoColumns",		"המשכי-צמודים",
+		"$$$/Dialog/Behaviors/ViewZoom/RotateCW",		"סובב עם כיוון השעון",
+		"$$$/Dialog/Behaviors/ViewZoom/RotateCCW",		"סובב נגד כיוון השעון",
+
+		"$$$/Dialog/Behaviors/ImportData/Select File:","&בחר קובץ:",
+		"$$$/Dialog/Behaviors/ImportData/Acrobat Format File","תבנית קובץ Acrobat",
+
+		"$$$/Dialog/Behaviors/OpenFile/Select File:","&בחר קובץ:",
+		"$$$/Dialog/Behaviors/OpenFile/Select File to be Opened", "בחר קובץ לפתיחה",
+		"$$$/Dialog/Behaviors/OpenFile/Acrobat Format File","תבנית קובץ Acrobat",
+
+		"$$$/Dialog/Behaviors/GoToView/No Data for Go To Next View Action", "",
+		"$$$/Dialog/Behaviors/GoToView/No Data for Go To Previous View Action", "",
+		"$$$/Dialog/Behaviors/Close/No Data for Close Action", "",
+
+		"$$$/Dialog/Behaviors/Exit/No Data for Exit Action", "",
+						
+		// ----- Tips strings
+	}
+};
+
+#endif // __ODFRC__

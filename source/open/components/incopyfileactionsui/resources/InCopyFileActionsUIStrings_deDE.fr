@@ -1,0 +1,43 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kInCopyFileActionsUIStringsRsrcID + index_deDE)
+{
+	k_deDE,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{
+		"&Update Design",		"Desi&gn aktualisieren",
+		"AlertUnableToSave",	"Der folgende Inhalt konnte nicht gespeichert werden.\nDie Dateien sind u. U. gesperrt oder Sie sind nicht berechtigt, sie zu ändern.\n",
+		"Update^1Alert",		"Einige Inhalte können nicht gespeichert werden. Bei einer Aktualisierung können Änderungen verloren gehen.\nMöchten Sie auf die letzte Version von \"^1\" aktualisieren?",
+		"Undoable^1Save",		"Mit \"Design aktualisieren\" werden vor dem Fortfahren alle bearbeitbaren Inhalte gespeichert. Änderungen durch Aktualisieren können nicht mit dem Befehl \"Rückgängig\" rückgängig gemacht werden. \nTrotzdem auf \"^1\" aktualisieren?",
+		"AlertStoriesMissing",	"Einige Inhaltsdateien wurden nicht gefunden und können daher nicht bearbeitet werden. Verschieben Sie die Dateien an ihren ursprünglichen Speicherort oder aktualisieren Sie die Verknüpfungen in InDesign.",
+		"AlertStoriesMissingWF", "Einige Inhaltsdateien wurden nicht gefunden und können daher nicht bearbeitet werden. Laden Sie den Inhalt vom Server herunter und öffnen Sie das Dokument erneut.",
+		"Update",				"Aktualisieren",
+		"&Revert Story",		"Inhalt zur&ücksetzen",
+//		"Revert Story",			"Revert Content", // Note to localizer: this string moved to InCopySharedStrings_enUS.fr
+		
+		"SaveAsFeatureLost",    "Dieses Dokument enthält möglicherweise Funktionen, die von diesem Dateiformat nicht unterstützt werden. Möchten Sie den Vorgang fortsetzen?",
+		"CannotSaveOntoLockedFile",		"Die angegebene Datei wurde von \"^1\" in ^2 von Dokument ^3 ausgecheckt.  Wählen Sie einen anderen Dateinamen oder lassen Sie die Datei von \"^1\" einchecken.",
+		"CannotSaveOntoLockedFileMinimal",	"Die angegebene Datei wurde von \"^1\" ausgecheckt.  Wählen Sie einen anderen Dateinamen oder lassen Sie die Datei von \"^1\" einchecken.",
+	}
+};
+
+
+#endif // __ODFRC__

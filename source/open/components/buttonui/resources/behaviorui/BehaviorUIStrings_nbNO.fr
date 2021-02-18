@@ -1,0 +1,129 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kBehaviorUIStringsRsrcID + index_nbNO)
+{
+	k_nbNO,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{		
+		"$$$/Dialog/Behaviors/ShowHideFields/Fields_Tree", "Felttre",
+
+		"$$$/Dialog/Behaviors/Description",				"Gir en kort beskrivelse av virkemåten. Kan også inneholde noen tips om valg for virkemåte som gir en forklaring på hvordan den skal brukes.",
+		"$$$/Dialog/Behaviors/Description Title",		"Beskrivelse",
+		"$$$/Dialog/Behaviors/DeleteAlert",				"Slette valgt handling?",
+		"$$$/Dialog/Behaviors/DragDeleteAlert",			"Slette flyttede handlinger?",
+		"$$$/Dialog/Behaviors/Error/Invalid URL",		"URL-adressefeltet må ha en verdi",
+		"$$$/Dialog/Behaviors/Error/Invalid File",		"Du må angi en gyldig fil",
+		
+		"$$$/Dialog/Behaviors/Movie/Movie:",			"Video:",
+		"$$$/Dialog/Behaviors/Movie/Play Options:",		"Alternativer:",
+		"$$$/Dialog/Behaviors/Movie/Play",				"Spill av",
+		"$$$/Dialog/Behaviors/Movie/Stop",				"Stopp",
+		"$$$/Dialog/Behaviors/Movie/Pause",				"Pause",
+		"$$$/Dialog/Behaviors/Movie/Resume",			"Fortsett",
+		"$$$/Dialog/Behaviors/Movie/PlayFromNavPoint",	"Spill av fra navigasjonspunkt",
+		"$$$/Dialog/Behaviors/Movie/StopAll",			"Stopp alle (bare SWF)",
+		"$$$/Dialog/Behaviors/Movie/NavPoint",			"Punkt:",
+		"$$$/Dialog/Behaviors/Movie/NoVideo",			"(ingen video)",
+		"$$$/Dialog/Behaviors/Movie/NoVideoNavPoint",	"(ikke navigasjonspunkt)",
+
+		"$$$/Dialog/Behaviors/Sound/Sound:",			"Lyd:",
+		"$$$/Dialog/Behaviors/Sound/Play Options:",		"Alternativer:",
+		"$$$/Dialog/Behaviors/Sound/Play",				"Spill av",
+		"$$$/Dialog/Behaviors/Sound/Stop",				"Stopp",
+		"$$$/Dialog/Behaviors/Sound/Pause",				"Pause",
+		"$$$/Dialog/Behaviors/Sound/Resume",			"Fortsett",
+		"$$$/Dialog/Behaviors/Sound/StopAll",			"Stopp alle (bare SWF)",
+		"$$$/Dialog/Behaviors/Sound/Volume:",			"Volum:",
+		"$$$/Dialog/Behaviors/Sound/Synchronous",		"Synkron",
+		"$$$/Dialog/Behaviors/Sound/Mix",				"Miks",
+		"$$$/Dialog/Behaviors/Sound/NoSound",			"(ingen lyd)",
+		
+		"$$$/Dialog/Behaviors/Animation/Animation:",	"Animasjon:",
+		"$$$/Dialog/Behaviors/Animation/Play Options:",	"Alternativer:",
+		"$$$/Dialog/Behaviors/Animation/Play",			"Spill av",
+		"$$$/Dialog/Behaviors/Animation/Stop",			"Stopp",
+		"$$$/Dialog/Behaviors/Animation/Pause",			"Pause",
+		"$$$/Dialog/Behaviors/Animation/Resume",		"Fortsett",
+		"$$$/Dialog/Behaviors/Animation/StopAll",		"Stopp alle",
+		"$$$/Dialog/Behaviors/Animation/Reverse",		"Bakover",
+		"$$$/Dialog/Behaviors/Animation/AutoReverse",	"Reverser ved rull av",
+		"$$$/Dialog/Behaviors/Animation/NoAnimation",	"(ingen animasjon)",
+		
+		"$$$/Dialog/Behaviors/MSO/Object:",				"Objekt:",
+		"$$$/Dialog/Behaviors/MSO/State:",				"Tilstand:",
+		"$$$/Dialog/Behaviors/MSO/AutoReverse",			"Gå tilbake ved rull av",
+		"$$$/Dialog/Behaviors/MSO/NextLoop",			"Stopp ved siste tilstand",
+		"$$$/Dialog/Behaviors/MSO/PrevLoop",			"Stopp ved første tilstand",
+		"$$$/Dialog/Behaviors/MSO/NoMSO",				"(ikke objekt med flere tilstander)",
+
+		"$$$/Dialog/Behaviors/GoToView/Go To:",			"Gå til:",
+		"$$$/Dialog/Behaviors/GoToView/First Page",		"Første side",
+		"$$$/Dialog/Behaviors/GoToView/Page",			"Side",
+		"$$$/Dialog/Behaviors/GoToView/Previous Page",	"Forrige side",
+		"$$$/Dialog/Behaviors/GoToView/Next Page",		"Neste side",
+		"$$$/Dialog/Behaviors/GoToView/Last Page",		"Siste side",
+		"$$$/Dialog/Behaviors/GoToView/Back",			"Tilbake",
+		"$$$/Dialog/Behaviors/GoToView/Forward",		"Fremover",
+		"$$$/Dialog/Behaviors/GoToView/Previous View",	"Forrige visning",
+		"$$$/Dialog/Behaviors/GoToView/Next View",		"Neste visning",
+		"$$$/Dialog/Behaviors/GoToView/Specific Page",	"Bestemt side",
+		"$$$/Dialog/Behaviors/GoToView/Document:",		"Dokument:",
+		"$$$/Dialog/Behaviors/GoToView/Page:",			"Side:",
+		"$$$/Dialog/Behaviors/GoToView/URL",			"URL-adresse",
+		"$$$/Dialog/Behaviors/GoToView/URL:",			"URL-adresse:",
+		"$$$/Dialog/Behaviors/GoToView/Anchor",			"Tekstanker",
+		"$$$/Dialog/Behaviors/GoToView/Anchor:",		"Mål:",
+		"$$$/Dialog/Behaviors/GoToView/Bookmark",		"Bokmerke",
+		"$$$/Dialog/Behaviors/GoToView/Inherit Zoom",	"Behold zoom",
+		"$$$/Dialog/Behaviors/GoToView/Actual Size",	"Faktisk størrelse",
+		"$$$/Dialog/Behaviors/GoToView/Fit In Window",	"Tilpass til vindu",
+		"$$$/Dialog/Behaviors/GoToView/Fit Width",		"Tilpass bredde",
+		"$$$/Dialog/Behaviors/GoToView/Fit Height",		"Tilpass høyde",
+		"$$$/Dialog/Behaviors/GoToView/Fit Visible",	"Tilpass synlig",
+		"$$$/Dialog/Behaviors/GoToView/Zoom:",			"Zoom:",
+		"$$$/Dialog/Behaviors/GoToView/None",			"Ingen",
+		"$$$/Dialog/Behaviors/GoToAnchor/InDesign Format File","InDesign-formatfil",
+		
+		"$$$/Dialog/Behaviors/ViewZoom/Full Screen",	"Full skjerm",
+		"$$$/Dialog/Behaviors/ViewZoom/Zoom View In",	"Zoom inn",
+		"$$$/Dialog/Behaviors/ViewZoom/Zoom View Out",	"Zoom ut",
+		"$$$/Dialog/Behaviors/ViewZoom/Fit Page",		"Tilpass til vindu",
+		"$$$/Dialog/Behaviors/ViewZoom/Actual Size",	"Faktisk størrelse",
+		"$$$/Dialog/Behaviors/ViewZoom/Fit Width",		"Tilpass bredde",
+		"$$$/Dialog/Behaviors/ViewZoom/Fit Visible",	"Tilpass synlig",
+		"$$$/Dialog/Behaviors/ViewZoom/SinglePage",		"Enkel side",
+		"$$$/Dialog/Behaviors/ViewZoom/OneColumn",		"Kontinuerlig",
+		"$$$/Dialog/Behaviors/ViewZoom/TwoColumns",		"Kontinuerlig - motstående",
+
+		"$$$/Dialog/Behaviors/ImportData/Select File:","Velg fil:",
+		"$$$/Dialog/Behaviors/ImportData/Acrobat Format File","Acrobat-formatfil",
+
+		"$$$/Dialog/Behaviors/OpenFile/Select File:","Velg fil:",
+		"$$$/Dialog/Behaviors/OpenFile/Select File to be Opened", "Velg fil som skal åpnes",
+		"$$$/Dialog/Behaviors/OpenFile/Acrobat Format File","Acrobat-formatfil",
+
+		"$$$/Dialog/Behaviors/SubmitForm/Submit To:","URL-adresse:",
+						
+		// ----- Tips strings
+	}
+};
+
+#endif // __ODFRC__

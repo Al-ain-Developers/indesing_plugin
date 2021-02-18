@@ -1,0 +1,51 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/sdksamples/wavetool/WavTlIcons.fr $
+//  
+//  Owner: Adobe Developer Technologies
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "IconPNGDefs.h"
+
+#ifdef __ODFRC__
+
+// light and dark icons
+resource PNGA(kIconSawToothWave) "ico135.png"
+resource PNGAD(kIconSawToothWave) "ico135_dark.png"
+
+resource PNGA(kIconSineWave) "ico136.png"
+resource PNGAD(kIconSineWave) "ico136_dark.png"
+
+// HiDPI icons (2x)
+resource PNGA(kIconSawToothWave + kHIDPIIconOffset) "ico135_hidpi.png"
+resource PNGAD(kIconSawToothWave  + kHIDPIIconOffset) "ico135_dark_hidpi.png"
+
+resource PNGA(kIconSineWave + kHIDPIIconOffset) "ico136_hidpi.png"
+resource PNGAD(kIconSineWave + kHIDPIIconOffset) "ico136_dark_hidpi.png"
+
+// HiDPI icons (1.5x)
+#ifdef WINDOWS
+resource PNGA(kIconSawToothWave + kHIDPIIconOffset150) "ico135.png"
+resource PNGAD(kIconSawToothWave + kHIDPIIconOffset150) "ico135_dark.png"
+
+resource PNGA(kIconSineWave + kHIDPIIconOffset150) "ico136.png"
+resource PNGAD(kIconSineWave + kHIDPIIconOffset150) "ico136_dark.png"
+#endif
+
+#endif // __ODFRC__

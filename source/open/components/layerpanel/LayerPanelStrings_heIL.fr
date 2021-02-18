@@ -1,0 +1,135 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/layerpanel/LayerPanelStrings_heIL.fr $
+//  
+//  Owner: Michael Burbidge
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kLayerPanelStringsRsrcID + index_heIL)
+{
+	k_heIL,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{
+		// ----- Command strings
+
+		"Layer Options",				"אפשרויות שכבה",
+		"New Layer",					"שכבה חדשה",
+		"Layer Deletion",				"מחק שכבות",
+		"Delete Unused Layers",			"מחק שכבות שאינן בשימוש",
+		"Lock Others",					"נעל אחרות",
+		"Show All",						"הצג הכל",
+		"Unlock All",					"בטל נעילה של הכל",
+		"Hide All",						"הסתר הכל",
+		"Lock All",						"נעל הכל",
+		"Merge Layers",					"מזג שכבות",
+		"Move To Layer",				"העבר לשכבה",
+		"Copy To Layer",				"העתק לשכבה",
+		"Move Layer",					"העבר שכבה",
+		"Move Layers",					"העבר שכבות",
+
+		// ----- Menu strings
+		
+		"Layers...",						"&שכבות...",
+
+		"New Layer...",						"שכבה חדשה...",
+		"New Layer Above \"^1\"...",		"שכבה חדשה מעל \"^1\"...",
+		"New Layer Below \"^1\"...",		"שכבה חדשה מתחת \"^1\"...",
+		"Delete Layer",						"מחק שכבה",
+		"Delete \"^1\"",					"מחק שכבה \"^1\"",
+		"Delete Layers",					"מחק שכבות",
+		"Duplicate Layer",						"שכפל שכבה",
+		"Duplicate \"^1\"...",					"שכפול שכבה \"^1\"...",
+		"Duplicate Layers...",					"שכפול שכבות...",
+		
+		"Layer Options for \"^1\"...",		"אפשרויות שכבה ל- \"^1\"...",
+		"Layer Options...",					"אפשרויות שכבה...",
+		"Show All Layers",					"הצג את כל השכבות",
+		"Hide Others",						"הסתר אחרות",
+		"Unlock All Layers",				"בטל את נעילת כל השכבות",
+		"Lock Others",						"נעל אחרות",
+		"Hide All Layers",					"הסתר את כל השכבות",
+		"Lock All Layers",					"נעל את כל השכבות",
+		
+		"Paste Remembers Layers",			"זכור שכבות מקוריות בהדבקה",
+		
+		"Merge Layers",						"מזג שכבות",
+		"Delete Unused Layers",				"מחק שכבות שאינן בשימוש",
+		"Select Item(s) on \"^1\"",			"בחר פריטים ב-\"^1\"",
+		"Select Item(s) Layer",				"בחר פריטים בשכבה",
+				
+		// Menu names for context and panel menus
+		"LayerPanelPopup",					"תפריט חלונית 'שכבות'",	
+		"RtMenuLayerPanelEye",				"תפריט תלוי-הקשר של 'עין' בחלונית 'שכבות'",	
+		"RtMenuLayerPanelLock",				"תפריט תלוי-הקשר של 'נעל' בחלונית 'שכבות'",
+		"RtMenuLayerPanelItem",				"תפריט תלוי-הקשר של 'פריט' בחלונית 'שכבות'",	
+
+		// ----- Window strings
+		"DeleteOneLayer",					"השכבה \"^1\" מכילה אובייקט אחד או יותר. האם למחוק אותה בכל זאת?",
+		"DeleteMultiLayers",				"השכבות שנבחרו מכילות אובייקטים. האם למחוק אותן בכל זאת?",
+		"DeleteOneGuideLayer",				"השכבה \"^1\" מכילה קווי עזר של סרגל. האם למחוק אותה בכל זאת?",
+		"DeleteGuideLayers",				"השכבות שנבחרו מכילות קווי עזר של סרגל. האם למחוק אותן בכל זאת?",
+		"DeletingPlaceGunUsedLayer",		"לא ניתן למחוק את השכבה. היא דרושה לגזיר הטקסט שנטען בסמן המיקום.",
+		"LockingPlaceGunUsedLayer",			"לא ניתן לנעול את השכבה. היא דרושה לגזיר הטקסט שנטען בסמן המיקום.",
+
+		// ----- Window Menu
+		"Layers_WinMenu",					"&שכבות",
+
+		// ----- Panel strings
+		
+		"Layers",							"שכבות",
+		"^1 Layer",							"שכבה ^1",		// For status widget
+		"^1 Layers",						"^1 שכבות",	// For status widget
+		"New Layer",						"שכבה חדשה",	// Title of New Layer dialog
+		"Layer Options",					"אפשרויות שכבה", // Title of Layer Options dialog
+		"&Name:",							"&שם:",
+		"&Color:",							"צ&בע:",
+		"&Show Layer",						"הצג &שכבה",
+		"Show &Guides",						"הצג &קווי עזר",
+		"&Lock Layer",						"&נעל שכבה",
+		"Loc&k Guides",						"נ&על קווי עזר",
+		"Keep When Layer is &Hidden",		"התעלם מ&דחיית טקסט כשהשכבה מוסתרת",
+		"&Print Layer",						"&הדפס שכבה",
+
+		// ----- Tips strings
+
+		"DeleteLayerTip",					"מחק שכבות שנבחרו",
+		"NewLayerTip",						"צור שכבה חדשה",
+		"EyeTip",							"מחליף בין הצגה/הסתרה של שכבה",
+		"PencilTip",						"החלפה בין נעילה/ביטול נעילה (ניתן לעריכה כאשר ריק)",
+		"SwatchTip",						"צבע סימוני בחירה בשכבה זו",
+		"ProxyTip",							"מציין את הפריטים שנבחרו בשכבה (גרור להעברה בין שכבות)",
+		"ActiveTip",						"מציין שזוהי השכבה הפעילה כעת",
+
+		// ----- Error strings
+		"EmptyLayerName",					"יש לציין שם שכבה.",
+		"DuplicateLayer",					"שכבה בשם זה כבר קיימת.",
+
+	}
+};
+
+#endif // __ODFRC__

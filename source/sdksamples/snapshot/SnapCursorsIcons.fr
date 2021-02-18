@@ -1,0 +1,51 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/sdksamples/snapshot/SnapCursorsIcons.fr $
+//  
+//  Owner: Adobe Developer Technologies
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2012 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//  
+//  Contains resource definitions for cursors and icons.
+//
+//	It is recommended you place cursor and icon definitions in a seperate FR 
+//	file like this, and include it in your main FR file. You could perhaps even 
+//  have one FR file for cursors and another one for icons if your project has 
+//  a lot of icons and cursors.
+//  
+//========================================================================================
+
+#include "Cursor.fh"
+#include "IconPNGDefs.h"
+
+#ifdef __ODFRC__
+
+// cursor
+resource PNGC(kCursorSnapResourceID) "SnapTool.png"
+resource HOTC(kCursorSnapResourceID) {10, 10}; // {X-hotspot value, Y-hotspot value}
+
+// light and dark icons
+resource PNGA(kIconSnapResourceID) "SnapTool.png"
+resource PNGAD(kIconSnapResourceID) "SnapTool_dark.png"
+
+// HiDPI icons - light and dark
+#ifdef MACINTOSH
+resource PNGA(kIconSnapResourceID + kHIDPIIconOffset) "SnapTool_hidpi.png" // provide hidpi version of your icon here (if the normal icon is 22x22 then the HiDPI icon should be 44x44).
+resource PNGAD(kIconSnapResourceID  + kHIDPIIconOffset) "SnapTool_dark_hidpi.png"
+#endif
+
+#endif // __ODFRC__

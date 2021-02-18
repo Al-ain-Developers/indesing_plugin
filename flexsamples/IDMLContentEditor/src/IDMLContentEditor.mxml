@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:WindowedApplication 
+	xmlns:mx="http://www.adobe.com/2006/mxml" 
+	xmlns:contentType="contentType.*" 
+	close="cleanup()" 
+	width="850" 
+	height="500"
+	layout="vertical">
+	
+	<mx:Script>
+		<![CDATA[
+			
+		import mx.controls.Alert;
+		import mx.events.CloseEvent;
+		import flash.filesystem.File;
+		import mx.collections.ArrayCollection;		
+		import mx.controls.Image;
+		import com.adobe.flexsamples.IDMLContentEditor.CompressionUtils;
+		import com.adobe.flexsamples.IDMLContentEditor.IdmlUtils;
+		import com.adobe.flexsamples.IDMLContentEditor.BindableTextObject;
+		import com.adobe.flexsamples.IDMLContentEditor.BindableImageObject;
+		
+		private var fScriptLabelObjects:ArrayCollection;
+		private var fImageObjects:ArrayCollection;
+		private var fIdmlTemplate:File;		
+		private var fTempDir:File;
+		
+		/**
+		 * Ensures an IDML file is not currently open when a user
+		 * chooses to open a new file.
+		 */
+		private function checkForExistingSource():void
+		{
+			//If the source is not null then an IDML file must currently be open.
+			if (null != fIdmlTemplate) 
+			{ 
+				var message:String = "Are you sure you want to open a new file?\n Opening a new file will close the file you currently have open";
+				Alert.show(message,"Warning", 3 /*confirm dialog box*/, this, chooseTemplate);
+			}
+			//An IDML file is not currently open.
+			else
+			{
+				chooseTemplate(null);
+			}
+		}
+		
+		/**
+		 * Handles the alert message prompting to overwrite the 
+		 * existing file.  Prompts the user to browse to the
+		 * file they wish to open.
+		 */ 
+		private function chooseTemplate(event:CloseEvent):void
+		{
+			//If there was a popup alert and the user selected "NO"
+			//terminate this method.
+			if ((event != null) && (event.detail == Alert.NO))
+			{
+				return;
+			}
+			
+			//Choose an IDML file to open.					
+			fIdmlTemplate = new File(); 
+			fIdmlTemplate.addEventListener(Event.SELECT, openTemplate);
+			fIdmlTemplate.browseForOpen("Choose an IDML File", [new FileFilter("IDML Package File", "*.idml")]);
+		}
+		
+		/**
+		 * Extracts the selected file to a temporary directory
+		 * and populates the display with content from the 
+		 * IDML file.
+		 */
+		private function openTemplate(event:Event):void
+		{
+			if (fIdmlTemplate.exists)
+			{
+				fTempDir = CompressionUtils.decompressToTempDir(fIdmlTemplate);
+			}			
+			fScriptLabelObjects = IdmlUtils.getScriptLabelObjects(fTempDir);
+			textCanvas.lstTextFrames.dataProvider = fScriptLabelObjects;
+			
+			fImageObjects = IdmlUtils.getSpreadImages(fTempDir);			
+			imageCanvas.lstImages.dataProvider = fImageObjects;
+		}
+		
+		/**
+		 * Prompts the user to browse to a file to save 
+		 * to.
+		 */
+		private function saveToIdml():void
+		{
+			var idml:File = new File
+			idml.addEventListener(Event.SELECT, handleSelectFileToSave);				
+			idml.browseForSave("IDML Package");
+		}
+		
+		/**
+		 * Generates a new IDML file and writes it
+		 * to the selected save location. 
+		 */
+		private function handleSelectFileToSave(event:Event):void
+		{
+			for each (var obj:BindableTextObject in fScriptLabelObjects)
+			{
+				IdmlUtils.updateStory(fTempDir, obj);
+			}
+			
+			for each (var img:BindableImageObject in fImageObjects)
+			{
+				IdmlUtils.updateSpread(fTempDir, img);
+			}
+			
+			var idml:File = event.target as File;			
+			CompressionUtils.compress(fTempDir, idml);
+		}
+		
+		/**
+		 * Removes the temporary directory containing
+		 * the extracted IDML file.
+		 */
+		private function cleanup():void
+		{
+			if((null != fTempDir) && (fTempDir.exists))
+			{
+				fTempDir.deleteDirectory(true);
+			}
+		}
+		
+		]]>
+    </mx:Script> 
+    
+	<mx:TabNavigator 
+		width="100%" 
+		height="100%"  
+		backgroundColor="#ffffff" 
+		borderStyle="solid" 
+		borderColor="#808080"
+		creationPolicy="all">
+		<contentType:ImageCanvas id="imageCanvas" width="100%" height="100%" />
+		<contentType:TextCanvas id="textCanvas" width="100%" height="100%" />		
+	</mx:TabNavigator>	
+	<mx:HBox>
+		<mx:Button label="Open IDML File Template" click="checkForExistingSource()" />
+		<mx:Button label="Save to IDML" click="saveToIdml()"/>
+	</mx:HBox>	
+</mx:WindowedApplication>

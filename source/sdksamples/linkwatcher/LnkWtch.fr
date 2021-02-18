@@ -1,0 +1,471 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/sdksamples/linkwatcher/LnkWtch.fr $
+//  
+//  Owner: Adobe Developer Technologies
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//  
+//  Umbrella include file for all the .fr files in the plug-in.
+//  
+//========================================================================================
+
+//===========================
+//  General includes:
+//===========================
+
+#include "MenuDef.fh"
+#include "ActionDef.fh"
+#include "ActionDefs.h"
+#include "AdobeMenuPositions.h"
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "StringTable.fh"
+//#include "OMTypes.h"
+#include "objectmodeltypes.fh"
+#include "ShuksanID.h"
+#include "ActionID.h"
+#include "CommandID.h"
+#include "WorkspaceID.h"
+#include "widgetid.h"
+#include "BuildNumber.h"
+#include "PanelList.fh"
+#include "Widgets.fh"	// for PalettePanelWidget
+#include "InterfaceColorDefines.h"
+#include "IControlViewDefs.h"
+#include "SysControlIds.h"
+#include "AboutBoxID.h"		// for kAboutBoxStaticTextViewImpl
+#include "TreeViewDefs.h"
+
+#include "PlugInModel_UIAttributes.h"
+// Project includes:
+#include "LnkWtchID.h"
+
+#ifdef __ODFRC__
+
+//================================================================================
+// Plugin version definition.
+//================================================================================
+resource PluginVersion (kSDKDefPluginVersionResourceID)
+{
+	kTargetVersion,
+	kLnkWtchPluginID,
+	kSDKDefPlugInMajorVersionNumber, kSDKDefPlugInMinorVersionNumber, 	
+	kSDKDefHostMajorVersionNumber, kSDKDefHostMinorVersionNumber,
+	kLnkWtchCurrentMajorFormatNumber, kLnkWtchCurrentMinorFormatNumber,
+	{ kInDesignProduct },
+	{ kWildFS },
+	kUIPlugIn,
+	kLnkWtchVersion
+};
+
+//================================================================================
+//	Boss class definition.
+//================================================================================
+resource ClassDescriptionTable(kSDKDefClassDescriptionTableResourceID)
+{{{
+
+
+
+#ifdef SDKAUTOUNDO
+// New code:
+/** Provides the actions invoked by this plug-in's
+	sub-menu items.
+	@ingroup linkwatcher
+*/
+	Class
+	{
+		kLnkWtchActionComponentBoss,
+		kBaseActionComponentBoss,
+		{
+			/** See IActionComponent / LnkWtchActionComponent.
+			*/
+			IID_IACTIONCOMPONENT, kLnkWtchActionComponentImpl,
+		}
+	},
+#else
+// Old code:
+	Class
+	{
+		kLnkWtchActionComponentBoss,
+		kInvalidClass,
+		{
+			/** See IActionComponent / LnkWtchActionComponent.
+			*/
+			IID_IACTIONCOMPONENT, kLnkWtchActionComponentImpl,
+			/** Provided by the API.
+			*/
+			IID_IPMPERSIST, kPMPersistImpl
+		}
+	},
+#endif
+
+
+	/**	Controls addition of a pop-up menu to the panel.
+		@ingroup linkwatcher
+	*/
+	Class
+	{
+		kLnkWtchPanelWidgetBoss,
+		kPalettePanelWidgetBoss,
+		{
+			/** An implementation of ITextControlData, but with interface
+				identifier of IID_IPANELMENUDATA, serves to name the popout panel menu.
+				Implementation provided by the API.
+			*/ 
+			IID_IPANELMENUDATA, kCPanelMenuDataImpl,
+		}
+	},
+
+	/**	Provides list-box user interface that is updated as entries
+		are added and removed from this plug-in's cache.
+		@ingroup linkwatcher
+	*/
+	Class 
+	{
+		kLnkWtchListBoxWidgetBoss,
+		kTreeViewWidgetBoss,
+		{
+			/** Furnishes application framework with widgets as needed 
+			*/
+			IID_ITREEVIEWWIDGETMGR,  kLnkWtchTreeViewWidgetMgrImpl,
+			/** Adapts our data model to the needs of the application framework 
+			*/
+			IID_ITREEVIEWHIERARCHYADAPTER,  kLnkWtchTreeViewAdapterImpl,
+			/** See IObserver / LnkWtchActiveContextObserver.
+			*/
+			IID_IOBSERVER,	kLnkWtchActiveContextObserverImpl,
+		}
+	},
+
+	/**
+		Text Widget boss.
+		@ingroup linkwatcher
+	*/
+	Class
+	{
+		kLnkWtchTextWidgetBoss,
+		kInfoStaticTextWidgetBoss,
+		{
+			// Add the following interfaces for a white background (they'd override the default.)
+			// IID_ICONTROLVIEW, kAboutBoxStaticTextViewImpl,
+			// IID_IBOOLDATA, kPersistBoolDataImpl,
+		}
+	}
+
+	/** Caches the identities of links that have been added to the document since it
+		was opened.
+		@ingroup linkwatcher
+	 */
+	AddIn
+	{
+		kDocBoss,
+		kInvalidClass,
+		{
+			/** See LnkWtchCacheManager.
+			 */
+			IID_ILNKWTCHCACHEMANAGER, kLnkWtchCacheManagerImpl,
+			
+			/** See LnkWtchCache. 
+			*/
+			IID_ILNKWTCHCACHE, kLnkWtchCacheImpl,
+		}
+	},
+
+	/** Attaches LnkWtchCacheManager to new documents.
+		@ingroup linkwatcher
+	*/
+	Class
+	{
+		kLnkWtchNewDocResponderBoss,
+		kInvalidClass,
+		{
+			/** See LnkWtchDocResponder.
+			 */
+			IID_IRESPONDER,				kLnkWtchDocResponderImpl,
+
+			/** Provided by API.
+			 */
+			IID_IK2SERVICEPROVIDER,		kDuringNewDocSignalRespServiceImpl,
+		}
+	},
+
+	/** Attaches LnkWtchCacheManager when a document opens.
+		@ingroup linkwatcher
+	*/
+	Class
+	{
+		kLnkWtchOpenDocResponderBoss,
+		kInvalidClass,
+		{
+			/** See LnkWtchDocResponder.
+			 */
+			IID_IRESPONDER,				kLnkWtchDocResponderImpl,
+
+			/** Provided by API.
+			 */
+			IID_IK2SERVICEPROVIDER,		kDuringOpenDocSignalRespServiceImpl,
+		}
+	},
+
+	/** Tidies up when a document closes.
+		@ingroup linkwatcher
+	*/
+	Class
+	{
+		kLnkWtchCloseDocResponderBoss,
+		kInvalidClass,
+		{
+			/** See LnkWtchDocResponder.
+			 */
+			IID_IRESPONDER,				kLnkWtchDocResponderImpl,
+
+			/** Provided by API.
+			 */
+			IID_IK2SERVICEPROVIDER,		kBeforeCloseDocSignalRespServiceImpl,
+		}
+	},
+
+
+}}};
+
+//================================================================================
+// Implementation definition.
+//================================================================================
+resource FactoryList (kSDKDefFactoryListResourceID) 
+{
+	kImplementationIDSpace,
+	{
+#include "LnkWtchFactoryList.h"
+	}
+};
+
+//================================================================================
+// Menu definition.
+//================================================================================
+resource MenuDef (kSDKDefMenuResourceID)
+{
+	{
+		// About this plugin submenu for the popup menu on the panel
+		kLnkWtchPopupAboutThisActionID,
+		kLnkWtchTargetMenuPath
+		kLnkWtchAboutThisMenuItemPosition,
+		kSDKDefIsNotDynamicMenuFlag, 
+
+	}
+};
+
+//================================================================================
+// Action definition.
+//================================================================================
+resource ActionDef (kSDKDefActionResourceID)
+{
+	{ 				
+		kLnkWtchActionComponentBoss, 
+		kLnkWtchPopupAboutThisActionID, 
+		kSDKDefAboutThisPlugInMenuKey,	// Key to the name of this action
+		kOtherActionArea,
+		kNormalAction,
+		kDisableIfLowMem,	
+		kInvalidInterfaceID,
+		kSDKDefInvisibleInKBSCEditorFlag,
+
+	}
+};
+
+
+//================================================================================
+// LocaleIndex
+// The LocaleIndex should have indicies that point at your
+// localizations for each language system that you are 
+// localized for.
+//================================================================================
+//------------------------------------------------------------
+// String LocaleIndex.
+//------------------------------------------------------------
+resource LocaleIndex (kSDKDefStringsResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_enUS, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_jaJP, kSDKDefStringsResourceID + index_jaJP
+		
+		kWildFS, k_Wild, kSDKDefStringsResourceID + index_enUS
+	}
+};
+
+resource LocaleIndex (kSDKDefStringsNoTransResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_Wild, kSDKDefStringsNoTransResourceID + index_enUS
+	}
+};
+
+// added to support the list elements in the list box
+resource LocaleIndex (kLnkWtchListElementRsrcID)
+{
+	kViewRsrcType,
+	{
+		kWildFS, k_Wild, kLnkWtchListElementRsrcID + index_enUS
+	}
+};
+
+resource StringTable (kSDKDefStringsNoTransResourceID + index_enUS)
+{
+	k_enUS,									// Locale Id
+	kEuropeanMacToWinEncodingConverter,		// Character encoding converter
+	{
+		// No-Translate strings go here:		
+
+
+		kLnkWtchInternalPopupMenuNameKey,	kLnkWtchInternalPopupMenuNameKey,		// No need to translate, internal menu name.
+	}
+};
+
+
+
+//------------------------------------------------------------
+// Panel LocaleIndex.
+//------------------------------------------------------------
+resource LocaleIndex (kSDKDefPanelResourceID)
+{
+	kViewRsrcType,
+	{
+		kWildFS, k_Wild, 	kSDKDefPanelResourceID + index_enUS
+	}
+};
+
+
+//========================================================================================
+// Type definition.
+//========================================================================================
+type LnkWtchPanelWidget(kViewRsrcType) : PalettePanelWidget(ClassID = kLnkWtchPanelWidgetBoss) 
+{
+	CPanelMenuData;
+};
+type LnkWtchListBox			(kViewRsrcType) : TreeViewWidget	(ClassID = kLnkWtchListBoxWidgetBoss) { };
+type LnkWtchTextWidget		(kViewRsrcType) : InfoStaticTextWidget	(ClassID = kLnkWtchTextWidgetBoss) { };
+
+//================================================================================
+// PanelList definition.
+//================================================================================
+resource PanelList (kSDKDefPanelResourceID)
+{
+	{
+		// 1st panel in the list
+		kSDKDefPanelResourceID,		// Resource ID for this panel (use SDK default rsrc ID)
+		kLnkWtchPluginID,			// ID of plug-in that owns this panel
+		kNotResizable,// is palette resizable
+		kLnkWtchPanelWidgetActionID,	// Action ID to show/hide the panel
+		kLnkWtchPanelTitleKey,		// Shows up in the Window list.
+		"",							// Alternate menu path of the form "Main:Foo" if you want your palette menu item in a second place
+		0.0,						// Alternate Menu position Alternate Menu position for determining menu order
+		0,0,   // plugin id & rsrcid for png icon for this palette
+		c_Panel	// which script object for this panel
+	}	
+};
+
+//================================================================================
+// PanelView definition.
+// The view is not currently localised: therefore, it can reside here.
+// However, if you wish to localise it, it is recommended to locate it in one of
+// the localised framework resource files (i.e. LnkWtch_enUS.fr etc.).
+//================================================================================
+resource LnkWtchPanelWidget(kSDKDefPanelResourceID + index_enUS)
+{
+	__FILE__, __LINE__,					// Localization macro		
+	kLnkWtchPanelWidgetID,			// WidgetID 
+	kPMRsrcID_None,						// RsrcID
+	kBindNone,							// Binding (0=none)
+	0, 0, 207, 95,						// Frame: left, top, right, bottom.
+	kTrue, kTrue,						// Visible, Enabled
+	kFalse,								// Erase background
+	kInterfacePaletteFill,				// Erase to color
+	kFalse,								// Draw dropshadow
+	kLnkWtchPanelTitleKey,			// Panel name	
+	{
+		LnkWtchListBox // (with tree view implemention)
+		(
+			kLnkWtchListBoxWidgetID, kPMRsrcID_None,// WidgetId, RsrcId
+			kBindAll,
+			Frame(-1,0,208,96)		// Frame
+			kTrue, kTrue,				// Visible, Enabled
+			kTrue, // EraseBeforeDraw
+			kInterfacePaletteFill, // Erase to color,
+			"Link watcher",
+			kHideRootNode | kDrawEndLine,	// Options
+			kFalse,						//Use H Scroll bar
+			kTrue,						//Use V scroll bar
+			20,							// Vertical Scroll Button Increment
+			20,							// Vertical Thumb Scroll Increment
+			0,							// Horizontal Scroll Button Increment - Not Used
+			0,							// Horizontal Thumb Scroll Increment - Not Used
+			1,							// Items selectable, 0 = No Selection, 1 = Single Selection, 2 = Multiple Selection
+			kFalse,						// Allow children from multiple parents to be selected
+			kTrue,						// Allow discontiguous selection
+			{
+			}
+		),
+		
+	}
+
+	kLnkWtchInternalPopupMenuNameKey		// Popup menu name (internal)
+};
+
+type LnkWtchNodeWidget(kViewRsrcType) : PrimaryResourcePanelWidget(ClassID = kTreeNodeWidgetBoss) {};
+resource LnkWtchNodeWidget (kLnkWtchListElementRsrcID + index_enUS)
+{
+	__FILE__, __LINE__,
+	kLnkWtchListParentWidgetId, 0,	// WidgetId, RsrcId
+	kLnkWtchPluginID,	
+	kBindLeft | kBindRight,			// Frame binding
+	Frame(0, 0, 194, 19),			// Frame
+	kTrue, kTrue,					// Visible, Enabled
+	"",								// Panel name
+	{
+
+		// Just a info-static text widget with about-box text view to get white bg.
+		LnkWtchTextWidget
+		(
+			kLnkWtchTextWidgetID, kPMRsrcID_None,		// WidgetId, RsrcId
+			kBindLeft | kBindRight,								// Frame binding
+			Frame(3,0,194,19)									// Frame
+			kTrue, kTrue, kAlignLeft,kEllipsizeEnd,kTrue,		// Visible, Enabled, ellipsize style, convert ampersands
+			"",													// Initial text
+			0,													// Associated widget for focus
+			kPaletteWindowSystemScriptFontId,					// default font 
+			kPaletteWindowSystemScriptHiliteFontId,				// for highlight state.
+		),
+		
+	}
+};
+
+
+
+
+
+#endif // __ODFRC__
+
+#include "LnkWtch_enUS.fr"
+#include "LnkWtch_jaJP.fr"
+
+// End, LnkWtch.fr.
+
+
+
+

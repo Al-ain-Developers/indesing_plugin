@@ -1,0 +1,255 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/dynamicdocumentsui/resources/LiquidLayoutPanelViews_enUS.fr $
+//  
+//  Owner: Dave Stephens
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "InterfaceColorDefines.h"
+#include "DynamicDocumentsUIDefs.h"
+#include "ApplDefs.h"
+
+#ifdef __ODFRC__
+
+
+//========================================================================================
+// LiquidLayoutPanelView resource
+//========================================================================================
+
+resource LiquidLayoutPanelWidget (kLiquidLayoutPaletteRsrcID + index_enUS)
+{
+	__FILE__, __LINE__,
+	kLiquidLayoutPanelWidgetID, kPMRsrcID_None, // WidgetId, RsrcId
+	kBindNone,					// Frame binding
+	Frame(0,0, 240, 243)			// Frame
+	kTrue, kTrue,				// Visible, Enabled
+	kTrue,						// EraseBeforeDraw
+	kInterfacePaletteFill,		// Erase to color
+	kFalse,						// DrawDropShadow
+	"kLiquidLayoutPanelName",		// Panel name	
+	{	
+		// ---------------------------------- //
+		// ----- The Page Layout Policy ----- //
+		// ---------------------------------- //
+		StaticTextWidget
+		(
+			kLayoutPolicyTextLabelWidgetID, kSysStaticTextPMRsrcId,      // WidgetId, RsrcId
+			kBindNone,                                // Frame binding
+			Frame(5,5,123,19)       // Frame
+			kTrue, kTrue, kAlignLeft,                 // Visible, Enabled, Alignment
+			kDontEllipsize, kTrue,                        // Ellipsize style, Convert ampersands
+			"kPageLayoutPolicyDropdownLabel",
+			kLiquidLayoutPanelPolicyDropdownListWidgetID,
+		),
+
+		InfoStaticTextWidget
+		(
+			kPageRangeWidgetID, kSysStaticTextPMRsrcId,      // WidgetId, RsrcId
+			kBindNone,                                // Frame binding
+			Frame(124, 5, 235, 19)       // Frame
+			kTrue, kTrue, kAlignRight,                 // Visible, Enabled, Alignment
+			kEllipsizeMiddle, kTrue,                        // Ellipsize style, Convert ampersands
+			"",
+			0,
+			kPaletteWindowFontId, kPaletteWindowFontId,
+		),
+
+		DropDownListWidget
+		(
+			kLiquidLayoutPanelPolicyDropdownListWidgetID,		// WidgetId
+			kSysDropDownPMRsrcId,					// RsrcId
+			kBindLeft|kBindTop,
+			Frame(5, 24, 208, 45)				// Frame
+			kTrue,									// Visible
+			kTrue,									// Enabled
+			{{
+				"kLayoutPolicyMenuString_Off",
+				"-",
+				"kLayoutPolicyMenuString_Scale",
+				"kLayoutPolicyMenuString_Recenter",
+				"kLayoutPolicyMenuString_Reposition",
+				"kLayoutPolicyMenuString_GuideSlice",
+//				"kLayoutPolicyMenuString_Interpolate",
+				"-",
+				"kLayoutPolicyMenuString_UseMaster",
+			}},
+		),
+						
+		SeparatorWidget 
+		( 
+			0, kPMRsrcID_None,                // WidgetId, RsrcId 
+			kBindNone, 
+			Frame(5,50,235,51)        // Frame 
+			kTrue, kTrue,                                        // Visible, Enabled 
+		), 
+
+		// ------------------- //
+		// ----- Content ----- //
+		// ------------------- //
+		StaticTextWidget
+		(		
+			0, kSysStaticTextPMRsrcId,// WidgetId, RsrcId
+			kBindLeft | kBindTop,									// Frame binding
+			Frame(5,56,200,70)					// Frame
+			kTrue, kTrue, kAlignLeft,								// Visible, Enabled
+			kDontEllipsize, kTrue,									// Ellipsize style, Convert ampersands
+			"kContentStaticTextLabel",					// Text
+			0,
+		),
+
+		CheckBoxWidget
+		(
+			kLiquidLayoutAutoFitObserverWidgetId, 
+			kSysCheckBoxPMRsrcId,			// RsrcId
+			kBindLeft,						// Frame binding
+			Frame(4,75,200,96)		// Frame
+			kTrue, kTrue,					// Visible, Enabled
+			kAlignLeft,					// Alignment
+			"AutoFitCheckboxLabel",					// Initial text
+		),	
+
+		SeparatorWidget 
+		( 
+			0, kPMRsrcID_None,                // WidgetId, RsrcId 
+			kBindNone, 
+			Frame(5,101,235,102)        // Frame 
+			kTrue, kTrue,                                        // Visible, Enabled 
+		), 
+
+		// ------------------------------------------ //
+		// ----- Object Constraints Title Group ----- //
+		// ------------------------------------------ //
+
+		GenericPanelWidget 
+		( 
+			kObjectConstraintsSubPanelGroupWID, kPMRsrcID_None,                        // WidgetId, RsrcId 
+			kBindAll | kBindParentToChild, 
+			Frame(0,107,235,237)        // Frame 
+			kTrue, kTrue,          // Visible, Enabled 
+			"",                // Panel name 
+			{
+				// Title
+				StaticTextWidget
+				(		
+					kConstraintsLabelWID, kSysStaticTextPMRsrcId,// WidgetId, RsrcId
+					kBindLeft | kBindTop,									// Frame binding
+					Frame(5,0,203,14)					// Frame
+					kTrue, kTrue, kAlignLeft,								// Visible, Enabled
+					kDontEllipsize, kTrue,									// Ellipsize style, Convert ampersands
+					"kObjectConstraintsStaticTextLabel",					// Text
+					0,
+				),
+
+				// Title
+				StaticTextWidget
+				(		
+					0, kSysStaticTextPMRsrcId,// WidgetId, RsrcId
+					kBindLeft | kBindTop,									// Frame binding
+					Frame(10,19,200,33)					// Frame
+					kTrue, kTrue, kAlignLeft,								// Visible, Enabled
+					kDontEllipsize, kTrue,									// Ellipsize style, Convert ampersands
+					"kFixedSizeStaticTextLabel",					// Text
+					0,
+				),
+
+				CheckBoxWidget
+				(
+					kFixedHeightConstraintCheckboxWidgetID, 
+					kSysCheckBoxPMRsrcId,			// RsrcId
+					kBindLeft,						// Frame binding
+					Frame(15,38,105,59)		// Frame
+					kTrue, kTrue,					// Visible, Enabled
+					kAlignLeft,					// Alignment
+					"kHeightCheckBoxLabel",					// Initial text
+				),	
+
+				CheckBoxWidget
+				(
+					kFixedWidthConstraintCheckboxWidgetID, 
+					kSysCheckBoxPMRsrcId,			// RsrcId
+					kBindNone,						// Frame binding
+					Frame(120,38,235,59)		// Frame
+					kTrue, kTrue,					// Visible, Enabled
+					kAlignLeft,					// Alignment
+					"kWidthCheckBoxLabel",					// Initial text
+				),			
+
+				// Title
+				StaticTextWidget
+				(		
+					0, kSysStaticTextPMRsrcId,// WidgetId, RsrcId
+					kBindLeft,									// Frame binding
+					Frame(10,64,200,78)					// Frame
+					kTrue, kTrue, kAlignLeft,								// Visible, Enabled
+					kDontEllipsize, kTrue,									// Ellipsize style, Convert ampersands
+					"kPinObjectEdgesStaticTextLabel",					// Text
+					0,
+				),
+
+				CheckBoxWidget
+				(
+					kPinTopConstraintCheckboxWidgetID, 
+					kSysCheckBoxPMRsrcId,			// RsrcId
+					kBindLeft,						// Frame binding
+					Frame(15,83,105,104)		// Frame
+					kTrue, kTrue,					// Visible, Enabled
+					kAlignLeft,					// Alignment
+					"kPinTopEdgeCheckBoxLabel",					// Initial text
+				),
+
+				CheckBoxWidget
+				(
+					kPinBottomConstraintCheckboxWidgetID, 
+					kSysCheckBoxPMRsrcId,			// RsrcId
+					kBindLeft,						// Frame binding
+					Frame(15,109,105,130)		// Frame
+					kTrue, kTrue,					// Visible, Enabled
+					kAlignLeft,					// Alignment
+					"kPinBottomEdgeCheckBoxLabel",					// Initial text
+				),			
+
+				CheckBoxWidget
+				(
+					kPinLeftConstraintCheckboxWidgetID, 
+					kSysCheckBoxPMRsrcId,			// RsrcId
+					kBindNone,						// Frame binding
+					Frame(120,83,235,104)		// Frame
+					kTrue, kTrue,					// Visible, Enabled
+					kAlignLeft,					// Alignment
+					"kPinLeftEdgeCheckBoxLabel",					// Initial text
+				),			
+
+				CheckBoxWidget
+				(
+					kPinRightConstraintCheckboxWidgetID, 
+					kSysCheckBoxPMRsrcId,			// RsrcId
+					kBindNone,						// Frame binding
+					Frame(120,109,235,130)		// Frame
+					kTrue, kTrue,					// Visible, Enabled
+					kAlignLeft,					// Alignment
+					"kPinRightEdgeCheckBoxLabel",					// Initial text
+				),			
+			}
+		),
+
+	}
+	{{ IID_IOBSERVER, IID_IAUTOLAYOUTWARNINGOBSERVER }} 
+}
+
+#endif

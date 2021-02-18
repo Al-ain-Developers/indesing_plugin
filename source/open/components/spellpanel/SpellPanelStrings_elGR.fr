@@ -1,0 +1,164 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/spellpanel/SpellPanelStrings_elGR.fr $
+//  
+//  Owner: Michael Burbidge
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kSpellPanelStringsRsrcID + index_elGR)
+{
+	k_elGR,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{				
+		// ----- Main menu strings
+		"SpellingMenu",					"Ορ&θογραφία",
+		"Check Spelling...",			"Ορθογραφικός έλ&εγχος...",
+		"Dynamic SpellCheck",			"Δυνα&μική ορθογραφία",
+		"Autocorrect",					"Αυτόματη διόρθωση",
+		"Auto Correct",					"Αυτόματη &διόρθωση",
+		"AutoCorrect",					"Αυτόματη διόρθωση",
+
+		// ----- Window strings
+		"corrected",					"διορθωμένο",
+		"misspelled",					"με ορθογραφικό λάθος",
+		
+		// ----- Scope strings
+		
+		"[No spelling]",				"[Χωρίς ορθογραφικό έλεγχο]",
+		"Auto",							"Αυτόματο",
+		"Document",						"Έγγραφο",
+		"Story",						"Αλυσ. κειμένου",
+		"Stories",						"Αλυσίδες κειμένου",
+		"Selection",					"Επιλογή",
+		
+		// ----- Panel strings		
+		"Spelling",						"Ορθογραφία",
+		"&Spelling...",					"&Ορθογραφικός έλεγχος...",
+		"Auto Correct...",				"Αυτόματη διόρ&θωση...",
+		"[No language]",				"[Καμία γλώσσα]",
+		"AutoCorrectEnable",			"Ε&νεργοποίηση αυτόματης διόρθωσης",
+		"AutoCorrectCapitalizationErrors",			"Αυτόματη διόρθωση σφαλμάτων &χρήσης κεφαλαίων",
+		"A&dd...",						"Πρ&οσθήκη...",		// Opens a dialog
+		"EditAutoCorrectWord",			"&Επεξεργασία...",		// Opens a dialog
+		"Correction",					"Διόρθωση",
+		"Misspelled Word",				"Λέξη με ορθογραφικό λάθος",
+
+		// ----- Dialog strings
+		"Check Spelling",				"Ορθογραφικός έλεγχος",
+		"&Change To:",					"Α&λλαγή σε:",
+		
+		"Change To",					"Αλλαγή σε",
+		"&Suggested Corrections:",		"Προτεινόμενες διορθώσ&εις:",
+		"Language:",					"Γλώσσα:",
+		"Sea&rch:",						"Α&ναζήτηση:",
+		"Include Overset",				"Περίληψη πλεονάζοντος κειμένου",
+		"&Done",							"&Τέλος",
+		"C&hange",						"Α&λλαγή",
+		"S&tart",						"Εκκί&νηση",
+		"Chan&ge All",					"Διόρθωση ό&λων",
+		"Skip",							"Παράλειψη",	
+		"kSkipButtonInSpellingDialog",  "Πα&ράλειψη",
+		"Ignore",						"Παράβλεψη",
+		"&Ignore All",					"Παράβλεψη ό&λων",
+		"&AddAndContinue",				"&Προσθήκη",			// Adds to dictionary automatically, continues spelling
+		"Dic&tionary...",				"Λεξικό&...",	// Launches Dict Editor dialog
+		"Add To:",						"Προσθήκη σ&ε:",
+
+		// Label strings in Spell Check dialog.
+		"Ready to Spell Check:", 			"Έτοιμοι για ορθογραφικό έλεγχο",
+		"Misspelled Word:",					"Ορθογραφικό λάθος:",
+		"Unknown Word - No Suggestions:", 	"Άγνωστη λέξη - Καμία πρόταση:",
+		"Not in Dictionary:",				"Δεν περιέχεται στο λεξικό:",
+		"Repeated Word:",					"Επαναλαμβανόμενη λέξη:",
+		"Uncapitalized Word:",				"Λέξη χωρίς κεφαλαία:",
+		"Uncapitalized Sentence:",			"Πρόταση χωρίς κεφαλαία:",
+		"Duplicate Word:",					"Διπλή λέξη:",
+		"Capitalization Error:",			"Σφάλμα κεφαλαίων:",
+		"Spell Check Complete:",			"Ο ορθογραφικός έλεγχος ολοκληρώθηκε",
+		
+		"SpellCheckCompleteAlertStr",			"Ο ορθογραφικός έλεγχος ολοκληρώθηκε.",	// Alert string at completion of spelling.
+
+		"Misspelled Word (Overset):",					"Λέξη με ορθογραφικό λάθος: (Πλεονάζον κείμενο)",
+		"Unknown Word - No Suggestions (Overset):", 	"Άγνωστη λέξη: (Πλεονάζον κείμενο)",
+		"Not in Dictionary (Overset):",					"Δεν υπάρχει στο Λεξικό: (Πλεονάζον κείμενο)",
+		"Repeated Word (Overset):",						"Επαναλαμβανόμενη λέξη: (Πλεονάζον κείμενο)",
+		"Uncapitalized Word (Overset):",				"Λέξη χωρίς κεφαλαία: (Πλεονάζον κείμενο)",
+		"Uncapitalized Sentence (Overset):",			"Πρόταση χωρίς κεφαλαία: (Πλεονάζουσα)",
+
+		"Misspelled Word (In Table):",					"Λέξη με ορθογραφικό λάθος: (Μέσα στον πίνακα)",
+		"Unknown Word - No Suggestions (In Table):", 	"Άγνωστη λέξη: (Μέσα στον πίνακα)",
+		"Not in Dictionary (In Table):",					"Δεν υπάρχει στο Λεξικό: (Μέσα στον πίνακα)",
+		"Repeated Word (In Table):",						"Επαναλαμβανόμενη λέξη: (Μέσα στον πίνακα)",
+		"Uncapitalized Word (In Table):",				"Λέξη χωρίς κεφαλαία: (Μέσα στον πίνακα)",
+		"Uncapitalized Sentence (In Table):",			"Πρόταση χωρίς κεφαλαία: (Μέσα στον πίνακα)",
+
+		"Misspelled Word (Deleted Text):",				"Λέξη με ορθογραφικό λάθος: (Διαγραμμένο κείμενο)",
+		"Unknown Word - No Suggestions (Deleted Text):","Άγνωστη λέξη: (Διαγραμμένο κείμενο)",
+		"Not in Dictionary (Deleted Text):",			"Δεν υπάρχει στο Λεξικό: (Διαγραμμένο κείμενο)",
+		"Repeated Word (Deleted Text):",				"Επαναλαμβανόμενη λέξη: (Διαγραμμένο κείμενο)",
+		"Uncapitalized Word (Deleted Text):",			"Λέξη χωρίς κεφαλαία: (Διαγραμμένο κείμενο)",
+		"Uncapitalized Sentence (Deleted Text):",		"Πρόταση Χωρίς Κεφαλαία: (Διαγράφηκε)",
+
+//		"Spelling Preferences", 						"Spelling Preferences", // Note to localizer: this string moved to SpellingServiceStrings.fr
+		"Find", 										"Εύρεση",
+		"&Misspelled Words", 							"&Ανορθόγραφες λέξεις",
+		"&Repeated Words", 								"&Επαναλαμβανόμενες λέξεις",
+		"&Uncapitalized Words", 						"&Λέξεις χωρίς κεφαλαία",
+		"Uncapitalized &Sentences", 					"Προτάσεις χωρίς &κεφαλαία",
+		"Misspelled Words Underline Color:",			"Λέξεις με ορθο&γραφικά λάθη:",
+		"Repeated Words Underline Color:",				"Επαναλαμβα&νόμενες λέξεις:",
+		"Uncapitalized Words Underline Color:",			"Λέξ&εις χωρίς κεφαλαία:",
+		"Uncapitalized Sentences Underline Color:",		"Προ&τάσεις χωρίς κεφαλαία:",
+		"Dynamic Spellchecking",						"Δυναμική ορθογραφία",
+		
+		"Underline Color",								"Χρώμα υπογράμμισης",
+		
+		"&Enable Dynamic Spelling",						"&Ενεργοποίηση δυναμικής ορθογραφίας",
+		
+		"Search is completed.  ^1  replacement(s) made.", "Ολοκληρώθηκε ο έλεγχος. Έγιναν  ^1  αντικαταστάσεις.", 
+
+		"Add",											"Προσθήκη",
+		"Re&move",										"Κα&τάργηση",
+		"Misspelled:",									"Με ορθογραφικά λάθη:",
+		"Correction:",									"Διόρθωση:",
+		"Language:",									"Γλώσσα:",
+		"&Language:",									"&Γλώσσα:",
+		"AddToAutoCorrectList",							"Προσθήκη στη λίστα αυτόματης διόρθωσης",
+		"EditAutoCorrectList",							"Επεξεργασία λίστας αυτόματης διόρθωσης",
+
+		"ACAlert1",		"Δνε επιτρέπονται κενές εγγραφές.",
+		"ACAlert2",		"Η λέξη και η διόρθωσή της δε μπορούν να είναι πανομοιότυπες σε ορθογραφία και χρήση κεφαλαίων.",
+		"ACAlert3",		"Αυτή η λέξη με ορθογραφικά σφάλματα και η διόρθωσή της υπάρχουν ήδη στη λίστα.",
+		"ACAlert4",		"Δεν είναι δυνατή η δημιουργία καταχώρησης. Υπερβαίνει το μέγιστο αριθμό χαρακτήρων (64).",
+		"ACAlert5",		"Η εγγραφή περιέχει κάποιον άκυρο χαρακτήρα.",
+		"ACAlert6",		"Δεν επιτρέπονται κενά στη λέξη με ορθογραφικά σφάλματα.",
+
+	}
+};
+
+#endif // __ODFRC__

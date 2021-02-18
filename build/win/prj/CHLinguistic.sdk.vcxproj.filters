@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{f4071ca7-e32f-45b5-974e-3e26480e5c08}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Plugin">
+      <UniqueIdentifier>{d331315b-cfbc-4af2-a8b2-20f280890135}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Plugin\Common">
+      <UniqueIdentifier>{50fa8a4b-0ce4-4afd-996f-d2a6f7ac7c34}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\UserDictionary">
+      <UniqueIdentifier>{d5c31cf1-b5f5-4b89-b8fc-06b4cce717af}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Thesaurus">
+      <UniqueIdentifier>{47d2e29a-2caa-44be-9f44-8bbb9ca7c9b2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Spelling">
+      <UniqueIdentifier>{dd0d7fd4-dd47-4d27-8eea-de92d8dc77b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{0b1d6822-214d-4704-b601-f0e55da5dd17}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{44323af8-2bbb-4935-8c98-1dc716281550}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\source\sdksamples\chlinguistic\CHLFileNameTable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\chlinguistic\CHLServiceProvider.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\chlinguistic\CHLUtils.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\chlinguistic\CHLID.cpp">
+      <Filter>Source Files\Plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\chlinguistic\CHLNoStrip.cpp">
+      <Filter>Source Files\Plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="$(id_sdk_dir)\source\public\libs\publiclib\statics\PlugInStatics.cpp">
+      <Filter>Source Files\Plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\chlinguistic\TriggerResourceDeps.cpp">
+      <Filter>Source Files\Plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="$(id_sdk_dir)\source\precomp\msvc\VCPlugInHeaders.cpp">
+      <Filter>Source Files\Plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\common\SDKFileHelper.cpp">
+      <Filter>Source Files\Plugin\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\common\SDKPlugInEntrypoint.cpp">
+      <Filter>Source Files\Plugin\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\chlinguistic\CHLData.cpp">
+      <Filter>Source Files\UserDictionary</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\chlinguistic\CHLUserDict.cpp">
+      <Filter>Source Files\UserDictionary</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\chlinguistic\CHLUserDictContentHandler.cpp">
+      <Filter>Source Files\UserDictionary</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\chlinguistic\CHLUserDictIterator.cpp">
+      <Filter>Source Files\UserDictionary</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\chlinguistic\CHLUserDictMgr.cpp">
+      <Filter>Source Files\UserDictionary</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\chlinguistic\CHLUserDictUtils.cpp">
+      <Filter>Source Files\UserDictionary</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\chlinguistic\CHLThesaurus.cpp">
+      <Filter>Source Files\Thesaurus</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\chlinguistic\CHLThesaurusMgr.cpp">
+      <Filter>Source Files\Thesaurus</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\chlinguistic\CHLSpelling.cpp">
+      <Filter>Source Files\Spelling</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\chlinguistic\CHLSpellingMgr.cpp">
+      <Filter>Source Files\Spelling</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\source\sdksamples\chlinguistic\CHLFactoryList.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\sdksamples\chlinguistic\CHLID.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\sdksamples\chlinguistic\CHLUserDict.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\sdksamples\chlinguistic\CHLUtils.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\sdksamples\chlinguistic\ICHLData.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\sdksamples\chlinguistic\ICHLFileNameTable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\..\..\source\sdksamples\chlinguistic\CHL.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\..\..\source\sdksamples\chlinguistic\CHL.fr">
+      <Filter>Resource Files</Filter>
+    </CustomBuild>
+  </ItemGroup>
+</Project>

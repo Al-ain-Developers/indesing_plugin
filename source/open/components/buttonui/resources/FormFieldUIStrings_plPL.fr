@@ -1,0 +1,357 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "StringTable.fh"
+
+#include "FormFieldUIDefs.h"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+//twright 12/11/2000 Removed left-over strings from group strings.
+//not sure if button/form is going to need lock warning...
+
+resource StringTable (kFormFieldUIStringsRsrcID + index_plPL)
+{
+	k_plPL,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{
+		// ----- Menu strings
+		"ButtonsActionsPopup",						"Menu operacji przycisków",
+		
+		"$$$/Menu/AppearancePanelPopup",	"Menu panelu przycisków",	
+		"$$$/Menu/Interactive",				"Interaktyw&ne", 
+		"$$$/Menu/FormField",				"&Formularz", 
+		"$$$/Menu/About",					"&Opis Wtyczki Formularz", 
+		"$$$/Menu/CreateButton",			"&Konwertuj na przycisk", 
+		"$$$/Menu/CreateCheckBox",			"&Konwertuj na pole wyboru",
+		"$$$/Menu/CreateComboBox",			"&Konwertuj na listę kombinowaną", 
+		"$$$/Menu/CreateListBox",			"&Konwertuj na pole listy", 
+		"$$$/Menu/CreateRadioButton",		"&Konwertuj na przycisk radiowy", 
+		"$$$/Menu/CreateSignatureField",	"&Konwertuj na pole podpisu", 
+		"$$$/Menu/CreateTextField",			"&Konwertuj na pole tekstowe", 
+		"$$$/Menu/DestroyButton",			"&Konwertuj na obiekt", 
+		"$$$/Menu/FormFieldSettings",		"&Opcje przycisku...", 
+		"$$$/Menu/NewState",				"Nowy stan", 
+		"$$$/Menu/DeleteState",				"Usuń stan", 
+		"$$$/Menu/DeleteStates",			"Usuń stany",
+		"$$$/Menu/PlaceIntoState",			"Umieść zawartość w stanie...",
+		"$$$/Menu/DeleteStateContent",		"Usuń zawartość ze stanu",
+		"$$$/Menu/AppearancePanelPrefs",	"Opcje panelu...",
+		"$$$/Menu/StateOptions",			"Opcje stanu...",
+		"$$$/Menu/SetTabOrder",				"Ustaw kolejność& tabulatorów...",
+		"$$$/Menu/SetCalculationOrder",		"Ustaw kolejność obliczania...",
+		"$$$/Menu/States",					"Przyciski i form&ularze",
+		
+		"$$$/Menu/Go To Page",				"Przejdź do strony",
+		"$$$/Menu/Go To First Page",		"Przejdź do pierwszej strony",
+		"$$$/Menu/Go To Anchor",			"Idź do miejsca docelowego",
+		"$$$/Menu/Go To Last Page",			"Przejdź do ostatniej strony",
+		"$$$/Menu/Go To Next Page",			"Przejdź do następnej strony",
+		"$$$/Menu/Go To Next View",			"Przejdź do następnego widoku",
+		"$$$/Menu/Go To Previous Page",		"Przejdź do poprzedniej strony",
+		"$$$/Menu/Go To Previous View",		"Przejdź do poprzedniego widoku",
+		"$$$/Menu/Go To URL",				"Przejdź do adresu URL",
+		"$$$/Menu/Movie",					"Film",
+		"$$$/Menu/Open File",				"Otwórz plik",
+		"$$$/Menu/Show/Hide Buttons",		"Pokaż/Ukryj przyciski i formularze",
+		"$$$/Menu/Sound",					"Dźwięk",
+		"$$$/Menu/View Zoom",				"Powiększenie widoku",
+		"$$$/Menu/Animation",				"Animacja",
+		"$$$/Menu/SwitchToMSOState",		"Przejdź do stanu",
+		"$$$/Menu/SwitchToNextMSOState",	"Przejdź do następnego stanu",
+		"$$$/Menu/SwitchToPrevMSOState",	"Przejdź do poprzedniego stanu",
+		"$$$/Menu/EPUBOnly",					"Tylko EPUB",
+		"$$$/Menu/PDFOnly",					"Tylko PDF",
+		"$$$/Menu/Print Form",				"Drukuj formularz",
+		"$$$/Menu/Clear Form",				"Wyczyść formularz",
+		"$$$/Menu/Submit Form",				"Prześlij formularz",
+		
+		"$$$/Menu/FormFieldSettings/ButtonLibrary",			"Przykładowe przyciski i formularze",	// Name of menu item in Buttons Panel flyout that opens a library of Sample Buttons
+
+		"$$$/Menu/FormFieldSettings/PDFVis/Visible",		"Widoczne w PDF",
+		"$$$/Menu/FormFieldSettings/PDFVis/Hidden",			"Ukryte w PDF",
+		"$$$/Menu/FormFieldSettings/PDFVis/VisibleNoPrint",	"Widoczne w PDF, ale bez możliwości drukowania",
+		"$$$/Menu/FormFieldSettings/PDFVis/HiddenButPrint",	"Ukryte w PDF, ale z możliwością drukowania",	
+		"$$$/Menu/ButtonPDFOptions", "Opcje PDF...",
+
+		"$$$/Menu/ResetAllButtons",	"Przywróć wszystkie przyciski do stanu normalnego",	
+			
+		"PageItems",						"Elementy strony", 
+		"$$$/Menu/Trace Geometry",			"Śledzenie geometrii", 
+
+		"$$$/Menu/FormFieldOptions/Button",					"Przycisk",
+		"$$$/Menu/FormFieldOptions/Check Box",				"Pole wyboru",
+		"$$$/Menu/FormFieldOptions/Combo Box",				"Lista kombinowana",
+		"$$$/Menu/FormFieldOptions/List Box",				"Pole listy",
+		"$$$/Menu/FormFieldOptions/Radio Button",			"Przycisk opcji",
+		"$$$/Menu/FormFieldOptions/Signature Field",		"Pole podpisu",
+		"$$$/Menu/FormFieldOptions/Text Field",				"Pole tekstowe",
+
+		"InteractiveContextMenu",			"Interaktywne",
+	
+		// ----- Dialog strings
+		"$$$/Dialog/CreateFormField/Title",		"Pole formularza", 
+		"$$$/Dialog/CreateFormField/Options",	"Opcje",
+		"$$$/Dialog/CreateFormField/Width",		"&Szerokość:",
+		"$$$/Dialog/CreateFormField/Height",	"&Wysokość:",
+
+		"$$$/Dialog/FormFieldSettings/Title",				"Ogólne", 
+		"$$$/Dialog/FormFieldSettings/FieldType",			"Typ pola:",
+		"$$$/Dialog/FormFieldSettings/FieldTypeSetting",	"",
+		"$$$/Dialog/FormFieldSettings/Name",				"&Nazwa:",
+		"$$$/Dialog/FormFieldSettings/PDFVisibility",		"&Widoczność w PDF:",
+		"$$$/Dialog/FormFieldSettings/PDFVis/Visible",		"Widoczny",
+		"$$$/Dialog/FormFieldSettings/PDFVis/Hidden",		"Ukryty",
+		"$$$/Dialog/FormFieldSettings/PDFVis/VisibleNoPrint",	"Widoczny, ale bez możliwości drukowania",
+		"$$$/Dialog/FormFieldSettings/PDFVis/HiddenButPrint",	"Ukryty, ale z możliwością drukowania",
+		"$$$/Dialog/FormFieldSettings/ReadOnly",			"Tylko do odczytu",
+		"$$$/Dialog/FormFieldSettings/Export",				"Eksportuj",
+		"$$$/Dialog/FormFieldSettings/RequiredForExport",	"Wymagane do eksportu",
+		"$$$/Dialog/FormFieldSettings/Description",			"&Opis:",
+		"$$$/Dialog/FormFieldSettings/ExportName",			"&Nazwa eksportu:",
+		"$$$/Dialog/FormFieldSettings/Common Settings",		"Ustawienia wspólne",
+		"$$$/Dialog/FormFieldSettings/Options",				"Opcje",
+		"$$$/Dialog/FormFieldSettings/Holder",				"Magazyn ustawień pola formularza",
+
+		"$$$/Dialog/FormOptions/Title",						"Opcje przycisku",
+		"$$$/Dialog/FormFieldSettings/Options",				"Opcje",
+		
+		"$$$/Dialog/FormFieldSettings/ExportValue",			"Wartość eksportu:",
+		"$$$/Dialog/FormFieldSettings/DefaultIsChecked",	"Wybrany jest domyślny",
+		"$$$/Dialog/FormFieldSettings/DefaultIsSelected",	"Zaznaczony jest domyślny",
+		"$$$/Dialog/FormFieldSettings/Default",				"Domyślny:",
+
+		"$$$/Dialog/FormFieldSettings/Multiline",				"Wielowierszowy",
+		"$$$/Dialog/FormFieldSettings/Scroll",					"Przewijany",
+		"$$$/Dialog/FormFieldSettings/LimitOf",					"Ograniczenie do",
+		"$$$/Dialog/FormFieldSettings/Characters",				"znaków",
+		"$$$/Dialog/FormFieldSettings/Password",				"Hasło",
+		"$$$/Dialog/FormFieldSettings/FieldForFileSelection",	"Używany dla zaznaczenia plików",
+		"$$$/Dialog/FormFieldSettings/SpellCheck",				"Sprawdzanie pisowni",
+		
+		"$$$/Dialog/FormFieldSettings/Item",					"Element:",
+		"$$$/Dialog/FormFieldSettings/Add",						"Dodaj",
+		"$$$/Dialog/FormFieldSettings/Delete",					"Usuń",
+		"$$$/Dialog/FormFieldSettings/Change",					"Zmień",
+		"$$$/Dialog/FormFieldSettings/SortItems",				"Sortuj elementy",
+		"$$$/Dialog/FormFieldSettings/AllowMultipleSelection",	"Dopuść wiele zaznaczeń",
+		"$$$/Dialog/FormFieldSettings/Editable",				"Edytowalny",
+
+		"$$$/Dialog/FormFieldSettings/Align",					"Wyrównaj:",
+		"$$$/Dialog/FormFieldSettings/Align/Left",				"Do lewej",
+		"$$$/Dialog/FormFieldSettings/Align/Center",			"Do środka",
+		"$$$/Dialog/FormFieldSettings/Align/Right",				"Do prawej",
+
+		"$$$/Dialog/FormFieldSettings/Font:",					"&Czcionka:",
+		"$$$/Dialog/FormFieldSettings/Size:",					"&Rozmiar:",
+		"$$$/Dialog/FormFieldSettings/Auto",					"Automatycznie",
+
+		"$$$/Dialog/FormFieldSettings/SelectedIsDefault",		"Wybrany element jest domyślny",
+		
+		"$$$/Dialog/FormFieldUI/DeleteAlert",					"Usuwanie stanu usuwa także powiązaną z nim zawartość. Czy mimo wszystko usunąć stan?",
+		"$$$/Dialog/FormFieldUI/DestroyAlert",					"Ta operacja usunie zawartość powiązaną z innymi stanami pola formularza. Czy kontynuować?",
+		"$$$/Dialog/FormFieldUI/DeleteContentAlert",			"Czy na pewno chcesz usunąć zawartość powiązaną z tym stanem?",
+		"$$$/Dialog/FormFieldUI/StyleChangeAlert",				"Ta operacja usunie zawartość powiązaną z aktualnymi stanami pola formularza. Czy kontynuować?",
+		"$$$/Dialog/FormFieldUI/StyleChangeFailed",				"Zastosowanie wybranego wyglądu do stylu pola formularza nie powiodło się.",
+
+		/* These are not visible, they are names of subpanels... */
+		
+		"$$$/Dialog/FormFieldSettings/CheckBox",				"Opcje pola wyboru",	
+		"$$$/Dialog/FormFieldSettings/RadioButton",				"Opcje przycisku opcji",	
+		"$$$/Dialog/FormFieldSettings/TextField",				"Opcje przycisku pola tekstowego",	
+		"$$$/Dialog/FormFieldSettings/ListBox",					"Opcje przycisku pola listy",	
+		
+		"$$$/Dialog/About/Description",						"Wtyczka Formularz, wersja 1.0\n\n(c) 2001 Adobe Systems Incorporated. Wszelkie prawa zastrzeżone.",
+
+		"$$$/Dialog/CmdName/CreateButton",					"Konwertuj na przycisk",
+		"$$$/Dialog/CmdName/DestroyButton",					"Konwertuj na obiekt",
+		"$$$/Dialog/CmdName/ChangeFormSettings",			"Zmień ustawienia przycisku",
+
+		"$$$/Dialog/TextColor/Title",						"Kolor tekstu", 
+		"$$$/Dialog/Button/Color...",						"Kolor czcionki...", 
+
+		"$$$/Dialog/AppearancePanelPrefs/Title",			"Opcje panelu", 
+		"$$$/Dialog/AppearancePanelPrefs/ThumbnailSize",	"Rozmiar miniaturki", 
+		"$$$/Dialog/AppearancePanelPrefs/None",				"Brak", 
+		
+		
+		"$$$/Dialog/StateOptions/Title",					"Opcje stanu", 
+		"$$$/Dialog/StateOptions/State",					"Stan:", 
+		"$$$/Dialog/StateOptions/Enable",					"Włącz stan", 
+
+		"$$$/Dialog/CalculationOrder/Title",				"Kolejność obliczania", 
+		"$$$/Dialog/TabOrder/Title",						"Kolejność tabulatorów", 
+		"$$$/Dialog/Order/MoveUp",							"Przesuń w &górę", 
+		"$$$/Dialog/Order/MoveDown",						"Przesuń w &dół",
+
+		"$$$/Dialog/ButtonPDFOptions/Title",				"Opcje PDF",
+		"$$$/Dialog/ButtonPDFOptions/InitialAppearance",	"Wygląd początkowy:",
+		"$$$/Dialog/ButtonPDFOptions/Visible",				"&Widoczny",
+		"$$$/Dialog/ButtonPDFOptions/Hidden",				"&Ukryty",
+		"$$$/Dialog/ButtonPDFOptions/Printable",			"Elementy druk&owalne",
+		"$$$/Dialog/ButtonPDFOptions/Description",			"&Opis:",
+		
+		// ----- Window strings
+		
+		// ----- Panel strings
+
+		"$$$/Panel/FormFieldSettings/Action Data Holder",	"Operator danych operacji",
+		"$$$/Panel/FormFieldSettings/+",					"+",
+		"$$$/Panel/FormFieldSettings/Event:",				"Zdarzenie:",
+		"$$$/Panel/FormFieldSettings/Actions:",				"Operacje:",
+		"$$$/Panel/FormFieldSettings/URL:",					"URL:",
+		"$$$/Panel/FormFieldSettings/Mail to:",				"Wyślij jako wiadomość do:",
+		"$$$/Panel/Action",									"Operacja",
+		"$$$/Panel/Empty Action",							"[Nie dodano operacji]",
+		"$$$/Panel/StatesListBoxLabel/States",				"Wygląd",
+		"$$$/Panel/States",									"Przyciski i formularze",
+		"$$$/Panel/FormFieldSettings/FieldType",			"Typ:",
+		"$$$/Panel/FormFieldSettings/Name",					"Nazwa:",
+		"$$$/Panel/ShowHide/Visibility:",					"Widoczność:",
+		"$$$/Panel/GoToPage/Page:",							"Strona:",
+
+		"$$$/Panel/Normal",									"[Zwykły]",
+		"$$$/Panel/Over",									"[Rollover]",
+		"$$$/Panel/Down",									"[Kliknięcie]",
+
+		"$$$/Panel/Off",									"[Normalny wył.]",
+		"$$$/Panel/On",										"[Normalny wł.]",
+
+		"$$$/Panel/RolloverOff",							"[Najazd wył.]",
+		"$$$/Panel/RolloverOn",								"[Najazd wł.]",
+		"$$$/Panel/DowmOff",								"[Kliknięcie wył.]",
+		"$$$/Panel/DownOn",									"[Kliknięcie wł.]",
+
+		"$$$/Panel/CmdName/FormFieldName",					"Nazwa przycisku",
+		"$$$/Panel/CmdName/FormFieldStyle",					"Wygląd przycisku",
+		
+		"$$$/Panel/FormFieldSettings/Appearance",			"Wygląd:",
+		"$$$/Panel/PDFOptions",								"Opcje PDF",
+		"$$$/Panel/Required",								"Wymagany",
+		"$$$/Panel/Printable",								"Drukowalne",
+		"$$$/Panel/Description",							"Opis:",
+		"$$$/Panel/SelectedByDefault",						"Zaznaczane domyślnie",
+		"$$$/Panel/Multiline",								"Wielowierszowy",
+		"$$$/Panel/ListItems",								"Elementy listy",
+		"$$$/Panel/MultipleSelection",						"Wiele zaznaczeń",
+		"$$$/Panel/FontSize",								"Rozmiar czcionki:",
+		"$$$/Panel/Font",									"Czcionka:",
+		"$$$/Panel/AutoSize",								"Automatycznie",
+		"$$$/Panel/SortItems",								"Sortuj elementy",
+		"$$$/Panel/MERTLOption",							"Od prawej do lewej",
+		"$$$/Panel/ExportValue",							"Wartość przycisku:",
+		 
+		"$$$/Popup/Separator",								"-",
+		
+		"$$$/Dialog/Behaviors/Exit/No Data for Exit Behavior", "",
+
+		// ----- Tips strings
+
+		"$$$/Tip/StateEye",				"Wł./Wył. opcjonalny stan podczas eksportowania",
+		"$$$/Tip/StateThumbnail",		"Zmniejszony widok tego stanu",
+		"$$$/Tip/Show",					"Pokaż",
+		"$$$/Tip/Hide",					"Ukryj",
+		"$$$/Tip/Ignore",				"Ignoruj",
+		"$$$/Tip/Delete Selected Action",	"Usuń zaznaczoną operację",
+		"$$$/Tip/Add New Action",		"Dodaj nową operację dla zaznaczonego zdarzenia",
+		"$$$/Tip/DeleteState",			"Usuń opcjonalny stan i jego zawartość",
+		"$$$/Tip/Convert To Button",		"Konwertuj na przycisk",
+		"$$$/Tip/Convert To Object",		"Konwertuj na obiekt",
+		"$$$/Tip/DefaultChoice",		"Zaznacz element na liście, aby nadać mu status domyślnego. Aby ustawić niestandardową kolejność sortowania, usuń zaznaczenie opcji „Sortuj elementy” i przeciągnij elementy na pozycje.",
+        "$$$/Tip/MissingFontToolTip",				"Brak czcionki w polu formularza. Kliknij, aby znaleźć czcionkę.",
+
+		// ----- Error strings
+
+		"$$$/Error/YouNeedToSpecifyAName", "Należy podać nazwę.",
+		"$$$/Error/YouNeedToSpecifyANonBlankName", "Należy podać prawidłową nazwę.",
+		"$$$/Error/YouNeedToSpecifyANonBlankNameOrNoName", "Należy podać prawidłową nazwę lub nie podawać jej wcale.",
+		"$$$/Error/YouNeedToSpecifyAnExportValue", "Należy podać wartość eksportu.",
+		"$$$/Error/YouNeedToSpecifyANonBlankExportValue", "Należy podać prawidłową wartość eksportu.",
+		"$$$/Error/YouNeedToSpecifyAUniqueName", "Ta nazwa stanu jest już używana. Wybierz inną nazwę.",
+		"$$$/Error/YouNeedToSpecifyAValidFontSize", "Podaj wartość z zakresu 0 - 300 lub wybierz Automatycznie.",
+		
+		// ----- Misc strings
+
+		"$$$/Command/DeleteStates",	"Usuń stany",
+		"$$$/CmdName/DeleteStateContent",	"Usuń zawartość stanu",
+		"$$$/Panel/CmdName/MSOName",		"Nazwa obiektu wielostanowego",
+		
+		// ----- MultiStateObject Panel strings
+				
+		"$$$/Menu/MSOPanel", "Stany &obiektów",
+		"$$$/Panel/MSOPanel", "Stany obiektów",
+		"$$$/Panel/MSOPanel/ObjectName", "Nazwa obiektu:",
+#ifdef MACINTOSH
+		"$$$/Panel/MSOPanel/MixedSelection", "Kliknij przycisk Nowy, aby zmienić każdy obiekt w osobny stan. (Option+kliknięcie, aby zachować ten sam stan obiektów.)",
+		"$$$/Panel/MSOPanel/MSOAndMixedSelection", "Kliknij przycisk Nowy, aby utworzyć dla każdego obiektu nowy stan w obiekcie wielostanowym \"^1\". (Option+kliknięcie, aby zachować ten sam stan obiektów.)\n\nKliknij przycisk Dodaj, aby umieścić obiekty w widocznym stanie obiektu \"^2\".",
+#else
+		"$$$/Panel/MSOPanel/MixedSelection", "Kliknij przycisk Nowy, aby zmienić każdy obiekt w osobny stan. (Alt+kliknięcie, aby zachować ten sam stan obiektów.)",
+		"$$$/Panel/MSOPanel/MSOAndMixedSelection", "Kliknij przycisk Nowy, aby utworzyć dla każdego obiektu nowy stan w obiekcie wielostanowym \"^1\". (Alt+kliknięcie, aby zachować ten sam stan obiektów.)\n\nKliknij przycisk Dodaj, aby umieścić obiekty w widocznym stanie obiektu \"^2\".",
+#endif
+		
+		"$$$/Menu/MSOPanelPopup", "Menu panelu Stany obiektów",	
+		"$$$/Menu/MSOPanel/NewState", "Nowy stan",
+		"$$$/Menu/MSOPanel/DeleteState", "Usuń stan",
+		"$$$/Menu/MSOPanel/AddToState", "Dodaj obiekty do stanu",
+		"$$$/Menu/MSOPanel/PasteIntoState", "Wklej do stanu",
+		"$$$/Menu/MSOPanel/ReleaseState", "Zwolnij stany do obiektów",
+		"$$$/Menu/MSOPanel/ReleaseAllStates", "Zwolnij wszystkie stany do obiektów",
+		"$$$/Menu/MSOPanel/ResetAllMSOs", "Resetuj wszystkie obiekty wielostanowe do pierwszego stanu",
+		"$$$/Menu/MSOPanel/Options", "Opcje panelu...",
+		"$$$/Menu/MSOPanel/ContextMenu", "Menu kontekstowe panelu Stanu obiektowe",
+		"$$$/Menu/MSOPanel/ReleaseStateContextMenu", "Zwolnij \"^1\" do obiektów",
+		"$$$/Menu/MSOPanel/DeleteStateContextMenu", "Usuń \"^1\"",
+		"$$$/Menu/MSOPanel/PasteIntoStateContextMenu", "Wklej do \"^1\"",
+		"$$$/Menu/MSOPanel/HiddenUntilTriggered", "Ukryty do wyzwolenia",
+	
+		"$$$/Tip/MSOPanel/StateAnimated", "Obiekt w stanie jest animowany.",
+		"$$$/Tip/MSOPanel/NewMSO", "Przekształć zaznaczenie na obiekt wielostanowy",
+		"$$$/Tip/MSOPanel/NewState", "Utwórz nowy stan",
+		"$$$/Tip/MSOPanel/DeleteState", "Usuń wybrany stan",
+		"$$$/Tip/MSOPanel/MSOIsSelected", "Ten obiekt wielostanowy jest zaznaczony. Jeśli obiekt zostanie przekształcony, przekształcone zostaną wszystkie stany.",
+		"$$$/Tip/MSOPanel/MSOIsNotSelected", "Zaznaczony jest stan. Kliknij, aby zaznaczyć obiekt wielostanowy.",
+		"$$$/Tip/MSOPanel/MSOStateIsSelected", "Ten stan jest zaznaczony.",
+		"$$$/Tip/MSOPanel/MSOStateContentIsSelected", "Zaznaczona jest zawartość tego stanu. Kliknij rząd, aby zaznaczyć ten stan.",
+		"$$$/Tip/MSOPanel/MSOStateRowMSOIsSelected", "Obiekt wielostanowy jest zaznaczony. Kliknij rząd, aby przełączyć na i zaznaczyć ten stan.",
+		"$$$/Tip/MSOPanel/MSOActiveStateRowMSOIsSelected", "Obiekt wielostanowy jest zaznaczony. Kliknij rząd, aby zaznaczyć ten stan.",
+		"$$$/Tip/MSOPanel/MSOAnotherStateIsSelected", "Kliknij rząd, aby przełączyć na oraz wybrać ten stan.",
+		"$$$/Tip/MSOPanel/PasteIntoState", "Wklej skopiowane obiekty do zaznaczonego stanu",
+		"$$$/Tip/MSOPanel/AddToState", "Dodaj obiekty do widocznego stanu",
+	
+		"$$$/Dialog/MSOPanel/ReleaseAlert", "Obiekt wielostanowy musi mieć przynajmniej dwa stany. Ta czynność spowoduje usunięcie obiektu wielostanowego z dokumentu. Wszystkie bieżące obiekty pozostaną na obecnych pozycjach jako obiekty jednostanowe.",
+		"$$$/Dialog/MSOPanel/ReleaseAllAlert", "Ta czynność spowoduje usunięcie obiektu wielostanowego z dokumentu. Wszystkie bieżące obiekty pozostaną na obecnych pozycjach jako obiekty jednostanowe.",
+		"$$$/Dialog/MSOPanel/DeletesMSOAlert", "Obiekt wielostanowy musi mieć przynajmniej dwa stany. Ta czynność spowoduje usunięcie obiektu wielostanowego z dokumentu. Obiekty powiązane z pozostałymi stanami pozostaną na obecnych pozycjach jako obiekty jednostanowe.",
+		
+		"$$$/Panel/MSOPanel/StatusOne", " obiekt w ^1",
+		"$$$/Panel/MSOPanel/Status", " obiekty w ^1",
+		
+		"$$$/Panel/MSOPanel/StatusMSOSelected", "Wszystkie zaznaczone stany",
+		"$$$/Panel/MSOPanel/StatusStateSelected", "Zaznaczony stan",
+		"$$$/Panel/MSOPanel/StatusStateContentSelected", "Obiekt w zaznaczonym stanie",
+
+		// Command strings		
+		"$$$/Command/CheckBox", "Konwertuj na pole wyboru",
+		"$$$/Command/ComboBox", "Konwertuj na listę kombinowaną",
+		"$$$/Command/ListBox", "Konwertuj na pole listy",
+		"$$$/Command/RadioButton", "Konwertuj na przycisk radiowy",
+		"$$$/Command/SignatureField", "Konwertuj na pole podpisu",
+		"$$$/Command/TextField", "Konwertuj na pole tekstowe",
+}
+};
+
+#endif // __ODFRC__

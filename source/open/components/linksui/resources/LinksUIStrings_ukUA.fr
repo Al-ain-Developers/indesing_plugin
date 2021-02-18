@@ -1,0 +1,227 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#ifdef __ODFRC__
+
+#include "StringTable.fh"
+
+resource StringTable (kLinksUIStringsRsrcID + index_ukUA)
+{
+	k_ukUA,					// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	{
+		"Links_WinMenu",			"Зв'&язки", // panel menu item
+		"kRtMouseGraphics",			"Графіка", // context menu submenu name
+		"RtMenuLinksUILinkInfo",	"Контекстне меню інформації зв'язку",
+		
+		"#LinksUIPanel",			"Зв'язки", // panel name
+		"#LinksUIPanelMenu",		"Панельне меню \"Зв'язки\"", 
+		"#LinksUtilitiesSubmenu",		"Утиліти",		// submenu for links panel menu
+		"#SelectedLinkInfoSectionName",			"Інформація зв'язку", // section name in links ui panel
+		
+		"#UpdateAllOutOfDateLinksMenu",	"Оновити всі зв'язки",
+		"#AutoFindMissingLinksMenu",		"Пошук відсутніх зв'язків",
+		"#LinksUIRelinkLinkMenu",		"Поновити зв'язок...",
+		"#LinksUIRelinkResourceMenu",	"Поновити зв'язок усіх екземплярів...", // menu item to relink all instances of this multiple link assets
+		"#RelinkResource ^1 Menu",		"Поновити зв'язок усіх екземплярів '^1'...", // menu item to relink all instances of one single link asset
+		"#ReplaceFPOWithOriginalResourceMenu",	"Замінити всі зразки…", // menu item to replace all instances of this multiple link assets
+		"#ReplaceFPOWithOriginalResource ^1 Menu", "Замінити всі зразки FPO '^1' оригіналом…", // menu item to replace all instances of one single link asset
+		"#RelinkCloudResource ^1 Menu",	"Поновити зв'язок з усіма екземплярами '^1' у CC Libraries...", // menu item to relink all instances of one single link asset
+        "#RelinkAALResource ^1 Menu",    "Повторно зв’язати всі примірники \"^1\" з Adobe Asset Link...", // menu item to relink all instances of one single link asset
+		"#LinksUIUpdateLinkMenu",			"Оновити зв'язок", // context menu item in links ui panel
+		"#LinksUIUpdateLinkResourceMenu",	"Оновити всі екземпляри",
+		"#UpdateResource ^1 Menu",		"Оновити всі екземпляри '^1'", // menu item to update all instances of one single link asset
+		"#LinksUIEmbedLinkMenu",			"Вбудувати зв'язок", // context menu item in links ui panel
+		"#LinksUIEmbedResourceMenu",		"Вбудувати всі екземпляри",
+		"#EmbedResource ^1 Menu",			"Вбудувати всі екземпляри '^1'", // menu item to embed all instances of one single link asset
+		"#LinksUIUnEmbedLinkMenu",		"Скасувати вбудування зв'язку", // context menu item in links ui panel
+		"#LinksUIUnEmbedResourceMenu",	"Скасувати вбудування всіх екземплярів",
+		"#UnembedResource ^1 Menu",			"Скасувати вбудовування всіх екземплярів '^1'", // menu item to unembed all instances of one single link asset
+		"#LinksUIUnLinkMenu",				"Скасувати зв'язок",
+		"#UnLinkResourceMenu",			"Скасувати зв'язок усіх екземплярів",
+		"#UnLinkResource ^1 Menu",			"Скасувати зв'язок усіх екземплярів '^1'", // menu item to unlink all instances of one single link asset
+		"#LinksUIEditOriginalLinkMenu",		"Редагувати оригінал", // context menu item in links ui panel
+		"#LinksUIGoToSourceLinkMenu",		"Перейти до джерела", // context menu item in links ui panel
+		"#LinksUIXMPFileInfo",				"Інформація файлу XMP...",
+		"#LinksUICopyPath",				"Копіювати шлях до файлу",
+		"#LinksUICopyPlatformPath",			"Копіювати шлях до стилю платформи",
+		"#RevealLinkInMacFinder",			"Показати у Finder",
+		"#RevealLinkInWinExplorer",			"Показати в Explorer",
+		"#RevealLinkInAdobeBridge",			"Показати у Bridge",
+		"#RevealLinkInCCLibraries",			"Показати в CC Libraries",
+		"#GoToLink",						"Перейти за посиланням",
+		"#EditWithApp",					"Редагувати за допомогою",
+		"ApplicationFiles",					"Програма (*.exe)", // windows only string to list exe files in the 'edit with application' dialog.
+		"#ChooseEditingApplication",			"Обрати програму", // dialog title
+		"#OtherApp",						"Інше...",	// Menu name for choosing a custom application via a standard file dialog for Edit With...
+		"#LinksUICopyLink",				"Копіювати зв'язок(-зки) в...",
+		"#LinksUIEditColumnsMenu",			"Параметри панелі...",
+		
+		"#LinksUIRemoveThisColumnMenu",	"Приховати цей стовпець",
+		"#LinksUIShowThumbnailMenu",		"Показати мініатюру",
+		"#LinksUIHideThumbnailMenu",		"Приховати мініатюру",		
+		"#LinksUIShowInfoThumbnailMenu",	"Показати мініатюру даних",
+		"#LinksUIHideInfoThumbnailMenu",	"Приховати мініатюру даних",
+		
+		"#SaveLinkVersionCmd",			"Повернути зв'язок",
+		"#ShowLinksPanelColumn",			"Показати стовпець",
+		"#ShowLinksPanelInfo",				"Показати в інформації зв'язку",
+		"#SelectNextLinkButtonTip",			"Вибрати наступний зв'язок у списку",
+		"#SelectPrevLinkButtonTip",			"Вибрати попередній зв'язок у списку",
+		"#ToggleLinkInfoButtonTip",			"Показати/сховати відомості про зв'язок",
+
+		"#ShortLinkStatusParamStr",				"^1 зв'язків(-ки)",  // status string for links panel
+		"#LongLinkStatusParamStr",				"^1 Усього зв'язків\n\n   ^2 Відсутніх\n   ^3 Змінених\n   ^4 Вбудованих\n   ^5 Унікальних\n   ^6 Дочірніх", // tip string for links panel status.
+		"#OneSelectedLinkStr",			"Вибрано 1", // status string when one link is selected in the panel.
+		"#NumSelectedLinksParamStr",	"^1 вибрано", // status string when multiple links are selected in the panel.
+				
+		"RtMenuLinksUILinkItem",		"Контекстне меню зв'язку",
+		"RtMenuLinksUILinksHeader",		"Контекстне меню заголовка зв'язків",
+		
+		"#LinkColumnDialog",			"Параметри панелі", // dialog name
+		"#LinksUIPanelOptions",			"Параметри",
+		
+		"#LinkThumbPrefLabel",			"Мініатюри:",
+		"#LinksUIRowSizeLabel",		"&Розмір рядка:",
+		"#LinksUISmallRowStr",			"Маленькі рядки",
+		"#LinksUIRegularRowStr",		"Звичайні рядки",
+		"#LinksUILargeRowStr",			"Великі рядки",
+		"#LinkInfoShowThumbnailCheckbox",	"Показати в інформації &зв'язку",
+		"#LinksUIShowThumbnail",		"Показати у стовпці &імені",
+		"#LinksUICollapseMultiple",		"&Згорнути кілька посилань до однакового джерела",
+
+		"#SearchHereForMissingFiles",	"Пошук відсутніх зв'язків у цій теці", // label for checkbox in relink dialog
+		"#RelinkSkipButton",			"Пропустити", // name for 'skip' button in relink dialog
+		"#SearchFound^1Links",		"Здійснено пошук в цьому каталозі, з яким було повторно встановлено зв'язок, внаслідок якого знайдено ^1 відсутніх посилань і з ними повторно встановлено зв'язок.", // alert that displays if we auto find missing links after a relink
+		"#RelinkToFolderTitle",			"Виберіть теку для повторного встановлення зв'язків. Зв'язки буде відновлено лише для виділених зв'язків з відповідними іменами.",
+		"#RelinkToSameFilename",		"Знайти збіги імені файлу та розширення.", // radio button option in relink to folder dialog
+		"#RelinkToExtension",			"Знайти збіги імені файлу, але з таким розширенням:", // radio button option in relink to folder dialog
+		"#LinksUICopyLinksTitle",		"Виберіть теку для копіювання зв'язаних файлів.",
+		"#LinksUIRelinkToFolderLinkMenu",	"Поновити зв'язок із текою...",
+		"#LinksUIRelinkFileExtensionLinkMenu",	"Поновити зв'язок із розширенням файлу...",
+        "#LinksUIRelinkFromCloudAssetLinkMenu",	"Поновити зв'язок із даними CC Libraries...",
+        "#LinksUIRelinkFromAALAssetLinkMenu",    "Повторно зв’язати з Adobe Asset Link...",
+		"#LicenseStockAssetLinkMenu",	"Ліцензувати зображення...",
+		"#LinksUIRelink: ^1",			"Поновити зв'язок: ^1", // title for relink dialog. ^1 becomes file path.
+		"#LinksUILocate: ^1",			"Знайти: ^1", // title for relink dialog when link is missing. ^1 becomes file path.
+		"#CopyLinksFailedAlert",		"Не вдалося скопіювати зв'язки до папки.",
+		"#AutoFindFoundNothingAlert",	"Відсутні зв'язки не знайдено. Скористуйтеся командою \"Поновити зв'язок\" для пошуку першого відсутнього зв'язку та спробуйте знову.",
+		
+		"kEditsMadeWarning",			  "В імпортовану версію \"^1\" були внесені зміни. У разі оновлення ці зміни будуть втрачені. Оновити?",
+		"kEditsMadeInLinkedStoryWarning",	"У зв'язаний матеріал \"^1\" внесено зміни. У разі оновлення ці зміни будуть втрачені. Оновити?",
+		"kEditsMadeInLinkedArticleWarning", "У пов’язаний елемент сторінки \"^1\" внесено зміни. У разі оновлення ці зміни буде втрачено. Оновити?",
+		"kEditsMadeToTextOrTableWarning", "В імпортовану версію \"^1\" були внесені зміни. Зміни будуть втрачені (за винятком змін, застосованих до електронних таблиць через стилі комірок або таблиць), якщо оновити зв'язок. Оновити?",
+
+		// Strings for Problem Links dialog
+		"#LinksModifiedWarning",	"Цей документ містить посилання на відсутні/змінені джерела. Можна оновити змінені зв’язки зараз або зробити це пізніше за допомогою панелі «Зв’язки».",
+		"#HTTPLinksModifiedWarning",	"Цей документ містить посилання на джерела, які були відсутні/змінені після останнього збереження документа. Можна оновити змінені зв’язки зараз або зробити це пізніше за допомогою панелі «Зв’язки».",
+		"#UpdateLinks",				"&Оновити змінені посилання",	 // button text
+		"#Don'tUpdateLinks",		"Не оновлювати зв'язки", // button text
+		"#ProblemMissingLinksParamStr",	"^1 - пропущений(-их) зв'язок(-ів)",
+		"#ProblemModifiedLinksParamStr",	"^1 - змінений(-их) зв'язок(-ів)",
+		"#ProblemInaccessibleLinksParamStr",	"^1 - Недоступні посилання URL. За додатковою інформацією зверніться до панелі “Зв'язки”.",
+        "#ProblemLinksDialogHeader",    "Проблеми із посиланнями",
+		"UnembedToOriginal", 		"Під час скасування вбудування можна визначити зв'язки таким чином, щоб вони вказували на вихідні файли або на файли, що будуть створені у теці. Зв'язати посилання з вихідними файлами?",
+		"#SelectUnembedDir",
+									"Виберіть теку для розміщення створених файлів.",
+
+		// Show Link message.
+		 "Cannot show link: The selected item is on a hidden layer.",
+						"Неможливо показати зв'язок: виділений елемент прихований або знаходиться у прихованому шарі.",
+		"Cannot show link: The selected item is hidden in overset text.",
+						"Неможливо показати зв'язок: виділений елемент прихований, бо знаходиться у надлишковому тексті.",
+		"Cannot show link: The selected item is hidden in an inactive form field state.",
+						"Неможливо показати зв'язок: обраний елемент прихований у неактивному стані кнопки.  Скористайтеся панеллю \"Кнопки\" для активації прихованого стану та відображення елемента.",
+		"Cannot show link: The selected item is hidden in an inactive mso state.",
+						"Неможливо показати зв'язок: виділений елемент знаходиться у неактивному стані. Скористайтеся панеллю “Стани об'єкта”, щоб зробити видимим прихований стан об'єкта.",
+		"Cannot show link: The selected item is in deleted text in a tracked change.",
+						"Неможливо показати зв'язок: обраний елемент міститься у видаленому тексті у відстеженій зміні.",
+		"Cannot show link: The selected item is an XML structure element not in the layout.",
+						"Неможливо показати зв'язок: обраний елемент - це елемент XML-структури, якого немає в макеті.",
+		"Cannot show link: The selected item is in hidden conditional text.",
+						"Неможливо показати зв'язок: виділений елемент міститься у прихованому умовному тексті.",
+						
+						
+		"#EditOriginalButtonTip",		"Редагувати оригінал",	// tip string for button in links panel
+		"#GotoLinkButtonTip",		"Перейти за посиланням",	// tip string for button in links panel
+		
+		"#appendedUpdateButtonTipMac",		". Клацніть з утримуванням клавіші Opt, щоб оновити все", // appened to menu name for 'update link' to build tip string for update button(mac)
+		"#appendedUpdateButtonTipWin",		". Клацніть з утримуванням клавіші Alt, щоб оновити все", // appened to menu name for 'update link' to build tip string for update button(win)
+		"#appendedRelinkButtonTipMac",		" Клацніть з утримуванням клавіші Opt, щоб поновити всі відсутні зв'язки", // appened to menu name for 'Relink' to build tip string for relink button(mac)
+		"#appendedRelinkButtonTipWin",		" Клацніть з утримуванням клавіші Alt, щоб поновити всі відсутні зв'язки", // appened to menu name for 'Relink' to build tip string for relink button(win)
+		
+		"#ErrorEmbeddingLink",				"Не вдалося вбудувати зв'язок.",
+		"#LinksUIShowLinkInfoMenu",		"Показати панель інформації про посилання",
+		"#LinksUIHideLinkInfoMenu",			"Сховати панель інформації про посилання",
+		"#LinksUICopyLinkInfoMenu",		"Скопіювати всю інформацію про посилання",
+		"#LinksUIAutosizeLinkInfoMenu",		"Автоматично встановити розмір інформації про посилання",
+		"#LinksUIGenerateReportMenu",		"Скопіювати інформацію для вибраних посилань",
+		"#LinksUIGenerateCaptionPrefsMenu",	"Налаштування підпису...",
+		"#GenerateLiveLinkCaptionMenu",		"Створити підписи в реальному часі",
+		"#GenerateStaticLinkCaptionMenu",	"Створити статичні підписи",
+		
+		"#GenerateCaptionPrefDialogName",	"Налаштування підпису",
+		"#BeforeMetadataCaptionLabel",		"Текст перед",
+		"#MetadataCaptionLabel",			"Метадані",
+		"#AfterMetadataCaptionLabel",		"Текст після",
+		"#GenerateLiveCaptionGraphicSelectionMenu",	"Створити підпис в реальному часі",
+		"#GenerateStaticCaptionGraphicSelectionMenu",	"Створити статичний підпис",
+		"#CopyLinkInfoStr '^1'",				"Копіювати '^1'", // Menu item name in links panel. ^1 is replaced with whatever text data is under the mouse.
+		"#CopyLinkFieldMenu",				"Поле “Відомості про копіювання”",
+		"#InfoLabelSuffix",					": ", // suffix added to end of link info labels in the info section
+		
+		"#LinksCopyInfoMenu",				"Відомості про копіювання", // links panel submenu
+		
+		"#CaptionSubmenu",				"Підписи",		// name of captions submenu on Object menu
+		"#CaptionRowLabel",				"Заголовок метаданих", // caption setup dialog top section title
+		"#CaptionOptionsLabel",				"Позиція та стиль", // caption setup dialog bottom section title
+		"#CaptionOffsetLabel",				"&Зсув:",
+		"#CaptionParaStyleLabel",			"&Стиль абзацу:",
+		"#CaptionLayerLabel",				"&Шар:",
+		"#CaptionLayerLockedError",			"Неможливо створити підпис на заблокованому шарі.",
+		"#CaptionGroupFailureError",			"Неможливо створити групу для підпису.",
+		"#ErrorGeneratingCaption",			"Не вдалося створити підпис.",
+		"#CaptionAlignmentLabel",			"&Вирівнювання:",
+		
+		"#CaptionAlignBelow",				"Під зображенням",
+		"#CaptionAlignAbove",				"Над зображенням",
+		"#CaptionAlignLeft",					"Зліва від зображення",
+		"#CaptionAlignRight",				"Справа від зображення",
+		
+		"#GroupCaptionWithImage",			"&Групувати підпис із зображенням",
+		 "#ConvertCaptionToTextMenu",		"Конвертувати у статичні підписи",
+		 "#ShowImportOptionsTip", 			"Показати параметри імпорту", // Tool tip for custom controls in relink dialog
+		 "#SearchHereForMissingFilesTip",	"Шукати відсутні файли тут", // Tool tip for custom controls in relink dialog
+		 "#EmbedLinkFromPropsPanel",		"Вбудувати зображення з панелі «Декоративні елементи»",
+		 "#RelinkAssetFromPropsPanel",		"Відновити зв’язок із зображенням із панелі «Декоративні елементи»",
+		 "#UpdateLinkFromPropsPanel",		"Оновити зображення з панелі «Декоративні елементи»",
+		 "#UnlinkFromPropsPanel",			"Скасувати зв’язок файлу з панеллю «Властивості»",
+        
+        "kImportingAALAsset",                "Імпортування ресурсу",
+        "kImportingFileName",                "Імпортування ^1",
+        
+        //Error Strings for AEM
+        "AEMUnsupportedFiles",     "Не вдалося розмістити ^1 із ^2 файлів. Тип файлу не підтримується програмою InDesign.",
+        "AEMInaccessibleFiles",     "Не вдалося розмістити ^1 із ^2 файлів. Програма InDesign не може отримати доступ до файлу. Перевірте підключення до мережі або вихідне джерело контенту.",
+        "AEMUnknownFiles",     "Не вдалося розмістити ^1 із ^2 файлів через невідому помилку.",
+        "AEMGenericImportFailure",     "Не вдалось імпортувати ресурс AEM.",
+        
+        // Action id strings
+        "#LinksUIReplaceFPOWithOriginalLink",        "Замінити FPO оригіналом…",
+        "#LinksUIReplaceAllFPOWithOriginalLinks",    "Замінити всі FPO оригіналами…",
+        "#LinksUIDownloadOriginalLink",                "Завантажити оригінал",
+        "#LinksUIDownloadAllOriginalLinks",            "Завантажити всі оригінали",
+	}
+};
+
+
+
+#endif //__ODFRC__

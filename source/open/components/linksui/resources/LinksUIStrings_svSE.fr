@@ -1,0 +1,227 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#ifdef __ODFRC__
+
+#include "StringTable.fh"
+
+resource StringTable (kLinksUIStringsRsrcID + index_svSE)
+{
+	k_svSE,					// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	{
+		"Links_WinMenu",			"Län&kar", // panel menu item
+		"kRtMouseGraphics",			"Bilder", // context menu submenu name
+		"RtMenuLinksUILinkInfo",	"Snabbmenyn Länkinformation",
+		
+		"#LinksUIPanel",			"Länkar", // panel name
+		"#LinksUIPanelMenu",		"Menyn i panelen Länkar", 
+		"#LinksUtilitiesSubmenu",		"Tillbehör",		// submenu for links panel menu
+		"#SelectedLinkInfoSectionName",			"Länkinfo", // section name in links ui panel
+		
+		"#UpdateAllOutOfDateLinksMenu",	"Uppdatera alla länkar",
+		"#AutoFindMissingLinksMenu",		"Sök efter saknade länkar",
+		"#LinksUIRelinkLinkMenu",		"Länka om...",
+		"#LinksUIRelinkResourceMenu",	"Länka om alla förekomster...", // menu item to relink all instances of this multiple link assets
+		"#RelinkResource ^1 Menu",		"Länka om alla förekomster av  '^1'...", // menu item to relink all instances of one single link asset
+		"#ReplaceFPOWithOriginalResourceMenu",	"Ersätt alla förekomster...", // menu item to replace all instances of this multiple link assets
+		"#ReplaceFPOWithOriginalResource ^1 Menu", "Ersätt alla förekomster av FPO ^1 med original...", // menu item to replace all instances of one single link asset
+		"#RelinkCloudResource ^1 Menu",	"Länka om alla förekomster av ^1 från CC Libraries...", // menu item to relink all instances of one single link asset
+        "#RelinkAALResource ^1 Menu",    "Länka om alla förekomster av ^1 från Adobe Asset Link...", // menu item to relink all instances of one single link asset
+		"#LinksUIUpdateLinkMenu",			"Uppdatera länk", // context menu item in links ui panel
+		"#LinksUIUpdateLinkResourceMenu",	"Uppdatera alla förekomster",
+		"#UpdateResource ^1 Menu",		"Uppdatera alla förekomster av '^1'", // menu item to update all instances of one single link asset
+		"#LinksUIEmbedLinkMenu",			"Bädda in länk", // context menu item in links ui panel
+		"#LinksUIEmbedResourceMenu",		"Bädda in alla förekomster",
+		"#EmbedResource ^1 Menu",			"Uppdatera alla förekomster av '^1'", // menu item to embed all instances of one single link asset
+		"#LinksUIUnEmbedLinkMenu",		"Ångra inbäddning av länk", // context menu item in links ui panel
+		"#LinksUIUnEmbedResourceMenu",	"Ångra inbäddning av alla förekomster",
+		"#UnembedResource ^1 Menu",			"Ångra inbäddning av alla förekomster av '^1'", // menu item to unembed all instances of one single link asset
+		"#LinksUIUnLinkMenu",				"Bryt länk",
+		"#UnLinkResourceMenu",			"Bryt länk för alla förekomster",
+		"#UnLinkResource ^1 Menu",			"Bryt länk för alla förekomster av '^1'", // menu item to unlink all instances of one single link asset
+		"#LinksUIEditOriginalLinkMenu",		"Redigera original", // context menu item in links ui panel
+		"#LinksUIGoToSourceLinkMenu",		"Gå till källa", // context menu item in links ui panel
+		"#LinksUIXMPFileInfo",				"XMP-filsinfo...",
+		"#LinksUICopyPath",				"Kopiera fullständig sökväg",
+		"#LinksUICopyPlatformPath",			"Kopiera sökväg till plattformsformat",
+		"#RevealLinkInMacFinder",			"Visa i Finder",
+		"#RevealLinkInWinExplorer",			"Visa i Utforskaren",
+		"#RevealLinkInAdobeBridge",			"Visa i Bridge",
+		"#RevealLinkInCCLibraries",			"Visa i CC Libraries",
+		"#GoToLink",						"Gå till länk",
+		"#EditWithApp",					"Redigera med ",
+		"ApplicationFiles",					"Program (*.exe)", // windows only string to list exe files in the 'edit with application' dialog.
+		"#ChooseEditingApplication",			"Välj program", // dialog title
+		"#OtherApp",						"Annat...",	// Menu name for choosing a custom application via a standard file dialog for Edit With...
+		"#LinksUICopyLink",				"Kopiera länkar till...",
+		"#LinksUIEditColumnsMenu",			"Panelalternativ...",
+		
+		"#LinksUIRemoveThisColumnMenu",	"Dölj den här kolumnen",
+		"#LinksUIShowThumbnailMenu",		"Visa miniatyrbild",
+		"#LinksUIHideThumbnailMenu",		"Dölj miniatyrbild",		
+		"#LinksUIShowInfoThumbnailMenu",	"Visa information om miniatyrbild",
+		"#LinksUIHideInfoThumbnailMenu",	"Dölj information om miniatyrbild",
+		
+		"#SaveLinkVersionCmd",			"Checka in länk",
+		"#ShowLinksPanelColumn",			"Visa kolumn",
+		"#ShowLinksPanelInfo",				"Visa i länkinfo",
+		"#SelectNextLinkButtonTip",			"Markera nästa länk i listan",
+		"#SelectPrevLinkButtonTip",			"Markera föregående länk i listan",
+		"#ToggleLinkInfoButtonTip",			"Visa/dölj länkinformation",
+
+		"#ShortLinkStatusParamStr",				"^1 länkar",  // status string for links panel
+		"#LongLinkStatusParamStr",				"^1Totala länkar\n\n   ^2 Saknade\n   ^3 Ändrade\n   ^4 Inbäddade\n   ^5 Unika\n   ^6 Underlänkar", // tip string for links panel status.
+		"#OneSelectedLinkStr",			"1 markerad", // status string when one link is selected in the panel.
+		"#NumSelectedLinksParamStr",	"^1 markerade", // status string when multiple links are selected in the panel.
+				
+		"RtMenuLinksUILinkItem",		"Länka snabbmeny",
+		"RtMenuLinksUILinksHeader",		"Länkar rubrik på snabbmeny",
+		
+		"#LinkColumnDialog",			"Panelalternativ", // dialog name
+		"#LinksUIPanelOptions",			"Alternativ",
+		
+		"#LinkThumbPrefLabel",			"Miniatyrbilder: ",
+		"#LinksUIRowSizeLabel",		"&Radstorlek:",
+		"#LinksUISmallRowStr",			"Små rader",
+		"#LinksUIRegularRowStr",		"Normala rader",
+		"#LinksUILargeRowStr",			"Stora rader",
+		"#LinkInfoShowThumbnailCheckbox",	"Visa i länk&info",
+		"#LinksUIShowThumbnail",		"Visa i &namnkolumn",
+		"#LinksUICollapseMultiple",		"&Komprimera flera länkar till samma källa",
+
+		"#SearchHereForMissingFiles",	"Sök efter saknade länkar i den här mappen", // label for checkbox in relink dialog
+		"#RelinkSkipButton",			"Hoppa över", // name for 'skip' button in relink dialog
+		"#SearchFound^1Links",		"En sökning gjordes i den här omlänkningskatalogen. ^1 saknade länkar hittades och länkades om.", // alert that displays if we auto find missing links after a relink
+		"#RelinkToFolderTitle",			"Ange mappen att länka om till. Endast markerade länkar med ett matchande namn kommer att länkas om.",
+		"#RelinkToSameFilename",		"Matcha samma filnamn och filtillägg.", // radio button option in relink to folder dialog
+		"#RelinkToExtension",			"Matcha samma filnamn utom det här filtillägget:", // radio button option in relink to folder dialog
+		"#LinksUICopyLinksTitle",		"Ange vilken mapp de länkade filerna ska kopieras till.",
+		"#LinksUIRelinkToFolderLinkMenu",	"Länka om till mapp...",
+		"#LinksUIRelinkFileExtensionLinkMenu",	"Länka om filtillägg...",
+        "#LinksUIRelinkFromCloudAssetLinkMenu",	"Länka om från CC Libraries...",
+        "#LinksUIRelinkFromAALAssetLinkMenu",    "Länka om från Adobe Asset Link...",
+		"#LicenseStockAssetLinkMenu",	"Licensiera bild…",
+		"#LinksUIRelink: ^1",			"Länka om: ^1", // title for relink dialog. ^1 becomes file path.
+		"#LinksUILocate: ^1",			"Hitta: ^1", // title for relink dialog when link is missing. ^1 becomes file path.
+		"#CopyLinksFailedAlert",		"Det gick inte att kopiera länkar till en mapp.",
+		"#AutoFindFoundNothingAlert",	"Hittade inga saknade länkar. Använd kommandot Länka om för att hitta den första saknade länken och försök igen.",
+		
+		"kEditsMadeWarning",			  "Den importerade versionen av \"^1\" har redigerats. Ändringarna försvinner om du uppdaterar. Vill du uppdatera ändå?",
+		"kEditsMadeInLinkedStoryWarning",	"Den länkade artikeln \"^1\" har redigerats. Ändringarna går förlorade om du uppdaterar. Vill du uppdatera ändå?",
+		"kEditsMadeInLinkedArticleWarning", "Det länkade sidobjektet ^1 har redigerats. Ändringarna går förlorade om du uppdaterar. Vill du uppdatera?",
+		"kEditsMadeToTextOrTableWarning", "Den importerade versionen av \"^1\" har redigerats. Du förlorar ändringarna om du uppdaterar länken (utom de ändringar i kalkylark som gjorts med hjälp av cell- eller tabellformat). Vill du uppdatera ändå?",
+
+		// Strings for Problem Links dialog
+		"#LinksModifiedWarning",	"Detta dokument innehåller länkar till källor som har saknats/ändrats. Du kan uppdatera de ändrade länkarna nu eller senare genom att använda panelen Länkar.",
+		"#HTTPLinksModifiedWarning",	"Detta dokument innehåller länkar till källor som har saknats/ändrats sedan dokumentet sparades senast. Du kan uppdatera de ändrade länkarna nu eller senare genom att använda panelen Länkar.",
+		"#UpdateLinks",				"&Uppdatera ändrade länkar",	 // button text
+		"#Don'tUpdateLinks",		"Uppdatera inte länkar", // button text
+		"#ProblemMissingLinksParamStr",	"^1 - Saknade länk/ar",
+		"#ProblemModifiedLinksParamStr",	"^1 - Förändrade länk/ar",
+		"#ProblemInaccessibleLinksParamStr",	"^1 - Oåtkomliga URL-länkar. Mer information finns på panelen Länkar.",
+        "#ProblemLinksDialogHeader",    "Problem med länkar",
+		"UnembedToOriginal", 		"Om du ångrar inbäddningen kan du länka till originalfilerna eller länka till filer som skapas i en mapp. Vill du länka till originalfilerna?",
+		"#SelectUnembedDir",
+									"Ange vilken mapp filerna ska skapas i.",
+
+		// Show Link message.
+		 "Cannot show link: The selected item is on a hidden layer.",
+						"Det gick inte att visa länken: Det markerade objektet är dolt eller finns i ett dolt lager.",
+		"Cannot show link: The selected item is hidden in overset text.",
+						"Det gick inte att visa länken: Det markerade objektet är dolt tillsammans med dold text.",
+		"Cannot show link: The selected item is hidden in an inactive form field state.",
+						"Det gick inte att visa länken: Det markerade objektet är dolt med ett inaktivt knappläge. Du kan använda panelen Knappar till att aktivera det dolda läget så att objektet visas.",
+		"Cannot show link: The selected item is hidden in an inactive mso state.",
+						"Det gick inte att visa länken: Det markerade objektet har ett inaktivt objektläge. Använd panelen Objektlägen för att göra det dolda läget synligt.",
+		"Cannot show link: The selected item is in deleted text in a tracked change.",
+						"Det gick inte att visa länken: Det markerade objektet finns i borttagen text i en spårad ändring.",
+		"Cannot show link: The selected item is an XML structure element not in the layout.",
+						"Det gick inte att visa länken: Det markerade objektet är ett XML-strukturelement som inte finns i layouten.",
+		"Cannot show link: The selected item is in hidden conditional text.",
+						"Det gick inte att visa länken: Det markerade objektet befinner sig i dold villkorlig text.",
+						
+						
+		"#EditOriginalButtonTip",		"Redigera original",	// tip string for button in links panel
+		"#GotoLinkButtonTip",		"Gå till länk",	// tip string for button in links panel
+		
+		"#appendedUpdateButtonTipMac",		". Alt-klicka för att uppdatera alla", // appened to menu name for 'update link' to build tip string for update button(mac)
+		"#appendedUpdateButtonTipWin",		". Alt-klicka för att uppdatera alla", // appened to menu name for 'update link' to build tip string for update button(win)
+		"#appendedRelinkButtonTipMac",		" Alt-klicka för att länka om alla saknade länkar", // appened to menu name for 'Relink' to build tip string for relink button(mac)
+		"#appendedRelinkButtonTipWin",		" Alt-klicka för att länka om alla saknade länkar", // appened to menu name for 'Relink' to build tip string for relink button(win)
+		
+		"#ErrorEmbeddingLink",				"Det gick inte att infoga länk.",
+		"#LinksUIShowLinkInfoMenu",		"Visa rutan Länkinformation",
+		"#LinksUIHideLinkInfoMenu",			"Dölj rutan Länkinformation",
+		"#LinksUICopyLinkInfoMenu",		"Kopiera all länkinformation",
+		"#LinksUIAutosizeLinkInfoMenu",		"Ändra länkinformationens storlek automatiskt",
+		"#LinksUIGenerateReportMenu",		"Kopiera information för markerade länkar",
+		"#LinksUIGenerateCaptionPrefsMenu",	"Bildtextinställningar...",
+		"#GenerateLiveLinkCaptionMenu",		"Generera Live-bildtexter",
+		"#GenerateStaticLinkCaptionMenu",	"Generera statiska bildtexter",
+		
+		"#GenerateCaptionPrefDialogName",	"Bildtextinställningar",
+		"#BeforeMetadataCaptionLabel",		"Text före",
+		"#MetadataCaptionLabel",			"Metadata",
+		"#AfterMetadataCaptionLabel",		"Text efter",
+		"#GenerateLiveCaptionGraphicSelectionMenu",	"Generera Live-bildtext",
+		"#GenerateStaticCaptionGraphicSelectionMenu",	"Generera statisk bildtext",
+		"#CopyLinkInfoStr '^1'",				"Kopiera ^1", // Menu item name in links panel. ^1 is replaced with whatever text data is under the mouse.
+		"#CopyLinkFieldMenu",				"Kopiera informationsfält",
+		"#InfoLabelSuffix",					": ", // suffix added to end of link info labels in the info section
+		
+		"#LinksCopyInfoMenu",				"Kopiera information", // links panel submenu
+		
+		"#CaptionSubmenu",				"Bildtexter",		// name of captions submenu on Object menu
+		"#CaptionRowLabel",				"Metadatabildtext", // caption setup dialog top section title
+		"#CaptionOptionsLabel",				"Placering och format", // caption setup dialog bottom section title
+		"#CaptionOffsetLabel",				"&Förskjutning:",
+		"#CaptionParaStyleLabel",			"&Styckeformat:",
+		"#CaptionLayerLabel",				"&Lager:",
+		"#CaptionLayerLockedError",			"Det går inte att generera bildtext för låst lager.",
+		"#CaptionGroupFailureError",			"Det går inte att skapa en grupp för bildtext.",
+		"#ErrorGeneratingCaption",			"Det gick inte att generera bildtext.",
+		"#CaptionAlignmentLabel",			"&Justering:",
+		
+		"#CaptionAlignBelow",				"Nedanför bild",
+		"#CaptionAlignAbove",				"Ovanför bild",
+		"#CaptionAlignLeft",					"Vänster om bild",
+		"#CaptionAlignRight",				"Höger om bild",
+		
+		"#GroupCaptionWithImage",			"&Gruppera bildtext med bild",
+		 "#ConvertCaptionToTextMenu",		"Konvertera till statisk bildtext",
+		 "#ShowImportOptionsTip", 			"Visa importalternativ", // Tool tip for custom controls in relink dialog
+		 "#SearchHereForMissingFilesTip",	"Sök här efter filer som saknas", // Tool tip for custom controls in relink dialog
+		 "#EmbedLinkFromPropsPanel",		"Bädda in bild från egenskapspanelen",
+		 "#RelinkAssetFromPropsPanel",		"Länka om bild från egenskapspanelen",
+		 "#UpdateLinkFromPropsPanel",		"Uppdatera bild från egenskapspanelen",
+		 "#UnlinkFromPropsPanel",			"Bryt länk till fil från egenskapspanelen",
+        
+        "kImportingAALAsset",                "Importerar resurs",
+        "kImportingFileName",                "Importerar ^1",
+        
+        //Error Strings for AEM
+        "AEMUnsupportedFiles",     "Det gick inte att placera ^1 av ^2 fil(er). Filtypen stöds inte av InDesign.",
+        "AEMInaccessibleFiles",     "Kan inte placera ^1 av ^2 fil(er). InDesign har inte åtkomst till filen. Kontrollera nätverksanslutningen eller den ursprungliga innehållskällan.",
+        "AEMUnknownFiles",     "Det gick inte att placera ^1 av ^2 fil(er) på grund av okänt fel.",
+        "AEMGenericImportFailure",     "Det gick inte att importera AEM-baserad resurs.",
+        
+        // Action id strings
+        "#LinksUIReplaceFPOWithOriginalLink",        "Ersätt FPO med original...",
+        "#LinksUIReplaceAllFPOWithOriginalLinks",    "Ersätt alla FPO med original...",
+        "#LinksUIDownloadOriginalLink",                "Hämta original",
+        "#LinksUIDownloadAllOriginalLinks",            "Hämta alla original",
+	}
+};
+
+
+
+#endif //__ODFRC__

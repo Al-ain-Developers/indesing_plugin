@@ -1,0 +1,142 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kLayerPanelStringsRsrcID + index_ukUA)
+{
+	k_ukUA,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{
+		// ----- Command strings
+
+		"Layer Options",				"Параметри шару",
+		"New Layer",					"Новий шар",
+		"Layer Deletion",				"Видалити шар(и)",
+		"Delete Unused Layers",			"Видалити шари, що не використовуються",
+		"Lock Others",					"Заблокувати решту",
+		"#UnlockOthers",					"Розблокувати інші",
+		"Show All",						"Показати всі",
+		"#ShowOthers",					"Показати інші",
+		"Unlock All",					"Розблокувати всі",
+		"Hide All",						"Сховати усе",
+		"Lock All",						"Заблокувати всі",
+		"Merge Layers",					"Об'єднати шари",
+		"Move To Layer",				"Перемістити у шар",
+		"Copy To Layer",				"Копіювати у шар",
+		"Move Layer",					"Перемістити шар",
+		"Move Layers",					"Перемістити шари",
+		"kUnlockOthersSequence",		"Розблокувати інші",
+		"kLockOthersSequence",			"Заблокувати інші",
+
+		// ----- Menu strings
+		
+		"Layers...",						"&Шари...",
+
+		"New Layer...",						"Створити шар...",
+		"New Layer Above \"^1\"...",		"Створити шар вище  \"^1\"...",
+		"New Layer Below \"^1\"...",		"Створити шар нижче  \"^1\"...",
+		"New Top Layer...",					"Створити верхній шар...",
+		"Delete Layer",						"Видалити шар",
+		"Delete \"^1\"",					"Видалити шар \"^1\"",
+		"Delete Layers",					"Видалити шари",
+		"#Duplicate ^1 Menu",				"Створити дублікат шару \"^1\"",
+		"#Duplicate LayersMenu",			"Створити дублікати шарів",
+		"#DuplicatLayersCmd",				"Створити дублікати шарів",
+		
+		"Layer Options for \"^1\"...",		"Параметри шару для  \"^1\"...",
+		"Layer Options...",					"Параметри шару...",
+		"Show All Layers",					"Показати всі шари",
+		"Hide Others",						"Сховати решту",
+		"Unlock All Layers",				"Розблокувати всі шари",
+		"Lock Others",						"Заблокувати решту",
+		"Hide All Layers",					"Сховати всі шари",
+		"Lock All Layers",					"Заблокувати всі шари",
+		
+		"Paste Remembers Layers",			"Вставити шар, що запам'ятовано",
+		"Ungroup Remembers Layers",			"Розгрупувати запам'ятовані шари",
+		
+		"Merge Layers",						"Об'єднати шари",
+		"Delete Unused Layers",				"Видалити шари, що не використовуються",
+		"Select Item(s) on \"^1\"",			"Вибрати елемент(и) у \"^1\"",
+		"Select Item(s) Layer",				"Вибрати елемент(и) шару",
+				
+		"#SelectLayerPageItemMenu",		"Вибрати елемент(и)",
+		"#SelectZoomLayerPageItemMenu",	"Вибрати та припасувати елемент",
+		"#ZoomLockedPageItemMenu",		"Припасувати елемент у вікні",
+		
+		// Menu names for context and panel menus
+		"LayerPanelPopup",					"Меню панелі шарів",	
+		"RtMenuLayerPanelEye",				"Контекстне меню значка \"Око\" на панелі шарів",	
+		"RtMenuLayerPanelLock",				"Контекстне меню блокування у панелі шарів",
+		"RtMenuLayerPanelItem",				"Контекстне меню шару на панелі шарів",	
+		"RtMenuLayerPanelPageItem",			"Контекстне меню елемента сторінки на панелі шарів",	
+
+		// ----- Window strings
+		"DeleteOneLayer",					"Шар \"^1\" містить один або декілька об'єктів. Видалити шар?",
+		"DeleteMultiLayers",				"Виділені шари містять об'єкти. Видалити шари?",
+		"DeleteOneGuideLayer",				"Шар \"^1\" містить відображення напрямних. Видалити шар?",
+		"DeleteGuideLayers",				"Виділені шари містять відображення напрямних. Видалити шари?",
+		"DeletingPlaceGunUsedLayer",		"Неможливо видалити шар. Його потребує фрагмент, завантажений у курсор розміщення.",
+
+		// ----- Window Menu
+		"Layers_WinMenu",					"&Шари",
+		
+		// ----- Panel strings
+		
+		"^1 Layer",							"^1 Шар",		// For status widget
+		"^1 Layers",						"^1 Шарів",	// For status widget
+		"New Layer",						"Новий шар",	// Title of New Layer dialog
+		"Layer Options",					"Параметри шару", // Title of Layer Options dialog
+		"&Name:",							"&Ім'я:",
+		"&Color:",							"&Колір:",
+		"&Show Layer",						"&Показати шар",
+		"Show &Guides",						"Показати &напрямні",
+		"&Lock Layer",						"&Блокувати шар",
+		"Loc&k Guides",						"Заб&локувати напрямні",
+		"Keep When Layer is &Hidden",		"Не застосовувати обтікання &текстом, коли шар прихований",
+		"&Print Layer",						"&Друкувати шар",
+
+		// ----- Tips strings
+
+		"DeleteLayerTip",					"Видалити виділені шари",
+		"NewLayerTip",						"Створити новий шар",
+		"EyeTip",							"Переключення видимості",
+		"PencilTip",						"Переключення блокування шарів (можна редагувати, якщо незаповнене)",
+		"PageItemPencilTip",				"Переключення блокування елементів сторінки (можна редагувати, якщо незаповнене)",
+		"SwatchTip",						"Колір позначок вибору у даному шарі",
+		"ProxyTip",							"Вказує на вибрані елементи (перетягніть, щоб перемістити між шарами або упорядкувати по z-координаті)",
+		"ProxyChildSelectedTip",			"Містить вибраний об'єкт, клацніть, щоб вибрати зовнішній об'єкт",
+		"UnselectedProxyTip",				"Натисніть, щоб вибрати елементи",
+		"ActiveTip",						"Вказує на поточний шар малювання",
+
+		// ----- Error strings
+		"EmptyLayerName",					"Необхідно вказати ім'я шару.",
+		"DuplicateLayer",					"Шар з таким ім'ям уже існує.",
+
+		"#LayerHierPanelName",		"Шари",
+		"#Page:^1,",					"Сторінка: ^1, ", // for layer panel status widget. Will be followed by layer count string.
+		"#Pages:^1,",					"Сторінки: ^1, ", // for layer panel status widget. Will be followed by layer count string.
+		"#DeletePageItemsMenu",		"Видалити елементи сторінки", // menu item name
+		"#DeletePageItem \"^1\"",		"Видалити елемент сторінки \"^1\"", // menu item name
+		"#DuplicatePI ^1 Menu",			"Створити дублікат елементу сторінки \"^1\"", // menu item name
+		"#DuplicatePIMenu",			"Створити дублікат елементів сторінки",  // menu item name
+	}
+};
+
+#endif // __ODFRC__

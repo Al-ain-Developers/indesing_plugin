@@ -1,0 +1,78 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/buttonui/resources/FormFieldUIDialogs.fh $
+//  
+//  Owner: Tim Wright
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#ifndef __FormFieldUIDialogs_fh__
+#define __FormFieldUIDialogs_fh__
+
+//========================================================================================
+// TYPES
+//========================================================================================
+
+#include "Widgets.fh"
+#include "FormFieldUIID.h"
+#include "TextPanelID.h"
+//#include "CharPanelID.h"
+//#include "TextColorPanelID.h"
+#include "SwatchesPanelID.h"
+#include "EveInfo.fh"
+
+//================================================================================
+// Dialogs
+// Resource definitions for any dialogs and widget types.
+//================================================================================
+
+//------------------------------------------------------------
+// Resource types
+// Define your User Interface resource types here.
+//------------------------------------------------------------
+#ifdef __ODFRC__
+
+type AppearancePanelPrefsDialog (kViewRsrcType) : DialogBoss (ClassID = kAppearancePanelPrefsDialogBoss) 
+{ 
+	WidgetEveInfo;
+};
+
+type StatePropertiesDialog (kViewRsrcType) : DialogBoss (ClassID = kStatePropertiesDialogBoss) { };
+
+type TabOrderDialog (kViewRsrcType) : DialogBoss (ClassID = kTabOrderDialogBoss) 
+{
+	WidgetEveInfo;
+};
+
+
+type FormChoiceListBoxWidget	(kViewRsrcType) : StdListBoxWidgetN (ClassID = kFormChoiceListBoxBoss) { };
+type EVEOrderListBoxWidget			(kViewRsrcType) : EVEStdTreeBasedListBox (ClassID = kOrderListBoxBoss) { };
+
+
+type CheckBoxDataPanel 			(kViewRsrcType) : GenericPalettePanelWidget 	(ClassID = kCheckBoxDataPanelBoss){};
+type ListBoxDataPanel 			(kViewRsrcType) : GenericPalettePanelWidget 	(ClassID = kListBoxDataPanelBoss){};
+type RadioButtonDataPanel 		(kViewRsrcType) : GenericPalettePanelWidget 	(ClassID = kRadioButtonDataPanelBoss){};
+type TextFieldDataPanel 		(kViewRsrcType) : GenericPalettePanelWidget 	(ClassID = kTextFieldDataPanelBoss){};
+
+type FormFieldSettingsHolderPanelWidget	 (kViewRsrcType) : GenericPanelWidget	(ClassID = kFormFieldSettingsHolderPanelBoss) { };
+
+//------------------------------------------------------------
+
+#endif // __ODFRC__
+
+#endif //  __FormFieldUIDialogs_fh__

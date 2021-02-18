@@ -1,0 +1,509 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/sdksamples/basicshape/BscShp.fr $
+//  
+//  Owner: Adobe Developer Technologies
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//  
+//  Umbrella include file for all the .fr files in the plug-in.
+//  
+//========================================================================================
+
+//===========================
+//  General includes:
+//===========================
+
+#include "MenuDef.fh"
+#include "ActionDef.fh"
+#include "ActionDefs.h"
+#include "AdobeMenuPositions.h"
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "StringTable.fh"
+//#include "OMTypes.h"
+#include "objectmodeltypes.fh"
+#include "ShuksanID.h"
+#include "ActionID.h"
+#include "CommandID.h"
+#include "WorkspaceID.h"
+#include "widgetid.h"
+#include "BuildNumber.h"
+#include "SplineID.h"
+#include "GraphicsID.h"
+#include "ScriptInfoTypes.fh"
+#include "GenericID.h"
+#include "SpreadID.h"
+#include "DocFrameworkID.h"
+#include "LayerID.h"
+#include "TextScriptID.h"
+#include "TablesID.h"
+#include "MasterPageID.h"
+#include "ErrorTableTypes.h" // for UserErrorTable
+#include "INXCoreID.h"
+
+#include "PlugInModel_UIAttributes.h"
+// Project includes:
+#include "BscShpID.h"
+#include "BscShpScriptingDefs.h"
+
+#ifdef __ODFRC__
+
+/*
+// Plugin version definition.
+*/
+resource PluginVersion (kSDKDefPluginVersionResourceID)
+{
+	kTargetVersion,
+	kBscShpPluginID,
+	kSDKDefPlugInMajorVersionNumber, kSDKDefPlugInMinorVersionNumber, 	
+	kSDKDefHostMajorVersionNumber, kSDKDefHostMinorVersionNumber,
+	kBscShpCurrentMajorFormatNumber, kBscShpCurrentMinorFormatNumber,
+	{ kInDesignProduct },
+	{ kWildFS },
+	kUIPlugIn,
+	kBscShpVersion
+};
+
+resource IgnoreTags(1)
+{
+    kImplementationIDSpace,
+    {
+ 		kCHierarchyNodeImpl,
+		kPageItemTransformImpl,
+		kPathGeometryImpl,
+		kCGraphicFrameDataImpl,
+		kPageItemAdornmentListImpl,
+    }
+};
+
+resource IgnoreTags(2)
+{
+    kClassIDSpace,
+    {
+        kBscShpPageItemBoss,
+    }
+};
+/*
+//	Boss class definition.
+*/
+resource ClassDescriptionTable(kSDKDefClassDescriptionTableResourceID)
+{{{
+
+	/**
+	This boss demonstrates custom page item drawing.
+	@ingroup basicshape
+	*/
+	Class
+	{
+		kBscShpPageItemBoss,
+		kSplineItemBoss,
+		{
+			/** 
+			Overrides the implementation to draw the page item 
+			*/
+			IID_ISHAPE, kBscShpShapeImpl,
+			/** 
+			Overrides the implementation to draw selection path and handles on a rectangular spline 
+			*/
+			IID_IHANDLESHAPE, kBscShpHandleShapeImpl,
+			/** 
+			Overrides the implementation to report the bounding box for a rectangular spline with a clipping path 
+			*/
+			IID_IPATHHANDLESHAPE, kBscShpPathHandleShapeImpl,
+			/** See IScript/BscShpScript, override to return the ScriptID for this scriptable boss.
+			*/
+			IID_ISCRIPT, kBscShpScriptImpl,
+		}
+	},
+
+	/**
+	 This boss class provides the actions invoked by this plug-in's
+	 sub-menu items. It supports two interfaces: 
+	 IActionComponent and IPMPersist. We provide the implementation 
+	 for IActionComponent in BscShpAction.cpp. The other
+	 default implementation is provided by the API.
+	@ingroup basicshape
+	*/
+	Class
+	{
+		kBscShpActionComponentBoss,
+		kBaseActionComponentBoss,
+		{
+			/** Handle the actions from the menu. */
+			IID_IACTIONCOMPONENT, kBscShpActionComponentImpl,
+		}
+	},
+	
+	/** Provides scripting support by means of handling events and property 
+		accesses that are delegated by the script manager. 
+		
+		Added at InDesign CS2 to support scripting.
+		
+		See VersionedScriptElementInfo below.
+		
+		@ingroup basicshape
+	 */
+    Class
+	{
+		kBscShpScriptProviderBoss,
+		kBaseScriptProviderBoss,
+		{
+			/** See IScriptprovider / BscShpScriptProvider.
+			 */
+			IID_ISCRIPTPROVIDER, kBscShpScriptProviderImpl,
+		}
+	},
+
+	/** Provides error strings for this plug-in.
+
+		Added at InDesign CS2 to support scripting.
+
+		@ingroup basicshape
+	 */
+	Class
+	{
+		kBscShpErrorStringServiceBoss,
+		kInvalidClass,
+		{
+			/** See IErrorStringService / BscShpErrorStringService.
+			 */
+			IID_IERRORSTRINGSERVICE, kBscShpErrorStringServiceImpl,		
+			/**	Identifies this boss as an error string provider.
+			 */
+			IID_IK2SERVICEPROVIDER, kErrorStringProviderImpl,
+		}
+	},
+	
+	
+}}};
+
+/*
+// Implementation definition.
+*/
+resource FactoryList (kSDKDefFactoryListResourceID) 
+{
+	kImplementationIDSpace,
+	{
+#include "BscShpFactoryList.h"
+	}
+};
+
+/*
+// Menu definition.
+*/
+resource MenuDef (kSDKDefMenuResourceID)
+{
+	{
+		// The About Plug-ins sub-menu item for this plug-in.
+		kBscShpAboutActionID,			// ActionID (kInvalidActionID for positional entries)
+		kBscShpAboutMenuPath,			// Menu Path.
+		kSDKDefAlphabeticPosition,			// Menu Position.
+		kSDKDefIsNotDynamicMenuFlag,		// kSDKDefIsNotDynamicMenuFlag or kSDKDefIsDynamicMenuFlag.
+
+		kBscShpPlace_PageItemActionID,
+		kBscShpTargetMenuPath,
+		kBscShpPlace_PageItemMenuItemPosition,
+		kSDKDefIsNotDynamicMenuFlag,
+
+	}
+};
+
+/*
+// Action definition.
+*/
+resource ActionDef (kSDKDefActionResourceID)
+{
+	{ 
+		kBscShpActionComponentBoss, 		// ClassID of boss class that implements the ActionID.
+		kBscShpAboutActionID,	// ActionID.
+		kBscShpAboutMenuKey,	// Sub-menu string.
+		kHelpMenuActionArea,				// Area name (see ActionDefs.h).
+		kNormalAction,					// Type of action (see ActionDefs.h).
+		kDisableIfLowMem,				// Enabling type (see ActionDefs.h).
+		kInvalidInterfaceID,			// Selection InterfaceID this action cares about or kInvalidInterfaceID.
+		kSDKDefInvisibleInKBSCEditorFlag, // kSDKDefVisibleInKBSCEditorFlag or kSDKDefInvisibleInKBSCEditorFlag.
+
+		kBscShpActionComponentBoss,
+		kBscShpPlace_PageItemActionID,		
+		kBscShpPlace_PageItemMenuItemKey,		
+		kOtherActionArea,			
+		kNormalAction,				
+		kDisableIfNoFrontLayoutView,	
+		kInvalidInterfaceID,		
+		kSDKDefInvisibleInKBSCEditorFlag,
+				
+	}
+};
+
+
+/*
+// LocaleIndex
+// The LocaleIndex should have indicies that point at your
+// localizations for each language system that you are 
+// localized for.
+*/
+/*
+// String LocaleIndex.
+*/
+resource LocaleIndex (kSDKDefStringsResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_enUS, kSDKDefStringsResourceID + index_enUS
+		kInDesignJapaneseFS, k_jaJP, kSDKDefStringsResourceID + index_jaJP
+		
+		kWildFS, k_Wild, kSDKDefStringsResourceID + index_enUS
+	}
+};
+
+resource LocaleIndex (kSDKDefStringsNoTransResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_Wild, kSDKDefStringsNoTransResourceID + index_enUS
+	}
+};
+
+resource StringTable (kSDKDefStringsNoTransResourceID + index_enUS)
+{
+	k_enUS,									// Locale Id
+	kEuropeanMacToWinEncodingConverter,		// Character encoding converter
+	{
+		// No-Translate strings go here:		
+
+
+	}
+};
+
+/*
+// User Error Table resource 
+// To be coupled with an IErrorStringService implementation and
+// string translations (see localized .fr files)
+*/
+resource UserErrorTable(kSDKDefErrorStringResourceID) 
+{
+	{
+		kBscShpFailureErrorCode, kBscShpFailureErrorCodeErrorCodeStringKey, 
+		kBscShpCreatePageItemErrorCode, kBscShpCreatePageItemErrorCodeStringKey,
+	}
+};
+
+/*
+// Scripting resources
+*/
+/*
+// Core scripting resources
+*/
+resource VersionedScriptElementInfo(1)
+{
+	//Contexts
+	{
+		// Scripting support added at InDesign CS2.
+		kCS2ScriptVersion, kCoreScriptManagerBoss, kWildFS, k_Wild,
+	}
+	
+	//Elements
+	{
+		// kBasicShapeObjectScriptElement represents kBscShpPageItemBoss in the Scripting DOM.
+		Object
+		{
+			kBasicShapeObjectScriptElement,
+			c_BasicShape,					// The script object
+			"basic shape",
+			"A basic shape",
+			kBscShpBasicShapeObject_CLSID,
+			c_BasicShapes,					// The collection (plural form)
+			"basic shapes",
+			"All basic shapes",
+			kBscShpBasicShapesObject_CLSID,
+			kPageItemObjectScriptElement,	// kBasicShapeObjectScriptElement is a page item (Script object inheritance)
+			kLayoutSuiteScriptElement,
+		}
+
+		// Expose kBasicShapeObjectScriptElement in the Scripting DOM.
+		Provider
+		{
+			kBscShpScriptProviderBoss,
+			{
+				Parent{ kSpreadObjectScriptElement },
+				Parent{ kMasterSpreadObjectScriptElement },
+				Parent{ kGroupObjectScriptElement },
+				Parent{ kTextFrameObjectScriptElement },		// inlines in a text frame
+				Parent{ kStoryObjectScriptElement },			// inlines in a story
+				Parent{ kTextObjectScriptElement },				// inlines in text
+				Parent{ kCharacterObjectScriptElement },		// inline of a character
+				Parent{ kWordObjectScriptElement },				// inlines in a word
+				Parent{ kLineObjectScriptElement },				// inlines in a line of text
+				Parent{ kTextColumnObjectScriptElement },		// inlines in a text column
+				Parent{ kParagraphObjectScriptElement },		// inlines in a paragraph
+				Parent{ kTextStyleRangeObjectScriptElement },	// inlines in a text style range
+				Parent{ kCellObjectScriptElement },				// inlines in a cell
+				Parent{ kTableObjectScriptElement },			// inlines in a table
+				
+				// Parent relationships that are supported in the core but not supported for INX (see VersionedScriptElementInfo(2) below):
+				Parent{ kDocumentObjectScriptElement },				
+				Parent{ kPageObjectScriptElement },
+				Parent{ kLayerObjectScriptElement },
+				Parent{ kInsertionPointObjectScriptElement },	// inlines in a insertion point	
+									
+				RepresentObject{ kBasicShapeObjectScriptElement },		
+				CollectionMethod{ kCreateMethodScriptElement }, 							
+			}
+		}
+				
+		// Allows kBasicShapeObjectScriptElement to contain rectangles.
+		Provider	
+		{
+			kPageItemScriptProviderBoss,
+			{
+				Parent{ kBasicShapeObjectScriptElement },
+				RepresentObject{ kRectangleObjectScriptElement },
+				CollectionMethod{ kCreateMethodScriptElement },
+			}
+		}
+
+		// Allows kBasicShapeObjectScriptElement to contain ovals.
+		Provider	
+		{
+			kPageItemScriptProviderBoss,
+			{
+				Parent{ kBasicShapeObjectScriptElement },
+				RepresentObject{ kOvalObjectScriptElement },
+				CollectionMethod{ kCreateMethodScriptElement },
+			}
+		}
+		// Allows kBasicShapeObjectScriptElement to contain images.
+       Provider    
+        {
+            kPageItemScriptProviderBoss,
+            {
+				Parent{ kBasicShapeObjectScriptElement },
+
+                RepresentObject{ kImageObjectScriptElement },
+                RepresentObject{ kEPSObjectScriptElement },
+                RepresentObject{ kWMFObjectScriptElement },
+                RepresentObject{ kPICTObjectScriptElement },
+                RepresentObject{ kPDFObjectScriptElement },
+                CollectionMethod{ kCreateMethodScriptElement },
+            }
+        }
+
+						
+	}
+};
+
+/*
+// INX scripting resources.
+//
+// Core parent relationships that are not supported for INX to avoid an object having more than one owner.
+// The parent relationships exposed to INX must be those that express a true parent relationship,
+// i.e. a parent that owns the object, as opposed to a parent that simply refers to the object.
+// If you are familiar with the native persistence model its analagous to the difference between
+// IPMStream::XferObject and IPMStream::XferReference. INX should only export the child below a true parent.
+//
+// If you don't get this right you will get asserts like when you import INX, for example: 
+// ASSERT: INXUtils::DefineKeyAndResolveReferences() - Invalid key redefinition: ua2.
+//
+// For example, the VersionedScriptElementInfo statement above makes the kBasicShapeObjectScriptElement object 
+// a child of the document, page, layer and insertion point script objects. In order to prevent confusing INX w
+// e don't support these parent relationships for INX.
+//
+// Prior to InDesign CS2 the SurrogateParent mechanism was used to indicate relationships that INX should ignore.
+// The prefered approach going forward is as shown below, to create an INX-only resource and use 
+// kNotSupported to remove the surrogate parent-child relationship. This approach is supported in InDesign CS1
+// and InDesign CS2 so the SurrogateParent mechanism (which was implemented before the kNotSupported mechanism) 
+// is unnecessary and is deprecated.
+*/
+resource VersionedScriptElementInfo(2)
+{
+	//Contexts
+	{
+		// Scripting support added at InDesign CS2.
+		kCS2ScriptVersion, kINXScriptManagerBoss, kWildFS, k_Wild,
+	}
+	        
+	//Elements
+	{
+		// INX only property
+        Property
+        {
+            kTextBasicShapePropertyScriptElement,
+            p_TextBasicShape,
+            "text basic shape",
+            "Whether the basic shape has text in it",
+            BoolType,
+            {}
+            kNoAttributeClass,
+        }
+        
+		// Create add two special attribute for Save backwards when BasicShape have text in it.
+		Provider
+		{
+			kBscShpScriptProviderBoss,
+			{
+				Parent{ kSpreadObjectScriptElement },
+				Parent{ kMasterSpreadObjectScriptElement },
+				Parent{ kGroupObjectScriptElement },
+				Parent{ kTextFrameObjectScriptElement },		// inlines in a text frame
+				Parent{ kStoryObjectScriptElement },			// inlines in a story
+				Parent{ kTextObjectScriptElement },				// inlines in text
+				Parent{ kCharacterObjectScriptElement },		// inline of a character
+				Parent{ kWordObjectScriptElement },				// inlines in a word
+				Parent{ kLineObjectScriptElement },				// inlines in a line of text
+				Parent{ kTextColumnObjectScriptElement },		// inlines in a text column
+				Parent{ kParagraphObjectScriptElement },		// inlines in a paragraph
+				Parent{ kTextStyleRangeObjectScriptElement },	// inlines in a text style range
+				Parent{ kCellObjectScriptElement },				// inlines in a cell
+				Parent{ kTableObjectScriptElement },			// inlines in a table
+				
+				// Parent relationships that are supported in the core but not supported for INX (see VersionedScriptElementInfo(2) below):
+				Parent{ kDocumentObjectScriptElement },				
+				Parent{ kPageObjectScriptElement },
+				Parent{ kLayerObjectScriptElement },
+				Parent{ kInsertionPointObjectScriptElement },	// inlines in a insertion point	
+									
+				Object{ kBasicShapeObjectScriptElement },		
+                Property{ kParentStoryPropertyScriptElement, kReadOnly },
+                Property{ kTextBasicShapePropertyScriptElement, kReadWrite },
+			}
+		}
+		
+		// For INX don't support the core relationships below:
+		Provider
+		{
+			kNotSupported,
+			{
+				Parent{ kPageObjectScriptElement },
+				Parent{ kDocumentObjectScriptElement },
+				Parent{ kLayerObjectScriptElement },
+				Parent{ kInsertionPointObjectScriptElement },	// inlines in a insertion point	
+									
+				RepresentObject{ kBasicShapeObjectScriptElement },		
+				CollectionMethod{ kCreateMethodScriptElement }, 							
+			}
+		}		
+	}
+};
+
+
+#endif // __ODFRC__
+
+#include "BscShp_enUS.fr"
+#include "BscShp_jaJP.fr"
+//  Generated by Dolly build 17: template "IfPanelMenu".
+// End, BscShp.fr.

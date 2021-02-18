@@ -1,0 +1,601 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/dynamicdocumentsui/resources/PageTransitionsDialogViews_enUS.fr $
+//  
+//  Owner: Yeming Liu
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#ifdef __ODFRC__
+
+resource PageTransitionsDialog (kPageTransitionsDialogRsrcID + index_enUS)
+{
+	__FILE__, __LINE__,
+	kPageTransitionsDialogWidgetID,			// WidgetId
+	kPMRsrcID_None,							// RsrcId
+	kBindNone,
+	Frame(0,0,415,400)						// Frame
+	kTrue,									// Visible
+	kTrue,									// Enabled
+	"kPageTransitionsDialogTitle",			// Panel name
+	{
+		EVEClusterPanelWidget
+        (
+            kInvalidWidgetID, kPMRsrcID_None,      // WidgetId, RsrcId
+            kBindNone,
+            Frame(0,0,0,0),                                // Frame
+            kTrue, kTrue,                                 // Visible, Enabled
+            kEVESmallSpaceAfter ,  // EVE info
+            {
+				// Group 1
+				EVEGenericPanelWidget
+				(
+					kPageTransitionsDialogProxyGroup1WidgetID,// WidgetId
+					0,0,							// RsrcId
+					kBindNone,						// Frame binding
+					Frame(0,5,415,500),				// Frame
+					kTrue,							// Visible
+					kTrue,							// Enabled
+					kEVERegularSpaceAfter|kEVEArrangeChildrenInColumn,	// EVE info
+					{			
+						// first row
+						EVEGenericPanelWidget
+						(
+							kPageTransitionsDialogProxyRow1WidgetID,// WidgetId
+							0,0,							// RsrcId
+							kBindNone,						// Frame binding
+							Frame(0,0,120,130),				// Frame
+							kTrue,							// Visible
+							kTrue,							// Enabled
+							kEVESmallSpaceAfter|kEVEArrangeChildrenInRow|kEVEAlignFill,	// EVE info
+							{
+								// Blinds
+								EVEPPFlashPlayerContainerPanelWidget
+								(
+									kPageTransitionsDialogBlindsContainerWidgetID,// WidgetId
+									0,0,							// RsrcId
+									kBindNone,						// Frame binding
+									Frame(0,0,0,0),					// Frame
+									kTrue,							// Visible
+									kTrue,							// Enabled
+									kEVELargeSpaceAfter|kEVEArrangeChildrenInColumn|kEVESmallMargin,	// EVE info									
+									{
+										GIFPlayerWidget // for previewable video
+										(
+											kGIFPlayerWidgetID,    //Widget ID
+											kPMRsrcID_None,                //Resource ID
+											kBindNone,
+											Frame(-3, -3, 106, 80),
+											kTrue, kTrue,                // Visible, Enabled,
+											""
+										),
+										PageTransitionRadioButtonWidget
+										(
+											kPageTransitionsDialogProxyRadioButtonWidgetID,
+											kSysRadioButtonPMRsrcId,
+											kBindNone,
+											Frame(0,0,0,0),					// Frame
+											kTrue, kTrue,
+											"kBlindsPageTransition"
+											kEVEAlignLeft|kEVENoSpaceAfter,    // EVE info
+										),
+									}
+									kBlindsPageTransitionBoss,
+								)
+						
+								// Box
+								EVEPPFlashPlayerContainerPanelWidget
+								(
+									kPageTransitionsDialogBoxContainerWidgetID,// WidgetId
+									0,0,							// RsrcId
+									kBindNone,						// Frame binding
+									Frame(0,0,0,0),					// Frame
+									kTrue,							// Visible
+									kTrue,							// Enabled
+									kEVELargeSpaceAfter|kEVEArrangeChildrenInColumn|kEVESmallMargin,	// EVE info
+									{
+										GIFPlayerWidget // for previewable video
+										(
+											kGIFPlayerWidgetID,    //Widget ID
+											kPMRsrcID_None,                //Resource ID
+											kBindNone,
+											Frame(-3, -3, 106, 80),
+											kTrue, kTrue,                // Visible, Enabled,
+											""
+										),
+										PageTransitionRadioButtonWidget
+										(
+											kPageTransitionsDialogProxyRadioButtonWidgetID,
+											kSysRadioButtonPMRsrcId,
+											kBindNone,
+											Frame(0,0,0,0),					// Frame
+											kTrue, kTrue,
+											"kBoxPageTransition"
+											kEVEAlignLeft|kEVENoSpaceAfter,    // EVE info
+										)
+									}
+									kBoxPageTransitionBoss
+								)
+						
+								// Comb
+								EVEPPFlashPlayerContainerPanelWidget
+								(
+									kPageTransitionsDialogCombContainerWidgetID,// WidgetId
+									0,0,							// RsrcId
+									kBindNone,						// Frame binding
+									Frame(0,0,0,0),					// Frame
+									kTrue,							// Visible
+									kTrue,							// Enabled
+									kEVELargeSpaceAfter|kEVEArrangeChildrenInColumn|kEVESmallMargin,	// EVE info
+									{
+										GIFPlayerWidget // for previewable video
+										(
+											kGIFPlayerWidgetID,    //Widget ID
+											kPMRsrcID_None,                //Resource ID
+											kBindNone,
+											Frame(-3, -3, 106, 80),
+											kTrue, kTrue,                // Visible, Enabled,
+											""
+										),
+										PageTransitionRadioButtonWidget
+										(
+											kPageTransitionsDialogProxyRadioButtonWidgetID,
+											kSysRadioButtonPMRsrcId,
+											kBindNone,
+											Frame(0,0,0,0),					// Frame
+											kTrue, kTrue,
+											"kCombPageTransition"
+											kEVEAlignLeft|kEVENoSpaceAfter,    // EVE info
+										)
+									}
+									kCombPageTransitionBoss
+								)
+						
+								// Cover
+								EVEPPFlashPlayerContainerPanelWidget
+								(
+									kPageTransitionsDialogCoverContainerWidgetID,// WidgetId
+									0,0,							// RsrcId
+									kBindNone,						// Frame binding
+									Frame(0,0,0,0),					// Frame
+									kTrue,							// Visible
+									kTrue,							// Enabled
+									kEVENoSpaceAfter|kEVEArrangeChildrenInColumn|kEVESmallMargin,	// EVE info
+									{
+										GIFPlayerWidget // for previewable video
+										(
+											kGIFPlayerWidgetID,    //Widget ID
+											kPMRsrcID_None,                //Resource ID
+											kBindNone,
+											Frame(-3, -3, 106, 80),
+											kTrue, kTrue,                // Visible, Enabled,
+											""
+										),
+										PageTransitionRadioButtonWidget
+										(
+											kPageTransitionsDialogProxyRadioButtonWidgetID,
+											kSysRadioButtonPMRsrcId,
+											kBindNone,
+											Frame(0,0,0,0),					// Frame
+											kTrue, kTrue,
+											"kCoverPageTransition"
+											kEVEAlignLeft|kEVENoSpaceAfter,    // EVE info
+										),
+									}
+									kCoverPageTransitionBoss
+								)
+							}
+						)
+				
+						// second row
+						EVEGenericPanelWidget
+						(
+							kPageTransitionsDialogProxyRow2WidgetID,// WidgetId
+							0,0,							// RsrcId
+							kBindNone,						// Frame binding
+							Frame(0,0,0,0),					// Frame
+							kTrue,							// Visible
+							kTrue,							// Enabled
+							kEVESmallSpaceAfter|kEVEArrangeChildrenInRow|kEVEAlignFill,	// EVE info
+							{
+								// Dissolve
+								EVEPPFlashPlayerContainerPanelWidget
+								(
+									kPageTransitionsDialogDissolveContainerWidgetID,// WidgetId
+									0,0,							// RsrcId
+									kBindNone,						// Frame binding
+									Frame(0,0,0,0),					// Frame
+									kTrue,							// Visible
+									kTrue,							// Enabled
+									kEVELargeSpaceAfter|kEVEArrangeChildrenInColumn|kEVESmallMargin,	// EVE info
+									{
+										GIFPlayerWidget // for previewable video
+										(
+											kGIFPlayerWidgetID,    //Widget ID
+											kPMRsrcID_None,                //Resource ID
+											kBindNone,
+											Frame(-3, -3, 106, 80),
+											kTrue, kTrue,                // Visible, Enabled,
+											""
+										),
+										PageTransitionRadioButtonWidget
+										(
+											kPageTransitionsDialogProxyRadioButtonWidgetID,
+											kSysRadioButtonPMRsrcId,
+											kBindNone,
+											Frame(0,0,0,0),					// Frame
+											kTrue, kTrue,
+											"kDissolvePageTransition"
+											kEVEAlignLeft|kEVENoSpaceAfter,    // EVE info
+										)
+									}
+									kDissolvePageTransitionBoss
+								)
+						
+								// Fade
+								EVEPPFlashPlayerContainerPanelWidget
+								(
+									kPageTransitionsDialogFadeContainerWidgetID,// WidgetId
+									0,0,							// RsrcId
+									kBindNone,						// Frame binding
+									Frame(0,0,0,0),					// Frame
+									kTrue,							// Visible
+									kTrue,							// Enabled
+									kEVELargeSpaceAfter|kEVEArrangeChildrenInColumn|kEVESmallMargin,	// EVE info
+									{
+										GIFPlayerWidget // for previewable video
+										(
+											kGIFPlayerWidgetID,    //Widget ID
+											kPMRsrcID_None,                //Resource ID
+											kBindNone,
+											Frame(-3, -3, 106, 80),
+											kTrue, kTrue,                // Visible, Enabled,
+											""
+										),
+										PageTransitionRadioButtonWidget
+										(
+											kPageTransitionsDialogProxyRadioButtonWidgetID,
+											kSysRadioButtonPMRsrcId,
+											kBindNone,
+											Frame(0,0,0,0),					// Frame
+											kTrue, kTrue,
+											"kFadePageTransition"
+											kEVEAlignLeft|kEVENoSpaceAfter,    // EVE info
+										)
+									}
+									kFadePageTransitionBoss
+								)	
+										
+								// Push
+								EVEPPFlashPlayerContainerPanelWidget
+								(
+									kPageTransitionsDialogPushContainerWidgetID,// WidgetId
+									0,0,							// RsrcId
+									kBindNone,						// Frame binding
+									Frame(0,0,0,0),					// Frame
+									kTrue,							// Visible
+									kTrue,							// Enabled
+									kEVELargeSpaceAfter|kEVEArrangeChildrenInColumn|kEVESmallMargin,	// EVE info
+									{
+										GIFPlayerWidget // for previewable video
+										(
+											kGIFPlayerWidgetID,    //Widget ID
+											kPMRsrcID_None,                //Resource ID
+											kBindNone,
+											Frame(-3, -3, 106, 80),
+											kTrue, kTrue,                // Visible, Enabled,
+											""
+										),
+										PageTransitionRadioButtonWidget
+										(
+											kPageTransitionsDialogProxyRadioButtonWidgetID,
+											kSysRadioButtonPMRsrcId,
+											kBindNone,
+											Frame(0,0,0,0),					// Frame
+											kTrue, kTrue,
+											"kPushPageTransition"
+											kEVEAlignLeft|kEVENoSpaceAfter,    // EVE info
+										)
+									}
+									kPushPageTransitionBoss
+								)
+						
+								// Split
+								EVEPPFlashPlayerContainerPanelWidget
+								(
+									kPageTransitionsDialogSplitContainerWidgetID,// WidgetId
+									0,0,							// RsrcId
+									kBindNone,						// Frame binding
+									Frame(0,0,0,0),					// Frame
+									kTrue,							// Visible
+									kTrue,							// Enabled
+									kEVENoSpaceAfter|kEVEArrangeChildrenInColumn|kEVESmallMargin,	// EVE info
+									{
+										GIFPlayerWidget // for previewable video
+										(
+											kGIFPlayerWidgetID,    //Widget ID
+											kPMRsrcID_None,                //Resource ID
+											kBindNone,
+											Frame(-3, -3, 106, 80),
+											kTrue, kTrue,                // Visible, Enabled,
+											""
+										),
+										PageTransitionRadioButtonWidget
+										(
+											kPageTransitionsDialogProxyRadioButtonWidgetID,
+											kSysRadioButtonPMRsrcId,
+											kBindNone,
+											Frame(0,0,0,0),					// Frame
+											kTrue, kTrue,
+											"kSplitPageTransition"
+											kEVEAlignLeft|kEVENoSpaceAfter,    // EVE info
+										)
+									}
+									kSplitPageTransitionBoss
+								)
+							}
+						)	
+				
+						// third row
+						EVEGenericPanelWidget
+						(
+							kPageTransitionsDialogProxyRow3WidgetID,// WidgetId
+							0,0,							// RsrcId
+							kBindNone,						// Frame binding
+							Frame(0,0,0,0),					// Frame
+							kTrue,							// Visible
+							kTrue,							// Enabled
+							kEVELargeSpaceAfter|kEVEArrangeChildrenInRow|kEVEAlignFill,	// EVE info
+							{						
+								// Uncover
+								EVEPPFlashPlayerContainerPanelWidget
+								(
+									kPageTransitionsDialogUncoverContainerWidgetID,// WidgetId
+									0,0,							// RsrcId
+									kBindNone,						// Frame binding
+									Frame(0,0,0,0),					// Frame
+									kTrue,							// Visible
+									kTrue,							// Enabled
+									kEVELargeSpaceAfter|kEVEArrangeChildrenInColumn|kEVESmallMargin,	// EVE info
+									{
+										GIFPlayerWidget // for previewable video
+										(
+											kGIFPlayerWidgetID,    //Widget ID
+											kPMRsrcID_None,                //Resource ID
+											kBindNone,
+											Frame(-3, -3, 106, 80),
+											kTrue, kTrue,                // Visible, Enabled,
+											""
+										),
+										PageTransitionRadioButtonWidget
+										(
+											kPageTransitionsDialogProxyRadioButtonWidgetID,
+											kSysRadioButtonPMRsrcId,
+											kBindNone,
+											Frame(0,0,0,0),					// Frame
+											kTrue, kTrue,
+											"kUncoverPageTransition"
+											kEVEAlignLeft|kEVENoSpaceAfter,    // EVE info
+										)
+									}
+									kUncoverPageTransitionBoss
+								)
+						
+								// Wipe
+								EVEPPFlashPlayerContainerPanelWidget
+								(
+									kPageTransitionsDialogWipeContainerWidgetID,// WidgetId
+									0,0,							// RsrcId
+									kBindNone,						// Frame binding
+									Frame(0,0,0,0),					// Frame
+									kTrue,							// Visible
+									kTrue,							// Enabled
+									kEVELargeSpaceAfter|kEVEArrangeChildrenInColumn|kEVESmallMargin,	// EVE info
+									{
+										GIFPlayerWidget // for previewable video
+										(
+											kGIFPlayerWidgetID,    //Widget ID
+											kPMRsrcID_None,                //Resource ID
+											kBindNone,
+											Frame(-3, -3, 106, 80),
+											kTrue, kTrue,                // Visible, Enabled,
+											""
+										),
+										PageTransitionRadioButtonWidget
+										(
+											kPageTransitionsDialogProxyRadioButtonWidgetID,
+											kSysRadioButtonPMRsrcId,
+											kBindNone,
+											Frame(0,0,0,0),					// Frame
+											kTrue, kTrue,
+											"kWipePageTransition"
+											kEVEAlignLeft|kEVENoSpaceAfter,    // EVE info
+										)
+									}
+									kWipePageTransitionBoss
+								)
+						
+								// Zoom In
+								EVEPPFlashPlayerContainerPanelWidget
+								(
+									kPageTransitionsDialogZoomInContainerWidgetID,// WidgetId
+									0,0,							// RsrcId
+									kBindNone,						// Frame binding
+									Frame(0,0,0,0),					// Frame
+									kTrue,							// Visible
+									kTrue,							// Enabled
+									kEVELargeSpaceAfter|kEVEArrangeChildrenInColumn|kEVESmallMargin,	// EVE info
+									{
+										GIFPlayerWidget // for previewable video
+										(
+											kGIFPlayerWidgetID,    //Widget ID
+											kPMRsrcID_None,                //Resource ID
+											kBindNone,
+											Frame(-3, -3, 106, 80),
+											kTrue, kTrue,                // Visible, Enabled,
+											""
+										),
+										PageTransitionRadioButtonWidget
+										(
+											kPageTransitionsDialogProxyRadioButtonWidgetID,
+											kSysRadioButtonPMRsrcId,
+											kBindNone,
+											Frame(0,0,0,0),					// Frame
+											kTrue, kTrue,
+											"kZoomInPageTransition"
+											kEVEAlignLeft|kEVENoSpaceAfter,    // EVE info
+										)
+									}
+									kZoomInPageTransitionBoss
+								)
+						
+								/*// Page Turn
+								EVEPPFlashPlayerContainerPanelWidget
+								(
+									kPageTransitionsDialogPageTurnContainerWidgetID,// WidgetId
+									0,0,							// RsrcId
+									kBindNone,						// Frame binding
+									Frame(0,0,0,0),					// Frame
+									kTrue,							// Visible
+									kTrue,							// Enabled
+									kEVENoSpaceAfter|kEVEArrangeChildrenInColumn|kEVESmallMargin,	// EVE info
+									{
+										GIFPlayerWidget // for previewable video
+										(
+											kGIFPlayerWidgetID,    //Widget ID
+											kPMRsrcID_None,                //Resource ID
+											kBindNone,
+											Frame(-3, -3, 106, 80),
+											kTrue, kTrue,                // Visible, Enabled,
+											""
+										),
+										PageTransitionRadioButtonWidget
+										(
+											kPageTransitionsDialogProxyRadioButtonWidgetID,
+											kSysRadioButtonPMRsrcId,
+											kBindNone,
+											Frame(0,0,0,0),					// Frame
+											kTrue, kTrue,
+											"kPageTurnPageTransition"
+											kEVEAlignLeft|kEVENoSpaceAfter,    // EVE info
+										)
+									}
+									kPageTurnPageTransitionBoss
+								)*/
+							}
+						)		
+					},
+				),
+			}
+		),
+
+
+		// Group 2
+		EVEGenericPanelWidget
+		(
+			kPageTransitionsDialogProxyGroup2WidgetID,// WidgetId
+			0,0,							// RsrcId
+			kBindNone,						// Frame binding
+			Frame(0,0,0,0),					// Frame
+			kTrue,							// Visible
+			kTrue,							// Enabled
+			kEVENoSpaceAfter|kEVEArrangeChildrenInRow|kEVEAlignFill|kEVESmallMargin,	// EVE info
+			{	
+				// Column 2: Check box
+				EVECheckBoxWidget
+				(
+					kPageTransitionsApplyToAllCheckBoxWidgetID,    // WidgetId
+					kSysCheckBoxPMRsrcId,							// RsrcId
+					kBindNone,										// Frame binding
+					Frame(0,0,0,0),									// Frame
+					kTrue, kTrue,									// Visible, Enabled
+					kAlignLeft,										// Alignment
+					"kPageTransitionApplyToAllSpreads",							// Initial Text
+					kEVEChildLargeSpaceAfter
+				),
+				
+				// Column 3: OK/Cancel buttons
+				EVEGenericPanelWidget
+				(
+					kPageTransitionsDialogOKCancelGroupWidgetID,	// WidgetId
+					0,0,									// RsrcId
+					kBindNone,								// Frame binding
+					Frame(0,0,0,0),							// Frame
+					kTrue,									// Visible
+					kTrue,									// Enabled
+					kEVENoSpaceAfter|kEVEArrangeChildrenInRow|kEVEAlignRight,	//EVE info
+					{
+					#ifdef MACINTOSH
+						EVECancelButtonWidget
+						(
+							kCancelButton_WidgetID, // WidgetId
+							kSysButtonPMRsrcId, // RsrcId
+							kBindNone,
+							Frame(0,0,0,0),					// Frame
+							kTrue, // Visible
+							kTrue, // Enabled
+							"Cancel", // Initial text
+							kTrue, // kTrue mean the cancel button turns into "Reset" when option key is down
+							kEVELargeSpaceAfter,
+						),
+						EVEDefaultButtonWidget
+						(
+							kOKButtonWidgetID,		// WidgetId
+							kSysButtonPMRsrcId,		// RsrcId
+							kBindNone,
+							Frame(0,0,0,0),					// Frame
+							kTrue,					// Visible
+							kTrue,					// Enabled
+							"OK",					// Initial text
+							kEVENoSpaceAfter
+						),
+					#else
+						EVEDefaultButtonWidget
+						(
+							kOKButtonWidgetID,		// WidgetId
+							kSysButtonPMRsrcId,		// RsrcId
+							kBindNone,
+							Frame(0,0,0,0),					// Frame
+							kTrue,					// Visible
+							kTrue,					// Enabled
+							"OK",					// Initial text
+							kEVELargeSpaceAfter
+						),
+						EVECancelButtonWidget
+						(
+							kCancelButton_WidgetID, // WidgetId
+							kSysButtonPMRsrcId, // RsrcId
+							kBindNone,
+							Frame(0,0,0,0),					// Frame
+							kTrue, // Visible
+							kTrue, // Enabled
+							"Cancel", // Initial text
+							kTrue, // kTrue mean the cancel button turns into "Reset" when option key is down
+							kEVENoSpaceAfter,
+						),
+					#endif
+					}
+				),
+			}
+		)
+	}
+	kEVEArrangeChildrenInColumn|kEVELargeMargin,		// EVE child layout(row/column)
+};
+
+#endif // __ODFRC__
+

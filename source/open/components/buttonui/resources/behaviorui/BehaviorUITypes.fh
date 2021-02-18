@@ -1,0 +1,83 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/buttonui/resources/behaviorui/BehaviorUITypes.fh $
+//  
+//  $Owner: Michael Burbidge $
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#ifndef __BehaviorUITypes_fh__
+#define __BehaviorUITypes_fh__
+
+#ifdef __ODFRC__
+
+#include "BehaviorUIID.h"
+#include "Widgets.fh"
+
+type IntData : Interface (IID = IID_IINTDATA)
+{
+	longint;		// Behavior ID
+};
+
+type TreeViewWidgetMgr : Interface (IID = IID_ITREEVIEWWIDGETMGR)
+{
+	longint;		// View resource ID for node view.
+};
+
+type ToggleThreeStates : Interface (IID = IID_ITOGGLEATTRIBUTES) 
+{ 
+    default: integer = kFalse; // if this checkbox toggles to unknown state 
+};
+
+type ZoomChoice 				(kViewRsrcType) : DropDownListWidget	(ClassID = kZoomChoicesWidgetBoss) { };
+type BehaviorOnOffButton		(kViewRsrcType) : RollOverIconButtonWidget	(ClassID = kBehaviorOnOffButtonBoss) 
+{
+	ToggleThreeStates (default=kTrue);
+};
+
+type FieldSelectionWidget 		(kViewRsrcType) : TreeViewWidget (ClassID = kFieldSelectionWidgetBoss)
+{
+	TreeViewWidgetMgr;	
+}
+type FieldSelectionNodeWidget	(kViewRsrcType) : PrimaryResourcePanelWidget (ClassID = kFieldSelectionNodeWidgetBoss) { };
+type FieldSelectionButtonWidget	(kViewRsrcType) : ButtonWidget (ClassID = kFieldSelectionButtonWidgetBoss) { };
+
+type FileTypeData : Interface (IID = IID_IOBSERVER)
+{
+	longint;	// Creator
+	longint;	// Type
+};
+
+type SelectFileButton				(kViewRsrcType) : ButtonWidget 	(ClassID = kSelectFileButtonBoss)
+{
+	FileTypeData;
+};
+
+type BehaviorsTreeViewWidget (kViewRsrcType) : TreeViewWidget (ClassID = kBehaviorsWidgetBoss)  { };
+
+type BehaviorTreeNodeWidget (kViewRsrcType) : PrimaryResourcePanelWidget (ClassID = kBehaviorNodeWidgetBoss) 
+{ 
+};
+
+type EventChoicesWidget			(kViewRsrcType) : DropDownListWidget			(ClassID = kButtonEventChoicesWidgetBoss) { };
+type BehaviorChoicesWidget		(kViewRsrcType) : DropDownListWidget			(ClassID = kBehaviorChoicesWidgetBoss) { };
+type HolderPanelWidget			(kViewRsrcType) : GenericPanelWidget			(ClassID = kHolderPanelWidgetBoss) { };
+
+#endif
+
+#endif // __BehaviorUITypes_fh__

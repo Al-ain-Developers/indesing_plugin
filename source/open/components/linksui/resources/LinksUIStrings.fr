@@ -1,0 +1,115 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/linksui/resources/LinksUIStrings.fr $
+//  
+//  Owner: lance bushore
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "LinksUIID.h"
+
+#ifdef __ODFRC__
+
+resource LocaleIndex (kLinksUIStringsRsrcID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_Wild, kLinksUIStringsRsrcID + index_enUS
+		kWildFS, k_enGB, kLinksUIStringsRsrcID + index_enGB
+		kWildFS, k_deDE, kLinksUIStringsRsrcID + index_deDE
+		kWildFS, k_frFR, kLinksUIStringsRsrcID + index_frFR
+		kWildFS, k_jaJP, kLinksUIStringsRsrcID + index_jaJP
+		kWildFS, k_esES, kLinksUIStringsRsrcID + index_esES
+		kWildFS, k_ptBR, kLinksUIStringsRsrcID + index_ptBR
+		kWildFS, k_svSE, kLinksUIStringsRsrcID + index_svSE
+		kWildFS, k_daDK, kLinksUIStringsRsrcID + index_daDK
+		kWildFS, k_nlNL, kLinksUIStringsRsrcID + index_nlNL
+		kWildFS, k_itIT, kLinksUIStringsRsrcID + index_itIT
+		kWildFS, k_nbNO, kLinksUIStringsRsrcID + index_nbNO
+		kWildFS, k_fiFI, kLinksUIStringsRsrcID + index_fiFI
+		kWildFS, k_koKR, kLinksUIStringsRsrcID + index_koKR
+		kWildFS, k_zhCN, kLinksUIStringsRsrcID + index_zhCN
+		kWildFS, k_zhTW, kLinksUIStringsRsrcID + index_zhTW
+		kWildFS, k_csCZ, kLinksUIStringsRsrcID + index_csCZ
+		kWildFS, k_plPL, kLinksUIStringsRsrcID + index_plPL
+		kWildFS, k_huHU, kLinksUIStringsRsrcID + index_huHU
+		kWildFS, k_ruRU, kLinksUIStringsRsrcID + index_ruRU
+		kWildFS, k_trTR, kLinksUIStringsRsrcID + index_trTR
+//		kWildFS, k_roRO, kLinksUIStringsRsrcID + index_roRO
+		kWildFS, k_ukUA, kLinksUIStringsRsrcID + index_ukUA
+		kWildFS, k_elGR, kLinksUIStringsRsrcID + index_elGR
+		kWildFS, k_arAE, kLinksUIStringsRsrcID + index_arAE
+		kWildFS, k_heIL, kLinksUIStringsRsrcID + index_heIL
+	}
+}
+
+
+#endif // __ODFRC__
+
+#include "LinksUIStrings_enUS.fr"
+#include "LinksUIStrings_enGB.fr"
+#include "LinksUIStrings_deDE.fr"
+#include "LinksUIStrings_frFR.fr"
+#include "LinksUIStrings_jaJP.fr"
+#include "LinksUIStrings_esES.fr"
+#include "LinksUIStrings_ptBR.fr"
+#include "LinksUIStrings_svSE.fr"
+#include "LinksUIStrings_daDK.fr"
+#include "LinksUIStrings_nlNL.fr"
+#include "LinksUIStrings_itIT.fr"
+#include "LinksUIStrings_nbNO.fr"
+#include "LinksUIStrings_fiFI.fr"
+#include "LinksUIStrings_koKR.fr"
+#include "LinksUIStrings_zhCN.fr"
+#include "LinksUIStrings_zhTW.fr"
+#include "LinksUIStrings_csCZ.fr"
+#include "LinksUIStrings_plPL.fr"
+#include "LinksUIStrings_huHU.fr"
+#include "LinksUIStrings_ruRU.fr"
+#include "LinksUIStrings_trTR.fr"
+//#include "LinksUIStrings_roRO.fr"
+#include "LinksUIStrings_ukUA.fr"
+#include "LinksUIStrings_elGR.fr"
+#include "LinksUIStrings_arAE.fr"
+#include "LinksUIStrings_heIL.fr"
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+resource LocaleIndex (kLinksUIStringsNoTransRsrcID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_Wild, 	kLinksUIStringsNoTransRsrcID + index_enUS
+	}
+}
+
+resource StringTable (kLinksUIStringsNoTransRsrcID + index_enUS)
+{
+	k_enUS,
+	kEuropeanWinToMacEncodingConverter,
+	{
+		// No-Translate strings go here
+
+#pragma message("LINKREWORK: Fix this string!")
+		// Strings for Open Refresh dialog
+		"%d - ",	"%d - ", 	// Don't translate? - WP; Moved from string file
+	}
+}
+#endif // __ODFRC__

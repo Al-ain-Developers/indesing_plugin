@@ -1,0 +1,52 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// U.S. English strings
+//========================================================================================
+
+resource StringTable (kInCopyExportStringsRsrcID + index_nlNL)
+{
+	k_nlNL,								// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+
+	{
+		// ----- Miscellaneous strings
+		"Export Seq Name", 		"Export InCopy Story",
+		"Text",					"Tekst", // append "Text" to export name on a text story
+		
+		// ----- Export options dialog strings
+		"InCopyExportOptions",	"Exportopties Adobe InCopy",
+		"ExportOptions_DataType",	"Cod&ering:",
+		"ExportOptions_UTF16",	"UTF16",
+		"ExportOptions_UTF8",	"UTF8",
+		"ExportOptions_DataOptions",	"Opties:",
+		"ExportOptions_StyleTable",	"Inclusief tabel met &stijlen",
+		"ExportOptions_SwatchList",	"Inclusief lijst met s&talen",
+		"ExportOptions_XMPData",	"Inclusief XMP-&informatie",
+		"ExportOptions_StoryLabel",	"Artikel&label:",
+
+		//menu
+		"ExportMenu",				"E&xporteren",
+		"kExportLayerToIC",			"&Laag...",
+		"kExportAllStoriesToIC",	"Alle a&rtikelen...",
+		"kExportAllGraphicsToIC",	"Alle afbeeldin&gen...",
+		"kExportAllItemsToIC",		"&Alle afbeeldingen en artikelen...",
+
+		"INCDFeatureLost",    "Dit artikel bevat wellicht functies die niet door deze bestandsindeling worden ondersteund.  Deze functies gaan verloren wanneer dit artikel wordt bijgewerkt.",
+	}
+};
+
+#endif // __ODFRC__

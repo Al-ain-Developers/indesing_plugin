@@ -1,0 +1,142 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kLayerPanelStringsRsrcID + index_huHU)
+{
+	k_huHU,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{
+		// ----- Command strings
+
+		"Layer Options",				"Rétegbeállítások",
+		"New Layer",					"Új réteg",
+		"Layer Deletion",				"Réteg(ek) törlése",
+		"Delete Unused Layers",			"Nem használt rétegek törlése",
+		"Lock Others",					"Többi zárolása",
+		"#UnlockOthers",					"A többi zárolásának megszüntetése",
+		"Show All",						"Az összes megjelenítése",
+		"#ShowOthers",					"A többi megjelenítése",
+		"Unlock All",					"Az összes feloldása",
+		"Hide All",						"Az összes elrejtése",
+		"Lock All",						"Az összes zárolása",
+		"Merge Layers",					"Rétegek egyesítése",
+		"Move To Layer",				"Mozgatás rétegre",
+		"Copy To Layer",				"Másolás rétegre",
+		"Move Layer",					"Réteg mozgatása",
+		"Move Layers",					"Rétegek mozgatása",
+		"kUnlockOthersSequence",		"A többi zárolásának megszüntetése",
+		"kLockOthersSequence",			"Többi zárolása",
+
+		// ----- Menu strings
+		
+		"Layers...",						"&Rétegek...",
+
+		"New Layer...",						"Új réteg...",
+		"New Layer Above \"^1\"...",		"Új réteg \"^1\" fölé...",
+		"New Layer Below \"^1\"...",		"Új réteg \"^1\" alá...",
+		"New Top Layer...",					"Új felső réteg...",
+		"Delete Layer",						"Réteg törlése",
+		"Delete \"^1\"",					"A(z) \"^1\" réteg törlése",
+		"Delete Layers",					"Rétegek törlése",
+		"#Duplicate ^1 Menu",				"\"^1\" réteg másolatának létrehozása",
+		"#Duplicate LayersMenu",			"Rétegek másolatának létrehozása",
+		"#DuplicatLayersCmd",				"Rétegek másolatának létrehozása",
+		
+		"Layer Options for \"^1\"...",		"\"^1\" rétegbeállításai...",
+		"Layer Options...",					"Rétegbeállítások...",
+		"Show All Layers",					"Összes réteg megjelenítése",
+		"Hide Others",						"A többi elrejtése",
+		"Unlock All Layers",				"Minden réteg feloldása",
+		"Lock Others",						"Többi zárolása",
+		"Hide All Layers",					"Minden réteg elrejtése",
+		"Lock All Layers",					"Minden réteg zárolása",
+		
+		"Paste Remembers Layers",			"A beillesztés emlékszik a rétegre",
+		"Ungroup Remembers Layers",			"Csoportbontás emlékszik a rétegekre",
+		
+		"Merge Layers",						"Rétegek egyesítése",
+		"Delete Unused Layers",				"Nem használt rétegek törlése",
+		"Select Item(s) on \"^1\"",			"Elem(ek) kijelölése a következőn: \"^1\"",
+		"Select Item(s) Layer",				"Elem(ek) kijelölése a rétegen",
+				
+		"#SelectLayerPageItemMenu",		"Kijelölt elem(ek)",
+		"#SelectZoomLayerPageItemMenu",	"Elem kijelölése és méretre igazítása",
+		"#ZoomLockedPageItemMenu",		"Az elem töltse ki az ablakot",
+		
+		// Menu names for context and panel menus
+		"LayerPanelPopup",					"Rétegek panelmenü",	
+		"RtMenuLayerPanelEye",				"Rétegek panel - Szem helyi menü",	
+		"RtMenuLayerPanelLock",				"Rétegek panel - Zárolás helyi menü",
+		"RtMenuLayerPanelItem",				"Rétegek panel - Réteg helyi menü",	
+		"RtMenuLayerPanelPageItem",			"Rétegek panel - Oldalelem helyi menü",	
+
+		// ----- Window strings
+		"DeleteOneLayer",					" A(z) \"^1\" réteg legalább egy objektumot tartalmaz. Mindenképpen törli a réteget?",
+		"DeleteMultiLayers",				"A kiválasztott rétegek objektumokat tartalmaznak. Mindenképpen törli a rétegeket?",
+		"DeleteOneGuideLayer",				" A(z) \"^1\" réteg vonalzó-segédvonalakat tartalmaz. Mindenképpen törli a réteget?",
+		"DeleteGuideLayers",				"A kiválasztott rétegek vonalzó-segédvonalakat tartalmaznak. Mindenképpen törli a rétegeket?",
+		"DeletingPlaceGunUsedLayer",		"A réteg nem törölhető, mivel az elhelyezési kurzorba betöltött objektumdarabhoz szükséges.",
+
+		// ----- Window Menu
+		"Layers_WinMenu",					"R&étegek",
+		
+		// ----- Panel strings
+		
+		"^1 Layer",							"^1 réteg",		// For status widget
+		"^1 Layers",						"^1 réteg",	// For status widget
+		"New Layer",						"Új réteg",	// Title of New Layer dialog
+		"Layer Options",					"Rétegbeállítások", // Title of Layer Options dialog
+		"&Name:",							"&Név:",
+		"&Color:",							"&Szín:",
+		"&Show Layer",						"Réteg &megjelenítése",
+		"Show &Guides",						"&Segédvonalak megjelenítése",
+		"&Lock Layer",						"Réteg &zárolása",
+		"Loc&k Guides",						"Segédvonalak rög&zítése",
+		"Keep When Layer is &Hidden",		"Ne folyassa körbe a &szöveget, ha a réteg rejtett",
+		"&Print Layer",						"Réteg &nyomtatása",
+
+		// ----- Tips strings
+
+		"DeleteLayerTip",					"A kiválasztott rétegek törlése",
+		"NewLayerTip",						"Új réteg létrehozása",
+		"EyeTip",							"Láthatóságkapcsoló",
+		"PencilTip",						"Rétegek zárolásának ki/bekapcsolása (szerkeszthető, ha üres)",
+		"PageItemPencilTip",				"Oldalelem zárolásának ki/bekapcsolása (szerkeszthető, ha üres)",
+		"SwatchTip",						"Kijelölés színe ezen a rétegen",
+		"ProxyTip",							"Jelzi a kijelölt elemeket (másik rétegre húzható át, illetve változtatható a rétegződési sorrend)",
+		"ProxyChildSelectedTip",			"Kijelölt objektumot tartalmaz, kattintással kijelölhető a tárolóobjektum",
+		"UnselectedProxyTip",				"Az elemek rákattintással kijelölhetők",
+		"ActiveTip",						"A jelenlegi rajzréteget jelzi",
+
+		// ----- Error strings
+		"EmptyLayerName",					"A réteg nevét kötelező megadni.",
+		"DuplicateLayer",					"Már van ilyen nevű réteg.",
+
+		"#LayerHierPanelName",		"Rétegek",
+		"#Page:^1,",					"Oldal: ^1, ", // for layer panel status widget. Will be followed by layer count string.
+		"#Pages:^1,",					"Oldal: ^1, ", // for layer panel status widget. Will be followed by layer count string.
+		"#DeletePageItemsMenu",		"Oldalelemek törlése", // menu item name
+		"#DeletePageItem \"^1\"",		"\"^1\" oldalelem törlése", // menu item name
+		"#DuplicatePI ^1 Menu",			"\"^1\" oldalelem másolatának létrehozása", // menu item name
+		"#DuplicatePIMenu",			"Oldalelemek másolatának létrehozása",  // menu item name
+	}
+};
+
+#endif // __ODFRC__

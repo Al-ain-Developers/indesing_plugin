@@ -1,0 +1,142 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kLayerPanelStringsRsrcID + index_deDE)
+{
+	k_deDE,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{
+		// ----- Command strings
+
+		"Layer Options",				"Ebenenoptionen",
+		"New Layer",					"Neue Ebene",
+		"Layer Deletion",				"Ebene(n) löschen",
+		"Delete Unused Layers",			"Unbenutzte Ebenen löschen",
+		"Lock Others",					"Andere sperren",
+		"#UnlockOthers",					"Andere entsperren",
+		"Show All",						"Alle einblenden",
+		"#ShowOthers",					"Andere anzeigen",
+		"Unlock All",					"Alle entsperren",
+		"Hide All",						"Alle ausblenden",
+		"Lock All",						"Alle sperren",
+		"Merge Layers",					"Auf eine Ebene reduzieren",
+		"Move To Layer",				"Auf Ebene verschieben",
+		"Copy To Layer",				"In Ebene kopieren",
+		"Move Layer",					"Ebene verschieben",
+		"Move Layers",					"Ebenen verschieben",
+		"kUnlockOthersSequence",		"Andere entsperren",
+		"kLockOthersSequence",			"Andere sperren",
+
+		// ----- Menu strings
+		
+		"Layers...",						"&Ebenen...",
+
+		"New Layer...",						"Neue Ebene...",
+		"New Layer Above \"^1\"...",		"Neue Ebene über \"^1\"...",
+		"New Layer Below \"^1\"...",		"Neue Ebene unter \"^1\"...",
+		"New Top Layer...",					"Neue oberste Ebene...",
+		"Delete Layer",						"Ebene löschen",
+		"Delete \"^1\"",					"Ebene \"^1\" löschen",
+		"Delete Layers",					"Ebenen löschen",
+		"#Duplicate ^1 Menu",				"Ebene \"^1\" duplizieren",
+		"#Duplicate LayersMenu",			"Ebenen duplizieren",
+		"#DuplicatLayersCmd",				"Ebenen duplizieren",
+		
+		"Layer Options for \"^1\"...",		"Ebenenoptionen für \"^1\"...",
+		"Layer Options...",					"Ebenenoptionen...",
+		"Show All Layers",					"Alle Ebenen einblenden",
+		"Hide Others",						"Andere ausblenden",
+		"Unlock All Layers",				"Alle Ebenen entsperren",
+		"Lock Others",						"Andere sperren",
+		"Hide All Layers",					"Alle Ebenen ausblenden",
+		"Lock All Layers",					"Alle Ebenen sperren",
+		
+		"Paste Remembers Layers",			"Ebenen beim Einfügen erhalten",
+		"Ungroup Remembers Layers",			"Ebenen beim Aufheben der Gruppe beibehalten",
+		
+		"Merge Layers",						"Auf eine Ebene reduzieren",
+		"Delete Unused Layers",				"Unbenutzte Ebenen löschen",
+		"Select Item(s) on \"^1\"",			"Element(e) auf \"^1\" auswählen",
+		"Select Item(s) Layer",				"Element(e) auf Ebene auswählen",
+				
+		"#SelectLayerPageItemMenu",		"Element(e) auswählen",
+		"#SelectZoomLayerPageItemMenu",	"Element auswählen und einpassen",
+		"#ZoomLockedPageItemMenu",		"Element in Fenster einpassen",
+		
+		// Menu names for context and panel menus
+		"LayerPanelPopup",					"Ebenenbedienfeldmenü",	
+		"RtMenuLayerPanelEye",				"Ebenenbedienfeld, Auge (Kontextmenü)",	
+		"RtMenuLayerPanelLock",				"Ebenenbedienfeld, Sperren (Kontextmenü)",
+		"RtMenuLayerPanelItem",				"Ebenenbedienfeld, Ebene (Kontextmenü)",	
+		"RtMenuLayerPanelPageItem",			"Ebenenbedienfeld, Seitenelement (Kontextmenü)",	
+
+		// ----- Window strings
+		"DeleteOneLayer",					"Die Ebene \"^1\" enthält mindestens ein Objekt. Soll die Ebene trotzdem gelöscht werden?",
+		"DeleteMultiLayers",				"Die ausgewählten Ebenen enthalten Objekte. Sollen die Ebenen trotzdem gelöscht werden?",
+		"DeleteOneGuideLayer",				"Die Ebene \"^1\" enthält Hilfslinien. Soll die Ebene trotzdem gelöscht werden?",
+		"DeleteGuideLayers",				"Die ausgewählten Ebenen enthalten Hilfslinien. Sollen die Ebenen trotzdem gelöscht werden?",
+		"DeletingPlaceGunUsedLayer",		"Die Ebene kann nicht gelöscht werden. Sie wird vom Snippet benötigt, das im Platzierungscursor geladen ist.",
+
+		// ----- Window Menu
+		"Layers_WinMenu",					"Ebe&nen",
+		
+		// ----- Panel strings
+		
+		"^1 Layer",							"^1 Ebene",		// For status widget
+		"^1 Layers",						"^1 Ebenen",	// For status widget
+		"New Layer",						"Neue Ebene",	// Title of New Layer dialog
+		"Layer Options",					"Ebenenoptionen", // Title of Layer Options dialog
+		"&Name:",							"&Name:",
+		"&Color:",							"&Farbe:",
+		"&Show Layer",						"&Ebene einblenden",
+		"Show &Guides",						"&Hilfslinien einblenden",
+		"&Lock Layer",						"Ebene &sperren",
+		"Loc&k Guides",						"Hilfslinien spe&rren",
+		"Keep When Layer is &Hidden",		"&Textumfluss bei ausgeblendeten Ebenen unterdrücken",
+		"&Print Layer",						"Ebene &drucken",
+
+		// ----- Tips strings
+
+		"DeleteLayerTip",					"Ausgewählte Ebenen löschen",
+		"NewLayerTip",						"Neue Ebene erstellen",
+		"EyeTip",							"Sichtbarkeit ein/aus",
+		"PencilTip",						"Ebene sperren/entsperren (bearbeitbar bei leerem Feld)",
+		"PageItemPencilTip",				"Seitenelement sperren/entsperren (bearbeitbar bei leerem Feld)",
+		"SwatchTip",						"Farbe der Auswahlmarkierungen dieser Ebene",
+		"ProxyTip",							"Kennzeichnet ausgewählte Elemente (ziehen, um zwischen Ebene zu verschieben oder die Rückgängig-Reihenfolge zu ändern)",
+		"ProxyChildSelectedTip",			"Enthält das ausgewählte Objekt; klicken, um das übergeordnete Objekt auszuwählen",
+		"UnselectedProxyTip",				"Zum Auswählen von Elementen klicken",
+		"ActiveTip",						"Zeigt aktuelle Zeichenebene",
+
+		// ----- Error strings
+		"EmptyLayerName",					"Ebenenname muss angegeben werden.",
+		"DuplicateLayer",					"Es existiert bereits eine Ebene dieses Namens.",
+
+		"#LayerHierPanelName",		"Ebenen",
+		"#Page:^1,",					"Seite: ^1, ", // for layer panel status widget. Will be followed by layer count string.
+		"#Pages:^1,",					"Seiten: ^1, ", // for layer panel status widget. Will be followed by layer count string.
+		"#DeletePageItemsMenu",		"Seitenelemente löschen", // menu item name
+		"#DeletePageItem \"^1\"",		"Seitenelement \"^1\" löschen", // menu item name
+		"#DuplicatePI ^1 Menu",			"Seitenelement \"^1\" duplizieren", // menu item name
+		"#DuplicatePIMenu",			"Seitenelemente duplizieren",  // menu item name
+	}
+};
+
+#endif // __ODFRC__

@@ -1,0 +1,146 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/dynamicdocumentsui/resources/DynamicDocumentsUIStrings.fr $
+//  
+//  Owner: DBerggren
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "StringTable.fh"
+#include "ErrorTableTypes.h"
+
+#include "DynamicDocumentsUIDefs.h"
+#include "DynamicDocumentsUIID.h"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// RESOURCE Locale index
+//========================================================================================
+
+resource LocaleIndex (kDynamicDocumentsUIStringsRsrcID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_Wild, kDynamicDocumentsUIStringsRsrcID + index_enUS
+		kWildFS, k_enGB, kDynamicDocumentsUIStringsRsrcID + index_enGB
+		kWildFS, k_deDE, kDynamicDocumentsUIStringsRsrcID + index_deDE
+		kWildFS, k_frFR, kDynamicDocumentsUIStringsRsrcID + index_frFR
+		kWildFS, k_jaJP, kDynamicDocumentsUIStringsRsrcID + index_jaJP
+		kWildFS, k_esES, kDynamicDocumentsUIStringsRsrcID + index_esES
+		kWildFS, k_ptBR, kDynamicDocumentsUIStringsRsrcID + index_ptBR
+		kWildFS, k_svSE, kDynamicDocumentsUIStringsRsrcID + index_svSE
+		kWildFS, k_daDK, kDynamicDocumentsUIStringsRsrcID + index_daDK
+		kWildFS, k_nlNL, kDynamicDocumentsUIStringsRsrcID + index_nlNL
+		kWildFS, k_itIT, kDynamicDocumentsUIStringsRsrcID + index_itIT
+		kWildFS, k_nbNO, kDynamicDocumentsUIStringsRsrcID + index_nbNO
+		kWildFS, k_fiFI, kDynamicDocumentsUIStringsRsrcID + index_fiFI
+		kWildFS, k_koKR, kDynamicDocumentsUIStringsRsrcID + index_koKR
+		kWildFS, k_zhCN, kDynamicDocumentsUIStringsRsrcID + index_zhCN
+		kWildFS, k_zhTW, kDynamicDocumentsUIStringsRsrcID + index_zhTW
+		kWildFS, k_csCZ, kDynamicDocumentsUIStringsRsrcID + index_csCZ
+		kWildFS, k_plPL, kDynamicDocumentsUIStringsRsrcID + index_plPL
+		kWildFS, k_huHU, kDynamicDocumentsUIStringsRsrcID + index_huHU
+		kWildFS, k_ruRU, kDynamicDocumentsUIStringsRsrcID + index_ruRU
+		kWildFS, k_trTR, kDynamicDocumentsUIStringsRsrcID + index_trTR
+		kWildFS, k_ukUA, kDynamicDocumentsUIStringsRsrcID + index_ukUA
+		kWildFS, k_elGR, kDynamicDocumentsUIStringsRsrcID + index_elGR
+		kWildFS, k_arAE, kDynamicDocumentsUIStringsRsrcID + index_arAE
+		kWildFS, k_heIL, kDynamicDocumentsUIStringsRsrcID + index_heIL
+	}
+}
+
+#endif // __ODFRC__
+
+#include "DynamicDocumentsUIStrings_enUS.fr"
+#include "DynamicDocumentsUIStrings_enGB.fr"
+#include "DynamicDocumentsUIStrings_deDE.fr"
+#include "DynamicDocumentsUIStrings_frFR.fr"
+#include "DynamicDocumentsUIStrings_jaJP.fr"
+#include "DynamicDocumentsUIStrings_esES.fr"
+#include "DynamicDocumentsUIStrings_ptBR.fr"
+#include "DynamicDocumentsUIStrings_svSE.fr"
+#include "DynamicDocumentsUIStrings_daDK.fr"
+#include "DynamicDocumentsUIStrings_nlNL.fr"
+#include "DynamicDocumentsUIStrings_itIT.fr"
+#include "DynamicDocumentsUIStrings_nbNO.fr"
+#include "DynamicDocumentsUIStrings_fiFI.fr"
+#include "DynamicDocumentsUIStrings_koKR.fr"
+#include "DynamicDocumentsUIStrings_zhCN.fr"
+#include "DynamicDocumentsUIStrings_zhTW.fr"
+#include "DynamicDocumentsUIStrings_csCZ.fr"
+#include "DynamicDocumentsUIStrings_plPL.fr"
+#include "DynamicDocumentsUIStrings_huHU.fr"
+#include "DynamicDocumentsUIStrings_ruRU.fr"
+#include "DynamicDocumentsUIStrings_trTR.fr"
+#include "DynamicDocumentsUIStrings_ukUA.fr"
+#include "DynamicDocumentsUIStrings_elGR.fr"
+#include "DynamicDocumentsUIStrings_arAE.fr"
+#include "DynamicDocumentsUIStrings_heIL.fr"
+
+#ifdef __ODFRC__
+
+resource LocaleIndex (kDynamicDocumentsUIStringsNoTransRsrcID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_Wild, kDynamicDocumentsUIStringsNoTransRsrcID + index_enUS
+	}
+}
+
+resource StringTable (kDynamicDocumentsUIStringsNoTransRsrcID + index_enUS)
+{
+	k_enUS,
+	kEuropeanWinToMacEncodingConverter,
+	{
+		// No-Translate strings go here
+		
+		"k1240x620",						"1240 x 620",
+		"k984x588",							"984 x 588",
+		"k760x420",							"760 x 420",
+		"k600x300",							"600 x 300",
+		
+		"1280",								"1280",
+		"1240",								"1240",
+		"1024",								"1024",
+		"984",								"984",
+		"800",								"800",
+		"768",								"768",
+		"760",								"760",
+		"640",								"640",
+		"620",								"620",
+		"600",								"600",
+		"588",								"588",
+		"480",								"480",
+		"420",								"420",
+		"300",								"300",		
+		"144",								"144",		
+		"96",								"96",		
+		"72",								"72",		
+		
+		"kDynamicDocumentsUISWFFileExtention",	".gif",
+		"kDynamicDocumentsUIDefaultSWF",	"default.gif",
+		"kHTMLPreviewFolderTextKey",		"HTMLPreview",
+		"kDynamicDocumentsUIHTMLFileExtention",	".html",		
+		"kDynamicDocumentsUIDefaultHTML",	"default.html",
+	}
+}
+
+#endif // __ODFRC__

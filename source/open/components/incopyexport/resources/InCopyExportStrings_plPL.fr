@@ -1,0 +1,52 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// U.S. English strings
+//========================================================================================
+
+resource StringTable (kInCopyExportStringsRsrcID + index_plPL)
+{
+	k_plPL,								// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+
+	{
+		// ----- Miscellaneous strings
+		"Export Seq Name", 		"Eksportuj wątek InCopy",
+		"Text",					"Tekst", // append "Text" to export name on a text story
+		
+		// ----- Export options dialog strings
+		"InCopyExportOptions",	"Opcje eksportowania programu Adobe InCopy",
+		"ExportOptions_DataType",	"&Kodowanie:",
+		"ExportOptions_UTF16",	"UTF16",
+		"ExportOptions_UTF8",	"UTF8",
+		"ExportOptions_DataOptions",	"Opcje:",
+		"ExportOptions_StyleTable",	"Dołącz tabelę &stylów",
+		"ExportOptions_SwatchList",	"Dołącz listę p&róbek",
+		"ExportOptions_XMPData",	"Dołącz &informacje XMP",
+		"ExportOptions_StoryLabel",	"&Etykieta wątku:",
+
+		//menu
+		"ExportMenu",				"E&ksportuj",
+		"kExportLayerToIC",			"&Warstwa...",
+		"kExportAllStoriesToIC",	"Wszystkie &wątki...",
+		"kExportAllGraphicsToIC",	"Wszystkie &grafiki...",
+		"kExportAllItemsToIC",		"&Wszystkie grafiki i wątki...",
+
+		"INCDFeatureLost",    "Ten wątek może zawierać funkcje nieobsługiwane przez wybrany format pliku. Funkcje te zostaną utracone po uaktualnieniu wątku.",
+	}
+};
+
+#endif // __ODFRC__

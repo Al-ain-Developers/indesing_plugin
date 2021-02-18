@@ -1,0 +1,379 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/layerpanel/LayerOptionsPanel_enUS.fr $
+//  
+//  Owner: Paul Sorrick
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#ifdef __ODFRC__
+
+
+//========================================================================================
+// Dialog:				"Layer Options"
+// UI Spec File:		PM_LayerOptions-v05.tif
+//						interface.corp.adobe.com/products/indesign/mockups/dt_text_wrap_v01.gif
+//========================================================================================
+
+resource LayerOptionsPanel (kLayerOptionsDialogRsrcID + index_enUS)
+{
+	__FILE__, __LINE__,
+	kLayerOptionsParentWidgetId,					// WidgetId
+	kPMRsrcID_None,							// RsrcId
+	kBindNone,								// Frame binding
+	Frame(0,0,420,165),		// Frame
+	kTrue,									// Visible
+	kTrue,									// Enabled
+	"Layer Options",						// Panel name
+	{
+		EVEGenericPanelWidget
+		(
+			kInvalidWidgetID,	// WidgetId
+			0					// RsrcId
+			0,					// Widget EVE Info
+			kBindNone,			// Frame binding
+			Frame(0,0,420,65),	// Frame
+			kTrue,				// Visible
+			kTrue,				// Enabled
+			kEVEAlignFill|kEVEArrangeChildrenInColumn|kEVENoSpaceAfter,	// EVE info
+			{
+				EVEGenericPanelWidget
+				(
+					kInvalidWidgetID,	// WidgetId
+					0					// RsrcId
+					0,					// Widget EVE Info
+					kBindNone,			// Frame binding
+					Frame(0,0,420,65),	// Frame
+					kTrue,				// Visible
+					kTrue,				// Enabled
+					kEVEAlignFill|kEVEArrangeChildrenInRow|kEVENoSpaceAfter,	// EVE info
+					{
+						EVEGenericPanelWidget
+						(
+							kInvalidWidgetID,	// WidgetId
+							0					// RsrcId
+							0,					// Widget EVE Info
+							kBindNone,			// Frame binding
+							Frame(0,0,320,65),	// Frame
+							kTrue,				// Visible
+							kTrue,				// Enabled
+							kEVEAlignFill|kEVEArrangeChildrenInColumn|kEVENoSpaceAfter,	// EVE info
+							{
+								EVEGenericPanelWidget
+								(
+									kInvalidWidgetID,	// WidgetId
+									0					// RsrcId
+									0,					// Widget EVE Info
+									kBindNone,			// Frame binding
+									Frame(0,0,320,65),	// Frame
+									kTrue,				// Visible
+									kTrue,				// Enabled
+									kEVEAlignFill|kEVEArrangeChildrenInRow|kEVERegularSpaceAfter,	// EVE info
+									{
+										EVEStaticTextWidget
+										(
+											kLayerNameStaticWidgetID,		// WidgetId
+											kSysStaticTextPMRsrcId,			// RsrcId
+											kBindNone,						// Frame binding
+											Frame(10,0,60,0),		// Frame
+											kTrue, kTrue, kAlignRight,		// Visible, Enabled, Alignment
+											kDontEllipsize, kTrue,					// Ellipsize style, Convert ampersands
+											"&Name:",						// Initial text
+											kLayerNameWidgetID,
+											kEVERegularSpaceAfter,				// Amount of empty space after
+										),
+										
+										EVETextEditBoxWidget					
+										(
+											kLayerNameWidgetID,				// WidgetId
+											kSysEditBoxPMRsrcId,			// RsrcId
+											kBindNone,						// Frame binding
+											Frame(65,0,295,0),		// Frame
+											kTrue, kTrue					// Visible, Enabled
+											0,								// Widget id of nudge button (0 so we don't get one)
+											0, 0,							// small,large nudge amount
+											kPMNamedItemMaxChars,			// max num chars( 0 = no limit)
+											kFalse,							// is read only
+											kFalse,							// should notify each key stroke
+											kFalse,							// range checking enabled
+											kFalse,							// blank entry allowed
+											0,								// Upper bounds
+											0,								// Lower bounds
+											"",								// Initial text
+											//kDialogWindowSystemScriptFontId, kDialogWindowSystemScriptFontId,
+											kEVELargeSpaceAfter,				// Amount of empty space after
+										),
+									}
+								),
+								
+								EVEGenericPanelWidget
+								(
+									kInvalidWidgetID,	// WidgetId
+									0					// RsrcId
+									0,					// Widget EVE Info
+									kBindNone,			// Frame binding
+									Frame(0,0,320,65),	// Frame
+									kTrue,				// Visible
+									kTrue,				// Enabled
+									kEVEAlignFill|kEVEArrangeChildrenInRow|kEVENoSpaceAfter,	// EVE info
+									{
+										StaticTextWidget
+										(
+											kLayerColorStaticWidgetID,		// WidgetId
+											kSysStaticTextPMRsrcId,			// RsrcId
+											kBindNone,						// Frame binding
+											Frame(10,0,60,0),		// Frame
+											kTrue, kTrue, kAlignRight,		// Visible, Enabled, Alignment
+											kDontEllipsize, kTrue,					// Ellipsize style, Convert ampersands
+											"&Color:",						// Initial text
+											kLayerColorDropDownWidgetID
+										),
+										
+										ColorListDropDownWidget
+										(
+											kLayerColorDropDownWidgetID,	// WidgetId
+											kSysDropDownPMRsrcId,				// RsrcId
+											kBindNone,					
+											Frame(65,0,240,0),					// Frame
+											kTrue,								// Visible
+											kTrue,								// Enabled
+											0,									// Associated Widget
+										),
+									}
+								),
+							}
+						),
+
+						EVEGenericPanelWidget
+						(
+							kInvalidWidgetID,	// WidgetId
+							0					// RsrcId
+							0,					// Widget EVE Info
+							kBindNone,			// Frame binding
+							Frame(320,0,420,65),	// Frame
+							kTrue,				// Visible
+							kTrue,				// Enabled
+							kEVEAlignFill|kEVEArrangeChildrenInColumn|kEVENoSpaceAfter,	// EVE info
+							{
+								DefaultButtonWidget
+								(
+									kOKButtonWidgetID,					// WidgetId
+									kSysButtonPMRsrcId,				// RsrcId
+									kBindNone,						// Frame binding
+									Frame(310,0,405,0),		// Frame
+									kTrue,							// Visible
+									kTrue,							// Enabled
+									"OK"							// Panel name
+								),
+								
+								CancelButtonWidget
+								(
+									kCancelButton_WidgetID,				// WidgetId
+									kSysButtonPMRsrcId,				// RsrcId
+									kBindNone,						// Frame binding
+									Frame(310,0,405,0),		// Frame
+									kTrue,							// Visible
+									kTrue,							// Enabled
+									"Cancel",						// Initial text
+									kTrue,							// Cancel changes to Reset
+								),
+							}
+						),
+					}
+				),
+			}
+		),
+		
+		EVEGenericPanelWidget
+		(
+			kInvalidWidgetID,	// WidgetId
+			0					// RsrcId
+			0,					// Widget EVE Info
+			kBindNone,			// Frame binding
+			Frame(0,65,420,110),	// Frame
+			kTrue,				// Visible
+			kTrue,				// Enabled
+			kEVEAlignFill|kEVEArrangeChildrenInRow|kEVENoSpaceAfter,	// EVE info
+			{
+				EVEStaticTextWidget
+				(
+					kInvalidWidgetID, 
+					kSysStaticTextPMRsrcId, 		// WidgetId, RsrcId
+					kBindNone,						// Frame binding
+					Frame(0,0,55,45),				// Frame
+					kTrue, 							// Visible,
+					kFalse, 						// Enabled
+					kAlignRight,					// Alignment
+					kDontEllipsize, kTrue,			// Ellipsize style, Convert ampersands
+					"",								// Initial text
+					kInvalidWidgetID,				// Companion widget
+					kEVENoSpaceAfter,				// Blank space after
+				),
+				
+				EVEGenericPanelWidget
+				(
+					kInvalidWidgetID,	// WidgetId
+					0					// RsrcId
+					0,					// Widget EVE Info
+					kBindNone,			// Frame binding
+					Frame(0,0,420,110),	// Frame
+					kTrue,				// Visible
+					kTrue,				// Enabled
+					kEVEAlignLeft|kEVEArrangeChildrenInRow|kEVENoSpaceAfter,	// EVE info
+					{
+
+						EVEGenericPanelWidget
+						(
+							kInvalidWidgetID,	// WidgetId
+							0					// RsrcId
+							0,					// Widget EVE Info
+							kBindNone,			// Frame binding
+							Frame(0,0,185,110),	// Frame
+							kTrue,				// Visible
+							kTrue,				// Enabled
+							kEVEAlignLeft|kEVEArrangeChildrenInColumn|kEVERegularSpaceAfter,	// EVE info
+							{
+								EVECheckBoxWidget
+								(
+									kLayerShowCheckboxWidgetID,	// WidgetId
+									kSysCheckBoxPMRsrcId,		// RsrcId
+									kBindNone,					// Frame binding
+									Frame(55,0,185,0),			// Frame
+									kTrue,						// Visible
+									kTrue,						// Enabled
+									kAlignLeft,					// Alignment
+									"&Show Layer",				// Initial text
+									kEVENoSpaceAfter,		// Amount of empty space after
+								),
+								
+								EVECheckBoxWidget
+								(
+									kLayerLockCheckboxWidgetID,		// WidgetId
+									kSysCheckBoxPMRsrcId,			// RsrcId
+									kBindNone,						// Frame binding
+									Frame(55,0,185,0),			// Frame
+									kTrue,							// Visible
+									kTrue,							// Enabled
+									kAlignLeft,						// Alignment
+									"&Lock Layer",					// Initial text
+									kEVENoSpaceAfter,			// Amount of empty space after
+								),
+								
+								EVECheckBoxWidget
+								(
+									kLayerPrintCheckboxWidgetID,	// WidgetId
+									kSysCheckBoxPMRsrcId,			// RsrcId
+									kBindNone,						// Frame binding
+									Frame(55,0,185,0),			// Frame
+									kTrue,							// Visible
+									kTrue,							// Enabled
+									kAlignLeft,						// Alignment
+									"&Print Layer",					// Initial text
+									kEVENoSpaceAfter,			// Amount of empty space after
+								)
+							}
+						),
+
+						EVEGenericPanelWidget
+						(
+							kInvalidWidgetID,	// WidgetId
+							0					// RsrcId
+							0,					// Widget EVE Info
+							kBindNone,			// Frame binding
+							Frame(185,0,420,110), // Frame
+							kTrue,				// Visible
+							kTrue,				// Enabled
+							kEVEAlignLeft|kEVEArrangeChildrenInColumn|kEVERegularSpaceAfter,	// EVE info
+							{				
+								EVECheckBoxWidget
+								(
+									kLayerShowGuidesCheckboxWidgetID,// WidgetId
+									kSysCheckBoxPMRsrcId,		// RsrcId
+									kBindNone,					// Frame binding
+									Frame(0,0,120,0),		// Frame
+									kTrue,						// Visible
+									kTrue,						// Enabled
+									kAlignLeft,					// Alignment
+									"Show &Guides",				// Initial text
+									kEVENoSpaceAfter,		// Amount of empty space after
+								),
+								
+								EVECheckBoxWidget
+								(
+									kLayerLockGuidesCheckboxWidgetID,// WidgetId
+									kSysCheckBoxPMRsrcId,			// RsrcId
+									kBindNone,						// Frame binding
+									Frame(0,0,120,0),		// Frame
+									kTrue,						// Visible
+									kTrue,						// Enabled
+									kAlignLeft,					// Alignment
+									"Loc&k Guides",				// Initial text
+									kEVENoSpaceAfter,		// Amount of empty space after
+								),
+							}
+						),
+					}
+				),						
+			}
+		),
+
+		EVEGenericPanelWidget
+		(
+			kInvalidWidgetID,	// WidgetId
+			0					// RsrcId
+			0,					// Widget EVE Info
+			kBindNone,			// Frame binding
+			Frame(0,130,420,165), // Frame
+			kTrue,				// Visible
+			kTrue,				// Enabled
+			kEVEAlignFill|kEVEArrangeChildrenInRow|kEVENoSpaceAfter,	// EVE info
+			{		
+				EVEStaticTextWidget
+				(
+					kInvalidWidgetID, 
+					kSysStaticTextPMRsrcId, 		// WidgetId, RsrcId
+					kBindNone,						// Frame binding
+					Frame(0,130,55,150),				// Frame
+					kTrue, 							// Visible,
+					kFalse, 						// Enabled
+					kAlignRight,					// Alignment
+					kDontEllipsize, kTrue,			// Ellipsize style, Convert ampersands
+					"",								// Initial text
+					kInvalidWidgetID,				// Companion widget
+					kEVENoSpaceAfter,				// Blank space after
+				),
+		
+				EVECheckBoxWidget
+				(
+					kIgnoreTextWrapCheckboxWidgetID,		// WidgetId
+					kSysCheckBoxPMRsrcId,			// RsrcId
+					kBindNone,						// Frame binding
+					Frame(55,0,340,0),			// Frame
+					kTrue,							// Visible
+					kTrue,							// Enabled
+					kAlignLeft,						// Alignment
+					"Keep When Layer is &Hidden",	// Initial text
+					kEVENoSpaceAfter,		// Amount of empty space after
+				)
+			}
+		),
+	}
+	kEVEArrangeChildrenInColumn|kEVELargeMargin,		// EVE child layout(row/column)
+};
+
+#endif

@@ -1,0 +1,129 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kBehaviorUIStringsRsrcID + index_koKR)
+{
+	k_koKR,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{		
+		"$$$/Dialog/Behaviors/ShowHideFields/Fields_Tree", "필드 트리",
+
+		"$$$/Dialog/Behaviors/Description",				"여기에 동작에 대한 간단한 설명을 입력할 수 있습니다. 또한 동작 옵션에 대한 약간의 힌트도 추가할 수 있습니다. 사용자에게 동작 옵션의 사용 방법을 간단히 설명하십시오.",
+		"$$$/Dialog/Behaviors/Description Title",		"설명",
+		"$$$/Dialog/Behaviors/DeleteAlert",				"선택한 동작을 삭제하시겠습니까?",
+		"$$$/Dialog/Behaviors/DragDeleteAlert",			"드래그한 동작을 삭제하시겠습니까?",
+		"$$$/Dialog/Behaviors/Error/Invalid URL",		"URL 필드에 값을 입력해야 합니다.",
+		"$$$/Dialog/Behaviors/Error/Invalid File",		"유효한 파일을 지정해야 합니다.",
+		
+		"$$$/Dialog/Behaviors/Movie/Movie:",			"비디오:",
+		"$$$/Dialog/Behaviors/Movie/Play Options:",		"옵션:",
+		"$$$/Dialog/Behaviors/Movie/Play",				"재생",
+		"$$$/Dialog/Behaviors/Movie/Stop",				"정지",
+		"$$$/Dialog/Behaviors/Movie/Pause",				"일시 정지",
+		"$$$/Dialog/Behaviors/Movie/Resume",			"계속",
+		"$$$/Dialog/Behaviors/Movie/PlayFromNavPoint",	"탐색 지점에서 재생",
+		"$$$/Dialog/Behaviors/Movie/StopAll",			"모두 정지(SWF만)",
+		"$$$/Dialog/Behaviors/Movie/NavPoint",			"점:",
+		"$$$/Dialog/Behaviors/Movie/NoVideo",			"(비디오 없음)",
+		"$$$/Dialog/Behaviors/Movie/NoVideoNavPoint",	"(탐색 지점 없음)",
+
+		"$$$/Dialog/Behaviors/Sound/Sound:",			"사운드:",
+		"$$$/Dialog/Behaviors/Sound/Play Options:",		"옵션:",
+		"$$$/Dialog/Behaviors/Sound/Play",				"재생",
+		"$$$/Dialog/Behaviors/Sound/Stop",				"정지",
+		"$$$/Dialog/Behaviors/Sound/Pause",				"일시 정지",
+		"$$$/Dialog/Behaviors/Sound/Resume",			"계속",
+		"$$$/Dialog/Behaviors/Sound/StopAll",			"모두 정지(SWF만)",
+		"$$$/Dialog/Behaviors/Sound/Volume:",			"볼륨:",
+		"$$$/Dialog/Behaviors/Sound/Synchronous",		"동기화",
+		"$$$/Dialog/Behaviors/Sound/Mix",				"혼합",
+		"$$$/Dialog/Behaviors/Sound/NoSound",			"(사운드 없음)",
+		
+		"$$$/Dialog/Behaviors/Animation/Animation:",	"애니메이션:",
+		"$$$/Dialog/Behaviors/Animation/Play Options:",	"옵션:",
+		"$$$/Dialog/Behaviors/Animation/Play",			"재생",
+		"$$$/Dialog/Behaviors/Animation/Stop",			"정지",
+		"$$$/Dialog/Behaviors/Animation/Pause",			"일시 정지",
+		"$$$/Dialog/Behaviors/Animation/Resume",		"계속",
+		"$$$/Dialog/Behaviors/Animation/StopAll",		"모두 정지",
+		"$$$/Dialog/Behaviors/Animation/Reverse",		"반전",
+		"$$$/Dialog/Behaviors/Animation/AutoReverse",	"롤오프할 때 반전",
+		"$$$/Dialog/Behaviors/Animation/NoAnimation",	"(애니메이션 없음)",
+		
+		"$$$/Dialog/Behaviors/MSO/Object:",				"개체:",
+		"$$$/Dialog/Behaviors/MSO/State:",				"상태:",
+		"$$$/Dialog/Behaviors/MSO/AutoReverse",			"롤오프할 때 뒤로 이동",
+		"$$$/Dialog/Behaviors/MSO/NextLoop",			"마지막 상태에서 정지",
+		"$$$/Dialog/Behaviors/MSO/PrevLoop",			"첫 상태에서 정지",
+		"$$$/Dialog/Behaviors/MSO/NoMSO",				"(다중 상태 개체 없음)",
+
+		"$$$/Dialog/Behaviors/GoToView/Go To:",			"이동:",
+		"$$$/Dialog/Behaviors/GoToView/First Page",		"첫 페이지",
+		"$$$/Dialog/Behaviors/GoToView/Page",			"페이지",
+		"$$$/Dialog/Behaviors/GoToView/Previous Page",	"이전 페이지",
+		"$$$/Dialog/Behaviors/GoToView/Next Page",		"다음 페이지",
+		"$$$/Dialog/Behaviors/GoToView/Last Page",		"마지막 페이지",
+		"$$$/Dialog/Behaviors/GoToView/Back",			"뒤로",
+		"$$$/Dialog/Behaviors/GoToView/Forward",		"앞으로",
+		"$$$/Dialog/Behaviors/GoToView/Previous View",	"이전 보기",
+		"$$$/Dialog/Behaviors/GoToView/Next View",		"다음 보기",
+		"$$$/Dialog/Behaviors/GoToView/Specific Page",	"특정 페이지",
+		"$$$/Dialog/Behaviors/GoToView/Document:",		"문서:",
+		"$$$/Dialog/Behaviors/GoToView/Page:",			"페이지:",
+		"$$$/Dialog/Behaviors/GoToView/URL",			"URL",
+		"$$$/Dialog/Behaviors/GoToView/URL:",			"URL:",
+		"$$$/Dialog/Behaviors/GoToView/Anchor",			"텍스트 앵커",
+		"$$$/Dialog/Behaviors/GoToView/Anchor:",		"대상:",
+		"$$$/Dialog/Behaviors/GoToView/Bookmark",		"책갈피",
+		"$$$/Dialog/Behaviors/GoToView/Inherit Zoom",	"확대/축소 설정 유지",
+		"$$$/Dialog/Behaviors/GoToView/Actual Size",	"실제 크기",
+		"$$$/Dialog/Behaviors/GoToView/Fit In Window",	"창에 맞추기",
+		"$$$/Dialog/Behaviors/GoToView/Fit Width",		"폭에 맞추기",
+		"$$$/Dialog/Behaviors/GoToView/Fit Height",		"높이에 맞추기",
+		"$$$/Dialog/Behaviors/GoToView/Fit Visible",	"표시 내용에 맞추기",
+		"$$$/Dialog/Behaviors/GoToView/Zoom:",			"확대/축소:",
+		"$$$/Dialog/Behaviors/GoToView/None",			"없음",
+		"$$$/Dialog/Behaviors/GoToAnchor/InDesign Format File","InDesign 형식 파일",
+		
+		"$$$/Dialog/Behaviors/ViewZoom/Full Screen",	"전체 화면",
+		"$$$/Dialog/Behaviors/ViewZoom/Zoom View In",	"확대",
+		"$$$/Dialog/Behaviors/ViewZoom/Zoom View Out",	"축소",
+		"$$$/Dialog/Behaviors/ViewZoom/Fit Page",		"창에 맞추기",
+		"$$$/Dialog/Behaviors/ViewZoom/Actual Size",	"실제 크기",
+		"$$$/Dialog/Behaviors/ViewZoom/Fit Width",		"폭에 맞추기",
+		"$$$/Dialog/Behaviors/ViewZoom/Fit Visible",	"표시 내용에 맞추기",
+		"$$$/Dialog/Behaviors/ViewZoom/SinglePage",		"단면",
+		"$$$/Dialog/Behaviors/ViewZoom/OneColumn",		"연속",
+		"$$$/Dialog/Behaviors/ViewZoom/TwoColumns",		"연속 - 양면",
+
+		"$$$/Dialog/Behaviors/ImportData/Select File:","파일 선택:",
+		"$$$/Dialog/Behaviors/ImportData/Acrobat Format File","Acrobat 형식 파일",
+
+		"$$$/Dialog/Behaviors/OpenFile/Select File:","파일 선택:",
+		"$$$/Dialog/Behaviors/OpenFile/Select File to be Opened", "열 파일 선택",
+		"$$$/Dialog/Behaviors/OpenFile/Acrobat Format File","Acrobat 형식 파일",
+
+		"$$$/Dialog/Behaviors/SubmitForm/Submit To:","URL:",
+						
+		// ----- Tips strings
+	}
+};
+
+#endif // __ODFRC__

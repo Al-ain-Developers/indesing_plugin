@@ -1,0 +1,602 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/sdksamples/candlechart/CdlChart.fr $
+//  
+//  Owner: Adobe Developer Technologies
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "VCPlugInHeaders.h"
+
+// General includes:
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "StringTable.fh"
+#include "objectmodeltypes.fh"
+#include "CommandID.h"
+#include "BuildNumber.h"
+#include "SplineID.h"
+#include "GraphicsID.h"
+#include "GenericID.h"
+#include "SpreadID.h"
+#include "DocFrameworkID.h"
+#include "LayerID.h"
+#include "TextScriptID.h"
+#include "TablesID.h"
+#include "MasterPageID.h"
+#include "INXCoreID.h"
+#include "ScriptInfoTypes.fh"
+#include "ErrorTableTypes.h"
+
+#include "PlugInModel_UIAttributes.h"
+// Project includes:
+#include "CdlChartID.h"
+
+#ifdef __ODFRC__
+
+/*
+// Plugin version definition.
+*/
+resource PluginVersion (kSDKDefPluginVersionResourceID)
+{
+	kTargetVersion,
+	kCdlChartPluginID,
+	kSDKDefPlugInMajorVersionNumber, kSDKDefPlugInMinorVersionNumber,
+	kSDKDefHostMajorVersionNumber, kSDKDefHostMinorVersionNumber,
+	kCdlChartLastMajorFormatChange, kCdlChartLastMinorFormatChange,
+	{ kInDesignProduct, kInDesignServerProduct },
+	{ kWildFS },
+	kModelPlugIn,
+	kCdlChartVersion
+};
+
+
+/* SchemaList: a history of the persistent data formats supported by this plug-in
+*/
+resource SchemaList(1)
+{{
+    Schema
+    {
+        kCdlChartDataImpl,
+        {kCdlChartInitialMajorFormat, kCdlChartInitialMinorFormat},
+        {
+            {Int16		{0x0001, 		    0}},
+            {PMString	{0x0002,			""}},
+            {FieldArray	{0x0003, 			{Uint16{0}}, 
+											{{Real{0x0004, 0.0}},
+											 {Real{0x0005, 0.0}},
+											 {Real{0x0006, 0.0}},
+											 {Real{0x0007, 0.0}},
+											 {Real{0x0008, 0.0}}
+											}
+            }},
+        }
+    };
+	
+    Schema
+    {
+        kCdlChartDataImpl,
+        {kCdlChartLastMajorFormatChange, kCdlChartLastMinorFormatChange},
+        {
+            {Int16		{0x0001, 		    0}},
+            {WideString	{0x0002,			""}},
+            {FieldArray	{0x0003, 			{Uint16{0}}, 
+											{{Real{0x0004, 0.0}},
+											 {Real{0x0005, 0.0}},
+											 {Real{0x0006, 0.0}},
+											 {Real{0x0007, 0.0}},
+											 {Real{0x0008, 0.0}}
+											}
+            }},
+        }
+    };
+    
+    
+}};
+
+
+/*
+// The ExtraPluginInfo resource adds extra information to the Missing Plug-in dialog
+// that is popped when a document containing this plug-in's data is opened when
+// this plug-in is not present. These strings are not translatable strings
+// since they must be available when the plug-in isn't around. They get stored
+// in any document that this plug-in contributes data to.
+*/
+resource ExtraPluginInfo(1)
+{
+	kCdlChartCompanyValue,				// Company name
+	kCdlChartMissingPluginURLValue,		// URL 
+	kCdlChartMissingPluginAlertValue,	// Missing plug-in alert text
+};
+
+/*
+//	Boss class definition.
+*/
+resource ClassDescriptionTable(kSDKDefClassDescriptionTableResourceID)
+{{{
+
+
+
+	/** Overrides spline item boss to take over IShape interface
+		to draw its own for the page item itself.
+		@ingroup candlechart
+	*/
+	Class
+	{
+		kCdlChartPageItemBoss,
+		kSplineItemBoss,
+		{
+			IID_ISHAPE, kCdlChartShapeImpl,
+			IID_ICDLCHARTDATA, kCdlChartDataImpl,
+			IID_ISCRIPT, kCdlChartScriptImpl,	
+		}	
+	},
+	
+	
+	/** Puts our command facade onto the Utils boss to let client code use it. 
+		@ingroup candlechart
+	*/
+	AddIn
+	{
+		kUtilsBoss,
+		kInvalidClass,
+		{
+			/** Implementation of ICdlChartFacade
+				@see CdlChartFacade
+			*/
+			IID_ICDLCHARTFACADE,	kCdlChartFacadeImpl,
+		}
+	},
+
+	/** Implements the command to create a new candle chart page item.
+		The stock chart data for the chart has to be set as well.
+		@ingroup candlechart
+	*/
+	Class
+	{
+		kNewCdlChartCmdBoss,
+		kInvalidClass,
+		{
+			IID_ICOMMAND, kNewCdlChartCmdImpl,
+			IID_INEWPAGEITEMCMDDATA, kNewPageItemCmdDataImpl,
+			IID_ICDLCHARTDATA, kCdlChartDataImpl,
+		}
+	},
+
+	/** Implements the command to modify an existing candle chart page item.
+		@ingroup candlechart
+	*/
+	Class
+	{
+		kModifyCdlChartCmdBoss,
+		kInvalidClass,
+		{
+			IID_ICOMMAND, kModifyCdlChartCmdImpl,
+			IID_ICDLCHARTDATA, kCdlChartDataImpl,
+		}
+	},
+
+
+
+	/** Provides scripting support. Handling event and accessing properties
+	    for candle chart page item. 
+		
+		@ingroup candlechart
+	 */
+    Class
+	{
+		kCdlChartScriptProviderBoss,
+		kBaseScriptProviderBoss,
+		{
+			/** See IScriptprovider / CdlChartScriptProvider.
+			 */
+			IID_ISCRIPTPROVIDER, kCdlChartScriptProviderImpl,
+		}
+	},
+	
+	/** Proxy script object corresponding to each candle stock. 
+		@ingroup candlechart
+	*/
+	Class
+	{
+		kCdlStockScriptObjectBoss ,
+		kBaseProxyScriptObjectBoss,
+		{
+			IID_ISCRIPT, kCdlStockScriptImpl,
+		}
+	},
+
+
+	/** Provides scripting support. Handling events and accessing properties
+		for the proxy candle stock object.  
+		@ingroup candlechart
+	*/
+	Class
+	{
+		kCdlStockScriptProviderBoss,
+		kBaseScriptProviderBoss,
+		{
+			IID_ISCRIPTPROVIDER, kCdlStockScriptProviderImpl,
+		}
+	},
+
+
+	/** Provides error strings for this plug-in.
+		@ingroup candlechart
+	 */
+	Class
+	{
+		kCdlChartErrorStringServiceBoss,
+		kInvalidClass,
+		{
+			IID_IERRORSTRINGSERVICE, kCdlChartErrorStringServiceImpl,		
+			IID_IK2SERVICEPROVIDER, kErrorStringProviderImpl,
+		}
+	},	
+	
+	/**	Adds ICdlChartSuite into the integrator suite boss class making it available
+		to the abstract selection.
+		ICdlChartSuite is a new interface added by this plug-in, it extends the
+		selection so that it can manipulate the ICdlChartData associated with
+		the objects that are currently selected.
+		@ingroup candlechart
+		@see Selection tech note
+	*/
+	
+	AddIn
+	{
+		kIntegratorSuiteBoss,
+		kInvalidClass,
+		{
+			/** See ICdlChartSuite and CdlChartSuiteASB; integrator suite that integrates ICdlChartSuite 
+				calls across CSB suites on concrete selection boss classes. 
+			*/
+			IID_ICDLCHARTSUITE, kCdlChartSuiteASBImpl,
+		}
+	},
+	
+	/**	Adds ICdlChartSuite into the layout suite boss making it available to
+		the layout CSB thus allowing ICdlChartData to be manipulated when
+		a layout selection exists.
+		ICdlChartSuite is a new interface added by this plug-in, it extends the
+		selection so that it can manipulate the ICdlChartData associated with
+		the objects that are currently selected.
+		@ingroup candlechart
+		@see Selection tech note
+	*/
+	AddIn
+	{
+		kLayoutSuiteBoss,
+		kInvalidClass,
+		{
+			/** See ICdlChartSuite and CdlChartSuiteCSB.
+			*/
+			IID_ICDLCHARTSUITE, kCdlChartSuiteLayoutCSBImpl,
+		}
+	},
+
+	/** This boss class supplies a schema-based conversion service for this plug-in.
+		@ingroup candlechart
+	*/
+	Class
+    {
+        kCdlChartConversionProviderBoss,
+        kInvalidClass,
+        {
+			/** Provides the conversion service.
+				Implementation provided by the API.
+			*/
+            IID_ICONVERSIONPROVIDER, kSchemaBasedConversionImpl,
+			/** Registers this boss as a conversion service provider.
+				Implementation provided by the API.
+			*/
+            IID_IK2SERVICEPROVIDER, kConversionServiceImpl,
+        }
+    },
+
+}}};
+
+
+/*
+// Implementation definition.
+*/
+resource FactoryList (kSDKDefFactoryListResourceID)
+{
+	kImplementationIDSpace,
+	{
+#include "CdlChartFactoryList.h"
+	}
+};
+
+
+/*
+// LocaleIndex
+// The LocaleIndex should have indicies that point at your
+// localizations for each language system that you are
+// localized for.
+*/
+resource LocaleIndex (kSDKDefStringsResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_enUS, kSDKDefStringsResourceID + index_enUS
+		kInDesignJapaneseFS, k_jaJP, kSDKDefStringsResourceID + index_jaJP
+		
+		kWildFS, k_Wild, kSDKDefStringsResourceID + index_enUS
+	}
+};
+
+resource LocaleIndex (kSDKDefStringsNoTransResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_Wild, kSDKDefStringsNoTransResourceID + index_enUS
+	}
+};
+
+resource StringTable (kSDKDefStringsNoTransResourceID + index_enUS)
+{
+	k_enUS,									// Locale Id
+	kEuropeanMacToWinEncodingConverter,		// Character encoding converter
+	{
+		// No-Translate strings go here:
+
+	}
+};
+
+
+
+
+/*
+// Panel LocaleIndex.
+*/
+resource LocaleIndex (kSDKDefPanelResourceID)
+{
+	kViewRsrcType,
+	{
+		kWildFS, k_Wild, 	kSDKDefPanelResourceID + index_enUS
+	}
+};
+
+
+
+/*
+// User Error Table resource 
+// To be coupled with an IErrorStringService implementation and
+// string translations (see localized .fr files)
+*/
+resource UserErrorTable(kSDKDefErrorStringResourceID) 
+{
+	{
+		kCdlChartImportDataErrorCode, kCdlChartImportDataErrorCodeStringKey, 
+		kCdlChartCreatePageItemErrorCode, kCdlChartCreatePageItemErrorCodeStringKey,
+	}
+};
+
+/*
+// Scripting resources
+*/
+/*
+// Core scripting resources
+*/
+resource VersionedScriptElementInfo(1)
+{
+	//Contexts
+	{
+		// Scripting support added at InDesign CS2.
+		kCS2ScriptVersion, kCoreScriptManagerBoss, kWildFS, k_Wild,
+	}
+	
+	//Elements
+	{
+		// kCandleChartObjectScriptElement represents kCdlChartPageItemBoss in the Scripting DOM.
+		Object
+		{
+			kCandleChartObjectScriptElement,
+			c_CandleChart,					// The script object
+			"candle chart",
+			"A candle chart",
+			kCdlChartObject_CLSID,
+			c_CandleCharts,					// The collection (plural form)
+			"candle charts",
+			"All candle charts",
+			kCdlChartsObject_CLSID,
+			kPageItemObjectScriptElement,	// kCandleChartObjectScriptElement is a page item (Script object inheritance)
+			kLayoutSuiteScriptElement,
+		}
+
+		// kCandleStockObjectScriptElement represents ICdlChartData on kCdlChartPageItemBoss.
+		Object
+		{
+			kCandleStockObjectScriptElement,
+			c_CandleStock,					// The script object
+			"candle stock",
+			"A candle stock",
+			kCdlStockObject_CLSID,
+			c_CandleStocks,					// The collection (plural form)
+			"candle stocks",
+			"All candle stocks",
+			kCdlStocksObject_CLSID,
+			kNonIDBasedObjectScriptElement,	// kCandleStockObjectScriptElement is a proxy object 
+			kLayoutSuiteScriptElement,
+		}
+
+
+        Method
+        {
+            kImportCandleChartMethodScriptElement,
+            e_ImportData,
+            "import data",
+            "Load a candle chart from comma separated file",
+            VoidType,
+            {
+                keyASPrepositionFrom, "from", "A file to import candle data", FileType, kRequired,
+            }
+        }
+		
+		Property
+        {
+            kCdlStackOpenPropertyScriptElement,
+            p_CdlStackOpen,
+            "stock open",
+            "stock open price",
+            RealType,
+            {}
+            kNoAttributeClass,
+        }
+		Property
+        {
+            kCdlStackHighPropertyScriptElement,
+            p_CdlStackHigh,
+            "stock high",
+            "stock price high",
+            RealType,
+            {}
+            kNoAttributeClass,
+        }
+		Property
+        {
+            kCdlStackLowPropertyScriptElement,
+            p_CdlStackLow,
+            "stock low",
+            "stock price low",
+            RealType,
+            {}
+            kNoAttributeClass,
+        }
+		Property
+        {
+            kCdlStackClosePropertyScriptElement,
+            p_CdlStackClose,
+            "stock close",
+            "stock price at close",
+            RealType,
+            {}
+            kNoAttributeClass,
+        }		
+		Property
+        {
+            kCdlStackVolumePropertyScriptElement,
+            p_CdlStackVolume,
+            "stock volume",
+            "stock trading volume",
+            RealType,
+            {}
+            kNoAttributeClass,
+        }
+        		
+		// Expose kCandleChartObjectScriptElement in the Scripting DOM.
+		Provider
+		{
+			kCdlChartScriptProviderBoss,
+			{
+				Parent{ kSpreadObjectScriptElement },
+				Parent{ kMasterSpreadObjectScriptElement },
+				Parent{ kGroupObjectScriptElement },
+				Parent{ kTextFrameObjectScriptElement },		// inlines in a text frame
+				Parent{ kStoryObjectScriptElement },			// inlines in a story
+				Parent{ kTextObjectScriptElement },				// inlines in text
+				Parent{ kCharacterObjectScriptElement },		// inline of a character
+				Parent{ kWordObjectScriptElement },				// inlines in a word
+				Parent{ kLineObjectScriptElement },				// inlines in a line of text
+				Parent{ kTextColumnObjectScriptElement },		// inlines in a text column
+				Parent{ kParagraphObjectScriptElement },		// inlines in a paragraph
+				Parent{ kTextStyleRangeObjectScriptElement },	// inlines in a text style range
+				Parent{ kCellObjectScriptElement },				// inlines in a cell
+				Parent{ kTableObjectScriptElement },			// inlines in a table
+				
+				// Parent relationships that are supported in the core but not supported for INX (see VersionedScriptElementInfo(2) below):
+				Parent{ kDocumentObjectScriptElement },				
+				Parent{ kPageObjectScriptElement },
+				Parent{ kLayerObjectScriptElement },
+				Parent{ kInsertionPointObjectScriptElement },	// inlines in a insertion point	
+									
+				RepresentObject{ kCandleChartObjectScriptElement },		
+				CollectionMethod{ kCreatePageItemMethodScriptElement }, 	
+				Method{ kImportCandleChartMethodScriptElement }, 	
+
+				Property{ kNamePropertyScriptElement, kReadWrite },
+						
+			}
+		}
+	
+
+		
+				
+		// Access kCandleStockObjectScriptElement.
+		Provider	
+		{
+			kCdlStockScriptProviderBoss,
+			{
+				Parent{ kCandleChartObjectScriptElement },
+				RepresentObject{ kCandleStockObjectScriptElement },
+				CollectionMethod{ kCreateMethodScriptElement },
+                Method{ kDeleteMethodScriptElement },
+				
+				Property{ kCdlStackOpenPropertyScriptElement, kReadWrite },
+				Property{ kCdlStackHighPropertyScriptElement, kReadWrite },
+				Property{ kCdlStackLowPropertyScriptElement, kReadWrite },
+				Property{ kCdlStackClosePropertyScriptElement, kReadWrite },
+				Property{ kCdlStackVolumePropertyScriptElement, kReadWrite },
+
+			}
+		}
+		
+	}
+};
+
+/*
+// INX scripting resources.
+//
+*/
+resource VersionedScriptElementInfo(2)
+{
+	//Contexts
+	{
+		// Scripting support added at InDesign CS2.
+		kCS2ScriptVersion, kINXScriptManagerBoss, kWildFS, k_Wild,
+	}
+	
+	//Elements
+	{
+		// For INX don't support the core relationships below:
+		Provider
+		{
+			kNotSupported,
+			{
+				Parent{ kPageObjectScriptElement },
+				Parent{ kDocumentObjectScriptElement },
+				Parent{ kLayerObjectScriptElement },
+				Parent{ kInsertionPointObjectScriptElement },	// inlines in a insertion point	
+									
+				RepresentObject{ kCandleChartObjectScriptElement },		
+				CollectionMethod{ kCreatePageItemMethodScriptElement }, 							
+				Method{ kImportCandleChartMethodScriptElement }, 	
+
+			}
+		}		
+	}
+};
+
+
+#endif // __ODFRC__
+
+#include "CdlChart_enUS.fr"
+#include "CdlChart_jaJP.fr"
+
+//  Code generated by DollyXS code generator

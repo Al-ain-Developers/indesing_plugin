@@ -1,0 +1,99 @@
+// =================================================================================================
+// ADOBE SYSTEMS INCORPORATED
+// Copyright 2014 Adobe Systems Incorporated
+// All Rights Reserved
+//
+// NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance with the terms
+// of the Adobe license agreement accompanying it.
+// =================================================================================================
+
+#if AdobePrivate
+// =================================================================================================
+// Change history
+// ==============
+//
+// Writers:
+//  ADC	Amandeep Chawla
+//
+// mm-dd-yy who Description of changes, most recent first.
+//
+// 05-19-14 ADC 1.0-m020 Refactoring XMPCommon code and appropriate changes in XMPCore and XMPCompareAndMerge.
+// 02-25-14 ADC 1.0-m010 Porting XMPCompareAndMerge to Mac Environment.
+// 02-18-14 ADC 1.0-m004 Three Way Conflict Identification Feature.
+//
+// =================================================================================================
+#endif	// AdobePrivate
+
+#include "XMPCompareAndMerge/Interfaces/ICompareAndMergeObjectFactory.h"
+#include "XMPCompareAndMerge/Interfaces/IThreeWayMerge.h"
+#include "XMPCompareAndMerge/XMPCompareAndMergeFwdDeclarations.h"
+#include "XMPCompareAndMerge/XMPCompareAndMerge.h"
+
+#include "XMPCommon/Interfaces/IError.h"
+
+#undef CALL_EQUIVALENT_VIRTUAL_FUNCTION_NO_ARGS
+#define CALL_EQUIVALENT_VIRTUAL_FUNCTION_NO_ARGS( className, functionName ) {			\
+			pIError error ( NULL );																	\
+			p##className##_base ptr = functionName( error );										\
+			if ( error )																			\
+				throw NS_XMPCOMMON::MakeUncheckedSharedPointer( error );								\
+				return NS_XMPCOMMON::MakeSharedPointer< className##_latest, className##_base >( ptr );	\
+		}
+
+#undef CALL_EQUIVALENT_VIRTUAL_FUNCTION
+#define CALL_EQUIVALENT_VIRTUAL_FUNCTION( className, functionName, ... ) {			\
+			pIError error ( NULL );																\
+			p##className##_base ptr = functionName( __VA_ARGS__, error );						\
+			if ( error )																		\
+				throw NS_XMPCOMMON::MakeUncheckedSharedPointer( error );							\
+			return NS_XMPCOMMON::MakeSharedPointer< className##_latest, className##_base >( ptr );	\
+		}
+
+#undef CALL_EQUIVALENT_CVIRTUAL_FUNCTION_NO_ARGS
+#define CALL_EQUIVALENT_CVIRTUAL_FUNCTION_NO_ARGS( className, functionName ) {	\
+			pIError error ( NULL );																	\
+			pc##className##_base ptr = functionName( error );										\
+			if ( error )																			\
+				throw NS_XMPCOMMON::MakeUncheckedSharedPointer( error );								\
+			return NS_XMPCOMMON::MakeSharedPointer< const className##_latest, const className##_base >( ptr );	\
+		}
+
+#undef CALL_EQUIVALENT_CVIRTUAL_FUNCTION
+#define CALL_EQUIVALENT_CVIRTUAL_FUNCTION( className, functionName, ... ) {			\
+			pIError error ( NULL );																\
+			pc##className##_base ptr = functionName( __VA_ARGS__, error );						\
+			if ( error )																		\
+				throw NS_XMPCOMMON::MakeUncheckedSharedPointer( error );							\
+			return NS_XMPCOMMON::MakeSharedPointer< const className##_latest, const className##_base >( ptr );	\
+		}
+
+namespace NS_XMPCOMPAREANDMERGE {
+	
+
+	spIThreeWayMerge_latest ICompareAndMergeObjectFactory_latest::CreateThreeWayMerge() {
+		CALL_EQUIVALENT_VIRTUAL_FUNCTION_NO_ARGS( IThreeWayMerge, CreateThreeWayMerge );
+	}
+}
+
+namespace NS_XMPCOMMON {
+	using namespace NS_XMPCOMPAREANDMERGE;
+	static pICompareAndMergeObjectFactory_latest sXMPCompareAndMergeObjectFactoryPtr = NULL;
+	template< >
+	pICompareAndMergeObjectFactory_latest ITSingleton< ICompareAndMergeObjectFactory_latest >::GetInstance() {
+		if ( sXMPCompareAndMergeObjectFactoryPtr == NULL )
+			sXMPCompareAndMergeObjectFactoryPtr = dynamic_cast< pICompareAndMergeObjectFactory_latest> ( XMPCM_GetObjectFactoryInstance() );
+		//TODO:@Aman: throw error on null ptr
+		return sXMPCompareAndMergeObjectFactoryPtr;
+	}
+	
+	template< >
+	void ITSingleton< ICompareAndMergeObjectFactory_latest >::CreateInstance() {
+		GetInstance();
+	}
+
+	template< >
+	void ITSingleton< ICompareAndMergeObjectFactory_latest >::DestroyInstance() {
+		sXMPCompareAndMergeObjectFactoryPtr = NULL;
+	}
+}
+

@@ -1,0 +1,3 @@
+<project name="Copy_CSXS">
+	<copy file="../../../../external/csxs/CSXSLibrary/3.0/CSXSLibrary-3.0.swc" todir="libs"/>
+</project>

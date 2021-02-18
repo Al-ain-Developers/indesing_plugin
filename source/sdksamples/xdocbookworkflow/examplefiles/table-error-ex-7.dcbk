@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article SYSTEM "sdocbook.dtd">
+<article>
+<section>
+<title>Single row and column</title>
+<informaltable>
+<tgroup cols="1">
+<tbody>
+<row>
+<entry>One entry</entry>
+</tbody>
+</row>
+</tgroup>
+</informaltable>
+</section>
+</article>

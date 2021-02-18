@@ -1,0 +1,278 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/sdksamples/printmemorystream/PrtMem.fr $
+//  
+//  Owner: Adobe Developer Technologies
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "VCPlugInHeaders.h"
+
+// General includes:
+#include "MenuDef.fh"
+#include "ActionDef.fh"
+#include "ActionDefs.h"
+#include "AdobeMenuPositions.h"
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "StringTable.fh"
+#include "objectmodeltypes.fh"
+#include "ShuksanID.h"
+#include "ActionID.h"
+#include "CommandID.h"
+#include "WorkspaceID.h"
+#include "widgetid.h"
+#include "BuildNumber.h"
+#include "PrintID.h" // for print-related IDs
+
+#include "PlugInModel_UIAttributes.h"
+
+// Project includes:
+#include "PrtMemID.h"
+
+#ifdef __ODFRC__
+
+/*
+// Plugin version definition.
+*/
+resource PluginVersion (kSDKDefPluginVersionResourceID)
+{
+	kTargetVersion,
+	kPrtMemPluginID,
+	kSDKDefPlugInMajorVersionNumber, kSDKDefPlugInMinorVersionNumber,
+	kSDKDefHostMajorVersionNumber, kSDKDefHostMinorVersionNumber,
+	kPrtMemCurrentMajorFormatNumber, kPrtMemCurrentMinorFormatNumber,
+	{ kInDesignProduct, kInCopyProduct },
+	{ kWildFS },
+	kUIPlugIn,
+	kPrtMemVersion
+};
+
+/*
+//	Boss class definition.
+*/
+resource ClassDescriptionTable(kSDKDefClassDescriptionTableResourceID)
+{{{
+
+	/** Custom stream 
+		@ingroup printmemorystream
+	*/
+	Class
+	{
+		kPrtMemCustomStreamBoss,
+		kInvalidClass,
+		{
+			/** Our memory-based implementation of IPMStream.
+				@see PrtMemWriteStream
+			*/
+			IID_IPMSTREAM, kPrtMemWriteStreamImpl,
+		},
+	},
+
+	/** The action component provided by this plug-in. 
+		@ingroup printmemorystream
+	*/
+	Class
+	{
+		kPrtMemActionComponentBoss,
+		kBaseActionComponentBoss,
+		{
+			/** Handle the actions from the menu and shortcut keys.
+				@see PrtMemActionComponent
+			*/
+			IID_IACTIONCOMPONENT, kPrtMemActionComponentImpl,
+		}
+	},
+
+
+	/** Print setup provider, which allows this plug-in to 
+	  	participate in the printing process.
+		@ingroup printmemorystream
+	*/
+	Class
+	{
+		kPrtMemPrintSetupProviderBoss,
+		kInvalidClass,
+		{
+			/** Implementation of IK2ServiceProvider registering this plug-in as
+				providing a kPrintSetupService. 
+			*/
+			IID_IK2SERVICEPROVIDER, kPrintSetupServiceImpl,
+			
+			/** Our implementation of IPrintSetupProvider. 
+				Sets up the print operation to use our custom memory stream.
+				@see PrtMemPrintSetupProvider.
+			*/
+			IID_IPRINTSETUPPROVIDER, kPrtMemPrintSetupProviderImpl,	
+		}
+	},
+	/** Print-data helper strategy service provider, which enables
+		this plug-in to specify how the Print/Print Preset dialog's UI 
+	  	elements appear.
+		@ingroup printmemorystream
+	*/
+	Class
+	{
+		kPrtMemPrintDataHelperStrategyProviderBoss,
+		kInvalidClass,
+		{
+			/** Implementation of IK2ServiceProvider registering this plug-in as
+				providing a kPrintDataHelperStrategyService.
+				@see PrtMemHelperStrategyService
+			*/
+			IID_IK2SERVICEPROVIDER, kPrtMemHelperStrategyServiceImpl,
+			
+			/** Implements IPrintDataHelperStrategy.
+				Specifies which of the Print/Print Preset dialog UI elements
+			  	are relevant or locked. 
+				@see PrtMemPrintDataHelperStrategy
+			*/
+			IID_IPRINTDATAHELPERSTRATEGY, kPrtMemPrintDataHelperStrategyImpl,
+		}
+	},
+	/** Implements a kPrintInsertPSProcService, which gets called 
+		at the points defined in IPrintInsertPSProcProvider::DocumentSection
+		when Postscript output is being created.
+		@ingroup printmemorystream 
+	 */
+	Class
+	{
+		kPrtMemPrintInsertPSProcProviderBoss,
+		kInvalidClass,
+		{
+			/** Implementation of IK2ServiceProvider, 
+				marking this as a kPrintInsertPSProcService.
+				Implementation provided by the API.
+			*/
+			IID_IK2SERVICEPROVIDER, kInsertPSProcServiceImpl,
+
+			/** Our implementation of IPrintInsertPSProcProvider. 
+				Injects strings into the PostScript stream.
+				@see PrtMemPrintInsertPSProcProvider.
+			*/
+			IID_IPRINTINSERTPSPROCPROVIDER, kPrtMemPrintInsertPSProcProviderImpl,
+		}
+	},
+
+	
+}}};
+
+/*
+// Implementation definition.
+*/
+resource FactoryList (kSDKDefFactoryListResourceID)
+{
+	kImplementationIDSpace,
+	{
+#include "PrtMemFactoryList.h"
+	}
+};
+
+
+/*
+// Menu definition.
+*/
+resource MenuDef (kSDKDefMenuResourceID)
+{
+	{
+		// The About Plug-ins sub-menu item
+		kPrtMemAboutActionID,			// ActionID (kInvalidActionID for positional entries)
+		kPrtMemAboutMenuPath,			// Menu Path.
+		kSDKDefAlphabeticPosition,		// Menu Position.
+		kSDKDefIsNotDynamicMenuFlag,	// kSDKDefIsNotDynamicMenuFlag or kSDKDefIsDynamicMenuFlag
+
+		// The Print to memory sub-menu item
+		kPrtMemPrintToMemoryActionID,
+		kPrtMemTargetMenuPath,
+		kPrtMemPrintToMemoryMenuItemPosition,
+		kSDKDefIsNotDynamicMenuFlag,
+	}
+};
+
+/*
+// Action definition.
+*/
+resource ActionDef (kSDKDefActionResourceID)
+{
+	{
+		kPrtMemActionComponentBoss, 	// ClassID of boss class that implements the ActionID.
+		kPrtMemAboutActionID,			// ActionID.
+		kPrtMemAboutMenuKey,			// Sub-menu string.
+		kOtherActionArea,				// Area name (see ActionDefs.h).
+		kNormalAction,					// Type of action (see ActionDefs.h).
+		kDisableIfLowMem,				// Enabling type (see ActionDefs.h).
+		kInvalidInterfaceID,			// Selection InterfaceID this action cares about or kInvalidInterfaceID.
+		kSDKDefInvisibleInKBSCEditorFlag, // kSDKDefVisibleInKBSCEditorFlag or kSDKDefInvisibleInKBSCEditorFlag.
+
+		kPrtMemActionComponentBoss,
+		kPrtMemPrintToMemoryActionID,
+		kPrtMemPrintToMemoryMenuItemKey,
+		kOtherActionArea,
+		kNormalAction,
+		kDisableIfNoFrontDocument|kDisableIfLowMem,
+		kInvalidInterfaceID,
+		kSDKDefInvisibleInKBSCEditorFlag,
+	}
+};
+
+
+/*
+// LocaleIndex
+// The LocaleIndex should have indicies that point at your
+// localizations for each language system that you are
+// localized for.
+*/
+/*
+// String LocaleIndex.
+*/
+resource LocaleIndex (kSDKDefStringsResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_enUS, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_jaJP, kSDKDefStringsResourceID + index_jaJP
+		
+		kWildFS, k_Wild, kSDKDefStringsResourceID + index_enUS
+	}
+};
+
+resource LocaleIndex (kSDKDefStringsNoTransResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_Wild, kSDKDefStringsNoTransResourceID + index_enUS
+	}
+};
+
+resource StringTable (kSDKDefStringsNoTransResourceID + index_enUS)
+{
+	k_enUS,									// Locale Id
+	kEuropeanMacToWinEncodingConverter,		// Character encoding converter
+	{
+		// No-Translate strings go here:
+
+	}
+};
+
+
+#endif // __ODFRC__
+
+#include "PrtMem_enUS.fr"
+#include "PrtMem_jaJP.fr"
+
+//  Code generated by DollyXS code generator

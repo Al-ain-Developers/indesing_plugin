@@ -1,0 +1,505 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/sdksamples/framelabelui/FrmLblUI.fr $
+//  
+//  Owner: Adobe Developer Technologies
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "VCPlugInHeaders.h"
+
+// General includes:
+#include "MenuDef.fh"
+#include "ActionDef.fh"
+#include "ActionDefs.h"
+#include "AdobeMenuPositions.h"
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "StringTable.fh"
+#include "objectmodeltypes.fh"
+#include "ShuksanID.h"
+#include "ActionID.h"
+#include "CommandID.h"
+#include "WorkspaceID.h"
+#include "widgetid.h"
+#include "BuildNumber.h"
+#include "InterfaceColorDefines.h"
+#include "IControlViewDefs.h"
+#include "SysControlIds.h"
+#include "Widgets.fh"    // for PalettePanelWidget or DialogBoss
+
+// Project includes:
+#include "FrmLblUIID.h"
+#include "GenericID.h"
+#include "ShuksanID.h"
+#include "TextID.h"
+
+#include "PlugInModel_UIAttributes.h"
+
+#include "EveInfo.fh"
+#ifdef __ODFRC__
+
+/*  Plugin version definition.
+*/
+resource PluginVersion (kSDKDefPluginVersionResourceID)
+{
+    kTargetVersion,
+    kFrmLblUIPluginID,
+    kSDKDefPlugInMajorVersionNumber, kSDKDefPlugInMinorVersionNumber,
+    kSDKDefHostMajorVersionNumber, kSDKDefHostMinorVersionNumber,
+    kFrmLblUICurrentMajorFormatNumber, kFrmLblUICurrentMinorFormatNumber,
+    {kInDesignProduct},
+    {kWildFS },
+    kUIPlugIn,
+    kFrmLblUIVersion
+};
+
+/*  The ExtraPluginInfo resource adds extra information to the Missing Plug-in dialog
+    that is popped when a document containing this plug-in's data is opened when
+    this plug-in is not present. These strings are not translatable strings
+    since they must be available when the plug-in isn't around. They get stored
+    in any document that this plug-in contributes data to.
+*/
+resource ExtraPluginInfo(1)
+{
+    kFrmLblUICompanyValue,             // Company name
+    kFrmLblUIMissingPluginURLValue,    // URL 
+    kFrmLblUIMissingPluginAlertValue,  // Missing plug-in alert text
+};
+
+/* Boss class definition.
+*/
+
+resource IgnoreTags(1)
+{
+    kImplementationIDSpace,
+    {
+        kPersistBoolDataImpl,
+    }
+};
+
+resource ClassDescriptionTable(kSDKDefClassDescriptionTableResourceID)
+{{{
+            
+            /**
+            This boss class supports two interfaces:
+            IActionComponent and IPMPersist.
+            
+            
+            @ingroup framelabelui
+            */
+            Class
+            {
+                kFrmLblUIActionComponentBoss,
+                kInvalidClass,
+                {
+                    /** Handle the actions from the menu. */
+                    IID_IACTIONCOMPONENT, kFrmLblUIActionComponentImpl,
+                    /** Persist the state of the menu across application instantiation.
+                    Implementation provided by the API.*/
+                    IID_IPMPERSIST, kPMPersistImpl
+                }
+            },
+            
+            /**
+            This boss class implements the dialog for this plug-in. All
+            dialogs must implement IDialogController. Specialisation of
+            
+            @ingroup framelabelui
+            */
+            Class
+            {
+                kFrmLblUIDialogBoss,
+                kDialogBoss,
+                {
+                    /** Provides management and control over the dialog.
+                    */
+                    IID_IDIALOGCONTROLLER, kFrmLblUIDialogControllerImpl,
+                    
+                }
+                
+            },
+            
+        }}};
+
+/*  Implementation definition.
+*/
+resource FactoryList (kSDKDefFactoryListResourceID)
+{
+    kImplementationIDSpace,
+    {
+#include "FrmLblUIFactoryList.h"
+    }
+};
+
+/*  Menu definition.
+*/
+resource MenuDef (kSDKDefMenuResourceID)
+{
+    {
+        // The About Plug-ins sub-menu item for this plug-in.
+        kFrmLblUIAboutActionID,            // ActionID (kInvalidActionID for positional entries)
+        kFrmLblUIAboutMenuPath,            // Menu Path.
+        kSDKDefAlphabeticPosition,         // Menu Position.
+        kSDKDefIsNotDynamicMenuFlag,       // kSDKDefIsNotDynamicMenuFlag or kSDKDefIsDynamicMenuFlag
+        
+        
+        // The Plug-ins menu sub-menu items for this plug-in.
+        kFrmLblUIDialogActionID,
+        kFrmLblUIPluginsMenuPath,
+        kFrmLblUIDialogMenuItemPosition,
+        kSDKDefIsNotDynamicMenuFlag,
+        
+        kFrmLblUIPrintFrmLblActionID,
+        kFrmLblUIPluginsMenuPath,
+        kFrmLblUIUIPrintFrmLblMenuItemPosition,
+        kSDKDefIsNotDynamicMenuFlag,
+        
+    }
+};
+
+/* Action definition.
+*/
+resource ActionDef (kSDKDefActionResourceID)
+{
+    {
+        kFrmLblUIActionComponentBoss,         // ClassID of boss class that implements the ActionID.
+        kFrmLblUIAboutActionID,               // ActionID.
+        kFrmLblUIAboutMenuKey,                // Sub-menu string.
+        kOtherActionArea,                     // Area name (see ActionDefs.h).
+        kNormalAction,                        // Type of action (see ActionDefs.h).
+        kDisableIfLowMem,                     // Enabling type (see ActionDefs.h).
+        kInvalidInterfaceID,                  // Selection InterfaceID this action cares about or kInvalidInterfaceID.
+        kSDKDefInvisibleInKBSCEditorFlag,     // kSDKDefVisibleInKBSCEditorFlag or kSDKDefInvisibleInKBSCEditorFlag.
+        
+        
+        kFrmLblUIActionComponentBoss,
+        kFrmLblUIDialogActionID,        
+        kFrmLblUIDialogMenuItemKey,        
+        kOtherActionArea,            
+        kNormalAction,                
+        kCustomEnabling|kDisableIfLowMem,
+        kInvalidInterfaceID,        
+        kSDKDefVisibleInKBSCEditorFlag,
+        
+        
+        kFrmLblUIActionComponentBoss,
+        kFrmLblUIPrintFrmLblActionID,
+        kFrmLblUIPrintFrmLblMenuItemKey,
+        kOtherActionArea,
+        kNormalAction,
+        kCustomEnabling|kDisableIfLowMem,
+        kInvalidInterfaceID,
+        kSDKDefInvisibleInKBSCEditorFlag,
+        
+    }
+};
+
+
+/*  LocaleIndex
+    The LocaleIndex should have indicies that point at your
+    localizations for each language system that you are localized for.
+*/
+/*  String LocaleIndex.
+*/
+resource LocaleIndex (kSDKDefStringsResourceID)
+{
+    kStringTableRsrcType,
+    {
+        kWildFS, k_enUS, kSDKDefStringsResourceID + index_enUS
+        kInDesignJapaneseFS, k_jaJP, kSDKDefStringsResourceID + index_jaJP
+        
+        kWildFS, k_Wild, kSDKDefStringsResourceID + index_enUS
+    }
+};
+
+resource LocaleIndex (kSDKDefStringsNoTransResourceID)
+{
+    kStringTableRsrcType,
+    {
+        kWildFS, k_Wild, kSDKDefStringsNoTransResourceID + index_enUS
+    }
+};
+
+resource StringTable (kSDKDefStringsNoTransResourceID + index_enUS)
+{
+    k_enUS,                                    // Locale Id
+    kEuropeanMacToWinEncodingConverter,        // Character encoding converter
+    {
+        // No-Translate strings go here:
+        
+    }
+};
+
+/*  Dialog LocaleIndex.
+*/
+resource LocaleIndex (kSDKDefDialogResourceID)
+{
+    kViewRsrcType,
+    {
+        kWildFS,    k_Wild, kSDKDefDialogResourceID + index_enUS
+    }
+};
+
+/*  Type definition.
+*/
+type FrmLblUIDialogWidget(kViewRsrcType) : DialogBoss(ClassID = kFrmLblUIDialogBoss)
+{
+    
+    WidgetEveInfo;
+};
+
+/*  Dialog definition.
+    This view is not localised: therefore, it can reside here.
+    However, if you wish to localise it, it is recommended to locate it in one of
+    the localised framework resource files (i.e. FrmLblUI_enUS.fr etc.) and
+    update your Dialog LocaleIndex accordingly.
+*/
+resource FrmLblUIDialogWidget (kSDKDefDialogResourceID + index_enUS)
+{
+    __FILE__, __LINE__,
+    kFrmLblUIDialogWidgetID,       // WidgetID
+    kPMRsrcID_None,                // RsrcID
+    kBindNone,                     // Binding
+    Frame(0,0,496,178)             // Frame (l,t,r,b)
+    kTrue, kTrue,                  // Visible, Enabled
+    kFrmLblUIDialogTitleKey,       // Dialog name
+    {
+        //<FREDDYWIDGETDEFLISTUS>
+        
+        EVEGenericPanelWidget
+        (
+            kInvalidWidgetID,    // WidgetId
+            0                    // RsrcId
+            0,                   // Widget EVE Info
+            kBindNone,           // Frame binding
+            Frame(0,0,140,178)   // Frame
+            kTrue,               // Visible
+            kTrue,               // Enabled
+            kEVEAlignFill | kEVELargeSpaceAfter | kEVEArrangeChildrenInColumn,
+            
+            {
+                
+                EVEStaticTextWidget
+                (
+                    // CControlView properties
+                    kInvalidWidgetID,                 // widget ID
+                    kSysStaticTextPMRsrcId,           // PMRsrc ID
+                    kBindNone,                        // frame binding
+                    Frame(40,0,140,0)                 //  left, top, right, bottom
+                    kTrue,                            // visible
+                    kTrue,                            // enabled
+                    // StaticTextAttributes properties
+                    kAlignRight,                      // Alignment
+                    kDontEllipsize, kTrue,            // Ellipsize style, Convert ampersands
+                    // CTextControlData properties
+                    kFrmLblUIAdornmentLabelStringKey, // control label
+                    // AssociatedWidgetAttributes properties
+                    kInvalidWidgetID,                 // associated widget ID
+                    
+                    kEVERegularSpaceAfter,
+                ),
+                
+                
+                // Adding a dummy widget to align other widgets properly
+                EVEStaticTextWidget
+                (
+                    kInvalidWidgetID,                // WidgetId
+                    kSysStaticTextPMRsrcId,          // RsrcId
+                    kBindNone,                       // Frame Binding
+                    Frame(0,0,0,0)                   // Frame
+                    kTrue, kFalse, kAlignRight,      // Visible, Enabled, Alignment
+                    kDontEllipsize, kTrue,           // Ellipsize style, Convert ampersands
+                    "",
+                    0 ,
+                    kEVELargeSpaceAfter,
+                    
+                ),
+                EVEStaticTextWidget
+                (
+                    // CControlView properties
+                    kInvalidWidgetID,                // widget ID
+                    kSysStaticTextPMRsrcId,          // PMRsrc ID
+                    kBindNone,                       // frame binding
+                    Frame(40,0,140,0)                //  left, top, right, bottom
+                    kTrue,                           // visible
+                    kTrue,                           // enabled
+                    // StaticTextAttributes properties
+                    kAlignRight,                     // Alignment
+                    kDontEllipsize, kTrue,           // Ellipsize style, Convert ampersands
+                    // CTextControlData properties
+                    kFrmLblUIFontColorStringKey,     // control label
+                    // AssociatedWidgetAttributes properties
+                    kInvalidWidgetID,                // associated widget ID
+                    
+                    kEVELargeSpaceAfter,
+                ),    
+                
+                EVEStaticTextWidget
+                (
+                    // CControlView properties
+                    kInvalidWidgetID,                // widget ID
+                    kSysStaticTextPMRsrcId,          // PMRsrc ID
+                    kBindNone,                       // frame binding
+                    Frame(40,0,140,0)                //  left, top, right, bottom
+                    kTrue,                           // visible
+                    kTrue,                           // enabled
+                    // StaticTextAttributes properties
+                    kAlignRight,                    // Alignment
+                    kDontEllipsize, kTrue,          // Ellipsize style, Convert ampersands
+                    // CTextControlData properties
+                    kFrmLblUIFonPositionStringKey,  // control label
+                    // AssociatedWidgetAttributes properties
+                    kInvalidWidgetID,               // associated widget ID
+                    
+                    kEVELargeSpaceAfter,
+                ),
+                
+                //</FREDDYWIDGETDEFLISTUS>
+                
+                
+            }  // End of Eve generic panel child widgets
+        ), // End of Eve generic panel widget definition
+        
+        EVEGenericPanelWidget
+        (
+            kInvalidWidgetID,                // WidgetId
+            0                                // RsrcId
+            0,                               // Widget EVE Info
+            kBindNone,                       // Frame binding
+            Frame(0,0,260,178)               // Frame
+            kTrue,                           // Visible
+            kTrue,                           // Enabled
+            kEVEAlignFill | kEVELargeSpaceAfter | kEVEArrangeChildrenInColumn,
+            
+            {
+                EVETextEditBoxWidget
+                (
+                    kFrmLblUIAdornmentTextEditBoxWidgetID,    // WidgetID
+                    kSysEditBoxPMRsrcId,                      // RsrcID
+                    kBindNone,                                // Binding
+                    Frame(0,0,200,20)                         // Frame (l,t,r,b)
+                    kTrue, kTrue,                             // Visible, Enabled
+                    0,                                        // Nudge control (0 = no control)
+                    1,                                        // Small nudge amount
+                    5,                                        // Large Nudge amount
+                    0,                                        // Max # chars (0 = no limit)
+                    kFalse,                                   // read only
+                    kFalse,                                   // Notify every key stroke
+                    kFalse,                                   // Range checking enabled
+                    kTrue,                                    // blank allowed
+                    0, 0,                                     // upper/lower bounds
+                    "",                                       // Initial text
+                            
+                    kEVERegularSpaceAfter,
+                ),        
+                        
+                EVECheckBoxWidget
+                (
+                    kFrmLblUIShowLabelCheckBoxWidgetID, // WidgetId
+                    kSysCheckBoxPMRsrcId,               // RsrcId
+                    kBindLeft | kBindBottom,
+                    Frame(0,0,0,0)                      // Frame
+                    kTrue,                              // Visible
+                    kTrue,                              // Enabled
+                    kAlignLeft,                         // Alignment
+                    kFrmLblUIShowLabelStringKey,        // Initial text
+                            
+                    kEVELargeSpaceAfter,
+                ),
+
+                EVEColorListDropDownWidget
+                (
+                    kFrmLblUIColorDropDownWidgetID,       // WidgetId
+                    kSysDropDownPMRsrcId,                 // RsrcId
+                    kBindNone,
+                    Frame(0,0,200,0)                      // Frame
+                    kTrue,                                // Visible
+                    kTrue,                                // Enabled
+                    0,                                    // Associated Widget
+                            
+                    kEVELargeSpaceAfter,
+                ),         
+
+                EVEDropDownListWidget
+                (
+                    kFrmLblUILabelPosDropDownWidgetID,// WidgetId
+                    kSysDropDownPMRsrcId,             // RsrcId
+                    kBindNone,                        // Frame binding
+                    Frame(0,0,200,0)                  // Frame
+                    kTrue,                            // Visible
+                    kTrue,                            // Enabled
+                    {{
+                        }}
+                            
+                    kEVELargeSpaceAfter,
+                ),
+                
+            }  // End of Eve generic panel child widgets
+        ), // End of Eve generic panel widget definition
+
+        EVEGenericPanelWidget
+        (
+            kInvalidWidgetID, // WidgetId
+            0                 // RsrcId
+            0,                // Widget EVE Info
+            kBindNone,        // Frame binding
+            Frame(0,0,60,178) // Frame
+            kTrue,            // Visible
+            kTrue,            // Enabled
+            kEVEAlignFill | kEVELargeSpaceAfter | kEVEArrangeChildrenInColumn,
+            
+            {
+
+                EVEDefaultButtonWidget
+                (
+                    kOKButtonWidgetID,         // WidgetID
+                    kSysButtonPMRsrcId,        // RsrcID
+                    kBindNone,                 // Binding
+                    Frame(0,0,0,0)             // Frame (l,t,r,b)
+                    kTrue, kTrue,              // Visible, Enabled
+                    kSDKDefOKButtonApplicationKey,    // Button text
+                                    
+                    kEVELargeSpaceAfter,
+                ),
+
+                EVECancelButtonWidget
+                (
+                    kCancelButton_WidgetID,               // WidgetID
+                    kSysButtonPMRsrcId,                   // RsrcID
+                    kBindNone,                            // Binding
+                    Frame(0,0,0,0)                        // Frame (l,t,r,b)
+                    kTrue, kTrue,                         // Visible, Enabled
+                    kSDKDefCancelButtonApplicationKey,    // Button name
+                    kTrue,                                // Change to Reset on option-click.
+                                    
+                    kEVELargeSpaceAfter,
+                ),                                
+                
+            }  // End of Eve generic panel child widgets
+        ), // End of Eve generic panel widget definition
+    },
+    
+    kEVEArrangeChildrenInRow | kEVELargeMargin,
+};
+
+
+#endif // __ODFRC__
+
+#include "FrmLblUI_enUS.fr"
+#include "FrmLblUI_jaJP.fr"

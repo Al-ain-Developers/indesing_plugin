@@ -1,0 +1,227 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#ifdef __ODFRC__
+
+#include "StringTable.fh"
+
+resource StringTable (kLinksUIStringsRsrcID + index_daDK)
+{
+	k_daDK,					// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	{
+		"Links_WinMenu",			"Læn&ker", // panel menu item
+		"kRtMouseGraphics",			"Grafik", // context menu submenu name
+		"RtMenuLinksUILinkInfo",	"Genvejsmenuen Lænkeoplysninger",
+		
+		"#LinksUIPanel",			"Lænker", // panel name
+		"#LinksUIPanelMenu",		"Panelmenuen Lænker", 
+		"#LinksUtilitiesSubmenu",		"Værktøjer",		// submenu for links panel menu
+		"#SelectedLinkInfoSectionName",			"Lænkeoplysninger", // section name in links ui panel
+		
+		"#UpdateAllOutOfDateLinksMenu",	"Opdater alle lænker",
+		"#AutoFindMissingLinksMenu",		"Søg efter manglende lænker",
+		"#LinksUIRelinkLinkMenu",		"Sammenlænk igen...",
+		"#LinksUIRelinkResourceMenu",	"Sammenlænk igen alle forekomster...", // menu item to relink all instances of this multiple link assets
+		"#RelinkResource ^1 Menu",		"Sammenlænk igen alle forekomster af '^1'...", // menu item to relink all instances of one single link asset
+		"#ReplaceFPOWithOriginalResourceMenu",	"Erstat alle forekomster...", // menu item to replace all instances of this multiple link assets
+		"#ReplaceFPOWithOriginalResource ^1 Menu", "Erstat alle forekomster af FPO '^1' med originalen...", // menu item to replace all instances of one single link asset
+		"#RelinkCloudResource ^1 Menu",	"Sammenkæd alle forekomster af '^1' fra CC Libraries...", // menu item to relink all instances of one single link asset
+        "#RelinkAALResource ^1 Menu",    "Sammenkæd alle forekomster af '^1' fra Adobe Asset Link...", // menu item to relink all instances of one single link asset
+		"#LinksUIUpdateLinkMenu",			"Opdater lænke", // context menu item in links ui panel
+		"#LinksUIUpdateLinkResourceMenu",	"Opdater alle forekomster",
+		"#UpdateResource ^1 Menu",		"Opdater alle forekomster af '^1'", // menu item to update all instances of one single link asset
+		"#LinksUIEmbedLinkMenu",			"Integrer lænke", // context menu item in links ui panel
+		"#LinksUIEmbedResourceMenu",		"Integrer alle forekomster",
+		"#EmbedResource ^1 Menu",			"Integrer alle forekomster af '^1'", // menu item to embed all instances of one single link asset
+		"#LinksUIUnEmbedLinkMenu",		"Fjern integrering af lænke", // context menu item in links ui panel
+		"#LinksUIUnEmbedResourceMenu",	"Fjern integrering af alle forekomster",
+		"#UnembedResource ^1 Menu",			"Fjern integrering af alle forekomster af '^1'", // menu item to unembed all instances of one single link asset
+		"#LinksUIUnLinkMenu",				"Fjern lænkning",
+		"#UnLinkResourceMenu",			"Fjern sammenlænkning af alle forekomster",
+		"#UnLinkResource ^1 Menu",			"Fjern sammenlænkning af alle forekomster af '^1'", // menu item to unlink all instances of one single link asset
+		"#LinksUIEditOriginalLinkMenu",		"Rediger original", // context menu item in links ui panel
+		"#LinksUIGoToSourceLinkMenu",		"Gå til kilde", // context menu item in links ui panel
+		"#LinksUIXMPFileInfo",				"XMP-filoplysninger...",
+		"#LinksUICopyPath",				"Kopier hele stien",
+		"#LinksUICopyPlatformPath",			"Kopier platformens formatsti",
+		"#RevealLinkInMacFinder",			"Vis i Finder",
+		"#RevealLinkInWinExplorer",			"Vis i Stifinder",
+		"#RevealLinkInAdobeBridge",			"Vis i Bridge",
+		"#RevealLinkInCCLibraries",			"Vis i CC Libraries",
+		"#GoToLink",						"Gå til lænke",
+		"#EditWithApp",					"Rediger med",
+		"ApplicationFiles",					"Program (*.exe)", // windows only string to list exe files in the 'edit with application' dialog.
+		"#ChooseEditingApplication",			"Vælg program", // dialog title
+		"#OtherApp",						"Andre...",	// Menu name for choosing a custom application via a standard file dialog for Edit With...
+		"#LinksUICopyLink",				"Kopier sammenlænkning(er) til...",
+		"#LinksUIEditColumnsMenu",			"Panelindstillinger...",
+		
+		"#LinksUIRemoveThisColumnMenu",	"Skjul denne kolonne",
+		"#LinksUIShowThumbnailMenu",		"Vis miniaturebillede",
+		"#LinksUIHideThumbnailMenu",		"Skjul miniaturebillede",		
+		"#LinksUIShowInfoThumbnailMenu",	"Vis oplysninger om miniaturebillede",
+		"#LinksUIHideInfoThumbnailMenu",	"Skjul oplysninger om miniaturebillede",
+		
+		"#SaveLinkVersionCmd",			"Check lænke ind",
+		"#ShowLinksPanelColumn",			"Vis kolonne",
+		"#ShowLinksPanelInfo",				"Vis i lænkeoplysninger",
+		"#SelectNextLinkButtonTip",			"Marker næste lænke på listen",
+		"#SelectPrevLinkButtonTip",			"Marker forrige lænke på listen",
+		"#ToggleLinkInfoButtonTip",			"Vis/skjul oplysninger om lænke",
+
+		"#ShortLinkStatusParamStr",				"^1 lænker",  // status string for links panel
+		"#LongLinkStatusParamStr",				"^1 lænker i alt \n\n   ^2 mangler\n   ^3 ændret\n   ^4 integreret\n   ^5 unik\n   ^6 underlænker", // tip string for links panel status.
+		"#OneSelectedLinkStr",			"1 markeret", // status string when one link is selected in the panel.
+		"#NumSelectedLinksParamStr",	"^1 markeret", // status string when multiple links are selected in the panel.
+				
+		"RtMenuLinksUILinkItem",		"Genvejsmenuen Lænker",
+		"RtMenuLinksUILinksHeader",		"Genvejsmenuen sidehovedlænke",
+		
+		"#LinkColumnDialog",			"Panelindstillinger", // dialog name
+		"#LinksUIPanelOptions",			"Indstillinger",
+		
+		"#LinkThumbPrefLabel",			"Miniaturebilleder:",
+		"#LinksUIRowSizeLabel",		"&Rækkestørrelse:",
+		"#LinksUISmallRowStr",			"Små rækker",
+		"#LinksUIRegularRowStr",		"Normale rækker",
+		"#LinksUILargeRowStr",			"Store rækker",
+		"#LinkInfoShowThumbnailCheckbox",	"Vis i lænke&oplysninger",
+		"#LinksUIShowThumbnail",		"Vis i &kolonnen Navn",
+		"#LinksUICollapseMultiple",		"&Skjul flere lænker til samme kilde",
+
+		"#SearchHereForMissingFiles",	"Søg efter manglende lænker i denne mappe", // label for checkbox in relink dialog
+		"#RelinkSkipButton",			"Ignorer", // name for 'skip' button in relink dialog
+		"#SearchFound^1Links",		"Der blev søgt i dette bibliotek, og ^1 manglende lænker blev fundet og sammenlænket igen.", // alert that displays if we auto find missing links after a relink
+		"#RelinkToFolderTitle",			"Vælg den mappe, der skal oprettes lænke til igen. Der oprettes kun lænker igen til valgte lænker med et matchende navn.",
+		"#RelinkToSameFilename",		"Match samme filnavn og filtype", // radio button option in relink to folder dialog
+		"#RelinkToExtension",			"Match samme filnavn, men denne filtype:", // radio button option in relink to folder dialog
+		"#LinksUICopyLinksTitle",		"Vælg den mappe, som de sammenlænkede filer skal kopieres til.",
+		"#LinksUIRelinkToFolderLinkMenu",	"Opret lænke til mappe igen...",
+		"#LinksUIRelinkFileExtensionLinkMenu",	"Sammenlænk filtypenavn igen...",
+        "#LinksUIRelinkFromCloudAssetLinkMenu",	"Sammenlænk fra CC Libraries...",
+        "#LinksUIRelinkFromAALAssetLinkMenu",    "Sammenkæd fra Adobe Asset Link...",
+		"#LicenseStockAssetLinkMenu",	"Licensér billede...",
+		"#LinksUIRelink: ^1",			"Sammenlænk igen: ^1", // title for relink dialog. ^1 becomes file path.
+		"#LinksUILocate: ^1",			"Find: ^1", // title for relink dialog when link is missing. ^1 becomes file path.
+		"#CopyLinksFailedAlert",		"Der opstod en fejl under kopiering af lænker til en mappe.",
+		"#AutoFindFoundNothingAlert",	"Der blev ikke fundet nogle manglende lænker. Brug kommandoen Sammenlænk igen for at finde den første manglende lænke, og prøv igen.",
+		
+		"kEditsMadeWarning",			  "Den importerede version af \"^1\" er blevet ændret. Ændringerne går tabt, hvis du opdaterer. Vil du opdatere alligevel?",
+		"kEditsMadeInLinkedStoryWarning",	"Der er foretaget ændringer i den sammenkædede tekstenhed \"^1\". Ændringerne går tabt, hvis du opdaterer. Vil du opdatere alligevel?",
+		"kEditsMadeInLinkedArticleWarning", "Der er foretaget ændringer i det sammenlænkede sideelement \"^1\". Ændringerne går tabt, hvis du opdaterer. Vil du opdatere alligevel?",
+		"kEditsMadeToTextOrTableWarning", "Der er blevet redigeret i den importerede version af \"^1\". Ændringerne vil gå tabt (med undtagelse af ændringer anvendt på regneark i form af celle- eller tabelformater), når du opdaterer lænken. Ønsker du alligevel at opdatere?",
+
+		// Strings for Problem Links dialog
+		"#LinksModifiedWarning",	"Dette dokument indeholder lænker til kilder, der har manglet/er blevet opdateret. Du kan opdatere de ændrede lænker nu, eller du kan opdatere dem senere ved hjælp af panelet Lænker.",
+		"#HTTPLinksModifiedWarning",	"Dette dokument indeholder lænker til kilder, der har manglet/er blevet ændret, siden dokumentet sidst blev gemt. Du kan opdatere de ændrede kilder nu, eller du kan opdatere dem senere ved hjælp af panelet Lænker.",
+		"#UpdateLinks",				"&Opdater ændrede lænker",	 // button text
+		"#Don'tUpdateLinks",		"Opdater ikke lænker", // button text
+		"#ProblemMissingLinksParamStr",	"^1 - Lænke(r) mangler",
+		"#ProblemModifiedLinksParamStr",	"^1 - Lænke(r) ændret",
+		"#ProblemInaccessibleLinksParamStr",	"^1 – URL-lænke(r) er utilgængelige. Gå til panelet Lænker for at få detaljer.",
+        "#ProblemLinksDialogHeader",    "Problemer med lænker",
+		"UnembedToOriginal", 		"Ved fjernelse af integrering kan du sammenkæde med den eller de oprindelige filer eller med filer, der oprettes i en mappe. Vil du sammenkæde med den eller de oprindelige filer?",
+		"#SelectUnembedDir",
+									"Vælg den mappe, hvor filerne oprettes.",
+
+		// Show Link message.
+		 "Cannot show link: The selected item is on a hidden layer.",
+						"Lænken kan ikke vises: Det markerede element er skjult eller på et skjult lag.",
+		"Cannot show link: The selected item is hidden in overset text.",
+						"Lænken kan ikke vises: Det markerede element er skjult i overskudstekst.",
+		"Cannot show link: The selected item is hidden in an inactive form field state.",
+						"Lænken kan ikke vises: Det markerede element er skjult i en inaktiv knaptilstand. Brug panelet Knapper for at aktivere den skjulte tilstand og se elementet.",
+		"Cannot show link: The selected item is hidden in an inactive mso state.",
+						"Lænken kan ikke vises: Det markerede element er i en inaktiv objekttilstand. Brug panelet Objekttilstande til at gøre den skjulte tilstand synlig.",
+		"Cannot show link: The selected item is in deleted text in a tracked change.",
+						"Kan ikke vise lænke: Det markerede element findes i slettet tekst i en sporet ændring.",
+		"Cannot show link: The selected item is an XML structure element not in the layout.",
+						"Kan ikke vise lænke: Det markerede element er et XML-strukturelement, som ikke findes i layoutet.",
+		"Cannot show link: The selected item is in hidden conditional text.",
+						"Lænken kan ikke vises: Det markerede element er i skjult betinget tekst.",
+						
+						
+		"#EditOriginalButtonTip",		"Rediger original",	// tip string for button in links panel
+		"#GotoLinkButtonTip",		"Gå til lænke",	// tip string for button in links panel
+		
+		"#appendedUpdateButtonTipMac",		". Alternativ+klik for at opdatere det hele", // appened to menu name for 'update link' to build tip string for update button(mac)
+		"#appendedUpdateButtonTipWin",		". Alt+klik for at opdatere det hele", // appened to menu name for 'update link' to build tip string for update button(win)
+		"#appendedRelinkButtonTipMac",		" Alternativ+klik for at sammenlænke alle manglende lænker", // appened to menu name for 'Relink' to build tip string for relink button(mac)
+		"#appendedRelinkButtonTipWin",		" Alt+klik for at sammenlænke alle manglende lænker", // appened to menu name for 'Relink' to build tip string for relink button(win)
+		
+		"#ErrorEmbeddingLink",				"Integrering af lænke mislykkedes.",
+		"#LinksUIShowLinkInfoMenu",		"Vis rude med lænkeinformationer",
+		"#LinksUIHideLinkInfoMenu",			"Skjul rude med lænkeinformationer",
+		"#LinksUICopyLinkInfoMenu",		"Kopier alle lænkeinformationer",
+		"#LinksUIAutosizeLinkInfoMenu",		"Tilpas automatisk størrelse af lænkeinformationer",
+		"#LinksUIGenerateReportMenu",		"Kopier informationer for markerede lænker",
+		"#LinksUIGenerateCaptionPrefsMenu",	"Konfiguration af billedtekst...",
+		"#GenerateLiveLinkCaptionMenu",		"Opret dynamiske billedtekster",
+		"#GenerateStaticLinkCaptionMenu",	"Opret statiske billedtekster",
+		
+		"#GenerateCaptionPrefDialogName",	"Konfiguration af billedtekst",
+		"#BeforeMetadataCaptionLabel",		"Tekst før",
+		"#MetadataCaptionLabel",			"Metadata",
+		"#AfterMetadataCaptionLabel",		"Tekst efter",
+		"#GenerateLiveCaptionGraphicSelectionMenu",	"Opret dynamisk billedtekst",
+		"#GenerateStaticCaptionGraphicSelectionMenu",	"Opret statisk billedtekst",
+		"#CopyLinkInfoStr '^1'",				"Kopier '^1'", // Menu item name in links panel. ^1 is replaced with whatever text data is under the mouse.
+		"#CopyLinkFieldMenu",				"Kopier informationsfelt",
+		"#InfoLabelSuffix",					": ", // suffix added to end of link info labels in the info section
+		
+		"#LinksCopyInfoMenu",				"Kopier informationer", // links panel submenu
+		
+		"#CaptionSubmenu",				"Billedtekster",		// name of captions submenu on Object menu
+		"#CaptionRowLabel",				"Billedtekst til metadata", // caption setup dialog top section title
+		"#CaptionOptionsLabel",				"Position og format", // caption setup dialog bottom section title
+		"#CaptionOffsetLabel",				"F&orskydning:",
+		"#CaptionParaStyleLabel",			"&Afsnitsformat:",
+		"#CaptionLayerLabel",				"&Lag:",
+		"#CaptionLayerLockedError",			"Billedtekst kan ikke oprettes på låst lag.",
+		"#CaptionGroupFailureError",			"Gruppe kan ikke oprettes for billedtekst.",
+		"#ErrorGeneratingCaption",			"Billedtekst kunne ikke oprettes.",
+		"#CaptionAlignmentLabel",			"&Justering:",
+		
+		"#CaptionAlignBelow",				"Under billede",
+		"#CaptionAlignAbove",				"Over billede",
+		"#CaptionAlignLeft",					"Til venstre for billede",
+		"#CaptionAlignRight",				"Til højre for billede",
+		
+		"#GroupCaptionWithImage",			"&Grupper billedtekst med billede",
+		 "#ConvertCaptionToTextMenu",		"Konverter til statisk billedtekst",
+		 "#ShowImportOptionsTip", 			"Vis importindstillinger", // Tool tip for custom controls in relink dialog
+		 "#SearchHereForMissingFilesTip",	"Søg her efter manglende filer", // Tool tip for custom controls in relink dialog
+		 "#EmbedLinkFromPropsPanel",		"Integrer billede fra panelet Props",
+		 "#RelinkAssetFromPropsPanel",		"Genopret link til billede fra panelet Props",
+		 "#UpdateLinkFromPropsPanel",		"Opdater billede fra panelet Props",
+		 "#UnlinkFromPropsPanel",			"Fjern link til fil fra panelet Props",
+        
+        "kImportingAALAsset",                "Importerer aktiv",
+        "kImportingFileName",                "Importerer ^1",
+        
+        //Error Strings for AEM
+        "AEMUnsupportedFiles",     "Kan ikke placere ^1 af ^2 fil(er). Filtype understøttes ikke af InDesign.",
+        "AEMInaccessibleFiles",     "Kan ikke placere ^1 af ^2 fil(er). InDesign kan ikke få adgang til filen. Tjek din netværksforbindelse eller den oprindelige indholdskilde.",
+        "AEMUnknownFiles",     "Kunne ikke placere ^1 af ^2 filer på grund af en ukendt fejl.",
+        "AEMGenericImportFailure",     "Kan ikke importere AEM-baseret aktiv.",
+        
+        // Action id strings
+        "#LinksUIReplaceFPOWithOriginalLink",        "Erstat FPO med original...",
+        "#LinksUIReplaceAllFPOWithOriginalLinks",    "Erstat alle FPO'er med Originals...",
+        "#LinksUIDownloadOriginalLink",                "Hente original",
+        "#LinksUIDownloadAllOriginalLinks",            "Hent alle Originals",
+	}
+};
+
+
+
+#endif //__ODFRC__

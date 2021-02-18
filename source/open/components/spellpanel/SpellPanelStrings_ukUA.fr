@@ -1,0 +1,159 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kSpellPanelStringsRsrcID + index_ukUA)
+{
+	k_ukUA,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{				
+		// ----- Main menu strings
+		"SpellingMenu",					"&Орфографія",
+		"Check Spelling...",			"Пере&вірити орфографію...",
+		"Dynamic SpellCheck",			"Дина&мічна перевірка орфографії",
+		"Autocorrect",					"Автоматичне виправлення",
+		"Auto Correct",					"&Автоматичне виправлення",
+		"AutoCorrect",					"Автоматичне виправлення",
+
+		// ----- Window strings
+		"corrected",					"виправлений",
+		"misspelled",					"з орфографічними помилками",
+		
+		// ----- Scope strings
+		
+		"[No spelling]",				"[Немає написання]",
+		"Auto",							"Авто",
+		"Document",						"Документ",
+		"Story",						"Матеріал",
+		"Stories",						"Матеріали",
+		"Selection",					"Виділення",
+		
+		// ----- Panel strings		
+		"Spelling",						"Орфографія",
+		"&Spelling...",					"&Орфографія...",
+		"Auto Correct...",				"Автомати&чне виправлення...",
+		"[No language]",				"[Відсутня мова]",
+		"AutoCorrectEnable",			"У&вімкнути автоматичне виправлення",
+		"AutoCorrectCapitalizationErrors",			"Автоматичне виправлення &помилок виділення великими літерами",
+		"A&dd...",						"Д&одати...",		// Opens a dialog
+		"EditAutoCorrectWord",			"&Правка...",		// Opens a dialog
+		"Correction",					"Виправлення",
+		"Misspelled Word",				"Слово з орфографічними помилками",
+
+		// ----- Dialog strings
+		"Check Spelling",				"Перевірити орфографію",
+		"&Change To:",					"&Змінити на:",
+		
+		"Change To",					"Змінити на",
+		"&Suggested Corrections:",		"Запропоновані виправлен&ня:",
+		"Language:",					"Мова:",
+		"Sea&rch:",						"Пош&ук:",
+		"Include Overset",				"Включати витіснення",
+		"&Done",							"&Готово",
+		"C&hange",						"З&мінити",
+		"S&tart",						"З&апуск",
+		"Chan&ge All",					"Змін&ити все",
+		"Skip",							"Пропустити",	
+		"kSkipButtonInSpellingDialog",  "П&ропустити",
+		"Ignore",						"Ігнорувати",
+		"&Ignore All",					"&Ігнорувати усе",
+		"&AddAndContinue",				"&Додати",			// Adds to dictionary automatically, continues spelling
+		"Dic&tionary...",				"Словни&к...",	// Launches Dict Editor dialog
+		"Add To:",						"Додати д&о:",
+
+		// Label strings in Spell Check dialog.
+		"Ready to Spell Check:", 			"Готово для перевірки орфографії",
+		"Misspelled Word:",					"Слово з орфографічними помилками:",
+		"Unknown Word - No Suggestions:", 	"Невідоме слово - немає пропозицій:",
+		"Not in Dictionary:",				"Немає в словнику:",
+		"Repeated Word:",					"Повторене слово:",
+		"Uncapitalized Word:",				"Слово з маленької літери:",
+		"Uncapitalized Sentence:",			"Речення з маленької літери:",
+		"Duplicate Word:",					"Дублювати слово:",
+		"Capitalization Error:",			"Помилка виділення великими літерами:",
+		"Spell Check Complete:",			"Перевірка орфографії завершена",
+		
+		"SpellCheckCompleteAlertStr",			"Перевірка орфографії завершена.",	// Alert string at completion of spelling.
+
+		"Misspelled Word (Overset):",					"Слово з орфографічними помилками: (витіснений текст)",
+		"Unknown Word - No Suggestions (Overset):", 	"Невідоме слово: (витіснений текст)",
+		"Not in Dictionary (Overset):",					"Немає в словнику: (витіснений текст)",
+		"Repeated Word (Overset):",						"Повторене слово: (витіснений текст)",
+		"Uncapitalized Word (Overset):",				"Слово з маленької літери: (витіснений текст)",
+		"Uncapitalized Sentence (Overset):",			"Речення з маленької літери: (витіснення)",
+
+		"Misspelled Word (In Table):",					"Слово з орфографічними помилками: (у таблиці)",
+		"Unknown Word - No Suggestions (In Table):", 	"Невідоме слово: (у таблиці)",
+		"Not in Dictionary (In Table):",					"Немає в словнику: (у таблиці)",
+		"Repeated Word (In Table):",						"Повторене слово: (у таблиці)",
+		"Uncapitalized Word (In Table):",				"Слово з маленької літери: (у таблиці)",
+		"Uncapitalized Sentence (In Table):",			"Речення з маленької літери: (у таблиці)",
+
+		"Misspelled Word (Deleted Text):",				"Слово з орфографічними помилками: (видалений текст)",
+		"Unknown Word - No Suggestions (Deleted Text):","Невідоме слово: (видалений текст)",
+		"Not in Dictionary (Deleted Text):",			"Немає в словнику: (видалений текст)",
+		"Repeated Word (Deleted Text):",				"Повторене слово: (видалений текст)",
+		"Uncapitalized Word (Deleted Text):",			"Слово з маленької літери: (видалений текст)",
+		"Uncapitalized Sentence (Deleted Text):",		"Речення з маленької літери: (видалено)",
+		
+		"Misspelled Word (Hidden):",					"Слово з орфографічними помилками: (прихований елемент)",
+		"Unknown Word - No Suggestions (Hidden):", 		"Невідоме слово: (прихований елемент)",
+		"Not in Dictionary (Hidden):",					"Відсутнє у словнику: (прихований елемент)",
+		"Repeated Word (Hidden):",						"Повторюване слово: (прихований елемент)",
+		"Uncapitalized Word (Hidden):",					"Слово з маленької літери: (прихований елемент)",
+		"Uncapitalized Sentence (Hidden):",				"Речення з маленької літери: (приховане)", // Shortened to "Hidden" for space. Like the "Overset" case above.
+
+//		"Spelling Preferences", 						"Spelling Preferences", // Note to localizer: this string moved to SpellingServiceStrings.fr
+		"Find", 										"Знайти",
+		"&Misspelled Words", 							"&Слова з орфографічними помилками",
+		"&Repeated Words", 								"&Повторювані слова",
+		"&Uncapitalized Words", 						"С&лова з маленької літери",
+		"Uncapitalized &Sentences", 					"&Речення з маленької літери",
+		"Misspelled Words Underline Color:",			"Слова з орфо&графічними помилками:",
+		"Repeated Words Underline Color:",				"Повто&рювані слова:",
+		"Uncapitalized Words Underline Color:",			"Слова з &маленької літери:",
+		"Uncapitalized Sentences Underline Color:",		"Ре&чення з маленької літери:",
+		"Dynamic Spellchecking",						"Динамічна перевірка орфографії",
+		
+		"Underline Color",								"Колір підкреслення",
+		
+		"&Enable Dynamic Spelling",						"&Ввімкнути динамічну перевірку орфографії",
+		
+		"Search is completed.  ^1  replacement(s) made.", "Пошук завершено.  Виконано заміщень: ^1.", 
+
+		"Add",											"Додати",
+		"Re&move",										"Ви&далити",
+		"Misspelled:",									"З орфографічними помилками:",
+		"Correction:",									"Виправлення:",
+		"Language:",									"Мова:",
+		"&Language:",									"&Мова:",
+		"AddToAutoCorrectList",							"Додати до списку автоматичного виправлення",
+		"EditAutoCorrectList",							"Редагувати список автоматичних виправлень",
+
+		"ACAlert1",		"Порожні записи не дозволені.",
+		"ACAlert2",		"Слово та його виправлення не можуть співпадати у перевірці орфографії та виділенні великими буквами.",
+		"ACAlert3",		"Слово з орфографічною помилкою та його виправлення вже існує в списку.",
+		"ACAlert4",		"Не вдається створити слово. Воно перевищує максимально допустиму кількість символів (64).",
+		"ACAlert5",		"Слово містить недійсний символ.",
+		"ACAlert6",		"Символ пробілу не допускається у слові з орфографічними помилками.",
+
+	}
+};
+
+#endif // __ODFRC__

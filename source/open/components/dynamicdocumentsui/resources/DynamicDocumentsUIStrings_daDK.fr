@@ -1,0 +1,298 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kDynamicDocumentsUIStringsRsrcID + index_daDK)
+{
+	k_daDK,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{
+		// ----- Command strings
+
+		// ----- Window strings
+
+		// ----- Panel strings
+		"kPageTransitionsPanelPopup",			"Panelmenuen Sideovergange",    
+		"kPageTransitionsSubMenu",				"Side&overgange",
+		"kPageTransitionsPanelName",			"Sideovergange",	   
+		"kPageTransitionStaticText",			"Overgang: ",
+		"kPageDirectionStaticText",				"Retning: ",
+		"kPageSpeedStaticText",					"Fart: ",
+        "kPTHorizontal",						"Vandret",
+        "kPTVertical",							"Lodret",
+        "kPTIn",								"Ind",
+        "kPTOut",								"Ud",
+        "kPTDown",								"Ned",
+        "kPTLeft",								"Venstre",
+        "kPTLeftDown",							"Venstre ned",
+        "kPTLeftUp",							"Venstre op",
+        "kPTRight",								"Højre",
+        "kPTRightDown",							"Højre ned",
+        "kPTRightUp",							"Højre op",
+        "kPTUp",								"Op",
+        "kPTHorizontalIn",						"Vandret ind",
+        "kPTHorizontalOut",						"Vandret ud",
+        "kPTVerticalIn",						"Lodret ind",
+        "kPTVerticalOut",						"Lodret ud",
+        "kPTSlow",								"Langsom",
+		"kPTMedium",							"Middel",
+		"kPTFast",								"Hurtig",		
+		"kPTNoTransition",						"Ingen",	
+              		
+		// ----- Liquid Layout panel
+		"kLiquidLayoutMenu",					"F&lydende layout",
+		"kLiquidLayoutPanelPopup",				"Panelmenuen Flydende layout",
+		"kLiquidLayoutPanelName",				"Flydende layout",	
+		"kObjectConstraintsStaticTextLabel",	"Objektafgrænsninger:",
+		"kDocumentReflowStaticTextLabel",		"Ombryd dokument",
+		"kFixedSizeStaticTextLabel",			"Tilpas størrelse med side:",
+		"kHeightCheckBoxLabel",					"Højde",
+		"kWidthCheckBoxLabel",					"Bredde",
+		"kPinLeftEdgeCheckBoxLabel",			"Venstre",
+		"kPinRightEdgeCheckBoxLabel",			"Højre",
+		"kPinTopEdgeCheckBoxLabel",				"Top",
+		"kPinBottomEdgeCheckBoxLabel",			"Bund",
+		"kPinObjectEdgesStaticTextLabel",		"Pin: ",
+		"kContentStaticTextLabel",				"Indhold:",
+		"kLayoutAdjustmentWarningTip",			"Regler for flydende layout gælder ikke, fordi layoutjustering er aktiveret for dokumentet. Klik for at deaktivere layoutjustering.",
+		"kPageLayoutPolicyDropdownLabel",		"Regel for flydende side:",
+		"kLiquidLayoutPanelPageRange",			"Side: ^1",
+		"kPinEdgeToolTip",						"Fastgør objekt i forhold til sidens kant.",
+		"kResizeHeightWithPageToolTip",			"Størrelse af objekthøjde tilpasses ændringer af sidehøjde.",
+		"kResizeWidthWithPageToolTip",			"Størrelse af objektbredde tilpasses ændringer af sidebredde.",
+		
+        // ----- Timing panel
+        "kTimingPanelPopup",					"Panelmenuen Timing",    
+		"kTimingSubMenu",						"Ti&ming",
+		"kTimingPanelName",						"Timing",	
+		"kTimingPanelEventStaticText",			"Hændelse: ",
+		"kTimingPanelDelayStaticText",			"Forsinkelse: ",
+        "kTimingPanelDelaySecondStaticText",	"sekund",
+        "kTimingPanelDelaySecondsStaticText",	"sekunder",
+        "kTimingPanelAssignPageLoadEvent",		"Omfordel til Ved sideindlæsning",
+        "kTimingPanelAssignStateLoadEvent",		"Omfordel til Ved tilstandsindlæsning",
+        "kTimingPanelAssignPageClickEvent",		"Omfordel til Ved sideklik",
+        "kTimingPanelRemoveItem",				"Fjern element",
+        "kTimingPanelEventDropDownTip",			"Et klik er påkrævet for at fortsætte",
+        "kTimingPanelGroupButtonTip",			"Afspil sammen",
+        "kTimingPanelUngroupkButtonTip",		"Afspil separat",
+        "kTimingPanelPreviewButtonTip",			"Vis opslag",
+        "kUnassignedEntry",						"Ikke tildelt",
+        "kTimingPanelLinkedItemStaticText",			"Sammenlænkede elementer:",	
+        "kTimingPanelPlayLinkedItemStaticText",		"Afspil: ",
+        "kTimingPanelPlayLinkedItemTimeStaticText",	"gang",
+        "kTimingPanelPlayLinkedItemTimesStaticText","tidspunkter",
+        "kTimingPanelLoopCheckBoxLabel",		"Løkke",
+        "kTimingPanelLinkedItemGroupWidgetTip",	"Objekter afspilles sammen (klik for at markere gruppe)", 
+
+        // HTML Preview menu items
+        "kHTMLFXLPreviewSpread",				"Vis opslag: EPUB",
+		// ----- Menu Strings
+		"kTransitionPanelChooseAction",				"&Vælg...",
+		"kTransitionPanelApplyToAllSpreadsAction",	"&Anvend på alle opslag",
+		"kTransitionPanelClearAllTransitionsAction","Fjern a&lle",
+		
+		// ----- Tips strings
+		"kApplyToAllSpreadsButtonTip",			"Anvend på alle opslag",
+		"kMotionPathTipStr",					"Bevægelseskurve, klik for redigering",
+		"kEasingPathTipStr",					"Lethedskurve",
+	#ifdef WINDOWS
+		"kPreviewSpreadButtonToolTip",			"Vis opslag: EPUB.",
+	#else
+		"kPreviewSpreadButtonToolTip",			"Vis opslag: EPUB.",			
+	#endif
+				
+		// ----- XFL Export Dialogs
+
+		"kXFLExport",						"Eksporter Flash CS6 Professional (FLA)",
+		"kSizePixels",						"Størrelse (pixels):",
+		"kPagesStr",						"Sider:",
+		"kExportStr",						"Eksporter:",
+		"kSpreadsStr",						"Opsla&g",
+		"kGenerateHTMLStr",					"Generer HTML-&fil",
+		"kFlashText",						"Klassisk Flash-tekst",
+		"kVectorText",						"Konverter til konturer",
+		"kRasterText",						"Konverter til pixel",
+		"kVellumText",						"Flash TLF-tekst",
+		"kInsertHyphensStr",				"I&ndsæt diskrete orddelingspunkter",
+		"kFitToSize",						"&Tilpas til:",
+		"kWidthSize",						"Bre&dde:",
+		"kHeightSize",						"&Højde:",
+		"kSelectionExportedStr",			"&Markering",
+		"kAllPagesExported",				"&Alle",
+		"kAllPagesExportedStr",				"A&lle sider",
+		"kPageRangeExported",				"&Udsnit:",
+		"kScaleSize",						"&Skaler:",
+		"kTextStr",							"Te&kst:",
+		"kInteractivityStr",				"Interaktivitet:",
+		"kDynamicMediaStr",					"Interaktivitet og medier:",
+		"kImageCompStr",					"Billed&komprimering:",
+		"kQualityStr",						"&JPEG-kvalitet:",
+		"kCurveQualityStr",					"Kurve&kvalitet:",
+		"kInclButtonsStr",					"Medtag &knapper",
+		"kInclHyperLinkStr",				"Medtag h&yperlinks",
+		"kInclPageTrans",					"Medtag side&overgange",
+		"kIncludePageCurl",					"Medtag i&nteraktivt sidekrøl",
+		"kIncludeAllStr",					"M&edtag alle",
+		"kAppearanceOnlyStr",				"Kun &udseende",
+		"kBackgroundStr",					"Baggrund:",
+		"kPaperColorStr",					"Papirf&arve",
+		"kTransparentStr",					"&Gennemsigtig",
+		"kFramesPerSecStr",					"billeder pr. sekund",
+		"kPageTransitionsStr",				"Side&overgange:",
+		"kNone",							"Ingen",
+		"kFromDocument",					"Fra dokument",
+		"kOptionsStr",						"Indstillinger:",
+		"kDescriptionStr",					"Beskrivelse:",
+		"kFrameRateStr",					"&Billedhastighed:",
+		"kImageCompAuto",					"Auto",
+		"kJPG_Lossy",						"JPEG",
+		"kJPG_LossyStr",					"JPEG (med tab)",
+		"kPNG_Lossless",					"Uden tab (gør ingenting)",
+		"kPNG_LosslessStr",					"PNG (uden tab)",
+		"kMinimumQual",						"Minimum",
+		"kLowQual",							"Lav",
+		"kMediumQual",						"Middel",
+		"kHighQual",						"Høj",
+		"kMaximumQual",						"Maksimum",
+		"kRasterizeStr",					"&Rasterer sider",
+		"kFlattenXPStr",					"S&amkopier gennemsigtighed",
+		"k1280x800",						"1280 x 800",
+		"k1024x768",						"1024 x 768",
+		"k800x600",							"800 x 600",
+		"k640x480",							"640 x 480",
+		"k250per",							"250%",
+		"k200per",							"200%",
+		"k150per",							"150%",
+		"k100per",							"100%",
+		"k75per",							"75%",
+		"k50per",							"50%",
+		"k25per",							"25%",
+
+		// Font Embedding
+		"kEmbeddedFontsTitle",				"Integrerede skrifter (gælder kun klassisk Flash-tekst)",
+		"kTotalFonts",						"Antal skrifter:  ",
+		"kFontLicensingInfo",				"Info om skriftlicenser",
+		"kEmbeddedFontName",				"Skriftnavn: ",
+		"kEmbeddedVendorID",				"Leverandør-id: ",
+
+		// Add Page Transition dialog
+		"kPageTransitionsDialogTitle",			"Sideovergange",
+		"kPageTransitionApplyToAllSpreads",		"Anvend på alle opslag",
+		"kZoomInOutString",						"Zoom ind/ud", 
+		
+		
+		//	Animation UI
+		"kAnimationUIPanelPopup",				"Panelmenuen Animations-UI",
+		"kAnimationUISubMenu",					"Animation",
+		"kAnimationUIPresetPopupMenu",			"Forudindstilling-menu i Animations-UI",
+		"kMotionPresetsNoneTextkey",			"Ingen",
+		"kAnimationUILoadPresetMenuItem",		"Indlæs forudindstilling...",
+		"kAnimationUISaveAsPresetMenuItem",		"Arkiver som...",
+		"kAnimationUISavePresetMenuItem",		"Arkiver",
+		"kAnimationUIDeletePresetMenuItem",		"Slet",
+
+		"kAnimationUIConvertToMotionPathMenuItem",	"Konverter til bevægelseskurve",
+		"kAnimationUITestInBrowserMenuItem",	"Test i browser...",
+		"kCustomPresetName",					"Forudindstilling af bevægelse",
+		"kAnimationUIEventSeparator",			", ",
+		
+		"kAnimationUIPanelName",				"Animation",
+		"kAnimationUIPreviewStaticTextLabel",	"Skærmversion",
+		"kAnimationUINameStaticTextLabel",		"Navn:",
+		"kAnimationUIPresetStaticTextLabel",	"Forudindstilling:",
+		"kAnimationUICustomPreset",				"Brugerdefineret",
+		"kAnimationUIMixed",					"Blandet",
+		"kAnimationUIMixed:",					"Blandet: ",
+		"kAnimationUIChoose",					"Vælg",
+		"kAnimationUIEventStaticTextLabel",		"Hændelse(r):",
+		"kAnimationUIDurationStaticTextLabel",	"Varighed:",
+		"kAnimationUISecondStaticTextLabel",	"sekund",
+		"kAnimationUISecondsStaticTextLabel",	"sekunder",
+		"kAnimationUIPlayStaticTextLabel",		"Afspil:",
+		"kAnimationUITimeStaticTextLabel",		"gang",
+		"kAnimationUITimesStaticTextLabel",		"tidspunkter",
+		"kAnimationUILoopCheckBoxLabel",		"Løkke",
+		"kAnimationUISpeedStaticTextLabel",		"Fart:",
+		"kAnimationUIVisibilityStaticTextLabel","Synlighed:",
+		"kAnimationUIPropertyStaticTextLabel",	"Egenskaber",
+		"kAnimationUIHideBeforeAnimateCheckBoxLabel","Skjul indtil animering",
+		"kAnimationUIHideAfterAnimateCheckBoxLabel","Skjul efter animering",
+		"kAnimationUIOnButtonEvent",			"Ved knaphændelse",
+		"kAnimationUIOnRollOffCheckBoxLabel",	"Vend ved rul væk fra",
+		"kAnimationUIEaseIn",					"Let ind",
+		"kAnimationUIEaseOut",					"Let ud",
+		"kAnimationUIEaseInAndOut",				"Let ind og ud",
+		"kAnimationUIFadeIn",					"Ton ind",
+		"kAnimationUIFadeOut",					"Ton ud",
+		"kAnimationUINone",						"Ingen",
+		"kAnimationUIFromPreset",				"Fra forudindstilling",
+		"kAnimationUIPropertyDesignStaticTextLabel",		"Animer:",
+		"kAnimationUIPropertyDesignCheckBoxLabel",			"Slutning af animation",
+		"kAnimationFromStaticTextLabel",					"Animer fra",
+		"kAnimationToStaticTextLabel",						"Animer til",
+		"kAnimationUIPropertyDesignScaleStaticTextLabel",	"Skaler",
+		"kAnimationUIPropertyDesignScaleHorzStaticTextLabel",	"B:",
+		"kAnimationUIPropertyDesignScaleVertStaticTextLabel",	"H:",
+		"kAnimationUIPropertyDesignRotateStaticTextLabel",	"Roter:",
+		"kAnimationUIPropertyDesignOpacityStaticTextLabel",	"Opacitet:",
+		"kAnimationUIPropertyDesignProxyStaticTextLabel",	"Startpunkt:",
+		
+		"kAnimationUIFrom",						"Fra aktuelt udseende",
+		"kAnimationUITo",						"Til aktuelt udseende",
+		"kAnimationUIOffset",					"Til aktuel placering",
+
+		"kAnimationPanelButtonTriggerTip",		"Opret knapudløser (klik på ikonet, og klik derefter på et objekt for at udløse denne animation)",
+		"kAnimationPanelShowProxyTip",			"Vis animationsproxy",
+		"kAnimationPanelLockIconTip",			"Begræns skaleringsværdien",
+		"kAnimationPanelEventMenuSelectorTip",	"Vælg udløserhændelse ved at klikke på den nedadgående pil",
+		"kAnimationPanelEventInfoTip",			"Udløserhændelse(r) for animationen",
+		"kAnimationPanelEventInfoDefaultTip",	"Standardudløserhændelse for animationen",
+		"kAnimationPanelPreviewButtonTip",		"Vælg aktuel markering",
+		"kAnimationPanelConvertToMotionPathTip","Konverter til bevægelseskurve",
+		"kAnimationUIFromTip",					"Bruger det aktuelle objekts egenskaber som startudseende af animationen på kørselstidspunktet.",
+		"kAnimationUIToTip",					"Bruger det aktuelle objekts egenskaber som slutudseende af animationen på kørselstidspunktet.",
+		"kAnimationUIOffsetTip",				"Bruger det aktuelle objekts egenskaber som startudseende og den aktuelle position som slutplacering af animationen på kørselstidspunktet.",
+		"kAnimationUIAnimationOptionTip",		"Animationsindstillinger",
+		"kAnimationUITrashTip",					"Fjern animation",
+		"kAnimationUIXFPointTip",				"Skift startpunkt for skalering og rotation.",
+		"kAnimationUIShowTimingButtonTip",		"Vis timingpanel",
+		
+		"kAnimationUISaveAsPresetTitle",		"Arkiver valgte forudindstilling som",
+		"kAnimationUISavePresetTitle",			"Arkiver forudindstilling",
+		"kAnimationUISavePresetNameLabel",		"Navn:",
+
+		"kAnimationUIEventPopupMenu",			"Pop op-menuen Hændelse",
+		"kAnimationUICreateButtonTriggerCmd",	"Opret knapudløser",
+		"kAnimationUICreateSelfTriggerCmd",		"Opret selvudløser",
+		
+		"kAnimationUIManagePresetsDialogTitle",	"Styr forudindstillinger",
+		"kAnimationUIManagePresetsDoneButton",	"Udført",
+		"kAnimationUIManagePresetsDeleteButton","&Slet",
+		"kAnimationUIManagePresetsDuplicateButton","D&ubler",
+		"kAnimationUIManagePresetsLoadButton",	"Ind&læs...",
+		"kAnimationUIManagePresetsSaveAsButton","Arkiver &som...",
+		"kAnimationUIManagePresetMenuItem",		"Styr forudindstillinger...",
+		"kAnimationUIManagePresetPresetsSeparator", "--------------------",
+		"kAnimationUIManagePresetNamePrefix",	"[",
+		"kAnimationUIManagePresetNameSuffix",	"]",
+	}
+};
+
+#endif // __ODFRC__

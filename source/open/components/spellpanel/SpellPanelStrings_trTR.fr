@@ -1,0 +1,159 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kSpellPanelStringsRsrcID + index_trTR)
+{
+	k_trTR,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{				
+		// ----- Main menu strings
+		"SpellingMenu",					"&Yazım Denetimi",
+		"Check Spelling...",			"Yazımı De&netle...",
+		"Dynamic SpellCheck",			"Dina&mik Yazım Denetimi",
+		"Autocorrect",					"Otomatik Düzeltme",
+		"Auto Correct",					"&Otomatik Düzeltme",
+		"AutoCorrect",					"Otomatik Düzeltme",
+
+		// ----- Window strings
+		"corrected",					"düzeltilmiş",
+		"misspelled",					"yazım hatası",
+		
+		// ----- Scope strings
+		
+		"[No spelling]",				"[Yazım denetimi yok]",
+		"Auto",							"Otomatik",
+		"Document",						"Belge",
+		"Story",						"Öykü",
+		"Stories",						"Öyküler",
+		"Selection",					"Seçim",
+		
+		// ----- Panel strings		
+		"Spelling",						"Yazım Denetimi",
+		"&Spelling...",					"&Yazım Denetimi...",
+		"Auto Correct...",				"Otomatik &Düzeltme...",
+		"[No language]",				"[Dil yok]",
+		"AutoCorrectEnable",			"&Otomatik Düzeltmeyi Etkinleştir",
+		"AutoCorrectCapitalizationErrors",			"&Büyük Harf Hatalarını Otomatik Düzelt",
+		"A&dd...",						"E&kle...",		// Opens a dialog
+		"EditAutoCorrectWord",			"&Düzenle...",		// Opens a dialog
+		"Correction",					"Düzeltme",
+		"Misspelled Word",				"Yanlış Yazılmış Sözcük",
+
+		// ----- Dialog strings
+		"Check Spelling",				"Yazımı Denetle",
+		"&Change To:",					"Şunu &Değiştir:",
+		
+		"Change To",					"Değişiklik:",
+		"&Suggested Corrections:",		"&Önerilen Düzeltmeler:",
+		"Language:",					"Dil:",
+		"Sea&rch:",						"Ar&a:",
+		"Include Overset",				"Taşma İçer",
+		"&Done",							"&Bitti",
+		"C&hange",						"D&eğiştir",
+		"S&tart",						"Baş&lat",
+		"Chan&ge All",					"Tümünü Değ&iştir",
+		"Skip",							"Atla",	
+		"kSkipButtonInSpellingDialog",  "&Atla",
+		"Ignore",						"Yoksay",
+		"&Ignore All",					"Tümünü &Yoksay",
+		"&AddAndContinue",				"&Ekle",			// Adds to dictionary automatically, continues spelling
+		"Dic&tionary...",				"Sözlü&k...",	// Launches Dict Editor dialog
+		"Add To:",						"&Ekle:",
+
+		// Label strings in Spell Check dialog.
+		"Ready to Spell Check:", 			"Yazım Denetimi için Hazır",
+		"Misspelled Word:",					"Yanlış Yazılmış Sözcük:",
+		"Unknown Word - No Suggestions:", 	"Bilinmeyen Sözcük - Öneri Yok:",
+		"Not in Dictionary:",				"Sözlükte Yok:",
+		"Repeated Word:",					"Tekrarlanan Sözcük:",
+		"Uncapitalized Word:",				"Büyük Harf Olmayan Sözcük:",
+		"Uncapitalized Sentence:",			"Büyük Harf Olmayan Cümle:",
+		"Duplicate Word:",					"Sözcüğü Çoğalt:",
+		"Capitalization Error:",			"Büyük Harf Hatası:",
+		"Spell Check Complete:",			"Yazım Denetimi Tamamlandı",
+		
+		"SpellCheckCompleteAlertStr",			"Yazım denetimi tamamlandı.",	// Alert string at completion of spelling.
+
+		"Misspelled Word (Overset):",					"Yanlış Yazılmış Sözcük: (Taşmış Metin)",
+		"Unknown Word - No Suggestions (Overset):", 	"Bilinmeyen Sözcük: (Taşmış Metin)",
+		"Not in Dictionary (Overset):",					"Sözlükte Yok: (Taşmış Metin)",
+		"Repeated Word (Overset):",						"Tekrarlanan Sözcük: (Taşan Metin)",
+		"Uncapitalized Word (Overset):",				"Büyük Harf Olmayan Sözcük: (Taşmış Metin)",
+		"Uncapitalized Sentence (Overset):",			"Büyük Harf Olmayan Cümle: (Taşmış)",
+
+		"Misspelled Word (In Table):",					"Yanlış Yazılmış Sözcük: (Tablo İçi)",
+		"Unknown Word - No Suggestions (In Table):", 	"Bilinmeyen Sözcük: (Tablo İçi)",
+		"Not in Dictionary (In Table):",					"Sözlükte Yok: (Tablo İçi)",
+		"Repeated Word (In Table):",						"Tekrarlanan Sözcük: (Tablo İçi)",
+		"Uncapitalized Word (In Table):",				"Büyük Harf Olmayan Sözcük: (Tabloda)",
+		"Uncapitalized Sentence (In Table):",			"Büyük Harf Olmayan Cümle: (Tabloda)",
+
+		"Misspelled Word (Deleted Text):",				"Yanlış Yazılmış Sözcük: (Silinmiş Metin)",
+		"Unknown Word - No Suggestions (Deleted Text):","Bilinmeyen Sözcük: (Silinmiş Metin)",
+		"Not in Dictionary (Deleted Text):",			"Sözlükte Yok: (Silinmiş Metin)",
+		"Repeated Word (Deleted Text):",				"Tekrarlanan Sözcük: (Silinmiş Metin)",
+		"Uncapitalized Word (Deleted Text):",			"Büyük Harf Olmayan Sözcük: (Silinmiş Metin)",
+		"Uncapitalized Sentence (Deleted Text):",		"Büyük Harf Olmayan Cümle: (Silinmiş)",
+		
+		"Misspelled Word (Hidden):",					"Yanlış Yazılmış Sözcük: (Gizli Öğe)",
+		"Unknown Word - No Suggestions (Hidden):", 		"Bilinmeyen Sözcük: (Gizli Öğe)",
+		"Not in Dictionary (Hidden):",					"Sözlükte Bulunmayan: (Gizli Öğe)",
+		"Repeated Word (Hidden):",						"Yinelenen Sözcük: (Gizli Öğe)",
+		"Uncapitalized Word (Hidden):",					"Büyük Harf İçermeyen Sözcük: (Gizli Öğe)",
+		"Uncapitalized Sentence (Hidden):",				"Büyük Harf İçermeyen Cümle: (Gizli)", // Shortened to "Hidden" for space. Like the "Overset" case above.
+
+//		"Spelling Preferences", 						"Spelling Preferences", // Note to localizer: this string moved to SpellingServiceStrings.fr
+		"Find", 										"Bul",
+		"&Misspelled Words", 							"&Yanlış Yazılmış Sözcükler",
+		"&Repeated Words", 								"&Tekrarlanan Sözcükler",
+		"&Uncapitalized Words", 						"&Büyük Harf Olmayan Sözcükler",
+		"Uncapitalized &Sentences", 					"Büyük Harf Olmayan &Cümleler",
+		"Misspelled Words Underline Color:",			"Y&anlış Yazılmış Sözcükler:",
+		"Repeated Words Underline Color:",				"Tekrar&lanan Sözcükler:",
+		"Uncapitalized Words Underline Color:",			"Büyük &Harf Olmayan Sözcükler:",
+		"Uncapitalized Sentences Underline Color:",		"Büyük Harf &Olmayan Cümleler:",
+		"Dynamic Spellchecking",						"Dinamik Yazım Denetimi",
+		
+		"Underline Color",								"Alt Çizgi Rengi",
+		
+		"&Enable Dynamic Spelling",						"Dinamik Yazım Denetimini &Etkinleştir",
+		
+		"Search is completed.  ^1  replacement(s) made.", "Arama tamamlandı.  ^1 değişiklik(ler) yapıldı.", 
+
+		"Add",											"Ekle",
+		"Re&move",										"Kal&dır",
+		"Misspelled:",									"Yazım hatası:",
+		"Correction:",									"Düzeltme:",
+		"Language:",									"Dil:",
+		"&Language:",									"&Dil:",
+		"AddToAutoCorrectList",							"Otomatik Düzeltme Listesine Ekle",
+		"EditAutoCorrectList",							"Otomatik Düzeltme Listesini Düzenle",
+
+		"ACAlert1",		"Boş girişlere izin verilmiyor.",
+		"ACAlert2",		"Sözcük ve düzeltmesi, yazım denetimi ile büyük harflerde aynı olamaz.",
+		"ACAlert3",		"Yanlış yazılmış sözcük ve düzeltilmiş hali zaten listede var.",
+		"ACAlert4",		"Giriş oluşturulamıyor. Maksimum karakter sayısını aşıyor (64).",
+		"ACAlert5",		"Giriş geçersiz karakter içeriyor.",
+		"ACAlert6",		"Yanlış yazılmış sözcükte boşluğa izin verilmiyor.",
+
+	}
+};
+
+#endif // __ODFRC__

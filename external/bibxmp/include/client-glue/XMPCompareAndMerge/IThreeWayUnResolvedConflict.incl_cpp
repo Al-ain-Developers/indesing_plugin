@@ -1,0 +1,84 @@
+// =================================================================================================
+// ADOBE SYSTEMS INCORPORATED
+// Copyright 2014 Adobe Systems Incorporated
+// All Rights Reserved
+//
+// NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance with the terms
+// of the Adobe license agreement accompanying it.
+// =================================================================================================
+
+#if AdobePrivate
+// =================================================================================================
+// Change history
+// ==============
+//
+// Writers:
+//  ADC	Amandeep Chawla
+//	HK	Honey Kansal
+//
+// mm-dd-yy who Description of changes, most recent first.
+//
+// 05-19-14 ADC 1.0-m020 Refactoring XMPCommon code and appropriate changes in XMPCore and XMPCompareAndMerge.
+// 03-03-14 ADC 1.0-m013 Implemented GetMergedMetadata function of ThreeWayMerge.
+// 02-24-14 HK  1.0-m009 Added new internal XMP DOM interfaces + fixed memory leaks + implemented qualifiers for new XMP DOM.
+// 02-18-14 ADC 1.0-m004 Three Way Conflict Identification Feature.
+//
+// =================================================================================================
+#endif	// AdobePrivate
+
+#include "XMPCompareAndMerge/Interfaces/IThreeWayUnResolvedConflict.h"
+#include "XMPCommon/Interfaces/IError.h"
+
+#include "XMPCore/Interfaces/IXMPNode.h"
+
+#define CALL_EQUIVALENT_VIRTUAL_FUNCTION_NO_ARGS( className, functionName ) {			\
+			pIError error ( NULL );																	\
+			p##className##_base ptr = functionName( error );										\
+			if ( error )																			\
+				throw NS_XMPCOMMON::MakeUncheckedSharedPointer( error );								\
+				return NS_XMPCOMMON::MakeSharedPointer< className##_latest, className##_base >( ptr );	\
+		}
+
+#define CALL_EQUIVALENT_VIRTUAL_FUNCTION( className, functionName, ... ) {			\
+			pIError error ( NULL );																\
+			p##className##_base ptr = functionName( __VA_ARGS__, error );						\
+			if ( error )																		\
+				throw NS_XMPCOMMON::MakeUncheckedSharedPointer( error );							\
+			return NS_XMPCOMMON::MakeSharedPointer< className##_latest, className##_base >( ptr );	\
+		}
+
+#define CALL_EQUIVALENT_CVIRTUAL_FUNCTION_NO_ARGS( className, functionName ) {	\
+			pIError error ( NULL );																	\
+			pc##className##_base ptr = functionName( error );										\
+			if ( error )																			\
+				throw NS_XMPCOMMON::MakeUncheckedSharedPointer( error );								\
+			return NS_XMPCOMMON::MakeSharedPointer< const className##_latest, const className##_base >( ptr );	\
+		}
+
+#define CALL_EQUIVALENT_CVIRTUAL_FUNCTION( className, functionName, ... ) {			\
+			pIError error ( NULL );																\
+			pc##className##_base ptr = functionName( __VA_ARGS__, error );						\
+			if ( error )																		\
+				throw NS_XMPCOMMON::MakeUncheckedSharedPointer( error );							\
+			return NS_XMPCOMMON::MakeSharedPointer< const className##_latest, const className##_base >( ptr );	\
+		}
+
+namespace NS_XMPCOMPAREANDMERGE {
+
+	eUnResolvedConflictReason IThreeWayUnResolvedConflict_v1::GetUnResolvedConflictReason() const {
+		CALL_EQUIVALENT_VIRTUAL_FUNCTION_RETURNING_ENUM_NO_ARGS( NS_XMPCOMMON, eUnResolvedConflictReason, GetUnResolvedConflictReason );
+	}
+
+	spcIXMPNode_latest IThreeWayUnResolvedConflict_v1::GetCommonBaseNode() const {
+		CALL_EQUIVALENT_CVIRTUAL_FUNCTION_NO_ARGS( IXMPNode, GetCommonBaseNode );
+	}
+
+	spcIXMPNode_latest IThreeWayUnResolvedConflict_v1::GetUserVersionNode() const {
+		CALL_EQUIVALENT_CVIRTUAL_FUNCTION_NO_ARGS( IXMPNode, GetUserVersionNode );
+	}
+
+	spcIXMPNode_latest IThreeWayUnResolvedConflict_v1::GetLatestVersionNode() const {
+		CALL_EQUIVALENT_CVIRTUAL_FUNCTION_NO_ARGS( IXMPNode, GetLatestVersionNode );
+	}
+
+}

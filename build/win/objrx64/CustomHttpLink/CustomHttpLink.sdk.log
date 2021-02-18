@@ -1,0 +1,35 @@
+﻿  VCPlugInHeaders.cpp
+  PlugInStatics.cpp
+  SDKPlugInEntrypoint.cpp
+  SDKFileHelper.cpp
+  CusHttpLnkLinkResourceConnection.cpp
+  CusHttpLnkLinkResourceFactory.cpp
+  CusHttpLnkLinkResourceHandler.cpp
+  CusHttpLnkLinkResourceHelperHandler.cpp
+  CusHttpLnkLinkResourceStateBatchUpdater.cpp
+  CusHttpLnkLinkResourceStateUpdater.cpp
+  CusHttpLnkResourceServerAPIWrapper.cpp
+  CustomHttpLinkID.cpp
+  CustomHttpLinkNoStrip.cpp
+  TriggerResourceDeps.cpp
+  Performing Custom Build Tools
+  ODFRC deleting old resources... 
+  Could Not Find C:\Users\User\Desktop\plugin_sdk_v3\plugin\build\win\objRx64\CustomHttpLink\*.idrc
+  "..\objRx64\CustomHttpLink"\CusDtLnk.res doesn't exist
+  Bad arguments to merge_res.cmd  
+     Usage 
+        1)merge_res.cmd $(IntDir) ResourceFile
+        2)merge_res.cmd $(IntDir) ResourceFile CoreResourceFile
+  Use 1) if the platform and core resourfile names are the same.
+     Use 2) if they are different.
+     Where ResourceFile is the filename without .res 
+           CoreResourceFile is the filename without .fres 
+     Example: 1) merge_res.cmd $(IntDir) TableModel
+              2) merge_res.cmd $(IntDir) TableModel TableModelCore
+  merge_res.cmd done.
+  Deleting old resources... 
+  The system cannot find the file specified.
+  10 File(s) copied
+     Creating library ..\..\..\build\win\objRx64\CustomHttpLink/CustomHttpLink.lib and object ..\..\..\build\win\objRx64\CustomHttpLink/CustomHttpLink.exp
+  CustomHttpLink.sdk.vcxproj -> C:\Users\User\Desktop\plugin_sdk_v3\plugin\build\win\releasex64\sdk\CustomHttpLink.sdk.pln
+  restore_res.cmd done.

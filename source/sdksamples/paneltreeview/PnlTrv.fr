@@ -1,0 +1,810 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/sdksamples/paneltreeview/PnlTrv.fr $
+//  
+//  Owner: Adobe Developer Technologies
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//  
+//  Umbrella include file for all the .fr files in the plug-in.
+//  
+//========================================================================================
+
+//===========================
+//  General includes:
+//===========================
+
+#include "MenuDef.fh"
+#include "ActionDef.fh"
+#include "ActionDefs.h"
+#include "AdobeMenuPositions.h"
+#include "AppFrameworkID.h"
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "StringTable.fh"
+#include "objectmodeltypes.fh"
+#include "ShuksanID.h"
+#include "ActionID.h"
+#include "CommandID.h"
+#include "WorkspaceID.h"
+#include "widgetid.h"
+#include "BuildNumber.h"
+#include "PanelList.fh"
+#include "ScriptingID.h"
+#include "ScriptInfoTypes.fh"
+#include "Widgets.fh"	// for PalettePanelWidget
+#include "InterfaceColorDefines.h"
+#include "IControlViewDefs.h"
+#include "SysControlIds.h"
+#include "IconStyleDefs.h"
+#include "DragDropID.h"
+#include "LayoutUIID.h" // for  kLayoutDDTargHelperProviderImpl
+#include "ErrorTableTypes.h"
+#include "TreeViewDefs.h"
+
+#include "PlugInModel_UIAttributes.h"
+// Project includes:
+#include "PnlTrvID.h"
+#include "PnlTrvScriptingDefs.h"
+
+#ifdef __ODFRC__
+
+/*
+// Plugin version definition.
+*/
+resource PluginVersion (kSDKDefPluginVersionResourceID)
+{
+	kTargetVersion,
+	kPnlTrvPluginID,
+	kSDKDefPlugInMajorVersionNumber, kSDKDefPlugInMinorVersionNumber, 	
+	kSDKDefHostMajorVersionNumber, kSDKDefHostMinorVersionNumber,
+	kPnlTrvLastMajorFormatChange, kPnlTrvLastMinorFormatChange,
+	{ kInDesignProduct },
+	{ kWildFS },
+	kUIPlugIn,
+	kPnlTrvVersion
+};
+
+/* SchemaList: a history of the persistent data formats supported by this plug-in
+*/
+resource SchemaList(1)
+{{
+    Schema
+    {
+        kPnlTrvOptionsImpl,
+        {kPnlTrvInitialMajorFormat, kPnlTrvInitialMinorFormat},
+        {
+            {FieldArray	{0x0001, {Uint32{0}}, {{PMString{0x0002, ""}}} }},
+        }
+    };
+    
+    Schema
+    {
+        kPnlTrvOptionsImpl,
+        {kPnlTrvLastMajorFormatChange, kPnlTrvLastMinorFormatChange},
+        {
+            {FieldArray	{0x0001, {Uint32{0}}, {{WideString{0x0002, ""}}} }},
+        }
+    };
+}};
+
+/*
+//	Boss class definition.
+*/
+resource ClassDescriptionTable(kSDKDefClassDescriptionTableResourceID)
+{{{
+	/**
+	This boss class provides the actions invoked by this plug-in's
+	sub-menu items. It supports two interfaces: 
+	IActionComponent and IPMPersist. We provide the implementation 
+	for IActionComponent in PnlTrvAction.cpp. The other
+	default implementation is provided by the API.
+	@ingroup paneltreeview
+	*/
+	Class
+	{
+		kPnlTrvActionComponentBoss,
+		kBaseActionComponentBoss,
+		{
+			/** Handle the actions from the menu. */
+			IID_IACTIONCOMPONENT,  kPnlTrvActionComponentImpl,
+		}
+	},
+
+	/**
+	This boss class inherits from an API panel boss class, and
+	adds an interface to control a pop-up menu on the panel.
+	The implementation for this interface is provided by the API.
+	@ingroup paneltreeview
+	*/
+	Class
+	{
+		kPnlTrvPanelWidgetBoss,
+		kPalettePanelWidgetBoss,
+		{
+			/** The plug-in's implementation of ITextControlData with an exotic IID of IID_IPANELMENUDATA.
+			Implementation provided by the API.
+			*/ 
+			IID_IPANELMENUDATA,  kCPanelMenuDataImpl,
+		}
+	},
+
+	/**
+	Our tree view widget subclassed as we must provide ITreeViewWidgetMgr and ITreeViewHierarchyAdapter implementations
+	to work with tree-view control. 
+	@ingroup paneltreeview
+	*/
+	Class
+	{
+		kPnlTrvTreeViewWidgetBoss,
+		kTreeViewWidgetBoss,
+		{
+			/** Furnishes application framework with widgets as needed and geometry info */
+			IID_ITREEVIEWWIDGETMGR,  kPnlTrvTVWidgetMgrImpl,
+			/** Observes changes in the selection within the tree-view */
+			IID_IOBSERVER,  kPnlTrvTreeObserverImpl,
+			/** Adapts our data model to the needs of the application framework */
+			IID_ITREEVIEWHIERARCHYADAPTER,  kPnlTrvTVHierarchyAdapterImpl,
+			
+			/** Implements IPnlTrvDataModel (our custom data model)
+				@see PnlTrvDataModel 
+			*/
+			IID_IPNLTRVDATAMODEL, kPnlTrvDataModelImpl,
+
+		}
+	},
+
+	/**
+	Subclass to allow us to use a proxy event handler (to catch double clicks), 
+	to add drag-drop capability and to an observer for node expand/contract events.
+	@ingroup paneltreeview
+	*/
+	Class
+	{
+		kPnlTrvNodeWidgetBoss,
+		kTreeNodeWidgetBoss,
+		{
+			/** What the application framework thinks is the  control's event handler */
+			IID_IEVENTHANDLER,  kPnlTrvNodeEHImpl,
+			/** The real event handler associated with this control, we delegate to this implementation */
+			IID_IPNLTRVSHADOWEVENTHANDLER,  kTreeNodeEventHandlerImpl,
+			/** Observer for changes in node state such as expand/contract */
+			IID_IOBSERVER,  kPnlTrvNodeObserverImpl,
+			/** Provides the node with drag source capability for the SysFile
+				associated with the widget.
+				See PnlTrvDragDropSource. 
+			 */
+			IID_IDRAGDROPSOURCE,  kPnlTrvDragDropSourceImpl,
+		}
+	},
+
+	/**
+	Command class to change options persisted on session workspace.
+	@ingroup paneltreeview
+	*/
+	Class
+	{
+		kPnlTrvChangeOptionsCmdBoss,
+		kInvalidClass,
+		{
+			/** Implementation of ICommand to change options
+			*/
+			IID_ICOMMAND,  kPnlTrvChangeOptionsCmdImpl,
+			/** Data interface for this command
+			*/
+			IID_IPNLTRVCHANGEOPTIONSCMDDATA,  kPnlTrvChangeOptionsCmdDataImpl,
+		}
+	},
+
+	/**
+	Save the options that we're working with.
+	@ingroup paneltreeview
+	*/
+	AddIn
+	{
+		kWorkspaceBoss,
+		kInvalidClass,
+		{
+			/** Options relating to this plugin stored in session workspace
+			*/
+			IID_IPNLTRVOPTIONS,  kPnlTrvOptionsImpl,
+		}
+	},
+
+	/**
+	AddIn for idle task and data interface representing whether it should run.
+	@ingroup paneltreeview
+	*/
+	AddIn
+	{
+		kSessionBoss,
+		kInvalidClass,
+		{
+			/** Idle task itself, implementation of IIdleTask */
+			IID_IPNLTRVIDLETASK,  kPnlTrvIdleTaskImpl,
+		}
+	},
+
+	/**
+	Service provider boss class to install the idle task on startup.
+	@ingroup paneltreeview
+	*/
+	Class
+	{
+		kPnlTrvStartupShutdownBoss,
+		kInvalidClass,
+		{
+			/** Implementation of IStartupShutdownService that installs idle task on startup */
+			IID_ISTARTUPSHUTDOWN,  kPnlTrvStartupShutdownImpl,
+			/** identify the service type */
+			IID_IK2SERVICEPROVIDER,  kCStartupShutdownProviderImpl,
+		}
+	},
+
+	/**
+	This boss provide a custom draw implementation on the kGenericPanelWidgetBoss, 
+	it illustrates how to change a panel's appearance through overriding IControlView.
+	@ingroup paneltreeview
+	*/
+	Class
+	{
+		kPnlTrvCViewPanelWidgetBoss,
+		kGenericPanelWidgetBoss,
+		{
+			/** A custom draw implementation
+			*/
+			IID_ICONTROLVIEW, kPnlTrvCustomViewImpl,
+			/** Path to image to preview in this widget */
+			IID_ISYSFILEDATA, kSysFileDataImpl,
+		}
+	},
+	
+	/** This boss provides scripting support for Panel Tree View Options.
+	@ingroup paneltreeview
+	*/
+	Class
+	{
+		kPnlTrvScriptProviderBoss,
+		kBaseScriptProviderBoss,
+		{
+			/** Provides scripting support by means of handling events and property 
+			  	accesses that are delegated by the script manager. 
+			  	REQUIRED by the scripting architecture.
+			  	Implementation provided in PnlTrvScriptProvider.cpp.
+			 */
+			IID_ISCRIPTPROVIDER,	kPnlTrvScriptProviderImpl,
+		}
+	},
+
+	/** Implements an error string service, primarily for use by 
+	  	the script provider (so that script users will get meaningful 
+	  	error descriptions)
+	  	@ingroup paneltreeview
+	*/
+	Class
+	{
+		kPnlTrvErrorStringServiceBoss,
+		kInvalidClass,
+		{
+			/** Declares this boss as an kErrorStringService provider.
+			  	Implementation provided by the API.
+			 */
+			IID_IK2SERVICEPROVIDER, kErrorStringProviderImpl, 
+			
+			/** Provides the support for ErrorUtils so that 
+			  	ErrorUtils::PMGetErrorString can locate a specific error code.
+			  	Implementation provided in PnlTrvErrorStringService.cpp
+			 */
+           IID_IERRORSTRINGSERVICE, kPnlTrvErrorStringServiceImpl,
+		}
+	},
+
+	/** This boss class supplies a schema-based conversion service for this plug-in.
+		@ingroup paneltreeview
+	*/
+	Class
+    {
+        kPnlTrvConversionProviderBoss,
+        kInvalidClass,
+        {
+			/** Provides the conversion service.
+				Implementation provided by the API.
+			*/
+            IID_ICONVERSIONPROVIDER, kSchemaBasedConversionImpl,
+			/** Registers this boss as a conversion service provider.
+				Implementation provided by the API.
+			*/
+            IID_IK2SERVICEPROVIDER, kConversionServiceImpl,
+        }
+    },
+    
+}}};
+
+/*
+// Implementation definition.
+*/
+resource FactoryList (kSDKDefFactoryListResourceID) 
+{
+	kImplementationIDSpace,
+	{
+		#include "PnlTrvFactoryList.h"
+	}
+};
+
+/*
+// Menu definition.
+*/
+resource MenuDef (kSDKDefMenuResourceID)
+{
+	{
+		// The About Plug-ins sub-menu item for this plug-in.
+		kPnlTrvAboutActionID,			// ActionID (kInvalidActionID for positional entries)
+		kPnlTrvAboutMenuPath,			// Menu Path.
+		kSDKDefAlphabeticPosition,		// Menu Position.
+		kSDKDefIsNotDynamicMenuFlag,	// kSDKDefIsNotDynamicMenuFlag or kSDKDefIsDynamicMenuFlag.
+
+		kPnlTrvRefreshActionID,
+		kPnlTrvTargetMenuPath,
+		kPnlTrvRefreshMenuItemPosition,
+		kSDKDefIsNotDynamicMenuFlag,
+
+		kPnlTrvSetOptionsActionID,
+		kPnlTrvTargetMenuPath,
+		kPnlTrvSetOptionsMenuItemPosition,
+		kSDKDefIsNotDynamicMenuFlag,
+
+		// Separator for the popup menu on the panel
+		kPnlTrvSeparator1ActionID,
+		kPnlTrvInternalPopupMenuNameKey kSDKDefDelimiterAndSeparatorPath,	// :- to mark an item as a separator.
+		kPnlTrvSeparator1MenuItemPosition,
+		kSDKDefIsNotDynamicMenuFlag,
+
+		// About this plugin submenu for the popup menu on the panel
+		kPnlTrvPopupAboutThisActionID,
+		kPnlTrvTargetMenuPath
+		kPnlTrvAboutThisMenuItemPosition,
+		kSDKDefIsNotDynamicMenuFlag, 
+
+	}
+};
+
+/*
+// Action definition.
+*/
+resource ActionDef (kSDKDefActionResourceID)
+{
+	{ 
+		kPnlTrvActionComponentBoss, 		// ClassID of boss class that implements the ActionID.
+		kPnlTrvAboutActionID,			// ActionID.
+		kPnlTrvAboutMenuKey,			// Sub-menu string.
+		kHelpMenuActionArea,				// Area name (see ActionDefs.h).
+		kNormalAction,					// Type of action (see ActionDefs.h).
+		kDisableIfLowMem,				// Enabling type (see ActionDefs.h).
+		kInvalidInterfaceID,			// Selection InterfaceID this action cares about or kInvalidInterfaceID.
+		kSDKDefInvisibleInKBSCEditorFlag, // kSDKDefVisibleInKBSCEditorFlag or kSDKDefInvisibleInKBSCEditorFlag.
+
+		kPnlTrvActionComponentBoss,
+		kPnlTrvRefreshActionID,		
+		kPnlTrvRefreshMenuItemKey,		
+		kOtherActionArea,			
+		kNormalAction,				
+		kDisableIfLowMem,	
+		kInvalidInterfaceID,		
+		kSDKDefInvisibleInKBSCEditorFlag,
+				
+
+		kPnlTrvActionComponentBoss,
+		kPnlTrvSetOptionsActionID,		
+		kPnlTrvSetOptionsMenuItemKey,		
+		kOtherActionArea,			
+		kNormalAction,				
+		kDisableIfLowMem,	
+		kInvalidInterfaceID,		
+		kSDKDefInvisibleInKBSCEditorFlag,
+
+		kPnlTrvActionComponentBoss, 
+		kPnlTrvPopupAboutThisActionID, 
+		kSDKDefAboutThisPlugInMenuKey,	// Key to the name of this action
+		kOtherActionArea,
+		kNormalAction,
+		kDisableIfLowMem,	
+		kInvalidInterfaceID,
+		kSDKDefInvisibleInKBSCEditorFlag,
+	}
+};
+
+
+/*
+// LocaleIndex
+// The LocaleIndex should have indicies that point at your
+// localizations for each language system that you are 
+// localized for.
+*/
+/*
+// String LocaleIndex.
+*/
+resource LocaleIndex (kSDKDefStringsResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_enUS, kSDKDefStringsResourceID + index_enUS
+		kInDesignJapaneseFS, k_jaJP, kSDKDefStringsResourceID + index_jaJP
+		
+		kWildFS, k_Wild, kSDKDefStringsResourceID + index_enUS
+	}
+};
+
+resource LocaleIndex (kSDKDefStringsNoTransResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_Wild, kSDKDefStringsNoTransResourceID + index_enUS
+	}
+};
+
+
+resource LocaleIndex (kPnlTrvNodeWidgetRsrcID)
+{
+	kViewRsrcType,
+	{
+		kWildFS, k_Wild, kPnlTrvNodeWidgetRsrcID + index_enUS
+	}
+}
+
+
+resource StringTable (kSDKDefStringsNoTransResourceID + index_enUS)
+{
+	k_enUS,									// Locale Id
+	kEuropeanMacToWinEncodingConverter,		// Character encoding converter
+	{
+		// No-Translate strings go here:		
+		kPnlTrvInternalPopupMenuNameKey,	kPnlTrvInternalPopupMenuNameKey,		// No need to translate, internal menu name.
+	}
+};
+
+
+/*
+// Panel LocaleIndex.
+*/
+resource LocaleIndex (kSDKDefPanelResourceID)
+{
+	kViewRsrcType,
+	{
+		kWildFS, k_Wild, kSDKDefPanelResourceID + index_enUS
+	}
+};
+
+
+/*
+// Type definition.
+*/
+type PnlTrvPanelWidget(kViewRsrcType) : PalettePanelWidget(ClassID = kPnlTrvPanelWidgetBoss) 
+{
+	CPanelMenuData;
+};
+
+type PnlTrvTreeViewWidget(kViewRsrcType) : TreeViewWidget(ClassID = kPnlTrvTreeViewWidgetBoss) 
+{
+};
+
+type PnlTrvNodeWidget(kViewRsrcType) : PrimaryResourcePanelWidget(ClassID = kPnlTrvNodeWidgetBoss) 
+{
+};
+
+type PnlTrvCViewPanelWidget(kViewRsrcType) : GenericPanelWidget(ClassID = kPnlTrvCViewPanelWidgetBoss)
+{
+};
+
+/*
+// PanelList definition.
+*/
+resource PanelList (kSDKDefPanelResourceID)
+{
+	{
+		// 1st panel in the list
+		kSDKDefPanelResourceID,			// Resource ID for this panel (use SDK default rsrc ID)
+		kPnlTrvPluginID,				// ID of plug-in that owns this panel
+		kNotResizable,
+		kPnlTrvPanelWidgetActionID,		// Action ID to show/hide the panel
+		kPnlTrvPanelTitleKey,			// Shows up in the Window list.
+		"",								// Alternate menu path of the form "Main:Foo" if you want your palette menu item in a second place
+		0.0,							// Alternate Menu position Alternate Menu position for determining menu order
+		0,0,						// Rsrc ID, Plugin ID for a PNG icon resource to use for this palette
+		c_Panel
+	}	
+};
+
+/*
+// PanelView definition.
+// The view is not currently localised: therefore, it can reside here.
+// However, if you wish to localise it, it is recommended to locate it in one of
+// the localised framework resource files (i.e. PnlTrv_enUS.fr etc.).
+*/
+resource PnlTrvPanelWidget(kSDKDefPanelResourceID + index_enUS)
+{
+	__FILE__, __LINE__,				// Localization macro		
+	kPnlTrvPanelWidgetID,			// WidgetID 
+	kPMRsrcID_None,					// RsrcID
+	kBindNone,						// Binding (0=none)
+	0, 0, 207, 372,					// Frame: left, top, right, bottom.
+	kTrue, kTrue,					// Visible, Enabled
+	kFalse,							// Erase background
+	kInterfacePaletteFill,			// Erase to color
+	kFalse,							// Draw dropshadow
+	kPnlTrvPanelTitleKey,			// Panel name	
+	{
+//<FREDDYWIDGETDEFLISTUS>
+	
+//</FREDDYWIDGETDEFLISTUS>
+		// Adding new fields isn't handled by Freddy 2.1
+		// ipaterso changed from GenericPanelWithBorderWidget to Erasable...
+		// as there was redraw glitch when scrolling horizontally added
+		ErasablePrimaryResourcePanelWidget
+		(
+			__FILE__, __LINE__,
+			0, kPMRsrcID_None,
+			kBindAll,
+			Frame(0,22,207,371)	// Frame
+			kTrue, kTrue,
+			kFalse,							// Erase background
+			kInterfacePaletteFill,			// Erase to color
+			"",
+			{
+				PnlTrvTreeViewWidget
+				(
+					kPnlTrvTreeViewWidgetID, kPMRsrcID_None,// WidgetId, RsrcId
+					kBindAll,
+					Frame(0,0,207,180)		// Frame
+					kTrue, kTrue,			// Visible, Enabled
+					kTrue, 						// EraseBeforeDraw
+					kInterfacePaletteFill,	 	// InterfaceColor
+					"",
+					kHideRootNode,	// Options
+					kTrue,		// Use H Scroll bar
+					kTrue,		// Use V scroll bar
+					20,			// fVScrollButtonIncrement
+					20,			// fVThumbScrollIncrement
+					20,			// fHScrollButtonIncrement
+					20,			// fHThumbScrollIncrement
+					2,			// Items selectable, 0 = No Selection, 1 = Single Selection, 2 = Multiple Selection
+					kFalse,		// Allow children from multiple parents to be selected
+					kFalse,		// Allow discontiguous selection
+					{
+								
+					},
+				),
+
+				PnlTrvCViewPanelWidget
+				(
+					kPnlTrvCustomPanelViewWidgetID,	// WidgetId
+					kPMRsrcID_None,					// RsrcId
+					kBindNone,
+					Frame(1,201,205,345)			// Frame
+					kTrue,							// Visible
+					kTrue,							// Enabled
+					"",
+					{
+					}
+				),
+
+				StaticTextWidget
+				(
+					kPnlTrvTextMessageWidgetID,		// WidgetId (default=0)
+					kSysStaticTextPMRsrcId,			// RsrcId
+					kBindNone,						// Frame binding
+					1, 181, 207, 200,				// Frame: left, top, right, bottom.
+					kTrue, kTrue,					// Visible, Enabled
+					kAlignLeft, kEllipsizeEnd, kTrue,		// Alignment, ellipsize style, convert ampersands
+					"",								// Initial text.
+					0								// No associated widget
+				),
+			}
+		),
+		
+	}
+
+	kPnlTrvInternalPopupMenuNameKey		// Popup menu name (internal)
+};
+
+
+// ipaterso the panel is now twice the width of the treeview  (207 - 414) to
+// allow display of  long filenames
+
+resource PnlTrvNodeWidget (kPnlTrvNodeWidgetRsrcID + index_enUS)
+{
+	__FILE__, __LINE__,
+	kPnlTrvNodeWidgetId, kPMRsrcID_None,	// WidgetId, RsrcId
+	kBindLeft, //| kBindRight,					// Frame binding
+	Frame(0,0,414,20),						// Frame (left, top, right, bottom)
+	kTrue, kTrue,							// Visible, Enabled
+	"",										// Panel name
+	{
+		// Drop down arrow
+		TreeExpanderWidget
+		(
+			kTreeNodeExpanderWidgetID,		// WidgetId
+			kTreeBranchCollapsedRsrcID,		// RsrcId for collapsed node icon
+			kApplicationRsrcPluginID,		// RsrcPlugin for collapsed node icon
+			kBindNone,						// Frame binding
+			Frame(2,4,18,18),				// Frame
+			kTrue, kTrue,					// Visible, Enabled
+			kTreeBranchExpandedRsrcID, 		// RsrcId for expanded node icon
+			kApplicationRsrcPluginID,		// RsrcPlugin for expanded node icon
+			kTrue,							// Cmd-Click expands/collapses children
+			kFalse,							// Scroll to show children when expanded
+			kIconNoCentering,			
+			kIconRaisedLook,		// Sets the icon look -- (kIconRaisedLook | kIconFlushLook)
+			kFalse					// Bool integer sets whether the icon draws a well.
+		),
+		
+		GenericPanelWidget
+		(
+			kPnlTrvElementWidgetId,			// WidgetId
+			kPMRsrcID_None,					// RsrcId
+			kBindLeft | kBindRight,			// Frame binding
+			Frame(19,0,414,18)				// Frame
+			kTrue, kTrue,					// Visible, Enabled
+			"",
+			{
+				IconSuiteWidget
+				(
+					kPnlTrvIconWidgetId,		// WidgetId,
+					kPMRsrcID_None,
+					kBindLeft,					// Frame binding
+					Frame(0,0,18,18),			// Frame
+					kTrue, kTrue,				// Visible, Enabled
+					kIconCentering,		// (kIconNoCentering, kIconHorizontalCentering, kIconVerticalCentering or kIconCentering)
+										// Centering value from IconStyleDefs.h
+					kIconRaisedLook,		// Sets the icon look -- (kIconRaisedLook | kIconFlushLook)
+					kFalse					//  bool, draw Well..	
+					0,						// WidgetId for associated control for shortcut focus
+				),
+				
+				InfoStaticTextWidget
+				(
+					kPnlTrvNodeNameWidgetID,		// WidgetId
+					kPMRsrcID_None,					// RsrcId
+					kBindLeft, // Frame binding
+					Frame(19,0,414,18),				// Frame
+					kTrue, kTrue,					// Visible, Enabled
+					kAlignLeft,						// Alignment
+					kDontEllipsize, kTrue,					// Ellipsize style, Convert ampersands
+					"",								// Text Control Data	
+					0,								// WidgetId for associated control for shortcut focus
+					kPaletteWindowSystemScriptFontId, kPaletteWindowSystemScriptFontId, 
+				),
+		
+	
+			}
+		),
+	}
+}
+
+/*
+// User Error Table resource
+// To be coupled with an IErrorStringService implementation and
+// string translations (see localized .fr files)
+*/
+resource UserErrorTable(kSDKDefErrorStringResourceID)
+{
+	{  // global err code, error string key
+		kPnlTrvFolderNotSetError,  kPnlTrvFolderNotSetErrorStringKey,
+	}
+};
+
+
+
+resource VersionedScriptElementInfo( 10 )
+{
+	//Contexts
+	{
+		kCS3ScriptVersion, kCoreScriptManagerBoss, kInDesignAllLanguagesFS, k_Wild, 
+		kCS3ScriptVersion, kCoreScriptManagerBoss, kInDesignServerAllLanguagesFS, k_Wild,
+	}
+	//Elements
+	{
+		ObsoleteObject
+		{
+			kCS4ScriptVersion,
+			kPnlTrvPreferencesObjectScriptElement,
+			c_PnlTrvPreferences,
+			"panel tree view preferences",
+			"Panel tree View Preferences",
+			kPnlTrvPreferences_CLSID,
+			NoCollectionInfo,
+			kPreferencesObjectScriptElement,
+			kPreferencesSuiteScriptElement,
+		}
+
+		Property
+		{
+			kPnlTrvPreferencesPropertyScriptElement,
+			p_PnlTrvPreferences,
+			"panel tree view preferences",
+			"panel tree view preferences",
+			ObjectType( kPnlTrvPreferencesObjectScriptElement ),
+			{}
+			kNoAttributeClass,
+		}
+
+		ObsoleteProperty	// Panel Tree View > Set Folder
+		{
+			kCS4ScriptVersion,
+			kPnlTrvFolderPropertyScriptElement,
+			p_Path,
+			"folder",
+			"The folder the Panel Tree View sample is operating on.",
+			StringType,
+			{}
+			kNoAttributeClass,
+		}
+
+		Provider
+		{
+			kPnlTrvScriptProviderBoss,
+			{
+				Parent{ kApplicationObjectScriptElement },
+				RepresentObject{ kPnlTrvPreferencesObjectScriptElement },
+				ParentProperty{ kPnlTrvPreferencesPropertyScriptElement, kReadOnly },
+				Property{ kPnlTrvFolderPropertyScriptElement, kReadWrite },
+			}
+		}
+	}
+} ;
+
+resource VersionedScriptElementInfo( 15 )
+{
+	//Contexts
+	{
+		kCS4ScriptVersion, kCoreScriptManagerBoss, kInDesignAllLanguagesFS, k_Wild, 
+		kCS4ScriptVersion, kCoreScriptManagerBoss, kInDesignServerAllLanguagesFS, k_Wild,
+	}
+	//Elements
+	{
+	
+		Object
+		{
+			kPnlTrvPreferencesObjectScriptElement,
+			c_PnlTrvPreferences,
+			"panel tree view preference",
+			"Panel tree View Preferences",
+			kPnlTrvPreferences_CLSID,
+			NoCollectionInfo,
+			kPreferencesObjectScriptElement,
+			kPreferencesSuiteScriptElement,
+		}
+	
+		Property	// Panel Tree View > Set Folder
+		{
+			kPnlTrvFolderPropertyScriptElement,
+			p_Path,
+			"file path",
+			"The folder the Panel Tree View sample is operating on.",
+			StringType,
+			{}
+			kNoAttributeClass,
+		}
+	}
+};
+
+#endif // __ODFRC__
+
+#include "PnlTrv_enUS.fr"
+#include "PnlTrv_jaJP.fr"
+
+//  Generated by Dolly build 17: template "IfPanelMenu".
+// End, PnlTrv.fr.

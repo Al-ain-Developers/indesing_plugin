@@ -1,0 +1,227 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#ifdef __ODFRC__
+
+#include "StringTable.fh"
+
+resource StringTable (kLinksUIStringsRsrcID + index_fiFI)
+{
+	k_fiFI,					// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	{
+		"Links_WinMenu",			"L&inkit", // panel menu item
+		"kRtMouseGraphics",			"Grafiikka", // context menu submenu name
+		"RtMenuLinksUILinkInfo",	"Linkkitiedot-pikavalikko",
+		
+		"#LinksUIPanel",			"Linkit", // panel name
+		"#LinksUIPanelMenu",		"Linkit-paneelivalikko", 
+		"#LinksUtilitiesSubmenu",		"Toiminnot",		// submenu for links panel menu
+		"#SelectedLinkInfoSectionName",			"Linkkitiedot", // section name in links ui panel
+		
+		"#UpdateAllOutOfDateLinksMenu",	"Päivitä kaikki linkit",
+		"#AutoFindMissingLinksMenu",		"Etsi puuttuvia linkkejä",
+		"#LinksUIRelinkLinkMenu",		"Linkitä uudelleen...",
+		"#LinksUIRelinkResourceMenu",	"Linkitä kaikki esiintymät uudelleen...", // menu item to relink all instances of this multiple link assets
+		"#RelinkResource ^1 Menu",		"Linkitä kaikki kohteen ^1 esiintymät uudelleen...", // menu item to relink all instances of one single link asset
+		"#ReplaceFPOWithOriginalResourceMenu",	"Korvaa kaikki esiintymät...", // menu item to replace all instances of this multiple link assets
+		"#ReplaceFPOWithOriginalResource ^1 Menu", "Korvaa kaikki FPO ^1 -esiintymät alkuperäisellä...", // menu item to replace all instances of one single link asset
+		"#RelinkCloudResource ^1 Menu",	"Linkitä kaikki kohteen ^1 esiintymät CC Librariesista uudelleen...", // menu item to relink all instances of one single link asset
+        "#RelinkAALResource ^1 Menu",    "Linkitä resurssin ^1 kaikki esiintymät Adobe Asset Linkistä uudelleen...", // menu item to relink all instances of one single link asset
+		"#LinksUIUpdateLinkMenu",			"Päivitä linkki", // context menu item in links ui panel
+		"#LinksUIUpdateLinkResourceMenu",	"Päivitä kaikki esiintymät",
+		"#UpdateResource ^1 Menu",		"Päivitä kaikki kohteen ^1 esiintymät...", // menu item to update all instances of one single link asset
+		"#LinksUIEmbedLinkMenu",			"Upota linkki", // context menu item in links ui panel
+		"#LinksUIEmbedResourceMenu",		"Upota kaikki esiintymät",
+		"#EmbedResource ^1 Menu",			"Upota kaikki kohteen ^1 esiintymät...", // menu item to embed all instances of one single link asset
+		"#LinksUIUnEmbedLinkMenu",		"Poista linkin upotus", // context menu item in links ui panel
+		"#LinksUIUnEmbedResourceMenu",	"Poista kaikkien esiintymien upotus",
+		"#UnembedResource ^1 Menu",			"Poista kaikkien kohteen ^1 esiintymien upotus...", // menu item to unembed all instances of one single link asset
+		"#LinksUIUnLinkMenu",				"Poista linkitys",
+		"#UnLinkResourceMenu",			"Poista kaikkien esiintymien linkitys",
+		"#UnLinkResource ^1 Menu",			"Poista kaikkien kohteen ^1 esiintymien linkitys...", // menu item to unlink all instances of one single link asset
+		"#LinksUIEditOriginalLinkMenu",		"Muokkaa alkuperäistä", // context menu item in links ui panel
+		"#LinksUIGoToSourceLinkMenu",		"Mene lähteeseen", // context menu item in links ui panel
+		"#LinksUIXMPFileInfo",				"XMP-tiedoston tiedot...",
+		"#LinksUICopyPath",				"Kopioi koko polku",
+		"#LinksUICopyPlatformPath",			"Kopioi ympäristön tyylin polku",
+		"#RevealLinkInMacFinder",			"Näytä Finderissa",
+		"#RevealLinkInWinExplorer",			"Näytä Resurssienhallinnassa",
+		"#RevealLinkInAdobeBridge",			"Näytä Bridgessä",
+		"#RevealLinkInCCLibraries",			"Näytä CC Librariesissa",
+		"#GoToLink",						"Siirry linkkiin",
+		"#EditWithApp",					"Muokkaa sovelluksella",
+		"ApplicationFiles",					"Sovellus (*.exe)", // windows only string to list exe files in the 'edit with application' dialog.
+		"#ChooseEditingApplication",			"Valitse sovellus", // dialog title
+		"#OtherApp",						"Muu...",	// Menu name for choosing a custom application via a standard file dialog for Edit With...
+		"#LinksUICopyLink",				"Kopioi linkit kohteeseen...",
+		"#LinksUIEditColumnsMenu",			"Paneeliasetukset...",
+		
+		"#LinksUIRemoveThisColumnMenu",	"Kätke tämä sarake",
+		"#LinksUIShowThumbnailMenu",		"Näytä miniatyyri",
+		"#LinksUIHideThumbnailMenu",		"Kätke miniatyyri",		
+		"#LinksUIShowInfoThumbnailMenu",	"Näytä tietojen miniatyyri",
+		"#LinksUIHideInfoThumbnailMenu",	"Kätke tietojen miniatyyri",
+		
+		"#SaveLinkVersionCmd",			"Sisäänkirjaa linkki",
+		"#ShowLinksPanelColumn",			"Näytä sarake",
+		"#ShowLinksPanelInfo",				"Näytä linkin tiedoissa",
+		"#SelectNextLinkButtonTip",			"Valitse luettelon seuraava linkki",
+		"#SelectPrevLinkButtonTip",			"Valitse luettelon edellinen linkki",
+		"#ToggleLinkInfoButtonTip",			"Näytä/kätke linkin tiedot",
+
+		"#ShortLinkStatusParamStr",				"^1 linkkiä",  // status string for links panel
+		"#LongLinkStatusParamStr",				"^1 linkkiä yhteensä\n\n   ^2 puuttuvaa\n   ^3 muokattua\n   ^4 upotettua\n   ^5 yksilöllistä\n   ^6 alitason linkkiä", // tip string for links panel status.
+		"#OneSelectedLinkStr",			"1 valittu", // status string when one link is selected in the panel.
+		"#NumSelectedLinksParamStr",	"^1 valittu", // status string when multiple links are selected in the panel.
+				
+		"RtMenuLinksUILinkItem",		"Linkit-pikavalikko",
+		"RtMenuLinksUILinksHeader",		"Linkit-otsikkorivin pikavalikko",
+		
+		"#LinkColumnDialog",			"Paneeliasetukset", // dialog name
+		"#LinksUIPanelOptions",			"Asetukset",
+		
+		"#LinkThumbPrefLabel",			"Miniatyyrit:",
+		"#LinksUIRowSizeLabel",		"&Rivin koko:",
+		"#LinksUISmallRowStr",			"Pienet rivit",
+		"#LinksUIRegularRowStr",		"Tavalliset rivit",
+		"#LinksUILargeRowStr",			"Suuret rivit",
+		"#LinkInfoShowThumbnailCheckbox",	"Näytä &linkin tiedoissa",
+		"#LinksUIShowThumbnail",		"&Näytä nimisarakkeessa",
+		"#LinksUICollapseMultiple",		"&Kutista useat linkit samaan lähteeseen",
+
+		"#SearchHereForMissingFiles",	"Etsi puuttuvia linkkejä tästä kansiosta", // label for checkbox in relink dialog
+		"#RelinkSkipButton",			"Ohita", // name for 'skip' button in relink dialog
+		"#SearchFound^1Links",		"Tämä uudelleenlinkityshakemisto tutkittiin ja ^1 puuttuvaa linkkiä löytyi ja linkitettiin uudelleen.", // alert that displays if we auto find missing links after a relink
+		"#RelinkToFolderTitle",			"Valitse kansio, johon kohde linkitetään uudelleen. Vain nyt valitut linkit, joiden nimet täsmäävät, linkitetään uudelleen.",
+		"#RelinkToSameFilename",		"Sovita sama tiedostonimi ja tunniste", // radio button option in relink to folder dialog
+		"#RelinkToExtension",			"Sovita sama tiedostonimi ja tämä tunniste:", // radio button option in relink to folder dialog
+		"#LinksUICopyLinksTitle",		"Valitse kansio, johon linkitetyt tiedostot kopioidaan.",
+		"#LinksUIRelinkToFolderLinkMenu",	"Linkitä uudelleen kansioon...",
+		"#LinksUIRelinkFileExtensionLinkMenu",	"Linkitä tiedostopääte uudelleen...",
+        "#LinksUIRelinkFromCloudAssetLinkMenu",	"Liitä uudelleen CC Librariesista...",
+        "#LinksUIRelinkFromAALAssetLinkMenu",    "Linkitä Adobe Asset Linkistä uudelleen...",
+		"#LicenseStockAssetLinkMenu",	"Lisensoi kuva...",
+		"#LinksUIRelink: ^1",			"Linkitä uudelleen: ^1", // title for relink dialog. ^1 becomes file path.
+		"#LinksUILocate: ^1",			"Paikanna: ^1", // title for relink dialog when link is missing. ^1 becomes file path.
+		"#CopyLinksFailedAlert",		"Linkkien kopiointi kansioon epäonnistui.",
+		"#AutoFindFoundNothingAlert",	"Puuttuvia linkkejä ei löytynyt. Etsi ensimmäinen puuttuva linkki Linkitä uudelleen -toiminnolla ja yritä uudelleen.",
+		
+		"kEditsMadeWarning",			  "Kohteen \"^1\" tuotuun versioon on tehty muutoksia. Muutokset menetetään päivitettäessä. Päivitetäänkö tästä huolimatta?",
+		"kEditsMadeInLinkedStoryWarning",	"Kohteen \"^1\" linkitettyyn juttuun on tehty muutoksia. Muutokset menetetään päivitettäessä. Päivitetäänkö tästä huolimatta?",
+		"kEditsMadeInLinkedArticleWarning", "Linkitettyyn kohteeseen \"^1\" on tehty muokkauksia. Muokkaukset menetetään päivityksessä. Haluatko päivittää?",
+		"kEditsMadeToTextOrTableWarning", "Kohteen \"^1\" tuotua versiota on muutettu. Menetät muutokset (tuotuihin laskentataulukoihin solun tyylien tai taulukon tyylien avulla tehtyjä muutoksia lukuun ottamatta), kun päivität linkin. Päivitetäänkö tästä huolimatta?",
+
+		// Strings for Problem Links dialog
+		"#LinksModifiedWarning",	"Tässä julkaisuissa on linkkejä lähteisiin, jotka puuttuvat tai joita on muokattu. Voit päivittää muokatut linkit nyt tai myöhemmin Linkit-paneelin avulla.",
+		"#HTTPLinksModifiedWarning",	"Tässä julkaisuissa on linkkejä lähteisiin, jotka puuttuvat tai joita on muokattu dokumentin edellisen tallennuskerran jälkeen. Voit päivittää muokatut linkit nyt tai myöhemmin Linkit-paneelin avulla.",
+		"#UpdateLinks",				"&Päivitä muokatut linkit",	 // button text
+		"#Don'tUpdateLinks",		"Älä päivitä linkkejä", // button text
+		"#ProblemMissingLinksParamStr",	"^1 - puuttuvaa linkki(ä)",
+		"#ProblemModifiedLinksParamStr",	"^1 - muokattua linkki(ä)",
+		"#ProblemInaccessibleLinksParamStr",	"^1 - URL-linkki tai -linkkiä ei ole käytettävissä. Linkit-paneelista löytyy lisätietoja.",
+        "#ProblemLinksDialogHeader",    "Linkkeihin liittyvät ongelmat",
+		"UnembedToOriginal", 		"Upotuksen poisto voi muodostaa linkin alkuperäisiin tiedostoihin tai tiedostoihin, jotka toiminto luo kansioon. Haluatko muodostaa linkin alkuperäisiin tiedostoihin?",
+		"#SelectUnembedDir",
+									"Valitse kansio, johon tiedostot luodaan.",
+
+		// Show Link message.
+		 "Cannot show link: The selected item is on a hidden layer.",
+						"Linkkiä ei voi näyttää: valittu kohde on kätketty tai se on kätketyllä tasolla.",
+		"Cannot show link: The selected item is hidden in overset text.",
+						"Linkkiä ei voi näyttää: valittu kohde on kätketty ylijuoksevaan tekstiin.",
+		"Cannot show link: The selected item is hidden in an inactive form field state.",
+						"Linkkiä ei voi näyttää: valittu kohde on kätketty passiiviseen painiketilaan. Voit näyttää kohteen aktivoimalla kätketyn tilan Painikkeet-paneelin avulla.",
+		"Cannot show link: The selected item is hidden in an inactive mso state.",
+						"Linkkiä ei voi näyttää: valittu kohde on passiivisessa objektitilassa. Voit näyttää kohteen muuttamalla kätketyn tilan näkyväksi Objektien tila -paneelin avulla.",
+		"Cannot show link: The selected item is in deleted text in a tracked change.",
+						"Linkkiä ei voi näyttää: valittu kohde on poistetussa tekstissä jäljitetyssä muutoksessa.",
+		"Cannot show link: The selected item is an XML structure element not in the layout.",
+						"Linkkiä ei voi näyttää: valittu kohde on XML-rakenne-elementti, jota ei ole asettelussa.",
+		"Cannot show link: The selected item is in hidden conditional text.",
+						"Linkkiä ei voi näyttää: valittu kohde on piilotetussa ehdollisessa tekstissä.",
+						
+						
+		"#EditOriginalButtonTip",		"Muokkaa alkuperäistä",	// tip string for button in links panel
+		"#GotoLinkButtonTip",		"Siirry linkkiin",	// tip string for button in links panel
+		
+		"#appendedUpdateButtonTipMac",		". Päivitä kaikki linkit painamalla optionäppäintä ja napsauttamalla", // appened to menu name for 'update link' to build tip string for update button(mac)
+		"#appendedUpdateButtonTipWin",		". Päivitä kaikki painamalla Alt-näppäintä napsauttaessasi", // appened to menu name for 'update link' to build tip string for update button(win)
+		"#appendedRelinkButtonTipMac",		" Linkitä kaikki puuttuvat linkit uudelleen painamalla optionäppäintä napsauttaessasi", // appened to menu name for 'Relink' to build tip string for relink button(mac)
+		"#appendedRelinkButtonTipWin",		" Linkitä kaikki puuttuvat linkit uudelleen painamalla Alt-näppäintä napsauttaessasi", // appened to menu name for 'Relink' to build tip string for relink button(win)
+		
+		"#ErrorEmbeddingLink",				"Linkin upottaminen epäonnistui.",
+		"#LinksUIShowLinkInfoMenu",		"Näytä linkin tietoruutu",
+		"#LinksUIHideLinkInfoMenu",			"Kätke linkin tietoruutu",
+		"#LinksUICopyLinkInfoMenu",		"Kopioi kaikki linkkitiedot",
+		"#LinksUIAutosizeLinkInfoMenu",		"Muuta automaattisesti linkkitietojen kokoa",
+		"#LinksUIGenerateReportMenu",		"Kopioi valittujen linkkien tiedot",
+		"#LinksUIGenerateCaptionPrefsMenu",	"Kuvatekstiasetukset...",
+		"#GenerateLiveLinkCaptionMenu",		"Luo käytettävät otsikot",
+		"#GenerateStaticLinkCaptionMenu",	"Tuota pysyvät kuvatekstit",
+		
+		"#GenerateCaptionPrefDialogName",	"Kuvatekstiasetukset",
+		"#BeforeMetadataCaptionLabel",		"Teksti ennen",
+		"#MetadataCaptionLabel",			"Metatiedot",
+		"#AfterMetadataCaptionLabel",		"Teksti jälkeen",
+		"#GenerateLiveCaptionGraphicSelectionMenu",	"Luo käytettävä otsikko",
+		"#GenerateStaticCaptionGraphicSelectionMenu",	"Tuota pysyvä kuvateksti",
+		"#CopyLinkInfoStr '^1'",				"Kopioi ^1", // Menu item name in links panel. ^1 is replaced with whatever text data is under the mouse.
+		"#CopyLinkFieldMenu",				"Kopioi Info-kenttä",
+		"#InfoLabelSuffix",					": ", // suffix added to end of link info labels in the info section
+		
+		"#LinksCopyInfoMenu",				"Kopioi Info", // links panel submenu
+		
+		"#CaptionSubmenu",				"Kuvatekstit",		// name of captions submenu on Object menu
+		"#CaptionRowLabel",				"Metatieto-otsikko", // caption setup dialog top section title
+		"#CaptionOptionsLabel",				"Sijainti ja tyyli", // caption setup dialog bottom section title
+		"#CaptionOffsetLabel",				"Siirty&mä:",
+		"#CaptionParaStyleLabel",			"Ka&ppaletyyli:",
+		"#CaptionLayerLabel",				"&Taso:",
+		"#CaptionLayerLockedError",			"Lukitulle tasolle ei voi luoda kuvatekstiä.",
+		"#CaptionGroupFailureError",			"Kuvatekstille ei voida luoda ryhmää.",
+		"#ErrorGeneratingCaption",			"Otsikon luominen epäonnistui.",
+		"#CaptionAlignmentLabel",			"T&asaus:",
+		
+		"#CaptionAlignBelow",				"Kuvan alle",
+		"#CaptionAlignAbove",				"Kuvan ylle",
+		"#CaptionAlignLeft",					"Kuvan vasemmalle puolelle",
+		"#CaptionAlignRight",				"Kuvan oikealle puolelle",
+		
+		"#GroupCaptionWithImage",			"&Ryhmitä kuvateksti kuvaan",
+		 "#ConvertCaptionToTextMenu",		"Muunna pysyväksi kuvatekstiksi",
+		 "#ShowImportOptionsTip", 			"Näytä tuontiasetukset", // Tool tip for custom controls in relink dialog
+		 "#SearchHereForMissingFilesTip",	"Hae puuttuvia tiedostoja täältä", // Tool tip for custom controls in relink dialog
+		 "#EmbedLinkFromPropsPanel",		"Upota kuva Varusteet-paneelista",
+		 "#RelinkAssetFromPropsPanel",		"Linkitä kuva Varusteet-paneelista",
+		 "#UpdateLinkFromPropsPanel",		"Päivitä kuva Varusteet-paneelista",
+		 "#UnlinkFromPropsPanel",			"Poista tiedoston linkitys Varusteet-paneelista",
+        
+        "kImportingAALAsset",                "Tuodaan resurssia",
+        "kImportingFileName",                "Tuodaan resurssia ^1",
+        
+        //Error Strings for AEM
+        "AEMUnsupportedFiles",     "^1/^2 tiedostoa ei voi lisätä. InDesign ei tue tiedostotyyppiä.",
+        "AEMInaccessibleFiles",     "^1/^2 tiedostoa ei voi lisätä. InDesign ei pysty käyttämään tiedostoa. Tarkista verkkoyhteys tai alkuperäinen sisältölähde.",
+        "AEMUnknownFiles",     "^1/^2 tiedoston lisääminen epäonnistui tuntemattoman virheen vuoksi.",
+        "AEMGenericImportFailure",     "AEM-pohjaista resurssia ei voi tuoda.",
+        
+        // Action id strings
+        "#LinksUIReplaceFPOWithOriginalLink",        "Korvaa FPO alkuperäisellä...",
+        "#LinksUIReplaceAllFPOWithOriginalLinks",    "Korvaa kaikki FPO:t alkuperäisillä...",
+        "#LinksUIDownloadOriginalLink",                "Lataa alkuperäinen",
+        "#LinksUIDownloadAllOriginalLinks",            "Lataa kaikki alkuperäiset",
+	}
+};
+
+
+
+#endif //__ODFRC__

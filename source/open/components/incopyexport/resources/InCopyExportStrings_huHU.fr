@@ -1,0 +1,52 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// U.S. English strings
+//========================================================================================
+
+resource StringTable (kInCopyExportStringsRsrcID + index_huHU)
+{
+	k_huHU,								// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+
+	{
+		// ----- Miscellaneous strings
+		"Export Seq Name", 		"InCopy-szövegegység exportálása",
+		"Text",					"Szöveg", // append "Text" to export name on a text story
+		
+		// ----- Export options dialog strings
+		"InCopyExportOptions",	"Adobe InCopy exportálásának beállításai",
+		"ExportOptions_DataType",	"&Kódolás:",
+		"ExportOptions_UTF16",	"UTF16",
+		"ExportOptions_UTF8",	"UTF8",
+		"ExportOptions_DataOptions",	"Beállítások:",
+		"ExportOptions_StyleTable",	"&Stílustáblázat felvétele",
+		"ExportOptions_SwatchList",	"S&zínmintalista felvétele",
+		"ExportOptions_XMPData",	"XMP-&információk felvétele",
+		"ExportOptions_StoryLabel",	"Szövegegység &címkéje:",
+
+		//menu
+		"ExportMenu",				"E&xportálás",
+		"kExportLayerToIC",			"&Réteg...",
+		"kExportAllStoriesToIC",	"Összes szö&veg...",
+		"kExportAllGraphicsToIC",	"Összes &grafika...",
+		"kExportAllItemsToIC",		"&Összes grafika és szöveg...",
+
+		"INCDFeatureLost",    "A szövegegység olyan beállításokat tartalmaz, amelyeket ez a fájlformátum nem támogat.  Ezek a beállítások elvesznek a szövegegység frissítésekor.",
+	}
+};
+
+#endif // __ODFRC__

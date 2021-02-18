@@ -1,0 +1,126 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kConditionalTextUIStringsRsrcID + index_fiFI)
+{
+    k_fiFI,                                 // Locale Id
+    kResourceUTF8Encoded,     // Character encoding converter
+    {
+		"#CondTextUI_WinMenu",	"Eh&dollinen teksti",	// panel menu item
+		"#CondTextUI_PanelName","Ehdollinen teksti",		// panel name
+		"#CondTextUI_PanelMenu","Ehdollinen teksti -paneelivalikko",
+		"#CondTextUI_NewConditionTagMenu", "Uusi ehto...",
+		"#CondTextUI_DeleteConditionTagMenu", "Poista ehto...",
+		"#CondTextUI_DeleteConditionTagsMenu", "Poista ehdot...",
+		"#CondTextUI_EditConditionTagMenu", "Ehtoasetukset...",
+		"#CondTextUI_LoadConditionTagsMenu", "Lataa ehdot...",
+		"#CondTextUI_LoadConditionTagsAndSetsMenu", "Lataa ehdot ja joukot...",
+		"#CondTextUI_ShowIndicatorsCB", "Näytä osoittimet ehdollisessa tekstissä",
+		"#CondTextUI_ShowIndicatorsMenu", "Näytä osoittimet ehdollisessa tekstissä",
+		"#CondTextUI_ShowAndPrintIndicatorsMenu", "Näytä ja tulosta ehdollisen tekstin osoittimet",
+		"#CondTextUI_HideIndicatorsMenu", "Kätke ehdollisen tekstin osoittimet",
+		"#CondTextUI_ShowIndicatorsDD", "Osoittimet:",
+		"#CondTextUI_ShowIndicators", "Näytä",
+		"#CondTextUI_ShowAndPrintIndicators", "Näytä ja tulosta",
+		"#CondTextUI_HideIndicators", "Kätke",
+		"#CondTextUI_RtMenuConditionTagTVNode",    "Ehtokaavion kohteen pikavalikko",
+		"#CondTextUI_RtMenuUnapplyTag",		"Poista \"^1\" käytöstä",
+		"#CondTextUI_RtMenuDeleteTag",		"Poista \"^1\"",
+		"#CondTextUI_RtMenuEditTag",		"Muokkaa kohdetta \"^1\"...",
+		"Show Options", "Näytä &asetukset",
+		"Hide Options", "Kätke &asetukset",
+		"#CondTextUI_SelectUnusedMenu", "Valitse kaikki käyttämättömät",
+	
+		"#ConditionTagList_NameColumnLabel", "Nimi",
+		"#ConditionTag_OptionsDialog", "Ehtoasetukset",
+		"#ConditionTag_OptionsDialogNew", "Uusi ehto",
+		"#ConditionTagOptions_Name:", "&Nimi:",
+		"#ConditionTagOptions_Method:", "&Menetelmä:",
+		"#ConditionTagOptions_Appearance:", "&Ulkoasu:",
+		"#ConditionTagOptions_Color:", "&Väri:",
+		"#ConditionTagOptions_Indicator", "Osoitin",
+		"#ConditionTagOptions_MethodUnderline", "Alleviivaus",
+		"#ConditionTagOptions_MethodHighlight", "Korostus",
+		"#ConditionTagOptions_WavyUnderline", "Aaltoviiva",		
+		"#ConditionTagOptions_SolidUnderline", "Yhtenäinen",		
+		"#ConditionTagOptions_DashedUnderline", "Katkoviiva",		
+		"#ConditionTag_EmptyNameMsg", "Anna ehdon nimi.",
+		"#ConditionTag_NameInUseMsg", "Tämä ehdon nimi on jo käytössä. Valitse toinen nimi.",
+		
+		"#ConditionSetShowAll", "Näytä kaikki",
+		"#ConditionSetHideAll", "Kätke kaikki",
+		"#ConditionSetNone", "[Ei mitään]",
+		"#ConditionSetBlank", " ",
+		"#ConditionSetLabel", "Joukko:",
+		"#ConditionSetNewSet", "Luo uusi joukko...",
+		"#ConditionSetDeleteSet", "Poista \"^1\"...",
+		"#ConditionSetRenameSet", "Nimeä \"^1\" uudelleen...",
+		"#ConditionSetRedefineSet", "Määritä \"^1\" uudelleen...",
+		"#ConditionSetUpdateAllSets", "Päivitä kaikki joukot",
+		"#ConditionSetUpdateAllSetsUndoName", "Päivitä kaikki ehtojoukot",
+		"#ConditionSetNameDialog", "Ehtojoukon nimi",
+		"#ConditionSetNameStatic", "&Nimi:",
+		"#InvalidSetName", "Virheellinen ehtojoukon nimi",
+		"#DuplicateSetName", "Nimi on jo olemassa",
+		"#NoActiveSetString", "Ei aktiivista joukkoa",
+		
+		"#ConditionalTextTip", "Löydetyt piilotekstit valinnalla ^1: ",
+		"#ConditionalTextTipOneTag", "tämä ehto",
+		"#ConditionalTextTipManyTags", "nämä ehdot",
+		
+		"#ConditionalTextEyeballHideWidgetTip", "Kätke kaikki teksti, johon tätä ehtoa on käytetty, napsauttamalla tätä",
+		"#ConditionalTextEyeballShowWidgetTip", "Näytä kaikki teksti, johon tätä ehtoa on käytetty, napsauttamalla tätä",
+		"#ConditionalTextEyeballUnconditionalWidgetTip", "Ehdoton teksti on aina näkyvissä",
+		"#ConditionalTextAppliedAllTip",	"Ehtoa on käytetty kaikkeen valittuun tekstiin. Poista se käytöstä napsauttamalla tätä",
+		"#ConditionalTextAppliedSomeTip",	"Ehtoa on käytetty osaan valitusta tekstistä. Käytä koko valittuun tekstiin napsauttamalla tätä",
+		"#ConditionalTextAppliedNoneTip",	"Käytä ehtoa napsauttamalla tätä",
+		"#ConditionalTextAppliedAllTipUncondition",	"Valittu teksti on ehdoton",
+		"#ConditionalTextAppliedSomeTipUncondition",	"Osa tekstistä on ehdotonta. Muuta kaikki ehdottomaksi napsauttamalla tätä",
+		"#ConditionalTextAppliedNoneTipUncondition",	"Muuta teksti ehdottomaksi napsauttamalla tätä",
+		"#ConditionalTextApplyNoSelectionTip", "Käytä ehtoa valittuun tekstiin napsauttamalla tätä",
+		"#ConditionalTextNewTagTip",		"Uusi ehto",
+		"#ConditionalTextDeleteTagTip",		"Poista ehto",
+		"#ConditionalTextIndicatorTip",		"Osoitinmenetelmä on ^1",
+		"#ConditionalTextNewSetTip",		"Uusi joukko",
+		"#SetOverrideTip_NewConditionsAndConditionVisibility",	"Ohitukset: ehdon näkyvyys (poista valitsemalla joukko uudelleen, tai valitse Määritä uudelleen) + uudet ehdot (poista valitsemalla Päivitä kaikki joukot, tai valitse Määritä uudelleen)",
+		"#SetOverrideTip_NewConditions",	"Ohitukset: uudet ehdot (poista valitsemalla Päivitä kaikki joukot, tai valitse Määritä uudelleen)",
+		"#SetOverrideTip_ConditionVisibility",	"Ohitukset: ehdon näkyvyys (poista valitsemalla joukko uudelleen, tai valitse Määritä uudelleen)",
+		
+		"#ConditionTag_DeleteConditionDialog", "Poista ehto", 
+		"#ConditionTag_DeleteConditionsDialog", "Poista ehdot", 
+		"#ConditionTag_DeleteConditionAndReplace:", "Poista ehto ja korvaa se ehdolla: ", 
+		"#ConditionTag_DeleteConditionsAndReplace:", "Poista ehdot ja korvaa ne ehdolla: ", 
+		"#ConditionTag_DeleteInformationAlert", "Poista ehto vetämällä se roskakorikuvakkeen päälle.",
+		"#ConditionTag_DeleteNoReplaceChoice", "[Ei mitään]",
+		
+		"#QuickApplyConditions", "Ehto",
+		"#Conditions_Filter_Key", "CT", // should be upper case if there is an upper case character, this is the prefix key for quick apply for text conditions.
+		"#QuickApplyConditionSets", "Ehtojoukko",
+		"#QuickApplyConditionSets_Filter_Key", "CS",  // should be upper case if there is an upper case character, this is the prefix key for quick apply for text condition sets.
+		"#QuickApplyConditons_Menu_Key_String", "Sisällytä ehdot (ct:)",
+		"#QuickApplyConditonSets_Menu_Key_String", "Sisällytä ehtojoukot (cs:)",
+		
+		"#SingularConditionStatusBodyString", "^1 ehtoa käytetty: ^2",
+		"#PluralConditionStatusBodyString", "^1 ehtoa käytetty: ^2",
+		"#MixedConditionString", " [sekoitettu]",
+		"#NoConditionsString", "ehtoja ei ole käytetty",
+    }
+};
+
+#endif // __ODFRC__

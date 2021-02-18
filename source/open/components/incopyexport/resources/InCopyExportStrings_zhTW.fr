@@ -1,0 +1,52 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// U.S. English strings
+//========================================================================================
+
+resource StringTable (kInCopyExportStringsRsrcID + index_zhTW)
+{
+	k_zhTW,								// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+
+	{
+		// ----- Miscellaneous strings
+		"Export Seq Name", 		"轉存 InCopy 內文",
+		"Text",					"文字", // append "Text" to export name on a text story
+		
+		// ----- Export options dialog strings
+		"InCopyExportOptions",	"Adobe InCopy 轉存選項",
+		"ExportOptions_DataType",	"編碼(&E):",
+		"ExportOptions_UTF16",	"UTF16",
+		"ExportOptions_UTF8",	"UTF8",
+		"ExportOptions_DataOptions",	"選項:",
+		"ExportOptions_StyleTable",	"包含樣式表格(&S)",
+		"ExportOptions_SwatchList",	"包含色票清單(&W)",
+		"ExportOptions_XMPData",	"包含 XMP 資訊(&I)",
+		"ExportOptions_StoryLabel",	"內文標籤(&L):",
+
+		//menu
+		"ExportMenu",				"轉存(&X)",
+		"kExportLayerToIC",			"圖層(&L)...",
+		"kExportAllStoriesToIC",	"所有內文(&R)...",
+		"kExportAllGraphicsToIC",	"所有圖形(&G)...",
+		"kExportAllItemsToIC",		"所有圖形和內文(&A)...",
+
+		"INCDFeatureLost",    "此內文可能含有此檔案格式不支援的功能。更新此內文，會導致這些功能遺失。",
+	}
+};
+
+#endif // __ODFRC__

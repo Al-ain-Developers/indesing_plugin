@@ -1,0 +1,164 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/spellpanel/SpellPanelStrings_heIL.fr $
+//  
+//  Owner: Michael Burbidge
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kSpellPanelStringsRsrcID + index_heIL)
+{
+	k_heIL,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{				
+		// ----- Main menu strings
+		"SpellingMenu",					"&איות",
+		"Check Spelling...",			"&בדיקת איות...",
+		"Dynamic SpellCheck",			"&איות דינמי",
+		"Autocorrect",					"תיקון שגיאות אוטומטי",
+		"Auto Correct",					"&תיקון אוטומטי",
+		"AutoCorrect",					"תיקון שגיאות אוטומטי",
+
+		// ----- Window strings
+		"corrected",					"תוקן",
+		"misspelled",					"שגיאות כתיב",
+		
+		// ----- Scope strings
+		
+		"[No spelling]",				"[ללא איות]",
+		"Auto",							"אוטומטי",
+		"Document",						"מסמך",
+		"Story",						"כתבה",
+		"Stories",						"כתבות",
+		"Selection",					"בחירה",
+		
+		// ----- Panel strings		
+		"Spelling",						"איות",
+		"&Spelling...",					"&איות...",
+		"Auto Correct...",				"&תיקון אוטומטי...",
+		"[No language]",				"[ללא שפה]",
+		"AutoCorrectEnable",			"&הפעל תיקון אוטומטי",
+		"AutoCorrectCapitalizationErrors",			"&תיקון שגיאות אוטומטי של אותיות גדולות וקטנות",
+		"A&dd...",						"&הוספה...",		// Opens a dialog
+		"EditAutoCorrectWord",			"&עריכה...",		// Opens a dialog
+		"Correction",					"תיקון",
+		"Misspelled Word",				"מילה עם שגיאות כתיב",
+
+		// ----- Dialog strings
+		"Check Spelling",				"בדוק איות",
+		"&Change To:",					"&שנה ל:",
+		
+		"Change To",					"שנה ל",
+		"&Suggested Corrections:",		"&תיקונים מומלצים:",
+		"Language:",					"שפה:",
+		"Sea&rch:",						"&חפש:",
+		"Include Overset",				"כלול עודף טקסט",
+		"&Done",							"&בוצע",
+		"C&hange",						"&שנה",
+		"S&tart",						"&התחל",
+		"Chan&ge All",					"שנה ה&כל",
+		"Skip",							"דלג",	
+		"kSkipButtonInSpellingDialog",  "דל&ג",
+		"Ignore",						"התעלם",
+		"&Ignore All",					"הת&עלם מהכל",
+		"&AddAndContinue",				"&הוסף",			// Adds to dictionary automatically, continues spelling
+		"Dic&tionary...",				"מי&לון...",	// Launches Dict Editor dialog
+		"Add To:",						"&הוסף ל:",
+
+		// Label strings in Spell Check dialog.
+		"Ready to Spell Check:", 			"מוכן לבדיקת איות",
+		"Misspelled Word:",					"מילה עם שגיאות כתיב:",
+		"Unknown Word - No Suggestions:", 	"מילה לא ידועה - אין הצעות:",
+		"Not in Dictionary:",				"לא במילון:",
+		"Repeated Word:",					"מילה חוזרת:",
+		"Uncapitalized Word:",				"מילה ללא אות גדולה:",
+		"Uncapitalized Sentence:",			"משפט ללא אות גדולה:",
+		"Duplicate Word:",					"מילה כפולה:",
+		"Capitalization Error:",			"שגיאת אות גדולה:",
+		"Spell Check Complete:",			"בדיקת האיות הושלמה",
+		
+		"SpellCheckCompleteAlertStr",			"בדיקת האיות הושלמה.",	// Alert string at completion of spelling.
+
+		"Misspelled Word (Overset):",					"מילה עם שגיאות כתיב: (עודף טקסט)",
+		"Unknown Word - No Suggestions (Overset):", 	"מילה לא ידועה: (עודף טקסט)",
+		"Not in Dictionary (Overset):",					"לא במילון: (עודף טקסט)",
+		"Repeated Word (Overset):",						"מילה חוזרת: (עודף טקסט)",
+		"Uncapitalized Word (Overset):",				"מילה ללא אות גדולה: (עודף טקסט)",
+		"Uncapitalized Sentence (Overset):",			"משפט ללא אות גדולה: (עודף טקסט)",
+
+		"Misspelled Word (In Table):",					"מילה עם שגיאות כתיב: (בטבלה)",
+		"Unknown Word - No Suggestions (In Table):", 	"מילה לא ידועה: (בטבלה)",
+		"Not in Dictionary (In Table):",					"לא במילון: (בטבלה)",
+		"Repeated Word (In Table):",						"מילה חוזרת: (בטבלה)",
+		"Uncapitalized Word (In Table):",				"מילה ללא אות גדולה: (בטבלה)",
+		"Uncapitalized Sentence (In Table):",			"משפט ללא אות גדולה: (בטבלה)",
+
+		"Misspelled Word (Deleted Text):",				"מילה עם שגיאות כתיב: (טקסט שנמחק)",
+		"Unknown Word - No Suggestions (Deleted Text):","מילה לא ידועה: (טקסט שנמחק)",
+		"Not in Dictionary (Deleted Text):",			"לא במילון: (טקסט שנמחק)",
+		"Repeated Word (Deleted Text):",				"מילה חוזרת: (טקסט שנמחק)",
+		"Uncapitalized Word (Deleted Text):",			"מילה ללא אות גדולה: (טקסט שנמחק)",
+		"Uncapitalized Sentence (Deleted Text):",		"משפט ללא אות גדולה: (נמחק)",
+
+//		"Spelling Preferences", 						"Spelling Preferences", // Note to localizer: this string moved to SpellingServiceStrings.fr
+		"Find", 										"חפש",
+		"&Misspelled Words", 							"מילים &עם שגיאות כתיב",
+		"&Repeated Words", 								"מילים &חוזרות",
+		"&Uncapitalized Words", 						"&מילים ללא אות גדולה",
+		"Uncapitalized &Sentences", 					"מ&שפטים ללא אות גדולה",
+		"Misspelled Words Underline Color:",			"מ&ילים עם שגיאות כתיב:",
+		"Repeated Words Underline Color:",				"מילים &חוזרות:",
+		"Uncapitalized Words Underline Color:",			"&מילים ללא אות גדולה:",
+		"Uncapitalized Sentences Underline Color:",		"מש&פטים ללא אות גדולה:",
+		"Dynamic Spellchecking",						"איות דינמי",
+		
+		"Underline Color",								"צבע קו תחתון",
+		
+		"&Enable Dynamic Spelling",						"&הפעל איות דינמי",
+		
+		"Search is completed.  ^1  replacement(s) made.", "החיפוש הושלם.  בוצעו ^1 החלפות.", 
+
+		"Add",											"הוסף",
+		"Re&move",										"ה&סר",
+		"Misspelled:",									"שגיאות כתיב:",
+		"Correction:",									"תיקון:",
+		"Language:",									"שפה:",
+		"&Language:",									"ש&פה:",
+		"AddToAutoCorrectList",							"הוסף לרשימת תיקון שגיאות אוטומטי",
+		"EditAutoCorrectList",							"עריכת רשימת התיקון האוטומטי",
+
+		"ACAlert1",		"ערכים ריקים אינם מותרים.",
+		"ACAlert2",		"המילה והתיקון שלה אינם יכולים להיות זהים באיות ובאותיות גדולות וקטנות.",
+		"ACAlert3",		"המילה עם שגיאות הכתיב והתיקון שלה כבר קיימים ברשימה.",
+		"ACAlert4",		"לא ניתן ליצור את הערך. הוא חורג ממספר התווים המקסימלי (64).",
+		"ACAlert5",		"הערך כולל תו לא חוקי.",
+		"ACAlert6",		"רווח לבן אינו מותר במילה עם שגיאות כתיב.",
+
+	}
+};
+
+#endif // __ODFRC__

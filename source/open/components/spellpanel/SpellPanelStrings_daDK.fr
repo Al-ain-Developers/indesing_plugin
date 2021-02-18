@@ -1,0 +1,159 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kSpellPanelStringsRsrcID + index_daDK)
+{
+	k_daDK,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{				
+		// ----- Main menu strings
+		"SpellingMenu",					"Stavek&ontrol",
+		"Check Spelling...",			"Stavek&ontrol...",
+		"Dynamic SpellCheck",			"Dyna&misk stavekontrol",
+		"Autocorrect",					"Autokorrektur",
+		"Auto Correct",					"&Autokorrektur",
+		"AutoCorrect",					"Autokorrektur",
+
+		// ----- Window strings
+		"corrected",					"rettet",
+		"misspelled",					"stavefejl",
+		
+		// ----- Scope strings
+		
+		"[No spelling]",				"[Ingen stavekontrol]",
+		"Auto",							"Auto",
+		"Document",						"Dokument",
+		"Story",						"Tekstenhed",
+		"Stories",						"Tekstenheder",
+		"Selection",					"Det markerede",
+		
+		// ----- Panel strings		
+		"Spelling",						"Stavekontrol",
+		"&Spelling...",					"&Stavekontrol...",
+		"Auto Correct...",				"Au&tokorrektur...",
+		"[No language]",				"[Intet sprog]",
+		"AutoCorrectEnable",			"A&ktiver autokorrektur",
+		"AutoCorrectCapitalizationErrors",			"&Autokorrektur – Fejl i brug af store bogstaver",
+		"A&dd...",						"T&ilføj...",		// Opens a dialog
+		"EditAutoCorrectWord",			"&Rediger...",		// Opens a dialog
+		"Correction",					"Rettelse",
+		"Misspelled Word",				"Ord med stavefejl",
+
+		// ----- Dialog strings
+		"Check Spelling",				"Stavekontrol",
+		"&Change To:",					"Erstat &med:",
+		
+		"Change To",					"Erstat med",
+		"&Suggested Corrections:",		"Forslag til r&ettelser:",
+		"Language:",					"Sprog:",
+		"Sea&rch:",						"Sø&g:",
+		"Include Overset",				"Medtag overskud",
+		"&Done",							"&Udført",
+		"C&hange",						"E&rstat",
+		"S&tart",						"S&tart",
+		"Chan&ge All",					"Erstat a&lle",
+		"Skip",							"Ignorer",	
+		"kSkipButtonInSpellingDialog",  "Spring &over",
+		"Ignore",						"Ignorer",
+		"&Ignore All",					"&Ignorer alle",
+		"&AddAndContinue",				"&Tilføj",			// Adds to dictionary automatically, continues spelling
+		"Dic&tionary...",				"Ord&bog...",	// Launches Dict Editor dialog
+		"Add To:",						"Fø&j til:",
+
+		// Label strings in Spell Check dialog.
+		"Ready to Spell Check:", 			"Klar til stavekontrol",
+		"Misspelled Word:",					"Ord med stavefejl:",
+		"Unknown Word - No Suggestions:", 	"Ukendt ord - ingen forslag:",
+		"Not in Dictionary:",				"Ikke i ordbog:",
+		"Repeated Word:",					"Gentaget ord:",
+		"Uncapitalized Word:",				"Ord med små bogstaver:",
+		"Uncapitalized Sentence:",			"Sætning med små bogstaver:",
+		"Duplicate Word:",					"Gentaget ord:",
+		"Capitalization Error:",			"Fejl i brug af store bogstaver:",
+		"Spell Check Complete:",			"Stavekontrol udført",
+		
+		"SpellCheckCompleteAlertStr",			"Stavekontrol udført.",	// Alert string at completion of spelling.
+
+		"Misspelled Word (Overset):",					"Ord med stavefejl: (overskud)",
+		"Unknown Word - No Suggestions (Overset):", 	"Ukendt ord: (overskud)",
+		"Not in Dictionary (Overset):",					"Ikke i ordbog: (overskud)",
+		"Repeated Word (Overset):",						"Gentaget ord: (overskud)",
+		"Uncapitalized Word (Overset):",				"Ord med små bogstaver: (overskud)",
+		"Uncapitalized Sentence (Overset):",			"Sætning med små bogstaver: (overskud)",
+
+		"Misspelled Word (In Table):",					"Ord med stavefejl: (i tabel)",
+		"Unknown Word - No Suggestions (In Table):", 	"Ukendt ord: (i tabel)",
+		"Not in Dictionary (In Table):",					"Ikke i ordbog: (i tabel)",
+		"Repeated Word (In Table):",						"Gentaget ord: (i tabel)",
+		"Uncapitalized Word (In Table):",				"Ord med små bogstaver: (i tabel)",
+		"Uncapitalized Sentence (In Table):",			"Sætning med små bogstaver: (i tabel)",
+
+		"Misspelled Word (Deleted Text):",				"Ord med stavefejl: (slettet tekst)",
+		"Unknown Word - No Suggestions (Deleted Text):","Ukendt ord: (slettet tekst)",
+		"Not in Dictionary (Deleted Text):",			"Ikke i ordbog: (slettet tekst)",
+		"Repeated Word (Deleted Text):",				"Gentaget ord: (slettet tekst)",
+		"Uncapitalized Word (Deleted Text):",			"Ord med små bogstaver: (slettet tekst)",
+		"Uncapitalized Sentence (Deleted Text):",		"Sætning med lille begyndelsesbogstav: (slettet)",
+		
+		"Misspelled Word (Hidden):",					"Forkert stavet ord: (Skjult element)",
+		"Unknown Word - No Suggestions (Hidden):", 		"Ukendt ord: (Skjult element)",
+		"Not in Dictionary (Hidden):",					"Ikke i ordbog: (Skjult element)",
+		"Repeated Word (Hidden):",						"Gentaget ord: (Skjult element)",
+		"Uncapitalized Word (Hidden):",					"Ord uden stort bogstav: (Skjult element)",
+		"Uncapitalized Sentence (Hidden):",				"Sætning uden store bogstaver: (Skjult)", // Shortened to "Hidden" for space. Like the "Overset" case above.
+
+//		"Spelling Preferences", 						"Spelling Preferences", // Note to localizer: this string moved to SpellingServiceStrings.fr
+		"Find", 										"Find",
+		"&Misspelled Words", 							"&Ord med stavefejl",
+		"&Repeated Words", 								"&Gentagne ord",
+		"&Uncapitalized Words", 						"O&rd med små bogstaver",
+		"Uncapitalized &Sentences", 					"&Sætninger med små bogstaver",
+		"Misspelled Words Underline Color:",			"Ord m&ed stavefejl:",
+		"Repeated Words Underline Color:",				"Ge&ntagne ord:",
+		"Uncapitalized Words Underline Color:",			"Ord med lille &begyndelsesbogstav:",
+		"Uncapitalized Sentences Underline Color:",		"Sætninger &med lille begyndelsesbogstav:",
+		"Dynamic Spellchecking",						"Dynamisk stavekontrol",
+		
+		"Underline Color",								"Understregningsfarve",
+		
+		"&Enable Dynamic Spelling",						"Aktiver &dynamisk stavekontrol",
+		
+		"Search is completed.  ^1  replacement(s) made.", "Søgningen er udført. Der er foretaget ^1 erstatning(er).", 
+
+		"Add",											"Tilføj",
+		"Re&move",										"&Fjern",
+		"Misspelled:",									"Ord med stavefejl:",
+		"Correction:",									"Rettelse:",
+		"Language:",									"Sprog:",
+		"&Language:",									"S&prog:",
+		"AddToAutoCorrectList",							"Føj til Autokorrektur-liste",
+		"EditAutoCorrectList",							"Rediger Autokorrektur-liste",
+
+		"ACAlert1",		"Tomme poster er ikke tilladt.",
+		"ACAlert2",		"Ordet og dets rettelse kan ikke have identisk stavemåde og brug af store og små bogstaver.",
+		"ACAlert3",		"Dette forkert stavede ord og dets rettelse findes allerede på listen.",
+		"ACAlert4",		"Posten kan ikke oprettes. Indholdet overstiger det maksimale antal tegn (64).",
+		"ACAlert5",		"Posten indeholder et ugyldigt tegn.",
+		"ACAlert6",		"Der må ikke være blanktegn i forkert stavede ord.",
+
+	}
+};
+
+#endif // __ODFRC__

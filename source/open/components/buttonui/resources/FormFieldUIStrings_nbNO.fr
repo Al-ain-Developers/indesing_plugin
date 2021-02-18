@@ -1,0 +1,357 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "StringTable.fh"
+
+#include "FormFieldUIDefs.h"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+//twright 12/11/2000 Removed left-over strings from group strings.
+//not sure if button/form is going to need lock warning...
+
+resource StringTable (kFormFieldUIStringsRsrcID + index_nbNO)
+{
+	k_nbNO,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{
+		// ----- Menu strings
+		"ButtonsActionsPopup",						"Knappehandlinger-meny",
+		
+		"$$$/Menu/AppearancePanelPopup",	"Knapper-panelmeny",	
+		"$$$/Menu/Interactive",				"&Interaktiv", 
+		"$$$/Menu/FormField",				"&Skjema", 
+		"$$$/Menu/About",					"&Om Plug-in-modulskjema", 
+		"$$$/Menu/CreateButton",			"K&onverter til knapp", 
+		"$$$/Menu/CreateCheckBox",			"&Konverter til avmerkingsboks",
+		"$$$/Menu/CreateComboBox",			"&Konverter til kombinasjonsboks", 
+		"$$$/Menu/CreateListBox",			"&Konverter til listeboks", 
+		"$$$/Menu/CreateRadioButton",		"&Konverter til alternativknapp", 
+		"$$$/Menu/CreateSignatureField",	"&Konverter til signaturfelt", 
+		"$$$/Menu/CreateTextField",			"&Konverter til tekstfelt", 
+		"$$$/Menu/DestroyButton",			"&Konverter til objekt", 
+		"$$$/Menu/FormFieldSettings",		"&Knappevalg...", 
+		"$$$/Menu/NewState",				"Ny tilstand", 
+		"$$$/Menu/DeleteState",				"Slett tilstand", 
+		"$$$/Menu/DeleteStates",			"Slett tilstander",
+		"$$$/Menu/PlaceIntoState",			"Monter innhold i tilstand...",
+		"$$$/Menu/DeleteStateContent",		"Slett tilstandsinnhold",
+		"$$$/Menu/AppearancePanelPrefs",	"Panelvalg...",
+		"$$$/Menu/StateOptions",			"Tilstandsvalg",
+		"$$$/Menu/SetTabOrder",				"&Angi tabulatorrekkefølge...",
+		"$$$/Menu/SetCalculationOrder",		"Angi beregningsrekkefølge",
+		"$$$/Menu/States",					"&Knapper og skjemaer",
+		
+		"$$$/Menu/Go To Page",				"Gå til side",
+		"$$$/Menu/Go To First Page",		"Gå til første side",
+		"$$$/Menu/Go To Anchor",			"Gå til mål",
+		"$$$/Menu/Go To Last Page",			"Gå til siste side",
+		"$$$/Menu/Go To Next Page",			"Gå til neste side",
+		"$$$/Menu/Go To Next View",			"Gå til neste visning",
+		"$$$/Menu/Go To Previous Page",		"Gå til forrige side",
+		"$$$/Menu/Go To Previous View",		"Gå til forrige visning",
+		"$$$/Menu/Go To URL",				"Gå til URL-adresse",
+		"$$$/Menu/Movie",					"Video",
+		"$$$/Menu/Open File",				"Åpne fil",
+		"$$$/Menu/Show/Hide Buttons",		"Vis/skjul knapper og skjemaer",
+		"$$$/Menu/Sound",					"Lyd",
+		"$$$/Menu/View Zoom",				"Vis zoom",
+		"$$$/Menu/Animation",				"Animasjon",
+		"$$$/Menu/SwitchToMSOState",		"Gå til tilstand",
+		"$$$/Menu/SwitchToNextMSOState",	"Gå til neste tilstand",
+		"$$$/Menu/SwitchToPrevMSOState",	"Gå til forrige tilstand",
+		"$$$/Menu/EPUBOnly",					"Bare EPUB",
+		"$$$/Menu/PDFOnly",					"Bare PDF",
+		"$$$/Menu/Print Form",				"Skriv ut skjema",
+		"$$$/Menu/Clear Form",				"Tøm skjema",
+		"$$$/Menu/Submit Form",				"Send skjema",
+		
+		"$$$/Menu/FormFieldSettings/ButtonLibrary",			"Eksempelknapper og -skjemaer",	// Name of menu item in Buttons Panel flyout that opens a library of Sample Buttons
+
+		"$$$/Menu/FormFieldSettings/PDFVis/Visible",		"Synlig i PDF",
+		"$$$/Menu/FormFieldSettings/PDFVis/Hidden",			"Skjult i PDF",
+		"$$$/Menu/FormFieldSettings/PDFVis/VisibleNoPrint",	"Synlig i PDF, men skrives ikke ut",
+		"$$$/Menu/FormFieldSettings/PDFVis/HiddenButPrint",	"Skjult i PDF, men skrives ut",	
+		"$$$/Menu/ButtonPDFOptions", "PDF-alternativer...",
+
+		"$$$/Menu/ResetAllButtons",	"Tilbakestill alle knapper til normal tilstand",	
+			
+		"PageItems",						"PageItems", 
+		"$$$/Menu/Trace Geometry",			"Trace Geometry", 
+
+		"$$$/Menu/FormFieldOptions/Button",					"Knapp",
+		"$$$/Menu/FormFieldOptions/Check Box",				"Avmerkingsboks",
+		"$$$/Menu/FormFieldOptions/Combo Box",				"Kombinasjonsboks",
+		"$$$/Menu/FormFieldOptions/List Box",				"Liste",
+		"$$$/Menu/FormFieldOptions/Radio Button",			"Alternativknapp",
+		"$$$/Menu/FormFieldOptions/Signature Field",		"Signaturfelt",
+		"$$$/Menu/FormFieldOptions/Text Field",				"Tekstfelt",
+
+		"InteractiveContextMenu",			"Interaktiv",
+	
+		// ----- Dialog strings
+		"$$$/Dialog/CreateFormField/Title",		"Skjemafelt", 
+		"$$$/Dialog/CreateFormField/Options",	"Valg",
+		"$$$/Dialog/CreateFormField/Width",		"Bre&dde:",
+		"$$$/Dialog/CreateFormField/Height",	"&Høyde:",
+
+		"$$$/Dialog/FormFieldSettings/Title",				"Generelt", 
+		"$$$/Dialog/FormFieldSettings/FieldType",			"Felttype:",
+		"$$$/Dialog/FormFieldSettings/FieldTypeSetting",	"",
+		"$$$/Dialog/FormFieldSettings/Name",				"&Navn:",
+		"$$$/Dialog/FormFieldSettings/PDFVisibility",		"&Synlighet i PDF:",
+		"$$$/Dialog/FormFieldSettings/PDFVis/Visible",		"Synlig",
+		"$$$/Dialog/FormFieldSettings/PDFVis/Hidden",		"Skjult",
+		"$$$/Dialog/FormFieldSettings/PDFVis/VisibleNoPrint",	"Synlig, men skrives ikke ut",
+		"$$$/Dialog/FormFieldSettings/PDFVis/HiddenButPrint",	"Skjult, men skrives ut",
+		"$$$/Dialog/FormFieldSettings/ReadOnly",			"Skrivebeskyttet",
+		"$$$/Dialog/FormFieldSettings/Export",				"Eksporter",
+		"$$$/Dialog/FormFieldSettings/RequiredForExport",	"Nødvendig for eksport",
+		"$$$/Dialog/FormFieldSettings/Description",			"&Beskrivelse:",
+		"$$$/Dialog/FormFieldSettings/ExportName",			"&Eksportnavn:",
+		"$$$/Dialog/FormFieldSettings/Common Settings",		"Felles innstillinger",
+		"$$$/Dialog/FormFieldSettings/Options",				"Valg",
+		"$$$/Dialog/FormFieldSettings/Holder",				"Form Field Settings Holder",
+
+		"$$$/Dialog/FormOptions/Title",						"Knappevalg",
+		"$$$/Dialog/FormFieldSettings/Options",				"Valg",
+		
+		"$$$/Dialog/FormFieldSettings/ExportValue",			"Eksportverdi:",
+		"$$$/Dialog/FormFieldSettings/DefaultIsChecked",	"Standard er merket",
+		"$$$/Dialog/FormFieldSettings/DefaultIsSelected",	"Standard er valgt",
+		"$$$/Dialog/FormFieldSettings/Default",				"Standard:",
+
+		"$$$/Dialog/FormFieldSettings/Multiline",				"Flere linjer",
+		"$$$/Dialog/FormFieldSettings/Scroll",					"Kan rulles",
+		"$$$/Dialog/FormFieldSettings/LimitOf",					"Begrenset til",
+		"$$$/Dialog/FormFieldSettings/Characters",				"tegn",
+		"$$$/Dialog/FormFieldSettings/Password",				"Passord",
+		"$$$/Dialog/FormFieldSettings/FieldForFileSelection",	"Brukes til filutvalg",
+		"$$$/Dialog/FormFieldSettings/SpellCheck",				"Stavekontroll",
+		
+		"$$$/Dialog/FormFieldSettings/Item",					"Objekt:",
+		"$$$/Dialog/FormFieldSettings/Add",						"Legg til",
+		"$$$/Dialog/FormFieldSettings/Delete",					"Slett",
+		"$$$/Dialog/FormFieldSettings/Change",					"Endre",
+		"$$$/Dialog/FormFieldSettings/SortItems",				"Sorter objekter",
+		"$$$/Dialog/FormFieldSettings/AllowMultipleSelection",	"Tillat flere markeringer",
+		"$$$/Dialog/FormFieldSettings/Editable",				"Kan redigeres",
+
+		"$$$/Dialog/FormFieldSettings/Align",					"Juster:",
+		"$$$/Dialog/FormFieldSettings/Align/Left",				"Venstre",
+		"$$$/Dialog/FormFieldSettings/Align/Center",			"Midtstill",
+		"$$$/Dialog/FormFieldSettings/Align/Right",				"Høyre",
+
+		"$$$/Dialog/FormFieldSettings/Font:",					"S&krift:",
+		"$$$/Dialog/FormFieldSettings/Size:",					"&Størrelse:",
+		"$$$/Dialog/FormFieldSettings/Auto",					"Automatisk",
+
+		"$$$/Dialog/FormFieldSettings/SelectedIsDefault",		"Det valgte objektet er standard",
+		
+		"$$$/Dialog/FormFieldUI/DeleteAlert",					"Når du sletter tilstanden, slettes også innholdet som er tilknyttet tilstanden. Vil du likevel slette tilstanden?",
+		"$$$/Dialog/FormFieldUI/DestroyAlert",					"Denne handlingen sletter innholdet som er tilknyttet skjemafeltets andre tilstander. Vil du likevel fortsette?",
+		"$$$/Dialog/FormFieldUI/DeleteContentAlert",			"Er du sikker på at du vil slette innholdet som er tilknyttet denne tilstanden?",
+		"$$$/Dialog/FormFieldUI/StyleChangeAlert",				"Denne handlingen sletter innholdet som er tilknyttet skjemafeltets gjeldende statuser. Vil du likevel fortsette?",
+		"$$$/Dialog/FormFieldUI/StyleChangeFailed",				"Kan ikke bruke den valgte malen for utseende til skjemafeltet.",
+
+		/* These are not visible, they are names of subpanels... */
+		
+		"$$$/Dialog/FormFieldSettings/CheckBox",				"Valg for avmerkingsboks",	
+		"$$$/Dialog/FormFieldSettings/RadioButton",				"Valg for alternativknapp",	
+		"$$$/Dialog/FormFieldSettings/TextField",				"Valg for tekstfeltknapp",	
+		"$$$/Dialog/FormFieldSettings/ListBox",					"Valg for listeknapp",	
+		
+		"$$$/Dialog/About/Description",						"Forms Plugin, versjon 1.0\n\n(c) 2001 Adobe Systems Incorporated. Med enerett.",
+
+		"$$$/Dialog/CmdName/CreateButton",					"Konverter til knapp",
+		"$$$/Dialog/CmdName/DestroyButton",					"Konverter til objekt",
+		"$$$/Dialog/CmdName/ChangeFormSettings",			"Endre knappeinnstillinger",
+
+		"$$$/Dialog/TextColor/Title",						"Tekstfarge", 
+		"$$$/Dialog/Button/Color...",						"Skriftfarge...", 
+
+		"$$$/Dialog/AppearancePanelPrefs/Title",			"Panelvalg", 
+		"$$$/Dialog/AppearancePanelPrefs/ThumbnailSize",	"Miniatyrstørrelse", 
+		"$$$/Dialog/AppearancePanelPrefs/None",				"Ingen", 
+		
+		
+		"$$$/Dialog/StateOptions/Title",					"Tilstandsvalg", 
+		"$$$/Dialog/StateOptions/State",					"Tilstand:", 
+		"$$$/Dialog/StateOptions/Enable",					"Aktiver tilstand", 
+
+		"$$$/Dialog/CalculationOrder/Title",				"Beregningsrekkefølge", 
+		"$$$/Dialog/TabOrder/Title",						"Tabulatorrekkefølge", 
+		"$$$/Dialog/Order/MoveUp",							"Flytt &opp", 
+		"$$$/Dialog/Order/MoveDown",						"Flytt &ned",
+
+		"$$$/Dialog/ButtonPDFOptions/Title",				"PDF-alternativer",
+		"$$$/Dialog/ButtonPDFOptions/InitialAppearance",	"Første utseende:",
+		"$$$/Dialog/ButtonPDFOptions/Visible",				"&Synlig",
+		"$$$/Dialog/ButtonPDFOptions/Hidden",				"&Skjult",
+		"$$$/Dialog/ButtonPDFOptions/Printable",			"&Kan skrives ut",
+		"$$$/Dialog/ButtonPDFOptions/Description",			"&Beskrivelse:",
+		
+		// ----- Window strings
+		
+		// ----- Panel strings
+
+		"$$$/Panel/FormFieldSettings/Action Data Holder",	"Dataholder for handling",
+		"$$$/Panel/FormFieldSettings/+",					"+",
+		"$$$/Panel/FormFieldSettings/Event:",				"Hendelse:",
+		"$$$/Panel/FormFieldSettings/Actions:",				"Handlinger:",
+		"$$$/Panel/FormFieldSettings/URL:",					"URL-adresse:",
+		"$$$/Panel/FormFieldSettings/Mail to:",				"Send e-post til:",
+		"$$$/Panel/Action",									"Handling",
+		"$$$/Panel/Empty Action",							"[Ingen handlinger lagt til]",
+		"$$$/Panel/StatesListBoxLabel/States",				"Utseende",
+		"$$$/Panel/States",									"Knapper og skjemaer",
+		"$$$/Panel/FormFieldSettings/FieldType",			"Type:",
+		"$$$/Panel/FormFieldSettings/Name",					"Navn:",
+		"$$$/Panel/ShowHide/Visibility:",					"Synlighet:",
+		"$$$/Panel/GoToPage/Page:",							"Side:",
+
+		"$$$/Panel/Normal",									"[Normal]",
+		"$$$/Panel/Over",									"[Berøring]",
+		"$$$/Panel/Down",									"[Klikk]",
+
+		"$$$/Panel/Off",									"[Normal av]",
+		"$$$/Panel/On",										"[Normal på]",
+
+		"$$$/Panel/RolloverOff",							"[Rull over av]",
+		"$$$/Panel/RolloverOn",								"[Rull over på]",
+		"$$$/Panel/DowmOff",								"[Klikk av]",
+		"$$$/Panel/DownOn",									"[Klikk på]",
+
+		"$$$/Panel/CmdName/FormFieldName",					"Knappenavn",
+		"$$$/Panel/CmdName/FormFieldStyle",					"Knappeutseende",
+		
+		"$$$/Panel/FormFieldSettings/Appearance",			"Utseende:",
+		"$$$/Panel/PDFOptions",								"PDF-alternativer",
+		"$$$/Panel/Required",								"Kreves",
+		"$$$/Panel/Printable",								"Kan skrives ut",
+		"$$$/Panel/Description",							"Beskrivelse:",
+		"$$$/Panel/SelectedByDefault",						"Valgt som standard",
+		"$$$/Panel/Multiline",								"Flere linjer",
+		"$$$/Panel/ListItems",								"Listeobjekter",
+		"$$$/Panel/MultipleSelection",						"Merking av flere",
+		"$$$/Panel/FontSize",								"Skriftstørrelse:",
+		"$$$/Panel/Font",									"Skrift:",
+		"$$$/Panel/AutoSize",								"Automatisk",
+		"$$$/Panel/SortItems",								"Sorter objekter",
+		"$$$/Panel/MERTLOption",							"Fra høyre mot venstre",
+		"$$$/Panel/ExportValue",							"Verdi for knapp:",
+		 
+		"$$$/Popup/Separator",								"-",
+		
+		"$$$/Dialog/Behaviors/Exit/No Data for Exit Behavior", "",
+
+		// ----- Tips strings
+
+		"$$$/Tip/StateEye",				"Aktiver/deaktiver alternativ tilstand ved eksport",
+		"$$$/Tip/StateThumbnail",		"Redusert visning av denne tilstanden",
+		"$$$/Tip/Show",					"Vis",
+		"$$$/Tip/Hide",					"Skjul",
+		"$$$/Tip/Ignore",				"Ignorer",
+		"$$$/Tip/Delete Selected Action",	"Slett valgt handling",
+		"$$$/Tip/Add New Action",		"Legg til ny handling for valgt hendelse",
+		"$$$/Tip/DeleteState",			"Slett alternativ tilstand og innholdet i den",
+		"$$$/Tip/Convert To Button",		"Konverter til knapp",
+		"$$$/Tip/Convert To Object",		"Konverter til objekt",
+		"$$$/Tip/DefaultChoice",		"Velg et objekt i listen for å gjøre det til standardvalg. Angi egendefinert sorteringsrekkefølge ved å fjerne avmerkingen for Sorter objekter, og dra objektene der du vil ha dem.",
+        "$$$/Tip/MissingFontToolTip",				"Mangler skrifttype i skjemafelt. Klikk for å finne skrifttype.",
+
+		// ----- Error strings
+
+		"$$$/Error/YouNeedToSpecifyAName", "Du må angi et navn.",
+		"$$$/Error/YouNeedToSpecifyANonBlankName", "Du må angi et gyldig navn.",
+		"$$$/Error/YouNeedToSpecifyANonBlankNameOrNoName", "Du må angi et gyldig navn eller ikke noe navn.",
+		"$$$/Error/YouNeedToSpecifyAnExportValue", "Du må angi en eksportverdi.",
+		"$$$/Error/YouNeedToSpecifyANonBlankExportValue", "Du må angi en gyldig eksportverdi.",
+		"$$$/Error/YouNeedToSpecifyAUniqueName", "Dette tilstandsnavnet er allerede i bruk. Velg et annet navn.",
+		"$$$/Error/YouNeedToSpecifyAValidFontSize", "Angi en verdi mellom 0 og 300 eller Auto.",
+		
+		// ----- Misc strings
+
+		"$$$/Command/DeleteStates",	"Slett tilstander",
+		"$$$/CmdName/DeleteStateContent",	"Slett tilstandsinnhold",
+		"$$$/Panel/CmdName/MSOName",		"Objektnavn for flere tilstander",
+		
+		// ----- MultiStateObject Panel strings
+				
+		"$$$/Menu/MSOPanel", "&Objekttilstander",
+		"$$$/Panel/MSOPanel", "Objekttilstander",
+		"$$$/Panel/MSOPanel/ObjectName", "Objektnavn:",
+#ifdef MACINTOSH
+		"$$$/Panel/MSOPanel/MixedSelection", "Klikk Ny-knappen for å gjøre hvert objekt til en egen tilstand. (Tilvalg + klikk for å beholde objektene i samme tilstand.)",
+		"$$$/Panel/MSOPanel/MSOAndMixedSelection", "Klikk Ny-knappen for å gjøre hvert objekt til en ny tilstand i objektet med flere tilstander \"^1\". (Tilvalg + klikk for å beholde objektene i samme tilstand.)\n\nKlikk Legg til-knappen for å sette inn objektene i den synlige tilstanden for \"^2\".",
+#else
+		"$$$/Panel/MSOPanel/MixedSelection", "Klikk Ny-knappen for å gjøre hvert objekt til en egen tilstand. (Alt + klikk for å beholde objektene i samme tilstand.)",
+		"$$$/Panel/MSOPanel/MSOAndMixedSelection", "Klikk Ny-knappen for å gjøre hvert objekt til en ny tilstand i objektet med flere tilstander \"^1\". (Alt + klikk for å beholde objektene i samme tilstand.)\n\nKlikk Legg til-knappen for å sette inn objektene i den synlige tilstanden for \"^2\".",
+#endif
+		
+		"$$$/Menu/MSOPanelPopup", "Panelmeny for objekttilstander",	
+		"$$$/Menu/MSOPanel/NewState", "Ny tilstand",
+		"$$$/Menu/MSOPanel/DeleteState", "Slett tilstand",
+		"$$$/Menu/MSOPanel/AddToState", "Legg til objekter i tilstand",
+		"$$$/Menu/MSOPanel/PasteIntoState", "Lim inn i tilstand",
+		"$$$/Menu/MSOPanel/ReleaseState", "Frigi tilstand til objekter",
+		"$$$/Menu/MSOPanel/ReleaseAllStates", "Frigi alle tilstander til objekter",
+		"$$$/Menu/MSOPanel/ResetAllMSOs", "Tilbakestill alle objekter med flere tilstander til første tilstand",
+		"$$$/Menu/MSOPanel/Options", "Panelalternativer...",
+		"$$$/Menu/MSOPanel/ContextMenu", "Hurtigmeny på Objekttilstander-panel",
+		"$$$/Menu/MSOPanel/ReleaseStateContextMenu", "Frigi \"^1\" til objekter",
+		"$$$/Menu/MSOPanel/DeleteStateContextMenu", "Slett \"^1\"",
+		"$$$/Menu/MSOPanel/PasteIntoStateContextMenu", "Lim inn i \"^1\"",
+		"$$$/Menu/MSOPanel/HiddenUntilTriggered", "Skjult til utløst",
+	
+		"$$$/Tip/MSOPanel/StateAnimated", "Et objekt i denne tilstanden er animert.",
+		"$$$/Tip/MSOPanel/NewMSO", "Konverter merket område til objekt med flere tilstander",
+		"$$$/Tip/MSOPanel/NewState", "Opprett ny tilstand",
+		"$$$/Tip/MSOPanel/DeleteState", "Slett valgt tilstand",
+		"$$$/Tip/MSOPanel/MSOIsSelected", "Dette objektet med flere tilstander er valgt. Alle tilstander blir transformert hvis du transformerer objektet.",
+		"$$$/Tip/MSOPanel/MSOIsNotSelected", "En tilstand er valgt. Klikk for å velge objektet med flere tilstander.",
+		"$$$/Tip/MSOPanel/MSOStateIsSelected", "Denne tilstanden er valgt.",
+		"$$$/Tip/MSOPanel/MSOStateContentIsSelected", "Innhold i denne tilstanden er valgt. Klikk raden for å velge denne tilstanden.",
+		"$$$/Tip/MSOPanel/MSOStateRowMSOIsSelected", "Objektet med flere tilstander er valgt. Klikk raden for å bytte til og velge denne tilstanden.",
+		"$$$/Tip/MSOPanel/MSOActiveStateRowMSOIsSelected", "Objektet med flere tilstander er valgt. Klikk raden for å velge denne tilstanden.",
+		"$$$/Tip/MSOPanel/MSOAnotherStateIsSelected", "Klikk raden for å bytte til og velge denne tilstanden.",
+		"$$$/Tip/MSOPanel/PasteIntoState", "Lim inn kopierte objekter i valgt tilstand",
+		"$$$/Tip/MSOPanel/AddToState", "Legg til objekter i synlig tilstand",
+	
+		"$$$/Dialog/MSOPanel/ReleaseAlert", "Objektet med flere tilstander må ha minst to tilstander. Denne handlingen fjerner objektet med flere tilstander fra dokumentet. Alle gjeldende objekter forblir på de gjeldende plasseringene som objekter med én tilstand.",
+		"$$$/Dialog/MSOPanel/ReleaseAllAlert", "Denne handlingen gjør at objektet med flere tilstander fjernes fra dokumentet. Alle gjeldende objekter forblir på de gjeldende plasseringene som objekter med én tilstand.",
+		"$$$/Dialog/MSOPanel/DeletesMSOAlert", "Objektet med flere tilstander må ha minst to tilstander. Denne handlingen fjerner objektet med flere tilstander fra dokumentet. Objekter tilknyttet den gjenværende tilstanden, forblir på de gjeldende plasseringene som objekter med én tilstand.",
+		
+		"$$$/Panel/MSOPanel/StatusOne", " objekt i ^1",
+		"$$$/Panel/MSOPanel/Status", " objekter i ^1",
+		
+		"$$$/Panel/MSOPanel/StatusMSOSelected", "Alle tilstander valgt",
+		"$$$/Panel/MSOPanel/StatusStateSelected", "Tilstand valgt",
+		"$$$/Panel/MSOPanel/StatusStateContentSelected", "Objekt i tilstand valgt",
+
+		// Command strings		
+		"$$$/Command/CheckBox", "Konverter til avmerkingsboks",
+		"$$$/Command/ComboBox", "Konverter til kombinasjonsboks",
+		"$$$/Command/ListBox", "Konverter til listeboks",
+		"$$$/Command/RadioButton", "Konverter til alternativknapp",
+		"$$$/Command/SignatureField", "Konverter til signaturfelt",
+		"$$$/Command/TextField", "Konverter til tekstfelt",
+}
+};
+
+#endif // __ODFRC__

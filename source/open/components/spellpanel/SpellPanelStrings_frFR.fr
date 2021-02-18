@@ -1,0 +1,159 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kSpellPanelStringsRsrcID + index_frFR)
+{
+	k_frFR,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{				
+		// ----- Main menu strings
+		"SpellingMenu",					"Ort&hographe",
+		"Check Spelling...",			"Ortho&graphe...",
+		"Dynamic SpellCheck",			"Vérification orthographique dyna&mique",
+		"Autocorrect",					"Correction automatique",
+		"Auto Correct",					"Correction &automatique",
+		"AutoCorrect",					"Correction automatique",
+
+		// ----- Window strings
+		"corrected",					"corrigé",
+		"misspelled",					"mal orthographié",
+		
+		// ----- Scope strings
+		
+		"[No spelling]",				"[Aucune suggestion]",
+		"Auto",							"Automatique",
+		"Document",						"Document",
+		"Story",						"Article",
+		"Stories",						"Articles",
+		"Selection",					"Sélection",
+		
+		// ----- Panel strings		
+		"Spelling",						"Orthographe",
+		"&Spelling...",					"&Orthographe...",
+		"Auto Correct...",				"Corr&ection automatique...",
+		"[No language]",				"[Aucune langue]",
+		"AutoCorrectEnable",			"&Activer la correction automatique",
+		"AutoCorrectCapitalizationErrors",			"&Correction automatique des erreurs de casse",
+		"A&dd...",						"A&jouter...",		// Opens a dialog
+		"EditAutoCorrectWord",			"&Modifier...",		// Opens a dialog
+		"Correction",					"Correction",
+		"Misspelled Word",				"Mot mal orthographié",
+
+		// ----- Dialog strings
+		"Check Spelling",				"Orthographe",
+		"&Change To:",					"Rempla&cer par :",
+		
+		"Change To",					"Remplacer par",
+		"&Suggested Corrections:",		"&Orthographes proposées :",
+		"Language:",					"Langue :",
+		"Sea&rch:",						"C&hercher dans :",
+		"Include Overset",				"Inclure le texte en excès",
+		"&Done",							"Ter&miner",
+		"C&hange",						"Remp&lacer",
+		"S&tart",						"Comm&encer",
+		"Chan&ge All",					"To&ut remplacer",
+		"Skip",							"Ignorer",	
+		"kSkipButtonInSpellingDialog",  "Ig&norer",
+		"Ignore",						"Ignorer",
+		"&Ignore All",					"Tout &ignorer",
+		"&AddAndContinue",				"&Ajouter",			// Adds to dictionary automatically, continues spelling
+		"Dic&tionary...",				"Dict&ionnaire...",	// Launches Dict Editor dialog
+		"Add To:",						"A&jouter à :",
+
+		// Label strings in Spell Check dialog.
+		"Ready to Spell Check:", 			"Prêt pour la vérification :",
+		"Misspelled Word:",					"Mot mal orthographié :",
+		"Unknown Word - No Suggestions:", 	"Mot inconnu - Aucune suggestion :",
+		"Not in Dictionary:",				"Absent du dictionnaire :",
+		"Repeated Word:",					"Mot répété :",
+		"Uncapitalized Word:",				"Mot en minuscule :",
+		"Uncapitalized Sentence:",			"Phrase en minuscule :",
+		"Duplicate Word:",					"Mot en double :",
+		"Capitalization Error:",			"Erreur de casse :",
+		"Spell Check Complete:",			"Vérification orthographique terminée",
+		
+		"SpellCheckCompleteAlertStr",			"Vérification orthographique terminée.",	// Alert string at completion of spelling.
+
+		"Misspelled Word (Overset):",					"Mot mal orthographié : (texte en excès)",
+		"Unknown Word - No Suggestions (Overset):", 	"Mot inconnu : (texte en excès)",
+		"Not in Dictionary (Overset):",					"Absent du dictionnaire : (texte en excès)",
+		"Repeated Word (Overset):",						"Mot répété : (texte en excès)",
+		"Uncapitalized Word (Overset):",				"Mot en minuscule : (texte en excès)",
+		"Uncapitalized Sentence (Overset):",			"Phrase en minuscule (excès) :",
+
+		"Misspelled Word (In Table):",					"Mot mal orthographié : (dans le tableau)",
+		"Unknown Word - No Suggestions (In Table):", 	"Mot inconnu : (dans le tableau)",
+		"Not in Dictionary (In Table):",					"Absent du dictionnaire : (dans le tableau)",
+		"Repeated Word (In Table):",						"Mot répété : (dans le tableau)",
+		"Uncapitalized Word (In Table):",				"Mot en minuscule : (dans le tableau)",
+		"Uncapitalized Sentence (In Table):",			"Phrase en minuscule : (dans le tableau)",
+
+		"Misspelled Word (Deleted Text):",				"Mot mal orthographié : (texte supprimé)",
+		"Unknown Word - No Suggestions (Deleted Text):","Mot inconnu : (texte supprimé)",
+		"Not in Dictionary (Deleted Text):",			"Absent du dictionnaire : (texte supprimé)",
+		"Repeated Word (Deleted Text):",				"Mot répété : (texte supprimé)",
+		"Uncapitalized Word (Deleted Text):",			"Mot en minuscule : (texte supprimé)",
+		"Uncapitalized Sentence (Deleted Text):",		"Phrase en minuscule : (supprimé)",
+		
+		"Misspelled Word (Hidden):",					"Mot mal orthographié : (élément masqué)",
+		"Unknown Word - No Suggestions (Hidden):", 		"Mot inconnu : (élément masqué)",
+		"Not in Dictionary (Hidden):",					"Absent du dictionnaire : (élément masqué)",
+		"Repeated Word (Hidden):",						"Mot répété : (élément masqué)",
+		"Uncapitalized Word (Hidden):",					"Mot en minuscules : (élément masqué)",
+		"Uncapitalized Sentence (Hidden):",				"Phrase en minuscules : (élément masqué)", // Shortened to "Hidden" for space. Like the "Overset" case above.
+
+//		"Spelling Preferences", 						"Spelling Preferences", // Note to localizer: this string moved to SpellingServiceStrings.fr
+		"Find", 										"Rechercher",
+		"&Misspelled Words", 							"Mots &mal orthographiés",
+		"&Repeated Words", 								"Mots &répétés",
+		"&Uncapitalized Words", 						"Mots en min&uscule",
+		"Uncapitalized &Sentences", 					"Phrases en minu&scule",
+		"Misspelled Words Underline Color:",			"M&ots mal orthographiés :",
+		"Repeated Words Underline Color:",				"Mo&ts répétés :",
+		"Uncapitalized Words Underline Color:",			"Mots en m&inuscule :",
+		"Uncapitalized Sentences Underline Color:",		"&Phrases en minuscule :",
+		"Dynamic Spellchecking",						"Vérification orthographique dynamique",
+		
+		"Underline Color",								"Couleur de soulignement",
+		
+		"&Enable Dynamic Spelling",						"&Activer la vérification orthographique dynamique",
+		
+		"Search is completed.  ^1  replacement(s) made.", "Recherche terminée. ^1 remplacement(s) effectué(s).", 
+
+		"Add",											"Ajouter",
+		"Re&move",										"Suppri&mer",
+		"Misspelled:",									"Mal orthographié :",
+		"Correction:",									"Correction :",
+		"Language:",									"Langue :",
+		"&Language:",									"&Langue :",
+		"AddToAutoCorrectList",							"Ajouter à la liste des corrections automatiques",
+		"EditAutoCorrectList",							"Modifier la liste des corrections automatiques",
+
+		"ACAlert1",		"Les entrées vides ne sont pas autorisées.",
+		"ACAlert2",		"L'orthographe et la casse du mot et de sa correction ne peuvent pas être identiques.",
+		"ACAlert3",		"Le mot mal orthographié et sa correction figurent déjà dans la liste.",
+		"ACAlert4",		"Impossible de créer l'entrée. Elle dépasse le nombre limite de caractères autorisés (64).",
+		"ACAlert5",		"L'entrée contient un caractère incorrect.",
+		"ACAlert6",		"L'espace n'est pas autorisé dans le mot mal orthographié.",
+
+	}
+};
+
+#endif // __ODFRC__

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest version="2.0">
+ <versioninfo>
+  <build build="20200813.001" compilertarget="Release" datetime="2020/08/13:17:06:55" format="Folder" lang="mul" licensemodel="None" platform="win64" product="AGL" subproduct="Library" version="11.0">
+   <repository authority="git.corp.adobe.com:g11n-libraries/agl/" path="master" query=":030b0488d3d867b76658c3fe426ac07372fc28e0" scheme="git"/>
+   <metadata>
+    <item key="BuildVersion" value="dev.10f2bcf915ad410d08c6ca86ca7ab8c1a91a09ea"/>
+   </metadata>
+  </build>
+ </versioninfo>
+</manifest>
+

@@ -1,0 +1,59 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/incopyfileactionsui/resources/InCopyFileActionsUIActions.fr $
+//  
+//  Owner: lance bushore
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "ActionDef.fh"
+#include "ActionDefs.h"
+#include "InCopyFileActionsUIID.h"
+#include "InCopyFileActionsUIDefs.h"
+
+#ifdef __ODFRC__
+
+
+resource ActionDef (kInCopyFileActionsUIActionsResID)
+{
+	{
+		// ActionComponent Class, ActionID,name,area,action type, enabling type(see ActionDefs.h), selectionIID,userEditable
+		kInCopyFileActionsComponentBoss, kNewActionID, "&New", kFileMenuNewActionArea,kNormalAction,kDisableIfLowMem,0,kTrue,
+		kInCopyFileActionsComponentBoss, kOpenActionID, "&Open...", kFileMenuActionArea,kNormalAction,kDisableIfLowMem,0,kTrue,
+		kInCopyFileActionsComponentBoss, kCloseActionID, "&Close", kFileMenuActionArea,kNormalAction,kDisableIfNoFrontDocument|kCustomEnabling,0,kTrue,
+		kInCopyFileActionsComponentBoss, kSaveActionID, "&Save Story", kFileMenuActionArea,kNormalAction,kDisableIfNoFrontDocument|kCustomEnabling,0,kTrue,
+		kInCopyFileActionsComponentBoss, kSaveAsActionID, "Save Story &As...", kFileMenuActionArea,kNormalAction,kDisableIfNoFrontDocument|kCustomEnabling,0,kTrue,
+		kInCopyFileActionsComponentBoss, kSaveACopyActionID, "Save Story Copy...", kFileMenuActionArea,kNormalAction,kDisableIfNoFrontDocument|kCustomEnabling,0,kTrue,
+		kInCopyFileActionsComponentBoss, kSaveAllStoriesActionID, "Save All Stories", kFileMenuActionArea,kNormalAction,kDisableIfNoFrontDocument|kCustomEnabling,0,kTrue,
+		kInCopyFileActionsComponentBoss, kRevertActionID, "&Revert", kFileMenuActionArea,kNormalAction,kDisableIfNoFrontDocument|kDisableIfLowMem|kCustomEnabling,0,kTrue,
+		kInCopyFileActionsComponentBoss, kRevertStoryActionID, "&Revert Story", kFileMenuActionArea,kNormalAction,kDisableIfNoFrontDocument|kDisableIfLowMem|kCustomEnabling,0,kTrue,
+		kInCopyFileActionsComponentBoss, kUpdateDesignActionID, "&Update Design", kFileMenuActionArea,kNormalAction,kDisableIfNoFrontDocument|kDisableIfLowMem|kCustomEnabling,0,kTrue,
+		kInCopyFileActionsComponentBoss, kNewWindowActionID, "New &Window",	kWindowMenuArrangeActionArea,kNormalAction,kDisableIfLowMem|kDisableIfNoFrontDocument,0,kTrue,
+
+		//action only
+		kInCopyFileActionsComponentBoss, kInCopyNewButtonActionID, "New default document", kFileMenuNewActionArea,kNormalAction,kDisableIfLowMem,0,kTrue,
+		
+		kInCopyMRUListBoss,kRecentDocsDynamicActionID, "dynamic", kDocumentsActionArea,kNormalAction,kCustomEnabling,0,kFalse,
+
+		kInCopyFileActionsComponentBoss, kBrowseActionID, "FileForBrowse", kFileMenuActionArea,kNormalAction,kDisableIfLowMem,0,kTrue,
+		kInCopyFileActionsComponentBoss, kBrowseNewWindowActionID, "Browse in New Window...", kFileMenuActionArea,kNormalAction,kDisableIfLowMem,0,kTrue,
+	}
+}
+
+#endif // __ODFRC__
+

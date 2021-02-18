@@ -1,0 +1,136 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/dynamicdocumentsui/resources/DynamicDocumentsUIStrings_arAE.fr $
+//  
+//  Owner: DBerggren
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kDynamicDocumentsUIStringsRsrcID + index_arAE)
+{
+	k_arAE,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{
+		// ----- Command strings
+
+		// ----- Window strings
+
+		// ----- Panel strings
+		"kPageTransitionsPanelPopup",			"قائمة لوحة انتقالات الصفحة",    
+		"kPageTransitionsSubMenu",				"&انتقالات الصفحة",
+		"kPageTransitionsPanelName",			"انتقالات الصفحة",	   
+		"kPageTransitionStaticText",			"الانتقال: ",
+		"kPageDirectionStaticText",				"الاتجاه: ",
+		"kPageSpeedStaticText",					"السرعة: ",
+        "kPTHorizontal",						"أفقي",
+        "kPTVertical",							"رأسي",
+        "kPTIn",								"للداخل",
+        "kPTOut",								"للخارج",
+        "kPTDown",								"أسفل",
+        "kPTLeft",								"يسار",
+        "kPTLeftDown",							"يسار لأسفل",
+        "kPTLeftUp",							"يسار لأعلى",
+        "kPTRight",								"يمين",
+        "kPTRightDown",							"يمين لأسفل",
+        "kPTRightUp",							"يمين لأعلى",
+        "kPTUp",								"أعلى",
+        "kPTHorizontalIn",						"أفقي للداخل",
+        "kPTHorizontalOut",						"أفقي للخارج",
+        "kPTVerticalIn",						"رأسي للداخل",
+        "kPTVerticalOut",						"رأسي للخارج",
+        "kPTSlow",								"بطئ",
+		"kPTMedium",							"متوسط",
+		"kPTFast",								"سريع",		
+		"kPTNoTransition",						"لا شيء",	
+        
+		// ----- Menu Strings
+		"kTransitionPanelChooseAction",				"إخ&تيار...",
+		"kTransitionPanelApplyToAllSpreadsAction",	"&تطبيق على كل الحيزات",
+		"kTransitionPanelClearAllTransitionsAction","مسح ال&كل",
+		
+		// ----- Tips strings
+		"kApplyToAllSpreadsButtonTip",			"تطبيق على كل الحيزات",
+		
+		// ----- SWF & XFL Export Dialogs
+
+		"kSWFExport",						"تصدير SWF",
+		"kXFLExport",						"تصدير Adobe Flash CS4 Professional (XFL)",
+		"kSizePixels",						"حجم (بالبكسل):",
+		"kPagesStr",						"صفحات:",
+		"kSpreadsStr",						"&حيز الصفحات",
+		"kGenerateHTMLStr",					"توليد ملف HT&ML",
+		"kViewSWFAfterExportingStr",		"ع&رض SWF بعد التصدير",
+		"kFlashText",						"نص InDesign إلى نص Flash",
+		"kVectorText",						"نص InDesign إلى مسارات متجهة",
+		"kRasterText",						"نص InDesign إلى صورة نقطية",
+		"kFitToSize",						"&ملائمة لـ:",
+		"kWidthSize",						"الع&رض:",
+		"kHeightSize",						"الارت&فاع:",
+		"kAllPagesExported",				"&كلي",
+		"kPageRangeExported",				"ال&نطاق:",
+		"kScaleSize",						"&قياس:",
+		"kTextStr",							"&النص:",
+		"kInteractivityStr",				"التفاعلية:",
+		"kImageCompStr",					"&ضغط الصورة:",
+		"kQualityStr",						"جودة &JPEG:",
+		"kCurveQualityStr",					"&جودة المنحنى:",
+		"kInclButtonsStr",					"تضمين ال&أزرار",
+		"kInclHyperLinkStr",				"تضمين ال&روابط التشعبية",
+		"kInclPageTrans",					"تضمين انت&قالات الصفحة",
+		"kIncludePageCurl",					"تضمين التفاف الصفحة ال&تفاعلي",
+		"kImageCompAuto",					"تلقائي",
+		"kJPG_Lossy",						"JPEG",
+		"kPNG_Lossless",					"بدون فقدان (عمل لا شيء)",
+		"kMinimumQual",						"الحد الأدنى",
+		"kLowQual",							"منخفض",
+		"kMediumQual",						"متوسط",
+		"kHighQual",						"مرتفع",
+		"kMaximumQual",						"الحد الأقصى",
+		"kRasterizeStr",					"ت&نقيط الصفحات",
+		"kFlattenXPStr",					"ت&سوية الشفافية",
+		"k1280x800",						"1280 x 800 (الشاشة الكاملة)",
+		"k1024x768",						"1024 x 768 (الشاشة الكاملة)",
+		"k800x600",							"800 x 600 (الشاشة الكاملة)",
+		"k640x480",							"640 x 480 (الشاشة الكاملة)",
+		"k250per",							"250%",
+		"k200per",							"200%",
+		"k150per",							"150%",
+		"k100per",							"100%",
+		"k75per",							"75%",
+		"k50per",							"50%",
+		"k25per",							"25%",
+
+		// Add Page Transition dialog
+		"kPageTransitionsDialogTitle",			"انتقالات الصفحة",
+		"kPageTransitionApplyToAllSpreads",		"تطبيق على كل الحيزات",
+		"kPageTurnSWFOnlyString",				"    (SWF فقط)",	// we have to leave the space to match align the text.
+		"kPageTurnTransitionSWFOnlyString",		"طوي الصفحة (SWF فقط)",
+		"kZoomInOutString",						"تكبير/تصغير", 
+	}
+};
+
+#endif // __ODFRC__

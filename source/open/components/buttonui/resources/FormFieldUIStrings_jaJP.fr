@@ -1,0 +1,357 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "StringTable.fh"
+
+#include "FormFieldUIDefs.h"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+//twright 12/11/2000 Removed left-over strings from group strings.
+//not sure if button/form is going to need lock warning...
+
+resource StringTable (kFormFieldUIStringsRsrcID + index_jaJP)
+{
+	k_jaJP,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{
+		// ----- Menu strings
+		"ButtonsActionsPopup",						"ボタンアクションメニュー",
+		
+		"$$$/Menu/AppearancePanelPopup",	"ボタンパネルメニュー",	
+		"$$$/Menu/Interactive",				"インタラクティブ(&V)", 
+		"$$$/Menu/FormField",				"形成(&F)", 
+		"$$$/Menu/About",					"形成プラグインについて(&A)", 
+		"$$$/Menu/CreateButton",			"ボタンに変換(&C)", 
+		"$$$/Menu/CreateCheckBox",			"チェックボックスに変換(&C)",
+		"$$$/Menu/CreateComboBox",			"コンボボックスに変換(&C)", 
+		"$$$/Menu/CreateListBox",			"リストボックスに変換(&C)", 
+		"$$$/Menu/CreateRadioButton",		"ラジオボタンに変換(&C)", 
+		"$$$/Menu/CreateSignatureField",	"署名フィールドに変換(&C)", 
+		"$$$/Menu/CreateTextField",			"テキストフィールドに変換(&C)", 
+		"$$$/Menu/DestroyButton",			"オブジェクトに変換(&C)", 
+		"$$$/Menu/FormFieldSettings",		"ボタン設定(&B)...", 
+		"$$$/Menu/NewState",				"新規ステート", 
+		"$$$/Menu/DeleteState",				"ステートを削除", 
+		"$$$/Menu/DeleteStates",			"ステートを削除",
+		"$$$/Menu/PlaceIntoState",			"内容をステートに配置...",
+		"$$$/Menu/DeleteStateContent",		"内容をステートから削除",
+		"$$$/Menu/AppearancePanelPrefs",	"パネルオプション...",
+		"$$$/Menu/StateOptions",			"ステートオプション...",
+		"$$$/Menu/SetTabOrder",				"タブ順を設定(&T)...",
+		"$$$/Menu/SetCalculationOrder",		"計算順を設定...",
+		"$$$/Menu/States",					"ボタンとフォーム(&U)",
+		
+		"$$$/Menu/Go To Page",				"ページへ移動",
+		"$$$/Menu/Go To First Page",		"先頭ページへ移動",
+		"$$$/Menu/Go To Anchor",			"配置先へ移動",
+		"$$$/Menu/Go To Last Page",			"最終ページへ移動",
+		"$$$/Menu/Go To Next Page",			"次ページへ移動",
+		"$$$/Menu/Go To Next View",			"次の表示へ移動",
+		"$$$/Menu/Go To Previous Page",		"前ページへ移動",
+		"$$$/Menu/Go To Previous View",		"前の表示へ移動",
+		"$$$/Menu/Go To URL",				"URL へ移動",
+		"$$$/Menu/Movie",					"ビデオ",
+		"$$$/Menu/Open File",				"ファイルを開く",
+		"$$$/Menu/Show/Hide Buttons",		"ボタンとフォームを表示 / 隠す",
+		"$$$/Menu/Sound",					"サウンド",
+		"$$$/Menu/View Zoom",				"ズーム表示",
+		"$$$/Menu/Animation",				"アニメーション",
+		"$$$/Menu/SwitchToMSOState",		"ステートに移動",
+		"$$$/Menu/SwitchToNextMSOState",	"次のステートに移動",
+		"$$$/Menu/SwitchToPrevMSOState",	"前のステートに移動",
+		"$$$/Menu/EPUBOnly",					"EPUB のみ",
+		"$$$/Menu/PDFOnly",					"PDF のみ",
+		"$$$/Menu/Print Form",				"フォームをプリント",
+		"$$$/Menu/Clear Form",				"フォームをクリア",
+		"$$$/Menu/Submit Form",				"フォームを送信",
+		
+		"$$$/Menu/FormFieldSettings/ButtonLibrary",			"サンプルボタンとフォーム",	// Name of menu item in Buttons Panel flyout that opens a library of Sample Buttons
+
+		"$$$/Menu/FormFieldSettings/PDFVis/Visible",		"PDF で表示可能",
+		"$$$/Menu/FormFieldSettings/PDFVis/Hidden",			"PDF で非表示",
+		"$$$/Menu/FormFieldSettings/PDFVis/VisibleNoPrint",	"PDF で表示可能・印刷不能",
+		"$$$/Menu/FormFieldSettings/PDFVis/HiddenButPrint",	"PDF で非表示・印刷可能",	
+		"$$$/Menu/ButtonPDFOptions", "PDF オプション...",
+
+		"$$$/Menu/ResetAllButtons",	"すべてのボタンを通常のステートにリセット",	
+			
+		"PageItems",						"ページアイテム", 
+		"$$$/Menu/Trace Geometry",			"形状をトレース", 
+
+		"$$$/Menu/FormFieldOptions/Button",					"ボタン",
+		"$$$/Menu/FormFieldOptions/Check Box",				"チェックボックス",
+		"$$$/Menu/FormFieldOptions/Combo Box",				"コンボボックス",
+		"$$$/Menu/FormFieldOptions/List Box",				"リストボックス",
+		"$$$/Menu/FormFieldOptions/Radio Button",			"ラジオボタン",
+		"$$$/Menu/FormFieldOptions/Signature Field",		"署名フィールド",
+		"$$$/Menu/FormFieldOptions/Text Field",				"テキストフィールド",
+
+		"InteractiveContextMenu",			"インタラクティブ",
+	
+		// ----- Dialog strings
+		"$$$/Dialog/CreateFormField/Title",		"フィールドを形成", 
+		"$$$/Dialog/CreateFormField/Options",	"オプション",
+		"$$$/Dialog/CreateFormField/Width",		"幅(&W) :",
+		"$$$/Dialog/CreateFormField/Height",	"高さ(&H) :",
+
+		"$$$/Dialog/FormFieldSettings/Title",				"一般", 
+		"$$$/Dialog/FormFieldSettings/FieldType",			"フィールドの種類 :",
+		"$$$/Dialog/FormFieldSettings/FieldTypeSetting",	"",
+		"$$$/Dialog/FormFieldSettings/Name",				"名前(&N) :",
+		"$$$/Dialog/FormFieldSettings/PDFVisibility",		"PDF で表示 / 非表示(&V) :",
+		"$$$/Dialog/FormFieldSettings/PDFVis/Visible",		"表示可能",
+		"$$$/Dialog/FormFieldSettings/PDFVis/Hidden",		"非表示",
+		"$$$/Dialog/FormFieldSettings/PDFVis/VisibleNoPrint",	"表示可能・印刷不能",
+		"$$$/Dialog/FormFieldSettings/PDFVis/HiddenButPrint",	"非表示・印刷可能",
+		"$$$/Dialog/FormFieldSettings/ReadOnly",			"読み取り専用",
+		"$$$/Dialog/FormFieldSettings/Export",				"書き出し",
+		"$$$/Dialog/FormFieldSettings/RequiredForExport",	"書き出し時に必須",
+		"$$$/Dialog/FormFieldSettings/Description",			"詳細(&D) :",
+		"$$$/Dialog/FormFieldSettings/ExportName",			"書き出し名(&E) :",
+		"$$$/Dialog/FormFieldSettings/Common Settings",		"一般設定",
+		"$$$/Dialog/FormFieldSettings/Options",				"オプション",
+		"$$$/Dialog/FormFieldSettings/Holder",				"フィールド設定ホルダを形成",
+
+		"$$$/Dialog/FormOptions/Title",						"ボタン設定",
+		"$$$/Dialog/FormFieldSettings/Options",				"オプション",
+		
+		"$$$/Dialog/FormFieldSettings/ExportValue",			"書き出し値 :",
+		"$$$/Dialog/FormFieldSettings/DefaultIsChecked",	"デフォルトはチェックされています。",
+		"$$$/Dialog/FormFieldSettings/DefaultIsSelected",	"デフォルトは選択されています。",
+		"$$$/Dialog/FormFieldSettings/Default",				"デフォルト :",
+
+		"$$$/Dialog/FormFieldSettings/Multiline",				"複数行",
+		"$$$/Dialog/FormFieldSettings/Scroll",					"スクロール可能",
+		"$$$/Dialog/FormFieldSettings/LimitOf",					"限定",
+		"$$$/Dialog/FormFieldSettings/Characters",				"文字",
+		"$$$/Dialog/FormFieldSettings/Password",				"パスワード",
+		"$$$/Dialog/FormFieldSettings/FieldForFileSelection",	"ファイルの選択に使用",
+		"$$$/Dialog/FormFieldSettings/SpellCheck",				"スペルチェック",
+		
+		"$$$/Dialog/FormFieldSettings/Item",					"アイテム :",
+		"$$$/Dialog/FormFieldSettings/Add",						"追加",
+		"$$$/Dialog/FormFieldSettings/Delete",					"削除",
+		"$$$/Dialog/FormFieldSettings/Change",					"変更",
+		"$$$/Dialog/FormFieldSettings/SortItems",				"アイテムをソート",
+		"$$$/Dialog/FormFieldSettings/AllowMultipleSelection",	"複数選択を許可",
+		"$$$/Dialog/FormFieldSettings/Editable",				"編集可能",
+
+		"$$$/Dialog/FormFieldSettings/Align",					"揃え :",
+		"$$$/Dialog/FormFieldSettings/Align/Left",				"左揃え",
+		"$$$/Dialog/FormFieldSettings/Align/Center",			"中央揃え",
+		"$$$/Dialog/FormFieldSettings/Align/Right",				"右揃え",
+
+		"$$$/Dialog/FormFieldSettings/Font:",					"フォント(&F) :",
+		"$$$/Dialog/FormFieldSettings/Size:",					"サイズ(&S) :",
+		"$$$/Dialog/FormFieldSettings/Auto",					"自動",
+
+		"$$$/Dialog/FormFieldSettings/SelectedIsDefault",		"選択したアイテムは、デフォルトのアイテムです。",
+		
+		"$$$/Dialog/FormFieldUI/DeleteAlert",					"ステートを削除すると関連した内容も削除されます。それでもステートを削除しますか？",
+		"$$$/Dialog/FormFieldUI/DestroyAlert",					"この操作を行うとフォームフィールドのその他のステートに関連した内容が削除されます。続行しますか？",
+		"$$$/Dialog/FormFieldUI/DeleteContentAlert",			"このステートに関連した内容を削除しますか？",
+		"$$$/Dialog/FormFieldUI/StyleChangeAlert",				"この操作を行うとフォームフィールドの現在のステートに関連した内容が削除されます。続行しますか？",
+		"$$$/Dialog/FormFieldUI/StyleChangeFailed",				"フォームフィールドに選択された外観スタイルを適用するのに失敗しました。",
+
+		/* These are not visible, they are names of subpanels... */
+		
+		"$$$/Dialog/FormFieldSettings/CheckBox",				"チェックボックスオプション",	
+		"$$$/Dialog/FormFieldSettings/RadioButton",				"ラジオボタンオプション",	
+		"$$$/Dialog/FormFieldSettings/TextField",				"テキストフィールドボタンオプション",	
+		"$$$/Dialog/FormFieldSettings/ListBox",					"リストボックスボタンオプション",	
+		
+		"$$$/Dialog/About/Description",						"形成プラグイン、version 1.0\n\n(c) 2001 Adobe Systems Incorporated. All rights reserved.",
+
+		"$$$/Dialog/CmdName/CreateButton",					"ボタンに変換",
+		"$$$/Dialog/CmdName/DestroyButton",					"オブジェクトに変換",
+		"$$$/Dialog/CmdName/ChangeFormSettings",			"ボタンの設定を変更",
+
+		"$$$/Dialog/TextColor/Title",						"テキストカラー", 
+		"$$$/Dialog/Button/Color...",						"フォントカラー...", 
+
+		"$$$/Dialog/AppearancePanelPrefs/Title",			"パネルオプション", 
+		"$$$/Dialog/AppearancePanelPrefs/ThumbnailSize",	"サムネールのサイズ", 
+		"$$$/Dialog/AppearancePanelPrefs/None",				"なし", 
+		
+		
+		"$$$/Dialog/StateOptions/Title",					"ステートオプション", 
+		"$$$/Dialog/StateOptions/State",					"ステート :", 
+		"$$$/Dialog/StateOptions/Enable",					"ステートを有効にする", 
+
+		"$$$/Dialog/CalculationOrder/Title",				"計算順", 
+		"$$$/Dialog/TabOrder/Title",						"タブ順の設定", 
+		"$$$/Dialog/Order/MoveUp",							"上へ移動(&U)", 
+		"$$$/Dialog/Order/MoveDown",						"下へ移動(&D)",
+
+		"$$$/Dialog/ButtonPDFOptions/Title",				"PDF オプション",
+		"$$$/Dialog/ButtonPDFOptions/InitialAppearance",	"初期の外観 :",
+		"$$$/Dialog/ButtonPDFOptions/Visible",				"表示可能(&V)",
+		"$$$/Dialog/ButtonPDFOptions/Hidden",				"非表示(&H)",
+		"$$$/Dialog/ButtonPDFOptions/Printable",			"プリント可能(&P)",
+		"$$$/Dialog/ButtonPDFOptions/Description",			"詳細(&D) :",
+		
+		// ----- Window strings
+		
+		// ----- Panel strings
+
+		"$$$/Panel/FormFieldSettings/Action Data Holder",	"アクションのデータホルダ",
+		"$$$/Panel/FormFieldSettings/+",					"+",
+		"$$$/Panel/FormFieldSettings/Event:",				"イベント :",
+		"$$$/Panel/FormFieldSettings/Actions:",				"アクション :",
+		"$$$/Panel/FormFieldSettings/URL:",					"URL :",
+		"$$$/Panel/FormFieldSettings/Mail to:",				"メールの送信先 :",
+		"$$$/Panel/Action",									"アクション",
+		"$$$/Panel/Empty Action",							"[追加されたアクションなし]",
+		"$$$/Panel/StatesListBoxLabel/States",				"外観",
+		"$$$/Panel/States",									"ボタンとフォーム",
+		"$$$/Panel/FormFieldSettings/FieldType",			"タイプ :",
+		"$$$/Panel/FormFieldSettings/Name",					"名前 :",
+		"$$$/Panel/ShowHide/Visibility:",					"表示 / 非表示 :",
+		"$$$/Panel/GoToPage/Page:",							"ページ :",
+
+		"$$$/Panel/Normal",									"[通常]",
+		"$$$/Panel/Over",									"[ロールオーバー]",
+		"$$$/Panel/Down",									"[クリック]",
+
+		"$$$/Panel/Off",									"[通常オフ]",
+		"$$$/Panel/On",										"[通常オン]",
+
+		"$$$/Panel/RolloverOff",							"[ロールオーバーオフ]",
+		"$$$/Panel/RolloverOn",								"[ロールオーバーオン]",
+		"$$$/Panel/DowmOff",								"[クリックオフ]",
+		"$$$/Panel/DownOn",									"[クリックオン]",
+
+		"$$$/Panel/CmdName/FormFieldName",					"ボタン名",
+		"$$$/Panel/CmdName/FormFieldStyle",					"ボタンの外観",
+		
+		"$$$/Panel/FormFieldSettings/Appearance",			"外観 :",
+		"$$$/Panel/PDFOptions",								"PDF オプション",
+		"$$$/Panel/Required",								"必須",
+		"$$$/Panel/Printable",								"プリント可能",
+		"$$$/Panel/Description",							"説明 :",
+		"$$$/Panel/SelectedByDefault",						"デフォルトで選択",
+		"$$$/Panel/Multiline",								"複数行",
+		"$$$/Panel/ListItems",								"リストアイテム",
+		"$$$/Panel/MultipleSelection",						"複数選択",
+		"$$$/Panel/FontSize",								"フォントサイズ :",
+		"$$$/Panel/Font",									"フォント :",
+		"$$$/Panel/AutoSize",								"自動",
+		"$$$/Panel/SortItems",								"アイテムをソート",
+		"$$$/Panel/MERTLOption",							"右から左方向",
+		"$$$/Panel/ExportValue",							"ボタンの値 :",
+		 
+		"$$$/Popup/Separator",								"-",
+		
+		"$$$/Dialog/Behaviors/Exit/No Data for Exit Behavior", "",
+
+		// ----- Tips strings
+
+		"$$$/Tip/StateEye",				"書き出し時に任意のステートを有効 / 無効",
+		"$$$/Tip/StateThumbnail",		"このステートの圧縮表示",
+		"$$$/Tip/Show",					"表示",
+		"$$$/Tip/Hide",					"隠す",
+		"$$$/Tip/Ignore",				"無視",
+		"$$$/Tip/Delete Selected Action",	"選択されたアクションを削除",
+		"$$$/Tip/Add New Action",		"選択したイベントに新規アクションを追加",
+		"$$$/Tip/DeleteState",			"任意のステートと内容を削除",
+		"$$$/Tip/Convert To Button",		"ボタンに変換",
+		"$$$/Tip/Convert To Object",		"オブジェクトに変換",
+		"$$$/Tip/DefaultChoice",		"リストのアイテムを選択し、そのアイテムをデフォルトの選択にします。ソート順をカスタム設定するには、「アイテムをソート」を選択解除し、アイテムを目的の位置へドラッグします。",
+        "$$$/Tip/MissingFontToolTip",				"フォームフィールドにないフォントです。クリックしてフォントを検索してください。",
+
+		// ----- Error strings
+
+		"$$$/Error/YouNeedToSpecifyAName", "名前を指定してください。",
+		"$$$/Error/YouNeedToSpecifyANonBlankName", "有効な名前を指定してください。",
+		"$$$/Error/YouNeedToSpecifyANonBlankNameOrNoName", "有効な名前を指定するか、または名前を指定しないでください。",
+		"$$$/Error/YouNeedToSpecifyAnExportValue", "書き出し値を指定してください。",
+		"$$$/Error/YouNeedToSpecifyANonBlankExportValue", "有効な書き出し値を指定してください。",
+		"$$$/Error/YouNeedToSpecifyAUniqueName", "このステート名は既に使用されています。他の名前を選択してください。",
+		"$$$/Error/YouNeedToSpecifyAValidFontSize", "0 ～ 300 の値または「自動」を指定します。",
+		
+		// ----- Misc strings
+
+		"$$$/Command/DeleteStates",	"ステートを削除",
+		"$$$/CmdName/DeleteStateContent",	"ステートの内容を削除",
+		"$$$/Panel/CmdName/MSOName",		"マルチステートオブジェクト名",
+		
+		// ----- MultiStateObject Panel strings
+				
+		"$$$/Menu/MSOPanel", "オブジェクトステート(&O)",
+		"$$$/Panel/MSOPanel", "オブジェクトステート",
+		"$$$/Panel/MSOPanel/ObjectName", "オブジェクト名 :",
+#ifdef MACINTOSH
+		"$$$/Panel/MSOPanel/MixedSelection", "「新規」ボタンをクリックして、各オブジェクトに別々のステートを作成します。Option キーを押しながらクリックすると、複数のオブジェクトを同じステートにできます。",
+		"$$$/Panel/MSOPanel/MSOAndMixedSelection", "「新規」ボタンをクリックして、マルチステートオブジェクト「^1」内の各オブジェクトに新しいステートを作成します。Option キーを押しながらクリックすると、複数のオブジェクトを同じステートにできます。\n\n「追加」ボタンをクリックすると、表示可能なステート「^2」にオブジェクトを挿入できます。",
+#else
+		"$$$/Panel/MSOPanel/MixedSelection", "「新規」ボタンをクリックして、各オブジェクトに別々のステートを作成します。Alt キーを押しながらクリックすると、複数のオブジェクトを同じステートにできます。",
+		"$$$/Panel/MSOPanel/MSOAndMixedSelection", "「新規」ボタンをクリックして、マルチステートオブジェクト「^1」内の各オブジェクトに新しいステートを作成します。Alt キーを押しながらクリックすると、複数のオブジェクトを同じステートにできます。\n\n「追加」ボタンをクリックすると、表示可能なステート「^2」にオブジェクトを挿入できます。",
+#endif
+		
+		"$$$/Menu/MSOPanelPopup", "オブジェクトステートパネルメニュー",	
+		"$$$/Menu/MSOPanel/NewState", "新規ステート",
+		"$$$/Menu/MSOPanel/DeleteState", "ステートを削除",
+		"$$$/Menu/MSOPanel/AddToState", "オブジェクトをステートに追加",
+		"$$$/Menu/MSOPanel/PasteIntoState", "ステートにペースト",
+		"$$$/Menu/MSOPanel/ReleaseState", "ステートをオブジェクトにリリース",
+		"$$$/Menu/MSOPanel/ReleaseAllStates", "すべてのオブジェクトをステートにリリース",
+		"$$$/Menu/MSOPanel/ResetAllMSOs", "すべてのマルチステートオブジェクトを最初のステートにリセット",
+		"$$$/Menu/MSOPanel/Options", "パネルオプション...",
+		"$$$/Menu/MSOPanel/ContextMenu", "オブジェクトステートパネルコンテキストメニュー",
+		"$$$/Menu/MSOPanel/ReleaseStateContextMenu", "「^1」をオブジェクトにリリース",
+		"$$$/Menu/MSOPanel/DeleteStateContextMenu", "「^1」を削除",
+		"$$$/Menu/MSOPanel/PasteIntoStateContextMenu", "「^1」にペースト",
+		"$$$/Menu/MSOPanel/HiddenUntilTriggered", "トリガーされるまで非表示",
+	
+		"$$$/Tip/MSOPanel/StateAnimated", "このステートのオブジェクトがアニメーション化されます。",
+		"$$$/Tip/MSOPanel/NewMSO", "選択範囲をマルチステートオブジェクトに変換",
+		"$$$/Tip/MSOPanel/NewState", "新規ステートを作成",
+		"$$$/Tip/MSOPanel/DeleteState", "選択したステートを削除",
+		"$$$/Tip/MSOPanel/MSOIsSelected", "このマルチステートオブジェクトは選択されています。オブジェクトを変換すると、すべてのステートが変換されます。",
+		"$$$/Tip/MSOPanel/MSOIsNotSelected", "ステートが選択されています。クリックしてマルチステートオブジェクトを選択してください。",
+		"$$$/Tip/MSOPanel/MSOStateIsSelected", "このステートは選択されています。",
+		"$$$/Tip/MSOPanel/MSOStateContentIsSelected", "このステート内のコンテンツが選択されています。このステートを選択するには行をクリックしてください。",
+		"$$$/Tip/MSOPanel/MSOStateRowMSOIsSelected", "マルチステートオブジェクトが選択されています。このステートに切り替えて選択するには、行をクリックしてください。",
+		"$$$/Tip/MSOPanel/MSOActiveStateRowMSOIsSelected", "マルチステートオブジェクトが選択されています。このステートを選択するには行をクリックしてください。",
+		"$$$/Tip/MSOPanel/MSOAnotherStateIsSelected", "このステートに切り替えて選択するには、行をクリックしてください。",
+		"$$$/Tip/MSOPanel/PasteIntoState", "コピーしたオブジェクトを選択したステートにペースト",
+		"$$$/Tip/MSOPanel/AddToState", "オブジェクトを表示可能なステートに追加",
+	
+		"$$$/Dialog/MSOPanel/ReleaseAlert", "マルチステートオブジェクトには、少なくとも 2 つのステートが含まれている必要があります。このアクションを実行すると、マルチステートオブジェクトがドキュメントから削除されます。現在のオブジェクトはすべて、シングルステートオブジェクトとして現在の位置に残ります。",
+		"$$$/Dialog/MSOPanel/ReleaseAllAlert", "このアクションを実行すると、マルチステートオブジェクトがドキュメントから削除されます。現在のオブジェクトはすべて、シングルステートオブジェクトとして現在の位置に残ります。",
+		"$$$/Dialog/MSOPanel/DeletesMSOAlert", "マルチステートオブジェクトには、少なくとも 2 つのステートが含まれている必要があります。このアクションを実行すると、マルチステートオブジェクトがドキュメントから削除されます。残りのステートに関連付けられているオブジェクトは、シングルステートオブジェクトとして現在の位置に残ります。",
+		
+		"$$$/Panel/MSOPanel/StatusOne", " ^1 のオブジェクト",
+		"$$$/Panel/MSOPanel/Status", " ^1 のオブジェクト",
+		
+		"$$$/Panel/MSOPanel/StatusMSOSelected", "選択されたすべてのステート",
+		"$$$/Panel/MSOPanel/StatusStateSelected", "選択されたすべてのステート",
+		"$$$/Panel/MSOPanel/StatusStateContentSelected", "選択されたステートのオブジェクト",
+
+		// Command strings		
+		"$$$/Command/CheckBox", "チェックボックスに変換",
+		"$$$/Command/ComboBox", "コンボボックスに変換",
+		"$$$/Command/ListBox", "リストボックスに変換",
+		"$$$/Command/RadioButton", "ラジオボタンに変換",
+		"$$$/Command/SignatureField", "署名フィールドに変換",
+		"$$$/Command/TextField", "テキストフィールドに変換",
+}
+};
+
+#endif // __ODFRC__

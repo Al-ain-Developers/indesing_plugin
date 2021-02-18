@@ -1,0 +1,142 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kLayerPanelStringsRsrcID + index_frFR)
+{
+	k_frFR,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{
+		// ----- Command strings
+
+		"Layer Options",				"Options de calque",
+		"New Layer",					"Nouveau calque",
+		"Layer Deletion",				"Supprimer le ou les calques",
+		"Delete Unused Layers",			"Supprimer les calques inutilisés",
+		"Lock Others",					"Verrouiller les autres",
+		"#UnlockOthers",					"Déverrouiller les autres",
+		"Show All",						"Tout afficher",
+		"#ShowOthers",					"Afficher les autres",
+		"Unlock All",					"Tout déverrouiller",
+		"Hide All",						"Tout masquer",
+		"Lock All",						"Tout verrouiller",
+		"Merge Layers",					"Fusionner les calques",
+		"Move To Layer",				"Déplacer vers le calque",
+		"Copy To Layer",				"Copier vers le calque",
+		"Move Layer",					"Déplacer le calque",
+		"Move Layers",					"Déplacer les calques",
+		"kUnlockOthersSequence",		"Déverrouiller les autres",
+		"kLockOthersSequence",			"Verrouiller les autres",
+
+		// ----- Menu strings
+		
+		"Layers...",						"Ca&lques...",
+
+		"New Layer...",						"Nouveau calque...",
+		"New Layer Above \"^1\"...",		"Nouveau calque au-dessus de \"^1\"...",
+		"New Layer Below \"^1\"...",		"Nouveau calque au-dessous de \"^1\"...",
+		"New Top Layer...",					"Nouveau calque supérieur...",
+		"Delete Layer",						"Supprimer le calque",
+		"Delete \"^1\"",					"Supprimer le calque \"^1\"",
+		"Delete Layers",					"Supprimer les calques",
+		"#Duplicate ^1 Menu",				"Dupliquer le calque \"^1\"",
+		"#Duplicate LayersMenu",			"Dupliquer les calques",
+		"#DuplicatLayersCmd",				"Dupliquer les calques",
+		
+		"Layer Options for \"^1\"...",		"Options de calque pour \"^1\"...",
+		"Layer Options...",					"Options de calque...",
+		"Show All Layers",					"Tout afficher",
+		"Hide Others",						"Masquer les autres",
+		"Unlock All Layers",				"Déverrouiller tous les calques",
+		"Lock Others",						"Verrouiller les autres",
+		"Hide All Layers",					"Tout masquer",
+		"Lock All Layers",					"Tout verrouiller",
+		
+		"Paste Remembers Layers",			"Coller selon les calques",
+		"Ungroup Remembers Layers",			"Dissocier selon les calques",
+		
+		"Merge Layers",						"Fusionner les calques",
+		"Delete Unused Layers",				"Supprimer les calques inutilisés",
+		"Select Item(s) on \"^1\"",			"Sélectionner un ou plusieurs éléments sur \"^1\"",
+		"Select Item(s) Layer",				"Sélectionner un ou plusieurs éléments sur le calque",
+				
+		"#SelectLayerPageItemMenu",		"Sélectionner les éléments",
+		"#SelectZoomLayerPageItemMenu",	"Sélectionner et ajuster un élément",
+		"#ZoomLockedPageItemMenu",		"Ajuster l'élément à la fenêtre",
+		
+		// Menu names for context and panel menus
+		"LayerPanelPopup",					"Menu du panneau Calques",	
+		"RtMenuLayerPanelEye",				"Menu contextuel Œil du panneau Calques",	
+		"RtMenuLayerPanelLock",				"Menu contextuel Verrouillage du panneau Calques",
+		"RtMenuLayerPanelItem",				"Menu contextuel Calque du panneau Calques",	
+		"RtMenuLayerPanelPageItem",			"Menu contextuel Elément de page du panneau Calques",	
+
+		// ----- Window strings
+		"DeleteOneLayer",					"Le calque \"^1\" comprend des objets. Voulez-vous quand même le supprimer ?",
+		"DeleteMultiLayers",				"Les calques sélectionnés comprennent des objets. Voulez-vous quand même supprimer les calques ?",
+		"DeleteOneGuideLayer",				"Le calque \"^1\" contient des repères de règle. Voulez-vous quand même le supprimer ?",
+		"DeleteGuideLayers",				"Les calques sélectionnés comprennent des repères de règle. Voulez-vous quand même supprimer les calques ?",
+		"DeletingPlaceGunUsedLayer",		"Impossible de supprimer le calque. Il est nécessaire pour l'extrait chargé dans le curseur d'importation.",
+
+		// ----- Window Menu
+		"Layers_WinMenu",					"Cal&ques",
+		
+		// ----- Panel strings
+		
+		"^1 Layer",							"^1 calque",		// For status widget
+		"^1 Layers",						"^1 calques",	// For status widget
+		"New Layer",						"Nouveau calque",	// Title of New Layer dialog
+		"Layer Options",					"Options de calque", // Title of Layer Options dialog
+		"&Name:",							"&Nom :",
+		"&Color:",							"&Couleur :",
+		"&Show Layer",						"&Afficher le calque",
+		"Show &Guides",						"A&fficher les repères",
+		"&Lock Layer",						"&Verrouiller le calque",
+		"Loc&k Guides",						"Verrouiller le&s repères",
+		"Keep When Layer is &Hidden",		"Supprimer l'ha&billage lorsque le calque est masqué",
+		"&Print Layer",						"&Imprimer le calque",
+
+		// ----- Tips strings
+
+		"DeleteLayerTip",					"Supprimer les calques sélectionnés",
+		"NewLayerTip",						"Nouveau calque",
+		"EyeTip",							"Active/Désactive l'affichage",
+		"PencilTip",						"Active/Désactive le verrouillage du calque (modifiable lorsque vide)",
+		"PageItemPencilTip",				"Active/Désactive le verrouillage de l'élément de page (modifiable lorsque vide)",
+		"SwatchTip",						"Couleur des repères de sélection sur ce calque",
+		"ProxyTip",							"Indique les éléments sélectionnés (faire glisser pour passer d'un calque à l'autre ou pour changer l'ordre Z).",
+		"ProxyChildSelectedTip",			"Contient l'objet sélectionné (cliquer pour sélectionner l'objet de conteneur).",
+		"UnselectedProxyTip",				"Cliquer pour sélectionner les éléments",
+		"ActiveTip",						"Calque actif",
+
+		// ----- Error strings
+		"EmptyLayerName",					"Le nom de calque est obligatoire.",
+		"DuplicateLayer",					"Un calque portant le même nom existe déjà.",
+
+		"#LayerHierPanelName",		"Calques",
+		"#Page:^1,",					"Page : ^1, ", // for layer panel status widget. Will be followed by layer count string.
+		"#Pages:^1,",					"Pages : ^1, ", // for layer panel status widget. Will be followed by layer count string.
+		"#DeletePageItemsMenu",		"Supprimer les éléments de page", // menu item name
+		"#DeletePageItem \"^1\"",		"Supprimer l'élément de page \"^1\"", // menu item name
+		"#DuplicatePI ^1 Menu",			"Dupliquer l'élément de page \"^1\"", // menu item name
+		"#DuplicatePIMenu",			"Dupliquer les éléments de page",  // menu item name
+	}
+};
+
+#endif // __ODFRC__

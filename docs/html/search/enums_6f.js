@@ -1,0 +1,21 @@
+var searchData=
+[
+  ['objectformat',['ObjectFormat',['../class_facade_1_1_i_digital_publishing_facade.html#a92757e3c408ae44976586c4e15b38125',1,'Facade::IDigitalPublishingFacade']]],
+  ['objectmodificationstate',['ObjectModificationState',['../class_i_link.html#a0d94340caed0468dded7799bf9c1e153',1,'ILink']]],
+  ['objectstyleapplication',['ObjectStyleApplication',['../class_i_new_page_item_cmd_data.html#a736b5582aed19ddcc5993e0e5821cbaa',1,'INewPageItemCmdData']]],
+  ['objecttype',['ObjectType',['../class_i_find_change_options.html#aecc0f426ac39b0a0ef375a5b286dac7f',1,'IFindChangeOptions']]],
+  ['observable',['Observable',['../class_i_database_observer.html#af6600b523c17fabb43590d13a11498d4',1,'IDatabaseObserver']]],
+  ['offsetstyle',['OffsetStyle',['../class_i_offset_path.html#a38ee19b7aff5fdbb2ae335f0a07a27f4',1,'IOffsetPath']]],
+  ['openflags',['OpenFlags',['../class_i_data_base.html#a9dbb56ce3d7e855224035880a8a8599e',1,'IDataBase::OpenFlags()'],['../class_i_open_file_cmd_data.html#a462bf6190d0f4851ded092a8ae15c8b8',1,'IOpenFileCmdData::OpenFlags()']]],
+  ['openoptions',['openOptions',['../class_i_book.html#a22d18dc63a495bb0cecb751f5cd24788',1,'IBook']]],
+  ['operatingstate',['OperatingState',['../class_i_preflight_process.html#a08dafac920e7a16139ea4de1b1cdd525',1,'IPreflightProcess']]],
+  ['operationtype',['OperationType',['../class_i_link_manager.html#ad1f63df63bf09c80a503cb88aaeb007d',1,'ILinkManager']]],
+  ['options',['Options',['../class_i_book_paginate_options.html#a496a0bcca1c21534d3a2224d62ebf076',1,'IBookPaginateOptions']]],
+  ['optionstate',['OptionState',['../class_i_s_v_g_export_options_data.html#acbd452a552a0f115dccad2ee20bd8934',1,'ISVGExportOptionsData::OptionState()'],['../class_i_text_frame_options_data.html#af144b25e4d3f575d67ac8d7c06874221',1,'ITextFrameOptionsData::OptionState()']]],
+  ['ordertype',['OrderType',['../class_facade_1_1_i_story_view_table_facade.html#a53a703a1ff31f4378b4752fd5b3925e2',1,'Facade::IStoryViewTableFacade']]],
+  ['orientation',['Orientation',['../class_i_digital_publishing_setup_provider.html#a029ad1c6a4b47ad11a24b5c0b711f4e3',1,'IDigitalPublishingSetupProvider']]],
+  ['otpositioningform',['OTPositioningForm',['../class_i_drawing_style.html#a100b6d8650ff46f1734ef311e41c3cdc',1,'IDrawingStyle']]],
+  ['outputuioptions',['OutputUIOptions',['../class_i_book_output_action_cmd_data.html#a86427d4c388edb1ed688486059e81370',1,'IBookOutputActionCmdData']]],
+  ['overridelocation',['OverrideLocation',['../class_i_draw_option_overrides.html#a15b9c64acbf2475b184eab68c574f7e1',1,'IDrawOptionOverrides']]],
+  ['oversetdisplaytype',['OversetDisplayType',['../class_i_galley_settings.html#a649b677709c291851ca07929189169a4',1,'IGalleySettings']]]
+];

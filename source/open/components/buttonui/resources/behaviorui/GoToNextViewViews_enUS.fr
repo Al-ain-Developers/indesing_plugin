@@ -1,0 +1,62 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/buttonui/resources/behaviorui/GoToNextViewViews_enUS.fr $
+//  
+//  Owner: Mark VerMurlen
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#ifdef __ODFRC__
+#include "InterfaceColorDefines.h"
+
+//========================================================================================
+// AlignPanelView resource
+//========================================================================================
+
+resource GoToNextViewDataPanel (kGoToNextViewPanelRsrcID + index_enUS)
+{
+	__FILE__, __LINE__,
+	kGoToNextViewPanelWidgetID,		// WidgetId,
+	kPMRsrcID_None,					// RsrcId
+	kBindNone,						// Frame binding
+	Frame(0,0,211,30)				// Frame
+	kTrue,							// Visible
+	kTrue,							// Enabled
+	kTrue,							// EraseBeforeDraw
+	kInterfacePaletteFill,			// Erase to color
+	kFalse,							// DrawDropShadow
+	"",				// Panel name	
+	{
+		StaticTextWidget
+		(
+			kSelectFileLabelWidgetID,	// WidgetId
+			kPMRsrcID_None,				// RsrcId
+			kBindNone,					// Frame binding
+			Frame(15,10,280,30)			// Frame
+			kFalse,						// Visible
+			kFalse,						// Enabled
+			kAlignLeft,					// Alignment
+			kDontEllipsize, kTrue,				// Ellipsize style, Convert ampersands
+			"",
+			kSelectFileWidgetID
+		)
+	},
+	kGoToNextViewBehavior
+}
+
+#endif

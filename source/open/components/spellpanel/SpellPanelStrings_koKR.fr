@@ -1,0 +1,159 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kSpellPanelStringsRsrcID + index_koKR)
+{
+	k_koKR,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{				
+		// ----- Main menu strings
+		"SpellingMenu",					"맞춤법(&S)",
+		"Check Spelling...",			"맞춤법 검사(&K)...",
+		"Dynamic SpellCheck",			"동적 맞춤법 검사(&M)",
+		"Autocorrect",					"자동 고침",
+		"Auto Correct",					"자동 고침(&A)",
+		"AutoCorrect",					"자동 고침",
+
+		// ----- Window strings
+		"corrected",					"수정됨",
+		"misspelled",					"틀림",
+		
+		// ----- Scope strings
+		
+		"[No spelling]",				"[맞춤법 검사 안 함]",
+		"Auto",							"자동",
+		"Document",						"문서",
+		"Story",						"스토리",
+		"Stories",						"여러 스토리",
+		"Selection",					"선택 항목",
+		
+		// ----- Panel strings		
+		"Spelling",						"맞춤법",
+		"&Spelling...",					"맞춤법(&S)...",
+		"Auto Correct...",				"자동 고침(&E)...",
+		"[No language]",				"[언어 없음]",
+		"AutoCorrectEnable",			"자동 고침 사용(&N)",
+		"AutoCorrectCapitalizationErrors",			"대문자 오류 자동 고침(&C)",
+		"A&dd...",						"추가(&D)...",		// Opens a dialog
+		"EditAutoCorrectWord",			"편집(&E)...",		// Opens a dialog
+		"Correction",					"고침",
+		"Misspelled Word",				"틀린 단어",
+
+		// ----- Dialog strings
+		"Check Spelling",				"맞춤법 검사",
+		"&Change To:",					"바꿀 내용(&C):",
+		
+		"Change To",					"바꿀 내용",
+		"&Suggested Corrections:",		"추천 단어(&N):",
+		"Language:",					"언어:",
+		"Sea&rch:",						"검색(&R):",
+		"Include Overset",				"넘치는 텍스트 포함",
+		"&Done",							"완료(&D)",
+		"C&hange",						"변경(&H)",
+		"S&tart",						"시작(&T)",
+		"Chan&ge All",					"모두 변경(&G)",
+		"Skip",							"건너뛰기",	
+		"kSkipButtonInSpellingDialog",  "건너뛰기(&K)",
+		"Ignore",						"무시",
+		"&Ignore All",					"모두 무시(&I)",
+		"&AddAndContinue",				"추가(&A)",			// Adds to dictionary automatically, continues spelling
+		"Dic&tionary...",				"사전(&Y)...",	// Launches Dict Editor dialog
+		"Add To:",						"추가할 사전(&O):",
+
+		// Label strings in Spell Check dialog.
+		"Ready to Spell Check:", 			"맞춤법 검사 준비",
+		"Misspelled Word:",					"틀린 단어:",
+		"Unknown Word - No Suggestions:", 	"알 수 없는 단어 - 추천 단어 없음:",
+		"Not in Dictionary:",				"사전에 없음:",
+		"Repeated Word:",					"반복된 단어:",
+		"Uncapitalized Word:",				"소문자로 시작하는 단어:",
+		"Uncapitalized Sentence:",			"소문자로 시작하는 문장:",
+		"Duplicate Word:",					"단어 복제:",
+		"Capitalization Error:",			"대문자 오류:",
+		"Spell Check Complete:",			"맞춤법 검사 완료",
+		
+		"SpellCheckCompleteAlertStr",			"맞춤법 검사가 완료되었습니다.",	// Alert string at completion of spelling.
+
+		"Misspelled Word (Overset):",					"틀린 단어: (넘치는 텍스트)",
+		"Unknown Word - No Suggestions (Overset):", 	"알 수 없는 단어: (넘치는 텍스트)",
+		"Not in Dictionary (Overset):",					"사전에 없음: (넘치는 텍스트)",
+		"Repeated Word (Overset):",						"반복된 단어: (넘치는 텍스트)",
+		"Uncapitalized Word (Overset):",				"소문자로 시작하는 단어: (넘치는 텍스트)",
+		"Uncapitalized Sentence (Overset):",			"소문자로 시작하는 문장: (넘침)",
+
+		"Misspelled Word (In Table):",					"틀린 단어: (표 내부)",
+		"Unknown Word - No Suggestions (In Table):", 	"알 수 없는 단어: (표 내부)",
+		"Not in Dictionary (In Table):",					"사전에 없음: (표 내부)",
+		"Repeated Word (In Table):",						"반복된 단어: (표 내부)",
+		"Uncapitalized Word (In Table):",				"소문자로 시작하는 단어: (표 내부)",
+		"Uncapitalized Sentence (In Table):",			"소문자로 시작하는 문장: (표 내부)",
+
+		"Misspelled Word (Deleted Text):",				"틀린 단어: (삭제된 텍스트)",
+		"Unknown Word - No Suggestions (Deleted Text):","알 수 없는 단어: (삭제된 텍스트)",
+		"Not in Dictionary (Deleted Text):",			"사전에 없음: (삭제된 텍스트)",
+		"Repeated Word (Deleted Text):",				"반복된 단어: (삭제된 텍스트)",
+		"Uncapitalized Word (Deleted Text):",			"소문자로 시작하는 단어: (삭제된 텍스트)",
+		"Uncapitalized Sentence (Deleted Text):",		"소문자로 시작하는 문장: (삭제됨)",
+		
+		"Misspelled Word (Hidden):",					"틀린 단어: (숨겨진 항목)",
+		"Unknown Word - No Suggestions (Hidden):", 		"알 수 없는 단어: (숨겨진 항목)",
+		"Not in Dictionary (Hidden):",					"사전에 없음: (숨겨진 항목)",
+		"Repeated Word (Hidden):",						"반복된 단어: (숨겨진 항목)",
+		"Uncapitalized Word (Hidden):",					"소문자로 시작하는 단어: (숨겨진 항목)",
+		"Uncapitalized Sentence (Hidden):",				"소문자로 시작하는 문장: (숨김)", // Shortened to "Hidden" for space. Like the "Overset" case above.
+
+//		"Spelling Preferences", 						"Spelling Preferences", // Note to localizer: this string moved to SpellingServiceStrings.fr
+		"Find", 										"찾기",
+		"&Misspelled Words", 							"틀린 단어(&M)",
+		"&Repeated Words", 								"반복된 단어(&R)",
+		"&Uncapitalized Words", 						"소문자로 시작하는 단어(&U)",
+		"Uncapitalized &Sentences", 					"소문자로 시작하는 문장(&S)",
+		"Misspelled Words Underline Color:",			"틀린 단어(&P):",
+		"Repeated Words Underline Color:",				"반복된 단어(&T):",
+		"Uncapitalized Words Underline Color:",			"소문자로 시작하는 단어(&Z):",
+		"Uncapitalized Sentences Underline Color:",		"소문자로 시작하는 문장(&N):",
+		"Dynamic Spellchecking",						"동적 맞춤법 검사",
+		
+		"Underline Color",								"밑줄 색상",
+		
+		"&Enable Dynamic Spelling",						"동적 맞춤법 검사 사용(&E)",
+		
+		"Search is completed.  ^1  replacement(s) made.", "검색이 완료되었습니다. ^1개의 항목을 바꿨습니다.", 
+
+		"Add",											"추가",
+		"Re&move",										"제거(&M)",
+		"Misspelled:",									"틀린 단어:",
+		"Correction:",									"고침:",
+		"Language:",									"언어:",
+		"&Language:",									"언어(&L):",
+		"AddToAutoCorrectList",							"자동 고침 목록에 추가",
+		"EditAutoCorrectList",							"자동 고침 목록 편집",
+
+		"ACAlert1",		"항목을 비워 둘 수 없습니다.",
+		"ACAlert2",		"맞춤법 및 대문자 오류를 수정할 때 원래 단어와 수정 단어는 같을 수 없습니다.",
+		"ACAlert3",		"이 틀린 단어와 수정 단어가 목록에 이미 있습니다.",
+		"ACAlert4",		"항목을 만들 수 없습니다. 최대 문자 수(64자)를 초과했습니다.",
+		"ACAlert5",		"항목에 잘못된 문자가 포함되어 있습니다.",
+		"ACAlert6",		"틀린 단어에 공백을 포함하여 입력할 수 없습니다.",
+
+	}
+};
+
+#endif // __ODFRC__

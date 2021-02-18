@@ -1,0 +1,126 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kConditionalTextUIStringsRsrcID + index_huHU)
+{
+    k_huHU,                                 // Locale Id
+    kResourceUTF8Encoded,     // Character encoding converter
+    {
+		"#CondTextUI_WinMenu",	"&Feltételes szöveg",	// panel menu item
+		"#CondTextUI_PanelName","Feltételes szöveg",		// panel name
+		"#CondTextUI_PanelMenu","Feltételes szöveg panelmenü",
+		"#CondTextUI_NewConditionTagMenu", "Új feltétel...",
+		"#CondTextUI_DeleteConditionTagMenu", "Feltétel törlése...",
+		"#CondTextUI_DeleteConditionTagsMenu", "Feltételek törlése...",
+		"#CondTextUI_EditConditionTagMenu", "Feltétel beállítása...",
+		"#CondTextUI_LoadConditionTagsMenu", "Feltételek betöltése...",
+		"#CondTextUI_LoadConditionTagsAndSetsMenu", "Feltételek és készletek betöltése...",
+		"#CondTextUI_ShowIndicatorsCB", "Feltételes szöveg jelzőinek mutatása",
+		"#CondTextUI_ShowIndicatorsMenu", "Feltételes szöveg jelzőinek mutatása",
+		"#CondTextUI_ShowAndPrintIndicatorsMenu", "Feltételes szöveg jelzőinek mutatása és nyomtatása",
+		"#CondTextUI_HideIndicatorsMenu", "Feltételes szöveg jelzőinek elrejtése",
+		"#CondTextUI_ShowIndicatorsDD", "Jelzők:",
+		"#CondTextUI_ShowIndicators", "Megjelenítés",
+		"#CondTextUI_ShowAndPrintIndicators", "Megjelenítés és nyomtatás",
+		"#CondTextUI_HideIndicators", "Elrejtés",
+		"#CondTextUI_RtMenuConditionTagTVNode",    "Feltétel fa nézet csomópont környezetfüggő menü",
+		"#CondTextUI_RtMenuUnapplyTag",		"\"^1\" nincs alkalmazva",
+		"#CondTextUI_RtMenuDeleteTag",		"\"^1\" törlése",
+		"#CondTextUI_RtMenuEditTag",		"\"^1\" szerkesztése...",
+		"Show Options", "&Beállítások megjelenítése",
+		"Hide Options", "&Beállítások elrejtése",
+		"#CondTextUI_SelectUnusedMenu", "Összes nem használt kijelölése",
+	
+		"#ConditionTagList_NameColumnLabel", "Név",
+		"#ConditionTag_OptionsDialog", "Feltétel beállítása",
+		"#ConditionTag_OptionsDialogNew", "Új feltétel",
+		"#ConditionTagOptions_Name:", "&Név:",
+		"#ConditionTagOptions_Method:", "M&ódszer:",
+		"#ConditionTagOptions_Appearance:", "&Megjelenés:",
+		"#ConditionTagOptions_Color:", "&Szín:",
+		"#ConditionTagOptions_Indicator", "Jelző",
+		"#ConditionTagOptions_MethodUnderline", "Aláhúzás",
+		"#ConditionTagOptions_MethodHighlight", "Kiemelés",
+		"#ConditionTagOptions_WavyUnderline", "Hullámos",		
+		"#ConditionTagOptions_SolidUnderline", "Folytonos",		
+		"#ConditionTagOptions_DashedUnderline", "Szaggatott",		
+		"#ConditionTag_EmptyNameMsg", "Adjon meg egy feltételnevet.",
+		"#ConditionTag_NameInUseMsg", "Ez a feltételnév már használatban van. Válasszon másikat.",
+		
+		"#ConditionSetShowAll", "Az összes megjelenítése",
+		"#ConditionSetHideAll", "Az összes elrejtése",
+		"#ConditionSetNone", "[Nincs]",
+		"#ConditionSetBlank", " ",
+		"#ConditionSetLabel", "Beállítás:",
+		"#ConditionSetNewSet", "Új beállítás készítése...",
+		"#ConditionSetDeleteSet", "\"^1\" törlése...",
+		"#ConditionSetRenameSet", "\"^1\" átnevezése...",
+		"#ConditionSetRedefineSet", "\"^1\" újradefiniálása...",
+		"#ConditionSetUpdateAllSets", "Összes készlet frissítése",
+		"#ConditionSetUpdateAllSetsUndoName", "Összes feltételkészlet frissítése",
+		"#ConditionSetNameDialog", "Feltétel beállítás neve",
+		"#ConditionSetNameStatic", "&Név:",
+		"#InvalidSetName", "Érvénytelen a feltétel beállítás neve",
+		"#DuplicateSetName", "A név már létezik",
+		"#NoActiveSetString", "Nincs aktív készlet",
+		
+		"#ConditionalTextTip", "Rejtett szöveg található, ^1: ",
+		"#ConditionalTextTipOneTag", "ez a feltétel",
+		"#ConditionalTextTipManyTags", "ezek a feltételek",
+		
+		"#ConditionalTextEyeballHideWidgetTip", "Kattintással elrejthet minden olyan szöveget, amelyikre ez a feltétel vonatkozik",
+		"#ConditionalTextEyeballShowWidgetTip", "Kattintással megjeleníthet minden olyan szöveget, amelyikre ez a feltétel vonatkozik",
+		"#ConditionalTextEyeballUnconditionalWidgetTip", "A feltétel nélküli szöveg mindig látható",
+		"#ConditionalTextAppliedAllTip",	"A feltétel az összes kijelölt szövegre érvényes. Kattintással érvénytelenítheti",
+		"#ConditionalTextAppliedSomeTip",	"A feltétel a kijelölt szöveg egy részére érvényes. Kattintással a kijelölt teljes szövegre lesz érvényes",
+		"#ConditionalTextAppliedNoneTip",	"Kattintással alkalmazza a feltételt",
+		"#ConditionalTextAppliedAllTipUncondition",	"A kijelölt szöveg feltétel nélküli",
+		"#ConditionalTextAppliedSomeTipUncondition",	"A kijelölt szöveg egy része feltétel nélküli. Kattintásra a kijelölt teljes szöveg feltétel nélküli lesz",
+		"#ConditionalTextAppliedNoneTipUncondition",	"Kattintással a kijelölt szöveget feltétel nélkülivé teszi",
+		"#ConditionalTextApplyNoSelectionTip", "Kattintással a feltételt alkalmazza a kijelölt szövegre",
+		"#ConditionalTextNewTagTip",		"Új feltétel",
+		"#ConditionalTextDeleteTagTip",		"Feltétel törlése",
+		"#ConditionalTextIndicatorTip",		"Jelzési módszer: ^1",
+		"#ConditionalTextNewSetTip",		"Új beállítás",
+		"#SetOverrideTip_NewConditionsAndConditionVisibility",	"Felülírás: feltétel láthatósága (a készlet újrakijelölésével törölhető, vagy az Újradefiniálás választható ki) + új feltételek (az Összes készlet frissítése művelettel törölhető, vagy az Újradefiniálás választható ki)",
+		"#SetOverrideTip_NewConditions",	"Felülírás: új feltételek (az Összes készlet frissítése művelettel törölhető, vagy az Újradefiniálás választható ki)",
+		"#SetOverrideTip_ConditionVisibility",	"Felülírás: feltétel láthatósága (a készlet újrakijelölésével törölhető, vagy az Újradefiniálás választható ki)",
+		
+		"#ConditionTag_DeleteConditionDialog", "Feltétel törlése", 
+		"#ConditionTag_DeleteConditionsDialog", "Feltételek törlése", 
+		"#ConditionTag_DeleteConditionAndReplace:", "Feltétel törlése és cseréje ezzel: ", 
+		"#ConditionTag_DeleteConditionsAndReplace:", "Feltételek törlése és cseréje ezzel: ", 
+		"#ConditionTag_DeleteInformationAlert", "A feltétel törléséhez húzza azt a lomtár ikonjára.",
+		"#ConditionTag_DeleteNoReplaceChoice", "[Nincs]",
+		
+		"#QuickApplyConditions", "Feltétel",
+		"#Conditions_Filter_Key", "CT", // should be upper case if there is an upper case character, this is the prefix key for quick apply for text conditions.
+		"#QuickApplyConditionSets", "Feltételkészlet",
+		"#QuickApplyConditionSets_Filter_Key", "CS",  // should be upper case if there is an upper case character, this is the prefix key for quick apply for text condition sets.
+		"#QuickApplyConditons_Menu_Key_String", "Feltételekkel együtt (ct:)",
+		"#QuickApplyConditonSets_Menu_Key_String", "Feltételbeállításokkal együtt (cs:)",
+		
+		"#SingularConditionStatusBodyString", "^1 feltétel alkalmazva: ^2",
+		"#PluralConditionStatusBodyString", "^1 feltételek alkalmazva: ^2",
+		"#MixedConditionString", " [vegyes]",
+		"#NoConditionsString", "nincsenek feltételek alkalmazva",
+    }
+};
+
+#endif // __ODFRC__

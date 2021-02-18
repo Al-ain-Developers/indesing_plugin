@@ -1,0 +1,255 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/sdksamples/customunits/CstUni.fr $
+//  
+//  Owner: Adobe Developer Technologies
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//  
+//  Umbrella include file for all the .fr files in the plug-in.
+//  
+//========================================================================================
+
+//===========================
+//  General includes:
+//===========================
+
+#include "MenuDef.fh"
+#include "ActionDef.fh"
+#include "ActionDefs.h"
+#include "AdobeMenuPositions.h"
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "StringTable.fh"
+//#include "OMTypes.h"
+#include "objectmodeltypes.fh"
+#include "ShuksanID.h"
+#include "ActionID.h"
+#include "CommandID.h"
+#include "WorkspaceID.h"
+#include "widgetid.h"
+#include "BuildNumber.h"
+#include "MeasurementSystemID.h"
+#include "ScriptInfoTypes.fh" // for VersionedScriptElementInfo
+#include "SpreadID.h"
+
+// Project includes:
+#include "CstUniID.h"
+#include "CstUniScriptingDefs.h"
+
+#include "PlugInModel_UIAttributes.h"
+#ifdef __ODFRC__
+
+// Custom ruler resource 
+#include "CstUniRuler.fr"
+
+/*
+// Plugin version definition.
+*/
+resource PluginVersion (kSDKDefPluginVersionResourceID)
+{
+	kTargetVersion,
+	kCstUniPluginID,
+	kSDKDefPlugInMajorVersionNumber, kSDKDefPlugInMinorVersionNumber, 	
+	kSDKDefHostMajorVersionNumber, kSDKDefHostMinorVersionNumber,
+	kCstUniCurrentMajorFormatNumber, kCstUniCurrentMinorFormatNumber,
+	{ kInDesignProduct, kInCopyProduct }, 
+	{ kWildFS },
+	kUIPlugIn,
+	kCstUniVersion
+};
+
+/*
+// The ExtraPluginInfo resource adds extra information to the Missing Plug-in dialog
+// that is popped when a document containing this plug-in's data is opened when
+// this plug-in is not present. These strings are not translatable strings
+// since they must be available when the plug-in isn't around. They get stored
+// in any document that this plug-in contributes data to.
+*/
+resource ExtraPluginInfo(1)
+{
+	kCstUniCompanyValue,				// Company name
+	kCstUniMissingPluginURLValue,		// URL 
+	kCstUniMissingPluginAlertValue,		// Missing plug-in alert text
+};
+
+/*
+//	Boss class definition.
+*/
+resource ClassDescriptionTable(kSDKDefClassDescriptionTableResourceID)
+{{{
+
+
+	/**
+	 It provides the actions invoked by this plug-in's
+	 sub-menu items. 
+
+	 @ingroup customunits
+	*/
+	Class
+	{
+		kCstUniActionComponentBoss,
+		kBaseActionComponentBoss,
+		{
+			/** 
+			Handle the actions from the menu. 
+			*/
+			IID_IACTIONCOMPONENT, kCstUniActionComponentImpl,
+		}
+	},
+
+	/** 
+	 It provides a custom units of measure implementation
+	 as a service provider.
+
+	 @ingroup customunits
+	 */
+	Class
+	{
+		kCstUniBoss,
+		kInvalidClass,
+		{
+			/** 
+			Register the custom units of measure with the application.
+			Implementation provided by the API.
+			 */
+			IID_IK2SERVICEPROVIDER,	kUnitOfMeasureService,
+			/** 
+			Provide the conversion between custom units and points, the 
+			formatting and tokenization and ruler resource for the custom units.
+			*/
+			IID_IUNITOFMEASURE,	kCstUniImpl,
+		}
+	},
+}}};
+
+/*
+// Implementation definition.
+*/
+resource FactoryList (kSDKDefFactoryListResourceID) 
+{
+	kImplementationIDSpace,
+	{
+#include "CstUniFactoryList.h"
+	}
+};
+
+/*
+// Menu definition.
+*/
+resource MenuDef (kSDKDefMenuResourceID)
+{
+	{
+		// The About Plug-ins sub-menu item for this plug-in.
+		kCstUniAboutActionID,			// ActionID (kInvalidActionID for positional entries)
+		kCstUniAboutMenuPath,			// Menu Path.
+		kSDKDefAlphabeticPosition,			// Menu Position.
+		kSDKDefIsNotDynamicMenuFlag,		// kSDKDefIsNotDynamicMenuFlag or kSDKDefIsDynamicMenuFlag.
+
+	}
+};
+
+/*
+// Action definition.
+*/
+resource ActionDef (kSDKDefActionResourceID)
+{
+	{ 
+		kCstUniActionComponentBoss, 		// ClassID of boss class that implements the ActionID.
+		kCstUniAboutActionID,	// ActionID.
+		kCstUniAboutMenuKey,	// Sub-menu string.
+		kHelpMenuActionArea,				// Area name (see ActionDefs.h).
+		kNormalAction,					// Type of action (see ActionDefs.h).
+		kDisableIfLowMem,				// Enabling type (see ActionDefs.h).
+		kInvalidInterfaceID,			// Selection InterfaceID this action cares about or kInvalidInterfaceID.
+		kSDKDefInvisibleInKBSCEditorFlag, // kSDKDefVisibleInKBSCEditorFlag or kSDKDefInvisibleInKBSCEditorFlag.
+
+	}
+};
+
+
+/*
+// LocaleIndex
+// The LocaleIndex should have indicies that point at your
+// localizations for each language system that you are 
+// localized for.
+*/
+/*
+// String LocaleIndex.
+*/
+resource LocaleIndex (kSDKDefStringsResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_enUS, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_jaJP, kSDKDefStringsResourceID + index_jaJP
+		
+		kWildFS, k_Wild, kSDKDefStringsResourceID + index_enUS
+	}
+};
+
+resource LocaleIndex (kSDKDefStringsNoTransResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_Wild, kSDKDefStringsNoTransResourceID + index_enUS
+	}
+};
+
+resource StringTable (kSDKDefStringsNoTransResourceID + index_enUS)
+{
+	k_enUS,									// Locale Id
+	kEuropeanMacToWinEncodingConverter,		// Character encoding converter
+	{
+		// No-Translate strings go here:	
+
+	}
+};
+
+/*
+// Scripting definition.
+*/
+resource VersionedScriptElementInfo(1)
+{
+	//Contexts
+	{
+		kCS3ScriptVersion, kCoreScriptManagerBoss, kWildFS, k_Wild,
+	}
+	//Elements
+	{
+		Enumerator
+		{
+			kMeasurementUnitsEnumScriptElement,
+			{
+				//Expose this unit to the scripting architecture
+				en_MeasCstUni, "sdk custom units", "A custom unit of measurement added by the SDK",
+			}
+		}		
+	}
+};
+
+#endif // __ODFRC__
+
+#include "CstUni_enUS.fr"
+#include "CstUni_jaJP.fr"
+//  Generated by Dolly build 16: template "IfPanelMenu".
+// End, CstUni.fr.
+
+
+
+
+

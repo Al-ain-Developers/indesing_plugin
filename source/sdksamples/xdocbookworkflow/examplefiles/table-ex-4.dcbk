@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article SYSTEM "sdocbook.dtd">
+<article>
+<section>
+<title>Different numbers of columns in the body rows</title>
+<informaltable>
+<tgroup cols="2">
+<tbody>
+<row>
+<entry>Solo entry</entry>
+</row>
+<row>
+<entry>Another entry</entry>
+<entry>Yet another entry</entry>
+</row>
+<row>
+<entry>Another entry</entry>
+<entry>Yet another entry</entry>
+</row>
+</tbody>
+</tgroup>
+</informaltable>
+</section>
+</article>

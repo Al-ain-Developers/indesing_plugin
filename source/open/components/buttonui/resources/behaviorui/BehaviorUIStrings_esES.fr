@@ -1,0 +1,129 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kBehaviorUIStringsRsrcID + index_esES)
+{
+	k_esES,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{		
+		"$$$/Dialog/Behaviors/ShowHideFields/Fields_Tree", "Árbol de campos",
+
+		"$$$/Dialog/Behaviors/Description",				"Se incluirá una breve descripción del comportamiento. También se pueden incluir sugerencias acerca de las opciones de comportamiento. Da al usuario una idea aproximada de cómo debe utilizarse.",
+		"$$$/Dialog/Behaviors/Description Title",		"Descripción",
+		"$$$/Dialog/Behaviors/DeleteAlert",				"¿Desea eliminar la acción seleccionada?",
+		"$$$/Dialog/Behaviors/DragDeleteAlert",			"¿Desea eliminar las acciones arrastradas?",
+		"$$$/Dialog/Behaviors/Error/Invalid URL",		"Debe especificarse un valor en el campo de la URL",
+		"$$$/Dialog/Behaviors/Error/Invalid File",		"Debe especificarse un archivo válido",
+		
+		"$$$/Dialog/Behaviors/Movie/Movie:",			"Vídeo:",
+		"$$$/Dialog/Behaviors/Movie/Play Options:",		"Opciones:",
+		"$$$/Dialog/Behaviors/Movie/Play",				"Reproducir",
+		"$$$/Dialog/Behaviors/Movie/Stop",				"Detener",
+		"$$$/Dialog/Behaviors/Movie/Pause",				"Pausa",
+		"$$$/Dialog/Behaviors/Movie/Resume",			"Reanudar",
+		"$$$/Dialog/Behaviors/Movie/PlayFromNavPoint",	"Reproducir desde punto de navegación",
+		"$$$/Dialog/Behaviors/Movie/StopAll",			"Detener todo (sólo SWF)",
+		"$$$/Dialog/Behaviors/Movie/NavPoint",			"Punto:",
+		"$$$/Dialog/Behaviors/Movie/NoVideo",			"(sin vídeo)",
+		"$$$/Dialog/Behaviors/Movie/NoVideoNavPoint",	"(sin punto de navegación)",
+
+		"$$$/Dialog/Behaviors/Sound/Sound:",			"Sonido:",
+		"$$$/Dialog/Behaviors/Sound/Play Options:",		"Opciones:",
+		"$$$/Dialog/Behaviors/Sound/Play",				"Reproducir",
+		"$$$/Dialog/Behaviors/Sound/Stop",				"Detener",
+		"$$$/Dialog/Behaviors/Sound/Pause",				"Pausa",
+		"$$$/Dialog/Behaviors/Sound/Resume",			"Reanudar",
+		"$$$/Dialog/Behaviors/Sound/StopAll",			"Detener todo (sólo SWF)",
+		"$$$/Dialog/Behaviors/Sound/Volume:",			"Volumen:",
+		"$$$/Dialog/Behaviors/Sound/Synchronous",		"Sincrónico",
+		"$$$/Dialog/Behaviors/Sound/Mix",				"Mix",
+		"$$$/Dialog/Behaviors/Sound/NoSound",			"(sin sonido)",
+		
+		"$$$/Dialog/Behaviors/Animation/Animation:",	"Animación:",
+		"$$$/Dialog/Behaviors/Animation/Play Options:",	"Opciones:",
+		"$$$/Dialog/Behaviors/Animation/Play",			"Reproducir",
+		"$$$/Dialog/Behaviors/Animation/Stop",			"Detener",
+		"$$$/Dialog/Behaviors/Animation/Pause",			"Pausa",
+		"$$$/Dialog/Behaviors/Animation/Resume",		"Reanudar",
+		"$$$/Dialog/Behaviors/Animation/StopAll",		"Detener todo",
+		"$$$/Dialog/Behaviors/Animation/Reverse",		"Invertir",
+		"$$$/Dialog/Behaviors/Animation/AutoReverse",	"Invertir al alejarse del objeto",
+		"$$$/Dialog/Behaviors/Animation/NoAnimation",	"(sin animación)",
+		
+		"$$$/Dialog/Behaviors/MSO/Object:",				"Objeto:",
+		"$$$/Dialog/Behaviors/MSO/State:",				"Estado:",
+		"$$$/Dialog/Behaviors/MSO/AutoReverse",			"Retroceder al alejarse del objeto",
+		"$$$/Dialog/Behaviors/MSO/NextLoop",			"Detener en el último estado",
+		"$$$/Dialog/Behaviors/MSO/PrevLoop",			"Detener en el primer estado",
+		"$$$/Dialog/Behaviors/MSO/NoMSO",				"(sin objeto de varios estados)",
+
+		"$$$/Dialog/Behaviors/GoToView/Go To:",			"Ir a:",
+		"$$$/Dialog/Behaviors/GoToView/First Page",		"Primera página",
+		"$$$/Dialog/Behaviors/GoToView/Page",			"Página",
+		"$$$/Dialog/Behaviors/GoToView/Previous Page",	"Página anterior",
+		"$$$/Dialog/Behaviors/GoToView/Next Page",		"Página siguiente",
+		"$$$/Dialog/Behaviors/GoToView/Last Page",		"Última página",
+		"$$$/Dialog/Behaviors/GoToView/Back",			"Atrás",
+		"$$$/Dialog/Behaviors/GoToView/Forward",		"Adelante",
+		"$$$/Dialog/Behaviors/GoToView/Previous View",	"Vista anterior",
+		"$$$/Dialog/Behaviors/GoToView/Next View",		"Vista siguiente",
+		"$$$/Dialog/Behaviors/GoToView/Specific Page",	"Página específica",
+		"$$$/Dialog/Behaviors/GoToView/Document:",		"Documento:",
+		"$$$/Dialog/Behaviors/GoToView/Page:",			"Página:",
+		"$$$/Dialog/Behaviors/GoToView/URL",			"URL",
+		"$$$/Dialog/Behaviors/GoToView/URL:",			"URL:",
+		"$$$/Dialog/Behaviors/GoToView/Anchor",			"Anclaje de texto",
+		"$$$/Dialog/Behaviors/GoToView/Anchor:",		"Destino:",
+		"$$$/Dialog/Behaviors/GoToView/Bookmark",		"Marcador",
+		"$$$/Dialog/Behaviors/GoToView/Inherit Zoom",	"Zoom anterior",
+		"$$$/Dialog/Behaviors/GoToView/Actual Size",	"Tamaño real",
+		"$$$/Dialog/Behaviors/GoToView/Fit In Window",	"Encajar en ventana",
+		"$$$/Dialog/Behaviors/GoToView/Fit Width",		"Encajar ancho",
+		"$$$/Dialog/Behaviors/GoToView/Fit Height",		"Encajar alto",
+		"$$$/Dialog/Behaviors/GoToView/Fit Visible",	"Encajar área visible",
+		"$$$/Dialog/Behaviors/GoToView/Zoom:",			"Zoom:",
+		"$$$/Dialog/Behaviors/GoToView/None",			"Ninguno",
+		"$$$/Dialog/Behaviors/GoToAnchor/InDesign Format File","Archivo de formato InDesign",
+		
+		"$$$/Dialog/Behaviors/ViewZoom/Full Screen",	"Pantalla completa",
+		"$$$/Dialog/Behaviors/ViewZoom/Zoom View In",	"Aumentar",
+		"$$$/Dialog/Behaviors/ViewZoom/Zoom View Out",	"Reducir",
+		"$$$/Dialog/Behaviors/ViewZoom/Fit Page",		"Encajar en ventana",
+		"$$$/Dialog/Behaviors/ViewZoom/Actual Size",	"Tamaño real",
+		"$$$/Dialog/Behaviors/ViewZoom/Fit Width",		"Encajar ancho",
+		"$$$/Dialog/Behaviors/ViewZoom/Fit Visible",	"Encajar área visible",
+		"$$$/Dialog/Behaviors/ViewZoom/SinglePage",		"Una sola página",
+		"$$$/Dialog/Behaviors/ViewZoom/OneColumn",		"Continuo",
+		"$$$/Dialog/Behaviors/ViewZoom/TwoColumns",		"Continuo - páginas opuestas",
+
+		"$$$/Dialog/Behaviors/ImportData/Select File:","Seleccionar archivo:",
+		"$$$/Dialog/Behaviors/ImportData/Acrobat Format File","Archivo de formato Acrobat",
+
+		"$$$/Dialog/Behaviors/OpenFile/Select File:","Seleccionar archivo:",
+		"$$$/Dialog/Behaviors/OpenFile/Select File to be Opened", "Seleccionar archivo que se va abrir",
+		"$$$/Dialog/Behaviors/OpenFile/Acrobat Format File","Archivo de formato Acrobat",
+
+		"$$$/Dialog/Behaviors/SubmitForm/Submit To:","URL:",
+						
+		// ----- Tips strings
+	}
+};
+
+#endif // __ODFRC__

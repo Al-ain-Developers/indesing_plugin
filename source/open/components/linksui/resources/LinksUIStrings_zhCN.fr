@@ -1,0 +1,227 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#ifdef __ODFRC__
+
+#include "StringTable.fh"
+
+resource StringTable (kLinksUIStringsRsrcID + index_zhCN)
+{
+	k_zhCN,					// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	{
+		"Links_WinMenu",			"链接(&K)", // panel menu item
+		"kRtMouseGraphics",			"图形", // context menu submenu name
+		"RtMenuLinksUILinkInfo",	"链接信息上下文菜单",
+		
+		"#LinksUIPanel",			"链接", // panel name
+		"#LinksUIPanelMenu",		"“链接”面板菜单", 
+		"#LinksUtilitiesSubmenu",		"实用程序",		// submenu for links panel menu
+		"#SelectedLinkInfoSectionName",			"链接信息", // section name in links ui panel
+		
+		"#UpdateAllOutOfDateLinksMenu",	"更新所有链接",
+		"#AutoFindMissingLinksMenu",		"搜索缺失的链接",
+		"#LinksUIRelinkLinkMenu",		"重新链接...",
+		"#LinksUIRelinkResourceMenu",	"重新链接所有实例...", // menu item to relink all instances of this multiple link assets
+		"#RelinkResource ^1 Menu",		"重新链接“^1”的所有实例...", // menu item to relink all instances of one single link asset
+		"#ReplaceFPOWithOriginalResourceMenu",	"替换所有实例...", // menu item to replace all instances of this multiple link assets
+		"#ReplaceFPOWithOriginalResource ^1 Menu", "使用原始资源替换 FPO“^1”的所有实例...", // menu item to replace all instances of one single link asset
+		"#RelinkCloudResource ^1 Menu",	"从 CC 库重新链接“^1”的所有实例...", // menu item to relink all instances of one single link asset
+        "#RelinkAALResource ^1 Menu",    "从 Adobe Asset Link 重新链接“^1”的所有实例...", // menu item to relink all instances of one single link asset
+		"#LinksUIUpdateLinkMenu",			"更新链接", // context menu item in links ui panel
+		"#LinksUIUpdateLinkResourceMenu",	"更新所有实例",
+		"#UpdateResource ^1 Menu",		"更新“^1”的所有实例", // menu item to update all instances of one single link asset
+		"#LinksUIEmbedLinkMenu",			"嵌入链接", // context menu item in links ui panel
+		"#LinksUIEmbedResourceMenu",		"嵌入所有实例",
+		"#EmbedResource ^1 Menu",			"嵌入“^1”的所有实例", // menu item to embed all instances of one single link asset
+		"#LinksUIUnEmbedLinkMenu",		"取消嵌入链接", // context menu item in links ui panel
+		"#LinksUIUnEmbedResourceMenu",	"取消嵌入所有实例",
+		"#UnembedResource ^1 Menu",			"取消嵌入“^1”的所有实例", // menu item to unembed all instances of one single link asset
+		"#LinksUIUnLinkMenu",				"取消链接",
+		"#UnLinkResourceMenu",			"取消链接所有实例",
+		"#UnLinkResource ^1 Menu",			"取消链接“^1”的所有实例", // menu item to unlink all instances of one single link asset
+		"#LinksUIEditOriginalLinkMenu",		"编辑原稿", // context menu item in links ui panel
+		"#LinksUIGoToSourceLinkMenu",		"转到源", // context menu item in links ui panel
+		"#LinksUIXMPFileInfo",				"XMP 文件信息...",
+		"#LinksUICopyPath",				"复制完整路径",
+		"#LinksUICopyPlatformPath",			"复制平台样式路径",
+		"#RevealLinkInMacFinder",			"在 Finder 中显示",
+		"#RevealLinkInWinExplorer",			"在资源管理器中显示",
+		"#RevealLinkInAdobeBridge",			"在 Bridge 中显示",
+		"#RevealLinkInCCLibraries",			"在 CC 库中显示",
+		"#GoToLink",						"转到链接",
+		"#EditWithApp",					"编辑工具",
+		"ApplicationFiles",					"应用程序 (*.exe)", // windows only string to list exe files in the 'edit with application' dialog.
+		"#ChooseEditingApplication",			"选择应用程序", // dialog title
+		"#OtherApp",						"其他...",	// Menu name for choosing a custom application via a standard file dialog for Edit With...
+		"#LinksUICopyLink",				"将链接复制到...",
+		"#LinksUIEditColumnsMenu",			"面板选项...",
+		
+		"#LinksUIRemoveThisColumnMenu",	"隐藏此栏",
+		"#LinksUIShowThumbnailMenu",		"显示缩览图",
+		"#LinksUIHideThumbnailMenu",		"隐藏缩览图",		
+		"#LinksUIShowInfoThumbnailMenu",	"显示信息缩览图",
+		"#LinksUIHideInfoThumbnailMenu",	"隐藏信息缩览图",
+		
+		"#SaveLinkVersionCmd",			"登记链接",
+		"#ShowLinksPanelColumn",			"显示栏",
+		"#ShowLinksPanelInfo",				"在链接信息中显示",
+		"#SelectNextLinkButtonTip",			"在列表中选择下一个链接",
+		"#SelectPrevLinkButtonTip",			"在列表中选择上一个链接",
+		"#ToggleLinkInfoButtonTip",			"显示/隐藏链接信息",
+
+		"#ShortLinkStatusParamStr",				"^1 个链接",  // status string for links panel
+		"#LongLinkStatusParamStr",				"总共 ^1 个链接\n\n   ^2 个缺失链接\n   ^3 个已修改链接\n   ^4 个嵌入链接\n   ^5 个唯一链接\n   ^6 个子链接", // tip string for links panel status.
+		"#OneSelectedLinkStr",			"选中 1 个链接", // status string when one link is selected in the panel.
+		"#NumSelectedLinksParamStr",	"选中了 ^1 个链接", // status string when multiple links are selected in the panel.
+				
+		"RtMenuLinksUILinkItem",		"“链接”上下文菜单",
+		"RtMenuLinksUILinksHeader",		"“链接标题”上下文菜单",
+		
+		"#LinkColumnDialog",			"面板选项", // dialog name
+		"#LinksUIPanelOptions",			"选项",
+		
+		"#LinkThumbPrefLabel",			"缩览图:",
+		"#LinksUIRowSizeLabel",		"行大小(&R):",
+		"#LinksUISmallRowStr",			"小行",
+		"#LinksUIRegularRowStr",		"常规行",
+		"#LinksUILargeRowStr",			"大行",
+		"#LinkInfoShowThumbnailCheckbox",	"在链接信息中显示(&I)",
+		"#LinksUIShowThumbnail",		"在名称栏中显示(&N)",
+		"#LinksUICollapseMultiple",		"将多个链接折叠为同一来源(&C)",
+
+		"#SearchHereForMissingFiles",	"在此文件夹中搜索缺失的链接", // label for checkbox in relink dialog
+		"#RelinkSkipButton",			"跳过", // name for 'skip' button in relink dialog
+		"#SearchFound^1Links",		"已搜索此重新链接的目录，找到并重新链接 ^1 个缺失的链接。", // alert that displays if we auto find missing links after a relink
+		"#RelinkToFolderTitle",			"选择要重新链接的目标文件夹。仅重新链接当前选定的有匹配名称的链接。",
+		"#RelinkToSameFilename",		"匹配相同文件名和扩展名", // radio button option in relink to folder dialog
+		"#RelinkToExtension",			"匹配相同文件名及此扩展名:", // radio button option in relink to folder dialog
+		"#LinksUICopyLinksTitle",		"选择将在其中复制链接文件的文件夹。",
+		"#LinksUIRelinkToFolderLinkMenu",	"重新链接到文件夹...",
+		"#LinksUIRelinkFileExtensionLinkMenu",	"重新链接文件扩展名...",
+        "#LinksUIRelinkFromCloudAssetLinkMenu",	"从 CC 库重新链接...",
+        "#LinksUIRelinkFromAALAssetLinkMenu",    "从 Adobe Asset Link 重新链接...",
+		"#LicenseStockAssetLinkMenu",	"授权图像...",
+		"#LinksUIRelink: ^1",			"重新链接: ^1", // title for relink dialog. ^1 becomes file path.
+		"#LinksUILocate: ^1",			"定位: ^1", // title for relink dialog when link is missing. ^1 becomes file path.
+		"#CopyLinksFailedAlert",		"将链接复制到文件夹失败。",
+		"#AutoFindFoundNothingAlert",	"未找到缺失的链接。使用“重新链接”命令查找第一个缺失的链接，然后重试。",
+		
+		"kEditsMadeWarning",			  "已对“^1”的导入版本进行了编辑。如果更新，将丢失这些编辑。仍要更新吗？",
+		"kEditsMadeInLinkedStoryWarning",	"已在链接的文章“^1”中进行了编辑。如果更新，将丢失这些编辑。仍要更新吗？",
+		"kEditsMadeInLinkedArticleWarning", "已在链接的页面项目“^1”中进行编辑。如果更新，将丢失这些编辑。仍要更新吗？",
+		"kEditsMadeToTextOrTableWarning", "已对“^1”的导入版本进行了编辑。如果更新链接，将丢失这些编辑（通过单元格样式或表格样式应用到导入电子表格的更改除外）。仍要更新吗？",
+
+		// Strings for Problem Links dialog
+		"#LinksModifiedWarning",	"此文档包含的链接指向了已缺失/已修改的源。您可以立即更新修改的链接，也可以稍后使用“链接”面板进行更新。",
+		"#HTTPLinksModifiedWarning",	"此文档包含的链接指向了自上一个文档保存以来已缺失/已修改的源。您可以立即更新修改的链接，也可以稍后使用“链接”面板进行更新。",
+		"#UpdateLinks",				"更新修改的链接(&U)",	 // button text
+		"#Don'tUpdateLinks",		"不更新链接", // button text
+		"#ProblemMissingLinksParamStr",	"^1 - 缺失的链接",
+		"#ProblemModifiedLinksParamStr",	"^1 - 修改的链接",
+		"#ProblemInaccessibleLinksParamStr",	"^1 - 无法访问的 URL 链接。有关详细信息，请参阅“链接”面板。",
+        "#ProblemLinksDialogHeader",    "链接相关问题",
+		"UnembedToOriginal", 		"如果取消嵌入，可以链接到原文件，或者链接到它在文件夹中创建的文件。是否要链接到原文件？",
+		"#SelectUnembedDir",
+									"选择将在其中创建文件的文件夹。",
+
+		// Show Link message.
+		 "Cannot show link: The selected item is on a hidden layer.",
+						"无法显示链接: 选定项目被隐藏或位于隐藏图层上。",
+		"Cannot show link: The selected item is hidden in overset text.",
+						"无法显示链接: 所选项目隐藏在溢流文本中。",
+		"Cannot show link: The selected item is hidden in an inactive form field state.",
+						"无法显示链接: 当按钮处于非现用状态时，所选项目是隐藏的。请使用“按钮”面板激活隐藏状态，以查看项目。",
+		"Cannot show link: The selected item is hidden in an inactive mso state.",
+						"无法显示链接: 选定项目处于非现用对象状态。使用“对象状态”面板可以将隐藏状态更改为可见状态。",
+		"Cannot show link: The selected item is in deleted text in a tracked change.",
+						"无法显示链接: 所选项目位于修订的已删除文本中。",
+		"Cannot show link: The selected item is an XML structure element not in the layout.",
+						"无法显示链接: 所选项目是 XML 结构元素，但不在版面中。",
+		"Cannot show link: The selected item is in hidden conditional text.",
+						"无法显示链接: 所选项目位于隐藏条件文本中。",
+						
+						
+		"#EditOriginalButtonTip",		"编辑原稿",	// tip string for button in links panel
+		"#GotoLinkButtonTip",		"转到链接",	// tip string for button in links panel
+		
+		"#appendedUpdateButtonTipMac",		". 按下 Opt 的同时单击鼠标可更新全部", // appened to menu name for 'update link' to build tip string for update button(mac)
+		"#appendedUpdateButtonTipWin",		". 按下 Alt 的同时单击鼠标可更新全部", // appened to menu name for 'update link' to build tip string for update button(win)
+		"#appendedRelinkButtonTipMac",		" 按下 Opt 的同时单击鼠标可重新链接所有缺失的链接", // appened to menu name for 'Relink' to build tip string for relink button(mac)
+		"#appendedRelinkButtonTipWin",		" 按下 Alt 的同时单击鼠标可重新链接所有缺失的链接", // appened to menu name for 'Relink' to build tip string for relink button(win)
+		
+		"#ErrorEmbeddingLink",				"嵌入链接失败。",
+		"#LinksUIShowLinkInfoMenu",		"显示“链接信息”窗格",
+		"#LinksUIHideLinkInfoMenu",			"隐藏“链接信息”窗格",
+		"#LinksUICopyLinkInfoMenu",		"复制所有链接信息",
+		"#LinksUIAutosizeLinkInfoMenu",		"自动调整链接信息的大小",
+		"#LinksUIGenerateReportMenu",		"复制选定链接的信息",
+		"#LinksUIGenerateCaptionPrefsMenu",	"题注设置...",
+		"#GenerateLiveLinkCaptionMenu",		"生成活动题注",
+		"#GenerateStaticLinkCaptionMenu",	"生成静态题注",
+		
+		"#GenerateCaptionPrefDialogName",	"题注设置",
+		"#BeforeMetadataCaptionLabel",		"此前放置文本",
+		"#MetadataCaptionLabel",			"元数据",
+		"#AfterMetadataCaptionLabel",		"此后放置文本",
+		"#GenerateLiveCaptionGraphicSelectionMenu",	"生成活动题注",
+		"#GenerateStaticCaptionGraphicSelectionMenu",	"生成静态题注",
+		"#CopyLinkInfoStr '^1'",				"复制“^1”", // Menu item name in links panel. ^1 is replaced with whatever text data is under the mouse.
+		"#CopyLinkFieldMenu",				"“复制信息”字段",
+		"#InfoLabelSuffix",					": ", // suffix added to end of link info labels in the info section
+		
+		"#LinksCopyInfoMenu",				"复制信息", // links panel submenu
+		
+		"#CaptionSubmenu",				"题注",		// name of captions submenu on Object menu
+		"#CaptionRowLabel",				"元数据题注", // caption setup dialog top section title
+		"#CaptionOptionsLabel",				"位置及样式", // caption setup dialog bottom section title
+		"#CaptionOffsetLabel",				"位移(&O):",
+		"#CaptionParaStyleLabel",			"段落样式(&P):",
+		"#CaptionLayerLabel",				"图层(&L):",
+		"#CaptionLayerLockedError",			"无法在锁定的图层上生成题注。",
+		"#CaptionGroupFailureError",			"无法为题注创建组。",
+		"#ErrorGeneratingCaption",			"生成题注时失败。",
+		"#CaptionAlignmentLabel",			"对齐方式(&A):",
+		
+		"#CaptionAlignBelow",				"图像下方",
+		"#CaptionAlignAbove",				"图像上方",
+		"#CaptionAlignLeft",					"图像左侧",
+		"#CaptionAlignRight",				"图像右侧",
+		
+		"#GroupCaptionWithImage",			"将题注和图像编组(&G)",
+		 "#ConvertCaptionToTextMenu",		"转换为静态题注",
+		 "#ShowImportOptionsTip", 			"显示导入选项", // Tool tip for custom controls in relink dialog
+		 "#SearchHereForMissingFilesTip",	"在此处搜索缺失文件", // Tool tip for custom controls in relink dialog
+		 "#EmbedLinkFromPropsPanel",		"从“属性”面板嵌入的图像",
+		 "#RelinkAssetFromPropsPanel",		"从“属性”面板重新链接图像",
+		 "#UpdateLinkFromPropsPanel",		"从“属性”面板更新图像",
+		 "#UnlinkFromPropsPanel",			"从“属性”面板中取消链接文件",
+        
+        "kImportingAALAsset",                "正在导入资产",
+        "kImportingFileName",                "正在导入 ^1",
+        
+        //Error Strings for AEM
+        "AEMUnsupportedFiles",     "无法置入 ^1 个文件（共 ^2 个文件）。文件类型不受 InDesign 支持。",
+        "AEMInaccessibleFiles",     "无法导入 ^1 个文件（共 ^2 个文件）。InDesign 无法访问文件。请检查您的网络连接或内容原始来源。",
+        "AEMUnknownFiles",     "由于未知错误，无法置入 ^1 个文件（共 ^2 个文件）。",
+        "AEMGenericImportFailure",     "无法导入基于 AEM 的资产。",
+        
+        // Action id strings
+        "#LinksUIReplaceFPOWithOriginalLink",        "使用原始资源替换 FPO...",
+        "#LinksUIReplaceAllFPOWithOriginalLinks",    "使用原始资源替换所有 FPO...",
+        "#LinksUIDownloadOriginalLink",                "下载原始资源",
+        "#LinksUIDownloadAllOriginalLinks",            "下载所有原始资源",
+	}
+};
+
+
+
+#endif //__ODFRC__

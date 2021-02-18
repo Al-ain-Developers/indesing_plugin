@@ -1,0 +1,65 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/incopyexport/resources/InCopyExportStrings_arAE.fr $
+//  
+//  Owner: craig rainwater
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// U.S. English strings
+//========================================================================================
+
+resource StringTable (kInCopyExportStringsRsrcID + index_arAE)
+{
+	k_arAE,								// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+
+	{
+		// ----- Miscellaneous strings
+		"Export Seq Name", 		"تصدير مجموعة نصية InCopy",
+		"Graphic",				"رسوم", // append "Graphic" to export name on a graphic item
+		"Text",					"النص", // append "Text" to export name on a text story
+		
+		// ----- Export options dialog strings
+		"InCopyExportOptions",	"خيارات تصدير Adobe In Copy",
+		"ExportOptions_DataType",	"الت&شفير:",
+		"ExportOptions_UTF16",	"UTF16",
+		"ExportOptions_UTF8",	"UTF8",
+		"ExportOptions_DataOptions",	"الخيارات:",
+		"ExportOptions_StyleTable",	"تضمين ج&دول الأنماط",
+		"ExportOptions_SwatchList",	"تضمين قائمة النما&ذج",
+		"ExportOptions_XMPData",	"تضمين م&علومات XMP",
+		"ExportOptions_StoryLabel",	"&عنوان المجموعة النصية:",
+
+		//menu
+		"ExportMenu",				"تص&دير",
+		"kExportLayerToIC",			"&طبقة...",
+		"kExportAllStoriesToIC",	"كل ال&مجموعات النصية...",
+		"kExportAllGraphicsToIC",	"كل ال&رسوم...",
+		"kExportAllItemsToIC",		"&كل الرسوم والمجموعات النصية...",
+
+		"INCDFeatureLost",    "قد تحتوي هذه المجموعة النصية على خصائص غير مدعومة من قبل تنسيق الملفات هذا، ستفقد هذه الخصائص عند تحديث هذه المجموعة النصية.",
+	}
+};
+
+#endif // __ODFRC__

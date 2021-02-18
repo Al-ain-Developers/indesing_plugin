@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Plugin">
+      <UniqueIdentifier>{4282b582-33d1-4248-ab7a-c033f22c6e11}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;rc;def;r;odl;hpj;bat;for;f90;h</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{18295f2a-3d04-43d3-98a1-bc005fea280f}</UniqueIdentifier>
+      <Extensions>ico;cur;bmp;dlg;rc2;rct;bin;cnt;rtf;gif;jpg;jpeg;jpe</Extensions>
+    </Filter>
+    <Filter Include="Resource Files\Core">
+      <UniqueIdentifier>{81496fba-2fda-4278-bdfd-99b1925c619a}</UniqueIdentifier>
+      <Extensions>fr</Extensions>
+    </Filter>
+    <Filter Include="Source">
+      <UniqueIdentifier>{95c24edc-34b6-4765-97c5-fc5169d44ecb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Utils">
+      <UniqueIdentifier>{c8bf2f0a-3be2-476c-8e51-3ee2a783e1bf}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\source\open\components\incopyfileactions\InCopyFileActionsID.cpp">
+      <Filter>Plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\incopyfileactions\InCopyFileActionsMWHacks.cpp">
+      <Filter>Plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\incopyfileactions\InCopyFileActionsPlugIn.cpp">
+      <Filter>Plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\libs\publiclib\statics\PlugInStatics.cpp">
+      <Filter>Plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\incopyfileactions\TriggerResourceDeps.cpp">
+      <Filter>Plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\precomp\msvc\VCPlugInHeaders.cpp">
+      <Filter>Plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\incopyfileactions\FileActionsOpenDocResponder.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\incopyfileactions\InCopyDocDetectContentHndlr.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\incopyfileactions\InCopyDocFileHandler.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\incopyfileactions\utils\InCopyDocUtils.cpp">
+      <Filter>Source\Utils</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\source\open\components\incopyfileactions\InCopyFileActionsDefs.h">
+      <Filter>Plugin</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\open\components\incopyfileactions\InCopyFileActionsFactoryList.h">
+      <Filter>Plugin</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\precomp\msvc\VCPlugInHeaders.h">
+      <Filter>Plugin</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\..\..\source\open\components\incopyfileactions\InCopyFileActions.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\source\open\components\incopyfileactions\resources\InCopyFileActionsClass.fr">
+      <Filter>Resource Files\Core</Filter>
+    </None>
+    <None Include="..\..\..\source\open\components\incopyfileactions\resources\InCopyFileActionsFactoryList.fr">
+      <Filter>Resource Files\Core</Filter>
+    </None>
+    <None Include="..\..\..\source\open\components\incopyfileactions\resources\InCopyFileActionsStrings.fr">
+      <Filter>Resource Files\Core</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\..\..\source\open\components\incopyfileactions\resources\InCopyFileActions.fr">
+      <Filter>Resource Files\Core</Filter>
+    </CustomBuild>
+  </ItemGroup>
+</Project>

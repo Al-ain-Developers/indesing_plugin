@@ -1,0 +1,154 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/incopyexport/resources/InCopyExportClass.fr $
+//  
+//  Owner: Jon Pugh
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "CrossPlatformTypes.h"
+
+#include "BuildNumber.h"
+#include "FormatNumber.h"
+#include "objectmodeltypes.fh"
+
+#include "CommandID.h"				// for kBoolDataImpl declaration
+#include "DocFrameworkID.h"
+#include "InCopyExportID.h"
+#include "InCopyWorkflowID.h"
+#include "NoteID.h"
+#include "WorkspaceID.h"
+#include "GenericID.h"
+#include "WritingModeID2.h"
+#include "ScriptingID.h"
+#include "TextAttrID.h"
+#include "TextID.h"
+#include "TablesID.h"
+
+#include "PlugInModel_UIAttributes.h"
+#include "PMLocaleIds.h"
+
+#ifdef __ODFRC__
+
+//---------------------------------------------------------------
+//	Plugin Version
+//---------------------------------------------------------------
+resource PluginVersion (1)
+{
+    kTargetVersion,
+	kInCopyExportPluginID,
+	kMajorVersionNumber, kMinorVersionNumber, 	
+	kMajorVersionNumber, kMinorVersionNumber, 	
+	kK2MajorFormatNumber,	kLastK2MinorVersionNumber
+	{ kInDesignProduct, kInDesignServerProduct},
+	{ kWildFS }, // kAllProductsRomanFS,
+	kModelPlugIn,
+	kAUMComponentVersionStr
+};
+
+resource ClassDescriptionTable(1)
+{{{
+//---------------------------------------------------------------
+// Basic Plugin Classes
+//---------------------------------------------------------------	
+	Class
+	{
+		kInCopyStoryExportBoss,
+		kInvalidClass,
+		{
+			IID_IK2SERVICEPROVIDER, kExportServiceImpl,
+			IID_IEXPORTPROVIDER, kInCopyStoryExportProviderImpl,
+			IID_IDOCFILETYPE, kDocFileTypeImpl,
+		}
+	},
+
+	Class
+	{
+		kICExportPrefsScriptProviderBoss,
+		kInvalidClass,
+		{
+			IID_ISCRIPTPROVIDER, kICExportPrefsScriptProviderImpl,
+		}
+	},
+
+	/**  kIntegratorSuiteBoss add-in */
+	AddIn
+	{
+		kIntegratorSuiteBoss,
+		kInvalidClass,
+		{
+			IID_IINCOPYEXPORTSUITE,	kICExportSuiteASBImpl,
+		}
+	},
+
+	/**  kTextSuiteBoss add-in */
+	AddIn
+	{
+		kTextSuiteBoss,
+		kInvalidClass,
+		{
+		/** Selection suite implementation */
+			IID_IINCOPYEXPORTSUITE,	kICExportSuiteTextImpl,
+		}
+	},
+
+	/**  kLayoutSuiteBoss add-in */
+	AddIn
+	{
+		kLayoutSuiteBoss,
+		kInvalidClass,
+		{
+		/** Selection suite implementation */
+			IID_IINCOPYEXPORTSUITE,	kICExportSuiteLayoutImpl,
+		}
+	},
+
+	/**  kGalleyTextSuiteBoss add-in */
+	AddIn
+	{
+		kGalleyTextSuiteBoss,
+		kInvalidClass,
+		{
+		/** Selection suite implementation */
+			IID_IINCOPYEXPORTSUITE,	kICExportSuiteTextImpl,
+		}
+	},
+
+	/**  kDocumentDefaultSuiteBoss add-in */
+	AddIn
+	{
+		kDocumentDefaultSuiteBoss,
+		kInvalidClass,
+		{
+		/** Selection suite implementation */
+			IID_IINCOPYEXPORTSUITE,	kICExportSuiteDefaultImpl,
+		}
+	},
+	
+	AddIn
+	{
+		kTableSuiteBoss,
+		kInvalidClass,
+		{
+		/** Selection suite implementation */
+			IID_IINCOPYEXPORTSUITE,	kICExportSuiteTableImpl,
+		}
+	},
+}}};
+
+#endif // __ODFRC__

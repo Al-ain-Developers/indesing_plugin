@@ -1,0 +1,227 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#ifdef __ODFRC__
+
+#include "StringTable.fh"
+
+resource StringTable (kLinksUIStringsRsrcID + index_itIT)
+{
+	k_itIT,					// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	{
+		"Links_WinMenu",			"&Collegamenti", // panel menu item
+		"kRtMouseGraphics",			"Grafica", // context menu submenu name
+		"RtMenuLinksUILinkInfo",	"Menu di scelta rapida Informazioni sul collegamento",
+		
+		"#LinksUIPanel",			"Collegamenti", // panel name
+		"#LinksUIPanelMenu",		"Menu del pannello Collegamenti", 
+		"#LinksUtilitiesSubmenu",		"Utilità",		// submenu for links panel menu
+		"#SelectedLinkInfoSectionName",			"Informazioni collegamento", // section name in links ui panel
+		
+		"#UpdateAllOutOfDateLinksMenu",	"Aggiorna tutti i collegamenti",
+		"#AutoFindMissingLinksMenu",		"Cerca collegamenti mancanti",
+		"#LinksUIRelinkLinkMenu",		"Ricollega...",
+		"#LinksUIRelinkResourceMenu",	"Ricollega tutte le istanze...", // menu item to relink all instances of this multiple link assets
+		"#RelinkResource ^1 Menu",		"Ricollega tutte le istanze di ^1...", // menu item to relink all instances of one single link asset
+		"#ReplaceFPOWithOriginalResourceMenu",	"Sostituisci tutte le istanze...", // menu item to replace all instances of this multiple link assets
+		"#ReplaceFPOWithOriginalResource ^1 Menu", "Sostituisci tutte le istanze di ^1 con l’originale...", // menu item to replace all instances of one single link asset
+		"#RelinkCloudResource ^1 Menu",	"Ricollega tutte le istanze di '^1' da CC Libraries...", // menu item to relink all instances of one single link asset
+        "#RelinkAALResource ^1 Menu",    "Ricollega tutte le istanze di '^1' da Adobe Asset Link...", // menu item to relink all instances of one single link asset
+		"#LinksUIUpdateLinkMenu",			"Aggiorna collegamento", // context menu item in links ui panel
+		"#LinksUIUpdateLinkResourceMenu",	"Aggiorna tutte le istanze",
+		"#UpdateResource ^1 Menu",		"Aggiorna tutte le istanze di ^1", // menu item to update all instances of one single link asset
+		"#LinksUIEmbedLinkMenu",			"Incorpora collegamento", // context menu item in links ui panel
+		"#LinksUIEmbedResourceMenu",		"Incorpora tutte le istanze",
+		"#EmbedResource ^1 Menu",			"Incorpora tutte le istanze di ^1", // menu item to embed all instances of one single link asset
+		"#LinksUIUnEmbedLinkMenu",		"Scorpora collegamento", // context menu item in links ui panel
+		"#LinksUIUnEmbedResourceMenu",	"Scorpora tutte le istanze",
+		"#UnembedResource ^1 Menu",			"Scorpora tutte le istanze di ^1", // menu item to unembed all instances of one single link asset
+		"#LinksUIUnLinkMenu",				"Scollega",
+		"#UnLinkResourceMenu",			"Scollega tutte le istanze",
+		"#UnLinkResource ^1 Menu",			"Scollega tutte le istanze di ^1", // menu item to unlink all instances of one single link asset
+		"#LinksUIEditOriginalLinkMenu",		"Modifica originale", // context menu item in links ui panel
+		"#LinksUIGoToSourceLinkMenu",		"Vai a sorgente", // context menu item in links ui panel
+		"#LinksUIXMPFileInfo",				"Informazioni file XMP...",
+		"#LinksUICopyPath",				"Copia percorso completo",
+		"#LinksUICopyPlatformPath",			"Copia percorso in stile piattaforma",
+		"#RevealLinkInMacFinder",			"Mostra nel Finder",
+		"#RevealLinkInWinExplorer",			"Mostra in Esplora risorse",
+		"#RevealLinkInAdobeBridge",			"Mostra in Bridge",
+		"#RevealLinkInCCLibraries",			"Mostra in CC Libraries",
+		"#GoToLink",						"Vai al collegamento",
+		"#EditWithApp",					"Modifica con",
+		"ApplicationFiles",					"Applicazione (*.exe)", // windows only string to list exe files in the 'edit with application' dialog.
+		"#ChooseEditingApplication",			"Scegli applicazione", // dialog title
+		"#OtherApp",						"Altro...",	// Menu name for choosing a custom application via a standard file dialog for Edit With...
+		"#LinksUICopyLink",				"Copia collegamento/i in...",
+		"#LinksUIEditColumnsMenu",			"Opzioni pannello...",
+		
+		"#LinksUIRemoveThisColumnMenu",	"Nascondi questa colonna",
+		"#LinksUIShowThumbnailMenu",		"Mostra miniatura",
+		"#LinksUIHideThumbnailMenu",		"Nascondi miniatura",		
+		"#LinksUIShowInfoThumbnailMenu",	"Mostra miniatura informazioni",
+		"#LinksUIHideInfoThumbnailMenu",	"Nascondi miniatura informazioni",
+		
+		"#SaveLinkVersionCmd",			"Consegna collegamento",
+		"#ShowLinksPanelColumn",			"Mostra colonna",
+		"#ShowLinksPanelInfo",				"Mostra in Informazioni sul collegamento",
+		"#SelectNextLinkButtonTip",			"Seleziona collegamento successivo nell'elenco",
+		"#SelectPrevLinkButtonTip",			"Seleziona collegamento precedente nell'elenco",
+		"#ToggleLinkInfoButtonTip",			"Mostra/nascondi informazioni sul collegamento",
+
+		"#ShortLinkStatusParamStr",				"^1 collegamenti",  // status string for links panel
+		"#LongLinkStatusParamStr",				"^1 collegamenti totali\n\n   ^2 mancanti\n   ^3 modificati\n   ^4 incorporati\n   ^5 univoci\n   ^6 subordinati", // tip string for links panel status.
+		"#OneSelectedLinkStr",			"1 selezionato", // status string when one link is selected in the panel.
+		"#NumSelectedLinksParamStr",	"^1 selezionati", // status string when multiple links are selected in the panel.
+				
+		"RtMenuLinksUILinkItem",		"Menu di scelta rapida Collegamenti",
+		"RtMenuLinksUILinksHeader",		"Menu di scelta rapida intestazioni collegamenti",
+		
+		"#LinkColumnDialog",			"Opzioni pannello", // dialog name
+		"#LinksUIPanelOptions",			"Opzioni",
+		
+		"#LinkThumbPrefLabel",			"Miniature:",
+		"#LinksUIRowSizeLabel",		"Dimensione &riga:",
+		"#LinksUISmallRowStr",			"Righe piccole",
+		"#LinksUIRegularRowStr",		"Righe normali",
+		"#LinksUILargeRowStr",			"Righe grandi",
+		"#LinkInfoShowThumbnailCheckbox",	"Mostra in &Informazioni collegamento",
+		"#LinksUIShowThumbnail",		"Mostra in colonna &nome",
+		"#LinksUICollapseMultiple",		"&Contrai più collegamenti alla stessa sorgente",
+
+		"#SearchHereForMissingFiles",	"Cerca collegamenti mancanti in questa cartella", // label for checkbox in relink dialog
+		"#RelinkSkipButton",			"Ignora", // name for 'skip' button in relink dialog
+		"#SearchFound^1Links",		"Ricerca effettuata nella directory di ricollegamento. Sono stati trovati e ricollegati ^1 collegamenti mancanti.", // alert that displays if we auto find missing links after a relink
+		"#RelinkToFolderTitle",			"Selezionate la cartella di cui ricreare il collegamento. Verranno ricreati solo i collegamenti attualmente selezionati con il nome corrispondente.",
+		"#RelinkToSameFilename",		"Corrispondenza di nome file ed estensione", // radio button option in relink to folder dialog
+		"#RelinkToExtension",			"Corrispondenza di nome file ma con questa estensione:", // radio button option in relink to folder dialog
+		"#LinksUICopyLinksTitle",		"Selezionate la cartella in cui verranno copiati i file collegati.",
+		"#LinksUIRelinkToFolderLinkMenu",	"Ricollega a cartella...",
+		"#LinksUIRelinkFileExtensionLinkMenu",	"Ricollega estensione file...",
+        "#LinksUIRelinkFromCloudAssetLinkMenu",	"Ricollega da CC Libraries...",
+        "#LinksUIRelinkFromAALAssetLinkMenu",    "Ricollega da Adobe Asset Link...",
+		"#LicenseStockAssetLinkMenu",	"Ottieni licenza immagine...",
+		"#LinksUIRelink: ^1",			"Ricollega: ^1", // title for relink dialog. ^1 becomes file path.
+		"#LinksUILocate: ^1",			"Individua: ^1", // title for relink dialog when link is missing. ^1 becomes file path.
+		"#CopyLinksFailedAlert",		"Copia dei collegamento in cartella non riuscita.",
+		"#AutoFindFoundNothingAlert",	"Nessun collegamento mancante trovato. Usate il comando Ricollega per individuare il primo collegamento mancante e riprovate.",
+		
+		"kEditsMadeWarning",			  "Sono state apportate modifiche alla versione importata di \"^1\". Con l'aggiornamento tali modifiche andranno perse. Intendete comunque effettuare l'aggiornamento?",
+		"kEditsMadeInLinkedStoryWarning",	"Sono state apportate modifiche al brano collegato \"^1\". Con l'aggiornamento tali modifiche andranno perse. Intendete comunque effettuare l'aggiornamento?",
+		"kEditsMadeInLinkedArticleWarning", "Sono state apportate modifiche all'elemento pagina collegato \"^1\". Con l'aggiornamento tali modifiche andranno perse. Intendete comunque effettuare l'aggiornamento?",
+		"kEditsMadeToTextOrTableWarning", "Sono state apportate modifiche alla versione importata di \"^1\". Con l'aggiornamento del collegamento tali modifiche andranno perse (eccetto le modifiche applicate ai fogli di lavoro mediante stili di cella o tabella). Intendete comunque effettuare l'aggiornamento?",
+
+		// Strings for Problem Links dialog
+		"#LinksModifiedWarning",	"Questo documento contiene collegamenti a sorgenti mancanti/modificate. Potete aggiornare ora i collegamenti modificati oppure aggiornarli in un secondo tempo mediante il pannello Collegamenti.",
+		"#HTTPLinksModifiedWarning",	"Questo documento contiene collegamenti a sorgenti mancanti/modificate dall'ultimo salvataggio del documento. Potete aggiornare ora i collegamenti modificati oppure aggiornarli in un secondo momento mediante il pannello Collegamenti.",
+		"#UpdateLinks",				"&Aggiorna collegamenti modificati",	 // button text
+		"#Don'tUpdateLinks",		"Non aggiornare collegamenti", // button text
+		"#ProblemMissingLinksParamStr",	"^1 - Collegamenti mancanti",
+		"#ProblemModifiedLinksParamStr",	"^1 - Collegamenti modificati",
+		"#ProblemInaccessibleLinksParamStr",	"^1 - Collegamenti URL non accessibili. Per informazioni fate riferimento al pannello Collegamenti.",
+        "#ProblemLinksDialogHeader",    "Problemi con i collegamenti",
+		"UnembedToOriginal", 		"L'operazione Scorpora può creare un collegamento ai file originali oppure a file creati in una cartella. Intendete creare il collegamento ai file originali?",
+		"#SelectUnembedDir",
+									"Selezionate la cartella in cui verranno creati i file.",
+
+		// Show Link message.
+		 "Cannot show link: The selected item is on a hidden layer.",
+						"Impossibile mostrare il collegamento: l'elemento selezionato è nascosto o si trova su un livello nascosto.",
+		"Cannot show link: The selected item is hidden in overset text.",
+						"Impossibile visualizzare il collegamento: l'elemento selezionato è nascosto in testo non inserito.",
+		"Cannot show link: The selected item is hidden in an inactive form field state.",
+						"Impossibile mostrare il collegamento: l'elemento selezionato è nascosto da uno stato di pulsante non attivo. Usate il pannello Pulsanti per attivare lo stato nascosto e visualizzare l'elemento.",
+		"Cannot show link: The selected item is hidden in an inactive mso state.",
+						"Impossibile mostrare il collegamento: l'elemento selezionato è in uno stato di oggetto non attivo. Usate il pannello Stati oggetto per rendere visibile lo stato nascosto.",
+		"Cannot show link: The selected item is in deleted text in a tracked change.",
+						"Impossibile mostrare il collegamento: l'elemento selezionato si trova in una modifica rilevata.",
+		"Cannot show link: The selected item is an XML structure element not in the layout.",
+						"Impossibile mostrare il collegamento: l'elemento selezionato è un elemento di struttura XML non presente nel layout.",
+		"Cannot show link: The selected item is in hidden conditional text.",
+						"Impossibile visualizzare il collegamento: l'elemento selezionato si trova in testo condizionato nascosto.",
+						
+						
+		"#EditOriginalButtonTip",		"Modifica originale",	// tip string for button in links panel
+		"#GotoLinkButtonTip",		"Vai al collegamento",	// tip string for button in links panel
+		
+		"#appendedUpdateButtonTipMac",		". Opz+clic per aggiornare tutto", // appened to menu name for 'update link' to build tip string for update button(mac)
+		"#appendedUpdateButtonTipWin",		". Alt+clic per aggiornare tutto", // appened to menu name for 'update link' to build tip string for update button(win)
+		"#appendedRelinkButtonTipMac",		" Opz+clic per ricollegare tutti i collegamenti mancanti", // appened to menu name for 'Relink' to build tip string for relink button(mac)
+		"#appendedRelinkButtonTipWin",		" Alt+clic per ricollegare tutti i collegamenti mancanti", // appened to menu name for 'Relink' to build tip string for relink button(win)
+		
+		"#ErrorEmbeddingLink",				"Impossibile incorporare il collegamento.",
+		"#LinksUIShowLinkInfoMenu",		"Mostra pannello informazioni collegamento",
+		"#LinksUIHideLinkInfoMenu",			"Nascondi pannello informazioni collegamento",
+		"#LinksUICopyLinkInfoMenu",		"Copia tutte le informazioni collegamento",
+		"#LinksUIAutosizeLinkInfoMenu",		"Dimensione automatica informazioni collegamento",
+		"#LinksUIGenerateReportMenu",		"Copia informazioni per collegamenti selezionati",
+		"#LinksUIGenerateCaptionPrefsMenu",	"Impostazione didascalia...",
+		"#GenerateLiveLinkCaptionMenu",		"Genera didascalie dinamiche",
+		"#GenerateStaticLinkCaptionMenu",	"Genera didascalie statiche",
+		
+		"#GenerateCaptionPrefDialogName",	"Impostazione didascalia",
+		"#BeforeMetadataCaptionLabel",		"Testo prima",
+		"#MetadataCaptionLabel",			"Metadati",
+		"#AfterMetadataCaptionLabel",		"Testo dopo",
+		"#GenerateLiveCaptionGraphicSelectionMenu",	"Genera didascalia dinamica",
+		"#GenerateStaticCaptionGraphicSelectionMenu",	"Genera didascalia statica",
+		"#CopyLinkInfoStr '^1'",				"Copia \"^1\"", // Menu item name in links panel. ^1 is replaced with whatever text data is under the mouse.
+		"#CopyLinkFieldMenu",				"Copia campo informazioni",
+		"#InfoLabelSuffix",					": ", // suffix added to end of link info labels in the info section
+		
+		"#LinksCopyInfoMenu",				"Copia informazioni", // links panel submenu
+		
+		"#CaptionSubmenu",				"Didascalie",		// name of captions submenu on Object menu
+		"#CaptionRowLabel",				"Didascalia da metadati", // caption setup dialog top section title
+		"#CaptionOptionsLabel",				"Posizione e stile", // caption setup dialog bottom section title
+		"#CaptionOffsetLabel",				"S&costamento:",
+		"#CaptionParaStyleLabel",			"Stile di &paragrafo:",
+		"#CaptionLayerLabel",				"&Livello:",
+		"#CaptionLayerLockedError",			"Impossibile generare una didascalia su un livello bloccato.",
+		"#CaptionGroupFailureError",			"Impossibile creare il gruppo per la didascalia.",
+		"#ErrorGeneratingCaption",			"Generazione della didascalia non riuscita.",
+		"#CaptionAlignmentLabel",			"&Allineamento:",
+		
+		"#CaptionAlignBelow",				"Sotto l'immagine",
+		"#CaptionAlignAbove",				"Sopra l'immagine",
+		"#CaptionAlignLeft",					"A sinistra dell'immagine",
+		"#CaptionAlignRight",				"A destra dell'immagine",
+		
+		"#GroupCaptionWithImage",			"Ra&ggruppa didascalia con immagine",
+		 "#ConvertCaptionToTextMenu",		"Converti in didascalia statica",
+		 "#ShowImportOptionsTip", 			"Mostra opzioni di importazione", // Tool tip for custom controls in relink dialog
+		 "#SearchHereForMissingFilesTip",	"Ricerca file mancanti", // Tool tip for custom controls in relink dialog
+		 "#EmbedLinkFromPropsPanel",		"Incorpora immagine dal pannello Proprietà",
+		 "#RelinkAssetFromPropsPanel",		"Ricollega immagine dal pannello Proprietà",
+		 "#UpdateLinkFromPropsPanel",		"Aggiorna immagine dal pannello Proprietà",
+		 "#UnlinkFromPropsPanel",			"Scollega il file dal pannello Proprietà",
+        
+        "kImportingAALAsset",                "Importazione delle risorse",
+        "kImportingFileName",                "Importazione di ^1",
+        
+        //Error Strings for AEM
+        "AEMUnsupportedFiles",     "Impossibile posizionare ^1 di ^2 file. Tipo di file non supportato da InDesign.",
+        "AEMInaccessibleFiles",     "Impossibile posizionare ^1 di ^2 file. InDesign non è in grado di accedere al file. Controlla la connettività di rete o la fonte originale di contenuto.",
+        "AEMUnknownFiles",     "Impossibile posizionare ^1 di ^2 file a causa di un errore sconosciuto.",
+        "AEMGenericImportFailure",     "Impossibile importare una risorsa basata su AEM.",
+        
+        // Action id strings
+        "#LinksUIReplaceFPOWithOriginalLink",        "Sostituisci immagine segnaposto con originale...",
+        "#LinksUIReplaceAllFPOWithOriginalLinks",    "Sostituisci tutte le immagini segnaposto con gli originali...",
+        "#LinksUIDownloadOriginalLink",                "Scarica originale",
+        "#LinksUIDownloadAllOriginalLinks",            "Scarica tutti gli originali",
+	}
+};
+
+
+
+#endif //__ODFRC__

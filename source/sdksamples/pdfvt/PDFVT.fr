@@ -1,0 +1,194 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/sdksamples/pdfvt/PDFVT.fr $
+//  
+//  Owner: DevTech
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2008 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "VCPlugInHeaders.h"
+
+// General includes:
+#include "MenuDef.fh"
+#include "ActionDef.fh"
+#include "ActionDefs.h"
+#include "AdobeMenuPositions.h"
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "StringTable.fh"
+#include "ObjectModelTypes.fh"
+#include "ShuksanID.h"
+#include "ActionID.h"
+#include "CommandID.h"
+#include "WorkspaceID.h"
+#include "WidgetID.h"
+#include "BuildNumber.h"
+#include "PlugInModel_UIAttributes.h"
+
+#include "PDFID.h"
+
+#include "Schema.fh"
+
+// Project includes:
+#include "PDFVTID.h"
+#include "GenericID.h"
+#include "ShuksanID.h"
+#include "TextID.h"
+
+#include "DocumentID.h"
+
+
+#ifdef __ODFRC__
+
+/*  Plugin version definition.
+*/
+resource PluginVersion (kSDKDefPluginVersionResourceID)
+{
+	kTargetVersion,
+	kPDFVTPluginID,
+	kSDKDefPlugInMajorVersionNumber, kSDKDefPlugInMinorVersionNumber,
+	kSDKDefHostMajorVersionNumber, kSDKDefHostMinorVersionNumber,
+	kPDFVTCurrentMajorFormatNumber, kPDFVTCurrentMinorFormatNumber,
+	{ kInDesignProduct },
+	{ kWildFS },
+	kModelPlugIn,
+	kPDFVTVersion
+};
+
+resource SchemaList(1)
+{{
+    Schema
+    {
+        kDataSourceDataImpl,
+        {kPDFVTCurrentMajorFormatNumber, kPDFVTCurrentMinorFormatNumber},
+        {
+			{FieldArray{0, {Int32{0}}, {{PMString{1, ""}},
+			{PMString{2, ""}}
+			}}}			
+        }
+    };       
+}};
+
+/*  The ExtraPluginInfo resource adds extra information to the Missing Plug-in dialog
+	that is popped when a document containing this plug-in's data is opened when
+	this plug-in is not present. These strings are not translatable strings
+	since they must be available when the plug-in isn't around. They get stored
+	in any document that this plug-in contributes data to.
+*/
+resource ExtraPluginInfo(1)
+{
+	kPDFVTCompanyValue,			// Company name
+	kPDFVTMissingPluginURLValue,	// URL 
+	kPDFVTMissingPluginAlertValue,	// Missing plug-in alert text
+};
+
+/* Boss class definition.
+*/
+resource ClassDescriptionTable(kSDKDefClassDescriptionTableResourceID)
+{{{
+    AddIn
+    {
+		kDocBoss,
+		kInvalidClass,
+		{
+			IID_IDATASOURCEDATA, kDataSourceDataImpl,
+		}
+    },
+    
+    Class
+    {
+        kPDFVTExportProviderBoss,
+        kInvalidClass,
+        {
+            IID_IK2SERVICEPROVIDER, kPDFExportSetupServiceImpl,
+            IID_IPDFEXPORTSETUPPROVIDER, kPDFVTExportProviderImpl,            
+        }
+    },
+    
+    Class
+    {
+		kWritePDFVTDataSourceInfoCmdBoss,
+		kInvalidClass,
+	    {
+			IID_ICOMMAND, kWritePDFVTDataSourceInfoCmdImpl,
+			IID_IDATASOURCEDATA, kDataSourceDataImpl,
+	    }
+	},      
+}}};
+
+/*  Implementation definition.
+*/
+resource FactoryList (kSDKDefFactoryListResourceID)
+{
+	kImplementationIDSpace,
+	{
+		#include "PDFVTFactoryList.h"
+	}
+};
+
+/*  LocaleIndex
+	The LocaleIndex should have indicies that point at your
+	localizations for each language system that you are localized for.
+*/
+/*  String LocaleIndex.
+*/
+resource LocaleIndex ( kSDKDefStringsResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_enUS, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_enGB, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_deDE, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_frFR, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_esES, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_ptBR, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_svSE, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_daDK, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_nlNL, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_itIT, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_nbNO, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_fiFI, kSDKDefStringsResourceID + index_enUS
+		kInDesignJapaneseFS, k_jaJP, kSDKDefStringsResourceID + index_jaJP
+	}
+};
+
+resource LocaleIndex (kSDKDefStringsNoTransResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_Wild, kSDKDefStringsNoTransResourceID + index_enUS
+	}
+};
+
+resource StringTable (kSDKDefStringsNoTransResourceID + index_enUS)
+{
+	k_enUS,									// Locale Id
+	kEuropeanMacToWinEncodingConverter,		// Character encoding converter
+	{
+		// No-Translate strings go here:
+
+	}
+};
+
+
+#endif // __ODFRC__
+
+#include "PDFVT_enUS.fr"
+#include "PDFVT_jaJP.fr"
+
+//  Code generated by DollyXs code generator

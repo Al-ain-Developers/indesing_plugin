@@ -1,0 +1,142 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kLayerPanelStringsRsrcID + index_ptBR)
+{
+	k_ptBR,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{
+		// ----- Command strings
+
+		"Layer Options",				"Opções de camadas",
+		"New Layer",					"Nova camada",
+		"Layer Deletion",				"Excluir camada(s)",
+		"Delete Unused Layers",			"Excluir camadas não usadas",
+		"Lock Others",					"Bloquear outras",
+		"#UnlockOthers",					"Desbloquear outros",
+		"Show All",						"Mostrar tudo",
+		"#ShowOthers",					"Mostrar outros",
+		"Unlock All",					"Desbloquear tudo",
+		"Hide All",						"Ocultar todos",
+		"Lock All",						"Bloquear todos",
+		"Merge Layers",					"Mesclar camadas",
+		"Move To Layer",				"Mover para camada",
+		"Copy To Layer",				"Copiar para camada",
+		"Move Layer",					"Mover camada",
+		"Move Layers",					"Mover camadas",
+		"kUnlockOthersSequence",		"Desbloquear outros",
+		"kLockOthersSequence",			"Bloquear outros",
+
+		// ----- Menu strings
+		
+		"Layers...",						"Cama&das...",
+
+		"New Layer...",						"Nova camada...",
+		"New Layer Above \"^1\"...",		"Nova camada acima \"^1\"...",
+		"New Layer Below \"^1\"...",		"Nova camada abaixo \"^1\"...",
+		"New Top Layer...",					"Nova camada superior...",
+		"Delete Layer",						"Excluir camada",
+		"Delete \"^1\"",					"Excluir camada \"^1\"",
+		"Delete Layers",					"Excluir camadas",
+		"#Duplicate ^1 Menu",				"Duplicar camada \"^1\"",
+		"#Duplicate LayersMenu",			"Duplicar camadas",
+		"#DuplicatLayersCmd",				"Duplicar camadas",
+		
+		"Layer Options for \"^1\"...",		"Opções de camadas para \"^1\"...",
+		"Layer Options...",					"Opções de camadas...",
+		"Show All Layers",					"Mostrar todas as camadas",
+		"Hide Others",						"Ocultar outras",
+		"Unlock All Layers",				"Desbloquear todas as camadas",
+		"Lock Others",						"Bloquear outras",
+		"Hide All Layers",					"Ocultar todas as camadas",
+		"Lock All Layers",					"Bloquear todas as camadas",
+		
+		"Paste Remembers Layers",			"Colar recorda camadas",
+		"Ungroup Remembers Layers",			"Desagrupar recorda camadas",
+		
+		"Merge Layers",						"Mesclar camadas",
+		"Delete Unused Layers",				"Excluir camadas não usadas",
+		"Select Item(s) on \"^1\"",			"Selecionar item(ns) em \"^1\"",
+		"Select Item(s) Layer",				"Selecionar item(ns) na camada",
+				
+		"#SelectLayerPageItemMenu",		"Itens selecionados",
+		"#SelectZoomLayerPageItemMenu",	"Selecionar e ajustar item",
+		"#ZoomLockedPageItemMenu",		"Ajustar item à janela",
+		
+		// Menu names for context and panel menus
+		"LayerPanelPopup",					"Menu do painel 'Camadas'",	
+		"RtMenuLayerPanelEye",				"Painel 'Camadas' – Menu contextual 'Olho'",	
+		"RtMenuLayerPanelLock",				"Painel 'Camadas' – Menu contextual 'Bloquear'",
+		"RtMenuLayerPanelItem",				"Menu de contexto Camada do painel Camadas",	
+		"RtMenuLayerPanelPageItem",			"Menu de contexto Item de página do painel Camadas",	
+
+		// ----- Window strings
+		"DeleteOneLayer",					"A camada \"^1\" contém um ou mais objetos. Deseja excluir a camada assim mesmo?",
+		"DeleteMultiLayers",				"As camadas selecionadas contêm objetos. Deseja excluir as camadas assim mesmo?",
+		"DeleteOneGuideLayer",				"A camada \"^1\" contém guias de régua. Deseja excluir a camada assim mesmo?",
+		"DeleteGuideLayers",				"As camadas selecionadas contêm guias de régua. Deseja excluir as camadas assim mesmo?",
+		"DeletingPlaceGunUsedLayer",		"Não é possível excluir a camada. Ela é necessária ao fragmento carregado no cursor de inserção.",
+
+		// ----- Window Menu
+		"Layers_WinMenu",					"Cama&das",
+		
+		// ----- Panel strings
+		
+		"^1 Layer",							"^1 camada",		// For status widget
+		"^1 Layers",						"^1 camadas",	// For status widget
+		"New Layer",						"Nova camada",	// Title of New Layer dialog
+		"Layer Options",					"Opções de camadas", // Title of Layer Options dialog
+		"&Name:",							"&Nome:",
+		"&Color:",							"&Cor:",
+		"&Show Layer",						"Mo&strar camada",
+		"Show &Guides",						"Mostrar &guias",
+		"&Lock Layer",						"Bloquear ca&mada",
+		"Loc&k Guides",						"Bl&oquear guias",
+		"Keep When Layer is &Hidden",		"Suprimir &texto em contorno em camadas ocultas",
+		"&Print Layer",						"Im&primir camada",
+
+		// ----- Tips strings
+
+		"DeleteLayerTip",					"Excluir camadas selecionadas",
+		"NewLayerTip",						"Criar nova camada",
+		"EyeTip",							"Alterna visualização ",
+		"PencilTip",						"Alterna bloqueio de camada (editável quando em branco)",
+		"PageItemPencilTip",				"Alterna bloqueio de item de página (editável quando em branco)",
+		"SwatchTip",						"Cor das marcas de seleção dessa camada",
+		"ProxyTip",							"Indica os itens selecionados (arraste para mover entre camadas ou alterar a ordem Z)",
+		"ProxyChildSelectedTip",			"Contém o objeto selecionado. Clique para selecionar o objeto contêiner.",
+		"UnselectedProxyTip",				"Clique para selecionar itens",
+		"ActiveTip",						"Indica a camada de desenho atual",
+
+		// ----- Error strings
+		"EmptyLayerName",					"O nome da camada deve ser fornecido.",
+		"DuplicateLayer",					"Já existe outra camada com esse nome.",
+
+		"#LayerHierPanelName",		"Camadas",
+		"#Page:^1,",					"Página: ^1, ", // for layer panel status widget. Will be followed by layer count string.
+		"#Pages:^1,",					"Páginas: ^1, ", // for layer panel status widget. Will be followed by layer count string.
+		"#DeletePageItemsMenu",		"Excluir itens de página", // menu item name
+		"#DeletePageItem \"^1\"",		"Excluir item de página \"^1\"", // menu item name
+		"#DuplicatePI ^1 Menu",			"Duplicar item de página \"^1\"", // menu item name
+		"#DuplicatePIMenu",			"Duplicar itens de página",  // menu item name
+	}
+};
+
+#endif // __ODFRC__

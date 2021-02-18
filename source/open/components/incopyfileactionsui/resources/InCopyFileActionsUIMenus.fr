@@ -1,0 +1,72 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/incopyfileactionsui/resources/InCopyFileActionsUIMenus.fr $
+//  
+//  Owner: chris parrish
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "MenuDef.fh"
+#include "PMLocaleIds.h"
+#include "ApplDefs.h"
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "AdobeMenuPositions.h"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// RESOURCES Local Index
+//========================================================================================
+
+resource MenuDef (128)
+{
+	{ 
+		//ActionID,menupath,menuposition,isDynamic		
+		kNewActionID, "Main:&File", kNewDocumentMenuPosition, kFalse,
+		kOpenActionID, "Main:&File", kOpenDocumentMenuPosition, kFalse,
+		kBrowseActionID, "Main:&File", kBrowseMenuPosition, kFalse,
+		kFileSep1ActionID, "Main:&File:-",kFileSeparator1MenuPosition, kFalse,
+		kCloseActionID, "Main:&File",kCloseMenuPosition, kFalse,
+		kSaveActionID, "Main:&File",kSaveMenuPosition, kFalse,
+		kSaveAsActionID, "Main:&File", kSaveAsMenuPosition, kFalse,
+		kSaveACopyActionID, "Main:&File", kSaveCopyMenuPosition, kFalse,
+		kSaveAllStoriesActionID, "Main:&File",kSaveAllMenuPosition, kFalse,
+//		kRevertActionID, "Main:&File", kRevertMenuPosition, kFalse,
+		kRevertStoryActionID, "Main:&File", kRevertMenuPosition, kFalse,
+		kFileSep2ActionID, "Main:&File:-",kFileSeparator2MenuPosition, kFalse,
+		kUpdateDesignActionID, "Main:&File", kUpdateDesignMenuPosition, kFalse,
+		kFileSep3ActionID, "Main:&File:-",kFileSeparator3MenuPosition, kFalse,
+		
+		kRecentDocsDynamicActionID, "Main:&File",0.0, kTrue, // dynamic menu for recent docs
+
+		//----- TEMP : Keep old open and save until conversion to new file format is compelte
+		//kSaveOldActionID, "Main:&File",kSaveMenuPosition, kFalse,
+	}
+}
+
+resource MenuDef (129)
+{
+	{ 
+		kUpdateDesignActionID, "AssignmentPanelPopup",	kSLUpdateDesignMenuPosition, 	kFalse,
+		kUpdateDesignActionID, "RtMenuAssignment",	kSLUpdateDesignMenuPosition, 	kFalse,		
+	}
+}
+
+#endif // __ODFRC__
+

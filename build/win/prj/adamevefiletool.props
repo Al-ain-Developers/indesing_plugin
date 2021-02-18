@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup
+    Condition="'$(AdamEveFileCopyToolBeforeTargets)' == '' and '$(AdamEveFileCopyToolAfterTargets)' == '' and '$(ConfigurationType)' != 'Makefile'">
+    <AdamEveFileCopyToolBeforeTargets>Midl</AdamEveFileCopyToolBeforeTargets>
+    <AdamEveFileCopyToolAfterTargets>CustomBuild</AdamEveFileCopyToolAfterTargets>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AdamEveFileCopyToolDependsOn
+      Condition="'$(ConfigurationType)' != 'Makefile'">_SelectedFiles;$(AdamEveFileCopyToolDependsOn)</AdamEveFileCopyToolDependsOn>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <AdamEveFileCopyTool>
+      <CommandLineTemplate>xcopy "%(FullPath)" "$(TargetDir)$(TargetName) Resources\" /Y</CommandLineTemplate>
+      <Outputs>$(TargetDir)$(TargetName) Resources\%(Filename)%(Extension)</Outputs>
+      <ExecutionDescription>Copying panel description: %(Filename)%(Extension)</ExecutionDescription>
+    </AdamEveFileCopyTool>
+  </ItemDefinitionGroup>
+</Project>

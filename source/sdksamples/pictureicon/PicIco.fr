@@ -1,0 +1,452 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/sdksamples/pictureicon/PicIco.fr $
+//  
+//  Owner: Adobe Developer Technologies
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//  
+//  Umbrella include file for all the .fr files in the plug-in.
+//  
+//========================================================================================
+
+//===========================
+//  General includes:
+//===========================
+
+#include "MenuDef.fh"
+#include "ActionDef.fh"
+#include "ActionDefs.h"
+#include "AdobeMenuPositions.h"
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "StringTable.fh"
+#include "objectmodeltypes.fh"
+#include "ShuksanID.h"
+#include "ActionID.h"
+#include "CommandID.h"
+#include "WorkspaceID.h"
+#include "widgetid.h"
+#include "BuildNumber.h"
+#include "PanelList.fh"
+#include "Widgets.fh"	
+#include "InterfaceColorDefines.h"
+#include "IControlViewDefs.h"
+#include "SysControlIds.h"
+
+#include "picicopng.fr"
+
+#include "PlugInModel_UIAttributes.h"
+// Project includes:
+#include "PicIcoID.h"
+
+#ifdef __ODFRC__
+
+//================================================================================
+// Plugin version definition.
+//================================================================================
+resource PluginVersion (kSDKDefPluginVersionResourceID)
+{
+	kTargetVersion,
+	kPicIcoPluginID,
+	kSDKDefPlugInMajorVersionNumber, kSDKDefPlugInMinorVersionNumber, 	
+	kSDKDefHostMajorVersionNumber, kSDKDefHostMinorVersionNumber,
+	kPicIcoCurrentMajorFormatNumber, kPicIcoCurrentMinorFormatNumber,
+	{ kInDesignProduct, kInCopyProduct },
+	{ kWildFS },
+	kUIPlugIn,
+	kPicIcoVersion
+};
+
+//================================================================================
+//	Boss class definition.
+//================================================================================
+resource ClassDescriptionTable(kSDKDefClassDescriptionTableResourceID)
+{{{
+
+
+/** Provides the actions invoked by this plug-in's menu items.
+	@ingroup pictureicon
+*/
+	Class
+	{
+		kPicIcoActionComponentBoss,
+		kBaseActionComponentBoss,
+		{
+			/** Handle the actions from the menu, See PicIcoActionComponent. 
+			*/
+			IID_IACTIONCOMPONENT, kPicIcoActionComponentImpl,
+		}
+	},
+
+	/** Adds the pop-up menu to the panel.
+		@ingroup pictureicon
+	*/
+	Class
+	{
+		kPicIcoPanelWidgetBoss,
+		kPalettePanelWidgetBoss,
+		{
+			/** The plug-in's implementation of ITextControlData,
+				Implementation provided by the API.
+			*/ 
+			IID_IPANELMENUDATA, kCPanelMenuDataImpl,
+		}
+	},
+
+	/** 
+		Adds observer to our child of the kRollOverIconButtonWidgetBoss.
+		@ingroup pictureicon
+	*/
+	Class 
+	{
+		kPicIcoRollOverIconButtonObserverBoss,
+		kRollOverIconButtonBoss,
+		{
+			/** 
+			Handles button press (and release), see PicIcoRollOverButtonObserver.
+			*/
+			IID_IOBSERVER, kPicIcoRollOverButtonObserverImpl,
+		}
+	},
+
+
+/** 
+	Custom picture widget boss class. kIconSuiteWidgetBoss, plus an event handler to catch left-button down evnets.
+	@ingroup pictureicon
+*/
+	Class 
+	{
+		kPicIcoPictureWidgetBoss,
+		kIconSuiteWidgetBoss,
+		{
+			/** 
+				We're overriding the left-button down method.
+			*/
+			IID_IEVENTHANDLER, kPicIcoPictureWidgetEHImpl,
+			/** 
+				Flag used to preserve the internal state (selected or otherwise)
+			*/
+			IID_IBOOLEANCONTROLDATA,kCBooleanControlDataImpl,
+			/** 
+				This interface has state data consisting of two integers, one for the default
+				state and one for the 'selected' or hilight state. Although it seems to be about fonts, it
+				isn't specific to fonts and 
+				it is appropriate here since we have two int32 resource IDs that we wish to maintain on
+				a data interface. This saves us having to write a custom data interface or use two int-data
+				interfaces with different IIDs. 
+			*/
+			IID_IUIFONTSPEC, kUIFontSpecImpl
+			// I know they're not fonts.. but we need two integers to be read in... 
+			// so it's a hack... but an efficient one.
+		}
+	},
+	
+
+}}};
+
+//================================================================================
+// Implementation definition.
+//================================================================================
+resource FactoryList (kSDKDefFactoryListResourceID) 
+{
+	kImplementationIDSpace,
+	{
+#include "PicIcoFactoryList.h"
+	}
+};
+
+//================================================================================
+// Menu definition.
+//================================================================================
+resource MenuDef (kSDKDefMenuResourceID)
+{
+	{
+		// The About Plug-ins sub-menu item for this plug-in.
+		kPicIcoAboutActionID,			// ActionID (kInvalidActionID for positional entries)
+		kPicIcoAboutMenuPath,			// Menu Path.
+		kSDKDefAlphabeticPosition,			// Menu Position.
+		kSDKDefIsNotDynamicMenuFlag,		// kSDKDefIsNotDynamicMenuFlag or kSDKDefIsDynamicMenuFlag.
+
+		kPicIcoRotatePictureActionID,
+		kPicIcoTargetMenuPath,
+		kPicIcoRotatePictureMenuItemPosition,
+		kSDKDefIsNotDynamicMenuFlag,
+
+
+		kPicIcoRotateIconActionID,
+		kPicIcoTargetMenuPath,
+		kPicIcoRotateIconMenuItemPosition,
+		kSDKDefIsNotDynamicMenuFlag,
+
+		// Separator for the popup menu on the panel
+		kPicIcoSeparator1ActionID,
+		kPicIcoInternalPopupMenuNameKey kSDKDefDelimiterAndSeparatorPath,	// :- to mark an item as a separator.
+		kPicIcoSeparator1MenuItemPosition,
+		kSDKDefIsNotDynamicMenuFlag,
+
+		// About this Plugin submenu for the popup menu on the panel
+		kPicIcoPopupAboutThisActionID,
+		kPicIcoTargetMenuPath
+		kPicIcoAboutThisMenuItemPosition,
+		kSDKDefIsNotDynamicMenuFlag, 
+
+	}
+};
+
+//================================================================================
+// Action definition.
+//================================================================================
+resource ActionDef (kSDKDefActionResourceID)
+{
+	{ 
+		kPicIcoActionComponentBoss, 		// ClassID of boss class that implements the ActionID.
+		kPicIcoAboutActionID,	// ActionID.
+		kPicIcoAboutMenuKey,	// Sub-menu string.
+		kHelpMenuActionArea,				// Area name (see ActionDefs.h).
+		kNormalAction,					// Type of action (see ActionDefs.h).
+		kDisableIfLowMem,				// Enabling type (see ActionDefs.h).
+		kInvalidInterfaceID,			// Selection InterfaceID this action cares about or kInvalidInterfaceID.
+		kSDKDefInvisibleInKBSCEditorFlag, // kSDKDefVisibleInKBSCEditorFlag or kSDKDefInvisibleInKBSCEditorFlag.
+		
+		kPicIcoActionComponentBoss,
+		kPicIcoRotatePictureActionID,		
+		kPicIcoRotatePictureMenuItemKey,		
+		kPaletteMenusActionArea,			
+		kNormalAction,				
+		kDisableIfLowMem,	
+		kInvalidInterfaceID,		
+		kSDKDefInvisibleInKBSCEditorFlag,
+				
+		kPicIcoActionComponentBoss, 
+		kPicIcoRotateIconActionID, 
+		kPicIcoRotateIconMenuItemKey,
+		kPaletteMenusActionArea,
+		kNormalAction,
+		kDisableIfLowMem,	
+		kInvalidInterfaceID,
+		kSDKDefInvisibleInKBSCEditorFlag,
+
+		kPicIcoActionComponentBoss, 
+		kPicIcoPopupAboutThisActionID, 
+		kSDKDefAboutThisPlugInMenuKey,	// Key to the name of this action
+		kPaletteMenusActionArea,
+		kNormalAction,
+		kDisableIfLowMem,	
+		kInvalidInterfaceID,
+		kSDKDefInvisibleInKBSCEditorFlag,
+
+	}
+};
+
+
+//================================================================================
+// LocaleIndex
+// The LocaleIndex should have indicies that point at your
+// localizations for each language system that you are 
+// localized for.
+//================================================================================
+//------------------------------------------------------------
+// String LocaleIndex.
+//------------------------------------------------------------
+resource LocaleIndex (kSDKDefStringsResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_enUS, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_jaJP, kSDKDefStringsResourceID + index_jaJP
+		
+		kWildFS, k_Wild, kSDKDefStringsResourceID + index_enUS
+	}
+};
+
+resource LocaleIndex (kSDKDefStringsNoTransResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_Wild, kSDKDefStringsNoTransResourceID + index_enUS
+	}
+};
+
+resource StringTable (kSDKDefStringsNoTransResourceID + index_enUS)
+{
+	k_enUS,									// Locale Id
+	kEuropeanMacToWinEncodingConverter,		// Character encoding converter
+	{
+		// No-Translate strings go here:		
+
+
+		kPicIcoInternalPopupMenuNameKey,	kPicIcoInternalPopupMenuNameKey,		// No need to translate, internal menu name.
+	}
+};
+
+
+
+//------------------------------------------------------------
+// Panel LocaleIndex.
+//------------------------------------------------------------
+resource LocaleIndex (kSDKDefPanelResourceID)
+{
+	kViewRsrcType,
+	{
+		kWildFS, k_Wild, 	kSDKDefPanelResourceID + index_enUS
+	}
+};
+
+
+//========================================================================================
+// Type definition.
+//========================================================================================
+type PicIcoPanelWidget(kViewRsrcType) : PalettePanelWidget(ClassID = kPicIcoPanelWidgetBoss) 
+{
+	CPanelMenuData;
+};
+
+
+type PicIcoRollOverIconButtonWidget (kViewRsrcType) : RollOverIconButtonWidget(ClassID = kPicIcoRollOverIconButtonObserverBoss) 
+{
+};
+
+type PicIcoPictureWidget(kViewRsrcType) : IconSuiteWidget(ClassID = kPicIcoPictureWidgetBoss) 
+{
+	UIFontSpec;	// because we want to read in two integers for the default and hilite states.
+};
+//================================================================================
+// PanelList definition.
+//================================================================================
+resource PanelList (kSDKDefPanelResourceID)
+{
+	{
+		// 1st panel in the list
+		kSDKDefPanelResourceID,		// Resource ID for this panel (use SDK default rsrc ID)
+		kPicIcoPluginID,			// ID of plug-in that owns this panel
+		kNotResizable,
+		kPicIcoPanelWidgetActionID,	// Action ID to show/hide the panel
+		kPicIcoPanelTitleKey,		// Shows up in the Window list.
+		"",							// Alternate menu path of the form "Main:Foo" if you want your palette menu item in a second place
+		0.0,						// Alternate Menu position Alternate Menu position for determining menu order
+		0,0,						// Rsrc ID, Plugin ID for a PNG icon resource to use for this palette
+		c_Panel,
+	}	
+};
+
+//================================================================================
+// PanelView definition.
+// The view is not currently localised: therefore, it can reside here.
+// However, if you wish to localise it, it is recommended to locate it in one of
+// the localised framework resource files (i.e. PicIco_enUS.fr etc.).
+//================================================================================
+resource PicIcoPanelWidget(kSDKDefPanelResourceID + index_enUS)
+{
+	__FILE__, __LINE__,					// Localization macro		
+	kPicIcoPanelWidgetID,			// WidgetID 
+	kPMRsrcID_None,						// RsrcID
+	kBindNone,							// Binding (0=none)
+	0, 0, 207, 95,						// Frame: left, top, right, bottom.
+	kTrue, kTrue,						// Visible, Enabled
+	kTrue,								// Erase background
+	kInterfacePaletteFill,				// Erase to color
+	kFalse,								// Draw dropshadow
+	kPicIcoPanelTitleKey,			// Panel name	
+	{
+		
+
+		IconSuiteWidget //We can achieve if change this to RollOverIconButtonWidget
+		(
+			kPicIcoIconSuiteWidgetId, 
+			kPicIcoButCapIconRsrcID, 
+			kApplicationRsrcPluginID,	// WidgetId, RsrcId
+			kBindNone,					
+			Frame(5,5,23,23)		
+			kTrue, kTrue,		// Visible, Enabled,
+			kADBEIconSuiteButtonType,0,
+		),
+
+		PicIcoRollOverIconButtonWidget
+		(
+			kPicIcoRollOverIconButtonWidgetID, 
+			kPicIcoPNGIconRsrcID, 
+			kPicIcoPluginID,	// WidgetId, RsrcId
+			kBindNone,											// Frame binding
+			Frame(35,5,53,23)		// Frame
+			kTrue, kTrue,									// Visible, Enabled
+			kADBEIconSuiteButtonType,
+		),
+				
+		IconSuiteWidget
+		(
+			kPicIcoPictureWidgetId,				// WidgetId
+			kPicIcoTopOutsidePictureRsrcID, 
+			kPicIcoPluginID,	// RsrcId
+			kBindNone,									// Frame binding
+			Frame(5, 35, 85, 85),				
+			kTrue,kTrue,								// Visible, Enabled
+			kStyledIconSuiteFlushedButtonType,
+			0,
+		),
+
+		
+
+		PicIcoPictureWidget
+		(
+			kPicIcoCustomPictureWidgetId,				// WidgetId
+			kPicIcoTopOutsidePictureRsrcID, 
+			kPicIcoPluginID,	// RsrcId
+			kBindNone,									// Frame binding
+			Frame(105, 35, 185, 85),				
+			kTrue,kTrue,								// Visible, Enabled
+			kStyledIconSuiteFlushedButtonType,
+			0,
+			// Custom fields
+			kPicIcoTopOutsidePictureRsrcID,		// Toggles between these two pictures
+			kPicIcoTopInsidePictureRsrcID,		// when picture is clicked on
+		),
+
+
+		StaticTextWidget
+		(
+			// StaticTextView properties
+			kPicIcoStaticTextWidgetId, // widget ID
+			kSysStaticTextPMRsrcId, // PMRsrc ID
+			kBindNone, // frame binding
+			Frame(105,10,200,30) //  left, top, right, bottom
+			kTrue, // visible
+			kTrue, // enabled
+			kAlignLeft, kEllipsizeEnd, kTrue, // alignment, ellipsize thing
+			// CTextControlData properties
+			kPicIcoStaticTextKey, // control label
+			// StaticTextAttributes properties
+			0, // Associated widget ID
+		),
+				
+	}
+
+	kPicIcoInternalPopupMenuNameKey		// Popup menu name (internal)
+};
+
+
+
+#endif // __ODFRC__
+
+#include "PicIco_enUS.fr"
+#include "PicIco_jaJP.fr"
+
+// End, PicIco.fr.
+
+
+
+

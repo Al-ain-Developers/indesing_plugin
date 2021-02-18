@@ -1,0 +1,51 @@
+<?xml version="1.0" ?>
+<project name="Idmltools" default="main">
+
+	<property name="bin.dir" location="classes"/>
+	<property name="src.dir" location="src" />	
+	<property name="jing.dir" location="jing/bin" />
+	<property name="javadoc.dir" location="docs"/>
+	
+	<target name="main" depends="compile,compress" />
+
+	<target name="compile" depends="prepare.dirs">
+		<javac classpath="jing/bin/jing.jar;jing/bin/xercesImpl.jar;jing/bin/xml-apis.jar;jing/bin/saxon.jar;jing/bin/isorelax.jar" 
+				destdir="${bin.dir}" 
+				srcdir="${src.dir}"
+				source="1.5"
+				target="1.5"
+				debug="on"
+				verbose="on"
+		/>
+	</target>
+	
+	<target name="compress">
+		<jar jarfile="jars/idmltools.jar" basedir="${bin.dir}"/>
+	</target>
+
+	<target name="javadoc">
+		<delete dir="${javadoc.dir}" quiet="true" />
+		<javadoc packagenames="com.adobe.idml.*"
+		 	sourcepath="${src.dir}"
+		    excludepackagenames=""
+		    defaultexcludes="yes"
+		    destdir="${javadoc.dir}/docs/api"
+		    author="true"
+		    version="true"
+		    use="true"
+           	windowtitle="IDML Tools">
+           	<doctitle><![CDATA[<h1>IDML Tools</h1>]]></doctitle>
+           	<bottom><![CDATA[<i>Copyright &#169; 2008 Adobe Systems Incorporated.  All Rights Reserved.</i>]]></bottom>
+         </javadoc>
+         <zip basedir="${javadoc.dir}" compress="true" destfile="docs.zip"/>
+	</target>
+	
+  <!-- Cleanup Targets -->
+  <target name="prepare.dirs" depends="do.clean.all">
+ 	  <mkdir dir="${bin.dir}" />
+   </target>
+
+  <target name="do.clean.all">
+      <delete dir="${bin.dir}" quiet="true" />
+  </target>	
+</project>

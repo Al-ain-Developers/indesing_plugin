@@ -1,0 +1,142 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kLayerPanelStringsRsrcID + index_jaJP)
+{
+	k_jaJP,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{
+		// ----- Command strings
+
+		"Layer Options",				"レイヤーオプション",
+		"New Layer",					"新規レイヤー",
+		"Layer Deletion",				"レイヤーを削除",
+		"Delete Unused Layers",			"未使用レイヤーを削除",
+		"Lock Others",					"他をロック",
+		"#UnlockOthers",					"他をロック解除",
+		"Show All",						"すべてを表示",
+		"#ShowOthers",					"他を表示",
+		"Unlock All",					"すべてをロック解除",
+		"Hide All",						"すべてを隠す",
+		"Lock All",						"すべてをロック",
+		"Merge Layers",					"レイヤーの結合",
+		"Move To Layer",				"レイヤーへ移動",
+		"Copy To Layer",				"レイヤーへコピー",
+		"Move Layer",					"レイヤー移動",
+		"Move Layers",					"レイヤー移動",
+		"kUnlockOthersSequence",		"他をロック解除",
+		"kLockOthersSequence",			"他をロック",
+
+		// ----- Menu strings
+		
+		"Layers...",						"レイヤー(&Y)...",
+
+		"New Layer...",						"新規レイヤー...",
+		"New Layer Above \"^1\"...",		"\"^1\" の上に新規レイヤー...",
+		"New Layer Below \"^1\"...",		"\"^1\" の下に新規レイヤー...",
+		"New Top Layer...",					"新規の上のレイヤー...",
+		"Delete Layer",						"レイヤーを削除",
+		"Delete \"^1\"",					"レイヤー \"^1\"を削除",
+		"Delete Layers",					"レイヤーを削除",
+		"#Duplicate ^1 Menu",				"レイヤー \"^1\" を複製",
+		"#Duplicate LayersMenu",			"レイヤーを複製",
+		"#DuplicatLayersCmd",				"レイヤーを複製",
+		
+		"Layer Options for \"^1\"...",		"\"^1\" のレイヤーオプション...",
+		"Layer Options...",					"レイヤーオプション...",
+		"Show All Layers",					"すべてのレイヤーを表示",
+		"Hide Others",						"他を隠す",
+		"Unlock All Layers",				"すべてのレイヤーをロック解除",
+		"Lock Others",						"他をロック",
+		"Hide All Layers",					"すべてのレイヤーを隠す",
+		"Lock All Layers",					"すべてのレイヤーをロック",
+		
+		"Paste Remembers Layers",			"コピー元のレイヤーにペースト",
+		"Ungroup Remembers Layers",			"元のレイヤーに戻してグループ解除",
+		
+		"Merge Layers",						"レイヤーの結合",
+		"Delete Unused Layers",				"未使用レイヤーを削除",
+		"Select Item(s) on \"^1\"",			"\"^1\" 上のアイテムを選択",
+		"Select Item(s) Layer",				"レイヤー上のアイテムを選択",
+				
+		"#SelectLayerPageItemMenu",		"アイテムを選択",
+		"#SelectZoomLayerPageItemMenu",	"アイテムを選択して合わせる",
+		"#ZoomLockedPageItemMenu",		"アイテムを全体表示",
+		
+		// Menu names for context and panel menus
+		"LayerPanelPopup",					"レイヤーパネルメニュー",	
+		"RtMenuLayerPanelEye",				"レイヤーパネルの目アイコンのコンテキストメニュー",	
+		"RtMenuLayerPanelLock",				"レイヤーパネルのロックアイコンのコンテキストメニュー",
+		"RtMenuLayerPanelItem",				"レイヤーパネルのレイヤーコンテキストメニュー",	
+		"RtMenuLayerPanelPageItem",			"レイヤーパネルのページアイテムのコンテキストメニュー",	
+
+		// ----- Window strings
+		"DeleteOneLayer",					"レイヤー \"^1\" には、1 つ以上のオブジェクトが含まれています。レイヤーを削除しますか？",
+		"DeleteMultiLayers",				"選択されたレイヤーには、オブジェクトが含まれています。レイヤーを削除しますか？",
+		"DeleteOneGuideLayer",				"レイヤー \"^1\" には、定規ガイドが含まれています。レイヤーを削除しますか？",
+		"DeleteGuideLayers",				"選択されたレイヤーには、定規ガイドが含まれています。レイヤーを削除しますか？",
+		"DeletingPlaceGunUsedLayer",		"レイヤーを削除できません。スニペットに必要なため、配置カーソルの位置に読み込みました。",
+
+		// ----- Window Menu
+		"Layers_WinMenu",					"レイヤー(&L)",
+		
+		// ----- Panel strings
+		
+		"^1 Layer",							"^1 レイヤー",		// For status widget
+		"^1 Layers",						"^1 レイヤー",	// For status widget
+		"New Layer",						"新規レイヤー",	// Title of New Layer dialog
+		"Layer Options",					"レイヤーオプション", // Title of Layer Options dialog
+		"&Name:",							"名前(&N) :",
+		"&Color:",							"カラー(&C) :",
+		"&Show Layer",						"レイヤーを表示(&S)",
+		"Show &Guides",						"ガイドを表示(&G)",
+		"&Lock Layer",						"レイヤーのロック(&L)",
+		"Loc&k Guides",						"ガイドをロック(&K)",
+		"Keep When Layer is &Hidden",		"レイヤーの非表示でテキストの回り込みを無効にする(&T)",
+		"&Print Layer",						"レイヤーをプリント(&P)",
+
+		// ----- Tips strings
+
+		"DeleteLayerTip",					"選択されたレイヤーを削除",
+		"NewLayerTip",						"新規レイヤーを作成",
+		"EyeTip",							"表示 / 非表示の切り替え",
+		"PencilTip",						"レイヤーのロックを切り替え (空欄時に編集可能)",
+		"PageItemPencilTip",				"ページアイテムのロックを切り替え (空欄時に編集可能)",
+		"SwatchTip",						"このレイヤー上の選択マークのカラー",
+		"ProxyTip",							"選択したアイテムを表示 (ドラッグしてレイヤー間を移動または Z 順を変更)",
+		"ProxyChildSelectedTip",			"選択したオブジェクトが含まれています。クリックしてコンテナオブジェクトを選択します",
+		"UnselectedProxyTip",				"クリックしてアイテムを選択",
+		"ActiveTip",						"現在の描画レイヤーを表示",
+
+		// ----- Error strings
+		"EmptyLayerName",					"レイヤー名を指定してください。",
+		"DuplicateLayer",					"この名前のレイヤーは既に存在します。",
+
+		"#LayerHierPanelName",		"レイヤー",
+		"#Page:^1,",					"ページ : ^1、 ", // for layer panel status widget. Will be followed by layer count string.
+		"#Pages:^1,",					"ページ : ^1、 ", // for layer panel status widget. Will be followed by layer count string.
+		"#DeletePageItemsMenu",		"ページアイテムを削除", // menu item name
+		"#DeletePageItem \"^1\"",		"ページアイテム \"^1\" を削除", // menu item name
+		"#DuplicatePI ^1 Menu",			"ページアイテム \"^1\" を複製", // menu item name
+		"#DuplicatePIMenu",			"ページアイテムを複製",  // menu item name
+	}
+};
+
+#endif // __ODFRC__

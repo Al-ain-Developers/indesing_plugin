@@ -1,0 +1,52 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// U.S. English strings
+//========================================================================================
+
+resource StringTable (kInCopyExportStringsRsrcID + index_ptBR)
+{
+	k_ptBR,								// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+
+	{
+		// ----- Miscellaneous strings
+		"Export Seq Name", 		"Export InCopy Story",
+		"Text",					"Texto", // append "Text" to export name on a text story
+		
+		// ----- Export options dialog strings
+		"InCopyExportOptions",	"Opções de exportação do Adobe InCopy",
+		"ExportOptions_DataType",	"&Codificação:",
+		"ExportOptions_UTF16",	"UTF16",
+		"ExportOptions_UTF8",	"UTF8",
+		"ExportOptions_DataOptions",	"Opções:",
+		"ExportOptions_StyleTable",	"Incluir tabela de &estilos",
+		"ExportOptions_SwatchList",	"Incluir lista de &amostras",
+		"ExportOptions_XMPData",	"Incluir informações &XMP",
+		"ExportOptions_StoryLabel",	"Rótulo da &matéria:",
+
+		//menu
+		"ExportMenu",				"E&xportar",
+		"kExportLayerToIC",			"&Camada...",
+		"kExportAllStoriesToIC",	"Todas as &matérias...",
+		"kExportAllGraphicsToIC",	"Todos os &gráficos...",
+		"kExportAllItemsToIC",		"&Todos os gráficos e matérias...",
+
+		"INCDFeatureLost",    "Esta matéria pode conter recursos não suportados por este formato de arquivo. Esses recursos serão perdidos quando a matéria for atualizada.",
+	}
+};
+
+#endif // __ODFRC__

@@ -1,0 +1,159 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kSpellPanelStringsRsrcID + index_jaJP)
+{
+	k_jaJP,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{				
+		// ----- Main menu strings
+		"SpellingMenu",					"欧文スペルチェック(&S)",
+		"Check Spelling...",			"欧文スペルチェック(&K)...",
+		"Dynamic SpellCheck",			"ダイナミックスペルチェック(&M)",
+		"Autocorrect",					"スペル自動修正",
+		"Auto Correct",					"スペル自動修正(&A)",
+		"AutoCorrect",					"スペル自動修正",
+
+		// ----- Window strings
+		"corrected",					"修正後",
+		"misspelled",					"スペルミス",
+		
+		// ----- Scope strings
+		
+		"[No spelling]",				"[スペルなし]",
+		"Auto",							"自動",
+		"Document",						"ドキュメント",
+		"Story",						"ストーリー",
+		"Stories",						"ストーリー",
+		"Selection",					"選択範囲",
+		
+		// ----- Panel strings		
+		"Spelling",						"欧文スペルチェック",
+		"&Spelling...",					"欧文スペルチェック(&S)...",
+		"Auto Correct...",				"スペル自動修正(&E)...",
+		"[No language]",				"[言語なし]",
+		"AutoCorrectEnable",			"自動修正を有効にする(&N)",
+		"AutoCorrectCapitalizationErrors",			"キャピタリゼーションエラーの自動修正(&C)",
+		"A&dd...",						"追加(&A)...",		// Opens a dialog
+		"EditAutoCorrectWord",			"編集(&E)...",		// Opens a dialog
+		"Correction",					"修正",
+		"Misspelled Word",				"ミススペル単語",
+
+		// ----- Dialog strings
+		"Check Spelling",				"欧文スペルチェック",
+		"&Change To:",					"置換文字列(&C) :",
+		
+		"Change To",					"置換文字列",
+		"&Suggested Corrections:",		"候補(&N) :",
+		"Language:",					"言語 :",
+		"Sea&rch:",						"検索(&R) :",
+		"Include Overset",				"オーバーセットを含む",
+		"&Done",							"完了(&D)",
+		"C&hange",						"置換(&H)",
+		"S&tart",						"開始(&T)",
+		"Chan&ge All",					"すべてを置換(&G)",
+		"Skip",							"スキップ",	
+		"kSkipButtonInSpellingDialog",  "スキップ(&K)",
+		"Ignore",						"無視",
+		"&Ignore All",					"すべて無視(&I)",
+		"&AddAndContinue",				"追加(&A)",			// Adds to dictionary automatically, continues spelling
+		"Dic&tionary...",				"欧文辞書(&Y)...",	// Launches Dict Editor dialog
+		"Add To:",						"追加(&O) :",
+
+		// Label strings in Spell Check dialog.
+		"Ready to Spell Check:", 			"欧文スペルチェック",
+		"Misspelled Word:",					"ミススペル単語 :",
+		"Unknown Word - No Suggestions:", 	"認識できない単語 - 候補ありません :",
+		"Not in Dictionary:",				"辞書に存在しない単語 :",
+		"Repeated Word:",					"反復語 :",
+		"Uncapitalized Word:",				"小文字の単語 :",
+		"Uncapitalized Sentence:",			"小文字の文 :",
+		"Duplicate Word:",					"単語の重複 :",
+		"Capitalization Error:",			"キャピタリゼーションエラー :",
+		"Spell Check Complete:",			"欧文スペルチェック終了",
+		
+		"SpellCheckCompleteAlertStr",			"欧文スペルチェックが完了しました。",	// Alert string at completion of spelling.
+
+		"Misspelled Word (Overset):",					"ミススペル単語 : (オーバーセットテキスト)",
+		"Unknown Word - No Suggestions (Overset):", 	"認識できない単語 : (オーバーセットテキスト)",
+		"Not in Dictionary (Overset):",					"辞書内に存在しない単語 : (オーバーセットテキスト)",
+		"Repeated Word (Overset):",						"反復語 : (オーバーセットテキスト)",
+		"Uncapitalized Word (Overset):",				"小文字の単語 : (オーバーセットテキスト)",
+		"Uncapitalized Sentence (Overset):",			"小文字の文 : (オーバーセットテキスト)",
+
+		"Misspelled Word (In Table):",					"ミススペル単語 : (表)",
+		"Unknown Word - No Suggestions (In Table):", 	"認識できない単語 : (表)",
+		"Not in Dictionary (In Table):",					"辞書に存在しない単語 : (表)",
+		"Repeated Word (In Table):",						"反復語 : (表)",
+		"Uncapitalized Word (In Table):",				"小文字の単語 : (表)",
+		"Uncapitalized Sentence (In Table):",			"小文字の文 : (表)",
+
+		"Misspelled Word (Deleted Text):",				"ミススペル単語 : (削除済みテキスト)",
+		"Unknown Word - No Suggestions (Deleted Text):","認識できない単語 : (削除済み単語)",
+		"Not in Dictionary (Deleted Text):",			"辞書に存在しない単語 : (削除済みテキスト)",
+		"Repeated Word (Deleted Text):",				"反復語 : (削除済みテキスト)",
+		"Uncapitalized Word (Deleted Text):",			"小文字の単語 : (削除済みテキスト)",
+		"Uncapitalized Sentence (Deleted Text):",		"小文字の文 : (削除済み)",
+		
+		"Misspelled Word (Hidden):",					"ミススペル単語 : (非表示アイテム)",
+		"Unknown Word - No Suggestions (Hidden):", 		"認識できない単語 : (非表示アイテム)",
+		"Not in Dictionary (Hidden):",					"辞書に存在しない単語 : (非表示アイテム)",
+		"Repeated Word (Hidden):",						"反復語 : (非表示アイテム)",
+		"Uncapitalized Word (Hidden):",					"小文字の単語 : (非表示アイテム)",
+		"Uncapitalized Sentence (Hidden):",				"小文字の文 : (非表示)", // Shortened to "Hidden" for space. Like the "Overset" case above.
+
+//		"Spelling Preferences", 						"Spelling Preferences", // Note to localizer: this string moved to SpellingServiceStrings.fr
+		"Find", 										"検索",
+		"&Misspelled Words", 							"ミススペル単語(&M)",
+		"&Repeated Words", 								"反復語(&R)",
+		"&Uncapitalized Words", 						"小文字の単語(&U)",
+		"Uncapitalized &Sentences", 					"小文字の文(&S)",
+		"Misspelled Words Underline Color:",			"ミススペル単語(&P) :",
+		"Repeated Words Underline Color:",				"反復語(&T) :",
+		"Uncapitalized Words Underline Color:",			"小文字の単語(&Z) :",
+		"Uncapitalized Sentences Underline Color:",		"小文字の文(&N) :",
+		"Dynamic Spellchecking",						"ダイナミックスペルチェック",
+		
+		"Underline Color",								"下線カラー",
+		
+		"&Enable Dynamic Spelling",						"ダイナミックスペルチェックを有効にする(&E)",
+		
+		"Search is completed.  ^1  replacement(s) made.", "^1 項目の変換が完了しました。", 
+
+		"Add",											"追加",
+		"Re&move",										"削除(&M)",
+		"Misspelled:",									"スペルミス :",
+		"Correction:",									"修正 :",
+		"Language:",									"言語 :",
+		"&Language:",									"言語(&L) :",
+		"AddToAutoCorrectList",							"自動修正リストに追加",
+		"EditAutoCorrectList",							"自動修正リストを編集",
+
+		"ACAlert1",		"空のエントリは許可されていません。",
+		"ACAlert2",		"単語および修正内容のスペルおよび大文字小文字を同一にすることはできません。",
+		"ACAlert3",		"このミススペル単語と修正内容はすでにリスト内に存在します。",
+		"ACAlert4",		"エントリを作成できません。文字数制限 (64) を超えています。",
+		"ACAlert5",		"エントリに無効な文字が含まれています。",
+		"ACAlert6",		"ミススペル単語にスペース文字を入力することはできません。",
+
+	}
+};
+
+#endif // __ODFRC__

@@ -1,0 +1,403 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/sdksamples/printselection/PrnSel.fr $
+//  
+//  Owner: Adobe Developer Technologies
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+//===========================
+//  Interface includes:
+//===========================
+
+#include "IControlViewDefs.h"
+
+// General includes:
+#include "MenuDef.fh"
+#include "ActionDef.fh"
+#include "ActionDefs.h"
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "StringTable.fh"
+#include "objectmodeltypes.fh"
+#include "ActionID.h"
+#include "BuildNumber.h"
+#include "SysControlIds.h"
+#include "Widgets.fh"      // for DialogBoss
+#include "GraphicsID.h"
+#include "PrintID.h"
+#include "GenericID.h"
+#include "TablesID.h"
+#include "TextID.h"
+#include "DocFrameworkID.h" // for kDocumentObjectScriptElement
+
+#include "PlugInModel_UIAttributes.h"
+// Project includes:
+#include "PrnSelID.h"
+#include "ScriptInfoTypes.fh"
+#include "PrnSelScriptingDefs.h"
+
+#ifdef __ODFRC__
+
+/*
+// Plugin version definition.
+*/
+resource PluginVersion (kSDKDefPluginVersionResourceID)
+{
+	kTargetVersion,
+	kPrnSelPluginID,
+	kSDKDefPlugInMajorVersionNumber, kSDKDefPlugInMinorVersionNumber, 	
+	kSDKDefHostMajorVersionNumber, kSDKDefHostMinorVersionNumber,
+	kPrnSelCurrentMajorFormatNumber, kPrnSelCurrentMinorFormatNumber,
+	{ kInDesignProduct, kInCopyProduct }, 
+	{ kWildFS },
+	kUIPlugIn,
+    kPrnSelVersion
+};
+
+/*
+//	Boss class definition.
+*/
+resource ClassDescriptionTable(kSDKDefClassDescriptionTableResourceID)
+{{{
+	/**	Provides processing for draw events.
+		@ingroup printselection
+	*/
+	Class
+	{
+		kPrnSelDrawServicesBoss,
+		kInvalidClass,
+		{
+			/** Implements code necessary to process draw events. 
+				@see PrnSelDrawHandler
+			*/
+			IID_IDRWEVTHANDLER, kPrnSelDrawHandlerImpl,
+		}
+	},
+
+	/** Implements the IPrintSetupProvider 
+		interface, which provides a mechanism to participate in the 
+		printing process at opportune stages.
+		@ingroup printselection
+	*/
+	Class
+	{
+		kPrnSelPrintSetupProviderBoss,
+		kInvalidClass,
+		{
+			/** Registers this plug-in with the application as 
+				providing a print setup service. 
+			*/
+			IID_IK2SERVICEPROVIDER, kPrintSetupServiceImpl,
+			/** Provides a mechanism to selectively enter into the print process.
+				@see PrnSelPrintSetupProvider
+			*/
+			IID_IPRINTSETUPPROVIDER, kPrnSelPrintSetupProviderImpl,
+		}
+	},
+
+	/**	Provides the actions invoked by this plug-in's menu items. 
+		@ingroup printselection
+	*/
+	Class
+	{
+		kPrnSelActionComponentBoss,
+		kBaseActionComponentBoss,
+		{
+			/** Handle the actions.
+				@see PrnSelActionComponent
+			*/
+			IID_IACTIONCOMPONENT, kPrnSelActionComponentImpl,
+		}
+	},
+
+	/**	Adds an an interface for print selection related data into kDocBoss. 
+		@ingroup printselection
+	*/
+	AddIn
+	{
+		kDocBoss,
+		kInvalidClass,
+		{
+			/** Stores data needed by PrintServiceProvider. 
+				@see PrnSelData
+			*/
+			IID_IPRNSELDATA, kPrnSelDataImpl,
+		}
+	},
+
+	/** Provides selection suite support for the abstract selection boss.
+		@ingroup printselection
+	*/
+	AddIn
+	{
+		kIntegratorSuiteBoss,
+		kInvalidClass,
+		{
+			/** Abstract selection boss implementation for IPrnSelSuite.
+				@see PrnSelSuiteASB
+			 */
+			IID_IPRNSELSUITE, kPrnSelSuiteASBImpl,
+		}
+	},
+
+	/**	Provides selection suite support for layout selections.
+		@ingroup printselection
+	*/
+	AddIn
+	{
+		kLayoutSuiteBoss,
+		kInvalidClass,
+		{
+			/** Concrete selection boss implementation for IPrnSelSuite
+				when the selection is a layout selection.
+				@see PrnSelSuiteLayoutCSB
+			 */
+			IID_IPRNSELSUITE, kPrnSelSuiteLayoutCSBImpl,
+		}
+	},
+
+	/**	Provides selection suite support for table selections.
+		@ingroup printselection
+	*/
+	AddIn
+	{
+		kTableSuiteBoss,
+		kInvalidClass,
+		{
+			/** Concrete selection boss implementation for IPrnSelSuite
+				when the selection is a table selection.
+				@see PrnSelSuiteTableCSB
+			 */
+			IID_IPRNSELSUITE, kPrnSelSuiteTableCSBImpl,
+		}
+	},
+
+	/** Provides selection suite support for text selections.
+		@ingroup printselection
+	*/
+	AddIn
+	{
+		kTextSuiteBoss,
+		kInvalidClass,
+		{
+			/** Concrete selection boss implementation for IPrnSelSuite
+				when the selection is a text selection.
+				@see PrnSelSuiteTextCSB
+			 */
+			IID_IPRNSELSUITE, kPrnSelSuiteTextCSBImpl,
+		}
+	},
+
+	/** Provides selection suite support for text selections.
+		@ingroup printselection
+	*/
+	AddIn
+	{
+		kUtilsBoss,
+		kInvalidClass,
+		{
+			/** Utility interface for manipulating IPrnSelData.
+			 	@see PrnSelUtils
+			 */
+			IID_IPRNSELUTILS, kPrnSelUtilsImpl,
+		}
+	}
+
+	/** Provides scripting support for the print selection preferences script object.
+		@ingroup printselection
+	*/
+	Class
+	{
+		kPrnSelScriptProviderBoss,
+		kBaseScriptProviderBoss,
+		{
+			/** Handles the events and properties on the 
+				print selection preferences script object.
+				@see PrnSelScriptProvider
+			*/
+			IID_ISCRIPTPROVIDER, kPrnSelScriptProviderImpl,
+		}
+	},
+}}};
+
+/*
+// Implementation definition.
+*/
+resource FactoryList (kSDKDefFactoryListResourceID) 
+{
+	kImplementationIDSpace,
+	{
+		#include "PrnSelFactoryList.h"
+	}
+};
+
+/*
+// Menu definition.
+*/
+resource MenuDef (kSDKDefMenuResourceID)
+{
+	{
+		// The About Plug-ins sub-menu item for this plug-in.
+		kPrnSelAboutActionID,			// ActionID (kInvalidActionID for positional entries)
+		kPrnSelAboutMenuPath,			// Menu Path.
+		kSDKDefAlphabeticPosition,		// Menu Position.
+		kSDKDefIsNotDynamicMenuFlag,	// kSDKDefIsNotDynamicMenuFlag or kSDKDefIsDynamicMenuFlag.
+
+		kPrnSelPrintSelectionActionID,
+		kPrnSelTargetMenuPath,
+		kSDKDefAlphabeticPosition,
+		kSDKDefIsNotDynamicMenuFlag,
+	}
+};
+
+/*
+// Action definition.
+*/
+resource ActionDef (kSDKDefActionResourceID)
+{
+	{ 
+		kPrnSelActionComponentBoss, 	// ClassID of boss class that implements the ActionID.
+		kPrnSelAboutActionID,			// ActionID.
+		kPrnSelAboutMenuKey,			// Sub-menu string.
+		kHelpMenuActionArea,				// Area name (see ActionDefs.h).
+		kNormalAction,					// Type of action (see ActionDefs.h).
+		kDisableIfLowMem,				// Enabling type (see ActionDefs.h).
+		kInvalidInterfaceID,			// Selection InterfaceID this action cares about or kInvalidInterfaceID.
+		kSDKDefInvisibleInKBSCEditorFlag, // kSDKDefVisibleInKBSCEditorFlag or kSDKDefInvisibleInKBSCEditorFlag.
+
+		kPrnSelActionComponentBoss,
+		kPrnSelPrintSelectionActionID,
+		kPrnSelPrintSelectionMenuKey,
+		kOtherActionArea,
+		kNormalAction,
+		kCustomEnabling,
+        kInvalidInterfaceID,
+		kSDKDefInvisibleInKBSCEditorFlag,
+	}
+};
+
+
+/*
+// LocaleIndex Definition.
+// The LocaleIndex should have indicies that point at your
+// localizations for each language system you are localized for.
+*/
+/*
+// String LocaleIndex.
+*/
+resource LocaleIndex (kSDKDefStringsResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_enUS, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_jaJP, kSDKDefStringsResourceID + index_jaJP
+		
+		kWildFS, k_Wild, kSDKDefStringsResourceID + index_enUS
+	}
+};
+
+resource LocaleIndex (kSDKDefStringsNoTransResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_Wild, kSDKDefStringsNoTransResourceID + index_enUS
+	}
+};
+
+resource StringTable (kSDKDefStringsNoTransResourceID + index_enUS)
+{
+	k_enUS,									// Locale Id
+	kEuropeanMacToWinEncodingConverter,		// Character encoding converter
+	{
+		// No-Translate strings go here:		
+	}
+};
+
+/*
+// Script Element info
+// In InDesign/InCopy 3.0, scripting resources are defined via ODFRez statements
+// for cross-platform compatibility.
+*/
+resource VersionedScriptElementInfo( 10 )
+{
+    //Contexts
+    {
+        kCS2ScriptVersion, kCoreScriptManagerBoss, kInDesignAllLanguagesFS, k_Wild,
+		kCS2ScriptVersion, kCoreScriptManagerBoss, kInCopyAllLanguagesFS, k_Wild,
+    }
+    {
+		// Object: print selection preference
+		Object
+		{
+			kPrintSelectionObjectScriptElement,	// object's script element ID
+			c_PrintSelection,			// script PropID
+			"print selection preference",		// name
+			"Print selection preference from the PrintSelection sample plug-in.", // description
+			kPrnSel_CLSID,			// Windows CLSID
+			NoCollectionInfo,			// CollectionElementType (scriptID, name, descr, CLSID)
+			kPreferencesObjectScriptElement,
+			kPreferencesSuiteScriptElement,
+		}
+		// Property (of the parent): print selection preferences
+		Property
+		{
+			kPrintSelectionObjectPropertyScriptElement,
+			p_PrintSelectionProperty,
+			"print selection preferences",
+			"Print selection preferences object from the PrintSelection sample plug-in",
+			ObjectType( kPrintSelectionObjectScriptElement ),
+			{}
+			kNoAttributeClass,
+		}
+        Property
+        {
+            kPrintSelectionPropertyScriptElement,
+            p_PrintSelection,
+            "print selection",
+            "Whether to print selected item only",
+            BoolType,
+            {}
+            kNoAttributeClass,
+        }
+        Provider
+        {
+            kPrnSelScriptProviderBoss,
+            {
+				// parent to the represented object: The document object
+                Parent { kDocumentObjectScriptElement },
+				// the represented object
+				RepresentObject{ kPrintSelectionObjectScriptElement },
+				// the property on the parent object that will refer to the represented object
+				ParentProperty{ kPrintSelectionObjectPropertyScriptElement, kReadWrite },	
+				// Property: print selection
+				Property{ kPrintSelectionPropertyScriptElement, kReadWrite },
+            }
+        }
+    }
+};
+
+
+#endif // __ODFRC__
+
+#include "PrnSel_enUS.fr"
+#include "PrnSel_jaJP.fr"
+//  Generated by Dolly build 17: template "Dialog".
+
+// End, PrnSel.fr.
+

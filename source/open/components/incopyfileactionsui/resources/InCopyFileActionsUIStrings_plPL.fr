@@ -1,0 +1,43 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kInCopyFileActionsUIStringsRsrcID + index_plPL)
+{
+	k_plPL,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{
+		"&Update Design",		"&Uaktualnij projekt",
+		"AlertUnableToSave",	"Następująca treść nie może zostać zapisana.\nPliki są zablokowane lub nie posiadasz przywilejów do ich edycji.\n",
+		"Update^1Alert",		"Nie można zapisać części zawartości. Uaktualnienie może spowodować utracenie zmian.\nCzy uaktualnić do najnowszej wersji “^1”?",
+		"Undoable^1Save",		"Uaktualnienie projektu spowoduje, że cała edytowalna zawartość zostanie najpierw zapisana. Zmian wprowadzonych w wyniku uaktualniania nie będzie można anulować poleceniem Cofnij. \nCzy mimo to uaktualnić do \"^1\"?",
+		"AlertStoriesMissing",	"Nie znaleziono niektórych plików z zawartością, nie można ich więc edytować. Spróbuj przenieść te pliki na ich oryginalne miejsce lub uaktualnić łącza w programie InDesign.",
+		"AlertStoriesMissingWF", "Nie znaleziono niektórych plików z zawartością, nie można ich więc edytować. Spróbuj pobrać tę zawartość z serwera i ponownie otworzyć dokument.",
+		"Update",				"Uaktualnij",
+		"&Revert Story",		"Prz&ywróć zawartość",
+//		"Revert Story",			"Revert Content", // Note to localizer: this string moved to InCopySharedStrings_enUS.fr
+		
+		"SaveAsFeatureLost",    "Ten dokument może zawierać funkcje nieobsługiwane w tym formacie pliku. Czy chcesz kontynuować?",
+		"CannotSaveOntoLockedFile",		"Wskazany plik jest obecnie pobrany przez użytkownika \"^1\" do edycji w ^2 z dokumentu ^3. Proszę wybrać inną nazwę pliku lub poprosić użytkownika \"^1\" o odłożenie pliku.",
+		"CannotSaveOntoLockedFileMinimal",	"Wskazany plik jest obecnie pobrany do edycji przez użytkownika \"^1\".  Proszę wybrać inną nazwę pliku lub poprosić użytkownika \"^1\" o odłożenie pliku.",
+	}
+};
+
+
+#endif // __ODFRC__

@@ -1,0 +1,1066 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/buttonui/resources/FormFieldUIPanelView_jaJP.fr $
+//  
+//  Owner: Mark VerMurlen
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "InterfaceColorDefines.h"
+
+#include "Widgets.fh"
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "IControlViewDefs.h"
+
+#include "FormFieldUIID.h"
+#include "FormFieldUIDefs.h"
+#include "SysControlIds.h"
+
+#include "IconRsrcDefs.h"
+#include "IconStyleDefs.h"
+
+
+#ifdef __ODFRC__
+
+// ----------------------------------------------
+// Appearance Panel:
+
+resource AppearancePanelWidget (kAppearancePaletteRsrcID + index_jaJP)
+{
+	__FILE__, __LINE__,
+	kAppearanceParentWidgetId, kPMRsrcID_None,			// WidgetId, RsrcId
+	kBindNone,					// Frame binding
+	Frame(0, 0, kButtonPanelMinWidth_JP, 0),		// Frame
+	kTrue, kTrue,				// Visible, Enabled
+	kTrue,						// EraseBeforeDrawing
+	kInterfacePaletteFill,		// Erase to color
+	"$$$/Panel/States",			// Panel name
+	{
+		EVEGenericPanelWidget
+		(
+			kInvalidWidgetID,	// WidgetId
+			0,0,				// RsrcId
+			kBindNone,						// Frame binding
+			Frame(0,0,0,0)					// Frame
+			kTrue,							// Visible
+			kTrue,							// Enabled
+			kEVESmallMargin|kEVEArrangeChildrenInColumn|kEVEAlignLeft|kEVEChildNoSpaceAfter|kEVENoSpaceAfter
+			{
+				EVEGenericPanelWidget
+				(
+					kInvalidWidgetID,	// WidgetId
+					0,0,				// RsrcId
+					kBindNone,						// Frame binding
+					Frame(0,0,0,0)					// Frame
+					kTrue,							// Visible
+					kTrue,							// Enabled
+					kEVENoSpaceAfter|kEVEChildAlignRight|kEVEArrangeChildrenInRow|kEVEChildNoSpaceAfter,		//EVE info
+					{
+						EVEGenericPanelWidget
+						(
+							kInvalidWidgetID,	// WidgetId
+							0,0,				// RsrcId
+							kBindLeft,						// Frame binding
+							Frame(0,0,0,0)					// Frame
+							kTrue,							// Visible
+							kTrue,							// Enabled
+							kEVERegularSpaceAfter|kEVEChildAlignRight|kEVEArrangeChildrenInColumn|kEVEChildNoSpaceAfter,		//EVE info
+							{
+								EVEStaticTextWidget
+								(
+									kFormsListStaticWID, kSysStaticTextPMRsrcId, kBindNone,
+									Frame(0,0,kButtonPanelTextWidth_JP,21)		// Frame
+									kTrue, kTrue, 					// Visible, Enabled,
+									kAlignRight, kEllipsizeEnd,kTrue,		//Alignment, Ellipsize, Convert ampersands
+									"$$$/Panel/FormFieldSettings/FieldType",
+									kFormFieldChoicesWidgetID,			// WidgetID this shortcut is connected to, 0 if none.
+									kEVERegularSpaceAfter|kEVEAlignRight
+								),
+								EVEStaticTextWidget
+								(
+									kNameStaticWID, kSysStaticTextPMRsrcId, kBindNone,
+									Frame(0,0,kButtonPanelTextWidth_JP,21)		// Frame
+									kTrue, kTrue, 					// Visible, Enabled,
+									kAlignRight, kEllipsizeEnd,kTrue,		//Alignment, Ellipsize, Convert ampersands
+									"$$$/Panel/FormFieldSettings/Name",
+									kNameEditWID,			// WidgetID this shortcut is connected to, 0 if none.
+									kEVERegularSpaceAfter|kEVEAlignRight
+								),
+								EVEStaticTextWidget
+								(
+									kEventStaticWID, kSysStaticTextPMRsrcId, kBindNone,
+									Frame(0,0,kButtonPanelTextWidth_JP,21)						// Frame
+									kTrue, kTrue, 							// Visible, Enabled,
+									kAlignRight, kEllipsizeEnd,kTrue,		//Alignment, Ellipsize, Convert ampersands
+									"$$$/Panel/FormFieldSettings/Event:",
+									kButtonEventChoicesWidgetID,							// WidgetID this shortcut is connected to, 0 if none.
+									kEVERegularSpaceAfter|kEVEAlignRight
+								),
+								EVEStaticTextWidget
+								(
+									kActionsListStaticWID, kSysStaticTextPMRsrcId, kBindNone,
+									Frame(0,0,kButtonPanelTextWidth_JP,21)						// Frame
+									kTrue, kTrue, 							// Visible, Enabled,
+									kAlignRight, kEllipsizeEnd,kTrue,		//Alignment, Ellipsize, Convert ampersands
+									"$$$/Panel/FormFieldSettings/Actions:",
+									kEventChoicesWidgetID,							// WidgetID this shortcut is connected to, 0 if none.
+									kEVENoSpaceAfter|kEVEAlignRight
+								)
+							}
+						)
+
+						EVEGenericPanelWidget
+						(
+							kInvalidWidgetID,	// WidgetId
+							0,0,				// RsrcId
+							kBindRight,						// Frame binding
+							Frame(0,0,0,0)					// Frame
+							kTrue,							// Visible
+							kTrue,							// Enabled
+							kEVENoSpaceAfter|kEVEAlignLeft|kEVEChildAlignLeft|kEVEArrangeChildrenInColumn|kEVEChildRegularSpaceAfter,		//EVE info
+							{
+								EVEDropDownListWidget					
+								(
+									kFormFieldChoicesWidgetID,		// WidgetId
+									kSysDropDownPMRsrcId,			// RsrcId
+									kBindRight,
+									Frame(0, 0, kButtonPanelMinWidth_JP-kButtonPanelTextWidth_JP-13,21)		// Frame
+									kTrue, kTrue					// Visible, Enabled
+									{ 
+										{
+											"$$$/Menu/FormFieldOptions/Button",	
+											"-",
+											"$$$/Menu/PDFOnly",	
+											"$$$/Menu/FormFieldOptions/Check Box",		
+											"$$$/Menu/FormFieldOptions/Combo Box",		
+											"$$$/Menu/FormFieldOptions/List Box",		
+											"$$$/Menu/FormFieldOptions/Radio Button",	
+											"$$$/Menu/FormFieldOptions/Signature Field",
+											"$$$/Menu/FormFieldOptions/Text Field",		
+										} 
+									}
+									kEVERegularSpaceAfter|kEVEAlignLeft,				
+								),
+
+								
+								EVETextEditBoxWidget
+								(
+									kNameEditWID, kSysEditBoxPMRsrcId, kBindRight,
+									Frame(0, 0, kButtonPanelMinWidth_JP-kButtonPanelTextWidth_JP-13,21)		// Frame
+									kTrue, kTrue,							// Visible, Enabled			
+									0,										// widget id of nudge button			
+									0,	0,									// small/large nudge amount
+									kPMNamedItemMaxChars,					// max num chars( 0 = no limit)
+									kFalse,									// is read only
+									kFalse,									//Notified for every key stroke
+									kFalse,									// range checking enabled
+									kFalse,									// blank entry allowed
+									0, 0,									// upper/lower bounds
+									"",										// initial text
+									kEVERegularSpaceAfter,					// EVE info
+								),
+								
+								EVEEventChoicesWidget					
+								(
+									kButtonEventChoicesWidgetID,		// WidgetId
+									kSysDropDownPMRsrcId,			// RsrcId
+									kBindRight,
+									Frame(0, 0, kButtonPanelMinWidth_JP-kButtonPanelTextWidth_JP-13,21)		// Frame
+									kTrue, kTrue					// Visible, Enabled
+									{ 
+										{
+										} 
+									}
+									kEVERegularSpaceAfter,							// EVE info
+								),
+								
+								EVEGenericPanelWidget
+								(
+									kInvalidWidgetID,	// WidgetId
+									0,0,				// RsrcId
+									kBindNone,						// Frame binding
+									Frame(0,0,0,0)		// Frame
+									kTrue,							// Visible
+									kTrue,							// Enabled
+									kEVERegularSpaceAfter|kEVEAlignLeft|kEVEChildAlignLeft|kEVEArrangeChildrenInRow|kEVEChildNoSpaceAfter,		//EVE info
+									{
+										AddActionIconPopup
+										(
+											kBehaviorChoicesWidgetID, kAddActionIconRsrcId, kFormFieldUIPluginID,
+											kBindNone,
+											Frame(0, 0, 24, 24)				// Frame
+											kTrue, kTrue,					// Visible, Enabled
+											kADBEIconSuiteButtonType,
+											"ButtonsActionsPopup",
+											kEVERegularSpaceAfter,
+										),
+
+										EVERemoveActionIconButton
+										(
+											kDeleteBehaviorButtonWidgetID, 
+											kRemoveActionIconRsrcId, kFormFieldUIPluginID,// WidgetId, RsrcId
+											kBindNone,							// Frame binding
+											Frame(0,0,24,24)		// Frame
+											kTrue, kTrue,										// Visible, Enabled
+											kADBEIconSuiteButtonType,
+											kEVERegularSpaceAfter,
+										),
+									}
+								),								
+							}
+						)
+					}
+				),
+		
+				EVEGenericPanelWithBorderWidget
+				(
+					kBehaviorsTreeBorderWidgetID, kPMRsrcID_None,
+					kBindLeft,
+					Frame(0, 0, kButtonPanelMinWidth_JP-8, 81)		// Frame
+					kTrue, kTrue,
+					"",
+					{
+						ActionsTreeViewWidget
+						(
+							kBehaviorsTreeWidgetID, kPMRsrcID_None,// WidgetId, RsrcId
+							kBindAll,
+							Frame(1,1,kButtonPanelMinWidth_JP-9,81)		// Frame
+							kTrue, kTrue,				// Visible, Enabled
+							kTrue,							// EraseBeforeDraw
+							kInterfacePaletteFill,			// Erase to color
+							"",
+							kHideRootNode,					//Options
+							kFalse,						//Use H Scroll bar
+							kTrue,						//Use V scroll bar
+							20,							// Vertical Scroll Button Increment
+							20,							// Vertical Thumb Scroll Increment
+							0,							// Horizontal Scroll Button Increment
+							0,							// Horizontal Thumb Scroll Increment
+							1,							// Items selectable, 0 = No Selection, 1 = Single Selection, 2 = Multiple Selection
+							kFalse,						// Allow children from multiple parents to be selected
+							kFalse,						// Allow discontiguous selection
+							{
+									
+							}
+						),
+
+						EVEInfoStaticTextWidget
+						(
+							kNoActionsAddedTextWidgetID, kPMRsrcID_None,			// WidgetId, RsrcId
+							kBindLeft | kBindRight,
+							Frame(2,2,kButtonPanelMinWidth_JP-26,20)			// Frame
+							kFalse, kTrue, kAlignCenter,					// Visible, Enabled, Alignment
+							kDontEllipsize,kTrue,							// Ellipsize style, Convert ampersands
+							"$$$/Panel/Empty Action",
+   							0
+							kPaletteWindowFontId, kPaletteWindowFontId,
+							kEVENoSpaceAfter
+						),
+					}
+					kEVERegularSpaceAfter|kEVEDontArrangeChildren|kEVENoMargin|kEVEChildNoSpaceAfter,	// EVE Info
+				),
+						
+				EVEGenericPanelWidget
+				(
+					kBehaviorOptionsGroupWidgetId,
+					kPMRsrcID_None,
+					kBindNone,						// Frame binding
+					Frame(0,0,0,0)					// Frame
+					kTrue,
+					kTrue,
+					kEVENoSpaceAfter|kEVEChildNoSpaceAfter|kEVEAlignLeft|kEVEArrangeChildrenInColumn
+					{
+						HolderPanelWidget
+						(
+							kBehaviorsDataHolderWidgetID, kPMRsrcID_None, // WidgetId, RsrcId
+							kBindNone,					// Frame binding
+							Frame(0,0,0,0)					// Frame
+							kTrue, kTrue,				// Visible, Enabled
+							"$$$/Panel/FormFieldSettings/Action Data Holder", // Panel name	
+							{
+							}
+						),
+					}
+				),
+		
+				EVEStaticTextWidget
+				(
+					kToggleStatesTextWidgetID,						// WidgetId
+					kSysStaticTextPMRsrcId,	// RsrcId
+					kBindNone,				// Frame binding
+					Frame(0,0,0,0)					// Frame
+					kFalse,kTrue, kAlignLeft,	// Visible, Enabled, Alignment
+					kDontEllipsize,	kTrue,			// Ellipsize style, Convert ampersands
+					"$$$/Panel/StatesListBoxLabel/States",			// Initial text
+					0,
+					kEVERegularSpaceAfter|kEVEAlignLeft
+				),	
+				
+				// ----- The List Boxes (set of 4: small/normal/big/huge).
+				EVEGenericPanelWidget
+				(
+					kStateListBoxesContainerWidgetID, kPMRsrcID_None,	// WidgetId, RsrcId
+					kBindTop | kBindLeft,					// Frame binding
+					Frame(0,0,0,0)					// Frame
+					kFalse, kTrue,										// Visible, Enabled
+					kEVERegularSpaceAfter|kEVEArrangeChildrenInColumn|kEVEAlignLeft|kEVEChildSmallSpaceAfter,		//EVE info
+					{						
+						// Listbox for Small Palette Rows
+						StateListBox
+						(
+							kStateListSmallWidgetID, kSysOwnerDrawListBoxPMRsrcId,	// WidgetId, RsrcId
+							kBindParentToChild,
+							Frame(0, 0, kButtonPanelMinWidth_JP-10, 48)			// Frame
+							kFalse, kTrue,										// Visible, Enabled
+							kTrue,												// EraseBeforeDraw
+							kInterfacePaletteFill,								// InterfaceColor
+							3,0,												// List dimensions
+							kCC2016PanelTreeNodeSmallRowHeight,													// Cell height
+							1,													// Border width
+							kFalse,	kTrue,										// Has scroll bar (h,v)
+							kFalse,												// Multiselection
+							kFalse,												// List items can be reordered
+							kTrue,												// Draggable to new/delete buttons
+							kFalse,												// Drag/Dropable to other windows
+							kFalse,												// An item always has to be selected
+							kFalse,												// Don't notify on reselect
+							kStateListSmallElementRsrcID						// Fill list box with widgets with this ID (default is 0)
+							kHideRootNode,											//Options
+							kFalse,												//Use H Scroll bar
+							kTrue,												//Use V scroll bar
+							kCC2016PanelTreeNodeSmallRowHeight,					// Vertical Scroll Button Increment
+							1,													// Vertical Thumb Scroll Increment
+							0,													// Horizontal Scroll Button Increment - Not Used
+							0,													// Horizontal Thumb Scroll Increment - Not Used
+							1,													// Items selectable, 0 = No Selection, 1 = Single Selection, 2 = Multiple Selection
+							kFalse,												// Allow children from multiple parents to be selected
+							kFalse,												// Allow discontiguous selection
+							kEVENoSpaceAfter,
+						),
+
+						
+						// Listbox for Regular Palette Rows
+						StateListBox
+						(
+							kStateListMediumWidgetID, kSysOwnerDrawListBoxPMRsrcId,	// WidgetId, RsrcId
+							kBindParentToChild,
+							Frame(0, 0, kButtonPanelMinWidth_JP-10, 84)			// Frame
+							kFalse, kTrue,										// Visible, Enabled
+							kTrue,												// EraseBeforeDraw
+							kInterfacePaletteFill,								// InterfaceColor
+							3,0,												// List dimensions
+							28,													// Cell height
+							1,													// Border width
+							kFalse,	kTrue,										// Has scroll bar (h,v)
+							kFalse,												// Multiselection
+							kFalse,												// List items can be reordered
+							kTrue,												// Draggable to new/delete buttons
+							kFalse,												// Drag/Dropable to other windows
+							kFalse,												// An item always has to be selected
+							kFalse,												// Don't notify on reselect
+							kStateListMediumElementRsrcID								// Fill list box with widgets with this ID (default is 0)
+							kHideRootNode,											//Options
+							kFalse,												//Use H Scroll bar
+							kTrue,												//Use V scroll bar
+							28,													// Vertical Scroll Button Increment
+							1,													// Vertical Thumb Scroll Increment
+							0,													// Horizontal Scroll Button Increment - Not Used
+							0,													// Horizontal Thumb Scroll Increment - Not Used
+							1,													// Items selectable, 0 = No Selection, 1 = Single Selection, 2 = Multiple Selection
+							kFalse,												// Allow children from multiple parents to be selected
+							kFalse,												// Allow discontiguous selection
+							kEVENoSpaceAfter,
+						),
+
+						// Listbox for Big Palette Rows
+						StateListBox
+						(
+							kStateListLargeWidgetID, kSysOwnerDrawListBoxPMRsrcId,	// WidgetId, RsrcId
+							kBindParentToChild,					// Frame binding
+							Frame(0, 0, kButtonPanelMinWidth_JP-10, 147)								// Frame
+							kFalse, kTrue,										// Visible, Enabled
+							kTrue,												// EraseBeforeDraw
+							kInterfacePaletteFill,								// InterfaceColor
+							3,0,												// List dimensions
+							49,													// Cell height
+							1,													// Border width
+							kFalse,	kTrue,										// Has scroll bar (h,v)
+							kFalse,												// Multiselection
+							kFalse,												// List items can be reordered
+							kTrue,												// Draggable to new/delete buttons
+							kFalse,												// Drag/Dropable to other windows
+							kFalse,												// An item always has to be selected
+							kFalse,												// Don't notify on reselect
+							kStateListLargeElementRsrcID						// Fill list box with widgets with this ID (default is 0)
+							kHideRootNode,											//Options
+							kFalse,												//Use H Scroll bar
+							kTrue,												//Use V scroll bar
+							49,													// Vertical Scroll Button Increment
+							1,													// Vertical Thumb Scroll Increment
+							0,													// Horizontal Scroll Button Increment - Not Used
+							0,													// Horizontal Thumb Scroll Increment - Not Used
+							1,													// Items selectable, 0 = No Selection, 1 = Single Selection, 2 = Multiple Selection
+							kFalse,												// Allow children from multiple parents to be selected
+							kFalse,												// Allow discontiguous selection
+							kEVENoSpaceAfter,
+						),
+
+						// Listbox for Huge Palette Rows
+						StateListBox
+						(
+							kStateListExtraLargeWidgetID, kSysOwnerDrawListBoxPMRsrcId,	// WidgetId, RsrcId
+							kBindParentToChild,					// Frame binding
+							Frame(0, 0, kButtonPanelMinWidth_JP-10, 177)								// Frame
+							kFalse, kTrue,										// Visible, Enabled
+							kTrue,												// EraseBeforeDraw
+							kInterfacePaletteFill,								// InterfaceColor
+							3,0,												// List dimensions
+							59,													// Cell height
+							1,													// Border width
+							kFalse,	kTrue,										// Has scroll bar (h,v)
+							kFalse,												// Multiselection
+							kFalse,												// List items can be reordered
+							kTrue,												// Draggable to new/delete buttons
+							kFalse,												// Drag/Dropable to other windows
+							kFalse,												// An item always has to be selected
+							kFalse,												// Don't notify on reselect
+							kStateListExtraLargeElementRsrcID						// Fill list box with widgets with this ID (default is 0)
+							kHideRootNode,											//Options
+							kFalse,												//Use H Scroll bar
+							kTrue,												//Use V scroll bar
+							59,													// Vertical Scroll Button Increment
+							1,													// Vertical Thumb Scroll Increment
+							0,													// Horizontal Scroll Button Increment - Not Used
+							0,													// Horizontal Thumb Scroll Increment - Not Used
+							1,													// Items selectable, 0 = No Selection, 1 = Single Selection, 2 = Multiple Selection
+							kFalse,												// Allow children from multiple parents to be selected
+							kFalse,												// Allow discontiguous selection
+							kEVENoSpaceAfter,
+						),
+					}
+				),
+				
+				EVECheckBoxWidget
+				(
+					kHiddenUntilCheckBoxWidgetID,					// WID
+					kSysCheckBoxPMRsrcId,							// RsrcId
+					kBindNone,										// Frame binding
+					Frame(0,0,0,0)					// Frame
+					kTrue, kTrue,									// Visible, Enabled
+					kAlignLeft,										// Alignment
+					"$$$/Menu/MSOPanel/HiddenUntilTriggered"		// Initial Text
+					kEVEAlignLeft|kEVERegularSpaceAfter,
+				),
+
+				EVESeparatorWidget
+				(
+					0, kSysGenericSeparatorPMRsrcId,
+					kBindNone,
+					Frame(0, 0, kButtonPanelMinWidth_JP-10, 1),
+					kTrue, kTrue,				// Visible, Enabled
+					kEVERegularSpaceAfter|kEVENoMargin
+				),
+				
+				// ----- PDF Options Title Group -----
+				EVEGenericPanelWidget
+				(
+					kPDFOptionsGroupWidgetID, 0, 0,	// WidgetId, RsrcId
+					kBindNone,				// Frame binding
+					Frame(0,0,0,0)					// Frame
+					kTrue, kTrue,										// Visible, Enabled
+					kEVERegularSpaceAfter|kEVEArrangeChildrenInRow|kEVEChildAlignFill|kEVENoMargin		//EVE info
+					{
+						//	Expand Icon
+						PDFOptionsExpanderWidget
+						(
+							kPDFOptionsExpanderWidgetID, 
+							kTreeBranchExpandedRsrcID, kApplicationRsrcPluginID,	// RsrcId of icon when node is collapsed 
+							kBindNone,
+							Frame(0,2,18,20)					// Frame
+							kTrue, kTrue,											// Visible, Enabled
+							kADBEIconSuiteButtonType,
+							kEVENoSpaceAfter
+						),
+						// Title
+						EVEStaticTextWidget
+						(		
+							kPDFOPtionsLabelWidgetID, kSysStaticTextPMRsrcId,// WidgetId, RsrcId
+							kBindNone,									// Frame binding
+							Frame(0,0,0,0)					// Frame
+							kTrue, kTrue, kAlignLeft,								// Visible, Enabled
+							kDontEllipsize, kTrue,									// Ellipsize style, Convert ampersands
+							"$$$/Panel/PDFOptions",					// Text
+							0,
+							kEVENoSpaceAfter
+						),
+					}
+				),
+				
+				// PDF Options widgets..
+				EVEStaticTextWidget
+				(
+					kPDFDescriptionLabelWID,		// WidgetId
+					kSysStaticTextPMRsrcId,			// RsrcId
+					kBindNone,						// Frame binding
+					Frame(0,0,0,0)					// Frame
+					kFalse, kTrue, kAlignLeft,		// Visible, Enabled, Alignment
+					kDontEllipsize, kTrue,			// Ellipsize style, Convert ampersands
+					"$$$/Panel/Description"			// Contents
+					kButtonPDFDescriptionWID,
+					kEVENoSpaceAfter|kEVENoMargin, // EVE info
+				),
+				
+				EVETextEditBoxWidget
+				(
+					kButtonPDFDescriptionWID, kSysEditBoxPMRsrcId,	// WidgetId, RsrcId
+					kBindNone,
+					Frame(0,0,kButtonPanelMinWidth_JP-10,21)					// Frame
+					kFalse, kTrue,						// Visible, Enabled
+					0,									// Widget id of nudge button (0 so we don't get one)
+					0, 0,								// small,large nudge amount
+					0,									// max num chars( 0 = no limit)
+					kFalse,								// is read only
+					kFalse,								// should notify each key stroke
+					kFalse,								// range checking enabled
+					kTrue,								// blank entry allowed
+					0,0,								// upper/lower bounds
+					"",
+					kEVERegularSpaceAfter|kEVENoMargin,	// EVE info
+				),	
+						
+				// Making Another Panel to arrange these in different columns...	
+				EVEGenericPanelWidget
+				(
+					0, kPMRsrcID_None,											// WidgetId, RsrcId
+					kBindNone ,													// Frame binding
+					Frame(0,0,0,0)										// Frame
+					kTrue, kTrue,                                              // Visible, Enabled
+					kEVENoSpaceAfter|kEVENoMargin|kEVEArrangeChildrenInRow,	// EVE info
+					{
+						EVEGenericPanelWidget
+						(
+							0, kPMRsrcID_None,											// WidgetId, RsrcId
+							kBindNone,							                          // Frame binding
+							Frame(0, 0, 120, 0)										// Frame
+							kTrue, kTrue,                                              // Visible, Enabled
+							kEVENoSpaceAfter|kEVENoMargin|kEVEArrangeChildrenInColumn,	// EVE info
+							{
+								EVECheckBoxWidget
+								(
+									kButtonPDFPrintableCheckBoxWID,				// WidgetId
+									kSysCheckBoxPMRsrcId,						// RsrcId
+									kBindNone,									// Frame binding
+									Frame(0,0,120,0)								// Frame
+									kFalse,										// Visible
+									kTrue,										// Enabled
+									kAlignLeft,									// Alignment
+									"$$$/Panel/Printable",						// Initial text
+									kEVEAlignLeft|kEVENoSpaceAfter,	// EVE info
+								),
+
+								EVECheckBoxWidget
+								(
+									kRequiredCheckBoxWidgetID,						// WID
+									kSysCheckBoxPMRsrcId,							// RsrcId
+									kBindNone,										// Frame binding
+									Frame(0,0,120,0)									// Frame
+									kFalse, kTrue,									// Visible, Enabled
+									kAlignLeft,										// Alignment
+									"$$$/Panel/Required"							// Initial Text
+									kEVEAlignLeft|kEVENoSpaceAfter,
+								),
+
+								EVECheckBoxWidget
+								(
+									kPasswordCheckBoxWidgetID,						// WID
+									kSysCheckBoxPMRsrcId,							// RsrcId
+									kBindNone,										// Frame binding
+									Frame(0,0,120,0)									// Frame
+									kFalse, kTrue,									// Visible, Enabled
+									kAlignLeft,										// Alignment
+									"$$$/Dialog/FormFieldSettings/Password"			// Initial Text
+									kEVEAlignLeft|kEVENoSpaceAfter,
+								),
+										
+								EVECheckBoxWidget
+								(
+									kMultipleSelectionCheckBoxWidgetID,				// WID
+									kSysCheckBoxPMRsrcId,							// RsrcId
+									kBindNone,										// Frame binding
+									Frame(0,0,120,0)									// Frame
+									kFalse, kTrue,									// Visible, Enabled
+									kAlignLeft,										// Alignment
+									"$$$/Panel/MultipleSelection"					// Initial Text
+									kEVEAlignLeft|kEVENoSpaceAfter,
+								),																					
+							}
+						),		
+
+						EVEGenericPanelWidget
+						(
+							0, kPMRsrcID_None,											// WidgetId, RsrcId
+							kBindNone,                          // Frame binding
+							Frame(0, 0, 120, 0)		                  // Frame
+							kTrue, kTrue,                                              // Visible, Enabled
+							kEVENoSpaceAfter|kEVENoMargin|kEVEArrangeChildrenInColumn|kEVEAlignRight,	// EVE info
+							{			
+								EVECheckBoxWidget
+								(
+									kReadOnlyCheckBoxWidgetID,						// WID
+									kSysCheckBoxPMRsrcId,							// RsrcId
+									kBindNone,										// Frame binding
+									Frame(0,0,120,0)									// Frame
+									kFalse, kTrue,									// Visible, Enabled
+									kAlignLeft,										// Alignment
+									"$$$/Dialog/FormFieldSettings/ReadOnly"			// Initial Text
+									kEVEAlignLeft|kEVENoSpaceAfter,
+								),
+
+								EVECheckBoxWidget
+								(
+									kSelectedByDefaultCheckBoxWidgetID,				// WID
+									kSysCheckBoxPMRsrcId,							// RsrcId
+									kBindNone,										// Frame binding
+									Frame(0,0,120,0)									// Frame
+									kFalse, kTrue,									// Visible, Enabled
+									kAlignLeft,										// Alignment
+									"$$$/Panel/SelectedByDefault"					// Initial Text
+									kEVEAlignLeft|kEVENoSpaceAfter,
+								),
+
+								EVECheckBoxWidget
+								(
+									kMultilineCheckBoxWidgetID,						// WID
+									kSysCheckBoxPMRsrcId,							// RsrcId
+									kBindNone,										// Frame binding
+									Frame(0,0,120,0)									// Frame
+									kFalse, kTrue,									// Visible, Enabled
+									kAlignLeft,										// Alignment
+									"$$$/Panel/Multiline"							// Initial Text
+									kEVEAlignLeft|kEVENoSpaceAfter,
+								),
+										
+								EVECheckBoxWidget
+								(
+									kScrollableCheckBoxWidgetID,					// WID
+									kSysCheckBoxPMRsrcId,							// RsrcId
+									kBindNone,										// Frame binding
+									Frame(0,0,120,0)									// Frame
+									kFalse, kTrue,									// Visible, Enabled
+									kAlignLeft,										// Alignment
+									"$$$/Dialog/FormFieldSettings/Scroll"			// Initial Text
+									kEVEAlignLeft|kEVENoSpaceAfter,
+								),
+
+								EVECheckBoxWidget
+								(
+									kSortItemsCheckBoxWidgetID,						// WID
+									kSysCheckBoxPMRsrcId,							// RsrcId
+									kBindNone,										// Frame binding
+									Frame(0,0,120,0)									// Frame
+									kFalse, kTrue,									// Visible, Enabled
+									kAlignLeft,										// Alignment
+									"$$$/Panel/SortItems"							// Initial Text
+									kEVEAlignLeft|kEVENoSpaceAfter,
+								),
+
+								EVECheckBoxWidget
+								(
+									kMERTLOptionCheckBoxWidgetID,					// WID
+									kSysCheckBoxPMRsrcId,							// RsrcId
+									kBindNone,										// Frame binding
+									Frame(0,0,120,0)									// Frame
+									kFalse, kTrue,									// Visible, Enabled
+									kAlignLeft,										// Alignment
+									"$$$/Panel/MERTLOption"							// Initial Text
+									kEVEAlignLeft|kEVENoSpaceAfter,
+								),	
+							}
+						),
+					}
+				),
+
+				EVEGenericPanelWidget
+				(
+					kPDFOptionsPanelWID, kPMRsrcID_None,												// WidgetId, RsrcId
+					kBindNone,												// Frame binding
+					Frame(0,0,0,0)					// Frame
+					kFalse, kTrue,													// Visible, Enabled
+					kEVENoSpaceAfter|kEVEArrangeChildrenInColumn|kEVENoMargin,						// EVE info
+					{
+						EVEGenericPanelWidget
+						(
+							0, kPMRsrcID_None,											// WidgetId, RsrcId
+							kBindNone,                          // Frame binding
+							Frame(0,0,0,0)					// Frame
+							kTrue, kTrue,												// Visible, Enabled
+							kEVENoSpaceAfter|kEVEArrangeChildrenInRow|kEVENoMargin,					// EVE info
+							{
+								EVEStaticTextWidget
+								(
+									kExportValueStaticWID, kSysStaticTextPMRsrcId, kBindNone,
+									Frame(0,0,0,0)					// Frame
+									kFalse, kTrue, 					// Visible, Enabled,
+									kAlignLeft, kEllipsizeEnd,kTrue,		//Alignment, Ellipsize, Convert ampersands
+									"$$$/Panel/ExportValue",
+									kExportValueEditWidgetID,			// WidgetID this shortcut is connected to, 0 if none.
+									kEVEAlignLeft|kEVESmallSpaceAfter, // EVE info
+								),
+
+								EVETextEditBoxWidget
+								(
+									kExportValueEditWidgetID, kSysEditBoxPMRsrcId,	// WidgetId, RsrcId
+									kBindNone,
+									Frame(0,0,90,21)					// Frame
+									kFalse, kTrue,						// Visible, Enabled
+									0,									// Widget id of nudge button (0 so we don't get one)
+									0, 0,								// small,large nudge amount
+									0,									// max num chars( 0 = no limit)
+									kFalse,								// is read only
+									kFalse,								// should notify each key stroke
+									kFalse,								// range checking enabled
+									kTrue,								// blank entry allowed
+									0,0,								// upper/lower bounds
+									"",
+									kEVEAlignLeft|kEVENoSpaceAfter,		// EVE info
+								),	
+							}
+						),
+
+						// Panel for the list and combo box options..
+						EVEGenericPanelWidget
+						(
+							kListOptionsPanelWidgetID,	// WidgetId
+							0,0,				// RsrcId
+							kBindNone,						// Frame binding
+							Frame(0,0,0,0)					// Frame
+							kFalse,							// Visible
+							kTrue,							// Enabled
+							kEVERegularSpaceAfter|kEVEAlignLeft|kEVEChildAlignLeft|kEVEArrangeChildrenInRow|kEVENoMargin,		//EVE info
+							{
+								EVEStaticTextWidget
+								(
+									kListItemsLabelWidgetID, kSysStaticTextPMRsrcId,					// WidgetId, RsrcId
+									kBindNone,											// Frame binding
+									Frame(0,0,0,0)					// Frame
+									kFalse, kTrue, kAlignLeft,							// Visible, Enabled, Alignment
+									kDontEllipsize,	kTrue,									// Ellipsize style, Convert ampersands
+									"$$$/Panel/ListItems",
+									0,
+									kEVEAlignLeft
+								),
+
+								ListItemTextEditBoxWidget
+								(
+									kListItemTextNodeWID, kSysEditBoxPMRsrcId, kBindNone,
+									Frame(0, 0, 143, 21)					// Frame
+									kFalse, kTrue,							// Visible, Enabled			
+									0,										// widget id of nudge button			
+									0,	0,									// small/large nudge amount
+									kPMNamedItemMaxChars,					// max num chars( 0 = no limit)
+									kFalse,									// is read only
+									kTrue,									//Notified for every key stroke
+									kFalse,									// range checking enabled
+									kFalse,									// blank entry allowed
+									0, 0,									// upper/lower bounds
+									"",										// initial text
+									kEVEAlignLeft
+								),
+
+								AddListOptionIconButton
+								(
+									kAddListOptionButtonWidgetID, 
+									kAddListOptionIconRsrcId, kFormFieldUIPluginID,// WidgetId, RsrcId
+									kBindNone,							// Frame binding
+									Frame(0,0,21,21)					// Frame
+									kFalse, kTrue,										// Visible, Enabled
+									kADBEIconSuiteButtonType,
+									kEVENoSpaceAfter,
+								),
+
+								RemoveListOptionIconButton
+								(
+									kRemoveListOptionButtonWidgetID, 
+									kRemoveActionIconRsrcId, kFormFieldUIPluginID,// WidgetId, RsrcId
+									kBindNone,							// Frame binding
+									Frame(0,0,21,21)					// Frame
+									kFalse, kTrue,										// Visible, Enabled
+									kADBEIconSuiteButtonType,
+									kEVENoSpaceAfter,
+								),
+							}
+						),
+
+						EVEGenericPanelWithBorderWidget
+						(
+							kListItemsBorderWidgetID, kPMRsrcID_None,
+							kBindLeft,
+							Frame(0,0,kButtonPanelMinWidth_JP-14,122)			// Frame
+							kFalse, kTrue,
+							"",
+							{
+								ListItemsTreeViewWidget
+								(
+									kListItemsWidgetID, kPMRsrcID_None,// WidgetId, RsrcId
+									kBindAll,
+									Frame(1,1,kButtonPanelMinWidth_JP-15,121)			// Frame
+									kTrue, kTrue,				// Visible, Enabled
+									kTrue,						// EraseBeforeDraw
+									kInterfacePaletteFill,		// Erase to color
+									"",
+									kHideRootNode,					//Options
+									kFalse,						//Use H Scroll bar
+									kTrue,						//Use V scroll bar
+									20,							// Vertical Scroll Button Increment
+									20,							// Vertical Thumb Scroll Increment
+									0,							// Horizontal Scroll Button Increment
+									0,							// Horizontal Thumb Scroll Increment
+									1,							// Items selectable, 0 = No Selection, 1 = Single Selection, 2 = Multiple Selection
+									kFalse,						// Allow children from multiple parents to be selected
+									kFalse,						// Allow discontiguous selection
+									{
+									}
+								)
+							}
+							kEVEDontArrangeChildren|kEVERegularSpaceAfter,	// EVE Info
+						),
+
+						// Options for font for text/combo/list fields..
+						EVEGenericPanelWidget
+						(
+							kFontPropertiesPanelWID, kPMRsrcID_None,												// WidgetId, RsrcId
+							kBindNone,												// Frame binding
+							Frame(0,0,0,0)					// Frame
+							kTrue, kTrue,													// Visible, Enabled
+							kEVENoSpaceAfter|kEVEArrangeChildrenInRow,						// EVE info
+							{
+								EVEGenericPanelWidget
+								(
+									kFormFontsPanelWidgetID, kPMRsrcID_None,												// WidgetId, RsrcId
+									kBindNone,												// Frame binding
+									Frame(0,0,0,0)					// Frame
+									kTrue, kTrue,													// Visible, Enabled
+									kEVEExtraLargeSpaceAfter|kEVEArrangeChildrenInColumn|kEVENoMargin,						// EVE info
+									{
+										EVEStaticTextWidget
+										(
+											kFontStaticWID, kSysStaticTextPMRsrcId, kBindNone,
+											Frame(0,0,0,0)					// Frame
+											kTrue, kTrue, 											// Visible, Enabled,
+											kAlignLeft, kEllipsizeEnd,kTrue,						//Alignment, Ellipsize, Convert ampersands
+											"$$$/Panel/Font",
+											kFormFontFamilyWidgetID,								// WidgetID this shortcut is connected to, 0 if none.
+											kEVENoMargin
+										),
+										FormsFontTypeaheadTextComboBoxWidget
+										(
+											kFormFontFamilyWidgetID,  kFontPopupID,    kGlyphPanelPluginID,// WidgetId, RsrcId 
+											kBindLeft, 
+											Frame(5,0,110,21)        // Frame 
+											kTrue, kTrue,                    // Visible, Enabled 
+											0,                            // widget id of nudge button             
+											0,0,                        // small/large nudge amount 
+											0,                            // max num chars( 0 = no limit) 
+											kFalse,                        // is read only 
+											kFalse,                        // should notify each key stroke 
+											kFalse,                        // range checking enabled 
+											kFalse,                        // blank entry allowed 
+											0, 0,                        // upper/lower bounds 
+											"",                            // initial text 
+											{{
+											}} 
+											kEVEAlignFill,
+										),
+
+										FormsFontTypeaheadTextComboBoxWidget
+										(
+											kFormFontStyleWidgetID,kFontPopupID, kGlyphPanelPluginID,// WidgetId, RsrcId 
+											kBindRight, 
+											Frame(0,0,0,0)        		// Frame 
+											kTrue, kTrue,                    // Visible, Enabled 
+											0,                            // widget id of nudge button             
+											0,0,                        // small/large nudge amount 
+											0,                            // max num chars( 0 = no limit) 
+											kFalse,                        // is read only 
+											kFalse,                        // should notify each key stroke 
+											kFalse,                        // range checking enabled 
+											kFalse,                        // blank entry allowed 
+											0, 0,                        // upper/lower bounds 
+											"",                            // initial text 
+											{{
+											}} 	
+											kEVEAlignFill,											
+										),
+									}
+								),
+
+								EVEGenericPanelWidget
+								(
+									kFontSizePanelWID, kPMRsrcID_None,												// WidgetId, RsrcId
+									kBindNone,												// Frame binding
+									Frame(0,0,0,0)					// Frame
+									kFalse, kTrue,													// Visible, Enabled
+									kEVENoSpaceAfter|kEVEArrangeChildrenInColumn|kEVENoMargin,						// EVE info
+									{
+										EVEStaticTextWidget
+										(
+											kFontSizeStaticWID, kSysStaticTextPMRsrcId, kBindNone,
+											Frame(0,0,0,0)					// Frame
+											kTrue, kTrue, 											// Visible, Enabled,
+											kAlignLeft, kEllipsizeEnd,kTrue,						//Alignment, Ellipsize, Convert ampersands
+											"$$$/Panel/FontSize",
+											kFontSizeEditBoxWidgetID,								// WidgetID this shortcut is connected to, 0 if none.
+											kEVENoMargin
+										),
+										EVEGenericPanelWidget
+										(
+											kInvalidWidgetID, kPMRsrcID_None,												// WidgetId, RsrcId
+											kBindNone,												// Frame binding
+											Frame(0,0,0,0)					// Frame
+											kTrue, kTrue,													// Visible, Enabled
+											kEVENoSpaceAfter|kEVEArrangeChildrenInRow,						// EVE info
+											{
+												EVENudgeControlWidget 
+												( 
+													kFontSizeNudgeWidgetID, kPMRsrcID_None,        // WidgetId, RsrcId 
+													kBindNone,                                        // Frame binding 
+													Frame(0,0,0,0),                 
+													kTrue, kTrue,                                    // Visible, Enabled 
+													kEVENoSpaceAfter 
+												), 
+												FontSizeComboBoxWidget
+												(
+													kFontSizeEditBoxWidgetID, kSysEditBoxPMRsrcId, 
+													kBindNone,
+													Frame(0, 0, 75, 21)										// Frame
+													kTrue, kTrue,											// Visible, Enabled	
+													kFontSizeNudgeWidgetID,										// Widget id of nudge button (0 so we don't get one)
+													1, 10,                                                   // small,large nudge amount		
+													kPMNamedItemMaxChars,									// max num chars( 0 = no limit)
+													kFalse,													// is read only
+													kFalse,													// Notified for every key stroke
+													kTrue,													// range checking enabled
+													kFalse,													// blank entry allowed
+													300, 0,													// upper/lower bounds
+													"12",											        // initial text
+													0,
+													{{
+														// Initial strings
+														"$$$/Panel/AutoSize",
+														"-",
+														"10",
+														"12",
+														"14",
+														"18",
+													}},									
+												),
+											}
+										),
+									}
+								),
+							}
+						),
+					}
+				),
+			}
+		),
+
+		// ----- Control strip. (delete state button)
+		EVEGenericPanelWidget
+		(
+			kStateControlStripWidgetID, kPMRsrcID_None,			// WidgetId, RsrcId
+			kBindNone,				// Frame binding
+			Frame(0, 0, kButtonPanelMinWidth_JP-8, 25)		// Frame
+			kTrue, kTrue,										// Visible, Enabled
+			kEVEDontArrangeChildren|kEVEAlignLeft|kEVENoSpaceAfter|kEVEChildNoSpaceAfter,
+			{			
+				EVESeparatorWidget
+				(
+					0, kSysGenericSeparatorPMRsrcId,
+					kBindNone,
+					Frame(5, 0, kButtonPanelMinWidth_JP-3, 1),
+					kTrue, kTrue,				// Visible, Enabled
+					kEVENoSpaceAfter|kEVENoMargin
+				),
+					
+				EVEPreviewButtonWidget
+				(
+					kShowPreviewButtonWidgetID, kShowPreviewIconRsrcID, kFormFieldUIPluginID,	// WidgetId, RsrcId
+					kBindLeft,											// Frame binding
+					Frame(0,1,28,25)													// Frame
+					kTrue, kTrue,														// Visible, Enabled
+					kADBEIconSuiteButtonType,
+					kEVENoSpaceAfter,
+				),
+						
+				EVEGenericPanelWidget
+				(
+					kInvalidWidgetID, kPMRsrcID_None,			// WidgetId, RsrcId
+					kBindNone,				// Frame binding
+					Frame(kButtonPanelMinWidth_JP-65,1,kButtonPanelMinWidth_JP-37,25)		// Frame
+					kTrue, kTrue,										// Visible, Enabled
+					kEVEDontArrangeChildren|kEVENoSpaceAfter,
+					{
+						ConvertToButtonButton
+						(
+							kConvertToButtonButtonWidgetID, kConvertToButtonIcon, kFormFieldUIPluginID,// WidgetId, RsrcId
+							kBindRight,							// Frame binding
+							Frame(0,0,28,24)		// Frame
+							kTrue, kFalse,										// Visible, Enabled
+							kADBEIconSuiteButtonType,
+							kEVENoSpaceAfter,
+						),
+						ConvertToObjectButton
+						(
+							kConvertToObjectButtonWidgetID, kConvertToObjectIcon, kFormFieldUIPluginID,// WidgetId, RsrcId
+							kBindRight,							// Frame binding
+							Frame(0,0,28,24)		// Frame
+							kFalse, kFalse,										// Visible, Enabled
+							kADBEIconSuiteButtonType,
+							kEVENoSpaceAfter,
+						),
+					}
+				),
+						
+				DeleteStateButton
+				(
+					kStateDeleteButtonWidgetID, kIconDelete, kApplicationRsrcPluginID,// WidgetId, RsrcId
+					kBindRight,							// Frame binding
+					Frame(kButtonPanelMinWidth_JP-36,1,kButtonPanelMinWidth_JP-8,25)		// Frame
+					kTrue, kTrue,										// Visible, Enabled
+					kADBEIconSuiteButtonType,
+				),
+			}
+		),
+	}
+			
+	"$$$/Menu/AppearancePanelPopup",			// Popup menu name	
+	{
+		{
+			{ kStateListSmallWidgetID,  kNameStaticWID, kNameEditWID, kToggleStatesButtonWidgetID, kToggleStatesTextWidgetID},
+			{ kStateListMediumWidgetID, kNameStaticWID, kNameEditWID, kToggleStatesButtonWidgetID, kToggleStatesTextWidgetID },
+			{ kStateListLargeWidgetID, kNameStaticWID, kNameEditWID, kToggleStatesButtonWidgetID, kToggleStatesTextWidgetID },
+			{ kStateListExtraLargeWidgetID, kNameStaticWID, kNameEditWID, kToggleStatesButtonWidgetID, kToggleStatesTextWidgetID  },
+		}
+		1, // default detail level 
+	}
+	kEVENoMargin,		//EVE info
+}
+
+#endif

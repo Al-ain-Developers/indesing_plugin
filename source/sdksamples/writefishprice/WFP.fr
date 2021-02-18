@@ -1,0 +1,375 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/sdksamples/writefishprice/WFP.fr $
+//  
+//  Owner: Adobe Developer Technologies
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "VCPlugInHeaders.h"
+
+// General includes:
+#include "MenuDef.fh"
+#include "ActionDef.fh"
+#include "ActionDefs.h"
+#include "AdobeMenuPositions.h"
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "StringTable.fh"
+#include "objectmodeltypes.fh"
+#include "ShuksanID.h"
+#include "ActionID.h"
+#include "CommandID.h"
+#include "WorkspaceID.h"
+#include "widgetid.h"
+#include "BuildNumber.h"
+
+#include "InterfaceColorDefines.h"
+#include "IControlViewDefs.h"
+#include "SysControlIds.h"
+#include "Widgets.fh"    // for PalettePanelWidget or DialogBoss
+
+#include "TextID.h" // STEP 8.1
+
+#include "PlugInModel_UIAttributes.h"
+
+// Project includes:
+#include "WFPID.h"
+
+
+
+#include "EveInfo.fh"
+#ifdef __ODFRC__
+
+/*
+// Plugin version definition.
+*/
+resource PluginVersion (kSDKDefPluginVersionResourceID)
+{
+    kTargetVersion,
+    kWFPPluginID,
+    kSDKDefPlugInMajorVersionNumber, kSDKDefPlugInMinorVersionNumber,
+    kSDKDefHostMajorVersionNumber, kSDKDefHostMinorVersionNumber,
+    kWFPCurrentMajorFormatNumber, kWFPCurrentMinorFormatNumber,
+    {kInDesignProduct, kInCopyProduct },
+    {kWildFS },
+    kUIPlugIn,
+    kWFPVersion
+};
+
+/*
+/*  The ExtraPluginInfo resource adds extra information to the Missing Plug-in dialog
+    that is popped when a document containing this plug-in's data is opened when
+    this plug-in is not present. These strings are not translatable strings
+    since they must be available when the plug-in isn't around. They get stored
+    in any document that this plug-in contributes data to.
+*/
+resource ExtraPluginInfo(1)
+{
+    kWFPCompanyValue,            // Company name
+    kWFPMissingPluginURLValue,    // URL 
+    kWFPMissingPluginAlertValue,    // Missing plug-in alert text
+};
+
+/* Boss class definition.
+*/
+resource ClassDescriptionTable(kSDKDefClassDescriptionTableResourceID)
+{{{
+            
+            /**
+            This boss class supports two interfaces:
+            IActionComponent and IPMPersist.
+            
+            
+            @ingroup writefishprice
+            */
+            Class
+            {
+                kWFPActionComponentBoss,
+                kBaseActionComponentBoss,
+                {
+                    /** Handle the actions from the menu. */
+                    IID_IACTIONCOMPONENT, kWFPActionComponentImpl,
+                }
+            },
+            
+            
+            /**
+            This boss class implements the dialog for this plug-in. All
+            dialogs must implement IDialogController. Specialisation of
+            IObserver is only necessary if you want to handle widget
+            changes dynamically rather than just gathering their values
+            and applying in the IDialogController implementation.
+            In this implementation IObserver is specialised so that the
+            plug-in's about box is popped when the info button widget
+            is clicked.
+            
+            
+            @ingroup writefishprice
+            */
+            Class
+            {
+                kWFPDialogBoss,
+                kDialogBoss,
+                {
+                    /** Provides management and control over the dialog.
+                    */
+                    IID_IDIALOGCONTROLLER, kWFPDialogControllerImpl,
+                    /** Allows dynamic processing of dialog changes.
+                    */
+                    IID_IOBSERVER, kWFPDialogObserverImpl,
+                }
+                
+            },
+            
+            
+        }}};
+
+/*  Implementation definition.
+*/
+resource FactoryList (kSDKDefFactoryListResourceID)
+{
+    kImplementationIDSpace,
+    {
+#include "WFPFactoryList.h"
+    }
+};
+
+
+/*  Menu definition.
+*/
+resource MenuDef (kSDKDefMenuResourceID)
+{
+    {
+        // The About Plug-ins sub-menu item for this plug-in.
+        kWFPAboutActionID,            // ActionID (kInvalidActionID for positional entries)
+        kWFPAboutMenuPath,            // Menu Path.
+        kSDKDefAlphabeticPosition,            // Menu Position.
+        kSDKDefIsNotDynamicMenuFlag,        // kSDKDefIsNotDynamicMenuFlag or kSDKDefIsDynamicMenuFlag
+        
+        
+        // The Plug-ins menu sub-menu items for this plug-in.
+        kWFPDialogActionID,
+        kWFPPluginsMenuPath,
+        kWFPDialogMenuItemPosition,
+        kSDKDefIsNotDynamicMenuFlag,
+        
+        
+    }
+};
+
+/* Action definition.
+*/
+resource ActionDef (kSDKDefActionResourceID)
+{
+    {
+        kWFPActionComponentBoss,         // ClassID of boss class that implements the ActionID.
+        kWFPAboutActionID,    // ActionID.
+        kWFPAboutMenuKey,    // Sub-menu string.
+        kOtherActionArea,                // Area name (see ActionDefs.h).
+        kNormalAction,                    // Type of action (see ActionDefs.h).
+        kDisableIfLowMem,                // Enabling type (see ActionDefs.h).
+        kInvalidInterfaceID,            // Selection InterfaceID this action cares about or kInvalidInterfaceID.
+        kSDKDefInvisibleInKBSCEditorFlag, // kSDKDefVisibleInKBSCEditorFlag or kSDKDefInvisibleInKBSCEditorFlag.
+        
+        
+        kWFPActionComponentBoss,
+        kWFPDialogActionID,        
+        kWFPDialogMenuItemKey,        
+        kOtherActionArea,            
+        kNormalAction,                
+        kDisableIfSelectionDoesNotSupportIID,    // STEP 8.1
+        IID_ITEXTEDIT_ISUITE,            // STEP 8.1
+        kSDKDefInvisibleInKBSCEditorFlag,
+        
+        
+    }
+};
+
+
+/*  LocaleIndex
+    The LocaleIndex should have indicies that point at your
+    localizations for each language system that you are localized for.
+*/
+/*  String LocaleIndex.
+*/
+resource LocaleIndex (kSDKDefStringsResourceID)
+{
+    kStringTableRsrcType,
+    {
+        kWildFS, k_enUS, kSDKDefStringsResourceID + index_enUS
+        kWildFS, k_jaJP, kSDKDefStringsResourceID + index_jaJP
+        
+        kWildFS, k_Wild, kSDKDefStringsResourceID + index_enUS
+    }
+};
+
+resource LocaleIndex (kSDKDefStringsNoTransResourceID)
+{
+    kStringTableRsrcType,
+    {
+        kWildFS, k_Wild, kSDKDefStringsNoTransResourceID + index_enUS
+    }
+};
+
+resource StringTable (kSDKDefStringsNoTransResourceID + index_enUS)
+{
+    k_enUS,                                    // Locale Id
+    kEuropeanMacToWinEncodingConverter,        // Character encoding converter
+    {
+        // No-Translate strings go here:
+        
+    }
+};
+
+
+
+/*  Dialog LocaleIndex.
+*/
+resource LocaleIndex (kSDKDefDialogResourceID)
+{
+    kViewRsrcType,
+    {
+        kWildFS,    k_Wild, kSDKDefDialogResourceID + index_enUS
+    }
+};
+
+/*  Type definition.
+*/
+type WFPDialogWidget(kViewRsrcType) : DialogBoss(ClassID = kWFPDialogBoss)
+{
+    
+    WidgetEveInfo;
+};
+
+/*  Dialog definition.
+    This view is not localised: therefore, it can reside here.
+    However, if you wish to localise it, it is recommended to locate it in one of
+    the localised framework resource files (i.e. WFP_enUS.fr etc.) and
+    update your Dialog LocaleIndex accordingly.
+*/
+resource WFPDialogWidget (kSDKDefDialogResourceID + index_enUS)
+{
+    __FILE__, __LINE__,
+    kWFPDialogWidgetID,    // WidgetID
+    kPMRsrcID_None,        // RsrcID
+    kBindNone,             // Binding
+    Frame(0,0,388,112),    // Frame (l,t,r,b)
+    kTrue, kTrue,          // Visible, Enabled
+    kWFPDialogTitleKey,    // Dialog name
+    {
+        EVEDropDownListWidget
+        (
+            kWFPDropDownListWidgetID, kSysDropDownPMRsrcId,    // WidgetId, RsrcId
+            kBindNone,            // Frame binding
+            Frame(0,0,130,20),    // Frame (l,t,r,b)
+            kTrue, kTrue,         // Visible, Enabled
+            {{                    // List Items
+                kWFPDropDownItem_1Key,
+                kWFPDropDownItem_2Key,
+                kWFPDropDownItem_3Key,
+                kWFPDropDownItem_4Key,
+            }}
+                    
+            kEVEAlignLeft | kEVEJumboSpaceAfter,
+        ),
+
+        EVEStaticTextWidget
+        (
+            kWFPStaticTextWidgetID,        // WidgetId
+            kSysStaticTextPMRsrcId,        // RsrcId
+            kBindNone,                     // Frame binding
+            Frame(0,0,0,0),                // Frame (l,t,r,b)
+            kTrue, kTrue, kAlignRight,     // Visible, Enabled, Alignment
+            kDontEllipsize, kTrue,         //**new element in InDesign 2.0: don't add any ellipses
+            kWFPStaticTextKey,             // Text
+            kWFPTextEditBoxWidgetID        // WidgetId for associated control for shortcut focus
+                            
+            kEVEAlignLeft | kEVELargeSpaceAfter,
+        ),
+                        
+        EVETextEditBoxWidget
+        (
+            kWFPTextEditBoxWidgetID,    // WidgetId
+            kSysEditBoxPMRsrcId,        // RsrcId
+            kBindNone,                  // Frame binding
+            Frame(0,0,50,20),           // Frame (l,t,r,b)
+            kTrue, kTrue                // Visible, Enabled
+            0,                          // Widget id of nudge button (0 so we dont get one)
+            0, 0,                       // small,large nudge amount
+            0,                          // max num chars(0 = no limit)
+            kFalse,                     // is read only
+            kFalse,                     //**new in InDesign 2.0: should notify each key stroke
+            kFalse,                     // range checking enabled
+            kFalse,                     // blank entry allowed
+            0,                          // Upper bounds
+            0,                          // Lower bounds
+            "",                         // Initial text
+                            
+            kEVEAlignLeft | kEVEJumboSpaceAfter,
+        ),
+
+        EVEGenericPanelWidget
+        (
+            kInvalidWidgetID,    // WidgetId
+            0                    // RsrcId
+            0,            
+            kBindNone,           // Frame binding
+            Frame(0,0,0,0)       // Frame
+            kTrue,               // Visible
+            kTrue,               // Enabled
+            kEVEAlignRight | kEVELargeSpaceAfter | kEVEArrangeChildrenInColumn,
+                    
+            {
+                EVEDefaultButtonWidget
+                (
+                    kOKButtonWidgetID,         // WidgetID
+                    kSysButtonPMRsrcId,        // RsrcID
+                    kBindNone,                 // Binding
+                    Frame(0,0,0,0),            // Frame (l,t,r,b)
+                    kTrue, kTrue,              // Visible, Enabled
+                    kSDKDefOKButtonApplicationKey,    // Button text
+                            
+                    kEVELargeSpaceAfter,
+                ),
+
+                EVECancelButtonWidget
+                (
+                    kCancelButton_WidgetID,    // WidgetID
+                    kSysButtonPMRsrcId,        // RsrcID
+                    kBindNone,                 // Binding
+                    Frame(0,0,0,0),            // Frame (l,t,r,b)
+                    kTrue, kTrue,              // Visible, Enabled
+                    kSDKDefCancelButtonApplicationKey,    // Button name
+                    kTrue,                     // Change to Reset on option-click.
+                            
+                    kEVEJumboSpaceAfter,
+                ),
+            }  // End of EVE Generic panel child widgets
+
+        ), // End of EVE Generic panel widget definition
+    },
+    
+    kEVEArrangeChildrenInRow | kEVELargeMargin,
+};
+
+
+#endif // __ODFRC__
+
+#include "WFP_enUS.fr"
+#include "WFP_jaJP.fr"

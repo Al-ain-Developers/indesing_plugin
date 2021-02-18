@@ -1,0 +1,142 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+resource StringTable (kLayerPanelStringsRsrcID + index_esES)
+{
+	k_esES,									// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	
+	{
+		// ----- Command strings
+
+		"Layer Options",				"Opciones de capas",
+		"New Layer",					"Nueva capa",
+		"Layer Deletion",				"Eliminar capas",
+		"Delete Unused Layers",			"Eliminar capas no usadas",
+		"Lock Others",					"Bloquear otras",
+		"#UnlockOthers",					"Desbloquear otras",
+		"Show All",						"Mostrar todo",
+		"#ShowOthers",					"Mostrar Otros",
+		"Unlock All",					"Desbloquear todo",
+		"Hide All",						"Ocultar todo",
+		"Lock All",						"Bloquear todo",
+		"Merge Layers",					"Combinar capas",
+		"Move To Layer",				"Ir a capa",
+		"Copy To Layer",				"Copiar en capa",
+		"Move Layer",					"Mover capa",
+		"Move Layers",					"Mover capas",
+		"kUnlockOthersSequence",		"Desbloquear otras",
+		"kLockOthersSequence",			"Bloquear otras",
+
+		// ----- Menu strings
+		
+		"Layers...",						"Capa&s...",
+
+		"New Layer...",						"Nueva capa...",
+		"New Layer Above \"^1\"...",		"Nueva capa sobre \"^1\"...",
+		"New Layer Below \"^1\"...",		"Nueva capa bajo \"^1\"...",
+		"New Top Layer...",					"Nueva capa superior...",
+		"Delete Layer",						"Eliminar capa",
+		"Delete \"^1\"",					"Eliminar capa \"^1\"",
+		"Delete Layers",					"Eliminar capas",
+		"#Duplicate ^1 Menu",				"Duplicar capa \"^1\"",
+		"#Duplicate LayersMenu",			"Duplicar capas",
+		"#DuplicatLayersCmd",				"Duplicar capas",
+		
+		"Layer Options for \"^1\"...",		"Opciones de capa para \"^1\"...",
+		"Layer Options...",					"Opciones de capas...",
+		"Show All Layers",					"Mostrar todas las capas",
+		"Hide Others",						"Ocultar otras",
+		"Unlock All Layers",				"Desbloquear todas las capas",
+		"Lock Others",						"Bloquear otras",
+		"Hide All Layers",					"Ocultar todas las capas",
+		"Lock All Layers",					"Bloquear todas las capas",
+		
+		"Paste Remembers Layers",			"Recordar capas al pegar",
+		"Ungroup Remembers Layers",			"Desagrupar capas recordadas",
+		
+		"Merge Layers",						"Combinar capas",
+		"Delete Unused Layers",				"Eliminar capas no usadas",
+		"Select Item(s) on \"^1\"",			"Seleccionar elementos en \"^1\"",
+		"Select Item(s) Layer",				"Seleccionar elementos en capa",
+				
+		"#SelectLayerPageItemMenu",		"Seleccionar elementos",
+		"#SelectZoomLayerPageItemMenu",	"Seleccionar y encajar elemento",
+		"#ZoomLockedPageItemMenu",		"Encajar elemento en ventana",
+		
+		// Menu names for context and panel menus
+		"LayerPanelPopup",					"Menú del panel Capas",	
+		"RtMenuLayerPanelEye",				"Menú contextual de ojo del panel Capas",	
+		"RtMenuLayerPanelLock",				"Menú contextual de bloqueo del panel Capas",
+		"RtMenuLayerPanelItem",				"Menú contextual de capa del panel Capas",	
+		"RtMenuLayerPanelPageItem",			"Menú contextual de elemento de página del panel Capas",	
+
+		// ----- Window strings
+		"DeleteOneLayer",					"La capa \"^1\" contiene uno o más objetos. ¿Desea eliminarla de todas formas?",
+		"DeleteMultiLayers",				"Las capas seleccionadas contienen objetos. ¿Desea eliminarlas de todas formas?",
+		"DeleteOneGuideLayer",				"La capa \"^1\" contiene guías. ¿Desea eliminarla de todas formas?",
+		"DeleteGuideLayers",				"Las capas seleccionadas contienen guías. ¿Desea eliminarlas de todas formas?",
+		"DeletingPlaceGunUsedLayer",		"No se puede eliminar la capa. El fragmento cargado en el cursor de colocación la necesita.",
+
+		// ----- Window Menu
+		"Layers_WinMenu",					"&Capas",
+		
+		// ----- Panel strings
+		
+		"^1 Layer",							"^1 capa",		// For status widget
+		"^1 Layers",						"^1 capas",	// For status widget
+		"New Layer",						"Nueva capa",	// Title of New Layer dialog
+		"Layer Options",					"Opciones de capas", // Title of Layer Options dialog
+		"&Name:",							"&Nombre:",
+		"&Color:",							"&Color:",
+		"&Show Layer",						"Mo&strar capa",
+		"Show &Guides",						"&Mostrar guías",
+		"&Lock Layer",						"B&loquear capa",
+		"Loc&k Guides",						"Blo&quear guías",
+		"Keep When Layer is &Hidden",		"S&uprimir ceñido de texto cuando la capa está oculta",
+		"&Print Layer",						"&Imprimir capa",
+
+		// ----- Tips strings
+
+		"DeleteLayerTip",					"Eliminar capas seleccionadas",
+		"NewLayerTip",						"Crear nueva capa",
+		"EyeTip",							"Alterna la visibilidad",
+		"PencilTip",						"Alterna el bloqueo de la capa (editable cuando está en blanco)",
+		"PageItemPencilTip",				"Alterna el bloqueo del elemento de página (editable cuando está en blanco)",
+		"SwatchTip",						"Color de las marcas de selección en esta capa",
+		"ProxyTip",							"Indica los elementos seleccionados (arrastrar para mover entre capas o invertir el orden)",
+		"ProxyChildSelectedTip",			"Contiene el objeto seleccionado; haga clic para seleccionar el objeto contenedor",
+		"UnselectedProxyTip",				"Hacer clic para seleccionar elementos",
+		"ActiveTip",						"Muestra la capa de dibujo activa",
+
+		// ----- Error strings
+		"EmptyLayerName",					"Se debe introducir un nombre de capa.",
+		"DuplicateLayer",					"Ya existe otra capa con este nombre.",
+
+		"#LayerHierPanelName",		"Capas",
+		"#Page:^1,",					"Página: ^1, ", // for layer panel status widget. Will be followed by layer count string.
+		"#Pages:^1,",					"Páginas: ^1, ", // for layer panel status widget. Will be followed by layer count string.
+		"#DeletePageItemsMenu",		"Eliminar elementos de página", // menu item name
+		"#DeletePageItem \"^1\"",		"Eliminar elemento de página  \"^1\"", // menu item name
+		"#DuplicatePI ^1 Menu",			"Duplicar elemento de página \"^1\"", // menu item name
+		"#DuplicatePIMenu",			"Duplicar elementos de página",  // menu item name
+	}
+};
+
+#endif // __ODFRC__

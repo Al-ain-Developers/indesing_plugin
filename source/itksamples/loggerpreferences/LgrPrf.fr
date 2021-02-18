@@ -1,0 +1,1011 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/itksamples/loggerpreferences/LgrPrf.fr $
+//  
+//  Owner: InDesign Developer Technologies
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  ADOBE CONFIDENTIAL
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  All information contained herein is, and remains
+//  the property of Adobe Systems Incorporated and its suppliers,
+//  if any.  The intellectual and technical concepts contained
+//  herein are proprietary to Adobe Systems Incorporated and its
+//  suppliers and may be covered by U.S. and Foreign Patents,
+//  patents in process, and are protected by trade secret or copyright law.
+//  Dissemination of this information or reproduction of this material
+//  is strictly forbidden unless prior written permission is obtained
+//  from Adobe Systems Incorporated.
+//  
+//========================================================================================
+
+#include "VCPlugInHeaders.h"
+
+// General includes:
+#include "MenuDef.fh"
+#include "ActionDef.fh"
+#include "ActionDefs.h"
+#include "AdobeMenuPositions.h"
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "StringTable.fh"
+#include "ObjectModelTypes.fh"
+#include "ShuksanID.h"
+#include "ActionID.h"
+#include "CommandID.h"
+#include "WorkspaceID.h"
+#include "WidgetID.h"
+#include "BuildNumber.h"
+#include "TreeViewDefs.h"
+
+#include "InterfaceColorDefines.h"
+#include "IControlViewDefs.h"
+#include "SysControlIDs.h"
+#include "Widgets.fh"	// for PalettePanelWidget or DialogBoss
+
+#include "PlugInModel_UIAttributes.h"
+
+// Project includes:
+#include "DiagnosticLogID.h"
+#include "LgrPrfID.h"
+
+
+
+#include "EveInfo.fh"
+#ifdef __ODFRC__
+
+/*
+// Plugin version definition.
+*/
+resource PluginVersion (kSDKDefPluginVersionResourceID)
+{
+	kTargetVersion,
+	kLgrPrfPluginID,
+	kSDKDefPlugInMajorVersionNumber, kSDKDefPlugInMinorVersionNumber,
+	kSDKDefHostMajorVersionNumber, kSDKDefHostMinorVersionNumber,
+	kLgrPrfMajorVersionNumber, kLgrPrfMinorVersionNumber,
+	{kInDesignProduct, kInCopyProduct },
+	{kWildFS },
+	kUIPlugIn,
+	kLgrPrfVersion
+};
+
+/*
+// Dependent on ConsoleLogger plug-in. Mainly this plug-in assumes there is a custom console logger defined in ConsoleLogger
+*/
+
+resource PluginDependency(kSDKDefPluginDependencyResourceID+1)
+{
+	kWildFS,
+	{
+		kDiagnosticLogPluginID, 
+		kDiagnosticLogPluginName, 
+		kMajorVersionNumber, 
+		kMinorVersionNumber, 	
+	}
+}
+
+/*
+//	Boss class definition.
+*/
+resource ClassDescriptionTable(kSDKDefClassDescriptionTableResourceID)
+{{{
+			
+			/**
+			This boss class supports two interfaces:
+			IActionComponent and IPMPersist.
+			
+			@ingroup loggerpreferences
+			*/
+			Class
+			{
+				kLgrPrfActionComponentBoss,
+				kBaseActionComponentBoss,
+				{
+					/** Handle the actions from the menu. */
+					IID_IACTIONCOMPONENT, kLgrPrfActionComponentImpl,
+				}
+			},
+			
+			
+			/**
+			This boss class implements the diagnostic log preference dialog for this plug-in. 
+			The dialog provides partial view to the preferences setting.  All
+			dialogs must implement IDialogController. Specialisation of
+			IObserver is only necessary if you want to handle widget
+			changes dynamically rather than just gathering their values
+			and applying in the IDialogController implementation.
+			
+			The main purpose of this plug-in is to provide a view to the application logging 
+			service's configuration file. See Diagnostic Logger technote about the 
+			application's logging service for more configuration details. This plug-in does not 
+			provide configuration for all the available settings.  The main purpose is to demonstrate 
+			how to use the IDiagLogConfigManager to change the setting during run time. 
+			
+			@ingroup loggerpreferences
+			*/
+			Class
+			{
+				kLgrPrfDialogBoss,
+				kDialogBoss,
+				{
+					/** Provides management and control over the dialog. When OK is clicked, the settings of 
+					the controls on the dialog will be gather and applied through the IDiagLogConfigManager
+					*/
+					IID_IDIALOGCONTROLLER, kLgrPrfDialogControllerImpl,
+					
+					/** 
+					Allows dynamic processing of dialog changes such as enabling/disabling certain controls 
+					when some control is clicked.  The IDiagLogConfigManager is used to set up the inital
+					value for all the controls.
+					*/
+					IID_IOBSERVER, kLgrPrfDialogObserverImpl,
+				}
+				
+			},
+			
+			/**
+			Tree view list box for the event list.
+			
+			@ingroup loggerpreferences
+			*/
+			Class 
+			{
+				kLgrPrfEventListBoxWidgetBoss,
+				kTreeViewWidgetBoss,
+				{
+					/** Furnishes application framework with widgets as needed 
+					*/
+					IID_ITREEVIEWWIDGETMGR,  kLgrPrfEventTreeViewWidgetMgrImpl,
+					/** Adapts our data model to the needs of the application framework 
+					*/
+					IID_ITREEVIEWHIERARCHYADAPTER,  kLgrPrfEventTreeViewAdapterImpl,			
+				}
+			},
+			
+			
+		}}};
+
+/*
+// Implementation definition.
+*/
+resource FactoryList (kSDKDefFactoryListResourceID)
+{
+	kImplementationIDSpace,
+	{
+		#include "LgrPrfFactoryList.h"
+	}
+};
+
+
+/*
+// Menu definition.
+*/
+resource MenuDef (kSDKDefMenuResourceID)
+{
+	{
+		// The About Plug-ins sub-menu item for this plug-in.
+		kLgrPrfAboutActionID,			// ActionID (kInvalidActionID for positional entries)
+		kLgrPrfAboutMenuPath,			// Menu Path.
+		kSDKDefAlphabeticPosition,			// Menu Position.
+		kSDKDefIsNotDynamicMenuFlag,		// kSDKDefIsNotDynamicMenuFlag or kSDKDefIsDynamicMenuFlag
+		
+		
+		// The Plug-ins menu sub-menu items for this plug-in.
+		kLgrPrfConfigDlgActionID,
+		kLgrPrfPluginsMenuPath,
+		kLgrPrfConfigDlgPosition,
+		kSDKDefIsNotDynamicMenuFlag,
+	}
+};
+
+/*
+// Action definition.
+*/
+resource ActionDef (kSDKDefActionResourceID)
+{
+	{
+		kLgrPrfActionComponentBoss, 		// ClassID of boss class that implements the ActionID.
+		kLgrPrfAboutActionID,	// ActionID.
+		kLgrPrfAboutMenuKey,	// Sub-menu string.
+		kOtherActionArea,				// Area name (see ActionDefs.h).
+		kNormalAction,					// Type of action (see ActionDefs.h).
+		kDisableIfLowMem,				// Enabling type (see ActionDefs.h).
+		kInvalidInterfaceID,			// Selection InterfaceID this action cares about or kInvalidInterfaceID.
+		kSDKDefInvisibleInKBSCEditorFlag, // kSDKDefVisibleInKBSCEditorFlag or kSDKDefInvisibleInKBSCEditorFlag.
+		
+		
+		kLgrPrfActionComponentBoss,
+		kLgrPrfConfigDlgActionID,		
+		kLgrPrfConfigDlgKey,		
+		kOtherActionArea,			
+		kNormalAction,				
+		kDisableIfLowMem,	
+		kInvalidInterfaceID,		
+		kSDKDefVisibleInKBSCEditorFlag,
+	}
+};
+
+
+/*
+// LocaleIndex
+// The LocaleIndex should have indicies that point at your
+// localizations for each language system that you are
+// localized for.
+*/
+/*
+// String LocaleIndex.
+*/
+resource LocaleIndex (kSDKDefStringsResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_enUS, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_enGB, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_deDE, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_frFR, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_esES, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_ptBR, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_svSE, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_daDK, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_nlNL, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_itIT, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_nbNO, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_fiFI, kSDKDefStringsResourceID + index_enUS
+		kInDesignJapaneseFS, k_jaJP, kSDKDefStringsResourceID + index_jaJP
+	}
+};
+
+resource LocaleIndex (kSDKDefStringsNoTransResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_Wild, kSDKDefStringsNoTransResourceID + index_enUS
+	}
+};
+
+resource StringTable (kSDKDefStringsNoTransResourceID + index_enUS)
+{
+	k_enUS,									// Locale Id
+	kEuropeanMacToWinEncodingConverter,		// Character encoding converter
+	{
+		// No-Translate strings go here:
+		
+	}
+};
+
+
+
+/*
+// Dialog LocaleIndex.
+*/
+resource LocaleIndex (kSDKDefDialogResourceID)
+{
+	kViewRsrcType,
+	{
+		kWildFS,	k_Wild, kSDKDefDialogResourceID + index_enUS
+	}
+};
+
+// added to support the list elements in the list box
+resource LocaleIndex (kLgrPrfEventListElementRsrcID)
+{
+	kViewRsrcType,
+	{
+		kWildFS, k_Wild,	kLgrPrfEventListElementRsrcID + index_enUS
+	}
+}
+
+/*
+// Type definition.
+*/
+type LgrPrfDialogWidget(kViewRsrcType) : DialogBoss(ClassID = kLgrPrfDialogBoss)
+{
+	
+	WidgetEveInfo;
+};
+
+type EVELgrPrfEventListBox	(kViewRsrcType) : TreeViewWidget	(ClassID = kLgrPrfEventListBoxWidgetBoss) {
+	WidgetEveInfo;
+};
+
+type EVELgrPrfEventStaticTextWidget(kViewRsrcType) : InfoStaticTextWidget	(ClassID = kInfoStaticTextWidgetBoss) {
+	WidgetEveInfo;
+};
+
+type EVEStandardTreeNodeWidget (kViewRsrcType) : Widget (ClassID = kTreeNodeWidgetBoss)
+{
+	ResourceSrcFileInfo;
+	CControlView;
+	CTextControlData;
+	CPanelControlData;
+	WidgetEveInfo;
+};
+
+
+
+/*
+// Dialog definition.
+// This view is not localised: therefore, it can reside here.
+// However, if you wish to localise it, it is recommended to locate it in one of
+// the localised framework resource files (i.e. LgrPrf_enUS.fr etc.) and
+// update your Dialog LocaleIndex accordingly.
+*/
+
+resource LgrPrfDialogWidget (kSDKDefDialogResourceID + index_enUS)
+{
+	__FILE__, __LINE__,
+	kLgrPrfDialogWidgetID,	// WidgetID
+	kPMRsrcID_None,				// RsrcID
+	kBindNone,					// Binding
+	Frame(0,0,332,525),			// Frame (l,t,r,b)
+	kTrue, kTrue,							// Visible, Enabled
+	kLgrPrfDialogTitleKey,				// Dialog name
+	{
+		//<FREDDYWIDGETDEFLISTUS>
+		
+		EVEGenericPanelWidget
+		(
+			kInvalidWidgetID,	// WidgetId
+			0			// RsrcId
+			0,			// Widget EVE Info
+			kBindNone,		// Frame binding
+			Frame(0,0,332,65)		// Frame
+			kTrue,			// Visible
+			kTrue,			// Enabled
+			kEVEAlignFill | kEVERegularSpaceAfter | kEVEArrangeChildrenInRow,
+			
+			{
+				EVEGroupPanelWidget
+				(
+					kLgrPrfMasterSwitchGroupWID,					// WidgetId
+					kPMRsrcID_None,						// RsrcId
+					kBindNone,
+					Frame(0,0,293,65),		    	  // Frame
+					kTrue,								// Visible
+					kTrue,								// Enabled
+					kLgrPrfMasterSwitchGroupTitleWID,					// widget id of border widget
+					
+					kEVEAlignFill | kEVEExtraLargeSpaceAfter | kEVEArrangeChildrenInRow | kEVERegularMargin,
+					{
+						EVEStaticTextWidget
+						(
+							kLgrPrfMasterSwitchGroupTitleWID,		// WidgetId
+							kSysStaticTextPMRsrcId,				// RsrcId
+							kBindNone,
+							Frame(0,0,0,0)					// Frame
+							kTrue, kTrue,
+							kAlignCenter,
+							kDontEllipsize, kTrue,						// Ellipsize style, Convert ampersands
+							kLgrPrfLoggerMasterSwitchKey,							// Initial text
+							0
+							
+							kEVENoSpaceAfter,
+						),
+						
+						EVEClusterPanelWidget
+						(
+							kLgrPrfMasterSwitchClusterWID, kPMRsrcID_None,			// WidgetId, RsrcId
+							kBindNone,					// Frame bindings
+							Frame(0,0,285,50)			// Frame
+							kTrue, kTrue,				// Visible, Enabled
+							kEVERegularSpaceAfter | kEVEArrangeChildrenInColumn,
+							{
+								EVERadioButtonWidget
+								(
+									kLgrPrfTurnOnRadioWID,			// WidgetId
+									kSysRadioButtonPMRsrcId,	// RsrcId
+									kBindNone,					// Frame binding
+									Frame(0,0,0,0)			// Frame
+									kTrue,						// Visible
+									kTrue,						// Enabled
+									kLgrPrfTurnOnLogKey			// Initial text
+									
+									kEVERegularSpaceAfter,
+								),
+								
+								EVERadioButtonWidget
+								(
+									kLgrPrfTurnOffRadioWID,		// WidgetId
+									kSysRadioButtonPMRsrcId,	// RsrcId
+									kBindNone,					// Frame binding
+									Frame(0,0,0,0)			// Frame
+									kTrue,						// Visible
+									kTrue,						// Enabled
+									kLgrPrfTurnOffLogKey		// Initial text
+									
+									kEVERegularSpaceAfter,
+								),
+							}
+						),
+					},
+				),
+				
+				
+			}  // End of Eve generic panel child widgets
+		), // End of Eve generic panel widget definition
+		
+		EVEGenericPanelWidget
+		(
+			kInvalidWidgetID,	// WidgetId
+			0			// RsrcId
+			0,			// Widget EVE Info
+			kBindNone,		// Frame binding
+			Frame(0,0,332,131)		// Frame
+			kTrue,			// Visible
+			kTrue,			// Enabled
+			kEVEAlignFill | kEVERegularSpaceAfter | kEVEArrangeChildrenInRow,
+			
+			{
+				EVEGroupPanelWidget
+				(
+					kLgrPrfLoggersGroupWID,					// WidgetId
+					kPMRsrcID_None,						// RsrcId
+					kBindNone,
+					Frame(0,0,293,116),		    	  // Frame
+					kTrue,								// Visible
+					kTrue,								// Enabled
+					kLgrPrfTitleWID,					// widget id of border widget
+					
+					kEVEAlignFill | kEVEExtraLargeSpaceAfter | kEVEArrangeChildrenInColumn | kEVERegularMargin,
+					{
+						EVEStaticTextWidget
+						(
+							kLgrPrfTitleWID,		// WidgetId
+							kSysStaticTextPMRsrcId,				// RsrcId
+							kBindNone,
+							Frame(0,0,0,0)					// Frame
+							kTrue, kTrue,
+							kAlignCenter,
+							kDontEllipsize, kTrue,						// Ellipsize style, Convert ampersands
+							kLgrPrfLoggerClusterKey,							// Initial text
+							0
+							
+							kEVENoSpaceAfter,
+						),
+						
+						
+						EVEGenericPanelWidget
+						(
+							kInvalidWidgetID,	// WidgetId
+							0			// RsrcId
+							0,			// Widget EVE Info
+							kBindNone,		// Frame binding
+							Frame(0,0,293,35)		// Frame
+							kTrue,			// Visible
+							kTrue,			// Enabled
+							kEVEAlignFill | kEVERegularSpaceAfter | kEVEArrangeChildrenInRow,
+							
+							{
+								EVECheckBoxWidget
+								(
+									kLgrPrfTextLoggerWID,			// WidgetId
+									kSysCheckBoxPMRsrcId,	// RsrcId
+									kBindNone,					// Frame binding
+									//					Frame(15,15,150,35)			// Frame
+									Frame(0,0,0,0)			// Frame
+									kTrue,						// Visible
+									kTrue,						// Enabled
+									kAlignLeft,
+									kLgrPrfTextLoggerKey,						// Initial text
+									
+									kEVERegularSpaceAfter,
+								),
+								
+								EVECheckBoxWidget
+								(
+									kLgrPrfXMLLoggerWID,		// WidgetId
+									kSysCheckBoxPMRsrcId,	// RsrcId
+									kBindNone,					// Frame binding
+									//					Frame(15,35,150,55)			// Frame
+									Frame(0,0,0,0)			// Frame
+									kTrue,						// Visible
+									kTrue,						// Enabled
+									kAlignLeft,
+									kLgrPrfXMLLoggerKey,					// Initial text
+									
+									kEVERegularSpaceAfter,
+								),
+								
+								EVECheckBoxWidget
+								(
+									kLgrPrfConsoleLoggerWID,	// WidgetId
+									kSysCheckBoxPMRsrcId,	// RsrcId
+									kBindNone,					// Frame binding
+									//					Frame(15,55,150,75)			// Frame
+									Frame(0,0,0,0)			// Frame
+									kTrue,						// Visible
+									kTrue,						// Enabled
+									kAlignLeft,
+									kLgrPrfConsoleLoggerKey,				// Initial text
+									
+									kEVERegularSpaceAfter,
+								),
+								
+							}  // End of Eve generic panel child widgets
+						), // End of Eve generic panel widget definition
+						
+						EVECheckBoxWidget
+						(
+							kLgrPrfUseDatabaseWID,			// WidgetId
+							kSysCheckBoxPMRsrcId,	// RsrcId
+							kBindNone,					// Frame binding
+							Frame(0,0,0,0)			// Frame
+							kTrue,						// Visible
+							kFalse,						// Enabled
+							kAlignLeft,
+							kLgrPrfResolveSymbolsKey	// Initial text
+							
+							kEVERegularSpaceAfter,
+						),
+
+								
+						EVEGenericPanelWidget
+						(
+							kInvalidWidgetID,	// WidgetId
+							0			// RsrcId
+							0,			
+							kBindNone,		// Frame binding
+							Frame(0,0,263,20)		// Frame
+							kTrue,			// Visible
+							kTrue,			// Enabled
+							kEVEAlignLeft | kEVERegularSpaceAfter | kEVEArrangeChildrenInRow,
+							
+							{
+								EVEStaticTextWidget
+								(
+									kLgrPrfLogDetailWID,		// WidgetId
+									kSysStaticTextPMRsrcId,			// RsrcId
+									kBindNone,						// Frame binding
+									Frame(0,0,0,0)				// Frame
+									kTrue, kFalse, 					// Visible, Enabled
+									kAlignLeft,						// Alignment
+									kDontEllipsize, kTrue,					// Ellipsize style, Convert ampersands
+									kLgrPrfLogDetailKey,					// Initial text
+									kLgrPrfLogDetailDropdownWID
+									
+									kEVERegularSpaceAfter,
+								),
+								
+								EVEDropDownListWidget
+								(
+									kLgrPrfLogDetailDropdownWID,			// WidgetId
+									kSysDropDownPMRsrcId,			// RsrcId
+									kBindNone,						// Frame binding
+									Frame(0,0,0,0),			// Frame
+									kTrue,							// Visible
+									kFalse,							// Enabled
+									{{
+											kLgrPrfLogMinimumKey,
+											kLgrPrfLogMediumKey,
+											kLgrPrfLogMaximumKey,
+										}}
+									
+									kEVERegularSpaceAfter,
+								),
+								
+							}  // End of EVE Generic panel child widgets
+						), // End of EVE Generic panel widget definition
+								
+					}  // End of Eve generic panel child widgets
+				),
+				
+				/** Options */
+				
+			}  // End of Eve generic panel child widgets
+		), // End of Eve generic panel widget definition
+		
+		EVEGenericPanelWidget
+		(
+			kInvalidWidgetID,	// WidgetId
+			0			// RsrcId
+			0,			// Widget EVE Info
+			kBindNone,		// Frame binding
+			Frame(0,0,332,260)		// Frame
+			kTrue,			// Visible
+			kTrue,			// Enabled
+			kEVEAlignFill | kEVEExtraLargeSpaceAfter | kEVEArrangeChildrenInRow,
+			
+			{
+				EVEGroupPanelWidget
+				(
+					kLgrPrfOptionsFrameWidgetID,				        // WidgetId
+					kPMRsrcID_None,			    // RsrcId
+					kBindNone,				// Frame binding
+					Frame(0,0,293,245)				// Frame
+					kTrue,				    // Visible
+					kFalse,				    // Enabled
+					kLgrPrfOptionsTitleWidgetID,	        // widget id of border widget
+					
+					kEVEAlignFill | kEVEExtraLargeSpaceAfter | kEVEArrangeChildrenInColumn | kEVERegularMargin,
+					{
+						EVEStaticTextWidget
+						(
+							kLgrPrfOptionsTitleWidgetID,	 // WidgetId
+							kSysStaticTextPMRsrcId,	        // RsrcId
+							kBindNone,			   // Frame binding
+							Frame(0,0,0,0),		 // Frame
+							kTrue,			       // Visible
+							kTrue,			      // Enabled
+							kAlignCenter,			 // Alignment
+							kDontEllipsize, kTrue,							// Ellipsize style, Convert ampersands
+							kLgrPrfCatLabelKey,	     // Initial text
+							0				   
+							
+							kEVENoSpaceAfter,
+						),
+						
+						EVECheckBoxWidget
+						(
+							kLgrPrfCatCmdWidgetID,				// WidgetId
+							kSysCheckBoxPMRsrcId,			// RsrcId
+							kBindNone,						// Frame binding
+							Frame(0,0,0,0),			// Frame
+							kTrue,						    // Visible
+							kTrue,							// Enabled
+							kAlignLeft,						// Alignment
+							kLgrPrfCatCmdKey	// Label
+							
+							kEVERegularSpaceAfter,
+						),
+						
+						EVEGenericPanelWidget
+						(
+							kInvalidWidgetID,	// WidgetId
+							0			// RsrcId
+							0,			// Widget EVE Info
+							kBindNone,		// Frame binding
+							Frame(0,0,293,20)		// Frame
+							kTrue,			// Visible
+							kTrue,			// Enabled
+							kEVEAlignFill | kEVERegularSpaceAfter | kEVEArrangeChildrenInRow,
+							{
+								EVEStaticTextWidget
+								(
+									kLgrPrfExcludeLabelWidgetID,	 // WidgetId
+									kSysStaticTextPMRsrcId,	        // RsrcId
+									kBindNone,			   // Frame binding
+									Frame(0,0,0,0),		 // Frame
+									kTrue,			       // Visible
+									kTrue,			      // Enabled
+									kAlignCenter,			 // Alignment
+									kDontEllipsize, kTrue,							// Ellipsize style, Convert ampersands
+									kLgrPrfExcludeLabelKey,	     // Initial text
+									0				   
+									
+									kEVEExtraLargeSpaceAfter,
+								),
+								EVETextEditBoxWidget
+								(
+									kLgrPrfCmdExcludeWidgetID,	// WidgetID
+									kSysEditBoxPMRsrcId,			// RsrcID
+									kBindNone,						// Binding
+									Frame(0,0,60,20),			// Frame (l,t,r,b)
+									kTrue, kTrue,					// Visible, Enabled
+									0,								// Nudge control (0 = no control)
+									0,								// Small nudge amount
+									0,								// Large Nudge amount
+									0,								// Max # chars (0 = no limit)
+									kFalse,							// read only
+									kFalse,							// should notify each key stroke
+									kFalse,							// Range checking enabled
+									kTrue,							// blank allowed
+									0, 0,							// upper/lower bounds
+									"",								// Initial text
+									
+									kEVERegularSpaceAfter,
+								),			
+
+								EVEStaticTextWidget
+								(
+									kLgrPrfIncludeLabelWidgetID,	 // WidgetId
+									kSysStaticTextPMRsrcId,	        // RsrcId
+									kBindNone,			   // Frame binding
+									Frame(0,0,0,0),		 // Frame
+									kTrue,			       // Visible
+									kTrue,			      // Enabled
+									kAlignCenter,			 // Alignment
+									kDontEllipsize, kTrue,							// Ellipsize style, Convert ampersands
+									kLgrPrfIncludeLabelKey,	     // Initial text
+									0				   
+									
+									kEVEExtraLargeSpaceAfter,
+								),
+								EVETextEditBoxWidget
+								(
+									kLgrPrfCmdIncludeWidgetID,	// WidgetID
+									kSysEditBoxPMRsrcId,			// RsrcID
+									kBindNone,						// Binding
+									Frame(0,0,60,20),			// Frame (l,t,r,b)
+									kTrue, kTrue,					// Visible, Enabled
+									0,								// Nudge control (0 = no control)
+									0,								// Small nudge amount
+									0,								// Large Nudge amount
+									0,								// Max # chars (0 = no limit)
+									kFalse,							// read only
+									kFalse,							// should notify each key stroke
+									kFalse,							// Range checking enabled
+									kTrue,							// blank allowed
+									0, 0,							// upper/lower bounds
+									"",								// Initial text
+									
+									kEVERegularSpaceAfter,
+								),
+
+							}  // End of Eve generic panel child widgets
+						), // End of Eve generic panel widget definition
+						
+						EVECheckBoxWidget
+						(
+							kLgrPrfCatActionWidgetID,				// WidgetId
+							kSysCheckBoxPMRsrcId,			// RsrcId
+							kBindNone,						// Frame binding
+							Frame(0,0,0,0),			// Frame
+							kTrue,						    // Visible
+							kTrue,							// Enabled
+							kAlignLeft,						// Alignment
+							kLgrPrfCatActionKey	// Label
+							
+							kEVERegularSpaceAfter,
+						),
+
+						EVEGenericPanelWidget
+						(
+							kInvalidWidgetID,	// WidgetId
+							0			// RsrcId
+							0,			// Widget EVE Info
+							kBindNone,		// Frame binding
+							Frame(0,0,293,20)		// Frame
+							kTrue,			// Visible
+							kTrue,			// Enabled
+							kEVEAlignFill | kEVERegularSpaceAfter | kEVEArrangeChildrenInRow,
+							{
+								EVEStaticTextWidget
+								(
+									kLgrPrfExcludeLabelWidgetID,	 // WidgetId
+									kSysStaticTextPMRsrcId,	        // RsrcId
+									kBindNone,			   // Frame binding
+									Frame(0,0,0,0),		 // Frame
+									kTrue,			       // Visible
+									kTrue,			      // Enabled
+									kAlignCenter,			 // Alignment
+									kDontEllipsize, kTrue,							// Ellipsize style, Convert ampersands
+									kLgrPrfExcludeLabelKey,	     // Initial text
+									0				   
+									
+									kEVELargeSpaceAfter,
+								),
+								EVETextEditBoxWidget
+								(
+									kLgrPrfActionExcludeWidgetID,	// WidgetID
+									kSysEditBoxPMRsrcId,			// RsrcID
+									kBindNone,						// Binding
+									Frame(0,0,60,20),			// Frame (l,t,r,b)
+									kTrue, kTrue,					// Visible, Enabled
+									0,								// Nudge control (0 = no control)
+									0,								// Small nudge amount
+									0,								// Large Nudge amount
+									0,								// Max # chars (0 = no limit)
+									kFalse,							// read only
+									kFalse,							// should notify each key stroke
+									kFalse,							// Range checking enabled
+									kTrue,							// blank allowed
+									0, 0,							// upper/lower bounds
+									"",								// Initial text
+									
+									kEVELargeSpaceAfter,
+								),			
+
+								EVEStaticTextWidget
+								(
+									kLgrPrfIncludeLabelWidgetID,	 // WidgetId
+									kSysStaticTextPMRsrcId,	        // RsrcId
+									kBindNone,			   // Frame binding
+									Frame(0,0,0,0),		 // Frame
+									kTrue,			       // Visible
+									kTrue,			      // Enabled
+									kAlignCenter,			 // Alignment
+									kDontEllipsize, kTrue,							// Ellipsize style, Convert ampersands
+									kLgrPrfIncludeLabelKey,	     // Initial text
+									0				   
+									
+									kEVELargeSpaceAfter,
+								),
+								EVETextEditBoxWidget
+								(
+									kLgrPrfActionIncludeWidgetID,	// WidgetID
+									kSysEditBoxPMRsrcId,			// RsrcID
+									kBindNone,						// Binding
+									Frame(0,0,60,20),			// Frame (l,t,r,b)
+									kTrue, kTrue,					// Visible, Enabled
+									0,								// Nudge control (0 = no control)
+									0,								// Small nudge amount
+									0,								// Large Nudge amount
+									0,								// Max # chars (0 = no limit)
+									kFalse,							// read only
+									kFalse,							// should notify each key stroke
+									kFalse,							// Range checking enabled
+									kTrue,							// blank allowed
+									0, 0,							// upper/lower bounds
+									"",								// Initial text
+									
+									kEVELargeSpaceAfter,
+								),
+
+							}  // End of Eve generic panel child widgets
+						), // End of Eve generic panel widget definition
+						
+						EVECheckBoxWidget
+						(
+							kLgrPrfCatEventWidgetID,				// WidgetId
+							kSysCheckBoxPMRsrcId,			// RsrcId
+							kBindNone,						// Frame binding
+							Frame(0,0,0,0),			// Frame
+							kTrue,						    // Visible
+							kTrue,							// Enabled
+							kAlignLeft,						// Alignment
+							kLgrPrfCatEventKey	// Label
+							
+							kEVERegularSpaceAfter,
+						),
+						
+						EVEGenericPanelWithBorderWidget
+						(
+							0, kPMRsrcID_None,
+							kBindAll,
+							Frame(0,0,214,98)
+							kTrue, kTrue,
+							"",
+							{
+								EVELgrPrfEventListBox
+								(
+									kLgrPrfEventListBoxWidgetID, kPMRsrcID_None,// WidgetId, RsrcId
+									kBindAll,
+									Frame(0,0,214,98)		// Frame
+									kTrue, kTrue,				// Visible, Enabled
+									kTrue, // EraseBeforeDraw
+									kInterfacePaletteFill, // Erase to color,
+									"",
+									kHideRootNode | kDrawEndLine,	// Options
+									kFalse,						//Use H Scroll bar
+									kTrue,						//Use V scroll bar
+									20,							// Vertical Scroll Button Increment
+									20,							// Vertical Thumb Scroll Increment
+									0,							// Horizontal Scroll Button Increment - Not Used
+									0,							// Horizontal Thumb Scroll Increment - Not Used
+									2,							// Items selectable, 0 = No Selection, 1 = Single Selection, 2 = Multiple Selection
+									kFalse,						// Allow children from multiple parents to be selected
+									kTrue,						// Allow discontiguous selection
+									{
+									}
+									
+									kEVENoSpaceAfter,
+								),
+							}
+							kEVERegularSpaceAfter | kEVEAlignRight,
+						),
+					},		    
+				),
+				
+			}  // End of Eve generic panel child widgets
+		), // End of Eve generic panel widget definition
+		
+		EVEGenericPanelWidget
+		(
+			kInvalidWidgetID,	// WidgetId
+			0			// RsrcId
+			0,			// Widget EVE Info
+			kBindNone,		// Frame binding
+			Frame(0,0,0,0)		// Frame
+			kTrue,			// Visible
+			kTrue,			// Enabled
+			kEVEAlignRight | kEVERegularSpaceAfter | kEVEArrangeChildrenInRow,
+			
+			{
+			
+#ifdef WINDOWS
+				EVEDefaultButtonWidget
+				(
+					kOKButtonWidgetID,
+					kSysButtonPMRsrcId,
+					kBindNone,
+					Frame(0,0,0,0),
+					kTrue, kTrue,
+					kSDKDefOKButtonApplicationKey,
+					
+					kEVEExtraLargeSpaceAfter,
+				),
+				
+				EVECancelButtonWidget
+				(
+					kCancelButton_WidgetID,
+					kSysButtonPMRsrcId,
+					kBindNone,
+					Frame(0,0,0,0),
+					kTrue, kTrue,
+					kSDKDefCancelButtonApplicationKey,
+					kFalse,
+					kEVEExtraLargeSpaceAfter,
+				),
+#else
+				EVECancelButtonWidget
+				(
+					kCancelButton_WidgetID,
+					kSysButtonPMRsrcId,
+					kBindNone,
+					Frame(0,0,0,0),
+					kTrue, kTrue,
+					kSDKDefCancelButtonApplicationKey,
+					kFalse,
+					kEVEExtraLargeSpaceAfter,
+				),
+				
+				EVEDefaultButtonWidget
+				(
+					kOKButtonWidgetID,
+					kSysButtonPMRsrcId,
+					kBindNone,
+					Frame(0,0,0,0),
+					kTrue, kTrue,
+					kSDKDefOKButtonApplicationKey,
+					
+					kEVEExtraLargeSpaceAfter,
+				),
+#endif
+				
+			}  // End of Eve generic panel child widgets
+		), // End of Eve generic panel widget definition
+	},
+	
+	kEVEArrangeChildrenInColumn | kEVELargeMargin,
+};
+
+
+resource EVEStandardTreeNodeWidget (kLgrPrfEventListElementRsrcID + index_enUS)
+{
+	__FILE__, __LINE__,
+	kLgrPrfEventListNodeWidgetId, 0,// WidgetId, RsrcId
+	kLgrPrfPluginID,
+	kBindLeft | kBindRight,		// Frame binding
+	Frame(0, 0, 208, 20),		// Frame
+	kTrue, kTrue,				// Visible, Enabled
+	"",							// name
+	{
+	
+		// Just an info-static text widget 
+		EVELgrPrfEventStaticTextWidget
+		(
+			kLgrPrfEventTextWidgetID, kPMRsrcID_None,		// WidgetId, RsrcId
+			kBindLeft | kBindRight,						// Frame binding
+			Frame(2,1,208,18)							// Frame
+			kTrue, kTrue, kAlignLeft, 
+			kEllipsizeEnd, kTrue					// Visible, Enabled
+			"",											// Text
+			0,
+			kDialogWindowSmallFontId, 
+			kDialogWindowSmallHiliteFontId,
+			
+			kEVERegularSpaceAfter,
+		),
+		
+	}
+	
+	kEVEArrangeChildrenInRow|kEVELargeMargin,
+};
+
+
+#endif // __ODFRC__
+
+#include "LgrPrf_enUS.fr"
+#include "LgrPrf_jaJP.fr"
+
+//  Code generated by DollyXs code generator

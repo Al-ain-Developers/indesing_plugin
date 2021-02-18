@@ -1,0 +1,189 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/buttonui/resources/behaviorui/GoToAnchorViews_elGR.fr $
+//  
+//  Owner: ???
+//  
+//  $Author: vans $
+//  
+//  $DateTime: 2020/11/06 05:06:09 $
+//  
+//  $Revision: #1 $
+//  
+//  $Change: 1088554 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#ifdef __ODFRC__
+#include "InterfaceColorDefines.h"
+
+//========================================================================================
+// AlignPanelView resource
+//========================================================================================
+
+resource GoToAnchorDataPanel (kGoToAnchorPanelRsrcID + index_elGR)
+{
+	__FILE__, __LINE__,
+	kGoToAnchorPanelWidgetID, 	// WidgetId
+	kPMRsrcID_None, 			// RsrcId
+	kBindNone,					// Frame binding
+	Frame(0,0,387,213)			// Frame
+	kTrue, kTrue,				// Visible, Enabled
+	kTrue,						// EraseBeforeDraw
+	kInterfacePaletteFill,		// Erase to color
+	kFalse,						// DrawDropShadow
+	"",				// Panel name	
+	{
+		EVEGenericPanelWidget
+		(
+			kInvalidWidgetID,	// WidgetId
+			0,0,				// RsrcId
+			kBindNone,						// Frame binding
+			Frame(0, 0, 201, 75)		// Frame
+			kTrue,							// Visible
+			kTrue,							// Enabled
+			kEVENoSpaceAfter|kEVEArrangeChildrenInRow|kEVEAlignLeft|kEVENoMargin,		//EVE info
+			{
+				EVEGenericPanelWidget
+				(
+					kInvalidWidgetID,	// WidgetId
+					0,0,				// RsrcId
+					kBindNone,						// Frame binding
+					Frame(0, 0, 50, 65)		// Frame
+					kTrue,							// Visible
+					kTrue,							// Enabled
+					kEVERegularSpaceAfter|kEVENoMargin|kEVEArrangeChildrenInColumn|kEVEAlignRight|kEVEChildRegularSpaceAfter,		//EVE info
+					{
+						EVEStaticTextWidget
+						(
+							kAnchorLabelWidgetID, 					// WidgetID
+							kSysStaticTextPMRsrcId,							// RsrcId
+							kBindNone,								// Frame binding
+							Frame(0, 5, 50,22)		// Frame
+							kTrue,									// Visible 
+							kTrue, 									// Enabled
+							kAlignRight,							// Alignment
+							kDontEllipsize,	kTrue,									// Ellipsize style, Convert ampersands
+							"$$$/Dialog/Behaviors/GoToView/Document:",
+							kAnchorDocumentChoicesWidgetID,
+							kEVEChildRegularSpaceAfter
+						),
+
+						EVEStaticTextWidget
+						(
+							kAnchorLabelWidgetID, 					// WidgetID
+							kSysStaticTextPMRsrcId,							// RsrcId
+							kBindNone,								// Frame binding
+							Frame(0, 25, 50,42)		// Frame
+							kTrue,									// Visible 
+							kTrue, 									// Enabled
+							kAlignRight,							// Alignment
+							kDontEllipsize,	kTrue,									// Ellipsize style, Convert ampersands
+							"$$$/Dialog/Behaviors/GoToView/Anchor:",
+							kAnchorChoicesWidgetID,
+							kEVEChildRegularSpaceAfter
+						),
+
+						EVEStaticTextWidget
+						(
+							kZoomLabelWidgetID, kPMRsrcID_None,					// WidgetId, RsrcId
+							kBindNone,											// Frame binding
+							Frame(0, 45, 50,62)		// Frame
+							kTrue, kTrue, kAlignRight,							// Visible, Enabled, Alignment
+							kDontEllipsize,	kTrue,									// Ellipsize style, Convert ampersands
+							"$$$/Dialog/Behaviors/GoToView/Zoom:",
+							kZoomWidgetID,
+							kEVEChildRegularSpaceAfter
+						)
+
+
+					}
+				)
+
+				EVEGenericPanelWidget
+				(
+					kInvalidWidgetID,	// WidgetId
+					0,0,				// RsrcId
+					kBindNone,						// Frame binding
+					Frame(55, 0, 201, 45)		// Frame
+					kTrue,							// Visible
+					kTrue,							// Enabled
+					kEVESmallSpaceAfter|kEVEArrangeChildrenInColumn|kEVEAlignLeft|kEVEChildRegularSpaceAfter,		//EVE info
+					{				
+						EVEGenericPanelWidget
+						(
+							kInvalidWidgetID,	// WidgetId
+							0,0,				// RsrcId
+							kBindNone,						// Frame binding
+							Frame(0, 0, 145,22)		// Frame
+							kTrue,							// Visible
+							kTrue,							// Enabled
+							kEVERegularSpaceAfter|kEVEArrangeChildrenInRow|kEVEAlignLeft|kEVENoMargin|kEVEChildRegularSpaceAfter,		//EVE info
+							{
+								AnchorDocumentDropDownListWidget					
+								(
+									kAnchorDocumentChoicesWidgetID,		// WidgetId
+									kSysDropDownPMRsrcId,				// RsrcId
+									kBindNone,							// Frame binding
+									Frame(0, 5, 145,22)		// Frame
+									kTrue,								// Visible
+									kTrue								// Enabled
+									{ 
+										{
+										} 
+									}				
+								),
+								
+								AnchorDocSelectFileButton
+								(
+									kSelectFileIconWidgetID,			// WidgetId, 
+									kChooseFileIconRsrcId, kFormFieldUIPluginID,
+									kBindNone,			// Frame Binding
+									Frame(150, 5, 170, 22)		// Frame
+									kTrue,								// Visible,
+									kTrue,								// Enabled
+									kADBEIconSuiteButtonType,
+									'InDn', 'IDd3'
+								),
+							}
+						),
+						
+						AnchorTypeDropDownListWidget					
+						(
+							kAnchorChoicesWidgetID,				// WidgetId
+							kSysDropDownPMRsrcId,				// RsrcId
+							kBindNone,							// Frame binding
+							Frame(0, 25, 125, 42)		// Frame
+							kTrue,								// Visible
+							kTrue								// Enabled
+							{ 
+								{
+								} 
+							}				
+						),
+											
+						ZoomChoice
+						(
+							kZoomWidgetID, kSysDropDownPMRsrcId, kBindNone,
+							Frame(0, 45, 125, 62)		// Frame
+							kTrue, kTrue,
+							{{
+							}}
+						),
+					}
+				)
+			}
+		)
+
+	},
+	kGoToAnchorBehavior
+}
+
+#endif

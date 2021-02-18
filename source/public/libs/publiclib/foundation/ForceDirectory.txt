@@ -1,0 +1,2 @@
+This file exist solely to force the source code version control
+system to create this directory/folder.

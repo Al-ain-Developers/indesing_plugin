@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{a51183d3-2303-4aeb-8cb9-9d1b03c6cb3f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Plugin">
+      <UniqueIdentifier>{6e41f3cd-6b4e-4718-8cd2-bec1da765195}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\extension patterns">
+      <UniqueIdentifier>{4268bc82-09dd-4079-812d-e98c3c8fff37}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\common">
+      <UniqueIdentifier>{db01b1a4-5c72-4008-8737-afaef4991ca9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\core">
+      <UniqueIdentifier>{37818e0c-60bf-4946-ac45-9859a39d06dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{8dc70f45-bd8c-4072-88f9-2e88ddf98102}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{23d9d369-9cda-42d1-a2a2-1b04e28aac98}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\source\sdksamples\customdatalink\CusDtLnkImportLinkConverter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\customdatalink\CusDtLnkLinkAssetConverter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\customdatalink\CusDtLnkLinkInfoProvider.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\customdatalink\CusDtLnkLinkResourceFactory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\customdatalink\CusDtLnkLinkResourceHandler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\customdatalink\CusDtLnkLinkResourceStatePacket.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\customdatalink\CusDtLnkLinkResourceStateUpdater.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\customdatalink\CusDtLnkLinkResourceStateUpdaterIdleTask.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\customdatalink\CusDtLnkNewLinkConverter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\customdatalink\CusDtLnkPhase2Conversion.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\customdatalink\CusDtLnkStartupShutdown.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\customdatalink\CusDtLnkStateUpdateProcessor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\customdatalink\CusDtLnkID.cpp">
+      <Filter>Source Files\Plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\customdatalink\CusDtLnkNoStrip.cpp">
+      <Filter>Source Files\Plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="$(id_sdk_dir)\source\public\libs\publiclib\statics\PlugInStatics.cpp">
+      <Filter>Source Files\Plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\common\SDKPlugInEntrypoint.cpp">
+      <Filter>Source Files\Plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\customdatalink\TriggerResourceDeps.cpp">
+      <Filter>Source Files\Plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="$(id_sdk_dir)\source\precomp\msvc\VCPlugInHeaders.cpp">
+      <Filter>Source Files\Plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\customdatalink\CusDtLnkAdornmentShape.cpp">
+      <Filter>Source Files\extension patterns</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\customdatalink\CusDtLnkAliasedDataLink.cpp">
+      <Filter>Source Files\extension patterns</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\customdatalink\CusDtLnkAliasedDataLinkAction.cpp">
+      <Filter>Source Files\extension patterns</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\customdatalink\CusDtLnkAliasedLinkedStream.cpp">
+      <Filter>Source Files\extension patterns</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\customdatalink\CusDtLnkDelimTextReader.cpp">
+      <Filter>Source Files\extension patterns</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\customdatalink\CusDtLnkDocObserver.cpp">
+      <Filter>Source Files\extension patterns</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\customdatalink\CusDtLnkDocResponder.cpp">
+      <Filter>Source Files\extension patterns</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\customdatalink\CusDtLnkDocRespServiceProvider.cpp">
+      <Filter>Source Files\extension patterns</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\customdatalink\CusDtLnkLinkResponder.cpp">
+      <Filter>Source Files\extension patterns</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\customdatalink\CusDtLnkOptionScriptProvider.cpp">
+      <Filter>Source Files\extension patterns</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\customdatalink\CusDtLnkRespServiceProvider.cpp">
+      <Filter>Source Files\extension patterns</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\customdatalink\CusDtLnkScript.cpp">
+      <Filter>Source Files\extension patterns</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\customdatalink\CusDtLnkScriptProvider.cpp">
+      <Filter>Source Files\extension patterns</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\common\SDKFileHelper.cpp">
+      <Filter>Source Files\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\customdatalink\CusDtLnkChangeOptionsCmd.cpp">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\customdatalink\CusDtLnkFacade.cpp">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\customdatalink\CusDtLnkOptions.cpp">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\sdksamples\customdatalink\CusDtLnkLinkResourceHelperHandler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\source\sdksamples\customdatalink\CusDtLnkFactoryList.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\sdksamples\customdatalink\CusDtLnkID.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\sdksamples\customdatalink\CusDtLnkLinkResourceStatePacket.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\sdksamples\customdatalink\CusDtLnkScriptingDefs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\sdksamples\customdatalink\ICusDtLnkDelimTextReader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\sdksamples\customdatalink\ICusDtLnkFacade.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\sdksamples\customdatalink\ICusDtLnkOptions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\sdksamples\customdatalink\ICusDtLnkStateUpdateProcessor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\sdksamples\common\SDKFileHelper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\source\sdksamples\customdatalink\CusDtLnk_enUS.fr">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\source\sdksamples\customdatalink\CusDtLnk_jaJP.fr">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\..\..\source\sdksamples\customdatalink\CusDtLnk.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\..\..\source\sdksamples\customdatalink\CusDtLnk.fr">
+      <Filter>Resource Files</Filter>
+    </CustomBuild>
+  </ItemGroup>
+</Project>

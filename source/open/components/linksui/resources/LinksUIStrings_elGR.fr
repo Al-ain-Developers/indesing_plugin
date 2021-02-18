@@ -1,0 +1,163 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/linksui/resources/LinksUIStrings_elGR.fr $
+//  
+//  Owner: Steve Flenniken
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#ifdef __ODFRC__
+
+#include "StringTable.fh"
+
+resource StringTable (kLinksUIStringsRsrcID + index_elGR)
+{
+	k_elGR,					// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	{
+		"Links_WinMenu",			"Συν&δέσεις", // panel menu item
+		"kRtMouseGraphics",			"Γραφικά", // context menu submenu name
+		"RtMenuLinksUILinkInfo",	"Μενού περιβάλλοντος πληροφοριών σύνδεσης",
+		
+		"#LinksUIPanel",			"Συνδέσεις", // panel name
+		"#LinksUIPanelMenu",		"Μενού πίνακα συνδέσεων", 
+		"#LinksUtilitiesSubmenu",		"Βοηθητικά προγράμματα",		// submenu for links panel menu
+		"#SelectedLinkInfoSectionName",			"Πληροφορίες σύνδεσης", // section name in links ui panel
+		
+		"#UpdateAllOutOfDateLinksMenu",	"Ενημέρωση όλων των συνδέσεων",
+		"#AutoFindMissingLinksMenu",		"Αναζήτηση συνδέσεων που λείπουν",
+		"#LinksUIRelinkLinkMenu",		"Επανασύνδεση...",
+		"#LinksUIRelinkResourceMenu",	"Επανασύνδεση όλων των παρουσιών...", // menu item to relink all instances of this multiple link assets
+		"#RelinkResource ^1 Menu",		"Επανασύνδεση όλων των παρουσιών του '^1'...", // menu item to relink all instances of one single link asset
+		"#LinksUIUpdateLinkMenu",			"Ενημέρωση σύνδεσης", // context menu item in links ui panel
+		"#LinksUIUpdateLinkResourceMenu",	"Ενημέρωση όλων των παρουσιών",
+		"#UpdateResource ^1 Menu",		"Ενημέρωση όλων των παρουσιών του '^1'", // menu item to update all instances of one single link asset
+		"#LinksUIEmbedLinkMenu",			"Ενσωμάτωση σύνδεσης", // context menu item in links ui panel
+		"#LinksUIEmbedResourceMenu",		"Ενσωμάτωση όλων των παρουσιών",
+		"#EmbedResource ^1 Menu",			"Ενσωμάτωση όλων των παρουσιών του '^1'", // menu item to embed all instances of one single link asset
+		"#LinksUIUnEmbedLinkMenu",		"Κατάργηση ενσωμάτωσης σύνδεσης", // context menu item in links ui panel
+		"#LinksUIUnEmbedResourceMenu",	"Κατάργηση ενσωμάτωσης όλων των παρουσιών",
+		"#UnembedResource ^1 Menu",			"Κατάργηση ενσωμάτωσης όλων των παρουσιών του '^1'", // menu item to unembed all instances of one single link asset
+		"#LinksUIUnLinkMenu",				"Κατάργηση σύνδεσης",
+		"#UnLinkResourceMenu",			"Κατάργηση σύνδεσης όλων των παρουσιών",
+		"#UnLinkResource ^1 Menu",			"Κατάργηση σύνδεσης όλων των παρουσιών του '^1'", // menu item to unlink all instances of one single link asset
+		"#LinksUIEditOriginalLinkMenu",		"Επεξεργασία πρωτοτύπου", // context menu item in links ui panel
+		"#LinksUIXMPFileInfo",				"Πληροφορίες αρχείου XMP...",
+		"#LinksUICopyPath",				"Αντιγραφή πλήρους διαδρομής",
+		"#LinksUICopyPlatformPath",			"Αντιγραφή διαδρομής στυλ πλατφόρμας",
+		"#RevealLinkInMacFinder",			"Αποκάλυψη στο Finder",
+		"#RevealLinkInWinExplorer",			"Αποκάλυψη στον Explorer",
+		"#RevealLinkInAdobeBridge",			"Αποκάλυψη στο Bridge",
+		"#GoToLink",						"Μετάβαση σε σύνδεση",
+		"#EditWithApp",					"Επεξεργασία με",
+		"ApplicationFiles",					"Εφαρμογή (*.exe)", // windows only string to list exe files in the 'edit with application' dialog.
+		"#ChooseEditingApplication",			"Επιλογή εφαρμογής", // dialog title
+		"#OtherApp",						"Άλλο...",	// Menu name for choosing a custom application via a standard file dialog for Edit With...
+		"#LinksUICopyLink",				"Αντιγραφή σύνδεσης(συνδέσεων) σε...",
+		"#LinksUIEditColumnsMenu",			"Επιλογές πίνακα...",
+		
+		"#LinksUIRemoveThisColumnMenu",	"Απόκρυψη αυτής της στήλης",
+		"#LinksUIShowThumbnailMenu",		"Εμφάνιση μικρογραφίας",
+		"#LinksUIHideThumbnailMenu",		"Απόκρυψη μικρογραφίας",		
+		"#LinksUIShowInfoThumbnailMenu",	"Εμφάνιση μικρογραφίας πληροφοριών",
+		"#LinksUIHideInfoThumbnailMenu",	"Απόκρυψη μικρογραφίας πληροφοριών",
+		
+		"#SaveLinkVersionCmd",			"Σύνδεση σύνδεσης",
+		"#ShowLinksPanelColumn",			"Εμφάνιση στήλης",
+		"#ShowLinksPanelInfo",				"Εμφάνιση στις πληροφορίες σύνδεσης",
+		"#SelectNextLinkButtonTip",			"Επιλέξτε την επόμενη σύνδεση στη λίστα",
+		"#SelectPrevLinkButtonTip",			"Επιλέξτε την προηγούμενη σύνδεση στη λίστα",
+		"#ToggleLinkInfoButtonTip",			"Εμφάνιση/Απόκρυψη πληροφοριών σύνδεσης",
+		
+		"#ShortLinkStatusParamStr",				"^1 Συνδέσεις",  // status string for links panel
+		"#LongLinkStatusParamStr",				"^1 Συνολικές συνδέσεις\n\n   ^2 Λείπουν\n   ^3 Έχουν τροποποιηθεί\n   ^4 Ενσωματωμένες\n   ^5 Μοναδικές\n   ^6 Υποσυνδέσεις", // tip string for links panel status.
+		"#NumSelectedLinksParamStr",			"^1 Επιλεγμένες", // status string when links are selected in the panel.
+				
+		"RtMenuLinksUILinkItem",		"Μενού περιβάλλοντος σύνδεσης",
+		"RtMenuLinksUILinksHeader",		"Μενού περιβάλλοντος κεφαλίδων συνδέσεων",
+		
+		"#LinkColumnDialog",			"Επιλογές πίνακα", // dialog name
+		"#LinksUIPanelOptions",			"Επιλογές",
+		
+		"#LinkThumbPrefLabel",			"Μικρογραφίες:",
+		"#LinksUIRowSizeLabel",		"&Μέγεθος γραμμής:",
+		"#LinksUISmallRowStr",			"Μικρές γραμμές",
+		"#LinksUIRegularRowStr",		"Κανονικές γραμμές",
+		"#LinksUILargeRowStr",			"Μεγάλες γραμμές",
+		"#LinkInfoShowThumbnailCheckbox",	"Εμφάνιση στις πληροφορίες &σύνδεσης",
+		"#LinksUIShowThumbnail",		"Εμφάνιση στη στήλη &ονόματος",
+
+		"#SearchHereForMissingFiles",	"Αναζήτηση συνδέσεων που λείπουν σε αυτόν το φάκελο", // label for checkbox in relink dialog
+		"#RelinkSkipButton",			"Παράλειψη", // name for 'skip' button in relink dialog
+		"#SearchFound^1Links",		"Βρέθηκαν και αποκαταστάθηκαν ^1 συνδέσεις που λείπουν.", // alert that displays if we auto find missing links after a relink
+		"#RelinkToFolderTitle",			"Επιλέξτε το φάκελο για επανασύνδεση. Θα αποκατασταθούν μόνο οι τρέχουσες επιλεγμένες συνδέσεις με όνομα που ταιριάζει.",
+		"#RelinkToSameFilename",		"Ταίριασμα ίδιου ονόματος αρχείου και επέκτασης", // radio button option in relink to folder dialog
+		"#RelinkToExtension",			"Ταίρισμα ίδιου ονόματος αρχείου εκτός από αυτή την επέκταση:", // radio button option in relink to folder dialog
+		"#RelinkToFolderFailedParamStr", "Αποτυχία εύρεσης ^1 συνδέσεων στο νέο φάκελο. Οι συνδέσεις αυτές δεν αποκαταστάθηκαν και θα παραμείνουν επιλεγμένες στον πίνακα συνδέσεων.",
+		"#LinksUICopyLinksTitle",		"Επιλέξτε το φάκελο στον οποίο θα αντιγραφούν τα συνδεδεμένα αρχεία.",
+		"#LinksUIRelinkToFolderLinkMenu",	"Επανασύνδεση στο φάκελο...",
+		"#LinksUIRelink: ^1",			"Επανασύνδεση: ^1", // title for relink dialog. ^1 becomes file path.
+		"#LinksUILocate: ^1",			"Εντοπισμός: ^1", // title for relink dialog when link is missing. ^1 becomes file path.
+		"#CopyLinksFailedAlert",		"Η αντιγραφή συνδέσεων σε φάκελο απέτυχε.",
+		"#AutoFindFoundNothingAlert",	"Δεν βρέθηκαν συνδέσεις που λείπουν. Χρησιμοποιήστε την εντολή επανασύνδεσης για να βρείτε την πρώτη σύνδεση που λείπει και δοκιμάστε ξανά.",
+		
+		"kEditsMadeWarning",			  "Έχουν γίνει τροποποιήσεις στην εισηγμένη έκδοση του \"^1\". Θα χάσετε αυτές τις τροποποιήσεις όταν γίνει η ενημέρωση. Θα συνεχίσετε με την ενημέρωση;",
+		"kEditsMadeToTextOrTableWarning", "Εχουν γίνει αλλαγές στην εισηγμένη έκδοση του \"^1\". Οι αλλαγές θα χαθούν (με εξαίρεση τις αλλαγές που έχουν γίνει σε λογιστικά φύλλα μέσω στυλ κελιών ή στυλ πίνακα) κατά την ενημέρωση της σύνδεσης. Να γίνει η ενημέρωση;",
+
+		// Strings for Problem Links dialog
+		"#LinksModifiedWarning",	"Το έγγραφο αυτό περιέχει συνδέσεις σε προελεύσεις που έχουν τροποποιηθεί. Μπορείτε να ενημερώσετε τις τροποποιημένες συνδέσεις τώρα ή αργότερα χρησιμοποιώντας τον πίνακα συνδέσεων.",
+		"#UpdateLinks",				"&Ενημέρωση συνδέσεων",	 // button text
+		"#Don'tUpdateLinks",		"Να μην ενημερωθούν οι συνδέσεις", // button text
+		"#ProblemMissingLinksParamStr",	"^1 - Συνδέσεις που δεν υπάρχουν",
+		"#ProblemModifiedLinksParamStr",	"^1 - Τροποποιημένες συνδέσεις",
+
+		"UnembedToOriginal", 		"Η κατάργηση της ενσωμάτωσης μπορεί να δημιουργήσει συνδέσεις με τα πρωτότυπα αρχεία ή να δημιουργήσει συνδέσεις με αρχεία που τα δημιουργεί σε ένα φάκελο. Θέλετε να εφαρμόσετε συνδέσεις με τα πρωτότυπα αρχεία;",
+   
+		"#SelectUnembedDir","Επιλέξτε το φάκελο στον οποίο θα δημιουργηθούν τα αρχεία.",
+   
+
+		// Show Link message.
+		 "Cannot show link: The selected item is on a hidden layer.","Δεν είναι δυνατή η εμφάνιση της σύνδεσης: Το επιλεγμένο αντικείμενο βρίσκεται σε ένα κρυμμένο επίπεδο.",
+   
+		"Cannot show link: The selected item is hidden in overset text.","Δεν είναι δυνατή η εμφάνιση της σύνδεσης: Το επιλεγμένο αντικείμενο είναι κρυμμένο σε πλεονάζον κείμενο.",
+   
+		"Cannot show link: The selected item is hidden in an inactive form field state.","Δεν είναι δυνατή η εμφάνιση της σύνδεσης: Το επιλεγμένο αντικείμενο είναι κρυφό σε ανενεργή κατάσταση κουμπιού.  Χρησιμοποιήστε τον πίνακα κουμπιών για να ενεργοποιήσετε την κρυφή κατάσταση και να δείτε το αντικείμενο.",
+   
+		"Cannot show link: The selected item is in deleted text in a tracked change.","Δεν είναι δυνατή η εμφάνιση της σύνδεσης: Το επιλεγμένο αντικείμενο είναι σε διαγραμμένο κείμενο παρακολουθούμενης αλλαγής.",
+   
+		"Cannot show link: The selected item is an XML structure element not in the layout.","Δεν είναι δυνατή η εμφάνιση της σύνδεσης: Το επιλεγμένο αντικείμενο είναι ένα στοιχείο δομής XML το οποίο δεν υπάρχει στη διαμόρφωση.",
+   
+		"Cannot show link: The selected item is in hidden conditional text.","Δεν είναι δυνατή η εμφάνιση της σύνδεσης: Το επιλεγμένο αντικείμενο βρίσκεται σε κρυφό κείμενο υπό συνθήκες.",
+   
+						
+						
+		"#EditOriginalButtonTip",		"Επεξεργασία πρωτοτύπου",	// tip string for button in links panel
+		"#GotoLinkButtonTip",		"Μετάβαση σε σύνδεση",	// tip string for button in links panel
+		
+		"#appendedUpdateButtonTipMac",		". Κάντε Opt-κλικ για ενημέρωση όλων", // appened to menu name for 'update link' to build tip string for update button(mac)
+		"#appendedUpdateButtonTipWin",		". Κάντε Alt-κλικ για ενημέρωση όλων", // appened to menu name for 'update link' to build tip string for update button(win)
+		"#appendedRelinkButtonTipMac",		" Κάντε Opt-κλικ για επανασύνδεση όλων των συνδέσεων που λείπουν", // appened to menu name for 'Relink' to build tip string for relink button(mac)
+		"#appendedRelinkButtonTipWin",		" Κάντε Alt-κλικ για επανασύνδεση όλων των συνδέσεων που λείπουν", // appened to menu name for 'Relink' to build tip string for relink button(win)
+		
+		"#ErrorEmbeddingLink",		"Αποτυχία ενσωμάτωσης σύνδεσης.",
+	}
+};
+
+
+
+#endif //__ODFRC__

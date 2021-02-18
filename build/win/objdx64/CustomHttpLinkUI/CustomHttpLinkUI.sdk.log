@@ -1,0 +1,31 @@
+﻿  VCPlugInHeaders.cpp
+  PlugInStatics.cpp
+  SDKFileHelper.cpp
+  SDKPlugInEntrypoint.cpp
+  CustomHttpLinkUIActionComponent.cpp
+  CustomHttpLinkUIID.cpp
+  CustomHttpLinkUINoStrip.cpp
+  CustomHttpLinkUIObserver.cpp
+  CustomHttpLinkUIPlaceButtonObserver.cpp
+  TriggerResourceDeps.cpp
+  Performing Custom Build Tools
+  ODFRC deleting old resources... 
+  Could Not Find C:\Users\User\Desktop\plugin_sdk_v3\plugin\build\win\objDx64\CustomHttpLinkUI\*.idrc
+  "..\objDx64\CustomHttpLinkUI"\CusDtLnkUI.res doesn't exist
+  Bad arguments to merge_res.cmd  
+     Usage 
+        1)merge_res.cmd $(IntDir) ResourceFile
+        2)merge_res.cmd $(IntDir) ResourceFile CoreResourceFile
+  Use 1) if the platform and core resourfile names are the same.
+     Use 2) if they are different.
+     Where ResourceFile is the filename without .res 
+           CoreResourceFile is the filename without .fres 
+     Example: 1) merge_res.cmd $(IntDir) TableModel
+              2) merge_res.cmd $(IntDir) TableModel TableModelCore
+  merge_res.cmd done.
+  Deleting old resources... 
+  The system cannot find the file specified.
+  16 File(s) copied
+     Creating library ..\..\..\build\win\objDx64\CustomHttpLinkUI/CustomHttpLinkUI.lib and object ..\..\..\build\win\objDx64\CustomHttpLinkUI/CustomHttpLinkUI.exp
+  CustomHttpLinkUI.sdk.vcxproj -> C:\Users\User\Desktop\plugin_sdk_v3\plugin\build\win\debugx64\sdk\CustomHttpLinkUI.sdk.pln
+  restore_res.cmd done.

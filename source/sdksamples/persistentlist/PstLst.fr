@@ -1,0 +1,719 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/sdksamples/persistentlist/PstLst.fr $
+//  
+//  Owner: Adobe Developer Technologies
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//  
+//  Umbrella include file for all the .fr files in the plug-in.
+//  
+//========================================================================================
+
+//===========================
+//  General includes:
+//===========================
+
+#include "MenuDef.fh"
+#include "ActionDef.fh"
+#include "ActionDefs.h"
+#include "AdobeMenuPositions.h"
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "StringTable.fh"
+#include "objectmodeltypes.fh"
+#include "ShuksanID.h"
+#include "ActionID.h"
+#include "CommandID.h"
+#include "WorkspaceID.h"
+#include "widgetid.h"
+#include "BuildNumber.h"
+#include "PanelList.fh"
+#include "Widgets.fh"	// for PalettePanelWidget
+#include "InterfaceColorDefines.h"
+#include "IControlViewDefs.h"
+#include "SysControlIds.h"
+
+// General includes:
+#include "ErrorTableTypes.h" // for UserErrorTable
+#include "GenericID.h"
+#include "ScriptingID.h"	// for IID_ISCRIPT
+#include "INXCoreID.h" 		// for IID_IDOMELEMENT, IID_IXMLFRAGMENT, kScriptDOMElementImpl, kINXBasicFragmentImpl
+
+// API includes for the scripting resource
+#include "EPSID.h" // for kEPSTextObjectScriptElement
+#include "TextScriptID.h"  // for kTextFrameObjectScriptElement
+#include "ScriptInfoTypes.fh"
+
+#include "PlugInModel_UIAttributes.h"
+// Project includes:
+#include "PstLstID.h"
+#include "PstLstScriptingDefs.h"
+
+#ifdef __ODFRC__
+
+/*
+// Plugin version definition.
+*/
+resource PluginVersion (kSDKDefPluginVersionResourceID)
+{
+	kTargetVersion,
+	kPstLstPluginID,
+	kSDKDefPlugInMajorVersionNumber, kSDKDefPlugInMinorVersionNumber, 	
+	kSDKDefHostMajorVersionNumber, kSDKDefHostMinorVersionNumber,
+	kPstLstLastMajorFormatChange, kPstLstLastMinorFormatChange,
+	{ kInDesignProduct, kInDesignServerProduct },
+	{ kWildFS },
+	kModelPlugIn,
+	kPstLstVersion
+};
+
+/*
+	The following resource asks the InDesign to warn the user that the data we add
+	to the document is critical, if this plug-in is missing when 
+	InDesign tries to open a document that contains the data.
+*/
+resource CriticalTags(1)
+{
+	kImplementationIDSpace,
+	{
+		kPstLstDataPersistImpl,
+		kPstLstUIDListImpl,		
+	}
+};
+
+resource CriticalTags(2)
+{
+	kClassIDSpace,
+	{
+		kPstLstDataBoss,
+	}
+};
+
+/*
+	The following resource adds extra information to the Missing Plug-in dialog
+	that is popped when a document containing this plug-in's data is opened when
+	this plug-in is not present. These strings are not translatable strings
+	since they must be available when the plug-in isn't around. They get stored
+	in any document that this plug-in contributes data to.
+*/
+resource ExtraPluginInfo(1)
+{
+	kPstLstCompanyValue,				// Company name
+	kPstLstMissingPluginURLValue,		// URL 
+	kPstLstMissingPluginAlertValue,		// Missing plug-in alert text
+};
+
+/*
+	Boss class definition.
+*/
+resource ClassDescriptionTable(kSDKDefClassDescriptionTableResourceID)
+{{{
+	/**
+		This AddIn adds a persistent IPstLstUIDList to the kDrawablePageItemBoss.
+		IPstLstUIDList maintain a list of IPstLstData, a new data interface added 
+		by this plug-in
+		@ingroup persistentlist
+	*/
+	AddIn
+	{
+		kDrawablePageItemBoss,
+		kInvalidClass,
+		{
+			/** 
+				kPstLstUIDListImpl is a persistent UID list implementation, 
+				kPstLstUIDListImpl allows adding/removing of a UID to/from the list.
+			*/
+			IID_IPSTLSTUIDLIST, kPstLstUIDListImpl,
+		}
+	},
+
+	/** 
+		This AddIn adds IPstLstSuite to the abstract selection boss.
+		IPstLstSuite is a new interface added by this plug-in, it allows
+		client code to manipulate the IPstLstData which is also added by this plug-in.
+		@ingroup persistentlist
+	*/
+	AddIn
+	{
+		kIntegratorSuiteBoss,
+		kInvalidClass,
+		{
+			/** 
+				Integrator implementation of IPstLstSuite that integrates IPstLstSuite 
+				calls across implementations on concrete selection boss classes. 
+				In this case the only other implementation of IPstLstSuite is on the 
+				layout selection boss, kLayoutISuiteBoss.
+				Implementation provided in PstLstASB.cpp.
+			*/
+			IID_IPSTLST_ISUITE, kPstLstASBImpl,
+		}
+	},
+
+	/**
+		This AddIn adds IPstLstSuite to the layout selection boss.
+		IPstLstSuite is a new interface added by this plug-in, it allows
+		client code to manipulate the IPstLstData which is also added by this plug-in.
+		@ingroup persistentlist
+	*/
+	AddIn
+	{
+		kLayoutSuiteBoss,
+		kInvalidClass,
+		{
+			/** 
+				The concrete implementation of IPstLstSuite that deals with model
+				specific work.
+				Implementation provided in PstLstLayoutCSB.cpp.
+			*/
+			IID_IPSTLST_ISUITE, kPstLstLayoutCSBImpl,
+		}
+	},
+
+	/** 
+		This AddIn adds an document observer to the kDocBoss.  The purpose of this
+		document observer is to observer the page item deletion from the doc.
+		@ingroup persistentlist
+	*/
+	AddIn
+	{
+		kDocBoss,
+		kInvalidClass,
+		{
+			/** See IObserver / PstLstDocObserver. 
+			*/
+			IID_IPSTLSTOBSERVER, kPstLstDocObserverImpl
+		}
+	};
+
+	/** 
+		This is the data boss that gets added onto a IPstLstUIDList of the page item.  The data
+		boss is persistent and has an ISubject interface.
+		@ingroup persistentlist
+	*/
+	Class 
+	{
+		kPstLstDataBoss,
+		kInvalidClass,
+		{
+			/** 
+				This is a persistent IPstLstData implementation, it has methods to
+				set/get the data. this data boss is created when the New command is called
+				Implementation provided in PstLstDataPersist.cpp.
+			*/
+			IID_IPSTLSTDATA, kPstLstDataPersistImpl,
+
+			/** 
+				Provides a notification mechanism for objects that need to be informed of changes
+				made to another object.  When an object is modified, calling the Change method of
+				its ISubject interface notifies attached observers of the change.
+			*/
+			IID_ISUBJECT, kCSubjectImpl,
+
+			/** 
+				Manages the persistence aspect of an object: handles streaming the boss
+				object, keeps the UID and database.
+			*/
+			IID_IPMPERSIST, kPMPersistImpl
+
+			/** Makes this boss class scriptable.  
+			  	REQUIRED by the scripting architecture.
+			  	Provides details as to what ScriptID is associated with this script object.
+			  	Implementation provided in PstLstScript.cpp.
+			 */
+			IID_ISCRIPT, kPstLstScriptImpl,
+		}
+	},
+
+	/** This boss provides scripting support by means of handling events and property 
+	  	accesses that are delegated by the script manager. 
+	  	@ingroup persistentlist
+	 */
+    Class
+	{
+		kPstLstScriptProviderBoss,
+		kBaseScriptProviderBoss,
+		{
+			/** Provides scripting support by means of handling events and property 
+			  	accesses that are delegated by the script manager. 
+			  	REQUIRED by the scripting architecture.
+			  	Implementation provided in PstLstScriptProvider.cpp.
+			 */
+			IID_ISCRIPTPROVIDER, kPstLstScriptProviderImpl,
+		}
+	},
+	
+	/** Implements an error string service, primarily for use by 
+	  	the script provider (so that script users will get meaningful 
+	  	error descriptions)
+	  	@ingroup persistentlist
+	*/
+	Class
+	{
+		kPstLstErrorStringServiceBoss,
+		kInvalidClass,
+		{
+			/** Declares this boss as an kErrorStringService provider.
+			  	Implementation provided by the API.
+			 */
+			IID_IK2SERVICEPROVIDER, kErrorStringProviderImpl, 
+			
+			/** Provides the support for ErrorUtils so that 
+			  	ErrorUtils::PMGetErrorString can locate a specific error code.
+			  	Implementation provided in PstLstErrorStringService.cpp
+			 */
+            IID_IERRORSTRINGSERVICE, kPstLstErrorStringServiceImpl,
+		}
+	},
+	
+	/** Implements a reference converter service, IReferenceConverter,
+		that controls how objects of ClassID kPstLstDataBoss get copied.
+	
+		@ingroup persistentlist
+	*/
+	Class 
+	{
+		kPstLstReferenceConverterBoss,
+		kInvalidClass,
+		{
+			/** See IReferenceConverter and PstLstReferenceConverter.
+			*/
+			IID_IREFERENCECONVERTER, kPstLstReferenceConverterImpl,
+
+			/** Implementation provided by the API.
+			*/
+			IID_IK2SERVICEPROVIDER, kReferenceConverterProviderImpl
+		}
+	},	
+
+	/** 
+		This boss class provides a command PstLstNewDataCmd that adds an IPstLstData on
+		to the IPstLstUIDList of the selected page items.
+		It supports two interfaces: ICommand and IPstLstData, we provide both implementations.
+		@ingroup persistentlist
+	*/
+	Class 
+	{
+		kPstLstNewDataCmdBoss,
+		kInvalidClass,
+		{
+			/** 
+				The implementation of the PstLstNewDataCmd, it gets the command data from its
+				sibling interface, then use it to create a new IPstLstData and add it onto its 
+				target's IPstLstUIDList.
+				Implementation provided in PstLstNewDataCmd.cpp.
+			*/
+			IID_ICOMMAND,	kPstLstNewDataCmdImpl,
+
+			/** 
+				This is the non-persistent version of IPstLstData, it provides the data needed
+				by the command.
+				Implementation provided in PstLstData.cpp.
+			*/
+			IID_IPSTLSTDATA,	kPstLstDataImpl,
+		}
+	},
+
+	/** 
+		This boss class provides a command PstLstModifyDataCmd that is used when the user enters a new
+		value through the the plug-in panel's menu command, in such case, the command will modify the
+		string data of the current selected IPstLstData in the IPstLstUIDList of the current selected page items.
+		
+		It supports two interfaces: ICommand and IPstLstData, we provide both implementations.
+		@ingroup persistentlist
+	*/
+	Class 
+	{
+		kPstLstModifyDataCmdBoss,
+		kInvalidClass,
+		{
+			/** 
+				kPstLstModifyDataCmdBoss will modify the the string data of the IPstLstData
+				in the PstLst items (not page items).  The IPstLstData is 
+				aggregated by the commmand boss, while the PstLst items to be modified are passed in 
+				the command's item list.
+				
+				Implementation provided in PstLstModifyDataCmd.cpp
+			*/
+			IID_ICOMMAND,	kPstLstModifyDataCmdImpl,
+
+			/** 
+				This is the non-persistent version of IPstLstData, it provides the data needed
+				by the command.
+				Implementation provided in PstLstData.cpp.
+			*/
+			IID_IPSTLSTDATA,	kPstLstDataImpl,
+		}
+	},
+
+	/** 
+		This boss class provides a command PstLstDeleteDataCmd that is used when the user select the
+		Delete command through the the plug-in panel's menu command, in such case, the command will delete
+		the current IPstLstData from the IPstLstUIDList of the selected items.
+		
+		It supports one interfaces: ICommand, we provide the implementations.
+		@ingroup persistentlist
+	*/
+	Class 
+	{
+		kPstLstDeleteDataCmdBoss,
+		kInvalidClass,
+		{
+			/** 
+				PstLstDeleteDataCmd will delete the selected IPstLstData object and remove its UID 
+				from the IPstLstUIDList from all selected page items.  There is no need for an extra
+				data interface like above since we are going to delete the page item's current selected
+				IPstLstData, this information is available through IPstLstUIDList.
+			*/
+			IID_ICOMMAND,	kPstLstDeleteDataCmdImpl,
+		}
+	},
+
+	/** 
+		This boss class provides a command PstLstDeletePageItemCmd that is used when the user deletes the
+		page item, in such case, we are responsible to delete ALL the data we allocated for the page item
+		while this plug-in is loaded.
+		
+		It supports one interfaces: ICommand, we provide the implementations.
+		@ingroup persistentlist
+	*/
+	Class 
+	{
+		kPstLstDeletePageItemCmdBoss,
+		kInvalidClass,
+		{
+			/** 
+				When a page item is deleted, we need to delete ALL the data boss we added to the item, also 
+				we need to  restore them in the event of undo deleting page item.  Unlike PstLstDeleteDataCmd,
+				which only deletes the current selected UID and its associated data boss for each
+				selected page item, this command delete EVERY one that's carried by a page item.
+			*/
+			IID_ICOMMAND,	kPstLstDeletePageItemCmdImpl,
+		}
+	},
+
+	/** 
+		This boss provides the service of responding to document file actions.
+		It has two interfaces: one that tells InDesign what kind of service is
+		provided, and a second to provide the service.
+		
+		An interface, IPstLstObserver is added to the kDocBoss to observer the document's
+		hierarchy change, for example, the removal of a page item by File->Cut command, this
+		observer allows us to purge the data allocated for the page item before it's too late.
+		Since there is not always a front document, we can only hook up the observer with
+		the document when it is opened, and detach the observer when the document is closed.
+		The purpose of this responder boss is to get notified for these events so the observer
+		can be hooked up and detached in the right time.
+		@ingroup persistentlist
+	*/
+	Class
+	{
+		kPstLstDocResponderBoss,
+		kInvalidClass,
+		{
+			/** 
+			An impl. of this plug-in to identify this boss as providing a 
+			responder service for multiple document actions, such as for doc open, close, etc.
+			If only one service was needed, then we'd reuse an API-defined implementation ID
+			listed in DocumentID.h.
+			*/
+			IID_IK2SERVICEPROVIDER,		kPstLstDocServiceProviderImpl,
+
+			/** 
+			An impl. of this plug-in to perform the responder service.  This implementation
+			will deliver every service promised by the IK2ServiceProvider implementation.
+			
+			We respond to kAfterNewDocSignalResponderService by attaching the doc observer
+			and kBeforeCloseDocSignalResponderService by detaching the observer.
+			*/
+			IID_IRESPONDER,				kPstLstDocResponderImpl,
+		}
+	};
+	
+	/** Provides schema based converter to handle static changes in the the format of 
+		persistent data in this plug-in's implementations.
+		@see SchemaList resource in PstLst.fr
+		@ingroup persistentlist
+	*/
+	Class 
+	{
+		kPstLstConversionProviderBoss,
+		kInvalidClass,
+		{
+			/** IConversionProvider implementation for schema based conversion.
+				Implementation provided by the API.
+			*/
+			IID_ICONVERSIONPROVIDER, kSchemaBasedConversionImpl,
+			/** IK2ServiceProvider implementation that identifies this boss as a conversion service.
+				Implementation provided by the API.
+			*/
+			IID_IK2SERVICEPROVIDER, kConversionServiceImpl,
+		}
+	};
+	
+	/** Phase 2 converter to handle dynamic changes in the format of the
+		persistent data in this plug-in's implementations.	
+		@ingroup persistentlist
+	*/
+	Class
+	{
+		kPstLstPhase2ConversionResponderBoss,
+		kInvalidClass,
+		{
+			/** See IResponder / PstLstPhase2Conversion.
+			*/
+			IID_IRESPONDER, kPstLstPhase2ConversionImpl,
+			/** IK2ServiceProvider implementation that identifies this boss aspase 2 converter.
+				Implementation provided by the API.
+			*/
+			IID_IK2SERVICEPROVIDER, kPhase2ConvSignalRespServiceImpl,			
+		}
+	};
+	
+}}};
+
+/* This resource links the selection extension implementation with the suite implementation.
+*/
+resource kSelectionSuiteExt (1)	
+{
+	kNewLayoutSelectionBoss,
+	{
+		kPstLstLayoutCSBImpl,		kPstLstSuiteLayoutSelectionExtImpl,
+	}
+};
+
+/*
+// Implementation definition.
+*/
+resource FactoryList (kSDKDefFactoryListResourceID) 
+{
+	kImplementationIDSpace,
+	{
+#include "PstLstFactoryList.h"
+	}
+};
+
+/*
+// LocaleIndex
+// The LocaleIndex should have indicies that point at your
+// localizations for each language system that you are 
+// localized for.
+*/
+/*
+// String LocaleIndex.
+*/
+resource LocaleIndex (kSDKDefStringsResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_enUS, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_jaJP, kSDKDefStringsResourceID + index_jaJP
+		
+		kWildFS, k_Wild, kSDKDefStringsResourceID + index_enUS
+	}
+};
+
+resource LocaleIndex (kSDKDefStringsNoTransResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_Wild, kSDKDefStringsNoTransResourceID + index_enUS
+	}
+};
+
+resource StringTable (kSDKDefStringsNoTransResourceID + index_enUS)
+{
+	k_enUS,									// Locale Id
+	kEuropeanMacToWinEncodingConverter,		// Character encoding converter
+	{
+		// No-Translate strings go here:		
+	}
+};
+
+/*
+// User error table
+*/
+resource UserErrorTable(kPstLstErrorStringTableRsrcID)
+{
+	{	// global err code, error string key
+		kPstLstScriptProviderPreconditionError,	kPstLstScriptProviderPreconditionErrorStringKey,
+		kPstLstUnsupportedObjectRequestedError,	kPstLstUnsupportedObjectRequestedErrorStringKey,
+		kPstLstInternalError, 					kPstLstInternalErrorStringKey,
+		kPstLstItemNotFoundInParentError,		kPstLstItemNotFoundInParentErrorStringKey,
+		kPstListParentUIDListHasInsufficientNumberOfItemsError,
+			kPstListParentUIDListHasInsufficientNumberOfItemsErrorStringKey,
+	}
+};
+
+// NOTE: e_Create events are expected to have a "with properties" parameter. To ensure consistency, use this #define.
+#define WITHPROPERTIESPARAM	keyAEPropData, "with properties", "Initial values for properties of the new ^Object", RecordType( kContainerObjectScriptElement ), kOptional,
+
+/* 
+// Script Element info - PstLstData object
+*/
+resource VersionedScriptElementInfo(10)
+{	
+	//Contexts
+	{
+		kCS2ScriptVersion, kCoreScriptManagerBoss, kInDesignAllLanguagesFS, k_Wild, 
+		kCS2ScriptVersion, kCoreScriptManagerBoss, kInDesignServerAllLanguagesFS, k_Wild,
+	}
+	//Elements
+	{
+		Suite
+		{
+			kPstLstSuiteScriptElement,
+			s_PstLstSuite,
+			"persistent list suite",
+			"Terms applicable to PersistList operations",
+		}
+
+		Object
+		{
+			kPstLstDataObjectScriptElement,
+			c_PstLstDataItem,
+			"persistent list data item",
+			"A persistent list data item",
+			kPstLstDataItem_CLSID,
+			c_PstLstDataItems,
+			"persistent list data items",
+			"Persistent list data items",
+			kPstLstDataItems_CLSID,
+			kUIDBasedObjectScriptElement,
+			kPstLstSuiteScriptElement,
+		}
+
+		Method
+		{
+			kPstLstDataCreateMethodScriptElement,
+			e_Create,
+			"add",
+			"Create a new ^Object",
+			ObjectType(kContainerObjectScriptElement),
+			"The new ^Object",
+			{
+				p_Name, "name", "The name property of the new ^Object", StringDefaultType(kPstLstDataItemNameDefault), kOptional,
+				WITHPROPERTIESPARAM
+			}
+		}
+
+		Provider
+		{
+			kPstLstScriptProviderBoss,
+			{
+				/* list of parent objects */
+				Parent{ kEPSObjectScriptElement },
+				Parent{ kGraphicLineObjectScriptElement },
+				Parent{ kGraphicObjectScriptElement },
+				Parent{ kGroupObjectScriptElement },
+				Parent{ kImageObjectScriptElement },
+				Parent{ kOvalObjectScriptElement },
+				Parent{ kPageItemObjectScriptElement },
+				Parent{ kPDFObjectScriptElement },
+				Parent{ kPICTObjectScriptElement },
+				Parent{ kPolygonObjectScriptElement },
+				Parent{ kRectangleObjectScriptElement },
+				Parent{ kTextFrameObjectScriptElement },
+				Parent{ kWMFObjectScriptElement },
+
+				/* element defined and handled by this plug-in */
+				RepresentObject{ kPstLstDataObjectScriptElement }, 	
+				
+				/* element defined by and handled by this plug-in (e_Create, "add") */
+				CollectionMethod{ kPstLstDataCreateMethodScriptElement }, 				
+
+				/* element defined by application but handled by this plug-in (e_Delete, "delete")*/
+				Method{ kDeleteMethodScriptElement },						
+
+				/* element defined by application but handled by this plug-in (p_Name, "name")*/
+				Property{ kNamePropertyScriptElement, kReadWrite },		
+			}
+		}
+	}
+};
+
+/* 
+// SchemaList
+// Define which formats of which implementations this plug-in's schema based converter should handle
+*/
+#define kPstLstDataPersist_fName	1
+#define kPstLstDataPersist_fParent	2
+#define kPstLstUIDList_fSelected	3
+#define kPstLstUIDList_fLength	4
+#define kPstLstUIDList_fUID	5
+resource SchemaList(1)
+{{
+	Schema
+	{
+		kPstLstDataPersistImpl,
+		{kPstLstInitialMajorFormat, kPstLstInitialMinorFormat},
+		{
+			{PMString	{kPstLstDataPersist_fName, ""}},				// fName
+		}
+	}, // end schema
+
+	// Add back reference to the boss object that owns the kPstLstDataBoss object.
+	// Adding scripting support to the plug-in required this.
+	// See also PstLstPhase2Converter.
+	Schema
+	{
+		kPstLstDataPersistImpl,
+		{kPstLstAddParentReferenceUIDMajorFormat, kPstLstAddParentReferenceUIDMinorFormat},
+		{
+			{PMString	{kPstLstDataPersist_fName, ""}},				// fName
+			{Reference	{kPstLstDataPersist_fParent, kInvalidUID}},		// fParent	<<-- Added
+		}
+	}, // end schema
+	
+	Schema
+	{
+		kPstLstDataPersistImpl,
+		{kPstLstStoreWideStringMajorFormat, kPstLstStoreWideStringMinorFormat},
+		{
+			{WideString	{kPstLstDataPersist_fName, ""}},				// fName
+			{Reference	{kPstLstDataPersist_fParent, kInvalidUID}},		// fParent	<<-- Added
+		}
+	}, // end schema
+	
+
+	Schema
+	{
+		kPstLstUIDListImpl,
+		{kPstLstAddParentReferenceUIDMajorFormat, kPstLstAddParentReferenceUIDMinorFormat},
+		{
+			{Reference	{kPstLstUIDList_fSelected, kInvalidUID}},		
+            {FieldArray  {kPstLstUIDList_fLength, {Int32{0}}, {{Reference{kPstLstUIDList_fUID, kInvalidUID}}}}}, // PersistUIDList
+		}
+	}, // end schema
+
+	Schema
+	{
+		kPstLstUIDListImpl,
+		{kRemoveSelectedUIDMajorFormat, kRemoveSelectedUIDMinorFormat},
+		{
+            {FieldArray  {kPstLstUIDList_fLength, {Int32{0}}, {{Reference{kPstLstUIDList_fUID, kInvalidUID}}}}}, // PersistUIDList
+		}
+	}, // end schema
+}};
+
+#endif // __ODFRC__
+
+#include "PstLst_enUS.fr"
+#include "PstLst_jaJP.fr"
+
+// End, PstLst.fr.
+

@@ -1,0 +1,536 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/sdksamples/transparencyeffectui/TranFxUI.fr $
+//  
+//  Owner: Adobe Developer Technologies
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//  
+//  Umbrella include file for all the .fr files in the plug-in.
+//  
+//========================================================================================
+
+//===========================
+//  General includes:
+//===========================
+
+#include "MenuDef.fh"
+#include "ActionDef.fh"
+#include "ActionDefs.h"
+#include "AdobeMenuPositions.h"
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "StringTable.fh"
+//#include "OMTypes.h"
+#include "objectmodeltypes.fh"
+#include "ShuksanID.h"
+#include "ActionID.h"
+#include "CommandID.h"
+#include "WorkspaceID.h"
+#include "widgetid.h"
+#include "BuildNumber.h"
+#include "IControlViewDefs.h"
+#include "SysControlIds.h"
+#include "Widgets.fh" // for DialogBoss
+
+#include "PlugInModel_UIAttributes.h"
+// Project includes:
+#include "TranFxUIID.h"
+#include "TranFxID.h"
+
+#include "EveInfo.fh"
+#ifdef __ODFRC__
+
+/*
+// Plugin version definition.
+*/
+resource PluginVersion (kSDKDefPluginVersionResourceID)
+{
+    kTargetVersion,
+    kTranFxUIPluginID,
+    kSDKDefPlugInMajorVersionNumber, kSDKDefPlugInMinorVersionNumber,     
+    kSDKDefHostMajorVersionNumber, kSDKDefHostMinorVersionNumber,
+    kTranFxUICurrentMajorFormatNumber, kTranFxUICurrentMinorFormatNumber,
+    {kInDesignProduct },
+    {kWildFS },
+    kUIPlugIn,
+    kTranFxUIVersion
+};
+
+/*
+// Dependent on TransparencyEffect plug-in.
+*/
+resource PluginDependency(kSDKDefPluginDependencyResourceID)
+{
+    kWildFS
+    {
+        kTranFxPluginID,
+        kTranFxPluginName,
+        kSDKDefPlugInMajorVersionNumber,
+        kSDKDefPlugInMinorVersionNumber,
+    }
+}
+
+/*
+//    Boss class definition.
+*/
+resource ClassDescriptionTable(kSDKDefClassDescriptionTableResourceID)
+{{{
+            
+            /** Implements this plug-in's previewable dialog.
+            @ingroup transparencyeffectui
+            */
+            Class
+            {
+                kTranFxUIDialogBoss,
+                kDialogBoss,
+                {
+                    /** See IDialogController and TranFxUIDialogController.
+                    */
+                    IID_IDIALOGCONTROLLER, kTranFxUIDialogControllerImpl,
+                    /** See CDialogObserver and TranFxUIDialogObserver.
+                    */
+                    IID_IOBSERVER, kTranFxUIDialogObserverImpl,
+                }
+            },
+            
+            /**    Implements this plug-in's actions.
+            @ingroup transparencyeffectui
+            */
+            Class
+            {
+                kTranFxUIActionComponentBoss,
+                kBaseActionComponentBoss,
+                {
+                    /** HSee IActionComponent and TranFxUIActionComponent.
+                    */
+                    IID_IACTIONCOMPONENT, kTranFxUIActionComponentImpl,
+                }
+            },
+            
+        }}};
+
+/*
+// Implementation definition.
+*/
+resource FactoryList (kSDKDefFactoryListResourceID) 
+{
+    kImplementationIDSpace,
+    {
+#include "TranFxUIFactoryList.h"
+    }
+};
+
+/*
+// Menu definition.
+*/
+resource MenuDef (kSDKDefMenuResourceID)
+{
+    {
+        // The About Plug-ins sub-menu item for this plug-in.
+        kTranFxUIAboutActionID,                // ActionID (kInvalidActionID for positional entries)
+        kTranFxUIAboutMenuPath,                // Menu Path.
+        kSDKDefAlphabeticPosition,             // Menu Position.
+        kSDKDefIsNotDynamicMenuFlag,           // kSDKDefIsNotDynamicMenuFlag or kSDKDefIsDynamicMenuFlag.
+        
+        // The Plug-ins menu sub-menu items for this plug-in.
+        kTranFxUIDialogActionID,
+        kTranFxUIPluginsMenuPath,
+        kTranFxUIDialogMenuItemPosition,
+        kSDKDefIsNotDynamicMenuFlag,
+    }
+};
+
+/*
+// Action definition.
+*/
+resource ActionDef (kSDKDefActionResourceID)
+{
+    {
+        kTranFxUIActionComponentBoss,         // ClassID of boss class that implements the ActionID.
+        kTranFxUIAboutActionID,               // ActionID.
+        kTranFxUIAboutMenuKey,                // Sub-menu string.
+        kHelpMenuActionArea,                  // Area name (see ActionDefs.h).
+        kNormalAction,                        // Type of action (see ActionDefs.h).
+        kDisableIfLowMem,                     // Enabling type (see ActionDefs.h).
+        kInvalidInterfaceID,                  // Selection InterfaceID this action cares about or kInvalidInterfaceID.
+        kSDKDefInvisibleInKBSCEditorFlag,     // kSDKDefVisibleInKBSCEditorFlag or kSDKDefInvisibleInKBSCEditorFlag.
+        
+        kTranFxUIActionComponentBoss,
+        kTranFxUIDialogActionID,        
+        kTranFxUIDialogMenuItemKey,        
+        kOtherActionArea,            
+        kNormalAction,                
+        kDisableIfLowMem | kDisableIfSelectionDoesNotSupportIID,    
+        IID_ITRANFXSUITE,        
+        kSDKDefInvisibleInKBSCEditorFlag,
+    }
+};
+
+/*
+// LocaleIndex Definition.
+// The LocaleIndex should have indicies that point at your
+// localizations for each language system that you are 
+// localized for.
+*/
+/*
+// String LocaleIndex.
+*/
+resource LocaleIndex (kSDKDefStringsResourceID)
+{
+    kStringTableRsrcType,
+    {
+        kWildFS, k_enUS, kSDKDefStringsResourceID + index_enUS
+        kInDesignJapaneseFS, k_jaJP, kSDKDefStringsResourceID + index_jaJP
+        
+        kWildFS, k_Wild, kSDKDefStringsResourceID + index_enUS
+    }
+};
+
+resource LocaleIndex (kSDKDefStringsNoTransResourceID)
+{
+    kStringTableRsrcType,
+    {
+        kWildFS, k_Wild, kSDKDefStringsNoTransResourceID + index_enUS
+    }
+};
+
+resource StringTable (kSDKDefStringsNoTransResourceID + index_enUS)
+{
+    k_enUS,                                    // Locale Id
+    kEuropeanMacToWinEncodingConverter,        // Character encoding converter
+    {
+        // No-Translate strings go here:        
+    }
+};
+
+/*
+// Dialog LocaleIndex.
+*/
+resource LocaleIndex (kSDKDefDialogResourceID)
+{
+    kViewRsrcType,
+    {
+        kWildFS,    k_Wild, kSDKDefDialogResourceID + index_enUS
+    }
+};
+
+/*
+// Type definition.
+*/
+type TranFxUIDialogWidget(kViewRsrcType) : DialogBoss(ClassID = kTranFxUIDialogBoss)
+{
+    
+    WidgetEveInfo;
+};
+
+/*
+// Dialog definition.
+// This view is not localised: therefore, it can reside here.
+// However, if you wish to localise it, it is recommended to locate it in one of 
+// the localised framework resource files (i.e. TranFxUI_enUS.fr etc.) and 
+// update your Dialog LocaleIndex accordingly.
+*/
+
+resource TranFxUIDialogWidget (kSDKDefDialogResourceID + index_enUS)
+{
+    __FILE__, __LINE__,
+    kTranFxUIDialogWidgetID,    // WidgetID
+    kPMRsrcID_None,             // RsrcID
+    kBindNone,                  // Binding
+    Frame(0,0,388,165),         // Frame (l,t,r,b)
+    kTrue, kTrue,               // Visible, Enabled
+    kTranFxUIDialogTitleKey,    // Dialog name
+    {
+        EVEGroupPanelWidget
+        (
+            // CControlView properties
+            kTranFxUIOptionsWidgetID, // widget ID
+            kPMRsrcID_None,           // PMRsrc ID
+            kBindNone,                // frame binding
+            Frame(0,0,0,0)        // Frame                    
+            kTrue,                    // visible
+            kTrue,                    // enabled
+            // GroupPanelAttributes properties
+            kTranFxUIApplyEffectWidgetID,   // header widget ID
+                    
+            kEVEAlignFill | kEVERegularSpaceAfter | kEVEArrangeChildrenInColumn | kEVERegularMargin,
+            {// CPanelControlData Children
+                        
+                EVECheckBoxWidget
+                (
+                    kTranFxUIApplyEffectWidgetID, kSysCheckBoxPMRsrcId, kBindNone,
+                    Frame(0,0,0,0)
+                    kTrue, kTrue,
+                    kAlignLeft,                    // Alignment
+                    kTranFxUIDialogTitleKey
+                    kEVERegularSpaceAfter,
+                ),        
+               
+                    
+                EVEGenericPanelWidget
+                (
+                    kInvalidWidgetID,    // WidgetId
+                    0                    // RsrcId
+                    0,                   // Widget EVE Info
+                    kBindNone,           // Frame binding
+                    Frame(0,0,0,0)       // Frame
+                    kTrue,               // Visible
+                    kTrue,               // Enabled
+                    kEVEAlignFill | kEVERegularSpaceAfter | kEVEArrangeChildrenInRow,
+                                        
+                    {
+                        EVEStaticTextWidget
+                        (
+                            // CControlView properties
+                            kTranFxUIXOffsetWidgetID, // widget ID
+                            kSysStaticTextPMRsrcId,   // PMRsrc ID
+                            kBindNone,                // frame binding
+                            Frame(0,0,0,0)            // left, top, right, bottom
+                            kTrue,                    // visible
+                            kTrue,                    // enabled
+                            // StaticTextAttributes properties
+                            kAlignLeft,               // Alignment
+                            kEllipsizeEnd, kTrue      // Ellipsize style, Convert ampersands
+                            // CTextControlData properties
+                            kTranFxUIXOffsetLabelStringKey, // control label
+                            // AssociatedWidgetAttributes properties
+                            kTranFxUIXOffsetEditBoxWidgetID, // associated widget ID
+                                            
+                            kEVERegularSpaceAfter,
+                        ),
+                    
+                        EVEXMeasureEditBoxWidget
+                        (
+                            // CControlView properties
+                            kTranFxUIXOffsetEditBoxWidgetID, // widget ID
+                            kSysEditBoxPMRsrcId,             // PMRsrc ID
+                            kBindNone,                       // frame binding
+                            Frame(0,0,180,0)                   // left, top, right, bottom
+                            kTrue,                           // visible
+                            kTrue,                           // enabled
+                            // CEditBoxAttributes
+                            0,                               // nudgeWidgetId (0 or kInvalidWidgetID if no nudge required)
+                            1.0,                             // small nudge amount
+                            10.0,                            // large nudge amount
+                            0,                               // max num chars
+                            kFalse,                          // read only flag
+                            kFalse,                          // should notify on each key stroke
+                            // TextDataValidation properties
+                            kFalse,                          // range checking enabled
+                            kFalse,                          // blank entry allowed
+                            10000.0,                         // upper limit
+                            -10000.0,                        // lower limit
+                            // CTextControlData properties
+                            "0",                             // control label
+                                            
+                            kEVERegularSpaceAfter,
+                        ),
+
+                    }  // End of Eve generic panel child widgets
+                ), // End of Eve generic panel widget definition
+                                        
+                EVEGenericPanelWidget
+                (
+                    kInvalidWidgetID,    // WidgetId
+                    0                    // RsrcId
+                    0,                   // Widget EVE Info
+                    kBindNone,           // Frame binding
+                    Frame(0,0,0,0)       // Frame
+                    kTrue,               // Visible
+                    kTrue,               // Enabled
+                    kEVEAlignFill | kEVERegularSpaceAfter | kEVEArrangeChildrenInRow,
+                                       
+                    {
+                        EVEStaticTextWidget
+                        (
+                            // CControlView properties
+                            kTranFxUIYOffsetWidgetID,  // widget ID
+                            kSysStaticTextPMRsrcId,    // PMRsrc ID
+                            kBindNone,                 // frame binding
+                            Frame(0,0,0,0)             // left, top, right, bottom
+                            kTrue,                     // visible
+                            kTrue,                     // enabled
+                            // StaticTextAttributes properties
+                            kAlignLeft,                // Alignment
+                            kEllipsizeEnd, kTrue       // Ellipsize style, Convert ampersands
+                            // CTextControlData properties
+                            kTranFxUIYOffsetLabelStringKey, // control label
+                            // AssociatedWidgetAttributes properties
+                            kTranFxUIYOffsetEditBoxWidgetID, // associated widget ID
+                                            
+                            kEVERegularSpaceAfter,
+                        ),
+                        
+                        EVEYMeasureEditBoxWidget
+                        (
+                            // CControlView properties
+                            kTranFxUIYOffsetEditBoxWidgetID, // widget ID
+                            kSysEditBoxPMRsrcId,             // PMRsrc ID
+                            kBindNone,                       // frame binding
+                            Frame(0,0,180,0)                   // left, top, right, bottom
+                            kTrue,                           // visible
+                            kTrue,                           // enabled
+                            // CEditBoxAttributes
+                            0,                               // nudgeWidgetId (0 or kInvalidWidgetID if no nudge required)
+                            1.0,                             // small nudge amount
+                            10.0,                            // large nudge amount
+                            0,                               // max num chars
+                            kFalse,                          // read only flag
+                            kFalse,                          // should notify on each key stroke
+                            // TextDataValidation properties
+                            kFalse,                          // range checking enabled
+                            kFalse,                          // blank entry allowed
+                            10000.0,                         // upper limit
+                            -10000.0,                        // lower limit
+                            // CTextControlData properties
+                            "0",                             // control label
+                                            
+                            kEVERegularSpaceAfter,
+                        ),
+
+                    }  // End of Eve generic panel child widgets
+                ), // End of Eve generic panel widget definition
+                        
+                EVECheckBoxWidget
+                (
+                    // CControlView properties
+                    kTranFxUIUseBlackAsOpaqueWidgetID, // widget ID
+                    kSysCheckBoxPMRsrcId,              // PMRsrc ID
+                    kBindNone,                         // frame binding
+                    Frame(0,0,0,0)                     // left, top, right, bottom
+                    kTrue,                             // visible
+                    kTrue,                             // enabled
+                    // TriStateControlAttributes properties
+                    kAlignLeft, // alignment
+                    // CTextControlData properties
+                    kTranFxUIUseBlackAsOpaqueWidgetKey, // control label
+                                    
+                    kEVERegularSpaceAfter,
+                ),
+                    
+                EVECheckBoxWidget
+                (
+                    // CControlView properties
+                    kTranFxUIUseAlphaWidgetID, // widget ID
+                    kSysCheckBoxPMRsrcId,      // PMRsrc ID
+                    kBindNone,                 // frame binding
+                    Frame(0,0,0,0)             // left, top, right, bottom
+                    kTrue,                     // visible
+                    kTrue,                     // enabled
+                    // TriStateControlAttributes properties
+                    kAlignLeft,                // alignment
+                    // CTextControlData properties
+                    kTranFxUIUseAlphaWidgetKey,// control label
+                                    
+                    kEVERegularSpaceAfter,
+                ),
+    
+                EVECheckBoxWidget
+                (
+                    // CControlView properties
+                    kTranFxUIUseBlurWidgetID, // widget ID
+                    kSysCheckBoxPMRsrcId,     // PMRsrc ID
+                    kBindNone,                // frame binding
+                    Frame(0,0,0,0)            // left, top, right, bottom
+                    kTrue,                    // visible
+                    kTrue,                    // enabled
+                    // TriStateControlAttributes properties
+                    kAlignLeft,               // alignment
+                    // CTextControlData properties
+                    kTranFxUIUseBlurWidgetKey,// control label
+                                    
+                    kEVERegularSpaceAfter,
+                ),                        
+
+            }
+        ),                
+                
+        EVEGenericPanelWidget
+        (
+            kInvalidWidgetID,    // WidgetId
+            0                    // RsrcId
+            0,            
+            kBindNone,           // Frame binding
+            Frame(0,0,0,0)     // Frame
+            kTrue,               // Visible
+            kTrue,               // Enabled
+            kEVEAlignLeft | kEVERegularSpaceAfter | kEVEArrangeChildrenInColumn,
+                    
+            {
+                EVEDefaultButtonWidget
+                (
+                    // CControlView properties
+                    kOKButtonWidgetID,   // widget ID
+                    kSysButtonPMRsrcId,  // PMRsrc ID
+                    kBindNone,           // frame binding
+                    Frame(0,0,0,0)       // left, top, right, bottom
+                    kTrue,               // visible
+                    kTrue,               // enabled
+                    // CTextControlData properties
+                    kSDKDefOKButtonApplicationKey, // control label
+                            
+                    kEVELargeSpaceAfter,
+                ),
+                EVECancelButtonWidget
+                (
+                    // CControlView properties
+                    kCancelButton_WidgetID, // widget ID
+                    kSysButtonPMRsrcId,     // PMRsrc ID
+                    kBindNone,              // frame binding
+                    Frame(0,0,0,0)          // left, top, right, bottom
+                    kTrue,                  // visible
+                    kTrue,                  // enabled
+                    // CTextControlData properties
+                    kSDKDefCancelButtonApplicationKey, // control label
+                    // CIntegerControlData properties
+                    kFalse,                 // current value
+                            
+                    kEVELargeSpaceAfter,
+                ),
+                EVECheckBoxWidget
+                (
+                    // CControlView properties
+                    kPreviewButtonWidgetID, // widget ID
+                    kSysCheckBoxPMRsrcId,   // PMRsrc ID
+                    kBindNone,              // frame binding
+                    Frame(0,0,0,0)          // left, top, right, bottom
+                    kTrue,                  // visible
+                    kTrue,                  // enabled
+                    // TriStateControlAttributes properties
+                    kAlignLeft,             // alignment
+                    // CTextControlData properties
+                    "Pre&view",             // control label
+                            
+                    kEVELargeSpaceAfter,
+                ),
+                        
+            }  // End of EVE Generic panel child widgets
+        ), // End of EVE Generic panel widget definition
+                
+    },
+    
+    kEVEArrangeChildrenInRow | kEVELargeMargin,
+};
+
+#endif // __ODFRC__
+
+#include "TranFxUI_enUS.fr"
+#include "TranFxUI_jaJP.fr"
+//  Generated by Dolly build 17: template "Dialog".
+
+// End, TranFxUI.fr.

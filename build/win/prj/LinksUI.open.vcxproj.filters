@@ -1,0 +1,223 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{3c711e6b-052a-4384-b87d-2edb64403edc}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;rc;def;r;odl;hpj;bat;for;f90</Extensions>
+    </Filter>
+    <Filter Include="Source Files\PlugIn and Hacks">
+      <UniqueIdentifier>{0c692b41-b354-4423-b7ff-513bc6333552}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Panel">
+      <UniqueIdentifier>{e58cd29d-a4ff-49c2-b60f-f305c3a40038}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Dialogs">
+      <UniqueIdentifier>{057f19ce-5ccd-4c89-8a80-71ee9e44d671}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{4503c0cd-f15e-406c-83dc-1a5ad2a96fb9}</UniqueIdentifier>
+      <Extensions>ico;cur;bmp;dlg;rc2;rct;bin;cnt;rtf;gif;jpg;jpeg;jpe</Extensions>
+    </Filter>
+    <Filter Include="Resource Files\Core">
+      <UniqueIdentifier>{3b6afa80-9b3d-4771-9e27-d8ec0e3a86cf}</UniqueIdentifier>
+      <Extensions>fr</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\source\open\components\linksui\LinksUIID.cpp">
+      <Filter>Source Files\PlugIn and Hacks</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\linksui\LinksUIPlugin.cpp">
+      <Filter>Source Files\PlugIn and Hacks</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\linksui\LinksUITestMenu.cpp">
+      <Filter>Source Files\PlugIn and Hacks</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\linksui\LinksUIVCHacks.cpp">
+      <Filter>Source Files\PlugIn and Hacks</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\public\libs\publiclib\statics\PlugInStatics.cpp">
+      <Filter>Source Files\PlugIn and Hacks</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\linksui\Templates_LinksUI.cpp">
+      <Filter>Source Files\PlugIn and Hacks</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\linksui\TriggerResourceDeps.cpp">
+      <Filter>Source Files\PlugIn and Hacks</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\precomp\msvc\VCPlugInHeaders.cpp">
+      <Filter>Source Files\PlugIn and Hacks</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\linksui\AddDeleteCaptionRowButtonObserver.cpp">
+      <Filter>Source Files\Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\linksui\CaptionLayerObserver.cpp">
+      <Filter>Source Files\Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\linksui\CaptionParaStyleObserver.cpp">
+      <Filter>Source Files\Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\linksui\CEditOriginalWithMenu.cpp">
+      <Filter>Source Files\Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\linksui\CEditOriginalWithMenuComponent.cpp">
+      <Filter>Source Files\Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\linksui\ChooseLinksColumnsDialogController.cpp">
+      <Filter>Source Files\Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\linksui\EditOriginalResumeObserver.cpp">
+      <Filter>Source Files\Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\linksui\FilesChanging.cpp">
+      <Filter>Source Files\Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\linksui\LinkCaptionActionComponent.cpp">
+      <Filter>Source Files\Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\linksui\LinkInfoDebugUIDsProvider.cpp">
+      <Filter>Source Files\Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\linksui\LinkInfoIconEH.cpp">
+      <Filter>Source Files\Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\linksui\LinkInfoIconTip.cpp">
+      <Filter>Source Files\Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\linksui\LinkInfoIconView.cpp">
+      <Filter>Source Files\Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\linksui\LinkInfoPanelEH.cpp">
+      <Filter>Source Files\Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\linksui\LinkInfoPanelObserver.cpp">
+      <Filter>Source Files\Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\linksui\LinkInfoPanelPanorama.cpp">
+      <Filter>Source Files\Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\linksui\LinkInfoPanelView.cpp">
+      <Filter>Source Files\Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\linksui\LinkInfoTextLabelEH.cpp">
+      <Filter>Source Files\Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\linksui\LinksTreeNodeList.cpp">
+      <Filter>Source Files\Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\linksui\LinksTreeUIDNodeID.cpp">
+      <Filter>Source Files\Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\linksui\LinksTreeViewTypeAhead.cpp">
+      <Filter>Source Files\Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\linksui\LinksUIButtonObserver.cpp">
+      <Filter>Source Files\Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\linksui\LinksUIButtonTips.cpp">
+      <Filter>Source Files\Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\linksui\LinksUIColumnHeaderObserver.cpp">
+      <Filter>Source Files\Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\linksui\LinksUIPanelMenuComponent.cpp">
+      <Filter>Source Files\Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\linksui\LinksUIPanelPrefs.cpp">
+      <Filter>Source Files\Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\linksui\LinksUIPanelSAXHandler.cpp">
+      <Filter>Source Files\Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\linksui\LinksUIPanelSelectionObserver.cpp">
+      <Filter>Source Files\Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\linksui\LinksUIPanelTreeObserver.cpp">
+      <Filter>Source Files\Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\linksui\LinksUIPanelTreeViewAdapter.cpp">
+      <Filter>Source Files\Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\linksui\LinksUIPanelTreeViewWidgetMgr.cpp">
+      <Filter>Source Files\Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\linksui\LinksUIPanelView.cpp">
+      <Filter>Source Files\Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\linksui\LinksUIPanelXMLGenerator.cpp">
+      <Filter>Source Files\Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\linksui\LinksUIRowElementCursorProvider.cpp">
+      <Filter>Source Files\Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\linksui\LinksUIStatusTextObserver.cpp">
+      <Filter>Source Files\Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\linksui\LinksUIStatusTextTip.cpp">
+      <Filter>Source Files\Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\linksui\LinksUITreePanelControlData.cpp">
+      <Filter>Source Files\Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\linksui\LinksUITreeRowPanelEH.cpp">
+      <Filter>Source Files\Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\linksui\LinksUITreeViewController.cpp">
+      <Filter>Source Files\Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\linksui\LinksUIUtils.cpp">
+      <Filter>Source Files\Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\linksui\LinkThumbnailView.cpp">
+      <Filter>Source Files\Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\linksui\LinkUILinkNameTip.cpp">
+      <Filter>Source Files\Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\linksui\LinkUIStaticTextView.cpp">
+      <Filter>Source Files\Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\linksui\NextPrevLinkButtonObserver.cpp">
+      <Filter>Source Files\Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\linksui\ToggleLinkInfoButtonObserver.cpp">
+      <Filter>Source Files\Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\linksui\GenerateLinkCaptionDialogController.cpp">
+      <Filter>Source Files\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\linksui\MetadataLabelEVEInfo.cpp">
+      <Filter>Source Files\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\linksui\OpenProblemLinksDialogCmd.cpp">
+      <Filter>Source Files\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\linksui\ProblemLinksDialogObserver.cpp">
+      <Filter>Source Files\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\linksui\LinksUILinkNamePanelView.cpp">
+      <Filter>Source Files\Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\linksui\LinksUIPanelViewObserver.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\open\components\linksui\ClosingDocumentsResponder.cpp">
+      <Filter>Source Files\Panel</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\source\precomp\msvc\VCPlugInHeaders.h">
+      <Filter>Source Files\PlugIn and Hacks</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\..\..\source\open\components\linksui\resources\LinksUI.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\..\..\source\open\components\linksui\resources\LinksUI.fr">
+      <Filter>Resource Files\Core</Filter>
+    </CustomBuild>
+  </ItemGroup>
+</Project>

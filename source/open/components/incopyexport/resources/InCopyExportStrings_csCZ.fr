@@ -1,0 +1,52 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#include "StringTable.fh"
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// U.S. English strings
+//========================================================================================
+
+resource StringTable (kInCopyExportStringsRsrcID + index_csCZ)
+{
+	k_csCZ,								// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+
+	{
+		// ----- Miscellaneous strings
+		"Export Seq Name", 		"Exportovat článek InCopy",
+		"Text",					"Text", // append "Text" to export name on a text story
+		
+		// ----- Export options dialog strings
+		"InCopyExportOptions",	"Volby exportu Adobe InCopy",
+		"ExportOptions_DataType",	"&Kódování:",
+		"ExportOptions_UTF16",	"UTF16",
+		"ExportOptions_UTF8",	"UTF8",
+		"ExportOptions_DataOptions",	"Volby:",
+		"ExportOptions_StyleTable",	"Zahrnout seznam &stylů",
+		"ExportOptions_SwatchList",	"Zahrnou seznam &vzorků",
+		"ExportOptions_XMPData",	"Zahrnout informace &XMP",
+		"ExportOptions_StoryLabel",	"&Popis článku:",
+
+		//menu
+		"ExportMenu",				"E&xportovat",
+		"kExportLayerToIC",			"&Vrstva...",
+		"kExportAllStoriesToIC",	"Vš&echny články...",
+		"kExportAllGraphicsToIC",	"Všechny &grafiky...",
+		"kExportAllItemsToIC",		"Všechny gr&afiky a články...",
+
+		"INCDFeatureLost",    "Tento článek může obsahovat funkce, které tento formát souboru nepodporuje.  Tyto funkce se při aktualizaci článku ztratí.",
+	}
+};
+
+#endif // __ODFRC__

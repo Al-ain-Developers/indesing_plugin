@@ -1,0 +1,228 @@
+//========================================================================================
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#ifdef __ODFRC__
+
+#include "StringTable.fh"
+
+resource StringTable (kLinksUIStringsRsrcID + index_enUS)
+{
+	k_enUS,					// Locale Id
+	kResourceUTF8Encoded,		// Character encoding converter
+	{
+		"Links_WinMenu",			"Lin&ks", // panel menu item
+		"kRtMouseGraphics",			"Graphics", // context menu submenu name
+		"RtMenuLinksUILinkInfo",	"Link Info Context Menu",
+		
+		"#LinksUIPanel",			"Links", // panel name
+		"#LinksUIPanelMenu",		"Links Panel Menu", 
+		"#LinksUtilitiesSubmenu",		"Utilities",		// submenu for links panel menu
+		"#SelectedLinkInfoSectionName",			"Link Info", // section name in links ui panel
+		
+		"#UpdateAllOutOfDateLinksMenu",	"Update All Links",
+		"#AutoFindMissingLinksMenu",		"Search for Missing Links",
+		"#LinksUIRelinkLinkMenu",		"Relink...",
+		"#LinksUIRelinkResourceMenu",	"Relink All Instances...", // menu item to relink all instances of this multiple link assets
+		"#RelinkResource ^1 Menu",		"Relink All Instances of '^1'...", // menu item to relink all instances of one single link asset
+		"#ReplaceFPOWithOriginalResourceMenu",	"Replace All Instances...", // menu item to replace all instances of this multiple link assets
+		"#ReplaceFPOWithOriginalResource ^1 Menu", "Replace All Instances of FPO '^1' with Original...", // menu item to replace all instances of one single link asset
+		"#RelinkCloudResource ^1 Menu",	"Relink All Instances of '^1' from CC Libraries...", // menu item to relink all instances of one single link asset
+        "#RelinkAALResource ^1 Menu",    "Relink All Instances of '^1' from Adobe Asset Link...", // menu item to relink all instances of one single link asset
+		"#LinksUIUpdateLinkMenu",			"Update Link", // context menu item in links ui panel
+		"#LinksUIUpdateLinkResourceMenu",	"Update All Instances",
+		"#UpdateResource ^1 Menu",		"Update All Instances of '^1'", // menu item to update all instances of one single link asset
+		"#LinksUIEmbedLinkMenu",			"Embed Link", // context menu item in links ui panel
+		"#LinksUIEmbedResourceMenu",		"Embed All Instances",
+		"#EmbedResource ^1 Menu",			"Embed All Instances of '^1'", // menu item to embed all instances of one single link asset
+		"#LinksUIUnEmbedLinkMenu",		"Unembed Link", // context menu item in links ui panel
+		"#LinksUIUnEmbedResourceMenu",	"Unembed All Instances",
+		"#UnembedResource ^1 Menu",			"Unembed All Instances of '^1'", // menu item to unembed all instances of one single link asset
+		"#LinksUIUnLinkMenu",				"Unlink",
+		"#UnLinkResourceMenu",			"Unlink All Instances",
+		"#UnLinkResource ^1 Menu",			"Unlink All Instances of '^1'", // menu item to unlink all instances of one single link asset
+		"#LinksUIEditOriginalLinkMenu",		"Edit Original", // context menu item in links ui panel
+		"#LinksUIGoToSourceLinkMenu",		"Go To Source", // context menu item in links ui panel
+		"#LinksUIXMPFileInfo",				"XMP File Info...",
+		"#LinksUICopyPath",				"Copy Full Path",
+		"#LinksUICopyPlatformPath",			"Copy Platform Style Path",
+		"#RevealLinkInMacFinder",			"Reveal in Finder",
+		"#RevealLinkInWinExplorer",			"Reveal in Explorer",
+		"#RevealLinkInAdobeBridge",			"Reveal in Bridge",
+		"#RevealLinkInCCLibraries",			"Reveal in CC Libraries",
+		"#GoToLink",						"Go To Link",
+		"#EditWithApp",					"Edit With",
+		"ApplicationFiles",					"Application (*.exe)", // windows only string to list exe files in the 'edit with application' dialog.
+		"#ChooseEditingApplication",			"Choose Application", // dialog title
+		"#OtherApp",						"Other...",	// Menu name for choosing a custom application via a standard file dialog for Edit With...
+		"#LinksUICopyLink",				"Copy Link(s) To...",
+		"#LinksUIEditColumnsMenu",			"Panel Options...",
+		
+		"#LinksUIRemoveThisColumnMenu",	"Hide this Column",
+		"#LinksUIShowThumbnailMenu",		"Show Thumbnail",
+		"#LinksUIHideThumbnailMenu",		"Hide Thumbnail",		
+		"#LinksUIShowInfoThumbnailMenu",	"Show Info Thumbnail",
+		"#LinksUIHideInfoThumbnailMenu",	"Hide Info Thumbnail",
+		
+		"#SaveLinkVersionCmd",			"Check In Link",
+		"#ShowLinksPanelColumn",			"Show Column",
+		"#ShowLinksPanelInfo",				"Show in Link Info",
+		"#SelectNextLinkButtonTip",			"Select next link in the list",
+		"#SelectPrevLinkButtonTip",			"Select previous link in the list",
+		"#ToggleLinkInfoButtonTip",			"Show/Hide Link Information",
+
+		"#ShortLinkStatusParamStr",				"^1 Links",  // status string for links panel
+		"#LongLinkStatusParamStr",				"^1 Total Links\n\n   ^2 Missing\n   ^3 Modified\n   ^4 Embedded\n   ^5 Unique\n   ^6 Sublinks", // tip string for links panel status.
+		"#OneSelectedLinkStr",			"1 Selected", // status string when one link is selected in the panel.
+		"#NumSelectedLinksParamStr",	"^1 Selected", // status string when multiple links are selected in the panel.
+				
+		"RtMenuLinksUILinkItem",		"Link Context Menu",
+		"RtMenuLinksUILinksHeader",		"Links Header Context Menu",
+		
+		"#LinkColumnDialog",			"Panel Options", // dialog name
+		"#LinksUIPanelOptions",			"Options",
+		
+		"#LinkThumbPrefLabel",			"Thumbnails:",
+		"#LinksUIRowSizeLabel",		"&Row Size:",
+		"#LinksUISmallRowStr",			"Small Rows",
+		"#LinksUIRegularRowStr",		"Regular Rows",
+		"#LinksUILargeRowStr",			"Large Rows",
+		"#LinkInfoShowThumbnailCheckbox",	"Show in Link &Info",
+		"#LinksUIShowThumbnail",		"Show in &Name Column",
+		"#LinksUICollapseMultiple",		"&Collapse Multiple Links to Same Source",
+
+		"#SearchHereForMissingFiles",	"Search for Missing Links in This Folder", // label for checkbox in relink dialog
+		"#RelinkSkipButton",			"Skip", // name for 'skip' button in relink dialog
+		"#SearchFound^1Links",		"Searched this relink directory, and found and relinked ^1 missing links.", // alert that displays if we auto find missing links after a relink
+		"#RelinkToFolderTitle",			"Select the folder to relink to. Only currently selected links with a matching name will be relinked.",
+		"#RelinkToSameFilename",		"Match same filename and extension", // radio button option in relink to folder dialog
+		"#RelinkToExtension",			"Match same filename but this extension:", // radio button option in relink to folder dialog
+		"#LinksUICopyLinksTitle",		"Select the folder where linked files will be copied.",
+		"#LinksUIRelinkToFolderLinkMenu",	"Relink to Folder...",
+		"#LinksUIRelinkFileExtensionLinkMenu",	"Relink File Extension...",
+        "#LinksUIRelinkFromCloudAssetLinkMenu",	"Relink from CC Libraries...",
+        "#LinksUIRelinkFromAALAssetLinkMenu",    "Relink from Adobe Asset Link...",
+		"#LicenseStockAssetLinkMenu",	"License Image...",
+		"#LinksUIRelink: ^1",			"Relink: ^1", // title for relink dialog. ^1 becomes file path.
+		"#LinksUILocate: ^1",			"Locate: ^1", // title for relink dialog when link is missing. ^1 becomes file path.
+		"#CopyLinksFailedAlert",		"Copying links to a folder failed.",
+		"#AutoFindFoundNothingAlert",	"No missing links found. Use the Relink command to find the first missing link, and try again.",
+		
+		"kEditsMadeWarning",			  "Edits have been made to the imported version of \"^1\". You will lose these edits by updating. Update anyway?",
+		"kEditsMadeInLinkedStoryWarning",	"Edits have been made in the linked story \"^1\". You will lose these edits by updating. Update anyway?",
+		"kEditsMadeInLinkedArticleWarning", "Edits have been made in the linked page item \"^1\". You will lose these edits by updating. Update anyway?",
+		"kEditsMadeToTextOrTableWarning", "Edits have been made to the imported version of \"^1\". You will lose these edits (with the exception of changes applied to spreadsheets through cell styles or table styles) when you update the link. Update anyway?",
+
+		// Strings for Problem Links dialog
+		"#LinksModifiedWarning",	"This document contains links to sources that have been missing/modified. You can update the modified links now, or update these later using the Links panel.",
+		"#HTTPLinksModifiedWarning",	"This document contains links to sources that have been missing/modified since last document save. You can update the modified links now, or update these later using the Links panel.",
+		"#UpdateLinks",				"&Update Modified Links",	 // button text
+		"#Don'tUpdateLinks",		"Don't Update Links", // button text
+		"#ProblemMissingLinksParamStr",	"^1 - Missing Link(s)",
+		"#ProblemModifiedLinksParamStr",	"^1 - Modified Link(s)",
+		"#ProblemInaccessibleLinksParamStr",	"^1 - Inaccessible URL Link(s). Refer to the Links panel for details.",
+        "#ProblemLinksDialogHeader",    "Issues with Links",
+		"UnembedToOriginal", 		"Unembed can link to the original file(s) or it can link to file(s) it creates in a folder. "
+									"Do you want to link to the original file(s)?",
+		"#SelectUnembedDir",
+									"Select the folder where files will be created.",
+
+		// Show Link message.
+		 "Cannot show link: The selected item is on a hidden layer.",
+						"Cannot show link: The selected item is hidden or on a hidden layer.",
+		"Cannot show link: The selected item is hidden in overset text.",
+						"Cannot show link: The selected item is hidden in overset text.",
+		"Cannot show link: The selected item is hidden in an inactive form field state.",
+						"Cannot show link: The selected item is hidden in an inactive button state.  Use the Buttons panel to activate the hidden state to view the item.",
+		"Cannot show link: The selected item is hidden in an inactive mso state.",
+						"Cannot show link: The selected item is in an inactive object state. Use the Object States panel to make the hidden state visible.",
+		"Cannot show link: The selected item is in deleted text in a tracked change.",
+						"Cannot show link: The selected item is in deleted text in a tracked change.",
+		"Cannot show link: The selected item is an XML structure element not in the layout.",
+						"Cannot show link: The selected item is an XML structure element not in the layout.",
+		"Cannot show link: The selected item is in hidden conditional text.",
+						"Cannot show link: The selected item is in hidden conditional text.",
+						
+						
+		"#EditOriginalButtonTip",		"Edit Original",	// tip string for button in links panel
+		"#GotoLinkButtonTip",		"Go to Link",	// tip string for button in links panel
+		
+		"#appendedUpdateButtonTipMac",		". Opt-click to update all", // appened to menu name for 'update link' to build tip string for update button(mac)
+		"#appendedUpdateButtonTipWin",		". Alt-click to update all", // appened to menu name for 'update link' to build tip string for update button(win)
+		"#appendedRelinkButtonTipMac",		" Opt-click to relink all missing links", // appened to menu name for 'Relink' to build tip string for relink button(mac)
+		"#appendedRelinkButtonTipWin",		" Alt-click to relink all missing links", // appened to menu name for 'Relink' to build tip string for relink button(win)
+		
+		"#ErrorEmbeddingLink",				"Failed to embed link.",
+		"#LinksUIShowLinkInfoMenu",		"Show Link Information Pane",
+		"#LinksUIHideLinkInfoMenu",			"Hide Link Information Pane",
+		"#LinksUICopyLinkInfoMenu",		"Copy All Link Information",
+		"#LinksUIAutosizeLinkInfoMenu",		"Auto-Size Link Information",
+		"#LinksUIGenerateReportMenu",		"Copy Info for Selected Links",
+		"#LinksUIGenerateCaptionPrefsMenu",	"Caption Setup...",
+		"#GenerateLiveLinkCaptionMenu",		"Generate Live Captions",
+		"#GenerateStaticLinkCaptionMenu",	"Generate Static Captions",
+		
+		"#GenerateCaptionPrefDialogName",	"Caption Setup",
+		"#BeforeMetadataCaptionLabel",		"Text Before",
+		"#MetadataCaptionLabel",			"Metadata",
+		"#AfterMetadataCaptionLabel",		"Text After",
+		"#GenerateLiveCaptionGraphicSelectionMenu",	"Generate Live Caption",
+		"#GenerateStaticCaptionGraphicSelectionMenu",	"Generate Static Caption",
+		"#CopyLinkInfoStr '^1'",				"Copy '^1'", // Menu item name in links panel. ^1 is replaced with whatever text data is under the mouse.
+		"#CopyLinkFieldMenu",				"Copy Info Field",
+		"#InfoLabelSuffix",					": ", // suffix added to end of link info labels in the info section
+		
+		"#LinksCopyInfoMenu",				"Copy Info", // links panel submenu
+		
+		"#CaptionSubmenu",				"Captions",		// name of captions submenu on Object menu
+		"#CaptionRowLabel",				"Metadata Caption", // caption setup dialog top section title
+		"#CaptionOptionsLabel",				"Position and Style", // caption setup dialog bottom section title
+		"#CaptionOffsetLabel",				"&Offset:",
+		"#CaptionParaStyleLabel",			"&Paragraph Style:",
+		"#CaptionLayerLabel",				"&Layer:",
+		"#CaptionLayerLockedError",			"Cannot generate caption on locked layer.",
+		"#CaptionGroupFailureError",			"Cannot create group for caption.",
+		"#ErrorGeneratingCaption",			"Failed to generate caption.",
+		"#CaptionAlignmentLabel",			"&Alignment:",
+		
+		"#CaptionAlignBelow",				"Below Image",
+		"#CaptionAlignAbove",				"Above Image",
+		"#CaptionAlignLeft",					"Left of Image",
+		"#CaptionAlignRight",				"Right of Image",
+		
+		"#GroupCaptionWithImage",			"&Group Caption with Image",
+		 "#ConvertCaptionToTextMenu",		"Convert to Static Caption",
+		 "#ShowImportOptionsTip", 			"Show Import Options", // Tool tip for custom controls in relink dialog
+		 "#SearchHereForMissingFilesTip",	"Search Here for Missing Files", // Tool tip for custom controls in relink dialog
+		 "#EmbedLinkFromPropsPanel",		"Embed Image from Props Panel",
+		 "#RelinkAssetFromPropsPanel",		"Relink Image from Props Panel",
+		 "#UpdateLinkFromPropsPanel",		"Update Image from Props Panel",
+		 "#UnlinkFromPropsPanel",			"Unlink File from Props Panel",
+        
+        "kImportingAALAsset",                "Importing Asset",
+        "kImportingFileName",                "Importing ^1",
+        
+        //Error Strings for AEM
+        "AEMUnsupportedFiles",     "Cannot place ^1 of ^2 file(s). File type not supported by InDesign.",
+        "AEMInaccessibleFiles",     "Cannot place ^1 of ^2 file(s). InDesign is not able to access the file. Please check your network connectivity or the original source of content.",
+        "AEMUnknownFiles",     "Failed to place ^1 of ^2 file(s) due to an unknown error.",
+        "AEMGenericImportFailure",     "Unable to import AEM based asset.",
+        
+        // Action id strings
+        "#LinksUIReplaceFPOWithOriginalLink",        "Replace FPO With Original...",
+        "#LinksUIReplaceAllFPOWithOriginalLinks",    "Replace all FPOs With Originals...",
+        "#LinksUIDownloadOriginalLink",                "Download Original",
+        "#LinksUIDownloadAllOriginalLinks",            "Download all Originals",
+	}
+};
+
+
+
+#endif //__ODFRC__

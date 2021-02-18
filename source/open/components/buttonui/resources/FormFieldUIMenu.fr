@@ -1,0 +1,244 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/open/components/buttonui/resources/FormFieldUIMenu.fr $
+//  
+//  Owner: Mark VerMurlen
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//  
+//  Adapted from GroupMenu.fr
+//  
+//========================================================================================
+
+#include "MenuDef.fh"
+#include "ActionDef.fh"
+#include "AdobeMenuPositions.h"
+#include "ActionDefs.h"
+#include "ActionID.h"
+
+#include "FormFieldUIDefs.h"
+#include "FormFieldUIID.h"
+#include "FormFieldID.h"
+
+#include "DynamicDocumentsUIID.h"
+
+
+#ifdef __ODFRC__
+
+//Menu "areas"
+
+// Actual menus where various things live...
+
+#define kButtonUIMenu		"Main:&Object:$$$/Menu/Interactive"
+#define kStatesUIMenu		"Main:&Object:$$$/Menu/Interactive"
+
+#define kButtonUIContextMenu	"RtMouseLayout:InteractiveContextMenu"
+#define kStatesUIContextMenu	"RtMouseLayout:InteractiveContextMenu"
+
+
+// Forms Panel Flyout Menu:
+
+#define kFormFieldUIFormFlyoutMenu "$$$/Menu/AppearancePanelPopup" //FormFieldUI string
+
+#define kOpenButtonLibraryFlyoutMenuPosition 10.0
+#define kSeparatorFlyoutMenuPosition	15.0
+#define kPDFOptionsFlyoutMenuPosition 20.0
+#define kSeparator2FlyoutMenuPosition 60.0 
+#define kResetAllButtonsMenuPosition 70.0
+#define kSeparator3FlyoutMenuPosition 80.0 
+#define kAppearancePalettePrefsMenuPosition 90.0
+
+
+// MultiStateObject panel
+
+#define kMSOPanelFlyoutMenu "$$$/Menu/MSOPanelPopup"
+
+#define kMSOPanelNewStateMenuPosition			10.0
+#define kMSOPanelDeleteStateMenuPosition		20.0
+#define kMSOPanelSep1MenuPosition				30.0
+#define kMSOPanelHiddenUntilTriggeredMenuPosition 35.0
+#define kMSOPanelSep2MenuPosition				36.0
+#define kMSOPanelAddToStateMenuPosition			39.0
+#define kMSOPanelPasteIntoStateMenuPosition		40.0
+#define kMSOPanelSep3MenuPosition				50.0
+#define kMSOPanelReleaseStateMenuPosition		60.0
+#define kMSOPanelReleaseAllStatesMenuPosition	70.0
+#define kMSOPanelSep4MenuPosition				80.0
+#define kMSOPanelResetAllMSOsMenuPosition		90.0
+#define kMSOPanelSep5MenuPosition				100.0
+#define kMSOPanelOptionsMenuPosition			110.0
+
+#define kMSOPanelContextMenu "$$$/Menu/MSOPanel/ContextMenu"
+
+#define kMSOPanelDeleteStateRtMenuPosition		10.0
+#define kMSOPanelPasteIntoStateRtMenuPosition	20.0
+#define kMSOPanelReleaseStateRtMenuPosition		30.0
+
+#define kPreviewSpreadHTMLPopupMenuPosition		40.0	
+#define kPreviewSpreadSWFPopupMenuPosition		41.0
+
+resource MenuDef (128)
+{
+	{ 
+		//globalID,menupath,menuposition,isDynamic
+		0 , kButtonUIMenu ":", kInteractiveSettingsMenuPosition, kFalse,
+		kCreateButtonActionID, kButtonUIMenu, kCreateButtonMenuPosition, kFalse,
+		kCheckBoxToolActionID, kButtonUIMenu, kCreateCheckBoxMenuPosition, kFalse,
+		kComboBoxToolActionID, kButtonUIMenu, kCreateComboBoxMenuPosition, kFalse,
+		kListBoxToolActionID, kButtonUIMenu, kCreateListBoxMenuPosition, kFalse,
+		kRadioButtonToolActionID, kButtonUIMenu, kCreateRadioButtonMenuPosition, kFalse,
+		kSignatureFieldToolActionID, kButtonUIMenu, kCreateSignatureFieldMenuPosition, kFalse,
+		kTextFieldToolActionID, kButtonUIMenu, kCreateTextFieldMenuPosition, kFalse,
+		kFormFieldUISepActionID, kButtonUIMenu ":-", kSepBeforeConvertMenuPosition, kFalse,
+		kConvertToObjectToolActionID, kButtonUIMenu, kConvertToObjectMenuPosition, kFalse,
+		kSetTabOrderActionID, kButtonUIMenu, kSetTabOrderMenuPosition, kFalse,
+
+		// Right Mouse support.
+		0, kButtonUIContextMenu ":", kContextInteractiveGroupMenuPosition, kFalse, 
+		kCreateButtonActionID, kButtonUIContextMenu, kContextInteractiveCreateButtonMenuPosition, kFalse,
+		kCheckBoxToolActionID, kButtonUIContextMenu, kContextInteractiveCreateCheckBoxMenuPosition, kFalse,
+		kComboBoxToolActionID, kButtonUIContextMenu, kContextInteractiveCreateComboBoxMenuPosition, kFalse,
+		kListBoxToolActionID, kButtonUIContextMenu, kContextInteractiveCreateListBoxMenuPosition, kFalse,
+		kRadioButtonToolActionID, kButtonUIContextMenu, kContextInteractiveCreateRadioButtonMenuPosition, kFalse,
+		kSignatureFieldToolActionID, kButtonUIContextMenu, kContextInteractiveCreateSignatureFieldMenuPosition, kFalse,
+		kTextFieldToolActionID, kButtonUIContextMenu, kContextInteractiveCreateTextFieldMenuPosition, kFalse,
+		kFormFieldUISepActionID, kButtonUIContextMenu ":-", kContextInteractiveSepBefConvertMenuPosition, kFalse,
+		kConvertToObjectToolActionID, kButtonUIContextMenu, kContextInteractiveConvertToObjectMenuPosition, kFalse,
+		kFormFieldUISepActionID, "RtMouseLayout:-",kContextEBookSepMenuPosition,kFalse,
+
+		//Button Panel Flyout menu:
+
+		kOpenButtonLibraryActionID, kFormFieldUIFormFlyoutMenu, kOpenButtonLibraryFlyoutMenuPosition, kFalse,
+		kFormFieldUISep4ActionID,kFormFieldUIFormFlyoutMenu ":-", kSeparatorFlyoutMenuPosition,kFalse,
+
+		kFormFieldUISep2ActionID,kFormFieldUIFormFlyoutMenu ":-", kSeparator2FlyoutMenuPosition,kFalse,
+		kResetAllButtonsActionID, kFormFieldUIFormFlyoutMenu, kResetAllButtonsMenuPosition, kFalse,	
+		
+		kFormFieldUISep3ActionID,kFormFieldUIFormFlyoutMenu ":-", kSeparator3FlyoutMenuPosition,kFalse,
+		kAppearancePalettePrefsActionID, kFormFieldUIFormFlyoutMenu, kAppearancePalettePrefsMenuPosition, kFalse,
+		
+		kGoToAnchorBehaviorActionID, "ButtonsActionsPopup", 3.0, kFalse,
+		kGoToFirstPageBehaviorActionID, "ButtonsActionsPopup", 4.0, kFalse,
+		kGoToLastPageBehaviorActionID, "ButtonsActionsPopup", 5.0, kFalse,
+		kGoToNextPageBehaviorActionID, "ButtonsActionsPopup", 6.0, kFalse,
+		kGoToPreviousPageBehaviorActionID, "ButtonsActionsPopup", 7.0, kFalse,
+		kGoToURLBehaviorActionID, "ButtonsActionsPopup", 8.0, kFalse,
+		kShowHideBehaviorActionID, "ButtonsActionsPopup", 8.5, kFalse,
+		kSoundBehaviorActionID, "ButtonsActionsPopup", 9.0, kFalse,
+		kMovieBehaviorActionID, "ButtonsActionsPopup", 10.0, kFalse,
+		kSWFOnlySeparatorActionID, "ButtonsActionsPopup", 11.0, kFalse,
+		kAnimationBehaviorActionID, "ButtonsActionsPopup", 12.0, kFalse,
+		kGoToPageBehaviorActionID, "ButtonsActionsPopup", 13.0, kFalse,
+		kSwitchToMSOStateBehaviorActionID, "ButtonsActionsPopup", 14.0, kFalse,
+		kSwitchToNextMSOStateBehaviorActionID, "ButtonsActionsPopup", 15.0, kFalse,
+		kSwitchToPrevMSOStateBehaviorActionID, "ButtonsActionsPopup", 16.0, kFalse,
+		kPDFOnlySeparatorActionID, "ButtonsActionsPopup", 17.0, kFalse,	
+		kResetFormBehaviorActionID, "ButtonsActionsPopup", 18.0, kFalse,
+		kGoToNextViewBehaviorActionID, "ButtonsActionsPopup", 19.0, kFalse,
+		kGoToPreviousViewBehaviorActionID, "ButtonsActionsPopup", 20.0, kFalse,
+		kOpenFileBehaviorActionID, "ButtonsActionsPopup", 22.0, kFalse,
+		kPrintFormBehaviorActionID, "ButtonsActionsPopup", 24.0, kFalse,
+		kSubmitFormBehaviorActionID, "ButtonsActionsPopup", 26.0, kFalse,
+		kViewZoomBehaviorActionID, "ButtonsActionsPopup", 28.0, kFalse,
+
+		// MultiStateObject Panel Flyout menu:
+
+		kNewMSOStateActionID, kMSOPanelFlyoutMenu, kMSOPanelNewStateMenuPosition, kFalse,
+		kDeleteMSOStateActionID, kMSOPanelFlyoutMenu, kMSOPanelDeleteStateMenuPosition, kFalse,	
+		kMSOPanelSep1ActionID, kMSOPanelFlyoutMenu ":-", kMSOPanelSep1MenuPosition, kFalse,	
+		kHiddenUntilTriggeredActionID, kMSOPanelFlyoutMenu, kMSOPanelHiddenUntilTriggeredMenuPosition, kFalse,	
+		kMSOPanelSep2ActionID, kMSOPanelFlyoutMenu ":-", kMSOPanelSep2MenuPosition, kFalse,	
+		kAddToMSOStateActionID, kMSOPanelFlyoutMenu, kMSOPanelAddToStateMenuPosition, kFalse,	
+		kPasteIntoMSOStateActionID, kMSOPanelFlyoutMenu, kMSOPanelPasteIntoStateMenuPosition, kFalse,	
+		kMSOPanelSep3ActionID, kMSOPanelFlyoutMenu ":-", kMSOPanelSep3MenuPosition, kFalse,	
+		kReleaseMSOStateActionID, kMSOPanelFlyoutMenu, kMSOPanelReleaseStateMenuPosition, kFalse,	
+		kReleaseAllMSOStatesActionID, kMSOPanelFlyoutMenu, kMSOPanelReleaseAllStatesMenuPosition, kFalse,	
+		kMSOPanelSep4ActionID, kMSOPanelFlyoutMenu ":-", kMSOPanelSep4MenuPosition, kFalse,	
+		kResetAllMSOsActionID, kMSOPanelFlyoutMenu, kMSOPanelResetAllMSOsMenuPosition, kFalse,	
+		kMSOPanelSep5ActionID, kMSOPanelFlyoutMenu ":-", kMSOPanelSep5MenuPosition, kFalse,	
+		kMSOPanelOptionsActionID, kMSOPanelFlyoutMenu, kMSOPanelOptionsMenuPosition, kFalse,	
+		
+		// MultiStateObject Panel Context menu:
+		
+		kDeleteMSOStateContextActionID, kMSOPanelContextMenu, kMSOPanelDeleteStateRtMenuPosition, kFalse,	
+		kPasteIntoMSOStateContextActionID, kMSOPanelContextMenu, kMSOPanelPasteIntoStateRtMenuPosition, kFalse,	
+		kReleaseMSOStateContextActionID, kMSOPanelContextMenu, kMSOPanelReleaseStateRtMenuPosition, kFalse,	
+	}
+};
+
+
+resource ActionDef (kFormFieldUIActionResID)
+{
+	{ 
+			// globalID,name,area,action type, enabling type(see ActionDefs.h), userEditable
+		kFormFieldUIComponentBoss, kCreateButtonActionID, "$$$/Menu/CreateButton", kObjectMenuInteractiveActionArea,kNormalAction,kDisableIfNoFrontLayoutView|kDisableIfSelectionDoesNotSupportIID|kCustomEnabling,IID_IFORMFIELDSUITE,kTrue,
+		kFormFieldUIComponentBoss, kCheckBoxToolActionID, "$$$/Menu/CreateCheckBox", kObjectMenuInteractiveActionArea,kNormalAction,kDisableIfNoFrontLayoutView|kDisableIfSelectionDoesNotSupportIID|kCustomEnabling,IID_IFORMFIELDSUITE,kTrue,
+		kFormFieldUIComponentBoss, kComboBoxToolActionID, "$$$/Menu/CreateComboBox", kObjectMenuInteractiveActionArea,kNormalAction,kDisableIfNoFrontLayoutView|kDisableIfSelectionDoesNotSupportIID|kCustomEnabling,IID_IFORMFIELDSUITE,kTrue,
+		kFormFieldUIComponentBoss, kListBoxToolActionID, "$$$/Menu/CreateListBox", kObjectMenuInteractiveActionArea,kNormalAction,kDisableIfNoFrontLayoutView|kDisableIfSelectionDoesNotSupportIID|kCustomEnabling,IID_IFORMFIELDSUITE,kTrue,
+		kFormFieldUIComponentBoss, kRadioButtonToolActionID, "$$$/Menu/CreateRadioButton", kObjectMenuInteractiveActionArea,kNormalAction,kDisableIfNoFrontLayoutView|kDisableIfSelectionDoesNotSupportIID|kCustomEnabling,IID_IFORMFIELDSUITE,kTrue,
+		kFormFieldUIComponentBoss, kSignatureFieldToolActionID, "$$$/Menu/CreateSignatureField", kObjectMenuInteractiveActionArea,kNormalAction,kDisableIfNoFrontLayoutView|kDisableIfSelectionDoesNotSupportIID|kCustomEnabling,IID_IFORMFIELDSUITE,kTrue,
+		kFormFieldUIComponentBoss, kTextFieldToolActionID, "$$$/Menu/CreateTextField", kObjectMenuInteractiveActionArea,kNormalAction,kDisableIfNoFrontLayoutView|kDisableIfSelectionDoesNotSupportIID|kCustomEnabling,IID_IFORMFIELDSUITE,kTrue,
+		kFormFieldUIComponentBoss, kConvertToObjectToolActionID, "$$$/Menu/DestroyButton", kObjectMenuInteractiveActionArea,kNormalAction,kDisableIfNoFrontLayoutView|kDisableIfSelectionDoesNotSupportIID|kCustomEnabling,IID_IFORMFIELDSUITE,kTrue,
+		kFormFieldUIComponentBoss, kSetTabOrderActionID, "$$$/Menu/SetTabOrder",kObjectMenuInteractiveActionArea,kNormalAction,kDisableIfNoFrontDocument|kCustomEnabling,0,kTrue
+
+		// Actions/Behaviors
+		kFormFieldUIComponentBoss, kGoToPageBehaviorActionID, "$$$/Menu/Go To Page", kPaletteMenusButtonsActionsActionArea,kNormalAction,kDisableIfNoFrontLayoutView|kCustomEnabling,0,kTrue,
+		kFormFieldUIComponentBoss, kGoToAnchorBehaviorActionID, "$$$/Menu/Go To Anchor", kPaletteMenusButtonsActionsActionArea,kNormalAction,kDisableIfNoFrontLayoutView|kCustomEnabling,0,kTrue,
+		kFormFieldUIComponentBoss, kGoToFirstPageBehaviorActionID, "$$$/Menu/Go To First Page", kPaletteMenusButtonsActionsActionArea,kNormalAction,kDisableIfNoFrontLayoutView|kCustomEnabling,0,kTrue,
+		kFormFieldUIComponentBoss, kGoToLastPageBehaviorActionID, "$$$/Menu/Go To Last Page", kPaletteMenusButtonsActionsActionArea,kNormalAction,kDisableIfNoFrontLayoutView|kCustomEnabling,0,kTrue,
+		kFormFieldUIComponentBoss, kGoToNextPageBehaviorActionID, "$$$/Menu/Go To Next Page", kPaletteMenusButtonsActionsActionArea,kNormalAction,kDisableIfNoFrontLayoutView|kCustomEnabling,0,kTrue,
+		kFormFieldUIComponentBoss, kGoToNextViewBehaviorActionID, "$$$/Menu/Go To Next View", kPaletteMenusButtonsActionsActionArea,kNormalAction,kDisableIfNoFrontLayoutView|kCustomEnabling,0,kTrue,
+		kFormFieldUIComponentBoss, kGoToPreviousPageBehaviorActionID, "$$$/Menu/Go To Previous Page", kPaletteMenusButtonsActionsActionArea,kNormalAction,kDisableIfNoFrontLayoutView|kCustomEnabling,0,kTrue,
+		kFormFieldUIComponentBoss, kGoToPreviousViewBehaviorActionID, "$$$/Menu/Go To Previous View", kPaletteMenusButtonsActionsActionArea,kNormalAction,kDisableIfNoFrontLayoutView|kCustomEnabling,0,kTrue,
+		kFormFieldUIComponentBoss, kGoToURLBehaviorActionID, "$$$/Menu/Go To URL", kPaletteMenusButtonsActionsActionArea,kNormalAction,kDisableIfNoFrontLayoutView|kCustomEnabling,0,kTrue,
+		kFormFieldUIComponentBoss, kMovieBehaviorActionID, "$$$/Menu/Movie", kPaletteMenusButtonsActionsActionArea,kNormalAction,kDisableIfNoFrontLayoutView|kCustomEnabling,0,kTrue,
+		kFormFieldUIComponentBoss, kOpenFileBehaviorActionID, "$$$/Menu/Open File", kPaletteMenusButtonsActionsActionArea,kNormalAction,kDisableIfNoFrontLayoutView|kCustomEnabling,0,kTrue,
+		kFormFieldUIComponentBoss, kShowHideBehaviorActionID, "$$$/Menu/Show/Hide Buttons", kPaletteMenusButtonsActionsActionArea,kNormalAction,kDisableIfNoFrontLayoutView|kCustomEnabling,0,kTrue,
+		kFormFieldUIComponentBoss, kSoundBehaviorActionID, "$$$/Menu/Sound", kPaletteMenusButtonsActionsActionArea,kNormalAction,kDisableIfNoFrontLayoutView|kCustomEnabling,0,kTrue,
+		kFormFieldUIComponentBoss, kViewZoomBehaviorActionID, "$$$/Menu/View Zoom", kPaletteMenusButtonsActionsActionArea,kNormalAction,kDisableIfNoFrontLayoutView|kCustomEnabling,0,kTrue,
+		kFormFieldUIComponentBoss, kAnimationBehaviorActionID, "$$$/Menu/Animation", kPaletteMenusButtonsActionsActionArea,kNormalAction,kDisableIfNoFrontLayoutView|kCustomEnabling,0,kTrue,
+		kFormFieldUIComponentBoss, kSwitchToMSOStateBehaviorActionID, "$$$/Menu/SwitchToMSOState", kPaletteMenusButtonsActionsActionArea,kNormalAction,kDisableIfNoFrontLayoutView|kCustomEnabling,0,kTrue,
+		kFormFieldUIComponentBoss, kSwitchToNextMSOStateBehaviorActionID, "$$$/Menu/SwitchToNextMSOState", kPaletteMenusButtonsActionsActionArea,kNormalAction,kDisableIfNoFrontLayoutView|kCustomEnabling,0,kTrue,
+		kFormFieldUIComponentBoss, kSwitchToPrevMSOStateBehaviorActionID, "$$$/Menu/SwitchToPrevMSOState", kPaletteMenusButtonsActionsActionArea,kNormalAction,kDisableIfNoFrontLayoutView|kCustomEnabling,0,kTrue,
+		kFormFieldUIComponentBoss, kSWFOnlySeparatorActionID, "$$$/Menu/EPUBOnly", kPaletteMenusButtonsActionsActionArea,kNormalAction,kAlwaysDisabled,0,kFalse,//Just the name of the Action ID Needs to be changed after Checking whether it is used anywhere else or not, as SWF is removed.
+		kFormFieldUIComponentBoss, kPDFOnlySeparatorActionID, "$$$/Menu/PDFOnly", kPaletteMenusButtonsActionsActionArea,kNormalAction,kAlwaysDisabled,0,kFalse,
+		kFormFieldUIComponentBoss, kPrintFormBehaviorActionID, "$$$/Menu/Print Form", kPaletteMenusButtonsActionsActionArea,kNormalAction,kDisableIfNoFrontLayoutView|kCustomEnabling,0,kTrue,
+		kFormFieldUIComponentBoss, kResetFormBehaviorActionID, "$$$/Menu/Clear Form", kPaletteMenusButtonsActionsActionArea,kNormalAction,kDisableIfNoFrontLayoutView|kCustomEnabling,0,kTrue,
+		kFormFieldUIComponentBoss, kSubmitFormBehaviorActionID, "$$$/Menu/Submit Form", kPaletteMenusButtonsActionsActionArea,kNormalAction,kDisableIfNoFrontLayoutView|kCustomEnabling,0,kTrue,
+
+		kAppearancePanelMenuComponentBoss, kOpenButtonLibraryActionID, "$$$/Menu/FormFieldSettings/ButtonLibrary",kPaletteMenusButtonsActionArea,kNormalAction,kDisableIfSelectionDoesNotSupportIID|kCustomEnabling,IID_IFORMFIELDSUITE,kTrue
+		kAppearancePanelMenuComponentBoss, kResetAllButtonsActionID, "$$$/Menu/ResetAllButtons",kPaletteMenusButtonsActionArea,kNormalAction,kCustomEnabling,0,kTrue
+		kAppearancePanelMenuComponentBoss, kAppearancePalettePrefsActionID, "$$$/Menu/AppearancePanelPrefs",kPaletteMenusButtonsActionArea,kNormalAction,kCustomEnabling,0,kTrue
+
+		kMSOPanelMenuActionBoss, kNewMSOStateActionID, "$$$/Menu/MSOPanel/NewState",kPaletteMenusObjectStatesActionArea,kNormalAction,kDisableIfSelectionDoesNotSupportIID|kCustomEnabling,IID_IFORMFIELDSUITE,kTrue
+		kMSOPanelMenuActionBoss, kDeleteMSOStateActionID, "$$$/Menu/MSOPanel/DeleteState",kPaletteMenusObjectStatesActionArea,kNormalAction,kDisableIfSelectionDoesNotSupportIID|kCustomEnabling,IID_IFORMFIELDSUITE,kTrue
+		kMSOPanelMenuActionBoss, kHiddenUntilTriggeredActionID, "$$$/Menu/MSOPanel/HiddenUntilTriggered",kPaletteMenusObjectStatesActionArea,kNormalAction,kDisableIfSelectionDoesNotSupportIID|kCustomEnabling,IID_IFORMFIELDSUITE,kTrue
+		kMSOPanelMenuActionBoss, kAddToMSOStateActionID, "$$$/Menu/MSOPanel/AddToState",kPaletteMenusObjectStatesActionArea,kNormalAction,kDisableIfSelectionDoesNotSupportIID|kCustomEnabling,IID_IFORMFIELDSUITE,kTrue
+		kMSOPanelMenuActionBoss, kPasteIntoMSOStateActionID, "$$$/Menu/MSOPanel/PasteIntoState",kPaletteMenusObjectStatesActionArea,kNormalAction,kDisableIfSelectionDoesNotSupportIID|kCustomEnabling,IID_IFORMFIELDSUITE,kTrue
+		kMSOPanelMenuActionBoss, kReleaseMSOStateActionID, "$$$/Menu/MSOPanel/ReleaseState",kPaletteMenusObjectStatesActionArea,kNormalAction,kDisableIfSelectionDoesNotSupportIID|kCustomEnabling,IID_IFORMFIELDSUITE,kTrue
+		kMSOPanelMenuActionBoss, kReleaseAllMSOStatesActionID, "$$$/Menu/MSOPanel/ReleaseAllStates",kPaletteMenusObjectStatesActionArea,kNormalAction,kDisableIfSelectionDoesNotSupportIID|kCustomEnabling,IID_IFORMFIELDSUITE,kTrue
+		kMSOPanelMenuActionBoss, kResetAllMSOsActionID, "$$$/Menu/MSOPanel/ResetAllMSOs",kPaletteMenusObjectStatesActionArea,kNormalAction,kCustomEnabling,0,kTrue
+		kMSOPanelMenuActionBoss, kMSOPanelOptionsActionID, "$$$/Menu/MSOPanel/Options",kPaletteMenusObjectStatesActionArea,kNormalAction,kDisableIfSelectionDoesNotSupportIID|kCustomEnabling,IID_IFORMFIELDSUITE,kTrue
+		
+		kMSOPanelMenuActionBoss, kDeleteMSOStateContextActionID, "$$$/Menu/MSOPanel/DeleteState",kPaletteMenusObjectStatesActionArea,kNormalAction,kDisableIfSelectionDoesNotSupportIID|kCustomEnabling,IID_IFORMFIELDSUITE,kFalse
+		kMSOPanelMenuActionBoss, kPasteIntoMSOStateContextActionID, "$$$/Menu/MSOPanel/PasteIntoState",kPaletteMenusObjectStatesActionArea,kNormalAction,kDisableIfSelectionDoesNotSupportIID|kCustomEnabling,IID_IFORMFIELDSUITE,kFalse
+		kMSOPanelMenuActionBoss, kReleaseMSOStateContextActionID, "$$$/Menu/MSOPanel/ReleaseState",kPaletteMenusObjectStatesActionArea,kNormalAction,kDisableIfSelectionDoesNotSupportIID|kCustomEnabling,IID_IFORMFIELDSUITE,kFalse
+	}
+};
+
+
+#endif //__ODFRC__

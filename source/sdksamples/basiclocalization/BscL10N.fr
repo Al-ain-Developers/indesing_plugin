@@ -1,0 +1,422 @@
+//========================================================================================
+//  
+//  $File: //depot/devtech/16.0.x/plugin/source/sdksamples/basiclocalization/BscL10N.fr $
+//  
+//  Owner: Adobe Developer Technologies
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2020/11/06 13:08:29 $
+//  
+//  $Revision: #2 $
+//  
+//  $Change: 1088580 $
+//  
+//  Copyright 1997-2010 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//  
+//  Umbrella include file for all the .fr files in the plug-in.
+//  
+//========================================================================================
+
+//===========================
+//  General includes:
+//===========================
+
+#include "MenuDef.fh"
+#include "ActionDef.fh"
+#include "ActionDefs.h"
+#include "AdobeMenuPositions.h"
+#include "LocaleIndex.h"
+#include "PMLocaleIds.h"
+#include "StringTable.fh"
+//#include "OMTypes.h"
+#include "objectmodeltypes.fh"
+#include "ShuksanID.h"
+#include "ActionID.h"
+#include "CommandID.h"
+#include "WorkspaceID.h"
+#include "widgetid.h"
+#include "BuildNumber.h"
+#include "IControlViewDefs.h"
+#include "SysControlIds.h"
+#include "Widgets.fh" // for DialogBoss
+
+#include "PlugInModel_UIAttributes.h"
+// Project includes:
+#include "BscL10NID.h"
+#include "SDKSharedPNG.fr"
+
+
+#include "EveInfo.fh"
+#ifdef __ODFRC__
+
+/*
+// Plugin version definition.
+*/
+resource PluginVersion (kSDKDefPluginVersionResourceID)
+{
+	kTargetVersion,
+	kBscL10NPluginID,
+	kSDKDefPlugInMajorVersionNumber, kSDKDefPlugInMinorVersionNumber, 	
+	kSDKDefHostMajorVersionNumber, kSDKDefHostMinorVersionNumber,
+	kBscL10NCurrentMajorFormatNumber, kBscL10NCurrentMinorFormatNumber,
+	{kInDesignProduct },
+	{kWildFS },
+	kUIPlugIn,
+	kBscL10NVersion
+};
+
+/*
+//	Boss class definition.
+*/
+resource ClassDescriptionTable(kSDKDefClassDescriptionTableResourceID)
+{{{
+			/**
+			This boss class implements the dialog for this plug-in. All
+			dialogs must implement IDialogController. Specialisation of 
+			IObserver is only necessary if you want to handle widget 
+			changes dynamically rather than just gathering their values 
+			and applying in the IDialogController implementation.
+			In this implementation IObserver is specialised so that the 
+			plug-in's about box is popped when the info button widget 
+			is clicked.
+			@ingroup basiclocalization
+			*/
+			Class
+			{
+				kBscL10NDialogBoss,
+				kDialogBoss,
+				{
+					/** Provides management and control over the dialog. 
+					*/
+					IID_IDIALOGCONTROLLER, kBscL10NDialogControllerImpl,
+					/** Allows dynamic processing of dialog changes.
+					*/
+					IID_IOBSERVER, kBscL10NDialogObserverImpl,
+				}
+			},
+			
+			/**
+			This boss class provides the actions invoked by this plug-in's
+			sub-menu items. It supports two interfaces: 
+			IActionComponent and IPMPersist. We provide the implementation 
+			for IActionComponent in BscL10NAction.cpp. The other
+			default implementation is provided by the API.
+			@ingroup basiclocalization
+			*/
+			Class
+			{
+				kBscL10NActionComponentBoss,
+				kBaseActionComponentBoss,
+				{
+					/** Handle the actions from the menu. 
+					*/
+					IID_IACTIONCOMPONENT, kBscL10NActionComponentImpl,
+				}
+			},
+		}}};
+
+/*
+// Implementation definition.
+*/
+resource FactoryList (kSDKDefFactoryListResourceID) 
+{
+	kImplementationIDSpace,
+	{
+#include "BscL10NFactoryList.h"
+	}
+};
+
+/*
+// Menu definition.
+*/
+resource MenuDef (kSDKDefMenuResourceID)
+{
+	{
+		// The About Plug-ins sub-menu item for this plug-in.
+		kBscL10NAboutActionID,			// ActionID (kInvalidActionID for positional entries)
+		kBscL10NAboutMenuPath,			// Menu Path.
+		kSDKDefAlphabeticPosition,			// Menu Position.
+		kSDKDefIsNotDynamicMenuFlag,		// kSDKDefIsNotDynamicMenuFlag or kSDKDefIsDynamicMenuFlag.
+		
+		// The Plug-ins menu sub-menu items for this plug-in.
+		kBscL10NDialogActionID,
+		kBscL10NPluginsMenuPath,
+		kBscL10NDialogMenuItemPosition,
+		kSDKDefIsNotDynamicMenuFlag,
+		
+	}
+};
+
+/*
+// Action definition.
+*/
+resource ActionDef (kSDKDefActionResourceID)
+{
+	{
+		kBscL10NActionComponentBoss, 		// ClassID of boss class that implements the ActionID.
+		kBscL10NAboutActionID,	// ActionID.
+		kBscL10NAboutMenuKey,	// Sub-menu string.
+		kHelpMenuActionArea,				// Area name (see ActionDefs.h).
+		kNormalAction,					// Type of action (see ActionDefs.h).
+		kDisableIfLowMem,				// Enabling type (see ActionDefs.h).
+		kInvalidInterfaceID,			// Selection InterfaceID this action cares about or kInvalidInterfaceID.
+		kSDKDefInvisibleInKBSCEditorFlag, // kSDKDefVisibleInKBSCEditorFlag or kSDKDefInvisibleInKBSCEditorFlag.
+		
+		kBscL10NActionComponentBoss,
+		kBscL10NDialogActionID,		
+		kBscL10NDialogMenuItemKey,		
+		kOtherActionArea,			
+		kNormalAction,				
+		kDisableIfLowMem,	
+		kInvalidInterfaceID,		
+		kSDKDefInvisibleInKBSCEditorFlag,
+		
+	}
+};
+
+
+/*
+// LocaleIndex Definition.
+// The LocaleIndex should have indicies that point at your
+// localizations for each language system that you are 
+// localized for.
+*/
+/*
+// String LocaleIndex.
+*/
+// ### This is different from most other SDK sample plug-ins:
+// All supported locales are listed here.
+resource LocaleIndex (kSDKDefStringsResourceID)
+{
+	kStringTableRsrcType,
+	{
+		// provide locale specific strings for all supported locales
+		kWildFS, k_enUS, kSDKDefStringsResourceID + index_enUS
+		kWildFS, k_enGB, kSDKDefStringsResourceID + index_enGB
+		kWildFS, k_deDE, kSDKDefStringsResourceID + index_deDE
+		kWildFS, k_frFR, kSDKDefStringsResourceID + index_frFR
+		kInDesignJapaneseFS, k_jaJP, kSDKDefStringsResourceID + index_jaJP
+		kWildFS, k_esES, kSDKDefStringsResourceID + index_esES
+		kWildFS, k_ptBR, kSDKDefStringsResourceID + index_ptBR
+		kWildFS, k_svSE, kSDKDefStringsResourceID + index_svSE
+		kWildFS, k_daDK, kSDKDefStringsResourceID + index_daDK
+		kWildFS, k_nlNL, kSDKDefStringsResourceID + index_nlNL
+		kWildFS, k_itIT, kSDKDefStringsResourceID + index_itIT
+		kWildFS, k_nbNO, kSDKDefStringsResourceID + index_nbNO
+		kWildFS, k_fiFI, kSDKDefStringsResourceID + index_fiFI
+		kWildFS, k_koKR, kSDKDefStringsResourceID + index_koKR
+		kWildFS, k_zhCN, kSDKDefStringsResourceID + index_zhCN
+		kWildFS, k_zhTW, kSDKDefStringsResourceID + index_zhTW
+		kWildFS, k_ruRU, kSDKDefStringsResourceID + index_ruRU
+	}
+};
+
+resource LocaleIndex (kSDKDefStringsNoTransResourceID)
+{
+	kStringTableRsrcType,
+	{
+		kWildFS, k_Wild, kSDKDefStringsNoTransResourceID + index_enUS
+	}
+};
+
+resource StringTable (kSDKDefStringsNoTransResourceID + index_enUS)
+{
+	k_enUS,									// Locale Id
+	kEuropeanMacToWinEncodingConverter,		// Character encoding converter
+	{
+		// No-Translate strings go here:		
+	}
+};
+
+/*
+// Dialog LocaleIndex.
+*/
+resource LocaleIndex (kSDKDefDialogResourceID)
+{
+	kViewRsrcType,
+	{
+		kWildFS,	k_Wild, kSDKDefDialogResourceID + index_enUS
+	}
+};
+
+/*
+// Type definition.
+*/
+type BscL10NDialogWidget(kViewRsrcType) : DialogBoss(ClassID = kBscL10NDialogBoss)
+{
+	
+	WidgetEveInfo;
+};
+
+/*
+// Dialog definition.
+// This view is not localised: therefore, it can reside here.
+// However, if you wish to localise it, it is recommended to locate it in one of 
+// the localised framework resource files (i.e. BscL10N_enUS.fr etc.) and 
+// update your Dialog LocaleIndex accordingly.
+*/
+
+resource BscL10NDialogWidget (kSDKDefDialogResourceID + index_enUS)
+{
+	__FILE__, __LINE__,
+	kBscL10NDialogWidgetID,	// WidgetID
+	kPMRsrcID_None,				// RsrcID
+	kBindNone,					// Binding
+	Frame(0,0,388,112)				// Frame (l,t,r,b)
+	kTrue, kTrue,							// Visible, Enabled
+	kBscL10NDialogTitleKey,				// Dialog name
+	{
+		EVEGenericPanelWidget
+		(
+			kInvalidWidgetID,	// WidgetId
+			0			// RsrcId
+			0,			// Widget EVE Info
+			kBindNone,		// Frame binding
+			Frame(0,0,388,100)		// Frame
+			kTrue,			// Visible
+			kTrue,			// Enabled
+			kEVEAlignFill | kEVERegularSpaceAfter | kEVEArrangeChildrenInRow,
+			{
+				
+				EVEGenericPanelWidget
+				(
+					kInvalidWidgetID,	// WidgetId
+					0			// RsrcId
+					0,			
+					kBindNone,		// Frame binding
+					Frame(0,0,260,70)		// Frame
+					kTrue,			// Visible
+					kTrue,			// Enabled
+					kEVEAlignLeft | kEVEJumboSpaceAfter | kEVEDontArrangeChildren,
+					
+					{
+						EVEStaticTextWidget
+						(
+							// CControlView properties
+							kBscL10NStaticTextWidgetID, // widget ID
+							kSysStaticTextPMRsrcId, // PMRsrc ID
+							kBindNone, // frame binding
+							Frame(10,5,260,70) //  left, top, right, bottom
+							kTrue, // visible
+							kTrue, // enabled
+							// StaticTextAttributes properties
+							kAlignLeft, // Alignment
+							kDontEllipsize, kTrue, // Ellipsize style, Convert ampersands
+							// CTextControlData properties
+							kBscL10NStaticTextStringKey, // control label
+							// AssociatedWidgetAttributes properties
+							kInvalidWidgetID, // associated widget ID
+							
+							kEVERegularSpaceAfter,
+						),
+					}
+				),
+				
+				EVEGenericPanelWidget
+				(
+					kInvalidWidgetID,	// WidgetId
+					0			// RsrcId
+					0,			
+					kBindNone,		// Frame binding
+					Frame(0,0,80,50)		// Frame
+					kTrue,			// Visible
+					kTrue,			// Enabled
+					kEVEAlignLeft | kEVERegularSpaceAfter | kEVEArrangeChildrenInColumn,
+					
+					{
+						EVEDefaultButtonWidget
+						(
+							// CControlView properties
+							kOKButtonWidgetID, // widget ID
+							kSysButtonPMRsrcId, // PMRsrc ID
+							kBindNone, // frame binding
+							Frame(0,0,0,0) // left, top, right, bottom
+							kTrue, // visible
+							kTrue, // enabled
+							// CTextControlData properties
+							kSDKDefOKButtonApplicationKey, // control label
+							
+							kEVELargeSpaceAfter,
+						),
+						EVECancelButtonWidget
+						(
+							// CControlView properties
+							kCancelButton_WidgetID, // widget ID
+							kSysButtonPMRsrcId, // PMRsrc ID
+							kBindNone, // frame binding
+							Frame(0,0,0,0) // left, top, right, bottom
+							kTrue, // visible
+							kTrue, // enabled
+							// CTextControlData properties
+							kSDKDefCancelButtonApplicationKey, // control label
+							// CIntegerControlData properties
+							kTrue, // current value
+							
+							kEVELargeSpaceAfter,
+						),
+						
+					}  // End of EVE Generic panel child widgets
+				), // End of EVE Generic panel widget definition
+
+			}
+		),			
+		
+		EVERollOverIconButtonWidget
+		(
+			kBscL10NIconSuiteWidgetID, // widget ID
+			kSDKDefIconInfoResourceID, // resource ID
+			kBscL10NPluginID, // plugin ID
+			kBindNone, // frame binding
+			Frame(0,0,0,0) // left, top, right, bottom
+			kTrue, // visible
+			kTrue, // enabled
+			kADBEIconSuiteButtonDrawWellType /*kADBEIconSuiteButtonType*/,		// PNGIconAttributes, new for InDesign 3.0
+			
+			//kEVERegularSpaceAfter,
+			kEVENoSpaceAfter,
+		),
+				
+	},
+	
+//	kEVEArrangeChildrenInColumn | kEVELargeMargin,
+	kEVEArrangeChildrenInColumn | kEVERegularMargin,
+};
+
+
+#endif // __ODFRC__
+
+// ### This is different from most other SDK sample plug-ins:
+// All supported locales are listed here.
+#include "BscL10N_enUS.fr"
+#include "BscL10N_enGB.fr"
+#include "BscL10N_deDE.fr"
+#include "BscL10N_frFR.fr"
+#include "BscL10N_jaJP.fr"
+#include "BscL10N_esES.fr"
+#include "BscL10N_ptBR.fr"
+#include "BscL10N_svSE.fr"
+#include "BscL10N_daDK.fr"
+#include "BscL10N_nlNL.fr"
+#include "BscL10N_itIT.fr"
+#include "BscL10N_nbNO.fr"
+#include "BscL10N_fiFI.fr"
+#include "BscL10N_koKR.fr"
+#include "BscL10N_zhCN.fr"
+#include "BscL10N_zhTW.fr"
+
+//  Generated by Dolly build 17: template "Dialog".
+
+// End, BscL10N.fr.
+
+
+
+
+
+

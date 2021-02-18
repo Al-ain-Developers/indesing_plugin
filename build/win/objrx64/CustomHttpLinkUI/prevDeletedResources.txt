@@ -1,0 +1,15 @@
+Deleted file - C:\Users\User\Desktop\plugin_sdk_v3\plugin\build\win\releasex64\sdk\(CustomHttpLinkUI.sdk Resources)\idrc_CLST\500.idrc
+Deleted file - C:\Users\User\Desktop\plugin_sdk_v3\plugin\build\win\releasex64\sdk\(CustomHttpLinkUI.sdk Resources)\idrc_CRCT\1.idrc
+Deleted file - C:\Users\User\Desktop\plugin_sdk_v3\plugin\build\win\releasex64\sdk\(CustomHttpLinkUI.sdk Resources)\idrc_FACT\550.idrc
+Deleted file - C:\Users\User\Desktop\plugin_sdk_v3\plugin\build\win\releasex64\sdk\(CustomHttpLinkUI.sdk Resources)\idrc_IDPL\1.idrc
+Deleted file - C:\Users\User\Desktop\plugin_sdk_v3\plugin\build\win\releasex64\sdk\(CustomHttpLinkUI.sdk Resources)\idrc_MENR\200.idrc
+Deleted file - C:\Users\User\Desktop\plugin_sdk_v3\plugin\build\win\releasex64\sdk\(CustomHttpLinkUI.sdk Resources)\idrc_misc\idrc_ACTD\400.idrc
+Deleted file - C:\Users\User\Desktop\plugin_sdk_v3\plugin\build\win\releasex64\sdk\(CustomHttpLinkUI.sdk Resources)\idrc_misc\idrc_LOCR\300.idrc
+Deleted file - C:\Users\User\Desktop\plugin_sdk_v3\plugin\build\win\releasex64\sdk\(CustomHttpLinkUI.sdk Resources)\idrc_misc\idrc_LOCR\350.idrc
+Deleted file - C:\Users\User\Desktop\plugin_sdk_v3\plugin\build\win\releasex64\sdk\(CustomHttpLinkUI.sdk Resources)\idrc_misc\idrc_LOCR\700.idrc
+Deleted file - C:\Users\User\Desktop\plugin_sdk_v3\plugin\build\win\releasex64\sdk\(CustomHttpLinkUI.sdk Resources)\idrc_misc\idrc_PMST\301.idrc
+Deleted file - C:\Users\User\Desktop\plugin_sdk_v3\plugin\build\win\releasex64\sdk\(CustomHttpLinkUI.sdk Resources)\idrc_misc\idrc_PMST\305.idrc
+Deleted file - C:\Users\User\Desktop\plugin_sdk_v3\plugin\build\win\releasex64\sdk\(CustomHttpLinkUI.sdk Resources)\idrc_misc\idrc_PMST\351.idrc
+Deleted file - C:\Users\User\Desktop\plugin_sdk_v3\plugin\build\win\releasex64\sdk\(CustomHttpLinkUI.sdk Resources)\idrc_misc\idrc_PVER\450.idrc
+Deleted file - C:\Users\User\Desktop\plugin_sdk_v3\plugin\build\win\releasex64\sdk\(CustomHttpLinkUI.sdk Resources)\idrc_misc\idrc_VIEW\701.idrc
+Deleted file - C:\Users\User\Desktop\plugin_sdk_v3\plugin\build\win\releasex64\sdk\(CustomHttpLinkUI.sdk Resources)\idrc_PLST\700.idrc
