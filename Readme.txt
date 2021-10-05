@@ -6,4 +6,3 @@ To use the plugin
 4. Copy folder at Plugin->build->win->releasex64->SDK to C:\Program Files\Adobe\Adobe InDesign 2021\Plug-Ins\
 5. created C:\\temp\ folder
 6. Open InDesign
-Tarek hesham abdelaziz
